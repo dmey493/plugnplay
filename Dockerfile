@@ -32,7 +32,8 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 # The API routes read PYTHON_PATH; on Linux the interpreter is `python3`.
 ENV PYTHON_PATH=python3
-ENV PORT=3000
-EXPOSE 3000
+# Don't hardcode PORT: container hosts like Cloud Run inject their own PORT
+# (8080) and `next start` binds to it. Falls back to 3000 when unset.
+EXPOSE 8080
 
 CMD ["npm", "run", "start"]

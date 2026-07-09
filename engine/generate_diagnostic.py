@@ -458,7 +458,10 @@ def main():
 
     standard_data = clean_dict(standard_data)
 
-    tmp_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".tmp")
+    # System temp dir: always writable, including on read-only container
+    # filesystems (e.g. Cloud Run, where only /tmp is guaranteed writable).
+    import tempfile
+    tmp_dir = tempfile.gettempdir()
     os.makedirs(tmp_dir, exist_ok=True)
     safe = standard.replace(".", "_")
     output_path = os.path.join(tmp_dir, f"{mode}_{safe}_{random.randint(1000,9999)}.pdf")

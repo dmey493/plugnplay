@@ -3013,7 +3013,10 @@ def main():
 
     skill = clean_dict(skill)
 
-    tmp_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".tmp")
+    # System temp dir: always writable, including on read-only container
+    # filesystems (e.g. Cloud Run, where only /tmp is guaranteed writable).
+    import tempfile
+    tmp_dir = tempfile.gettempdir()
     os.makedirs(tmp_dir, exist_ok=True)
     output_path = os.path.join(tmp_dir, f"skill_{skill_id}_{random.randint(1000,9999)}.pdf")
 
