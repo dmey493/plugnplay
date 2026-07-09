@@ -45,15 +45,37 @@ npm run start   # serve the production build
 npm run lint    # eslint
 ```
 
+## PDF engine
+
+Two API routes — the skill-intervention **packet** and the math **diagnostic** —
+generate PDFs with a small Python engine in [`engine/`](engine) (`fpdf2` +
+`drawsvg`, no secrets, no network calls). Everything else in the app is pure
+Node/React. The routes call Python via the `PYTHON_PATH` environment variable
+(defaults to a local Windows path for development; set it to `python3` on Linux).
+
+Run the engine locally:
+
+```bash
+pip install -r requirements.txt   # fpdf2, drawsvg
+```
+
 ## Deploying
 
-The site deploys to any Next.js host. The easiest path is [Vercel](https://vercel.com):
-import this repository and it builds and hosts automatically on every push.
+Because of the Python PDF engine, deploy on a host that runs **both Node and
+Python**. A [`Dockerfile`](Dockerfile) is included that installs both, builds the
+app, and serves it — deploy it on any container host (**Render**, **Railway**,
+**Fly.io**, or a VPS):
 
-> Note: a few PDF-generation API routes shell out to a local Python engine (via a
-> `PYTHON_PATH` environment variable). The full site — lesson activities, the
-> Graph of the Week, WODB, number talks, fluency, and browsing — runs without it;
-> only those specific server-side PDF generators require the Python backend.
+1. Push this repo to GitHub.
+2. Create a new **Web Service** on your host and point it at the repo.
+3. Choose the **Docker** environment (it auto-detects the `Dockerfile`). No build
+   command needed.
+4. Deploy — the host builds the image and gives you a public URL.
+
+> Vercel's default runtime is Node-only and can't run the Python engine, so the
+> two PDF routes won't work there. If you deploy to Vercel, the rest of the site
+> (lesson activities, Graph of the Week, WODB, Number Talks, fluency, browsing)
+> still works — only the packet/diagnostic PDF downloads need the container host.
 
 ## License
 

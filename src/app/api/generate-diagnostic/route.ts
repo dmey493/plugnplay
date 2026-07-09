@@ -8,8 +8,11 @@ const PYTHON_PATH =
   process.env.PYTHON_PATH ??
   "C:/Users/meyedl01/AppData/Local/Python/pythoncore-3.14-64/python.exe";
 
-const SCRIPT_PATH = path.join(process.cwd(), "..", "engine", "generate_diagnostic.py");
-const PROJECT_ROOT = path.join(process.cwd(), "..");
+// The Python PDF engine ships in the repo at ./engine, so it deploys with
+// the app. process.cwd() is the app root in dev (`next dev` from web/) and in
+// production (`next start` / the Docker image's WORKDIR).
+const SCRIPT_PATH = path.join(process.cwd(), "engine", "generate_diagnostic.py");
+const PROJECT_ROOT = process.cwd();
 
 export async function POST(request: Request) {
   try {
