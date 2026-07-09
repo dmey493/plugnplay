@@ -1,0 +1,1983 @@
+{
+  "standard_code": "7.DSP.1",
+  "standard_text": "Understand that statistics can be used to gain information about a population by examining a sample of the population. Understand that conclusions and generalizations about a population from a sample are valid only if the sample is representative of that population, and that random sampling tends to produce representative samples and support valid inferences; distinguish biased from unbiased samples.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "This standard is one honest idea about measuring a big group without asking everyone: you study a slice (a SAMPLE) and reason about the whole (the POPULATION) -- but a conclusion is only as trustworthy as the sample behind it. So the progression begins by nailing the two nouns (population vs. sample) and the one number move that makes a sample useful: scaling a sample result up to the population with a proportion. From that base the logic climbs. First students choose a sensible way to gather a sample -- one that can reach the WHOLE population, not just an easy corner of it. Then they judge whether a method is RANDOM (does every member get an equal chance?), because randomness is the mechanism that protects against bias. Then they judge whether a sample is REPRESENTATIVE -- does it mirror the population, including matching unequal sub-groups in proportion?\n\nWith those two judgments in hand, students evaluate a conclusion someone else drew: is the generalization VALID given how the sample was gathered? That is the on-grade heart of the standard. Finally come the two hardest moves: JUSTIFY in words why a conclusion holds or fails by naming the sampling flaw or strength, and DESIGN a fair sampling method from scratch for a new statistical question. The through-line we keep naming: a correct percentage of a biased sample still cannot be trusted -- random selection is what lets a sample stand in for the whole population.",
+    "steps": [
+      {
+        "skill_id": "7DSP1-S1",
+        "verb": "choose",
+        "rationale": "Before judging fairness a student must grasp that a sample has to be drawn from the population being asked about; choosing a method that can reach the whole group is the first, most concrete decision."
+      },
+      {
+        "skill_id": "7DSP1-S2",
+        "verb": "classify",
+        "rationale": "Random sampling is the exact mechanism the standard names for producing representative samples; distinguishing a random (unbiased) method from a biased one is the standard's explicit demand."
+      },
+      {
+        "skill_id": "7DSP1-S3",
+        "verb": "evaluate",
+        "rationale": "Representativeness is the property that makes a generalization valid; the spec's difficult tier is sub-populations of unequal size, which the sample must mirror in proportion."
+      },
+      {
+        "skill_id": "7DSP1-S4",
+        "verb": "judge",
+        "rationale": "The At-proficiency synthesis: apply the random and representative judgments to someone else's claim and decide whether the conclusion about the population is valid."
+      },
+      {
+        "skill_id": "7DSP1-S5",
+        "verb": "justify",
+        "rationale": "The Above-proficiency move from recognizing to explaining: write WHY a conclusion holds or fails, naming the bias or randomness in the method rather than the sample size."
+      },
+      {
+        "skill_id": "7DSP1-S6",
+        "verb": "design",
+        "rationale": "The hardest DOK 3 move: produce a fair sampling method (population, random selection, size) for a new statistical question instead of critiquing an existing one."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "7DSP1-F1",
+      "name": "Identify the population and the sample in a survey situation",
+      "column": "foundation",
+      "parent_standard": "7.DSP.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Read a survey situation and tell what whole group is being studied and what smaller group is actually asked.",
+        "check_question": "A principal wants to know what all 900 students think, and asks 45 of them. Which is the whole group?"
+      },
+      "i_do_script": "Every survey has two groups. The POPULATION is the whole group we want to learn about -- everyone the question is really about. The SAMPLE is the smaller group we actually collect data from. Watch: a principal wants to know what all 900 students think about lunch. The population is all 900 students. She cannot ask everyone, so she asks 45 of them -- those 45 are the sample. The sample is always a part OF the population.",
+      "canonical_error": {
+        "pattern": "Swaps population and sample, calling the small group that was asked the 'population.'",
+        "example": "For 'a principal asks 45 of 900 students,' says the population is the 45 students who were asked.",
+        "why": "The student labels whichever group has a number attached as the 'population,' instead of asking which group the question wants to learn ABOUT. The population is the whole target group; the sample is only the part actually surveyed."
+      },
+      "item_template": "A survey situation naming a whole group and a smaller surveyed group; student identifies which is the population and which is the sample. Short response.",
+      "sample_items": [
+        {
+          "stem": "A company wants to know what all 2,000 of its employees think of a new schedule. What is the population?",
+          "answer": "All 2,000 employees."
+        },
+        {
+          "stem": "That company asks 50 of its employees about the schedule. What is the sample?",
+          "answer": "The 50 employees who were asked."
+        },
+        {
+          "stem": "True or false: a sample is a part of the population.",
+          "answer": "True."
+        },
+        {
+          "stem": "In one sentence, how is a population different from a sample?",
+          "answer": "The population is the entire group you want to learn about; the sample is the smaller part you actually collect data from."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which group does the question want to learn about?",
+        "prompt": "Underline the whole group the question is really about -- that is the population. The smaller group that was actually asked is the sample, a part of it.",
+        "praise": "You named the whole target group as the population -- the sample is just the slice."
+      },
+      "vocabulary": [
+        {
+          "term": "Population",
+          "definition": "The entire group you want to learn about in a study."
+        },
+        {
+          "term": "Sample",
+          "definition": "A smaller part of the population that you actually collect data from."
+        },
+        {
+          "term": "Statistics",
+          "definition": "Using data from a sample to learn about a population."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP1-S1",
+        "if_fail": "Review whole-vs-part groups (6.DS.2)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A mayor wants to know what all 5,000 residents think about a park. She asks 100 of them.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which group does the mayor want to learn ABOUT? Which group did she actually ask?"
+        },
+        {
+          "kind": "say",
+          "text": "The population is all 5,000 residents -- the group she wants to learn about. The sample is the 100 residents she asked."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says the population is the 100, ask 'does she care only about those 100, or about all 5,000?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a coach wants all 300 team members' opinion and surveys 30. Name the population and the sample."
+        }
+      ]
+    },
+    {
+      "skill_id": "7DSP1-F2",
+      "name": "Use a proportion to estimate a population total from a sample",
+      "column": "foundation",
+      "parent_standard": "7.DSP.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Set up part/whole = part/whole and solve for the missing value using a proportion.",
+        "check_question": "If 1 out of 4 sampled students walks to school, how many out of 800 students would you expect?"
+      },
+      "i_do_script": "A sample only helps if I can scale it up to the whole population. I find the fraction of the sample with a trait, then apply that SAME fraction to the population. Watch: in a random sample of 40 students, 10 walk to school. That is 10/40 = 0.25, or one fourth. If the school has 800 students, I expect the same one fourth: 0.25 x 800 = 200 students. Same fraction, bigger group.",
+      "canonical_error": {
+        "pattern": "Reports the raw sample count as the population estimate, skipping the scale-up.",
+        "example": "For '10 of 40 sampled students walk; estimate for 800 students,' answers 10 instead of scaling 10/40 up to 200.",
+        "why": "The student gives the sample number directly instead of turning it into a rate (part/whole) and applying that rate to the larger population. The estimate must keep the SAME fraction, not the same count."
+      },
+      "item_template": "A random sample count and a population size; student scales the sample fraction up to estimate the population total. Calculator allowed. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "In a random sample of 40 students, 10 walk to school. Estimate how many of the school's 800 students walk to school.",
+          "answer": "200 (10/40 = 0.25; 0.25 x 800 = 200)"
+        },
+        {
+          "stem": "A random sample of 50 voters found 30 support a measure. Estimate the number of supporters among 600 voters.",
+          "answer": "360 (30/50 = 0.6; 0.6 x 600 = 360)"
+        },
+        {
+          "stem": "15 of 25 sampled shoppers preferred a new brand. Estimate how many of 500 shoppers prefer it.",
+          "answer": "300 (15/25 = 0.6; 0.6 x 500 = 300)"
+        },
+        {
+          "stem": "8 of 20 sampled fans wore team colors. Estimate the number among 1,000 fans.",
+          "answer": "400 (8/20 = 0.4; 0.4 x 1000 = 400)"
+        },
+        {
+          "stem": "In a random sample of 10 students, 3 chose tacos. Estimate how many of 200 students choose tacos.",
+          "answer": "60 (3/10 = 0.3; 0.3 x 200 = 60)"
+        },
+        {
+          "stem": "6 of 12 sampled members renewed. Estimate how many of 300 members renew.",
+          "answer": "150 (6/12 = 0.5; 0.5 x 300 = 150)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is 10 the whole school, or just your sample?",
+        "prompt": "Turn the sample into a fraction first: part over whole. Then multiply that fraction by the population size to scale it up. 10 out of 40 is one fourth, so take one fourth of 800.",
+        "praise": "You kept the same fraction and scaled it to the population -- that is a real estimate."
+      },
+      "vocabulary": [
+        {
+          "term": "Proportion",
+          "definition": "Two equal ratios, like part/whole in the sample = part/whole in the population."
+        },
+        {
+          "term": "Estimate (inference)",
+          "definition": "A statement about the whole population based on the sample's fraction."
+        },
+        {
+          "term": "Rate",
+          "definition": "The sample's part-out-of-whole, like 10 out of 40, used to scale up."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP1-S1",
+        "if_fail": "Review proportions (6.RP.1)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'In a random sample of 25 shoppers, 15 preferred store brand. Estimate for 500 shoppers.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What fraction of the SAMPLE preferred the store brand? How do we use that for 500?"
+        },
+        {
+          "kind": "say",
+          "text": "15 out of 25 is 15/25 = 0.6. Keep the same fraction for the population: 0.6 x 500 = 300 shoppers."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 15, ask 'was 15 out of the whole 500, or out of your 25? Scale it up.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 8 of 20 sampled fans wore team colors -- estimate for 1,000 fans."
+        }
+      ]
+    },
+    {
+      "skill_id": "7DSP1-S1",
+      "name": "Choose a sampling method that represents the whole population",
+      "column": "looking_back",
+      "parent_standard": "7.DSP.1",
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7DSP1-F1"
+      },
+      "i_do_script": "To learn about a population, I pick a sample that could include ANY member of that population, not just one corner of it. Watch: a teacher wants to know how many students in the school want to go skating. Asking 20 students in the skating club is a bad sample -- they already love skating. Asking people at a grocery store misses the school entirely. The best method asks every 20th student who walks into the SCHOOL, because that reaches all kinds of students in the population.",
+      "canonical_error": {
+        "pattern": "Picks a sample from a sub-group that already favors one answer (or from outside the population).",
+        "example": "To find whether students want to go skating, chooses 'ask the skating club' because they are easy to find -- a group guaranteed to say yes.",
+        "why": "The student chooses for convenience or topic-match instead of coverage. A good method must be able to reach the WHOLE population, not a slice that leans one way."
+      },
+      "item_template": "A statistical question about a population with several candidate sampling methods; student selects the method that best represents the population. Multiple choice.",
+      "sample_items": [
+        {
+          "stem": "A teacher wants to estimate how many students in the school want to go skating. Which method is most accurate? (a) ask 20 students in the school's skating club (b) ask 20 people in the city chorus (c) ask every 20th student who walks into the school (d) ask every 20th person who walks into a grocery store",
+          "answer": "c",
+          "distractor_logic": "The skating club and chorus are biased sub-groups; the grocery store is outside the school population. Only (c) samples across the whole school."
+        },
+        {
+          "stem": "A librarian wants the most popular books among all students. Which sample best helps? (a) ask 10 students in the hallway (b) ask the 10 students closest to her (c) ask 10 random students from each grade (d) ask the 10 highest-scoring students from each grade",
+          "answer": "c",
+          "distractor_logic": "Convenience (a, b) and high-scorers (d) are biased slices; random students from each grade cover the whole population."
+        },
+        {
+          "stem": "A restaurant wants all customers' favorite new menu item. Which method is most accurate? (a) ask all teenagers (b) ask all female customers (c) ask customers who have eaten there exactly 5 years (d) ask a random group of customers from each age level",
+          "answer": "d",
+          "distractor_logic": "One age or gender is a biased sub-group; a random group from each age level represents all customers."
+        },
+        {
+          "stem": "A town wants to know if residents support a new park. Which sample best represents the town? (a) people leaving the current park (b) members of the garden club (c) 100 residents chosen at random from the town's address list (d) shoppers at one store",
+          "answer": "c",
+          "distractor_logic": "Park-goers and gardeners already favor parks; one store is a slice. A random draw from all addresses reaches the whole town."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Does that group already lean one way?",
+        "prompt": "Ask yourself: could this method reach EVERY kind of member in the population, or only one corner? Pick the method that samples across the whole group, not the easy-to-find fans.",
+        "praise": "You chose the method that reaches the whole population -- that is what keeps a sample fair."
+      },
+      "vocabulary": [
+        {
+          "term": "Sampling method",
+          "definition": "The plan for choosing who is in the sample."
+        },
+        {
+          "term": "Biased sample",
+          "definition": "A sample that over-represents one group and leaves others out."
+        },
+        {
+          "term": "Population",
+          "definition": "The whole group the question is about."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP1-S2",
+        "if_fail": "7DSP1-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A principal wants all students' favorite lunch. Options: ask the football team / ask 10 random students from each grade.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which option could reach every kind of student? Which one is only one group?"
+        },
+        {
+          "kind": "say",
+          "text": "The football team is one biased group. Ten random students from each grade reaches the whole school, so that is the fair method."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student picks the team because it is easy, ask 'do football players speak for the whole school's lunch taste?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a store wants all shoppers' favorite item -- pick the fairer method: ask people in the toy aisle, or randomly stop shoppers throughout the store."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A survey asks only members of the chess club whether the whole school likes chess. Is that a fair sample of the school?",
+          "answer": "No -- the chess club already likes chess; it is a biased sample."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Which reaches more kinds of students: asking one classroom, or randomly picking students from every grade?",
+          "answer": "Randomly picking students from every grade."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A teacher wants to know how many students want to go skating. Best method? (a) ask the skating club (b) ask the chorus (c) ask every 20th student entering the school (d) ask people at a grocery store",
+          "answer": "c",
+          "notes": "Baits the convenient, already-favoring skating club."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A gym wants all members' favorite class. Which is the fairest sample? (a) ask people in the yoga room (b) ask a random group of members across all class times (c) ask the newest members (d) ask the owner's friends",
+          "answer": "b",
+          "notes": "Yoga-room, newest, and friends are all biased slices."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Maria wants the favorite lunch of ALL students at her school. Find and fix her sampling method.",
+          "shown_work": [
+            "Maria wrote: 'I will ask everyone sitting at the pizza table in the cafeteria.'",
+            "'It is an easy group to reach.'"
+          ],
+          "answer": "The pizza table already favors pizza, so it is a biased sample of one corner of the school. A fair method picks students from across the whole school at random -- for example, every 20th student entering the building.",
+          "notes": "Canonical error: choosing a convenient sub-group that leans one way."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A reporter wants the whole city's opinion on bike lanes. Explain why interviewing people at a bike shop would give a biased sample.",
+          "answer": "People at a bike shop are cyclists, who already favor bike lanes; the sample leaves out non-cyclists, so it does not represent the whole city."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write a fair sampling method a principal could use to find all 800 students' favorite school event.",
+          "answer": "Randomly select students from every grade (for example, number all students and draw about 60-100), so every student could be chosen and all grades are represented."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Fair Sample or Biased Slice?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 10 sampling methods for a stated population"
+          ],
+          "instructions": "1. Read the population on the header card (for example, 'all students in the school').\n2. Sort each method card into 'Fair sample (reaches the whole population)' or 'Biased slice (one corner only).'\n3. For each biased card, write which group it leaves out.\n4. Debrief: what do all the fair methods have in common?",
+          "content": {
+            "categories": [
+              "Fair sample (reaches the whole population)",
+              "Biased slice (one corner only)"
+            ],
+            "cards": [
+              {
+                "text": "Ask every 20th student entering the school",
+                "category": "Fair sample (reaches the whole population)"
+              },
+              {
+                "text": "Ask only the skating club",
+                "category": "Biased slice (one corner only)"
+              },
+              {
+                "text": "Randomly pick 10 students from each grade",
+                "category": "Fair sample (reaches the whole population)"
+              },
+              {
+                "text": "Ask the 10 students closest to you",
+                "category": "Biased slice (one corner only)"
+              },
+              {
+                "text": "Number all students and let a computer choose 50",
+                "category": "Fair sample (reaches the whole population)"
+              },
+              {
+                "text": "Ask only students on the honor roll",
+                "category": "Biased slice (one corner only)"
+              },
+              {
+                "text": "Ask people leaving one club meeting",
+                "category": "Biased slice (one corner only)"
+              },
+              {
+                "text": "Draw 40 names from a bin of all students",
+                "category": "Fair sample (reaches the whole population)"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "The Easy Group Trap",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Maria's pizza-table method"
+          ],
+          "instructions": "1. Read Maria's plan to ask everyone at the pizza table.\n2. Ask: which lunch will that group probably pick, and why?\n3. Rewrite the method so it can reach every kind of student.\n4. Write a one-sentence rule for spotting a biased 'easy group.'",
+          "content": {
+            "worked_problem": "Find all students' favorite lunch. Maria asks everyone at the pizza table.",
+            "error_step": "Maria sampled one group that already favors pizza.",
+            "why": "A fair method reaches the whole school at random, so no single food is over-counted."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The convenient-biased-group choice is a clean, baitable error; find-and-fix on flawed methods targets it directly."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share lets students argue which method reaches the whole population before committing to an answer."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'could this reach every member?' models the coverage check students skip."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Who is the population -- the whole group this question is about?",
+          "Could this method reach every kind of member, or only one corner?",
+          "Which way would this group already lean before you even ask?",
+          "Which group does this method leave out?",
+          "What would make this sample fairer?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student picks a sample from a sub-group that already favors one answer (or from outside the population).",
+            "say": "Ask yourself: could this method reach EVERY kind of member in the population, or only one corner? Pick the method that samples across the whole group, not the easy-to-find fans.",
+            "praise": "You chose the method that reaches the whole population -- that is what keeps a sample fair."
+          },
+          {
+            "if_you_see": "Student picks a method just because it surveys a large number of people, ignoring who is left out.",
+            "say": "A big sample can still be biased if it is all one group. Check who is missing, not just how many were asked.",
+            "praise": "You looked at WHO was sampled, not just how many -- that is the right check."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "To find the whole school's favorite sport, is asking only the soccer team a fair sample?",
+            "look_for": "No -- the soccer team is biased. A 'yes' shows the student is choosing by convenience."
+          },
+          {
+            "prompt": "Name one fair way to sample all 600 students about school lunch.",
+            "look_for": "Any random, whole-school method (number students, pick randomly; every 20th student). A single group signals the bias trap."
+          }
+        ]
+      },
+      "fluency_source": "7DSP1-F1",
+      "sentence_starters": [
+        "The population is ___, so a fair sample must be able to include ___.",
+        "This method is biased because it only reaches ___, so instead I would ___."
+      ],
+      "worked_solution": {
+        "stem": "A school wants to know all students' favorite lunch. Which is the fairest sample: the pizza table, the football team, or 10 random students from each grade?",
+        "answer": "10 random students from each grade",
+        "steps": [
+          {
+            "math": "Population = all students in the school",
+            "annotation": "Name the whole group the question is about."
+          },
+          {
+            "math": "Pizza table and football team = biased slices",
+            "annotation": "Each already leans one way and leaves others out."
+          },
+          {
+            "math": "10 random students from each grade reaches every grade",
+            "annotation": "A method that can include any student is fair."
+          },
+          {
+            "math": "Choose the random, whole-school method",
+            "annotation": "Coverage of the whole population, not convenience, decides."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A gym wants all members' favorite class. Choose the fairest sample: the yoga room, the newest members, or a random group across all class times.",
+        "answer": "A random group across all class times",
+        "steps": [
+          {
+            "math": "Population = all gym members",
+            "annotation": "Name the whole target group.",
+            "given": true
+          },
+          {
+            "math": "Yoga room and newest members = biased slices",
+            "annotation": "Each is only one corner of the membership.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Which option can reach every kind of member?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Choose the method that samples across the whole population.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7DSP1-S2",
+      "name": "Classify a sampling method as random or biased",
+      "column": "on_grade",
+      "parent_standard": "7.DSP.1",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7DSP1-S1"
+      },
+      "i_do_script": "A sampling method is RANDOM when every member of the population has an equal chance of being picked -- like drawing names from a hat or using a random number generator. It is BIASED when the method leaves some members out or favors a certain group -- like surveying only the people in the cafeteria. Watch: 'assign every student a number and let a computer pick 30' is random -- everyone had a chance. 'Survey only students on the soccer team' is biased -- the rest of the school had zero chance.",
+      "canonical_error": {
+        "pattern": "Calls a method random because it 'felt fair' or reached many people, even though some members had no chance of being chosen.",
+        "example": "Says surveying 'the first 30 students to arrive in the morning' is random because no one hand-picked them -- but early arrivers (bus riders, athletes) are a specific group, so it is biased.",
+        "why": "The student equates 'not hand-picked by me' or 'a big group' with random. Random requires that EVERY member of the population has an equal chance; a method that structurally excludes some members is biased even if it feels neutral."
+      },
+      "item_template": "A described sampling method; student classifies it as random (every member an equal chance) or biased. Short response / multiple choice.",
+      "sample_items": [
+        {
+          "stem": "A librarian assigns every student a number and uses a random number generator to pick 25 to survey. Random or biased?",
+          "answer": "Random -- every student had an equal chance of being chosen.",
+          "distractor_logic": "The equal-chance test is met, so it is random; students who call any survey biased miss the mechanism."
+        },
+        {
+          "stem": "A reporter surveys only people who volunteer to answer an online poll. Random or biased?",
+          "answer": "Biased -- only volunteers (who often feel strongly) can be chosen; others have no chance.",
+          "distractor_logic": "Self-selection excludes most of the population, so it is biased despite feeling open."
+        },
+        {
+          "stem": "A coach surveys the first 30 students who arrive at school. Random or biased?",
+          "answer": "Biased -- early arrivers are a specific group (bus riders, athletes); not everyone had an equal chance.",
+          "distractor_logic": "'No one was hand-picked' is not the test; equal chance for all is, and early arrivers are a slice."
+        },
+        {
+          "stem": "The names of all 500 club members are put in a bin and 40 are drawn. Random or biased?",
+          "answer": "Random -- every member had an equal chance of being drawn.",
+          "distractor_logic": "Drawing from all names gives equal chance, so it is random."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did EVERY member have an equal chance?",
+        "prompt": "Test it: could every single person in the population have been picked? If some were shut out -- only volunteers, only early arrivers -- it is biased, not random, even if it felt fair.",
+        "praise": "You checked for equal chance, not just 'felt fair' -- that is the real test for random."
+      },
+      "vocabulary": [
+        {
+          "term": "Random sampling",
+          "definition": "A method where every member of the population has an equal chance of being selected."
+        },
+        {
+          "term": "Biased sample",
+          "definition": "A sample from a method that leaves some members out or favors a group."
+        },
+        {
+          "term": "Equal chance",
+          "definition": "The idea that every member could be chosen with the same likelihood."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP1-S3",
+        "if_fail": "7DSP1-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Method A: draw 40 names from a bin of all members. Method B: survey whoever is in the lobby.'"
+        },
+        {
+          "kind": "ask",
+          "text": "In each method, did every member have an equal chance of being picked?"
+        },
+        {
+          "kind": "say",
+          "text": "Method A gives everyone an equal chance -- random. Method B only reaches people in the lobby -- biased."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student calls B random because 'you did not choose them,' ask 'could someone at home be picked? No -- so it is biased.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a computer randomly selects 30 of all employees. Random or biased?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What is the test for a RANDOM sample in one phrase?",
+          "answer": "Every member has an equal chance of being chosen."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Drawing names from a hat with all names in it -- random or biased?",
+          "answer": "Random."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A survey uses only people who call in to a radio show. Random or biased? Explain.",
+          "answer": "Biased -- only listeners who choose to call can be sampled; most people have no chance."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A school numbers all 900 students and a computer picks 50. Random or biased? Explain.",
+          "answer": "Random -- every student had an equal chance of being selected."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Sam is deciding if a method is random. Find and fix his reasoning.",
+          "shown_work": [
+            "Method: survey the first 30 students who arrive at school.",
+            "Sam wrote: 'This is random because I did not choose who came first.'"
+          ],
+          "answer": "Not choosing them yourself is not the test. The first arrivers are a specific group (bus riders, early athletes), so most students had no chance -- the method is biased. Random means every student had an equal chance.",
+          "notes": "Canonical error: equating 'not hand-picked' with random."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why an online poll that 'anyone can take' is still usually a biased sample.",
+          "answer": "Only people who see the poll and choose to respond are sampled; that self-selected group is not everyone, so it is biased despite being open to all."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Describe a method that would turn 'ask whoever is in the gym' into a random sample of the whole school.",
+          "answer": "Number every student in the school and use a random number generator (or draw names) to pick the sample, so every student -- not just gym users -- has an equal chance."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Random or Biased",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Card set of 10 sampling methods"
+          ],
+          "instructions": "1. Read each method card.\n2. Apply the test: did EVERY member of the population have an equal chance?\n3. Sort into 'Random' or 'Biased,' and on each biased card write who had no chance.\n4. Debrief: which cards fooled you into thinking 'felt fair' meant random?",
+          "content": {
+            "categories": [
+              "Random (equal chance for all)",
+              "Biased (some had no chance)"
+            ],
+            "cards": [
+              {
+                "text": "Draw 40 names from a bin of all members",
+                "category": "Random (equal chance for all)"
+              },
+              {
+                "text": "Survey only online poll volunteers",
+                "category": "Biased (some had no chance)"
+              },
+              {
+                "text": "Computer picks 50 numbered students",
+                "category": "Random (equal chance for all)"
+              },
+              {
+                "text": "Ask the first 30 students to arrive",
+                "category": "Biased (some had no chance)"
+              },
+              {
+                "text": "Randomly select customers from the full member list",
+                "category": "Random (equal chance for all)"
+              },
+              {
+                "text": "Survey only people in the cafeteria",
+                "category": "Biased (some had no chance)"
+              },
+              {
+                "text": "Ask only the soccer team",
+                "category": "Biased (some had no chance)"
+              },
+              {
+                "text": "Roll to pick which numbered seats are surveyed",
+                "category": "Random (equal chance for all)"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Felt Fair vs. Was Fair",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Sam's first-arrivers claim"
+          ],
+          "instructions": "1. Read Sam's claim that surveying the first 30 arrivers is random.\n2. List two groups of students who would rarely be in the first 30.\n3. Rewrite the method to give every student an equal chance.\n4. Write the one-sentence test for a random sample.",
+          "content": {
+            "worked_problem": "Survey the first 30 students to arrive. Sam called it random because he did not choose them.",
+            "error_step": "Sam used 'I did not pick them' instead of 'everyone had an equal chance.'",
+            "why": "Early arrivers are a specific group; late arrivers had no chance, so the method is biased."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The 'felt fair equals random' error is precise and baitable; find-and-fix with the equal-chance test targets it."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "A journal entry defining random in the student's own words cements the equal-chance criterion."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'could everyone have been picked?' models the check that separates random from biased."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Did every member of the population have an equal chance here?",
+          "Who was shut out of this method?",
+          "Is 'no one hand-picked them' the same as random? Why not?",
+          "Could a big sample still be biased? How?",
+          "How would you fix this method to make it random?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student calls a method random because it 'felt fair' or reached many people, though some members had no chance.",
+            "say": "Test it: could every single person in the population have been picked? If some were shut out -- only volunteers, only early arrivers -- it is biased, not random, even if it felt fair.",
+            "praise": "You checked for equal chance, not just 'felt fair' -- that is the real test for random."
+          },
+          {
+            "if_you_see": "Student labels every survey biased, treating any sampling as unfair.",
+            "say": "A method IS random when everyone had an equal chance -- like a computer picking from all names. Not every sample is biased; check the equal-chance test.",
+            "praise": "You reserved 'biased' for methods that actually shut people out."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A computer randomly selects 30 of all 500 members. Random or biased?",
+            "look_for": "Random (equal chance for all). 'Biased' signals the student thinks all sampling is unfair."
+          },
+          {
+            "prompt": "A survey of only people at a bus stop -- random or biased?",
+            "look_for": "Biased -- only bus riders had a chance. 'Random' signals the felt-fair error."
+          }
+        ]
+      },
+      "fluency_source": "7DSP1-F1",
+      "sentence_starters": [
+        "Every member of ___ had an equal chance, so this method is ___.",
+        "This method leaves out ___, so it is ___."
+      ],
+      "worked_solution": {
+        "stem": "A store surveys the first 40 customers who walk in on Monday. Is this method random or biased?",
+        "answer": "Biased",
+        "steps": [
+          {
+            "math": "Population = all of the store's customers",
+            "annotation": "Name who the question is about."
+          },
+          {
+            "math": "Test: did every customer have an equal chance?",
+            "annotation": "The equal-chance rule decides random vs. biased."
+          },
+          {
+            "math": "Only Monday-morning early arrivers could be picked",
+            "annotation": "Weekend and afternoon customers had no chance."
+          },
+          {
+            "math": "Some members shut out => biased",
+            "annotation": "Not everyone had an equal chance, so it is biased."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A club numbers all 300 members and a computer randomly selects 30. Is this method random or biased?",
+        "answer": "Random",
+        "steps": [
+          {
+            "math": "Population = all 300 members",
+            "annotation": "Name the whole group.",
+            "given": true
+          },
+          {
+            "math": "Test: did every member have an equal chance?",
+            "annotation": "Apply the equal-chance rule.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Could any of the 300 have been the one chosen?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State random or biased based on the equal-chance test.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7DSP1-S3",
+      "name": "Evaluate whether a sample represents a population, including its sub-groups",
+      "column": "on_grade",
+      "parent_standard": "7.DSP.1",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7DSP1-S2"
+      },
+      "i_do_script": "A sample is REPRESENTATIVE when it looks like the population in miniature -- the same kinds of members in about the same proportions. If the population has sub-groups of different sizes, the sample should include them in the SAME proportion. Watch: a school has 300 sixth graders, 200 seventh, and 100 eighth (600 total). A representative sample of 60 keeps the 3 to 2 to 1 ratio -- 30 sixth, 20 seventh, 10 eighth -- not 20 from each grade, which would over-count the smaller grades.",
+      "canonical_error": {
+        "pattern": "Takes an EQUAL number from each sub-group even when the sub-groups are different sizes.",
+        "example": "For a school of 300, 200, and 100 across three grades, samples 20 from each grade instead of matching the 3:2:1 sizes (30, 20, 10), over-representing the smallest grade.",
+        "why": "The student treats 'fair' as 'the same number from everyone,' but a representative sample must mirror the population's PROPORTIONS. Equal counts distort a population whose sub-groups are unequal in size."
+      },
+      "item_template": "A population (sometimes with unequal sub-groups given in text) and one or more proposed samples; student picks or builds the representative one, or estimates a population fraction from a random sample. Calculator allowed.",
+      "sample_items": [
+        {
+          "stem": "A school has 300 sixth graders, 200 seventh graders, and 100 eighth graders. Which sample of 60 best represents the school? (a) 20 from each grade (b) 30 sixth, 20 seventh, 10 eighth (c) 10 sixth, 20 seventh, 30 eighth (d) all 60 from sixth grade",
+          "answer": "b",
+          "distractor_logic": "The population ratio is 3:2:1, so 30/20/10 keeps it. Equal 20/20/20 (a) over-counts the smaller grades; (c) reverses the ratio; (d) uses one grade only."
+        },
+        {
+          "stem": "A club has 240 adult members and 160 teen members (400 total). A representative sample of 40 should include how many teens?",
+          "answer": "16 (160/400 = 0.4; 0.4 x 40 = 16)",
+          "distractor_logic": "Splitting 20/20 ignores that adults outnumber teens 3:2; the teen share is 16."
+        },
+        {
+          "stem": "In a random sample of 50 shoppers, 35 preferred the store brand. About what fraction of ALL shoppers would you estimate prefer it?",
+          "answer": "About 7/10 (35/50 = 70%)",
+          "distractor_logic": "Because the sample was random, its fraction estimates the population's; 35/50 = 7/10."
+        },
+        {
+          "stem": "A survey of a town uses only people leaving a football game. Is this sample representative of the whole town? Explain.",
+          "answer": "No -- football fans are one sub-group; residents who dislike or cannot attend games are left out, so the sample does not mirror the town.",
+          "distractor_logic": "A single-event crowd is not a miniature of the town."
+        },
+        {
+          "stem": "A neighborhood has 400 houses on the north side and 400 on the south side. A representative sample of 80 houses should include how many from the south side?",
+          "answer": "40 (the two sides are equal, so split evenly)",
+          "distractor_logic": "Here the sub-groups ARE equal, so equal counts (40/40) are correct -- proportional and equal coincide."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Are the sub-groups the same size?",
+        "prompt": "A representative sample mirrors the population's proportions. If one grade is bigger, it should send MORE to the sample. Find each sub-group's fraction of the whole, then match it -- do not just take the same number from each.",
+        "praise": "You matched the sample to the population's proportions -- that is what makes it representative."
+      },
+      "vocabulary": [
+        {
+          "term": "Representative sample",
+          "definition": "A sample that mirrors the population, with the same kinds of members in about the same proportions."
+        },
+        {
+          "term": "Sub-group (sub-population)",
+          "definition": "A smaller category within the population, like a grade level."
+        },
+        {
+          "term": "Proportion",
+          "definition": "Each sub-group's share of the whole, which the sample should match."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP1-S4",
+        "if_fail": "7DSP1-S2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'School: 300 sixth, 200 seventh, 100 eighth (600 total). Build a representative sample of 60.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What fraction of the school is each grade? How many of 60 should each send?"
+        },
+        {
+          "kind": "say",
+          "text": "Sixth is 300/600 = 1/2 -> 30. Seventh is 200/600 = 1/3 -> 20. Eighth is 100/600 = 1/6 -> 10. Sample: 30, 20, 10."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 20 from each grade, ask 'is sixth grade bigger than eighth? Then should it send the same number?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 240 adults and 160 teens (400 total) -- how many teens in a sample of 40?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A representative sample should look like the population in what way?",
+          "answer": "The same kinds of members in about the same proportions."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "If a school is half sixth graders, about what fraction of a representative sample should be sixth graders?",
+          "answer": "About half."
+        },
+        {
+          "difficulty": "core",
+          "stem": "School: 300 sixth, 200 seventh, 100 eighth. Best sample of 60? (a) 20/20/20 (b) 30/20/10 (c) 10/20/30",
+          "answer": "b",
+          "notes": "Baits equal counts (a) for unequal sub-groups."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A club has 240 adults and 160 teens (400 total). How many teens belong in a representative sample of 40?",
+          "answer": "16 (160/400 x 40)",
+          "notes": "Proportional share, not a 20/20 split."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Priya built a sample for a school with 400 freshmen, 300 sophomores, and 300 juniors (1,000 total). Find and fix her sample of 50.",
+          "shown_work": [
+            "Priya wrote: 'To be fair, I will take the same number from each grade.'",
+            "'So: about 17 freshmen, 17 sophomores, 16 juniors.'"
+          ],
+          "answer": "Equal counts do not mirror unequal grades. Freshmen are 400/1000 = 40%, sophomores and juniors 30% each. Of 50: 20 freshmen, 15 sophomores, 15 juniors.",
+          "notes": "Canonical error: equal counts for unequal sub-groups."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "In a random sample of 50 voters, 30 support a measure. Estimate the number of supporters among 600 voters, and explain why the estimate is trustworthy.",
+          "answer": "30/50 = 0.6, so 0.6 x 600 = 360 supporters. It is trustworthy because the sample was random, so its fraction represents the whole population."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A neighborhood has 400 north-side and 400 south-side houses. Explain why a representative sample of 80 takes 40 from each side here, even though usually you must weight by size.",
+          "answer": "The sub-groups are equal in size, so their equal proportions (1/2 and 1/2) give 40 and 40. Equal counts are correct only because the sides are equal -- weighting by size just happens to match."
+        }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Match the Population to Its Fair Sample",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Population cards (with sub-group sizes)",
+            "Sample cards (proportional and equal-count decoys)"
+          ],
+          "instructions": "1. Read each population card and its sub-group sizes.\n2. Find the sample card whose counts keep the SAME proportions.\n3. Set aside the equal-count decoys and label who they over-count.\n4. Debrief: when do equal counts happen to be correct?",
+          "content": {
+            "pairs": [
+              {
+                "left": "300 sixth, 200 seventh, 100 eighth; sample 60",
+                "right": "30 sixth, 20 seventh, 10 eighth"
+              },
+              {
+                "left": "240 adults, 160 teens; sample 40",
+                "right": "24 adults, 16 teens"
+              },
+              {
+                "left": "400 north, 400 south houses; sample 80",
+                "right": "40 north, 40 south"
+              },
+              {
+                "left": "400 freshmen, 300 soph, 300 junior; sample 50",
+                "right": "20 freshmen, 15 soph, 15 junior"
+              }
+            ],
+            "decoys": [
+              "20 sixth, 20 seventh, 20 eighth",
+              "20 adults, 20 teens"
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Same Number Is Not the Same as Fair",
+          "time_minutes": 8,
+          "grouping": "small_group",
+          "materials": [
+            "Slip with Priya's equal-count sample"
+          ],
+          "instructions": "1. Read Priya's plan to take the same number from each grade.\n2. Compute each grade's real fraction of the school.\n3. Rebuild the sample of 50 to match those fractions.\n4. Write the rule: a fair sample matches the population's ____.",
+          "content": {
+            "worked_problem": "School of 400/300/300 (1,000). Priya took 17/17/16 for a sample of 50.",
+            "error_step": "Priya used equal counts for unequal grades.",
+            "why": "Freshmen are 40% of the school, so the sample should be 20 freshmen, 15 sophomores, 15 juniors."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building samples from concrete counts to proportional fractions moves students from equal-count intuition to a representational model."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The equal-counts-for-unequal-groups error is precise and baitable for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "A number talk on 'what fraction of the school is each grade?' builds the proportional sense representativeness requires."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What fraction of the population is each sub-group?",
+          "Are the sub-groups the same size, or different?",
+          "Should a bigger sub-group send more to the sample? Why?",
+          "Does this sample mirror the population's proportions?",
+          "When would equal counts actually be correct?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student takes an equal number from each sub-group even when the sub-groups are different sizes.",
+            "say": "A representative sample mirrors the population's proportions. If one grade is bigger, it should send MORE to the sample. Find each sub-group's fraction of the whole, then match it -- do not just take the same number from each.",
+            "praise": "You matched the sample to the population's proportions -- that is what makes it representative."
+          },
+          {
+            "if_you_see": "Student trusts a sample fraction to estimate the population even when the sample was biased.",
+            "say": "A fraction only estimates the population if the sample was random and representative. Check the method before you scale the fraction up.",
+            "praise": "You checked that the sample was fair before trusting its fraction."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A school is 300 sixth, 200 seventh, 100 eighth. Sample of 60: is 20/20/20 representative?",
+            "look_for": "No -- it should be 30/20/10. 'Yes' reveals the equal-count error."
+          },
+          {
+            "prompt": "A club is 240 adults, 160 teens. How many teens in a representative sample of 40?",
+            "look_for": "16 (0.4 x 40). An answer of 20 diagnoses splitting evenly."
+          }
+        ]
+      },
+      "fluency_source": "7DSP1-F2",
+      "sentence_starters": [
+        "The population has ___ and ___, so the sample should keep the ratio ___.",
+        "___ out of ___ in the sample is about ___ of the population."
+      ],
+      "worked_solution": {
+        "stem": "A school has 300 sixth graders, 200 seventh graders, and 100 eighth graders. Build a representative sample of 60.",
+        "answer": "30 sixth, 20 seventh, 10 eighth",
+        "steps": [
+          {
+            "math": "total = 300 + 200 + 100 = 600",
+            "annotation": "Find the whole population."
+          },
+          {
+            "math": "sixth = 300/600 = 1/2, seventh = 1/3, eighth = 1/6",
+            "annotation": "Each sub-group's share of the whole."
+          },
+          {
+            "math": "1/2 x 60 = 30, 1/3 x 60 = 20, 1/6 x 60 = 10",
+            "annotation": "Give the sample the same proportions."
+          },
+          {
+            "math": "sample = 30, 20, 10 (sums to 60)",
+            "annotation": "Bigger grades send more -- the sample mirrors the school."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A club has 240 adult members and 160 teen members (400 total). Build a representative sample of 40.",
+        "answer": "24 adults, 16 teens",
+        "steps": [
+          {
+            "math": "total = 240 + 160 = 400",
+            "annotation": "Find the whole population.",
+            "given": true
+          },
+          {
+            "math": "adults = 240/400 = 0.6, teens = 160/400 = 0.4",
+            "annotation": "Each group's share of the whole.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply each fraction by the sample size of 40.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check that your counts add to 40 and keep the 3:2 ratio.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7DSP1-S4",
+      "name": "Judge whether a conclusion about a population is valid from the sampling method",
+      "column": "on_grade",
+      "parent_standard": "7.DSP.1",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7DSP1-S3"
+      },
+      "i_do_script": "Whether a conclusion about a population is trustworthy depends on HOW the sample was gathered, not on the numbers alone. Watch: a researcher asks 10 of his FRIENDS about a new soda; 7 say yes, and he tells the company '7 out of 10 people like it.' The math is right, but his friends are not a representative sample of all soda drinkers, so the conclusion is NOT valid. A valid generalization needs a random, representative sample behind it.",
+      "canonical_error": {
+        "pattern": "Accepts a conclusion because the arithmetic or the data recording was correct, ignoring that the sample was biased.",
+        "example": "For the soda researcher who asked 10 friends, says the conclusion is valid 'because he correctly recorded 7 out of 10,' overlooking that friends are not representative of all soda drinkers.",
+        "why": "The student judges validity by whether the counting was done right rather than by whether the SAMPLE was random and representative. A correct percentage of a biased sample still cannot be generalized to the population."
+      },
+      "item_template": "A situation with a sample, a stated conclusion, and how the sample was gathered; student judges whether the conclusion is valid. Multiple choice.",
+      "sample_items": [
+        {
+          "stem": "A researcher asks 10 of his friends if they like a new soda. 7 say yes, and he tells the company '7 out of 10 people like it.' Is this conclusion valid? (a) Yes, he asked a representative sample (b) Yes, he recorded the opinions correctly (c) No, he did not ask a representative sample of soda drinkers (d) No, the correct conclusion is that 30% like it",
+          "answer": "c",
+          "distractor_logic": "(b) rewards correct recording of a biased sample; (a) and (d) misread validity. The flaw is the biased friend group."
+        },
+        {
+          "stem": "A store randomly selected 200 customers and found 45% prefer paper bags. Which conclusion is valid? (a) exactly 45% of all customers prefer paper bags (b) about 45% of all customers likely prefer paper bags, because the sample was random (c) only those 200 customers prefer paper bags (d) the survey tells us nothing",
+          "answer": "b",
+          "distractor_logic": "A random sample supports an estimate ('about 45%'), not an exact claim; (c) and (d) dismiss a valid random sample."
+        },
+        {
+          "stem": "A reporter polled only readers who called in and concluded 'most people in the state support the law.' Is this valid? (a) Yes, many people called (b) No, call-in readers are a self-selected, biased sample (c) Yes, the reporter counted correctly (d) No, the law is unpopular",
+          "answer": "b",
+          "distractor_logic": "Sample size and correct counting do not fix self-selection bias; (d) invents an unsupported claim."
+        },
+        {
+          "stem": "A principal randomly surveyed 60 of 900 students; 40 want a later start. Which conclusion is valid? (a) about 2/3 of all students likely want a later start (b) exactly 40 students in the school want it (c) the sample was too small to mean anything (d) only the 60 surveyed want it",
+          "answer": "a",
+          "distractor_logic": "40/60 = 2/3; a random sample supports estimating the population. (c) wrongly dismisses a random sample."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Right count, but WHO was asked?",
+        "prompt": "Correct arithmetic does not make a conclusion valid. Check the METHOD: was the sample random and representative? If it was a biased group -- friends, one club, call-ins -- the conclusion cannot be trusted for the whole population.",
+        "praise": "You judged by how the sample was gathered, not just by the math -- that is what validity means."
+      },
+      "vocabulary": [
+        {
+          "term": "Valid conclusion",
+          "definition": "A generalization the sample actually supports because the sample was random and representative."
+        },
+        {
+          "term": "Generalization",
+          "definition": "A statement extending the sample's result to the whole population."
+        },
+        {
+          "term": "Inference",
+          "definition": "A reasonable estimate about the population drawn from the sample."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP1-S5",
+        "if_fail": "7DSP1-S3"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A researcher asks 10 friends about a soda; 7 like it; he says 7 of 10 people like it.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Is his counting correct? Is his SAMPLE a fair picture of all soda drinkers?"
+        },
+        {
+          "kind": "say",
+          "text": "The count is right, but 10 friends are a biased sample, so the conclusion about all people is NOT valid."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says valid 'because 7 of 10 is correct,' ask 'do his 10 friends stand in for everyone?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a store randomly asked 200 customers and 45% prefer paper -- is 'about 45% of all customers prefer paper' valid?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What makes a conclusion about a population valid?",
+          "answer": "The sample behind it was random and representative."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "True or false: correct arithmetic on a biased sample makes the conclusion valid.",
+          "answer": "False."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A researcher asks 10 friends about a soda; 7 say yes; he claims '7 of 10 people like it.' Valid? Explain.",
+          "answer": "No -- 10 friends are a biased sample, not representative of all soda drinkers, so the conclusion cannot be generalized."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A store randomly surveyed 200 customers; 45% prefer paper bags. Which is valid: 'exactly 45%' or 'about 45% of all customers likely prefer paper bags'?",
+          "answer": "'About 45% of all customers likely prefer paper bags' -- a random sample supports an estimate, not an exact count."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "A survey asked only members of the drama club whether the whole school wants a talent show; 90% said yes. Ken judges the conclusion. Find and fix his reasoning.",
+          "shown_work": [
+            "Ken wrote: 'The conclusion is valid because they counted 90% correctly.'",
+            "'So most of the school wants a talent show.'"
+          ],
+          "answer": "Correct counting does not make it valid. The drama club is a biased sample that already favors talent shows, so the 90% cannot be generalized to the whole school. A random school-wide sample is needed.",
+          "notes": "Canonical error: judging validity by correct arithmetic instead of the method."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A principal randomly surveyed 60 of 900 students; 40 want a later start. Estimate how many of all 900 want a later start, and say whether that estimate is valid.",
+          "answer": "40/60 = 2/3, so about 600 of 900 students. It is valid because the sample was random and representative."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two surveys both find 70% support. One asked 500 random voters; the other asked 500 people at a rally for the measure. Are both conclusions equally valid? Explain.",
+          "answer": "No -- the random sample supports the conclusion; the rally crowd is biased toward the measure, so its 70% cannot be generalized even though the sample is large."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Valid or Not Valid",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 10 conclusion-plus-method situations"
+          ],
+          "instructions": "1. Read each card: the sample, the conclusion, and how the sample was gathered.\n2. Sort into 'Valid (random and representative)' or 'Not valid (biased method).'\n3. On each 'not valid' card, name the bias.\n4. Debrief: did any card have correct math but an invalid conclusion?",
+          "content": {
+            "categories": [
+              "Valid (random and representative)",
+              "Not valid (biased method)"
+            ],
+            "cards": [
+              {
+                "text": "Randomly surveyed 200 customers; 'about 45% prefer paper'",
+                "category": "Valid (random and representative)"
+              },
+              {
+                "text": "Asked 10 friends; 'most people like the soda'",
+                "category": "Not valid (biased method)"
+              },
+              {
+                "text": "Random sample of 60 of 900 students; 'about 2/3 want a later start'",
+                "category": "Valid (random and representative)"
+              },
+              {
+                "text": "Only call-in readers; 'most of the state supports the law'",
+                "category": "Not valid (biased method)"
+              },
+              {
+                "text": "Only the drama club; 'the whole school wants a talent show'",
+                "category": "Not valid (biased method)"
+              },
+              {
+                "text": "Randomly chose 100 residents; 'about 60% want the park'",
+                "category": "Valid (random and representative)"
+              },
+              {
+                "text": "Only people at a rally for the measure; 'the town supports it'",
+                "category": "Not valid (biased method)"
+              },
+              {
+                "text": "Computer picked 50 numbered members; 'about 30% will renew'",
+                "category": "Valid (random and representative)"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Right Math, Wrong Sample",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Ken's drama-club judgment"
+          ],
+          "instructions": "1. Read Ken's claim that a drama-club survey is valid because the 90% is correct.\n2. Explain which group the drama club leaves out.\n3. Decide if the conclusion can be generalized and why not.\n4. Write the rule linking validity to the sampling method.",
+          "content": {
+            "worked_problem": "Only the drama club surveyed; 90% want a talent show. Ken called the conclusion valid.",
+            "error_step": "Ken judged by correct arithmetic, not by the biased method.",
+            "why": "The drama club already favors talent shows, so 90% of them does not represent the whole school."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The 'right math, biased sample' error is precise and baitable; find-and-fix separates arithmetic from validity."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share surfaces students' reasons for calling a conclusion valid, exposing the arithmetic-only judgment."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'the count is right, but who was asked?' models the method check that validity depends on."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How was this sample gathered -- randomly, or from one group?",
+          "Does the arithmetic being correct make the conclusion valid?",
+          "Can this result be generalized to the whole population? Why or why not?",
+          "Which group does this sample leave out?",
+          "Is 'about' or 'exactly' the right word for a random-sample estimate?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student accepts a conclusion because the arithmetic or recording was correct, ignoring that the sample was biased.",
+            "say": "Correct arithmetic does not make a conclusion valid. Check the METHOD: was the sample random and representative? If it was a biased group -- friends, one club, call-ins -- the conclusion cannot be trusted for the whole population.",
+            "praise": "You judged by how the sample was gathered, not just by the math -- that is what validity means."
+          },
+          {
+            "if_you_see": "Student dismisses a valid random sample as 'too small to mean anything.'",
+            "say": "A random sample of the population supports a reasonable ESTIMATE about the whole -- say 'about,' not 'exactly.' It is valid even if it is not everyone.",
+            "praise": "You accepted a random sample as evidence for an estimate about the population."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A poll of only a team's fans says 'the whole school loves the team.' Valid?",
+            "look_for": "Not valid -- biased sample. 'Valid because they counted right' shows the arithmetic-only error."
+          },
+          {
+            "prompt": "A random sample of 100 of 2,000 residents finds 60% want a park. Valid conclusion?",
+            "look_for": "Yes -- 'about 60% of residents likely want a park.' Dismissing it as too small is the opposite error."
+          }
+        ]
+      },
+      "fluency_source": "7DSP1-F1",
+      "sentence_starters": [
+        "The sample was ___ (random / biased), so the conclusion is ___.",
+        "I can / cannot generalize to ___ because the sample ___."
+      ],
+      "worked_solution": {
+        "stem": "A researcher asks 10 of his friends about a new soda; 7 say yes. He concludes '7 out of 10 people like it.' Is the conclusion valid?",
+        "answer": "No -- not valid",
+        "steps": [
+          {
+            "math": "The count 7 of 10 is correct",
+            "annotation": "The arithmetic is not the issue."
+          },
+          {
+            "math": "Sample = 10 friends",
+            "annotation": "Ask how the sample was gathered."
+          },
+          {
+            "math": "Friends are a biased, non-representative group",
+            "annotation": "They do not stand in for all soda drinkers."
+          },
+          {
+            "math": "=> conclusion is NOT valid",
+            "annotation": "Validity depends on a random, representative sample."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A store randomly surveyed 200 customers and found 45% prefer paper bags. Is 'about 45% of all customers likely prefer paper bags' a valid conclusion?",
+        "answer": "Yes -- valid",
+        "steps": [
+          {
+            "math": "Sample = 200 randomly selected customers",
+            "annotation": "Check how the sample was gathered.",
+            "given": true
+          },
+          {
+            "math": "Random => representative of all customers",
+            "annotation": "Every customer had an equal chance.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Does a random sample support an estimate about the whole?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State valid or not, and note 'about' vs 'exactly.'",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7DSP1-S5",
+      "name": "Justify in writing why a conclusion is or is not valid",
+      "column": "looking_forward",
+      "parent_standard": "7.DSP.1",
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7DSP1-S4"
+      },
+      "i_do_script": "Justifying means writing WHY a conclusion holds or fails, naming the sampling method. Watch: a researcher surveyed only people at the gym about exercise and concluded 'most people exercise daily.' I justify it: this is NOT valid because gym-goers are a biased sample -- people who do not exercise were unlikely to be there, so the sample does not represent everyone. To improve it, I would use random sampling so every person has an equal chance.",
+      "canonical_error": {
+        "pattern": "States a verdict ('valid' / 'not valid') without naming the sampling reason, or blames sample SIZE instead of bias.",
+        "example": "Writes 'the conclusion is not valid because the sample was too small' when the real flaw is that only gym members were asked -- a biased method, not a size problem.",
+        "why": "The student gives a bare yes/no or points to size, missing that validity turns on whether the method was RANDOM and REPRESENTATIVE. A justification must name the bias (or the randomness) in the method."
+      },
+      "item_template": "A situation with a sample method and a conclusion; student writes a justification (often Part A: valid or not and why; Part B: how to improve). Constructed response.",
+      "sample_items": [
+        {
+          "stem": "A researcher surveyed only shoppers at one store and concluded most families in the city shop there weekly. Explain whether this conclusion is valid and how to improve the study.",
+          "answer": "Not valid -- one store's shoppers are a biased sample that leaves out families who shop elsewhere or not at all. Improve it by randomly sampling families from across the whole city.",
+          "distractor_logic": "A strong answer names the bias (one store) and the fix (random city-wide sample), not just 'no.'"
+        },
+        {
+          "stem": "A school randomly selected 75 students and found 60% want a longer lunch. A student claims 'about 60% of all students want a longer lunch.' Justify whether this is valid.",
+          "answer": "Valid -- the sample was random, so every student had an equal chance and the sample represents the school; about 60% is a reasonable estimate for the population.",
+          "distractor_logic": "The justification must cite the RANDOM method, not just agree."
+        },
+        {
+          "stem": "Explain why increasing the sample size does NOT fix a biased sampling method.",
+          "answer": "A bigger biased sample is still biased -- it just includes more of the same over-represented group. Only random selection makes the sample represent the whole population.",
+          "distractor_logic": "Targets the size-not-bias misconception directly."
+        },
+        {
+          "stem": "A poll of gym members concluded 'most adults exercise daily.' Part A: Is the sampling method likely representative? Part B: What would improve it?",
+          "answer": "Part A: No -- gym members are not representative of all adults; non-exercisers are unlikely to be sampled. Part B: Randomly select adults from the whole community so everyone has an equal chance.",
+          "distractor_logic": "Part A must name the bias; Part B must name random selection as the fix."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Say WHY -- name the method.",
+        "prompt": "A justification needs a reason, not just 'yes' or 'no.' Name the method: was it random and representative, or a biased group? And remember -- a small sample is fine if random; the problem is bias, not size.",
+        "praise": "You named the sampling method as your reason -- that is a real justification."
+      },
+      "vocabulary": [
+        {
+          "term": "Justify",
+          "definition": "Give the reason a conclusion holds or fails, naming the sampling method."
+        },
+        {
+          "term": "Representative",
+          "definition": "The sample mirrors the population, so its results can be generalized."
+        },
+        {
+          "term": "Valid inference",
+          "definition": "A population estimate that the random, representative sample actually supports."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP1-S6",
+        "if_fail": "7DSP1-S4"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A survey of only gym members concludes most adults exercise daily. Justify: valid or not, and how to improve.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Was the sample random and representative? Who is missing from a gym-only survey?"
+        },
+        {
+          "kind": "say",
+          "text": "Not valid: gym members are a biased sample; non-exercisers are left out. To improve, randomly sample adults from the whole community."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes only 'not valid, too small,' ask 'is size the problem, or WHO was asked?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a school randomly surveyed 75 students; 60% want longer lunch. Justify whether 'about 60% of all students' is valid."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A justification needs what besides 'valid' or 'not valid'?",
+          "answer": "A reason that names the sampling method (random/representative or biased)."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Does a small random sample or a large biased sample give a more trustworthy conclusion?",
+          "answer": "The small random sample -- randomness matters more than size."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A survey of only one store's shoppers concludes 'most city families shop here weekly.' Justify whether it is valid and how to fix it.",
+          "answer": "Not valid -- one store's shoppers are biased and leave out other families. Fix: randomly sample families across the whole city."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A school randomly surveyed 75 students; 60% want longer lunch. Justify whether 'about 60% of all students want longer lunch' is valid.",
+          "answer": "Valid -- the random sample represents the school, so about 60% is a reasonable estimate for all students."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "A researcher surveyed only people leaving a concert about the town's favorite music. Rosa justifies the conclusion. Find and fix her justification.",
+          "shown_work": [
+            "Rosa wrote: 'The conclusion is not valid because only 40 people were asked.'",
+            "'They should ask more people.'"
+          ],
+          "answer": "The flaw is bias, not size. Concert-goers already favor that music, so even 400 of them would be biased. A valid justification says: use random sampling of the whole town, not just a bigger concert crowd.",
+          "notes": "Canonical error: blaming sample size instead of the biased method."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write a two-sentence justification for why a random sample of 100 of 5,000 voters can validly support 'about 55% favor the measure.'",
+          "answer": "The sample was random, so every voter had an equal chance and the 100 represent the whole electorate. Therefore about 55% is a valid estimate for all 5,000 voters, even though not everyone was asked."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A study's conclusion is invalid. Explain, in writing, both what is wrong and exactly what change would make a future study valid.",
+          "answer": "Sample answer: The study used a biased group that leaves out part of the population, so its result cannot be generalized. To make it valid, randomly select members from the ENTIRE population (for example, number everyone and draw a random sample) so every member has an equal chance."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Name the Real Flaw",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Slips with weak justifications (size-based) for biased studies"
+          ],
+          "instructions": "1. Read each weak justification that blames sample size.\n2. Identify the actual flaw -- which group was over-represented?\n3. Rewrite the justification to name the bias and the random-sampling fix.\n4. Debrief: why does a bigger biased sample stay biased?",
+          "content": {
+            "worked_problem": "Only concert-goers surveyed about the town's music taste. Rosa said 'not valid because only 40 were asked.'",
+            "error_step": "Rosa blamed the sample size instead of the biased concert crowd.",
+            "why": "Concert-goers favor that music; a valid study randomly samples the whole town, regardless of size."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Justify-It Round Robin",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Deck of 12 study cards (sample method + conclusion)",
+            "Sentence-frame poster"
+          ],
+          "instructions": "1. A student draws a study card and reads the method and conclusion aloud.\n2. Using the frame 'This is ___ because the sample was ___,' they justify valid or not valid.\n3. The group gives a thumbs-up only if the justification names the METHOD (not size).\n4. Rotate. Debrief the hardest card."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-004",
+          "why": "Written justifications are the skill's core; math journaling builds the habit of naming the method as the reason."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The size-not-bias error is precise; find-and-fix on weak justifications rewrites verdicts into reasons."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Studying a strong worked justification, then contrasting a flawed one, models what a complete reason includes."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is your REASON -- which method was used?",
+          "Was the sample random and representative, or a biased group?",
+          "Is the problem the sample's size, or who was asked?",
+          "What exact change would make this study valid?",
+          "Would a bigger version of this sample still be biased?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student states a verdict without a reason, or blames sample size instead of the biased method.",
+            "say": "A justification needs a reason, not just 'yes' or 'no.' Name the method: was it random and representative, or a biased group? And remember -- a small sample is fine if random; the problem is bias, not size.",
+            "praise": "You named the sampling method as your reason -- that is a real justification."
+          },
+          {
+            "if_you_see": "Student says a valid study is 'not valid' because it did not ask everyone.",
+            "say": "A random sample is not supposed to ask everyone -- that is the point of sampling. If it was random and representative, the conclusion is valid.",
+            "praise": "You recognized that a fair sample need not include the whole population."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "In one sentence, why is a gym-only survey of 'most adults exercise daily' not valid?",
+            "look_for": "Names the bias (gym-goers exclude non-exercisers). 'Too few people' shows the size error."
+          },
+          {
+            "prompt": "Justify: is a random sample of 80 of 1,000 residents enough to estimate the population?",
+            "look_for": "Yes -- random makes it representative; size is sufficient. 'No, too small' is the misconception."
+          }
+        ]
+      },
+      "fluency_source": "7DSP1-F1",
+      "sentence_starters": [
+        "This conclusion is ___ because the sample was ___.",
+        "To improve the study I would ___ so that ___."
+      ],
+      "worked_solution": {
+        "stem": "A researcher surveyed only people at a gym and concluded 'most adults exercise daily.' Justify whether the conclusion is valid and how to improve the study.",
+        "answer": "Not valid; use random sampling of all adults",
+        "steps": [
+          {
+            "math": "Sample = only gym members",
+            "annotation": "Identify how the sample was gathered."
+          },
+          {
+            "math": "Gym members already exercise -> biased",
+            "annotation": "Non-exercisers are unlikely to be sampled."
+          },
+          {
+            "math": "Not representative => conclusion NOT valid",
+            "annotation": "State the verdict with its reason."
+          },
+          {
+            "math": "Fix: randomly sample adults from the whole community",
+            "annotation": "Name the change that gives everyone an equal chance."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A school randomly surveyed 75 students and found 60% want a longer lunch. Justify whether 'about 60% of all students want a longer lunch' is valid.",
+        "answer": "Valid -- the random sample represents the school",
+        "steps": [
+          {
+            "math": "Sample = 75 randomly selected students",
+            "annotation": "Identify the sampling method.",
+            "given": true
+          },
+          {
+            "math": "Random => every student had an equal chance",
+            "annotation": "This makes the sample representative.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "State whether the conclusion is valid and WHY (name the method).",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Note that 'about 60%' is an estimate a random sample supports.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7DSP1-S6",
+      "name": "Design a random sampling method to answer a statistical question",
+      "column": "looking_forward",
+      "parent_standard": "7.DSP.1",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7DSP1-S3"
+      },
+      "i_do_script": "Designing a fair study means choosing WHO to sample (the population), HOW to pick them randomly, and HOW MANY. Watch: a librarian wants students' favorite book genre. The population is the school's students. A fair method assigns every student a number and randomly picks about 50 to 100, spread across all grades so every group is represented. That gives a representative sample without asking everyone.",
+      "canonical_error": {
+        "pattern": "Designs a method that samples a convenient sub-group instead of randomly covering the whole population.",
+        "example": "To find students' favorite genre, plans to 'ask everyone in the library after school' -- only frequent library users, a biased slice -- instead of randomly sampling across all students.",
+        "why": "The student designs for convenience and forgets the two requirements: draw from the WHOLE population and select RANDOMLY. A design that starts from an easy-to-reach group builds bias in from the start."
+      },
+      "item_template": "A statistical question about a population; student designs a sampling method (population, random selection, size) likely to be representative. Constructed response.",
+      "sample_items": [
+        {
+          "stem": "A principal wants to know the favorite school lunch of all 800 students. Describe a sampling group, a random method, and a sample size.",
+          "answer": "Group: all 800 students. Method: assign each student a number and use a random generator to choose the sample, including students from every grade. Size: about 60 to 100 students -- enough to represent the school without asking everyone.",
+          "distractor_logic": "A complete design names the whole population, a random method, and a reasonable size."
+        },
+        {
+          "stem": "A town wants to learn residents' opinions on a new bus route. Design a sampling method likely to give a representative sample.",
+          "answer": "Randomly select residents from the town's full address or voter list (not just riders at one stop), covering all neighborhoods, and survey about 100 people.",
+          "distractor_logic": "Sampling only current riders would be biased; a random list-based draw covers the town."
+        },
+        {
+          "stem": "Why should a designed sample include members from every sub-group of the population?",
+          "answer": "So the sample mirrors the population's makeup; leaving out a sub-group makes the sample unrepresentative and the conclusion invalid.",
+          "distractor_logic": "Coverage of sub-groups is what makes a design representative."
+        },
+        {
+          "stem": "A student plans to survey only the school's soccer team to find the whole school's favorite sport. Redesign the method to be fair.",
+          "answer": "Do not use one team -- randomly select students from across all grades and activities (for example, number every student and draw a random sample of 50 to 100) so every student has an equal chance.",
+          "distractor_logic": "Replaces the biased team with a random, whole-school draw."
+        },
+        {
+          "stem": "A gym with 600 members wants to choose a new class. Design a fair sampling method, including how many to survey.",
+          "answer": "Number all 600 members and randomly select about 60 to 100 across all membership types and class times, so every member could be chosen and every group is represented.",
+          "distractor_logic": "A random draw from the full membership avoids favoring one class's regulars."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Whole population, or just the easy group?",
+        "prompt": "A good design has three parts: sample the WHOLE population, pick members at RANDOM (number them, draw names), and choose a reasonable size. If you started with a convenient group, widen it to everyone first.",
+        "praise": "You designed a random method that reaches the whole population -- that is a study you can trust."
+      },
+      "vocabulary": [
+        {
+          "term": "Sampling design",
+          "definition": "The plan naming the population, the random method, and the sample size."
+        },
+        {
+          "term": "Random selection",
+          "definition": "Choosing members so every one has an equal chance (numbering, drawing names, a generator)."
+        },
+        {
+          "term": "Sample size",
+          "definition": "How many members to survey -- large enough to represent the population."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for grade-8 data reasoning and comparing samples; sampling is not re-taught as a distinct standard in later grades.",
+        "if_fail": "7DSP1-S3"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A librarian wants all students' favorite book genre. Design a fair sampling method.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Who is the population? How could you pick students randomly? How many is enough?"
+        },
+        {
+          "kind": "say",
+          "text": "Population: all students. Method: number every student and randomly pick across all grades. Size: about 50 to 100 -- enough to represent the school."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 'ask kids in the library,' ask 'do library regulars represent every student's taste?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: design a fair method for a town deciding on a new bus route."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Name the three parts of a good sampling design.",
+          "answer": "The population (who), a random method (how), and a sample size (how many)."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Is 'ask my friends' a fair way to design a school-wide survey? Why not?",
+          "answer": "No -- friends are a biased, convenient group, not the whole school."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Design a fair method for a principal to learn all 800 students' favorite lunch (group, random method, size).",
+          "answer": "All 800 students; number them and randomly select across grades; about 60-100 students."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A town wants opinions on a new bus route. Design a representative sampling method.",
+          "answer": "Randomly select residents from the full address list across all neighborhoods; survey about 100 -- not just current riders."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Dev designed a survey to find the whole school's favorite sport. Find and fix his design.",
+          "shown_work": [
+            "Dev wrote: 'I will survey everyone at soccer practice.'",
+            "'They are easy to find all in one place.'"
+          ],
+          "answer": "Soccer players are a biased slice who likely favor soccer. A fair design samples the WHOLE school at random: number every student and randomly pick 50-100 across all grades and activities.",
+          "notes": "Canonical error: designing from a convenient sub-group."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A school has 400 sixth, 300 seventh, and 300 eighth graders. Design a representative sample of 50 and say how many come from each grade.",
+          "answer": "Randomly select within grades to match proportions: 400/1000 x 50 = 20 sixth, 300/1000 x 50 = 15 seventh, 15 eighth. Total 50, mirroring the school."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Critique and improve this design: 'To learn the city's favorite park, survey 500 people at the largest park on Saturday.'",
+          "answer": "It is biased -- park-goers already like parks and one park's crowd is not the whole city. Improve it by randomly sampling residents city-wide (from an address or voter list) across neighborhoods, keeping a size around 100-500."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Design a Fair Study",
+          "time_minutes": 15,
+          "grouping": "small_group",
+          "materials": [
+            "Statistical-question cards",
+            "Design planner: 'Population / Random method / Sample size'"
+          ],
+          "instructions": "1. Draw a statistical-question card (for example, 'favorite school event').\n2. Fill the planner: name the whole population, a random way to pick members, and a sample size.\n3. Trade planners with another group and check: could every member be chosen? Are all sub-groups covered?\n4. Debrief: what made a design biased, and how did the group fix it?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Fix the Convenient Design",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Slip with Dev's soccer-practice design"
+          ],
+          "instructions": "1. Read Dev's plan to survey everyone at soccer practice.\n2. Explain which students are over-represented and which are missing.\n3. Rewrite the design so every student could be chosen at random.\n4. Write the three-part checklist for a fair design.",
+          "content": {
+            "worked_problem": "Find the school's favorite sport. Dev surveys everyone at soccer practice.",
+            "error_step": "Dev sampled a convenient team instead of the whole school at random.",
+            "why": "Soccer players favor soccer; a fair design numbers all students and randomly selects across the school."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release from critiquing methods (S5) to designing one scaffolds the shift from evaluating to producing."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The convenient-design error is baitable; find-and-fix on flawed designs makes the whole-population-plus-random rule concrete."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "Writing out a design in a journal forces students to name the population, method, and size explicitly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Who is the whole population you must reach?",
+          "How will you pick members RANDOMLY?",
+          "Could every member of the population be chosen by your method?",
+          "Are all the sub-groups represented?",
+          "How many is enough to represent the population without asking everyone?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student designs a method that samples a convenient sub-group instead of randomly covering the whole population.",
+            "say": "A good design has three parts: sample the WHOLE population, pick members at RANDOM (number them, draw names), and choose a reasonable size. If you started with a convenient group, widen it to everyone first.",
+            "praise": "You designed a random method that reaches the whole population -- that is a study you can trust."
+          },
+          {
+            "if_you_see": "Student's design reaches everyone but never says HOW members are chosen randomly.",
+            "say": "Add the random step: number every member and draw names or use a random generator, so the choice is not left to convenience.",
+            "praise": "You built the random selection step in -- that is what removes the bias."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Design a fair way to find all 500 students' favorite assembly.",
+            "look_for": "Whole population + random selection + reasonable size. A single convenient group signals the bias trap."
+          },
+          {
+            "prompt": "Is 'survey everyone at the game' a fair design for the town's favorite sport? Fix it if not.",
+            "look_for": "No -- biased; fix with a random city-wide sample. Accepting it shows the convenience error."
+          }
+        ]
+      },
+      "fluency_source": "7DSP1-F2",
+      "sentence_starters": [
+        "The population is ___, and I will randomly pick about ___ by ___.",
+        "To represent every sub-group I will ___."
+      ],
+      "worked_solution": {
+        "stem": "A librarian wants to know the favorite book genre of all students in the school. Design a sampling method: group, random method, and size.",
+        "answer": "All students; number and randomly select; about 50-100",
+        "steps": [
+          {
+            "math": "Population = all students in the school",
+            "annotation": "Name the whole group the question is about."
+          },
+          {
+            "math": "Random method: number every student, draw randomly",
+            "annotation": "Give every student an equal chance."
+          },
+          {
+            "math": "Cover every grade",
+            "annotation": "Include all sub-groups so the sample is representative."
+          },
+          {
+            "math": "Size: about 50-100 students",
+            "annotation": "Large enough to represent the school without asking everyone."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A town wants residents' opinions on a new bus route. Design a fair sampling method.",
+        "answer": "Random sample of residents town-wide, about 100",
+        "steps": [
+          {
+            "math": "Population = all residents of the town",
+            "annotation": "Name the whole group.",
+            "given": true
+          },
+          {
+            "math": "Do NOT use only current bus riders",
+            "annotation": "That would be a biased sub-group.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Describe a random way to pick residents from the whole town.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Give a reasonable sample size that covers all neighborhoods.",
+            "given": false
+          }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "skills": [
+        "7DSP1-F1",
+        "7DSP1-F2"
+      ]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": [
+        "7DSP1-S1"
+      ]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": [
+        "7DSP1-S2",
+        "7DSP1-S3",
+        "7DSP1-S4"
+      ]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": [
+        "7DSP1-S5",
+        "7DSP1-S6"
+      ]
+    }
+  },
+  "skill_sequence": [
+    "7DSP1-F1",
+    "7DSP1-F2",
+    "7DSP1-S1",
+    "7DSP1-S2",
+    "7DSP1-S3",
+    "7DSP1-S4",
+    "7DSP1-S5",
+    "7DSP1-S6"
+  ],
+  "skill_tree": {
+    "7DSP1-F1": [],
+    "7DSP1-F2": [],
+    "7DSP1-S1": [
+      "7DSP1-F1"
+    ],
+    "7DSP1-S2": [
+      "7DSP1-S1"
+    ],
+    "7DSP1-S3": [
+      "7DSP1-S2",
+      "7DSP1-F2"
+    ],
+    "7DSP1-S4": [
+      "7DSP1-S2",
+      "7DSP1-S3"
+    ],
+    "7DSP1-S5": [
+      "7DSP1-S4"
+    ],
+    "7DSP1-S6": [
+      "7DSP1-S2",
+      "7DSP1-S3"
+    ]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S4 (judge whether a conclusion about a population is valid) -- the At-proficiency heart of the standard, where random and representative judgments come together. If they pass, push to S5 (justify in writing) and S6 (design a sampling method). If they fail, drop to S2 to check whether the random-vs-biased distinction is even solid. S1 (choose a method) and S3 (representativeness, including sub-groups) branch off the core as the supporting judgments.",
+    "entry_skill": "7DSP1-S4",
+    "if_pass": [
+      "7DSP1-S5",
+      "7DSP1-S6"
+    ],
+    "if_fail": [
+      "7DSP1-S2"
+    ],
+    "branch_skills": [
+      "7DSP1-S1",
+      "7DSP1-S3"
+    ]
+  }
+}

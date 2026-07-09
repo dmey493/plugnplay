@@ -1,0 +1,89 @@
+{
+  "id": "task-math-040",
+  "type": "task",
+  "scope": "component",
+  "version": 1,
+  "title": "Lightning Distance Estimator",
+  "subjects": [
+    "math"
+  ],
+  "gradeBand": "6-8",
+  "grades": [
+    8
+  ],
+  "standards": {
+    "indiana": [
+      "8.AF.5",
+      "8.AF.6",
+      "8.NS.3"
+    ],
+    "commonCore": [
+      "8.F.B.4",
+      "8.F.B.5",
+      "8.EE.B.5"
+    ],
+    "ngss": []
+  },
+  "mtssTiers": [
+    1,
+    2
+  ],
+  "purposes": [
+    "guided-practice",
+    "performance"
+  ],
+  "time": {
+    "estimatedMinutes": 30,
+    "minMinutes": 25,
+    "maxMinutes": 45
+  },
+  "tags": [
+    "linear-model",
+    "rate",
+    "real-world",
+    "unit-conversion",
+    "high-ceiling"
+  ],
+  "preview": "Sound travels about 1129 feet per second. You see lightning, then count to thunder. Build a linear model that converts the gap into distance — and figure out the rule of thumb meteorologists use.",
+  "body": {
+    "goal": "Build a linear function from a real-world rate, evaluate it at multiple inputs, convert units, and use the model to justify a real-world safety threshold.",
+    "studentPrompt": "Sound travels through air at roughly **1129 feet per second**. Light is essentially instant. So when you see lightning and then hear the thunder, the gap tells you how far away the strike was.\n\nA group of students timed three lightning strikes during a thunderstorm:\n\n| Strike | Seconds between flash and thunder |\n|---|---|\n| A | 5 |\n| B | 12 |\n| C | 27 |\n\n1. Write a linear function **d = f(t)** that gives the distance to a lightning strike (in feet) given the time gap **t** (in seconds).\n2. Use your function to find how many feet away each of the three strikes was.\n3. There are 5280 feet in a mile. Convert each distance to miles (round to the nearest tenth).\n4. There's an old rule: \"divide the count by 5 to get the distance in miles.\" Check that rule against your model. Is it close? When does it work well, and when does it fail?\n5. The National Weather Service says you should seek shelter when thunder follows lightning within **30 seconds**. Use your function to find the danger distance in miles. Why do you think 30 seconds is the cutoff?",
+    "image": {
+      "kind": "url",
+      "url": "https://images.pexels.com/photos/6235455/pexels-photo-6235455.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "alt": "A powerful display of lightning during a night thunderstorm.",
+      "credit": "Photo by Sven Pieren on Pexels"
+    },
+    "launch": "Don't give the formula d = 1129t. Just give them the 1129 ft/s rate and the table. Let groups decide what function form to use. Resist the urge to confirm the rule-of-thumb answer in Q4 — the surprise *is* the discussion.",
+    "materials": [
+      "Vertical whiteboards",
+      "Markers",
+      "Calculator allowed"
+    ],
+    "concepts": [
+      "linear-function",
+      "rate-of-change",
+      "unit-conversion",
+      "real-world-modeling",
+      "function-evaluation"
+    ],
+    "taskType": "performance",
+    "btcFit": "Strong performance task. Low floor (anyone can multiply 1129 × 5). High ceiling: the rule-of-thumb (\"count, divide by 5\") corresponds to a *simpler* model d ≈ 1056t (since 5280/5 = 1056 ft/s). Groups who notice the discrepancy and explain it have done genuine modeling work. Q5 surfaces a real safety-context application.",
+    "anticipatedApproaches": "- Q1: d = 1129t (in feet).\n- Q2: A → 5645 ft; B → 13,548 ft; C → 30,483 ft.\n- Q3: A → 1.1 mi; B → 2.6 mi; C → 5.8 mi.\n- Q4: The 'divide-by-5' rule implies 1 mile per 5 seconds, or 1056 ft/s — about 6.5% slower than 1129 ft/s. At small distances (1-2 mi) the error is under 0.1 mi — close enough for a quick safety call. At 5+ mi the gap grows to 0.3+ mi.\n- Q5: t = 30 → d = 33,870 ft ≈ 6.4 mi. The 30-second rule means you're inside the 6-mile radius where lightning is statistically likely to strike again.",
+    "commonMisconceptions": "- Writing d = 1129/t (inverse) instead of d = 1129t. Some students confuse 'rate' with 'per' and divide.\n- Dropping units. Reporting '5645' without specifying feet, leading to nonsense answers like '5645 miles away.'\n- For Q4, just *applying* the rule rather than *checking* it. The interesting move is realizing 5280/5 = 1056 ≠ 1129.\n- Skipping the unit conversion in Q5: reporting '33,870 feet' as the danger distance instead of converting to miles.",
+    "discussionQuestions": "- Why is it OK to ignore the time it takes light to reach you? (Roughly 0.000005 seconds at 1 mile — negligible compared to the time gap.)\n- What does the slope of d = 1129t mean in words? What does the y-intercept mean? Could the y-intercept ever be anything other than 0?\n- The 'divide by 5' rule is a different linear model. What slope does *it* represent? Why does it still work pretty well as a quick rule of thumb?\n- For Q5, is 30 seconds a safe cutoff in *every* situation? (No — open fields, water, tall objects all change risk. The math gives a distance; the safety rule depends on context.)",
+    "extensions": "- Sound speed depends on air temperature. At 50°F it's about 1100 ft/s; at 90°F it's about 1158 ft/s. Build a temperature-adjusted model. Does the temperature change the rule-of-thumb meaningfully?\n- A nearby strike sounds like a sharp 'crack.' A distant strike sounds like a low 'rumble.' Why? (Higher-frequency sound waves attenuate faster, leaving only the low frequencies at long range.)\n- Lightning bolts can be several miles long. If one end is 1 mi away and the other is 4 mi away, what time gap do you hear? Is it instantaneous or stretched?\n- Convert the function to give distance in **kilometers** given time in seconds. Sound is 343 m/s at 20°C. What's the equivalent of the 'divide by 5' rule in metric? (Divide the count by 3 for km — close to 333 m/s.)",
+    "sampleSolutions": "1. d = 1129t (where t is in seconds and d is in feet).\n2. A: 1129 × 5 = 5645 ft. B: 1129 × 12 = 13,548 ft. C: 1129 × 27 = 30,483 ft.\n3. A: 5645 / 5280 ≈ 1.1 mi. B: 13,548 / 5280 ≈ 2.6 mi. C: 30,483 / 5280 ≈ 5.8 mi.\n4. The rule predicts 5/5 = 1.0 mi, 12/5 = 2.4 mi, 27/5 = 5.4 mi — all slightly less than the model. The rule implies sound travels at 5280/5 = 1056 ft/s, which is ~6.5% slow. For close strikes the gap is tiny (≤0.2 mi); for distant strikes it grows. **The rule works well for quick mental safety estimates; the model is needed for precision.**\n5. d(30) = 1129 × 30 = 33,870 ft ≈ 6.4 mi. The 30-second cutoff sets a roughly 6-mile safety radius — large enough that the next strike (which can travel sideways through clouds) is unlikely to reach you.",
+    "source": {
+      "name": "Plug N Play (original)",
+      "license": "CC BY-NC-SA 4.0",
+      "url": "",
+      "attribution": "Plug N Play. Original lightning-distance modeling task. Inspired by the National Weather Service '30/30 rule' for thunderstorm safety. Licensed under CC BY-NC-SA 4.0."
+    }
+  },
+  "authoring": {
+    "generatedBy": "seed",
+    "generatedAt": "2026-05-29",
+    "reviewedBy": null
+  }
+}

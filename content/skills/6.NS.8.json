@@ -1,0 +1,2534 @@
+{
+  "standard_code": "6.NS.8",
+  "standard_text": "Evaluate positive rational numbers with whole number exponents.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "6.NS.8 asks students to do one thing -- EVALUATE a power -- but the base can be any positive rational number: a whole number, a fraction, or a decimal. The logic of the standard runs from notation to computation to number sense. First a student must read the notation correctly: in 4^3, the little 3 counts how many copies of 4 get multiplied, so 4^3 means 4 x 4 x 4, never 4 x 3 (S1). Once the notation unpacks reliably, evaluation with whole-number bases is just careful repeated multiplication (S2). The base then changes character twice: decimal bases, where students first learn to SELECT the correct expanded form before computing (S3), and fraction bases, where the exponent must reach BOTH the numerator and the denominator -- (2/3)^3 = 2^3/3^3 = 8/27, never 8/3 (S4). Evaluating decimal powers adds the place-value demand that decimal places accumulate with every factor (S5). Finally the standard's Above-Proficiency ceiling reverses the job: given someone else's evaluation, decide whether it is right, name the exact wrong move, and explain the counterintuitive truth that raising a number between 0 and 1 to a power makes it SMALLER (S6).",
+    "steps": [
+      {
+        "skill_id": "6NS8-S1",
+        "verb": "identify",
+        "rationale": "Read the notation before computing anything. In 4^3 the base is 4 and the exponent 3 counts factors, so 4^3 = 4 x 4 x 4. Every later step -- and the single most common error, 4^3 = 12 -- lives or dies here."
+      },
+      {
+        "skill_id": "6NS8-S2",
+        "verb": "evaluate",
+        "rationale": "Turn the expanded form into a value with whole-number bases. This is the standard's core verb in its friendliest setting: expand, then multiply left to right, one factor at a time."
+      },
+      {
+        "skill_id": "6NS8-S3",
+        "verb": "represent",
+        "rationale": "Extend the notation to decimal bases by selecting or writing the equivalent expanded expression BEFORE computing. The spec's Approaching item (2.3^6) tests exactly this: the expansion is the referee, not the arithmetic."
+      },
+      {
+        "skill_id": "6NS8-S4",
+        "verb": "evaluate",
+        "rationale": "Evaluate fraction-base powers, the spec's At-Proficiency item ((2/3)^3 = 8/27). The new demand: the exponent applies to the WHOLE base, so both numerator and denominator get raised -- never the numerator alone."
+      },
+      {
+        "skill_id": "6NS8-S5",
+        "verb": "evaluate",
+        "rationale": "Evaluate decimal-base powers, the spec's Difficult tier. Repeated multiplication now carries a place-value obligation: 0.3 x 0.3 is 0.09, not 0.9, because decimal places add with every factor."
+      },
+      {
+        "skill_id": "6NS8-S6",
+        "verb": "analyze",
+        "rationale": "The Above-Proficiency demand: judge someone else's evaluation, name the exact error (base times exponent, numerator-only), and explain why a fraction raised to a power gets smaller. Analysis proves the earlier steps are owned, not memorized."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "6NS8-F1",
+      "name": "Recall multiplication facts and small repeated products fluently",
+      "column": "foundation",
+      "parent_standard": "6.NS.8",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 3,
+        "description": "Multiply single-digit numbers from memory",
+        "check_question": "What is 6 x 6?"
+      },
+      "i_do_script": "Powers are built out of plain multiplication facts, so the facts have to come fast. Watch me do one chain out loud: 3 x 3 is 9, and 9 x 3 is 27 -- I never tried to hold the whole thing in my head, I just did one small fact at a time. If a fact isn't automatic yet, use a fact you DO know to get there: 6 x 6 is 36 because 6 x 5 is 30 and one more 6 makes 36.",
+      "canonical_error": {
+        "pattern": "Cannot recall multiplication facts or loses track mid-chain, so every exponent evaluation collapses into counting errors",
+        "example": "For 4 x 4 x 4, student gets 4 x 4 = 16 correctly but then computes 16 x 4 as 54 or gives up",
+        "why": "Multiplication facts weren't automatized in grades 3-4. The student understands the repeated multiplication but can't execute it, so working memory runs out before the chain ends."
+      },
+      "redirect_script": {
+        "stop": "Pause -- let's do one fact at a time.",
+        "prompt": "Cover everything except the first two numbers. Multiply just those two and write the answer down. Now multiply THAT answer by the next number. You never need more than one small fact at a time.",
+        "praise": "You chained the facts one at a time and never lost your place. That's exactly how powers get evaluated."
+      },
+      "item_template": "A single multiplication fact or a short repeated product (two or three factors of the same small number). NR (numeric response), no choices, no context. Built to feed the timed Fluency Sprint.",
+      "sample_items": [
+        {
+          "stem": "What is 3 x 3?",
+          "answer": "9",
+          "choices": null,
+          "distractor_logic": "Common errors: 6 (adds instead of multiplying), 33 (writes the digits side by side)"
+        },
+        {
+          "stem": "What is 4 x 4?",
+          "answer": "16",
+          "choices": null,
+          "distractor_logic": "Common errors: 8 (adds), 12 (confuses with 3 x 4)"
+        },
+        {
+          "stem": "What is 5 x 5?",
+          "answer": "25",
+          "choices": null,
+          "distractor_logic": "Common errors: 10 (adds), 20 (confuses with 4 x 5)"
+        },
+        {
+          "stem": "What is 6 x 6?",
+          "answer": "36",
+          "choices": null,
+          "distractor_logic": "Common errors: 12 (adds), 30 (confuses with 5 x 6)"
+        },
+        {
+          "stem": "What is 7 x 7?",
+          "answer": "49",
+          "choices": null,
+          "distractor_logic": "Common errors: 42 (confuses with 6 x 7), 56 (confuses with 7 x 8)"
+        },
+        {
+          "stem": "What is 8 x 8?",
+          "answer": "64",
+          "choices": null,
+          "distractor_logic": "Common errors: 56 (confuses with 7 x 8), 72 (confuses with 8 x 9)"
+        },
+        {
+          "stem": "What is 9 x 9?",
+          "answer": "81",
+          "choices": null,
+          "distractor_logic": "Common errors: 72 (confuses with 8 x 9), 18 (adds)"
+        },
+        {
+          "stem": "What is 12 x 12?",
+          "answer": "144",
+          "choices": null,
+          "distractor_logic": "Common errors: 124 (place-value slip), 132 (confuses with 11 x 12)"
+        },
+        {
+          "stem": "What is 2 x 2 x 2?",
+          "answer": "8",
+          "choices": null,
+          "distractor_logic": "Common errors: 6 (adds the three 2s), 4 (stops after the first fact)"
+        },
+        {
+          "stem": "What is 3 x 3 x 3?",
+          "answer": "27",
+          "choices": null,
+          "distractor_logic": "Common errors: 9 (stops after 3 x 3), 18 (multiplies 9 by 2 instead of 3)"
+        },
+        {
+          "stem": "What is 4 x 4 x 4?",
+          "answer": "64",
+          "choices": null,
+          "distractor_logic": "Common errors: 16 (stops after 4 x 4), 48 (computes 16 x 3)"
+        },
+        {
+          "stem": "What is 5 x 5 x 5?",
+          "answer": "125",
+          "choices": null,
+          "distractor_logic": "Common errors: 25 (stops after 5 x 5), 75 (computes 25 x 3)"
+        },
+        {
+          "stem": "What is 2 x 2 x 2 x 2?",
+          "answer": "16",
+          "choices": null,
+          "distractor_logic": "Common errors: 8 (uses only three 2s), 6 (adds three 2s)"
+        },
+        {
+          "stem": "What is 10 x 10 x 10?",
+          "answer": "1000",
+          "choices": null,
+          "distractor_logic": "Common errors: 100 (stops after 10 x 10), 30 (adds the three 10s)"
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "Factor",
+          "definition": "A number being multiplied -- in 4 x 4 x 4, each 4 is a factor."
+        },
+        {
+          "term": "Product",
+          "definition": "The answer you get when you multiply."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS8-S1",
+        "if_fail": "Review grade-3 multiplication facts with skip counting and known-fact bridges (6 x 6 = 6 x 5 + 6) before working with exponents."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board: 4 x 4 x 4."
+        },
+        {
+          "kind": "ask",
+          "text": "Before we compute anything -- how many multiplications will we actually do here, one at a time?"
+        },
+        {
+          "kind": "ask",
+          "text": "Start with just the first two numbers. What is 4 x 4?"
+        },
+        {
+          "kind": "show",
+          "text": "Write 16 under the first pair, so the problem now reads 16 x 4."
+        },
+        {
+          "kind": "ask",
+          "text": "Now the chain is just one fact: what is 16 x 4? If that's not automatic, what is 16 x 2, and what is that doubled?"
+        },
+        {
+          "kind": "watch",
+          "text": "If the student tries to compute all three 4s in their head at once, stop them and have them write the running product after every single fact. Losing the running product is the whole failure mode."
+        },
+        {
+          "kind": "say",
+          "text": "So 4 x 4 x 4 = 64. One small fact at a time, writing the running answer down -- that's the entire trick, no matter how long the chain gets."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: what is 3 x 3 x 3, one fact at a time?"
+        }
+      ],
+      "printable_artifact": {
+        "title": "Squares and Cubes Quick-Reference Card",
+        "kind": "reference_card",
+        "instructions": "Keep this nearby during exponent work. Say each fact out loud until it comes without counting.",
+        "items": [
+          "2 x 2 = 4        2 x 2 x 2 = 8",
+          "3 x 3 = 9        3 x 3 x 3 = 27",
+          "4 x 4 = 16       4 x 4 x 4 = 64",
+          "5 x 5 = 25       5 x 5 x 5 = 125",
+          "6 x 6 = 36",
+          "7 x 7 = 49",
+          "8 x 8 = 64",
+          "9 x 9 = 81",
+          "10 x 10 = 100    10 x 10 x 10 = 1000",
+          "12 x 12 = 144"
+        ]
+      }
+    },
+    {
+      "skill_id": "6NS8-F2",
+      "name": "Multiply two fractions by multiplying tops and bottoms",
+      "column": "foundation",
+      "parent_standard": "6.NS.8",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Multiply two fractions (numerator x numerator over denominator x denominator)",
+        "check_question": "What is 1/2 x 1/2?"
+      },
+      "i_do_script": "Before we can raise a fraction to a power, we have to be able to multiply two fractions. Watch: 2/3 x 2/3. I multiply the tops -- 2 x 2 = 4 -- and I multiply the bottoms -- 3 x 3 = 9 -- so the answer is 4/9. Both jobs happen every time: the top AND the bottom. Notice the answer, 4/9, is SMALLER than 2/3 -- taking two-thirds of two-thirds leaves you with less.",
+      "canonical_error": {
+        "pattern": "Multiplies the numerators but leaves the denominator alone (or adds the denominators)",
+        "example": "Computes 2/3 x 2/3 = 4/3 instead of 4/9",
+        "why": "The student treats the denominator as a fixed label ('thirds') rather than a number that participates in the multiplication, so only the tops get multiplied."
+      },
+      "redirect_script": {
+        "stop": "Wait -- the bottom number has a job too.",
+        "prompt": "A fraction is TWO numbers, and multiplying fractions is TWO multiplications. Draw an arrow across the tops and multiply them. Now draw an arrow across the bottoms and multiply those. Both arrows, every time.",
+        "praise": "You multiplied the tops AND the bottoms -- that's the complete move."
+      },
+      "item_template": "Multiply two simple fractions (same or different), denominators through 6, no simplifying required. NR, no choices, short stems for fluency use.",
+      "sample_items": [
+        {
+          "stem": "What is 1/2 x 1/2?",
+          "answer": "1/4",
+          "choices": null,
+          "distractor_logic": "Common errors: 1/2 (thinks nothing changes), 2/4 (adds tops), 1 (adds the halves)"
+        },
+        {
+          "stem": "What is 1/3 x 1/3?",
+          "answer": "1/9",
+          "choices": null,
+          "distractor_logic": "Common errors: 1/3 (no change), 2/3 (adds), 1/6 (adds denominators)"
+        },
+        {
+          "stem": "What is 2/3 x 2/3?",
+          "answer": "4/9",
+          "choices": null,
+          "distractor_logic": "Common errors: 4/3 (multiplies tops only), 4/6 (adds denominators)"
+        },
+        {
+          "stem": "What is 3/4 x 3/4?",
+          "answer": "9/16",
+          "choices": null,
+          "distractor_logic": "Common errors: 9/4 (tops only), 6/8 (doubles both instead of multiplying)"
+        },
+        {
+          "stem": "What is 1/5 x 1/5?",
+          "answer": "1/25",
+          "choices": null,
+          "distractor_logic": "Common errors: 1/5 (no change), 1/10 (adds denominators), 2/5 (adds)"
+        },
+        {
+          "stem": "What is 2/5 x 2/5?",
+          "answer": "4/25",
+          "choices": null,
+          "distractor_logic": "Common errors: 4/5 (tops only), 4/10 (adds denominators)"
+        },
+        {
+          "stem": "What is 1/2 x 1/4?",
+          "answer": "1/8",
+          "choices": null,
+          "distractor_logic": "Common errors: 1/6 (adds denominators), 2/6 (adds both), 1/4 (ignores the 1/2)"
+        },
+        {
+          "stem": "What is 3/5 x 3/5?",
+          "answer": "9/25",
+          "choices": null,
+          "distractor_logic": "Common errors: 9/5 (tops only), 6/10 (doubles both numbers)"
+        },
+        {
+          "stem": "What is 1/4 x 1/4?",
+          "answer": "1/16",
+          "choices": null,
+          "distractor_logic": "Common errors: 1/8 (adds denominators), 1/4 (no change), 2/8 (adds both)"
+        },
+        {
+          "stem": "What is 5/6 x 5/6?",
+          "answer": "25/36",
+          "choices": null,
+          "distractor_logic": "Common errors: 25/6 (tops only), 10/12 (doubles both numbers)"
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "Numerator",
+          "definition": "The top number of a fraction -- it counts the parts you have."
+        },
+        {
+          "term": "Denominator",
+          "definition": "The bottom number of a fraction -- it names the size of each part."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS8-S1",
+        "if_fail": "Review grade-5 fraction multiplication with an area model (fold a paper in half, then take half of that) before raising fractions to powers."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board: 2/3 x 2/3."
+        },
+        {
+          "kind": "ask",
+          "text": "A fraction is made of two numbers. When we multiply two fractions, how many little multiplications do you think we'll do?"
+        },
+        {
+          "kind": "show",
+          "text": "Draw one arrow connecting the two tops, and a second arrow connecting the two bottoms."
+        },
+        {
+          "kind": "ask",
+          "text": "Follow the top arrow first: what is 2 x 2?"
+        },
+        {
+          "kind": "ask",
+          "text": "Now the bottom arrow: what is 3 x 3? So what fraction do we have?"
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 4/3, they multiplied the tops and copied the bottom. Point at the bottom arrow and ask: 'Did this arrow get used?' Don't move on until both arrows get used every time."
+        },
+        {
+          "kind": "ask",
+          "text": "Look at 4/9 next to 2/3 (which is 6/9). Did multiplying make the fraction bigger or smaller? Why does taking two-thirds OF two-thirds leave you with less?"
+        },
+        {
+          "kind": "say",
+          "text": "Tops times tops, bottoms times bottoms -- two multiplications every time. And when both fractions are less than 1, the answer comes out smaller. Hold onto that; it comes back when we raise fractions to powers."
+        }
+      ]
+    },
+    {
+      "skill_id": "6NS8-S1",
+      "name": "Identify the base and exponent and write the expanded form",
+      "column": "looking_back",
+      "parent_standard": "6.NS.8",
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "6NS8-F1"
+      },
+      "i_do_script": "Today we're reading a brand-new kind of notation: a big number with a tiny number floating up on its shoulder, like 4^3. I'm not going to tell you the rule right away -- we'll unpack it together. The big number, 4, is called the base; the tiny number, 3, is the exponent, and it COUNTS how many copies of the base get multiplied: 4^3 = 4 x 4 x 4. The trap almost everyone falls into is reading 4^3 as 4 x 3 -- the exponent is a counter, never a factor.",
+      "canonical_error": {
+        "pattern": "Reads the exponent as a factor and expands the power as base times exponent",
+        "example": "Writes 4^3 = 4 x 3 = 12 instead of 4 x 4 x 4 = 64",
+        "why": "The superscript looks like just another number sitting next to the base, so the student applies the only operation they know for two numbers side by side: multiply them. They haven't internalized that the exponent COUNTS copies of the base instead of participating in the multiplication."
+      },
+      "redirect_script": {
+        "stop": "Wait -- let's check what that little number does.",
+        "prompt": "Circle the base and underline the exponent. The exponent is a COUNTER, not a multiplier: it tells you how many copies of the base to write. Write the base that many times with x signs between, then count your copies against the exponent.",
+        "praise": "You used the exponent as a counter and wrote the right number of copies. That's exactly what the notation means."
+      },
+      "item_template": "A power with a whole-number base (2-9) and exponent (2-6). Student identifies the base or exponent, or selects/writes the equivalent expanded multiplication. MC with 4 choices or short write-in.",
+      "sample_items": [
+        {
+          "stem": "Which expression is equivalent to 5^3?",
+          "answer": "5 x 5 x 5",
+          "choices": [
+            "5 x 3",
+            "5 x 5 x 5",
+            "3 x 3 x 3 x 3 x 3",
+            "5 + 5 + 5"
+          ],
+          "distractor_logic": "5 x 3 is the base-times-exponent error; 3 x 3 x 3 x 3 x 3 swaps the roles of base and exponent; 5 + 5 + 5 uses the exponent as a counter but adds instead of multiplying."
+        },
+        {
+          "stem": "In the expression 7^4, which number is the base?",
+          "answer": "7",
+          "choices": [
+            "7",
+            "4",
+            "28",
+            "2401"
+          ],
+          "distractor_logic": "4 confuses base with exponent; 28 is 7 x 4 (base times exponent); 2401 is the value of the expression, not the base."
+        },
+        {
+          "stem": "Which expression is equivalent to 2^6?",
+          "answer": "2 x 2 x 2 x 2 x 2 x 2",
+          "choices": [
+            "2 x 6",
+            "6 x 6",
+            "2 x 2 x 2 x 2 x 2 x 2",
+            "2 x 2 x 2"
+          ],
+          "distractor_logic": "2 x 6 is the base-times-exponent error; 6 x 6 swaps base and exponent; 2 x 2 x 2 uses the wrong count of factors."
+        },
+        {
+          "stem": "Which power means 9 x 9 x 9?",
+          "answer": "9^3",
+          "choices": [
+            "9^3",
+            "3^9",
+            "9^9",
+            "27^1"
+          ],
+          "distractor_logic": "3^9 swaps base and exponent; 9^9 uses the base as its own counter; 27^1 evaluates one step and hides the structure."
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "Base",
+          "definition": "The big number in a power -- the number that gets multiplied by itself."
+        },
+        {
+          "term": "Exponent",
+          "definition": "The small raised number -- it counts how many copies of the base are multiplied."
+        },
+        {
+          "term": "Factor",
+          "definition": "A number being multiplied. In 4 x 4 x 4 there are three factors."
+        },
+        {
+          "term": "Expression",
+          "definition": "A math phrase made of numbers and operations, like 4^3 or 4 x 4 x 4."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS8-S2",
+        "if_fail": "6NS8-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board: 4^3, nice and big, with the 3 clearly small and raised."
+        },
+        {
+          "kind": "ask",
+          "text": "What do you notice about how these two numbers are written? Are they sitting the same way?"
+        },
+        {
+          "kind": "say",
+          "text": "The big number is called the base, and the tiny raised number is the exponent. They have completely different jobs."
+        },
+        {
+          "kind": "ask",
+          "text": "Here's the question everyone gets wrong at first: do you think 4^3 means 4 x 3? Let's test it. The exponent's real job is to COUNT -- it says 'write the base this many times.' So how many 4s should I write?"
+        },
+        {
+          "kind": "show",
+          "text": "Write 4 x 4 x 4 under the power, and count the factors out loud: one, two, three -- three copies, matching the exponent 3."
+        },
+        {
+          "kind": "ask",
+          "text": "Is 4 x 4 x 4 the same as 4 x 3? Work out both: 4 x 3 is 12, and 4 x 4 x 4 is 16 x 4 = 64. Are those even close?"
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 4 x 3 or says 12, don't correct it directly. Ask: 'Point to the exponent. Is it a number we multiply BY, or a number that COUNTS?' Have them re-write the expansion and count factors against the exponent."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: write 5^3 the long way, then tell me the base, the exponent, and how many factors you wrote."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Power Notation Reference Card",
+        "kind": "reference_card",
+        "instructions": "Keep this nearby. The left side is the power; the right side is what it really means.",
+        "items": [
+          "4^3  ->  4 x 4 x 4  (three copies of 4)",
+          "5^2  ->  5 x 5  ('5 squared')",
+          "2^5  ->  2 x 2 x 2 x 2 x 2",
+          "10^3  ->  10 x 10 x 10  ('10 cubed')",
+          "The BASE is the big number: the one being copied.",
+          "The EXPONENT is the small raised number: it COUNTS the copies.",
+          "4^3 is NOT 4 x 3.  (4^3 = 64, but 4 x 3 = 12.)",
+          "4^3 is NOT the same as 3^4.  (64 vs 81 -- the jobs don't swap.)"
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "In the expression 3^5, which number is the base?",
+          "answer": "3"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Write 2^4 as repeated multiplication.",
+          "answer": "2 x 2 x 2 x 2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write 6^3 as repeated multiplication. How many factors did you write?",
+          "answer": "6 x 6 x 6 -- three factors, matching the exponent.",
+          "notes": "Have the student count factors against the exponent out loud."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which is equivalent to 8^2: 8 x 2 or 8 x 8? Explain how you know.",
+          "answer": "8 x 8. The exponent 2 counts copies of the base; it is not a factor. 8 x 2 = 16 but 8^2 = 64.",
+          "notes": "Direct bait for the base-times-exponent error."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write 7 x 7 x 7 x 7 as a power.",
+          "answer": "7^4",
+          "notes": "Reversed direction: expanded form back to notation. Watch for 4^7."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Andre expanded a power. Find his mistake and fix it.",
+          "shown_work": [
+            "9^4",
+            "= 9 x 4",
+            "= 36"
+          ],
+          "answer": "9^4 = 9 x 9 x 9 x 9 = 6561. The exponent 4 counts how many 9s to multiply -- it never multiplies the base itself. 9 x 4 = 36 is a different (and much smaller) number.",
+          "notes": "The canonical base-times-exponent error with fresh numbers."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why 2^3 and 3^2 are NOT the same number, even though they use the same digits.",
+          "answer": "2^3 = 2 x 2 x 2 = 8, but 3^2 = 3 x 3 = 9. Swapping base and exponent changes which number is copied and how many times.",
+          "notes": "The contrast forces the base/exponent roles apart."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write your own power whose expanded form has exactly five factors, then write its expanded form.",
+          "answer": "Any base to the 5th power, e.g. 3^5 = 3 x 3 x 3 x 3 x 3.",
+          "notes": "Produce-your-own: the exponent-as-counter idea in reverse."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Counter or Factor?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "One deck of expression cards per pair"
+          ],
+          "instructions": "1. Pairs sort each card under the power it truly matches -- or into the trash can pile if it matches no power.\n2. The trap cards (4 x 3, 5 x 2, 2 x 2 x 2) look right but belong in the trash or under a different power than students expect.\n3. A card only scores when the pair can say 'the exponent counts ___ copies of ___' for the match.\n4. Debrief: which trash-pile card fooled you, and what does the exponent actually count?",
+          "content": {
+            "categories": [
+              "4^3",
+              "5^2",
+              "2^4",
+              "Trash can (matches no power shown)"
+            ],
+            "cards": [
+              {
+                "text": "4 x 4 x 4",
+                "category": "4^3"
+              },
+              {
+                "text": "5 x 5",
+                "category": "5^2"
+              },
+              {
+                "text": "2 x 2 x 2 x 2",
+                "category": "2^4"
+              },
+              {
+                "text": "4 x 3",
+                "category": "Trash can (matches no power shown)"
+              },
+              {
+                "text": "5 x 2",
+                "category": "Trash can (matches no power shown)"
+              },
+              {
+                "text": "2 x 2 x 2",
+                "category": "Trash can (matches no power shown)"
+              },
+              {
+                "text": "sixty-four",
+                "category": "4^3"
+              },
+              {
+                "text": "twenty-five",
+                "category": "5^2"
+              },
+              {
+                "text": "sixteen",
+                "category": "2^4"
+              }
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "title": "Three Ways to Say a Power",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Card sets in three colors: power notation, expanded form, value"
+          ],
+          "instructions": "1. Groups build complete triples: power notation, expanded multiplication, and value (e.g. 3^3, 3 x 3 x 3, 27).\n2. The decoy cards 12 (which is 4 x 3) and 6 (which is 3 x 2) match NO triple -- they are the base-times-exponent wrong answers.\n3. A triple only scores when the group reads all three versions aloud as the same number.\n4. Debrief: why did nobody get to use the 12 card?",
+          "content": {
+            "pairs": [
+              {
+                "left": "4^3",
+                "right": "4 x 4 x 4 = 64"
+              },
+              {
+                "left": "3^3",
+                "right": "3 x 3 x 3 = 27"
+              },
+              {
+                "left": "2^5",
+                "right": "2 x 2 x 2 x 2 x 2 = 32"
+              },
+              {
+                "left": "5^2",
+                "right": "5 x 5 = 25"
+              },
+              {
+                "left": "10^3",
+                "right": "10 x 10 x 10 = 1000"
+              }
+            ],
+            "decoys": [
+              "12",
+              "6",
+              "10 (from 2 x 5)"
+            ]
+          }
+        },
+        {
+          "type": "game",
+          "title": "Expansion Showdown",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Say a power ('two to the fourth'); students write the EXPANDED form -- not the value -- and hold boards up on the count of three.\n2. Any board showing 2 x 4 becomes an instant class debate: evaluate both versions and let the numbers referee (2 x 4 = 8, but 2 x 2 x 2 x 2 = 16).\n3. Speed round: teacher shows an expanded form, students write the power.\n4. Debrief question: what does the exponent count?"
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Chanting 'the exponent counts the copies' while reading powers aloud builds the base/exponent roles into automatic language."
+        },
+        {
+          "strategy_id": "strat-math-008",
+          "why": "Whiteboard rounds instantly expose which students still expand 4^3 as 4 x 3."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Placing 4 x 4 x 4 next to the wrong 4 x 3 and asking which matches 4^3 makes the counter-vs-factor distinction the whole lesson."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Point to the base. Point to the exponent. Which one gets copied, and which one counts?",
+          "If I wrote the expansion out, how many factors would I see? How do you know before writing it?",
+          "Is 4^3 the same as 4 x 3? Prove your answer by working out both.",
+          "What's the difference between 2^3 and 3^2? Why doesn't swapping them keep the value?",
+          "I see 6 x 6 x 6 x 6 on your paper. What power is that, and which number became the exponent?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student expands a power as base times exponent -- writes 4^3 = 4 x 3 = 12.",
+            "say": "Circle the base and underline the exponent. The exponent is a COUNTER, not a multiplier: it tells you how many copies of the base to write. Write the base that many times with x signs between, then count your copies against the exponent.",
+            "praise": "You used the exponent as a counter and wrote the right number of copies. That's exactly what the notation means."
+          },
+          {
+            "if_you_see": "Student swaps the roles -- writes 2^5 as 5 x 5 (or names 5 as the base).",
+            "say": "Which number is big and on the line, and which is small and floating? The big one is the base -- it's the one that gets copied. Rewrite the expansion so the BASE is the number you see repeated.",
+            "praise": "Right -- the base repeats, the exponent counts. The jobs never swap."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Hold up fingers: how many 7s get multiplied in 7^5?",
+            "look_for": "Five fingers. 'Thirty-five' or seven fingers means the exponent is still being read as a factor or the roles are swapped."
+          },
+          {
+            "prompt": "True or false: 6^2 = 12. Prove it.",
+            "look_for": "False, with 6 x 6 = 36 shown. A 'true' diagnoses the base-times-exponent error exactly."
+          }
+        ]
+      },
+      "fluency_source": "6NS8-F1",
+      "sentence_starters": [
+        "The exponent tells me to write ___ copies of ___.",
+        "4^3 is not 4 x 3 because the exponent ___."
+      ],
+      "worked_solution": {
+        "stem": "Which expression is equivalent to 5^3?",
+        "answer": "5 x 5 x 5",
+        "steps": [
+          {
+            "math": "base = 5, exponent = 3",
+            "annotation": "The big number is the base; the small raised number is the exponent."
+          },
+          {
+            "math": "the exponent COUNTS: write 5 three times",
+            "annotation": "The exponent never multiplies the base -- it only says how many copies to write."
+          },
+          {
+            "math": "5^3 = 5 x 5 x 5",
+            "annotation": "Count the factors: one, two, three. The count matches the exponent, so the expansion is right. (5 x 3 = 15 would be a different, much smaller number.)"
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Write 3^4 as repeated multiplication.",
+        "answer": "3 x 3 x 3 x 3",
+        "steps": [
+          {
+            "math": "base = 3, exponent = 4",
+            "annotation": "Name the two parts first: which number gets copied, and which one counts?",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "The exponent says how many 3s to write. Write them with x signs between.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Count your factors against the exponent. Do they match?",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "6NS8-S2",
+      "name": "Evaluate powers with whole number bases",
+      "column": "looking_back",
+      "parent_standard": "6.NS.8",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "6NS8-S1"
+      },
+      "i_do_script": "Now that we can unpack a power, we can find its value. Watch me do 3^4. First I expand: 3 x 3 x 3 x 3. Then I multiply one step at a time, writing the running answer down: 3 x 3 is 9, 9 x 3 is 27, 27 x 3 is 81. So 3^4 = 81. Notice I never touched the 4 with multiplication -- the 4 only told me how many 3s to write. If you ever get an answer like 12 for 4^3, that's the trap: you multiplied the base by the exponent.",
+      "canonical_error": {
+        "pattern": "Multiplies the base by the exponent instead of using the base as a repeated factor",
+        "example": "Evaluates 4^3 as 4 x 3 = 12 instead of 4 x 4 x 4 = 64",
+        "why": "The student skips the expansion step and treats the two visible numbers as a multiplication problem. Without writing the expanded form first, the exponent gets pulled into the arithmetic as a factor."
+      },
+      "redirect_script": {
+        "stop": "Hold on -- did the exponent sneak into your multiplication?",
+        "prompt": "Expand first, every time. Write the base as many times as the exponent says, with x signs between. Then multiply left to right, one pair at a time, writing the running answer under each step. The exponent's job ended when you finished writing the expansion.",
+        "praise": "You expanded first and multiplied one step at a time -- the exponent never touched your arithmetic."
+      },
+      "item_template": "Evaluate a power with a whole-number base (2-10) and exponent (2-5), keeping values within mental/pencil computation range. NR (numeric response). Matches the spec's 'Enter the value of the expression 8^5' shape.",
+      "sample_items": [
+        {
+          "stem": "What is the value of 3^4? Show your work or explain your reasoning.",
+          "answer": "81",
+          "choices": null,
+          "distractor_logic": "12 is the base-times-exponent error (3 x 4); 27 stops one factor early (3^3); 64 confuses with 4^3."
+        },
+        {
+          "stem": "What is the value of 2^5? Show your work or explain your reasoning.",
+          "answer": "32",
+          "choices": null,
+          "distractor_logic": "10 is the base-times-exponent error (2 x 5); 16 stops one factor early (2^4); 25 swaps base and exponent (5^2)."
+        },
+        {
+          "stem": "What is the value of 8^2? Show your work or explain your reasoning.",
+          "answer": "64",
+          "choices": null,
+          "distractor_logic": "16 is the base-times-exponent error (8 x 2); 10 adds; 82 writes the digits side by side."
+        },
+        {
+          "stem": "What is the value of 5^3? Show your work or explain your reasoning.",
+          "answer": "125",
+          "choices": null,
+          "distractor_logic": "15 is the base-times-exponent error (5 x 3); 25 stops at 5^2; 35 confuses with 5 x 7 fact errors."
+        },
+        {
+          "stem": "What is the value of 10^4? Show your work or explain your reasoning.",
+          "answer": "10000",
+          "choices": null,
+          "distractor_logic": "40 is the base-times-exponent error (10 x 4); 1000 stops one factor early; 100 stops two early."
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "Evaluate",
+          "definition": "Find the value -- work the expression all the way down to a single number."
+        },
+        {
+          "term": "Base",
+          "definition": "The big number in a power -- the repeated factor."
+        },
+        {
+          "term": "Exponent",
+          "definition": "The small raised number that counts how many copies of the base are multiplied."
+        },
+        {
+          "term": "Power",
+          "definition": "An expression like 3^4 -- a base raised to an exponent."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS8-S3",
+        "if_fail": "6NS8-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board: 3^4."
+        },
+        {
+          "kind": "ask",
+          "text": "Before any arithmetic -- what does this power mean? Write it the long way."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 3 x 4, stop right there. Ask them to point to the exponent and say its job out loud ('it counts the copies'). The expansion must show four 3s before anything gets multiplied."
+        },
+        {
+          "kind": "ask",
+          "text": "Now we multiply left to right, one pair at a time. What is 3 x 3?"
+        },
+        {
+          "kind": "show",
+          "text": "Write the running product under each step: 3 x 3 = 9, then 9 x 3 = 27, then 27 x 3 = 81."
+        },
+        {
+          "kind": "ask",
+          "text": "So what is 3^4? And here's the check: is your answer 12? What would getting 12 tell us about the mistake we made?"
+        },
+        {
+          "kind": "say",
+          "text": "3^4 = 81. The exponent did its whole job when we wrote four 3s -- after that, it's just one small multiplication fact at a time."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: evaluate 2^5 the same way -- expansion first, then one fact at a time with the running answer written down."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate 2^3.",
+          "answer": "8"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate 6^2.",
+          "answer": "36"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 3^3.",
+          "answer": "27",
+          "notes": "Watch for 9 (stops early) and 9 vs 27 confusion -- and 9 from 3 x 3 only."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 4^3.",
+          "answer": "64",
+          "notes": "THE bait: 12 means base times exponent. Ask for the expansion before accepting any answer."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 2^6.",
+          "answer": "64",
+          "notes": "Long chain -- running product must be written each step: 2, 4, 8, 16, 32, 64."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Keisha evaluated a power. Find her mistake and fix it.",
+          "shown_work": [
+            "5^4",
+            "= 5 x 4",
+            "= 20"
+          ],
+          "answer": "5^4 = 5 x 5 x 5 x 5 = 625. Keisha multiplied the base by the exponent. The exponent 4 only counts the copies of 5 -- it never joins the multiplication. 20 and 625 aren't even close.",
+          "notes": "Canonical base-times-exponent error with fresh numbers."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Which is greater, 2^5 or 5^2? Evaluate both and explain why the answer isn't 'they're equal.'",
+          "answer": "2^5 = 32 and 5^2 = 25, so 2^5 is greater. Swapping base and exponent changes which number gets copied and how many times -- the jobs don't trade.",
+          "notes": "Reversal stretch: same digits, different structure."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "number_line",
+          "stem": "Evaluate 2^4. Then mark your answer on the number line.",
+          "answer": "16",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18
+            ],
+            "point_value": null
+          },
+          "notes": "Placement connects the computed value to magnitude -- and 8 (base x exponent... actually 2 x 4) sits off the line entirely, which is the tell."
+        }
+      ],
+      "activities": [
+        {
+          "type": "game",
+          "title": "Power Tower Race",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "One die per pair",
+            "Scratch paper"
+          ],
+          "instructions": "1. Player A rolls the die twice: first roll is the base, second roll is the exponent (re-roll exponents of 1).\n2. BOTH players write the expanded form, then race to evaluate one step at a time, writing every running product.\n3. Answers must match; if they don't, the players compare running products line by line to find where the chains split.\n4. A player who writes base x exponent anywhere loses the round instantly -- name it out loud: 'the exponent is a counter.'\n5. Debrief: which chains were longest, and how did writing the running product save you?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Keisha's Shortcut That Wasn't",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Pairs read Keisha's work (5^4 = 5 x 4 = 20) and name the exact wrong move.\n2. They fix it by writing the true expansion and evaluating one step at a time: 5, 25, 125, 625.\n3. Each pair writes the rule in their own words: what is the exponent's one and only job?\n4. Debrief question: how far apart are 20 and 625, and why is this error so big?",
+          "content": {
+            "worked_problem": "Evaluate 5^4. Keisha wrote: 5^4 = 5 x 4 = 20.",
+            "error_step": "Keisha multiplied the base 5 by the exponent 4.",
+            "why": "The exponent counts how many 5s get multiplied -- it never joins the arithmetic. 5^4 = 5 x 5 x 5 x 5 = 625, which is nowhere near 20. The size of the miss is the lesson: treating the exponent as a factor doesn't just tweak the answer, it collapses the whole structure."
+          }
+        },
+        {
+          "type": "hands_on",
+          "title": "Doubling Rice Grid",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Dry beans or counters (about 70 per group)",
+            "Paper folded into 6 squares labeled 2^1 through 2^6"
+          ],
+          "instructions": "1. Groups place 2 beans on the 2^1 square, then DOUBLE into each next square: 4, 8, 16, 32, 64.\n2. Before each doubling, groups predict: will adding 2 more beans match? (That's what base-times-exponent thinking predicts: 2 x 2 = 4, 2 x 3 = 6, 2 x 4 = 8...)\n3. Compare the bean counts to the base-times-exponent predictions written beside each square: 4 vs 4, 8 vs 6, 16 vs 8, 32 vs 10, 64 vs 12.\n4. Debrief: where do the two patterns split apart, and why does the power grow so much faster?"
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Evaluate-a-power is a fixed routine (expand, then multiply left to right) -- I Do / We Do / You Do transfers the routine cleanly to independent work."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Studying 4^3 = 64 side by side with the wrong 4^3 = 12 makes the base-times-exponent trap the explicit object of the lesson."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "A number talk on 2^6 surfaces chaining strategies (doubling, grouping into 4 x 4 x 4) and keeps fact work mental and flexible."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What's your first move before any multiplying happens?",
+          "How many factors are in your expansion? Does that match the exponent?",
+          "What's your running product so far? Where did you write it down?",
+          "If someone got 12 for 4^3, what exactly did they do? How do you know without asking them?",
+          "Could 3^4 possibly be 12? About how big should it be after multiplying by 3 three times?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student evaluates the power as base times exponent -- 4^3 = 12 or 5^4 = 20.",
+            "say": "Expand first, every time. Write the base as many times as the exponent says, with x signs between. Then multiply left to right, one pair at a time, writing the running answer under each step. The exponent's job ended when you finished writing the expansion.",
+            "praise": "You expanded first and multiplied one step at a time -- the exponent never touched your arithmetic."
+          },
+          {
+            "if_you_see": "Student expands correctly but stops one factor early -- evaluates 2^5 as 16.",
+            "say": "Count the factors in your expansion out loud and check the count against the exponent. Now count how many multiplications you actually did. A chain of five 2s takes four multiplications -- did you do all four?",
+            "praise": "You checked your factor count against the exponent -- that catch is exactly what checking is for."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Evaluate 4^3 on your whiteboard. Show the expansion.",
+            "look_for": "4 x 4 x 4 = 64 with a running product. An answer of 12 diagnoses the base-times-exponent error; 16 means the chain stopped early."
+          },
+          {
+            "prompt": "Without evaluating: which is bigger, 3^4 or 3 x 4? How do you know?",
+            "look_for": "3^4, because it multiplies by 3 repeatedly instead of once. A student who says 'same' is still reading the exponent as a factor."
+          }
+        ]
+      },
+      "fluency_source": "6NS8-F1",
+      "sentence_starters": [
+        "First I expanded ___ into ___ factors, then I multiplied one step at a time.",
+        "The answer can't be ___ because that's just base times exponent."
+      ],
+      "worked_solution": {
+        "stem": "What is the value of 3^4?",
+        "answer": "81",
+        "steps": [
+          {
+            "math": "3^4 = 3 x 3 x 3 x 3",
+            "annotation": "Expand first: the exponent 4 says write four 3s. (Not 3 x 4 -- the exponent counts, it never multiplies.)"
+          },
+          {
+            "math": "3 x 3 = 9",
+            "annotation": "Multiply left to right, one pair at a time, writing the running product."
+          },
+          {
+            "math": "9 x 3 = 27, then 27 x 3 = 81",
+            "annotation": "Keep multiplying by 3 until every factor in the expansion is used -- four 3s means three multiplications."
+          },
+          {
+            "math": "3^4 = 81",
+            "annotation": "Quick sense check: 12 would mean we multiplied 3 x 4. Repeated multiplication grows much faster than that."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "What is the value of 2^5?",
+        "answer": "32",
+        "steps": [
+          {
+            "math": "2^5 = 2 x 2 x 2 x 2 x 2",
+            "annotation": "Expand first: five copies of 2.",
+            "given": true
+          },
+          {
+            "math": "2 x 2 = 4, then 4 x 2 = 8",
+            "annotation": "Multiply left to right, writing each running product.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Two factors left. Keep the chain going: 8 x 2 = ?, then that times 2.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the final value. Check: it should NOT be 10 (that's 2 x 5).",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "6NS8-S3",
+      "name": "Identify equivalent expanded expressions for decimal-base powers",
+      "column": "on_grade",
+      "parent_standard": "6.NS.8",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "6NS8-S1"
+      },
+      "i_do_script": "The base of a power doesn't have to be a whole number -- it can be a decimal, like 2.3^6. The notation works exactly the same way: the exponent counts copies of the WHOLE base. So 2.3^6 means 2.3 x 2.3 x 2.3 x 2.3 x 2.3 x 2.3 -- six copies of 2.3. Today we're not computing that monster; we're learning to recognize and write the correct expanded form, because choosing between 2.3 x 2.3 x ... and the trap answer 2.3 x 6 is the whole game.",
+      "canonical_error": {
+        "pattern": "Selects base times exponent (or repeated addition of the base) as the expansion of a decimal-base power",
+        "example": "Chooses 2.3 x 6 as equivalent to 2.3^6 instead of 2.3 x 2.3 x 2.3 x 2.3 x 2.3 x 2.3",
+        "why": "With a decimal base the expansion is long and ugly, so the tidy-looking 2.3 x 6 feels more like real math. The student falls back on the exponent-as-factor reading -- and 2.3 + 2.3 + ... + 2.3 tempts the same way, since repeated ADDITION is what 'times 6' actually means."
+      },
+      "redirect_script": {
+        "stop": "Careful -- count the copies in that choice.",
+        "prompt": "Underline the base -- the whole thing, 2.3. Now count: how many copies of 2.3 does the exponent demand? Count the copies of 2.3 in each answer choice and cross out every choice where the count is wrong or where the copies are ADDED instead of multiplied.",
+        "praise": "You counted the copies and checked the operation -- that's exactly how to beat the tidy-looking wrong answer."
+      },
+      "item_template": "A power with a decimal base (one decimal place, e.g. 0.7, 1.5, 2.3) and whole-number exponent (2-6). Student selects or writes the equivalent expanded multiplication. MC with 4 choices, matching the spec's Approaching item (2.3^6).",
+      "sample_items": [
+        {
+          "stem": "Which expression is equivalent to 2.3^6?",
+          "answer": "2.3 x 2.3 x 2.3 x 2.3 x 2.3 x 2.3",
+          "choices": [
+            "2.3 x 6",
+            "2.3 x 2.3 x 2.3 x 2.3 x 2.3 x 2.3",
+            "2.3 + 2.3 + 2.3 + 2.3 + 2.3 + 2.3",
+            "2.3 x 2.3 x 2.3"
+          ],
+          "distractor_logic": "2.3 x 6 is the base-times-exponent error; the repeated addition equals 2.3 x 6 in disguise; three copies is the wrong count of factors."
+        },
+        {
+          "stem": "Which expression is equivalent to 0.7^3?",
+          "answer": "0.7 x 0.7 x 0.7",
+          "choices": [
+            "0.7 x 3",
+            "0.7 x 0.7 x 0.7",
+            "0.7 + 0.7 + 0.7",
+            "3 x 3 x 3 x 3 x 3 x 3 x 3"
+          ],
+          "distractor_logic": "0.7 x 3 is the base-times-exponent error; the addition version is the same error in additive form; the last choice swaps base and exponent."
+        },
+        {
+          "stem": "Which expression is equivalent to 1.5^4?",
+          "answer": "1.5 x 1.5 x 1.5 x 1.5",
+          "choices": [
+            "1.5 x 4",
+            "1.5 x 1.5 x 1.5 x 1.5",
+            "1.5 x 1.5",
+            "4 + 1.5"
+          ],
+          "distractor_logic": "1.5 x 4 is the base-times-exponent error; two copies is the wrong factor count; 4 + 1.5 combines base and exponent with addition."
+        },
+        {
+          "stem": "Which power means 0.9 x 0.9 x 0.9 x 0.9 x 0.9?",
+          "answer": "0.9^5",
+          "choices": [
+            "0.9^5",
+            "5^0.9",
+            "0.9^4",
+            "0.9 x 5"
+          ],
+          "distractor_logic": "5^0.9 swaps base and exponent; 0.9^4 miscounts the factors; 0.9 x 5 is the base-times-exponent error in reverse."
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "Base",
+          "definition": "The number being copied -- here it's the whole decimal, like 2.3."
+        },
+        {
+          "term": "Exponent",
+          "definition": "The small raised number that counts the copies of the base."
+        },
+        {
+          "term": "Equivalent",
+          "definition": "Worth exactly the same amount, even if it's written differently."
+        },
+        {
+          "term": "Expression",
+          "definition": "A math phrase made of numbers and operations, like 2.3^6."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS8-S4",
+        "if_fail": "6NS8-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board: 2.3^6, with four answer choices below it: 2.3 x 6, six copies of 2.3 multiplied, six copies of 2.3 added, and three copies of 2.3 multiplied."
+        },
+        {
+          "kind": "ask",
+          "text": "First -- what is the base here? Is it 2, is it 3, or is it the whole number 2.3?"
+        },
+        {
+          "kind": "ask",
+          "text": "And the exponent, 6 -- what's its job? Does it multiply the base, or count something?"
+        },
+        {
+          "kind": "ask",
+          "text": "So in the correct answer, how many copies of 2.3 should we see, and what operation should sit between them?"
+        },
+        {
+          "kind": "show",
+          "text": "Go choice by choice. For each one, count the copies of 2.3 out loud and name the operation between them."
+        },
+        {
+          "kind": "watch",
+          "text": "The tidy choice 2.3 x 6 is the trap -- it LOOKS like math class. If the student picks it, ask: 'How many copies of 2.3 are in this choice? The exponent demanded six.' Also watch for the addition choice: six copies, right count, wrong operation."
+        },
+        {
+          "kind": "ask",
+          "text": "Two choices show six copies of 2.3 -- one with x signs, one with + signs. Are they worth the same? What does the exponent tell us to DO with the copies?"
+        },
+        {
+          "kind": "say",
+          "text": "The exponent counts copies AND tells us to multiply them. Right count, right operation -- check both, every time, and the tidy wrong answers can't fool you."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Write 0.5^2 as repeated multiplication.",
+          "answer": "0.5 x 0.5"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "In the expression 1.2^4, what is the base -- 1, 2, or 1.2?",
+          "answer": "1.2 -- the whole decimal is the base."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write 0.4^3 as repeated multiplication. How many factors did you write?",
+          "answer": "0.4 x 0.4 x 0.4 -- three factors, matching the exponent."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is 1.5 + 1.5 + 1.5 + 1.5 equivalent to 1.5^4? Explain.",
+          "answer": "No. Adding four copies of 1.5 is 1.5 x 4 = 6. The exponent says to MULTIPLY four copies: 1.5 x 1.5 x 1.5 x 1.5 = 5.0625.",
+          "notes": "The addition disguise of the base-times-exponent error."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write 0.6 x 0.6 x 0.6 x 0.6 as a power.",
+          "answer": "0.6^4",
+          "notes": "Reversed direction. Watch for 4^0.6 or 0.6 x 4."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Mia rewrote a power as an equivalent expression. Find her mistake and fix it.",
+          "shown_work": [
+            "1.2^4",
+            "= 1.2 x 4",
+            "= 4.8"
+          ],
+          "answer": "1.2^4 = 1.2 x 1.2 x 1.2 x 1.2 = 2.0736. Mia multiplied the base by the exponent. The exponent 4 counts four copies of 1.2 -- it is not a factor. (Notice her wrong answer 4.8 is bigger than the true value 2.0736.)",
+          "notes": "Base-times-exponent bait with a decimal base and fresh numbers."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Without computing either one, is 0.5^3 greater than, less than, or equal to 0.5? Explain your thinking.",
+          "answer": "Less than 0.5. Each extra factor of 0.5 takes half of what you had, so the value shrinks: 0.5, 0.25, 0.125.",
+          "notes": "Bridges to the S6 misconception: powers of numbers below 1 shrink."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write your own decimal-base power whose expanded form has exactly five factors, then write that expanded form.",
+          "answer": "Any one-decimal base to the 5th power, e.g. 0.8^5 = 0.8 x 0.8 x 0.8 x 0.8 x 0.8.",
+          "notes": "Produce-your-own: the counter idea in reverse with a decimal base."
+        }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Power-to-Expansion Match (Decimal Edition)",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Match cards: powers on blue cards, expressions on white cards"
+          ],
+          "instructions": "1. Pairs match each power card to its equivalent expression card.\n2. The decoy cards (2.3 x 6, 0.7 + 0.7 + 0.7, 1.5 x 1.5) match NO power in the deck -- they are the classic wrong answers.\n3. A match only scores when the pair states the copy count and the operation: 'six copies of 2.3, all multiplied.'\n4. Debrief: which decoy fooled you, and what check catches it?",
+          "content": {
+            "pairs": [
+              {
+                "left": "2.3^6",
+                "right": "2.3 x 2.3 x 2.3 x 2.3 x 2.3 x 2.3"
+              },
+              {
+                "left": "0.7^3",
+                "right": "0.7 x 0.7 x 0.7"
+              },
+              {
+                "left": "1.5^4",
+                "right": "1.5 x 1.5 x 1.5 x 1.5"
+              },
+              {
+                "left": "0.9^2",
+                "right": "0.9 x 0.9"
+              },
+              {
+                "left": "4.1^3",
+                "right": "4.1 x 4.1 x 4.1"
+              }
+            ],
+            "decoys": [
+              "2.3 x 6",
+              "0.7 + 0.7 + 0.7",
+              "1.5 x 1.5"
+            ]
+          }
+        },
+        {
+          "type": "game",
+          "title": "Copy-Count Showdown",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Say a decimal power ('one point five to the fourth'); students write the expanded form and hold boards up on three.\n2. Any board showing 1.5 x 4 or an addition chain triggers a class debate: count the copies, name the operation, and evaluate the small cases to referee.\n3. Reverse round: show an expanded form, students write the power.\n4. Keep a running list of 'tidy traps' the class has beaten (2.3 x 6, repeated addition)."
+        },
+        {
+          "type": "card_sort",
+          "title": "Equivalent or Impostor?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "One card deck per group"
+          ],
+          "instructions": "1. Post one power for the round: 0.8^4.\n2. Groups sort each expression card into 'Equivalent to 0.8^4' or 'Impostor.'\n3. Every impostor card must get a one-line reason: wrong copy count, wrong operation, or wrong base.\n4. Debrief: the impostors all LOOK reasonable -- what two checks defeat all of them?",
+          "content": {
+            "categories": [
+              "Equivalent to 0.8^4",
+              "Impostor"
+            ],
+            "cards": [
+              {
+                "text": "0.8 x 0.8 x 0.8 x 0.8",
+                "category": "Equivalent to 0.8^4"
+              },
+              {
+                "text": "(0.8 x 0.8) x (0.8 x 0.8)",
+                "category": "Equivalent to 0.8^4"
+              },
+              {
+                "text": "0.8 x 4",
+                "category": "Impostor"
+              },
+              {
+                "text": "0.8 + 0.8 + 0.8 + 0.8",
+                "category": "Impostor"
+              },
+              {
+                "text": "0.8 x 0.8 x 0.8",
+                "category": "Impostor"
+              },
+              {
+                "text": "4^0.8",
+                "category": "Impostor"
+              },
+              {
+                "text": "8 x 8 x 8 x 8",
+                "category": "Impostor"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Choice-by-choice justification ('six copies, multiplied') is exactly what partners can rehearse and defend to each other."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "The spec's own trap (2.3 x 6 next to the true expansion) is a ready-made worked-example/error pair."
+        },
+        {
+          "strategy_id": "strat-math-008",
+          "why": "Whiteboard rounds show instantly who still writes the tidy base-times-exponent form when the base turns ugly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the base -- the whole decimal or just part of it? Underline it.",
+          "How many copies of the base does the exponent demand? Count the copies in your answer.",
+          "Two choices have six copies of 2.3 -- one added, one multiplied. Which does the exponent mean, and how do you know?",
+          "Why do you think 2.3 x 6 is such a popular wrong answer? What makes it tempting?",
+          "If the expanded form has five factors, what's the exponent? If the exponent is 5, how many factors?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student selects the base-times-exponent choice (2.3 x 6) or the repeated-addition chain as equivalent to the power.",
+            "say": "Underline the base -- the whole thing, 2.3. Now count: how many copies of 2.3 does the exponent demand? Count the copies of 2.3 in each answer choice and cross out every choice where the count is wrong or where the copies are ADDED instead of multiplied.",
+            "praise": "You counted the copies and checked the operation -- that's exactly how to beat the tidy-looking wrong answer."
+          },
+          {
+            "if_you_see": "Student treats only part of the decimal as the base -- expands 2.3^2 as 2 x 2 with a .3 tacked on, or writes 3 x 3.",
+            "say": "The base is one number: 2.3, all of it. Put parentheses around it -- (2.3)^2 -- and expand the whole package: 2.3 x 2.3. Nothing inside the parentheses gets left behind.",
+            "praise": "You kept the whole base together -- the decimal never splits."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Write 0.7^4 as an expression with no exponent.",
+            "look_for": "0.7 x 0.7 x 0.7 x 0.7. Seeing 0.7 x 4 diagnoses the base-times-exponent error; 0.7 + 0.7 + 0.7 + 0.7 is the same bug in additive clothing."
+          },
+          {
+            "prompt": "Thumbs up or down: 1.5 x 4 is equivalent to 1.5^4.",
+            "look_for": "Thumbs down, with 'the exponent counts copies of 1.5 that get MULTIPLIED.' A thumbs up means the expansion step is still being skipped."
+          }
+        ]
+      },
+      "fluency_source": "6NS8-F1",
+      "sentence_starters": [
+        "The exponent demands ___ copies of ___, all multiplied.",
+        "That choice is an impostor because ___."
+      ],
+      "worked_solution": {
+        "stem": "Which expression is equivalent to 2.3^6?",
+        "answer": "2.3 x 2.3 x 2.3 x 2.3 x 2.3 x 2.3",
+        "steps": [
+          {
+            "math": "base = 2.3 (the whole decimal), exponent = 6",
+            "annotation": "The base is the entire number 2.3 -- the decimal never splits apart."
+          },
+          {
+            "math": "the exponent counts: six copies of 2.3, multiplied",
+            "annotation": "Two checks for every answer choice: the copy COUNT and the OPERATION between copies."
+          },
+          {
+            "math": "2.3^6 = 2.3 x 2.3 x 2.3 x 2.3 x 2.3 x 2.3",
+            "annotation": "Six copies, all x signs. The tidy trap 2.3 x 6 has only ONE copy of 2.3 -- and 2.3 + 2.3 + ... adds when the exponent says multiply."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Write 0.9^5 as repeated multiplication.",
+        "answer": "0.9 x 0.9 x 0.9 x 0.9 x 0.9",
+        "steps": [
+          {
+            "math": "base = 0.9, exponent = 5",
+            "annotation": "Name the whole base and the counter first.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "How many copies of 0.9, and what operation goes between them? Write it out.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check yourself: count your factors against the exponent, and make sure no choice like 0.9 x 5 snuck in.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "6NS8-S4",
+      "name": "Evaluate powers with fraction bases",
+      "column": "on_grade",
+      "parent_standard": "6.NS.8",
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "6NS8-F2"
+      },
+      "i_do_script": "Now the base is a fraction: (2/3)^3. The parentheses matter -- they say the WHOLE fraction is the base. Watch: (2/3)^3 = 2/3 x 2/3 x 2/3. Tops: 2 x 2 x 2 = 8. Bottoms: 3 x 3 x 3 = 27. So (2/3)^3 = 8/27. The exponent reaches both floors of the fraction -- top AND bottom. The trap is raising only the top: 8/3 is wrong because the 3 on the bottom got copied three times too.",
+      "canonical_error": {
+        "pattern": "Raises only the numerator to the power and leaves the denominator alone",
+        "example": "Evaluates (3/5)^2 as 9/5 instead of 9/25",
+        "why": "The student treats the denominator as a label ('fifths') rather than a number inside the base. Since the exponent sits up by the top of the fraction, it feels like it only belongs to the numerator -- but the parentheses make the WHOLE fraction the base."
+      },
+      "redirect_script": {
+        "stop": "Stop -- did the bottom number get raised too?",
+        "prompt": "The parentheses make the WHOLE fraction the base. Write the expansion first: 3/5 x 3/5. Now multiply tops (3 x 3) AND bottoms (5 x 5) -- two jobs every time. If your denominator didn't change, the bottom never got its copies.",
+        "praise": "You raised the top and the bottom -- the exponent reached the whole fraction."
+      },
+      "item_template": "Evaluate a power with a unit or simple fraction base (denominators through 7) and exponent 2-4, matching the spec's At-Proficiency item ((2/3)^3 = 8/27). NR; answer entered as a fraction.",
+      "sample_items": [
+        {
+          "stem": "Evaluate (2/3)^3.",
+          "answer": "8/27",
+          "choices": null,
+          "distractor_logic": "8/3 raises only the numerator; 2 is the base-times-exponent error (2/3 x 3); 6/9 multiplies both parts of the fraction BY 3 instead of raising them."
+        },
+        {
+          "stem": "Evaluate (1/2)^4.",
+          "answer": "1/16",
+          "choices": null,
+          "distractor_logic": "1/2 leaves the fraction unchanged (1^4 = 1 misread); 2 is the base-times-exponent error (1/2 x 4); 1/8 stops one factor early."
+        },
+        {
+          "stem": "Evaluate (3/4)^2.",
+          "answer": "9/16",
+          "choices": null,
+          "distractor_logic": "9/4 raises only the numerator; 6/8 doubles both parts instead of squaring; 3/2 is the base-times-exponent error (3/4 x 2)."
+        },
+        {
+          "stem": "Evaluate (2/5)^2.",
+          "answer": "4/25",
+          "choices": null,
+          "distractor_logic": "4/5 raises only the numerator; 4/10 doubles the denominator instead of squaring it; 4/7 adds the denominator and exponent."
+        },
+        {
+          "stem": "Evaluate (1/3)^3.",
+          "answer": "1/27",
+          "choices": null,
+          "distractor_logic": "1/3 leaves the value unchanged; 1 is the base-times-exponent error (1/3 x 3); 1/9 stops one factor early."
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "Base",
+          "definition": "The number being copied -- here it's the whole fraction inside the parentheses."
+        },
+        {
+          "term": "Numerator",
+          "definition": "The top number of a fraction."
+        },
+        {
+          "term": "Denominator",
+          "definition": "The bottom number of a fraction."
+        },
+        {
+          "term": "Exponent",
+          "definition": "The small raised number that counts the copies of the whole base."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS8-S5",
+        "if_fail": "6NS8-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board: (2/3)^3, with the parentheses drawn clearly around the whole fraction."
+        },
+        {
+          "kind": "ask",
+          "text": "What are these parentheses hugging? What exactly is the base here -- the 2, the 3, or the whole fraction 2/3?"
+        },
+        {
+          "kind": "ask",
+          "text": "The exponent is 3. So write the expansion: how many copies of 2/3, with what between them?"
+        },
+        {
+          "kind": "show",
+          "text": "Write 2/3 x 2/3 x 2/3. Draw one arrow across all three tops and another arrow across all three bottoms."
+        },
+        {
+          "kind": "ask",
+          "text": "Follow the top arrow: 2 x 2 x 2 = ? Now the bottom arrow: 3 x 3 x 3 = ? So what is (2/3)^3?"
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 8/3, the bottom arrow never got used. Point at the three 3s in the expansion and ask: 'How many 3s are on the bottom? What happens when they multiply?' Don't move on until both arrows get used every time."
+        },
+        {
+          "kind": "ask",
+          "text": "Look at 8/27 next to 2/3. Did raising to the third power make the fraction bigger or smaller? Why does taking two-thirds of two-thirds of two-thirds leave so little?"
+        },
+        {
+          "kind": "say",
+          "text": "The exponent raises the WHOLE base: top to the power, bottom to the power. (2/3)^3 = (2 x 2 x 2)/(3 x 3 x 3) = 8/27 -- and a fraction below 1 SHRINKS when you raise it. That surprise is real math, not a mistake."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate (1/2)^2.",
+          "answer": "1/4"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate (1/3)^2.",
+          "answer": "1/9"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate (3/5)^2.",
+          "answer": "9/25",
+          "notes": "Watch for 9/5 -- the numerator-only error."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate (2/3)^2.",
+          "answer": "4/9",
+          "notes": "Watch for 4/3 (numerator only) and 4/6 (doubled the bottom instead of squaring)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate (1/4)^3.",
+          "answer": "1/64",
+          "notes": "The 1 on top stays 1 -- students sometimes doubt an unchanged numerator."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Jordan evaluated a power with a fraction base. Find the mistake and fix it.",
+          "shown_work": [
+            "(4/7)^2",
+            "= 4 x 4 / 7",
+            "= 16/7"
+          ],
+          "answer": "(4/7)^2 = 4/7 x 4/7 = 16/49. Jordan squared the numerator but left the denominator alone. The whole fraction is the base, so the 7 gets squared too: 7 x 7 = 49. (A quick sense check: 4/7 is less than 1, so its square must be SMALLER than 4/7 -- but 16/7 is bigger than 2.)",
+          "notes": "The square-the-numerator-only bait with fresh numbers."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "number_line",
+          "stem": "Evaluate (1/2)^3. Then mark your answer on the number line.",
+          "answer": "1/8 (= 0.125)",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              0,
+              0.25,
+              0.5,
+              0.75,
+              1
+            ],
+            "point_value": null
+          },
+          "notes": "Placement makes the shrinking visible: the point lands LEFT of 1/2, between 0 and 1/4."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Why does (2/3)^3 come out SMALLER than 2/3, when 3^3 comes out BIGGER than 3? Explain.",
+          "answer": "Multiplying by 2/3 takes two-thirds of what you had, so each factor shrinks the value: 2/3 -> 4/9 -> 8/27. Multiplying by 3 triples what you had, so each factor grows it. Powers repeat whatever the base does.",
+          "notes": "The spec's named misconception, stated as an explain-why."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Paper-Folding Powers of One-Half",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "One sheet of paper per pair",
+            "Pencil for labeling"
+          ],
+          "instructions": "1. Fold the sheet in half and shade one half: that's (1/2)^1 = 1/2 of the paper.\n2. Fold in half again -- the shaded region is now half OF a half. Label it (1/2)^2 and name the fraction: 1/4.\n3. Fold twice more, labeling (1/2)^3 = 1/8 and (1/2)^4 = 1/16.\n4. Ask before each fold: 'Will the shaded part get bigger or smaller?' The paper answers the spec's big misconception -- powers of a fraction SHRINK.\n5. Debrief: where do the denominators 2, 4, 8, 16 come from? (The bottom gets raised too: 2, 2^2, 2^3, 2^4.)"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Jordan's Half-Raised Fraction",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Pairs read Jordan's work ((4/7)^2 = 16/7) and name the exact wrong move.\n2. They fix it by writing the expansion 4/7 x 4/7 and using both arrows: tops 4 x 4 = 16, bottoms 7 x 7 = 49.\n3. Sense-check round: 4/7 is less than 1 -- should its square be bigger than 2, like 16/7 is? Why not?\n4. Each pair writes the rule in their own words: who does the exponent reach?",
+          "content": {
+            "worked_problem": "Evaluate (4/7)^2. Jordan wrote: (4/7)^2 = 4 x 4 / 7 = 16/7.",
+            "error_step": "Jordan squared the numerator but never squared the denominator.",
+            "why": "The parentheses make the WHOLE fraction the base, so both the 4 and the 7 get copied: (4/7)^2 = (4 x 4)/(7 x 7) = 16/49. The sense check clinches it: 4/7 is less than 1, so its square must be even smaller -- 16/7 (more than 2) is impossible."
+          }
+        },
+        {
+          "type": "card_sort",
+          "title": "Bigger or Smaller? Predicting Powers",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "One prediction deck per group"
+          ],
+          "instructions": "1. WITHOUT computing, groups sort each power card: 'Bigger than its base' or 'Smaller than its base.'\n2. Then groups evaluate two cards from each pile to verify their sort.\n3. Debrief: what do all the shrinking bases have in common? (They're between 0 and 1 -- fractions less than one shrink when raised to a power.)",
+          "content": {
+            "categories": [
+              "Bigger than its base",
+              "Smaller than its base"
+            ],
+            "cards": [
+              {
+                "text": "(1/2)^3",
+                "category": "Smaller than its base"
+              },
+              {
+                "text": "(2/3)^2",
+                "category": "Smaller than its base"
+              },
+              {
+                "text": "(3/4)^3",
+                "category": "Smaller than its base"
+              },
+              {
+                "text": "3^2",
+                "category": "Bigger than its base"
+              },
+              {
+                "text": "5^3",
+                "category": "Bigger than its base"
+              },
+              {
+                "text": "(3/2)^2",
+                "category": "Bigger than its base"
+              },
+              {
+                "text": "(1/5)^2",
+                "category": "Smaller than its base"
+              },
+              {
+                "text": "2^4",
+                "category": "Bigger than its base"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Paper folding (concrete) to fraction strips (representational) to 2^n denominators (abstract) makes the shrinking-powers idea physical before it's symbolic."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Pairing the correct 16/49 against the classic 16/7 makes 'the exponent reaches the denominator too' the explicit lesson."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud while evaluating (2/3)^3 models both arrows -- tops and bottoms -- as separate, named moves."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What are the parentheses hugging? So what exactly is the base?",
+          "Your expansion shows three 2s on top. How many 3s should be on the bottom? Where are they?",
+          "Before you compute: will (3/4)^2 be bigger or smaller than 3/4? How do you know?",
+          "Your denominator didn't change from the base to your answer. What does that tell you happened -- or didn't happen?",
+          "Where did the 27 in 8/27 come from? Point to the three numbers that built it."
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student raises only the numerator -- writes (3/5)^2 = 9/5.",
+            "say": "The parentheses make the WHOLE fraction the base. Write the expansion first: 3/5 x 3/5. Now multiply tops (3 x 3) AND bottoms (5 x 5) -- two jobs every time. If your denominator didn't change, the bottom never got its copies.",
+            "praise": "You raised the top and the bottom -- the exponent reached the whole fraction."
+          },
+          {
+            "if_you_see": "Student rejects a correct small answer -- says 8/27 'must be wrong' because powers are supposed to make numbers bigger.",
+            "say": "Fold this paper in half, then in half again. Is the shaded piece growing or shrinking? Multiplying by a fraction less than 1 TAKES A PART OF what you had, so each factor shrinks the value. Powers repeat whatever the base does.",
+            "praise": "You trusted the expansion over the hunch -- fraction powers really do shrink."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Evaluate (2/5)^2 on your whiteboard. Show the expansion.",
+            "look_for": "2/5 x 2/5 = 4/25. An answer of 4/5 diagnoses the numerator-only error; 4/10 means the denominator was doubled instead of squared."
+          },
+          {
+            "prompt": "Thumbs up or down: (5/6)^2 is greater than 5/6.",
+            "look_for": "Thumbs down, with 'multiplying by 5/6 takes five-sixths of what you had.' A thumbs up flags the powers-always-grow misconception before it costs an answer."
+          }
+        ]
+      },
+      "fluency_source": "6NS8-F1",
+      "sentence_starters": [
+        "The exponent reaches the top AND the bottom, so ___.",
+        "My answer should be smaller than the base because ___."
+      ],
+      "worked_solution": {
+        "stem": "Evaluate (2/3)^3.",
+        "answer": "8/27",
+        "steps": [
+          {
+            "math": "(2/3)^3 = 2/3 x 2/3 x 2/3",
+            "annotation": "The parentheses make the whole fraction the base -- three copies of 2/3, multiplied."
+          },
+          {
+            "math": "tops: 2 x 2 x 2 = 8",
+            "annotation": "Multiply the numerators across."
+          },
+          {
+            "math": "bottoms: 3 x 3 x 3 = 27",
+            "annotation": "The denominators multiply too -- the exponent reaches the bottom floor. Skipping this is what produces the wrong answer 8/3."
+          },
+          {
+            "math": "(2/3)^3 = 8/27",
+            "annotation": "Sense check: 2/3 is less than 1, so its cube should be SMALLER than 2/3 -- and 8/27 is. A smaller answer here is right, not wrong."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Evaluate (2/5)^3.",
+        "answer": "8/125",
+        "steps": [
+          {
+            "math": "(2/5)^3 = 2/5 x 2/5 x 2/5",
+            "annotation": "Expand first: three copies of the whole fraction.",
+            "given": true
+          },
+          {
+            "math": "tops: 2 x 2 x 2 = 8",
+            "annotation": "Numerators multiplied across.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Now the bottoms: what is 5 x 5 x 5?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the final fraction. Check: is it smaller than 2/5, the way a fraction power should be?",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "6NS8-S5",
+      "name": "Evaluate powers with decimal bases",
+      "column": "on_grade",
+      "parent_standard": "6.NS.8",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "6NS8-S3"
+      },
+      "i_do_script": "Now we evaluate decimal powers -- the spec calls these the hardest tier, and the reason is place value. Watch me do 0.3^2. Expand: 0.3 x 0.3. I multiply as if there were no decimals -- 3 x 3 = 9 -- then I count decimal places: 0.3 has one place, and I used it twice, so the answer needs TWO places: 0.09. Not 0.9. Every factor brings its decimal places with it, and they add up.",
+      "canonical_error": {
+        "pattern": "Multiplies the digits correctly but keeps only one decimal place instead of adding the places from every factor",
+        "example": "Evaluates 0.3^2 as 0.9 instead of 0.09",
+        "why": "The student computes 3 x 3 = 9 and then reattaches the decimal point where it was in the base. They haven't internalized that decimal places ADD when you multiply: two factors with one place each need two places in the product."
+      },
+      "redirect_script": {
+        "stop": "Freeze -- count your decimal places before you place that point.",
+        "prompt": "Multiply the digits as if there were no decimal point. Now count the decimal places in EVERY factor of your expansion and add them up -- that total is how many places your answer needs. 0.3 x 0.3: one place plus one place means two places, so 9 becomes 0.09.",
+        "praise": "You added the decimal places from every factor -- that's exactly how the point finds its home."
+      },
+      "item_template": "Evaluate a power with a one-decimal-place base (0.1-2.5) and exponent 2-3, keeping digit work within basic facts. NR (numeric response). The spec's Difficult tier.",
+      "sample_items": [
+        {
+          "stem": "Evaluate 0.5^2.",
+          "answer": "0.25",
+          "choices": null,
+          "distractor_logic": "2.5 keeps one decimal place (place-value error); 1.0 is the base-times-exponent error (0.5 x 2); 0.10 adds the halves."
+        },
+        {
+          "stem": "Evaluate 0.2^2.",
+          "answer": "0.04",
+          "choices": null,
+          "distractor_logic": "0.4 keeps one decimal place -- the canonical place-value slip (and also matches 0.2 x 2, making it doubly tempting)."
+        },
+        {
+          "stem": "Evaluate 0.3^2.",
+          "answer": "0.09",
+          "choices": null,
+          "distractor_logic": "0.9 keeps one decimal place; 0.6 is the base-times-exponent error (0.3 x 2); 9 drops the decimal entirely."
+        },
+        {
+          "stem": "Evaluate 0.4^2.",
+          "answer": "0.16",
+          "choices": null,
+          "distractor_logic": "1.6 keeps one decimal place; 0.8 is the base-times-exponent error (0.4 x 2); 16 drops the decimal."
+        },
+        {
+          "stem": "Evaluate 1.5^2.",
+          "answer": "2.25",
+          "choices": null,
+          "distractor_logic": "22.5 misplaces the point; 3.0 is the base-times-exponent error (1.5 x 2); 1.25 squares only the digits after the point."
+        },
+        {
+          "stem": "Evaluate 0.2^3.",
+          "answer": "0.008",
+          "choices": null,
+          "distractor_logic": "0.8 keeps one decimal place instead of three; 0.6 is the base-times-exponent error (0.2 x 3); 0.08 counts only two places."
+        },
+        {
+          "stem": "Evaluate 0.1^3.",
+          "answer": "0.001",
+          "choices": null,
+          "distractor_logic": "0.3 is the base-times-exponent error (0.1 x 3); 0.1 assumes nothing changes; 0.01 counts only two places."
+        },
+        {
+          "stem": "Evaluate 1.2^2.",
+          "answer": "1.44",
+          "choices": null,
+          "distractor_logic": "14.4 misplaces the point; 2.4 is the base-times-exponent error (1.2 x 2); 1.4 squares only the whole-number part."
+        },
+        {
+          "stem": "Evaluate 0.6^2.",
+          "answer": "0.36",
+          "choices": null,
+          "distractor_logic": "3.6 keeps one decimal place; 1.2 is the base-times-exponent error (0.6 x 2); 36 drops the decimal."
+        },
+        {
+          "stem": "Evaluate 2.5^2.",
+          "answer": "6.25",
+          "choices": null,
+          "distractor_logic": "62.5 misplaces the point; 5.0 is the base-times-exponent error (2.5 x 2); 4.25 squares the 2 and the 0.5 separately and adds."
+        },
+        {
+          "stem": "Evaluate 0.5^3.",
+          "answer": "0.125",
+          "choices": null,
+          "distractor_logic": "1.5 is the base-times-exponent error (0.5 x 3); 0.15 miscounts places; 12.5 drops most of the places."
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "Decimal place",
+          "definition": "A position to the right of the decimal point -- 0.3 has one decimal place, 0.09 has two."
+        },
+        {
+          "term": "Base",
+          "definition": "The number being copied -- here the whole decimal, like 0.3."
+        },
+        {
+          "term": "Exponent",
+          "definition": "The small raised number that counts the copies of the base."
+        },
+        {
+          "term": "Product",
+          "definition": "The answer to a multiplication."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS8-S6",
+        "if_fail": "6NS8-S3"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board: 0.3^2."
+        },
+        {
+          "kind": "ask",
+          "text": "First move, same as always: expand. What does 0.3^2 mean, written the long way?"
+        },
+        {
+          "kind": "ask",
+          "text": "Here's the shortcut for decimal multiplication: pretend the points aren't there. What is 3 x 3?"
+        },
+        {
+          "kind": "say",
+          "text": "Now the points come back, and here's the rule: count the decimal places in EVERY factor and add them up. 0.3 has one place. We used it twice. So the answer needs two places."
+        },
+        {
+          "kind": "show",
+          "text": "Write 9, then walk the decimal point in two places: 0.09."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 0.9, they multiplied the digits and put the point back where the base had it. Ask: 'How many decimal places did each factor bring? Add them. Does 0.9 have that many?' Have them verify with money: 0.3 of 0.3 of a dollar can't be 90 cents."
+        },
+        {
+          "kind": "ask",
+          "text": "Sense check: 0.3 is less than 1. If I take 0.3 OF 0.3, should I end up with more than 0.3 or less? Is 0.9 even possible?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: evaluate 0.4^2. Digits first, then count and add the places from both factors."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate 0.1^2.",
+          "answer": "0.01"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate 0.5^2.",
+          "answer": "0.25"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 0.4^2.",
+          "answer": "0.16",
+          "notes": "Watch for 1.6 -- one decimal place kept instead of two."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 1.1^2.",
+          "answer": "1.21",
+          "notes": "A base just over 1 grows only slightly -- good magnitude talk."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 0.3^3.",
+          "answer": "0.027",
+          "notes": "Three factors, one place each: the answer needs THREE places. Watch for 2.7 and 0.27."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Amara evaluated a decimal power. Find her mistake and fix it.",
+          "shown_work": [
+            "0.6^2 = 0.6 x 0.6",
+            "6 x 6 = 36",
+            "so 0.6^2 = 3.6"
+          ],
+          "answer": "0.6^2 = 0.36. Amara's digit work was right (6 x 6 = 36), but each factor 0.6 brings one decimal place, so the product needs 1 + 1 = 2 places: 0.36, not 3.6. Sense check: 0.6 is less than 1, so its square must be LESS than 0.6 -- 3.6 can't possibly be right.",
+          "notes": "The place-value bait: digits correct, point misplaced."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Evaluate 1.5^3.",
+          "answer": "3.375",
+          "notes": "Two-stage chain: 1.5 x 1.5 = 2.25, then 2.25 x 1.5 = 3.375. Places: 2, then 3."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Without computing, is 0.9^2 greater than, less than, or equal to 0.9? Then compute to check.",
+          "answer": "Less than 0.9. Taking 0.9 OF 0.9 shrinks it: 0.9^2 = 0.81.",
+          "notes": "Magnitude-first reasoning; the compute step confirms the prediction."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Where Does the Point Land?",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Pairs read Amara's work (0.6^2 = 3.6) and find the step where it went wrong -- note her digit work was perfect.\n2. They fix it with the place-counting rule: one place per factor, two factors, two places -- 0.36.\n3. Money check: 0.6 of 60 cents is 36 cents, not 3 dollars 60.\n4. Each pair writes the rule: when you multiply decimals, the decimal places ___.",
+          "content": {
+            "worked_problem": "Evaluate 0.6^2. Amara wrote: 0.6 x 0.6 -> 6 x 6 = 36 -> so 0.6^2 = 3.6.",
+            "error_step": "Amara gave the answer one decimal place instead of adding the places from both factors.",
+            "why": "Each factor 0.6 carries one decimal place, and places ADD in a product: 1 + 1 = 2 places, so 36 becomes 0.36. The sense check seals it: squaring a number less than 1 must shrink it, so getting 3.6 from 0.6 is impossible."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Place-Value Point Hop",
+          "time_minutes": 10,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Show a decimal power (0.4^2). Students write ONLY the digit product first (16), holding the point.\n2. On the signal, everyone counts places aloud together ('one place, plus one place, two places!') and hops the point in: 0.16.\n3. Boards up. Any 1.6 boards trigger the money check: 0.4 of 40 cents is 16 cents.\n4. Increase difficulty: cubes like 0.2^3 need a three-place hop (0.008). Keep score by places counted correctly, not speed."
+        },
+        {
+          "type": "hands_on",
+          "title": "Hundred-Grid Shrinking Squares",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Printed 10 x 10 hundred grids",
+            "Colored pencils"
+          ],
+          "instructions": "1. On a hundred grid (the whole grid = 1), students shade a 3-wide column strip: that's 0.3.\n2. Now take 0.3 OF the shaded strip: mark off the bottom 3 rows of the strip. The double-shaded region is 3 x 3 = 9 little squares out of 100.\n3. Name it: 0.3 x 0.3 = 9/100 = 0.09. The grid shows WHY two decimal places appear: tenths of tenths are hundredths.\n4. Repeat with 0.4^2 = 0.16. Debrief: why can 0.9 never be the answer to 0.3^2?"
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The hundred grid makes 'tenths of tenths are hundredths' concrete before the add-the-places rule gets stated abstractly."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Amara's 3.6 next to the correct 0.36 isolates the single decision -- where the point lands -- that defines this skill."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Number talks on 0.5^2 and 0.9^2 build the magnitude intuition (squares of numbers below 1 shrink) that catches misplaced points before checking."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many decimal places does each factor bring? What's the total your answer needs?",
+          "Your digits say 36. Where does the point go, and how do you know?",
+          "0.6 is less than 1. Should 0.6^2 be bigger or smaller than 0.6? Is your answer?",
+          "What would 0.3 of 30 cents be? Does your answer to 0.3^2 agree with the money?",
+          "Why does 0.2^3 need THREE decimal places when 0.2^2 only needed two?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student multiplies the digits correctly but keeps one decimal place -- writes 0.3^2 = 0.9 or 0.6^2 = 3.6.",
+            "say": "Multiply the digits as if there were no decimal point. Now count the decimal places in EVERY factor of your expansion and add them up -- that total is how many places your answer needs. 0.3 x 0.3: one place plus one place means two places, so 9 becomes 0.09.",
+            "praise": "You added the decimal places from every factor -- that's exactly how the point finds its home."
+          },
+          {
+            "if_you_see": "Student evaluates the decimal power as base times exponent -- writes 0.4^2 = 0.8.",
+            "say": "Expand before anything else: 0.4^2 means 0.4 x 0.4, two copies of the base multiplied together. The exponent counts copies -- it never multiplies the base. Now do the digits, then count places.",
+            "praise": "You expanded first -- with the expansion on paper, the exponent can't sneak into the arithmetic."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Evaluate 0.2^2 on your whiteboard. Show where the decimal places came from.",
+            "look_for": "0.04 with '1 + 1 = 2 places' shown. 0.4 is the double trap -- it's both the one-place error AND 0.2 x 2 -- so ask which mistake they think it represents."
+          },
+          {
+            "prompt": "Thumbs up or down: 0.5^2 is greater than 0.5.",
+            "look_for": "Thumbs down with '0.25 -- half of a half.' A thumbs up means magnitude intuition isn't guarding the arithmetic yet."
+          }
+        ]
+      },
+      "fluency_source": "6NS8-F1",
+      "sentence_starters": [
+        "Each factor brings ___ decimal place(s), so my answer needs ___.",
+        "My answer must be smaller than the base because ___."
+      ],
+      "worked_solution": {
+        "stem": "Evaluate 0.3^2.",
+        "answer": "0.09",
+        "steps": [
+          {
+            "math": "0.3^2 = 0.3 x 0.3",
+            "annotation": "Expand first: two copies of the whole base 0.3."
+          },
+          {
+            "math": "digits: 3 x 3 = 9",
+            "annotation": "Multiply as if the decimal points weren't there."
+          },
+          {
+            "math": "places: 1 + 1 = 2, so 9 -> 0.09",
+            "annotation": "Every factor brings its decimal places, and the places ADD. Two one-place factors need a two-place answer -- this is why 0.9 is wrong."
+          },
+          {
+            "math": "0.3^2 = 0.09",
+            "annotation": "Sense check: 0.3 of 0.3 must be LESS than 0.3. 0.09 is; 0.9 isn't even possible."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Evaluate 0.4^2.",
+        "answer": "0.16",
+        "steps": [
+          {
+            "math": "0.4^2 = 0.4 x 0.4",
+            "annotation": "Expand: two copies of 0.4.",
+            "given": true
+          },
+          {
+            "math": "digits: 4 x 4 = 16",
+            "annotation": "Digits first, points on hold.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Count the decimal places in both factors and add them. How many places does the answer need?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Place the point and write the final value. Check: smaller than 0.4?",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "6NS8-S6",
+      "name": "Analyze and correct errors in evaluating exponential expressions",
+      "column": "looking_forward",
+      "parent_standard": "6.NS.8",
+      "engine_stems": [
+        5
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "6NS8-S4"
+      },
+      "i_do_script": "Today YOU are the teacher. Someone hands you their work -- say, '(2/3)^3 = 2' -- and your job is to decide: right or wrong, and if wrong, name the exact wrong move. Watch my routine: I redo the problem MY way, from the expansion. 2/3 x 2/3 x 2/3 = 8/27, not 2. Then I play detective: what would produce 2? Well, 2/3 x 3 = 2 -- they multiplied the base by the exponent. Naming the move is the whole skill; 'it's wrong' isn't an analysis.",
+      "canonical_error": {
+        "pattern": "Checks someone's answer by re-doing the same wrong move, or rejects a correct small answer because 'powers make numbers bigger'",
+        "example": "Confirms that (2/3)^3 = 2 'because 2/3 times 3 is 2,' or insists 8/27 must be wrong since it's smaller than 2/3",
+        "why": "Without the expanded form as the referee, checking collapses into repeating whatever move feels natural -- usually base times exponent. And the belief that exponents always grow a number (true for bases above 1) makes the CORRECT shrinking answer look like the mistake."
+      },
+      "redirect_script": {
+        "stop": "Don't judge it yet -- redo it from the expansion.",
+        "prompt": "Cover the student's work. Write the expansion yourself and evaluate it fresh. Now uncover and compare answers. If they differ, play detective: what operation with those two numbers WOULD produce the student's answer? That operation is the mistake -- name it out loud.",
+        "praise": "You re-derived the answer and named the exact wrong move -- that's a real error analysis."
+      },
+      "item_template": "A named student's evaluation of a power (fraction or decimal base) is shown, containing either the base-times-exponent error, the numerator-only error, or no error. Student judges correct/incorrect, names the mistake, and supplies the correct value. MC or short constructed response, matching the spec's Above item (DOK 2).",
+      "sample_items": [
+        {
+          "stem": "Ana evaluated (2/5)^3 and got 6/5. What mistake did Ana most likely make?",
+          "answer": "Ana multiplied 2/5 by 3 instead of multiplying 2/5 by itself 3 times.",
+          "choices": [
+            "Ana multiplied 2/5 by 3 instead of multiplying 2/5 by itself 3 times.",
+            "Ana added 2/5 and 3 instead of multiplying.",
+            "Ana raised only the numerator to the power of 3 and forgot to raise the denominator.",
+            "Ana divided 2/5 by 3 instead of multiplying 2/5 by itself 3 times."
+          ],
+          "distractor_logic": "2/5 x 3 = 6/5 confirms the base-times-exponent diagnosis; adding gives 17/5, numerator-only gives 8/5, dividing gives 2/15 -- none matches 6/5, so each wrong choice fails the 'would it produce this answer?' test."
+        },
+        {
+          "stem": "Marcus evaluated (5/6)^2 and got 25/6. What mistake did Marcus most likely make?",
+          "answer": "Marcus squared the numerator but did not square the denominator.",
+          "choices": [
+            "Marcus squared the numerator but did not square the denominator.",
+            "Marcus multiplied 5/6 by 2 instead of squaring it.",
+            "Marcus added 5/6 and 2 instead of multiplying.",
+            "Marcus squared the denominator but not the numerator."
+          ],
+          "distractor_logic": "5^2/6 = 25/6 confirms numerator-only; 5/6 x 2 = 10/6, adding gives 17/6, denominator-only gives 5/36 -- the detective test rules each out. Correct value: 25/36."
+        },
+        {
+          "stem": "A student claims 0.4^3 = 1.2 because 0.4 x 3 = 1.2. Is the student correct or incorrect? Give the correct value and explain.",
+          "answer": "Incorrect. 0.4^3 = 0.4 x 0.4 x 0.4 = 0.064. The student multiplied the base by the exponent, but the exponent only counts the copies of 0.4. Also, 0.4 is less than 1, so its cube must be SMALLER than 0.4 -- 1.2 is impossible.",
+          "choices": null,
+          "distractor_logic": "Students who agree with the claim are re-doing the base-times-exponent move as their 'check'; the magnitude argument (a power of a number below 1 shrinks) is the second layer of the analysis."
+        },
+        {
+          "stem": "Tia evaluated (1/2)^4 and got 1/16. Priya says Tia must be wrong because raising to a power makes numbers bigger. Who is correct, and why?",
+          "answer": "Tia is correct: (1/2)^4 = 1/2 x 1/2 x 1/2 x 1/2 = 1/16. Priya's rule only works for bases greater than 1. Multiplying by 1/2 takes half of what you had, so each factor shrinks the value.",
+          "choices": null,
+          "distractor_logic": "Siding with Priya diagnoses the powers-always-grow misconception the spec names -- the correct shrinking answer is being rejected on intuition."
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "Base",
+          "definition": "The number being copied in a power."
+        },
+        {
+          "term": "Exponent",
+          "definition": "The small raised number that counts the copies of the base."
+        },
+        {
+          "term": "Factor",
+          "definition": "A number being multiplied -- an expansion of b^4 shows four factors."
+        },
+        {
+          "term": "Justify",
+          "definition": "Show or explain WHY an answer is right or wrong, not just say that it is."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for 7.NS.6 -- operations with rational numbers, where exponent understanding carries forward.",
+        "if_fail": "6NS8-S4"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board: 'Ana evaluated (2/5)^3 and got 6/5.' Next to it, write the two-question routine: 1) What do I get? 2) What move produces HER answer?"
+        },
+        {
+          "kind": "ask",
+          "text": "Rule one: never judge before you recompute. Cover Ana's 6/5 with your hand and evaluate (2/5)^3 yourself from the expansion -- multiply the tops, 2 x 2 x 2, then the bottoms, 5 x 5 x 5. What fraction do you get?"
+        },
+        {
+          "kind": "ask",
+          "text": "So we get 8/125. Now uncover Ana's 6/5 -- ours and hers don't match. Here's the detective question: what could Ana DO with just the 2/5 and the 3 to land on exactly 6/5?"
+        },
+        {
+          "kind": "watch",
+          "text": "Watch here: if a student 'confirms' Ana by re-doing 2/5 x 3 = 6/5 and calling it correct, they've repeated her exact wrong move instead of recomputing. Send them back to the expansion -- 8/125 is the referee, not whichever move feels natural. (And if anyone wants to reject 8/125 for looking too small, that's the other trap: a fraction below 1 really does shrink when raised to a power.)"
+        },
+        {
+          "kind": "say",
+          "text": "2/5 x 3 = 6/5. So Ana multiplied the base by the exponent -- the single most common exponent mistake. We didn't just say 'wrong'; we named the exact move."
+        },
+        {
+          "kind": "ask",
+          "text": "There's a second clue hiding in the sizes. 2/5 is less than 1. When you multiply it by itself again and again, does it grow or shrink? So could the true answer ever be 6/5, which is bigger than 1?"
+        },
+        {
+          "kind": "say",
+          "text": "So Ana is incorrect: she multiplied the base by the exponent, and the true value is (2/5)^3 = 8/125. A full analysis always names three things -- the verdict, the exact move, and the corrected value."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a student says (3/4)^2 = 9/4. Run the routine -- your answer first, then name the move that produces 9/4."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "True or false: 3^3 = 9. If false, give the correct value.",
+          "answer": "False. 3^3 = 3 x 3 x 3 = 27. (9 is 3^2 -- the chain stopped one factor early.)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "True or false: 10^2 = 100. If false, give the correct value.",
+          "answer": "True. 10^2 = 10 x 10 = 100."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A student says (2/3)^2 = 4/3. Name the mistake and give the correct value.",
+          "answer": "The student squared the numerator only. The denominator gets squared too: (2/3)^2 = 4/9.",
+          "notes": "Numerator-only diagnosis with small numbers."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Devon evaluated a power. Decide whether his work is correct. If not, name the exact mistake and fix it.",
+          "shown_work": [
+            "(3/5)^2",
+            "= 3/5 x 2",
+            "= 6/5"
+          ],
+          "answer": "Incorrect. Devon multiplied the base by the exponent. The exponent 2 counts copies: (3/5)^2 = 3/5 x 3/5 = 9/25. Sense check: 3/5 is less than 1, so its square must be smaller than 3/5 -- 6/5 is bigger than 1, which is impossible.",
+          "notes": "The canonical base-times-exponent bait with fresh numbers, fraction base."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Lena says 0.5^2 = 1.0 because 0.5 x 2 = 1.0. Is she correct? Explain and give the correct value.",
+          "answer": "Incorrect. She multiplied the base by the exponent. 0.5^2 = 0.5 x 0.5 = 0.25. Half of a half is a quarter -- the answer must shrink.",
+          "notes": "Same diagnosis, decimal base."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Priya evaluated (1/4)^2 and got 1/16. Her partner says the answer must be wrong because it got smaller. Who is right?",
+          "answer": "Priya is right: (1/4)^2 = 1/4 x 1/4 = 1/16. Powers of bases between 0 and 1 SHRINK -- each factor takes a quarter of what was there.",
+          "notes": "Defend-the-correct-answer: the reverse of find-the-error."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write the wrong answer a student would get for 4^3 if they multiplied the base times the exponent. Then explain how a teacher could spot that mistake just from the answer's size.",
+          "answer": "They'd get 12. It's far too small: 4^3 multiplies by 4 twice more after the first 4, so it must be much bigger than 12 (it's 64). An answer near base x exponent is the fingerprint of the error.",
+          "notes": "Produce-the-error: owning the bug from the inside."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why (5/6)^3 is SMALLER than 5/6 but 6^3 is BIGGER than 6. What decides which way a power moves?",
+          "answer": "(5/6)^3 = 125/216, smaller, because each factor takes five-sixths of what you had. 6^3 = 216, bigger, because each factor multiplies by 6. The base decides: bases between 0 and 1 shrink under powers; bases greater than 1 grow.",
+          "notes": "The spec's named misconception, resolved as a general rule."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Grade the Teacher",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Three printed 'student work' slips (one correct, two flawed)"
+          ],
+          "instructions": "1. Tell pairs: 'You're the teacher today. Grade these three papers.' Paper A: (3/5)^2 = 6/5. Paper B: (1/2)^3 = 1/8. Paper C: (4/5)^2 = 16/5.\n2. For each paper, pairs run the routine: redo it from the expansion, compare, and if wrong, name the exact move that produces the student's answer.\n3. Trap alert: Paper B is CORRECT -- pairs who 'fix' 1/8 because it looks too small have hit the powers-always-grow misconception.\n4. Debrief: which paper was hardest to grade, and why is a correct-but-small answer the sneakiest?",
+          "content": {
+            "worked_problem": "Paper A: (3/5)^2 = 3/5 x 2 = 6/5. Paper B: (1/2)^3 = 1/2 x 1/2 x 1/2 = 1/8. Paper C: (4/5)^2 = 16/5.",
+            "error_step": "Paper A multiplied the base by the exponent (should be 9/25). Paper B is correct. Paper C squared the numerator only (should be 16/25).",
+            "why": "The two real errors are the standard's two classic bugs: exponent-as-factor and numerator-only. Paper B tests the deeper misconception -- students must ACCEPT a shrinking answer, because fraction bases below 1 genuinely shrink under powers."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Error Detective Showdown",
+          "time_minutes": 10,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Show a claim ('a student got 10/7 for (5/7)^2'). Teams have 60 seconds to write the diagnosis: the exact operation that produces the wrong answer.\n2. Teams earn 1 point for catching that it's wrong, 2 points for naming the move (5/7 x 2 = 10/7 -- base times exponent), 3 points for also giving the correct value (25/49).\n3. Sprinkle in one CORRECT claim per round -- teams lose a point for 'fixing' a right answer.\n4. Debrief: what's the fastest tell that an answer came from base times exponent?"
+        },
+        {
+          "type": "matching",
+          "title": "Match the Mistake to Its Fingerprint",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Two-column match cards: wrong answers and error names"
+          ],
+          "instructions": "1. Groups match each wrong answer to the error that produces it -- checking by actually performing the named move.\n2. The decoy error names ('added the base and exponent', 'squared the denominator only') match nothing in this deck; groups must verify by computing, not vibes.\n3. A match only scores when the group shows the computation that reproduces the wrong answer.\n4. Debrief: which two errors show up most, and what one habit (expand first) blocks both?",
+          "content": {
+            "pairs": [
+              {
+                "left": "(2/3)^3 = 2",
+                "right": "Multiplied the base by the exponent: 2/3 x 3 = 2"
+              },
+              {
+                "left": "(3/4)^2 = 9/4",
+                "right": "Squared the numerator only: 3^2 over an untouched 4"
+              },
+              {
+                "left": "0.3^2 = 0.9",
+                "right": "Kept one decimal place instead of adding places: 3 x 3 = 9 -> 0.9"
+              },
+              {
+                "left": "5^3 = 15",
+                "right": "Multiplied the base by the exponent: 5 x 3 = 15"
+              },
+              {
+                "left": "2^4 = 8",
+                "right": "Stopped one factor early: 2 x 2 x 2 = 8"
+              }
+            ],
+            "decoys": [
+              "Added the base and exponent",
+              "Squared the denominator only"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The skill IS find-and-fix: every session is structured error analysis with the two classic exponent bugs as the specimen set."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Diagnosing a mistake and defending the diagnosis to a partner is exactly the justify-out-loud demand of the spec's DOK 2 item."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Modeling the detective routine aloud -- 'what move produces THEIR answer?' -- gives students a repeatable script for analysis."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Before you judge their work -- what do YOU get, starting from the expansion?",
+          "What operation with those two numbers would produce exactly the answer they got?",
+          "Their answer is bigger than 1 but the base is a fraction below 1. Why is that a red flag all by itself?",
+          "When is 'powers make numbers bigger' true, and when does it break?",
+          "You say it's wrong -- can you name the move, not just the verdict?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student confirms a wrong answer by re-doing the same wrong move -- 'yes, (2/3)^3 = 2, because 2/3 times 3 is 2' -- or judges without recomputing.",
+            "say": "Cover the student's work. Write the expansion yourself and evaluate it fresh. Now uncover and compare answers. If they differ, play detective: what operation with those two numbers WOULD produce the student's answer? That operation is the mistake -- name it out loud.",
+            "praise": "You re-derived the answer and named the exact wrong move -- that's a real error analysis."
+          },
+          {
+            "if_you_see": "Student rejects a correct answer because it shrank -- 'fixes' (1/2)^3 = 1/8 into something bigger.",
+            "say": "Test the rule you're using: does multiplying by 1/2 make a number bigger or smaller? Take half of a half of a half with a folded paper. Powers repeat what the base does -- and this base shrinks things.",
+            "praise": "You let the expansion overrule the hunch -- correct answers are allowed to be small."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A student got 14/9 for (7/9)^2. In one sentence: what did they do?",
+            "look_for": "'Multiplied 7/9 by 2' (base times exponent), ideally with the correct 49/81. A student who says 'squared the top only' hasn't run the detective test -- that move gives 49/9, not 14/9."
+          },
+          {
+            "prompt": "Thumbs up or down: (3/4)^3 = 27/64 must be wrong because it's smaller than 3/4.",
+            "look_for": "Thumbs down with 'fraction bases shrink under powers.' A thumbs up flags the powers-always-grow misconception even when every computation is right."
+          }
+        ]
+      },
+      "fluency_source": "6NS8-F1",
+      "sentence_starters": [
+        "The student most likely ___ because that move produces exactly ___.",
+        "The answer can't be right because the base is less than 1, so ___."
+      ],
+      "worked_solution": {
+        "stem": "Ana evaluated (2/5)^3 and got 6/5. Is she correct? Name the mistake and give the correct value.",
+        "answer": "Incorrect -- Ana multiplied the base by the exponent. (2/5)^3 = 8/125.",
+        "steps": [
+          {
+            "math": "my answer first: (2/5)^3 = 2/5 x 2/5 x 2/5 = 8/125",
+            "annotation": "Never judge before recomputing. Tops: 2 x 2 x 2 = 8. Bottoms: 5 x 5 x 5 = 125."
+          },
+          {
+            "math": "detective test: 2/5 x 3 = 6/5",
+            "annotation": "What move produces HER answer exactly? Multiplying the base by the exponent does -- that's the diagnosis."
+          },
+          {
+            "math": "size check: 2/5 < 1, but 6/5 > 1",
+            "annotation": "A fraction below 1 shrinks when raised to a power, so an answer bigger than 1 was impossible from the start."
+          },
+          {
+            "math": "verdict: incorrect; correct value 8/125",
+            "annotation": "A full analysis has three parts: the verdict, the named move, and the corrected value."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Marcus evaluated (5/6)^2 and got 25/6. Analyze his work.",
+        "answer": "Incorrect -- he squared the numerator only. (5/6)^2 = 25/36.",
+        "steps": [
+          {
+            "math": "my answer first: (5/6)^2 = 5/6 x 5/6 = 25/36",
+            "annotation": "Recompute from the expansion before judging.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Detective test: what move turns 5/6 into 25/6? (Try squaring only part of the fraction.)",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the verdict, name the move, and give the corrected value.",
+            "given": false
+          }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "skills": [
+        "6NS8-F1",
+        "6NS8-F2"
+      ]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": [
+        "6NS8-S1",
+        "6NS8-S2"
+      ]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": [
+        "6NS8-S3",
+        "6NS8-S4",
+        "6NS8-S5"
+      ]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": [
+        "6NS8-S6"
+      ]
+    }
+  },
+  "skill_sequence": [
+    "6NS8-F1",
+    "6NS8-F2",
+    "6NS8-S1",
+    "6NS8-S2",
+    "6NS8-S3",
+    "6NS8-S4",
+    "6NS8-S5",
+    "6NS8-S6"
+  ],
+  "skill_tree": {
+    "6NS8-F1": [],
+    "6NS8-F2": [
+      "6NS8-F1"
+    ],
+    "6NS8-S1": [
+      "6NS8-F1"
+    ],
+    "6NS8-S2": [
+      "6NS8-S1",
+      "6NS8-F1"
+    ],
+    "6NS8-S3": [
+      "6NS8-S1"
+    ],
+    "6NS8-S4": [
+      "6NS8-S2",
+      "6NS8-F2"
+    ],
+    "6NS8-S5": [
+      "6NS8-S2",
+      "6NS8-S3"
+    ],
+    "6NS8-S6": [
+      "6NS8-S4",
+      "6NS8-S5"
+    ]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S4 (evaluate a fraction-base power) -- the spec's At-Proficiency item. If they pass, move to S5/S6. If they fail, check whether the gap is notation (S1: does 4^3 mean 4 x 4 x 4 or 4 x 3?) or computation (S2). This avoids testing all six skills when the student may only need one or two.",
+    "entry_skill": "6NS8-S4",
+    "if_pass": [
+      "6NS8-S5",
+      "6NS8-S6"
+    ],
+    "if_fail": [
+      "6NS8-S1",
+      "6NS8-S2"
+    ],
+    "branch_skills": [
+      "6NS8-S3"
+    ]
+  }
+}

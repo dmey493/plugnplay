@@ -1,0 +1,1991 @@
+{
+  "standard_code": "7.DSP.2",
+  "standard_text": "Find, use, and interpret measures of central tendency (mean and median) and measures of spread (range, interquartile range, and mean absolute deviation) for numerical data from random samples to draw comparative inferences about two populations.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "This standard is really one habit built in layers: to compare two groups fairly, a student first has to describe each group with a single 'typical' number (a measure of center -- mean or median) and a single 'how spread out' number (a measure of spread -- range, interquartile range, or mean absolute deviation). Everything after that is learning to read those two numbers together. So the progression starts by making the raw computations automatic -- find the mean, find the range -- then builds the median, IQR, and MAD on top, because you cannot compare what you cannot calculate.\n\nOnce both a center and a spread can be found for each data set, the arc turns from computing to comparing and then to inferring. First students compare the centers of two samples (which group is generally higher) and, separately, the spreads (which group is more consistent). Then they learn what a spread actually MEANS -- that a bigger range or MAD says the data is more scattered, not that the values are bigger. Then they put center and spread together to compare two populations in a real context. Finally they reach the point of the standard: drawing an informal comparative inference -- using the center to say which population is likely greater and the spread to temper how certain that claim can be -- and critiquing inferences that overreach, treat a sample as a guarantee, or mistake spread for size.",
+    "steps": [
+      {
+        "skill_id": "7DSP2-S1",
+        "verb": "calculate",
+        "rationale": "The Below-proficiency floor: compute and compare the mean, median, and range of two samples. If a student cannot produce these three numbers, no comparison of two populations is possible."
+      },
+      {
+        "skill_id": "7DSP2-S2",
+        "verb": "calculate",
+        "rationale": "Adds the two harder spread measures the standard names -- interquartile range and mean absolute deviation. They earn a step because their procedures (quartiles; average distance from the mean) are where computation most often breaks."
+      },
+      {
+        "skill_id": "7DSP2-S3",
+        "verb": "interpret",
+        "rationale": "Turns a spread number into meaning: a larger range/IQR/MAD says the data is more scattered (less consistent), NOT that the values are larger. This is the 'use and interpret' half of the standard and the guard against the most common inference error."
+      },
+      {
+        "skill_id": "7DSP2-S4",
+        "verb": "compare",
+        "rationale": "The At-proficiency task: describe two data sets with BOTH a center and a spread and compare them together in a real context -- the difference between two groups is never captured by one measure alone."
+      },
+      {
+        "skill_id": "7DSP2-S5",
+        "verb": "infer",
+        "rationale": "The heart of the standard: draw an informal comparative inference -- the center says which population is likely greater, and the spread says how confident that claim can be."
+      },
+      {
+        "skill_id": "7DSP2-S6",
+        "verb": "critique",
+        "rationale": "The Above-proficiency extension: judge whether someone else's comparative inference is valid -- catching claims that overstate certainty, ignore overlap from spread, or mistake more spread for higher values."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "7DSP2-F1",
+      "name": "Compute the mean of a data set",
+      "column": "foundation",
+      "parent_standard": "7.DSP.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Add a short list of whole numbers and divide to find a simple average.",
+        "check_question": "What is the average of 4 and 10?"
+      },
+      "i_do_script": "The mean is the 'fair share' -- what everybody would get if we split the total evenly. I add up all the values, then divide by how many there are. Watch: for 6, 9, and 12, I add to get 27, then divide by 3 values: 27 divided by 3 is 9. For 4, 8, 8, 12, 8, the total is 40 and there are 5 numbers, so 40 divided by 5 is 8. Always count the values so you divide by the right number.",
+      "canonical_error": {
+        "pattern": "Adds the values but forgets to divide by how many there are, reporting the sum as the mean",
+        "example": "For 6, 9, 12 writes 27 instead of 27 / 3 = 9",
+        "why": "The student stops after adding. The mean is the total shared equally among all the values, so the sum must be divided by the count."
+      },
+      "item_template": "A short list of whole numbers. Student computes the mean (sum divided by count). Numeric response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "Find the mean of 6, 9, 12.",
+          "answer": "9"
+        },
+        {
+          "stem": "Find the mean of 4, 8, 8, 12, 8.",
+          "answer": "8"
+        },
+        {
+          "stem": "Find the mean of 10, 15, 20, 25, 30.",
+          "answer": "20"
+        },
+        {
+          "stem": "Find the mean of 7, 3, 5, 9, 6.",
+          "answer": "6"
+        },
+        {
+          "stem": "Find the mean of 12, 14, 16, 18.",
+          "answer": "15"
+        },
+        {
+          "stem": "Find the mean of 2, 5, 5, 8.",
+          "answer": "5"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait -- did you divide by how many?",
+        "prompt": "The mean shares the total equally: add every value, then divide by how many values there are. Count them -- 3 numbers means divide by 3.",
+        "praise": "You divided the total by the count -- that's the mean."
+      },
+      "vocabulary": [
+        {
+          "term": "Mean",
+          "definition": "The average: add all the values and divide by how many there are."
+        },
+        {
+          "term": "Central tendency",
+          "definition": "A single 'typical' value that describes the middle of a data set."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP2-S1",
+        "if_fail": "Review finding the mean (6.DS.3)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Find the mean of 5, 10, 12.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the total, and how many numbers are there?"
+        },
+        {
+          "kind": "say",
+          "text": "The total is 27 and there are 3 numbers, so 27 divided by 3 is 9."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 27, ask 'is 27 a typical value for these three numbers, or their total?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: find the mean of 4, 6, 8, 10."
+        }
+      ]
+    },
+    {
+      "skill_id": "7DSP2-F2",
+      "name": "Find the range of a data set",
+      "column": "foundation",
+      "parent_standard": "7.DSP.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Identify the largest and smallest values in a list and subtract them.",
+        "check_question": "In 3, 9, 5, what is the largest minus the smallest?"
+      },
+      "i_do_script": "The range tells me how far the data spreads, from the smallest value to the largest. I find the biggest number and the smallest number, then subtract. Watch: for 8, 15, 3, 10, the biggest is 15 and the smallest is 3, so the range is 15 minus 3 = 12. It doesn't matter what order the numbers are written in -- I hunt for the true max and min, not the first and last value.",
+      "canonical_error": {
+        "pattern": "Subtracts the first value from the last (or two arbitrary values) instead of the largest minus the smallest",
+        "example": "For 8, 15, 3, 10 computes 10 - 8 = 2 instead of 15 - 3 = 12",
+        "why": "The student uses position instead of size. Range is the biggest value minus the smallest, so the max and min must be found first, not read off the ends of the list."
+      },
+      "item_template": "A short unordered list of whole numbers. Student finds the range (max minus min). Numeric response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "Find the range of 4, 9, 2, 7, 5.",
+          "answer": "7"
+        },
+        {
+          "stem": "Find the range of 12, 18, 15, 20, 11.",
+          "answer": "9"
+        },
+        {
+          "stem": "Find the range of 30, 22, 45, 38.",
+          "answer": "23"
+        },
+        {
+          "stem": "Find the range of 6, 6, 6, 6.",
+          "answer": "0"
+        },
+        {
+          "stem": "Find the range of 8, 15, 3, 10.",
+          "answer": "12"
+        },
+        {
+          "stem": "Find the range of 50, 65, 55, 70, 60.",
+          "answer": "20"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which is the biggest? Which is the smallest?",
+        "prompt": "Range is largest minus smallest. Circle the biggest number and the smallest number in the whole list, then subtract.",
+        "praise": "You found the max and the min and subtracted -- that's the range."
+      },
+      "vocabulary": [
+        {
+          "term": "Range",
+          "definition": "The largest value minus the smallest value; a measure of how spread out the data is."
+        },
+        {
+          "term": "Spread",
+          "definition": "How scattered the values in a data set are."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP2-S1",
+        "if_fail": "Review finding the range (6.DS.4)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Find the range of 7, 2, 9, 4.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the biggest value, and what is the smallest?"
+        },
+        {
+          "kind": "say",
+          "text": "The biggest is 9, the smallest is 2, so the range is 9 minus 2 = 7."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student subtracts 4 - 7 or uses the end values, ask 'are those the biggest and smallest, or just the first and last?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: find the range of 11, 20, 15, 18."
+        }
+      ]
+    },
+    {
+      "skill_id": "7DSP2-S1",
+      "name": "Calculate and compare the mean, median, and range of two data sets",
+      "column": "looking_back",
+      "parent_standard": "7.DSP.2",
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7DSP2-F1"
+      },
+      "i_do_script": "To compare two groups I first describe each one with three numbers: the mean, the median, and the range. The mean and median are 'typical' values; the range is how spread out they are. Watch two samples: A is 4, 6, 8, 10, 12 and B is 5, 7, 9, 11, 13. The mean of A is 40/5 = 8; the mean of B is 45/5 = 9, so B is one higher. For the median I ORDER each set and take the middle: A's is 8, B's is 9. The range is largest minus smallest: both are 8. The big trap is the median -- always order the numbers by size first.",
+      "canonical_error": {
+        "pattern": "Finds the median from the unordered list -- picks the physical middle of the numbers as written instead of ordering them by size first",
+        "example": "For 12, 8, 5, 20, 15 reports 5 (the middle of the list) instead of ordering to 5, 8, 12, 15, 20 and getting 12",
+        "why": "The median is the middle of the data BY SIZE. If the list isn't sorted, the value sitting in the physical middle is not the median."
+      },
+      "item_template": "Two data sets (lists of whole numbers) or a single set; student computes and compares mean, median, and/or range. Numeric or short response.",
+      "sample_items": [
+        {
+          "stem": "Sample A: 4, 6, 8, 10, 12. Sample B: 5, 7, 9, 11, 13. Which sample has the greater mean, and by how much?",
+          "answer": "Sample B, by 1 (means are 8 and 9)."
+        },
+        {
+          "stem": "Data set: 12, 8, 5, 20, 15. Find the median.",
+          "answer": "12 (order first: 5, 8, 12, 15, 20)."
+        },
+        {
+          "stem": "Class A: 78, 85, 90, 88, 92, 76, 81, 95, 89, 84. Class B: 82, 91, 87, 79, 85, 88, 90, 83, 80, 86. How much greater is the range of Class A than Class B?",
+          "answer": "7 (range A = 19, range B = 12)."
+        },
+        {
+          "stem": "Set A: 12, 15, 18, 20, 25. Set B: 10, 14, 16, 22, 28. Both have a mean of 18. Which set has the greater range?",
+          "answer": "Set B (range 18 vs 13)."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you put the numbers in order first?",
+        "prompt": "The median is the middle value BY SIZE, so line the numbers up from smallest to largest first, then find the middle one.",
+        "praise": "You ordered the data before finding the middle -- that's a correct median."
+      },
+      "vocabulary": [
+        {
+          "term": "Mean",
+          "definition": "The average: the sum of the values divided by how many there are."
+        },
+        {
+          "term": "Median",
+          "definition": "The middle value when the data is ordered from smallest to largest."
+        },
+        {
+          "term": "Range",
+          "definition": "The largest value minus the smallest value."
+        },
+        {
+          "term": "Central tendency",
+          "definition": "A single value (mean or median) that describes the typical middle of the data."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP2-S2",
+        "if_fail": "7DSP2-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Sample A: 3, 5, 7, 9, 11. Sample B: 6, 8, 10, 12, 14. Compare the medians.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Are both sets in order? What is the middle value of each?"
+        },
+        {
+          "kind": "say",
+          "text": "Both are ordered. The middle of A is 7; the middle of B is 10. B's center is 3 higher."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student grabs a middle number from an unsorted set, stop and have them rewrite it in order first."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: find and compare the ranges of A and B."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Data set: 4, 6, 8, 10, 12. Find the mean and the median.",
+          "answer": "Mean 8, median 8."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Data set: 5, 7, 9, 11, 13. Find the range.",
+          "answer": "8 (13 - 5)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Class A: 78, 85, 90, 88, 92, 76, 81, 95, 89, 84. Class B: 82, 91, 87, 79, 85, 88, 90, 83, 80, 86. How much greater is the range of Class A than Class B?",
+          "answer": "7 (range A = 19, range B = 12).",
+          "notes": "The spec's Below-Proficiency example."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Set A: 12, 15, 18, 20, 25. Set B: 10, 14, 16, 22, 28. Both have a mean of 18. Which set has the higher median?",
+          "answer": "Set A (median 18 vs 16).",
+          "notes": "Same mean, different median -- centers are not one number."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Rosa found the median of 12, 8, 5, 20, 15. Find and fix her mistake.",
+          "shown_work": [
+            "Rosa wrote: 'The middle number in the list is 5.'",
+            "'So the median is 5.'"
+          ],
+          "answer": "Rosa did not order the data first. Sorted, it is 5, 8, 12, 15, 20, so the median is 12.",
+          "notes": "Canonical error: median of the unsorted list."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write a data set of five whole numbers with a median of 10 and a range of 8.",
+          "answer": "Many answers, e.g., 6, 8, 10, 12, 14 (median 10, range 8)."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Samples A: 20, 22, 24, 26, 28 and B: 30, 32, 34, 36, 38 have the same range (8). Which measure shows B is higher, and by how much?",
+          "answer": "The center: B's mean/median is 34 vs A's 24, so B is 10 higher.",
+          "notes": "Reverses direction -- equal spread, different center."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Center or Spread?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 8 statistic cards (terms and plain-language descriptions)"
+          ],
+          "instructions": "1. Sort every card into 'Measure of center' or 'Measure of spread.'\n2. For each center card, say whether it is the mean or the median.\n3. Pick one small data set and compute one card from each pile.\n4. Debrief: why do you need BOTH a center and a spread to describe a group?",
+          "content": {
+            "categories": [
+              "Measure of center",
+              "Measure of spread"
+            ],
+            "cards": [
+              {
+                "text": "mean",
+                "category": "Measure of center"
+              },
+              {
+                "text": "median",
+                "category": "Measure of center"
+              },
+              {
+                "text": "range",
+                "category": "Measure of spread"
+              },
+              {
+                "text": "the typical or middle value",
+                "category": "Measure of center"
+              },
+              {
+                "text": "how spread out the values are",
+                "category": "Measure of spread"
+              },
+              {
+                "text": "add all values and divide by how many",
+                "category": "Measure of center"
+              },
+              {
+                "text": "largest value minus smallest value",
+                "category": "Measure of spread"
+              },
+              {
+                "text": "the middle value once the data is ordered",
+                "category": "Measure of center"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Order First",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Rosa's unordered-median work"
+          ],
+          "instructions": "1. Read Rosa's claim that the median of 12, 8, 5, 20, 15 is 5.\n2. Rewrite the data in order from smallest to largest.\n3. Find the true median and compare it to Rosa's answer.\n4. Write the one-sentence rule about what you must do before finding a median.",
+          "content": {
+            "worked_problem": "Median of 12, 8, 5, 20, 15. Rosa wrote 5.",
+            "error_step": "Rosa took the middle of the unordered list (5) instead of ordering first.",
+            "why": "Ordered, the data is 5, 8, 12, 15, 20, so the median is 12."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The unordered-median mistake is a single, clean, baitable error -- ideal for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'order first, then find the middle' models the step students skip on the median."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Quick number talks on 'what is the mean of these five numbers' build the fluency the comparison rests on."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is the data in order before you look for the median?",
+          "What is the mean, and how many values did you divide by?",
+          "Which is bigger and which is smaller for the range?",
+          "Which sample has the higher center, and by how much?",
+          "Could two samples have the same mean but a different range?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student finds the median from the unordered list -- picks the physical middle of the numbers as written.",
+            "say": "The median is the middle value BY SIZE, so line the numbers up from smallest to largest first, then find the middle one.",
+            "praise": "You ordered the data before finding the middle -- that's a correct median."
+          },
+          {
+            "if_you_see": "Student adds the values for the mean but forgets to divide by the count.",
+            "say": "That is the total, not the mean. Divide the sum by how many values there are.",
+            "praise": "You divided the total by the count -- now it's a mean."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Find the median of 9, 3, 7, 1, 5.",
+            "look_for": "5 (ordered: 1, 3, 5, 7, 9). An answer of 7 means the student didn't order first."
+          },
+          {
+            "prompt": "Sample A mean 20, Sample B mean 26 -- which center is higher and by how much?",
+            "look_for": "B, by 6. Hesitation signals the student isn't reading the mean as a comparable center."
+          }
+        ]
+      },
+      "fluency_source": "7DSP2-F1",
+      "sentence_starters": [
+        "The mean of ___ is ___ and the mean of ___ is ___, so ___ is higher by ___.",
+        "In order the data is ___, so the median is ___."
+      ],
+      "worked_solution": {
+        "stem": "Sample A scores: 4, 6, 8, 10, 12. Sample B scores: 5, 7, 9, 11, 13. Which sample has the higher mean, and by how much?",
+        "answer": "Sample B, by 1",
+        "steps": [
+          {
+            "math": "Mean A = (4+6+8+10+12) / 5 = 40 / 5 = 8",
+            "annotation": "Add Sample A and divide by its 5 values."
+          },
+          {
+            "math": "Mean B = (5+7+9+11+13) / 5 = 45 / 5 = 9",
+            "annotation": "Do the same for Sample B."
+          },
+          {
+            "math": "9 - 8 = 1",
+            "annotation": "Compare the two centers by subtracting."
+          },
+          {
+            "math": "Sample B has the higher mean, by 1 point.",
+            "annotation": "State which group is higher and by how much."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Sample A: 3, 5, 7, 9, 11. Sample B: 6, 8, 10, 12, 14. Which sample has the higher median, and by how much?",
+        "answer": "Sample B, by 3",
+        "steps": [
+          {
+            "math": "Both sets are already ordered smallest to largest.",
+            "annotation": "The median needs ordered data.",
+            "given": true
+          },
+          {
+            "math": "Median A = 7 (the 3rd of 5 values)",
+            "annotation": "The middle value of Sample A.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Find the middle value of Sample B.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Subtract to compare the two medians.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7DSP2-S2",
+      "name": "Calculate the interquartile range and mean absolute deviation of two data sets",
+      "column": "on_grade",
+      "parent_standard": "7.DSP.2",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7DSP2-S1"
+      },
+      "i_do_script": "The IQR and the MAD both measure spread, but in different ways. The IQR is the width of the middle half: I find Q1 (the median of the lower half) and Q3 (the median of the upper half) and subtract. For 3, 5, 7, 9, 11, 13, 15, 17, Q1 is 6 and Q3 is 14, so IQR = 14 - 6 = 8. The MAD is the average distance from the mean: for 2, 4, 6, 8, 10 the mean is 6, the distances are 4, 2, 0, 2, 4, and their average is 12/5 = 2.4. Those distances are always positive -- that's the step students skip.",
+      "canonical_error": {
+        "pattern": "Finds the MAD by adding the signed differences from the mean, which cancel to zero (forgets absolute value); or finds the IQR as max minus min (the range)",
+        "example": "For 4, 6, 8, 10, 12 (mean 8) adds -4 + -2 + 0 + 2 + 4 = 0 and reports MAD = 0, instead of averaging the distances 4, 2, 0, 2, 4 = 2.4",
+        "why": "Deviations below the mean are negative and cancel the ones above. MAD is the average DISTANCE, so each difference must be made positive first. And IQR is Q3 minus Q1, not the full range."
+      },
+      "item_template": "A data set (list); student computes the IQR (Q3 - Q1) or the MAD (average distance from the mean). Numeric response.",
+      "sample_items": [
+        {
+          "stem": "Data set: 2, 4, 6, 8, 10. Find the mean absolute deviation (MAD).",
+          "answer": "2.4"
+        },
+        {
+          "stem": "Data set: 3, 5, 7, 9, 11, 13, 15, 17. Find the interquartile range (IQR).",
+          "answer": "8 (Q3 - Q1 = 14 - 6)."
+        },
+        {
+          "stem": "A data set has Q1 = 25 and Q3 = 40. What is the IQR?",
+          "answer": "15"
+        },
+        {
+          "stem": "Data set: 10, 20, 30, 40, 50. Find the MAD.",
+          "answer": "12 (mean 30; average distance 12)."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Distances are never negative -- did you make them positive?",
+        "prompt": "MAD is the average DISTANCE from the mean, so make every difference positive (absolute value) before you add. For IQR, use Q3 minus Q1, not the biggest minus smallest.",
+        "praise": "You used positive distances (and Q3 - Q1) -- that's a correct spread."
+      },
+      "vocabulary": [
+        {
+          "term": "Interquartile range",
+          "definition": "The width of the middle half of the data: Q3 (median of the upper half) minus Q1 (median of the lower half)."
+        },
+        {
+          "term": "Mean absolute deviation",
+          "definition": "The average distance of the values from the mean."
+        },
+        {
+          "term": "Spread",
+          "definition": "How scattered the values are; range, IQR, and MAD all measure it."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP2-S3",
+        "if_fail": "7DSP2-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Find the MAD of 5, 5, 8, 10, 12.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the mean? Then how far is each value from it?"
+        },
+        {
+          "kind": "say",
+          "text": "The mean is 8. Distances are 3, 3, 0, 2, 4 -- all positive. Their sum is 12, and 12 / 5 = 2.4."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student's distances add to 0, stop: 'distance can't be negative -- make each one positive first.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: find the IQR of 3, 5, 7, 9, 11, 13, 15, 17 (find Q1 and Q3)."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Data set: 2, 4, 6, 8, 10. Find the MAD.",
+          "answer": "2.4 (mean 6; distances 4, 2, 0, 2, 4)."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A data set has Q1 = 12 and Q3 = 20. Find the IQR.",
+          "answer": "8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Data set: 3, 5, 7, 9, 11, 13, 15, 17. Find the IQR.",
+          "answer": "8 (Q1 = 6, Q3 = 14).",
+          "notes": "Eight values; lower half 3,5,7,9 and upper half 11,13,15,17."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Data set: 10, 20, 30, 40, 50. Find the MAD.",
+          "answer": "12 (mean 30; distances 20, 10, 0, 10, 20).",
+          "notes": "Larger, cleaner MAD."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Milo found the MAD of 4, 6, 8, 10, 12. Find and fix his mistake.",
+          "shown_work": [
+            "Milo wrote: 'Mean = 8. Differences: -4, -2, 0, 2, 4.'",
+            "'Sum = 0, so MAD = 0 / 5 = 0.'"
+          ],
+          "answer": "Milo added the signed differences, which cancel. MAD uses DISTANCES (absolute values): 4 + 2 + 0 + 2 + 4 = 12, and 12 / 5 = 2.4.",
+          "notes": "Canonical error: forgetting absolute value on the deviations."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Team X: 22, 24, 26, 28, 30, 32, 34, 36. Team Y: 20, 25, 28, 29, 31, 34, 37, 40. Which team has the larger IQR?",
+          "answer": "Team Y (IQR 9) is slightly larger than Team X (IQR 8).",
+          "notes": "Compare IQRs of two eight-value sets."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why two data sets can have the same range but different MADs.",
+          "answer": "Range only uses the two extreme values; MAD uses every value's distance from the mean, so how the middle values cluster changes the MAD even when the extremes match."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Distance-from-the-Mean Strips",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Number strips or a ruler line",
+            "Data-set cards (5-8 values)",
+            "Recording sheet: 'mean', 'distances', 'MAD'"
+          ],
+          "instructions": "1. Draw a data-set card and mark each value on the number line.\n2. Compute the mean and mark it.\n3. Measure each value's DISTANCE to the mean -- always a positive length.\n4. Add the distances and divide by how many values to get the MAD.\n5. Debrief: what happens to the sum if you keep the negative signs?",
+          "content": {}
+        },
+        {
+          "type": "error_analysis",
+          "title": "The Deviations That Cancel",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Milo's zero-MAD work"
+          ],
+          "instructions": "1. Read Milo's claim that the MAD is 0.\n2. Ask: can the values be different but the 'average distance' be zero?\n3. Redo the MAD using absolute distances.\n4. Write the rule about making differences positive before adding.",
+          "content": {
+            "worked_problem": "MAD of 4, 6, 8, 10, 12. Milo wrote 0 (sum of -4, -2, 0, 2, 4).",
+            "error_step": "Milo kept the negative signs, so the deviations cancelled to 0.",
+            "why": "MAD is the average DISTANCE: 4 + 2 + 0 + 2 + 4 = 12, and 12 / 5 = 2.4."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Marking values and distances on a number line makes the MAD concrete before it becomes an abstract average of absolute values."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The cancelling-deviations error is precise and baitable -- a perfect find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release from 'find Q1 and Q3' to 'subtract for the IQR' scaffolds the quartile procedure."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the mean before you measure the distances?",
+          "Are all your distances positive?",
+          "Where does the lower half stop and the upper half begin?",
+          "Is the IQR Q3 minus Q1, or the biggest minus the smallest?",
+          "What does a MAD of 2.4 tell you about this data?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds the signed differences for the MAD (they cancel to 0), or uses max minus min for the IQR.",
+            "say": "MAD is the average DISTANCE from the mean, so make every difference positive (absolute value) before you add. For IQR, use Q3 minus Q1, not the biggest minus smallest.",
+            "praise": "You used positive distances (and Q3 - Q1) -- that's a correct spread."
+          },
+          {
+            "if_you_see": "Student includes the overall median inside both halves when finding Q1 and Q3.",
+            "say": "Split the data into a lower half and an upper half. For an odd count, leave the middle value out of both halves before finding Q1 and Q3.",
+            "praise": "You split the halves cleanly -- that keeps the quartiles right."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Find the MAD of 3, 5, 7 (mean 5).",
+            "look_for": "1.33 or 4/3 (distances 2, 0, 2 = 4, over 3). An answer of 0 signals cancelled signs."
+          },
+          {
+            "prompt": "A data set has Q1 = 30 and Q3 = 50. Find the IQR.",
+            "look_for": "20. Using the full min/max instead means the student confused IQR with range."
+          }
+        ]
+      },
+      "fluency_source": "7DSP2-F1",
+      "sentence_starters": [
+        "The mean is ___, so the distances are ___, and MAD = ___ / ___ = ___.",
+        "Q1 is ___ and Q3 is ___, so the IQR is ___ - ___ = ___."
+      ],
+      "worked_solution": {
+        "stem": "Data set: 2, 4, 6, 8, 10. Find the mean absolute deviation (MAD).",
+        "answer": "2.4",
+        "steps": [
+          {
+            "math": "Mean = (2+4+6+8+10) / 5 = 6",
+            "annotation": "Find the mean first -- MAD measures distance from it."
+          },
+          {
+            "math": "Distances from 6: 4, 2, 0, 2, 4",
+            "annotation": "Each value's distance to the mean, always positive."
+          },
+          {
+            "math": "Sum of distances = 12",
+            "annotation": "Add the distances."
+          },
+          {
+            "math": "MAD = 12 / 5 = 2.4",
+            "annotation": "Average distance from the mean."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Data set: 3, 5, 7, 9, 11, 13, 15, 17. Find the interquartile range (IQR).",
+        "answer": "8",
+        "steps": [
+          {
+            "math": "Median = (9+11) / 2 = 10; split into a lower half and an upper half",
+            "annotation": "The IQR uses the middle 50 percent.",
+            "given": true
+          },
+          {
+            "math": "Lower half 3, 5, 7, 9 -> Q1 = (5+7) / 2 = 6",
+            "annotation": "Q1 is the median of the lower half.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Find Q3, the median of the upper half 11, 13, 15, 17.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "IQR = Q3 - Q1.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7DSP2-S3",
+      "name": "Interpret a measure of spread as the consistency of a data set",
+      "column": "on_grade",
+      "parent_standard": "7.DSP.2",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7DSP2-S2"
+      },
+      "i_do_script": "A spread number answers 'how consistent is this group?' -- not 'how big are the values?' Watch two teams that both average 50 points. Team A scored 48, 50, 50, 50, 52 -- very close together, a small spread. Team B scored 30, 45, 50, 55, 70 -- all over the place, a big spread. Team A is more consistent. But notice: A is NOT lower than B; they have the same center. A smaller range, IQR, or MAD means steadier, not smaller.",
+      "canonical_error": {
+        "pattern": "Reads a measure of spread as a measure of size -- assumes a bigger (or smaller) range/IQR/MAD means bigger (or smaller) values",
+        "example": "Sees Team A has a smaller MAD than Team B and concludes Team A scored lower, even though both teams average the same",
+        "why": "Spread describes how scattered the data is, not how large it is. Two data sets with the same center can have very different spreads."
+      },
+      "item_template": "A spread value (or two) with context, or a small data set; student interprets what the spread means about consistency (not size). Short response.",
+      "sample_items": [
+        {
+          "stem": "Team A's scores have a MAD of 1.2; Team B's have a MAD of 6.5. Which team is more consistent?",
+          "answer": "Team A (a smaller MAD means the scores are closer together)."
+        },
+        {
+          "stem": "Two data sets have the same mean. Set X has a range of 4; Set Y has a range of 20. Which set is more spread out?",
+          "answer": "Set Y."
+        },
+        {
+          "stem": "Set A: 7, 8, 8, 8, 9. Set B: 2, 6, 8, 12, 15. Which set is more consistent, and does that make its values smaller?",
+          "answer": "Set A is more consistent; no -- a smaller spread means the values are closer together, not smaller (the centers are about the same)."
+        },
+        {
+          "stem": "A larger interquartile range tells you what about a data set?",
+          "answer": "The middle half of the data is more spread out (less consistent)."
+        },
+        {
+          "stem": "True or false: a data set with a bigger MAD must have bigger values.",
+          "answer": "False -- MAD measures spread, not size."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Does spread tell you how big, or how scattered?",
+        "prompt": "A spread number -- range, IQR, or MAD -- tells you how CONSISTENT the data is, not how large. Check the center for size; check the spread for consistency.",
+        "praise": "You read the spread as consistency, not size -- exactly right."
+      },
+      "vocabulary": [
+        {
+          "term": "Spread",
+          "definition": "How scattered the values are; measured by range, IQR, or MAD."
+        },
+        {
+          "term": "Consistency",
+          "definition": "How close together the values are; a smaller spread means more consistent."
+        },
+        {
+          "term": "Mean absolute deviation",
+          "definition": "The average distance of the values from the mean; a bigger MAD means less consistent."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP2-S4",
+        "if_fail": "7DSP2-S2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Team A MAD = 2 points. Team B MAD = 9 points. Both average 40 points.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which team's scores are closer together? Which team is higher?"
+        },
+        {
+          "kind": "say",
+          "text": "Team A is more consistent (smaller MAD). Neither is higher -- both average 40. Spread is about steadiness, not size."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says Team A scored lower, point back to the equal averages: 'same center -- so which is smaller?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: if Set Y has a bigger range than Set X, what does that tell you -- and what does it NOT tell you?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Set X has a MAD of 0.8; Set Y has a MAD of 5.0. Which set is more consistent?",
+          "answer": "Set X."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Fill in the blank: a bigger range means the data is more ______.",
+          "answer": "spread out (less consistent)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Set A: 48, 50, 50, 50, 52. Set B: 30, 45, 50, 55, 70. Both average 50. Which set is more consistent?",
+          "answer": "Set A -- its values sit much closer to 50 (smaller spread).",
+          "notes": "Same center, very different spread."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A student says, 'Set A has a smaller IQR, so Set A's values are smaller.' Is that a correct interpretation of spread?",
+          "answer": "No -- a smaller IQR means Set A is more consistent, not that its values are smaller. Size comes from the center.",
+          "notes": "Baits the spread-as-size error directly."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Two data sets each have a mean of 50. Nadia reasons about their spread. Find and fix her mistake.",
+          "shown_work": [
+            "Set A MAD = 0.8. Set B MAD = 10.",
+            "Nadia wrote: 'Set A has a smaller MAD, so Set A's values must be smaller than Set B's.'"
+          ],
+          "answer": "Both sets have a mean of 50, so neither is smaller. A smaller MAD means Set A is more CONSISTENT (its values cluster near 50), not that its values are lower.",
+          "notes": "Canonical error: reading spread as size."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Describe two classes whose test scores have the SAME mean but very different consistency, and say which measure shows the difference.",
+          "answer": "e.g., Class A: 78, 80, 80, 80, 82 and Class B: 60, 70, 80, 90, 100 -- both mean 80, but the range/MAD (Class B much larger) shows Class B is far less consistent.",
+          "notes": "Produce-your-own; reverses recognition into construction."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A coach wants the team whose players are most alike in height, not the tallest team. Which type of measure should the coach compare, and why?",
+          "answer": "A measure of spread (range, IQR, or MAD) -- it tells how alike the heights are; a center would only tell how tall they typically are."
+        }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "What the Spread Means",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Cards with spread facts",
+            "Cards with plain-language interpretations"
+          ],
+          "instructions": "1. Match each spread fact to the interpretation that is TRUE.\n2. Set aside any interpretation card that talks about the values being bigger or smaller -- those are decoys.\n3. For each match, say whether it describes consistency or size.\n4. Debrief: why can two groups with the same mean have different spreads?",
+          "content": {
+            "pairs": [
+              {
+                "left": "Smaller MAD",
+                "right": "Values sit closer to the mean (more consistent)"
+              },
+              {
+                "left": "Larger range",
+                "right": "The gap from lowest to highest is wider (less consistent)"
+              },
+              {
+                "left": "Larger IQR",
+                "right": "The middle half of the data is more spread out"
+              },
+              {
+                "left": "MAD of 0",
+                "right": "Every value is identical"
+              }
+            ],
+            "decoys": [
+              "The values are all bigger",
+              "The values are all smaller"
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Spread Is Not Size",
+          "time_minutes": 8,
+          "grouping": "small_group",
+          "materials": [
+            "Slip with Nadia's spread-as-size reasoning"
+          ],
+          "instructions": "1. Read Nadia's claim that a smaller MAD means smaller values.\n2. Underline the two means -- what do you notice?\n3. Rewrite the correct interpretation of the smaller MAD.\n4. Write a one-sentence rule: a spread number tells you ______, not ______.",
+          "content": {
+            "worked_problem": "Both means are 50. Set A MAD = 0.8, Set B MAD = 10. Nadia said Set A's values are smaller.",
+            "error_step": "Nadia treated the smaller MAD as smaller values.",
+            "why": "Equal means mean neither is smaller; a smaller MAD only means Set A is more consistent."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The spread-as-size confusion is the exact error this skill exists to fix -- a targeted find-and-fix drills it."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "A journal entry contrasting 'how big' with 'how spread out' consolidates the interpretation in the student's own words."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'what does a bigger MAD tell you?' surfaces and repairs the size misconception through talk."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Does this number tell you how big the values are, or how spread out?",
+          "Which group is more consistent -- and is that the same as which is higher?",
+          "If two groups have the same mean, can their spreads differ?",
+          "What does a MAD of almost zero say about the data?",
+          "Which measure would you compare to find the steadiest group?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reads a spread measure as size -- says the smaller/larger spread means smaller/larger values.",
+            "say": "A spread number -- range, IQR, or MAD -- tells you how CONSISTENT the data is, not how large. Check the center for size; check the spread for consistency.",
+            "praise": "You read the spread as consistency, not size -- exactly right."
+          },
+          {
+            "if_you_see": "Student thinks a small spread automatically means a 'good' or 'better' group.",
+            "say": "Consistency isn't the same as better. A small spread means steady; whether steady is good depends on the situation and the center.",
+            "praise": "You separated 'consistent' from 'better' -- careful reasoning."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Two groups both average 100. Group A range 5, Group B range 40. Which is more consistent?",
+            "look_for": "Group A. Saying Group A is 'lower' reveals the spread-as-size error."
+          },
+          {
+            "prompt": "True or false: a bigger MAD means bigger values.",
+            "look_for": "False. 'True' means the student still equates spread with size."
+          }
+        ]
+      },
+      "fluency_source": "7DSP2-F1",
+      "sentence_starters": [
+        "A smaller ___ means the data is more ___, not ___.",
+        "Both groups have about the same center, so the spread tells me ___."
+      ],
+      "worked_solution": {
+        "stem": "Set A: 7, 8, 8, 8, 9 (MAD 0.4). Set B: 2, 6, 8, 12, 15 (MAD about 3.9). Their centers are both near 8. Which set is more consistent, and does a smaller MAD mean smaller values?",
+        "answer": "Set A is more consistent; a smaller MAD does not mean smaller values.",
+        "steps": [
+          {
+            "math": "Set A MAD = 0.4; Set B MAD = 3.9",
+            "annotation": "Compare the spread numbers."
+          },
+          {
+            "math": "Smaller MAD = values sit closer to the mean",
+            "annotation": "Spread measures consistency."
+          },
+          {
+            "math": "Both centers are about 8",
+            "annotation": "The typical values are the same size."
+          },
+          {
+            "math": "So Set A is more consistent, but NOT lower -- spread is not size.",
+            "annotation": "Interpret spread as consistency, never magnitude."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Team X range = 4 points. Team Y range = 20 points. Both teams average 30 points. Which team is more consistent?",
+        "answer": "Team X",
+        "steps": [
+          {
+            "math": "Compare the ranges: 4 vs 20",
+            "annotation": "Range is a spread measure.",
+            "given": true
+          },
+          {
+            "math": "Smaller range = more consistent",
+            "annotation": "Less spread out.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the team with the smaller range.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Does the smaller range mean lower scores? Explain (both average 30).",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7DSP2-S4",
+      "name": "Compare two data sets using measures of center and spread together",
+      "column": "on_grade",
+      "parent_standard": "7.DSP.2",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7DSP2-S3"
+      },
+      "i_do_script": "To compare two data sets fairly I report two things: a center and a spread. The center says which group is typically higher; the spread says which group is more consistent. Watch: Sample A is 60, 62, 64, 66, 68, 70, 72, 74 and Sample B is 50, 58, 63, 66, 68, 71, 79, 85. Both have a median of 67 -- so their centers are the same. But A's IQR is 8 and B's is about 14.5, so B is far more spread out. My comparison names BOTH: 'same typical value, but A is more consistent.' One measure alone would hide half the story.",
+      "canonical_error": {
+        "pattern": "Compares the two groups on only one kind of measure -- names a center difference but ignores spread, or judges which group is 'higher' from the spread",
+        "example": "For two samples with equal medians but very different IQRs, says the groups are 'the same' because only the medians were compared -- or says the wider group is 'higher'",
+        "why": "A fair comparison of two data sets needs BOTH a center (which is typically higher) and a spread (which is more consistent). One measure alone hides half the story, and spread is not a stand-in for center."
+      },
+      "item_template": "Two data sets (lists) in a real context; student compares a center and a spread and states both. Short/extended response.",
+      "sample_items": [
+        {
+          "stem": "Sample A: 10, 12, 14, 16, 18. Sample B: 11, 13, 15, 17, 19. Compare the two using a center and a spread.",
+          "answer": "Medians 14 vs 15 (B higher by 1); ranges both 8 (equally consistent)."
+        },
+        {
+          "stem": "Sample A: 60, 62, 64, 66, 68, 70, 72, 74. Sample B: 50, 58, 63, 66, 68, 71, 79, 85. Compare the medians and the IQRs.",
+          "answer": "Medians are both 67; IQR 8 vs about 14.5 -- Sample B is much more spread out."
+        },
+        {
+          "stem": "Sample A: 70, 72, 74, 76, 78. Sample B: 55, 60, 66, 72, 77. Which sample has the higher center, and which is more consistent?",
+          "answer": "A has the higher center (median 74 vs 66) and is more consistent (range 8 vs 22)."
+        },
+        {
+          "stem": "Two samples have equal medians, but Sample B has a much larger IQR. Write one sentence that compares them.",
+          "answer": "The groups are typically the same, but Sample B is more spread out (less consistent)."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you compare a center AND a spread?",
+        "prompt": "Compare two things: a center (mean or median) to see which is typically higher, and a spread (range, IQR, or MAD) to see which is more consistent. Say both.",
+        "praise": "You compared both center and spread -- that's a complete comparison."
+      },
+      "vocabulary": [
+        {
+          "term": "Central tendency",
+          "definition": "A typical value (mean or median) telling which group is generally higher."
+        },
+        {
+          "term": "Spread",
+          "definition": "How scattered a group is (range, IQR, MAD), telling which group is more consistent."
+        },
+        {
+          "term": "Populations",
+          "definition": "The full groups the two samples are drawn from and being compared."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP2-S5",
+        "if_fail": "7DSP2-S3"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Sample A: 40, 42, 44, 46, 48. Sample B: 30, 38, 44, 50, 58. Compare them.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is each median? What is each range or IQR?"
+        },
+        {
+          "kind": "say",
+          "text": "Both medians are 44 -- same center. But A's range is 8 and B's is 28, so A is much more consistent. I say both."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says B is 'bigger' because its range is bigger, stop: 'bigger spread means less consistent, not higher.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: compare Sample A: 10, 12, 14, 16, 18 with Sample B: 11, 13, 15, 17, 19 using a center and a spread."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Sample A median 20, Sample B median 26. Which center is higher?",
+          "answer": "Sample B, by 6."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Sample A range 5, Sample B range 18. Which sample is more consistent?",
+          "answer": "Sample A."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Sample A: 60, 62, 64, 66, 68, 70, 72, 74. Sample B: 50, 58, 63, 66, 68, 71, 79, 85. Compare the centers and the spreads.",
+          "answer": "Same median (67); IQR 8 vs about 14.5, so B is far more spread out.",
+          "notes": "Equal center, very different spread -- must report both."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Sample A: 70, 72, 74, 76, 78. Sample B: 55, 60, 66, 72, 77. Which group is typically higher, and which is more consistent?",
+          "answer": "A is typically higher (median 74 vs 66) and more consistent (range 8 vs 22).",
+          "notes": "Both measures point the same way here."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Sample A: 40, 42, 44, 46, 48. Sample B: 30, 38, 44, 50, 58. Owen compares them. Find and fix his mistake.",
+          "shown_work": [
+            "Owen wrote: 'Sample B has a range of 28 and Sample A has a range of 8.'",
+            "'So Sample B is the higher group.'"
+          ],
+          "answer": "Owen used the spread to judge which is higher. Both medians are 44, so the centers are equal. Sample B just has a bigger spread -- it is less consistent, not higher.",
+          "notes": "Canonical error: judging 'higher' from spread and ignoring the equal centers."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Sample A: 80, 82, 84, 86, 88, 90. Sample B: 70, 78, 84, 90, 96, 102. Compare center and spread -- is one clearly better for a task that needs steady results?",
+          "answer": "Medians are close (85 vs 87), so centers are about the same; A's IQR is 6 vs B's 18, so A is far more consistent and better when steadiness matters.",
+          "notes": "Ties the comparison to a decision."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write a comparison sentence for two samples with the same center but different spread, then a second sentence for two samples with the same spread but different centers.",
+          "answer": "e.g., 'They are typically equal, but Sample A is more consistent (smaller IQR).' and 'They are equally consistent, but Sample B is typically higher (larger median).'",
+          "notes": "Produce-your-own for both cases."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Which Comparison Is Complete?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of comparison statements about two samples"
+          ],
+          "instructions": "1. Sort each comparison card into 'Complete (names a center AND a spread)' or 'Incomplete (only one).'\n2. For each incomplete card, add the missing half so it becomes complete.\n3. Flag any card that uses spread to say which group is 'higher.'\n4. Debrief: why does a full comparison need both kinds of measure?",
+          "content": {
+            "categories": [
+              "Complete (center AND spread)",
+              "Incomplete (only one)"
+            ],
+            "cards": [
+              {
+                "text": "Sample A's median is higher, and its IQR is smaller.",
+                "category": "Complete (center AND spread)"
+              },
+              {
+                "text": "Sample B has a bigger range.",
+                "category": "Incomplete (only one)"
+              },
+              {
+                "text": "Both medians are 67, but A is more consistent.",
+                "category": "Complete (center AND spread)"
+              },
+              {
+                "text": "Sample A is higher.",
+                "category": "Incomplete (only one)"
+              },
+              {
+                "text": "Sample B is typically higher and more spread out.",
+                "category": "Complete (center AND spread)"
+              },
+              {
+                "text": "Sample A has a smaller MAD.",
+                "category": "Incomplete (only one)"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Higher, or Just Wider?",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Slip with Owen's spread-based comparison"
+          ],
+          "instructions": "1. Read Owen's claim that the wider sample is the higher group.\n2. Find and compare the two medians.\n3. Rewrite the comparison so it names the center AND the spread correctly.\n4. Write the rule: to say which group is higher, compare the ______; to say which is more consistent, compare the ______.",
+          "content": {
+            "worked_problem": "Samples with medians 44 and 44; ranges 8 and 28. Owen said the range-28 sample is higher.",
+            "error_step": "Owen used the spread (range) to decide which group is higher.",
+            "why": "The medians are equal (44), so neither is higher; the bigger range only means less consistent."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release from 'compare the centers' to 'now add the spread' builds the two-part comparison deliberately."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The 'wider means higher' error is sharp and baitable, ideal for a targeted find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'is this comparison complete?' pushes students to check for both a center and a spread."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which measure tells you the typical value, and which tells you the spread?",
+          "Did your comparison mention BOTH a center and a spread?",
+          "The medians are equal -- does that make the groups identical?",
+          "Which group is more consistent, and how do you know?",
+          "Could you use the spread to say which group is higher? Why not?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student compares only a center or only a spread, or uses the spread to judge which group is 'higher.'",
+            "say": "Compare two things: a center (mean or median) to see which is typically higher, and a spread (range, IQR, or MAD) to see which is more consistent. Say both.",
+            "praise": "You compared both center and spread -- that's a complete comparison."
+          },
+          {
+            "if_you_see": "Student treats equal medians as meaning the groups are identical in every way.",
+            "say": "Equal centers only means the typical values match. Check the spread -- the groups can still differ a lot in consistency.",
+            "praise": "You looked past the equal centers to the spread -- thorough."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Two samples: medians 30 and 30, IQRs 4 and 16. Compare them in one sentence.",
+            "look_for": "'Typically equal, but the first is more consistent.' Saying 'the same' misses the spread."
+          },
+          {
+            "prompt": "Sample A median 50 IQR 6; Sample B median 42 IQR 6. Which is higher, and are they equally consistent?",
+            "look_for": "A is higher; yes, equally consistent. Confusing the two measures signals the core error."
+          }
+        ]
+      },
+      "fluency_source": "7DSP2-F1",
+      "sentence_starters": [
+        "The center of ___ is ___ and of ___ is ___, so ___ is typically ___.",
+        "Their spreads are ___ and ___, so ___ is more consistent."
+      ],
+      "worked_solution": {
+        "stem": "Sample A: 10, 12, 14, 16, 18. Sample B: 11, 13, 15, 17, 19. Compare the two samples using a measure of center AND a measure of spread.",
+        "answer": "Sample B is typically higher by 1; the spreads are equal.",
+        "steps": [
+          {
+            "math": "Median A = 14, Median B = 15",
+            "annotation": "Compare the centers first."
+          },
+          {
+            "math": "Range A = 18 - 10 = 8, Range B = 19 - 11 = 8",
+            "annotation": "Now compare the spreads."
+          },
+          {
+            "math": "B's center is 1 higher; the spreads match",
+            "annotation": "Report BOTH a center and a spread."
+          },
+          {
+            "math": "Sample B is generally a little higher, and the two are equally consistent.",
+            "annotation": "A complete comparison names center and spread."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Sample A: 40, 42, 44, 46, 48. Sample B: 30, 38, 44, 50, 58. Compare a center and a spread.",
+        "answer": "Same center (median 44); Sample A is more consistent (IQR 6 vs 20).",
+        "steps": [
+          {
+            "math": "Median A = 44, Median B = 44",
+            "annotation": "Compare the centers.",
+            "given": true
+          },
+          {
+            "math": "IQR A = 6, IQR B = 20",
+            "annotation": "Compare the spreads.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "State how the centers compare (equal here).",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State which sample is more spread out, and what that means.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7DSP2-S5",
+      "name": "Draw and justify a comparative inference about two populations",
+      "column": "looking_forward",
+      "parent_standard": "7.DSP.2",
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7DSP2-S4"
+      },
+      "i_do_script": "Drawing a comparative inference means using the numbers to make a careful claim about which whole population is generally greater -- and saying how sure I am. The CENTER decides 'greater.' Watch random samples: Population A is 15, 18, 20, 22, 25 (median 20) and Population B is 8, 12, 16, 20, 24 (median 16). A's center is higher, so I infer Population A generally has higher values. A is also more consistent, so I'm fairly confident. I say 'generally' or 'likely,' never 'always' -- a sample shows a tendency, not a guarantee.",
+      "canonical_error": {
+        "pattern": "Justifies which population is greater using a spread measure or a single extreme value instead of a measure of center",
+        "example": "Argues Population B is greater because it has the single highest value (43) or the largest range, even though B's median equals A's",
+        "why": "Whether a population is generally greater is a question about the CENTER. Spread tells you consistency; one extreme value is not the typical value and cannot carry the inference."
+      },
+      "item_template": "Two random-sample data sets (lists) in context; student draws an inference about which population is generally greater and justifies it with a center. Extended response.",
+      "sample_items": [
+        {
+          "stem": "Random sample of Population A: 15, 18, 20, 22, 25. Random sample of Population B: 8, 12, 16, 20, 24. Which population generally has higher values? Justify with a measure.",
+          "answer": "Population A -- its median (20) is higher than B's (16)."
+        },
+        {
+          "stem": "Sample A median = 34, Sample B median = 34, but B's highest value is 43. A student says B is greater. Is a higher single maximum a good justification?",
+          "answer": "No -- the centers are equal, so one high value does not make the population generally greater."
+        },
+        {
+          "stem": "Random sample of Team A: 55, 58, 60, 62, 65. Random sample of Team B: 40, 52, 60, 68, 80. Draw a careful inference about the two teams.",
+          "answer": "The centers are equal (median 60), but Team A is far more consistent, so neither is clearly greater."
+        },
+        {
+          "stem": "Why should a comparative inference from a random sample say 'likely' or 'generally' rather than 'always'?",
+          "answer": "A random sample shows a tendency, not a guarantee about every member of the population."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which measure tells you 'generally greater' -- center or spread?",
+        "prompt": "To say one population is generally greater, point to the CENTER (mean or median). Use spread only to say how consistent or how confident, not which is bigger.",
+        "praise": "You justified 'greater' with the center -- that's a valid inference."
+      },
+      "vocabulary": [
+        {
+          "term": "Comparative inferences",
+          "definition": "A careful claim comparing two populations, based on and justified by the sample data."
+        },
+        {
+          "term": "Populations",
+          "definition": "The full groups the random samples are drawn from and the inference is about."
+        },
+        {
+          "term": "Central tendency",
+          "definition": "The mean or median; it is what supports a claim that one population is generally greater."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP2-S6",
+        "if_fail": "7DSP2-S4"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write two random samples: A: 30, 33, 35, 37, 40 and B: 20, 24, 28, 32, 36. Ask which population is generally greater."
+        },
+        {
+          "kind": "ask",
+          "text": "What is each median? Which center is higher?"
+        },
+        {
+          "kind": "say",
+          "text": "Median A is 35, median B is 28. A's center is higher, so I infer Population A generally has higher values -- and I say 'generally,' not 'always.'"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student points to B's biggest value or its range, redirect: 'that's one value or the spread -- what does the CENTER say?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: infer and justify for Population A: 15, 18, 20, 22, 25 vs B: 8, 12, 16, 20, 24."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Sample A median 22, Sample B median 15. Which population is generally greater, and what justifies it?",
+          "answer": "Population A -- its median is higher."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Should an inference from a random sample say 'A is always greater' or 'A is likely greater'?",
+          "answer": "'A is likely greater' -- a sample shows a tendency, not a certainty."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Random sample of Population A: 15, 18, 20, 22, 25. Random sample of Population B: 8, 12, 16, 20, 24. Draw a comparative inference and justify it.",
+          "answer": "Population A generally has higher values, because A's median (20) is greater than B's (16); A is also more consistent, so the inference is fairly reliable.",
+          "notes": "Center justifies 'greater'; spread adds confidence."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Random sample of Team A: 55, 58, 60, 62, 65. Random sample of Team B: 40, 52, 60, 68, 80. Draw a careful inference.",
+          "answer": "The centers are equal (median 60), so neither team is clearly greater; Team A is more consistent (IQR 7 vs 28).",
+          "notes": "Equal centers -- the honest inference is 'no clear difference in typical value.'"
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Random sample of Population A: 30, 32, 34, 36, 38. Random sample of Population B: 25, 31, 34, 37, 43. Priya draws an inference. Find and fix her mistake.",
+          "shown_work": [
+            "Priya wrote: 'Population B has the highest value, 43.'",
+            "'So Population B generally has higher values than Population A.'"
+          ],
+          "answer": "Priya used one extreme value. Both medians are 34, so the centers are equal -- neither population is generally greater. A single high value is not the typical value.",
+          "notes": "Canonical error: justifying 'greater' from one extreme instead of the center."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Population A median 60, more consistent; Population B median 60, much more spread out. Write an inference and explain why it must be cautious.",
+          "answer": "The typical values are about equal, so neither population is clearly greater; because B is far more spread out, individual results vary widely, so any claim must stay general and tentative.",
+          "notes": "Uses spread to temper certainty."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Turn this weak claim into a justified inference: 'Population A is better.' (Samples: A median 48, B median 40, both fairly consistent.)",
+          "answer": "'Population A generally has higher values than Population B, because A's median (48) is higher than B's (40), and both samples are fairly consistent.'",
+          "notes": "Reverse direction -- produce a justified claim."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Valid Justification or Not?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Cards, each with a comparative claim and its stated reason"
+          ],
+          "instructions": "1. Sort each card into 'Justified (uses a center)' or 'Not justified (uses one value or spread).'\n2. For each 'not justified' card, rewrite the reason using a center.\n3. Flag any card that says 'always' or 'definitely' and soften it to 'generally' or 'likely.'\n4. Debrief: what makes a reason strong enough to support 'generally greater'?",
+          "content": {
+            "categories": [
+              "Justified (uses a center)",
+              "Not justified (uses one value or spread)"
+            ],
+            "cards": [
+              {
+                "text": "A is generally greater because A's median is higher.",
+                "category": "Justified (uses a center)"
+              },
+              {
+                "text": "B is greater because B has the single highest value.",
+                "category": "Not justified (uses one value or spread)"
+              },
+              {
+                "text": "A is likely higher because A's mean is larger.",
+                "category": "Justified (uses a center)"
+              },
+              {
+                "text": "B is greater because B has a bigger range.",
+                "category": "Not justified (uses one value or spread)"
+              },
+              {
+                "text": "A generally scores higher; its median beats B's.",
+                "category": "Justified (uses a center)"
+              },
+              {
+                "text": "A is greater because one A value was the biggest.",
+                "category": "Not justified (uses one value or spread)"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "One Big Value Isn't the Center",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Slip with Priya's single-value inference"
+          ],
+          "instructions": "1. Read Priya's claim that Population B is greater because it has the value 43.\n2. Compute both medians.\n3. Rewrite a correct inference (or explain why neither is clearly greater).\n4. Write the rule: to say which population is generally greater, justify with the ______.",
+          "content": {
+            "worked_problem": "Medians 34 and 34; B has the single value 43. Priya said B is generally greater.",
+            "error_step": "Priya justified 'greater' with one extreme value (43).",
+            "why": "The medians are equal, so neither is generally greater; a single high value is not the typical value."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Studying a strong worked inference beside a flawed one teaches what a valid center-based justification looks like."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "Writing the inference in a math journal forces the 'because the center is...' justification into the student's own words."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The single-extreme-value error is a clean target for find-and-fix."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which measure supports 'generally greater' -- a center or a spread?",
+          "What is each population's center, and which is higher?",
+          "Did you justify the claim with a number, or just assert it?",
+          "Is 'always' or 'definitely' too strong for sample data?",
+          "How does the spread change how confident you can be?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student justifies which population is greater using a spread measure or a single extreme value instead of a center.",
+            "say": "To say one population is generally greater, point to the CENTER (mean or median). Use spread only to say how consistent or how confident, not which is bigger.",
+            "praise": "You justified 'greater' with the center -- that's a valid inference."
+          },
+          {
+            "if_you_see": "Student states the inference as a certainty ('A will always win').",
+            "say": "A random sample shows a tendency, not a guarantee. Say 'generally' or 'likely' instead of 'always.'",
+            "praise": "You made the claim general instead of absolute -- that fits sample data."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Samples: A median 40, B median 32. Which population is likely greater, and why?",
+            "look_for": "A, because its center (median) is higher. Pointing to a single value or the range signals the core error."
+          },
+          {
+            "prompt": "True or false: 'This random sample proves every A beats every B.'",
+            "look_for": "False -- a sample shows a tendency. 'True' reveals an over-certain inference."
+          }
+        ]
+      },
+      "fluency_source": "7DSP2-F1",
+      "sentence_starters": [
+        "Population ___ generally has higher values, because its ___ is ___ than ___.",
+        "The centers are ___, so I can only say ___ -- not that one is always greater."
+      ],
+      "worked_solution": {
+        "stem": "A random sample of Population A: 15, 18, 20, 22, 25. A random sample of Population B: 8, 12, 16, 20, 24. Draw and justify a comparative inference about which population generally has higher values.",
+        "answer": "Population A generally has higher values, justified by its higher median.",
+        "steps": [
+          {
+            "math": "Median A = 20, Median B = 16",
+            "annotation": "Use the center to judge which is generally greater."
+          },
+          {
+            "math": "A's center is higher by 4",
+            "annotation": "A higher center supports 'generally greater.'"
+          },
+          {
+            "math": "Spread: IQR A = 7, IQR B = 12",
+            "annotation": "A is more consistent, so the gap is meaningful."
+          },
+          {
+            "math": "Inference: Population A likely has higher values than Population B.",
+            "annotation": "State it as a general tendency, justified by the center."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Random sample of Team A: 55, 58, 60, 62, 65. Random sample of Team B: 40, 52, 60, 68, 80. Draw a comparative inference.",
+        "answer": "Centers are equal (median 60); Team A is far more consistent, so neither is clearly greater.",
+        "steps": [
+          {
+            "math": "Median A = 60, Median B = 60",
+            "annotation": "Compare the centers.",
+            "given": true
+          },
+          {
+            "math": "The centers are equal",
+            "annotation": "Neither is clearly greater on center.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Compare the spreads (IQR 7 vs 28) -- which team is more consistent?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State a careful inference: centers equal, but Team A is far more consistent.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7DSP2-S6",
+      "name": "Critique a flawed comparative inference about two populations",
+      "column": "looking_forward",
+      "parent_standard": "7.DSP.2",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7DSP2-S5"
+      },
+      "i_do_script": "Critiquing an inference means checking whether the claim actually fits the data. I ask three things: Did they use the CENTER to argue which is greater? Did they say 'likely' instead of 'always'? Did they account for overlap from spread? Watch a claim: 'Group B is higher because B is more spread out.' That's wrong -- spread is not size, and if both medians are 24, neither group is higher. A good critique names the exact flaw and gives the corrected version.",
+      "canonical_error": {
+        "pattern": "Accepts a comparative inference as valid whenever a number was mentioned -- overlooking that it overstates certainty, ignores overlap from spread, or mistakes more spread for higher values",
+        "example": "Marks 'Group A's mean is higher, so A will definitely beat B next time' as valid, missing that 'definitely' overreaches for a random sample",
+        "why": "A valid comparative inference from a sample is a general/likely claim supported by the right measure. Critiquing means checking the measure, the certainty, and the overlap -- not just that a number appears in the reasoning."
+      },
+      "item_template": "A comparative claim about two populations (with sample data as a list); student judges whether it is valid and explains the specific flaw. Extended response.",
+      "sample_items": [
+        {
+          "stem": "Group A: 20, 22, 24, 26, 28. Group B: 10, 18, 24, 30, 38. Claim: 'Group B typically has higher values because it is more spread out.' Is the inference valid? Explain.",
+          "answer": "Invalid -- both medians are 24, so neither is typically higher; a bigger spread means less consistent, not higher."
+        },
+        {
+          "stem": "Claim: 'Sample A's mean is higher, so Population A will definitely beat Population B next time.' What is wrong with this inference?",
+          "answer": "It overstates certainty; a random sample suggests a likely tendency, not a guarantee."
+        },
+        {
+          "stem": "Two random samples have the same median but overlap a lot. A student concludes one population is clearly greater. Is that justified?",
+          "answer": "No -- equal centers with heavy overlap do not support 'clearly greater.'"
+        },
+        {
+          "stem": "Rewrite this over-claim as a valid inference: 'Every Grade 7 student is taller than every Grade 6 student.'",
+          "answer": "'Grade 7 students are generally (likely) taller than Grade 6 students.'"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is the claim too certain, or reading spread as size?",
+        "prompt": "Check three things: does it use the CENTER to argue 'greater,' does it say 'likely/generally' instead of 'always,' and does it account for overlap from spread? If any fails, the inference is flawed.",
+        "praise": "You caught exactly why the inference overreached -- sharp critique."
+      },
+      "vocabulary": [
+        {
+          "term": "Comparative inferences",
+          "definition": "Claims comparing two populations; a valid one is general, justified by the right measure."
+        },
+        {
+          "term": "Populations",
+          "definition": "The full groups the samples represent and the claim is about."
+        },
+        {
+          "term": "Spread",
+          "definition": "How scattered the data is; large overlap from spread can undercut a 'clearly greater' claim."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for comparing populations with larger random samples and box/line plots (later data-analysis work).",
+        "if_fail": "7DSP2-S5"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the claim 'Team A's mean is higher, so Team A will always win' with samples A: 20, 22, 24 and B: 18, 21, 23."
+        },
+        {
+          "kind": "ask",
+          "text": "Is the reason (higher mean) the right kind of measure? Is 'always' fair for a sample?"
+        },
+        {
+          "kind": "say",
+          "text": "The higher mean does support 'generally greater,' but 'always win' overreaches -- a sample shows a tendency, not a guarantee. So the inference is flawed on certainty."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student marks it valid because a number is cited, ask 'is the claim as careful as the data allows?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: critique 'Group B is higher because it is more spread out' for samples with equal medians."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Is 'Population A will definitely always score higher' an appropriate claim from a random sample?",
+          "answer": "No -- 'definitely always' is too certain for sample data."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A claim says one group is higher because its range is bigger. Which idea did it confuse?",
+          "answer": "It confused spread with size (center)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Group A: 20, 22, 24, 26, 28. Group B: 10, 18, 24, 30, 38. Claim: 'Group B typically has higher values because it is more spread out.' Valid? Explain.",
+          "answer": "Invalid -- both medians are 24, so neither is typically higher; more spread means B is less consistent, not higher.",
+          "notes": "Mistakes spread for size with equal centers."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Two random samples both have a median of 49 and overlap heavily. Claim: 'Population A is clearly greater.' Critique it.",
+          "answer": "Invalid -- equal centers and heavy overlap give no basis for 'clearly greater'; at most the two are about the same.",
+          "notes": "Overlap undercuts the claim."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Group A: 45, 47, 49, 51, 53. Group B: 40, 46, 49, 52, 58. A student critiques a claim. Find and fix the student's mistake.",
+          "shown_work": [
+            "Claim: 'Sample A's values are more consistent, so Population A will definitely score higher next time.'",
+            "Student wrote: 'Valid -- Sample A is more consistent, so A is the better group.'"
+          ],
+          "answer": "Not valid. Both medians are 49, so neither is higher -- consistency is not size. And 'definitely' overstates certainty for a sample. The student accepted a flawed claim.",
+          "notes": "Canonical error: accepting an over-certain, spread-as-size claim as valid."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Group A: 12, 14, 16, 18, 20. Group B: 6, 11, 16, 21, 26. Someone claims 'B is greater because its scores reach higher.' Write a full critique and a corrected inference.",
+          "answer": "Invalid -- both medians are 16, so the centers are equal; B just has a wider spread (reaches higher AND lower). A corrected inference: 'The two populations are typically about the same, but Group B is less consistent.'",
+          "notes": "Critique plus rewrite."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write a comparative claim that IS valid for two samples where A's median is clearly higher and both are consistent, then explain why it passes your three checks.",
+          "answer": "e.g., 'Population A generally has higher values than B, because A's median is higher and both samples are consistent.' It uses the center, stays general ('generally'), and notes low spread, so it passes all three checks.",
+          "notes": "Produce-your-own valid inference."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Three-Question Critique",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Claim cards (each a comparative inference with sample data)",
+            "'Three checks' reference: center? / general? / overlap?"
+          ],
+          "instructions": "1. Read a claim card and its data.\n2. Run the three checks: Does it use the CENTER to argue greater? Does it stay general ('likely'), not 'always'? Does it account for overlap from spread?\n3. Mark the claim valid or flawed, naming which check it fails.\n4. Rewrite every flawed claim so it passes all three checks.\n5. Debrief: which check trips students up most often?",
+          "content": {
+            "worked_problem": "Medians 49 and 49. Claim: 'A is more consistent, so A will definitely score higher.'",
+            "error_step": "The claim treats consistency as size and says 'definitely.'",
+            "why": "Equal medians mean neither is higher; consistency is not size, and 'definitely' overreaches for a sample."
+          }
+        },
+        {
+          "type": "card_sort",
+          "title": "Valid or Flawed Inference?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Cards with comparative inferences"
+          ],
+          "instructions": "1. Sort each inference card into 'Valid' or 'Flawed.'\n2. For each flawed card, label the flaw: 'too certain,' 'spread as size,' or 'ignores overlap.'\n3. Fix one flawed card from each label type.\n4. Debrief: what does a valid comparative inference always include?",
+          "content": {
+            "categories": [
+              "Valid",
+              "Flawed"
+            ],
+            "cards": [
+              {
+                "text": "A generally has higher values; A's median is higher and spread is small.",
+                "category": "Valid"
+              },
+              {
+                "text": "B will always beat A because B's mean is higher.",
+                "category": "Flawed"
+              },
+              {
+                "text": "A is higher because A is more spread out.",
+                "category": "Flawed"
+              },
+              {
+                "text": "The groups are about the same; equal medians and heavy overlap.",
+                "category": "Valid"
+              },
+              {
+                "text": "A is clearly greater, even though the medians are equal.",
+                "category": "Flawed"
+              },
+              {
+                "text": "B is likely higher; B's median beats A's and both are consistent.",
+                "category": "Valid"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Contrasting a valid inference with a flawed one is the core move of a critique skill -- worked/erroneous pairs make the flaw visible."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The whole skill is error analysis; a structured find-and-fix on real claims is the natural fit."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share lets students argue whether a claim is valid, surfacing the certainty and overlap issues through debate."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Does the claim use the center to argue which is greater?",
+          "Is the claim as certain as the data allows, or does it say 'always'?",
+          "Do the two samples overlap? Does that weaken 'clearly greater'?",
+          "Did the claim mistake more spread for higher values?",
+          "How would you rewrite the claim so it passes all three checks?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student accepts an inference as valid just because a number was cited -- missing over-certainty, overlap, or spread-as-size.",
+            "say": "Check three things: does it use the CENTER to argue 'greater,' does it say 'likely/generally' instead of 'always,' and does it account for overlap from spread? If any fails, the inference is flawed.",
+            "praise": "You caught exactly why the inference overreached -- sharp critique."
+          },
+          {
+            "if_you_see": "Student rejects a valid, appropriately cautious inference because it isn't a definite claim.",
+            "say": "A careful 'generally' or 'likely' claim IS valid for sample data -- being cautious is correct, not a flaw.",
+            "praise": "You recognized that a careful, general claim is exactly what the data supports."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Critique: 'A's mean is higher, so every A beats every B.'",
+            "look_for": "Flawed -- overstates certainty; a sample shows a tendency. Calling it valid signals the core error."
+          },
+          {
+            "prompt": "Critique: 'A is greater because A has a bigger range,' with equal medians.",
+            "look_for": "Flawed -- spread is not size; equal medians mean neither is greater."
+          }
+        ]
+      },
+      "fluency_source": "7DSP2-F1",
+      "sentence_starters": [
+        "This inference is ___ because it ___ (too certain / spread as size / ignores overlap).",
+        "A corrected version is: '___ generally has higher values because its ___ is ___.'"
+      ],
+      "worked_solution": {
+        "stem": "Random sample of Group A: 20, 22, 24, 26, 28. Random sample of Group B: 10, 18, 24, 30, 38. A student claims: 'Group B typically has higher values because Group B's data is more spread out.' Is the inference valid? Explain.",
+        "answer": "Not valid -- equal centers, and spread was mistaken for size.",
+        "steps": [
+          {
+            "math": "Median A = 24, Median B = 24",
+            "annotation": "Check the centers -- they are equal."
+          },
+          {
+            "math": "The claim uses spread ('more spread out') to argue 'higher'",
+            "annotation": "Spread is not center."
+          },
+          {
+            "math": "B's bigger range only means B is less consistent",
+            "annotation": "More spread does not mean higher values."
+          },
+          {
+            "math": "So the inference is invalid -- equal centers and misread spread.",
+            "annotation": "A critique names the specific flaw."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Group A mean = 49, Group B mean = 49. A student claims: 'Group A will definitely score higher next time because its scores are more consistent.' Is the inference valid?",
+        "answer": "Not valid -- centers are equal, 'definitely' overreaches, and consistency is not size.",
+        "steps": [
+          {
+            "math": "Both means are 49",
+            "annotation": "The centers are equal.",
+            "given": true
+          },
+          {
+            "math": "'Definitely' is a certainty claim",
+            "annotation": "Samples show tendencies, not guarantees.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Explain why 'definitely' overreaches for sample data.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the fix: more consistent does not mean higher.",
+            "given": false
+          }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "skills": [
+        "7DSP2-F1",
+        "7DSP2-F2"
+      ]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": [
+        "7DSP2-S1"
+      ]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": [
+        "7DSP2-S2",
+        "7DSP2-S3",
+        "7DSP2-S4"
+      ]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": [
+        "7DSP2-S5",
+        "7DSP2-S6"
+      ]
+    }
+  },
+  "skill_sequence": [
+    "7DSP2-F1",
+    "7DSP2-F2",
+    "7DSP2-S1",
+    "7DSP2-S2",
+    "7DSP2-S3",
+    "7DSP2-S4",
+    "7DSP2-S5",
+    "7DSP2-S6"
+  ],
+  "skill_tree": {
+    "7DSP2-F1": [],
+    "7DSP2-F2": [],
+    "7DSP2-S1": [
+      "7DSP2-F1",
+      "7DSP2-F2"
+    ],
+    "7DSP2-S2": [
+      "7DSP2-S1"
+    ],
+    "7DSP2-S3": [
+      "7DSP2-S2"
+    ],
+    "7DSP2-S4": [
+      "7DSP2-S2",
+      "7DSP2-S3"
+    ],
+    "7DSP2-S5": [
+      "7DSP2-S4"
+    ],
+    "7DSP2-S6": [
+      "7DSP2-S5"
+    ]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S4 (compare two data sets using a center AND a spread) -- the At-proficiency workhorse. If they pass, push to S5 (draw and justify a comparative inference) and S6 (critique a flawed inference). If they fail, drop to S1 to check whether the student can even calculate and compare the mean, median, and range. S2 (IQR and MAD) and S3 (interpret spread as consistency) branch off the core as the spread-specific supports.",
+    "entry_skill": "7DSP2-S4",
+    "if_pass": [
+      "7DSP2-S5",
+      "7DSP2-S6"
+    ],
+    "if_fail": [
+      "7DSP2-S1"
+    ],
+    "branch_skills": [
+      "7DSP2-S2",
+      "7DSP2-S3"
+    ]
+  }
+}

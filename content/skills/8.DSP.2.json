@@ -1,0 +1,2087 @@
+{
+  "standard_code": "8.DSP.2",
+  "standard_text": "Write and use equations that model linear relationships to make predictions, including interpolation and extrapolation, in real-world situations involving bivariate measurement data. Interpret the slope and y-intercept in context.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "A scatter plot is a cloud of points, and this standard is about deciding when a straight line is a fair summary of that cloud -- and then trusting the line enough to read meaning and predictions out of it. The arc starts with a yes/no judgment: does the scatter even SUGGEST a linear association? Points that drift steadily up or steadily down as x grows earn a line; a shapeless swarm does not. Once a line is warranted, the next move is to fit and assess one informally -- a good trend line threads the middle of the cloud, passing near MOST points with roughly as many above as below, and a student must be able to say why one candidate line fits better than another (closeness of points to the line is the whole test).\n\nThe Indiana item spec then bounds and extends that fitting work into what you DO with a line of best fit that is handed to you. Because the line comes as a slope-intercept equation, the standard leans hard on interpretation: what does the slope mean as a rate in context, and what does the y-intercept mean as a starting value at x = 0? From there the line becomes a prediction machine -- substitute an x to interpolate inside the data or extrapolate beyond it -- and finally a thing to argue about: is a given prediction reasonable, or has the model been pushed past the data (or past a real-world limit) where the straight line can no longer be trusted? So the progression climbs from recognizing association, to judging fit, to interpreting the fitted line's slope and intercept, to predicting with it, and tops out at critiquing the reasonableness of those predictions.",
+    "steps": [
+      {
+        "skill_id": "8DSP2-S1",
+        "verb": "recognize",
+        "rationale": "The entry judgment of the standard: decide whether a scatter plot's points suggest a linear association at all. A line is only a model worth fitting when the data trends steadily up or down, so students must see association before they draw or trust any line."
+      },
+      {
+        "skill_id": "8DSP2-S2",
+        "verb": "interpret",
+        "rationale": "The spec's Below-Proficiency band hands students a line of best fit and asks what its slope and y-intercept mean in context. Reading a given line is the gentlest form of 'using' a straight-line model, so it sits just after recognizing that a line fits."
+      },
+      {
+        "skill_id": "8DSP2-S3",
+        "verb": "assess",
+        "rationale": "The heart of 'informally fit a straight line and assess the model fit': judge whether a proposed line is a good or poor fit by how close it passes to the points, balanced above and below. This is the standard's own language and its core reasoning."
+      },
+      {
+        "skill_id": "8DSP2-S4",
+        "verb": "interpret",
+        "rationale": "The spec's Approaching band moves from a graphed line to a modeling EQUATION and asks students to interpret its slope (a rate) and intercept (a start) in context, including negative slopes read as per-unit decreases -- the on-grade form of reading the fitted model."
+      },
+      {
+        "skill_id": "8DSP2-S5",
+        "verb": "predict",
+        "rationale": "The spec's At-Proficiency band uses the equation to make predictions, distinguishing interpolation (inside the data) from extrapolation (beyond it). Once a line is fit and interpreted, substituting an x to predict a y is what the model is for."
+      },
+      {
+        "skill_id": "8DSP2-S6",
+        "verb": "justify",
+        "rationale": "The standard tops out at the spec's Above-Proficiency band: judge and justify whether a prediction is reasonable, catching extrapolation pushed past the data or past a real-world limit where the straight line stops being trustworthy."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "8DSP2-F1",
+      "name": "Plot and read ordered pairs on the coordinate plane",
+      "column": "foundation",
+      "parent_standard": "8.DSP.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Plot a point (x, y) by moving right then up from the origin, and read the coordinates of a plotted point.",
+        "check_question": "Where is the point (3, 5): how far right and how far up from the origin?"
+      },
+      "i_do_script": "A point on a scatter plot is an ordered pair (x, y): the FIRST number tells how far to go along the horizontal x-axis, the SECOND how far up the vertical y-axis. Watch (3, 5): start at the origin, go 3 to the right, then 5 up. Reading is the reverse -- for a plotted dot I read its across value first, then its up value. The order never changes: x always comes before y.",
+      "canonical_error": {
+        "pattern": "Reverses the coordinates -- moves up by the first number and across by the second, plotting (a, b) where (b, a) belongs.",
+        "example": "Plots (3, 5) by going 5 right and 3 up (landing at (5, 3)) instead of 3 right and 5 up.",
+        "why": "The student ignores the fixed order of an ordered pair. The first coordinate is ALWAYS the horizontal (x) distance and the second is ALWAYS the vertical (y) distance; swapping them puts every point in the wrong place and destroys the shape of a scatter plot."
+      },
+      "item_template": "A single ordered pair, or a plotted dot described in words. Student plots the point or reads its coordinates. Short-response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "To plot (4, 7), how many units right and how many up?",
+          "answer": "4 right, 7 up"
+        },
+        {
+          "stem": "A dot is 6 right and 2 up from the origin. What are its coordinates?",
+          "answer": "(6, 2)"
+        },
+        {
+          "stem": "Which coordinate comes first in (x, y), the across value or the up value?",
+          "answer": "The across value (x)"
+        },
+        {
+          "stem": "Where does the point (0, 9) sit?",
+          "answer": "On the y-axis, 9 units up"
+        },
+        {
+          "stem": "To plot (5, 1), how many units right and how many up?",
+          "answer": "5 right, 1 up"
+        },
+        {
+          "stem": "A dot is at 3 right and 3 up. What are its coordinates?",
+          "answer": "(3, 3)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which number goes across and which goes up?",
+        "prompt": "Read the pair left to right: the first number is steps RIGHT along the bottom, the second is steps UP. Point to the x-axis for the first, the y-axis for the second.",
+        "praise": "You moved across first, then up -- that's the ordered pair read correctly."
+      },
+      "vocabulary": [
+        {
+          "term": "Ordered pair",
+          "definition": "Two numbers (x, y) that give a point's horizontal then vertical position."
+        },
+        {
+          "term": "x-axis",
+          "definition": "The horizontal number line; the first coordinate is measured along it."
+        },
+        {
+          "term": "y-axis",
+          "definition": "The vertical number line; the second coordinate is measured along it."
+        },
+        {
+          "term": "Origin",
+          "definition": "The point (0, 0) where the two axes cross."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP2-S1",
+        "if_fail": "Review plotting points on the coordinate plane (5.G.1)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Plot (2, 6).'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which number tells us to move across, and which tells us to move up?"
+        },
+        {
+          "kind": "say",
+          "text": "The first number, 2, is 2 steps right along the bottom axis. The second, 6, is 6 steps up. Mark the dot there."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student goes 6 right and 2 up, ask 'which number is written first? That one is the across move.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: plot (7, 3) -- tell me the across move and the up move."
+        }
+      ]
+    },
+    {
+      "skill_id": "8DSP2-F2",
+      "name": "Find the slope of a line through two points (rise over run)",
+      "column": "foundation",
+      "parent_standard": "8.DSP.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 8,
+        "description": "Compute slope as the change in y over the change in x between two points on a line.",
+        "check_question": "What is the slope of the line through (2, 3) and (6, 11)?"
+      },
+      "i_do_script": "Slope is how steep a line is: the change in y (rise) divided by the change in x (run). Watch the points (2, 3) and (6, 11). The y-values change by 11 - 3 = 8, and the x-values change by 6 - 2 = 4, so the slope is 8/4 = 2. Two rules: rise goes on top and run on the bottom, and I subtract in the SAME order for both -- second point minus first point, top and bottom.",
+      "canonical_error": {
+        "pattern": "Computes run over rise (flips the ratio), or subtracts the coordinates in a different order on top than on the bottom.",
+        "example": "For (2, 3) and (6, 11) writes slope = (6 - 2)/(11 - 3) = 4/8 = 1/2 instead of (11 - 3)/(6 - 2) = 8/4 = 2.",
+        "why": "Slope is the change in y OVER the change in x, and both differences must be taken in the same order. Putting the x-change on top gives the reciprocal; mismatching the subtraction order flips the sign. The rise (vertical change) must sit on top of the run (horizontal change)."
+      },
+      "item_template": "Two points given as coordinates in text. Student computes the slope. Short-response fluency bank. (No figure needed.)",
+      "sample_items": [
+        {
+          "stem": "Find the slope of the line through (2, 3) and (6, 11).",
+          "answer": "2 (rise 8 over run 4)"
+        },
+        {
+          "stem": "Find the slope through (0, 5) and (4, 13).",
+          "answer": "2 (8/4)"
+        },
+        {
+          "stem": "Find the slope through (1, 10) and (3, 4).",
+          "answer": "-3 ((4 - 10)/(3 - 1) = -6/2)"
+        },
+        {
+          "stem": "Find the slope through (0, 50) and (2, 59).",
+          "answer": "9/2 = 4.5 (rise 9 over run 2)"
+        },
+        {
+          "stem": "Find the slope through (0, 25) and (3, 23).",
+          "answer": "-2/3 ((23 - 25)/(3 - 0))"
+        },
+        {
+          "stem": "Find the slope through (2, 4) and (5, 4).",
+          "answer": "0 (rise 0; the line is flat)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is the y-change on top of the x-change?",
+        "prompt": "Slope is rise over run: put the change in y ON TOP and the change in x on the BOTTOM. Subtract second-minus-first the same way on both, then simplify.",
+        "praise": "You kept rise on top and subtracted in the same order -- that's the slope done right."
+      },
+      "vocabulary": [
+        {
+          "term": "Slope",
+          "definition": "The steepness of a line: the change in y divided by the change in x."
+        },
+        {
+          "term": "Rise",
+          "definition": "The vertical change (change in y) between two points."
+        },
+        {
+          "term": "Run",
+          "definition": "The horizontal change (change in x) between two points."
+        },
+        {
+          "term": "Rate of change",
+          "definition": "How much y changes for each 1-unit change in x; the slope."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP2-S2",
+        "if_fail": "Review slope from two points (8.AF.4)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Find the slope through (1, 4) and (5, 16).'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the change in y (top)? What is the change in x (bottom)?"
+        },
+        {
+          "kind": "say",
+          "text": "Change in y = 16 - 4 = 12. Change in x = 5 - 1 = 4. Slope = 12/4 = 3."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 4/12, ask 'which change goes on top -- the up-and-down change or the left-and-right change?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: find the slope through (0, 2) and (4, 14)."
+        }
+      ]
+    },
+    {
+      "skill_id": "8DSP2-S1",
+      "name": "Recognize when a scatter plot suggests a linear association",
+      "column": "looking_back",
+      "parent_standard": "8.DSP.2",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP2-F1"
+      },
+      "i_do_script": "Before I ever draw a line, I ask whether the data even LOOKS like a line. I scan the points from left to right. If as x increases the y-values mostly climb, that is a positive linear association; if they mostly fall, that is a negative linear association; if they bounce up and down with no steady direction, there is NO linear association and a straight line would not model them. Watch (1,4), (2,7), (3,9), (4,12), (5,15): every step right, y climbs by about 3 -- a clear positive linear association, so a line is a reasonable model.",
+      "canonical_error": {
+        "pattern": "Decides there is a linear association by looking at only one or two points (or whether y is 'big'), instead of whether the whole set of points trends steadily up or steadily down.",
+        "example": "For the scattered set (1,5), (2,12), (3,4), (4,15), (5,3) a student says 'yes, linear -- the numbers are large,' even though the points jump up and down with no consistent direction.",
+        "why": "A linear association means the points, taken together, drift in one steady direction (up or down) so a straight line could summarize them. Judging from one point, or from how large the values are, ignores the overall trend -- a swarm with no direction has NO linear association no matter how big its numbers are."
+      },
+      "item_template": "A small set of (x, y) points listed in text (or a short data table). Student decides whether the points suggest a linear association and, if so, its direction. Short response. (No figure -- data given as a list.)",
+      "sample_items": [
+        {
+          "stem": "Points: (1,4), (2,7), (3,9), (4,12), (5,15). Do these suggest a linear association? If so, which direction?",
+          "answer": "Yes -- a positive linear association (y climbs steadily as x grows)."
+        },
+        {
+          "stem": "Points: (1,20), (2,17), (3,15), (4,12), (5,9). Linear association?",
+          "answer": "Yes -- a negative linear association (y falls steadily as x grows)."
+        },
+        {
+          "stem": "Points: (1,5), (2,12), (3,4), (4,15), (5,3). Linear association?",
+          "answer": "No -- the points jump up and down with no steady direction."
+        },
+        {
+          "stem": "Points: (2,6), (4,10), (6,14), (8,18). Linear association?",
+          "answer": "Yes -- a positive linear association (up about 4 for every 2 across)."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Look at ALL the points -- do they trend one direction?",
+        "prompt": "Scan left to right: as x grows, do the y-values mostly go up (positive), mostly go down (negative), or jump around with no pattern (none)? One point can't decide it.",
+        "praise": "You read the whole trend, not one point -- that's how you spot a linear association."
+      },
+      "vocabulary": [
+        {
+          "term": "Scatter plot",
+          "definition": "A graph of points (x, y) showing two measurements for each case."
+        },
+        {
+          "term": "Linear association",
+          "definition": "A pattern where the points trend steadily up or down, so a straight line summarizes them."
+        },
+        {
+          "term": "Positive association",
+          "definition": "As x increases, y tends to increase (the points climb)."
+        },
+        {
+          "term": "Negative association",
+          "definition": "As x increases, y tends to decrease (the points fall)."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP2-S2",
+        "if_fail": "8DSP2-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the points (1,3), (2,5), (3,8), (4,10), (5,12)."
+        },
+        {
+          "kind": "ask",
+          "text": "As we read left to right, do the y-values mostly climb, mostly fall, or bounce around?"
+        },
+        {
+          "kind": "say",
+          "text": "They climb every step (3, 5, 8, 10, 12), so this is a positive linear association -- a straight line is a reasonable model here."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 'no pattern' because a step is uneven, say 'a line doesn't need every step equal -- just a steady overall direction.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: (1,18), (2,15), (3,13), (4,10), (5,7) -- is there a linear association, and which way?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "As x increases, y increases. Is that a positive or negative association?",
+          "answer": "Positive."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "In one sentence, what does 'no linear association' look like in a scatter plot?",
+          "answer": "The points scatter with no steady up or down direction."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Points: (1,2), (2,5), (3,7), (4,10), (5,12). Is there a linear association? Which direction?",
+          "answer": "Yes -- positive; y rises steadily as x grows.",
+          "notes": "Clean positive trend."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Points: (1,19), (2,16), (3,14), (4,11), (5,8). Linear association?",
+          "answer": "Yes -- negative; y falls steadily as x grows.",
+          "notes": "Clean negative trend."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Devon judged whether points (1,3), (2,14), (3,5), (4,16), (5,2) show a linear association. Find and fix his mistake.",
+          "shown_work": [
+            "Devon wrote: 'Some y-values are big, like 14 and 16.'",
+            "'So yes, there is a strong positive linear association.'"
+          ],
+          "answer": "Devon looked at how large a couple of values are, not the trend. Reading left to right the y-values go 3, 14, 5, 16, 2 -- up and down with no steady direction, so there is NO linear association.",
+          "notes": "Canonical error: judging by point size instead of overall trend."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Points: (10,2), (20,4), (30,6), (40,8). Linear association?",
+          "answer": "Yes -- positive (y rises 2 for every 10 in x).",
+          "notes": "Larger x-scale, same idea."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write your own set of five points that shows a NEGATIVE linear association, and explain why it qualifies.",
+          "answer": "Example: (1,20), (2,17), (3,15), (4,12), (5,9); as x grows the y-values fall steadily, so a downward line summarizes them.",
+          "notes": "Produce-your-own; reverses the direction."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two data sets both trend upward, but one's points hug a line and the other's are loosely scattered around it. Do both have a linear association? Which would a line model better?",
+          "answer": "Both have a positive linear association, but the tight one is a STRONGER association and a line models it better (points closer to the line).",
+          "notes": "Introduces strength of association, previews fit."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Line, Falling Line, or No Line",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 12 small point-lists (5-6 points each) written as (x, y)"
+          ],
+          "instructions": "1. Sort each card into 'Positive association,' 'Negative association,' or 'No association.'\n2. For each card, read the y-values left to right and draw an arrow up, down, or a squiggle.\n3. Check: for 'no association' cards, point to where the direction reverses.\n4. Debrief: does a linear association need every step to be equal? (No -- just a steady overall direction.)",
+          "content": {
+            "categories": [
+              "Positive association",
+              "Negative association",
+              "No association"
+            ],
+            "cards": [
+              {
+                "text": "(1,4)(2,7)(3,9)(4,12)(5,15)",
+                "category": "Positive association"
+              },
+              {
+                "text": "(1,20)(2,17)(3,15)(4,12)(5,9)",
+                "category": "Negative association"
+              },
+              {
+                "text": "(1,5)(2,12)(3,4)(4,15)(5,3)",
+                "category": "No association"
+              },
+              {
+                "text": "(2,6)(4,10)(6,14)(8,18)",
+                "category": "Positive association"
+              },
+              {
+                "text": "(1,18)(2,14)(3,11)(4,7)(5,4)",
+                "category": "Negative association"
+              },
+              {
+                "text": "(1,9)(2,2)(3,10)(4,3)(5,11)",
+                "category": "No association"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Big Numbers Aren't a Trend",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Devon's 'the numbers are big' reasoning"
+          ],
+          "instructions": "1. Read Devon's claim that points with some large y-values show a positive association.\n2. Write the y-values in order left to right and draw an arrow between each pair.\n3. Circle where the arrows disagree (some up, some down).\n4. Write the rule: association is about steady DIRECTION, not how big the numbers are.",
+          "content": {
+            "worked_problem": "Points (1,3), (2,14), (3,5), (4,16), (5,2). Devon said 'strong positive association because 14 and 16 are big.'",
+            "error_step": "Devon judged by the size of two values, not the trend.",
+            "why": "Left to right the y-values go up, down, up, down -- no steady direction, so there is no linear association."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Sketching each point-list on a shared axis (representational) makes 'steady direction' visible before it becomes a classification."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'does this data suggest a line?' surfaces the size-versus-trend disagreement students must resolve aloud."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The 'big numbers mean a trend' error is clean and baitable; find-and-fix with direction arrows targets it."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "As x increases, do the y-values mostly climb, mostly fall, or bounce around?",
+          "Does a linear association need every step to be exactly equal?",
+          "Which direction is the association -- positive, negative, or none?",
+          "Could a straight line reasonably summarize these points? Why or why not?",
+          "Are you judging the trend or just the size of a couple of values?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student decides there is a linear association from one or two points (or how large y is) instead of the overall trend.",
+            "say": "Scan left to right: as x grows, do the y-values mostly go up (positive), mostly go down (negative), or jump around with no pattern (none)? One point can't decide it.",
+            "praise": "You read the whole trend, not one point -- that's how you spot a linear association."
+          },
+          {
+            "if_you_see": "Student calls a set 'no association' just because the steps between points are unequal.",
+            "say": "A line doesn't need equal steps -- only a steady overall direction. Do the y-values keep heading the same way?",
+            "praise": "You looked past the uneven steps to the steady direction -- that's the real test."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Points (1,6), (2,9), (3,11), (4,14), (5,16). Association?",
+            "look_for": "Positive linear association. 'No association' diagnoses missing the steady climb."
+          },
+          {
+            "prompt": "Points (1,8), (2,2), (3,9), (4,1), (5,7). Association?",
+            "look_for": "None -- the points bounce. Calling it positive means the student judged by size, not trend."
+          }
+        ]
+      },
+      "fluency_source": "8DSP2-F1",
+      "sentence_starters": [
+        "As x increases, the y-values mostly ___, so this is a ___ association.",
+        "A straight line ___ a reasonable model here because the points ___ trend in one direction."
+      ],
+      "worked_solution": {
+        "stem": "Points: (1,4), (2,7), (3,9), (4,12), (5,15). Do these suggest a linear association? If so, which direction?",
+        "answer": "Yes -- a positive linear association",
+        "steps": [
+          {
+            "math": "read y left to right: 4, 7, 9, 12, 15",
+            "annotation": "List the y-values in x-order to see the trend."
+          },
+          {
+            "math": "each step: +3, +2, +3, +3",
+            "annotation": "Check the direction between consecutive points -- all increases."
+          },
+          {
+            "math": "steady climb, no reversals",
+            "annotation": "A steady direction (not equal steps) means a linear association."
+          },
+          {
+            "math": "=> positive linear association",
+            "annotation": "Because y rises as x grows, a straight line is a reasonable model."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Points: (1,20), (2,17), (3,15), (4,12), (5,9). Do these suggest a linear association? If so, which direction?",
+        "answer": "Yes -- a negative linear association",
+        "steps": [
+          {
+            "math": "read y left to right: 20, 17, 15, 12, 9",
+            "annotation": "List the y-values in x-order.",
+            "given": true
+          },
+          {
+            "math": "each step: -3, -2, -3, -3",
+            "annotation": "Check the direction between points -- all decreases.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Is the direction steady (no reversals)?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the association and its direction.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8DSP2-S2",
+      "name": "Interpret the slope and y-intercept of a given line of best fit in context",
+      "column": "looking_back",
+      "parent_standard": "8.DSP.2",
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP2-F2"
+      },
+      "i_do_script": "When a scatter plot already has its line of best fit drawn and its equation given, my job is to say what the two numbers MEAN in the story. The slope is a rate: how much the y-quantity changes for each 1 more of the x-quantity. The y-intercept is the starting value: the y-quantity when x is 0. Watch a line y = 4.5x + 50 for test score (y) versus hours studied (x): the slope 4.5 means the score goes up about 4.5 points for each extra hour studied, and the intercept 50 means a student who studies 0 hours is predicted to score about 50.",
+      "canonical_error": {
+        "pattern": "Swaps the roles of slope and y-intercept -- reads the y-intercept as the rate of change and the slope as the starting value.",
+        "example": "For a line of best fit y = 4.5x + 50 (test score vs hours studied), the student says '50 means the score rises 50 points per hour' and '4.5 is the score with no studying,' reversing the two.",
+        "why": "The slope is the amount y changes for each 1-unit increase in x -- a rate ('per hour'). The y-intercept is the value of y when x = 0 -- a starting amount. The student attaches the wrong role to each number, so both interpretations come out backward."
+      },
+      "item_template": "A scatter plot with a given line of best fit whose slope-intercept equation is provided (data described in text). Student interprets the slope or y-intercept in the context. Multiple choice, DOK 2.",
+      "sample_items": [
+        {
+          "stem": "Line of best fit y = 4.5x + 50, where x is hours studied and y is test score. What does the slope 4.5 mean?",
+          "answer": "The test score rises about 4.5 points for each additional hour studied."
+        },
+        {
+          "stem": "For that same line, what does the y-intercept 50 mean?",
+          "answer": "A student who studies 0 hours is predicted to score about 50."
+        },
+        {
+          "stem": "A line of best fit is y = 20x + 15 for weeks saving (x) and total savings (y). What does 15 represent?",
+          "answer": "The starting savings (at 0 weeks) is about $15."
+        },
+        {
+          "stem": "For y = 20x + 15, what does the slope 20 mean?",
+          "answer": "Savings increase about $20 for each additional week."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which number is the rate, and which is the start?",
+        "prompt": "In y = mx + b, m (the slope) is the change PER one x -- a rate. b (the y-intercept) is the value when x = 0 -- the starting amount. Label each number with its role before you write the sentence.",
+        "praise": "You matched slope to the rate and intercept to the starting value -- that's the interpretation nailed."
+      },
+      "vocabulary": [
+        {
+          "term": "Line of best fit",
+          "definition": "A straight line drawn to pass as close as possible to the points of a scatter plot."
+        },
+        {
+          "term": "Slope",
+          "definition": "The rate of change: how much y changes for each 1-unit increase in x."
+        },
+        {
+          "term": "y-intercept",
+          "definition": "The value of y when x = 0; where the line crosses the y-axis."
+        },
+        {
+          "term": "In context",
+          "definition": "Explained using the real-world quantities the x and y stand for."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP2-S3",
+        "if_fail": "8DSP2-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Line of best fit y = 3x + 12, x = number of items, y = total cost in dollars.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which number is the rate per item, and which is the cost when there are 0 items?"
+        },
+        {
+          "kind": "say",
+          "text": "The slope 3 is the rate: each additional item adds about $3. The intercept 12 is the start: with 0 items the cost is about $12 (a base fee)."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says '12 is the cost per item,' ask 'is 12 sitting with the x, or by itself? The number with x is the per-item rate.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: for y = 5x + 8, x = hours, y = distance, interpret both the 5 and the 8."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "In y = mx + b, which letter is the rate of change?",
+          "answer": "m (the slope)."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "In y = 7x + 30, what is the y-intercept?",
+          "answer": "30."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Line of best fit y = 4.5x + 50 (test score vs hours studied). Interpret the slope in context.",
+          "answer": "The score rises about 4.5 points for each extra hour studied.",
+          "notes": "The model item; slope as a rate."
+        },
+        {
+          "difficulty": "core",
+          "stem": "For that same line, interpret the y-intercept 50 in context.",
+          "answer": "With 0 hours of studying, the predicted score is about 50.",
+          "notes": "Intercept as a starting value."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Priya interpreted the line y = 6x + 40 for distance (y, miles) vs time (x, hours). Find and fix her mistake.",
+          "shown_work": [
+            "Priya wrote: 'The 40 means the car goes 40 miles for every hour.'",
+            "'The 6 means the trip started 6 miles from home.'"
+          ],
+          "answer": "Priya swapped the two. The slope 6 is the rate -- 6 miles for each hour. The y-intercept 40 is the starting value -- 40 miles from home at time 0.",
+          "notes": "Canonical error: slope and intercept roles reversed."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Line of best fit y = 2x + 9 for number of items (x) and total cost (y, dollars). What does 9 represent?",
+          "answer": "A base fee of about $9 when 0 items are bought.",
+          "notes": "Intercept as a base fee."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A line of best fit has y-intercept 50 and slope 4.5. Write ONE sentence interpreting each, for the test-score context.",
+          "answer": "Slope: the score rises about 4.5 points per extra hour studied. Intercept: a student who studies 0 hours is predicted to score about 50.",
+          "notes": "Produce both interpretations in context."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two lines of best fit have the same y-intercept but different slopes. What does that tell you about the two situations?",
+          "answer": "They start at the same value when x = 0, but one changes faster than the other (a steeper slope means a larger change per unit of x).",
+          "notes": "Compares meaning of slope vs intercept."
+        }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Rate or Start?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Situation cards (equation + context)",
+            "Meaning cards (a slope meaning and an intercept meaning for each)"
+          ],
+          "instructions": "1. For each equation card, find its correct SLOPE-meaning card and its correct INTERCEPT-meaning card.\n2. Several meaning cards are swapped (slope meaning worded as a start, intercept worded as a rate) -- set those aside as traps.\n3. To claim a match, say 'this is the per-unit rate' or 'this is the value at zero.'\n4. Debrief: what word signals a rate ('per', 'each') versus a start ('at 0', 'starting')?",
+          "content": {
+            "pairs": [
+              {
+                "left": "y = 4.5x + 50, slope",
+                "right": "score rises ~4.5 points per hour studied"
+              },
+              {
+                "left": "y = 4.5x + 50, intercept",
+                "right": "score of ~50 with 0 hours studied"
+              },
+              {
+                "left": "y = 20x + 15, slope",
+                "right": "savings rise ~$20 each week"
+              },
+              {
+                "left": "y = 20x + 15, intercept",
+                "right": "starting savings of ~$15"
+              },
+              {
+                "left": "y = 2x + 9, intercept",
+                "right": "base fee of ~$9 for 0 items"
+              }
+            ],
+            "decoys": [
+              "cost rises ~$9 per item",
+              "score of ~4.5 with 0 hours"
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Which Number Is the Rate?",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Priya's swapped interpretation"
+          ],
+          "instructions": "1. Read Priya's claim about y = 6x + 40 (distance vs time).\n2. Circle the number sitting WITH the x -- that one is the per-hour rate.\n3. Circle the number sitting ALONE -- that one is the value at time 0.\n4. Rewrite both sentences with the roles fixed, using 'per hour' and 'at the start.'",
+          "content": {
+            "worked_problem": "y = 6x + 40 (distance in miles vs time in hours). Priya said 40 is the rate per hour and 6 is the starting distance.",
+            "error_step": "Priya swapped slope and intercept.",
+            "why": "The number with x (6) is the per-hour rate; the number alone (40) is the distance at time 0."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The slope/intercept swap is a precise, baitable error; find-and-fix that labels each number's role corrects it."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'the number with x is the per-unit rate; the number alone is the start' models the exact sorting students skip."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "A journal sentence-frame for slope ('per') versus intercept ('at 0') consolidates the two interpretations in the student's own words."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which number is sitting with the x, and which is alone?",
+          "The slope tells you the change per WHAT?",
+          "What is the y-value when x = 0, and what does that mean in the story?",
+          "Does 'per hour' describe the slope or the intercept?",
+          "Rewrite the slope's meaning using the word 'each.'"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student swaps the roles of slope and y-intercept (intercept read as the rate, slope as the start).",
+            "say": "In y = mx + b, m (the slope) is the change PER one x -- a rate. b (the y-intercept) is the value when x = 0 -- the starting amount. Label each number with its role before you write the sentence.",
+            "praise": "You matched slope to the rate and intercept to the starting value -- that's the interpretation nailed."
+          },
+          {
+            "if_you_see": "Student interprets the slope but forgets to tie it to the real-world x and y quantities.",
+            "say": "Say it in the story's words: '___ (y) changes by the slope for each 1 more ___ (x).' Name the quantities.",
+            "praise": "You put the rate back into the context -- that's what 'interpret' asks for."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "y = 3x + 12, x = items, y = cost ($). What does 3 mean?",
+            "look_for": "Cost rises ~$3 per item. 'Cost is $3 at 0 items' diagnoses the slope/intercept swap."
+          },
+          {
+            "prompt": "For that same line, what does 12 mean?",
+            "look_for": "A base cost of ~$12 at 0 items. '$12 per item' means the roles are reversed."
+          }
+        ]
+      },
+      "fluency_source": "8DSP2-F2",
+      "sentence_starters": [
+        "The slope ___ means the ___ changes by about ___ for each additional ___.",
+        "The y-intercept ___ means that when ___ is 0, the ___ is about ___."
+      ],
+      "worked_solution": {
+        "stem": "A line of best fit is y = 4.5x + 50, where x is hours studied and y is test score. What does the slope 4.5 mean, and what does the y-intercept 50 mean?",
+        "answer": "Slope: score rises ~4.5 points per hour studied. Intercept: ~50 with 0 hours studied.",
+        "steps": [
+          {
+            "math": "y = 4.5x + 50 -> m = 4.5, b = 50",
+            "annotation": "Pick out the slope (with x) and the y-intercept (alone)."
+          },
+          {
+            "math": "slope 4.5 = change in score per 1 hour",
+            "annotation": "Slope is a rate: points gained for each extra hour studied."
+          },
+          {
+            "math": "intercept 50 = score when x = 0",
+            "annotation": "Intercept is the starting value: the score with no studying."
+          },
+          {
+            "math": "state both in context",
+            "annotation": "'~4.5 points per hour' and '~50 with 0 hours studied.'"
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A line of best fit is y = 20x + 15, where x is weeks saving and y is total savings ($). Interpret the slope 20 and the y-intercept 15.",
+        "answer": "Slope: savings rise ~$20 each week. Intercept: ~$15 starting savings.",
+        "steps": [
+          {
+            "math": "y = 20x + 15 -> m = 20, b = 15",
+            "annotation": "Identify the slope and the y-intercept.",
+            "given": true
+          },
+          {
+            "math": "slope 20 = dollars added per 1 week",
+            "annotation": "Slope is the per-week rate of saving.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "What does b = 15 mean when x = 0?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write both meanings in the savings context.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8DSP2-S3",
+      "name": "Judge whether a proposed line is a good or poor fit to a scatter plot",
+      "column": "on_grade",
+      "parent_standard": "8.DSP.2",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP2-S1"
+      },
+      "i_do_script": "Once data trends like a line, I judge how WELL a proposed line fits by how close it passes to the points. A good fit threads the middle of the cloud: it stays near most points, with about as many points above the line as below it. A poor fit leaves the points far away, sits entirely above or below them, or runs the wrong direction. Watch the data (1,6), (2,6), (3,10), (4,10), (5,13) with the line y = 2x + 3: the points land at +1, -1, +1, -1, and 0 from the line -- all within 1 unit and balanced above and below, so it is a good fit. The line y = 2x + 8 leaves every point 4 to 6 units below it, so that line is a poor fit.",
+      "canonical_error": {
+        "pattern": "Calls a line a good fit if it passes through a couple of the points (often the first and last), instead of checking that it stays close to MOST points with about as many above as below.",
+        "example": "For data (1,5), (2,6), (3,7), (4,8), (5,20), a student says y = 3.75x + 1.25 is a great fit 'because it goes right through (1,5) and (5,20),' even though it misses the four lower points by 3 to 9 units.",
+        "why": "A good-fit line sits in the MIDDLE of the whole cloud, close to as many points as possible with roughly balanced amounts above and below. Touching two points -- especially an extreme one -- says nothing about the rest; the line can still be far from the bulk of the data, which is a poor fit."
+      },
+      "item_template": "A small (x, y) data set listed in text plus one or two candidate lines given by equation. Student judges whether a line is a good or poor fit, or picks the better of two, and explains using closeness/balance. Short response. (No figure -- lines described by equation.)",
+      "sample_items": [
+        {
+          "stem": "Data: (1,6), (2,6), (3,10), (4,10), (5,13). Is y = 2x + 3 a good fit? Explain.",
+          "answer": "Good fit -- the points sit +1, -1, +1, -1, 0 from the line, all within 1 unit and balanced above and below."
+        },
+        {
+          "stem": "For that same data, is y = 2x + 8 a good fit? Explain.",
+          "answer": "Poor fit -- every point is 4 to 6 units below the line, so the line sits entirely above the data."
+        },
+        {
+          "stem": "Data: (1,14), (2,10), (3,10), (4,6), (5,5). Which fits better: y = -2x + 15 or y = 2x + 3?",
+          "answer": "y = -2x + 15 -- it follows the downward trend and passes within 1 unit of every point; y = 2x + 3 runs upward while the data falls."
+        },
+        {
+          "stem": "A line passes exactly through 2 of 8 points but is far from the other 6. Is it necessarily a good fit?",
+          "answer": "No -- a good fit stays close to MOST points; touching 2 while missing 6 is a poor fit."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Does the line stay close to MOST points, or just touch two?",
+        "prompt": "Check every point: is the line near it, and are about as many points above the line as below? A line that hits two points but leaves the rest far away is a poor fit.",
+        "praise": "You checked closeness to all the points and the balance above and below -- that's how you judge fit."
+      },
+      "vocabulary": [
+        {
+          "term": "Model fit",
+          "definition": "How closely a line passes to the points of a scatter plot."
+        },
+        {
+          "term": "Good fit",
+          "definition": "A line that stays close to most points, balanced above and below."
+        },
+        {
+          "term": "Residual (informal)",
+          "definition": "How far a point sits above or below the line."
+        },
+        {
+          "term": "Trend line",
+          "definition": "A straight line drawn to summarize the direction of the data."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP2-S4",
+        "if_fail": "8DSP2-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write data (1,5), (2,8), (3,10), (4,13), (5,15) and the line y = 2.5x + 3."
+        },
+        {
+          "kind": "ask",
+          "text": "For each point, is it just above or just below the line, and by how much?"
+        },
+        {
+          "kind": "say",
+          "text": "Compare each y to 2.5x + 3: the points land within about half a unit, some above and some below -- close and balanced, so it's a good fit."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 'good because it hits (1,5),' ask 'and what about the other four points -- is the line close to them too?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: for that data, is the flat line y = 10 a good fit? Why not?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A good-fit line should be close to how many of the points -- a couple, or most?",
+          "answer": "Most of them."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "If a line sits entirely above every data point, is it a good fit?",
+          "answer": "No -- a good fit runs through the middle, with points above and below."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Data: (1,6), (2,6), (3,10), (4,10), (5,13). Is y = 2x + 3 a good fit? Explain using closeness and balance.",
+          "answer": "Good fit -- points are +1, -1, +1, -1, 0 from the line: all within 1 unit and about balanced above and below.",
+          "notes": "The model good-fit item."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Same data. Explain why y = 2x + 8 is a poor fit.",
+          "answer": "Every point is 4 to 6 units below the line, so it sits above all the data instead of through the middle.",
+          "notes": "Right slope, wrong height -- poor fit."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Sam judged a fit for data (1,5), (2,6), (3,7), (4,8), (5,20). Find and fix his mistake.",
+          "shown_work": [
+            "Sam wrote: 'I drew the line y = 3.75x + 1.25 through (1,5) and (5,20).'",
+            "'It hits two points exactly, so it is a great fit.'"
+          ],
+          "answer": "Hitting two points is not the test. Check the rest: at x = 2, 3, 4 the line predicts about 8.75, 12.5, 16.25 but the data is 6, 7, 8 -- off by 3 to 8 units. The line chases the high point (5,20) and misses the bulk, so it is a POOR fit.",
+          "notes": "Canonical error: 'touches two points' judged as good fit."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Data: (1,14), (2,10), (3,10), (4,6), (5,5). Is y = -2x + 15 a good fit? Explain.",
+          "answer": "Good fit -- it follows the downward trend and each point is within 1 unit (+1, -1, +1, -1, 0), balanced above and below.",
+          "notes": "Negative-slope good fit."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "For data (1,3), (2,5), (3,7), (4,9), (5,11), write an equation of a line you think fits well, and say how you checked.",
+          "answer": "y = 2x + 1 fits exactly (it passes through every point); I checked that each point is on or very near the line with none far off.",
+          "notes": "Produce-your-own fit and justify."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two lines both stay close to the data, but line A has 4 points above and 1 below while line B has 3 above and 2 below. Which is likely the better fit, and why?",
+          "answer": "Line B -- a good fit is balanced with about as many points above as below; line A leans below the data, suggesting it sits a bit too high.",
+          "notes": "Balance as a tiebreaker between close lines."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Good Fit or Poor Fit",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 10 (data set + candidate line) pairs written in text"
+          ],
+          "instructions": "1. Sort each card into 'Good fit' or 'Poor fit.'\n2. For each card, plug two or three x-values into the line and compare to the data's y-values.\n3. Rule: good fit = close to most points AND balanced above/below; poor fit = far off, all on one side, or wrong direction.\n4. Debrief: find a poor-fit card whose line still touches a data point -- explain why it's still poor.",
+          "content": {
+            "categories": [
+              "Good fit",
+              "Poor fit"
+            ],
+            "cards": [
+              {
+                "text": "(1,6)(2,6)(3,10)(4,10)(5,13) with y=2x+3",
+                "category": "Good fit"
+              },
+              {
+                "text": "(1,6)(2,6)(3,10)(4,10)(5,13) with y=2x+8",
+                "category": "Poor fit"
+              },
+              {
+                "text": "(1,14)(2,10)(3,10)(4,6)(5,5) with y=-2x+15",
+                "category": "Good fit"
+              },
+              {
+                "text": "(1,14)(2,10)(3,10)(4,6)(5,5) with y=2x+3",
+                "category": "Poor fit"
+              },
+              {
+                "text": "(1,5)(2,6)(3,7)(4,8)(5,20) with y=3.75x+1.25",
+                "category": "Poor fit"
+              },
+              {
+                "text": "(1,3)(2,5)(3,7)(4,9)(5,11) with y=2x+1",
+                "category": "Good fit"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Touching Two Points Isn't Enough",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Slip with Sam's two-point line",
+            "Blank axes for plotting"
+          ],
+          "instructions": "1. Read Sam's claim that a line through (1,5) and (5,20) is a great fit.\n2. Plug x = 2, 3, 4 into the line and compare to the actual y-values (6, 7, 8).\n3. Mark how far the line misses each middle point.\n4. Write the rule: a good fit is close to MOST points, not just two -- and beware a line chasing one high point.",
+          "content": {
+            "worked_problem": "Data (1,5), (2,6), (3,7), (4,8), (5,20). Sam said y = 3.75x + 1.25 is a great fit because it hits (1,5) and (5,20).",
+            "error_step": "Sam judged the fit by two points and ignored the rest.",
+            "why": "At x = 2, 3, 4 the line is 3 to 9 units above the data; it chases the outlier (5,20) and misses the bulk, so it is a poor fit."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Plotting the points and laying candidate lines over them (representational) makes 'closeness' and 'balanced above/below' something students can see and measure."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The 'it touches two points so it fits' error is precise and baitable; find-and-fix that checks the missed points corrects it."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'which line fits better?' forces students to defend closeness-and-balance reasoning aloud."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "For each point, how far above or below the line does it sit?",
+          "Are about as many points above the line as below it?",
+          "Does this line run the same direction as the data trends?",
+          "Is the line close to MOST points, or just a couple?",
+          "If a line touches two points but misses the rest, is that a good fit?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student calls a line a good fit because it passes through a couple of points, ignoring how far it is from the rest.",
+            "say": "Check every point: is the line near it, and are about as many points above the line as below? A line that hits two points but leaves the rest far away is a poor fit.",
+            "praise": "You checked closeness to all the points and the balance above and below -- that's how you judge fit."
+          },
+          {
+            "if_you_see": "Student rejects a good fit because the line doesn't pass exactly through every point.",
+            "say": "A best-fit line rarely hits every point -- it just needs to be CLOSE to most, with points balanced above and below. Small misses are fine.",
+            "praise": "You accepted a close, balanced line instead of demanding a perfect hit -- that's a realistic fit."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Data (1,4), (2,6), (3,8), (4,10). Is y = 2x + 2 a good fit?",
+            "look_for": "Good fit -- it passes through every point. Calling it poor means the student misjudged closeness."
+          },
+          {
+            "prompt": "Data (1,4), (2,6), (3,8), (4,10). Is y = 2x + 9 a good fit?",
+            "look_for": "Poor fit -- the line sits ~5 units above every point. 'Good' means the student ignored the gap."
+          }
+        ]
+      },
+      "fluency_source": "8DSP2-F1",
+      "sentence_starters": [
+        "The line is a ___ fit because it passes ___ the points, with about as many ___ as ___.",
+        "Line ___ fits better because it stays closer to ___ of the points."
+      ],
+      "worked_solution": {
+        "stem": "Data: (1,6), (2,6), (3,10), (4,10), (5,13). Is the line y = 2x + 3 a good fit or a poor fit? Explain.",
+        "answer": "Good fit",
+        "steps": [
+          {
+            "math": "compare each point to 2x + 3",
+            "annotation": "Plug each x into the line and compare to the data's y."
+          },
+          {
+            "math": "gaps: +1, -1, +1, -1, 0",
+            "annotation": "Each point sits at most 1 unit from the line."
+          },
+          {
+            "math": "2 points above, 2 below, 1 on the line",
+            "annotation": "The points are balanced above and below."
+          },
+          {
+            "math": "=> good fit",
+            "annotation": "Close to every point and balanced -- a good fit."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Data: (1,14), (2,10), (3,10), (4,6), (5,5). Is y = -2x + 15 a good fit or a poor fit? Explain.",
+        "answer": "Good fit",
+        "steps": [
+          {
+            "math": "compare each point to -2x + 15",
+            "annotation": "Plug each x into the line and compare to the data's y.",
+            "given": true
+          },
+          {
+            "math": "gaps: +1, -1, +1, -1, 0",
+            "annotation": "Each point is within 1 unit of the line.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Are the points balanced above and below the line?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State good or poor fit and why.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8DSP2-S4",
+      "name": "Interpret the slope and y-intercept of a linear modeling equation in context",
+      "column": "on_grade",
+      "parent_standard": "8.DSP.2",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP2-S2"
+      },
+      "i_do_script": "A modeling equation in y = mx + b form tells a story through its two numbers, and the slope can be negative. The slope is the per-unit rate of change -- how much y changes for each 1 more x -- and its SIGN tells the direction. Watch y = -4x + 50 for a plane's distance from a tower (y) after x minutes: the slope -4 means the plane moves 4 miles CLOSER each minute (down 4 per minute), and the intercept 50 means it starts 50 miles away at 0 minutes. A slope of -2/3 in y = -2/3 x + 25 means y drops 2/3 for EVERY 1 more x -- a repeating per-unit decrease, not a one-time drop.",
+      "canonical_error": {
+        "pattern": "Reads a negative slope as a single total change (or ignores its sign) instead of a per-unit rate of decrease.",
+        "example": "For y = -2/3 x + 25 (flour vs batches), the student says 'the flour decreases by 2/3 pound in total' instead of 'decreases by 2/3 pound for EACH batch.'",
+        "why": "Slope is a rate: y changes by m for every 1-unit increase in x. A negative slope means y goes DOWN by |m| per unit -- repeatedly, not once. The sign gives the direction (decreasing) and the magnitude gives the per-unit amount; dropping either misreads the model."
+      },
+      "item_template": "A slope-intercept modeling equation (often with a negative or fractional slope) with a real context in text, sometimes with a scatter plot. Student interprets the rate of change or intercept in context. Multiple choice, DOK 2.",
+      "sample_items": [
+        {
+          "stem": "y = -4x + 50 models a plane's distance from a tower (y, miles) after x minutes. What does -4 represent?",
+          "answer": "The plane moves 4 miles closer to the tower each minute (distance decreases 4 miles per minute)."
+        },
+        {
+          "stem": "y = -2/3 x + 25 models flour left (y, pounds) after x batches. Which describes the rate of change?",
+          "answer": "The flour decreases by 2/3 pound for each batch of cookies made."
+        },
+        {
+          "stem": "For y = -2/3 x + 25, what does the y-intercept 25 mean?",
+          "answer": "The baker starts with about 25 pounds of flour (at 0 batches)."
+        },
+        {
+          "stem": "y = 3x - 5 models temperature (y) over hours (x). What does the slope 3 mean?",
+          "answer": "The temperature rises about 3 degrees each hour."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is that a one-time change, or a change per unit?",
+        "prompt": "The slope is a RATE. A slope of -2/3 means y goes DOWN 2/3 for EACH 1 more x -- every batch, not just once. Say the direction (down) and the 'per each' amount together.",
+        "praise": "You read the slope as a per-unit rate and kept its sign -- that's the model interpreted right."
+      },
+      "vocabulary": [
+        {
+          "term": "Modeling equation",
+          "definition": "An equation like y = mx + b that describes how two real quantities are related."
+        },
+        {
+          "term": "Rate of change",
+          "definition": "The slope: how much y changes for each 1-unit increase in x."
+        },
+        {
+          "term": "Negative slope",
+          "definition": "A slope less than 0; y decreases as x increases."
+        },
+        {
+          "term": "Slope-intercept form",
+          "definition": "y = mx + b, where m is the slope and b is the y-intercept."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP2-S5",
+        "if_fail": "8DSP2-S2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'y = -5x + 80 models battery percent (y) after x hours of use.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Does the battery go up or down each hour, and by how much? What does 80 mean?"
+        },
+        {
+          "kind": "say",
+          "text": "The slope -5 means the battery drops 5% for EACH hour of use. The intercept 80 means it started at about 80% at 0 hours."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 'the battery drops 5% total,' ask 'is that once, or for every hour? The slope is a per-hour rate.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: y = -2x + 30 models candy left (y) after x days -- interpret the -2 and the 30."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "In y = -4x + 50, is the slope positive or negative? Does y rise or fall as x grows?",
+          "answer": "Negative; y falls."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A slope of -2/3 means y changes by how much for each 1 more x?",
+          "answer": "It goes down 2/3."
+        },
+        {
+          "difficulty": "core",
+          "stem": "y = -4x + 50 models a plane's distance from a tower (miles) after x minutes. Interpret -4 in context.",
+          "answer": "The plane gets 4 miles closer to the tower each minute.",
+          "notes": "Negative slope as a per-minute decrease."
+        },
+        {
+          "difficulty": "core",
+          "stem": "y = -2/3 x + 25 models flour left (lb) after x batches. Interpret the slope.",
+          "answer": "The flour decreases by 2/3 pound for each batch made.",
+          "notes": "The spec's baker; per-batch decrease."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Lena interpreted y = -2/3 x + 25 (flour left vs batches). Find and fix her mistake.",
+          "shown_work": [
+            "Lena wrote: 'The slope -2/3 means the baker loses 2/3 pound of flour in total.'",
+            "'After that one loss, the flour stays the same.'"
+          ],
+          "answer": "The slope is a per-batch RATE, not a one-time loss. It means the flour drops 2/3 pound for EACH batch -- so after 3 batches it has dropped 2 pounds, after 6 batches 4 pounds, and so on.",
+          "notes": "Canonical error: negative slope read as a single total change."
+        },
+        {
+          "difficulty": "core",
+          "stem": "y = -5x + 90 models battery percent after x hours. What does 90 mean, and what does -5 mean?",
+          "answer": "90: the battery starts at about 90% at 0 hours. -5: it drops about 5% for each hour of use.",
+          "notes": "Both features, negative slope."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two models are y = -3x + 40 and y = -6x + 40. Both start at 40. Which quantity drops faster, and how do you know?",
+          "answer": "The second (slope -6) drops faster -- 6 per unit versus 3 per unit; a steeper negative slope means a larger decrease per step.",
+          "notes": "Compare magnitude of negative slopes."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why the slope in y = -2/3 x + 25 is written as a RATE and not just '2/3 pounds.'",
+          "answer": "It is 2/3 pound PER BATCH -- a change for each 1 more batch. Without 'per batch' it would sound like a one-time amount, but the slope repeats every unit of x.",
+          "notes": "Explains the 'per unit' meaning of slope."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Per Each, or All at Once?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of equations with negative/fractional slopes",
+            "Interpretation cards"
+          ],
+          "instructions": "1. Match each equation to the interpretation that treats the slope as a PER-UNIT rate.\n2. Set aside interpretation cards that say the change happens only once ('in total,' 'a one-time drop').\n3. To claim a match, say the direction (up/down) and the 'per each' amount.\n4. Debrief: how can you tell a rate ('per batch') from a one-time change ('in total')?",
+          "content": {
+            "categories": [
+              "Correct: per-unit rate",
+              "Wrong: one-time change"
+            ],
+            "cards": [
+              {
+                "text": "y=-2/3x+25: flour drops 2/3 lb per batch",
+                "category": "Correct: per-unit rate"
+              },
+              {
+                "text": "y=-2/3x+25: flour drops 2/3 lb in total",
+                "category": "Wrong: one-time change"
+              },
+              {
+                "text": "y=-4x+50: plane 4 mi closer each minute",
+                "category": "Correct: per-unit rate"
+              },
+              {
+                "text": "y=-4x+50: plane 4 mi from the tower total",
+                "category": "Wrong: one-time change"
+              },
+              {
+                "text": "y=-5x+90: battery drops 5% each hour",
+                "category": "Correct: per-unit rate"
+              },
+              {
+                "text": "y=-5x+90: battery drops 5% one time",
+                "category": "Wrong: one-time change"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "The Slope That Kept Going",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Lena's one-time-loss claim"
+          ],
+          "instructions": "1. Read Lena's claim that the slope -2/3 is a single total loss of flour.\n2. Make a tiny table: flour after 0, 3, and 6 batches using y = -2/3 x + 25.\n3. Point out that the flour keeps dropping each batch -- the change repeats.\n4. Write the rule: a slope is a change PER unit of x, so it applies every step.",
+          "content": {
+            "worked_problem": "y = -2/3 x + 25 (flour left vs batches). Lena said the slope is a one-time 2/3-pound loss.",
+            "error_step": "Lena treated the per-batch rate as a single total change.",
+            "why": "At 0, 3, 6 batches the flour is 25, 23, 21 -- it drops 2/3 pound for EACH batch, so the change repeats."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The 'negative slope is a one-time total change' error is precise and baitable; find-and-fix with a tiny table corrects it."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'down 2/3 for EACH batch, so it keeps dropping' models the per-unit reading students skip."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "A journal frame ('the slope means ___ per ___, so after n units...') consolidates slope as a repeating rate in context."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is the slope positive or negative -- does y rise or fall as x grows?",
+          "Does the slope happen once, or for EACH 1 more x?",
+          "What does the y-intercept tell you at x = 0 in this story?",
+          "Say the slope's meaning using the words 'for each.'",
+          "After 3 units of x, how much has y changed? Does that prove it's a rate?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reads a negative slope as a single total change or drops its sign, instead of a per-unit decrease.",
+            "say": "The slope is a RATE. A slope of -2/3 means y goes DOWN 2/3 for EACH 1 more x -- every batch, not just once. Say the direction (down) and the 'per each' amount together.",
+            "praise": "You read the slope as a per-unit rate and kept its sign -- that's the model interpreted right."
+          },
+          {
+            "if_you_see": "Student interprets a fractional slope's numerator and denominator backward (2/3 read as 3 per 2).",
+            "say": "For slope 2/3, y changes 2 for every 3 of x -- rise over run. Keep the top number as the y-change and the bottom as the x-change.",
+            "praise": "You kept the fraction as y-change over x-change -- that's the rate read correctly."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "y = -6x + 100 models water (liters) in a tank after x minutes. What does -6 mean?",
+            "look_for": "The tank loses 6 liters each minute. 'Loses 6 liters total' diagnoses the one-time-change error."
+          },
+          {
+            "prompt": "For that model, what does 100 mean?",
+            "look_for": "The tank starts with 100 liters at 0 minutes. Confusing it with the rate means slope/intercept roles slipped."
+          }
+        ]
+      },
+      "fluency_source": "8DSP2-F2",
+      "sentence_starters": [
+        "The slope ___ means the ___ goes ___ by ___ for each additional ___.",
+        "The y-intercept ___ means that at ___ = 0, the ___ is about ___."
+      ],
+      "worked_solution": {
+        "stem": "y = -2/3 x + 25 models the pounds of flour a baker has (y) after x batches of cookies. Interpret the slope and the y-intercept.",
+        "answer": "Slope: flour drops 2/3 pound per batch. Intercept: ~25 pounds to start.",
+        "steps": [
+          {
+            "math": "y = -2/3 x + 25 -> m = -2/3, b = 25",
+            "annotation": "Identify the slope (with x) and the y-intercept (alone)."
+          },
+          {
+            "math": "m = -2/3 is negative -> flour decreases",
+            "annotation": "The sign tells the direction: flour goes down."
+          },
+          {
+            "math": "|m| = 2/3 per 1 batch",
+            "annotation": "The magnitude is the per-batch rate -- 2/3 pound for each batch."
+          },
+          {
+            "math": "b = 25 at x = 0",
+            "annotation": "The baker starts with about 25 pounds of flour."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "y = -4x + 50 models a plane's distance from the tower (y, miles) after x minutes. Interpret the slope and the y-intercept.",
+        "answer": "Slope: 4 miles closer per minute. Intercept: 50 miles away to start.",
+        "steps": [
+          {
+            "math": "y = -4x + 50 -> m = -4, b = 50",
+            "annotation": "Identify the slope and the y-intercept.",
+            "given": true
+          },
+          {
+            "math": "m = -4 is negative -> distance decreases",
+            "annotation": "The plane is getting closer as time passes.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "What is the per-minute rate (magnitude of the slope)?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "What does b = 50 mean at 0 minutes?",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8DSP2-S5",
+      "name": "Use the equation to make predictions by interpolation and extrapolation",
+      "column": "on_grade",
+      "parent_standard": "8.DSP.2",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP2-S4"
+      },
+      "i_do_script": "A line of best fit is a prediction machine: put in an x, get a predicted y. I substitute the known value for its matching variable, multiply by the slope FIRST, then add the intercept. Watch y = -2/3 x + 25 for flour (y) after x batches: to predict after 12 batches, y = -2/3(12) + 25 = -8 + 25 = 17 pounds. I also name the prediction: if the x is INSIDE the data range it is interpolation (usually safe); if it is BEYOND the range it is extrapolation (use with care). Twelve batches inside data that ran 1 to 20 is interpolation.",
+      "canonical_error": {
+        "pattern": "Substitutes the given number for the wrong variable, or breaks the order of operations -- adding before multiplying by the slope.",
+        "example": "To predict flour after 12 batches with y = -2/3 x + 25, the student computes -2/3 + 25 x 12 = 299.33, or plugs 12 in for y, instead of y = -2/3(12) + 25 = 17.",
+        "why": "In y = mx + b you substitute the KNOWN quantity for its matching variable (batches -> x), multiply by the slope FIRST, then add the intercept. Putting the value in the wrong variable, or adding the intercept before multiplying, produces a prediction that has nothing to do with the model."
+      },
+      "item_template": "A slope-intercept modeling equation with a data range and a target x, in text (sometimes with a scatter plot). Student computes the predicted y and labels it interpolation or extrapolation. Numeric response plus a short explanation, DOK 2.",
+      "sample_items": [
+        {
+          "stem": "y = -2/3 x + 25 models flour left (y, lb) after x batches. Predict the flour after 12 batches.",
+          "answer": "17 pounds (-2/3 times 12 = -8; -8 + 25 = 17)."
+        },
+        {
+          "stem": "Data ran from x = 1 to x = 20. Is predicting at x = 12 interpolation or extrapolation?",
+          "answer": "Interpolation -- 12 is inside the data range 1 to 20."
+        },
+        {
+          "stem": "y = 3x + 40 models savings (y, $) after x weeks. Predict the savings at week 10.",
+          "answer": "$70 (3 times 10 + 40)."
+        },
+        {
+          "stem": "Data ran from x = 1 to x = 8 weeks. Predicting at x = 20 is which type?",
+          "answer": "Extrapolation -- 20 is beyond the data range 1 to 8."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which variable does the number replace -- and did you multiply first?",
+        "prompt": "Put the known value in for its matching variable (batches -> x). Then multiply by the slope BEFORE adding the intercept: y = m times x, then + b.",
+        "praise": "You substituted into the right variable and multiplied before adding -- that's the prediction done right."
+      },
+      "vocabulary": [
+        {
+          "term": "Interpolation",
+          "definition": "Predicting a y-value for an x INSIDE the range of the data."
+        },
+        {
+          "term": "Extrapolation",
+          "definition": "Predicting a y-value for an x BEYOND the range of the data."
+        },
+        {
+          "term": "Substitute",
+          "definition": "Replace a variable with a known number, then compute."
+        },
+        {
+          "term": "Prediction",
+          "definition": "A y-value estimated from the model for a chosen x."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP2-S6",
+        "if_fail": "8DSP2-S4"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'y = 1.5x + 4 models plant height (y, cm) after x weeks; data from x = 1 to x = 10. Predict at x = 6.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which variable gets the 6? What do we do first -- multiply or add?"
+        },
+        {
+          "kind": "say",
+          "text": "The 6 is weeks, so it goes in for x. Multiply first: 1.5 times 6 = 9, then add 4 -> 13 cm. And 6 is inside 1 to 10, so this is interpolation."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 1.5 + 4 times 6, ask 'what comes first, the slope times x or the +4?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: for that model, predict at x = 8, and say if it's interpolation or extrapolation."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "In y = 3x + 40, what do you compute first to predict at x = 10?",
+          "answer": "3 times 10 (multiply the slope by x), then add 40."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Data runs x = 1 to 15. Is x = 25 inside or outside the data range?",
+          "answer": "Outside (so a prediction there is extrapolation)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "y = -2/3 x + 25 models flour left (lb) after x batches. Predict the flour after 12 batches.",
+          "answer": "17 pounds (-2/3 times 12 = -8; -8 + 25 = 17).",
+          "notes": "The spec's baker prediction."
+        },
+        {
+          "difficulty": "core",
+          "stem": "y = 3x + 40 models savings ($) after x weeks. Predict at week 10, and label it if the data ran weeks 1 to 12.",
+          "answer": "$70; interpolation (10 is inside 1 to 12).",
+          "notes": "Predict + label."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Marco predicted flour after 12 batches using y = -2/3 x + 25. Find and fix his mistake.",
+          "shown_work": [
+            "Marco wrote: 'y = -2/3 + 25 times 12.'",
+            "'y = -2/3 + 300 = 299.33 pounds.'"
+          ],
+          "answer": "Marco added before multiplying and multiplied the wrong number. Substitute x = 12 and multiply the SLOPE by it first: y = -2/3(12) + 25 = -8 + 25 = 17 pounds.",
+          "notes": "Canonical error: wrong order / wrong substitution."
+        },
+        {
+          "difficulty": "core",
+          "stem": "y = 1.5x + 4 models plant height (cm) after x weeks. Predict the height at week 6.",
+          "answer": "13 cm (1.5 times 6 = 9; 9 + 4 = 13).",
+          "notes": "Fractional slope, clean product."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Using y = 3x + 40, for what week is the predicted savings $100? Show how you undo the equation.",
+          "answer": "Week 20: 100 = 3x + 40 -> 60 = 3x -> x = 20.",
+          "notes": "Reverse direction: solve for x given y."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "The data for y = -2/3 x + 25 ran from x = 1 to x = 20. A classmate predicts at x = 30 and calls it interpolation. Is that right? Explain.",
+          "answer": "No -- 30 is beyond the data range (1 to 20), so it is extrapolation, not interpolation.",
+          "notes": "Correct the interp/extrap label."
+        }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Predict, Then Label",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Cards: equation + target x + data range",
+            "Answer cards: predicted y",
+            "Label cards: interpolation / extrapolation"
+          ],
+          "instructions": "1. For each situation card, compute the predicted y (multiply the slope by x first, then add the intercept).\n2. Match it to its predicted-y card.\n3. Then attach the correct label -- interpolation if x is inside the data range, extrapolation if beyond.\n4. Debrief: which predictions should we trust more, and why?",
+          "content": {
+            "pairs": [
+              {
+                "left": "y=-2/3x+25 at x=12 (data 1-20)",
+                "right": "17, interpolation"
+              },
+              {
+                "left": "y=3x+40 at x=10 (data 1-12)",
+                "right": "70, interpolation"
+              },
+              {
+                "left": "y=1.5x+4 at x=6 (data 1-10)",
+                "right": "13, interpolation"
+              },
+              {
+                "left": "y=3x+40 at x=20 (data 1-8)",
+                "right": "100, extrapolation"
+              },
+              {
+                "left": "y=-2/3x+25 at x=30 (data 1-20)",
+                "right": "5, extrapolation"
+              }
+            ],
+            "decoys": [
+              "299.33, interpolation",
+              "17, extrapolation"
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Multiply Before You Add",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Marco's wrong-order work"
+          ],
+          "instructions": "1. Read Marco's work: y = -2/3 + 25 x 12.\n2. Circle which number is the slope and which is the intercept in y = -2/3 x + 25.\n3. Redo it: put 12 in for x, multiply the slope by 12 FIRST, then add 25.\n4. Write the rule: substitute into the matching variable, then multiply before adding.",
+          "content": {
+            "worked_problem": "Predict flour after 12 batches with y = -2/3 x + 25. Marco wrote y = -2/3 + 25 x 12 = 299.33.",
+            "error_step": "Marco added before multiplying and multiplied the intercept by x.",
+            "why": "Correct: y = -2/3(12) + 25 = -8 + 25 = 17. Multiply the slope by x first, then add the intercept."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The wrong-order / wrong-substitution error is baitable; find-and-fix that rewrites the substitution corrects it."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'the value goes in for x, multiply by the slope first, then add' models the exact procedure students garble."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release on a predict-and-label routine (I do / we do / you do) builds the two-step habit of computing then classifying."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which variable does the known number replace?",
+          "What do you compute first -- the slope times x, or the + b?",
+          "Is your target x inside the data range or beyond it?",
+          "So is this interpolation or extrapolation?",
+          "Does your predicted value make sense for the story?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student substitutes into the wrong variable or adds the intercept before multiplying by the slope.",
+            "say": "Put the known value in for its matching variable (batches -> x). Then multiply by the slope BEFORE adding the intercept: y = m times x, then + b.",
+            "praise": "You substituted into the right variable and multiplied before adding -- that's the prediction done right."
+          },
+          {
+            "if_you_see": "Student labels a prediction inside the data range as extrapolation (or one beyond it as interpolation).",
+            "say": "Check the target x against the data's smallest and largest x. Inside the range is interpolation; outside is extrapolation.",
+            "praise": "You compared the x to the data range -- that's how you name interpolation versus extrapolation."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "y = 2x + 5 models cost after x items. Predict the cost at x = 6.",
+            "look_for": "17 (2 times 6 + 5). An answer like 22 (2 + 5 times... ) or 13 signals wrong order or substitution."
+          },
+          {
+            "prompt": "Data ran x = 1 to 10. Predicting at x = 4 is which type?",
+            "look_for": "Interpolation (4 is inside 1 to 10). 'Extrapolation' means the student misread the range."
+          }
+        ]
+      },
+      "fluency_source": "8DSP2-F2",
+      "sentence_starters": [
+        "To predict, I put ___ in for x, so y = ___ times ___ + ___ = ___.",
+        "This is ___ because x = ___ is ___ the data range of ___ to ___."
+      ],
+      "worked_solution": {
+        "stem": "y = -2/3 x + 25 models pounds of flour (y) after x batches; the data ran from x = 1 to x = 20. Predict the flour after 12 batches and label the prediction.",
+        "answer": "17 pounds; interpolation",
+        "steps": [
+          {
+            "math": "substitute x = 12: y = -2/3(12) + 25",
+            "annotation": "Put the known batches in for x."
+          },
+          {
+            "math": "-2/3 times 12 = -8",
+            "annotation": "Multiply the slope by x FIRST."
+          },
+          {
+            "math": "-8 + 25 = 17",
+            "annotation": "Then add the intercept: 17 pounds."
+          },
+          {
+            "math": "12 is inside 1 to 20 -> interpolation",
+            "annotation": "The target x is within the data range, so this is interpolation."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "y = 3x + 40 models savings (y, $) after x weeks; the data ran from x = 1 to x = 8. Predict the savings at week 20 and label the prediction.",
+        "answer": "$100; extrapolation",
+        "steps": [
+          {
+            "math": "substitute x = 20: y = 3(20) + 40",
+            "annotation": "Put the known week in for x.",
+            "given": true
+          },
+          {
+            "math": "3 times 20 = 60",
+            "annotation": "Multiply the slope by x first.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Add the intercept 40 to get the predicted savings.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Is x = 20 inside or beyond the data range 1 to 8? Label it.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8DSP2-S6",
+      "name": "Judge and justify the reasonableness of predictions from a line of best fit",
+      "column": "looking_forward",
+      "parent_standard": "8.DSP.2",
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP2-S5"
+      },
+      "i_do_script": "The last step is judgment: not every number the equation spits out is trustworthy. A line of best fit is reliable NEAR the data it was built from. Predicting a little inside the data (interpolation) is usually safe; predicting far beyond it (extrapolation) assumes the straight line keeps going, which may not be true -- and some inputs are impossible in the story. Watch y = 203x - 11 for calories (y) burned walking x hours: at x = 10 the model predicts 203(10) - 11 = 2019 calories, but 10 hours is near the edge of what anyone walks in a day. At x = 30 the prediction is meaningless, because a day has no 30 walking hours and it is far past the data. So I justify each prediction with the data range and real-world sense.",
+      "canonical_error": {
+        "pattern": "Treats every prediction from the equation as equally reliable, ignoring that far extrapolation beyond the data (or past a real-world limit) may be unreasonable.",
+        "example": "Using y = 203x - 11 for calories (y) vs hours walked (x), a student accepts the prediction for x = 30 hours as reliable, even though no one walks 30 hours in a day and the data only reached about 10.",
+        "why": "A line of best fit is only trustworthy near the data it was built from. Predicting far outside that range (extrapolation) assumes the straight-line pattern keeps holding, which it often does not -- and some x-values are impossible in context. Reasonableness depends on whether the input is inside the data AND physically sensible, not just on the arithmetic."
+      },
+      "item_template": "A modeling equation with a data range and a prediction (often far outside the data), in a real context. Student computes or evaluates the prediction and justifies whether it is reasonable, citing the data range and real-world limits. Short/extended response, DOK 3.",
+      "sample_items": [
+        {
+          "stem": "y = 203x - 11 models calories (y) vs hours walked (x); data ran to about x = 10. Predict at x = 10 and say whether it is reasonable.",
+          "answer": "203(10) - 11 = 2019 calories; borderline -- 10 hours is at the edge of realistic daily walking and of the data, so use it with caution."
+        },
+        {
+          "stem": "For that same model, is a prediction at x = 30 hours reasonable? Explain.",
+          "answer": "No -- no one walks 30 hours in a day, and it is far beyond the data, so the prediction is not reasonable (extrapolation past a real-world limit)."
+        },
+        {
+          "stem": "A battery model y = -5x + 90 predicts the percent after x hours. Why is a prediction at x = 30 hours unreasonable?",
+          "answer": "It gives -60%, which is impossible (battery cannot be negative); the line stops describing reality once the battery hits 0."
+        },
+        {
+          "stem": "Which prediction is more trustworthy: one at an x inside the data, or one far beyond it? Why?",
+          "answer": "Inside the data -- the line was fit there, so the pattern is supported; far beyond, the straight-line trend may not hold."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is that x inside the data -- and even possible in real life?",
+        "prompt": "Check two things: is the x near the data the line was built from, and does it make sense in the story? Far beyond the data, or past a real-world limit, the prediction is not reliable.",
+        "praise": "You judged the prediction by the data range AND real-world sense -- that's a defensible call."
+      },
+      "vocabulary": [
+        {
+          "term": "Reasonable prediction",
+          "definition": "A predicted value that comes from an x inside (or near) the data and makes sense in the context."
+        },
+        {
+          "term": "Extrapolation risk",
+          "definition": "The danger that a line stops describing the data once you go far beyond its range."
+        },
+        {
+          "term": "Real-world limit",
+          "definition": "A natural bound on a quantity (like hours in a day) that a model can violate."
+        },
+        {
+          "term": "Justify",
+          "definition": "Give the evidence -- data range and context -- that supports or rejects a prediction."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for high-school bivariate data and lines of best fit (AI.DS.3).",
+        "if_fail": "8DSP2-S5"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'y = 203x - 11, calories vs hours walked; data reached about x = 10. A student predicts at x = 24.'"
+        },
+        {
+          "kind": "ask",
+          "text": "First: is 24 inside the data? Second: can a person walk 24 hours in a day?"
+        },
+        {
+          "kind": "say",
+          "text": "24 is far past the data (about 10) AND impossible in a day, so the prediction (about 4861 calories) is not reasonable -- the model has been pushed too far."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 'it's fine, the math works,' ask 'the arithmetic works, but does the SITUATION allow 24 walking hours?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: for this model, judge a prediction at x = 3 hours -- reasonable or not, and why?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Is a prediction usually more reliable inside the data range or far outside it?",
+          "answer": "Inside the data range."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Name one real-world limit that could make a walking-hours prediction impossible.",
+          "answer": "There are only 24 hours in a day (and far fewer spent walking)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "y = 203x - 11 models calories vs hours walked; data reached ~x = 10. Predict at x = 10 and judge its reasonableness.",
+          "answer": "2019 calories; borderline -- 10 hours is at the edge of the data and of realistic daily walking, so treat it with caution.",
+          "notes": "The spec's calorie item, Part A + judgment."
+        },
+        {
+          "difficulty": "core",
+          "stem": "For that model, is a prediction at x = 30 hours reasonable? Justify.",
+          "answer": "No -- 30 walking hours in a day is impossible and far beyond the data, so the prediction is not reasonable.",
+          "notes": "Extrapolation past a real-world limit."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Jada judged a prediction from y = 203x - 11 (calories vs hours walked; data to ~10 hours). Find and fix her mistake.",
+          "shown_work": [
+            "Jada wrote: 'At x = 30, y = 203(30) - 11 = 6079 calories.'",
+            "'The math is correct, so the prediction is reliable.'"
+          ],
+          "answer": "The arithmetic is right, but the prediction is NOT reliable: 30 hours is impossible in a day and far past the data (~10 hours). A correct computation does not make an extrapolation reasonable.",
+          "notes": "Canonical error: 'the math works, so it's reliable.'"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A savings model y = 20x + 15 fit data for weeks 1 to 10. Why should you be cautious predicting savings at week 200?",
+          "answer": "Week 200 is far beyond the data, so the steady $20/week pattern may not hold that long (raises, spending changes, account limits) -- the extrapolation is unreliable.",
+          "notes": "Reasoning about far extrapolation."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "For y = 203x - 11 (data to ~10 hours), identify one x-value where the prediction is reasonable and one where it is not, and explain the difference.",
+          "answer": "Reasonable: x = 5 (inside the data, a normal walk). Not reasonable: x = 30 (far past the data and impossible in a day). Reasonableness depends on being inside the data and physically possible.",
+          "notes": "Produce both a good and a bad prediction."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A model predicts a battery at -60% after many hours. Explain what this tells you about using a line to model battery life far out.",
+          "answer": "A negative percent is impossible, so the linear model breaks down beyond the point the battery reaches 0%; a straight line cannot describe the flat 'dead battery' region.",
+          "notes": "Model breakdown at a real-world floor."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "The Math Works, But...",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Claim cards with correctly-computed but unreasonable predictions",
+            "Context notes (data range + real-world limit)"
+          ],
+          "instructions": "1. Read each claim: a prediction whose arithmetic is correct.\n2. Check two things -- is the x inside the data range, and is it possible in the story?\n3. If either fails, mark the claim UNRELIABLE and write the reason.\n4. Debrief: why can a prediction be arithmetically correct yet unreasonable?",
+          "content": {
+            "worked_problem": "y = 203x - 11 (calories vs hours walked; data to ~10 hours). Claim: 'At x = 30, y = 6079 calories, so it's reliable because the math checks.'",
+            "error_step": "The claim treats correct arithmetic as proof of reliability.",
+            "why": "30 walking hours is impossible in a day and far past the data, so the prediction is unreasonable despite the correct computation."
+          }
+        },
+        {
+          "type": "card_sort",
+          "title": "Reasonable or Not",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Card set of 8 predictions with their contexts and data ranges"
+          ],
+          "instructions": "1. Sort each prediction into 'Reasonable' or 'Not reasonable.'\n2. For each, mark whether the x is inside the data and whether it is possible in real life.\n3. For every 'Not reasonable' card, write which test it failed (data range or real-world limit).\n4. Debrief: which is riskier -- interpolation or far extrapolation?",
+          "content": {
+            "categories": [
+              "Reasonable",
+              "Not reasonable"
+            ],
+            "cards": [
+              {
+                "text": "calories vs hours (data to 10): predict at x=5",
+                "category": "Reasonable"
+              },
+              {
+                "text": "calories vs hours (data to 10): predict at x=30",
+                "category": "Not reasonable"
+              },
+              {
+                "text": "savings vs weeks (data 1-10): predict at x=8",
+                "category": "Reasonable"
+              },
+              {
+                "text": "savings vs weeks (data 1-10): predict at x=200",
+                "category": "Not reasonable"
+              },
+              {
+                "text": "battery % vs hours: predict at x=30 -> -60%",
+                "category": "Not reasonable"
+              },
+              {
+                "text": "plant height vs weeks (data 1-10): predict at x=7",
+                "category": "Reasonable"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The 'the math is correct so it's reliable' error is precise and baitable; find-and-fix that applies the data-range and real-world tests corrects it."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "A math-journal justification (data range + real-world limit) builds the argument the DOK-3 standard tops out on."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'is this prediction reasonable?' forces students to defend or reject a prediction aloud with evidence."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is the target x inside the data the line was built from, or far beyond it?",
+          "Is that x even possible in this real-world situation?",
+          "Does the arithmetic being correct make the prediction reliable?",
+          "What evidence would you give to justify or reject this prediction?",
+          "Where does this model start to break down, and why?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student treats every prediction as reliable, ignoring far extrapolation or real-world limits.",
+            "say": "Check two things: is the x near the data the line was built from, and does it make sense in the story? Far beyond the data, or past a real-world limit, the prediction is not reliable.",
+            "praise": "You judged the prediction by the data range AND real-world sense -- that's a defensible call."
+          },
+          {
+            "if_you_see": "Student rejects a perfectly good interpolation just because 'predictions are guesses.'",
+            "say": "A prediction from an x INSIDE the data is well supported -- the line was fit right there. Reserve your doubt for far extrapolation.",
+            "praise": "You trusted the interpolation and saved your caution for extrapolation -- that's the right balance."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A model fit data for weeks 1 to 10 predicts savings at week 50. Reasonable? Why?",
+            "look_for": "Not reasonable -- week 50 is far beyond the data. 'Reasonable, the math works' diagnoses the misconception."
+          },
+          {
+            "prompt": "The same model predicts savings at week 6. Reasonable? Why?",
+            "look_for": "Reasonable -- week 6 is inside the data (1 to 10). Calling it unreliable over-applies extrapolation doubt."
+          }
+        ]
+      },
+      "fluency_source": "8DSP2-F2",
+      "sentence_starters": [
+        "The prediction at x = ___ is ___ reasonable because x is ___ the data range and ___ possible in real life.",
+        "This model breaks down when ___, so a prediction there is ___."
+      ],
+      "worked_solution": {
+        "stem": "y = 203x - 11 models calories burned (y) walking x hours; the data reached about x = 10. A student predicts calories at x = 30 hours. Is the prediction reasonable? Justify.",
+        "answer": "Not reasonable -- x = 30 is impossible and far beyond the data",
+        "steps": [
+          {
+            "math": "y = 203(30) - 11 = 6079",
+            "annotation": "The arithmetic gives a number, but that is not the whole question."
+          },
+          {
+            "math": "data reached only ~x = 10",
+            "annotation": "x = 30 is far beyond the data the line was fit from (extrapolation)."
+          },
+          {
+            "math": "30 walking hours > 24 hours in a day",
+            "annotation": "The input violates a real-world limit."
+          },
+          {
+            "math": "=> not reasonable",
+            "annotation": "Correct math, but the prediction is unreliable and impossible -- reject it."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "y = 20x + 15 models savings (y, $) after x weeks; the data fit weeks 1 to 10. A student predicts savings at week 200. Is the prediction reasonable? Justify.",
+        "answer": "Not reasonable -- week 200 is far beyond the data",
+        "steps": [
+          {
+            "math": "y = 20(200) + 15 = 4015",
+            "annotation": "The equation produces a value at x = 200.",
+            "given": true
+          },
+          {
+            "math": "data only covered weeks 1 to 10",
+            "annotation": "x = 200 is far outside the fitted range (extrapolation).",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Why might the steady $20/week pattern not hold for 200 weeks?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State whether the prediction is reasonable and justify it.",
+            "given": false
+          }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "skills": [
+        "8DSP2-F1",
+        "8DSP2-F2"
+      ]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": [
+        "8DSP2-S1",
+        "8DSP2-S2"
+      ]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": [
+        "8DSP2-S3",
+        "8DSP2-S4",
+        "8DSP2-S5"
+      ]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": [
+        "8DSP2-S6"
+      ]
+    }
+  },
+  "skill_sequence": [
+    "8DSP2-F1",
+    "8DSP2-F2",
+    "8DSP2-S1",
+    "8DSP2-S2",
+    "8DSP2-S3",
+    "8DSP2-S4",
+    "8DSP2-S5",
+    "8DSP2-S6"
+  ],
+  "skill_tree": {
+    "8DSP2-F1": [],
+    "8DSP2-F2": [],
+    "8DSP2-S1": [
+      "8DSP2-F1"
+    ],
+    "8DSP2-S2": [
+      "8DSP2-S1",
+      "8DSP2-F2"
+    ],
+    "8DSP2-S3": [
+      "8DSP2-S1"
+    ],
+    "8DSP2-S4": [
+      "8DSP2-S2"
+    ],
+    "8DSP2-S5": [
+      "8DSP2-S4"
+    ],
+    "8DSP2-S6": [
+      "8DSP2-S5"
+    ]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S4 (interpret the slope and y-intercept of a modeling equation in context) -- the workhorse on-grade skill that the Below and Approaching bands both build toward and that the assessed scatter-plot/equation items lean on. If they pass, push to S5 (use the equation to predict by interpolation and extrapolation) and S6 (judge and justify the reasonableness of predictions). If they fail, drop to S1 (recognize a linear association) and S2 (interpret a given line of best fit) to find where the model reading breaks. S3 (judge whether a proposed line is a good or poor fit) is the standard's core fitting idea and branches off S1.",
+    "entry_skill": "8DSP2-S4",
+    "if_pass": [
+      "8DSP2-S5",
+      "8DSP2-S6"
+    ],
+    "if_fail": [
+      "8DSP2-S1",
+      "8DSP2-S2"
+    ],
+    "branch_skills": [
+      "8DSP2-S3"
+    ]
+  }
+}

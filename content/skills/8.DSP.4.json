@@ -1,0 +1,2058 @@
+{
+  "standard_code": "8.DSP.4",
+  "standard_text": "Define the probability of a compound event, just as with simple events, as the fraction of outcomes in the sample space for which the compound event occurs. Use appropriate terminology to describe independent, dependent, complementary, and mutually exclusive events.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "This standard has two intertwined jobs: NAME what kind of events are in play, and COMPUTE the probability of a compound event as favorable outcomes over total outcomes -- exactly as with a simple event. The vocabulary is the spine. A student first learns to classify a described situation as independent, dependent, complementary, or mutually exclusive, because the label decides how the probability is built. Independent events (a coin and a die, or a draw WITH replacement) do not affect each other; dependent events (a draw WITHOUT replacement) do, because removing the first item changes the counts for the second. Complementary events split all outcomes into 'A' and 'not A' so their probabilities add to 1; mutually exclusive events cannot both happen at once.\n\nFrom the naming, the computation follows. For an 'and' compound event students write each stage as favorable/total and MULTIPLY -- first for independent events, where both stages keep their original totals, then for dependent events, where the second stage's counts shrink by one after the first draw is kept. Complementary and mutually exclusive events give the 'or' and 'not' side of the vocabulary: P(not A) = 1 - P(A), and for disjoint events P(A or B) = P(A) + P(B). At the top, students analyze a flawed calculation -- almost always the classic slip of using the with-replacement probability on a without-replacement draw -- and repair it. The through-line we keep naming: a probability is favorable over total, and the EVENT TYPE tells you whether to update the counts, multiply, add, or subtract from 1.",
+    "steps": [
+      {
+        "skill_id": "8DSP4-S1",
+        "verb": "identify",
+        "rationale": "The entry move and the standard's named vocabulary: given a described scenario, classify the events as independent, dependent, complementary, or mutually exclusive. Every later computation depends on choosing the right type first."
+      },
+      {
+        "skill_id": "8DSP4-S2",
+        "verb": "determine",
+        "rationale": "Sharpen the independent/dependent distinction on the exact hinge the spec tests -- whether the first outcome changes the second, i.e. with replacement vs without. This is what decides whether the second-stage counts stay the same or shrink."
+      },
+      {
+        "skill_id": "8DSP4-S3",
+        "verb": "write",
+        "rationale": "The core grade-level move for independent events: express the probability of a compound 'and' event as P(A) x P(B), each stage favorable over total with the same total. This is where 'multiply, don't add' is settled."
+      },
+      {
+        "skill_id": "8DSP4-S4",
+        "verb": "calculate",
+        "rationale": "Extend the computation to dependent events drawn without replacement, where the second stage's favorable count and total each drop by one. The trap is treating the second draw as if the first were replaced."
+      },
+      {
+        "skill_id": "8DSP4-S5",
+        "verb": "reason",
+        "rationale": "Cover the other half of the standard's vocabulary that the 'and' work under-emphasizes: complementary events (P(not A) = 1 - P(A)) and mutually exclusive events (disjoint, so P(A or B) = P(A) + P(B))."
+      },
+      {
+        "skill_id": "8DSP4-S6",
+        "verb": "analyze",
+        "rationale": "The above-grade synthesis: find and correct the error in a compound-probability calculation -- classically, using the with-replacement probability on a without-replacement draw, or reusing one bag's total for another bag."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "8DSP4-F1",
+      "name": "Write a simple probability as favorable/total outcomes",
+      "column": "foundation",
+      "parent_standard": "8.DSP.4",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Given the favorable outcomes and the total outcomes, write the probability as a fraction.",
+        "check_question": "A bag has 3 red and 5 blue marbles. What is the probability of drawing a red marble?"
+      },
+      "i_do_script": "The probability of a simple event is the number of favorable outcomes over the total number of outcomes. Watch a bag with 3 red and 5 blue marbles: there are 3 red (favorable) out of 8 marbles total, so P(red) = 3/8. The favorable count goes on TOP, the total on the bottom. On a number cube, P(rolling a 4) = 1/6 because one face is a 4 out of six faces. Every compound-event probability we build later is just these simple fractions multiplied together, so the fraction has to be right first.",
+      "canonical_error": {
+        "pattern": "Writes total over favorable, or uses the number of OTHER outcomes as the top",
+        "example": "For 3 red out of 8 marbles, writes 8/3, or writes 5/8 (the blue count) instead of 3/8",
+        "why": "The student loses track of what 'favorable' means: it is the outcome you are asking about, on top, over the total. Flipping it or using the leftover count gives the wrong probability."
+      },
+      "item_template": "A simple event with a stated favorable count and total. Student writes the probability as a fraction. Short-response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "A bag has 3 red and 5 blue marbles (8 total). What is P(red)?",
+          "answer": "3/8"
+        },
+        {
+          "stem": "A fair number cube (1-6) is rolled. What is P(rolling a 2)?",
+          "answer": "1/6"
+        },
+        {
+          "stem": "A fair number cube (1-6) is rolled. What is P(rolling an odd number)?",
+          "answer": "1/2"
+        },
+        {
+          "stem": "A standard deck has 52 cards, including 4 kings. What is P(drawing a king)?",
+          "answer": "1/13"
+        },
+        {
+          "stem": "A spinner has 5 equal sections. What is P(landing on one chosen section)?",
+          "answer": "1/5"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which count goes on top -- favorable or total?",
+        "prompt": "Put the outcome you are asking about on TOP (favorable) and the total number of outcomes on the bottom. If your fraction is bigger than 1, you flipped it -- a probability is never more than 1.",
+        "praise": "You put the favorable outcomes over the total -- that's a probability, right-side up."
+      },
+      "vocabulary": [
+        {
+          "term": "Probability",
+          "definition": "How likely an event is, written as favorable outcomes over total outcomes."
+        },
+        {
+          "term": "Favorable outcome",
+          "definition": "An outcome that counts as the event you are asking about."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP4-S1",
+        "if_fail": "Review simple event probability (7.DSP.5)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A bag has 2 green and 6 yellow marbles. Find P(green).'"
+        },
+        {
+          "kind": "ask",
+          "text": "How many are favorable (green), and how many marbles are there in total?"
+        },
+        {
+          "kind": "say",
+          "text": "Favorable over total: 2 green out of 8 marbles, so P(green) = 2/8 = 1/4."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 8/2, ask 'is a probability ever bigger than 1?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a number cube -- find P(rolling a number greater than 4)."
+        }
+      ]
+    },
+    {
+      "skill_id": "8DSP4-F2",
+      "name": "Multiply two fractions and simplify",
+      "column": "foundation",
+      "parent_standard": "8.DSP.4",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Multiply two fractions by multiplying numerators and denominators, then simplify.",
+        "check_question": "What is 1/2 x 1/6?"
+      },
+      "i_do_script": "To multiply two fractions I multiply the tops together and the bottoms together, then simplify. Watch 1/2 x 1/6: top is 1 x 1 = 1, bottom is 2 x 6 = 12, so the answer is 1/12. Another: 4/12 x 1/11 = 4/132, and 4/132 simplifies to 1/33. I do NOT add across -- multiplying fractions means top times top over bottom times bottom. This is the engine of every compound 'and' probability, so it has to be automatic.",
+      "canonical_error": {
+        "pattern": "Adds the fractions (or cross-adds) instead of multiplying numerators and denominators",
+        "example": "For 1/2 x 1/6 writes 1/2 + 1/6 = 4/6 = 2/3, or adds tops and bottoms to get 2/8",
+        "why": "The student confuses the rule for multiplying with the rule for adding. Multiplying is straight across (top x top, bottom x bottom); adding needs a common denominator and gives a different value."
+      },
+      "item_template": "Two fractions to multiply. Student multiplies straight across and simplifies. Short-response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "Multiply: 1/2 x 1/6.",
+          "answer": "1/12"
+        },
+        {
+          "stem": "Multiply and simplify: 3/8 x 5/8.",
+          "answer": "15/64"
+        },
+        {
+          "stem": "Multiply and simplify: 4/12 x 1/11.",
+          "answer": "1/33"
+        },
+        {
+          "stem": "Multiply and simplify: 4/52 x 3/51.",
+          "answer": "1/221"
+        },
+        {
+          "stem": "Multiply and simplify: 2/5 x 1/4.",
+          "answer": "1/10"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Are you multiplying, or adding these fractions?",
+        "prompt": "Multiply straight across: top times top over bottom times bottom. No common denominator is needed. Then simplify. If you found a common denominator, you started adding by mistake.",
+        "praise": "You multiplied tops and bottoms straight across and simplified -- that's fraction multiplication."
+      },
+      "vocabulary": [
+        {
+          "term": "Numerator",
+          "definition": "The top number of a fraction."
+        },
+        {
+          "term": "Simplify",
+          "definition": "Write a fraction in lowest terms by dividing top and bottom by a common factor."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP4-S3",
+        "if_fail": "Review multiplying fractions (6.NS.4/5)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write '1/3 x 2/5 = ?'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is top times top, and bottom times bottom?"
+        },
+        {
+          "kind": "say",
+          "text": "1 x 2 = 2 on top, 3 x 5 = 15 on the bottom, so 1/3 x 2/5 = 2/15."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 3/8, ask 'did you add the bottoms instead of multiplying?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: multiply 1/2 x 4/9 and simplify."
+        }
+      ]
+    },
+    {
+      "skill_id": "8DSP4-S1",
+      "name": "Identify the type of event: independent, dependent, complementary, or mutually exclusive",
+      "column": "looking_back",
+      "parent_standard": "8.DSP.4",
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP4-F1"
+      },
+      "i_do_script": "This standard gives four words for how events relate, and naming the type comes first because it decides how you compute later. INDEPENDENT: one outcome does not affect the other -- a coin and a die, or a draw WITH replacement. DEPENDENT: the first outcome changes the second -- a draw WITHOUT replacement. COMPLEMENTARY: 'A' and 'not A' -- they cover every outcome and add to 1. MUTUALLY EXCLUSIVE: two events that cannot both happen at once, like rolling a 2 and rolling a 5 on one roll. Watch: 'flip a coin and roll a number cube' -- the coin does not change the cube, so these are independent.",
+      "canonical_error": {
+        "pattern": "Confuses mutually exclusive with independent -- assumes 'two different events' automatically means independent",
+        "example": "For 'rolling a 2 and rolling a 5 on ONE roll of a number cube,' says independent instead of mutually exclusive",
+        "why": "The student keys on 'two events' rather than on the relationship. Independent is about two separate trials that do not affect each other; mutually exclusive is about two outcomes of the SAME trial that cannot co-occur. Different questions, different labels."
+      },
+      "item_template": "A described scenario. Student selects the term (independent / dependent / complementary / mutually exclusive) that fits. MC.",
+      "sample_items": [
+        {
+          "stem": "A coin is flipped and a number cube (1-6) is rolled. Which term describes these two events?",
+          "answer": "independent",
+          "choices": [
+            "independent",
+            "dependent",
+            "complementary",
+            "mutually exclusive"
+          ],
+          "distractor_logic": "Separate trials that do not affect each other = independent."
+        },
+        {
+          "stem": "Two marbles are drawn from a bag one after the other, and the first is NOT replaced. Which term describes these events?",
+          "answer": "dependent",
+          "choices": [
+            "independent",
+            "dependent",
+            "complementary",
+            "mutually exclusive"
+          ],
+          "distractor_logic": "Without replacement the first draw changes the second = dependent."
+        },
+        {
+          "stem": "One card is drawn from a deck. Consider the events 'the card is red' and 'the card is not red.' Which term describes this pair?",
+          "answer": "complementary",
+          "choices": [
+            "independent",
+            "dependent",
+            "complementary",
+            "mutually exclusive"
+          ],
+          "distractor_logic": "'A' and 'not A' cover all outcomes = complementary."
+        },
+        {
+          "stem": "A single number cube (1-6) is rolled once. Consider 'rolling a 2' and 'rolling a 5.' Which term describes this pair?",
+          "answer": "mutually exclusive",
+          "choices": [
+            "independent",
+            "dependent",
+            "complementary",
+            "mutually exclusive"
+          ],
+          "distractor_logic": "Cannot both happen on one roll = mutually exclusive. Baits 'independent.'"
+        },
+        {
+          "stem": "A marble is drawn from a bag, replaced, and then another marble is drawn. Which term describes these two events?",
+          "answer": "independent",
+          "choices": [
+            "independent",
+            "dependent",
+            "complementary",
+            "mutually exclusive"
+          ],
+          "distractor_logic": "With replacement the second draw is unaffected = independent."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Same trial, or two separate trials?",
+        "prompt": "Ask two things: (1) Are these two separate trials, or two outcomes of ONE trial? (2) Does the first change the second? Two separate trials that don't affect each other = independent; two outcomes of one trial that can't both happen = mutually exclusive; 'A' and 'not A' = complementary; without replacement = dependent.",
+        "praise": "You read the relationship, not just 'two events' -- that's how you pick the right term."
+      },
+      "vocabulary": [
+        {
+          "term": "Independent events",
+          "definition": "Events where one outcome does not change the probability of the other (a coin and a die, or a draw with replacement)."
+        },
+        {
+          "term": "Dependent events",
+          "definition": "Events where the first outcome changes the probability of the second (a draw without replacement)."
+        },
+        {
+          "term": "Complementary events",
+          "definition": "An event and its opposite ('A' and 'not A') that together cover every outcome and add to 1."
+        },
+        {
+          "term": "Mutually exclusive events",
+          "definition": "Two events that cannot both happen at the same time."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP4-S2",
+        "if_fail": "8DSP4-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Draw a card, keep it, then draw a second card. What type of events?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Does keeping the first card change what is left for the second draw?"
+        },
+        {
+          "kind": "say",
+          "text": "Yes -- one card is gone, so the second draw is affected. These are DEPENDENT events."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says independent, ask 'is the deck the same size for the second draw?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: on one roll of a number cube, 'roll a 3' and 'roll a 6' -- what type?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "'With replacement' -- does the second event depend on the first, or not?",
+          "answer": "Not -- it is independent."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What word means 'A' and 'not A,' which together cover every outcome?",
+          "answer": "Complementary"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A coin is flipped and a spinner is spun. Which term describes these events?",
+          "answer": "Independent -- one does not affect the other."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Two chips are drawn from a bag without replacement. Which term describes these events?",
+          "answer": "Dependent -- the first draw changes the second."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Dana classified a pair of events. Find and fix the mistake.",
+          "shown_work": [
+            "A single number cube (1-6) is rolled once. Events: 'roll a 2' and 'roll a 5.'",
+            "Dana wrote: 'These are independent, because they are two different numbers.'"
+          ],
+          "answer": "Dana confused independent with mutually exclusive. Both events are outcomes of the SAME single roll, and you cannot roll a 2 and a 5 at once, so they are mutually exclusive -- not independent.",
+          "notes": "Canonical error: 'two events' read as independent."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A drawer has 3 red and 4 blue markers. One is taken and REPLACED, then another is taken. Which term describes these events?",
+          "answer": "Independent -- replacing the marker keeps the drawer the same."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Give an example of two mutually exclusive events using one draw from a standard deck of 52 cards.",
+          "answer": "Example: 'the card is a king' and 'the card is a queen' -- a single card cannot be both, so they cannot both happen."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Are 'rolling an even number' and 'rolling a 3' on one number-cube roll mutually exclusive? Explain.",
+          "answer": "Yes. 3 is odd, so it is not even; no single roll is both even and a 3, so the two events cannot both happen."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Name That Event Type",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Scenario cards (one described event pair each)",
+            "Four category headers"
+          ],
+          "instructions": "1. Lay out the four headers: Independent, Dependent, Complementary, Mutually Exclusive.\n2. Read each scenario card aloud.\n3. Ask the two questions: same trial or separate trials? does the first change the second?\n4. Place the card under the matching header and say why.\n5. Debrief: which two types are easiest to mix up, and how do you tell them apart?",
+          "content": {
+            "categories": [
+              "Independent",
+              "Dependent",
+              "Complementary",
+              "Mutually Exclusive"
+            ],
+            "cards": [
+              {
+                "text": "Flip a coin and roll a number cube",
+                "category": "Independent"
+              },
+              {
+                "text": "Draw two marbles without replacement",
+                "category": "Dependent"
+              },
+              {
+                "text": "Draw a card, replace it, draw again",
+                "category": "Independent"
+              },
+              {
+                "text": "'It rains' and 'it does not rain'",
+                "category": "Complementary"
+              },
+              {
+                "text": "On one roll: 'a 2' and 'a 5'",
+                "category": "Mutually Exclusive"
+              },
+              {
+                "text": "'Draw a red card' and 'draw a non-red card' on one draw",
+                "category": "Complementary"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Different Numbers Isn't Independent",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Dana's claim"
+          ],
+          "instructions": "1. Read Dana's claim that rolling a 2 and rolling a 5 on ONE roll are independent.\n2. Ask: are these two separate trials, or two results of the same roll?\n3. Write the correct term and one sentence of why.\n4. Write the rule: independent = separate trials that don't affect each other; mutually exclusive = can't both happen on one trial.",
+          "content": {
+            "worked_problem": "One roll of a number cube. Dana called 'roll a 2' and 'roll a 5' independent.",
+            "error_step": "Dana keyed on 'two different numbers' instead of the relationship.",
+            "why": "Both are outcomes of the same single roll and cannot co-occur, so they are mutually exclusive."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The mutually-exclusive-as-independent slip is a precise, nameable error a find-and-fix exposes."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'why is this dependent and not independent?' surfaces the reasoning behind the label."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral response on the four terms and their one-line definitions builds fast, automatic recall of the vocabulary."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Are these two separate trials, or two outcomes of one trial?",
+          "Does the first outcome change the second?",
+          "Do the two events together cover every possible outcome?",
+          "Can both events happen at the same time?",
+          "Which of the four terms fits -- and why not the others?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student confuses mutually exclusive with independent -- assumes 'two different events' automatically means independent.",
+            "say": "Ask two things: (1) Are these two separate trials, or two outcomes of ONE trial? (2) Does the first change the second? Two separate trials that don't affect each other = independent; two outcomes of one trial that can't both happen = mutually exclusive; 'A' and 'not A' = complementary; without replacement = dependent.",
+            "praise": "You read the relationship, not just 'two events' -- that's how you pick the right term."
+          },
+          {
+            "if_you_see": "Student labels a with-replacement draw as dependent because it involves the same bag twice.",
+            "say": "Because the marble is put back, the bag is identical for the second draw -- the first outcome changes nothing. That makes it independent, not dependent.",
+            "praise": "You checked whether the counts actually changed -- replaced means independent."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Draw two marbles without replacement. What type of events?",
+            "look_for": "Dependent. 'Independent' means the student isn't tracking that the counts change."
+          },
+          {
+            "prompt": "On one number-cube roll, 'a 4' and 'a 6' -- what type?",
+            "look_for": "Mutually exclusive. 'Independent' diagnoses the 'two events' shortcut."
+          }
+        ]
+      },
+      "fluency_source": "8DSP4-F1",
+      "sentence_starters": [
+        "These are separate trials / outcomes of one trial, so the events are ___.",
+        "I know it's ___ because the first outcome ___ the second."
+      ],
+      "worked_solution": {
+        "stem": "Draw a card from a deck, keep it, then draw a second card. Which term describes these two events?",
+        "answer": "Dependent",
+        "steps": [
+          {
+            "math": "one trial or two? two draws",
+            "annotation": "There are two separate draws, so check whether one affects the other."
+          },
+          {
+            "math": "first card kept, not replaced",
+            "annotation": "The first card is gone before the second draw."
+          },
+          {
+            "math": "deck 52 -> 51 for the second draw",
+            "annotation": "The counts change, so the first outcome affects the second."
+          },
+          {
+            "math": "type = dependent",
+            "annotation": "A first outcome that changes the second means the events are dependent."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A marble is drawn from a bag, replaced, and another is drawn. Which term describes these two events?",
+        "answer": "Independent",
+        "steps": [
+          {
+            "math": "two draws from the same bag",
+            "annotation": "Two draws -- check whether the first affects the second.",
+            "given": true
+          },
+          {
+            "math": "first marble is replaced",
+            "annotation": "The marble goes back, so the bag is unchanged.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "State whether the counts change for the second draw.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the event type based on whether the first outcome affects the second.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8DSP4-S2",
+      "name": "Determine independent vs. dependent by whether the first outcome changes the second (with vs. without replacement)",
+      "column": "on_grade",
+      "parent_standard": "8.DSP.4",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP4-S1"
+      },
+      "i_do_script": "The whole independent-vs-dependent question comes down to one thing: after the first outcome, is the situation the SAME for the second? If yes, the events are independent; if no, they are dependent. The clearest signal is replacement. Watch a drawer with 3 red, 4 blue, and 6 yellow markers (13 total). If I take one marker and put it BACK, the drawer is identical for the next pick -- 13 markers again -- so the events are independent. If I take one marker and KEEP it, only 12 markers remain, the counts have changed, and the second pick is affected -- so the events are dependent.",
+      "canonical_error": {
+        "pattern": "Calls every two-draw situation dependent because 'you draw twice,' ignoring whether the item was replaced",
+        "example": "For 'draw a marble, put it back, draw again,' says dependent even though replacement keeps the counts the same",
+        "why": "The student treats 'two draws from one bag' as automatically dependent. Dependence is not about drawing twice -- it is about whether the first outcome CHANGES the counts for the second. With replacement, nothing changes, so the draws are independent."
+      },
+      "item_template": "A described two-stage situation, with or without replacement. Student states whether the events are independent or dependent and justifies with the count. Short response.",
+      "sample_items": [
+        {
+          "stem": "A drawer holds 3 red, 4 blue, and 6 yellow markers. One marker is taken out and then REPLACED. Another marker is then taken. Are the two events independent or dependent? Explain.",
+          "answer": "Independent. Because the first marker is replaced, the drawer holds all 13 markers again for the second pick, so the first outcome does not affect the second."
+        },
+        {
+          "stem": "Two marbles are drawn from a bag, one after the other, and the first is NOT put back. Independent or dependent? Explain.",
+          "answer": "Dependent. The first marble is gone, so there is one fewer marble and the counts change for the second draw -- the first outcome affects the second."
+        },
+        {
+          "stem": "A coin is flipped and then a number cube is rolled. Independent or dependent? Explain.",
+          "answer": "Independent. The coin result does not change the number cube in any way, so one event does not affect the other."
+        },
+        {
+          "stem": "A card is drawn from a deck and kept, then a second card is drawn. Independent or dependent? Explain.",
+          "answer": "Dependent. The first card is kept (not replaced), so there are only 51 cards for the second draw -- the counts change."
+        },
+        {
+          "stem": "A spinner is spun twice. Independent or dependent? Explain.",
+          "answer": "Independent. Spinning does not use anything up, so the spinner is the same for the second spin and the first outcome does not affect the second."
+        }
+      ],
+      "redirect_script": {
+        "stop": "After the first pick, did the counts change?",
+        "prompt": "Don't count the number of draws -- check the counts. Ask: after the first outcome, is the total (and the favorable count) the same for the second event? If it was replaced or it's a coin/die/spinner, nothing changed -> independent. If it was kept, the total dropped -> dependent.",
+        "praise": "You checked whether the counts changed, not just how many times you drew -- that's the real test."
+      },
+      "vocabulary": [
+        {
+          "term": "With replacement",
+          "definition": "The first item is put back before the second draw, so the counts stay the same."
+        },
+        {
+          "term": "Without replacement",
+          "definition": "The first item is kept, so there is one fewer item for the second draw."
+        },
+        {
+          "term": "Independent events",
+          "definition": "Events where the first outcome does not change the probability of the second."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP4-S3",
+        "if_fail": "8DSP4-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A bag has 5 red and 5 blue. Draw one, put it back, draw again. Independent or dependent?'"
+        },
+        {
+          "kind": "ask",
+          "text": "After the first draw, how many marbles are in the bag for the second draw?"
+        },
+        {
+          "kind": "say",
+          "text": "It's back to 10 because the marble was replaced -- the counts didn't change, so these are INDEPENDENT."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says dependent, ask 'did the total change, or is it still 10?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: same bag, but you KEEP the first marble -- independent or dependent?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "You draw a marble and put it back. Did the number of marbles change for the next draw?",
+          "answer": "No -- it's the same total."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "You draw a marble and keep it. Did the number of marbles change for the next draw?",
+          "answer": "Yes -- there is one fewer."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bag has 4 red and 6 blue. One is drawn and REPLACED, then another is drawn. Independent or dependent?",
+          "answer": "Independent -- the bag is still 10 marbles for the second draw."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bag has 4 red and 6 blue. One is drawn and KEPT, then another is drawn. Independent or dependent?",
+          "answer": "Dependent -- only 9 marbles remain, so the counts changed."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Mateo decided whether two events are independent. Find and fix the mistake.",
+          "shown_work": [
+            "A bag has 3 red and 5 green. A marble is drawn, PUT BACK, then another is drawn.",
+            "Mateo wrote: 'Dependent, because you draw two marbles from the same bag.'"
+          ],
+          "answer": "Mateo counted the number of draws instead of checking the counts. Because the marble is put back, the bag holds all 8 marbles again, so nothing changes for the second draw -- the events are independent, not dependent.",
+          "notes": "Canonical error: two draws read as automatically dependent."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A number cube is rolled and a coin is flipped. Independent or dependent?",
+          "answer": "Independent -- the roll does not affect the flip."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Describe one change to 'draw two marbles from a bag' that would turn it from dependent into independent.",
+          "answer": "Replace the first marble before the second draw. With replacement the counts stay the same, so the events become independent."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A friend says 'flipping a coin twice is dependent because it's the same coin.' Explain why they are wrong.",
+          "answer": "The coin is not used up or changed by the first flip -- it still has heads and tails for the second flip. Nothing about the first flip changes the second, so the flips are independent."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Replaced or Kept?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Scenario cards",
+            "Two headers: Independent / Dependent"
+          ],
+          "instructions": "1. Sort each scenario under Independent or Dependent.\n2. For each, underline the phrase that decided it (replaced, put back, kept, does not affect).\n3. For the dependent ones, write the second-draw total.\n4. Debrief: which single word in a problem most often flips the answer?",
+          "content": {
+            "categories": [
+              "Independent",
+              "Dependent"
+            ],
+            "cards": [
+              {
+                "text": "Draw a marble, put it back, draw again",
+                "category": "Independent"
+              },
+              {
+                "text": "Draw a marble, keep it, draw again",
+                "category": "Dependent"
+              },
+              {
+                "text": "Flip a coin, then roll a die",
+                "category": "Independent"
+              },
+              {
+                "text": "Deal two cards from the top of a deck",
+                "category": "Dependent"
+              },
+              {
+                "text": "Spin a spinner twice",
+                "category": "Independent"
+              },
+              {
+                "text": "Pick two names from a hat, one after the other",
+                "category": "Dependent"
+              }
+            ]
+          }
+        },
+        {
+          "type": "hands_on",
+          "title": "Same Bag, Two Rules",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper bag",
+            "10 counters (e.g., 4 red, 6 blue)"
+          ],
+          "instructions": "1. Draw one counter and record its color.\n2. Round 1: put it BACK; count the bag -- still 10. Draw again.\n3. Round 2: KEEP it; count the bag -- now 9. Draw again.\n4. Debrief: which round changed the counts, and which type of event is each?"
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Physically replacing vs keeping a counter makes 'the counts changed' concrete before it is a rule."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The 'two draws = dependent' shortcut is a precise error a find-and-fix corrects."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'is the total the same for the second draw?' models the one check that decides the label."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "After the first outcome, is the total the same or smaller?",
+          "Was the item replaced or kept?",
+          "Does a coin, die, or spinner get 'used up' by the first trial?",
+          "Which word in the problem tells you whether it's with or without replacement?",
+          "If the counts didn't change, what does that make the events?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student calls every two-draw situation dependent because 'you draw twice,' ignoring whether the item was replaced.",
+            "say": "Don't count the number of draws -- check the counts. Ask: after the first outcome, is the total (and the favorable count) the same for the second event? If it was replaced or it's a coin/die/spinner, nothing changed -> independent. If it was kept, the total dropped -> dependent.",
+            "praise": "You checked whether the counts changed, not just how many times you drew -- that's the real test."
+          },
+          {
+            "if_you_see": "Student thinks flipping a coin twice is dependent because it is 'the same coin.'",
+            "say": "The coin isn't used up -- it still has heads and tails for the second flip. Same object is fine; what matters is whether the first outcome changes the second.",
+            "praise": "You saw that reusing the same object doesn't make events dependent -- only changing counts does."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Draw a marble, put it back, draw again. Independent or dependent?",
+            "look_for": "Independent. 'Dependent' means the student is counting draws, not counts."
+          },
+          {
+            "prompt": "Deal two cards off the top of a deck. Independent or dependent?",
+            "look_for": "Dependent. 'Independent' means the student missed that the first card is not replaced."
+          }
+        ]
+      },
+      "fluency_source": "8DSP4-F1",
+      "sentence_starters": [
+        "After the first pick the total is ___, so the events are ___.",
+        "The item was ___ (replaced/kept), which makes this ___."
+      ],
+      "worked_solution": {
+        "stem": "A drawer holds 3 red, 4 blue, and 6 yellow markers (13 total). One marker is taken and replaced, then another is taken. Independent or dependent?",
+        "answer": "Independent",
+        "steps": [
+          {
+            "math": "first pick from 13 markers",
+            "annotation": "Note the starting total."
+          },
+          {
+            "math": "marker is replaced",
+            "annotation": "The marker goes back into the drawer."
+          },
+          {
+            "math": "second pick also from 13",
+            "annotation": "The counts are unchanged for the second pick."
+          },
+          {
+            "math": "type = independent",
+            "annotation": "Unchanged counts mean the first outcome does not affect the second."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A card is drawn from a deck of 52 and kept, then a second card is drawn. Independent or dependent?",
+        "answer": "Dependent",
+        "steps": [
+          {
+            "math": "first draw from 52 cards",
+            "annotation": "Note the starting total.",
+            "given": true
+          },
+          {
+            "math": "first card is kept, not replaced",
+            "annotation": "The card does not go back.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "State the total available for the second draw.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the event type based on whether the counts changed.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8DSP4-S3",
+      "name": "Write the fraction expression for the probability of a compound (independent) event, P(A and B)=P(A)xP(B)",
+      "column": "on_grade",
+      "parent_standard": "8.DSP.4",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP4-S1"
+      },
+      "i_do_script": "For a compound INDEPENDENT 'and' event, I write each stage as favorable over total and MULTIPLY them: P(A and B) = P(A) x P(B). Because the events are independent -- a coin and a die, or a draw WITH replacement -- both totals stay the same. Watch a bag of 3 red and 5 green (8 total), drawing one, putting it back, and drawing again: P(red then green) = 3/8 x 5/8. Both draws are out of 8 because the marble was replaced. I do NOT add, and I do NOT shrink the second total -- that's only for without replacement.",
+      "canonical_error": {
+        "pattern": "Adds the stage probabilities, or shrinks the second total even though the event is with replacement",
+        "example": "For P(red then green) from 3 red and 5 green of 8 with replacement, writes 3/8 + 5/8, or writes 3/8 x 5/7 as if the marble were kept",
+        "why": "The student either uses the addition rule where multiplication belongs, or imports the without-replacement move. For independent events joined by 'and,' you multiply, and both stages keep the original total because nothing was removed."
+      },
+      "item_template": "A compound independent event (coin/die, two spinners, draw with replacement). Student selects the expression P(A) x P(B). MC.",
+      "sample_items": [
+        {
+          "stem": "A bag has 3 red and 5 green marbles (8 total). A marble is drawn, replaced, then another is drawn. Which expression represents P(red then green)?",
+          "answer": "3/8 x 5/8",
+          "choices": [
+            "3/8 x 5/8",
+            "3/8 + 5/8",
+            "3/8 x 5/7",
+            "8/8"
+          ],
+          "distractor_logic": "With replacement both draws are out of 8: 3/8 x 5/8. '3/8 + 5/8' baits adding; '3/8 x 5/7' baits without replacement."
+        },
+        {
+          "stem": "A bag has 4 red and 6 blue marbles (10 total). A marble is drawn, replaced, then another is drawn. Which expression represents P(both red)?",
+          "answer": "4/10 x 4/10",
+          "choices": [
+            "4/10 x 4/10",
+            "4/10 x 3/9",
+            "4/10 + 4/10",
+            "8/10"
+          ],
+          "distractor_logic": "With replacement: 4/10 x 4/10. '4/10 x 3/9' baits without replacement; '4/10 + 4/10' baits adding."
+        },
+        {
+          "stem": "A spinner (1-4) is spun and a number cube (1-6) is rolled. Which expression represents P(a 3 on the spinner AND a 5 on the cube)?",
+          "answer": "1/4 x 1/6",
+          "choices": [
+            "1/4 x 1/6",
+            "1/4 + 1/6",
+            "1/4 x 1/5",
+            "2/10"
+          ],
+          "distractor_logic": "Independent stages: 1/4 x 1/6. '1/4 + 1/6' baits adding."
+        },
+        {
+          "stem": "A bowl holds 14 stars, 18 circles, and 9 triangles (41 total). A student draws one shape, replaces it, then draws again. Which expression represents P(a star then a triangle)?",
+          "answer": "14/41 x 9/41",
+          "choices": [
+            "14/41 x 9/41",
+            "14/41 x 9/40",
+            "14/41 + 9/41",
+            "23/41"
+          ],
+          "distractor_logic": "With replacement both are out of 41: 14/41 x 9/41. '14/41 x 9/40' baits without replacement."
+        }
+      ],
+      "redirect_script": {
+        "stop": "For 'and' with independent events -- add or multiply?",
+        "prompt": "Write each stage as favorable over total, then MULTIPLY: P(A) x P(B). It's 'and,' so you multiply, not add. And because the item was replaced (or it's a coin/die), the second total is the SAME -- don't shrink it.",
+        "praise": "You multiplied two favorable-over-total stages with the same total -- that's the independent 'and' rule."
+      },
+      "vocabulary": [
+        {
+          "term": "Compound event",
+          "definition": "An event made of two or more parts joined by 'and.'"
+        },
+        {
+          "term": "Independent events",
+          "definition": "Events where one outcome does not change the probability of the other."
+        },
+        {
+          "term": "Expression",
+          "definition": "A way to write a calculation, like 3/8 x 5/8, without necessarily finishing the arithmetic."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP4-S4",
+        "if_fail": "8DSP4-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A coin is flipped and a number cube is rolled. Write the expression for P(heads and a 3).'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is P(heads), what is P(a 3), and do you add or multiply for 'and'?"
+        },
+        {
+          "kind": "say",
+          "text": "P(heads) = 1/2 and P(a 3) = 1/6. For 'and' with independent events, multiply: 1/2 x 1/6."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 1/2 + 1/6, ask 'does 'and' mean add or multiply here?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a bag of 2 red and 3 blue, draw-replace-draw -- write the expression for P(red then blue)."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "For an independent 'and' event, do you add or multiply the stage probabilities?",
+          "answer": "Multiply"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A marble is drawn from a bag of 8 and REPLACED. What total does the second draw use?",
+          "answer": "8 -- the same total, because it was replaced."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bag has 2 red and 3 green (5 total). Draw, replace, draw again. Write the expression for P(red then green).",
+          "answer": "2/5 x 3/5",
+          "notes": "Both stages out of 5."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A coin is flipped and a spinner with 3 equal sections is spun. Write the expression for P(heads AND section 1).",
+          "answer": "1/2 x 1/3"
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Priya wrote an expression for a compound probability. Find and fix the mistake.",
+          "shown_work": [
+            "A bag has 3 red and 5 green (8 total). A marble is drawn, put back, then drawn again.",
+            "Priya wrote: P(red then green) = 3/8 + 5/8."
+          ],
+          "answer": "Priya added instead of multiplying. For 'and' with independent events you multiply, and since the marble was replaced both draws are out of 8, so the expression is 3/8 x 5/8.",
+          "notes": "Canonical error: adds probabilities for 'and.'"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A number cube (1-6) is rolled and a coin is flipped. Write the expression for P(a 6 AND tails).",
+          "answer": "1/6 x 1/2"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A bag has 4 red and 6 blue (10 total), drawn WITH replacement. A student writes P(both red) = 4/10 x 3/9. What did they do wrong, and what is the correct expression?",
+          "answer": "They shrank the second total as if the marble were kept. With replacement both draws are out of 10, so the correct expression is 4/10 x 4/10."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write a with-replacement compound-event question whose expression is 1/2 x 1/6, and name the objects it uses.",
+          "answer": "Example: 'A coin is flipped and a number cube is rolled; write P(heads and a 4).' The expression is 1/2 x 1/6."
+        }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Match the Expression",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Scenario cards",
+            "Expression cards"
+          ],
+          "instructions": "1. Read each with-replacement scenario.\n2. Find the expression card that matches P(A) x P(B).\n3. Reject any expression that adds, or that shrinks the second total.\n4. Debrief: how can you spot a without-replacement distractor?",
+          "content": {
+            "pairs": [
+              {
+                "left": "3 red, 5 green (8); draw, replace, draw: P(red then green)",
+                "right": "3/8 x 5/8"
+              },
+              {
+                "left": "Coin and number cube: P(heads and a 3)",
+                "right": "1/2 x 1/6"
+              },
+              {
+                "left": "4 red, 6 blue (10); draw, replace, draw: P(both red)",
+                "right": "4/10 x 4/10"
+              },
+              {
+                "left": "Spinner (1-4) and cube (1-6): P(a 3 and a 5)",
+                "right": "1/4 x 1/6"
+              }
+            ],
+            "decoys": [
+              "3/8 + 5/8",
+              "4/10 x 3/9"
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Added, Not Multiplied",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Priya's work"
+          ],
+          "instructions": "1. Read Priya's expression 3/8 + 5/8.\n2. Ask: does 'and' mean add or multiply for independent events?\n3. Rewrite the correct expression.\n4. Write the rule and note why both stages keep the total 8.",
+          "content": {
+            "worked_problem": "3 red, 5 green (8), with replacement. Priya wrote P(red then green) = 3/8 + 5/8.",
+            "error_step": "Priya added the stage probabilities instead of multiplying.",
+            "why": "For independent 'and' events you multiply, and with replacement both draws are out of 8: 3/8 x 5/8."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Adding instead of multiplying (and shrinking the total by mistake) are precise errors a find-and-fix targets."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'each stage favorable over total, then multiply' models the whole expression build."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "A number talk on 'why is 1/2 x 1/6 smaller than each piece?' builds the sense that 'and' shrinks the probability."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the probability of each stage, favorable over total?",
+          "Is this joined by 'and' -- so do you multiply?",
+          "Was the item replaced? Then what total does the second stage use?",
+          "Should the combined expression be bigger or smaller than each piece?",
+          "Where would a 'without replacement' answer differ from this one?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds the stage probabilities, or shrinks the second total even though the event is with replacement.",
+            "say": "Write each stage as favorable over total, then MULTIPLY: P(A) x P(B). It's 'and,' so you multiply, not add. And because the item was replaced (or it's a coin/die), the second total is the SAME -- don't shrink it.",
+            "praise": "You multiplied two favorable-over-total stages with the same total -- that's the independent 'and' rule."
+          },
+          {
+            "if_you_see": "Student uses the wrong favorable/total for one stage (e.g. counts 'even' as 1/6).",
+            "say": "Recount that stage: how many outcomes are favorable and how many total? P(even) on a die is 3/6, not 1/6.",
+            "praise": "You fixed the stage fraction, so the whole expression is right."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Coin and number cube: write the expression for P(tails and a 6).",
+            "look_for": "1/2 x 1/6. A sum (2/3-style) diagnoses adding for 'and.'"
+          },
+          {
+            "prompt": "3 red, 5 blue (8), draw-replace-draw: expression for P(red then blue)?",
+            "look_for": "3/8 x 5/8. '3/8 x 5/7' means the student shrank the total by mistake."
+          }
+        ]
+      },
+      "fluency_source": "8DSP4-F2",
+      "sentence_starters": [
+        "P(first) = ___ and P(second) = ___, so P(both) = ___ x ___.",
+        "It's an independent 'and' event, so I ___ the two fractions and keep the same total."
+      ],
+      "worked_solution": {
+        "stem": "A coin is flipped and a number cube (1-6) is rolled. Write the expression for P(heads AND a 3).",
+        "answer": "1/2 x 1/6",
+        "steps": [
+          {
+            "math": "P(heads) = 1/2",
+            "annotation": "One favorable coin face out of two."
+          },
+          {
+            "math": "P(a 3) = 1/6",
+            "annotation": "One favorable face out of six."
+          },
+          {
+            "math": "independent 'and' -> multiply",
+            "annotation": "One event does not affect the other, so multiply the stages."
+          },
+          {
+            "math": "expression: 1/2 x 1/6",
+            "annotation": "Write the product of the two favorable-over-total stages."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A bag has 3 red and 5 blue marbles (8 total). A marble is drawn, replaced, then drawn again. Write the expression for P(blue then red).",
+        "answer": "5/8 x 3/8",
+        "steps": [
+          {
+            "math": "P(blue) = 5/8",
+            "annotation": "Five blue out of eight marbles.",
+            "given": true
+          },
+          {
+            "math": "marble replaced -> total still 8",
+            "annotation": "The second draw is out of 8 again.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the second stage, P(red), as favorable over total.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the two stages to write the expression.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8DSP4-S4",
+      "name": "Calculate the probability of a compound event without replacement (dependent)",
+      "column": "on_grade",
+      "parent_standard": "8.DSP.4",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP4-S3"
+      },
+      "i_do_script": "For a DEPENDENT event -- drawing WITHOUT replacement -- the first draw changes what is left for the second, so I update the counts before I multiply. Watch a bag of 4 red and 6 blue (10 total), drawing two without replacement, P(both red): the first red is 4/10. Now one red is gone and only 9 marbles remain, so the second red is 3/9. Multiply: 4/10 x 3/9 = 12/90 = 2/15. The key move is to subtract 1 from BOTH the favorable count and the total after the first draw.",
+      "canonical_error": {
+        "pattern": "Treats the second draw as if the first were replaced -- keeps the same counts (independent)",
+        "example": "For P(both red) from 4 red of 10, writes 4/10 x 4/10 = 4/25 instead of 4/10 x 3/9 = 2/15",
+        "why": "Without replacement, the drawn marble is gone: there is one fewer favorable AND one fewer total for the second draw. Reusing the original counts treats a dependent event as independent and overstates the probability."
+      },
+      "item_template": "Two draws without replacement from a described set. Student updates the counts on the second draw and multiplies. Short response (fraction).",
+      "sample_items": [
+        {
+          "stem": "A bag contains 4 red and 6 blue marbles (10 total). Two marbles are drawn without replacement. What is P(both red)? Write as a fraction.",
+          "answer": "2/15"
+        },
+        {
+          "stem": "A bag holds 12 letter tiles, including 4 B tiles and 1 C tile. Two tiles are drawn without replacement. What is P(a B then a C)? Write as a fraction.",
+          "answer": "1/33"
+        },
+        {
+          "stem": "A bag contains 5 green and 3 yellow marbles (8 total). Two are drawn without replacement. What is P(green then yellow)? Write as a fraction.",
+          "answer": "15/56"
+        },
+        {
+          "stem": "A standard deck has 52 cards, including 4 aces. Two cards are drawn without replacement. What is P(both aces)? Write as a fraction.",
+          "answer": "1/221"
+        },
+        {
+          "stem": "A bag contains 3 red, 4 blue, and 5 green marbles (12 total). Two are drawn without replacement. What is P(red then blue)? Write as a fraction.",
+          "answer": "1/11"
+        }
+      ],
+      "redirect_script": {
+        "stop": "After the first draw, how many are left?",
+        "prompt": "Without replacement, the first item is gone. Subtract 1 from the favorable count AND 1 from the total for the second draw, then multiply. If both fractions have the same denominator, you forgot to shrink it.",
+        "praise": "You shrank the counts after the first draw -- that's what 'without replacement' means."
+      },
+      "vocabulary": [
+        {
+          "term": "Dependent events",
+          "definition": "Events where the first outcome changes the probability of the second (drawing without replacement)."
+        },
+        {
+          "term": "Without replacement",
+          "definition": "The first item is not put back, so there is one fewer item for the next draw."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP4-S5",
+        "if_fail": "8DSP4-S3"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A bag has 5 red and 5 blue (10). Draw two without replacement: P(both red)?'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the first draw's probability, and what changes for the second draw?"
+        },
+        {
+          "kind": "say",
+          "text": "First red is 5/10. Now 4 red are left of 9 marbles, so second red is 4/9. Multiply: 5/10 x 4/9 = 20/90 = 2/9."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 5/10 x 5/10, ask 'did you put the first marble back?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 6 red and 4 blue (10), draw two without replacement -- P(both blue)?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A bag has 4 red of 10 marbles. You draw 1 red and do NOT replace it. How many red are left, and how many marbles in all?",
+          "answer": "3 red left, 9 marbles total"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Does 'without replacement' make the two draws independent or dependent?",
+          "answer": "Dependent"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bag has 4 red and 6 blue (10 total). Draw two without replacement. What is P(both red)?",
+          "answer": "2/15 (4/10 x 3/9)",
+          "notes": "Baits using 4/10 x 4/10."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bag has 5 green and 3 yellow (8 total). Draw two without replacement. What is P(green then yellow)?",
+          "answer": "15/56 (5/8 x 3/7)"
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Riley found a probability. Find and fix the mistake.",
+          "shown_work": [
+            "A bag has 4 red and 6 blue marbles (10 total). Two are drawn without replacement.",
+            "Riley wrote: P(both red) = 4/10 x 4/10 = 16/100 = 4/25."
+          ],
+          "answer": "Riley treated the draws as if the first marble were replaced. Without replacement, after drawing one red there are 3 red left of 9 total, so P(both red) = 4/10 x 3/9 = 12/90 = 2/15.",
+          "notes": "Canonical error: does not shrink the second draw's counts."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A standard deck has 52 cards with 4 aces. Draw two without replacement. What is P(both aces)?",
+          "answer": "1/221 (4/52 x 3/51)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A bag has 3 red, 4 blue, and 5 green (12 total). Draw two without replacement. What is P(red then blue)?",
+          "answer": "1/11 (3/12 x 4/11)",
+          "notes": "Different colors -- only the total shrinks, not the blue count."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why P(both red) is smaller drawing WITHOUT replacement than WITH replacement, using a bag of 4 red and 6 blue.",
+          "answer": "With replacement it is 4/10 x 4/10 = 4/25; without replacement it is 4/10 x 3/9 = 2/15. Removing the first red leaves fewer red for the second draw, so the probability is lower."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Draw and Don't Replace",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper bag",
+            "Colored counters (e.g., 4 red, 6 blue)"
+          ],
+          "instructions": "1. Write P(first red) = 4/10 before drawing.\n2. Draw one red and set it ASIDE (do not replace).\n3. Count what is left and write P(second red) with the new counts.\n4. Multiply the two fractions. Debrief: what two numbers changed after the first draw, and why?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Did You Put It Back?",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Riley's work"
+          ],
+          "instructions": "1. Read Riley's work: P(both red) = 4/10 x 4/10.\n2. Cross out the second 4/10 and write the correct second-draw fraction.\n3. Recompute the probability.\n4. Write the rule for what changes on a without-replacement draw.",
+          "content": {
+            "worked_problem": "4 red, 6 blue (10 total), two drawn without replacement. Riley wrote P(both red) = 4/10 x 4/10 = 4/25.",
+            "error_step": "Riley kept the same counts on the second draw (as if the marble were replaced).",
+            "why": "After one red is removed, 3 red remain of 9 total, so P(both red) = 4/10 x 3/9 = 2/15."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Reusing the original counts on the second draw is a precise error a find-and-fix corrects."
+        },
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Physically drawing and setting aside a counter makes the shrinking count concrete before it is a fraction."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'one fewer favorable, one fewer total' models the update the second draw needs."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the probability of the first draw?",
+          "After the first draw, how many favorable are left? How many total?",
+          "Did the denominator get smaller for the second draw?",
+          "Is this with or without replacement -- does the first draw change the second?",
+          "What do you multiply to get the probability of both?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student treats the second draw as if the first were replaced -- keeps the same counts.",
+            "say": "Without replacement, the first item is gone. Subtract 1 from the favorable count AND 1 from the total for the second draw, then multiply. If both fractions have the same denominator, you forgot to shrink it.",
+            "praise": "You shrank the counts after the first draw -- that's what 'without replacement' means."
+          },
+          {
+            "if_you_see": "Student shrinks the total but not the favorable count when both draws are the same color.",
+            "say": "If you already drew a red, there is one fewer RED too. Subtract 1 from both the red count and the total.",
+            "praise": "You subtracted 1 from the favorable count and the total -- both change for the same color."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A bag has 5 red and 5 blue (10). Draw two without replacement. What is P(both red)?",
+            "look_for": "2/9 (5/10 x 4/9). An answer of 1/4 (5/10 x 5/10) diagnoses treating it as independent."
+          },
+          {
+            "prompt": "After drawing one ace from a 52-card deck (not replaced), what is P(the next card is also an ace)?",
+            "look_for": "3/51 = 1/17. An answer of 4/52 means the counts were not updated."
+          }
+        ]
+      },
+      "fluency_source": "8DSP4-F2",
+      "sentence_starters": [
+        "First draw: ___/___. After removing one, second draw: ___/___.",
+        "It's without replacement, so I subtract 1 from the ___ and the ___ before multiplying."
+      ],
+      "worked_solution": {
+        "stem": "A bag contains 5 green and 3 yellow marbles (8 total). Two are drawn without replacement. What is P(green then yellow)?",
+        "answer": "15/56",
+        "steps": [
+          {
+            "math": "P(first green) = 5/8",
+            "annotation": "Five green out of eight marbles."
+          },
+          {
+            "math": "one marble gone: 7 left",
+            "annotation": "Without replacement, the total drops to 7."
+          },
+          {
+            "math": "P(second yellow) = 3/7",
+            "annotation": "All 3 yellow remain, now out of 7."
+          },
+          {
+            "math": "5/8 x 3/7 = 15/56",
+            "annotation": "Multiply the two draws."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A bag contains 4 red and 6 blue marbles (10 total). Two are drawn without replacement. What is P(both blue)?",
+        "answer": "1/3",
+        "steps": [
+          {
+            "math": "P(first blue) = 6/10",
+            "annotation": "Six blue out of ten marbles.",
+            "given": true
+          },
+          {
+            "math": "one blue gone: 5 blue, 9 total",
+            "annotation": "Subtract 1 from the blue count and the total.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the second draw's probability.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the two draws and simplify.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8DSP4-S5",
+      "name": "Reason about complementary events [P(not A)=1-P(A)] and mutually exclusive events",
+      "column": "on_grade",
+      "parent_standard": "8.DSP.4",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP4-S1"
+      },
+      "i_do_script": "Two of the standard's four words are about single-trial relationships. COMPLEMENTARY events are 'A' and 'not A': together they cover every outcome, so their probabilities add to 1, which means P(not A) = 1 - P(A). Watch: if P(rain) = 3/10, then P(no rain) = 1 - 3/10 = 7/10. MUTUALLY EXCLUSIVE events cannot both happen at once, so for 'A or B' you ADD: on one roll of a number cube, P(a 2 or a 5) = 1/6 + 1/6 = 2/6 = 1/3. Complements subtract from 1; disjoint 'or' events add.",
+      "canonical_error": {
+        "pattern": "Multiplies (uses the 'and' rule) for complementary or mutually exclusive 'or'/'not' events instead of subtracting from 1 or adding",
+        "example": "For P(not A) when P(A) = 3/10, writes 3/10 x something; or for P(a 2 or a 5) writes 1/6 x 1/6 = 1/36 instead of 1/6 + 1/6 = 1/3",
+        "why": "The student applies the compound 'and' multiplication rule everywhere. But complementary events use P(not A) = 1 - P(A), and mutually exclusive 'or' events add their probabilities -- multiplication is the wrong operation for both."
+      },
+      "item_template": "A single-trial complementary or mutually exclusive situation. Student finds P(not A) = 1 - P(A) or, for disjoint events, P(A or B) = P(A) + P(B). Short response (fraction).",
+      "sample_items": [
+        {
+          "stem": "The probability that it rains tomorrow is 3/10. What is the probability that it does NOT rain? (These are complementary events.)",
+          "answer": "7/10"
+        },
+        {
+          "stem": "A spinner lands on red with probability 2/5. What is the probability it does NOT land on red?",
+          "answer": "3/5"
+        },
+        {
+          "stem": "One card is drawn from a standard deck of 52 cards (4 kings and 4 queens). A king and a queen cannot both occur on one draw, so they are mutually exclusive. What is P(king or queen)?",
+          "answer": "2/13"
+        },
+        {
+          "stem": "A number cube (1-6) is rolled once. 'Rolling a 2' and 'rolling a 5' are mutually exclusive. What is P(rolling a 2 or a 5)?",
+          "answer": "1/3"
+        },
+        {
+          "stem": "In a deck of 52 cards there are 4 aces, so P(ace) = 1/13. What is P(NOT drawing an ace)?",
+          "answer": "12/13"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is this 'and,' or 'or'/'not'?",
+        "prompt": "Check the words. For 'not A' (a complement), subtract from 1: P(not A) = 1 - P(A). For 'A or B' when they can't both happen, ADD: P(A) + P(B). Multiplying is only for 'and' with independent events.",
+        "praise": "You matched the operation to the words -- subtract from 1 for a complement, add for disjoint 'or.'"
+      },
+      "vocabulary": [
+        {
+          "term": "Complementary events",
+          "definition": "An event and its opposite; their probabilities add to 1, so P(not A) = 1 - P(A)."
+        },
+        {
+          "term": "Mutually exclusive events",
+          "definition": "Two events that cannot both happen at once, so P(A or B) = P(A) + P(B)."
+        },
+        {
+          "term": "Complement",
+          "definition": "The set of all outcomes NOT in an event, written 'not A.'"
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP4-S6",
+        "if_fail": "8DSP4-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'P(a bus is on time) = 4/7. Find P(the bus is NOT on time).'"
+        },
+        {
+          "kind": "ask",
+          "text": "Do 'on time' and 'not on time' cover every outcome? What do they add to?"
+        },
+        {
+          "kind": "say",
+          "text": "Yes -- they're complementary, so they add to 1. P(not on time) = 1 - 4/7 = 3/7."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student multiplies, ask 'is this an 'and' event, or an opposite?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: on one number-cube roll, P(a 1 or a 4)?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "P(win) = 1/4. What do P(win) and P(not win) add up to?",
+          "answer": "1"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "For two events that cannot both happen, do you add or multiply to find P(A or B)?",
+          "answer": "Add"
+        },
+        {
+          "difficulty": "core",
+          "stem": "The probability a seed sprouts is 5/8. What is the probability it does NOT sprout?",
+          "answer": "3/8 (1 - 5/8)",
+          "notes": "Complement: subtract from 1."
+        },
+        {
+          "difficulty": "core",
+          "stem": "On one roll of a number cube, what is P(rolling a 3 or an even number)? (These are mutually exclusive.)",
+          "answer": "2/3 (1/6 + 3/6)"
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Sam found a probability. Find and fix the mistake.",
+          "shown_work": [
+            "A number cube (1-6) is rolled once. Events 'roll a 2' and 'roll a 5' are mutually exclusive.",
+            "Sam wrote: P(a 2 or a 5) = 1/6 x 1/6 = 1/36."
+          ],
+          "answer": "Sam multiplied, which is the 'and' rule. These are mutually exclusive events joined by 'or,' so you ADD: P(a 2 or a 5) = 1/6 + 1/6 = 2/6 = 1/3.",
+          "notes": "Canonical error: multiplies for an 'or'/'not' event."
+        },
+        {
+          "difficulty": "core",
+          "stem": "One card is drawn from a deck of 52. What is P(the card is a heart or a spade)? (13 hearts, 13 spades; mutually exclusive.)",
+          "answer": "1/2 (13/52 + 13/52)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "P(not A) = 3/4 for some event A. What is P(A)? Explain.",
+          "answer": "P(A) = 1/4, because complementary probabilities add to 1, so P(A) = 1 - 3/4 = 1/4."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A student says 'rolling an even number' and 'rolling a 4' are mutually exclusive. Explain why they are NOT.",
+          "answer": "4 is an even number, so a single roll of 4 makes BOTH events happen at once. Because they can occur together, they are not mutually exclusive."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Add, or Subtract from One?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Situation cards",
+            "Two headers: 'Complement: 1 - P(A)' and 'Mutually exclusive 'or': add'"
+          ],
+          "instructions": "1. Read each situation card.\n2. Decide whether it asks for a complement ('not A') or a disjoint 'or.'\n3. Place it under the matching header and compute the probability.\n4. Debrief: which words in a problem signal 'subtract from 1' versus 'add'?",
+          "content": {
+            "categories": [
+              "Complement: 1 - P(A)",
+              "Mutually exclusive 'or': add"
+            ],
+            "cards": [
+              {
+                "text": "P(rain) = 3/10; find P(no rain)",
+                "category": "Complement: 1 - P(A)"
+              },
+              {
+                "text": "One roll: P(a 2 or a 5)",
+                "category": "Mutually exclusive 'or': add"
+              },
+              {
+                "text": "P(ace) = 1/13; find P(not an ace)",
+                "category": "Complement: 1 - P(A)"
+              },
+              {
+                "text": "One card: P(king or queen)",
+                "category": "Mutually exclusive 'or': add"
+              },
+              {
+                "text": "P(spinner red) = 2/5; find P(not red)",
+                "category": "Complement: 1 - P(A)"
+              },
+              {
+                "text": "One card: P(heart or spade)",
+                "category": "Mutually exclusive 'or': add"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "That's the 'And' Rule",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Sam's work"
+          ],
+          "instructions": "1. Read Sam's work: P(a 2 or a 5) = 1/6 x 1/6.\n2. Ask: is this 'and,' or 'or'? Can both happen on one roll?\n3. Rewrite with the correct operation.\n4. Write the rule: mutually exclusive 'or' events ADD.",
+          "content": {
+            "worked_problem": "One roll of a number cube. Sam wrote P(a 2 or a 5) = 1/6 x 1/6 = 1/36.",
+            "error_step": "Sam multiplied (the 'and' rule) for a mutually exclusive 'or' event.",
+            "why": "The events can't both happen and are joined by 'or,' so add: 1/6 + 1/6 = 1/3."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Multiplying for an 'or'/'not' event is a precise, common error a find-and-fix names cleanly."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "A journal entry contrasting 'and,' 'or,' and 'not' in their own words cements when each operation applies."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'why do complements add to 1?' builds the reasoning behind the subtraction rule."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is this an 'and,' an 'or,' or a 'not'?",
+          "Do the two events cover every outcome (do they add to 1)?",
+          "Can both events happen at the same time?",
+          "For a complement, what do you subtract from?",
+          "For a disjoint 'or,' do you add or multiply?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student multiplies (uses the 'and' rule) for complementary or mutually exclusive 'or'/'not' events instead of subtracting from 1 or adding.",
+            "say": "Check the words. For 'not A' (a complement), subtract from 1: P(not A) = 1 - P(A). For 'A or B' when they can't both happen, ADD: P(A) + P(B). Multiplying is only for 'and' with independent events.",
+            "praise": "You matched the operation to the words -- subtract from 1 for a complement, add for disjoint 'or.'"
+          },
+          {
+            "if_you_see": "Student adds probabilities for two events that CAN both happen (not mutually exclusive).",
+            "say": "First check: can both happen at once? If yes, they aren't mutually exclusive, and plain addition double-counts the overlap. Only add when the events can't co-occur.",
+            "praise": "You checked for overlap first -- adding only works when the events can't both happen."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "P(late) = 2/9. What is P(not late)?",
+            "look_for": "7/9 (1 - 2/9). Multiplying or leaving 2/9 means the complement rule isn't understood."
+          },
+          {
+            "prompt": "One roll: P(a 1 or a 6)?",
+            "look_for": "1/3 (1/6 + 1/6). An answer of 1/36 diagnoses multiplying for 'or.'"
+          }
+        ]
+      },
+      "fluency_source": "8DSP4-F1",
+      "sentence_starters": [
+        "These are complementary, so P(not A) = 1 - ___ = ___.",
+        "These can't both happen, so P(A or B) = ___ + ___ = ___."
+      ],
+      "worked_solution": {
+        "stem": "The probability that it rains tomorrow is 3/10. What is the probability that it does NOT rain?",
+        "answer": "7/10",
+        "steps": [
+          {
+            "math": "P(rain) = 3/10",
+            "annotation": "Write the known probability."
+          },
+          {
+            "math": "'rain' and 'no rain' are complements",
+            "annotation": "Together they cover every outcome, so they add to 1."
+          },
+          {
+            "math": "P(no rain) = 1 - 3/10",
+            "annotation": "Subtract the event's probability from 1."
+          },
+          {
+            "math": "= 7/10",
+            "annotation": "1 = 10/10, and 10/10 - 3/10 = 7/10."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A spinner lands on red with probability 2/5. What is the probability it does NOT land on red?",
+        "answer": "3/5",
+        "steps": [
+          {
+            "math": "P(red) = 2/5",
+            "annotation": "Write the known probability.",
+            "given": true
+          },
+          {
+            "math": "'red' and 'not red' are complements",
+            "annotation": "They cover every outcome, so they add to 1.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Set up P(not red) as 1 minus the event's probability.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Subtract to find the final probability.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8DSP4-S6",
+      "name": "Analyze and correct an error in a compound-probability calculation",
+      "column": "looking_forward",
+      "parent_standard": "8.DSP.4",
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP4-S4"
+      },
+      "i_do_script": "At this level I read someone else's work, find the error, and fix it. The most common mistake in compound probability is using the WITH-replacement probability on a WITHOUT-replacement draw. Watch: a bag has 5 red and 3 green (8 total), two drawn without replacement, and a student writes P(both red) = 5/8 x 5/8 = 25/64. The first fraction is fine, but the second should update: after one red is gone there are 4 red of 7 left, so it's 5/8 x 4/7 = 20/56 = 5/14. I name the error (kept the counts the same) and give the corrected calculation.",
+      "canonical_error": {
+        "pattern": "Uses the with-replacement probability on a without-replacement draw (or reuses one bag's total for a second, separate bag)",
+        "example": "For two draws without replacement from 5 red of 8, accepts P(both red) = 5/8 x 5/8 = 25/64 instead of 5/8 x 4/7 = 5/14",
+        "why": "The error is failing to update the second stage's counts after the first item is removed. The student (or the work being analyzed) treats a dependent draw as independent, keeping the original favorable count and total, which overstates the probability."
+      },
+      "item_template": "A worked compound-probability calculation containing an error. Student identifies the error (Part A) and computes the correct probability (Part B). Multi-part.",
+      "sample_items": [
+        {
+          "stem": "A bag has 5 red and 3 green marbles (8 total). Two marbles are drawn without replacement. A student calculated P(both red) = 5/8 x 5/8 = 25/64.",
+          "parts": [
+            {
+              "label": "Part A",
+              "prompt": "Identify the student's error.",
+              "answer": "The student used 5/8 for the second draw as if the first red were replaced. Without replacement, after one red is drawn there are 4 red left of 7 total, so the second draw should be 4/7."
+            },
+            {
+              "label": "Part B",
+              "prompt": "Calculate the correct probability. Write as a fraction.",
+              "answer": "5/14"
+            }
+          ]
+        },
+        {
+          "stem": "Bag A has 9 red and 3 green marbles. Bag B has 9 black and 6 orange marbles. A student found P(green from Bag A and black from Bag B) = 3/12 x 9/12.",
+          "parts": [
+            {
+              "label": "Part A",
+              "prompt": "Identify the student's error.",
+              "answer": "The student reused Bag A's total of 12 for the Bag B draw. Bag B has 9 + 6 = 15 marbles, so P(black from Bag B) is 9/15, not 9/12."
+            },
+            {
+              "label": "Part B",
+              "prompt": "Calculate the correct probability. Write as a fraction.",
+              "answer": "3/20"
+            }
+          ]
+        },
+        {
+          "stem": "A bag has 4 red and 5 blue marbles (9 total). Two are drawn without replacement. A student calculated P(both red) = 4/9 x 4/9 = 16/81.",
+          "parts": [
+            {
+              "label": "Part A",
+              "prompt": "Identify the student's error.",
+              "answer": "The student did not update the second draw. After one red is removed there are 3 red of 8 left, so the second draw is 3/8, not 4/9."
+            },
+            {
+              "label": "Part B",
+              "prompt": "Calculate the correct probability. Write as a fraction.",
+              "answer": "1/6"
+            }
+          ]
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did the second draw's counts get updated?",
+        "prompt": "Check the second fraction against the story. If the draw is without replacement, the second stage must lose 1 from the favorable count and 1 from the total. If it's a separate bag, use THAT bag's total. Then recompute.",
+        "praise": "You caught the un-updated fraction and fixed it -- that's the whole error, named and corrected."
+      },
+      "vocabulary": [
+        {
+          "term": "Analyze",
+          "definition": "Examine a calculation step by step to find where it goes wrong."
+        },
+        {
+          "term": "Without replacement",
+          "definition": "The first item is not put back, so the second draw's counts drop by one."
+        },
+        {
+          "term": "Dependent events",
+          "definition": "Events where the first outcome changes the probability of the second."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for AII.MDS.3 (probability with conditional and combined events).",
+        "if_fail": "8DSP4-S4"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Bag of 4 red, 6 blue (10). Draw two without replacement. Student wrote P(both red) = 4/10 x 4/10.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which fraction is wrong, and what should it be?"
+        },
+        {
+          "kind": "say",
+          "text": "The second 4/10 is wrong. After one red is gone, it's 3 red of 9, so 4/10 x 3/9 = 12/90 = 2/15."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 'both fractions are fine,' ask 'did a marble get removed before the second draw?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 5 red, 3 green (8), without replacement -- a student wrote 5/8 x 5/8. Fix it."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "In a without-replacement draw, what happens to the total for the second draw?",
+          "answer": "It drops by 1."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A student uses the same denominator for both draws in a without-replacement problem. What did they forget?",
+          "answer": "To subtract 1 from the total (and favorable count) after the first draw."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bag has 6 blue and 4 red (10 total). Two drawn without replacement. A student wrote P(both blue) = 6/10 x 6/10. What is the correct probability?",
+          "answer": "1/3 (6/10 x 5/9)",
+          "notes": "Second fraction should be 5/9."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Bag A: 9 red, 3 green (12). Bag B: 9 black, 6 orange (15). A student wrote P(green from A and black from B) = 3/12 x 9/12. What is correct?",
+          "answer": "3/20 (3/12 x 9/15)",
+          "notes": "Bag B total is 15, not 12."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Jordan analyzed a probability. Find and fix the mistake.",
+          "shown_work": [
+            "A bag has 5 red and 3 green (8 total). Two are drawn without replacement.",
+            "Jordan wrote: P(both red) = 5/8 x 5/8 = 25/64."
+          ],
+          "answer": "Jordan used 5/8 twice, as if the first red were replaced. Without replacement, the second draw is 4 red of 7, so P(both red) = 5/8 x 4/7 = 20/56 = 5/14.",
+          "notes": "Canonical error: with-replacement probability on a without-replacement draw."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A student found P(both aces) from a 52-card deck (4 aces), drawn without replacement, as 4/52 x 4/52. What is the correct probability?",
+          "answer": "1/221 (4/52 x 3/51)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two students got different answers for the same without-replacement problem: 25/64 and 5/14. Which is correct and why?",
+          "answer": "5/14 is correct. The other student kept 5/8 for both draws (with replacement); without replacement the second draw must drop to 4/7, giving 5/8 x 4/7 = 5/14."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write a compound-probability calculation that contains the 'kept the counts the same' error, then show the correct fix.",
+          "answer": "Example: 3 red, 5 blue (8), without replacement, P(both red) = 3/8 x 3/8 (wrong). Fix: after one red is gone it's 2 red of 7, so 3/8 x 2/7 = 6/56 = 3/28."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Find the Broken Fraction",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Cards, each with a flawed compound-probability calculation",
+            "Whiteboards"
+          ],
+          "instructions": "1. For each card, read the story and the student's work.\n2. Circle the ONE fraction that doesn't match the story (usually the second draw).\n3. Write the correct fraction and recompute.\n4. Debrief: what question do you ask to catch this error every time?",
+          "content": {
+            "worked_problem": "5 red, 3 green (8), without replacement. Student wrote P(both red) = 5/8 x 5/8 = 25/64.",
+            "error_step": "The second 5/8 was not updated after a red was removed.",
+            "why": "Without replacement the second draw is 4 red of 7, so P(both red) = 5/8 x 4/7 = 5/14."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Two Students, One Right",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Prompt cards showing two students' answers to the same problem"
+          ],
+          "instructions": "1. Read the problem and both students' answers.\n2. As a group, decide which student is correct.\n3. Name the exact error the other student made.\n4. Score a point for correctly naming the error, not just picking the right answer.\n5. Debrief: was the error always in the same place?"
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-009",
+          "why": "This skill IS worked-example error analysis -- studying a flawed solution and repairing it is exactly the routine."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The un-updated second fraction is a precise error a find-and-fix isolates and corrects."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "Writing out which student erred and why builds the explanation the DOK-3 item demands."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Does the second fraction match the story after the first draw?",
+          "Was this with or without replacement?",
+          "If it's a second, separate bag, whose total should you use?",
+          "Which single number in the work is wrong?",
+          "How would you say the error in one sentence?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student uses the with-replacement probability on a without-replacement draw (or reuses one bag's total for a second bag).",
+            "say": "Check the second fraction against the story. If the draw is without replacement, the second stage must lose 1 from the favorable count and 1 from the total. If it's a separate bag, use THAT bag's total. Then recompute.",
+            "praise": "You caught the un-updated fraction and fixed it -- that's the whole error, named and corrected."
+          },
+          {
+            "if_you_see": "Student spots that an answer is wrong but can't say WHICH step caused it.",
+            "say": "Go fraction by fraction: does the first match the story? Does the second? Point to the exact number that doesn't fit, then fix just that one.",
+            "praise": "You located the exact broken fraction, not just 'the answer's off' -- that's real analysis."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "6 blue, 4 red (10), without replacement. A student wrote P(both blue) = 6/10 x 6/10. Fix it.",
+            "look_for": "1/3 (6/10 x 5/9). Keeping 6/10 twice means the without-replacement update was missed."
+          },
+          {
+            "prompt": "In 'green from Bag A and black from Bag B,' should both fractions share a denominator?",
+            "look_for": "No -- each bag has its own total. Sharing a denominator diagnoses reusing one bag's total."
+          }
+        ]
+      },
+      "fluency_source": "8DSP4-F2",
+      "sentence_starters": [
+        "The error is in the ___ fraction: it should be ___ because ___.",
+        "The correct calculation is ___ x ___ = ___."
+      ],
+      "worked_solution": {
+        "stem": "A bag has 5 red and 3 green marbles (8 total). Two are drawn without replacement. A student wrote P(both red) = 5/8 x 5/8 = 25/64. Find and correct the error.",
+        "answer": "5/14",
+        "steps": [
+          {
+            "math": "first draw 5/8 is correct",
+            "annotation": "Five red out of eight is right for the first draw."
+          },
+          {
+            "math": "error: second draw kept as 5/8",
+            "annotation": "The marble was not replaced, so the counts must change."
+          },
+          {
+            "math": "second draw should be 4/7",
+            "annotation": "One red gone: 4 red left of 7 marbles."
+          },
+          {
+            "math": "5/8 x 4/7 = 20/56 = 5/14",
+            "annotation": "Multiply the corrected fractions and simplify."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Bag A has 9 red and 3 green. Bag B has 9 black and 6 orange. A student wrote P(green from A and black from B) = 3/12 x 9/12. Find and correct the error.",
+        "answer": "3/20",
+        "steps": [
+          {
+            "math": "green from A = 3/12",
+            "annotation": "Bag A has 12 marbles, so 3/12 is correct.",
+            "given": true
+          },
+          {
+            "math": "error: used 12 as Bag B's total",
+            "annotation": "Bag B is a separate bag with its own total.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write P(black from Bag B) using Bag B's total of 15.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the corrected fractions and simplify.",
+            "given": false
+          }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "skills": [
+        "8DSP4-F1",
+        "8DSP4-F2"
+      ]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": [
+        "8DSP4-S1"
+      ]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": [
+        "8DSP4-S2",
+        "8DSP4-S3",
+        "8DSP4-S4",
+        "8DSP4-S5"
+      ]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": [
+        "8DSP4-S6"
+      ]
+    }
+  },
+  "skill_sequence": [
+    "8DSP4-F1",
+    "8DSP4-F2",
+    "8DSP4-S1",
+    "8DSP4-S2",
+    "8DSP4-S3",
+    "8DSP4-S4",
+    "8DSP4-S5",
+    "8DSP4-S6"
+  ],
+  "skill_tree": {
+    "8DSP4-F1": [],
+    "8DSP4-F2": [],
+    "8DSP4-S1": [
+      "8DSP4-F1"
+    ],
+    "8DSP4-S2": [
+      "8DSP4-S1"
+    ],
+    "8DSP4-S3": [
+      "8DSP4-S1",
+      "8DSP4-F2"
+    ],
+    "8DSP4-S4": [
+      "8DSP4-S3"
+    ],
+    "8DSP4-S5": [
+      "8DSP4-S1",
+      "8DSP4-F1"
+    ],
+    "8DSP4-S6": [
+      "8DSP4-S4"
+    ]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S4 (calculate the probability of a compound event WITHOUT replacement) -- the core grade-level discriminator, where the classic with-replacement misconception lives. If they pass, move to S6 (analyze and correct an error) and S5 (complementary and mutually exclusive reasoning). If they fail, drop to S3 (write the independent expression) and then S1 (classify the event type), and to F1/F2 if the fraction mechanics are the gap. S2 (independent vs dependent) branches off as the with/without-replacement check, and S5 as the 'or'/'not' vocabulary check.",
+    "entry_skill": "8DSP4-S4",
+    "if_pass": [
+      "8DSP4-S6",
+      "8DSP4-S5"
+    ],
+    "if_fail": [
+      "8DSP4-S3",
+      "8DSP4-S1"
+    ],
+    "branch_skills": [
+      "8DSP4-S2",
+      "8DSP4-S5"
+    ]
+  }
+}

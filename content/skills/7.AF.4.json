@@ -1,0 +1,1215 @@
+{
+  "standard_code": "7.AF.4",
+  "standard_text": "Solve inequalities of the form px + q > r or px + q < r (and >= , <=), where p, q, and r are specific rational numbers. Represent real-world problems using inequalities of these forms and solve such problems. Graph the solution set of the inequality and interpret it in the context of the problem.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "This standard turns the two-step equation students just mastered into a two-step INEQUALITY -- same machinery, one new idea, and a picture at the end. So the progression starts with what a solution to an inequality even IS: not a single number, but a whole SET of numbers, every value that makes the statement true. Testing a candidate by substitution (the Below-proficiency task) is the anchor -- if a student can't tell whether 5 makes 6x + 4 > 28 true, nothing downstream can be trusted. From there the picture arrives early, because the standard names it: the solution set lives on a number line, and reading or drawing that graph forces two decisions students confuse for years -- open circle vs. closed circle (does the boundary itself count?) and which direction to shade.\n\nWith 'what is a solution' and 'how do we picture it' in hand, the core solving step is next: isolate x in px + q compared to r exactly as if the sign were an equals sign, EXCEPT for the one rule that has no analog in equation solving -- when you multiply or divide both sides by a negative, the inequality flips direction. That single rule is the dominant error, so it earns its own step and a test-point habit to catch it. Only then does the standard turn outward: translate a real-world 'at most / at least' situation into px + q compared to r, solve it, graph the set, and say what the answer MEANS (the greatest whole number of miles, the fewest weeks of saving). At the top band students critique someone else's claim -- deciding whether a proposed value is reasonable and justifying it against the constraint. The order is deliberate: test, then graph, then find the set, then solve with the flip, then model, then justify. Underneath all of it runs one habit -- an inequality answers with a range, and you confirm the range by picking a point inside it and checking the original."
+  ,
+    "steps": [
+      {
+        "skill_id": "7AF4-S1",
+        "verb": "determine",
+        "rationale": "A solution to an inequality is any value that makes it true. Testing a candidate by substitution is the Below-proficiency task and the meaning every later solving and graphing step is verified against."
+      },
+      {
+        "skill_id": "7AF4-S2",
+        "verb": "graph",
+        "rationale": "The standard explicitly requires graphing the solution set. Recognizing and constructing the number-line picture -- open vs. closed circle and shade direction -- is a distinct skill from solving, and the spec's Below band asks students to pick the correct graph."
+      },
+      {
+        "skill_id": "7AF4-S3",
+        "verb": "identify",
+        "rationale": "A solution SET is more than one number. Deciding which values from a list belong -- and correctly including or excluding the boundary -- bridges single-value testing and full solving, and is the spec's Approaching multi-select task."
+      },
+      {
+        "skill_id": "7AF4-S4",
+        "verb": "solve",
+        "rationale": "The core of the standard: isolate x in px + q compared to r. It uses equation machinery plus the one rule new to inequalities -- reverse the direction when multiplying or dividing by a negative -- which is the dominant error and so earns its own step."
+      },
+      {
+        "skill_id": "7AF4-S5",
+        "verb": "represent",
+        "rationale": "The At-proficiency demand: translate a real-world 'at most / at least' situation into an inequality, solve it, graph the set, and interpret the answer in context. Modeling and interpreting are separate from executing the algebra."
+      },
+      {
+        "skill_id": "7AF4-S6",
+        "verb": "justify",
+        "rationale": "The Above-proficiency payoff: critique a proposed solution to a real-world inequality for reasonableness and justify the judgment against the constraint -- proving an answer belongs to the solution set, not just producing one."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "7AF4-F1",
+      "name": "Solve a two-step equation using inverse operations",
+      "column": "foundation",
+      "parent_standard": "7.AF.4",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Undo addition/subtraction and multiplication/division to isolate a variable in px + q = r.",
+        "check_question": "Solve 4x + 3 = 19."
+      },
+      "i_do_script": "To get x by itself I undo whatever is happening to it, in reverse order -- clear the added or subtracted number first, then undo the multiplication. Watch: 4x + 3 = 19. The x is multiplied by 4, then 3 is added. I undo the adding first: subtract 3 from both sides, giving 4x = 16. Then I undo the multiplying: divide both sides by 4, giving x = 4. Whatever I do to one side I do to the other -- that keeps the scale balanced. This is the exact same routine we will use to solve inequalities.",
+      "canonical_error": {
+        "pattern": "Undoes operations in the wrong order -- divides by the coefficient before clearing the constant",
+        "example": "For 4x + 3 = 19 the student divides by 4 first (getting x + 3 = 19/4) instead of subtracting 3 first",
+        "why": "The student attacks the coefficient before clearing the added term, reading left to right instead of reversing the order of operations. The added or subtracted number must be cleared before the multiplication is undone."
+      },
+      "item_template": "A two-step equation px + q = r with integer or simple rational values. Student isolates x. Short numeric response; a strong short fluency bank.",
+      "sample_items": [
+        { "stem": "Solve 4x + 3 = 19.", "answer": "x = 4" },
+        { "stem": "Solve 2x - 5 = 11.", "answer": "x = 8" },
+        { "stem": "Solve 3x + 7 = 22.", "answer": "x = 5" },
+        { "stem": "Solve 6x - 4 = 20.", "answer": "x = 4" },
+        { "stem": "Solve 5x + 2 = 27.", "answer": "x = 5" },
+        { "stem": "Solve (1/2)x + 3 = 8.", "answer": "x = 10" }
+      ],
+      "redirect_script": {
+        "stop": "Wait -- what is being done to the x LAST?",
+        "prompt": "Undo in reverse order. Clear the added or subtracted number FIRST (do the opposite to both sides), and only then divide by the number multiplying x.",
+        "praise": "You cleared the constant before touching the coefficient -- that's the right order."
+      },
+      "vocabulary": [
+        { "term": "Inverse operation", "definition": "The operation that undoes another (subtraction undoes addition; division undoes multiplication)." },
+        { "term": "Isolate", "definition": "Get the variable alone on one side of the equation." },
+        { "term": "Coefficient", "definition": "The number multiplied by a variable, like the 4 in 4x." }
+      ],
+      "next_steps": { "if_pass": "7AF4-S1", "if_fail": "Review one- and two-step equations (6.AF.5 / 7.AF.3)." },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write '5x - 2 = 18.'" },
+        { "kind": "ask", "text": "What is happening to x, and in what order?" },
+        { "kind": "say", "text": "x is multiplied by 5, then 2 is subtracted. I undo the subtraction first: add 2 to both sides, getting 5x = 20." },
+        { "kind": "watch", "text": "If the student divides by 5 first, ask 'what number is stuck to the x by adding or subtracting? Clear that one first.'" },
+        { "kind": "ask", "text": "Now undo the times 5. What do you do to both sides? Your turn: 3x + 4 = 19." }
+      ]
+    },
+    {
+      "skill_id": "7AF4-F2",
+      "name": "Read inequality symbols and plot on a number line",
+      "column": "foundation",
+      "parent_standard": "7.AF.4",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Interpret <, >, <=, >= and represent an inequality's solutions on a number line with open/closed circles (6.AF.4).",
+        "check_question": "Graph x > 3 on a number line: open or closed circle, and which way do you shade?"
+      },
+      "i_do_script": "The inequality symbol always opens toward the bigger side -- the wide end faces the larger amount, the point faces the smaller. And the circle tells you whether the boundary itself counts: an OPEN (hollow) circle means 'not equal to,' used for > and <; a CLOSED (filled) circle means 'equal to is allowed,' used for >= and <=. Watch: to graph x > 3 I put an OPEN circle on 3 (3 itself is not a solution) and shade to the RIGHT, toward the larger numbers. For x <= -2 I put a CLOSED circle on -2 and shade LEFT.",
+      "canonical_error": {
+        "pattern": "Confuses open vs. closed circles or shades toward the wrong side of the boundary",
+        "example": "Graphs x > 3 with a CLOSED circle at 3 (treating > like >=), or shades left toward smaller numbers instead of right",
+        "why": "The student memorizes the picture without linking it to meaning -- an open circle stands for 'boundary excluded' (strict >/<), and the shading follows the direction of the larger/smaller values the symbol points to."
+      },
+      "item_template": "A single inequality (x > a, x <= a) or a symbol-choice item. Student names open vs. closed circle, the shade direction, or whether the boundary is included. Short response.",
+      "sample_items": [
+        { "stem": "Graph x > 3. Open or closed circle at 3, and which direction do you shade?", "answer": "Open circle at 3, shade right." },
+        { "stem": "Graph x <= -2. Open or closed circle, and which direction?", "answer": "Closed circle at -2, shade left." },
+        { "stem": "Does the graph of x >= 4 include the number 4? Why?", "answer": "Yes -- >= means 'equal to' is allowed, so the circle at 4 is closed." },
+        { "stem": "Which symbol makes this true: 5 __ 8?", "answer": "5 < 8" },
+        { "stem": "Plot 2.5 on a number line. Between which two whole numbers does the point sit?", "answer": "Between 2 and 3, halfway." }
+      ],
+      "redirect_script": {
+        "stop": "Hold on -- does the boundary number count or not?",
+        "prompt": "If the symbol is > or <, the boundary is NOT a solution, so use an open (hollow) circle. If it is >= or <=, the boundary IS a solution, so fill the circle in. Then shade toward the numbers that make it true.",
+        "praise": "You matched the circle to the symbol and shaded the right way -- that's a correct solution-set picture."
+      },
+      "vocabulary": [
+        { "term": "Inequality", "definition": "A statement comparing two amounts with <, >, <=, or >=." },
+        { "term": "Open circle", "definition": "A hollow circle on the number line meaning the boundary value is NOT included (used for > and <)." },
+        { "term": "Closed circle", "definition": "A filled-in circle meaning the boundary value IS included (used for >= and <=)." },
+        { "term": "Boundary", "definition": "The number where the solution set starts, like the 3 in x > 3." }
+      ],
+      "next_steps": { "if_pass": "7AF4-S2", "if_fail": "Review graphing inequalities on a number line (6.AF.4)." },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Graph x >= 1.'" },
+        { "kind": "ask", "text": "Is 1 itself a solution? What does the >= tell you?" },
+        { "kind": "say", "text": "Yes -- >= allows 'equal to,' so I use a CLOSED circle on 1. Then I shade to the right, toward all the numbers bigger than 1." },
+        { "kind": "watch", "text": "If the student shades left, ask 'are the solutions bigger than 1 or smaller than 1?'" },
+        { "kind": "ask", "text": "Your turn: graph x < 0. Open or closed circle, and which way?" }
+      ]
+    },
+    {
+      "skill_id": "7AF4-S1",
+      "name": "Determine whether a value is a solution to an inequality by substituting",
+      "column": "looking_back",
+      "parent_standard": "7.AF.4",
+      "engine_stems": [1],
+      "prerequisite_skill": { "type": "skill", "skill_id": "7AF4-F1" },
+      "i_do_script": "A solution to an inequality is any value that makes the statement TRUE. To test one, I substitute the number for x, work out the left side, and then ask: is the comparison actually true? Watch: is x = 5 a solution to 6x + 4 > 28? I replace x with 5: 6(5) + 4 = 30 + 4 = 34. Now compare: 34 > 28 is TRUE, so 5 IS a solution. Watch the tricky case: is x = 4 a solution? 6(4) + 4 = 28, and 28 > 28 is FALSE -- a number equal to the boundary is NOT a solution when the sign is a strict > . So 4 is not a solution.",
+      "canonical_error": {
+        "pattern": "Counts a boundary value as a solution for a strict inequality, or stops after computing the left side without checking the comparison",
+        "example": "For 6x + 4 > 28 with x = 4, the student gets 28 and says 'yes, it's a solution' because 28 reaches 28, ignoring that 28 > 28 is false",
+        "why": "The student treats 'reaching' the right-hand number as good enough and does not distinguish strict > from >= . Substitution only tells the truth when the final comparison is judged exactly -- for > , equal is not enough."
+      },
+      "item_template": "An inequality px + q compared to r and a candidate value. Student substitutes, evaluates, and states true/false. Include boundary cases that separate > from >= . MC / yes-no.",
+      "sample_items": [
+        {
+          "stem": "Is x = 5 a solution to 6x + 4 > 28?",
+          "answer": "Yes -- 6(5) + 4 = 34, and 34 > 28 is true.",
+          "choices": [
+            "Yes -- 6(5) + 4 = 34, and 34 > 28 is true.",
+            "No, because 5 is too small.",
+            "No -- 6(5) + 4 = 28.",
+            "Cannot be determined."
+          ],
+          "distractor_logic": "6(5) + 4 = 34 > 28, so 5 is a solution. Distractors reward guessing by size or a miscomputed left side."
+        },
+        {
+          "stem": "Is x = 3 a solution to 6x + 4 > 28?",
+          "answer": "No -- 6(3) + 4 = 22, and 22 > 28 is false.",
+          "choices": [
+            "Yes, because 3 is a whole number.",
+            "No -- 6(3) + 4 = 22, and 22 > 28 is false.",
+            "Yes -- 22 > 28.",
+            "Cannot be determined."
+          ],
+          "distractor_logic": "22 is not greater than 28, so 3 fails. Distractors reward misreading the comparison direction."
+        },
+        {
+          "stem": "Is x = 2 a solution to 4x - 1 <= 7?",
+          "answer": "Yes -- 4(2) - 1 = 7, and 7 <= 7 is true.",
+          "choices": [
+            "Yes -- 4(2) - 1 = 7, and 7 <= 7 is true.",
+            "No, because 7 equals 7.",
+            "No -- 4(2) - 1 = 9.",
+            "Cannot be determined."
+          ],
+          "distractor_logic": "For <= , hitting the boundary exactly IS a solution. The trap 'no, because it equals' misreads <= as strict."
+        },
+        {
+          "stem": "Is x = 6 a solution to 2x + 3 < 15?",
+          "answer": "No -- 2(6) + 3 = 15, and 15 < 15 is false.",
+          "choices": [
+            "Yes -- 15 < 15.",
+            "No -- 2(6) + 3 = 15, and 15 < 15 is false.",
+            "Yes, because 6 works in most problems.",
+            "Cannot be determined."
+          ],
+          "distractor_logic": "15 is not less than 15, so the boundary value fails a strict < . This is the canonical boundary trap."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Before you decide -- is the comparison TRUE or false?",
+        "prompt": "Finish the arithmetic, then read the symbol exactly. For > and < , landing right on the other number is NOT enough -- it has to be strictly bigger or strictly smaller. For >= and <= , equal counts. Say the final line out loud: '28 greater than 28? No.'",
+        "praise": "You checked the comparison exactly, boundary and all -- that's a real solution test."
+      },
+      "vocabulary": [
+        { "term": "Solution", "definition": "A value that makes an inequality true when you substitute it for the variable." },
+        { "term": "Substitute", "definition": "Replace the variable with a number everywhere it appears." },
+        { "term": "Strict inequality", "definition": "A > or < statement, where the boundary value is NOT a solution." }
+      ],
+      "next_steps": { "if_pass": "7AF4-S3", "if_fail": "7AF4-F1" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Is x = 4 a solution to 5x - 2 >= 18?'" },
+        { "kind": "ask", "text": "Where does the 4 go? What do we compute first?" },
+        { "kind": "say", "text": "Substitute: 5(4) - 2 = 20 - 2 = 18. Compare: 18 >= 18 is true, so 4 IS a solution." },
+        { "kind": "watch", "text": "If a student says 'no, 18 isn't bigger than 18,' point out that >= allows equal." },
+        { "kind": "ask", "text": "Your turn: is x = 4 a solution to 5x - 2 > 18? (Careful -- the sign changed.)" }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Is x = 4 a solution to 3x > 9?", "answer": "Yes -- 3(4) = 12, and 12 > 9 is true." },
+        { "difficulty": "warm_up", "stem": "When you substitute a value and the comparison comes out false, is the value a solution?", "answer": "No -- a value is only a solution if the comparison is true." },
+        { "difficulty": "core", "stem": "Is x = 5 a solution to 6x + 4 > 28?", "answer": "Yes -- 6(5) + 4 = 34, and 34 > 28 is true.", "notes": "Spec item -- straightforward true case." },
+        { "difficulty": "core", "stem": "Is x = 2 a solution to 4x - 1 <= 7?", "answer": "Yes -- 4(2) - 1 = 7, and 7 <= 7 is true.", "notes": "Boundary value that DOES count because the sign is <= ." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Priya checked whether x = 4 is a solution to 6x + 4 > 28. Find and fix the mistake.",
+          "shown_work": [
+            "Priya wrote: '6(4) + 4 = 24 + 4 = 28.'",
+            "'28 reaches 28, so x = 4 IS a solution.'"
+          ],
+          "answer": "Priya's arithmetic is right (28) but the verdict is wrong. The sign is a strict > , and 28 > 28 is FALSE, so x = 4 is NOT a solution. Reaching the boundary only counts when the sign is >= .",
+          "notes": "Canonical error: treating the boundary as a solution under a strict > ."
+        },
+        { "difficulty": "stretch", "stem": "For which inequality is x = 6 a solution: (a) 2x + 3 < 15 or (b) 2x + 3 <= 15? Explain.", "answer": "(b) only. 2(6) + 3 = 15; 15 < 15 is false (a fails), but 15 <= 15 is true (b works). The <= is what lets the boundary count.", "notes": "Forces the strict-vs-inclusive distinction directly." },
+        { "difficulty": "stretch", "stem": "Write a value of x that IS a solution to 6x + 4 > 28 and a value that is NOT, and show the check for each.", "answer": "Sample: x = 5 works (34 > 28 true); x = 4 does not (28 > 28 false). Any x > 4 works; any x <= 4 fails.", "notes": "Reversed direction -- produce solutions and non-solutions." }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Solution or Not",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": ["Card set: 10 (inequality + candidate value) cards, several landing on the boundary"],
+          "instructions": "1. Each card shows an inequality and a value to test.\n2. Substitute the value and work out the left side on scratch paper.\n3. Write the final comparison line (like '28 > 28? No').\n4. Sort the card into 'Solution' or 'Not a solution.'\n5. Debrief: which cards were traps because the value landed exactly on the boundary? What decided them -- the circle rule (strict vs. inclusive)?",
+          "content": {
+            "categories": ["Solution", "Not a solution"],
+            "cards": [
+              { "text": "6x + 4 > 28; x = 5", "category": "Solution" },
+              { "text": "6x + 4 > 28; x = 4", "category": "Not a solution" },
+              { "text": "4x - 1 <= 7; x = 2", "category": "Solution" },
+              { "text": "2x + 3 < 15; x = 6", "category": "Not a solution" },
+              { "text": "3x - 5 >= 7; x = 4", "category": "Solution" },
+              { "text": "6x + 4 > 28; x = 3", "category": "Not a solution" },
+              { "text": "2x + 1 > 7; x = 5", "category": "Solution" },
+              { "text": "4x - 1 <= 7; x = 3", "category": "Not a solution" }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Boundary Trap Detective",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Priya's boundary verdict"],
+          "instructions": "1. Read Priya's check of x = 4 in 6x + 4 > 28.\n2. Confirm her arithmetic (does 6(4) + 4 = 28?).\n3. Decide whether 28 > 28 is true or false, and correct the verdict.\n4. Write the one rule that settles every boundary case: when does 'equal' count?",
+          "content": {
+            "worked_problem": "Is x = 4 a solution to 6x + 4 > 28? Priya got 28 and said 'yes.'",
+            "error_step": "Priya treated reaching 28 as satisfying a strict > .",
+            "why": "28 > 28 is false; the boundary counts only for >= or <= . So x = 4 is not a solution."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "Sorting true solutions from boundary traps that fail only because of strict-vs-inclusive is error analysis aimed right at the misconception." },
+        { "strategy_id": "strat-math-002", "why": "A number-talk on 'is 28 > 28?' surfaces the strict-inequality idea through student reasoning before any procedure." },
+        { "strategy_id": "strat-math-010", "why": "Choral response on 'open circle means... boundary counts / doesn't count' hard-wires the strict-vs-inclusive habit." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Where does the number go, and what do you compute first?",
+          "What is the left side now?",
+          "Is the final comparison true or false -- read the symbol exactly.",
+          "Does the boundary value count here? How do you know?",
+          "What kind of numbers would make this one true?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student counts a boundary value as a solution for a strict inequality, or stops after computing the left side.",
+            "say": "Finish the arithmetic, then read the symbol exactly. For > and < , landing right on the other number is NOT enough -- it has to be strictly bigger or strictly smaller. For >= and <= , equal counts. Say the final line out loud: '28 greater than 28? No.'",
+            "praise": "You checked the comparison exactly, boundary and all -- that's a real solution test."
+          },
+          {
+            "if_you_see": "Student guesses by the size of the number without substituting.",
+            "say": "You have to put the number in and work out the left side -- 'looks big' isn't a check. Substitute, compute, compare.",
+            "praise": "You tested by substituting instead of guessing -- that's how you know for sure."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Is x = 4 a solution to 6x + 4 > 28?",
+            "look_for": "No (it equals 28, and 28 > 28 is false). A 'yes' diagnoses the boundary trap."
+          },
+          {
+            "prompt": "Is x = 2 a solution to 4x - 1 <= 7?",
+            "look_for": "Yes (7 <= 7 is true). A 'no' means the student read <= as strict."
+          }
+        ]
+      },
+      "fluency_source": "7AF4-F1",
+      "sentence_starters": [
+        "I replaced x with ___ and the left side became ___.",
+        "The comparison ___ ___ ___ is ___, so ___ ___ a solution."
+      ],
+      "worked_solution": {
+        "stem": "Is x = 5 a solution to 6x + 4 > 28?",
+        "answer": "Yes -- 6(5) + 4 = 34, and 34 > 28 is true.",
+        "steps": [
+          { "math": "substitute x = 5: 6(5) + 4", "annotation": "Replace every x with 5." },
+          { "math": "6(5) + 4 = 30 + 4 = 34", "annotation": "Multiply first, then add -- work out the whole left side." },
+          { "math": "34 > 28 ?", "annotation": "Now read the symbol exactly and compare." },
+          { "math": "34 > 28 is TRUE -> x = 5 IS a solution", "annotation": "True comparison means the value is a solution." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Is x = 4 a solution to 6x + 4 > 28?",
+        "answer": "No -- 6(4) + 4 = 28, and 28 > 28 is false.",
+        "steps": [
+          { "math": "substitute x = 4: 6(4) + 4", "annotation": "Replace every x with 4.", "given": true },
+          { "math": "6(4) + 4 = 28", "annotation": "Work out the left side.", "given": true },
+          { "math": null, "annotation": "Write the comparison 28 > 28 and decide: is it true or false?", "given": false },
+          { "math": null, "annotation": "State whether 4 is a solution, and why the boundary does not count for > .", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "7AF4-S2",
+      "name": "Graph and choose the number-line picture of a solution set",
+      "column": "looking_back",
+      "parent_standard": "7.AF.4",
+      "engine_stems": [2],
+      "prerequisite_skill": { "type": "skill", "skill_id": "7AF4-F2" },
+      "i_do_script": "To graph the solution to an inequality I first solve it down to 'x compared to a number,' then draw the picture with two decisions: the circle and the direction. Watch: 6x + 2 < 14. Subtract 2: 6x < 12. Divide by 6: x < 2. Now the picture -- the sign is a strict < , so I use an OPEN circle at 2, and because x is LESS than 2, I shade LEFT toward the smaller numbers. If it had been x <= 2 I would fill the circle in; if it had been x > 2 I would shade right.",
+      "canonical_error": {
+        "pattern": "Uses the wrong circle (closed for a strict sign) or shades the wrong direction",
+        "example": "For x < 2 the student draws a CLOSED circle at 2, or shades to the right instead of left toward the smaller values",
+        "why": "The student solves correctly but breaks the link between the symbol and the picture -- a strict >/< needs an open circle, and the shading must run toward the values that make x compared to the boundary true."
+      },
+      "item_template": "An inequality px + q compared to r (whole-number boundary). Student solves and identifies the correct number-line graph: circle type + shade direction. MC-with-graphs or short description.",
+      "sample_items": [
+        {
+          "stem": "Solve 6x + 2 < 14, then graph the solution. Describe the correct number line.",
+          "answer": "x < 2: open circle at 2, shade left.",
+          "choices": [
+            "x < 2: open circle at 2, shade left.",
+            "x < 2: closed circle at 2, shade left.",
+            "x > 2: open circle at 2, shade right.",
+            "x < 12: open circle at 12, shade left."
+          ],
+          "distractor_logic": "6x < 12 so x < 2. A closed circle mishandles the strict < ; shading right reverses direction; boundary 12 skips dividing by 6."
+        },
+        {
+          "stem": "Solve 3x - 5 >= 7, then graph the solution. Describe the correct number line.",
+          "answer": "x >= 4: closed circle at 4, shade right.",
+          "choices": [
+            "x >= 4: closed circle at 4, shade right.",
+            "x >= 4: open circle at 4, shade right.",
+            "x <= 4: closed circle at 4, shade left.",
+            "x >= 12: closed circle at 12, shade right."
+          ],
+          "distractor_logic": "3x >= 12 so x >= 4. An open circle mishandles the inclusive >= ; shading left reverses; boundary 12 forgets to divide."
+        },
+        {
+          "stem": "Solve 2x + 6 > 10, then graph the solution. Describe the correct number line.",
+          "answer": "x > 2: open circle at 2, shade right.",
+          "distractor_logic": "2x > 4 so x > 2. Open circle (strict) and shade right (greater than)."
+        },
+        {
+          "stem": "Solve 4x + 3 <= 15, then graph the solution. Describe the correct number line.",
+          "answer": "x <= 3: closed circle at 3, shade left.",
+          "distractor_logic": "4x <= 12 so x <= 3. Closed circle (inclusive) and shade left (less than)."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Two decisions -- what circle, and which way?",
+        "prompt": "First the circle: > or < gets an OPEN (hollow) circle; >= or <= gets a CLOSED (filled) one. Then the direction: if x is greater, shade right toward bigger numbers; if x is less, shade left. Point to your solved form 'x < 2' and let it tell you both.",
+        "praise": "Your circle matches the symbol and your shading matches the direction -- that's a correct graph."
+      },
+      "vocabulary": [
+        { "term": "Solution set", "definition": "All the values that make the inequality true, shown as a shaded ray on a number line." },
+        { "term": "Open circle", "definition": "A hollow circle marking a boundary that is NOT included (for > and <)." },
+        { "term": "Closed circle", "definition": "A filled circle marking a boundary that IS included (for >= and <=)." }
+      ],
+      "next_steps": { "if_pass": "7AF4-S4", "if_fail": "7AF4-F2" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Graph the solution to 2x + 6 > 10.'" },
+        { "kind": "ask", "text": "Solve it first -- what does x compare to?" },
+        { "kind": "say", "text": "2x > 4, so x > 2. The sign is strict > , so OPEN circle at 2, and x is greater, so shade RIGHT." },
+        { "kind": "watch", "text": "If a student fills the circle, ask 'is 2 itself a solution? Try it: 2(2) + 6 = 10, and 10 > 10 is false.'" },
+        { "kind": "ask", "text": "Your turn: graph the solution to 4x + 3 <= 15." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Graph x > 5. Open or closed circle, and which direction?", "answer": "Open circle at 5, shade right." },
+        { "difficulty": "warm_up", "stem": "You solved an inequality and got x <= 4. What circle do you draw at 4?", "answer": "A closed (filled) circle, because <= includes 4." },
+        { "difficulty": "core", "stem": "Solve 6x + 2 < 14 and graph the solution.", "answer": "x < 2: open circle at 2, shade left.", "notes": "Spec item -- strict sign, shade left." },
+        { "difficulty": "core", "stem": "Solve 3x - 5 >= 7 and graph the solution.", "answer": "x >= 4: closed circle at 4, shade right.", "notes": "Inclusive sign, shade right." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Marcus solved and graphed 5x - 3 > 12. Find and fix the mistake in his graph.",
+          "shown_work": [
+            "Marcus wrote: '5x > 15, so x > 3.'",
+            "'Graph: CLOSED circle at 3, shade right.'"
+          ],
+          "answer": "The solving is correct (x > 3), but the circle is wrong. A strict > means 3 is NOT a solution, so the circle must be OPEN, not closed. The shade direction (right) is correct.",
+          "notes": "Canonical error: closed circle used for a strict inequality."
+        },
+        { "difficulty": "stretch", "stem": "A graph shows a closed circle at -2 shaded to the left. Write the inequality it represents.", "answer": "x <= -2 (closed circle = inclusive, shaded left = less than).", "notes": "Reversed direction -- read a picture back into symbols." },
+        { "difficulty": "stretch", "stem": "Two students graph 4x + 3 <= 15. One draws an open circle at 3, the other a closed circle. Who is right, and how could a single test value settle it?", "answer": "Closed is right (x <= 3 includes 3). Test x = 3: 4(3) + 3 = 15, and 15 <= 15 is true, so 3 IS a solution and the circle is filled.", "notes": "Justify the circle choice with a boundary test point." }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Inequality to Number Line",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": ["Card set: 6 inequalities and 8 number-line pictures (two circle/direction decoys)"],
+          "instructions": "1. Solve each inequality card down to 'x compared to a number.'\n2. Match it to the number-line card with the correct circle and shading.\n3. Two picture cards are decoys -- one flips the circle (open vs. closed), one shades the wrong way. Set them aside and name the error.\n4. To claim a match, say both decisions out loud: 'open because strict, shade left because less than.'\n5. Debrief: which decoy fooled more people -- the circle or the direction?",
+          "content": {
+            "pairs": [
+              { "left": "6x + 2 < 14", "right": "open circle at 2, shade left" },
+              { "left": "3x - 5 >= 7", "right": "closed circle at 4, shade right" },
+              { "left": "2x + 6 > 10", "right": "open circle at 2, shade right" },
+              { "left": "4x + 3 <= 15", "right": "closed circle at 3, shade left" },
+              { "left": "5x - 3 > 12", "right": "open circle at 3, shade right" },
+              { "left": "2x + 1 <= 9", "right": "closed circle at 4, shade left" }
+            ],
+            "decoys": ["closed circle at 2, shade left", "open circle at 4, shade left"]
+          }
+        },
+        {
+          "type": "hands_on",
+          "title": "Build the Ray",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": ["Blank number-line strips", "One open ring token and one filled token per pair", "Arrow strips"],
+          "instructions": "1. Draw an inequality card and solve it to 'x compared to a number.'\n2. Place the OPEN ring or the FILLED token on the boundary based on the symbol.\n3. Lay the arrow strip in the shade direction (right for greater, left for less).\n4. Check with a test value from the shaded side by substituting into the original.\n5. Debrief: how did the token you chose match the symbol, every time?"
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-007", "why": "The number line is the representational bridge between the abstract symbol x < 2 and the concrete shaded ray -- exactly the CRA move." },
+        { "strategy_id": "strat-math-003", "why": "The closed-for-strict circle error is precise and baitable, ideal for a find-and-fix on the graph itself." },
+        { "strategy_id": "strat-math-008", "why": "A whiteboard pass where each student adds one decision (circle, then direction, then a test point) makes the two graphing choices explicit." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What does x compare to after you solve?",
+          "Is the boundary a solution? So is the circle open or closed?",
+          "Which numbers make it true -- bigger or smaller? Which way do you shade?",
+          "Pick a point in your shading -- does it work in the original?",
+          "How would the picture change if the sign were >= instead of > ?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student uses a closed circle for a strict > /< or shades the wrong direction.",
+            "say": "First the circle: > or < gets an OPEN (hollow) circle; >= or <= gets a CLOSED (filled) one. Then the direction: if x is greater, shade right toward bigger numbers; if x is less, shade left. Point to your solved form 'x < 2' and let it tell you both.",
+            "praise": "Your circle matches the symbol and your shading matches the direction -- that's a correct graph."
+          },
+          {
+            "if_you_see": "Student graphs the boundary from r instead of dividing (marks 12 instead of 2).",
+            "say": "Finish solving BEFORE you graph -- divide both sides so you have x by itself. The circle goes on the solved boundary, not the number from the right side.",
+            "praise": "You solved all the way to x by itself before drawing -- now the boundary is right."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Graph the solution to 6x + 2 < 14.",
+            "look_for": "x < 2, open circle at 2, shade left. A closed circle diagnoses the strict-sign error."
+          },
+          {
+            "prompt": "Graph the solution to 3x - 5 >= 7.",
+            "look_for": "x >= 4, closed circle at 4, shade right. An open circle means the student missed that >= includes the boundary."
+          }
+        ]
+      },
+      "fluency_source": "7AF4-F1",
+      "sentence_starters": [
+        "After solving, x ___ ___, so the circle is ___ because the sign is ___.",
+        "I shade to the ___ because the solutions are ___ than ___."
+      ],
+      "worked_solution": {
+        "stem": "Solve 6x + 2 < 14 and graph the solution set.",
+        "answer": "x < 2: open circle at 2, shade left.",
+        "steps": [
+          { "math": "6x + 2 < 14 -> 6x < 12", "annotation": "Subtract 2 from both sides -- adding/subtracting never changes the picture." },
+          { "math": "6x < 12 -> x < 2", "annotation": "Divide by 6 (positive), so the sign stays < ." },
+          { "math": "sign is < (strict) -> OPEN circle at 2", "annotation": "Strict inequality: the boundary is not a solution." },
+          { "math": "x is less than 2 -> shade LEFT", "annotation": "Shade toward the smaller numbers that make it true." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Solve 4x + 3 <= 15 and graph the solution set.",
+        "answer": "x <= 3: closed circle at 3, shade left.",
+        "steps": [
+          { "math": "4x + 3 <= 15 -> 4x <= 12", "annotation": "Subtract 3 from both sides.", "given": true },
+          { "math": "4x <= 12 -> x <= 3", "annotation": "Divide by 4 (positive), sign stays <= .", "given": true },
+          { "math": null, "annotation": "Decide the circle: is <= strict or inclusive? Open or closed?", "given": false },
+          { "math": null, "annotation": "Decide the direction and shade, then test a point from your shading.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "7AF4-S3",
+      "name": "Identify which values belong to an inequality's solution set",
+      "column": "on_grade",
+      "parent_standard": "7.AF.4",
+      "engine_stems": [3],
+      "prerequisite_skill": { "type": "skill", "skill_id": "7AF4-S1" },
+      "i_do_script": "A solution SET is every number that makes the inequality true -- usually a whole side of a boundary, not one value. To decide which numbers from a list belong, I find the boundary, then check each one, watching the boundary itself carefully. Watch: 1.5x + 2 <= 11. Solve: 1.5x <= 9, so x <= 6. The set is 'everything 6 or less.' From the list 4, 6, 7, 8: 4 belongs (4 <= 6), 6 belongs because the sign is <= (equal is allowed), but 7 and 8 do not. So I select 4 and 6.",
+      "canonical_error": {
+        "pattern": "Selects values on the wrong side of the boundary, or wrongly includes/excludes the boundary value itself",
+        "example": "For x <= 6 the student also picks 7 (thinking 'close enough'), or for a strict x < 6 the student includes 6",
+        "why": "The student finds the boundary but does not treat the solution set as one full side plus a decision about the endpoint -- the boundary belongs only when the sign is inclusive (>=, <=), and every value on the correct side belongs, not just nearby ones."
+      },
+      "item_template": "An inequality px + q compared to r with rational values, plus a list of candidate numbers. Student selects ALL that are solutions, with boundary and both sides represented. Multi-select.",
+      "sample_items": [
+        {
+          "stem": "For 2x + 1 > 7, select ALL values that are solutions: 2, 3, 4, 5.",
+          "answer": "4 and 5",
+          "distractor_logic": "x > 3, so 4 and 5 belong. 3 is the boundary but the sign is strict > , so 3 is excluded; 2 is below."
+        },
+        {
+          "stem": "For 1.5x + 2 <= 11, select ALL values that are solutions: 4, 6, 7, 8.",
+          "answer": "4 and 6",
+          "distractor_logic": "x <= 6, so 4 and 6 belong (6 is included by <=). 7 and 8 are above the boundary."
+        },
+        {
+          "stem": "For 3x - 4 >= 5, select ALL values that are solutions: 2, 2.5, 3, 4.",
+          "answer": "3 and 4",
+          "distractor_logic": "x >= 3, so 3 (included by >=) and 4 belong. 2 and 2.5 are below the boundary."
+        },
+        {
+          "stem": "For 2x + 3 < 15, select ALL values that are solutions: 4, 5, 6, 7.",
+          "answer": "4 and 5",
+          "distractor_logic": "x < 6, so 4 and 5 belong. 6 is the boundary but the sign is strict < , so 6 is excluded; 7 is above."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which SIDE of the boundary makes it true -- and does the boundary itself count?",
+        "prompt": "Solve to find the boundary, then shade the whole correct side in your head. Every value on that side belongs. Check the boundary separately: it counts only if the sign is >= or <= . Test one number you selected in the original to be sure.",
+        "praise": "You picked the whole correct side AND made the right call on the boundary -- that's the full solution set."
+      },
+      "vocabulary": [
+        { "term": "Solution set", "definition": "All the values that make the inequality true." },
+        { "term": "Boundary value", "definition": "The number where the solution set begins, like the 6 in x <= 6." },
+        { "term": "Included", "definition": "A value that belongs to the solution set; the boundary is included only for >= and <= ." }
+      ],
+      "next_steps": { "if_pass": "7AF4-S4", "if_fail": "7AF4-S1" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'For 3x - 4 >= 5, which of 2, 2.5, 3, 4 are solutions?'" },
+        { "kind": "ask", "text": "Solve first -- what does x have to be?" },
+        { "kind": "say", "text": "3x >= 9, so x >= 3. The set is 3 and everything bigger. So 3 belongs (>= includes it) and 4 belongs; 2 and 2.5 are too small." },
+        { "kind": "watch", "text": "If a student drops the 3, ask 'does >= let the boundary count?'" },
+        { "kind": "ask", "text": "Your turn: for 2x + 3 < 15, which of 4, 5, 6, 7 are solutions? Watch the boundary." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "For x > 3, which of these belong: 3, 4, 5?", "answer": "4 and 5 (3 is the boundary and > excludes it)." },
+        { "difficulty": "warm_up", "stem": "If the solution is x <= 6, does 6 belong to the set?", "answer": "Yes -- <= includes the boundary." },
+        { "difficulty": "core", "stem": "For 2x + 1 > 7, select ALL solutions from 2, 3, 4, 5.", "answer": "4 and 5 (x > 3; 3 excluded).", "notes": "Boundary 3 excluded by strict > ." },
+        { "difficulty": "core", "stem": "For 1.5x + 2 <= 11, select ALL solutions from 4, 6, 7, 8.", "answer": "4 and 6 (x <= 6; 6 included).", "notes": "Spec-style medium item with a decimal coefficient; boundary included." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Dana chose the solutions to 2x + 1 > 7 from the list 2, 3, 4, 5. Find and fix the mistake.",
+          "shown_work": [
+            "Dana solved: '2x > 6, so x > 3.'",
+            "'Solutions: 3, 4, and 5.'"
+          ],
+          "answer": "Dana solved correctly (x > 3) but included the boundary 3. The sign is a strict > , so 3 is NOT a solution: 2(3) + 1 = 7, and 7 > 7 is false. The solutions are only 4 and 5.",
+          "notes": "Canonical error: including the boundary under a strict inequality."
+        },
+        { "difficulty": "stretch", "stem": "For 3x - 4 >= 5, a student says only 4 is a solution from the list 2, 2.5, 3, 4. What did they miss, and why?", "answer": "They missed 3. Since x >= 3, the boundary 3 IS included: 3(3) - 4 = 5, and 5 >= 5 is true. Both 3 and 4 belong.", "notes": "Reversed direction -- diagnose a too-small selection." },
+        { "difficulty": "stretch", "stem": "Write an inequality of the form 2x + q <= r whose solution set includes 5 but NOT 6. Show why.", "answer": "Sample: 2x + 1 <= 11 gives x <= 5, so 5 belongs (2(5)+1 = 11 <= 11) but 6 does not (2(6)+1 = 13 > 11).", "notes": "Produce-your-own -- design a set with a chosen boundary." }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "In the Set or Out",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": ["One inequality header card per round", "A stack of value cards including the exact boundary"],
+          "instructions": "1. Flip the inequality header card and solve it to find the boundary.\n2. One at a time, sort each value card into 'In the set' or 'Out.'\n3. The boundary-value card is the key one -- decide it by the sign (>= / <= include it; > / < exclude it).\n4. For any card you dispute, substitute it into the original to settle it.\n5. Debrief: what made the whole left (or right) side belong -- not just the numbers close to the boundary?",
+          "content": {
+            "categories": ["In the set", "Out"],
+            "cards": [
+              { "text": "2x + 1 > 7; test 4", "category": "In the set" },
+              { "text": "2x + 1 > 7; test 3", "category": "Out" },
+              { "text": "1.5x + 2 <= 11; test 6", "category": "In the set" },
+              { "text": "1.5x + 2 <= 11; test 7", "category": "Out" },
+              { "text": "3x - 4 >= 5; test 3", "category": "In the set" },
+              { "text": "2x + 3 < 15; test 6", "category": "Out" }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Whole Side, Right Endpoint",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": ["Slip with Dana's selection"],
+          "instructions": "1. Read Dana's solutions to 2x + 1 > 7: '3, 4, and 5.'\n2. Check the boundary 3 by substituting it into the original.\n3. Cross out any value that doesn't belong and explain why.\n4. Write the two-part rule: which SIDE belongs, and when does the boundary count?",
+          "content": {
+            "worked_problem": "For 2x + 1 > 7 (x > 3), Dana selected 3, 4, and 5.",
+            "error_step": "Dana included the boundary 3 under a strict > .",
+            "why": "2(3) + 1 = 7 and 7 > 7 is false, so 3 is excluded; only 4 and 5 belong."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "The include-the-boundary and wrong-side errors are precise and high-frequency -- a natural find-and-fix target." },
+        { "strategy_id": "strat-math-007", "why": "Picturing the shaded side and marking the endpoint connects the abstract 'x <= 6' to the concrete set of numbers on the line." },
+        { "strategy_id": "strat-math-001", "why": "Think-pair-share on 'does the boundary belong?' lets partners argue the endpoint before committing, exposing the strict-vs-inclusive idea." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the boundary after you solve?",
+          "Which whole side of it makes the inequality true?",
+          "Does the boundary value itself belong? How does the sign tell you?",
+          "Pick one you chose -- does it check in the original?",
+          "Is there a value you left out that actually belongs?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student selects values on the wrong side of the boundary, or wrongly includes/excludes the boundary itself.",
+            "say": "Solve to find the boundary, then shade the whole correct side in your head. Every value on that side belongs. Check the boundary separately: it counts only if the sign is >= or <= . Test one number you selected in the original to be sure.",
+            "praise": "You picked the whole correct side AND made the right call on the boundary -- that's the full solution set."
+          },
+          {
+            "if_you_see": "Student only picks numbers near the boundary and misses others on the same side.",
+            "say": "The solution set is EVERY value on that side, not just the ones close to the boundary. If x <= 6, then 4, 1, and 0 all belong too.",
+            "praise": "You saw the set stretches across the whole side -- not just the neighbors of the boundary."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "For 2x + 1 > 7, which of 3, 4, 5 are solutions?",
+            "look_for": "4 and 5 only. Including 3 diagnoses the boundary-inclusion error under a strict > ."
+          },
+          {
+            "prompt": "For 1.5x + 2 <= 11, is 6 a solution?",
+            "look_for": "Yes (x <= 6 includes 6). A 'no' means the student read <= as strict."
+          }
+        ]
+      },
+      "fluency_source": "7AF4-F1",
+      "sentence_starters": [
+        "After solving, x ___ ___, so the set is everything ___ the boundary.",
+        "The boundary ___ ___ included because the sign is ___."
+      ],
+      "worked_solution": {
+        "stem": "For 1.5x + 2 <= 11, select all solutions from 4, 6, 7, 8.",
+        "answer": "4 and 6",
+        "steps": [
+          { "math": "1.5x + 2 <= 11 -> 1.5x <= 9", "annotation": "Subtract 2 from both sides." },
+          { "math": "1.5x <= 9 -> x <= 6", "annotation": "Divide by 1.5 (positive), sign stays <= ." },
+          { "math": "set = everything 6 or less", "annotation": "The boundary 6 is included because the sign is <= ." },
+          { "math": "check the list: 4 yes, 6 yes, 7 no, 8 no", "annotation": "4 <= 6 and 6 <= 6 are true; 7 and 8 are above the boundary." }
+        ]
+      },
+      "faded_example": {
+        "stem": "For 2x + 1 > 7, select all solutions from 2, 3, 4, 5.",
+        "answer": "4 and 5",
+        "steps": [
+          { "math": "2x + 1 > 7 -> 2x > 6", "annotation": "Subtract 1 from both sides.", "given": true },
+          { "math": "2x > 6 -> x > 3", "annotation": "Divide by 2 (positive), sign stays > .", "given": true },
+          { "math": null, "annotation": "Decide about the boundary 3: does a strict > include it?", "given": false },
+          { "math": null, "annotation": "Go through 2, 3, 4, 5 and select every value on the correct side.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "7AF4-S4",
+      "name": "Solve a two-step inequality, reversing the sign for a negative",
+      "column": "on_grade",
+      "parent_standard": "7.AF.4",
+      "engine_stems": [4],
+      "prerequisite_skill": { "type": "skill", "skill_id": "7AF4-F1" },
+      "i_do_script": "Solving an inequality uses the exact same steps as an equation, with ONE new rule: if you multiply or divide both sides by a NEGATIVE number, you flip the inequality sign. Watch: -2x + 7 >= 1. Subtract 7: -2x >= -6. Now divide by -2 -- that's the negative move, so >= flips to <= : x <= 3. If I forget to flip, I get the wrong half of the number line. Adding or subtracting NEVER flips; only multiplying or dividing by a negative does. And a positive coefficient, like in 3x + 5 > 20, needs no flip at all: 3x > 15, x > 5.",
+      "canonical_error": {
+        "pattern": "Fails to reverse the inequality sign when dividing or multiplying by a negative (or flips it after merely adding/subtracting)",
+        "example": "For -2x + 4 > 10 the student gets -2x > 6, divides by -2, and writes x > -3 instead of flipping to x < -3",
+        "why": "The student runs the equation procedure without the inequality-specific rule, because the flip has no analog in equations. Dividing by a negative reverses the order of the number line, so the direction of the inequality must reverse too."
+      },
+      "item_template": "A two-step inequality px + q compared to r with rational coefficients; a mix of positive coefficients (no flip) and negative coefficients (flip required). Student solves and states the solution. Numeric/inequality response.",
+      "sample_items": [
+        {
+          "stem": "Solve 3x + 5 > 20.",
+          "answer": "x > 5",
+          "distractor_logic": "3x > 15, x > 5. Divide by +3, no flip. A flipped answer over-applies the rule."
+        },
+        {
+          "stem": "Solve -2x + 7 >= 1.",
+          "answer": "x <= 3",
+          "distractor_logic": "-2x >= -6, divide by -2 and FLIP: x <= 3. Not flipping gives x >= 3, the wrong half."
+        },
+        {
+          "stem": "Solve -3.5x + 7 >= -24.5.",
+          "answer": "x <= 9",
+          "distractor_logic": "-3.5x >= -31.5, divide by -3.5 and FLIP: x <= 9. Forgetting the flip gives x >= 9."
+        },
+        {
+          "stem": "Solve 4x - 3 < 9.",
+          "answer": "x < 3",
+          "distractor_logic": "4x < 12, x < 3. Divide by +4, no flip -- a guard against over-flipping."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you just multiply or divide by a NEGATIVE?",
+        "prompt": "If the number you divided by is negative, flip the inequality sign -- greater becomes less, less becomes greater. Circle the negative divisor as a reminder. Adding or subtracting never flips. Then test a value from your answer in the original to confirm the direction.",
+        "praise": "You flipped the sign for the negative divide -- that's the one rule inequalities add."
+      },
+      "vocabulary": [
+        { "term": "Reverse the inequality", "definition": "Flip < to > (or <= to >=) when you multiply or divide both sides by a negative." },
+        { "term": "Solution set", "definition": "All the values that make the inequality true, like x <= 3." },
+        { "term": "Test point", "definition": "A value you pick from your answer and substitute into the original to check the direction." }
+      ],
+      "next_steps": { "if_pass": "7AF4-S5", "if_fail": "7AF4-S1" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write '-x + 2 <= 6.'" },
+        { "kind": "ask", "text": "Solve it like an equation first -- what clears the +2?" },
+        { "kind": "say", "text": "Subtract 2: -x <= 4. Now divide by -1. Because -1 is negative, the <= flips to >= : x >= -4." },
+        { "kind": "watch", "text": "If a student writes x <= -4, stop: 'you divided by a negative -- what has to happen to the sign?'" },
+        { "kind": "ask", "text": "Test it: is x = 0 a solution to the original? Your turn: -2x + 7 >= 1." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Solve 2x < 10.", "answer": "x < 5 (divide by +2, no flip)." },
+        { "difficulty": "warm_up", "stem": "You divide both sides of an inequality by -3. What must happen to the sign?", "answer": "It flips (for example, >= becomes <=)." },
+        { "difficulty": "core", "stem": "Solve 3x + 5 > 20.", "answer": "x > 5 (divide by +3, no flip).", "notes": "Positive coefficient -- guards against over-flipping." },
+        { "difficulty": "core", "stem": "Solve -2x + 7 >= 1.", "answer": "x <= 3 (divide by -2, flip).", "notes": "Core flip case." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Sam solved -2x + 4 > 10. Find and fix the mistake.",
+          "shown_work": [
+            "Sam wrote: '-2x > 6.'",
+            "'Divide by -2: x > -3.'"
+          ],
+          "answer": "Sam divided by a negative without flipping the sign. Dividing by -2 reverses > to < , so the answer is x < -3. Sam's step -2x > 6 is correct; only the final direction is wrong. Test x = -4: -2(-4) + 4 = 12 > 10 is true, and -4 < -3, which confirms x < -3.",
+          "notes": "Canonical error: missing sign-flip on a negative divide."
+        },
+        { "difficulty": "stretch", "stem": "Solve -3.5x + 7 >= -24.5 and describe the solution set in words.", "answer": "-3.5x >= -31.5, divide by -3.5 and flip: x <= 9. 'All numbers 9 or less.'", "notes": "Spec-style difficult item with decimals plus the flip and an interpretation." },
+        { "difficulty": "stretch", "stem": "A classmate says '5 - 2x > 1 solves to x > 2.' Without redoing every step, argue why the direction must be wrong using a test value.", "answer": "Rewrite as -2x + 5 > 1, so -2x > -4; dividing by -2 flips to x < 2. Test x = 0: 5 - 2(0) = 5 > 1 is true, and 0 < 2, so 0 must be in the solution set -- meaning x < 2, not x > 2.", "notes": "Justify the required flip with a test point." }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Flip or No Flip",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": ["Card set: 10 solving-step cards, each showing the last move of an inequality solve"],
+          "instructions": "1. Each card shows the final move of a solve (like 'divide both sides by -2').\n2. Sort each card into 'Flip the sign' or 'Keep the sign.'\n3. Rule: only multiplying or dividing by a NEGATIVE flips. Adding, subtracting, and positive multiply/divide keep it.\n4. For each 'flip' card, write the resulting inequality with the sign reversed.\n5. Debrief: why does dividing by a negative reverse the number line?",
+          "content": {
+            "categories": ["Flip the sign", "Keep the sign"],
+            "cards": [
+              { "text": "divide both sides by -2", "category": "Flip the sign" },
+              { "text": "divide both sides by 3", "category": "Keep the sign" },
+              { "text": "subtract 7 from both sides", "category": "Keep the sign" },
+              { "text": "divide both sides by -3.5", "category": "Flip the sign" },
+              { "text": "add 4 to both sides", "category": "Keep the sign" },
+              { "text": "multiply both sides by -1", "category": "Flip the sign" },
+              { "text": "divide both sides by 4", "category": "Keep the sign" },
+              { "text": "divide both sides by -10", "category": "Flip the sign" }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Test-Point Trap Check",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": ["Slip with Sam's un-flipped inequality"],
+          "instructions": "1. Read Sam's solution x > -3 for -2x + 4 > 10.\n2. Pick a test value from Sam's answer (like x = 0) and check it in the ORIGINAL.\n3. Since it fails, correct the direction of the inequality.\n4. Write the rule and one test value you could always use to catch a missing flip.",
+          "content": {
+            "worked_problem": "-2x + 4 > 10. Sam wrote x > -3.",
+            "error_step": "Sam divided by -2 without flipping the sign.",
+            "why": "Dividing by a negative reverses the inequality: x < -3. A test point (x = 0 fails the original) exposes the wrong direction."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "The missing-flip error is the single most common inequality mistake; find-and-fix with a test point targets it directly." },
+        { "strategy_id": "strat-math-010", "why": "Choral response on 'divide by a negative means...' hard-wires the flip rule that has no equation analog." },
+        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'I divided by a negative, so I flip, then I test a point' models the self-check that prevents the error." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Did you multiply or divide by a negative on that step?",
+          "What has to happen to the sign, and why?",
+          "Pick a value from your solution -- does it work in the original?",
+          "Did adding or subtracting change the direction? Should it?",
+          "How would you say your solution set in plain words?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student divides or multiplies by a negative and keeps the inequality direction the same.",
+            "say": "If the number you divided by is negative, flip the inequality sign -- greater becomes less, less becomes greater. Circle the negative divisor as a reminder. Adding or subtracting never flips. Then test a value from your answer in the original to confirm the direction.",
+            "praise": "You flipped the sign for the negative divide -- that's the one rule inequalities add."
+          },
+          {
+            "if_you_see": "Student flips the sign after merely adding or subtracting a term.",
+            "say": "Adding and subtracting never flip the sign -- only multiplying or dividing by a negative does. Put the sign back.",
+            "praise": "You kept the sign steady through the add/subtract -- flips are only for negative multiply or divide."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Solve -x > 5.",
+            "look_for": "x < -5 (multiply/divide by -1, flip). An answer of x > -5 is the missing-flip error."
+          },
+          {
+            "prompt": "Solve 4x - 1 < 11.",
+            "look_for": "x < 3 (no flip). A flipped answer x > 3 means the student over-applied the rule."
+          }
+        ]
+      },
+      "fluency_source": "7AF4-F1",
+      "sentence_starters": [
+        "I divided both sides by ___, which is ___, so the sign ___.",
+        "My solution is x ___ ___, and testing x = ___ in the original confirms it."
+      ],
+      "worked_solution": {
+        "stem": "Solve -2x + 7 >= 1.",
+        "answer": "x <= 3",
+        "steps": [
+          { "math": "-2x + 7 >= 1 -> -2x >= -6", "annotation": "Subtract 7 from both sides -- subtracting never flips the sign." },
+          { "math": "divide both sides by -2", "annotation": "This is the negative move -- the sign will reverse." },
+          { "math": "x <= 3", "annotation": ">= flips to <= because we divided by a negative." },
+          { "math": "check x = 0: -2(0) + 7 = 7 >= 1, true", "annotation": "A test point from the solution confirms the direction." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Solve -3.5x + 7 >= -24.5.",
+        "answer": "x <= 9",
+        "steps": [
+          { "math": "-3.5x + 7 >= -24.5 -> -3.5x >= -31.5", "annotation": "Subtract 7 from both sides.", "given": true },
+          { "math": "divide both sides by -3.5 (negative -> flip)", "annotation": "The >= will reverse to <= .", "given": true },
+          { "math": null, "annotation": "Write the solution with the flipped sign.", "given": false },
+          { "math": null, "annotation": "Test a value from your solution in the original to confirm the direction.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "7AF4-S5",
+      "name": "Write, solve, and interpret a real-world inequality",
+      "column": "on_grade",
+      "parent_standard": "7.AF.4",
+      "engine_stems": [5],
+      "prerequisite_skill": { "type": "skill", "skill_id": "7AF4-S4" },
+      "i_do_script": "The hard part of a word problem is turning the words into an inequality -- the phrase that sets the limit picks the symbol. 'At most' or 'no more than' means <= ; 'at least' or 'a minimum of' means >= . Watch: Maria has $12 saved and adds $8 each week; she needs AT LEAST $60. The $12 is fixed and the $8 multiplies the weeks w, so 8w + 12 >= 60. Solve: 8w >= 48, w >= 6. Interpret: she needs to save for at least 6 weeks. Graph: closed circle at 6, shade right. Every number in the story has a job, and the limit phrase decides the direction.",
+      "canonical_error": {
+        "pattern": "Chooses the wrong inequality direction for the limit phrase (uses <= for 'at least', or > for 'no more than')",
+        "example": "For 'she needs at least $60' the student writes 8w + 12 <= 60 instead of >= 60, so the solution comes out backward",
+        "why": "The student maps the phrase to a symbol by habit or by the nearby number rather than by meaning -- 'at least' sets a MINIMUM (>=), 'at most' sets a MAXIMUM (<=). Getting the direction right is the whole modeling decision."
+      },
+      "item_template": "A real-world situation leading to px + q compared to r with rational values. Student writes the inequality, solves, graphs, and interprets (the greatest/fewest whole amount). Multi-part response.",
+      "sample_items": [
+        {
+          "stem": "Maria has $12 saved and adds $8 each week. She needs at least $60.\n\nPart A: Write an inequality (w = weeks).\nPart B: Solve and interpret.",
+          "answer": "Part A: 8w + 12 >= 60; Part B: w >= 6, so she must save for at least 6 weeks (closed circle at 6, shade right).",
+          "distractor_logic": "'At least' -> >= . 8w >= 48, w >= 6. Writing <= reverses the model; attaching 8 to the fixed $12 misplaces the coefficient."
+        },
+        {
+          "stem": "A phone plan costs $15 plus $0.10 per text. You want to spend no more than $30.\n\nPart A: Write an inequality (t = texts).\nPart B: What is the greatest number of texts?",
+          "answer": "Part A: 0.10t + 15 <= 30; Part B: t <= 150, so at most 150 texts (closed circle at 150, shade left).",
+          "distractor_logic": "'No more than' -> <= . 0.10t <= 15, t <= 150. Using >= or attaching 15 to t breaks the model."
+        },
+        {
+          "stem": "A climber is 1.3 miles up a mountain and climbs 2.5 miles per hour. She wants to reach at least 8.75 miles.\n\nPart A: Write an inequality (x = hours).\nPart B: Solve; round to the nearest hour.",
+          "answer": "Part A: 2.5x + 1.3 >= 8.75; Part B: x >= 2.98, so at least about 3 hours.",
+          "distractor_logic": "'At least' -> >= . 2.5x >= 7.45, x >= 2.98. Spec item; using <= reverses the meaning."
+        },
+        {
+          "stem": "A water bottle holds up to 36 ounces. It already has 18.5 ounces.\n\nWrite an inequality for how many more ounces w can be added.",
+          "answer": "w + 18.5 <= 36 (so w <= 17.5).",
+          "distractor_logic": "'Holds up to' -> <= . w <= 17.5. Spec item; > 36 or attaching a coefficient to w misreads the limit."
+        }
+      ],
+      "redirect_script": {
+        "stop": "What does the limit phrase say -- a most or a least?",
+        "prompt": "Underline the limit words. 'At most / no more than' means <= (a ceiling); 'at least / a minimum of' means >= (a floor). Then write the fixed amount alone and the per-unit rate times the variable. Solve, then read the answer back into the story.",
+        "praise": "You matched the limit phrase to the right symbol and each number to its job -- that's a correct model."
+      },
+      "vocabulary": [
+        { "term": "At most", "definition": "No more than -- sets a maximum, written with <= ." },
+        { "term": "At least", "definition": "A minimum -- the amount or more, written with >= ." },
+        { "term": "Interpret", "definition": "Say what the solution means in the context, like 'the greatest whole number of texts.'" },
+        { "term": "Fixed amount", "definition": "A one-time value (a base fee, a starting balance) added on its own, not multiplied by the variable." }
+      ],
+      "next_steps": { "if_pass": "7AF4-S6", "if_fail": "7AF4-S4" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'A taxi charges $3 plus $2.50 per mile. You have at most $18.'" },
+        { "kind": "ask", "text": "Which words set the limit? What symbol do they mean? Which number is fixed?" },
+        { "kind": "say", "text": "'At most' means <= . The $3 is fixed; $2.50 multiplies the miles m. So 2.5m + 3 <= 18. Solve: 2.5m <= 15, m <= 6 -- at most 6 miles." },
+        { "kind": "watch", "text": "If a student writes 2.5m + 3 >= 18, ask 'does at most mean a ceiling or a floor?'" },
+        { "kind": "ask", "text": "Your turn: a gym costs $20 to join plus $8 a month; you want to spend at most $76. Write and solve for months m." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Write 'a $5 fee plus $2 per item, x items' as an expression.", "answer": "2x + 5" },
+        { "difficulty": "warm_up", "stem": "Does 'at least 60' mean 60 or more, or 60 or less? Which symbol?", "answer": "60 or more -- use >= ." },
+        { "difficulty": "core", "stem": "Maria has $12 and saves $8 per week; she needs at least $60. Write, solve, and interpret.", "answer": "8w + 12 >= 60; w >= 6; save for at least 6 weeks (closed circle at 6, shade right).", "notes": "Fixed start plus per-week rate; 'at least' -> >= ." },
+        { "difficulty": "core", "stem": "A phone plan is $15 plus $0.10 per text; you can spend no more than $30. Write and solve for texts t.", "answer": "0.10t + 15 <= 30; t <= 150; at most 150 texts.", "notes": "Decimal rate; 'no more than' -> <= ." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Leo modeled: 'Maria has $12 and saves $8 per week; she needs at least $60.' Find and fix his inequality.",
+          "shown_work": [
+            "Leo wrote: '8w + 12 <= 60.'",
+            "'8w <= 48, so w <= 6 -- she saves for 6 weeks or fewer.'"
+          ],
+          "answer": "'At least $60' is a minimum, so the symbol should be >= , not <= : 8w + 12 >= 60 gives w >= 6, meaning 6 weeks OR MORE. Leo's arithmetic is fine, but the reversed symbol reversed the meaning.",
+          "notes": "Canonical error: wrong direction for the limit phrase."
+        },
+        { "difficulty": "stretch", "stem": "A climber is 1.3 miles up and climbs 2.5 miles per hour, aiming for at least 8.75 miles. Write, solve, and round to the nearest hour. Explain what the answer means.", "answer": "2.5x + 1.3 >= 8.75; 2.5x >= 7.45; x >= 2.98, so she needs about 3 hours of climbing to reach at least 8.75 miles.", "notes": "Rational values plus interpretation and rounding." },
+        { "difficulty": "stretch", "stem": "Write your own 'at most' word problem that leads to the inequality 2.5m + 3 <= 18, then solve and interpret it.", "answer": "Sample: 'A taxi charges a $3 base plus $2.50 per mile; you have at most $18.' Solve: 2.5m <= 15, m <= 6 -- at most 6 miles.", "notes": "Reversed direction -- build a story to fit an inequality." }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Phrase to Symbol to Model",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": ["Card set: 6 word problems and 8 inequalities (two reversed-direction decoys)"],
+          "instructions": "1. Underline the limit phrase in each word problem ('at most', 'at least', 'no more than').\n2. Match the problem to the inequality with the correct symbol and coefficients.\n3. Two inequality cards are decoys with the direction reversed -- set them aside and explain the mismatch.\n4. To claim a match, say the limit phrase and its symbol out loud.\n5. Solve two matched pairs and state what each answer means.",
+          "content": {
+            "pairs": [
+              { "left": "$12 saved + $8/week, at least $60, w weeks", "right": "8w + 12 >= 60" },
+              { "left": "$15 plan + $0.10/text, no more than $30, t texts", "right": "0.10t + 15 <= 30" },
+              { "left": "$3 base + $2.50/mile, at most $18, m miles", "right": "2.5m + 3 <= 18" },
+              { "left": "1.3 mi up + 2.5 mi/hr, at least 8.75 mi, x hours", "right": "2.5x + 1.3 >= 8.75" },
+              { "left": "$20 join + $8/month, at most $76, m months", "right": "8m + 20 <= 76" },
+              { "left": "holds up to 36 oz, has 18.5 oz, w more ounces", "right": "w + 18.5 <= 36" }
+            ],
+            "decoys": ["8w + 12 <= 60", "2.5m + 3 >= 18"]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Which Way Does the Limit Point?",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Leo's reversed inequality"],
+          "instructions": "1. Read Leo's model 8w + 12 <= 60 for 'she needs AT LEAST $60.'\n2. Underline the limit phrase and decide: is $60 a floor or a ceiling?\n3. Rewrite the inequality with the correct symbol, solve, and state what it means.\n4. Write a rule for turning 'at most' and 'at least' into symbols.",
+          "content": {
+            "worked_problem": "Maria has $12 and saves $8/week; she needs at least $60. Leo wrote 8w + 12 <= 60.",
+            "error_step": "Leo used <= for 'at least', which sets a minimum.",
+            "why": "'At least $60' means $60 or more, so 8w + 12 >= 60 and w >= 6 (6 weeks or more)."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-006", "why": "Underline-the-phrase, pick-the-symbol, build-and-solve is a gradual-release routine that scaffolds the translation students find hardest." },
+        { "strategy_id": "strat-math-003", "why": "The reversed-direction error is a clean, high-frequency modeling mistake -- ideal for find-and-fix." },
+        { "strategy_id": "strat-math-004", "why": "A journal entry explaining what each number 'does' and why the symbol points its way cements mapping by meaning, not word order." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What are you solving for? Give it a letter.",
+          "Which words set the limit -- and do they mean a most or a least?",
+          "Which number is fixed, and which one multiplies the variable?",
+          "After solving, what does the answer mean -- the greatest or fewest whole amount?",
+          "How would you graph the solution set for this situation?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student chooses the wrong inequality direction for the limit phrase (<= for 'at least', or the reverse).",
+            "say": "Underline the limit words. 'At most / no more than' means <= (a ceiling); 'at least / a minimum of' means >= (a floor). Then write the fixed amount alone and the per-unit rate times the variable. Solve, then read the answer back into the story.",
+            "praise": "You matched the limit phrase to the right symbol and each number to its job -- that's a correct model."
+          },
+          {
+            "if_you_see": "Student attaches the variable to the fixed fee or puts the per-unit rate on a fixed amount.",
+            "say": "The one-time amount stands alone; the per-unit rate multiplies the variable. Label each number by what it does before you write the inequality.",
+            "praise": "You put the fixed part alone and the rate on the variable -- the model matches the story."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A $10 fee plus $4 per hour; you can spend at most $34. Write an inequality for hours x.",
+            "look_for": "4x + 10 <= 34. Using >= diagnoses the 'at most' direction error; 10x + 4 shows a coefficient misplacement."
+          },
+          {
+            "prompt": "You need at least $50; you have $20 and add $6 per week. Inequality for weeks w?",
+            "look_for": "6w + 20 >= 50. A <= shows the 'at least' direction error."
+          }
+        ]
+      },
+      "fluency_source": "7AF4-F1",
+      "sentence_starters": [
+        "The limit phrase is '___', which means the symbol is ___.",
+        "The inequality is ___, so ___ ___ ___, which means ___ in the story."
+      ],
+      "worked_solution": {
+        "stem": "A phone plan costs $15 plus $0.10 per text. You can spend no more than $30. What is the greatest number of texts?",
+        "answer": "t <= 150 -- at most 150 texts.",
+        "steps": [
+          { "math": "let t = number of texts; 'no more than' -> <=", "annotation": "The limit phrase sets the symbol: a ceiling means <= ." },
+          { "math": "0.10t + 15 <= 30", "annotation": "The $15 is fixed; the $0.10 multiplies each text." },
+          { "math": "0.10t <= 15 -> t <= 150", "annotation": "Clear the fixed fee, then divide by 0.10 (positive), no flip." },
+          { "math": "at most 150 texts (closed circle at 150, shade left)", "annotation": "Interpret and graph: 150 is included, fewer texts also work." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Maria has $12 saved and adds $8 each week. She needs at least $60. For how many weeks must she save?",
+        "answer": "w >= 6 -- at least 6 weeks.",
+        "steps": [
+          { "math": "let w = weeks; 'at least' -> >=", "annotation": "A minimum means the symbol is >= .", "given": true },
+          { "math": "8w + 12 >= 60", "annotation": "The $12 is the starting amount; $8 multiplies the weeks.", "given": true },
+          { "math": null, "annotation": "Clear the fixed $12, then divide by 8 to solve for w.", "given": false },
+          { "math": null, "annotation": "Interpret in context and describe the graph (circle type + direction).", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "7AF4-S6",
+      "name": "Critique and justify a proposed solution to a real-world inequality",
+      "column": "looking_forward",
+      "parent_standard": "7.AF.4",
+      "engine_stems": [6],
+      "prerequisite_skill": { "type": "skill", "skill_id": "7AF4-S5" },
+      "i_do_script": "At the top level I don't just solve -- I JUDGE someone else's claim and prove whether it holds. My routine: build the inequality from the story, solve for the boundary, then test the claimed value against it. Watch: an art class costs $3.50 per session plus a $12 registration, and Ben can spend at most $90. He says he can take 25 sessions. I write 3.5x + 12 <= 90, solve: 3.5x <= 78, x <= 22.28..., so at most 22 whole sessions. Now I test his claim: 3.5(25) + 12 = 99.50, which is MORE than $90 -- so 25 is NOT reasonable. To justify, I show the number: 25 sessions cost $99.50, over his $90 limit.",
+      "canonical_error": {
+        "pattern": "Judges the claim against a wrongly-built inequality or the wrong side of the boundary, or asserts 'reasonable' without testing the value in the constraint",
+        "example": "For an 'at most $90' budget, the student decides 25 sessions is fine because 25 is 'close to' the boundary 22, instead of computing 3.5(25) + 12 = 99.50 > 90",
+        "why": "The student stops at the boundary without checking which side the claim lands on, or never substitutes the claimed value into the real constraint. A justification must put the number back and show it satisfies (or violates) the limit."
+      },
+      "item_template": "A real-world constraint px + q compared to r and a proposed value. Student builds the inequality, solves, tests the claim, and justifies reasonableness with the computed amount. Multi-part response with explanation.",
+      "sample_items": [
+        {
+          "stem": "An art class costs $3.50 per session plus a $12 registration fee. Ben can spend at most $90. He says he can take 25 sessions.\n\nPart A: Write an inequality (x = sessions).\nPart B: Is 25 reasonable? Justify with numbers.",
+          "answer": "Part A: 3.5x + 12 <= 90; Part B: No -- x <= 22 whole sessions; 25 sessions cost 3.5(25) + 12 = $99.50, which is more than $90.",
+          "distractor_logic": "3.5x <= 78, x <= 22.28, so at most 22. Testing 25 gives $99.50 > $90, so the claim fails."
+        },
+        {
+          "stem": "A ride costs $2.50 to start plus $1.75 per mile. You have at most $20. A friend says you can ride 12 miles.\n\nPart A: Write an inequality (x = miles).\nPart B: Is 12 miles reasonable? Justify.",
+          "answer": "Part A: 1.75x + 2.5 <= 20; Part B: No -- x <= 10 miles; 12 miles cost 1.75(12) + 2.5 = $23.50, more than $20.",
+          "distractor_logic": "1.75x <= 17.5, x <= 10. Testing 12 gives $23.50 > $20, so 12 is not reasonable; the max whole miles is 10."
+        },
+        {
+          "stem": "A student has $12 and saves $8 per week, needing at least $60. She claims 5 weeks is enough.\n\nPart A: Write an inequality (w = weeks).\nPart B: Is 5 weeks enough? Justify.",
+          "answer": "Part A: 8w + 12 >= 60; Part B: No -- w >= 6; after 5 weeks she has 8(5) + 12 = $52, less than $60.",
+          "distractor_logic": "8w >= 48, w >= 6. Testing 5 gives $52 < $60, so 5 weeks is short; she needs at least 6."
+        },
+        {
+          "stem": "A booth rents for $40 plus $6 per hour. The budget is no more than $88. A vendor says 9 hours fits.\n\nPart A: Write an inequality (h = hours).\nPart B: Is 9 hours reasonable? Justify.",
+          "answer": "Part A: 6h + 40 <= 88; Part B: No -- h <= 8; 9 hours cost 6(9) + 40 = $94, over the $88 budget.",
+          "distractor_logic": "6h <= 48, h <= 8. Testing 9 gives $94 > $88, so 9 hours exceeds the limit; 8 is the max."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Don't eyeball it -- put the claimed number IN the constraint.",
+        "prompt": "Build the inequality, solve for the boundary, then substitute the claimed value into the ORIGINAL and compute the real total. Compare it to the limit: does it stay under a 'at most' ceiling, or reach an 'at least' floor? Show that number as your justification.",
+        "praise": "You tested the claim against the actual limit and showed the number -- that's a real justification."
+      },
+      "vocabulary": [
+        { "term": "Critique", "definition": "Judge whether a claim or solution is correct or reasonable and explain why." },
+        { "term": "Justify", "definition": "Give the numbers that prove an answer does (or does not) satisfy the situation." },
+        { "term": "Reasonable", "definition": "An answer that actually fits the constraint when you check it." }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for 8.AF.1 (multi-step inequalities with distribution and the negative-flip rule).",
+        "if_fail": "7AF4-S5"
+      },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'A ride is $2.50 plus $1.75/mile; budget at most $20. A friend says 12 miles.'" },
+        { "kind": "ask", "text": "What inequality models the budget? Which words set the symbol?" },
+        { "kind": "say", "text": "'At most' means <= : 1.75x + 2.5 <= 20, so x <= 10. To judge 12, I put it in: 1.75(12) + 2.5 = 23.50, which is more than $20 -- so 12 miles is NOT reasonable." },
+        { "kind": "watch", "text": "If a student says '12 is close to 10, so it's fine,' insist they compute the actual $23.50 and compare to $20." },
+        { "kind": "ask", "text": "Your turn: art class $3.50/session + $12; at most $90; someone claims 25 sessions. Judge and justify." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "You solved a budget inequality and got x <= 8 hours. Is a claim of 10 hours reasonable?", "answer": "No -- 10 is more than the maximum of 8." },
+        { "difficulty": "warm_up", "stem": "To justify that a value is reasonable, what must you show?", "answer": "Substitute it into the original constraint and show the total satisfies the limit." },
+        { "difficulty": "core", "stem": "Art class: $3.50/session + $12; budget at most $90. Is 25 sessions reasonable? Justify.", "answer": "No -- 3.5x + 12 <= 90 gives x <= 22; 25 sessions cost $99.50 > $90.", "notes": "Critique against an 'at most' ceiling with a computed total." },
+        { "difficulty": "core", "stem": "Ride: $2.50 + $1.75/mile; at most $20. Is 12 miles reasonable? Justify.", "answer": "No -- 1.75x + 2.5 <= 20 gives x <= 10; 12 miles cost $23.50 > $20.", "notes": "Second critique context; test point exceeds the limit." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Rosa judged whether 25 sessions fit an 'at most $90' budget at $3.50/session plus $12. Find and fix her reasoning.",
+          "shown_work": [
+            "Rosa wrote: '3.5x + 12 <= 90, so x <= 22.28.'",
+            "'25 is close to 22, so 25 sessions is reasonable.'"
+          ],
+          "answer": "Rosa solved correctly but never tested 25 in the constraint. 3.5(25) + 12 = $99.50, which is MORE than $90, so 25 is NOT reasonable -- and 22 is the greatest whole number of sessions, not a value you round up from. Being 'close' to the boundary is not a justification.",
+          "notes": "Canonical error: asserting reasonableness without testing the claimed value against the limit."
+        },
+        { "difficulty": "stretch", "stem": "A student has $12 and saves $8/week, needing at least $60, and claims 5 weeks is enough. Decide, justify with the amount, and state the true minimum.", "answer": "Not enough -- 8w + 12 >= 60 gives w >= 6. After 5 weeks she has 8(5) + 12 = $52 < $60. The minimum is 6 weeks ($60).", "notes": "Critique against an 'at least' floor -- opposite direction from the budget cases." },
+        { "difficulty": "stretch", "stem": "Booth rent is $40 plus $6/hour with a budget of no more than $88. Write a claim about a number of hours that IS reasonable and one that is NOT, and justify each.", "answer": "6h + 40 <= 88 gives h <= 8. Reasonable: 8 hours cost 6(8) + 40 = $88 (exactly the limit, allowed by <=). Not reasonable: 9 hours cost $94 > $88.", "notes": "Produce-your-own -- generate a valid and an invalid claim with justification." }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Prove It or Lose It",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": ["Slip with Rosa's 'close enough' reasoning", "Calculators"],
+          "instructions": "1. Read Rosa's judgment that 25 sessions is reasonable because '25 is close to 22.'\n2. Substitute 25 into the ORIGINAL constraint 3.5x + 12 and compute the real total.\n3. Compare that total to the $90 ceiling and correct Rosa's verdict.\n4. Write the rule: a justification must show the claimed value's total against the limit -- 'close' is never enough.",
+          "content": {
+            "worked_problem": "Art class $3.50/session + $12, at most $90. Rosa said 25 sessions is reasonable because 25 is close to 22.",
+            "error_step": "Rosa never tested 25 in the constraint and rounded the boundary up.",
+            "why": "3.5(25) + 12 = $99.50 > $90, so 25 fails; the greatest whole number of sessions is 22."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Reasonable or Not -- Justify to Win",
+          "time_minutes": 15,
+          "grouping": "pairs",
+          "materials": ["Context cards (constraint + a claimed value)", "Scorecard", "Calculators"],
+          "instructions": "1. Draw a card: it names a real-world constraint and a claimed value (like '9 hours' for a 'no more than $88' budget).\n2. Both players write the inequality and solve for the boundary.\n3. Each player predicts 'reasonable' or 'not', then substitutes the claimed value into the original to compute the real total.\n4. You score a point ONLY if your verdict is right AND you show the total compared to the limit.\n5. Debrief: which cards were traps because the claim was just past the boundary?"
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-009", "why": "Comparing a correct justification against Rosa's 'close enough' non-justification makes the standard for proof explicit." },
+        { "strategy_id": "strat-math-004", "why": "Writing 'this claim is/ is not reasonable because...' with the computed total is exactly the reflective-justification move the top band demands." },
+        { "strategy_id": "strat-math-003", "why": "The 'assert without testing' error is a precise, high-value mistake for a find-and-fix routine flagged by a value just past the boundary." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What inequality models this constraint, and which words set the symbol?",
+          "What is the boundary after you solve?",
+          "Did you put the CLAIMED value into the original and compute the total?",
+          "Does that total stay under the ceiling (or reach the floor)?",
+          "How would you convince a skeptic the claim is (or isn't) reasonable?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student judges a claim against a wrongly-built inequality or the wrong side, or says 'reasonable' without testing the value.",
+            "say": "Build the inequality, solve for the boundary, then substitute the claimed value into the ORIGINAL and compute the real total. Compare it to the limit: does it stay under a 'at most' ceiling, or reach an 'at least' floor? Show that number as your justification.",
+            "praise": "You tested the claim against the actual limit and showed the number -- that's a real justification."
+          },
+          {
+            "if_you_see": "Student rounds the boundary the wrong way (says the max is 23 when x <= 22.28).",
+            "say": "For an 'at most' limit, the greatest WHOLE amount rounds DOWN -- 22.28 means 22 fits but 23 goes over. Check 23 in the original to see it exceed the limit.",
+            "praise": "You rounded to the whole amount that actually fits the limit -- that's careful interpreting."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Budget at most $90, cost 3.5x + 12. Is 25 sessions reasonable?",
+            "look_for": "No -- 3.5(25) + 12 = $99.50 > $90. A 'yes because it's close' diagnoses the assert-without-testing error."
+          },
+          {
+            "prompt": "Need at least $60, have 8w + 12. Is 5 weeks enough?",
+            "look_for": "No -- 8(5) + 12 = $52 < $60; needs at least 6 weeks. A 'yes' means the student didn't test the value."
+          }
+        ]
+      },
+      "fluency_source": "7AF4-F1",
+      "sentence_starters": [
+        "The constraint is ___, so the boundary is ___.",
+        "The claim of ___ ___ reasonable because the total is ___, which is ___ the limit."
+      ],
+      "worked_solution": {
+        "stem": "An art class is $3.50 per session plus a $12 fee; the budget is at most $90. Is a claim of 25 sessions reasonable?",
+        "answer": "No -- x <= 22 sessions; 25 sessions cost $99.50, over the $90 limit.",
+        "steps": [
+          { "math": "3.5x + 12 <= 90", "annotation": "'At most $90' sets a ceiling, so use <= ." },
+          { "math": "3.5x <= 78 -> x <= 22.28...", "annotation": "Solve for the boundary; the greatest whole number is 22." },
+          { "math": "test the claim: 3.5(25) + 12 = $99.50", "annotation": "Substitute the claimed value into the original constraint." },
+          { "math": "$99.50 > $90 -> 25 is NOT reasonable", "annotation": "The total exceeds the limit, so the claim fails; justify with the number." }
+        ]
+      },
+      "faded_example": {
+        "stem": "A ride costs $2.50 plus $1.75 per mile; the budget is at most $20. Is a claim of 12 miles reasonable?",
+        "answer": "No -- x <= 10 miles; 12 miles cost $23.50, over the $20 limit.",
+        "steps": [
+          { "math": "1.75x + 2.5 <= 20", "annotation": "'At most $20' means <= .", "given": true },
+          { "math": "1.75x <= 17.5 -> x <= 10", "annotation": "Solve for the boundary.", "given": true },
+          { "math": null, "annotation": "Substitute 12 into 1.75x + 2.5 and compute the real total.", "given": false },
+          { "math": null, "annotation": "Compare that total to $20 and state whether 12 miles is reasonable, with the number.", "given": false }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "skills": ["7AF4-F1", "7AF4-F2"]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": ["7AF4-S1", "7AF4-S2"]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": ["7AF4-S3", "7AF4-S4", "7AF4-S5"]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": ["7AF4-S6"]
+    }
+  },
+  "skill_sequence": ["7AF4-F1", "7AF4-F2", "7AF4-S1", "7AF4-S2", "7AF4-S3", "7AF4-S4", "7AF4-S5", "7AF4-S6"],
+  "skill_tree": {
+    "7AF4-F1": [],
+    "7AF4-F2": [],
+    "7AF4-S1": ["7AF4-F1"],
+    "7AF4-S2": ["7AF4-F2", "7AF4-F1"],
+    "7AF4-S3": ["7AF4-S1"],
+    "7AF4-S4": ["7AF4-F1", "7AF4-S1"],
+    "7AF4-S5": ["7AF4-S4", "7AF4-S2"],
+    "7AF4-S6": ["7AF4-S5", "7AF4-S3"]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S4 (solve a two-step inequality, reversing the sign for a negative) -- the core mechanic of the standard. If they pass, push to S5 (model, solve, and interpret a real-world inequality) and S6 (critique and justify a claim). If they fail, split the diagnosis: S1 checks whether they understand what a solution to an inequality even is (substitution), and S2 checks whether they can read and build the number-line graph. S3 (which values belong to the solution set) branches off between testing and full solving.",
+    "entry_skill": "7AF4-S4",
+    "if_pass": ["7AF4-S5", "7AF4-S6"],
+    "if_fail": ["7AF4-S1", "7AF4-S2"],
+    "branch_skills": ["7AF4-S3"]
+  }
+}

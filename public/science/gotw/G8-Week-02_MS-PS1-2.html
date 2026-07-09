@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light only"><title>Graph of the Week &middot; MS-PS1-2</title><style>
+  :root { color-scheme: light only; }
+  * { box-sizing: border-box; }
+  html { background: transparent; }
+  body { margin:0; font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         color:#111; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .sheet { width:8.5in; margin:18px auto; padding:0.55in 0.6in 0.5in; background:#fff;
+           box-shadow:0 2px 14px rgba(0,0,0,.18); }
+  .print-bar { max-width:8.5in; margin:14px auto 0; text-align:right; }
+  .print-btn { font:600 13px/1 inherit; padding:8px 14px; border:1px solid #111; background:#111;
+               color:#fff; border-radius:6px; cursor:pointer; }
+  .namebar { display:flex; gap:26px; font-size:12px; color:#333; margin-bottom:10px; }
+  .namebar .f { flex:1; display:flex; align-items:baseline; gap:8px; }
+  .namebar .ln { flex:1; border-bottom:1px solid #555; height:14px; }
+  h1.title { font-family:Georgia,"Times New Roman",serif; font-size:30px; line-height:1.05; margin:0;
+             color:#000; letter-spacing:.2px; }
+  .standline { font-size:11px; font-weight:700; letter-spacing:.4px; color:#222; margin:5px 0 9px;
+               text-transform:uppercase; }
+  .standline .sep { color:#888; }
+  .question { border:1px solid #999; background:#f3f3f3; border-radius:6px; padding:9px 14px; margin-bottom:9px; }
+  .question .lab { font-size:10.5px; font-weight:800; letter-spacing:.8px; text-transform:uppercase;
+                   color:#333; display:block; margin-bottom:3px; }
+  .question p { margin:0; font-size:15px; font-weight:600; color:#000; line-height:1.35; }
+  .howto { font-size:12px; font-style:italic; color:#555; margin:0 0 5px; }
+  .howto b { color:#222; font-style:normal; }
+  .legend { display:flex; gap:22px; justify-content:center; flex-wrap:wrap; font-size:12px; margin-bottom:4px; }
+  .legend span { display:inline-flex; align-items:center; }
+  .legend .sw { width:18px; height:12px; border:1px solid #000; margin-right:6px; }
+  .legend svg.mk { margin-right:6px; }
+  .chart { width:84%; height:auto; display:block; margin:2px auto 0; }
+  table { width:100%; border-collapse:collapse; margin:4px 0 4px; font-size:12.5px; }
+  thead th { background:#1c1c1c; color:#fff; font-size:12px; font-weight:700; line-height:1.2;
+             padding:7px 10px; text-align:center; vertical-align:middle; border:1px solid #1c1c1c; }
+  thead th:first-child { text-align:left; }
+  tbody td { border:1px solid #c9c9c9; padding:4px 10px; text-align:center; }
+  tbody td:first-child { text-align:left; }
+  tbody tr:nth-child(even) td { background:#f4f4f4; }
+  .src { font-size:10.5px; font-style:italic; color:#666; margin:3px 0 8px; }
+  .cer { display:flex; flex-direction:column; gap:6px; }
+  .step .hd { display:flex; align-items:baseline; gap:10px; margin-bottom:3px; }
+  .step .badge { font-size:11px; font-weight:800; letter-spacing:.7px; text-transform:uppercase;
+                 background:#222; color:#fff; padding:3px 9px; border-radius:3px; }
+  .step .ask { font-size:13px; font-weight:700; color:#000; }
+  .step .hint { font-size:11.5px; font-style:italic; color:#777; margin:0 0 5px; }
+  .rule { border-bottom:1px solid #b9b9b9; height:20px; }
+  .rule.r { height:23px; }
+  .foot { margin-top:12px; padding-top:9px; border-top:1px solid #ccc; display:flex;
+          justify-content:space-between; font-size:10.5px; color:#555; }
+  .foot .r { font-weight:700; color:#333; }
+
+  /* ---- double-sided: front "first look" + back analysis ---- */
+  .firstlook { border:1px solid #999; border-radius:6px; padding:8px 12px; margin-top:10px; }
+  .firstlook .fl-lab { font-size:10.5px; font-weight:800; letter-spacing:.7px; text-transform:uppercase; color:#333; }
+  .firstlook .row { font-size:12.5px; margin-top:7px; color:#000; line-height:1.5; }
+  .firstlook .u { display:inline-block; border-bottom:1px solid #999; min-width:140px; height:14px; vertical-align:middle; }
+  .firstlook .u.long { min-width:330px; }
+  .backhead { margin-bottom:12px; padding-bottom:8px; border-bottom:2px solid #1c1c1c; }
+  .backhead .t { font-family:Georgia,"Times New Roman",serif; font-size:20px; color:#000; }
+  .backhead .q { font-size:11.5px; color:#444; margin-top:3px; }
+  .backhead .q b { color:#222; }
+  .part { margin-bottom:12px; }
+  .part .lab { display:inline-block; font-size:11px; font-weight:800; letter-spacing:.6px; text-transform:uppercase;
+               background:#222; color:#fff; padding:3px 9px; border-radius:3px; margin-bottom:6px; }
+  .part .q2 { font-size:12.5px; color:#222; margin:7px 0 3px; }
+  .part .q2 b { color:#000; }
+  .part .hint { font-size:11px; font-style:italic; color:#777; margin:1px 0 4px; }
+
+  @media print { html{background:#fff;} .print-bar{display:none;}
+    .sheet{width:auto; min-height:0; margin:0; padding:0; box-shadow:none; page-break-after:always; }
+    .sheet:last-of-type{ page-break-after:auto; }
+    @page{ size:letter; margin:0.5in 0.55in; } }
+</style></head><body><div class="sheet"><div class="namebar"><span class="f">Name <span class="ln"></span></span><span class="f">Date <span class="ln"></span></span></div><h1 class="title">Graph of the Week</h1><div class="standline">Standard MS-PS1-2 <span class="sep">&middot;</span> Properties of Matter <span class="sep">&middot;</span> Density</div><div class="question"><span class="lab">This Week's Question</span><p>Two shiny metal blocks look alike — one is aluminum, one is iron. With no labels, how could mass and volume tell them apart?</p></div><div class="legend"><span><svg class="mk" width="14" height="12" viewBox="0 0 14 12"><circle cx="7.0" cy="6.0" r="3.4" fill="#111" stroke="#111" stroke-width="1.2"/></svg>Iron</span><span><svg class="mk" width="14" height="12" viewBox="0 0 14 12"><rect x="3.6" y="2.6" width="6.8" height="6.8" fill="#fff" stroke="#111" stroke-width="1.2"/></svg>Aluminum</span></div><svg class="chart" style="width:86%" viewBox="0 0 700 250" role="img" aria-label="chart"><defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#1c1c1c" stroke-width="2.6"/></pattern><pattern id="cross" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e9e9e9"/><path d="M0 0 L6 6 M6 0 L0 6" stroke="#1c1c1c" stroke-width="1"/></pattern><pattern id="dots" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#fff"/><circle cx="3" cy="3" r="1.3" fill="#1c1c1c"/></pattern></defs><g stroke="#cfcfcf" stroke-width="1"><line x1="60" y1="158.8" x2="680" y2="158.8"/><line x1="60" y1="112.5" x2="680" y2="112.5"/><line x1="60" y1="66.2" x2="680" y2="66.2"/><line x1="60" y1="20.0" x2="680" y2="20.0"/></g><g font-size="11" fill="#444" text-anchor="end"><text x="52" y="209.0">0</text><text x="52" y="162.8">50</text><text x="52" y="116.5">100</text><text x="52" y="70.2">150</text><text x="52" y="24.0">200</text></g><text x="16" y="112" font-size="10" fill="#444" text-anchor="middle" transform="rotate(-90 16 112)">Mass (g)</text><line x1="60" y1="205" x2="680" y2="205" stroke="#000" stroke-width="1.5"/><g font-size="11" fill="#111" text-anchor="middle"><text x="60" y="222">0</text><text x="184" y="222">5</text><text x="308" y="222">10</text><text x="432" y="222">15</text><text x="556" y="222">20</text><text x="680" y="222">25</text></g><circle cx="184.0" cy="168.5" r="3.4" fill="#111" stroke="#111" stroke-width="1.2"/><circle cx="308.0" cy="131.9" r="3.4" fill="#111" stroke="#111" stroke-width="1.2"/><circle cx="432.0" cy="95.4" r="3.4" fill="#111" stroke="#111" stroke-width="1.2"/><circle cx="556.0" cy="58.8" r="3.4" fill="#111" stroke="#111" stroke-width="1.2"/><circle cx="680.0" cy="22.3" r="3.4" fill="#111" stroke="#111" stroke-width="1.2"/><rect x="180.6" y="189.1" width="6.8" height="6.8" fill="#fff" stroke="#111" stroke-width="1.2"/><rect x="304.6" y="176.6" width="6.8" height="6.8" fill="#fff" stroke="#111" stroke-width="1.2"/><rect x="428.6" y="164.1" width="6.8" height="6.8" fill="#fff" stroke="#111" stroke-width="1.2"/><rect x="552.6" y="151.7" width="6.8" height="6.8" fill="#fff" stroke="#111" stroke-width="1.2"/><rect x="676.6" y="139.2" width="6.8" height="6.8" fill="#fff" stroke="#111" stroke-width="1.2"/><text x="370" y="244" font-size="11" fill="#444" text-anchor="middle">Volume (cm³)</text></svg><table><thead><tr><th style="width:34%;">Volume (cm³)</th><th>Iron mass (g)</th><th>Aluminum mass (g)</th></tr></thead><tbody><tr><td>5</td><td>39.5</td><td>13.5</td></tr><tr><td>10</td><td>79</td><td>27</td></tr><tr><td>15</td><td>118.5</td><td>40.5</td></tr><tr><td>20</td><td>158</td><td>54</td></tr><tr><td>25</td><td>197.5</td><td>67.5</td></tr></tbody></table><p class="src">Data: Calculated from accepted densities: iron 7.9 g/cm³, aluminum 2.7 g/cm³.</p><div class="firstlook"><span class="fl-lab">First look &mdash; before you flip over</span><div class="row"><b>This graph is about:</b> <span class="u long"></span></div><div class="row"><b>The x-axis shows</b> <span class="u"></span> &nbsp;<b>the y-axis shows</b> <span class="u"></span></div><div class="row"><b>I notice&hellip;</b> <span class="u long"></span></div><div class="row"><b>I wonder&hellip;</b> <span class="u long"></span></div></div></div><div class="sheet"><div class="backhead"><div class="t">Analyze the Graph</div><div class="q"><b>MS-PS1-2</b> &middot; Two shiny metal blocks look alike — one is aluminum, one is iron. With no labels, how could mass and volume tell them apart?</div></div><div class="part"><span class="lab">Part A &middot; Analyze the Data</span><div class="q2">Which metal’s line is steeper? What does a steeper line mean about the metal?</div><div class="rule"></div><div class="rule"></div><div class="q2">At the same volume (say 10 cm³), which metal has more mass, and about how many times more?</div><div class="rule"></div><div class="rule"></div><div class="q2">Both lines start at (0, 0). Why does that make sense for mass and volume?</div><div class="rule"></div><div class="rule"></div></div><div class="part"><span class="lab">Part B &middot; Claim &middot; Evidence &middot; Reasoning</span><div class="q2"><b>Claim</b> &mdash; answer this week's question in one sentence.</div><p class="hint">You can tell the two metals apart because…</p><div class="rule"></div><div class="rule"></div><div class="q2"><b>Evidence</b> &mdash; back it up with numbers from the graph and table.</div><p class="hint">For example, a 10 cm³ piece of iron has a mass of about ___ g, but 10 cm³ of aluminum is only about ___ g.</p><div class="rule"></div><div class="rule"></div><div class="rule"></div><div class="q2"><b>Reasoning</b> &mdash; explain the chemistry behind the data.</div><p class="hint">Density (mass per unit volume) is a property of each material and doesn’t depend on the size of the piece, which is why…</p><div class="rule"></div><div class="rule"></div></div><div class="part"><span class="lab">Part C &middot; Predict &amp; Investigate</span><div class="q2"><b>Predict:</b> A mystery block has a volume of 20 cm³ and a mass of 54 g. Which metal is it? How does the graph help you decide?</div><div class="rule"></div><div class="rule"></div><div class="q2"><b>Investigate:</b> If you found a block that didn’t land on either line, what would that tell you? How could you use density to identify an unknown metal?</div><div class="rule"></div><div class="rule"></div></div><div class="foot"><span>Graph of the Week</span><span class="r">MS-PS1-2 &middot; Properties of Matter</span></div></div></body></html>

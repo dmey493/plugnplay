@@ -1,0 +1,1076 @@
+{
+  "standard_code": "8.GM.1",
+  "standard_text": "Identify and describe the effect of translations, reflections, rotations, and dilations on two-dimensional figures using coordinates; understand that rotations, reflections, and translations produce congruent figures and dilations produce similar figures.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "Every transformation in this standard does one clear thing to a point's coordinates, and the whole standard is learning to name that thing, predict it, and reverse it. So the arc begins with the eyes: given a figure and its image on the grid, IDENTIFY which of the four moves happened -- a translation slides, a reflection flips, a rotation turns, a dilation resizes. The first cut a student must make is size. If the image is a different size it is a dilation, which makes a SIMILAR figure; if it is the same size it is a rigid motion (translation, reflection, or rotation), which makes a CONGRUENT figure. That congruent-versus-similar idea is the standard's one big concept, so it earns its own step right after identification.\n\nFrom naming, the arc turns to DOING with coordinates. A dilation multiplies BOTH coordinates by the scale factor -- (x, y) -> (kx, ky) -- the signature 'similar' move and the place students most often add instead of multiply, or scale only one coordinate. Then the rigid motions get their coordinate rules: a reflection over the x-axis negates y, over the y-axis negates x; a rotation about the origin swaps and/or negates coordinates (180 degrees is (x, y) -> (-x, -y), 90 degrees clockwise is (x, y) -> (y, -x)); a translation by (a, b) is (x, y) -> (x + a, y + b). The student first finds a single image vertex, then performs a whole transformation and reports every image coordinate. The top of the arc chains two transformations, where the trap is applying the second move to the original figure instead of to the image of the first. The through-line we keep naming: decide size first (congruent or similar), then apply the coordinate rule to EVERY vertex, and when there are two moves, feed the first image into the second.",
+    "steps": [
+      {
+        "skill_id": "8GM1-S1",
+        "verb": "identify",
+        "rationale": "The standard's first verb is 'identify.' Given a figure and its image, a student must name which of the four transformations occurred, and the deciding cue is whether the size changed. Every later step assumes the student can recognize what move they are looking at."
+      },
+      {
+        "skill_id": "8GM1-S2",
+        "verb": "classify",
+        "rationale": "The standard's explicit 'understand' clause: rotations, reflections, and translations produce congruent figures, while dilations produce similar figures. Sorting a transformation by same-size (congruent) versus resized (similar) is the conceptual heart of the standard and deserves its own step."
+      },
+      {
+        "skill_id": "8GM1-S3",
+        "verb": "dilate",
+        "rationale": "The dilation is the only transformation that produces a similar (not congruent) figure, and its rule (x, y) -> (kx, ky) requires multiplying BOTH coordinates by the scale factor. It is isolated early because its multiplicative logic differs from the rigid motions and its errors (adding k, scaling one coordinate) are distinct."
+      },
+      {
+        "skill_id": "8GM1-S4",
+        "verb": "determine",
+        "rationale": "Before moving a whole figure, a student must be able to send a SINGLE point to its image under a rotation about the origin or a dilation -- applying one coordinate rule correctly (swap and/or sign, or multiply). This is the atomic 'describe with coordinates' skill the rest build on."
+      },
+      {
+        "skill_id": "8GM1-S5",
+        "verb": "perform",
+        "rationale": "The At-proficiency core: perform a single translation, reflection over an axis, or rotation about the origin on a whole figure and report every image coordinate, applying the SAME rule to each vertex. This is the standard's central 'using coordinates' demand."
+      },
+      {
+        "skill_id": "8GM1-S6",
+        "verb": "compose",
+        "rationale": "The Above-proficiency extension: chain two transformations, feeding the image of the first into the second. It synthesizes every earlier rule and exposes the sequencing error of applying the second move to the original figure."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "8GM1-F1",
+      "name": "Plot and identify ordered pairs and name the quadrant of a point",
+      "column": "foundation",
+      "parent_standard": "8.GM.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Plot and read points as ordered pairs (x, y) in all four quadrants of the coordinate plane.",
+        "check_question": "What are the coordinates of a point 3 units right and 2 units down from the origin?"
+      },
+      "i_do_script": "Every point on the grid has an address written (x, y): FIRST how far right or left along the x-axis, THEN how far up or down along the y-axis. Watch: to plot (3, -5) I start at the origin, go 3 to the right, then 5 DOWN, landing in the bottom-right region -- Quadrant IV. The signs tell the quadrant: (+, +) is I, (-, +) is II, (-, -) is III, (+, -) is IV. I always move along x first, then y.",
+      "canonical_error": {
+        "pattern": "Reverses the coordinates -- moves up/down first, or reads (x, y) as (y, x)",
+        "example": "Plots (3, -5) by going 3 UP and 5 to the right, or names a point 3 right and 5 down as (-5, 3)",
+        "why": "The student does not hold the convention that the FIRST number is the horizontal (x) move and the SECOND is the vertical (y) move, so the point lands in the wrong place or is named backward."
+      },
+      "item_template": "A point described in words or by its signs; student writes the ordered pair or names the quadrant. Short-response fluency bank.",
+      "sample_items": [
+        { "stem": "In which quadrant is the point (3, -5)?", "answer": "Quadrant IV" },
+        { "stem": "In which quadrant is the point (-4, 2)?", "answer": "Quadrant II" },
+        { "stem": "A point is 5 units right and 2 units up from the origin. Write its ordered pair.", "answer": "(5, 2)" },
+        { "stem": "In which quadrant is the point (-3, -6)?", "answer": "Quadrant III" },
+        { "stem": "Write the ordered pair for a point 6 units left and 1 unit down from the origin.", "answer": "(-6, -1)" }
+      ],
+      "redirect_script": {
+        "stop": "Which number moves you sideways?",
+        "prompt": "Read (x, y) in order: the FIRST number is the sideways move (right or left), the SECOND is up or down. For (3, -5): 3 right, then 5 down.",
+        "praise": "You moved along x first, then y -- that puts the point in the right spot."
+      },
+      "vocabulary": [
+        { "term": "Ordered pair", "definition": "The two numbers (x, y) that give a point's location -- across first, then up or down." },
+        { "term": "x-coordinate", "definition": "The first number in an ordered pair; how far right or left of the origin." },
+        { "term": "y-coordinate", "definition": "The second number in an ordered pair; how far up or down from the origin." },
+        { "term": "Quadrant", "definition": "One of the four regions of the coordinate plane, numbered I to IV." },
+        { "term": "Origin", "definition": "The point (0, 0) where the x-axis and y-axis cross." }
+      ],
+      "next_steps": { "if_pass": "8GM1-S1", "if_fail": "Review plotting points in four quadrants (6.NS.6)." },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Plot the point (3, -5) and name its quadrant.'" },
+        { "kind": "ask", "text": "Which way does the first number send us -- sideways, or up and down?" },
+        { "kind": "say", "text": "First number 3: go 3 right. Second number -5: go 5 down. That is the bottom-right region, Quadrant IV." },
+        { "kind": "watch", "text": "If the student goes up 3 and right 5, ask 'which number is the sideways move -- the first or the second?'" },
+        { "kind": "ask", "text": "Your turn: in which quadrant is (-4, 2)?" }
+      ]
+    },
+    {
+      "skill_id": "8GM1-F2",
+      "name": "Find the opposite of a coordinate and apply a coordinate rule to one point",
+      "column": "foundation",
+      "parent_standard": "8.GM.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Find the opposite (additive inverse) of an integer and substitute a point into a coordinate rule like (x, y) -> (x + a, y + b).",
+        "check_question": "What is the opposite of -4? Apply (x, y) -> (x, -y) to the point (3, 5)."
+      },
+      "i_do_script": "Transformations are just rules that rewrite a point's coordinates, so I need two habits: taking OPPOSITES and substituting into a rule. The opposite of a number flips its sign: the opposite of 7 is -7, and the opposite of -4 is 4 (the opposite of 0 is 0). Watch a rule: (x, y) -> (x, -y) means keep x and take the opposite of y, so (3, 5) becomes (3, -5). Another: (x, y) -> (x + 4, y - 1) applied to (2, 3) gives (2 + 4, 3 - 1) = (6, 2). I substitute one coordinate at a time.",
+      "canonical_error": {
+        "pattern": "Changes the WRONG coordinate, or treats 'opposite' as 'make negative' instead of 'flip the sign'",
+        "example": "For (x, y) -> (x, -y) on (3, 5) writes (-3, 5); or says the opposite of -4 is -4",
+        "why": "The student does not track which coordinate the rule changes, or thinks 'opposite' always means a negative sign rather than flipping whatever sign is there."
+      },
+      "item_template": "An opposite to compute, or a one-point coordinate rule to apply. Short-response fluency bank.",
+      "sample_items": [
+        { "stem": "What is the opposite of 7?", "answer": "-7" },
+        { "stem": "What is the opposite of -4?", "answer": "4" },
+        { "stem": "What is the opposite of 0?", "answer": "0" },
+        { "stem": "Apply the rule (x, y) -> (x, -y) to the point (3, 5).", "answer": "(3, -5)" },
+        { "stem": "Apply the rule (x, y) -> (-x, y) to the point (2, -6).", "answer": "(-2, -6)" },
+        { "stem": "Apply the rule (x, y) -> (x + 4, y - 1) to the point (2, 3).", "answer": "(6, 2)" }
+      ],
+      "redirect_script": {
+        "stop": "Which coordinate does the rule change?",
+        "prompt": "Point to the rule: (x, y) -> (x, -y) changes ONLY y. Keep x the same and flip the sign of y, so (3, 5) becomes (3, -5).",
+        "praise": "You changed only the coordinate the rule names -- that is how a transformation rule works."
+      },
+      "vocabulary": [
+        { "term": "Opposite", "definition": "A number with its sign flipped; the opposite of 5 is -5 and the opposite of -5 is 5." },
+        { "term": "Coordinate rule", "definition": "An instruction like (x, y) -> (x, -y) that tells how to rewrite a point's coordinates." },
+        { "term": "Coordinate notation", "definition": "Writing a transformation as a rule that acts on (x, y)." },
+        { "term": "Substitute", "definition": "Replace x and y in the rule with the point's actual numbers." }
+      ],
+      "next_steps": { "if_pass": "8GM1-S3", "if_fail": "Review opposites of integers (7.NS.1)." },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Apply (x, y) -> (x, -y) to the point (3, 5).'" },
+        { "kind": "ask", "text": "Which coordinate does the rule change, and which stays the same?" },
+        { "kind": "say", "text": "It changes only y: keep x = 3, flip the sign of y so 5 becomes -5. The image is (3, -5)." },
+        { "kind": "watch", "text": "If the student writes (-3, 5), ask 'does the rule put the minus on x or on y?'" },
+        { "kind": "ask", "text": "Your turn: apply (x, y) -> (-x, y) to (2, -6)." }
+      ]
+    },
+    {
+      "skill_id": "8GM1-S1",
+      "name": "Identify the type of transformation that maps a figure onto its image",
+      "column": "looking_back",
+      "parent_standard": "8.GM.1",
+      "engine_stems": [1],
+      "prerequisite_skill": { "type": "skill", "skill_id": "8GM1-F1" },
+      "i_do_script": "To name a transformation I ask ONE question first: did the size change? Watch a triangle A(2,3), B(4,3), C(2,6) whose image is A'(6,9), B'(12,9), C'(6,18). A side that was 2 units is now 6 units, so the image is bigger -- that means it is a dilation, the only move that resizes. If the size had stayed the same, I would check HOW it moved: a straight slide is a translation, a mirror flip across an axis is a reflection, and a turn is a rotation. Size first, then how it moved.",
+      "canonical_error": {
+        "pattern": "Names a transformation by how the figure appears to move without checking the size, so a resized figure gets called a translation",
+        "example": "A triangle whose image is twice as large gets called a 'translation' because the image sits in a new place, ignoring that every side doubled",
+        "why": "The student watches only position, not size. A translation slides without resizing (congruent), while a dilation resizes (similar); ignoring the size change is what makes the two look alike."
+      },
+      "item_template": "A preimage and image given as coordinate lists; student names the transformation. Multiple choice / short response.",
+      "sample_items": [
+        { "stem": "Triangle A(1,2), B(4,2), C(1,5) maps to A'(2,4), B'(8,4), C'(2,10). Which transformation was applied?", "answer": "Dilation", "distractor_logic": "Each coordinate is multiplied by 2, so the image is larger -- a dilation. 'Translation' ignores the size change." },
+        { "stem": "Triangle A(2,3), B(5,3), C(2,7) maps to A'(5,1), B'(8,1), C'(5,5). Which transformation was applied?", "answer": "Translation", "distractor_logic": "Every point shifts +3 and -2 and the size is unchanged -- a translation." },
+        { "stem": "Triangle A(1,2), B(3,2), C(1,5) maps to A'(1,-2), B'(3,-2), C'(1,-5). Which transformation was applied?", "answer": "Reflection", "distractor_logic": "The y-coordinates flip sign while x stays -- a reflection over the x-axis. Same size, so not a dilation." },
+        { "stem": "Triangle A(2,1), B(5,1), C(2,3) maps to A'(-1,2), B'(-1,5), C'(-3,2). Which transformation was applied?", "answer": "Rotation", "distractor_logic": "The figure is turned, (x,y)->(-y,x), a 90-degree counterclockwise rotation. Same size and not a straight mirror across one axis." }
+      ],
+      "redirect_script": {
+        "stop": "Did the size change, or just the position?",
+        "prompt": "Check a side length first. If the image is bigger or smaller, it is a dilation. If the size is the same, then decide slide, flip, or turn.",
+        "praise": "You checked the size before naming it -- that is what separates a dilation from a slide."
+      },
+      "vocabulary": [
+        { "term": "Preimage", "definition": "The original figure before a transformation, labeled with plain letters like A, B, C." },
+        { "term": "Image", "definition": "The figure after the transformation, labeled with primes like A', B', C'." },
+        { "term": "Translation", "definition": "A slide that moves every point the same distance and direction." },
+        { "term": "Dilation", "definition": "A resize from a center point that multiplies every length by a scale factor." }
+      ],
+      "next_steps": { "if_pass": "8GM1-S2", "if_fail": "8GM1-F1" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'A(2,3),B(4,3),C(2,6) maps to A'(6,9),B'(12,9),C'(6,18). Which transformation?'" },
+        { "kind": "ask", "text": "First question: is the image the same size, or a different size?" },
+        { "kind": "say", "text": "A side of 2 became 6 -- three times as big. A size change means it is a dilation." },
+        { "kind": "watch", "text": "If the student says 'translation' because it moved, ask 'is the image still the same size as the original?'" },
+        { "kind": "ask", "text": "Your turn: A(2,3),B(5,3),C(2,7) maps to A'(5,1),B'(8,1),C'(5,5) -- name it." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Does a translation change the SIZE of a figure?", "answer": "No -- it only slides it, so the image is congruent." },
+        { "difficulty": "warm_up", "stem": "A figure gets bigger but keeps its shape. Which transformation is it?", "answer": "Dilation" },
+        { "difficulty": "core", "stem": "A(2,3), B(5,3), C(2,7) maps to A'(5,1), B'(8,1), C'(5,5). Name the transformation.", "answer": "Translation of (3, -2)", "notes": "Same size; every point shifts +3 and -2." },
+        { "difficulty": "core", "stem": "A(1,2), B(3,2), C(1,5) maps to A'(1,-2), B'(3,-2), C'(1,-5). Name the transformation.", "answer": "Reflection over the x-axis", "notes": "Same size, y-signs flipped." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "A(1,2), B(4,2), C(1,5) maps to A'(2,4), B'(8,4), C'(2,10). Rosa named the transformation. Find and fix her mistake.",
+          "shown_work": [
+            "Rosa wrote: 'The whole triangle moved away from where it started.'",
+            "'So it is a translation.'"
+          ],
+          "answer": "The image is TWICE as big (1->2, 4->8, 5->10), so it is a dilation, not a translation. A translation keeps the same size.",
+          "notes": "Canonical error: naming by movement, ignoring the size change."
+        },
+        { "difficulty": "stretch", "stem": "A transformation produces a SIMILAR figure. Which of the four transformations must it be, and why?", "answer": "A dilation -- it is the only one that changes size, producing a similar (not congruent) figure.", "notes": "Reverse: from 'similar' back to the transformation." },
+        { "difficulty": "stretch", "stem": "A(2,1), B(5,1), C(2,3) maps to A'(-1,2), B'(-1,5), C'(-3,2). Is this a rotation or a reflection? Justify.", "answer": "A rotation (90 degrees counterclockwise about the origin), (x,y)->(-y,x). The figure is turned, not mirrored across a single axis.", "notes": "Distinguish rotation from reflection." }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Which of the Four?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": ["Card set of 8 coordinate rules"],
+          "instructions": "1. Read each coordinate-rule card.\n2. Sort it under Translation, Reflection, Rotation, or Dilation.\n3. For each card, say the one clue that gave it away (adds a number = slide, flips a sign = flip, swaps coordinates = turn, multiplies = resize).\n4. Debrief: which rule is the only one that changes the SIZE of the figure?",
+          "content": {
+            "categories": ["Translation", "Reflection", "Rotation", "Dilation"],
+            "cards": [
+              { "text": "(x, y) -> (x + 3, y - 2)", "category": "Translation" },
+              { "text": "(x, y) -> (x, -y)", "category": "Reflection" },
+              { "text": "(x, y) -> (-x, -y)", "category": "Rotation" },
+              { "text": "(x, y) -> (2x, 2y)", "category": "Dilation" },
+              { "text": "(x, y) -> (-x, y)", "category": "Reflection" },
+              { "text": "(x, y) -> (y, -x)", "category": "Rotation" },
+              { "text": "(x, y) -> (x - 5, y)", "category": "Translation" },
+              { "text": "(x, y) -> (3x, 3y)", "category": "Dilation" }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Moved Is Not Named",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Rosa's work"],
+          "instructions": "1. Read Rosa's claim that a resized triangle is a translation.\n2. Compare one side of the preimage to the matching side of the image -- did it stay the same length?\n3. Rename the transformation using the size clue.\n4. Write the one-sentence rule: a translation keeps the ___; a dilation changes the ___.",
+          "content": {
+            "worked_problem": "A(1,2),B(4,2),C(1,5) maps to A'(2,4),B'(8,4),C'(2,10). Rosa wrote: 'It moved, so it is a translation.'",
+            "error_step": "Rosa named the transformation by its movement without checking that every side doubled.",
+            "why": "The image is twice as big, so it is a dilation (a similar figure), not a translation (a congruent figure)."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "The 'it moved so it is a translation' mistake is a clean, baitable error that find-and-fix with a size check corrects directly." },
+        { "strategy_id": "strat-math-007", "why": "Working on the concrete grid, comparing side lengths of preimage and image, makes the size clue visible before it is a rule." },
+        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'did the size change first?' models the check students skip when they name by position." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is the image the same size as the original, or a different size?",
+          "If the size is the same, is it a slide, a flip, or a turn?",
+          "How can you tell a reflection from a rotation just by looking?",
+          "Which transformation is the only one that makes a similar figure?",
+          "What happened to the signs of the coordinates from preimage to image?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student names a resized figure a 'translation' because the image sits in a new place.",
+            "say": "Check a side length first. If the image is bigger or smaller, it is a dilation. If the size is the same, then decide slide, flip, or turn.",
+            "praise": "You checked the size before naming it -- that is what separates a dilation from a slide."
+          },
+          {
+            "if_you_see": "Student confuses a reflection with a rotation.",
+            "say": "A reflection is a mirror flip over an axis; a rotation is a turn about the origin. Follow one vertex -- does it flip straight across, or swing around?",
+            "praise": "You tracked one vertex to tell a flip from a turn -- that is the reliable check."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A(2,2), B(6,2), C(2,5) maps to A'(4,4), B'(12,4), C'(4,10). Which transformation?",
+            "look_for": "Dilation (each coordinate is multiplied by 2). Saying 'translation' means the student ignored the size change."
+          },
+          {
+            "prompt": "A figure keeps its size but every point flips to the other side of the x-axis. Which transformation?",
+            "look_for": "Reflection. Saying 'dilation' means the student did not notice the size stayed the same."
+          }
+        ]
+      },
+      "fluency_source": "8GM1-F1",
+      "sentence_starters": [
+        "The image is the ___ size as the original, so it is a ___ (congruent or similar) figure.",
+        "Each point changed by ___, so the transformation is a ___."
+      ],
+      "worked_solution": {
+        "stem": "Triangle A(2,3), B(4,3), C(2,6) has image A'(6,9), B'(12,9), C'(6,18). Which transformation was applied?",
+        "answer": "Dilation (scale factor 3)",
+        "steps": [
+          { "math": "compare a side: A to B is 2 units; A' to B' is 6 units", "annotation": "Check first whether the image is the same size or a different size." },
+          { "math": "6 / 2 = 3, so the image is 3 times as big", "annotation": "A size change means it is NOT a translation, reflection, or rotation." },
+          { "math": "every coordinate is multiplied by 3: (2,3) -> (6,9)", "annotation": "Multiplying both coordinates from the origin is a dilation." },
+          { "math": "answer: dilation", "annotation": "A dilation makes a SIMILAR figure -- same shape, different size." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Triangle A(1,3), B(5,3), C(1,6) has image A'(5,-2), B'(9,-2), C'(5,1). Which transformation was applied?",
+        "answer": "Translation of (4, -5)",
+        "steps": [
+          { "math": "compare sizes: A to B is 4 units in both figures", "annotation": "Same size, so it is a rigid motion, not a dilation.", "given": true },
+          { "math": "each point moves the same way: (1,3) -> (5,-2)", "annotation": "Find how x and y changed: +4 and -5.", "given": true },
+          { "math": null, "annotation": "Write the change as a translation (x, y) -> (x + __, y + __).", "given": false },
+          { "math": null, "annotation": "Name the transformation.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM1-S2",
+      "name": "Classify a transformation as producing a congruent or a similar figure",
+      "column": "on_grade",
+      "parent_standard": "8.GM.1",
+      "prerequisite_skill": { "type": "skill", "skill_id": "8GM1-S1" },
+      "i_do_script": "This is the big idea of the standard: some transformations keep a figure the same size and some do not. Translations, reflections, and rotations are rigid motions -- they slide, flip, or turn without resizing -- so the image is CONGRUENT (same size AND same shape). A dilation stretches or shrinks, so the image is SIMILAR (same shape, different size). Watch: a triangle rotated 90 degrees is congruent to the original, but the same triangle dilated by a scale factor of 3 is similar, not congruent, because every side tripled.",
+      "canonical_error": {
+        "pattern": "Calls a dilated figure 'congruent' because it has the same shape, not noticing the side lengths changed",
+        "example": "A triangle with sides 3, 4, 5 dilated to sides 6, 8, 10 is called congruent because the angles match",
+        "why": "The student treats 'same shape' as enough for congruence. Congruent requires same size AND shape (rigid motions); a dilation keeps the shape but changes the size, so it is only similar."
+      },
+      "item_template": "A transformation described in words (or as before/after side lengths); student says congruent or similar. Multiple choice / short response.",
+      "sample_items": [
+        { "stem": "A triangle is rotated 90 degrees about the origin. Is the image congruent or similar to the original?", "answer": "Congruent", "distractor_logic": "A rotation is a rigid motion -- same size and shape, so congruent." },
+        { "stem": "A figure is dilated by a scale factor of 3 about the origin. Congruent or similar?", "answer": "Similar", "distractor_logic": "A dilation changes size but keeps shape -- similar." },
+        { "stem": "A figure is reflected over the y-axis. Congruent or similar?", "answer": "Congruent", "distractor_logic": "A reflection preserves all lengths -- congruent." },
+        { "stem": "A triangle with sides 3, 4, 5 is transformed into a triangle with sides 6, 8, 10. Congruent or similar?", "answer": "Similar", "distractor_logic": "Every side doubled (a dilation by 2), so same shape, different size -- similar." }
+      ],
+      "redirect_script": {
+        "stop": "Did the SIZE stay the same?",
+        "prompt": "Congruent means same size AND shape; similar means same shape but different size. If the sides changed length, it is similar, not congruent.",
+        "praise": "You checked the size, not just the shape -- that is how you tell congruent from similar."
+      },
+      "vocabulary": [
+        { "term": "Congruent", "definition": "Same size and same shape; produced by translations, reflections, and rotations." },
+        { "term": "Similar", "definition": "Same shape but a different size; produced by dilations." },
+        { "term": "Rigid motion", "definition": "A transformation that does not resize the figure -- a translation, reflection, or rotation." },
+        { "term": "Scale factor", "definition": "The number every length is multiplied by in a dilation." }
+      ],
+      "next_steps": { "if_pass": "8GM1-S3", "if_fail": "8GM1-S1" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'A triangle is rotated 90 degrees. Congruent or similar?'" },
+        { "kind": "ask", "text": "Does a turn change the size of the figure, or just its direction?" },
+        { "kind": "say", "text": "A rotation is a rigid motion -- same size, same shape -- so the image is congruent." },
+        { "kind": "watch", "text": "If the student says similar, ask 'did any side get longer or shorter when we turned it?'" },
+        { "kind": "ask", "text": "Your turn: a figure dilated by a scale factor of 3 -- congruent or similar?" }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Do rotations produce congruent or similar figures?", "answer": "Congruent" },
+        { "difficulty": "warm_up", "stem": "Do dilations produce congruent or similar figures?", "answer": "Similar" },
+        { "difficulty": "core", "stem": "A triangle is reflected over the y-axis. Congruent or similar? Explain.", "answer": "Congruent -- a reflection keeps every length the same, so same size and shape.", "notes": "Rigid motion." },
+        { "difficulty": "core", "stem": "A rectangle is dilated by a scale factor of 2 about the origin. Congruent or similar? Explain.", "answer": "Similar -- the shape is the same but every side doubled, so the size changed.", "notes": "Size change." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "A triangle with sides 3, 4, 5 is dilated to a triangle with sides 6, 8, 10. Leo classified the two figures. Find and fix his mistake.",
+          "shown_work": [
+            "Leo wrote: 'The two triangles have the same angles.'",
+            "'So they are congruent.'"
+          ],
+          "answer": "Same angles make them SIMILAR, not congruent. Congruent also needs the same size, but the sides doubled (3->6, 4->8, 5->10), so they are similar.",
+          "notes": "Canonical error: calling a dilation congruent because the shape matches."
+        },
+        { "difficulty": "stretch", "stem": "Name all the transformations that produce a congruent figure, and the one that does not.", "answer": "Translations, reflections, and rotations produce congruent figures; a dilation does not -- it produces a similar figure.", "notes": "Reverse: list by property." },
+        { "difficulty": "stretch", "stem": "A figure is translated, and then that image is dilated by a scale factor of 2. Is the FINAL figure congruent or similar to the original? Explain.", "answer": "Similar -- the translation kept it congruent, but the dilation changed the size, so overall the shape is the same and the size is not.", "notes": "Combined reasoning across two moves." }
+      ],
+      "activities": [
+        {
+          "type": "game",
+          "title": "Congruent or Similar Quick Call",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": ["Two response cards per student: CONGRUENT and SIMILAR"],
+          "instructions": "1. Call out a transformation (for example, 'reflected over the x-axis' or 'dilated by a scale factor of 4').\n2. On the count of three, every student holds up CONGRUENT or SIMILAR.\n3. Ask one student who is correct to say the reason (did the size change?).\n4. Debrief: which single transformation is the only 'similar' answer?",
+          "content": {
+            "categories": ["Congruent", "Similar"],
+            "cards": [
+              { "text": "Translated 5 units left", "category": "Congruent" },
+              { "text": "Rotated 180 degrees about the origin", "category": "Congruent" },
+              { "text": "Dilated by a scale factor of 3", "category": "Similar" },
+              { "text": "Reflected over the y-axis", "category": "Congruent" },
+              { "text": "Shrunk by a scale factor of one half", "category": "Similar" },
+              { "text": "Rotated 90 degrees clockwise", "category": "Congruent" }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Same Angles Are Not Enough",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": ["Slip with Leo's classification"],
+          "instructions": "1. Read Leo's claim that two triangles with matching angles are congruent.\n2. Line up the side lengths: 3, 4, 5 versus 6, 8, 10 -- did they stay the same?\n3. Decide congruent or similar, and give the size reason.\n4. Write the rule: congruent needs same ___ AND same ___; similar needs only same ___.",
+          "content": {
+            "worked_problem": "Triangle sides 3, 4, 5 dilated to 6, 8, 10. Leo wrote: 'Same angles, so congruent.'",
+            "error_step": "Leo used matching angles alone to claim congruence.",
+            "why": "Congruent requires equal side lengths too; the sides doubled, so the figures are similar, not congruent."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "The 'same shape means congruent' slip is a precise, baitable error ideal for a find-and-fix on the congruent/similar distinction." },
+        { "strategy_id": "strat-math-004", "why": "A short journal entry defining congruent versus similar in the student's own words consolidates the standard's central concept." },
+        { "strategy_id": "strat-math-001", "why": "Think-pair-share on 'which transformations keep the size' surfaces and repairs the misconception through discussion." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Did the SIZE of the figure change, or only its position or direction?",
+          "What does congruent require that similar does not?",
+          "Which three transformations always give a congruent image?",
+          "Why is a dilation the odd one out?",
+          "If the angles match but the sides doubled, is it congruent or similar?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student calls a dilated figure congruent because it has the same shape.",
+            "say": "Congruent means same size AND shape; similar means same shape but different size. If the sides changed length, it is similar, not congruent.",
+            "praise": "You checked the size, not just the shape -- that is how you tell congruent from similar."
+          },
+          {
+            "if_you_see": "Student thinks a reflection or rotation must change the size because the figure looks different.",
+            "say": "A flip or a turn moves the figure without stretching it, so every length stays the same -- the image is congruent.",
+            "praise": "You saw that a flip keeps the lengths -- rigid motions stay congruent."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A figure is translated 6 units left. Congruent or similar?",
+            "look_for": "Congruent. 'Similar' means the student thinks moving changes the size."
+          },
+          {
+            "prompt": "A figure's sides go from 2, 3, 4 to 4, 6, 8. Congruent or similar?",
+            "look_for": "Similar (a dilation by 2). 'Congruent' means the student missed that every side doubled."
+          }
+        ]
+      },
+      "fluency_source": "8GM1-F1",
+      "sentence_starters": [
+        "This transformation ___ the size, so the image is ___ to the original.",
+        "Because it is a ___, the figures are ___ (congruent or similar)."
+      ],
+      "worked_solution": {
+        "stem": "Triangle ABC is rotated 90 degrees about the origin to form A'B'C'. Is A'B'C' congruent or similar to ABC?",
+        "answer": "Congruent",
+        "steps": [
+          { "math": "a rotation is a rigid motion (a turn)", "annotation": "It moves the figure without resizing it." },
+          { "math": "every side length stays the same", "annotation": "Same size and same shape." },
+          { "math": "same size + same shape = congruent", "annotation": "Rotations, reflections, and translations all give congruent figures." }
+        ]
+      },
+      "faded_example": {
+        "stem": "A figure is dilated by a scale factor of 3 about the origin. Is the image congruent or similar to the original?",
+        "answer": "Similar",
+        "steps": [
+          { "math": "a dilation multiplies every length by 3", "annotation": "The size changes.", "given": true },
+          { "math": "the shape (the angles) stays the same", "annotation": "Same shape, different size.", "given": true },
+          { "math": null, "annotation": "Same shape but a different size is called ____.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM1-S3",
+      "name": "Dilate a figure by a scale factor about the origin and find the image coordinates",
+      "column": "on_grade",
+      "parent_standard": "8.GM.1",
+      "prerequisite_skill": { "type": "skill", "skill_id": "8GM1-S1" },
+      "i_do_script": "A dilation about the origin multiplies BOTH coordinates by the scale factor: the rule is (x, y) -> (kx, ky). Watch a triangle A(2,2), B(5,2), C(2,4) dilated by a scale factor of 2. I multiply every coordinate by 2: A becomes (4,4), B becomes (10,4), C becomes (4,8). The catch is that BOTH numbers get multiplied -- not added, and not just one of them. The image is bigger but the same shape, so it is a similar figure.",
+      "canonical_error": {
+        "pattern": "Adds the scale factor to each coordinate, or multiplies only one coordinate, instead of multiplying BOTH by the scale factor",
+        "example": "Dilating (3, 2) by a scale factor of 2 gives (5, 4) by adding 2, or (6, 2) by scaling only x, instead of (6, 4)",
+        "why": "The student does not treat a dilation as multiplicative on both coordinates. A dilation by k sends (x, y) to (kx, ky), so each coordinate is MULTIPLIED by the same factor."
+      },
+      "item_template": "A figure's vertices as a coordinate list plus a scale factor; student gives all image coordinates. Numeric response.",
+      "sample_items": [
+        { "stem": "Triangle A(2,3), B(4,1), C(1,5) is dilated by a scale factor of 2 about the origin. Find A', B', C'.", "answer": "A'(4,6), B'(8,2), C'(2,10)", "distractor_logic": "Multiply each coordinate by 2. Adding 2 would give (4,5), (6,3), (3,7)." },
+        { "stem": "Point P(3, -2) is dilated by a scale factor of 3 about the origin. Find P'.", "answer": "(9, -6)", "distractor_logic": "3 x 3 = 9 and 3 x (-2) = -6." },
+        { "stem": "A rectangle has a vertex at (-2, 4). After a dilation by a scale factor of 2 about the origin, where is that vertex?", "answer": "(-4, 8)", "distractor_logic": "2 x (-2) = -4 and 2 x 4 = 8." },
+        { "stem": "Triangle E(5,1), F(5,-6), G(7,1) is dilated by a scale factor of 4 about the origin. Find E', F', G'.", "answer": "E'(20,4), F'(20,-24), G'(28,4)", "distractor_logic": "Multiply every coordinate by 4." }
+      ],
+      "redirect_script": {
+        "stop": "Multiply or add -- and how many coordinates?",
+        "prompt": "A dilation MULTIPLIES both coordinates by the scale factor. For a factor of 2 on (3, 2): (2 x 3, 2 x 2) = (6, 4), not (5, 4).",
+        "praise": "You multiplied BOTH coordinates by the scale factor -- that is the dilation rule."
+      },
+      "vocabulary": [
+        { "term": "Dilation", "definition": "A transformation that resizes a figure from a center point by a scale factor." },
+        { "term": "Scale factor", "definition": "The number k every coordinate is multiplied by; the rule is (x, y) -> (kx, ky)." },
+        { "term": "Center of dilation", "definition": "The fixed point the figure grows or shrinks from -- here, the origin (0, 0)." },
+        { "term": "Similar", "definition": "Same shape, different size; the result of a dilation." }
+      ],
+      "next_steps": { "if_pass": "8GM1-S4", "if_fail": "8GM1-F2" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Dilate A(2,2), B(5,2), C(2,4) by a scale factor of 2 about the origin.'" },
+        { "kind": "ask", "text": "Do we add 2 to the coordinates, or multiply them by 2? And do we do both coordinates?" },
+        { "kind": "say", "text": "Multiply BOTH by 2: A(2,2) -> (4,4), B(5,2) -> (10,4), C(2,4) -> (4,8)." },
+        { "kind": "watch", "text": "If the student writes (4,4) then (7,4) by adding, ask 'is a dilation multiply or add?'" },
+        { "kind": "ask", "text": "Your turn: dilate A(2,1), B(4,1), C(2,3) by a scale factor of 3." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Dilate the point (2, 2) by a scale factor of 3 about the origin.", "answer": "(6, 6)" },
+        { "difficulty": "warm_up", "stem": "Triangle A(1,2), B(3,2), C(1,4) is dilated by a scale factor of 2 about the origin. Find the image.", "answer": "A'(2,4), B'(6,4), C'(2,8)" },
+        { "difficulty": "core", "stem": "Triangle A(2,1), B(4,1), C(2,3) is dilated by a scale factor of 3 about the origin. Find A', B', C'.", "answer": "A'(6,3), B'(12,3), C'(6,9)", "notes": "Multiply both coordinates by 3." },
+        { "difficulty": "core", "stem": "Triangle A(1,3), B(2,1), C(4,2) is dilated by a scale factor of 2 about the origin. Find the image.", "answer": "A'(2,6), B'(4,2), C'(8,4)", "notes": "Every coordinate doubles." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Dilate the point (3, 2) by a scale factor of 2 about the origin. Find and fix the student's mistake.",
+          "shown_work": [
+            "Student wrote: '(3 + 2, 2 + 2)'",
+            "'= (5, 4)'"
+          ],
+          "answer": "The student ADDED the scale factor. A dilation MULTIPLIES both coordinates: (2 x 3, 2 x 2) = (6, 4).",
+          "notes": "Canonical error: adding instead of multiplying."
+        },
+        { "difficulty": "stretch", "stem": "A triangle is dilated by a scale factor of 3 to give an image with a vertex at (6, 9). What was the original vertex?", "answer": "(2, 3) -- reverse the dilation by DIVIDING each coordinate by 3.", "notes": "Reverse a dilation." },
+        { "difficulty": "stretch", "stem": "Triangle E(5,1), F(5,-6), G(7,1) is dilated by a scale factor of 4 about the origin. Find the image and state whether it is congruent or similar to EFG.", "answer": "E'(20,4), F'(20,-24), G'(28,4); similar, because a dilation changes the size.", "notes": "Larger factor; connect to similarity." }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Multiply, Don't Add",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": ["Grid paper", "Cards with a small triangle's vertices and a scale factor"],
+          "instructions": "1. Plot the triangle on the cards on grid paper.\n2. Multiply every coordinate by the scale factor and plot the image.\n3. Measure one side of the original and the matching side of the image -- confirm it grew by the scale factor.\n4. Debrief: what happens to the image if you ADD the scale factor instead of multiplying?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Added Instead of Multiplied",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with the (3,2) dilation error"],
+          "instructions": "1. Read the student work that dilates (3, 2) by 2 into (5, 4).\n2. Circle the operation the student used -- was it multiply or add?\n3. Redo the point by multiplying BOTH coordinates by 2.\n4. Write the dilation rule in coordinate notation.",
+          "content": {
+            "worked_problem": "Dilate (3, 2) by a scale factor of 2 about the origin. Student wrote (3 + 2, 2 + 2) = (5, 4).",
+            "error_step": "The student added the scale factor to each coordinate.",
+            "why": "A dilation multiplies: (2 x 3, 2 x 2) = (6, 4)."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-007", "why": "Plotting the original and the multiplied image on a grid makes the 'both coordinates times k' idea concrete before it is a formula." },
+        { "strategy_id": "strat-math-003", "why": "The add-instead-of-multiply slip is a single, baitable error perfect for a find-and-fix." },
+        { "strategy_id": "strat-math-002", "why": "A number talk on 'three times as big' builds the multiplicative reasoning that replaces additive thinking about dilations." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is a dilation an add rule or a multiply rule?",
+          "How many of the coordinates get multiplied by the scale factor?",
+          "What is the rule (x, y) -> (?, ?) for a scale factor of 3?",
+          "Is the image bigger or smaller, and does that match the scale factor?",
+          "Is the image congruent or similar to the original?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds the scale factor to each coordinate, or multiplies only one coordinate.",
+            "say": "A dilation MULTIPLIES both coordinates by the scale factor. For a factor of 2 on (3, 2): (2 x 3, 2 x 2) = (6, 4), not (5, 4).",
+            "praise": "You multiplied BOTH coordinates by the scale factor -- that is the dilation rule."
+          },
+          {
+            "if_you_see": "Student multiplies only the x-coordinate and leaves y unchanged.",
+            "say": "Both coordinates scale together. Multiply x by the factor AND y by the same factor: (2, 4) at scale 3 becomes (6, 12).",
+            "praise": "You scaled both coordinates by the same factor -- the whole figure grows evenly."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Dilate (4, 3) by a scale factor of 2 about the origin.",
+            "look_for": "(8, 6). An answer of (6, 5) means the student ADDED 2 instead of multiplying."
+          },
+          {
+            "prompt": "Dilate (2, 5) by a scale factor of 3 about the origin.",
+            "look_for": "(6, 15). An answer of (6, 5) means the student scaled only the x-coordinate."
+          }
+        ]
+      },
+      "fluency_source": "8GM1-F2",
+      "sentence_starters": [
+        "The rule for a dilation by ___ is (x, y) -> (___x, ___y).",
+        "I multiply BOTH coordinates by ___, so (___, ___) becomes (___, ___)."
+      ],
+      "worked_solution": {
+        "stem": "Triangle A(2,2), B(5,2), C(2,4) is dilated by a scale factor of 2 about the origin. Find the image coordinates.",
+        "answer": "A'(4,4), B'(10,4), C'(4,8)",
+        "steps": [
+          { "math": "rule: (x, y) -> (2x, 2y)", "annotation": "A dilation multiplies BOTH coordinates by the scale factor." },
+          { "math": "A(2,2) -> (2 x 2, 2 x 2) = (4,4)", "annotation": "Multiply each coordinate of A by 2." },
+          { "math": "B(5,2) -> (10,4); C(2,4) -> (4,8)", "annotation": "Apply the same rule to every vertex." },
+          { "math": "A'(4,4), B'(10,4), C'(4,8)", "annotation": "The image is larger but the same shape -- a similar figure." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Triangle A(1,2), B(3,1), C(2,4) is dilated by a scale factor of 3 about the origin. Find the image coordinates.",
+        "answer": "A'(3,6), B'(9,3), C'(6,12)",
+        "steps": [
+          { "math": "rule: (x, y) -> (3x, 3y)", "annotation": "Multiply both coordinates by 3.", "given": true },
+          { "math": "A(1,2) -> (3,6)", "annotation": "Multiply each coordinate of A by 3.", "given": true },
+          { "math": null, "annotation": "Apply the rule to B(3,1).", "given": false },
+          { "math": null, "annotation": "Apply the rule to C(2,4).", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM1-S4",
+      "name": "Determine the image coordinates of a vertex after a rotation about the origin or a dilation",
+      "column": "on_grade",
+      "parent_standard": "8.GM.1",
+      "engine_stems": [2],
+      "prerequisite_skill": { "type": "skill", "skill_id": "8GM1-S3" },
+      "i_do_script": "Before moving a whole figure, I practice sending ONE point to its image. Each rotation about the origin has its own rule: 180 degrees is (x, y) -> (-x, -y); 90 degrees clockwise is (x, y) -> (y, -x); 270 degrees clockwise is (x, y) -> (-y, x). Watch a 90-degree clockwise turn of (4, 1): swap to (1, 4), then flip the sign of the new second number to get (1, -4). A dilation is different -- it multiplies both coordinates, so (3, 2) at a scale factor of 3 becomes (9, 6). I say the rule out loud, then apply it one coordinate at a time.",
+      "canonical_error": {
+        "pattern": "For a rotation, swaps the coordinates but keeps the original signs, or changes the sign of the wrong coordinate",
+        "example": "For a 90-degree clockwise rotation of (4, 1), writes (1, 4) or (4, -1) instead of (1, -4); for a 180-degree rotation of (5, 2), writes (-5, 2) instead of (-5, -2)",
+        "why": "The student remembers half of a rotation rule. A 90- or 270-degree rotation both SWAPS the coordinates AND flips a sign; a 180-degree rotation flips BOTH signs. Doing only one part lands the point in the wrong place."
+      },
+      "item_template": "A single vertex plus a rotation about the origin or a dilation; student gives the image coordinates. Multiple choice / numeric response.",
+      "sample_items": [
+        { "stem": "Point A(2,3) is rotated 180 degrees about the origin. What are the coordinates of A'?", "answer": "(-2, -3)", "distractor_logic": "(x,y)->(-x,-y). Leaving a sign gives (-2,3) or (2,-3); swapping gives (3,2)." },
+        { "stem": "Point B(4,1) is rotated 90 degrees clockwise about the origin: (x, y) -> (y, -x). What are the coordinates of B'?", "answer": "(1, -4)", "distractor_logic": "Swap to (1,4), then flip the new y: (1,-4). Forgetting the sign gives (1,4); forgetting to swap gives (4,-1)." },
+        { "stem": "Point C(-3,5) is rotated 270 degrees clockwise about the origin: (x, y) -> (-y, x). What are the coordinates of C'?", "answer": "(-5, -3)", "distractor_logic": "(-y, x) = (-5, -3). Swapping without the sign change gives (5, -3)." },
+        { "stem": "Point D(3,2) is dilated by a scale factor of 3 about the origin. What are the coordinates of D'?", "answer": "(9, 6)", "distractor_logic": "Multiply both by 3: (9,6). Adding 3 gives (6,5); scaling one coordinate gives (9,2)." }
+      ],
+      "redirect_script": {
+        "stop": "Did you do BOTH parts of the rotation rule?",
+        "prompt": "A 90- or 270-degree rotation swaps the coordinates AND flips a sign. For 90 clockwise on (4, 1): swap to (1, 4), then flip the new y to (1, -4).",
+        "praise": "You swapped AND fixed the sign -- that is the full rotation rule."
+      },
+      "vocabulary": [
+        { "term": "Rotation", "definition": "A turn about a fixed point; here, about the origin." },
+        { "term": "Clockwise", "definition": "Turning in the direction the hands of a clock move." },
+        { "term": "Counterclockwise", "definition": "Turning opposite to a clock's hands; a 270-degree clockwise turn equals a 90-degree counterclockwise turn." },
+        { "term": "Image", "definition": "The point after the transformation, labeled with a prime, like A'." }
+      ],
+      "next_steps": { "if_pass": "8GM1-S5", "if_fail": "8GM1-S3" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Rotate B(4,1) 90 degrees clockwise about the origin: (x, y) -> (y, -x).'" },
+        { "kind": "ask", "text": "The rule has two parts -- what are they?" },
+        { "kind": "say", "text": "Swap the coordinates: (1, 4). Then flip the sign of the new second number: (1, -4)." },
+        { "kind": "watch", "text": "If the student writes (1, 4), ask 'did you flip the sign after swapping?'" },
+        { "kind": "ask", "text": "Your turn: rotate A(2,3) 180 degrees about the origin." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Rotate the point (1, 4) 180 degrees about the origin.", "answer": "(-1, -4)" },
+        { "difficulty": "warm_up", "stem": "Rotate the point (2, 3) 90 degrees clockwise about the origin: (x, y) -> (y, -x).", "answer": "(3, -2)" },
+        { "difficulty": "core", "stem": "Point C(5, 2) is rotated 270 degrees clockwise about the origin: (x, y) -> (-y, x). Find C'.", "answer": "(-2, 5)", "notes": "270 clockwise equals 90 counterclockwise." },
+        { "difficulty": "core", "stem": "Point D(-2, 3) is rotated 90 degrees clockwise about the origin. Find D'.", "answer": "(3, 2)", "notes": "(x, y) -> (y, -x): (3, -(-2)) = (3, 2). Watch the double negative." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Point A(5, 2) is rotated 180 degrees about the origin. Find and fix the student's mistake.",
+          "shown_work": [
+            "Student wrote: 'Take the opposite of x.'",
+            "'A' = (-5, 2)'"
+          ],
+          "answer": "For 180 degrees you take the opposite of BOTH coordinates: (-5, -2). The student flipped only x.",
+          "notes": "Canonical error: wrong sign in a rotation rule (only one coordinate flipped)."
+        },
+        { "difficulty": "stretch", "stem": "Point (3, 4) is rotated 90 degrees clockwise, and separately 270 degrees clockwise, about the origin. Give both images and explain why they differ.", "answer": "90 clockwise: (4, -3). 270 clockwise: (-4, 3). They are opposite turns, so the images are 180 degrees apart -- opposite points.", "notes": "Contrast the two rotation directions." },
+        { "difficulty": "stretch", "stem": "Point E(4, -3) is dilated by a scale factor of 2 about the origin. Find E', and state whether the image is congruent or similar to E's figure.", "answer": "(8, -6); similar, because a dilation changes the size.", "notes": "Dilation vertex plus the similarity link." }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Turn and Land",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": ["Card set: rotation/dilation rule cards and image-point cards"],
+          "instructions": "1. Each rule card starts from the point (4, 1). Apply the rule.\n2. Match the rule card to the image-point card it produces.\n3. Two decoy points are swap-only or sign-only mistakes -- set them aside and label what went wrong.\n4. Debrief: which rules SWAP the coordinates, and which only change signs?",
+          "content": {
+            "pairs": [
+              { "left": "90 degrees clockwise: (x, y) -> (y, -x)", "right": "(1, -4)" },
+              { "left": "180 degrees: (x, y) -> (-x, -y)", "right": "(-4, -1)" },
+              { "left": "270 degrees clockwise: (x, y) -> (-y, x)", "right": "(-1, 4)" },
+              { "left": "Dilation by scale factor 2: (x, y) -> (2x, 2y)", "right": "(8, 2)" }
+            ],
+            "decoys": ["(1, 4)", "(-4, 1)"]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Swap AND Sign",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with the 180-degree rotation error"],
+          "instructions": "1. Read the student work that rotates (5, 2) by 180 degrees into (-5, 2).\n2. Write the full 180-degree rule and underline what it says about EACH coordinate.\n3. Redo the point, flipping both signs.\n4. Write a reminder: a 180-degree rotation flips the sign of ___ coordinates.",
+          "content": {
+            "worked_problem": "Rotate (5, 2) 180 degrees about the origin. Student wrote (-5, 2).",
+            "error_step": "The student took the opposite of x only.",
+            "why": "180 degrees is (x, y) -> (-x, -y), so both signs flip: (-5, -2)."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'swap, then fix the sign' models the two-part rotation rule students collapse into one step." },
+        { "strategy_id": "strat-math-003", "why": "The half-a-rule rotation error (swap only, or one sign) is precise and baitable for find-and-fix." },
+        { "strategy_id": "strat-math-010", "why": "Choral rehearsal of the rotation rules builds the automaticity that keeps students from dropping the swap or the sign." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the rule for this rotation, said out loud?",
+          "Does this rotation SWAP the coordinates, or only change signs?",
+          "After swapping, which coordinate's sign do you flip?",
+          "Is a 270-degree clockwise turn the same as a 90-degree counterclockwise turn?",
+          "For a dilation, do you multiply or change signs?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student swaps the coordinates but keeps the original signs, or flips the wrong sign.",
+            "say": "A 90- or 270-degree rotation swaps the coordinates AND flips a sign. For 90 clockwise on (4, 1): swap to (1, 4), then flip the new y to (1, -4).",
+            "praise": "You swapped AND fixed the sign -- that is the full rotation rule."
+          },
+          {
+            "if_you_see": "Student uses a rotation rule when the problem is a dilation.",
+            "say": "A dilation does not swap or flip -- it MULTIPLIES both coordinates by the scale factor. (3, 2) at scale 3 is (9, 6).",
+            "praise": "You matched the rule to the transformation -- dilations multiply, rotations turn."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Rotate (1, 3) 90 degrees clockwise about the origin.",
+            "look_for": "(3, -1). An answer of (1, -3) means the student negated without swapping; (3, 1) means they swapped without the sign change."
+          },
+          {
+            "prompt": "Dilate the vertex (5, 4) by a scale factor of 2 about the origin.",
+            "look_for": "(10, 8). An answer of (7, 6) means the student added the scale factor instead of multiplying."
+          }
+        ]
+      },
+      "fluency_source": "8GM1-F2",
+      "sentence_starters": [
+        "The rule for this rotation is (x, y) -> (___, ___).",
+        "I ___ the coordinates and then flip the sign of ___, so (___, ___) becomes (___, ___)."
+      ],
+      "worked_solution": {
+        "stem": "Point A(2, 5) is rotated 90 degrees clockwise about the origin. What are the coordinates of A'?",
+        "answer": "(5, -2)",
+        "steps": [
+          { "math": "rule for 90 degrees clockwise: (x, y) -> (y, -x)", "annotation": "Swap the coordinates, then take the opposite of the new second coordinate." },
+          { "math": "swap: (2, 5) -> (5, 2)", "annotation": "The old y becomes the new x." },
+          { "math": "flip the sign of the new y: (5, -2)", "annotation": "The old x becomes the new y with its sign flipped." },
+          { "math": "A'(5, -2)", "annotation": "Check on the grid: a clockwise quarter-turn lands here." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Point A(6, 1) is rotated 180 degrees about the origin. What are the coordinates of A'?",
+        "answer": "(-6, -1)",
+        "steps": [
+          { "math": "rule for 180 degrees: (x, y) -> (-x, -y)", "annotation": "Take the opposite of BOTH coordinates.", "given": true },
+          { "math": "opposite of x: 6 -> -6", "annotation": "Flip the sign of the x-coordinate.", "given": true },
+          { "math": null, "annotation": "Flip the sign of the y-coordinate.", "given": false },
+          { "math": null, "annotation": "Write A'.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM1-S5",
+      "name": "Perform a single translation, reflection, or rotation and determine all image coordinates",
+      "column": "on_grade",
+      "parent_standard": "8.GM.1",
+      "engine_stems": [3],
+      "prerequisite_skill": { "type": "skill", "skill_id": "8GM1-S4" },
+      "i_do_script": "Now I move a WHOLE figure by applying the SAME rule to every vertex. The rules: a translation by (a, b) is (x, y) -> (x + a, y + b); a reflection over the x-axis is (x, y) -> (x, -y); a reflection over the y-axis is (x, y) -> (-x, y); a rotation is one of the origin rules. Watch a reflection over the y-axis of A(2,1), B(5,1), C(2,5): flip the sign of x on each vertex -- A(-2,1), B(-5,1), C(-2,5). The trap is the axis: reflecting over the x-axis flips y, and over the y-axis flips x. Whatever the rule, I do it to all three vertices, not just one.",
+      "canonical_error": {
+        "pattern": "Reflecting over the x-axis, negates the x-coordinate instead of the y-coordinate (uses the wrong axis's rule), or applies the rule to only one vertex",
+        "example": "Reflecting (2, 3) over the x-axis, writes (-2, 3) instead of (2, -3)",
+        "why": "The student ties the axis to the wrong coordinate. A reflection over the x-axis flips the sign of y (the vertical coordinate) and keeps x; over the y-axis it flips x and keeps y. Mixing them up moves every vertex the wrong way."
+      },
+      "item_template": "A figure's vertices as a coordinate list plus a single transformation; student gives all image coordinates. Numeric response.",
+      "sample_items": [
+        { "stem": "Triangle A(1,2), B(4,2), C(1,5) is reflected over the x-axis. Find A', B', C'.", "answer": "A'(1,-2), B'(4,-2), C'(1,-5)", "distractor_logic": "Keep x, flip the sign of y. Flipping x instead gives (-1,2), the wrong-axis error." },
+        { "stem": "Triangle A(2,3), B(5,3), C(2,6) is translated by (-4, -2) (4 left, 2 down). Find the image.", "answer": "A'(-2,1), B'(1,1), C'(-2,4)", "distractor_logic": "Add -4 to x and -2 to y for every vertex." },
+        { "stem": "Triangle A(1,2), B(3,2), C(3,5) is rotated 180 degrees about the origin. Find A', B', C'.", "answer": "A'(-1,-2), B'(-3,-2), C'(-3,-5)", "distractor_logic": "(x,y)->(-x,-y) applied to each vertex." },
+        { "stem": "Triangle A(2,1), B(4,1), C(2,4) is reflected over the y-axis. Find A', B', C'.", "answer": "A'(-2,1), B'(-4,1), C'(-2,4)", "distractor_logic": "Flip the sign of x, keep y." }
+      ],
+      "redirect_script": {
+        "stop": "Which axis, and which coordinate flips?",
+        "prompt": "Reflecting over the x-axis flips the sign of y and keeps x. So (2, 3) becomes (2, -3), not (-2, 3). Then do the same to every vertex.",
+        "praise": "You matched the axis to the right coordinate and applied it to all the vertices -- that is a full reflection."
+      },
+      "vocabulary": [
+        { "term": "Reflection", "definition": "A mirror flip over a line; here, over the x-axis or the y-axis." },
+        { "term": "Line of reflection", "definition": "The axis the figure flips over; points on opposite sides are the same distance from it." },
+        { "term": "Translation", "definition": "A slide by (a, b): (x, y) -> (x + a, y + b)." },
+        { "term": "Image", "definition": "The whole figure after the transformation, labeled A', B', C'." }
+      ],
+      "next_steps": { "if_pass": "8GM1-S6", "if_fail": "8GM1-S4" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Reflect A(2,1), B(5,1), C(2,5) over the y-axis.'" },
+        { "kind": "ask", "text": "Over the y-axis, which coordinate flips its sign -- x or y?" },
+        { "kind": "say", "text": "The y-axis is vertical, so flip x and keep y: A(-2,1), B(-5,1), C(-2,5)." },
+        { "kind": "watch", "text": "If the student flips y instead, ask 'the y-axis runs up and down -- which coordinate does it flip?'" },
+        { "kind": "ask", "text": "Your turn: reflect A(1,2), B(4,2), C(1,5) over the x-axis." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Translate triangle A(1,1), B(3,1), C(1,3) by 5 units right: (x, y) -> (x + 5, y). Find the image.", "answer": "A'(6,1), B'(8,1), C'(6,3)" },
+        { "difficulty": "warm_up", "stem": "Reflect triangle A(2,2), B(5,2), C(2,4) over the x-axis. Find the image.", "answer": "A'(2,-2), B'(5,-2), C'(2,-4)" },
+        { "difficulty": "core", "stem": "Reflect triangle A(3,1), B(6,1), C(3,4) over the y-axis. Find A', B', C'.", "answer": "A'(-3,1), B'(-6,1), C'(-3,4)", "notes": "Negate x, keep y." },
+        { "difficulty": "core", "stem": "Rotate triangle A(1,2), B(4,2), C(1,6) 90 degrees clockwise about the origin: (x, y) -> (y, -x). Find A', B', C'.", "answer": "A'(2,-1), B'(2,-4), C'(6,-1)", "notes": "Swap, then flip the sign of the new second coordinate." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Reflect the point (2, 3) over the x-axis. Find and fix the student's mistake.",
+          "shown_work": [
+            "Student wrote: 'Reflecting over the x-axis means change x.'",
+            "'(2, 3) -> (-2, 3)'"
+          ],
+          "answer": "Reflecting over the x-axis flips the sign of y (the vertical coordinate), not x: (2, -3). The student used the wrong axis's rule.",
+          "notes": "Canonical error: wrong axis, so the wrong coordinate's sign flips."
+        },
+        { "difficulty": "stretch", "stem": "Translate triangle A(1,1), B(5,1), C(1,4) by (-3, 4) -- 3 left and 4 up. Find the image.", "answer": "A'(-2,5), B'(2,5), C'(-2,8)", "notes": "Both a horizontal and a vertical shift." },
+        { "difficulty": "stretch", "stem": "A triangle is reflected over the y-axis and its image is A'(-2,1), B'(-4,1), C'(-2,4). What were the original coordinates?", "answer": "A(2,1), B(4,1), C(2,4) -- reflecting over the y-axis again reverses it.", "notes": "Reverse a reflection." }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Which Coordinate Flips?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": ["Card set of 6 point-to-image reflections"],
+          "instructions": "1. Read each 'point -> image' card.\n2. Sort it under 'Keep x, flip y (reflect over the x-axis)' or 'Flip x, keep y (reflect over the y-axis).'\n3. Say the line of reflection for each card.\n4. Debrief: why does the x-axis flip the y-coordinate and not the x-coordinate?",
+          "content": {
+            "categories": ["Keep x, flip y (reflect over the x-axis)", "Flip x, keep y (reflect over the y-axis)"],
+            "cards": [
+              { "text": "(2, 3) -> (2, -3)", "category": "Keep x, flip y (reflect over the x-axis)" },
+              { "text": "(2, 3) -> (-2, 3)", "category": "Flip x, keep y (reflect over the y-axis)" },
+              { "text": "(4, 1) -> (4, -1)", "category": "Keep x, flip y (reflect over the x-axis)" },
+              { "text": "(4, 1) -> (-4, 1)", "category": "Flip x, keep y (reflect over the y-axis)" },
+              { "text": "(1, 5) -> (-1, 5)", "category": "Flip x, keep y (reflect over the y-axis)" },
+              { "text": "(3, 2) -> (3, -2)", "category": "Keep x, flip y (reflect over the x-axis)" }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Wrong Axis",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": ["Slip with the x-axis reflection error"],
+          "instructions": "1. Read the student work that reflects (2, 3) over the x-axis into (-2, 3).\n2. Trace the flip on a grid -- does a flip over the horizontal x-axis move the point sideways or up and down?\n3. Redo it, flipping the correct coordinate.\n4. Write both rules: over the x-axis flip ___; over the y-axis flip ___.",
+          "content": {
+            "worked_problem": "Reflect (2, 3) over the x-axis. Student wrote (-2, 3).",
+            "error_step": "The student flipped the sign of x instead of y.",
+            "why": "The x-axis is horizontal, so a reflection over it flips y: (2, 3) -> (2, -3)."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "The wrong-axis reflection error is a clean single-point mistake ideal for find-and-fix." },
+        { "strategy_id": "strat-math-006", "why": "Gradual release from sending one vertex (S4) to performing a whole-figure transformation scaffolds applying the rule to every vertex." },
+        { "strategy_id": "strat-math-008", "why": "A whiteboard pass gives fast, low-stakes reps at choosing the right rule and applying it to all three vertices." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which transformation is this, and what is its coordinate rule?",
+          "For a reflection, which axis, and which coordinate flips?",
+          "Did you apply the rule to EVERY vertex, or just one?",
+          "How can you check one image point on the grid?",
+          "Is the image congruent to the original? How do you know?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reflecting over the x-axis flips x instead of y (wrong axis), or transforms only one vertex.",
+            "say": "Reflecting over the x-axis flips the sign of y and keeps x. So (2, 3) becomes (2, -3), not (-2, 3). Then do the same to every vertex.",
+            "praise": "You matched the axis to the right coordinate and applied it to all the vertices -- that is a full reflection."
+          },
+          {
+            "if_you_see": "Student translates the x-coordinate for both the horizontal and vertical shift.",
+            "say": "A translation by (a, b) adds a to x and b to y. Add the FIRST number to x and the SECOND to y separately.",
+            "praise": "You added each shift to its own coordinate -- that keeps horizontal and vertical straight."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Reflect (3, -4) over the y-axis.",
+            "look_for": "(-3, -4). An answer of (3, 4) means the student reflected over the x-axis instead (wrong axis)."
+          },
+          {
+            "prompt": "Rotate triangle A(1,2), B(3,2), C(1,5) 180 degrees about the origin.",
+            "look_for": "A'(-1,-2), B'(-3,-2), C'(-1,-5). Any vertex left unchanged means the rule was not applied to all three."
+          }
+        ]
+      },
+      "fluency_source": "8GM1-F2",
+      "sentence_starters": [
+        "Reflecting over the ___-axis, I keep ___ and flip the sign of ___.",
+        "I apply the SAME rule (x, y) -> (___, ___) to every vertex."
+      ],
+      "worked_solution": {
+        "stem": "Triangle A(2,1), B(5,1), C(2,5) is reflected over the y-axis. Find A', B', C'.",
+        "answer": "A'(-2,1), B'(-5,1), C'(-2,5)",
+        "steps": [
+          { "math": "rule for reflection over the y-axis: (x, y) -> (-x, y)", "annotation": "The y-axis is vertical, so flip the sign of x and keep y." },
+          { "math": "A(2,1) -> (-2,1)", "annotation": "Negate x, keep y." },
+          { "math": "B(5,1) -> (-5,1); C(2,5) -> (-2,5)", "annotation": "Apply the SAME rule to every vertex." },
+          { "math": "A'(-2,1), B'(-5,1), C'(-2,5)", "annotation": "The image is the same size -- a congruent figure." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Triangle A(1,3), B(4,3), C(1,6) is reflected over the x-axis. Find A', B', C'.",
+        "answer": "A'(1,-3), B'(4,-3), C'(1,-6)",
+        "steps": [
+          { "math": "rule for reflection over the x-axis: (x, y) -> (x, -y)", "annotation": "The x-axis is horizontal, so keep x and flip the sign of y.", "given": true },
+          { "math": "A(1,3) -> (1,-3)", "annotation": "Keep x, negate y.", "given": true },
+          { "math": null, "annotation": "Apply the rule to B(4,3).", "given": false },
+          { "math": null, "annotation": "Apply the rule to C(1,6).", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM1-S6",
+      "name": "Compose two transformations and determine the final image coordinates",
+      "column": "looking_forward",
+      "parent_standard": "8.GM.1",
+      "engine_stems": [4],
+      "prerequisite_skill": { "type": "skill", "skill_id": "8GM1-S5" },
+      "i_do_script": "A composition is two transformations in a row, and the key is order: the SECOND move acts on the IMAGE of the first, not on the original. Watch triangle A(1,1), B(4,1), C(1,3): first reflect over the x-axis to get A'(1,-1), B'(4,-1), C'(1,-3); then translate that image 2 units right to get A''(3,-1), B''(6,-1), C''(3,-3). I finish step 1 completely, write the primed image, and feed THAT into step 2. Using the original figure for the second step is the classic slip.",
+      "canonical_error": {
+        "pattern": "Applies the second transformation to the ORIGINAL figure instead of to the image of the first transformation",
+        "example": "For 'reflect P(3,2) over the x-axis, then reflect the image over the y-axis,' reflects the original (3,2) over the y-axis to (-3,2) instead of reflecting the first image (3,-2) to (-3,-2)",
+        "why": "The student treats the two transformations as independent instead of sequential. In a composition, the output of the first move is the input to the second, so step 2 must use the primed image."
+      },
+      "item_template": "A figure or point plus two transformations to apply in order; student gives the final image coordinates. Numeric / multi-part response.",
+      "sample_items": [
+        { "stem": "Triangle A(1,2), B(4,2), C(1,5). First reflect over the x-axis, then translate 3 units right. Find the final image.", "answer": "A''(4,-2), B''(7,-2), C''(4,-5)", "distractor_logic": "Reflect -> (1,-2),(4,-2),(1,-5); then add 3 to each x." },
+        { "stem": "Point P(2,3) is rotated 90 degrees clockwise about the origin, then reflected over the y-axis. Find the final point.", "answer": "(-3, -2)", "distractor_logic": "Rotate (x,y)->(y,-x): (3,-2); reflect over y-axis: (-3,-2). Using the original for step 2 gives (-3,2)." },
+        { "stem": "Triangle A(2,1), B(5,1), C(2,3). First rotate 180 degrees about the origin, then translate 4 units up. Find the final image.", "answer": "A''(-2,3), B''(-5,3), C''(-2,1)", "distractor_logic": "Rotate -> (-2,-1),(-5,-1),(-2,-3); then add 4 to each y." },
+        { "stem": "Point Q(3,4) is reflected over the x-axis, then rotated 180 degrees about the origin. Find the final point.", "answer": "(-3, 4)", "distractor_logic": "Reflect -> (3,-4); rotate 180 -> (-3,4)." }
+      ],
+      "redirect_script": {
+        "stop": "What does step 2 act on -- the original, or the image?",
+        "prompt": "Finish step 1 and write the primed image. Then apply step 2 to THAT image, not the original. Reflect (3,2) to (3,-2), then reflect (3,-2), not (3,2).",
+        "praise": "You fed the first image into the second move -- that is how a composition works."
+      },
+      "vocabulary": [
+        { "term": "Composition", "definition": "Two or more transformations applied one after another." },
+        { "term": "Image of the first", "definition": "The result of step 1, which becomes the input to step 2." },
+        { "term": "Double prime", "definition": "The label A'' for a point after the second transformation." },
+        { "term": "Sequence", "definition": "The order the transformations are applied; order can change the result." }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for high-school transformations and similarity (G.TS.1, G.TS.2), including sequences of rigid motions and dilations.",
+        "if_fail": "8GM1-S5"
+      },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'A(1,1),B(4,1),C(1,3): reflect over the x-axis, THEN translate 2 right.'" },
+        { "kind": "ask", "text": "Which figure does the translation act on -- the original, or the reflected image?" },
+        { "kind": "say", "text": "Reflect first: A'(1,-1), B'(4,-1), C'(1,-3). Then translate THAT image 2 right: A''(3,-1), B''(6,-1), C''(3,-3)." },
+        { "kind": "watch", "text": "If the student translates the original, ask 'did you use the primed image for step 2?'" },
+        { "kind": "ask", "text": "Your turn: P(2,3), rotate 90 clockwise, then reflect over the y-axis." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Reflect triangle A(1,1), B(3,1), C(1,4) over the y-axis. Find the image.", "answer": "A'(-1,1), B'(-3,1), C'(-1,4)" },
+        { "difficulty": "warm_up", "stem": "Translate triangle A(2,2), B(4,2), C(2,5) by (2, -3). Find the image.", "answer": "A'(4,-1), B'(6,-1), C'(4,2)" },
+        { "difficulty": "core", "stem": "Triangle A(1,2), B(4,2), C(1,5). First reflect over the x-axis, then translate 5 units up. Find the final image.", "answer": "A''(1,3), B''(4,3), C''(1,0)", "notes": "Reflect first, then translate the image." },
+        { "difficulty": "core", "stem": "Triangle A(2,1), B(4,1), C(2,3). First rotate 90 degrees clockwise about the origin, then translate 4 units up. Find the final image.", "answer": "A''(1,2), B''(1,0), C''(3,2)", "notes": "Rotate (x,y)->(y,-x), then shift the image up." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Point P(3, 2): first reflect over the x-axis, then reflect the IMAGE over the y-axis. Find and fix the student's mistake.",
+          "shown_work": [
+            "Student wrote: 'Reflect over the x-axis: (3, -2).'",
+            "'Reflect the ORIGINAL over the y-axis: (-3, 2).'",
+            "'Final answer: (-3, 2).'"
+          ],
+          "answer": "The second reflection must act on the FIRST image (3, -2), not the original. Reflecting (3, -2) over the y-axis gives (-3, -2).",
+          "notes": "Canonical error: applying step 2 to the original figure."
+        },
+        { "difficulty": "stretch", "stem": "Triangle A(2,3), B(5,3), C(2,5). Translate 4 units left, then reflect over the x-axis. Find the final image.", "answer": "A''(-2,-3), B''(1,-3), C''(-2,-5)", "notes": "Shift left, then flip the image over the x-axis." },
+        { "difficulty": "stretch", "stem": "Point Q(2,3) is translated 5 units left and then reflected over the x-axis. A classmate did the reflection first, then the translation. Do they get the same point? Show both.", "answer": "Translate-then-reflect: (2,3) -> (-3,3) -> (-3,-3). Reflect-then-translate: (2,3) -> (2,-3) -> (-3,-3). Both give (-3,-3) here, but order does not always match.", "notes": "Explore whether order matters." }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Feed the Image Forward",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": ["Grid paper", "Cards with a triangle and two transformations in order"],
+          "instructions": "1. Plot the triangle and do the FIRST transformation; label the image with single primes (A', B', C').\n2. Do the SECOND transformation starting from the primed image; label it with double primes (A'', B'', C'').\n3. Draw an arrow from the original to A' to A'' to see the path.\n4. Debrief: what would go wrong if you did step 2 from the original triangle instead of A'B'C'?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Use the Image, Not the Original",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with the double-reflection error"],
+          "instructions": "1. Read the student work that reflects P(3,2) over the x-axis, then reflects the ORIGINAL over the y-axis.\n2. Point to the step that went back to the original point.\n3. Redo step 2 starting from the first image (3, -2).\n4. Write the rule: in a composition, step 2 acts on the ___ of step 1.",
+          "content": {
+            "worked_problem": "Reflect P(3,2) over the x-axis, then reflect the image over the y-axis. Student wrote: x-axis gives (3,-2); then reflected the ORIGINAL (3,2) over the y-axis to (-3,2).",
+            "error_step": "The student used the original point for the second reflection.",
+            "why": "Step 2 must act on the first image (3, -2); reflecting it over the y-axis gives (-3, -2)."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-006", "why": "Gradual release from one transformation (S5) to a chained pair scaffolds the multi-step sequencing." },
+        { "strategy_id": "strat-math-009", "why": "Pairing a correct two-step worked example with a flawed one highlights the missing 'use the image' step." },
+        { "strategy_id": "strat-math-003", "why": "Applying step 2 to the original figure is a clean, baitable error for find-and-fix." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the image after ONLY the first transformation?",
+          "Which figure does the second transformation start from?",
+          "How should you label the point after step 1 versus step 2?",
+          "Does changing the order of the two transformations change the answer here?",
+          "How can you check the final point on the grid?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student applies the second transformation to the original figure instead of the image of the first.",
+            "say": "Finish step 1 and write the primed image. Then apply step 2 to THAT image, not the original. Reflect (3,2) to (3,-2), then reflect (3,-2), not (3,2).",
+            "praise": "You fed the first image into the second move -- that is how a composition works."
+          },
+          {
+            "if_you_see": "Student loses track of which prime label goes with which step.",
+            "say": "Use one prime after step 1 (A') and two primes after step 2 (A''). The double prime is always the final answer.",
+            "praise": "You labeled the steps A' then A'' -- that keeps the sequence clear."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Point P(1, 2): rotate 90 degrees clockwise about the origin, then reflect over the x-axis.",
+            "look_for": "(2, 1). Rotation gives (2, -1); reflecting THAT over the x-axis gives (2, 1). Using the original for step 2 is the error."
+          },
+          {
+            "prompt": "A triangle is translated 5 left, then reflected over the x-axis. Does step 2 start from the original or the shifted image?",
+            "look_for": "The shifted image. Answering 'original' signals the composition error."
+          }
+        ]
+      },
+      "fluency_source": "8GM1-F2",
+      "sentence_starters": [
+        "First I apply ___ to the original, getting ___.",
+        "Then I apply ___ to the IMAGE, not the original, getting ___."
+      ],
+      "worked_solution": {
+        "stem": "Triangle A(1,1), B(4,1), C(1,3). First reflect over the x-axis, then translate 2 units right. Find the final image.",
+        "answer": "A''(3,-1), B''(6,-1), C''(3,-3)",
+        "steps": [
+          { "math": "step 1 -- reflect over the x-axis: (x, y) -> (x, -y)", "annotation": "Apply the first transformation to the original triangle." },
+          { "math": "A(1,1)->(1,-1), B(4,1)->(4,-1), C(1,3)->(1,-3)", "annotation": "This is the first image, A'B'C'." },
+          { "math": "step 2 -- translate 2 right on the IMAGE: (x, y) -> (x + 2, y)", "annotation": "Apply the second transformation to A'B'C', not the original." },
+          { "math": "A''(3,-1), B''(6,-1), C''(3,-3)", "annotation": "Feed the first image into the second move." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Triangle A(2,2), B(5,2), C(2,4). First rotate 180 degrees about the origin, then translate 3 units up. Find the final image.",
+        "answer": "A''(-2,1), B''(-5,1), C''(-2,-1)",
+        "steps": [
+          { "math": "step 1 -- rotate 180 degrees: (x, y) -> (-x, -y)", "annotation": "Apply the first transformation to the original.", "given": true },
+          { "math": "A(2,2)->(-2,-2), B(5,2)->(-5,-2), C(2,4)->(-2,-4)", "annotation": "This is the first image.", "given": true },
+          { "math": null, "annotation": "Now translate the FIRST IMAGE 3 units up: (x, y) -> (x, y + 3).", "given": false },
+          { "math": null, "annotation": "Write the final image A''B''C''.", "given": false }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "skills": ["8GM1-F1", "8GM1-F2"]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": ["8GM1-S1"]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": ["8GM1-S2", "8GM1-S3", "8GM1-S4", "8GM1-S5"]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": ["8GM1-S6"]
+    }
+  },
+  "skill_sequence": ["8GM1-F1", "8GM1-F2", "8GM1-S1", "8GM1-S2", "8GM1-S3", "8GM1-S4", "8GM1-S5", "8GM1-S6"],
+  "skill_tree": {
+    "8GM1-F1": [],
+    "8GM1-F2": [],
+    "8GM1-S1": ["8GM1-F1"],
+    "8GM1-S2": ["8GM1-S1"],
+    "8GM1-S3": ["8GM1-S1"],
+    "8GM1-S4": ["8GM1-S3", "8GM1-F2"],
+    "8GM1-S5": ["8GM1-S4", "8GM1-F2"],
+    "8GM1-S6": ["8GM1-S5"]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S5 (perform a single transformation and give all image coordinates) -- the At-proficiency core that carries the standard's central 'using coordinates' demand and its signature error, the wrong-axis reflection. If they pass, push to S6 (compose two transformations). If they fail, drop to S4 to confirm they can send a single vertex to its image, then to S1 to check they can even identify which transformation is happening. S3 (dilation) and S2 (congruent versus similar) branch off as the similarity strand.",
+    "entry_skill": "8GM1-S5",
+    "if_pass": ["8GM1-S6"],
+    "if_fail": ["8GM1-S4", "8GM1-S1"],
+    "branch_skills": ["8GM1-S3", "8GM1-S2"]
+  }
+}

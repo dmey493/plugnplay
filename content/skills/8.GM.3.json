@@ -1,0 +1,2062 @@
+{
+  "standard_code": "8.GM.3",
+  "standard_text": "Apply the Pythagorean Theorem to determine unknown side lengths in right triangles in real-world and mathematical problems, and to find the distance between two points in the coordinate plane.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "This standard is one equation applied five ways: a² + b² = c², where c is always the hypotenuse, the longest side, opposite the right angle. Everything rests on identifying that hypotenuse correctly, so the progression makes two prerequisites automatic first: squaring a number and taking a square root (the arithmetic engine of the theorem), and naming the legs versus the hypotenuse. Get the hypotenuse wrong and every later step is wrong.\n\nFrom there the arc runs forward, then backward, then out into the world. First the student WRITES the equation for a given triangle, putting the hypotenuse alone as c. Then the two forward computations split apart: find the hypotenuse from two legs (square, add, take the root) and find a missing leg from the hypotenuse and a leg (SUBTRACT, then take the root). Keeping these separate matters because the leg case is where students add when they should subtract, dropping the hypotenuse into the a² + b² sum. Next the theorem moves into real-world contexts, where the student must first decide which hidden distance is the hypotenuse before setting up the equation, and into the coordinate plane, where the distance between two points is the hypotenuse of a right triangle whose legs are the horizontal and vertical changes. Finally the 'above' move chains the theorem across more than one right triangle or combines it with perimeter and area in a compound figure. The through-line we keep naming: find the hypotenuse (the longest, slanted side), decide whether to add or subtract, and never forget the square root. Per the item spec, answers are perfect-square whole numbers or decimals rounded to the tenth or hundredth -- students do not simplify radicals.",
+    "steps": [
+      {
+        "skill_id": "8GM3-S1",
+        "verb": "write",
+        "rationale": "The setup step: write a² + b² = c² for a given right triangle with the hypotenuse alone as c. It is where the longest-side-is-c idea first has to hold, and where the whole standard's accuracy begins."
+      },
+      {
+        "skill_id": "8GM3-S2",
+        "verb": "calculate",
+        "rationale": "The first forward computation: find the hypotenuse from two legs by squaring, adding, and taking the square root. It is where students either add the legs or forget the final root."
+      },
+      {
+        "skill_id": "8GM3-S3",
+        "verb": "calculate",
+        "rationale": "The inverse forward move: find a missing leg from the hypotenuse and a leg. It earns its own step because it SUBTRACTS -- the exact place students add the hypotenuse's square instead of removing the known leg's."
+      },
+      {
+        "skill_id": "8GM3-S4",
+        "verb": "solve",
+        "rationale": "The At-proficiency application: a real-world story hides a right triangle, so the student must first decide which distance is the hypotenuse, then set up and solve. This is the standard's core demand."
+      },
+      {
+        "skill_id": "8GM3-S5",
+        "verb": "determine",
+        "rationale": "The coordinate-plane case named in the standard: the distance between two points is the hypotenuse of a right triangle whose legs are the horizontal and vertical changes."
+      },
+      {
+        "skill_id": "8GM3-S6",
+        "verb": "solve",
+        "rationale": "The Above-proficiency extension: chain the theorem across more than one right triangle, or combine it with perimeter and area in a compound figure, showing the student can carry a result into a second step."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "8GM3-F1",
+      "name": "Square a number and take its square root",
+      "column": "foundation",
+      "parent_standard": "8.GM.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Evaluate a number squared (n²) as n times n, and recognize a square root as the number that undoes squaring.",
+        "check_question": "What is 6², and what is the square root of 36?"
+      },
+      "i_do_script": "The Pythagorean Theorem needs two arithmetic moves: squaring and square roots. Squaring means multiplying a number by ITSELF, not by 2: 6² = 6 x 6 = 36. A square root undoes squaring -- the square root of 36 is 6, because 6 x 6 = 36. Watch how they work together: 3² = 9, 4² = 16, 9 + 16 = 25, and the square root of 25 is 5. A calculator is allowed, so when a root is not a whole number I round it, like the square root of 56 ≈ 7.48.",
+      "canonical_error": {
+        "pattern": "Doubles the base instead of squaring it, or reports the squared value without taking the root",
+        "example": "Computes 6² as 12 (6 x 2) instead of 36, or leaves the answer as 25 when the square root of 25 = 5 was needed",
+        "why": "The student reads the exponent 2 as 'times 2.' Squaring uses the number as a factor twice (n² = n x n), and a square root is its inverse -- the number that, times itself, gives the value."
+      },
+      "item_template": "A number to square, or a perfect square to take the root of. Short-response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "What is 5²?",
+          "answer": "25"
+        },
+        {
+          "stem": "What is 12²?",
+          "answer": "144"
+        },
+        {
+          "stem": "What is the square root of 49?",
+          "answer": "7"
+        },
+        {
+          "stem": "What is the square root of 100?",
+          "answer": "10"
+        },
+        {
+          "stem": "What is 8²?",
+          "answer": "64"
+        },
+        {
+          "stem": "What is the square root of 144?",
+          "answer": "12"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait -- does the little 2 mean 'times 2'?",
+        "prompt": "Squaring means multiply the number by ITSELF: 6² = 6 x 6 = 36, not 6 x 2. A square root undoes that -- the square root of 36 is 6. Write out the multiplication before you compute.",
+        "praise": "You multiplied the number by itself -- that's squaring."
+      },
+      "vocabulary": [
+        {
+          "term": "Squaring",
+          "definition": "Multiplying a number by itself; n² = n x n."
+        },
+        {
+          "term": "Square root",
+          "definition": "The number that, multiplied by itself, gives the original; it undoes squaring."
+        },
+        {
+          "term": "Exponent",
+          "definition": "A small raised number that tells how many times to use the base as a factor."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM3-S2",
+        "if_fail": "Review exponents and square roots (6.AF.1)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write '7² = ?' and 'square root of 64 = ?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Does the 2 mean add another 7, double it, or multiply 7 by itself?"
+        },
+        {
+          "kind": "say",
+          "text": "Multiply by itself: 7 x 7 = 49. And the square root of 64 is 8, because 8 x 8 = 64."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 14 for 7², ask 'is that 7 x 7, or 7 x 2? Square means times itself.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: what is 9², and what is the square root of 81?"
+        }
+      ]
+    },
+    {
+      "skill_id": "8GM3-F2",
+      "name": "Identify the hypotenuse and legs of a right triangle",
+      "column": "foundation",
+      "parent_standard": "8.GM.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Recognize the right angle in a right triangle and that the longest side lies opposite it.",
+        "check_question": "In a right triangle, which side is the longest?"
+      },
+      "i_do_script": "Every right triangle has one right angle (90 degrees). The two sides that FORM the right angle are the LEGS. The side directly across from the right angle -- the longest side -- is the HYPOTENUSE. In the formula a² + b² = c², the legs are a and b, and the hypotenuse is always c. Watch: a triangle with sides 6, 8, and 10 -- the 6 and 8 meet at the corner, so they are the legs; 10 is the longest, so it is the hypotenuse.",
+      "canonical_error": {
+        "pattern": "Calls a leg the hypotenuse (or the hypotenuse a leg), usually by not checking which side is longest / opposite the right angle",
+        "example": "For a triangle with sides 5, 12, and 13, names 12 as the hypotenuse instead of 13",
+        "why": "The student has not anchored that the hypotenuse is the side opposite the right angle -- and therefore the longest. Mislabeling it means the wrong side lands as c in a² + b² = c²."
+      },
+      "item_template": "A right triangle described by three side lengths in text; the student names the hypotenuse or legs. Short-response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "A right triangle has sides 3, 4, and 5. Which side is the hypotenuse?",
+          "answer": "5"
+        },
+        {
+          "stem": "A right triangle has legs and a hypotenuse; its sides are 6, 8, and 10. Which two sides are the legs?",
+          "answer": "6 and 8"
+        },
+        {
+          "stem": "A right triangle has sides 8, 15, and 17. Which side is the hypotenuse?",
+          "answer": "17"
+        },
+        {
+          "stem": "In a² + b² = c², which letter stands for the hypotenuse?",
+          "answer": "c"
+        },
+        {
+          "stem": "A right triangle has sides 9, 12, and 15. Name the two legs.",
+          "answer": "9 and 12"
+        },
+        {
+          "stem": "The hypotenuse of a right triangle is across from which angle?",
+          "answer": "The right angle (90 degrees)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait -- which side is the longest?",
+        "prompt": "The hypotenuse is the longest side and sits across from the right angle; the two sides that form the right angle are the legs. Find the right angle first, then look straight across from it.",
+        "praise": "You found the hypotenuse across from the right angle -- exactly right."
+      },
+      "vocabulary": [
+        {
+          "term": "Hypotenuse",
+          "definition": "The longest side of a right triangle, opposite the right angle; the c in a² + b² = c²."
+        },
+        {
+          "term": "Leg",
+          "definition": "One of the two shorter sides that form the right angle; the a and b in the formula."
+        },
+        {
+          "term": "Right triangle",
+          "definition": "A triangle with one 90-degree (right) angle."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM3-S1",
+        "if_fail": "Review right angles and right triangles."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A right triangle has sides 5, 12, and 13. Name the legs and the hypotenuse.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Where is the right angle, and which side is across from it?"
+        },
+        {
+          "kind": "say",
+          "text": "The 5 and 12 form the right angle, so they are the legs; 13 is longest and opposite the right angle, so it is the hypotenuse."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student names 12 as the hypotenuse, ask 'which side is the longest? The hypotenuse is always the longest.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a right triangle has sides 8, 15, and 17. Name the legs and the hypotenuse."
+        }
+      ]
+    },
+    {
+      "skill_id": "8GM3-S1",
+      "name": "Write the Pythagorean equation for a given right triangle",
+      "column": "looking_back",
+      "parent_standard": "8.GM.3",
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8GM3-F2"
+      },
+      "i_do_script": "The Pythagorean Theorem says leg² + leg² = hypotenuse², written a² + b² = c². The one rule that makes it correct: c is always the HYPOTENUSE -- the longest side, opposite the right angle -- so it stands alone on one side of the equation. Watch, a triangle with sides 5, 12, 13: the legs 5 and 12 go in the sum, so 5² + 12² = 13². Check: 25 + 144 = 169 = 13². If I put 13 in the sum -- 5² + 13² = 12² -- that is false, because 13 is the hypotenuse and cannot be a leg.",
+      "canonical_error": {
+        "pattern": "Places the hypotenuse inside the a² + b² sum (treats it as a leg), so the equation does not hold",
+        "example": "For sides 5, 12, 13, writes 5² + 13² = 12² instead of 5² + 12² = 13²",
+        "why": "The student does not identify the longest side (opposite the right angle) as c. The two legs squared add to the hypotenuse squared, so the hypotenuse must be alone as c, never inside the sum."
+      },
+      "item_template": "A right triangle's three side lengths are given in text; the student writes a² + b² = c² with the hypotenuse as c. Short response.",
+      "sample_items": [
+        {
+          "stem": "A right triangle has legs 3 and 4 and hypotenuse 5. Write the Pythagorean equation.",
+          "answer": "3² + 4² = 5²",
+          "distractor_logic": "Putting 5 in the sum gives the false 3² + 5² = 4²."
+        },
+        {
+          "stem": "A right triangle has legs 8 and 15 and hypotenuse 17. Write the Pythagorean equation.",
+          "answer": "8² + 15² = 17²",
+          "distractor_logic": "17 is the hypotenuse; placing it in the sum is the common error."
+        },
+        {
+          "stem": "A right triangle has sides 6, 8, and 10. Which is correct: 6² + 8² = 10² or 6² + 10² = 8²?",
+          "answer": "6² + 8² = 10²",
+          "distractor_logic": "10 is the longest side, so it is the hypotenuse and must be alone."
+        },
+        {
+          "stem": "For a triangle with sides 9, 12, and 15, what value is c in a² + b² = c²?",
+          "answer": "15 (the hypotenuse)",
+          "distractor_logic": "c is the longest side; choosing 9 or 12 mislabels a leg as the hypotenuse."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait -- which side is the hypotenuse?",
+        "prompt": "The hypotenuse is the longest side, across from the right angle. It has to stand alone as c in a² + b² = c². Put the two shorter sides (the legs) in the sum.",
+        "praise": "You put the hypotenuse as c and the two legs in the sum -- that's the theorem."
+      },
+      "vocabulary": [
+        {
+          "term": "Pythagorean Theorem",
+          "definition": "In a right triangle, the sum of the squares of the legs equals the square of the hypotenuse: a² + b² = c²."
+        },
+        {
+          "term": "Hypotenuse",
+          "definition": "The longest side, opposite the right angle; the c that stands alone in the equation."
+        },
+        {
+          "term": "Legs",
+          "definition": "The two shorter sides that form the right angle; the a and b in the sum."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM3-S2",
+        "if_fail": "8GM3-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A right triangle has sides 8, 15, and 17. Write the Pythagorean equation.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which side is the longest? That one is the hypotenuse and stands alone as c."
+        },
+        {
+          "kind": "say",
+          "text": "17 is longest, so 8² + 15² = 17². Check: 64 + 225 = 289 = 17²."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 8² + 17² = 15², ask 'can the longest side be a leg? The hypotenuse is alone.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a right triangle has sides 7, 24, and 25. Write the equation."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "In a² + b² = c², which side is c?",
+          "answer": "The hypotenuse (the longest side)."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A right triangle has legs 3 and 4 and hypotenuse 5. Write the equation.",
+          "answer": "3² + 4² = 5²"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A right triangle has legs 5 and 12 and hypotenuse 13. Write the Pythagorean equation.",
+          "answer": "5² + 12² = 13²",
+          "notes": "Baits putting the hypotenuse 13 in the sum."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A right triangle has sides 7, 24, and 25. Write a² + b² = c² with the correct hypotenuse.",
+          "answer": "7² + 24² = 25²",
+          "notes": "25 is the longest side."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Devon wrote the Pythagorean equation for a right triangle with sides 8, 15, and 17. Find and fix the mistake.",
+          "shown_work": [
+            "Devon wrote: '8² + 17² = 15².'",
+            "'So 64 + 289 = 225.'"
+          ],
+          "answer": "17 is the hypotenuse (the longest side), so it must stand alone: 8² + 15² = 17². Check: 64 + 225 = 289 = 17².",
+          "notes": "Canonical error: hypotenuse placed inside the sum."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A right triangle has legs 20 and 21 and hypotenuse 29. Write the equation.",
+          "answer": "20² + 21² = 29²",
+          "notes": "Less-friendly triple; 29 is the hypotenuse."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A right triangle has sides 9, 40, and 41. Identify the hypotenuse and write the equation.",
+          "answer": "41 is the hypotenuse; 9² + 40² = 41² (81 + 1600 = 1681).",
+          "notes": "Large triple -- forces choosing the longest side as c."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why 6² + 10² = 8² is wrong for a triangle with sides 6, 8, and 10.",
+          "answer": "10 is the longest side, so it is the hypotenuse and cannot be inside the sum; the correct equation is 6² + 8² = 10².",
+          "notes": "Explain-why reversal of the canonical error."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Hypotenuse or Leg?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 8 sides labeled with their triangle's three lengths"
+          ],
+          "instructions": "1. For each card, read the three side lengths of a right triangle.\n2. Sort the marked side into 'This side is the hypotenuse' or 'This side is a leg.'\n3. The hypotenuse is always the longest side -- use that to check.\n4. Debrief: how did you decide which side was the hypotenuse every time?",
+          "content": {
+            "categories": [
+              "This side is the hypotenuse",
+              "This side is a leg"
+            ],
+            "cards": [
+              {
+                "text": "sides 3, 4, 5 -- is 5 a leg or hypotenuse?",
+                "category": "This side is the hypotenuse"
+              },
+              {
+                "text": "sides 3, 4, 5 -- is 3 a leg or hypotenuse?",
+                "category": "This side is a leg"
+              },
+              {
+                "text": "sides 5, 12, 13 -- is 13 a leg or hypotenuse?",
+                "category": "This side is the hypotenuse"
+              },
+              {
+                "text": "sides 5, 12, 13 -- is 12 a leg or hypotenuse?",
+                "category": "This side is a leg"
+              },
+              {
+                "text": "sides 8, 15, 17 -- is 17 a leg or hypotenuse?",
+                "category": "This side is the hypotenuse"
+              },
+              {
+                "text": "sides 8, 15, 17 -- is 8 a leg or hypotenuse?",
+                "category": "This side is a leg"
+              },
+              {
+                "text": "sides 9, 12, 15 -- is 15 a leg or hypotenuse?",
+                "category": "This side is the hypotenuse"
+              },
+              {
+                "text": "sides 9, 12, 15 -- is 9 a leg or hypotenuse?",
+                "category": "This side is a leg"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Hypotenuse in the Sum",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Devon's work"
+          ],
+          "instructions": "1. Read Devon's equation for a triangle with sides 8, 15, 17.\n2. Circle the number that was put in the wrong place.\n3. Rewrite the equation with the longest side alone as c.\n4. Write the rule: the ____ side is always the hypotenuse.",
+          "content": {
+            "worked_problem": "Sides 8, 15, 17. Devon wrote 8² + 17² = 15².",
+            "error_step": "Devon put the hypotenuse 17 inside the sum.",
+            "why": "17 is the longest side (the hypotenuse), so it stands alone: 8² + 15² = 17²."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The hypotenuse-in-the-sum error is a single, baitable slip that find-and-fix with a 'which side is longest?' check targets directly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'the longest side is the hypotenuse, so it stands alone' models the check students skip."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'which side is c?' surfaces the longest-side reasoning before students commit to an equation."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which side is the longest? What does that tell you about c?",
+          "Is the side opposite the right angle a leg or the hypotenuse?",
+          "Does your equation put the hypotenuse alone on one side?",
+          "Check it: do the two legs squared add up to the hypotenuse squared?",
+          "Could the longest side ever go inside the a² + b² sum?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student places the hypotenuse inside the a² + b² sum (treats it as a leg).",
+            "say": "The hypotenuse is the longest side, across from the right angle. It has to stand alone as c in a² + b² = c². Put the two shorter sides (the legs) in the sum.",
+            "praise": "You put the hypotenuse as c and the two legs in the sum -- that's the theorem."
+          },
+          {
+            "if_you_see": "Student writes a + b = c (forgets to square each side).",
+            "say": "Every side is squared: a² + b² = c², not a + b = c. Add the little 2 to each term.",
+            "praise": "You squared each side -- that's the exponent the theorem needs."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A right triangle has sides 5, 12, 13. Write the Pythagorean equation.",
+            "look_for": "5² + 12² = 13². An equation with 13 inside the sum means the hypotenuse was mislabeled."
+          },
+          {
+            "prompt": "In a triangle with sides 6, 8, 10, what is c?",
+            "look_for": "10 (the longest side). Choosing 6 or 8 signals the student is not tracking the hypotenuse."
+          }
+        ]
+      },
+      "fluency_source": "8GM3-F2",
+      "sentence_starters": [
+        "The longest side is ___, so it is the hypotenuse and c = ___.",
+        "The two legs are ___ and ___, so the equation is ___² + ___² = ___²."
+      ],
+      "worked_solution": {
+        "stem": "A right triangle has sides 8, 15, and 17. Write the Pythagorean equation.",
+        "answer": "8² + 15² = 17²",
+        "steps": [
+          {
+            "math": "longest side = 17",
+            "annotation": "The hypotenuse is the longest side -- find it first."
+          },
+          {
+            "math": "legs = 8 and 15",
+            "annotation": "The two shorter sides are the legs; they go in the sum."
+          },
+          {
+            "math": "8² + 15² = 17²",
+            "annotation": "Hypotenuse alone as c; legs squared and added."
+          },
+          {
+            "math": "check: 64 + 225 = 289 = 17²",
+            "annotation": "The sum of the legs squared equals the hypotenuse squared -- true."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A right triangle has sides 7, 24, and 25. Write the Pythagorean equation.",
+        "answer": "7² + 24² = 25²",
+        "steps": [
+          {
+            "math": "longest side = 25",
+            "annotation": "Identify the hypotenuse (the longest side).",
+            "given": true
+          },
+          {
+            "math": "legs = 7 and 24",
+            "annotation": "The other two sides are the legs.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the equation with the hypotenuse alone as c.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check: do 7² and 24² add to 25²?",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM3-S2",
+      "name": "Calculate the hypotenuse of a right triangle given the two legs",
+      "column": "on_grade",
+      "parent_standard": "8.GM.3",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8GM3-S1"
+      },
+      "i_do_script": "To find the hypotenuse c from the two legs, I do three moves: square each leg, add them, then take the square root: c = the square root of (a² + b²). Watch, legs 6 and 8: 6² + 8² = 36 + 64 = 100, and c = the square root of 100 = 10. Two traps to avoid: do NOT just add the legs (6 + 8 = 14 is wrong), and do NOT stop at 100 -- take the square root. A calculator is allowed, so when the root is not a whole number I round to the hundredth: legs 5 and 8 give the square root of 89 ≈ 9.43.",
+      "canonical_error": {
+        "pattern": "Adds the legs (a + b) instead of squaring, adding, and taking the root -- or computes a² + b² and forgets the final square root",
+        "example": "For legs 6 and 8, answers 14 (6 + 8) or 100 (6² + 8² with no root) instead of the square root of 100 = 10",
+        "why": "The theorem squares the legs, so a² + b² equals c² -- the SQUARE OF the hypotenuse. The hypotenuse itself is the square root of that sum, not the bare sum and not the plain total of the legs."
+      },
+      "item_template": "Two leg lengths are given in text; the student finds the hypotenuse, exact when a perfect square or rounded to the hundredth. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A right triangle has legs 3 and 4. Find the length of the hypotenuse.",
+          "answer": "5",
+          "distractor_logic": "3² + 4² = 25, root 5. Adding the legs gives 7; skipping the root gives 25."
+        },
+        {
+          "stem": "A right triangle has legs 6 and 8. Find the length of the hypotenuse.",
+          "answer": "10",
+          "distractor_logic": "36 + 64 = 100, root 10. Adding gives 14; no root gives 100."
+        },
+        {
+          "stem": "A right triangle has legs 5 and 12. Find the length of the hypotenuse.",
+          "answer": "13",
+          "distractor_logic": "25 + 144 = 169, root 13."
+        },
+        {
+          "stem": "A right triangle has legs 5 and 8. Find the length of the hypotenuse. Round to the nearest hundredth.",
+          "answer": "9.43",
+          "distractor_logic": "25 + 64 = 89, root ≈ 9.43. Adding the legs gives 13."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you square the legs before adding?",
+        "prompt": "Square each leg, add them, THEN take the square root: c = the square root of (a² + b²). Don't just add the legs, and don't stop at the sum -- the hypotenuse is the root of the sum.",
+        "praise": "You squared, added, and took the square root -- that's the hypotenuse."
+      },
+      "vocabulary": [
+        {
+          "term": "Hypotenuse",
+          "definition": "The longest side; here, the unknown you solve for."
+        },
+        {
+          "term": "Square root",
+          "definition": "The last step in finding the hypotenuse -- it undoes the squaring in a² + b² = c²."
+        },
+        {
+          "term": "Pythagorean triples",
+          "definition": "Whole-number side sets like 3-4-5 and 5-12-13 that satisfy a² + b² = c²."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM3-S3",
+        "if_fail": "8GM3-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A right triangle has legs 9 and 12. Find the hypotenuse.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What are the three steps -- square, add, then what?"
+        },
+        {
+          "kind": "say",
+          "text": "9² + 12² = 81 + 144 = 225, and the square root of 225 = 15."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 21, ask 'did you add 9 + 12, or square first? The hypotenuse needs the squares and the root.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a right triangle has legs 8 and 15. Find the hypotenuse."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What is 3² + 4²?",
+          "answer": "25"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A right triangle has legs 6 and 8. Find the hypotenuse.",
+          "answer": "10"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A right triangle has legs 8 and 15. Find the hypotenuse.",
+          "answer": "17",
+          "notes": "8-15-17 triple."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A right triangle has legs 9 and 12. Find the hypotenuse.",
+          "answer": "15",
+          "notes": "9-12-15 triple."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Priya found the hypotenuse of a right triangle with legs 6 and 8. Find and fix her mistake.",
+          "shown_work": [
+            "Priya wrote: 'c = 6 + 8.'",
+            "'So the hypotenuse is 14.'"
+          ],
+          "answer": "She added the legs. Square first: 6² + 8² = 36 + 64 = 100, so c = the square root of 100 = 10.",
+          "notes": "Canonical error: add-the-legs."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A right triangle has legs 6 and 9. Find the hypotenuse. Round to the nearest hundredth.",
+          "answer": "10.82",
+          "notes": "6² + 9² = 117; root ≈ 10.82 (non-perfect square)."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A right triangle has legs 20 and 21. Find the hypotenuse.",
+          "answer": "29",
+          "notes": "20-21-29 triple -- less friendly numbers."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A right triangle has two equal legs of 10 each. Find the hypotenuse. Round to the nearest hundredth.",
+          "answer": "14.14",
+          "notes": "10² + 10² = 200; root ≈ 14.14 -- the diagonal of a square."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Added the Legs",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Priya's work"
+          ],
+          "instructions": "1. Read Priya's hypotenuse for a triangle with legs 6 and 8.\n2. Ask: did she square the legs before adding?\n3. Redo it: square, add, then take the square root.\n4. Write the three-step rule for finding a hypotenuse.",
+          "content": {
+            "worked_problem": "Legs 6 and 8. Priya wrote c = 6 + 8 = 14.",
+            "error_step": "Priya added the legs without squaring or taking a root.",
+            "why": "6² + 8² = 100, and the square root of 100 = 10, not 14."
+          }
+        },
+        {
+          "type": "matching",
+          "title": "Legs to Hypotenuse",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "6 leg-pair cards and 6 hypotenuse cards, plus 2 decoys"
+          ],
+          "instructions": "1. Match each pair of legs to its correct hypotenuse.\n2. Two decoy cards are just the legs added together -- set them aside.\n3. To claim a match, show a² + b² and its square root.\n4. Debrief: why is the hypotenuse never just the two legs added?",
+          "content": {
+            "pairs": [
+              {
+                "left": "legs 3 and 4",
+                "right": "hypotenuse 5"
+              },
+              {
+                "left": "legs 6 and 8",
+                "right": "hypotenuse 10"
+              },
+              {
+                "left": "legs 5 and 12",
+                "right": "hypotenuse 13"
+              },
+              {
+                "left": "legs 8 and 15",
+                "right": "hypotenuse 17"
+              },
+              {
+                "left": "legs 9 and 12",
+                "right": "hypotenuse 15"
+              },
+              {
+                "left": "legs 7 and 24",
+                "right": "hypotenuse 25"
+              }
+            ],
+            "decoys": [
+              "hypotenuse 7",
+              "hypotenuse 14"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The add-the-legs and forgot-the-root errors are clean single-point slips ideal for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building squares on the two legs with tiles and combining them into the square on the hypotenuse makes a² + b² = c² concrete before the procedure."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'square, add, root' models the exact three-step order students collapse."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What are the three steps to find the hypotenuse?",
+          "Did you square each leg before adding?",
+          "After adding, is that number c or c²? What do you still have to do?",
+          "Should the hypotenuse be longer than each leg? Is yours?",
+          "Is the answer a perfect square, or do you round to the hundredth?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds the legs, or computes a² + b² and forgets the square root.",
+            "say": "Square each leg, add them, THEN take the square root: c = the square root of (a² + b²). Don't just add the legs, and don't stop at the sum -- the hypotenuse is the root of the sum.",
+            "praise": "You squared, added, and took the square root -- that's the hypotenuse."
+          },
+          {
+            "if_you_see": "Student squares the legs correctly but reports the sum (c²) as the answer.",
+            "say": "That number is c squared, not c. Take its square root to get the hypotenuse itself.",
+            "praise": "You finished with the square root -- now the answer is the actual length."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A right triangle has legs 3 and 4. Find the hypotenuse.",
+            "look_for": "5. An answer of 7 means the legs were added; 25 means the root was skipped."
+          },
+          {
+            "prompt": "A right triangle has legs 5 and 12. Find the hypotenuse.",
+            "look_for": "13. An answer of 17 (the sum) or 169 signals a missing step."
+          }
+        ]
+      },
+      "fluency_source": "8GM3-F1",
+      "sentence_starters": [
+        "I squared the legs: ___² + ___² = ___.",
+        "The hypotenuse is the square root of ___, which is ___."
+      ],
+      "worked_solution": {
+        "stem": "A right triangle has legs 9 and 12. What is the length of the hypotenuse?",
+        "answer": "15",
+        "steps": [
+          {
+            "math": "a² + b² = c², so 9² + 12² = c²",
+            "annotation": "Set up the theorem with the two legs."
+          },
+          {
+            "math": "81 + 144 = 225",
+            "annotation": "Square each leg, then add."
+          },
+          {
+            "math": "c = square root of 225 = 15",
+            "annotation": "Take the square root of the sum -- don't stop at 225."
+          },
+          {
+            "math": "check: 15 is longer than 9 and 12",
+            "annotation": "The hypotenuse should be the longest side -- reasonable."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A right triangle has legs 8 and 15. What is the length of the hypotenuse?",
+        "answer": "17",
+        "steps": [
+          {
+            "math": "8² + 15² = c²",
+            "annotation": "Set up the theorem with the legs.",
+            "given": true
+          },
+          {
+            "math": "64 + 225 = 289",
+            "annotation": "Square each leg and add.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Take the square root of 289 to get c.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check: is the hypotenuse longer than both legs?",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM3-S3",
+      "name": "Calculate a missing leg given the hypotenuse and the other leg",
+      "column": "on_grade",
+      "parent_standard": "8.GM.3",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8GM3-S2"
+      },
+      "i_do_script": "When the hypotenuse is known and I need a LEG, I SUBTRACT instead of add: a = the square root of (c² - b²). Watch, hypotenuse 13 and leg 5: 13² - 5² = 169 - 25 = 144, and a = the square root of 144 = 12. Here is why subtracting is right: the hypotenuse's square is already the WHOLE (c² = a² + b²), so I take away the known leg's square to get the missing leg's square. Do NOT do 13² + 5² -- that puts the hypotenuse in the sum. When the result is not a perfect square, round: hypotenuse 9, leg 5 gives the square root of 56 ≈ 7.48.",
+      "canonical_error": {
+        "pattern": "Adds the squares instead of subtracting when a leg is unknown -- puts the hypotenuse into the a² + b² sum",
+        "example": "For hypotenuse 13 and leg 5, computes 13² + 5² = 194, root ≈ 13.93, instead of 13² - 5² = 144, root 12",
+        "why": "When a leg is unknown, c² = a² + b² rearranges to a² = c² - b². The hypotenuse's square is the TOTAL, so you subtract the known leg's square from it -- you never add the hypotenuse into the sum."
+      },
+      "item_template": "A hypotenuse and one leg are given in text; the student finds the other leg, exact when a perfect square or rounded to the hundredth. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A right triangle has a hypotenuse of 5 and one leg of 3. Find the other leg.",
+          "answer": "4",
+          "distractor_logic": "5² - 3² = 16, root 4. Adding gives the square root of 34 ≈ 5.83."
+        },
+        {
+          "stem": "A right triangle has a hypotenuse of 13 and one leg of 5. Find the other leg.",
+          "answer": "12",
+          "distractor_logic": "169 - 25 = 144, root 12. Adding gives root of 194 ≈ 13.93."
+        },
+        {
+          "stem": "A right triangle has a hypotenuse of 17 and one leg of 8. Find the other leg.",
+          "answer": "15",
+          "distractor_logic": "289 - 64 = 225, root 15."
+        },
+        {
+          "stem": "A right triangle has a hypotenuse of 10 and one leg of 6. Find the other leg.",
+          "answer": "8",
+          "distractor_logic": "100 - 36 = 64, root 8."
+        },
+        {
+          "stem": "A right triangle has a hypotenuse of 9 and one leg of 5. Find the other leg. Round to the nearest hundredth.",
+          "answer": "7.48",
+          "distractor_logic": "81 - 25 = 56, root ≈ 7.48."
+        },
+        {
+          "stem": "A right triangle has a hypotenuse of 12 and one leg of 7. Find the other leg. Round to the nearest hundredth.",
+          "answer": "9.75",
+          "distractor_logic": "144 - 49 = 95, root ≈ 9.75."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Are you adding or subtracting?",
+        "prompt": "The hypotenuse's square is the whole; to find a leg, SUBTRACT the known leg's square: a² = c² - b². Then take the square root of the difference. Never put the hypotenuse in the sum.",
+        "praise": "You subtracted from the hypotenuse's square -- that's how you find a leg."
+      },
+      "vocabulary": [
+        {
+          "term": "Leg",
+          "definition": "A shorter side of the right triangle; here, the unknown you solve for by subtracting."
+        },
+        {
+          "term": "Hypotenuse",
+          "definition": "The longest side; its square is the total, so you subtract from it to find a leg."
+        },
+        {
+          "term": "Square root",
+          "definition": "Undoes the squaring after you subtract; a = square root of (c² - b²)."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM3-S4",
+        "if_fail": "8GM3-S2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A right triangle has a hypotenuse of 25 and one leg of 7. Find the other leg.'"
+        },
+        {
+          "kind": "ask",
+          "text": "The hypotenuse is known -- do you add or subtract the known leg's square?"
+        },
+        {
+          "kind": "say",
+          "text": "Subtract: 25² - 7² = 625 - 49 = 576, and the square root of 576 = 24."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student adds to get the root of 674, ask 'is the hypotenuse the total or a part? You subtract from the total.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a right triangle has a hypotenuse of 15 and one leg of 9. Find the other leg."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What is 13² - 5²?",
+          "answer": "144"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A right triangle has a hypotenuse of 5 and one leg of 4. Find the other leg.",
+          "answer": "3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A right triangle has a hypotenuse of 13 and one leg of 12. Find the other leg.",
+          "answer": "5",
+          "notes": "169 - 144 = 25, root 5."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A right triangle has a hypotenuse of 25 and one leg of 7. Find the other leg.",
+          "answer": "24",
+          "notes": "625 - 49 = 576, root 24."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Marcus found the missing leg of a right triangle with a hypotenuse of 10 and one leg of 6. Find and fix his mistake.",
+          "shown_work": [
+            "Marcus wrote: '10² + 6² = 100 + 36 = 136.'",
+            "'So the leg is the square root of 136 ≈ 11.66.'"
+          ],
+          "answer": "He added, putting the hypotenuse in the sum. Subtract instead: 10² - 6² = 100 - 36 = 64, so the leg is the square root of 64 = 8.",
+          "notes": "Canonical error: hypotenuse used in the a² + b² sum when solving for a leg."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A right triangle has a hypotenuse of 15 and one leg of 9. Find the other leg.",
+          "answer": "12",
+          "notes": "225 - 81 = 144, root 12."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A right triangle has a hypotenuse of 10 and one leg of 4. Find the other leg. Round to the nearest hundredth.",
+          "answer": "9.17",
+          "notes": "100 - 16 = 84, root ≈ 9.17 (non-perfect square)."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Make up a right triangle where the hypotenuse and one leg are whole numbers and the other leg is also a whole number. Give the three sides and show the subtraction.",
+          "answer": "For example, hypotenuse 17, leg 8: 17² - 8² = 289 - 64 = 225, root 15 -- sides 8, 15, 17.",
+          "notes": "Produce-your-own; must land on a triple."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Added Instead of Subtracted",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Marcus's work"
+          ],
+          "instructions": "1. Read Marcus's leg for a hypotenuse of 10 and a leg of 6.\n2. Ask: is the hypotenuse the total or a part of the triangle?\n3. Redo it by subtracting the known leg's square from the hypotenuse's square.\n4. Write the rule: to find a leg, ____ the squares.",
+          "content": {
+            "worked_problem": "Hypotenuse 10, leg 6. Marcus wrote 10² + 6² = 136, leg ≈ 11.66.",
+            "error_step": "Marcus added, putting the hypotenuse into the a² + b² sum.",
+            "why": "The hypotenuse's square is the total: 10² - 6² = 64, so the leg is 8."
+          }
+        },
+        {
+          "type": "card_sort",
+          "title": "Add or Subtract?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 8 right-triangle problems, each stating which sides are known"
+          ],
+          "instructions": "1. Read each card and find what is unknown -- the hypotenuse or a leg.\n2. Sort into 'Add the squares (find the hypotenuse)' or 'Subtract the squares (find a leg).'\n3. For two cards in the subtract pile, solve for the missing leg.\n4. Debrief: how does knowing which side is unknown decide add versus subtract?",
+          "content": {
+            "categories": [
+              "Add the squares (find the hypotenuse)",
+              "Subtract the squares (find a leg)"
+            ],
+            "cards": [
+              {
+                "text": "legs 6 and 8, find the hypotenuse",
+                "category": "Add the squares (find the hypotenuse)"
+              },
+              {
+                "text": "hypotenuse 13, leg 5, find the other leg",
+                "category": "Subtract the squares (find a leg)"
+              },
+              {
+                "text": "legs 9 and 12, find the hypotenuse",
+                "category": "Add the squares (find the hypotenuse)"
+              },
+              {
+                "text": "hypotenuse 17, leg 8, find the other leg",
+                "category": "Subtract the squares (find a leg)"
+              },
+              {
+                "text": "legs 5 and 12, find the hypotenuse",
+                "category": "Add the squares (find the hypotenuse)"
+              },
+              {
+                "text": "hypotenuse 10, leg 6, find the other leg",
+                "category": "Subtract the squares (find a leg)"
+              },
+              {
+                "text": "legs 8 and 15, find the hypotenuse",
+                "category": "Add the squares (find the hypotenuse)"
+              },
+              {
+                "text": "hypotenuse 25, leg 24, find the other leg",
+                "category": "Subtract the squares (find a leg)"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Adding when the leg is unknown is a single, precise error that find-and-fix with a 'total or part?' check exposes."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release from the forward hypotenuse case (S2) to the inverse leg case scaffolds the switch from adding to subtracting."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'the hypotenuse is the total, so I subtract the known leg's square' models the missing reasoning."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is the unknown the hypotenuse or a leg? So do you add or subtract?",
+          "Is the hypotenuse the total or just a part of the triangle?",
+          "What is c² - b² here, and then what do you do with it?",
+          "Should the missing leg be shorter than the hypotenuse? Is yours?",
+          "How can you check by squaring your leg and the known leg and adding?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds the squares (puts the hypotenuse in the sum) when a leg is unknown.",
+            "say": "The hypotenuse's square is the whole; to find a leg, SUBTRACT the known leg's square: a² = c² - b². Then take the square root of the difference. Never put the hypotenuse in the sum.",
+            "praise": "You subtracted from the hypotenuse's square -- that's how you find a leg."
+          },
+          {
+            "if_you_see": "Student subtracts correctly but forgets to take the square root of the difference.",
+            "say": "That difference is the leg squared, not the leg. Take its square root to get the length.",
+            "praise": "You rooted the difference -- now it's the actual leg length."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A right triangle has a hypotenuse of 13 and one leg of 12. Find the other leg.",
+            "look_for": "5. An answer near 17.7 (square root of 313) means the student added instead of subtracting."
+          },
+          {
+            "prompt": "A right triangle has a hypotenuse of 10 and one leg of 8. Find the other leg.",
+            "look_for": "6. An answer near 12.8 signals the hypotenuse was added into the sum."
+          }
+        ]
+      },
+      "fluency_source": "8GM3-F1",
+      "sentence_starters": [
+        "The hypotenuse is known, so I subtract: ___² - ___² = ___.",
+        "The missing leg is the square root of ___, which is ___."
+      ],
+      "worked_solution": {
+        "stem": "A right triangle has a hypotenuse of 25 and one leg of 7. What is the other leg?",
+        "answer": "24",
+        "steps": [
+          {
+            "math": "a² = c² - b², so a² = 25² - 7²",
+            "annotation": "A leg is unknown, so subtract the known leg's square from the hypotenuse's square."
+          },
+          {
+            "math": "625 - 49 = 576",
+            "annotation": "Square each, then subtract -- the hypotenuse's square is the total."
+          },
+          {
+            "math": "a = square root of 576 = 24",
+            "annotation": "Take the square root of the difference."
+          },
+          {
+            "math": "check: 7² + 24² = 49 + 576 = 625 = 25²",
+            "annotation": "Put both legs back in -- they add to the hypotenuse squared."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A right triangle has a hypotenuse of 15 and one leg of 9. What is the other leg?",
+        "answer": "12",
+        "steps": [
+          {
+            "math": "a² = 15² - 9²",
+            "annotation": "Leg unknown, so subtract from the hypotenuse's square.",
+            "given": true
+          },
+          {
+            "math": "225 - 81 = 144",
+            "annotation": "Square each and subtract.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Take the square root of 144 to get the leg.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check: do 9² and your leg squared add to 15²?",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM3-S4",
+      "name": "Solve real-world problems by applying the Pythagorean Theorem",
+      "column": "on_grade",
+      "parent_standard": "8.GM.3",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8GM3-S2"
+      },
+      "i_do_script": "Real-world problems hide a right triangle in a story -- a ladder against a wall, a diagonal across a field, a screen's diagonal. First I find the right angle and decide which distance is the HYPOTENUSE: it is the slanted or longest distance, opposite the right angle (the ladder, the diagonal, the straight-line path). Then I set up a² + b² = c² and solve. Watch: a 13-ft ladder's base is 5 ft from a wall -- the ladder is the hypotenuse, so the wall height is a LEG: square root of (13² - 5²) = square root of 144 = 12 ft. But if a person walks 6 blocks east then 8 north, the straight-line distance is the HYPOTENUSE: square root of (6² + 8²) = square root of 100 = 10 blocks.",
+      "canonical_error": {
+        "pattern": "Mis-identifies which distance in the story is the hypotenuse, so adds when it should subtract (or the reverse)",
+        "example": "For a 13-ft ladder 5 ft from the wall, adds 13² + 5² to 'find the ladder' -- but the ladder IS the hypotenuse, so the wall height is the square root of (13² - 5²) = 12 ft",
+        "why": "In a context the hypotenuse is the slanted or longest distance opposite the right angle. If the UNKNOWN is that slant, add the legs and take the root; if the unknown is a leg, subtract. Reading the wrong side as the hypotenuse flips the operation."
+      },
+      "item_template": "A real-world scenario names two of the three distances of a hidden right triangle; the student decides the hypotenuse, sets up, and solves. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A ladder 13 ft long leans against a wall with its base 5 ft from the wall. How high up the wall does the ladder reach?",
+          "answer": "12 ft",
+          "distractor_logic": "Ladder is the hypotenuse; height is a leg: 13² - 5² = 144, root 12. Adding gives ≈ 13.93."
+        },
+        {
+          "stem": "Jordan walks 6 blocks east and then 8 blocks north. What is the straight-line distance back to the start?",
+          "answer": "10 blocks",
+          "distractor_logic": "Straight line is the hypotenuse: 6² + 8² = 100, root 10. Adding the walk gives 14."
+        },
+        {
+          "stem": "A television screen is 15 in. wide and 17 in. along the diagonal. How tall is the screen?",
+          "answer": "8 in.",
+          "distractor_logic": "Diagonal is the hypotenuse; height is a leg: 17² - 15² = 64, root 8."
+        },
+        {
+          "stem": "A rectangular garden is 9 m by 12 m. How long is the diagonal path across it?",
+          "answer": "15 m",
+          "distractor_logic": "Diagonal is the hypotenuse: 9² + 12² = 225, root 15."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which distance in the story is the hypotenuse?",
+        "prompt": "Find the right angle. The slanted or longest distance -- the ladder, the diagonal, the straight-line path -- is the hypotenuse. If the unknown is that slant, add the legs and take the root; if it's a leg, subtract.",
+        "praise": "You spotted the hypotenuse in the story and set it up right."
+      },
+      "vocabulary": [
+        {
+          "term": "Hypotenuse (in context)",
+          "definition": "The slanted or longest distance in a real situation -- a ladder, a diagonal, a straight-line path."
+        },
+        {
+          "term": "Leg (in context)",
+          "definition": "A distance along the right angle -- a wall height, a horizontal run, a side of a rectangle."
+        },
+        {
+          "term": "Right triangle",
+          "definition": "The shape hidden in the story wherever two distances meet at a right angle."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM3-S6",
+        "if_fail": "8GM3-S2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A 10-ft ramp rises 6 ft vertically. How far does it extend horizontally?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which distance is the slanted one? That is the hypotenuse. Is the unknown a leg or the hypotenuse?"
+        },
+        {
+          "kind": "say",
+          "text": "The ramp (10) is the hypotenuse; the horizontal run is a leg: square root of (10² - 6²) = square root of 64 = 8 ft."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student adds to get the root of 136, ask 'is the ramp the slant or a side? You subtract to find a leg.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a kite string is 25 m long; the kite is above a point 7 m away. How high is the kite?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "In a ladder-against-a-wall problem, which part is the hypotenuse?",
+          "answer": "The ladder (the slanted side)."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Someone walks 6 blocks east and 8 blocks north. What is the straight-line distance back?",
+          "answer": "10 blocks"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A 10-ft ramp rises 6 ft vertically. How far does it extend horizontally?",
+          "answer": "8 ft",
+          "notes": "Ramp is the hypotenuse; run is a leg -- subtract."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A kite string is 25 m long and the kite is directly above a point 7 m from the flyer. How high is the kite?",
+          "answer": "24 m",
+          "notes": "String is the hypotenuse; height is a leg -- subtract."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Ava found how high a 17-ft ladder reaches when its base is 8 ft from the wall. Find and fix her mistake.",
+          "shown_work": [
+            "Ava wrote: '17² + 8² = 289 + 64 = 353.'",
+            "'So the ladder reaches the square root of 353 ≈ 18.79 ft.'"
+          ],
+          "answer": "The ladder is the hypotenuse, so the height is a leg -- subtract: 17² - 8² = 289 - 64 = 225, height = square root of 225 = 15 ft.",
+          "notes": "Canonical error: treated the hypotenuse as a leg and added."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A baseball diamond is a square 90 ft on a side. How far is it from home plate to second base? Round to the nearest hundredth.",
+          "answer": "127.28 ft",
+          "notes": "Diagonal of the square: 90² + 90² = 16200, root ≈ 127.28."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A carpenter cuts an 8-in. square diagonally, making two right triangles. How long is the longest side of each triangle? Round to the nearest tenth.",
+          "answer": "11.3 in.",
+          "notes": "Diagonal is the hypotenuse: 8² + 8² = 128, root ≈ 11.3 -- no model given."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A guy wire runs from the top of a 15-ft pole to a stake 8 ft from the base. How long is the wire? Then say which distance was the hypotenuse.",
+          "answer": "17 ft; the wire is the hypotenuse (the slanted distance): 15² + 8² = 289, root 17.",
+          "notes": "Explain-why plus a clean triple."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Which Side Is the Ladder?",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Slip with Ava's work"
+          ],
+          "instructions": "1. Read Ava's height for a 17-ft ladder with its base 8 ft out.\n2. Ask: is the ladder the slanted side or a side along the wall?\n3. Redo it -- the ladder is the hypotenuse, so subtract to find the height.\n4. Write the rule: the slanted distance is always the ____.",
+          "content": {
+            "worked_problem": "17-ft ladder, base 8 ft from the wall. Ava wrote 17² + 8² = 353, height ≈ 18.79 ft.",
+            "error_step": "Ava treated the ladder (the hypotenuse) as a leg and added.",
+            "why": "The ladder is the hypotenuse: 17² - 8² = 225, so the height is 15 ft."
+          }
+        },
+        {
+          "type": "card_sort",
+          "title": "Find the Hypotenuse in the Story",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 8 real-world scenarios"
+          ],
+          "instructions": "1. For each scenario, decide which distance is the hypotenuse (the slanted or longest one).\n2. Sort into 'Unknown is the hypotenuse -- add' or 'Unknown is a leg -- subtract.'\n3. Pick two cards and solve them.\n4. Debrief: what words in a story point to the hypotenuse?",
+          "content": {
+            "categories": [
+              "Unknown is the hypotenuse -- add",
+              "Unknown is a leg -- subtract"
+            ],
+            "cards": [
+              {
+                "text": "walk 6 east then 8 north, find the straight-line distance",
+                "category": "Unknown is the hypotenuse -- add"
+              },
+              {
+                "text": "13-ft ladder, base 5 ft out, find the wall height",
+                "category": "Unknown is a leg -- subtract"
+              },
+              {
+                "text": "rectangular field 9 by 12, find the diagonal",
+                "category": "Unknown is the hypotenuse -- add"
+              },
+              {
+                "text": "25-m kite string, kite 7 m out, find the height",
+                "category": "Unknown is a leg -- subtract"
+              },
+              {
+                "text": "square 8 on a side, find the diagonal",
+                "category": "Unknown is the hypotenuse -- add"
+              },
+              {
+                "text": "17-in. TV diagonal, 15 in. wide, find the height",
+                "category": "Unknown is a leg -- subtract"
+              },
+              {
+                "text": "run 5 east then 12 north, find the straight-line distance",
+                "category": "Unknown is the hypotenuse -- add"
+              },
+              {
+                "text": "10-ft ramp rises 6 ft, find the horizontal run",
+                "category": "Unknown is a leg -- subtract"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The wrong-hypotenuse error is baitable; find-and-fix with a 'which side is slanted?' check trains the setup decision."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'which distance is the hypotenuse?' settles the setup before anyone computes."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'the ladder is the slant, so it's the hypotenuse' models the read students skip."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Where is the right angle in this situation?",
+          "Which distance is slanted or longest? That one is the hypotenuse.",
+          "Is the unknown the hypotenuse (add) or a leg (subtract)?",
+          "Does your answer make sense -- shorter than the hypotenuse for a leg?",
+          "What are the units, and did the problem ask you to round?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student mis-identifies the hypotenuse in the story and uses the wrong operation.",
+            "say": "Find the right angle. The slanted or longest distance -- the ladder, the diagonal, the straight-line path -- is the hypotenuse. If the unknown is that slant, add the legs and take the root; if it's a leg, subtract.",
+            "praise": "You spotted the hypotenuse in the story and set it up right."
+          },
+          {
+            "if_you_see": "Student sets up correctly but leaves the answer without units or without rounding as asked.",
+            "say": "Finish the answer the way the problem asks -- attach the units and round to the tenth or hundredth if it says to.",
+            "praise": "You reported the answer with units and the right rounding."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A 13-ft ladder's base is 5 ft from a wall. How high does it reach?",
+            "look_for": "12 ft (subtract: 169 - 25 = 144). An answer near 13.9 means the ladder was added as a leg."
+          },
+          {
+            "prompt": "Walk 9 blocks east then 12 north. Straight-line distance back?",
+            "look_for": "15 blocks (add: 81 + 144 = 225). An answer of 21 means the legs were just added."
+          }
+        ]
+      },
+      "fluency_source": "8GM3-F1",
+      "sentence_starters": [
+        "The slanted distance is the ___, so it is the hypotenuse.",
+        "The unknown is a ___, so I ___ and then take the square root."
+      ],
+      "worked_solution": {
+        "stem": "A 13-ft ladder leans against a wall with its base 5 ft from the wall. How high up the wall does it reach?",
+        "answer": "12 ft",
+        "steps": [
+          {
+            "math": "ladder = hypotenuse (the slant)",
+            "annotation": "The ladder is the slanted, longest distance, so it is the hypotenuse."
+          },
+          {
+            "math": "height is a leg: a² = 13² - 5²",
+            "annotation": "The wall height is a leg, so subtract the base's square."
+          },
+          {
+            "math": "169 - 25 = 144",
+            "annotation": "Square each and subtract."
+          },
+          {
+            "math": "a = square root of 144 = 12 ft",
+            "annotation": "Take the root; the height is shorter than the ladder -- reasonable."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A rectangular garden is 9 m by 12 m. How long is the diagonal path across it?",
+        "answer": "15 m",
+        "steps": [
+          {
+            "math": "diagonal = hypotenuse",
+            "annotation": "The diagonal is the slanted distance, so it is the hypotenuse.",
+            "given": true
+          },
+          {
+            "math": "c² = 9² + 12² = 81 + 144 = 225",
+            "annotation": "The two sides are the legs -- add their squares.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Take the square root of 225 to get the diagonal.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check: is the diagonal longer than each side?",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM3-S5",
+      "name": "Determine the distance between two points in the coordinate plane",
+      "column": "on_grade",
+      "parent_standard": "8.GM.3",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8GM3-S2"
+      },
+      "i_do_script": "The distance between two points is the hypotenuse of a right triangle whose legs are the horizontal and vertical changes. I find the horizontal leg (the difference in x) and the vertical leg (the difference in y), then use d = square root of ((x2 - x1)² + (y2 - y1)²). Watch, from (1, 2) to (4, 6): the horizontal change is 4 - 1 = 3, the vertical change is 6 - 2 = 4, so d = square root of (3² + 4²) = square root of 25 = 5. The trap is ADDING the two changes (3 + 4 = 7) -- that walks along the two legs, but the straight-line distance is the hypotenuse.",
+      "canonical_error": {
+        "pattern": "Adds the horizontal and vertical changes instead of squaring, adding, and taking the root -- or forgets the square root",
+        "example": "For (1, 2) to (4, 6), answers 3 + 4 = 7 instead of the square root of (3² + 4²) = 5",
+        "why": "The straight-line distance is the hypotenuse of the right triangle formed by the horizontal and vertical legs, so it is the square root of (change in x squared + change in y squared), not the sum of the two changes."
+      },
+      "item_template": "Two ordered pairs are given in text; the student finds the distance between them, exact when a perfect square or rounded to the hundredth. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "Find the distance between the points (1, 2) and (4, 6).",
+          "answer": "5",
+          "distractor_logic": "Legs 3 and 4: 9 + 16 = 25, root 5. Adding the changes gives 7."
+        },
+        {
+          "stem": "Find the distance between the points (0, 0) and (6, 8).",
+          "answer": "10",
+          "distractor_logic": "Legs 6 and 8: 36 + 64 = 100, root 10. Adding gives 14."
+        },
+        {
+          "stem": "Find the distance between the points (1, 1) and (5, 4).",
+          "answer": "5",
+          "distractor_logic": "Legs 4 and 3: 16 + 9 = 25, root 5."
+        },
+        {
+          "stem": "Find the distance between the points (-2, 1) and (3, 13).",
+          "answer": "13",
+          "distractor_logic": "Legs 5 and 12: 25 + 144 = 169, root 13."
+        },
+        {
+          "stem": "Find the distance between the points (0, 0) and (3, 5). Round to the nearest hundredth.",
+          "answer": "5.83",
+          "distractor_logic": "Legs 3 and 5: 9 + 25 = 34, root ≈ 5.83."
+        },
+        {
+          "stem": "Find the distance between the points (2, 1) and (10, 7).",
+          "answer": "10",
+          "distractor_logic": "Legs 8 and 6: 64 + 36 = 100, root 10."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is the distance the sum of the legs, or the hypotenuse?",
+        "prompt": "Find the horizontal change and the vertical change -- those are the legs. The distance is the hypotenuse: the square root of ((change in x)² + (change in y)²). Don't just add the two changes.",
+        "praise": "You used the legs to find the hypotenuse -- that's the distance."
+      },
+      "vocabulary": [
+        {
+          "term": "Coordinate plane",
+          "definition": "The grid of x- and y-values where each point is an ordered pair (x, y)."
+        },
+        {
+          "term": "Horizontal/vertical change",
+          "definition": "The difference in the x-values (horizontal leg) and in the y-values (vertical leg) between two points."
+        },
+        {
+          "term": "Distance",
+          "definition": "The straight-line length between two points -- the hypotenuse of the right triangle formed by the changes."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM3-S6",
+        "if_fail": "8GM3-S2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Find the distance between (2, 1) and (10, 7).'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the horizontal change? The vertical change? Those are the two legs."
+        },
+        {
+          "kind": "say",
+          "text": "Horizontal 10 - 2 = 8, vertical 7 - 1 = 6, so d = square root of (8² + 6²) = square root of 100 = 10."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 14, ask 'did you add the changes, or square them? The distance is the hypotenuse.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: find the distance between (1, 2) and (4, 6)."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "From (1, 2) to (4, 6), what is the horizontal change (difference in x)?",
+          "answer": "3"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Two points are 3 units apart horizontally and 4 apart vertically. How far apart are they in a straight line?",
+          "answer": "5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the distance between (0, 0) and (6, 8).",
+          "answer": "10",
+          "notes": "Legs 6 and 8."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the distance between (2, 3) and (7, 15).",
+          "answer": "13",
+          "notes": "Legs 5 and 12."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Leo found the distance between (1, 2) and (4, 6). Find and fix his mistake.",
+          "shown_work": [
+            "Leo wrote: 'horizontal change 3, vertical change 4.'",
+            "'Distance = 3 + 4 = 7.'"
+          ],
+          "answer": "He added the legs. The distance is the hypotenuse: square root of (3² + 4²) = square root of 25 = 5.",
+          "notes": "Canonical error: adds the changes instead of using the hypotenuse."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the distance between (-3, -2) and (3, 6).",
+          "answer": "10",
+          "notes": "Legs 6 and 8; watch the negative coordinates."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Find the distance between (2, 3) and (7, 6). Round to the nearest hundredth.",
+          "answer": "5.83",
+          "notes": "Legs 5 and 3: 25 + 9 = 34, root ≈ 5.83 (non-perfect square)."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two points are exactly 5 units apart. One is (1, 1); the other is (x, 4) with x greater than 1. Find x and explain how the right triangle helps.",
+          "answer": "x = 5: the vertical leg is 4 - 1 = 3, so the horizontal leg must be 4 (a 3-4-5 triangle), giving x = 1 + 4 = 5.",
+          "notes": "Reverse direction -- work back from the distance."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Added the Changes",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Leo's work"
+          ],
+          "instructions": "1. Read Leo's distance between (1, 2) and (4, 6).\n2. Ask: does adding the two changes give a straight line, or the two legs of an L?\n3. Redo it using the hypotenuse.\n4. Write the rule: the distance is the ____ of the right triangle, not the sum of the changes.",
+          "content": {
+            "worked_problem": "(1, 2) to (4, 6). Leo wrote distance = 3 + 4 = 7.",
+            "error_step": "Leo added the horizontal and vertical changes.",
+            "why": "The distance is the hypotenuse: square root of (3² + 4²) = 5, not 7."
+          }
+        },
+        {
+          "type": "hands_on",
+          "title": "Plot, Draw, Solve",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper",
+            "Point-pair cards"
+          ],
+          "instructions": "1. Plot the two points from a card on grid paper.\n2. Draw the horizontal leg and the vertical leg to make a right triangle.\n3. Count the legs, then use a² + b² = c² to find the distance (the hypotenuse).\n4. Check by counting: the distance should be a bit less than the two legs added.\n5. Debrief: why is the straight-line distance always shorter than walking the two legs?"
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Plotting the points and drawing the right triangle on the grid makes the horizontal and vertical legs concrete before the formula."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The add-the-changes error is a single, baitable slip that find-and-fix with a plotted triangle exposes."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'the changes are the legs, the distance is the hypotenuse' models the connection students miss."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the horizontal change? The vertical change? Those are the legs.",
+          "Is the straight-line distance the sum of the legs, or the hypotenuse?",
+          "Did you square each change before adding?",
+          "After adding, did you take the square root?",
+          "Should the distance be a little less than the two changes added? Is it?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds the horizontal and vertical changes instead of using the hypotenuse.",
+            "say": "Find the horizontal change and the vertical change -- those are the legs. The distance is the hypotenuse: the square root of ((change in x)² + (change in y)²). Don't just add the two changes.",
+            "praise": "You used the legs to find the hypotenuse -- that's the distance."
+          },
+          {
+            "if_you_see": "Student subtracts coordinates in the wrong order or drops a negative sign.",
+            "say": "The change can be counted either direction -- what matters is how far apart the x-values are and how far apart the y-values are. Squaring makes the sign disappear anyway.",
+            "praise": "You measured the true gap between the coordinates."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Find the distance between (0, 0) and (6, 8).",
+            "look_for": "10 (legs 6 and 8). An answer of 14 means the changes were added."
+          },
+          {
+            "prompt": "Find the distance between (1, 1) and (5, 4).",
+            "look_for": "5 (legs 4 and 3). An answer of 7 signals the add-the-changes error."
+          }
+        ]
+      },
+      "fluency_source": "8GM3-F1",
+      "sentence_starters": [
+        "The horizontal change is ___ and the vertical change is ___.",
+        "The distance is the square root of (___² + ___²) = ___."
+      ],
+      "worked_solution": {
+        "stem": "Find the distance between the points (2, 1) and (10, 7).",
+        "answer": "10",
+        "steps": [
+          {
+            "math": "horizontal change = 10 - 2 = 8",
+            "annotation": "The difference in x-values is one leg."
+          },
+          {
+            "math": "vertical change = 7 - 1 = 6",
+            "annotation": "The difference in y-values is the other leg."
+          },
+          {
+            "math": "d = square root of (8² + 6²) = square root of 100",
+            "annotation": "The distance is the hypotenuse -- square, add, root."
+          },
+          {
+            "math": "d = 10",
+            "annotation": "Less than 8 + 6 = 14, as a straight line should be."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Find the distance between the points (0, 0) and (6, 8).",
+        "answer": "10",
+        "steps": [
+          {
+            "math": "horizontal change = 6 - 0 = 6",
+            "annotation": "Difference in x -- one leg.",
+            "given": true
+          },
+          {
+            "math": "vertical change = 8 - 0 = 8",
+            "annotation": "Difference in y -- the other leg.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the distance as the square root of (6² + 8²).",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Simplify to the hypotenuse and check it is under 14.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM3-S6",
+      "name": "Solve multi-step problems using more than one application of the theorem",
+      "column": "looking_forward",
+      "parent_standard": "8.GM.3",
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8GM3-S4"
+      },
+      "i_do_script": "Some problems need the Pythagorean Theorem more than once, or combine it with perimeter and area in a compound figure. I solve one right triangle first, then carry that result into the next step. Watch, a rectangular field 9 m by 12 m: first the diagonal is square root of (9² + 12²) = square root of 225 = 15 m. If someone walks the perimeter 2(9 + 12) = 42 m and then the diagonal, the total is 42 + 15 = 57 m. Two traps: stopping after the first triangle, and reusing a computed length in the wrong place. I reread the question to see how the pieces combine before I stop.",
+      "canonical_error": {
+        "pattern": "Stops after one application, or plugs a computed length into the wrong part of the second step",
+        "example": "For a field 9 m by 12 m, finds the diagonal 15 m but forgets to add the 42 m perimeter for the 'total distance,' answering 15 m or 42 m instead of 57 m",
+        "why": "Multi-step problems chain results: the hypotenuse from step one becomes an input to step two. Each right triangle must be solved, and the final question decides how the pieces combine."
+      },
+      "item_template": "A compound figure or two-part scenario stated in text; the student solves one right triangle, then uses the result in a second step. Multi-part response.",
+      "sample_items": [
+        {
+          "stem": "An isosceles trapezoid has parallel bases of 14 cm and 8 cm and slanted legs of 5 cm. Dropping a height to the longer base forms a right triangle whose horizontal leg is (14 - 8) / 2 = 3 cm. Find the height of the trapezoid.",
+          "answer": "4 cm",
+          "distractor_logic": "Leg is unknown: 5² - 3² = 25 - 9 = 16, height = 4."
+        },
+        {
+          "stem": "Part A: A right-triangle sail has legs 6 ft and 8 ft -- find its longest side. Part B: A second sail has legs 9 ft and 12 ft -- find its longest side. How much longer is the second sail's longest side than the first?",
+          "answer": "Part A: 10 ft; Part B: 15 ft; 5 ft longer.",
+          "distractor_logic": "10 and 15, difference 5."
+        },
+        {
+          "stem": "A rectangular field is 9 m by 12 m. Find the diagonal, then find the total distance to walk the perimeter and then straight across the diagonal.",
+          "answer": "Diagonal 15 m; total 2(9 + 12) + 15 = 57 m.",
+          "distractor_logic": "Stopping at 15 or 42 misses the sum."
+        },
+        {
+          "stem": "A rectangular picture frame is 8 in. by 15 in. with a diagonal brace. Find the brace length, then the total wood needed for the four sides plus the brace.",
+          "answer": "Brace 17 in.; total 2(8 + 15) + 17 = 63 in.",
+          "distractor_logic": "Brace 17 (8-15-17); perimeter 46; total 63."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Are you finished, or is there a second step?",
+        "prompt": "Solve one right triangle first, then carry that length into the next step. Reread the question to see how the pieces combine before you stop.",
+        "praise": "You carried the first result into the second step instead of stopping early."
+      },
+      "vocabulary": [
+        {
+          "term": "Multi-step problem",
+          "definition": "A problem that needs the theorem more than once, or combined with perimeter or area."
+        },
+        {
+          "term": "Diagonal",
+          "definition": "A slanted segment across a rectangle or figure -- usually the hypotenuse of a right triangle."
+        },
+        {
+          "term": "Compound figure",
+          "definition": "A shape made of parts, at least one of which is a right triangle you solve separately."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for high-school right-triangle trigonometry (G.T.5, G.T.7).",
+        "if_fail": "8GM3-S4"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A rectangular frame is 8 in. by 15 in. Find the diagonal brace, then the total wood for the 4 sides plus the brace.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the first right triangle? What do you do with its answer?"
+        },
+        {
+          "kind": "say",
+          "text": "Brace: square root of (8² + 15²) = square root of 289 = 17 in. Then perimeter 2(8 + 15) = 46, total 46 + 17 = 63 in."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 17, ask 'is the brace the whole question, or do you still add the four sides?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a field is 9 m by 12 m -- find the diagonal, then the perimeter plus the diagonal."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A rectangle is 9 by 12. What is the length of its diagonal?",
+          "answer": "15"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is 2(9 + 12)?",
+          "answer": "42"
+        },
+        {
+          "difficulty": "core",
+          "stem": "An isosceles trapezoid has bases 14 and 8 and slanted legs 5. Find its height.",
+          "answer": "4",
+          "notes": "Horizontal leg (14 - 8) / 2 = 3, then square root of (25 - 9) = 4."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A rectangular frame is 8 in. by 15 in. Find the diagonal brace, then the total wood for the four sides plus the brace.",
+          "answer": "Brace 17 in.; total 63 in.",
+          "notes": "Two steps: hypotenuse then perimeter + brace."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Sam was asked for the total distance around a 9 m by 12 m field AND across its diagonal. Find and fix the mistake.",
+          "shown_work": [
+            "Sam wrote: 'Diagonal = square root of (9² + 12²) = 15 m.'",
+            "'Total distance = 15 m.'"
+          ],
+          "answer": "Sam stopped after step one. Add the perimeter: 2(9 + 12) = 42, so the total is 42 + 15 = 57 m.",
+          "notes": "Canonical error: stops after the first application."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Two sails are right triangles: one with legs 6 and 8, one with legs 5 and 12. How much longer is the second sail's longest side than the first?",
+          "answer": "10 and 13, so 3 ft longer.",
+          "notes": "Two hypotenuses, then subtract."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A boat sail is a right triangle with base 6 ft and height 8 ft. A larger sail has height 9.5 ft and base 8.25 ft. How much longer is the larger sail's longest side? Round to the nearest whole number.",
+          "answer": "First sail 10 ft; larger sail is square root of (9.5² + 8.25²) ≈ 12.58 ft; about 3 ft longer.",
+          "notes": "Decimals in the second triangle -- no model given."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why finding the space diagonal of a box (across the floor, then up to a top corner) uses the theorem twice.",
+          "answer": "First the floor diagonal is the hypotenuse of the length-width triangle; then that diagonal and the height form a second right triangle whose hypotenuse is the space diagonal.",
+          "notes": "Explain-why -- names the chained applications."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Stopped Too Soon",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Slip with Sam's work"
+          ],
+          "instructions": "1. Read Sam's total distance for a 9 m by 12 m field plus its diagonal.\n2. Ask: did the question want just the diagonal, or the perimeter AND the diagonal?\n3. Redo it, adding the perimeter to the diagonal.\n4. Write the rule: in a multi-step problem, carry the first answer into the ____ step.",
+          "content": {
+            "worked_problem": "Field 9 m by 12 m. Sam found the diagonal 15 m and wrote total = 15 m.",
+            "error_step": "Sam stopped after the first right triangle.",
+            "why": "The total is the perimeter plus the diagonal: 2(9 + 12) + 15 = 57 m."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Two-Step Relay",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Compound-figure cards (rectangle + diagonal, trapezoid, two sails)"
+          ],
+          "instructions": "1. Player 1 solves the first right triangle on a card and passes the length to Player 2.\n2. Player 2 uses that length in the second step (add a perimeter, subtract, or compare).\n3. Swap roles on the next card.\n4. A card scores only if BOTH steps are shown.\n5. Debrief: which cards were easiest to stop too early on?"
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release from single-triangle problems (S4) to chained ones scaffolds carrying a result into a second step."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The stop-after-step-one error is baitable; find-and-fix with a 'reread the question' check trains students to finish."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "A math-journal entry explaining how the two triangles connect consolidates the chaining the standard's 'above' band asks for."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many right triangles are hidden in this problem?",
+          "What does the first triangle's answer become in the next step?",
+          "Reread the question -- what is it actually asking for at the end?",
+          "Did you combine the pieces the way the question asks (add, subtract, compare)?",
+          "Are you finished, or is there one more step?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student stops after one application, or reuses a computed length in the wrong place.",
+            "say": "Solve one right triangle first, then carry that length into the next step. Reread the question to see how the pieces combine before you stop.",
+            "praise": "You carried the first result into the second step instead of stopping early."
+          },
+          {
+            "if_you_see": "Student sets up the second triangle but reuses the wrong side as a leg.",
+            "say": "Label each length as you find it. The diagonal you just computed is the hypotenuse of triangle one -- decide carefully where it goes in triangle two.",
+            "praise": "You tracked which length was which across both triangles."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A field is 9 m by 12 m. Find the total distance around it AND across the diagonal.",
+            "look_for": "57 m (perimeter 42 + diagonal 15). An answer of 15 or 42 means one step was dropped."
+          },
+          {
+            "prompt": "A frame is 8 in. by 15 in. Find the diagonal brace, then the wood for all four sides plus the brace.",
+            "look_for": "63 in. (brace 17 + perimeter 46). An answer of 17 means the student stopped early."
+          }
+        ]
+      },
+      "fluency_source": "8GM3-F1",
+      "sentence_starters": [
+        "First I found ___ using one right triangle.",
+        "Then I used it in the next step to get ___."
+      ],
+      "worked_solution": {
+        "stem": "A rectangular field is 9 m by 12 m. Find the total distance to walk the perimeter and then straight across the diagonal.",
+        "answer": "57 m",
+        "steps": [
+          {
+            "math": "diagonal = square root of (9² + 12²) = square root of 225 = 15 m",
+            "annotation": "Step one: solve the right triangle for the diagonal."
+          },
+          {
+            "math": "perimeter = 2(9 + 12) = 42 m",
+            "annotation": "Step two input: the distance around the rectangle."
+          },
+          {
+            "math": "total = 42 + 15 = 57 m",
+            "annotation": "Combine the pieces the question asks for."
+          },
+          {
+            "math": "check: 15 is longer than each side; 57 > 42",
+            "annotation": "Each part is reasonable, so the total is too."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A rectangular picture frame is 8 in. by 15 in. with a diagonal brace. Find the total wood for the four sides plus the brace.",
+        "answer": "63 in.",
+        "steps": [
+          {
+            "math": "brace = square root of (8² + 15²) = square root of 289 = 17 in.",
+            "annotation": "Step one: the brace is the hypotenuse of the 8-by-15 triangle.",
+            "given": true
+          },
+          {
+            "math": "perimeter = 2(8 + 15) = 46 in.",
+            "annotation": "Step two input: the four sides.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Add the perimeter and the brace for the total wood.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check that you used both the brace and all four sides.",
+            "given": false
+          }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "skills": [
+        "8GM3-F1",
+        "8GM3-F2"
+      ]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": [
+        "8GM3-S1"
+      ]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": [
+        "8GM3-S2",
+        "8GM3-S3",
+        "8GM3-S4",
+        "8GM3-S5"
+      ]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": [
+        "8GM3-S6"
+      ]
+    }
+  },
+  "skill_sequence": [
+    "8GM3-F1",
+    "8GM3-F2",
+    "8GM3-S1",
+    "8GM3-S2",
+    "8GM3-S3",
+    "8GM3-S4",
+    "8GM3-S5",
+    "8GM3-S6"
+  ],
+  "skill_tree": {
+    "8GM3-F1": [],
+    "8GM3-F2": [],
+    "8GM3-S1": [
+      "8GM3-F2"
+    ],
+    "8GM3-S2": [
+      "8GM3-F1",
+      "8GM3-S1"
+    ],
+    "8GM3-S3": [
+      "8GM3-S2"
+    ],
+    "8GM3-S4": [
+      "8GM3-S2",
+      "8GM3-S3"
+    ],
+    "8GM3-S5": [
+      "8GM3-S2"
+    ],
+    "8GM3-S6": [
+      "8GM3-S4"
+    ]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S4 (a real-world Pythagorean problem) -- the At-proficiency workhorse where the student must decide which distance is the hypotenuse and then add or subtract. If they pass, push to S6 (multi-step problems chaining more than one right triangle). If they fail, drop to S1 and S2 to check whether writing the equation and finding a hypotenuse from two legs are solid. S3 (finding a missing leg by subtracting) and S5 (distance between two points) branch off as the reversal and coordinate contexts.",
+    "entry_skill": "8GM3-S4",
+    "if_pass": [
+      "8GM3-S6"
+    ],
+    "if_fail": [
+      "8GM3-S1",
+      "8GM3-S2"
+    ],
+    "branch_skills": [
+      "8GM3-S3",
+      "8GM3-S5"
+    ]
+  }
+}

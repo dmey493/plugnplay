@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light only"><title>Graph of the Week &middot; MS-LS2-3</title><style>
+  :root { color-scheme: light only; }
+  * { box-sizing: border-box; }
+  html { background: transparent; }
+  body { margin:0; font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         color:#111; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .sheet { width:8.5in; margin:18px auto; padding:0.55in 0.6in 0.5in; background:#fff;
+           box-shadow:0 2px 14px rgba(0,0,0,.18); }
+  .print-bar { max-width:8.5in; margin:14px auto 0; text-align:right; }
+  .print-btn { font:600 13px/1 inherit; padding:8px 14px; border:1px solid #111; background:#111;
+               color:#fff; border-radius:6px; cursor:pointer; }
+  .namebar { display:flex; gap:26px; font-size:12px; color:#333; margin-bottom:10px; }
+  .namebar .f { flex:1; display:flex; align-items:baseline; gap:8px; }
+  .namebar .ln { flex:1; border-bottom:1px solid #555; height:14px; }
+  h1.title { font-family:Georgia,"Times New Roman",serif; font-size:30px; line-height:1.05; margin:0;
+             color:#000; letter-spacing:.2px; }
+  .standline { font-size:11px; font-weight:700; letter-spacing:.4px; color:#222; margin:5px 0 9px;
+               text-transform:uppercase; }
+  .standline .sep { color:#888; }
+  .question { border:1px solid #999; background:#f3f3f3; border-radius:6px; padding:9px 14px; margin-bottom:9px; }
+  .question .lab { font-size:10.5px; font-weight:800; letter-spacing:.8px; text-transform:uppercase;
+                   color:#333; display:block; margin-bottom:3px; }
+  .question p { margin:0; font-size:15px; font-weight:600; color:#000; line-height:1.35; }
+  .howto { font-size:12px; font-style:italic; color:#555; margin:0 0 5px; }
+  .howto b { color:#222; font-style:normal; }
+  .legend { display:flex; gap:22px; justify-content:center; flex-wrap:wrap; font-size:12px; margin-bottom:4px; }
+  .legend span { display:inline-flex; align-items:center; }
+  .legend .sw { width:18px; height:12px; border:1px solid #000; margin-right:6px; }
+  .legend svg.mk { margin-right:6px; }
+  .chart { width:84%; height:auto; display:block; margin:2px auto 0; }
+  table { width:100%; border-collapse:collapse; margin:4px 0 4px; font-size:12.5px; }
+  thead th { background:#1c1c1c; color:#fff; font-size:12px; font-weight:700; line-height:1.2;
+             padding:7px 10px; text-align:center; vertical-align:middle; border:1px solid #1c1c1c; }
+  thead th:first-child { text-align:left; }
+  tbody td { border:1px solid #c9c9c9; padding:4px 10px; text-align:center; }
+  tbody td:first-child { text-align:left; }
+  tbody tr:nth-child(even) td { background:#f4f4f4; }
+  .src { font-size:10.5px; font-style:italic; color:#666; margin:3px 0 8px; }
+  .cer { display:flex; flex-direction:column; gap:6px; }
+  .step .hd { display:flex; align-items:baseline; gap:10px; margin-bottom:3px; }
+  .step .badge { font-size:11px; font-weight:800; letter-spacing:.7px; text-transform:uppercase;
+                 background:#222; color:#fff; padding:3px 9px; border-radius:3px; }
+  .step .ask { font-size:13px; font-weight:700; color:#000; }
+  .step .hint { font-size:11.5px; font-style:italic; color:#777; margin:0 0 5px; }
+  .rule { border-bottom:1px solid #b9b9b9; height:20px; }
+  .rule.r { height:23px; }
+  .foot { margin-top:12px; padding-top:9px; border-top:1px solid #ccc; display:flex;
+          justify-content:space-between; font-size:10.5px; color:#555; }
+  .foot .r { font-weight:700; color:#333; }
+
+  /* ---- double-sided: front "first look" + back analysis ---- */
+  .firstlook { border:1px solid #999; border-radius:6px; padding:8px 12px; margin-top:10px; }
+  .firstlook .fl-lab { font-size:10.5px; font-weight:800; letter-spacing:.7px; text-transform:uppercase; color:#333; }
+  .firstlook .row { font-size:12.5px; margin-top:7px; color:#000; line-height:1.5; }
+  .firstlook .u { display:inline-block; border-bottom:1px solid #999; min-width:140px; height:14px; vertical-align:middle; }
+  .firstlook .u.long { min-width:330px; }
+  .backhead { margin-bottom:12px; padding-bottom:8px; border-bottom:2px solid #1c1c1c; }
+  .backhead .t { font-family:Georgia,"Times New Roman",serif; font-size:20px; color:#000; }
+  .backhead .q { font-size:11.5px; color:#444; margin-top:3px; }
+  .backhead .q b { color:#222; }
+  .part { margin-bottom:12px; }
+  .part .lab { display:inline-block; font-size:11px; font-weight:800; letter-spacing:.6px; text-transform:uppercase;
+               background:#222; color:#fff; padding:3px 9px; border-radius:3px; margin-bottom:6px; }
+  .part .q2 { font-size:12.5px; color:#222; margin:7px 0 3px; }
+  .part .q2 b { color:#000; }
+  .part .hint { font-size:11px; font-style:italic; color:#777; margin:1px 0 4px; }
+
+  @media print { html{background:#fff;} .print-bar{display:none;}
+    .sheet{width:auto; min-height:0; margin:0; padding:0; box-shadow:none; page-break-after:always; }
+    .sheet:last-of-type{ page-break-after:auto; }
+    @page{ size:letter; margin:0.5in 0.55in; } }
+</style></head><body><div class="sheet"><div class="namebar"><span class="f">Name <span class="ln"></span></span><span class="f">Date <span class="ln"></span></span></div><h1 class="title">Graph of the Week</h1><div class="standline">Standard MS-LS2-3 <span class="sep">&middot;</span> Ocean Food Web <span class="sep">&middot;</span> Who Eats Whom</div><div class="question"><span class="lab">This Week's Question</span><p>In the Antarctic ocean, tiny krill feed almost everything bigger. What share of a predator community&#x27;s diet comes from krill versus other foods?</p></div><div class="legend"><span><span class="sw" style="background:#222"></span>Krill</span><span><span class="sw" style="background:repeating-linear-gradient(45deg,#1c1c1c 0 2px,#fff 2px 5px)"></span>Small fish</span><span><span class="sw" style="background:repeating-linear-gradient(45deg,#1c1c1c 0 1px,transparent 1px 5px),repeating-linear-gradient(-45deg,#1c1c1c 0 1px,#e9e9e9 1px 5px)"></span>Squid</span></div><svg class="chart" style="width:96%" viewBox="0 0 700 250" role="img" aria-label="chart"><defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#1c1c1c" stroke-width="2.6"/></pattern><pattern id="cross" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e9e9e9"/><path d="M0 0 L6 6 M6 0 L0 6" stroke="#1c1c1c" stroke-width="1"/></pattern><pattern id="dots" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#fff"/><circle cx="3" cy="3" r="1.3" fill="#1c1c1c"/></pattern></defs><path d="M350,118 L350.0,24.0 A94,94 0 1 1 294.7,194.0 Z" fill="#222" stroke="#000" stroke-width="1"/><path d="M350,118 L294.7,194.0 A94,94 0 0 1 274.0,62.7 Z" fill="url(#hatch)" stroke="#000" stroke-width="1"/><path d="M350,118 L274.0,62.7 A94,94 0 0 1 350.0,24.0 Z" fill="url(#cross)" stroke="#000" stroke-width="1"/><text x="405.4" y="140.0" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#000" stroke="#fff" stroke-width="2.4" paint-order="stroke">60%</text><text x="292.4" y="131.1" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#000" stroke="#fff" stroke-width="2.4" paint-order="stroke">25%</text><text x="323.5" y="70.1" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#000" stroke="#fff" stroke-width="2.4" paint-order="stroke">15%</text></svg><p class="src">Data: Representative Antarctic predator diet composition patterned on published Southern Ocean food-web studies.</p><div class="firstlook"><span class="fl-lab">First look &mdash; before you flip over</span><div class="row"><b>This graph is about:</b> <span class="u long"></span></div><div class="row"><b>I notice&hellip;</b> <span class="u long"></span></div><div class="row"><b>I wonder&hellip;</b> <span class="u long"></span></div></div></div><div class="sheet"><div class="backhead"><div class="t">Analyze the Graph</div><div class="q"><b>MS-LS2-3</b> &middot; In the Antarctic ocean, tiny krill feed almost everything bigger. What share of a predator community&#x27;s diet comes from krill versus other foods?</div></div><div class="part"><span class="lab">Part A &middot; Analyze the Data</span><div class="q2">Which food source is the largest slice?</div><div class="rule"></div><div class="rule"></div><div class="q2">How much bigger is the krill slice than the squid slice?</div><div class="rule"></div><div class="rule"></div><div class="q2">What fraction of the diet is NOT krill?</div><div class="rule"></div><div class="rule"></div></div><div class="part"><span class="lab">Part B &middot; Claim &middot; Evidence &middot; Reasoning</span><div class="q2"><b>Claim</b> &mdash; answer this week's question in one sentence.</div><p class="hint">The most important food source in this web is…</p><div class="rule"></div><div class="rule"></div><div class="q2"><b>Evidence</b> &mdash; back it up with numbers from the graph.</div><p class="hint">Krill make up about ___% of the diet, while squid make up about ___%.</p><div class="rule"></div><div class="rule"></div><div class="rule"></div><div class="q2"><b>Reasoning</b> &mdash; explain the science behind the data.</div><p class="hint">A food web shows how energy flows from prey to predators, so a species that many animals depend on is a keystone because…</p><div class="rule"></div><div class="rule"></div></div><div class="part"><span class="lab">Part C &middot; Predict &amp; Investigate</span><div class="q2"><b>Predict:</b> If krill disappeared, what would happen to the predators above them?</div><div class="rule"></div><div class="rule"></div><div class="q2"><b>Investigate:</b> How could scientists find out what an ocean animal eats?</div><div class="rule"></div><div class="rule"></div></div><div class="foot"><span>Graph of the Week</span><span class="r">MS-LS2-3 &middot; Ocean Food Web</span></div></div></body></html>

@@ -1,0 +1,1182 @@
+{
+  "standard_code": "8.AF.2",
+  "standard_text": "Solve linear equations in one variable that generate one solution, infinitely many solutions, or no solution; give examples and justify which case results.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "This standard is where students stop treating 'solve' as a hunt for a single number and start reasoning about the STRUCTURE of an equation. The engine underneath every task is the same: simplify each side as far as it will go -- distribute, then collect like terms -- and look at what is left. Three outcomes are possible. If the variable survives with a leftover of the form x = a number, there is exactly one solution. If the variable cancels and leaves a TRUE numeric statement (like 12 = 12 or 0 = 0), every value of x works, so there are infinitely many solutions. If the variable cancels and leaves a FALSE statement (like 3 = 7), no value works, so there is no solution. The whole standard is learning to read that final line and justify the verdict.\n\nSo the progression starts by anchoring the meaning of the final line: given an already-simplified equation, classify it (the Below task) -- this is where a true statement like 12 = 12 gets mistaken for 'no solution' because 'there's no x.' From there students classify equations that need no simplification by comparing the two sides' coefficients and constants directly, then equations that DO require distributing and combining first (the At-proficiency core, where a single sign slip flips the classification). Next the standard turns generative: complete or build an equation to force a chosen number of solutions, and write your own examples for each case with a justification -- the standard literally says 'give examples and justify.' Finally, at the top band, students judge someone else's claim about a multi-step equation and prove it by simplifying both sides completely. The order is deliberate: read the final line, compare simple sides, simplify then compare, generate, then analyze and justify. Underneath all of it runs one habit -- simplify honestly, then let the leftover statement decide. Per the item spec, equations may show a variable on both sides, but students only SIMPLIFY those sides (they are not yet solving variables-on-both-sides), and a calculator is allowed throughout."
+  ,
+    "steps": [
+      {
+        "skill_id": "8AF2-S1",
+        "verb": "classify",
+        "rationale": "The Below-proficiency anchor: given an equation already reduced to its last line (x = a, a true statement, or a false statement), name the number of solutions. Every later task is judged against this reading of the final line, so it comes first."
+      },
+      {
+        "skill_id": "8AF2-S2",
+        "verb": "classify",
+        "rationale": "The Approaching task: classify equations that need no simplification by comparing the two sides directly. Different x-coefficients give one solution; matching coefficients push the decision onto the constants (same = infinite, different = none). This isolates the coefficient-vs-constant logic before any algebra clutters it."
+      },
+      {
+        "skill_id": "8AF2-S3",
+        "verb": "simplify",
+        "rationale": "The At-proficiency core of the standard: distribute and collect like terms on one or both sides, THEN classify. A sign or distribution slip here flips the verdict, so it earns its own step as the fluency spine."
+      },
+      {
+        "skill_id": "8AF2-S4",
+        "verb": "generate",
+        "rationale": "The At-proficiency generative demand: complete an equation's missing values (a, b) to force a chosen number of solutions. Building a case is a different skill from classifying a given one, and it exposes whether students understand what each case requires."
+      },
+      {
+        "skill_id": "8AF2-S5",
+        "verb": "give examples",
+        "rationale": "The standard's own words 'give examples' -- write your OWN equation for each case, from scratch, and justify it. Open production (vs completing a template) is where the confusion between 'no solution' and 'different coefficients' surfaces, so it deserves a dedicated step."
+      },
+      {
+        "skill_id": "8AF2-S6",
+        "verb": "justify",
+        "rationale": "The Above-proficiency payoff: judge someone's claim about a multi-step equation and justify by simplifying both sides completely. Analyzing and proving a claim is the highest form of the standard's 'justify which case results.'"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "8AF2-F1",
+      "name": "Simplify one side of a linear equation by distributing and combining like terms",
+      "column": "foundation",
+      "parent_standard": "8.AF.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Distribute a factor over a parenthesis and combine like terms on one side of an expression.",
+        "check_question": "Simplify 3(x + 2) + 4x."
+      },
+      "i_do_script": "Before I can decide how many solutions an equation has, I have to clean up each side. Cleaning up means two moves: distribute, then combine like terms. Watch: 4((1/2)x + 3). The 4 multiplies BOTH terms inside -- 4 times (1/2)x is 2x, and 4 times 3 is 12 -- so it becomes 2x + 12. Then I combine like terms: the x-terms live together and the plain numbers live together, but they never mix. On 3x + 12 - x, the x-terms 3x and -x make 2x, and 12 stands alone, so it is 2x + 12. Every term inside a parenthesis gets multiplied, and only same-type terms combine.",
+      "canonical_error": {
+        "pattern": "Distributes to the first term only, or combines a variable term with a plain number",
+        "example": "Writes 4((1/2)x + 3) as 2x + 3 (never multiplied the 3), or simplifies 3x + 12 - x to 14x by adding everything in sight",
+        "why": "The student treats the outside number as attached to just the leading term, or adds every number regardless of whether it has a variable. Both terms inside must be multiplied, and 2x and 12 are unlike terms that stay separate."
+      },
+      "item_template": "A single expression needing one distribution and/or combining 2-3 like terms. Student returns the simplified form (coefficient-x + constant). Short numeric response; good short fluency bank.",
+      "sample_items": [
+        { "stem": "Simplify 4((1/2)x + 3).", "answer": "2x + 12" },
+        { "stem": "Simplify 3x + 12 - x.", "answer": "2x + 12" },
+        { "stem": "Simplify 2(x + 5).", "answer": "2x + 10" },
+        { "stem": "Simplify 7(2 + 5x).", "answer": "35x + 14" },
+        { "stem": "Simplify -3(x - 4).", "answer": "-3x + 12" },
+        { "stem": "Simplify 5x + 3x - 2.", "answer": "8x - 2" }
+      ],
+      "redirect_script": {
+        "stop": "Wait -- did the outside number reach every term?",
+        "prompt": "Draw an arrow from the outside number to each term inside, then say each product out loud. After distributing, circle the x-terms in one color and the plain numbers in another, and only combine same-color terms.",
+        "praise": "You multiplied every term and kept the x-terms and numbers in separate piles -- that's a clean simplification."
+      },
+      "vocabulary": [
+        { "term": "Distributive property", "definition": "The rule that the number outside parentheses multiplies each term inside: a(b + c) = ab + ac." },
+        { "term": "Like terms", "definition": "Terms with the exact same variable part, so their number parts can be added." },
+        { "term": "Simplify", "definition": "Rewrite a side as one x-term and one number by distributing and combining." }
+      ],
+      "next_steps": { "if_pass": "8AF2-S1", "if_fail": "Review distributing and combining like terms (7.AF.1)." },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write '2(3x + 4) - x.'" },
+        { "kind": "ask", "text": "How many terms are inside the parentheses? So how many products?" },
+        { "kind": "say", "text": "Two products: 2 times 3x is 6x, 2 times 4 is 8, giving 6x + 8 - x. Then combine the x-terms 6x - x to get 5x + 8." },
+        { "kind": "watch", "text": "If the student writes 6x + 4 (forgot to multiply the 4), ask 'did the 2 reach the second term?'" },
+        { "kind": "ask", "text": "Your turn: 5(x - 2) + 3x. Distribute, then combine." }
+      ]
+    },
+    {
+      "skill_id": "8AF2-F2",
+      "name": "Interpret a numeric statement as always true or never true",
+      "column": "foundation",
+      "parent_standard": "8.AF.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Understand that an equation says two amounts are equal, and tell a true number sentence from a false one.",
+        "check_question": "Is 5 = 5 true? Is 4 = 9 true?"
+      },
+      "i_do_script": "When both sides of an equation end up with NO variable left, I just read the number sentence that remains. 5 = 5 is always true, which means every value of x made it work -- infinitely many solutions. 3 = 7 is never true, so no value of x works -- no solution. The variable disappearing is not a dead end; it is the clue to look at whether the leftover statement is true or false. A true leftover means all values; a false leftover means none.",
+      "canonical_error": {
+        "pattern": "Reads a variable-free TRUE statement as 'no solution,' or reads 0 = 0 as x = 0",
+        "example": "Sees a final line of 12 = 12 and says 'there's no x, so there's no solution,' or turns 0 = 0 into the single solution x = 0",
+        "why": "The student expects every answer to look like x = a number, so a true statement with no variable feels like nothing worked, when in fact everything worked. A true leftover means infinitely many solutions, not zero and not one."
+      },
+      "item_template": "A bare numeric statement (a = a, a = b, or 0 = 0) that a student labels always true or never true, and the number of solutions it signals. Short response; fluency bank for reading final lines.",
+      "sample_items": [
+        { "stem": "Is 5 = 5 always true or never true?", "answer": "Always true (so infinitely many solutions)." },
+        { "stem": "Is 3 = 7 always true or never true?", "answer": "Never true (so no solution)." },
+        { "stem": "The variables cancel and you are left with 0 = 0. True or false, and how many solutions?", "answer": "True -- infinitely many solutions." },
+        { "stem": "The variables cancel and you are left with 8 = 2. True or false, and how many solutions?", "answer": "False -- no solution." },
+        { "stem": "Is 12 = 12 true or false?", "answer": "True (an always-true statement)." }
+      ],
+      "redirect_script": {
+        "stop": "Hold on -- is that leftover statement true or false?",
+        "prompt": "Cover the x's for a second. Just ask: is the number sentence that's left actually true? A true one (like 12 = 12) means EVERY value works -- infinitely many. A false one (like 3 = 7) means none.",
+        "praise": "You read the leftover statement and let it decide -- true means all values, false means none."
+      },
+      "vocabulary": [
+        { "term": "Always true (identity)", "definition": "A statement like 5 = 5 that is true no matter what x is, signaling infinitely many solutions." },
+        { "term": "Never true", "definition": "A statement like 3 = 7 that can never hold, signaling no solution." },
+        { "term": "Solution", "definition": "A value of the variable that makes the equation a true statement." }
+      ],
+      "next_steps": { "if_pass": "8AF2-S1", "if_fail": "Review the meaning of the equals sign and true/false number sentences (6.AF.2)." },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write two final lines: '6 = 6' and '6 = 10.'" },
+        { "kind": "ask", "text": "Which of these is always true? Which can never be true?" },
+        { "kind": "say", "text": "6 = 6 is always true, so every x works -- infinitely many solutions. 6 = 10 is never true, so no x works -- no solution." },
+        { "kind": "watch", "text": "If a student says 6 = 6 has 'no solution because there's no x,' ask 'if it's always true, how many values of x make it work?'" },
+        { "kind": "ask", "text": "Your turn: a problem ends in 0 = 0. Always true or never true? How many solutions?" }
+      ]
+    },
+    {
+      "skill_id": "8AF2-S1",
+      "name": "Classify an already-simplified equation by its number of solutions",
+      "column": "looking_back",
+      "parent_standard": "8.AF.2",
+      "engine_stems": [1],
+      "prerequisite_skill": { "type": "skill", "skill_id": "8AF2-F2" },
+      "i_do_script": "Once an equation is boiled down to its last line, three things can happen, and each has a name. If I get x = a number (like x = 5), that is exactly ONE solution. If the x's cancel and I'm left with a true statement (like 12 = 12 or 0 = 0), EVERY value works -- infinitely many solutions. If the x's cancel and I'm left with a false statement (like 3 = 7), NO value works -- no solution. Watch: 9x = 9x. Subtracting 9x from both sides gives 0 = 0, which is always true, so this has infinitely many solutions -- not zero, even though no x is left.",
+      "canonical_error": {
+        "pattern": "Reads a true leftover statement as 'no solution,' or treats 0 = 0 as the single solution x = 0",
+        "example": "An equation reaches the line 12 = 12 and the student picks 'no solution because 12 = 12' or 'the solution is x = 0'",
+        "why": "The student expects an answer shaped like x = a number, so a true statement with no variable reads as 'nothing worked.' In fact a true leftover means everything worked -- infinitely many solutions -- and 0 = 0 is not a value of x."
+      },
+      "item_template": "An equation shown at its simplified final line (x = a, a = a, or a = b) or one short cancel-step away. Student states one / none / infinitely many. MC / dropdown.",
+      "sample_items": [
+        {
+          "stem": "An equation simplifies to x = -4. How many solutions does it have?",
+          "answer": "One solution",
+          "choices": [
+            "No solution",
+            "One solution",
+            "Infinitely many solutions",
+            "Cannot be determined"
+          ],
+          "distractor_logic": "x = a specific number is exactly one solution. Distractors reward confusing a clean value with the cancel-to-a-statement cases."
+        },
+        {
+          "stem": "The equation 9x = 9x simplifies to 0 = 0. How many solutions does it have?",
+          "answer": "Infinitely many solutions",
+          "choices": [
+            "No solution",
+            "One solution",
+            "Between 500 and 1000 solutions",
+            "Infinitely many solutions"
+          ],
+          "distractor_logic": "0 = 0 is always true, so every value of x works. 'No solution' rewards the 'there's no x left' misread; 'one solution' rewards reading 0 = 0 as x = 0."
+        },
+        {
+          "stem": "An equation's final line is 7 = 2. How many solutions does it have?",
+          "answer": "No solution",
+          "choices": [
+            "No solution",
+            "One solution",
+            "Infinitely many solutions",
+            "Cannot be determined"
+          ],
+          "distractor_logic": "7 = 2 is false, so no value of x can make it true. Distractors reward not checking whether the leftover statement is true."
+        },
+        {
+          "stem": "Jared simplifies both sides of 4((1/2)x + 3) = 3x + 12 - x and reaches 12 = 12. How many solutions does the equation have?",
+          "answer": "Infinitely many solutions because 12 = 12 is always true.",
+          "choices": [
+            "The solution is x = 0.",
+            "There is no solution because 12 = 12.",
+            "Infinitely many solutions because 12 = 12 is always true.",
+            "The solution is the ordered pair (12, 12)."
+          ],
+          "distractor_logic": "Spec item. 12 = 12 is a true statement, so every value of x works. 'x = 0' and 'no solution' are the two classic misreads; the ordered-pair option confuses this with graphing."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Before you answer -- is that last line true or false?",
+        "prompt": "Look only at the final line. If it's x = a number, that's ONE solution. If the x's canceled, ask if what's left is true (12 = 12 -> infinitely many) or false (3 = 7 -> none). A true statement means every value works.",
+        "praise": "You read the final line correctly -- a true leftover means infinitely many, not zero."
+      },
+      "vocabulary": [
+        { "term": "One solution", "definition": "Exactly one value of x makes the equation true, shown by a final line like x = 5." },
+        { "term": "Infinitely many solutions", "definition": "Every value of x works, shown when the variable cancels to a true statement like 0 = 0." },
+        { "term": "No solution", "definition": "No value of x works, shown when the variable cancels to a false statement like 3 = 7." }
+      ],
+      "next_steps": { "if_pass": "8AF2-S2", "if_fail": "8AF2-F2" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write three final lines: 'x = 6', '5 = 5', and '4 = 9.'" },
+        { "kind": "ask", "text": "For each, is the variable still there or did it cancel? Is the statement true?" },
+        { "kind": "say", "text": "x = 6 is one solution. 5 = 5 is always true, so infinitely many. 4 = 9 is false, so no solution." },
+        { "kind": "watch", "text": "If a student calls 5 = 5 'no solution,' ask 'is it true? If it's always true, how many values of x work?'" },
+        { "kind": "ask", "text": "Your turn: an equation ends in 0 = 0. Which of the three cases is it?" }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "An equation simplifies to x = 3. One, none, or infinitely many solutions?", "answer": "One solution." },
+        { "difficulty": "warm_up", "stem": "A final line reads 6 = 6. Is it true, and how many solutions does that mean?", "answer": "True -- infinitely many solutions." },
+        { "difficulty": "core", "stem": "An equation's last line is 5 = 8. How many solutions?", "answer": "No solution (5 = 8 is false).", "notes": "False leftover statement." },
+        { "difficulty": "core", "stem": "The equation 7x = 7x simplifies to 0 = 0. How many solutions?", "answer": "Infinitely many solutions.", "notes": "Baits the 'no x, so no solution' misread." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Priya's equation simplified to 8 = 8. Find and fix her mistake.",
+          "shown_work": [
+            "Priya wrote: 'The last line is 8 = 8.'",
+            "'There is no x left, so there is no solution.'"
+          ],
+          "answer": "8 = 8 is always true, so EVERY value of x works -- infinitely many solutions, not none. A variable-free TRUE statement signals infinitely many solutions.",
+          "notes": "Canonical error: true leftover misread as no solution."
+        },
+        { "difficulty": "core", "stem": "An equation simplifies to x = 0. How many solutions, and how is this different from a line that reads 0 = 0?", "answer": "x = 0 is exactly one solution (the single value 0). 0 = 0 is a true statement with no variable, which is infinitely many.", "notes": "Separates x = 0 from 0 = 0." },
+        { "difficulty": "stretch", "stem": "Match each final line to its case: (i) x = -2, (ii) 4 = 4, (iii) 4 = 10.", "answer": "(i) one solution, (ii) infinitely many, (iii) no solution.", "notes": "All three cases at once." },
+        { "difficulty": "stretch", "stem": "Write a final line that would mean 'no solution,' and one that would mean 'infinitely many.' Explain the difference.", "answer": "Sample: 3 = 5 (false -> no solution) and 7 = 7 (true -> infinitely many). A false leftover means no value works; a true one means every value works.", "notes": "Reversed direction -- produce the leftover statements." }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Read the Last Line",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": ["Card set: 9 cards each showing an equation's final line"],
+          "instructions": "1. Each card shows the LAST line of a solved equation (like 'x = 5', '6 = 6', or '3 = 8').\n2. Decide whether the variable is still there or canceled, and whether any leftover statement is true.\n3. Sort each card into 'One solution', 'Infinitely many', or 'No solution.'\n4. Rule: to place a card you must say out loud why -- 'true statement, so all values.'\n5. Debrief: which cards tricked someone into 'no solution' just because no x was left?",
+          "content": {
+            "categories": ["One solution", "Infinitely many", "No solution"],
+            "cards": [
+              { "text": "x = 5", "category": "One solution" },
+              { "text": "x = -4", "category": "One solution" },
+              { "text": "0 = 0", "category": "Infinitely many" },
+              { "text": "12 = 12", "category": "Infinitely many" },
+              { "text": "6 = 6", "category": "Infinitely many" },
+              { "text": "3 = 7", "category": "No solution" },
+              { "text": "8 = 2", "category": "No solution" },
+              { "text": "5 = 9", "category": "No solution" },
+              { "text": "x = 0", "category": "One solution" }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "No X Is Not No Solution",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Priya's 8 = 8 conclusion"],
+          "instructions": "1. Read Priya's claim that 8 = 8 means 'no solution because there's no x.'\n2. Decide whether 8 = 8 is true or false.\n3. If it's always true, write how many values of x actually work.\n4. Explain in one sentence why a true leftover statement means infinitely many, not zero.",
+          "content": {
+            "worked_problem": "An equation simplifies to 8 = 8. Priya wrote 'no solution -- there's no x.'",
+            "error_step": "Priya treated the missing variable as meaning nothing worked.",
+            "why": "8 = 8 is always true, so every value of x makes the original equation true: infinitely many solutions."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "Sorting true, false, and x = a final lines targets the exact misread (true statement labeled 'no solution') at the point of the error." },
+        { "strategy_id": "strat-math-010", "why": "Choral response on 'true statement means...?' / 'false statement means...?' hard-wires the reading of the final line." },
+        { "strategy_id": "strat-math-002", "why": "A quick number talk on 'is 0 = 0 true?' surfaces and repairs the 0 = 0 equals x = 0 confusion before it spreads." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is the variable still in the final line, or did it cancel?",
+          "If it canceled, is what's left true or false?",
+          "How many values of x make a true statement work?",
+          "What is the difference between x = 0 and 0 = 0?",
+          "Which case is this: one, none, or infinitely many?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reads a true leftover statement (like 12 = 12) as 'no solution,' or treats 0 = 0 as x = 0.",
+            "say": "Look only at the final line. If it's x = a number, that's ONE solution. If the x's canceled, ask if what's left is true (12 = 12 -> infinitely many) or false (3 = 7 -> none). A true statement means every value works.",
+            "praise": "You read the final line correctly -- a true leftover means infinitely many, not zero."
+          },
+          {
+            "if_you_see": "Student sees a final line like x = 0 and calls it infinitely many or no solution.",
+            "say": "x = 0 is a real value of x -- that's exactly one solution. It's only 0 = 0 (no variable) that means infinitely many.",
+            "praise": "You kept x = 0 as one solution and didn't confuse it with 0 = 0 -- careful reading."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A final line reads 4 = 4. How many solutions?",
+            "look_for": "Infinitely many (it's always true). 'No solution' diagnoses the no-x misread."
+          },
+          {
+            "prompt": "A final line reads 4 = 9. How many solutions?",
+            "look_for": "No solution (it's false). 'Infinitely many' means the student didn't check the statement's truth."
+          }
+        ]
+      },
+      "fluency_source": "8AF2-F1",
+      "sentence_starters": [
+        "The final line is ___, and the variable ___ (canceled / is still there).",
+        "That statement is ___, so the equation has ___ solutions."
+      ],
+      "worked_solution": {
+        "stem": "How many solutions does 6x + 4 = 6x + 4 have, and why?",
+        "answer": "Infinitely many solutions.",
+        "steps": [
+          { "math": "start: 6x + 4 = 6x + 4", "annotation": "Both sides are already identical." },
+          { "math": "subtract 6x from both sides: 4 = 4", "annotation": "The matching x-terms cancel." },
+          { "math": "4 = 4 is always true", "annotation": "No variable is left and the statement is true." },
+          { "math": "-> infinitely many solutions", "annotation": "An always-true leftover means every value of x works." }
+        ]
+      },
+      "faded_example": {
+        "stem": "An equation simplifies to its final line 3 = 10. How many solutions, and why?",
+        "answer": "No solution -- 3 = 10 is false.",
+        "steps": [
+          { "math": "leftover statement: 3 = 10", "annotation": "The variable has already canceled.", "given": true },
+          { "math": "check the number sentence: is 3 = 10 true?", "annotation": "Read whether the statement can ever hold.", "given": true },
+          { "math": null, "annotation": "State whether 3 = 10 is true or false.", "given": false },
+          { "math": null, "annotation": "A false leftover means how many solutions? Write it.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF2-S2",
+      "name": "Classify equations that need no simplification by comparing coefficients and constants",
+      "column": "on_grade",
+      "parent_standard": "8.AF.2",
+      "engine_stems": [2],
+      "prerequisite_skill": { "type": "skill", "skill_id": "8AF2-S1" },
+      "i_do_script": "When each side is already one x-term and one number, I don't have to solve -- I just compare. First look at the x-coefficients. If they are DIFFERENT, like 3x = 2x + 4, there is exactly one solution. If they are the SAME, the x's will cancel, so I look at the constants: if the constants also match, like 5x = 5x (that's 5x = 5x + 0), it's infinitely many; if the constants differ, like 5x = 5x + 5, it's no solution. So: different coefficients -> one; same coefficient, same constant -> infinitely many; same coefficient, different constant -> none.",
+      "canonical_error": {
+        "pattern": "Sees the same variable term on both sides and jumps to 'infinitely many' without checking the constants",
+        "example": "Labels 5x = 5x + 5 as infinitely many because both sides have 5x, ignoring that the constants 0 and 5 disagree",
+        "why": "The student stops after matching the coefficients and forgets that when the x's cancel, the CONSTANTS decide between infinitely many (they match) and no solution (they don't). Matching x-terms alone is not enough."
+      },
+      "item_template": "Equations already in the form (coeff)x (+ const) = (coeff)x (+ const), no distribution or combining needed. Student classifies one or selects all of a given case. MC / multi-select.",
+      "sample_items": [
+        {
+          "stem": "Select all equations that have exactly one solution.\n\n3x = 2x + 4\n3x = 3x\n5x = 3x + 5\n5x = 5x + 0\n5x = 5x + 5",
+          "answer": "3x = 2x + 4 and 5x = 3x + 5",
+          "distractor_logic": "Spec item. One solution requires DIFFERENT x-coefficients: 3x = 2x + 4 and 5x = 3x + 5. 3x = 3x and 5x = 5x + 0 are infinitely many; 5x = 5x + 5 is no solution."
+        },
+        {
+          "stem": "Classify 5x = 5x + 5 (one, none, or infinitely many solutions).",
+          "answer": "No solution",
+          "distractor_logic": "Same coefficient (5x on both sides) but constants 0 and 5 disagree, so the x's cancel to a false statement. 'Infinitely many' is the canonical trap."
+        },
+        {
+          "stem": "Classify 6x + 1 = 6x + 1 (one, none, or infinitely many solutions).",
+          "answer": "Infinitely many solutions",
+          "distractor_logic": "Identical sides -- same coefficient and same constant -- so every value works."
+        },
+        {
+          "stem": "Classify 7x = 2x (one, none, or infinitely many solutions).",
+          "answer": "One solution",
+          "distractor_logic": "Different coefficients (7 and 2), so exactly one solution (x = 0). Some students wrongly call it 'no solution' because there is no constant."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Same x on both sides -- but did you check the numbers?",
+        "prompt": "When the coefficients match, the x's cancel. Now compare the CONSTANTS: if they're equal it's infinitely many, if they're different it's no solution. Cover the x-terms and read what's left.",
+        "praise": "You checked the constants after matching the coefficients -- that's what separates infinitely many from none."
+      },
+      "vocabulary": [
+        { "term": "Coefficient", "definition": "The number multiplied by the variable, like the 5 in 5x." },
+        { "term": "Constant", "definition": "A plain number with no variable, like the + 5 in 5x + 5." },
+        { "term": "Equivalent equation", "definition": "An equation with the same solutions; identical sides are equivalent to a true statement like 0 = 0." }
+      ],
+      "next_steps": { "if_pass": "8AF2-S3", "if_fail": "8AF2-S1" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write '4x = 4x + 7' and '4x = 4x' side by side." },
+        { "kind": "ask", "text": "Are the x-coefficients the same in each? Then what decides the answer?" },
+        { "kind": "say", "text": "Both have 4x, so the x's cancel. On the left one, constants 0 and 7 differ -> no solution. On the right, constants match -> infinitely many." },
+        { "kind": "watch", "text": "If a student calls 4x = 4x + 7 'infinitely many,' say 'the x's cancel -- is 0 = 7 true?'" },
+        { "kind": "ask", "text": "Your turn: classify 2x + 3 = 2x + 8, and then 6x = 5x + 1." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Do 3x and 2x have the same coefficient?", "answer": "No -- 3 and 2 are different, so an equation 3x = 2x + (number) has one solution." },
+        { "difficulty": "warm_up", "stem": "Classify 8x = 8x.", "answer": "Infinitely many solutions (identical sides)." },
+        { "difficulty": "core", "stem": "Classify 4x = 4x + 1.", "answer": "No solution (same coefficient, constants 0 and 1 differ).", "notes": "The infinite-vs-none decision." },
+        { "difficulty": "core", "stem": "Classify 5x = 3x + 5.", "answer": "One solution (coefficients 5 and 3 differ).", "notes": "Different coefficients -> one." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Leo classified 7x = 7x + 3. Find and fix his mistake.",
+          "shown_work": [
+            "Leo wrote: 'Both sides have 7x, so it's infinitely many solutions.'"
+          ],
+          "answer": "Matching x-terms cancel, leaving 0 = 3, which is false. Same coefficient but DIFFERENT constants means NO solution, not infinitely many.",
+          "notes": "Canonical error: same coefficient assumed to mean infinitely many."
+        },
+        { "difficulty": "core", "stem": "Select all with infinitely many solutions: 2x = 2x + 0; 3x = 3x + 4; 9x = 4x.", "answer": "Only 2x = 2x + 0 (same coefficient and same constant).", "notes": "3x = 3x + 4 is none; 9x = 4x is one." },
+        { "difficulty": "stretch", "stem": "Without solving, order these by number of solutions from fewest to most: 6x = 6x + 2, 6x = 2x, 6x = 6x. ", "answer": "6x = 6x + 2 (none, 0), then 6x = 2x (one), then 6x = 6x (infinitely many).", "notes": "Compares all three cases." },
+        { "difficulty": "stretch", "stem": "For 4x = 4x + c, what value of c gives infinitely many solutions, and what values give no solution?", "answer": "c = 0 gives infinitely many; any c not equal to 0 gives no solution.", "notes": "Reversed direction -- reason about the constant." }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Coefficient First, Then Constant",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": ["Card set: 9 already-simplified equations"],
+          "instructions": "1. Each card shows an equation like 5x = 5x + 5 or 3x = 2x + 4 (no simplifying needed).\n2. First check: are the x-coefficients the same or different?\n3. If different, sort to 'One solution.' If the same, check the constants and sort to 'Infinitely many' or 'No solution.'\n4. To place a card you must say the rule you used.\n5. Debrief: which same-coefficient cards were 'no solution,' and how did you catch them?",
+          "content": {
+            "categories": ["One solution", "Infinitely many", "No solution"],
+            "cards": [
+              { "text": "3x = 2x + 4", "category": "One solution" },
+              { "text": "5x = 3x + 5", "category": "One solution" },
+              { "text": "7x = 2x", "category": "One solution" },
+              { "text": "3x = 3x", "category": "Infinitely many" },
+              { "text": "5x = 5x + 0", "category": "Infinitely many" },
+              { "text": "6x + 1 = 6x + 1", "category": "Infinitely many" },
+              { "text": "5x = 5x + 5", "category": "No solution" },
+              { "text": "4x = 4x + 1", "category": "No solution" },
+              { "text": "2x + 3 = 2x + 8", "category": "No solution" }
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "title": "Same or Different?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": ["Card set: 6 equations and 3 case labels"],
+          "instructions": "1. Lay out the equation cards and the three case labels (One / Infinitely many / No solution).\n2. Match each equation to its case by comparing coefficients, then constants.\n3. Two equations share a case -- find both.\n4. To claim a match, name whether the coefficients matched and what the constants did.\n5. Debrief: what's the one question you always ask AFTER the coefficients match?",
+          "content": {
+            "pairs": [
+              { "left": "3x = 2x + 4", "right": "One solution" },
+              { "left": "7x = 2x", "right": "One solution" },
+              { "left": "6x + 1 = 6x + 1", "right": "Infinitely many" },
+              { "left": "5x = 5x + 0", "right": "Infinitely many" },
+              { "left": "5x = 5x + 5", "right": "No solution" },
+              { "left": "4x = 4x + 1", "right": "No solution" }
+            ],
+            "decoys": ["Two solutions", "Between 10 and 20 solutions"]
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "The 'same coefficient means infinitely many' bug is precise and baitable, so find-and-fix on same-coefficient cards targets it directly." },
+        { "strategy_id": "strat-math-010", "why": "Choral drill of the decision -- 'coefficients different?' 'same? then check constants' -- builds the two-step habit into automaticity." },
+        { "strategy_id": "strat-math-001", "why": "Think-pair-share on 'why isn't 5x = 5x + 5 infinitely many?' lets partners surface and correct the constant-check gap." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Are the x-coefficients the same or different?",
+          "If they're the same, what do the x's do?",
+          "Now what do the constants have to be for infinitely many? For none?",
+          "Why is 5x = 5x + 5 not infinitely many?",
+          "Could an equation with different coefficients ever have no solution?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student sees the same x-term on both sides and jumps to 'infinitely many' without checking the constants.",
+            "say": "When the coefficients match, the x's cancel. Now compare the CONSTANTS: if they're equal it's infinitely many, if they're different it's no solution. Cover the x-terms and read what's left.",
+            "praise": "You checked the constants after matching the coefficients -- that's what separates infinitely many from none."
+          },
+          {
+            "if_you_see": "Student calls an equation with different coefficients 'no solution' because there's no constant (like 7x = 2x).",
+            "say": "Different coefficients always give exactly one solution -- here the x's don't cancel, so solve 7x = 2x and you get x = 0.",
+            "praise": "You saw the coefficients differ and landed on one solution -- that's the rule."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Classify 9x = 9x + 2.",
+            "look_for": "No solution (same coefficient, constants differ). 'Infinitely many' is the canonical error."
+          },
+          {
+            "prompt": "Classify 8x = 3x.",
+            "look_for": "One solution (different coefficients; x = 0). 'No solution' means the student misread the missing constant."
+          }
+        ]
+      },
+      "fluency_source": "8AF2-F1",
+      "sentence_starters": [
+        "The coefficients are ___ (same / different), so ___.",
+        "Since the constants are ___, the equation has ___ solutions."
+      ],
+      "worked_solution": {
+        "stem": "Classify 5x = 5x + 5.",
+        "answer": "No solution.",
+        "steps": [
+          { "math": "compare coefficients: 5x and 5x are the same", "annotation": "Matching x-terms will cancel." },
+          { "math": "subtract 5x from both sides: 0 = 5", "annotation": "Left constant 0, right constant 5." },
+          { "math": "0 = 5 is false", "annotation": "A false leftover means no value works." },
+          { "math": "-> no solution", "annotation": "Same coefficient, different constant = no solution." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Classify 4x = 4x + 1.",
+        "answer": "No solution.",
+        "steps": [
+          { "math": "compare coefficients: both sides have 4x", "annotation": "The x-coefficients match, so the x's cancel.", "given": true },
+          { "math": "subtract 4x: 0 = 1", "annotation": "Compare the constants.", "given": true },
+          { "math": null, "annotation": "Is 0 = 1 true or false?", "given": false },
+          { "math": null, "annotation": "Classify the equation from the leftover statement.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF2-S3",
+      "name": "Simplify both sides, then classify one, none, or infinitely many solutions",
+      "column": "on_grade",
+      "parent_standard": "8.AF.2",
+      "engine_stems": [4],
+      "prerequisite_skill": { "type": "skill", "skill_id": "8AF2-S2" },
+      "i_do_script": "Most equations don't arrive tidy -- I have to distribute and combine on each side FIRST, then compare like before. Watch: -4(x + 3) = -12 - 4x. Left side: -4 times x is -4x, -4 times 3 is -12, giving -4x - 12. Right side: -12 - 4x is the same thing, -4x - 12. The sides are identical, so infinitely many solutions. Now a trap: -(3 - 6b) = 6b + 5. The leading minus flips both signs: -(3 - 6b) = -3 + 6b, which is 6b - 3. The right side is 6b + 5. Same coefficient 6b, but -3 is not 5 -- no solution. The rule: simplify honestly, because one sign slip changes the whole verdict.",
+      "canonical_error": {
+        "pattern": "A sign or distribution slip while simplifying produces the wrong leftover statement, so the equation is misclassified",
+        "example": "For -(3 - 6b) = 6b + 5 the student writes -3 - 6b (missing that -(-6b) = +6b), gets -3 - 6b = 6b + 5 with different coefficients, and calls it 'one solution' instead of no solution",
+        "why": "Classification is only as trustworthy as the simplification. A single mishandled sign changes the x-coefficient or constant, flipping none into one (or infinitely many into none). Both sides must be expanded exactly before comparing."
+      },
+      "item_template": "Equations needing distribution and/or combining on one or both sides (variables may appear on both sides but only to simplify, per the spec). Student simplifies, then classifies or selects all of a case. MC / multi-select.",
+      "sample_items": [
+        {
+          "stem": "Select all equations that have no solution.\n\n7(2 + 5x) = 3x + 14\n36 - 7p = -7(p - 5)\n-4(x + 3) = -12 - 4x\n8x + 38 = -3(-6 - 4x)\n-(3 - 6b) = 6b + 5",
+          "answer": "36 - 7p = -7(p - 5) and -(3 - 6b) = 6b + 5",
+          "distractor_logic": "Spec item. 36 - 7p = -7p + 36 vs -7p + 35 (none); -(3 - 6b) = 6b - 3 vs 6b + 5 (none). The other three: 7(2 + 5x) = 35x + 14 vs 3x + 14 (one); -4(x + 3) = -4x - 12 vs -4x - 12 (infinitely many); 8x + 38 vs 12x + 18 (one)."
+        },
+        {
+          "stem": "Classify 4((1/2)x + 3) = 3x + 12 - x (one, none, or infinitely many solutions).",
+          "answer": "Infinitely many solutions",
+          "distractor_logic": "Left simplifies to 2x + 12; right 3x + 12 - x is also 2x + 12. Identical sides -> infinitely many."
+        },
+        {
+          "stem": "Classify 2(x + 3) = 2x + 5 (one, none, or infinitely many solutions).",
+          "answer": "No solution",
+          "distractor_logic": "Left is 2x + 6, right 2x + 5; same coefficient, constants 6 and 5 differ -> no solution. 'Infinitely many' rewards stopping at the matching 2x."
+        },
+        {
+          "stem": "Classify 3(x + 1) = 2x + 3 (one, none, or infinitely many solutions).",
+          "answer": "One solution",
+          "distractor_logic": "Left is 3x + 3, right 2x + 3; different coefficients (3 and 2) -> exactly one solution (x = 0)."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Hold on -- did you distribute every sign correctly?",
+        "prompt": "Rewrite each side fully before you compare. Watch the leading minus: -(3 - 6b) flips BOTH signs to -3 + 6b. Say each product with its sign out loud, then compare the clean sides.",
+        "praise": "You simplified both sides exactly, signs and all -- now the classification is trustworthy."
+      },
+      "vocabulary": [
+        { "term": "Linear equation", "definition": "An equation where the variable appears only to the first power, like 2(x + 3) = 2x + 5." },
+        { "term": "Simplify both sides", "definition": "Distribute and combine like terms on the left and the right until each is one x-term and one number." },
+        { "term": "Equivalent equation", "definition": "The simpler equation you get after honest simplification; it has the same number of solutions as the original." }
+      ],
+      "next_steps": { "if_pass": "8AF2-S4", "if_fail": "8AF2-S2" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write '-4(x + 3) = -12 - 4x.'" },
+        { "kind": "ask", "text": "What do we do to each side before deciding anything?" },
+        { "kind": "say", "text": "Left: -4(x + 3) = -4x - 12. Right: -12 - 4x = -4x - 12. The sides are identical, so infinitely many solutions." },
+        { "kind": "watch", "text": "If a student writes -4x + 12 on the left, ask 'what is -4 times +3?'" },
+        { "kind": "ask", "text": "Your turn: classify 2(x + 3) = 2x + 5, then -(3 - 6b) = 6b + 5." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Simplify each side of 3(x + 2) = 3x + 6, then say if the sides match.", "answer": "Left 3x + 6, right 3x + 6 -- identical." },
+        { "difficulty": "warm_up", "stem": "Simplify -(3 - 6b).", "answer": "-3 + 6b (which is 6b - 3); the leading minus flips both signs." },
+        { "difficulty": "core", "stem": "Classify 5(x - 2) = 5x - 10.", "answer": "Infinitely many solutions (both sides 5x - 10).", "notes": "Identical after distributing." },
+        { "difficulty": "core", "stem": "Classify 4x + 2(x + 1) = 6x + 5.", "answer": "No solution (left 6x + 2, right 6x + 5).", "notes": "Combine on the left, then compare constants." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Mara classified -(2 - 5x) = 5x + 6. Find and fix her mistake.",
+          "shown_work": [
+            "Mara wrote: '-(2 - 5x) = -2 - 5x.'",
+            "'-2 - 5x = 5x + 6 has different x-terms, so one solution.'"
+          ],
+          "answer": "The leading minus flips BOTH signs: -(2 - 5x) = -2 + 5x = 5x - 2. Then 5x - 2 = 5x + 6 has the same coefficient but -2 is not 6, so it's NO solution, not one.",
+          "notes": "Canonical error: sign slip on distribution flips the classification."
+        },
+        { "difficulty": "core", "stem": "Classify 7(2 + 5x) = 3x + 14.", "answer": "One solution (left 35x + 14, right 3x + 14; coefficients differ).", "notes": "Spec-derived; different coefficients." },
+        { "difficulty": "stretch", "stem": "Classify 8x + 38 = -3(-6 - 4x) and explain each simplification step.", "answer": "Right: -3(-6 - 4x) = 18 + 12x = 12x + 18. Left 8x + 38 vs 12x + 18; coefficients 8 and 12 differ -> one solution.", "notes": "Two negative-times-negative products on the right." },
+        { "difficulty": "stretch", "stem": "Change one number on the right of 6(x + 2) = 6x + 12 so it becomes 'no solution' instead of infinitely many. Justify.", "answer": "Sample: 6(x + 2) = 6x + 5. Left is 6x + 12; now 12 is not 5, so same coefficient with different constants -> no solution.", "notes": "Reversed direction -- engineer a case by editing a constant." }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Simplify First, Then Decide",
+          "time_minutes": 14,
+          "grouping": "pairs",
+          "materials": ["Equation cards (each needs distributing/combining)", "Two-column mat: 'Simplify each side' / 'Compare'"],
+          "instructions": "1. Draw an equation card like -4(x + 3) = -12 - 4x.\n2. On the 'Simplify each side' column, distribute and combine the LEFT, then the RIGHT -- one x-term and one number each.\n3. Move to 'Compare' only when both sides are clean: same coefficient? then check constants.\n4. Write the case (one / none / infinitely many) and the leftover statement that proves it.\n5. Debrief: on which card did a sign slip change the answer, and how did you catch it?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Trace the Sign Slip",
+          "time_minutes": 8,
+          "grouping": "small_group",
+          "materials": ["Slip with Mara's misdistributed equation"],
+          "instructions": "1. Read Mara's work on -(2 - 5x) = 5x + 6, ending in 'one solution.'\n2. Circle the exact step where a sign went wrong.\n3. Redistribute the leading minus correctly and rewrite both sides.\n4. Reclassify, and explain how one sign changed the whole verdict.",
+          "content": {
+            "worked_problem": "-(2 - 5x) = 5x + 6. Mara wrote -2 - 5x = 5x + 6 and concluded one solution.",
+            "error_step": "Mara kept -5x instead of flipping -(-5x) to +5x.",
+            "why": "-(2 - 5x) = -2 + 5x = 5x - 2. Then 5x - 2 = 5x + 6 has the same coefficient but different constants, so no solution."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-006", "why": "The simplify-each-side-then-compare sequence is a natural gradual-release script, adding the clean-up move before the classification students can already do." },
+        { "strategy_id": "strat-math-009", "why": "Comparing a correct simplification against Mara's sign-slip version makes 'expand exactly before deciding' explicit." },
+        { "strategy_id": "strat-math-007", "why": "A box/area model for distribution (especially the leading minus and negative-times-negative) grounds the sign work the classification depends on." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What has to happen on each side before you compare them?",
+          "What is the sign of that distributed term? Why?",
+          "After simplifying, are the coefficients the same or different?",
+          "If the coefficients match, what do the constants say?",
+          "Where would a sign slip show up in your final verdict?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student makes a sign or distribution slip while simplifying and then classifies from the corrupted line.",
+            "say": "Rewrite each side fully before you compare. Watch the leading minus: -(3 - 6b) flips BOTH signs to -3 + 6b. Say each product with its sign out loud, then compare the clean sides.",
+            "praise": "You simplified both sides exactly, signs and all -- now the classification is trustworthy."
+          },
+          {
+            "if_you_see": "Student stops after seeing matching x-terms and calls it infinitely many without checking constants.",
+            "say": "Good -- the x's cancel. Now finish the read: do the constants match too? If not, it's no solution, not infinitely many.",
+            "praise": "You went past the coefficients to the constants -- that's the full check."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Classify -(4 - 2x) = 2x + 4.",
+            "look_for": "No solution: -(4 - 2x) = 2x - 4 vs 2x + 4 (same coefficient, -4 not 4). A sign slip to -4 - 2x would wrongly give one solution."
+          },
+          {
+            "prompt": "Classify 3(2x + 1) = 6x + 3.",
+            "look_for": "Infinitely many (both sides 6x + 3). 'One solution' means the student didn't finish distributing."
+          }
+        ]
+      },
+      "fluency_source": "8AF2-F1",
+      "sentence_starters": [
+        "The left simplifies to ___ and the right simplifies to ___.",
+        "Because the coefficients are ___ and the constants are ___, there are ___ solutions."
+      ],
+      "worked_solution": {
+        "stem": "Classify -(3 - 6b) = 6b + 5.",
+        "answer": "No solution.",
+        "steps": [
+          { "math": "distribute the leading minus: -(3 - 6b) = -3 + 6b", "annotation": "The minus flips both signs; write it as 6b - 3." },
+          { "math": "rewrite the equation: 6b - 3 = 6b + 5", "annotation": "Line up coefficient then constant on each side." },
+          { "math": "subtract 6b from both sides: -3 = 5", "annotation": "The matching b-terms cancel." },
+          { "math": "-3 = 5 is false -> no solution", "annotation": "Same coefficient, different constant means no value works." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Classify 4((1/2)x + 3) = 3x + 12 - x.",
+        "answer": "Infinitely many solutions.",
+        "steps": [
+          { "math": "left side: 4((1/2)x + 3) = 2x + 12", "annotation": "Distribute the 4 to both terms.", "given": true },
+          { "math": "right side: 3x + 12 - x = 2x + 12", "annotation": "Combine 3x - x on the right.", "given": true },
+          { "math": null, "annotation": "Compare the two simplified sides -- same coefficient and same constant?", "given": false },
+          { "math": null, "annotation": "State the leftover statement and the number of solutions.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF2-S4",
+      "name": "Generate a linear equation with a target number of solutions by completing missing values",
+      "column": "on_grade",
+      "parent_standard": "8.AF.2",
+      "engine_stems": [3],
+      "prerequisite_skill": { "type": "skill", "skill_id": "8AF2-S3" },
+      "i_do_script": "Now I run the machinery backward: instead of classifying a given equation, I BUILD one to hit a target. I control the two sides. For infinitely many solutions, both sides have to simplify to the exact same expression. Watch: 2(x + 5) = ax + b. The left is 2x + 10, so for infinitely many I need a = 2 (match the x-coefficient) AND b = 10 (match the distributed constant). For no solution I keep a = 2 but change b, say b = 3, so the constants disagree. For exactly one solution I make a anything except 2. The key is knowing what each case REQUIRES: infinitely many = identical sides; none = same coefficient, different constant; one = different coefficients.",
+      "canonical_error": {
+        "pattern": "For infinitely many solutions, matches the x-coefficient but uses the wrong constant (the number inside the parentheses, not the distributed one)",
+        "example": "For 2(x + 5) = ax + b the student sets a = 2 and b = 5 (copying the inside 5), giving 2x + 10 = 2x + 5, which has NO solution instead of infinitely many",
+        "why": "The student remembers 'match the sides' but distributes only in their head, grabbing the pre-distribution constant. The right side must equal the FULLY simplified left side (2x + 10), so b has to be 10."
+      },
+      "item_template": "An equation with one or two missing values (a and/or b) and a target case. Student supplies values that force one / none / infinitely many solutions and can justify. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "An equation with missing values a and b is given.\n\n2(x + 5) = ax + b\n\nEnter values for a and b so the equation has infinitely many solutions.",
+          "answer": "a = 2, b = 10",
+          "distractor_logic": "Spec item. The left simplifies to 2x + 10, so both sides match only when a = 2 and b = 10. Picking b = 5 (the inside constant) gives no solution."
+        },
+        {
+          "stem": "a(2x + 3) = 6x + 9. What value of a gives infinitely many solutions?",
+          "answer": "a = 3",
+          "distractor_logic": "a must make a(2x + 3) = 6x + 9, so a*2 = 6 and a*3 = 9, giving a = 3. a = 2 or 4 breaks the match."
+        },
+        {
+          "stem": "4x + 8 = 4x + b. What value of b gives NO solution?",
+          "answer": "Any b not equal to 8 (for example, b = 5)",
+          "distractor_logic": "Same coefficient (4x on both sides); a different constant forces a false statement. b = 8 would instead give infinitely many."
+        },
+        {
+          "stem": "ax + 6 = 2x + 6. Give a value of a so the equation has exactly one solution.",
+          "answer": "Any a not equal to 2 (for example, a = 5)",
+          "distractor_logic": "Different coefficients guarantee one solution. a = 2 makes the sides identical (infinitely many), which is not the target."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait -- what does the LEFT side actually simplify to?",
+        "prompt": "Distribute the left side all the way first (2(x + 5) = 2x + 10). For infinitely many, the right side must copy that exactly -- so b matches the DISTRIBUTED constant, not the number inside the parentheses.",
+        "praise": "You matched the fully simplified side, so both sides are truly identical -- that's infinitely many."
+      },
+      "vocabulary": [
+        { "term": "Generate", "definition": "Build an equation on purpose so it has a chosen number of solutions." },
+        { "term": "Coefficient", "definition": "The number multiplied by x; matching coefficients make the x's cancel." },
+        { "term": "Constant", "definition": "The plain number; for infinitely many it must equal the other side's distributed constant." }
+      ],
+      "next_steps": { "if_pass": "8AF2-S5", "if_fail": "8AF2-S3" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write '3(x + 2) = ax + b' and the target 'infinitely many solutions.'" },
+        { "kind": "ask", "text": "What does the left side become when we distribute?" },
+        { "kind": "say", "text": "3(x + 2) = 3x + 6. For infinitely many, the right must be identical: a = 3 and b = 6." },
+        { "kind": "watch", "text": "If a student writes b = 2 (the inside number), ask 'what is 3 times 2? The right has to match 3x + 6.'" },
+        { "kind": "ask", "text": "Your turn: for 2(x + 5) = ax + b, what a and b give infinitely many? What b would give no solution?" }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "What does 2(x + 5) simplify to?", "answer": "2x + 10." },
+        { "difficulty": "warm_up", "stem": "For 3x + 7 = 3x + b to have infinitely many solutions, what must b be?", "answer": "b = 7 (identical sides)." },
+        { "difficulty": "core", "stem": "a(x - 4) = 5x - 20. What value of a gives infinitely many solutions?", "answer": "a = 5 (5(x - 4) = 5x - 20).", "notes": "Match coefficient and distributed constant." },
+        { "difficulty": "core", "stem": "6x + 1 = 6x + c. Give a value of c that produces no solution.", "answer": "Any c not equal to 1 (for example, c = 4).", "notes": "Same coefficient, different constant." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Tomas wants 4(x + 3) = ax + b to have infinitely many solutions and wrote a = 4, b = 3. Find and fix his mistake.",
+          "shown_work": [
+            "Tomas wrote: '4(x + 3) = 4x + 3, so a = 4 and b = 3.'"
+          ],
+          "answer": "He forgot to distribute the 4 to the 3: 4(x + 3) = 4x + 12. For infinitely many solutions b must be 12, not 3. With b = 3 the equation 4x + 12 = 4x + 3 has NO solution.",
+          "notes": "Canonical error: matches coefficient but uses the pre-distribution constant."
+        },
+        { "difficulty": "core", "stem": "kx + 2 = 3x + 2. Give a value of k so there is exactly one solution.", "answer": "Any k not equal to 3 (for example, k = 1).", "notes": "Different coefficients -> one solution." },
+        { "difficulty": "stretch", "stem": "For 2(x + 5) = ax + b, give one (a, b) pair for infinitely many, one for no solution, and one for exactly one solution. ", "answer": "Infinitely many: a = 2, b = 10. No solution: a = 2, b = 3 (any b not 10). One solution: a = 5, b anything (any a not 2).", "notes": "All three cases from one template." },
+        { "difficulty": "stretch", "stem": "Can you make 3(x + 1) = ax + b have NO solution by changing only a? Explain.", "answer": "No -- for no solution the coefficients must match (a = 3) while the constant differs from 3. If you only change a away from 3 you get one solution, not none.", "notes": "Reversed reasoning -- which knob controls which case." }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build It to Order",
+          "time_minutes": 14,
+          "grouping": "pairs",
+          "materials": ["Template cards like 'p(x + q) = ax + b'", "Target-case cards (One / None / Infinitely many)"],
+          "instructions": "1. Draw a template card and a target-case card.\n2. First simplify the fixed side fully (distribute).\n3. Choose a and b to hit the target: identical sides for infinitely many, same coefficient and different constant for none, different coefficient for one.\n4. Trade with another pair; they classify your equation to check it really hits the target.\n5. Debrief: for 'infinitely many,' why does b have to be the DISTRIBUTED constant?"
+        },
+        {
+          "type": "game",
+          "title": "Target Solutions Challenge",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": ["Spinner or die labeled One / None / Infinitely many", "Blank equation frames"],
+          "instructions": "1. Spin to get a target case.\n2. Each player fills a blank frame like '__(x + 3) = __x + __' to hit the target.\n3. Players swap and classify each other's equations.\n4. Score a point only if your equation truly matches the spun target (partner verifies by simplifying).\n5. Debrief: which target was hardest to build, and why?"
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-006", "why": "Building an equation to a target is a gradual-release extension of classifying one -- model, then let students generate with support." },
+        { "strategy_id": "strat-math-003", "why": "The 'used the inside constant instead of the distributed one' slip is precise and baitable, ideal for find-and-fix on generated equations." },
+        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'the right side must copy the fully simplified left side' models the reasoning that fixes the constant-matching error." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What does the fixed side simplify to first?",
+          "For infinitely many, what must the other side equal exactly?",
+          "For no solution, what stays the same and what changes?",
+          "Which knob -- coefficient or constant -- controls which case?",
+          "How would you check that your equation really hits the target?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student matches the x-coefficient but uses the number inside the parentheses as the constant, so 'infinitely many' comes out as no solution.",
+            "say": "Distribute the left side all the way first (2(x + 5) = 2x + 10). For infinitely many, the right side must copy that exactly -- so b matches the DISTRIBUTED constant, not the number inside the parentheses.",
+            "praise": "You matched the fully simplified side, so both sides are truly identical -- that's infinitely many."
+          },
+          {
+            "if_you_see": "Student tries to build 'no solution' by using different coefficients.",
+            "say": "Different coefficients always give exactly one solution. For no solution keep the coefficients the SAME and make only the constants disagree.",
+            "praise": "You matched the coefficients and split the constants -- that's a genuine no-solution build."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "5(x + 2) = ax + b. Give a and b for infinitely many solutions.",
+            "look_for": "a = 5, b = 10. b = 2 (the inside constant) diagnoses the distribution slip."
+          },
+          {
+            "prompt": "7x + 3 = 7x + b. Give a b for no solution.",
+            "look_for": "Any b not equal to 3. Choosing b = 3 (infinitely many) means the student aimed at the wrong case."
+          }
+        ]
+      },
+      "fluency_source": "8AF2-F1",
+      "sentence_starters": [
+        "The fixed side simplifies to ___, so for infinitely many I need ___.",
+        "To force ___ solutions, I keep ___ the same and change ___."
+      ],
+      "worked_solution": {
+        "stem": "In 3(x + 2) = ax + b, find a and b so the equation has infinitely many solutions.",
+        "answer": "a = 3, b = 6.",
+        "steps": [
+          { "math": "distribute the left: 3(x + 2) = 3x + 6", "annotation": "Both sides must become identical for infinitely many." },
+          { "math": "match the x-coefficient: a = 3", "annotation": "The right side needs 3x." },
+          { "math": "match the constant: b = 6", "annotation": "The right side needs + 6, the DISTRIBUTED constant." },
+          { "math": "3(x + 2) = 3x + 6 -> both sides equal -> infinitely many", "annotation": "Identical sides means every value of x works." }
+        ]
+      },
+      "faded_example": {
+        "stem": "In 5(x - 4) = ax + b, find a and b so the equation has infinitely many solutions.",
+        "answer": "a = 5, b = -20.",
+        "steps": [
+          { "math": "distribute the left: 5(x - 4) = 5x - 20", "annotation": "Expand fully so you can compare.", "given": true },
+          { "math": "the right side must match 5x - 20 exactly", "annotation": "Infinitely many needs identical sides.", "given": true },
+          { "math": null, "annotation": "Choose a to match the x-coefficient.", "given": false },
+          { "math": null, "annotation": "Choose b to match the constant -- watch the sign.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF2-S5",
+      "name": "Write your own equation for each case and justify the classification",
+      "column": "on_grade",
+      "parent_standard": "8.AF.2",
+      "prerequisite_skill": { "type": "skill", "skill_id": "8AF2-S3" },
+      "i_do_script": "The standard says 'give examples,' so I design an equation for any case I'm asked for -- from scratch -- and justify it. For NO solution I keep the x-terms identical but make the numbers disagree: x + 3 = x + 5. The x's cancel, leaving 3 = 5, which is false. For INFINITELY many I make both sides truly equal: 2(x + 1) = 2x + 2, which leaves 0 = 0. For ONE solution I make the x-coefficients different: 3x = x + 4, which solves to x = 2. Every time, I justify by simplifying and reading the leftover statement out loud.",
+      "canonical_error": {
+        "pattern": "To make 'no solution,' the student writes an equation with DIFFERENT coefficients, thinking 'it can't be solved'",
+        "example": "Asked for a no-solution equation, writes 3x = 2x + 5, which actually solves to x = 5 -- exactly one solution",
+        "why": "The student confuses 'no solution' with 'looks unsolvable.' No solution requires the SAME coefficient (so the x's cancel) and DIFFERENT constants (so the leftover is false). Different coefficients always give exactly one solution."
+      },
+      "item_template": "An open prompt asking the student to produce an equation with a specified number of solutions and justify it by simplifying. Hand-authored; constructed-response. At least 4 sample items so a teacher has a bank without engine fill.",
+      "sample_items": [
+        {
+          "stem": "Write a linear equation that has no solution. Show how you know.",
+          "answer": "Sample: x + 3 = x + 5. Subtracting x leaves 3 = 5, which is false, so no value of x works.",
+          "distractor_logic": "A correct answer keeps identical x-terms and different constants. Writing different coefficients (like 3x = 2x + 5) yields one solution, the canonical error."
+        },
+        {
+          "stem": "Write a linear equation with infinitely many solutions. Justify your answer.",
+          "answer": "Sample: 2(x + 1) = 2x + 2. Both sides simplify to 2x + 2, leaving 0 = 0, which is always true.",
+          "distractor_logic": "Both sides must be identical after simplifying. Any equation whose sides differ in a constant is not infinitely many."
+        },
+        {
+          "stem": "Write a linear equation with exactly one solution. Justify your answer.",
+          "answer": "Sample: 3x = x + 4. The coefficients differ, so it solves to a single value, x = 2.",
+          "distractor_logic": "One solution requires different coefficients. Matching coefficients would give infinitely many or none instead."
+        },
+        {
+          "stem": "Start from x + 4 = x + 4 (which has infinitely many solutions). Change ONE number so it has no solution instead. Justify.",
+          "answer": "Sample: x + 4 = x + 7. The x's still cancel, but 4 = 7 is false, so there is no solution.",
+          "distractor_logic": "Changing a constant while keeping the coefficients equal flips infinitely many into no solution. Changing a coefficient instead would give one solution."
+        },
+        {
+          "stem": "Write an equation that shows a variable on both sides but has infinitely many solutions. Justify.",
+          "answer": "Sample: 3(x + 2) = 3x + 6. The left distributes to 3x + 6, identical to the right, so 0 = 0 -- infinitely many.",
+          "distractor_logic": "Variables on both sides do not guarantee infinitely many; the sides must simplify to the same expression."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait -- solve your 'no solution' equation. What do you get?",
+        "prompt": "For NO solution the x's must cancel, so keep the SAME coefficient on both sides and make only the constants disagree, like x + 2 = x + 9. Different coefficients always leave exactly one solution.",
+        "praise": "You matched the coefficients and split the constants -- now it's a true no-solution example."
+      },
+      "vocabulary": [
+        { "term": "Give examples", "definition": "Produce your own equation that fits a stated number of solutions." },
+        { "term": "Justify", "definition": "Show why your equation has that number of solutions by simplifying and reading the leftover statement." },
+        { "term": "No solution", "definition": "Requires the same coefficient on both sides and different constants, so the leftover statement is false." }
+      ],
+      "next_steps": { "if_pass": "8AF2-S6", "if_fail": "8AF2-S3" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write the target 'Make an equation with NO solution.'" },
+        { "kind": "ask", "text": "What has to be true about the x-terms so no value works?" },
+        { "kind": "say", "text": "Keep the x-terms identical so they cancel, then make the numbers disagree: x + 1 = x + 6. That leaves 1 = 6, false -- no solution." },
+        { "kind": "watch", "text": "If a student writes 4x = 3x + 2 for 'no solution,' say 'solve it -- you get x = 2, that's one solution.'" },
+        { "kind": "ask", "text": "Your turn: make one equation with infinitely many solutions and one with exactly one, and justify each." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "What has to be true about the coefficients for an equation to have no solution?", "answer": "They must be the SAME (so the x's cancel), with different constants." },
+        { "difficulty": "warm_up", "stem": "Is 5x = 5x + 0 an example of infinitely many or no solution?", "answer": "Infinitely many (identical sides)." },
+        { "difficulty": "core", "stem": "Write an equation with no solution and justify it.", "answer": "Sample: x + 2 = x + 9; the x's cancel to 2 = 9, which is false.", "notes": "Same coefficient, different constant." },
+        { "difficulty": "core", "stem": "Write an equation with infinitely many solutions using a parenthesis on one side. Justify.", "answer": "Sample: 4(x + 1) = 4x + 4; both sides simplify to 4x + 4, leaving 0 = 0.", "notes": "Identical after distributing." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Bri was asked for a no-solution equation and wrote 4x = 3x + 6. Find and fix her mistake.",
+          "shown_work": [
+            "Bri wrote: '4x = 3x + 6 -- the sides look different, so no solution.'"
+          ],
+          "answer": "Different x-coefficients give exactly ONE solution (here x = 6), not none. For no solution the coefficients must MATCH and the constants differ, like 4x + 1 = 4x + 6.",
+          "notes": "Canonical error: 'no solution' confused with different coefficients."
+        },
+        { "difficulty": "core", "stem": "Write an equation with exactly one solution whose solution is x = 5. Justify.", "answer": "Sample: 2x = x + 5; different coefficients, and it solves to x = 5.", "notes": "Design to a specific one-solution value." },
+        { "difficulty": "stretch", "stem": "Write three equations that all start with 6x on the left -- one with each number of solutions -- and justify each.", "answer": "Sample: 6x = 2x (one, x = 0); 6x = 6x (infinitely many); 6x = 6x + 4 (none). Same left side, different right sides.", "notes": "Produce all three cases from a shared start." },
+        { "difficulty": "stretch", "stem": "A classmate says 'any equation with the same number on both sides has infinitely many solutions.' Give a counterexample and explain.", "answer": "Counterexample: 5x + 3 = 2x + 3 has the same constant (+3) but different coefficients, so it has one solution (x = 0), not infinitely many. The COEFFICIENTS have to match too.", "notes": "Reversed direction -- disprove an overgeneralization." }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Design and Defend",
+          "time_minutes": 14,
+          "grouping": "pairs",
+          "materials": ["Case cards (One / None / Infinitely many)", "Recording sheet: 'my equation' / 'simplified sides' / 'leftover statement' / 'why'"],
+          "instructions": "1. Draw a case card.\n2. On the recording sheet, write your own equation for that case.\n3. Fill 'simplified sides' and 'leftover statement,' then write 'why' in one sentence.\n4. Trade sheets; a partner accepts it only if simplifying really produces that case.\n5. Debrief: what's the difference between building 'no solution' and building 'one solution'?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Does It Really Have No Solution?",
+          "time_minutes": 8,
+          "grouping": "small_group",
+          "materials": ["Slip with Bri's 4x = 3x + 6"],
+          "instructions": "1. Read Bri's claim that 4x = 3x + 6 has no solution because the sides look different.\n2. Actually solve it -- what is x?\n3. Explain why different coefficients always give exactly one solution.\n4. Rewrite Bri's equation into a true no-solution example by matching the coefficients.",
+          "content": {
+            "worked_problem": "Asked for a no-solution equation, Bri wrote 4x = 3x + 6.",
+            "error_step": "Bri used different coefficients (4 and 3), thinking that means unsolvable.",
+            "why": "4x = 3x + 6 solves to x = 6 -- one solution. No solution needs the same coefficient and different constants, like 4x + 1 = 4x + 6."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-004", "why": "Writing an equation and justifying it in words is exactly the reflective-writing move -- a journal frame ('this has ___ solutions because ___') builds the justification habit." },
+        { "strategy_id": "strat-math-003", "why": "The 'different coefficients = no solution' misconception is a precise, high-value error to catch by testing self-made examples." },
+        { "strategy_id": "strat-math-001", "why": "Think-pair-share on 'whose no-solution example actually has no solution?' lets partners test and repair each other's builds." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What does each case REQUIRE of the coefficients and constants?",
+          "How would you prove your equation really has that many solutions?",
+          "Solve your 'no solution' equation -- what happens?",
+          "Could you build the same case a different way?",
+          "What leftover statement does your equation produce?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student writes an equation with different coefficients to represent 'no solution.'",
+            "say": "For NO solution the x's must cancel, so keep the SAME coefficient on both sides and make only the constants disagree, like x + 2 = x + 9. Different coefficients always leave exactly one solution.",
+            "praise": "You matched the coefficients and split the constants -- now it's a true no-solution example."
+          },
+          {
+            "if_you_see": "Student produces an example but skips the justification.",
+            "say": "An example isn't finished until you prove it. Simplify both sides and show me the leftover statement -- is it x = a number, always true, or false?",
+            "praise": "You backed your example with the leftover statement -- that's a real justification."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Write an equation with no solution.",
+            "look_for": "Same coefficient, different constant (e.g., x + 1 = x + 4). Different coefficients (e.g., 3x = 2x + 1) diagnoses the canonical error."
+          },
+          {
+            "prompt": "Write an equation with infinitely many solutions and justify it.",
+            "look_for": "Identical sides after simplifying (e.g., 2(x + 3) = 2x + 6) plus a stated 0 = 0. A missing justification means the concept isn't secure."
+          }
+        ]
+      },
+      "fluency_source": "8AF2-F1",
+      "sentence_starters": [
+        "To get ___ solutions I made the coefficients ___ and the constants ___.",
+        "My equation has ___ solutions because it simplifies to ___."
+      ],
+      "worked_solution": {
+        "stem": "Write a linear equation that has no solution, and justify it.",
+        "answer": "Sample: x + 3 = x + 5 (no solution).",
+        "steps": [
+          { "math": "keep the x-terms identical: x = x", "annotation": "Same coefficient so the x's cancel." },
+          { "math": "make the constants disagree: + 3 vs + 5", "annotation": "Different constants force a false leftover." },
+          { "math": "x + 3 = x + 5 -> subtract x -> 3 = 5", "annotation": "The x's cancel to a number statement." },
+          { "math": "3 = 5 is false -> no solution", "annotation": "Justify by reading the leftover statement." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Write a linear equation with infinitely many solutions, and justify it.",
+        "answer": "Sample: 2(x + 1) = 2x + 2 (infinitely many).",
+        "steps": [
+          { "math": "decide the sides must be identical", "annotation": "Infinitely many needs both sides to match.", "given": true },
+          { "math": "expand a left side: 2(x + 1) = 2x + 2", "annotation": "Distribute so you can copy it.", "given": true },
+          { "math": null, "annotation": "Write your full equation with an identical right side.", "given": false },
+          { "math": null, "annotation": "Justify: simplify both sides and show the leftover 0 = 0.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF2-S6",
+      "name": "Analyze and justify a claim about the number of solutions to a multi-step equation",
+      "column": "looking_forward",
+      "parent_standard": "8.AF.2",
+      "engine_stems": [5],
+      "prerequisite_skill": { "type": "skill", "skill_id": "8AF2-S5" },
+      "i_do_script": "At the top level someone hands me a CLAIM and I have to judge it and prove my judgment. Watch Sam's claim that 4(4x + 3) = 19x + 9 - 3x + 3 has no solution. I refuse to trust the surface -- I simplify BOTH sides completely. Left: 4(4x + 3) = 16x + 12. Right: 19x + 9 - 3x + 3 = 16x + 12 (I combined 19x - 3x and 9 + 3). The two sides are identical, so 0 = 0 -- infinitely many solutions. I DISAGREE with Sam. The whole move is: simplify each side fully, then justify the verdict with the leftover statement.",
+      "canonical_error": {
+        "pattern": "Judges the claim from surface appearance or simplifies only one side, missing that combining the other side changes everything",
+        "example": "For 4(4x + 3) = 19x + 9 - 3x + 3 the student never combines 19x - 3x = 16x on the right, sees 'different' sides, and agrees there is no (or one) solution",
+        "why": "A valid justification requires FULLY simplifying both sides before comparing. Skipping the like-terms on one side hides that the two sides actually match, so a true 'infinitely many' gets misjudged as none or one."
+      },
+      "item_template": "A stated claim about a multi-step equation (requiring simplification on one or both sides). Student agrees/disagrees and justifies by simplifying both sides. Multi-part constructed response.",
+      "sample_items": [
+        {
+          "stem": "Sam states that the equation below has no solutions.\n\n4(4x + 3) = 19x + 9 - 3x + 3\n\nDo you agree or disagree? Justify your answer.",
+          "answer": "Disagree. Both sides simplify to 16x + 12 (left: 4(4x + 3) = 16x + 12; right: 19x + 9 - 3x + 3 = 16x + 12), leaving 12 = 12, so there are infinitely many solutions.",
+          "distractor_logic": "Spec item. The right side must be combined (19x - 3x = 16x, 9 + 3 = 12) to see it matches the left. Agreeing with Sam comes from not combining the right side."
+        },
+        {
+          "stem": "Maria says 5(x + 2) = 5x + 10 has infinitely many solutions. Do you agree or disagree? Justify.",
+          "answer": "Agree. The left distributes to 5x + 10, identical to the right, so the leftover is 0 = 0 -- infinitely many solutions.",
+          "distractor_logic": "Both sides truly match, so Maria is right. Disagreeing usually comes from a distribution slip on the left."
+        },
+        {
+          "stem": "Devon says 3(x + 4) = 3x + 4 has infinitely many solutions. Do you agree or disagree? Justify.",
+          "answer": "Disagree. The left is 3x + 12 and the right is 3x + 4; same coefficient but 12 is not 4, so the leftover is a false statement -- no solution.",
+          "distractor_logic": "The matching 3x tempts 'infinitely many,' but the constants differ. Distributing the left exposes the mismatch."
+        },
+        {
+          "stem": "Kim says 2(3x - 1) = 6x - 2 has one solution. Do you agree or disagree? Justify.",
+          "answer": "Disagree. The left distributes to 6x - 2, identical to the right, so there are infinitely many solutions, not one.",
+          "distractor_logic": "The sides are identical after distributing, so it is infinitely many. 'One solution' comes from assuming every equation has a single answer."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Before you agree -- did you simplify BOTH sides all the way?",
+        "prompt": "Fully distribute and combine each side first. On the right, combine 19x - 3x into 16x and 9 + 3 into 12 before you compare. Only then read the leftover statement to justify.",
+        "praise": "You simplified both sides completely and justified with the leftover statement -- that's how you judge a claim."
+      },
+      "vocabulary": [
+        { "term": "Analyze", "definition": "Examine a claim carefully by simplifying and checking, rather than trusting how it looks." },
+        { "term": "Justify", "definition": "Give the reasoning -- the simplified sides and leftover statement -- that proves the number of solutions." },
+        { "term": "Multi-step equation", "definition": "An equation that needs distributing and combining on one or both sides before it can be classified." }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for high-school Algebra I (AI.L.2): solving and reasoning about linear equations and their solution sets.",
+        "if_fail": "8AF2-S5"
+      },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Sam says 4(4x + 3) = 19x + 9 - 3x + 3 has no solution.'" },
+        { "kind": "ask", "text": "What must we do to each side before we can agree or disagree?" },
+        { "kind": "say", "text": "Left: 4(4x + 3) = 16x + 12. Right: 19x + 9 - 3x + 3 = 16x + 12. Identical sides -> infinitely many, so I disagree with Sam." },
+        { "kind": "watch", "text": "If a student leaves the right as 19x + 12, ask 'did you combine 19x and -3x?'" },
+        { "kind": "ask", "text": "Your turn: Devon says 3(x + 4) = 3x + 4 has infinitely many solutions. Agree or disagree, and justify." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Simplify the right side of 19x + 9 - 3x + 3.", "answer": "16x + 12 (combine 19x - 3x and 9 + 3)." },
+        { "difficulty": "warm_up", "stem": "If both sides of an equation simplify to 16x + 12, how many solutions does it have?", "answer": "Infinitely many (identical sides -> 0 = 0)." },
+        { "difficulty": "core", "stem": "Maria says 5(x + 2) = 5x + 10 has infinitely many solutions. Agree or disagree? Justify.", "answer": "Agree -- both sides are 5x + 10, leaving 0 = 0.", "notes": "Claim is correct; justify it." },
+        { "difficulty": "core", "stem": "Devon says 3(x + 4) = 3x + 4 has infinitely many solutions. Agree or disagree? Justify.", "answer": "Disagree -- left is 3x + 12, right 3x + 4; same coefficient but 12 is not 4, so no solution.", "notes": "Distribute the left to expose the mismatch." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Nate judges Sam's claim that 5(2x + 1) = 12x + 5 - 2x has one solution. Find and fix Nate's reasoning.",
+          "shown_work": [
+            "Nate wrote: 'Left is 10x + 5. Right is 12x + 5, which is different, so one solution -- I agree with Sam.'"
+          ],
+          "answer": "Nate didn't combine the right side: 12x + 5 - 2x = 10x + 5. Both sides are 10x + 5, so there are infinitely many solutions -- disagree with Sam.",
+          "notes": "Canonical error: failing to fully simplify one side before judging."
+        },
+        { "difficulty": "core", "stem": "Kim says 2(3x - 1) = 6x - 2 has one solution. Agree or disagree? Justify.", "answer": "Disagree -- both sides are 6x - 2, so infinitely many solutions.", "notes": "Every equation is not guaranteed a single answer." },
+        { "difficulty": "stretch", "stem": "A student claims 6(x + 2) = 3x + 12 + 3x has no solution. Simplify both sides, decide, and justify.", "answer": "Left 6x + 12; right 3x + 12 + 3x = 6x + 12. Identical -> infinitely many solutions, so the claim is wrong.", "notes": "Combine two x-terms on the right to reveal the match." },
+        { "difficulty": "stretch", "stem": "Write your own equation and a WRONG claim about its number of solutions, then justify the correct answer -- like a trap for a classmate.", "answer": "Sample: '2(x + 4) = 2x + 4 has infinitely many solutions.' Correct: left 2x + 8, right 2x + 4; 8 is not 4, so NO solution. The claim is wrong.", "notes": "Reversed direction -- author a claim and refute it." }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Agree or Disagree -- Prove It",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": ["Claim cards (a person + an equation + a stated number of solutions)"],
+          "instructions": "1. Draw a claim card, like 'Sam: 4(4x + 3) = 19x + 9 - 3x + 3 has no solution.'\n2. Simplify BOTH sides completely on scratch paper -- combine every like term.\n3. Decide agree or disagree, and write the leftover statement that proves it.\n4. A card is only 'solved' when your justification names the leftover statement (12 = 12, 0 = 0, or a false line).\n5. Debrief: which claims fooled someone who simplified only one side?",
+          "content": {
+            "worked_problem": "Sam: 4(4x + 3) = 19x + 9 - 3x + 3 has no solution.",
+            "error_step": "Trusting the claim without combining 19x - 3x = 16x on the right.",
+            "why": "Both sides simplify to 16x + 12, so the equation has infinitely many solutions; disagree with Sam."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Claim Court",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": ["Claim cards", "Agree / Disagree paddles or cards"],
+          "instructions": "1. One player reads a claim card aloud.\n2. Everyone simplifies both sides privately and raises Agree or Disagree.\n3. A chosen 'lawyer' justifies the verdict using the leftover statement.\n4. Award a point for the correct verdict AND a valid justification (both required).\n5. Debrief: what's the one habit that wins every round? (Simplify both sides fully first.)"
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-004", "why": "Agreeing or disagreeing in writing with a justification is the reflective-writing move at its most rigorous -- a claim-and-evidence frame fits perfectly." },
+        { "strategy_id": "strat-math-009", "why": "Contrasting a fully-simplified analysis with Nate's simplify-one-side version makes 'combine both sides completely' the explicit lesson." },
+        { "strategy_id": "strat-math-003", "why": "Each claim card is a ready-made error to analyze; disproving a wrong claim is find-and-fix at the reasoning level." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What has to happen on BOTH sides before you judge the claim?",
+          "Did you combine every like term on the right?",
+          "What leftover statement proves your verdict?",
+          "Is the claim right for the right reason, or right by luck?",
+          "How would you convince a skeptic the claim is wrong?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student judges a claim from surface appearance or after simplifying only one side.",
+            "say": "Fully distribute and combine each side first. On the right, combine 19x - 3x into 16x and 9 + 3 into 12 before you compare. Only then read the leftover statement to justify.",
+            "praise": "You simplified both sides completely and justified with the leftover statement -- that's how you judge a claim."
+          },
+          {
+            "if_you_see": "Student reaches the correct verdict but offers no justification.",
+            "say": "A verdict without evidence isn't a justification. Show the two simplified sides and the leftover statement (0 = 0, 12 = 12, or a false line).",
+            "praise": "You paired your verdict with the leftover statement -- that's a complete justification."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A student claims 2(x + 3) = 2x + 6 has one solution. Agree or disagree, and justify.",
+            "look_for": "Disagree -- both sides are 2x + 6, so infinitely many (0 = 0). 'Agree' means the student assumed a single answer."
+          },
+          {
+            "prompt": "A student claims 4x + 8 - x = 3x + 5 has infinitely many solutions. Agree or disagree, and justify.",
+            "look_for": "Disagree -- left 3x + 8, right 3x + 5; same coefficient, 8 not 5, so no solution. Missing the left-side combine hides this."
+          }
+        ]
+      },
+      "fluency_source": "8AF2-F1",
+      "sentence_starters": [
+        "After simplifying both sides I get ___ and ___.",
+        "I ___ (agree / disagree) because the leftover statement is ___, which means ___ solutions."
+      ],
+      "worked_solution": {
+        "stem": "Sam says 4(4x + 3) = 19x + 9 - 3x + 3 has no solution. Do you agree or disagree? Justify.",
+        "answer": "Disagree -- the equation has infinitely many solutions.",
+        "steps": [
+          { "math": "left side: 4(4x + 3) = 16x + 12", "annotation": "Distribute the 4 to both terms." },
+          { "math": "right side: 19x + 9 - 3x + 3 = 16x + 12", "annotation": "Combine 19x - 3x = 16x and 9 + 3 = 12." },
+          { "math": "16x + 12 = 16x + 12 -> 0 = 0", "annotation": "Both sides identical; the leftover is always true." },
+          { "math": "infinitely many solutions -> disagree with Sam", "annotation": "A true leftover means every value works, so 'no solution' is wrong." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Devon says 3(x + 4) = 3x + 4 has infinitely many solutions. Do you agree or disagree? Justify.",
+        "answer": "Disagree -- the equation has no solution.",
+        "steps": [
+          { "math": "left side: 3(x + 4) = 3x + 12", "annotation": "Distribute the 3.", "given": true },
+          { "math": "right side: 3x + 4 (already simplified)", "annotation": "Compare it with the left.", "given": true },
+          { "math": null, "annotation": "Same coefficient? Now compare the constants 12 and 4.", "given": false },
+          { "math": null, "annotation": "State the leftover statement and whether Devon is right.", "given": false }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "skills": ["8AF2-F1", "8AF2-F2"]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": ["8AF2-S1"]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": ["8AF2-S2", "8AF2-S3", "8AF2-S4", "8AF2-S5"]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": ["8AF2-S6"]
+    }
+  },
+  "skill_sequence": ["8AF2-F1", "8AF2-F2", "8AF2-S1", "8AF2-S2", "8AF2-S3", "8AF2-S4", "8AF2-S5", "8AF2-S6"],
+  "skill_tree": {
+    "8AF2-F1": [],
+    "8AF2-F2": [],
+    "8AF2-S1": ["8AF2-F2"],
+    "8AF2-S2": ["8AF2-S1"],
+    "8AF2-S3": ["8AF2-S2", "8AF2-F1"],
+    "8AF2-S4": ["8AF2-S3"],
+    "8AF2-S5": ["8AF2-S3"],
+    "8AF2-S6": ["8AF2-S4", "8AF2-S5"]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S3 (simplify both sides, then classify) -- the At-proficiency core where the standard's real difficulty lives. If they pass, push to S4 (generate an equation to a target case) and S6 (analyze and justify a claim about a multi-step equation). If they fail, split the diagnosis: S1 checks whether they can read a simplified final line (true statement vs false vs x = a), and S2 checks whether they compare coefficients and constants correctly without any simplification. S5 (write your own examples and justify) branches off the generative side.",
+    "entry_skill": "8AF2-S3",
+    "if_pass": ["8AF2-S4", "8AF2-S6"],
+    "if_fail": ["8AF2-S1", "8AF2-S2"],
+    "branch_skills": ["8AF2-S5"]
+  }
+}

@@ -1,26 +1,453 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Plug N Play Brand Colors */
+  --pnp-navy: #1a1f3d;
+  --pnp-blue: #3f42d9;
+  --pnp-teal: #2dd4bf;
+  --pnp-orange: #f97316;
+  --pnp-yellow: #ffe25a;
+  --pnp-yellow-dark: #f5d000;
+  --pnp-light-blue: #60a5fa;
+  --pnp-green: #22c55e;
+  --pnp-red: #ef4444;
+  --pnp-white: #ffffff;
+
+  /* ─── Button-system accent ─────────────────────────────────────────
+     The brand teal (#2dd4bf) is too light for white text on a solid fill
+     — it scores ~1.6:1 against white, far below WCAG AA's 4.5:1 minimum.
+     We darken to teal-600 for the actual button surface so white text
+     passes AA, and keep -700 / -800 for hover / press.
+     - accent      : default fill on primary buttons (4.51:1 vs white)
+     - accent-hover: ~8% darker, applied on :hover
+     - accent-press: deeper still, applied on :active alongside scale(.98)
+     - accent-soft : 10% tint of the accent, used for tertiary hover bg
+     The original --pnp-teal stays for decorative uses (tile borders, etc).
+  */
+  --pnp-accent: #0d9488;        /* teal-600 — primary button fill */
+  --pnp-accent-hover: #0f766e;  /* teal-700 — hover */
+  --pnp-accent-press: #115e59;  /* teal-800 — :active */
+  --pnp-accent-soft: #ccfbf1;   /* teal-100 — tertiary hover background */
+  --pnp-gray-50: #f9fafb;
+  --pnp-gray-100: #f3f4f6;
+  --pnp-gray-200: #e5e7eb;
+  --pnp-gray-300: #d1d5db;
+  --pnp-gray-400: #9ca3af;
+  --pnp-gray-500: #6b7280;
+  --pnp-gray-600: #4b5563;
+  --pnp-gray-700: #374151;
+  --pnp-gray-800: #1f2937;
+  --pnp-gray-900: #111827;
+
+  --background: #f9fafb;
+  --foreground: #111827;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-pnp-navy: var(--pnp-navy);
+  --color-pnp-blue: var(--pnp-blue);
+  --color-pnp-teal: var(--pnp-teal);
+  --color-pnp-orange: var(--pnp-orange);
+  --color-pnp-yellow: var(--pnp-yellow);
+  --color-pnp-yellow-dark: var(--pnp-yellow-dark);
+  --color-pnp-light-blue: var(--pnp-light-blue);
+  --color-pnp-green: var(--pnp-green);
+  --color-pnp-red: var(--pnp-red);
+  --color-pnp-accent: var(--pnp-accent);
+  --color-pnp-accent-hover: var(--pnp-accent-hover);
+  --color-pnp-accent-press: var(--pnp-accent-press);
+  --color-pnp-accent-soft: var(--pnp-accent-soft);
+  --color-pnp-gray-50: var(--pnp-gray-50);
+  --color-pnp-gray-100: var(--pnp-gray-100);
+  --color-pnp-gray-200: var(--pnp-gray-200);
+  --color-pnp-gray-300: var(--pnp-gray-300);
+  --color-pnp-gray-400: var(--pnp-gray-400);
+  --color-pnp-gray-500: var(--pnp-gray-500);
+  --color-pnp-gray-600: var(--pnp-gray-600);
+  --color-pnp-gray-700: var(--pnp-gray-700);
+  --color-pnp-gray-800: var(--pnp-gray-800);
+  --color-pnp-gray-900: var(--pnp-gray-900);
+  --font-heading: var(--font-epilogue);
+  --font-sans: var(--font-inter);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =====================
+   REDUCED MOTION
+   =====================
+   Honor prefers-reduced-motion globally: near-instant animations and
+   transitions, and stop infinite loops (e.g. the hero shape bob, the
+   wave-scroll). Per-component motion still layers on top of this. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Modal animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Wave animation */
+@keyframes wave-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.wave-track {
+  display: flex;
+  animation: wave-scroll 8s linear infinite;
+  width: 200%;
+}
+
+.wave-track svg {
+  flex-shrink: 0;
+  width: 50%;
+}
+
+/* Hero ambient bob — a single decorative shape drifts up and down. The
+   reduced-motion guard above neutralizes it for users who opt out. */
+@keyframes pnp-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.pnp-bob {
+  animation: pnp-bob 3.6s ease-in-out infinite;
+}
+
+/* More ambient float variants for decorative hero/section shapes. Vary the
+   rhythm per shape with an inline `animation-delay`. All are neutralized by
+   the reduced-motion guard above, and shapes must stay `aria-hidden` +
+   `pointer-events-none`. Diamonds use pnp-sway/pnp-spin (which own their
+   rotation) instead of a Tailwind `rotate-45` the animation would override. */
+@keyframes pnp-bob-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+.pnp-bob-slow { animation: pnp-bob-slow 5.4s ease-in-out infinite; }
+
+@keyframes pnp-drift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(12px, -10px); }
+  50% { transform: translate(2px, -20px); }
+  75% { transform: translate(-12px, -8px); }
+}
+.pnp-drift { animation: pnp-drift 8s ease-in-out infinite; }
+
+@keyframes pnp-spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.pnp-spin-slow { animation: pnp-spin-slow 24s linear infinite; }
+
+@keyframes pnp-sway {
+  0%, 100% { transform: rotate(35deg) translateY(0); }
+  50% { transform: rotate(52deg) translateY(-10px); }
+}
+.pnp-sway { animation: pnp-sway 5s ease-in-out infinite; }
+
+/* Lesson highlight — a quick one-shot ring pulse on the lesson a teacher
+   opened the intervention from. Uses the accent (teal-600). The
+   reduced-motion guard above neutralizes it for users who opt out. */
+@keyframes pnp-lesson-flash {
+  0% { box-shadow: 0 0 0 0 rgba(13, 148, 136, 0); }
+  25% { box-shadow: 0 0 0 5px rgba(13, 148, 136, 0.45); }
+  100% { box-shadow: 0 0 0 0 rgba(13, 148, 136, 0); }
+}
+.pnp-lesson-flash {
+  animation: pnp-lesson-flash 1.3s ease-out 1;
+}
+
+/* Step reveal — the next step (generator format panel / intervention
+   progression) fades and rises in when a standard is picked, so the jump
+   isn't abrupt. Pairs with the smooth scroll-into-view. `both` fill keeps
+   it hidden until it starts (no flash of final state). Reduced-motion
+   guard above neutralizes it. */
+@keyframes pnp-reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.pnp-reveal {
+  animation: pnp-reveal 0.32s ease-out both;
+}
+
+/* WODB (Which One Doesn't Belong) box content — the SVG / HTML that the
+   render helpers in lib/wodb-render.ts emit. Scoped under .wodb-box; the
+   wrapper's font-size drives the em-based math text (small on cards, large
+   in projection). */
+.wodb-box .q-text { font-weight: 800; text-align: center; line-height: 1.12; }
+.wodb-box .q-text.sm { font-size: 0.62em; line-height: 1.3; font-weight: 700; }
+.wodb-box .q-sub { font-weight: 600; font-size: 0.5em; color: var(--pnp-gray-500); margin-top: 0.25em; }
+.wodb-box .mini-table { border-collapse: collapse; font-size: 0.6em; font-weight: 700; }
+.wodb-box .mini-table th,
+.wodb-box .mini-table td { border: 1.5px solid #c7d0dc; padding: 0.18em 0.5em; text-align: center; }
+.wodb-box .mini-table th { background: #eef1f6; color: var(--pnp-gray-500); }
+.wodb-box .q-svg { width: 100%; height: auto; max-height: 150px; display: block; }
+.wodb-box.mini .q-svg { max-height: 76px; }
+.wodb-box .frac { display: inline-flex; flex-direction: column; text-align: center; vertical-align: middle; margin: 0 0.08em; line-height: 1; }
+.wodb-box .frac .n { border-bottom: 0.09em solid currentColor; padding: 0 0.18em; }
+.wodb-box .frac .d { padding: 0 0.18em; }
+
+/* Number Talks figures + inline fraction markup, scoped under .nt-fig
+   (problems, answers, and pre-baked quick-image SVGs). */
+.nt-fig .nt-svg { width: 100%; height: auto; max-height: 230px; display: block; }
+/* card thumbnail: keep the quick-image inside the fixed tile height */
+.nt-fig .nt-card-fig .nt-svg { max-height: 86px; }
+.nt-fig .frac { display: inline-flex; flex-direction: column; text-align: center; vertical-align: middle; margin: 0 0.08em; line-height: 1; }
+.nt-fig .frac .n { border-bottom: 0.09em solid currentColor; padding: 0 0.18em; }
+.nt-fig .frac .d { padding: 0 0.18em; }
+
+/* =====================
+   TASK IMAGE THEMING
+   =====================
+   Inline-SVG task images authored using currentColor for stroke/fill auto-adapt.
+   We set color on the wrapper so authored <svg> elements with stroke="currentColor"
+   pick up the right tone (dark in light theme, light in dark theme). Authored
+   SVGs that hardcode black/white still render — they just may need manual
+   light/dark variants if used in projection. */
+.task-image-svg[data-theme="light"] { color: #1a1f3d; }
+.task-image-svg[data-theme="dark"] { color: #ffffff; }
+
+/* =====================
+   PROJECTION MODE
+   ===================== */
+/* When ProjectionView is mounted it adds .project-mode to body.
+   That hides the site header and footer so the task fills the screen. */
+body.project-mode > header,
+body.project-mode > footer {
+  display: none !important;
+}
+body.project-mode {
+  padding: 0;
+  margin: 0;
+}
+
+/* =====================
+   PRINT STYLES (Rich Tasks)
+   =====================
+   Rules:
+   - .no-print: always hide on print (used for nav, banners, action bars).
+   - data-print-section="student": shown only when body[data-print-mode] is "student" or "both".
+   - data-print-section="teacher": shown only when body[data-print-mode] is "teacher" or "both".
+   - data-print-section="both": shown for all print modes.
+   When body has no data-print-mode (i.e., user pressed Ctrl-P directly without clicking a button),
+   we default to printing everything ("both") for safety.
+*/
+@media print {
+  /* Universal: kill nav, sticky bars, site chrome. */
+  .no-print,
+  body > header,
+  body > footer {
+    display: none !important;
+  }
+
+  /* Use full page width */
+  body {
+    background: white !important;
+  }
+
+  /* Fluency worksheet — borderless full-page rendering. The container is
+     marked `.worksheet`; we strip any wrapping borders/shadows so it prints
+     edge-to-edge like a paper worksheet. */
+  .worksheet {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  .page-break-before {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  /* Force-print all section content with reasonable typography */
+  .task-article {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: black !important;
+  }
+
+  .task-article section {
+    break-inside: avoid;
+  }
+
+  /* Force a page break between Student Handout (the-task) and Teacher Notes
+     when both are printed. Only kicks in for print-mode="both". */
+  body[data-print-mode="both"] section[data-print-section="teacher"]:first-of-type {
+    break-before: page;
+  }
+
+  /* STUDENT mode: hide everything marked teacher-only. */
+  body[data-print-mode="student"] [data-print-section="teacher"] {
+    display: none !important;
+  }
+
+  /* TEACHER mode: hide nothing (teacher gets the full picture including
+     student-facing sections). The student-facing sections are useful as
+     reference for the teacher. */
+
+  /* Backgrounds get stripped on print so colored boxes don't waste ink */
+  .task-article .bg-amber-50\/40,
+  .task-article [class*="bg-emerald-50"] {
+    background: white !important;
+    border: 1px solid #888 !important;
+  }
+
+  /* =====================
+     STUDENT HANDOUT — tighten for one-page fit
+     =====================
+     The screen view runs the task body at text-xl/text-2xl with text-lg
+     elsewhere. That's great on a projector and big on a sheet of paper. For
+     print we compact aggressively so a 3-question rich task fits one page,
+     and a long task fits two front-and-back at most.
+  */
+  .task-article {
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+  }
+  .task-article section {
+    margin-top: 12pt !important;
+    margin-bottom: 0 !important;
+  }
+  .task-article h1 {
+    font-size: 18pt !important;
+    margin-bottom: 4pt !important;
+  }
+  .task-article h2 {
+    font-size: 14pt !important;
+    margin-top: 10pt !important;
+    margin-bottom: 4pt !important;
+  }
+  .task-article h3 {
+    font-size: 11pt !important;
+    margin-bottom: 3pt !important;
+  }
+  /* The Task box gets the most aggressive override — it's where the bulk
+     of the student content lives, and it currently runs at text-xl/2xl. */
+  .task-article #the-task {
+    margin-top: 8pt !important;
+  }
+  .task-article #the-task > div {
+    padding: 12pt !important;
+  }
+  .task-article #the-task p {
+    font-size: 12pt !important;
+    line-height: 1.5 !important;
+  }
+  /* Inline task images shouldn't dominate the page — cap their height for
+     print so the prompt text actually fits. */
+  .task-article #the-task svg,
+  .task-article #the-task img {
+    max-height: 2.2in !important;
+    height: auto !important;
+    width: auto !important;
+  }
+  /* Source attribution becomes a tiny print footer, not a full section. */
+  .task-article #source {
+    font-size: 8pt !important;
+    color: #666 !important;
+    margin-top: 18pt !important;
+    padding-top: 4pt !important;
+    border-top: 1px solid #ccc !important;
+  }
+  .task-article #source p {
+    font-size: 8pt !important;
+    margin: 0 !important;
+  }
+  /* Lists stay readable but compact. */
+  .task-article ul {
+    margin: 4pt 0 !important;
+    padding-left: 18pt !important;
+  }
+  .task-article ul li {
+    font-size: 11pt !important;
+    line-height: 1.35 !important;
+    margin: 2pt 0 !important;
+  }
+  /* Pre-formatted prompt text uses whitespace-pre-line — keep that. */
+  .task-article p {
+    margin: 4pt 0 !important;
+  }
+  /* "BTC Fit" callout (emerald box) becomes a normal paragraph in print
+     since it's teacher-only and its colored bg gets stripped. */
+  .task-article .bg-emerald-50,
+  .task-article .border-emerald-500 {
+    border: 1px solid #888 !important;
+    padding: 6pt !important;
+  }
+
+  /* ── Print a biology stimulus SHEET (Science → Print preview modal) ────
+     The modal is portaled to <body>, so we hide every other body child and
+     print only the clean PrintSheet inside it, with wide margins. Scoped to
+     `.printing-sheet` so it never touches the math/fluency prints above. */
+  body.printing-sheet {
+    display: block !important;
+    min-height: 0 !important;
+  }
+  body.printing-sheet main {
+    flex: 0 0 auto !important;
+    min-height: 0 !important;
+  }
+  body.printing-sheet > *:not(.stimulus-print-portal) {
+    display: none !important;
+  }
+  body.printing-sheet [data-no-print] {
+    display: none !important;
+  }
+  /* strip the modal chrome so only the sheet flows onto the page */
+  body.printing-sheet .print-overlay {
+    position: static !important;
+    display: block !important;
+    background: none !important;
+    padding: 0 !important;
+  }
+  body.printing-sheet .print-modal {
+    max-height: none !important;
+    max-width: none !important;
+    overflow: visible !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  body.printing-sheet .print-scroll {
+    overflow: visible !important;
+    background: none !important;
+    padding: 0 !important;
+  }
+  body.printing-sheet .sheet-frame {
+    max-width: none !important;
+    box-shadow: none !important;
+    padding: 0.3in 0.5in !important; /* wide margins on top of the page margin */
+  }
+  body.printing-sheet .print-sheet {
+    max-width: none !important;
+    font-size: 11.5pt;
+    color: #000 !important;
+  }
+  body.printing-sheet .print-sheet li,
+  body.printing-sheet .print-sheet figure,
+  body.printing-sheet .print-sheet table {
+    break-inside: avoid;
+  }
 }

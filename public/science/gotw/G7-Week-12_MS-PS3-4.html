@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light only"><title>Graph of the Week &middot; MS-PS3-4</title><style>
+  :root { color-scheme: light only; }
+  * { box-sizing: border-box; }
+  html { background: transparent; }
+  body { margin:0; font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         color:#111; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .sheet { width:8.5in; margin:18px auto; padding:0.55in 0.6in 0.5in; background:#fff;
+           box-shadow:0 2px 14px rgba(0,0,0,.18); }
+  .print-bar { max-width:8.5in; margin:14px auto 0; text-align:right; }
+  .print-btn { font:600 13px/1 inherit; padding:8px 14px; border:1px solid #111; background:#111;
+               color:#fff; border-radius:6px; cursor:pointer; }
+  .namebar { display:flex; gap:26px; font-size:12px; color:#333; margin-bottom:10px; }
+  .namebar .f { flex:1; display:flex; align-items:baseline; gap:8px; }
+  .namebar .ln { flex:1; border-bottom:1px solid #555; height:14px; }
+  h1.title { font-family:Georgia,"Times New Roman",serif; font-size:30px; line-height:1.05; margin:0;
+             color:#000; letter-spacing:.2px; }
+  .standline { font-size:11px; font-weight:700; letter-spacing:.4px; color:#222; margin:5px 0 9px;
+               text-transform:uppercase; }
+  .standline .sep { color:#888; }
+  .question { border:1px solid #999; background:#f3f3f3; border-radius:6px; padding:9px 14px; margin-bottom:9px; }
+  .question .lab { font-size:10.5px; font-weight:800; letter-spacing:.8px; text-transform:uppercase;
+                   color:#333; display:block; margin-bottom:3px; }
+  .question p { margin:0; font-size:15px; font-weight:600; color:#000; line-height:1.35; }
+  .howto { font-size:12px; font-style:italic; color:#555; margin:0 0 5px; }
+  .howto b { color:#222; font-style:normal; }
+  .legend { display:flex; gap:22px; justify-content:center; flex-wrap:wrap; font-size:12px; margin-bottom:4px; }
+  .legend span { display:inline-flex; align-items:center; }
+  .legend .sw { width:18px; height:12px; border:1px solid #000; margin-right:6px; }
+  .legend svg.mk { margin-right:6px; }
+  .chart { width:84%; height:auto; display:block; margin:2px auto 0; }
+  table { width:100%; border-collapse:collapse; margin:4px 0 4px; font-size:12.5px; }
+  thead th { background:#1c1c1c; color:#fff; font-size:12px; font-weight:700; line-height:1.2;
+             padding:7px 10px; text-align:center; vertical-align:middle; border:1px solid #1c1c1c; }
+  thead th:first-child { text-align:left; }
+  tbody td { border:1px solid #c9c9c9; padding:4px 10px; text-align:center; }
+  tbody td:first-child { text-align:left; }
+  tbody tr:nth-child(even) td { background:#f4f4f4; }
+  .src { font-size:10.5px; font-style:italic; color:#666; margin:3px 0 8px; }
+  .cer { display:flex; flex-direction:column; gap:6px; }
+  .step .hd { display:flex; align-items:baseline; gap:10px; margin-bottom:3px; }
+  .step .badge { font-size:11px; font-weight:800; letter-spacing:.7px; text-transform:uppercase;
+                 background:#222; color:#fff; padding:3px 9px; border-radius:3px; }
+  .step .ask { font-size:13px; font-weight:700; color:#000; }
+  .step .hint { font-size:11.5px; font-style:italic; color:#777; margin:0 0 5px; }
+  .rule { border-bottom:1px solid #b9b9b9; height:20px; }
+  .rule.r { height:23px; }
+  .foot { margin-top:12px; padding-top:9px; border-top:1px solid #ccc; display:flex;
+          justify-content:space-between; font-size:10.5px; color:#555; }
+  .foot .r { font-weight:700; color:#333; }
+
+  /* ---- double-sided: front "first look" + back analysis ---- */
+  .firstlook { border:1px solid #999; border-radius:6px; padding:8px 12px; margin-top:10px; }
+  .firstlook .fl-lab { font-size:10.5px; font-weight:800; letter-spacing:.7px; text-transform:uppercase; color:#333; }
+  .firstlook .row { font-size:12.5px; margin-top:7px; color:#000; line-height:1.5; }
+  .firstlook .u { display:inline-block; border-bottom:1px solid #999; min-width:140px; height:14px; vertical-align:middle; }
+  .firstlook .u.long { min-width:330px; }
+  .backhead { margin-bottom:12px; padding-bottom:8px; border-bottom:2px solid #1c1c1c; }
+  .backhead .t { font-family:Georgia,"Times New Roman",serif; font-size:20px; color:#000; }
+  .backhead .q { font-size:11.5px; color:#444; margin-top:3px; }
+  .backhead .q b { color:#222; }
+  .part { margin-bottom:12px; }
+  .part .lab { display:inline-block; font-size:11px; font-weight:800; letter-spacing:.6px; text-transform:uppercase;
+               background:#222; color:#fff; padding:3px 9px; border-radius:3px; margin-bottom:6px; }
+  .part .q2 { font-size:12.5px; color:#222; margin:7px 0 3px; }
+  .part .q2 b { color:#000; }
+  .part .hint { font-size:11px; font-style:italic; color:#777; margin:1px 0 4px; }
+
+  @media print { html{background:#fff;} .print-bar{display:none;}
+    .sheet{width:auto; min-height:0; margin:0; padding:0; box-shadow:none; page-break-after:always; }
+    .sheet:last-of-type{ page-break-after:auto; }
+    @page{ size:letter; margin:0.5in 0.55in; } }
+</style></head><body><div class="sheet"><div class="namebar"><span class="f">Name <span class="ln"></span></span><span class="f">Date <span class="ln"></span></span></div><h1 class="title">Graph of the Week</h1><div class="standline">Standard MS-PS3-4 <span class="sep">&middot;</span> Specific Heat <span class="sep">&middot;</span> Material &amp; Heat</div><div class="question"><span class="lab">This Week's Question</span><p>Beach sand gets scorching at noon while the ocean stays cool — same sunshine. Use the graph to see why some materials heat up so much faster than water.</p></div><div class="legend"><span><span class="sw" style="background:#222"></span>Specific heat</span></div><svg class="chart" style="width:96%" viewBox="0 0 700 250" role="img" aria-label="chart"><defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#1c1c1c" stroke-width="2.6"/></pattern><pattern id="cross" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e9e9e9"/><path d="M0 0 L6 6 M6 0 L0 6" stroke="#1c1c1c" stroke-width="1"/></pattern><pattern id="dots" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#fff"/><circle cx="3" cy="3" r="1.3" fill="#1c1c1c"/></pattern></defs><g stroke="#cfcfcf" stroke-width="1"><line x1="60" y1="168.0" x2="680" y2="168.0"/><line x1="60" y1="131.0" x2="680" y2="131.0"/><line x1="60" y1="94.0" x2="680" y2="94.0"/><line x1="60" y1="57.0" x2="680" y2="57.0"/><line x1="60" y1="20.0" x2="680" y2="20.0"/></g><g font-size="11" fill="#444" text-anchor="end"><text x="52" y="209.0">0</text><text x="52" y="172.0">1000</text><text x="52" y="135.0">2000</text><text x="52" y="98.0">3000</text><text x="52" y="61.0">4000</text><text x="52" y="24.0">5000</text></g><text x="16" y="112" font-size="10" fill="#444" text-anchor="middle" transform="rotate(-90 16 112)">Energy to warm 1 kg by 1°C (J)</text><line x1="60" y1="205" x2="680" y2="205" stroke="#000" stroke-width="1.5"/><rect x="115.5" y="188.3" width="44.0" height="16.6" fill="#222" stroke="#000"/><rect x="270.5" y="174.3" width="44.0" height="30.7" fill="#222" stroke="#000"/><rect x="425.5" y="171.7" width="44.0" height="33.3" fill="#222" stroke="#000"/><rect x="580.5" y="50.1" width="44.0" height="154.9" fill="#222" stroke="#000"/><g font-size="11" fill="#000" text-anchor="middle" font-weight="bold"><text x="137.5" y="184.3">450</text><text x="292.5" y="170.3">830</text><text x="447.5" y="167.7">900</text><text x="602.5" y="46.1">4186</text></g><g font-size="12" fill="#111" text-anchor="middle"><text x="138" y="223" font-weight="bold">Iron</text><text x="292" y="223" font-weight="bold">Sand</text><text x="448" y="223" font-weight="bold">Aluminum</text><text x="602" y="223" font-weight="bold">Water</text></g></svg><p class="src">Data: Standard specific heat capacities (J/kg·°C) from engineering references.</p><div class="firstlook"><span class="fl-lab">First look &mdash; before you flip over</span><div class="row"><b>This graph is about:</b> <span class="u long"></span></div><div class="row"><b>The x-axis shows</b> <span class="u"></span> &nbsp;<b>the y-axis shows</b> <span class="u"></span></div><div class="row"><b>I notice&hellip;</b> <span class="u long"></span></div><div class="row"><b>I wonder&hellip;</b> <span class="u long"></span></div></div></div><div class="sheet"><div class="backhead"><div class="t">Analyze the Graph</div><div class="q"><b>MS-PS3-4</b> &middot; Beach sand gets scorching at noon while the ocean stays cool — same sunshine. Use the graph to see why some materials heat up so much faster than water.</div></div><div class="part"><span class="lab">Part A &middot; Analyze the Data</span><div class="q2">Which material needs the most energy to warm up? The least?</div><div class="rule"></div><div class="rule"></div><div class="q2">About how many times more energy does water need than sand?</div><div class="rule"></div><div class="rule"></div><div class="q2">Are iron and aluminum close or far apart?</div><div class="rule"></div><div class="rule"></div></div><div class="part"><span class="lab">Part B &middot; Claim &middot; Evidence &middot; Reasoning</span><div class="q2"><b>Claim</b> &mdash; answer this week's question in one sentence.</div><p class="hint">Materials with a low specific heat…</p><div class="rule"></div><div class="rule"></div><div class="q2"><b>Evidence</b> &mdash; back it up with numbers from the graph.</div><p class="hint">Water needs about ___ J to warm 1 kg by 1°C, while sand needs about ___ J — water needs about ___ times more.</p><div class="rule"></div><div class="rule"></div><div class="rule"></div><div class="q2"><b>Reasoning</b> &mdash; explain the physics behind the data.</div><p class="hint">Specific heat measures how much energy a material must absorb to change temperature, so low-specific-heat materials heat up quickly…</p><div class="rule"></div><div class="rule"></div></div><div class="part"><span class="lab">Part C &middot; Predict &amp; Investigate</span><div class="q2"><b>Predict:</b> On a sunny day, would sand or water reach a higher temperature first?</div><div class="rule"></div><div class="rule"></div><div class="q2"><b>Investigate:</b> How would you measure the specific heat of a new material in a lab?</div><div class="rule"></div><div class="rule"></div></div><div class="foot"><span>Graph of the Week</span><span class="r">MS-PS3-4 &middot; Specific Heat</span></div></div></body></html>

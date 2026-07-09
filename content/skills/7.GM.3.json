@@ -1,0 +1,1999 @@
+{
+  "standard_code": "7.GM.3",
+  "standard_text": "Solve real-world and other mathematical problems involving volume of cylinders and three-dimensional objects composed of right rectangular prisms.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "Volume is one idea told two ways: fill a solid with unit cubes and count them. For a box that count is length times width times height; for a cylinder it is the area of the round base, pi r squared, stacked h units high. So the progression starts by making those two volume computations automatic, because everything else in the standard is one of them plus a decision. The single most fragile move is the cylinder: the r in pi r squared h must be the RADIUS (half the diameter) and it must be SQUARED. Miss either and the base area is wrong before the height is ever multiplied. So the arc opens with the cylinder formula, then the composite solid, where the new idea is not a formula but a habit: cut the solid into prisms whose three dimensions you actually know, find each volume with l times w times h, and add.\n\nFrom those two atoms the standard fans outward. First it runs the machine backwards: given a volume and all but one measurement, recover the missing height, radius, or side length, which for a radius means dividing out pi AND taking a square root. Then it drops the computation into real-world questions where the volume is only step one and a further operation finishes the job, usually a division, into days of dog food, gallons, or paint cans. Then it combines the two shapes, fitting a cylinder into the smallest rectangular box, where the box side must span the DIAMETER, not the radius. Finally it reaches the hardest composites, where cylinders are REMOVED from a prism, a brick drilled with holes, and the answer is the prism minus every cylinder. The through-line we keep naming: find the base, multiply by the height, then decide whether to add a second piece, subtract a hollow, divide to answer a question, or work backwards to a missing measurement.",
+    "steps": [
+      {
+        "skill_id": "7GM3-S1",
+        "verb": "calculate",
+        "rationale": "The new grade-7 atom: the volume of a cylinder, V = pi r squared h. It leads because it is the formula students have never seen before, and because its two failure points (radius vs diameter, forgetting to square) poison every later cylinder problem if not fixed first."
+      },
+      {
+        "skill_id": "7GM3-S2",
+        "verb": "decompose",
+        "rationale": "The second atom: the volume of a solid built from at least two right rectangular prisms. The standard's demand is not a new formula but a habit -- split the solid into prisms you can measure, apply l times w times h to each, and add. It sits beside the cylinder as the other base computation."
+      },
+      {
+        "skill_id": "7GM3-S3",
+        "verb": "determine",
+        "rationale": "Runs the volume formula backwards: given the volume and all but one measurement, recover the missing height, radius, or side length. It earns its own step because undoing pi r squared h to find a radius adds a square root, a move forward-only problems never require."
+      },
+      {
+        "skill_id": "7GM3-S4",
+        "verb": "solve",
+        "rationale": "The At-proficiency application: the volume is only the first step, and a real-world question (days of food, gallons of water, cans of paint) demands one more operation on it. It exists because students who can compute a volume still stop there instead of answering what was asked."
+      },
+      {
+        "skill_id": "7GM3-S5",
+        "verb": "combine",
+        "rationale": "Puts a cylinder and a prism in one problem: the smallest box that holds a cylinder, or the empty space around it. It is separate from S4 because the controlling relationship is that the box side spans the DIAMETER, a fresh place for the radius/diameter confusion to strike."
+      },
+      {
+        "skill_id": "7GM3-S6",
+        "verb": "analyze",
+        "rationale": "The Above-proficiency composite: cylinders REMOVED from a prism (a drilled brick) or a missing side of a composite recovered from its total volume. The reliable action flips from adding pieces to subtracting hollows, the hardest conceptual turn in the standard."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "7GM3-F1",
+      "name": "Find the area of a rectangle and the area of a circle",
+      "column": "foundation",
+      "parent_standard": "7.GM.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Compute the area of a rectangle (length times width) and of a circle (pi times radius squared), using the radius, not the diameter.",
+        "check_question": "A circle has a diameter of 10. What is its radius, and what is pi times the radius squared? (Use 3.14 for pi.)"
+      },
+      "i_do_script": "Every volume in this standard stands on a base area, so I make the two base areas automatic first. A rectangle's area is just length times width: an 8 by 5 rectangle is 8 times 5 = 40 square units. A circle's area is pi times the radius squared: with radius 3 that is 3.14 times 3 times 3 = 3.14 times 9 = 28.26 square units. The trap is the diameter: if I'm told the diameter is 10, the RADIUS is half of that, 5, and I square the 5, not the 10.",
+      "canonical_error": {
+        "pattern": "Uses the diameter in place of the radius, or multiplies pi by the radius without squaring it",
+        "example": "For a circle with diameter 10, computes 3.14 times 10 times 10 = 314, or 3.14 times 5 = 15.7, instead of 3.14 times 5 squared = 78.5",
+        "why": "The student grabs the number they were handed (the diameter) and skips both steps that make the circle right: halving the diameter to get the radius, and squaring that radius before multiplying by pi."
+      },
+      "item_template": "A rectangle (length, width) or a circle (radius or diameter). Student finds the area, using 3.14 for pi. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "Find the area of a rectangle that is 8 cm by 5 cm.",
+          "answer": "40 square cm"
+        },
+        {
+          "stem": "Find the area of a circle with radius 3 in. Use 3.14 for pi.",
+          "answer": "28.26 square in"
+        },
+        {
+          "stem": "A circle has a diameter of 10 ft. Find its area. Use 3.14 for pi.",
+          "answer": "78.5 square ft (radius is 5)"
+        },
+        {
+          "stem": "Find the area of a rectangle that is 12 m by 4 m.",
+          "answer": "48 square m"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait -- is that number the radius or the diameter?",
+        "prompt": "If you were given the diameter, cut it in half to get the radius first. Then square the radius (radius times radius) before you multiply by 3.14.",
+        "praise": "You halved the diameter and squared the radius -- that's a correct circle area."
+      },
+      "vocabulary": [
+        {
+          "term": "Radius",
+          "definition": "The distance from the center of a circle to its edge; half the diameter."
+        },
+        {
+          "term": "Diameter",
+          "definition": "The distance across a circle through its center; twice the radius."
+        },
+        {
+          "term": "Area",
+          "definition": "The number of square units that cover a flat shape."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7GM3-S1",
+        "if_fail": "Review area of rectangles and circles (6.GM.4 / 7.GM.2)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A circle has a diameter of 8. Find its area (use 3.14).'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the radius when the diameter is 8? Then what do we do to the radius?"
+        },
+        {
+          "kind": "say",
+          "text": "The radius is half of 8, which is 4. Square it: 4 times 4 = 16. Then 3.14 times 16 = 50.24 square units."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student uses 8 as the radius, ask 'is that the whole way across or halfway across? Which one is the radius?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a rectangle 7 by 3, and a circle of radius 5 (use 3.14)."
+        }
+      ]
+    },
+    {
+      "skill_id": "7GM3-F2",
+      "name": "Multiply three dimensions and square a radius",
+      "column": "foundation",
+      "parent_standard": "7.GM.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Multiply three numbers together and evaluate a number squared, including simple decimals.",
+        "check_question": "Evaluate 4 times 3 times 5. Then evaluate 5 squared (5 times 5)."
+      },
+      "i_do_script": "Both volume formulas end in the same arithmetic: multiply a small pile of numbers, and one of them is squared. To multiply three dimensions I just go two at a time: 4 times 3 times 5 is 4 times 3 = 12, then 12 times 5 = 60. Squaring means a number times itself: 5 squared is 5 times 5 = 25, not 5 times 2. When I plug into pi r squared h, I square the radius first, then multiply by the height and by 3.14: for r = 5 and h = 6, that's 25 times 6 = 150, then 3.14 times 150 = 471.",
+      "canonical_error": {
+        "pattern": "Reads 'squared' as 'times 2,' or multiplies only two of the three dimensions",
+        "example": "Evaluates 5 squared as 5 times 2 = 10 instead of 5 times 5 = 25, or computes only 3.14 times 25 and forgets to multiply by the height",
+        "why": "The student treats the exponent 2 as a multiplier and loses track of how many factors a volume needs; squaring is a number times itself, and a volume multiplies all three dimensions (with the base dimension squared for a cylinder)."
+      },
+      "item_template": "A product of two or three numbers, or a number squared, sometimes with 3.14 as a factor. Student evaluates it. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "Evaluate 4 times 3 times 5.",
+          "answer": "60"
+        },
+        {
+          "stem": "A radius is 5. What is the radius squared (5 times 5)?",
+          "answer": "25"
+        },
+        {
+          "stem": "Evaluate 3.14 times 9 times 10.",
+          "answer": "282.6"
+        },
+        {
+          "stem": "Evaluate 8 times 8 times 3.",
+          "answer": "192"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Hold on -- what does 'squared' actually tell you to do?",
+        "prompt": "Squared means the number times itself, not times two. Write it out: 5 squared is 5 times 5. Then count your factors -- a volume needs all three dimensions multiplied.",
+        "praise": "You squared by multiplying the number by itself and kept all three factors -- that's the whole product."
+      },
+      "vocabulary": [
+        {
+          "term": "Squared",
+          "definition": "A number multiplied by itself; 5 squared means 5 times 5 = 25."
+        },
+        {
+          "term": "Dimension",
+          "definition": "A measured length of a solid, such as its length, width, or height."
+        },
+        {
+          "term": "Product",
+          "definition": "The result of multiplying numbers together."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7GM3-S1",
+        "if_fail": "Review multiplication and exponents (5.C / 6.C)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Evaluate 3.14 times 4 squared times 10.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which piece do we handle first -- what does 4 squared equal?"
+        },
+        {
+          "kind": "say",
+          "text": "4 squared is 4 times 4 = 16. Now multiply left to right: 3.14 times 16 = 50.24, then times 10 = 502.4."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 4 squared as 8, stop: 'squared is times itself, not times two -- 4 times 4.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: evaluate 6 times 6 times 3, and evaluate 2 squared times 5."
+        }
+      ]
+    },
+    {
+      "skill_id": "7GM3-S1",
+      "name": "Calculate the volume of a cylinder using V = pi r squared h",
+      "column": "looking_back",
+      "parent_standard": "7.GM.3",
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7GM3-F1"
+      },
+      "i_do_script": "A cylinder is a circle stacked into a tower, so its volume is the circle's area times the height: V = pi r squared h. Watch a cylinder with radius 4 and height 10. First the base: 4 squared is 16. Then times pi: 3.14 times 16 = 50.24. Then times the height: 50.24 times 10 = 502.4 cubic units. Two things keep me honest: the r is the RADIUS, so if I'm handed a diameter I cut it in half first, and I always SQUARE the radius before anything else.",
+      "canonical_error": {
+        "pattern": "Uses the diameter as the radius, or forgets to square the radius (multiplies by r instead of r squared)",
+        "example": "For radius 5 and height 6, computes 3.14 times 5 times 6 = 94.2 (never squared) instead of 3.14 times 25 times 6 = 471; or, given diameter 10, uses 10 as the radius to get 3.14 times 100 times 6 = 1884",
+        "why": "The base of the cylinder is a circle whose area needs the radius squared. Skipping the square, or feeding in the diameter instead of the radius, makes the base area wrong before the height is ever applied."
+      },
+      "item_template": "A cylinder given by radius (or diameter) and height. Student finds the volume, in terms of pi or using 3.14 with a rounding rule. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A cylinder has a radius of 4 cm and a height of 10 cm. What is the volume? Use 3.14 for pi. Round to the nearest hundredth.",
+          "answer": "502.4 cubic cm",
+          "distractor_logic": "3.14 x 4^2 x 10 = 502.4. Forgetting to square gives 3.14 x 4 x 10 = 125.6."
+        },
+        {
+          "stem": "A cylinder has a radius of 3 and a height of 9. What is the volume in terms of pi?",
+          "answer": "81π cubic units",
+          "distractor_logic": "3^2 x 9 = 81, so 81π. Not squaring gives 3 x 9 = 27π."
+        },
+        {
+          "stem": "A cylinder has a diameter of 10 in and a height of 6 in. What is the volume? Use 3.14 for pi.",
+          "answer": "471 cubic in",
+          "distractor_logic": "Radius is 5: 3.14 x 25 x 6 = 471. Using the diameter 10 as the radius gives 1884."
+        },
+        {
+          "stem": "A cylinder has a radius of 2 ft and a height of 12 ft. What is the volume? Use 3.14 for pi. Round to the nearest hundredth.",
+          "answer": "150.72 cubic ft",
+          "distractor_logic": "3.14 x 2^2 x 12 = 150.72. Forgetting the square gives 75.36."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you square the radius -- and is that number the radius?",
+        "prompt": "In pi r squared h, the r is the radius (half the diameter), and it gets SQUARED first. Find r squared, multiply by 3.14, then multiply by the height.",
+        "praise": "You squared the radius before multiplying -- that keeps the base area right."
+      },
+      "vocabulary": [
+        {
+          "term": "Cylinder",
+          "definition": "A solid with two equal circular ends joined by a curved surface, like a can."
+        },
+        {
+          "term": "Volume",
+          "definition": "The amount of space a solid takes up, measured in cubic units."
+        },
+        {
+          "term": "Pi",
+          "definition": "The number of times a circle's diameter fits around it, about 3.14."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7GM3-S3",
+        "if_fail": "7GM3-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A cylinder has radius 2 and height 5. Volume in terms of pi?'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the base first -- what is 2 squared? Then what do we multiply by?"
+        },
+        {
+          "kind": "say",
+          "text": "2 squared is 4, times the height 5 is 20, so the volume is 20π cubic units."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 2 times 5 = 10π, stop: 'did you square the radius? 2 squared is 4, not 2.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a cylinder with radius 3 and height 4, in terms of pi."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A cylinder has a radius of 2 and a height of 5. What is the volume in terms of pi?",
+          "answer": "20π cubic units"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A cylinder's radius is 6. What is the radius squared, the first step of its volume?",
+          "answer": "36"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cylinder has a radius of 4 cm and a height of 10 cm. Find the volume. Use 3.14 for pi. Round to the nearest hundredth.",
+          "answer": "502.4 cubic cm (3.14 x 16 x 10)",
+          "notes": "Square the radius first, then multiply by height."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cylinder has a diameter of 10 in and a height of 6 in. Find the volume. Use 3.14 for pi.",
+          "answer": "471 cubic in (radius 5: 3.14 x 25 x 6)",
+          "notes": "Baits using the diameter 10 as the radius."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Jordan found the volume of a cylinder with radius 5 in and height 6 in (using 3.14 for pi). Find and fix the mistake.",
+          "shown_work": [
+            "Jordan wrote: V = 3.14 x 5 x 6",
+            "V = 94.2 cubic inches"
+          ],
+          "answer": "Jordan forgot to square the radius. V = pi r squared h = 3.14 x 5 squared x 6 = 3.14 x 25 x 6 = 471 cubic inches.",
+          "notes": "Canonical error: multiplied by r instead of r squared."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A cylinder has a radius of 3 and a height of 9. Give its volume in terms of pi, then also using 3.14 (nearest hundredth).",
+          "answer": "81π cubic units, which is about 254.34 cubic units (3.14 x 81)",
+          "notes": "Connects 'in terms of pi' to a decimal answer."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Cylinder A has radius 4 and height 3. Cylinder B has radius 3 and height 4. Which has the greater volume? Use 3.14 for pi.",
+          "answer": "A: 3.14 x 16 x 3 = 150.72; B: 3.14 x 9 x 4 = 113.04. A is greater -- squaring the larger radius matters more than the larger height.",
+          "notes": "Shows why the squared radius dominates."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Radius or Diameter?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 10 cylinders, some labeled with a radius and some with a diameter"
+          ],
+          "instructions": "1. Sort every card into 'radius given' or 'diameter given.'\n2. On each diameter card, write the radius (half the diameter) before doing anything else.\n3. For four cards (two of each kind) compute the volume using 3.14 for pi.\n4. Debrief: what is the very first thing you do when a cylinder gives you a diameter?",
+          "content": {
+            "categories": [
+              "Radius given",
+              "Diameter given"
+            ],
+            "cards": [
+              {
+                "text": "radius 4, height 10",
+                "category": "Radius given"
+              },
+              {
+                "text": "diameter 10, height 6",
+                "category": "Diameter given"
+              },
+              {
+                "text": "radius 2, height 12",
+                "category": "Radius given"
+              },
+              {
+                "text": "diameter 8, height 5",
+                "category": "Diameter given"
+              },
+              {
+                "text": "radius 3, height 9",
+                "category": "Radius given"
+              },
+              {
+                "text": "diameter 6, height 7",
+                "category": "Diameter given"
+              },
+              {
+                "text": "radius 5, height 6",
+                "category": "Radius given"
+              },
+              {
+                "text": "diameter 14, height 2",
+                "category": "Diameter given"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Square It First",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Jordan's un-squared work"
+          ],
+          "instructions": "1. Read Jordan's claim that a cylinder with radius 5 and height 6 has volume 94.2 cubic inches.\n2. Find the exact step where Jordan skipped the square.\n3. Redo the volume with the radius squared.\n4. Write a one-line rule for the order of steps in pi r squared h.",
+          "content": {
+            "worked_problem": "Radius 5, height 6. Jordan wrote V = 3.14 x 5 x 6 = 94.2 cubic in.",
+            "error_step": "Jordan multiplied by the radius (5) instead of the radius squared (25).",
+            "why": "The base is a circle, area pi r squared: 3.14 x 25 x 6 = 471 cubic in."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'square the radius first, then times the height' models the exact order students collapse."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The forgot-to-square and diameter-as-radius errors are precise and baitable, ideal for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral response on 'radius squared equals...' builds the automaticity that prevents the missed square."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is the number you were given the radius or the diameter?",
+          "What is the radius squared? Did you square before multiplying?",
+          "What is the base area, and what do you multiply it by next?",
+          "Should the volume be bigger or smaller than the base area? Why?",
+          "If the radius doubles, what happens to the volume?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student uses the diameter as the radius, or forgets to square the radius.",
+            "say": "In pi r squared h, the r is the radius (half the diameter), and it gets SQUARED first. Find r squared, multiply by 3.14, then multiply by the height.",
+            "praise": "You squared the radius before multiplying -- that keeps the base area right."
+          },
+          {
+            "if_you_see": "Student multiplies 3.14 by the radius and stops, never using the height.",
+            "say": "That's only the base circle. A cylinder is that circle stacked h high, so multiply by the height too.",
+            "praise": "You carried the base area all the way up by the height -- that's the full volume."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A cylinder has radius 2 and height 3. Volume (use 3.14)?",
+            "look_for": "37.68 (3.14 x 4 x 3). An answer of 18.84 means the radius was not squared."
+          },
+          {
+            "prompt": "A cylinder has a diameter of 10 and a height of 6. What radius do you use?",
+            "look_for": "5 (half of 10). Using 10 signals the diameter/radius confusion."
+          }
+        ]
+      },
+      "fluency_source": "7GM3-F2",
+      "sentence_starters": [
+        "The radius is ___, so r squared is ___, and V = 3.14 x ___ x ___ = ___.",
+        "I was given the ___, so the radius is ___ before I square it."
+      ],
+      "worked_solution": {
+        "stem": "A cylinder has a radius of 4 cm and a height of 10 cm. What is the volume? Use 3.14 for pi.",
+        "answer": "502.4 cubic cm",
+        "steps": [
+          {
+            "math": "V = pi r squared h",
+            "annotation": "Write the cylinder formula."
+          },
+          {
+            "math": "V = 3.14 x 4 squared x 10",
+            "annotation": "The radius is 4 -- substitute it for r."
+          },
+          {
+            "math": "= 3.14 x 16 x 10",
+            "annotation": "Square the radius FIRST: 4 x 4 = 16."
+          },
+          {
+            "math": "= 502.4 cubic cm",
+            "annotation": "Multiply by pi and the height."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A cylinder has a radius of 5 in and a height of 6 in. What is the volume? Use 3.14 for pi.",
+        "answer": "471 cubic in",
+        "steps": [
+          {
+            "math": "V = pi r squared h",
+            "annotation": "Start from the formula.",
+            "given": true
+          },
+          {
+            "math": "V = 3.14 x 5 squared x 6",
+            "annotation": "Substitute the radius 5.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Square the radius, then multiply by pi.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply by the height to finish.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7GM3-S2",
+      "name": "Calculate the volume of a composite solid by decomposing it into rectangular prisms",
+      "column": "looking_back",
+      "parent_standard": "7.GM.3",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7GM3-F2"
+      },
+      "i_do_script": "A composite solid is two or more boxes stuck together, so I cut it into separate rectangular prisms, find each volume with length times width times height, then add. Watch a solid made of a bottom prism 10 by 4 by 6 and a top prism 4 by 4 by 5. Bottom: 10 times 4 times 6 = 240. Top: 4 times 4 times 5 = 80. Total: 240 plus 80 = 320 cubic units. The mistake is treating the whole thing as one big box -- I only multiply dimensions that actually belong to the same prism.",
+      "canonical_error": {
+        "pattern": "Treats the whole composite as a single rectangular prism instead of splitting it into separate prisms and adding",
+        "example": "For a solid made of a 10 x 4 x 6 prism and a 4 x 4 x 5 prism, multiplies an outer 10 x 8 x 6 = 480 (using the total height 8) instead of adding 240 + 80 = 320",
+        "why": "A composite solid is not one box, so no single length-width-height captures it. The student must break it at the step into prisms whose three dimensions are all known, find each volume, and sum them."
+      },
+      "item_template": "A solid described as two (or more) rectangular prisms with given dimensions. Student finds the total volume. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A solid is made of two rectangular prisms. Prism A is 10 cm by 4 cm by 6 cm. Prism B is 4 cm by 4 cm by 5 cm. What is the total volume?",
+          "answer": "320 cubic cm",
+          "distractor_logic": "240 + 80 = 320. Treating it as one 10 x 8 x 6 box gives 480."
+        },
+        {
+          "stem": "A composite solid has a bottom prism of 8 in by 6 in by 3 in and a top prism of 6 in by 2 in by 4 in. What is the total volume?",
+          "answer": "192 cubic in",
+          "distractor_logic": "144 + 48 = 192. Forgetting a piece leaves 144."
+        },
+        {
+          "stem": "Two boxes are stacked. The lower box is 12 m by 5 m by 4 m and the upper box is 5 m by 5 m by 2 m. What is the combined volume?",
+          "answer": "290 cubic m",
+          "distractor_logic": "240 + 50 = 290."
+        },
+        {
+          "stem": "A step-shaped solid is made of a prism 9 ft by 3 ft by 4 ft and a prism 3 ft by 3 ft by 3 ft. What is the total volume?",
+          "answer": "135 cubic ft",
+          "distractor_logic": "108 + 27 = 135."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is this really one box, or two stuck together?",
+        "prompt": "Draw a line to cut the solid into separate prisms. Find each prism's volume with its own length, width, and height, then add the volumes.",
+        "praise": "You split it into prisms and added -- that's how any composite volume works."
+      },
+      "vocabulary": [
+        {
+          "term": "Composite solid",
+          "definition": "A solid made by joining two or more simpler solids, such as two rectangular prisms."
+        },
+        {
+          "term": "Right rectangular prism",
+          "definition": "A box shape whose faces are all rectangles; its volume is length times width times height."
+        },
+        {
+          "term": "Decompose",
+          "definition": "To break a shape into smaller pieces you can measure separately."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7GM3-S5",
+        "if_fail": "7GM3-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Bottom prism 8 by 3 by 5, top prism 3 by 3 by 2. Total volume?'"
+        },
+        {
+          "kind": "ask",
+          "text": "How many prisms is this? What is the volume of the bottom one?"
+        },
+        {
+          "kind": "say",
+          "text": "Two prisms. Bottom: 8 times 3 times 5 = 120. Top: 3 times 3 times 2 = 18. Add: 120 plus 18 = 138 cubic units."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student multiplies all the numbers together, stop: 'each prism has its OWN three dimensions -- don't mix them.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a 10 by 4 by 6 prism and a 4 by 4 by 5 prism -- total volume?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A rectangular prism is 4 by 3 by 2. What is its volume?",
+          "answer": "24 cubic units"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A solid splits into two prisms with volumes 90 and 40. What is the total volume?",
+          "answer": "130 cubic units"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Prism A is 10 cm by 4 cm by 6 cm and Prism B is 4 cm by 4 cm by 5 cm. Find the total volume.",
+          "answer": "320 cubic cm (240 + 80)",
+          "notes": "Two prisms, add the volumes."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bottom prism is 8 in by 6 in by 3 in and a top prism is 6 in by 2 in by 4 in. Find the total volume.",
+          "answer": "192 cubic in (144 + 48)",
+          "notes": "Baits forgetting the second piece."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Sam found the volume of an L-shaped solid made of a 10 x 4 x 6 prism and a 4 x 4 x 5 prism. Find and fix the mistake.",
+          "shown_work": [
+            "Sam wrote: it's one big box, 10 x 8 x 6",
+            "V = 480 cubic in"
+          ],
+          "answer": "The solid is not one box. Split it: 10 x 4 x 6 = 240 and 4 x 4 x 5 = 80, so the total is 240 + 80 = 320 cubic in.",
+          "notes": "Canonical error: treated a composite as a single prism."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A lower box is 12 m by 5 m by 4 m and an upper box is 5 m by 5 m by 2 m. Find the combined volume.",
+          "answer": "290 cubic m (240 + 50)",
+          "notes": "Add the two prism volumes."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A solid is a 9 ft by 3 ft by 4 ft prism with a 3 ft by 3 ft by 3 ft prism on top. Find the total volume, and state which three dimensions you multiplied for each piece.",
+          "answer": "135 cubic ft: 9 x 3 x 4 = 108 and 3 x 3 x 3 = 27, then 108 + 27 = 135.",
+          "notes": "Reverse direction -- name the dimensions per prism."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Design your own composite solid from two rectangular prisms whose volumes add to exactly 200 cubic cm. Give both prisms' dimensions and show the sum.",
+          "answer": "Sample: a 5 x 4 x 5 prism (100) and a 10 x 5 x 2 prism (100); 100 + 100 = 200 cubic cm.",
+          "notes": "Produce-your-own; many correct answers."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Cut and Add",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Composite-solid cards (each shows two joined prisms with dimensions)",
+            "Recording sheet with 'Prism 1', 'Prism 2', 'Total' rows"
+          ],
+          "instructions": "1. Draw a composite-solid card.\n2. Draw one line to cut it into two separate prisms.\n3. Write each prism's length, width, and height, then its volume, in its own row.\n4. Add the two volumes for the total.\n5. Debrief: what goes wrong if you multiply numbers from two different prisms together?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "One Box or Two?",
+          "time_minutes": 8,
+          "grouping": "small_group",
+          "materials": [
+            "Slip with Sam's single-box work"
+          ],
+          "instructions": "1. Read Sam's claim that the L-shaped solid is one 10 x 8 x 6 box worth 480.\n2. Show why the top part is not 10 wide or 6 tall like the bottom.\n3. Redo it by cutting into two prisms and adding.\n4. Write the rule: a composite solid is the ____ of its prisms' volumes.",
+          "content": {
+            "worked_problem": "A 10 x 4 x 6 prism plus a 4 x 4 x 5 prism. Sam wrote 10 x 8 x 6 = 480.",
+            "error_step": "Sam used one overall height (8) across the whole width, treating it as a single box.",
+            "why": "The pieces have different footprints: 10 x 4 x 6 = 240 and 4 x 4 x 5 = 80, total 320 cubic in."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building the solid from unit-cube or paper prisms makes the two-pieces-added structure concrete before it is abstract."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The single-box error is a clean, one-move mistake perfect for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release from one prism to two-prism composites scaffolds the decompose-and-add habit."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many prisms make up this solid?",
+          "Where would you cut it into separate boxes?",
+          "What are the three dimensions of just this one prism?",
+          "Did any dimension come from a different prism by accident?",
+          "How do you combine the pieces once each volume is found?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student treats the whole composite as one rectangular prism.",
+            "say": "Draw a line to cut the solid into separate prisms. Find each prism's volume with its own length, width, and height, then add the volumes.",
+            "praise": "You split it into prisms and added -- that's how any composite volume works."
+          },
+          {
+            "if_you_see": "Student finds both prism volumes but forgets to add them (reports only one).",
+            "say": "You found each piece -- now put them together. The total volume is the sum of the prisms.",
+            "praise": "You added both pieces -- the total is every prism combined."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A 5 x 2 x 3 prism and a 2 x 2 x 4 prism are joined. Total volume?",
+            "look_for": "46 (30 + 16). A single answer like 30 means a piece was dropped."
+          },
+          {
+            "prompt": "True or false: a composite of two prisms has one length, one width, and one height.",
+            "look_for": "False -- each prism has its own three dimensions. 'True' signals the single-box error."
+          }
+        ]
+      },
+      "fluency_source": "7GM3-F2",
+      "sentence_starters": [
+        "I cut the solid into ___ prisms.",
+        "Prism 1 is ___, prism 2 is ___, so the total is ___ + ___ = ___."
+      ],
+      "worked_solution": {
+        "stem": "A solid is made of a bottom prism 10 in by 4 in by 6 in and a top prism 4 in by 4 in by 5 in. What is the total volume?",
+        "answer": "320 cubic in",
+        "steps": [
+          {
+            "math": "cut into two prisms",
+            "annotation": "A composite solid is separate boxes joined together."
+          },
+          {
+            "math": "Prism 1: 10 x 4 x 6 = 240",
+            "annotation": "Length times width times height for the bottom prism."
+          },
+          {
+            "math": "Prism 2: 4 x 4 x 5 = 80",
+            "annotation": "Do the same for the top prism, using ITS dimensions."
+          },
+          {
+            "math": "total = 240 + 80 = 320",
+            "annotation": "Add the two volumes."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A solid is made of a prism 8 m by 3 m by 5 m and a prism 3 m by 3 m by 2 m. What is the total volume?",
+        "answer": "138 cubic m",
+        "steps": [
+          {
+            "math": "cut into two prisms",
+            "annotation": "Separate the solid into boxes.",
+            "given": true
+          },
+          {
+            "math": "Prism 1: 8 x 3 x 5 = 120",
+            "annotation": "Volume of the first prism.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Find the second prism's volume with its own dimensions.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Add the two volumes for the total.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7GM3-S3",
+      "name": "Find a missing height, radius, or side length from a given volume",
+      "column": "on_grade",
+      "parent_standard": "7.GM.3",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7GM3-S1"
+      },
+      "i_do_script": "Sometimes I'm handed the volume and have to find a missing measurement, so I run the formula backwards by dividing. Watch a cylinder with volume 471 and radius 5 (using 3.14). V = pi r squared h, so 471 = 3.14 times 25 times h, which is 471 = 78.5 h. Divide: h = 471 divided by 78.5 = 6. If instead the RADIUS is missing, I divide the same way to get r squared, then take the square root -- because the formula squared it. For a composite, I subtract the prism I know, then divide to find the missing side.",
+      "canonical_error": {
+        "pattern": "When the radius is unknown, reports r squared as the radius (skips the square root), or divides out only the height and forgets pi",
+        "example": "For volume 1413 and height 18 (using 3.14), computes r squared = 1413 / (3.14 x 18) = 25 but answers 25 instead of the square root, 5",
+        "why": "Undoing V = pi r squared h means dividing by everything multiplying the unknown; for the radius the formula squared it, so the last step must undo the square with a square root."
+      },
+      "item_template": "A volume with all but one measurement given (cylinder height or radius, or a composite side). Student finds the missing measurement. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A cylinder has a volume of 471 cubic in and a radius of 5 in. Use 3.14 for pi. What is the height?",
+          "answer": "6 in",
+          "distractor_logic": "471 / (3.14 x 25) = 471 / 78.5 = 6. Forgetting to square the radius changes the divisor."
+        },
+        {
+          "stem": "A cylinder has a volume of 1413 cubic in and a height of 18 in. Use 3.14 for pi. What is the radius?",
+          "answer": "5 in",
+          "distractor_logic": "r squared = 1413 / (3.14 x 18) = 25, so r = square root of 25 = 5. Reporting 25 skips the square root."
+        },
+        {
+          "stem": "A cylinder has a volume of 150.72 cubic ft and a height of 12 ft. Use 3.14 for pi. What is the radius?",
+          "answer": "2 ft",
+          "distractor_logic": "r squared = 150.72 / (3.14 x 12) = 4, so r = 2."
+        },
+        {
+          "stem": "A composite solid of two prisms has a total volume of 188 cubic m. One prism is 6 m by 5 m by 4 m. The other prism is 5 m by 4 m by x m. What is x?",
+          "answer": "3.4 m",
+          "distractor_logic": "188 - 120 = 68, and 68 / (5 x 4) = 3.4."
+        }
+      ],
+      "redirect_script": {
+        "stop": "You found r squared -- is that the radius yet?",
+        "prompt": "To find the missing measurement, divide the volume by everything else. For a radius, the formula squared it, so finish by taking the square root of your answer.",
+        "praise": "You divided out the rest and took the square root -- that's the real radius."
+      },
+      "vocabulary": [
+        {
+          "term": "Square root",
+          "definition": "The number that, multiplied by itself, gives the value; the square root of 25 is 5."
+        },
+        {
+          "term": "Missing dimension",
+          "definition": "A length you solve for by working a volume formula backwards."
+        },
+        {
+          "term": "Inverse operation",
+          "definition": "The operation that undoes another; division undoes multiplication."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7GM3-S4",
+        "if_fail": "7GM3-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Cylinder volume 471, radius 5 (use 3.14). Find the height.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is 3.14 times 5 squared? What does that leave times the height?"
+        },
+        {
+          "kind": "say",
+          "text": "3.14 times 25 = 78.5, so 471 = 78.5 h. Divide: 471 divided by 78.5 = 6. The height is 6."
+        },
+        {
+          "kind": "watch",
+          "text": "If the missing value is a radius and the student stops at r squared, ask 'you found r times r -- what undoes the square?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: volume 1413, height 18 (use 3.14). Find the radius."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "If 78.5 times h = 471, what is h?",
+          "answer": "6 (471 / 78.5)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "If r squared = 49, what is r?",
+          "answer": "7 (the square root of 49)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cylinder has a volume of 471 cubic in and a radius of 5 in. Use 3.14 for pi. Find the height.",
+          "answer": "6 in (471 / 78.5)",
+          "notes": "Divide the volume by pi r squared."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cylinder has a volume of 1413 cubic in and a height of 18 in. Use 3.14 for pi. Find the radius.",
+          "answer": "5 in (r squared = 25, then square root)",
+          "notes": "Baits reporting r squared = 25."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Riley found the radius of a cylinder with volume 1413 cubic in and height 18 in (using 3.14 for pi). Find and fix the mistake.",
+          "shown_work": [
+            "Riley wrote: r squared = 1413 / (3.14 x 18) = 25",
+            "So the radius is 25 inches."
+          ],
+          "answer": "Riley found r squared correctly but forgot the square root. r = square root of 25 = 5 inches.",
+          "notes": "Canonical error: reporting r squared as r."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A composite solid of two prisms has a total volume of 188 cubic m. One prism is 6 m by 5 m by 4 m; the other is 5 m by 4 m by x m. Find x.",
+          "answer": "3.4 m (188 - 120 = 68, then 68 / 20)",
+          "notes": "Subtract the known prism, then divide."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A cylinder has a volume of 150.72 cubic ft and a radius of 2 ft. Use 3.14 for pi. Find the height.",
+          "answer": "12 ft (150.72 / (3.14 x 4) = 150.72 / 12.56)",
+          "notes": "Radius given, solve for height."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A cylinder has a volume of 100.48 cubic in and a height of 8 in. Use 3.14 for pi. Find the radius.",
+          "answer": "2 in (r squared = 100.48 / 25.12 = 4, then square root)",
+          "notes": "Radius from volume and height; remember the square root."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Divide, or Divide-Then-Root?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Card set of 10 'find the missing measurement' problems (some missing a height/side, some missing a radius)"
+          ],
+          "instructions": "1. Sort each card into 'missing height or side (just divide)' or 'missing radius (divide, then square root).'\n2. For each card, write the single extra step the radius problems need.\n3. Solve four cards, two from each pile, using 3.14 for pi.\n4. Debrief: why does finding a radius take one more step than finding a height?",
+          "content": {
+            "categories": [
+              "Missing height or side (divide)",
+              "Missing radius (divide, then square root)"
+            ],
+            "cards": [
+              {
+                "text": "V = 471, r = 5, find height",
+                "category": "Missing height or side (divide)"
+              },
+              {
+                "text": "V = 1413, h = 18, find radius",
+                "category": "Missing radius (divide, then square root)"
+              },
+              {
+                "text": "V = 150.72, r = 2, find height",
+                "category": "Missing height or side (divide)"
+              },
+              {
+                "text": "V = 100.48, h = 8, find radius",
+                "category": "Missing radius (divide, then square root)"
+              },
+              {
+                "text": "total V = 188, find missing side x",
+                "category": "Missing height or side (divide)"
+              },
+              {
+                "text": "V = 78.5, h = 10, find radius",
+                "category": "Missing radius (divide, then square root)"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "You Found r Squared, Not r",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Riley's radius-of-25 work"
+          ],
+          "instructions": "1. Read Riley's answer that the radius is 25 inches.\n2. Ask: could a can with a 25-inch radius have a volume of only 1413 cubic inches? Use that to spot the error.\n3. Redo the last step by taking the square root.\n4. Write the rule for the extra step every 'find the radius' problem needs.",
+          "content": {
+            "worked_problem": "V = 1413, h = 18 (use 3.14). Riley wrote r squared = 25, so r = 25.",
+            "error_step": "Riley reported r squared (25) as the radius.",
+            "why": "The formula squared the radius, so undo it: r = square root of 25 = 5 inches."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The radius-vs-r-squared slip is a single, precise error that find-and-fix targets cleanly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'divide out everything, then undo the square' models the reverse procedure step by step."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release from find-the-height (just divide) to find-the-radius (divide then root) adds the square root deliberately."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is multiplying the unknown, and how do you undo it?",
+          "After you divide, is your answer the radius or the radius squared?",
+          "What operation undoes squaring?",
+          "For the composite, which prism can you subtract first?",
+          "Does your missing length look reasonable next to the volume?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reports r squared as the radius or forgets to divide out pi.",
+            "say": "To find the missing measurement, divide the volume by everything else. For a radius, the formula squared it, so finish by taking the square root of your answer.",
+            "praise": "You divided out the rest and took the square root -- that's the real radius."
+          },
+          {
+            "if_you_see": "On a composite, student divides the whole volume without subtracting the known prism first.",
+            "say": "First take away the prism you already know. Then divide what's left to find the missing side.",
+            "praise": "You subtracted the known piece before dividing -- now the leftover matches the unknown prism."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A cylinder has volume 100.48 and height 8 (use 3.14). Find the radius.",
+            "look_for": "2 (r squared = 4, then root). An answer of 4 means the square root was skipped."
+          },
+          {
+            "prompt": "A cylinder has volume 314 and radius 5 (use 3.14). Find the height.",
+            "look_for": "4 (314 / 78.5). Dividing by 5 instead of 25 signals the missed square."
+          }
+        ]
+      },
+      "fluency_source": "7GM3-F2",
+      "sentence_starters": [
+        "The volume is ___, and pi r squared is ___, so the height is ___ / ___ = ___.",
+        "I found r squared = ___, so the radius is the square root, ___."
+      ],
+      "worked_solution": {
+        "stem": "A cylinder has a volume of 471 cubic in and a radius of 5 in. Use 3.14 for pi. What is the height?",
+        "answer": "6 in",
+        "steps": [
+          {
+            "math": "V = pi r squared h, so 471 = 3.14 x 25 x h",
+            "annotation": "Substitute the volume and the radius."
+          },
+          {
+            "math": "3.14 x 25 = 78.5, so 471 = 78.5 h",
+            "annotation": "Combine everything multiplying the height."
+          },
+          {
+            "math": "h = 471 / 78.5",
+            "annotation": "Divide to undo the multiplication."
+          },
+          {
+            "math": "= 6 in",
+            "annotation": "The missing height."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A cylinder has a volume of 1413 cubic in and a height of 18 in. Use 3.14 for pi. What is the radius?",
+        "answer": "5 in",
+        "steps": [
+          {
+            "math": "V = pi r squared h, so 1413 = 3.14 x r squared x 18",
+            "annotation": "Substitute the volume and the height.",
+            "given": true
+          },
+          {
+            "math": "3.14 x 18 = 56.52, so r squared = 1413 / 56.52",
+            "annotation": "Divide out pi and the height.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Simplify to find r squared.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Take the square root to get the radius.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7GM3-S4",
+      "name": "Solve a real-world problem that applies a cylinder's volume",
+      "column": "on_grade",
+      "parent_standard": "7.GM.3",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7GM3-S1"
+      },
+      "i_do_script": "In a real-world problem the volume is only step one; the question asks for something else, so I finish with one more operation. Watch a cylindrical dog-food container, radius 5 and height 18, where the dog eats 18.84 cubic inches a day. First the volume: 3.14 times 25 times 18 = 1413 cubic inches. But the question is how many DAYS, so I divide: 1413 divided by 18.84 = 75 days. The trap is stopping at 1413 -- that's the volume, not the answer the story wanted.",
+      "canonical_error": {
+        "pattern": "Computes the cylinder's volume correctly but stops there, or does the wrong final operation, never answering the real-world question",
+        "example": "For a 1413-cubic-inch container and a dog eating 18.84 per day, answers 1413 (the volume) or multiplies 1413 x 18.84, instead of dividing 1413 / 18.84 = 75 days",
+        "why": "The volume is a means, not the answer. The story asks for a further quantity -- days, gallons, cans -- that needs one more operation, usually division, applied to the volume."
+      },
+      "item_template": "A real-world cylinder plus a rate or capacity (per day, per gallon, per can). Student finds the volume, then does one more operation. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A cylindrical container has a radius of 5 in and a height of 18 in and is full of dog food. The dog eats 18.84 cubic in per day. Use 3.14 for pi. How many full days will it last?",
+          "answer": "75 days",
+          "distractor_logic": "V = 1413; 1413 / 18.84 = 75. Answering 1413 stops at the volume."
+        },
+        {
+          "stem": "A cylindrical tank has a radius of 10 in and a height of 21 in. One gallon equals 231 cubic in. Use 3.14 for pi. How many gallons does it hold? Round to the nearest tenth.",
+          "answer": "28.5 gallons",
+          "distractor_logic": "V = 6594; 6594 / 231 = 28.5."
+        },
+        {
+          "stem": "A cylindrical paint can has a radius of 4 in and a height of 10 in. A painter needs 2,000 cubic in of paint. Use 3.14 for pi. How many full cans must be bought?",
+          "answer": "4 cans",
+          "distractor_logic": "V = 502.4; 2000 / 502.4 = 3.98, round up to 4."
+        },
+        {
+          "stem": "A cylindrical barrel of radius 3 ft and height 5 ft is full of water. Each bucket holds 4.71 cubic ft. Use 3.14 for pi. How many full buckets can be filled?",
+          "answer": "30 buckets",
+          "distractor_logic": "V = 141.3; 141.3 / 4.71 = 30."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is that the volume, or the actual thing the question asked for?",
+        "prompt": "The volume is step one. Reread the question -- it wants days, gallons, or cans. Take the volume and do one more operation (usually divide) to answer it.",
+        "praise": "You used the volume to answer the real question -- that second step is the point."
+      },
+      "vocabulary": [
+        {
+          "term": "Capacity",
+          "definition": "How much a container can hold, often measured as a volume."
+        },
+        {
+          "term": "Rate",
+          "definition": "An amount per unit, such as cubic inches of food per day."
+        },
+        {
+          "term": "Cylindrical",
+          "definition": "Shaped like a cylinder."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7GM3-S5",
+        "if_fail": "7GM3-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Container radius 5, height 18. Dog eats 18.84 per day. Days? (use 3.14)'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the volume first? Then what does the question actually ask for?"
+        },
+        {
+          "kind": "say",
+          "text": "Volume: 3.14 times 25 times 18 = 1413 cubic in. The question asks for days, so divide: 1413 divided by 18.84 = 75 days."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 1413 as the final answer, ask 'is 1413 a number of days, or a number of cubic inches?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a tank radius 10, height 21; one gallon is 231 cubic in. How many gallons? (use 3.14)"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A container holds 1,413 cubic in. A dog eats 20 cubic in per day. How many full days will it last?",
+          "answer": "70 full days (1413 / 20 = 70.65)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A tank holds 462 cubic in. One gallon equals 231 cubic in. How many gallons is that?",
+          "answer": "2 gallons"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cylindrical container (radius 5 in, height 18 in) of dog food lets a dog eat 18.84 cubic in per day. Use 3.14 for pi. How many full days will it last?",
+          "answer": "75 days (1413 / 18.84)",
+          "notes": "Baits stopping at the volume 1413."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cylindrical paint can (radius 4 in, height 10 in) is used to buy 2,000 cubic in of paint. Use 3.14 for pi. How many full cans are needed?",
+          "answer": "4 cans (2000 / 502.4 = 3.98, round up)",
+          "notes": "Must round UP to cover the need."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Alex solved: a cylindrical container (radius 5 in, height 18 in) of dog food, dog eats 18.84 cubic in per day -- how many days? Use 3.14 for pi. Find and fix the mistake.",
+          "shown_work": [
+            "Alex wrote: V = 3.14 x 25 x 18 = 1413 cubic in",
+            "So the food lasts 1413 days."
+          ],
+          "answer": "1413 is the VOLUME, not the number of days. Divide by the daily amount: 1413 / 18.84 = 75 days.",
+          "notes": "Canonical error: stops at the volume instead of finishing the question."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cylindrical tank (radius 10 in, height 21 in) is measured in gallons, with one gallon equal to 231 cubic in. Use 3.14 for pi. How many gallons does it hold? Round to the nearest tenth.",
+          "answer": "28.5 gallons (6594 / 231)",
+          "notes": "Volume then divide by 231."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A cylindrical barrel of radius 3 ft and height 5 ft is emptied with buckets holding 4.71 cubic ft each. Use 3.14 for pi. How many full buckets does it take?",
+          "answer": "30 buckets (141.3 / 4.71)",
+          "notes": "Clean division; watch the units."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A cylindrical vase (radius 4 cm, height 20 cm) is filled with water at 50.24 cubic cm per second. Use 3.14 for pi. How many seconds to fill it?",
+          "answer": "20 seconds (1004.8 / 50.24)",
+          "notes": "Rate is per second; still divide the volume."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Two Steps, Every Time",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Real-world cylinder cards (radius, height, and a rate or capacity)",
+            "Recording sheet with 'Step 1: volume' and 'Step 2: answer the question' rows"
+          ],
+          "instructions": "1. Draw a card and read what the question is really asking (days, gallons, cans, seconds).\n2. Step 1: compute the cylinder's volume with 3.14 for pi.\n3. Step 2: do one more operation on the volume to answer the question, and label the units.\n4. Debrief: how did you know whether to divide, and by what?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "That's the Volume, Not the Answer",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Alex's 1413-days work"
+          ],
+          "instructions": "1. Read Alex's claim that the food lasts 1413 days.\n2. Point to where the volume got mistaken for the final answer.\n3. Finish the problem with the missing division and label the units.\n4. Write the two-step rule for any real-world volume problem.",
+          "content": {
+            "worked_problem": "Container radius 5, height 18; dog eats 18.84 per day. Alex wrote V = 1413, so 1413 days.",
+            "error_step": "Alex reported the volume (1413 cubic in) as the number of days.",
+            "why": "Days = volume / daily amount = 1413 / 18.84 = 75 days."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Stopping at the volume is the signature error here; find-and-fix with a units check makes the second step stick."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release from bare-volume problems to two-step story problems adds the finishing operation on purpose."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'what is the question actually asking?' surfaces the missing second step before students calculate."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the question really asking for -- what units?",
+          "Is the volume the answer, or a step toward it?",
+          "What operation turns the volume into days, gallons, or cans?",
+          "Should you round up, down, or to a decimal here? Why?",
+          "Does your answer's size make sense for the story?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reports the cylinder's volume as the final answer or picks the wrong final operation.",
+            "say": "The volume is step one. Reread the question -- it wants days, gallons, or cans. Take the volume and do one more operation (usually divide) to answer it.",
+            "praise": "You used the volume to answer the real question -- that second step is the point."
+          },
+          {
+            "if_you_see": "Student divides but rounds a 'how many full cans' answer down instead of up.",
+            "say": "If you need to COVER the amount, a partial can still means buying a whole one -- round up.",
+            "praise": "You rounded up so the need is fully covered -- that matches the story."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A tank holds 462 cubic in; one gallon is 231 cubic in. How many gallons?",
+            "look_for": "2 (462 / 231). Answering 462 means the student stopped at the volume."
+          },
+          {
+            "prompt": "A container holds 500 cubic in; a scoop is 100 cubic in. How many full scoops?",
+            "look_for": "5 (500 / 100). Multiplying instead of dividing signals the wrong final operation."
+          }
+        ]
+      },
+      "fluency_source": "7GM3-F2",
+      "sentence_starters": [
+        "The volume is 3.14 x ___ x ___ = ___ cubic units.",
+        "The question asks for ___, so I ___ the volume: ___ / ___ = ___."
+      ],
+      "worked_solution": {
+        "stem": "A cylindrical container has a radius of 5 in and a height of 18 in and is full of dog food. The dog eats 18.84 cubic in per day. Use 3.14 for pi. How many full days will the food last?",
+        "answer": "75 days",
+        "steps": [
+          {
+            "math": "V = pi r squared h = 3.14 x 5 squared x 18",
+            "annotation": "Step 1: find the container's volume."
+          },
+          {
+            "math": "= 3.14 x 25 x 18 = 1413 cubic in",
+            "annotation": "Square the radius, then multiply."
+          },
+          {
+            "math": "days = 1413 / 18.84",
+            "annotation": "Step 2: the question asks for DAYS, so divide by the daily amount."
+          },
+          {
+            "math": "= 75 days",
+            "annotation": "The volume was only the halfway point."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A cylindrical tank has a radius of 10 in and a height of 21 in. One gallon equals 231 cubic in. Use 3.14 for pi. How many gallons does it hold? Round to the nearest tenth.",
+        "answer": "28.5 gallons",
+        "steps": [
+          {
+            "math": "V = pi r squared h = 3.14 x 10 squared x 21",
+            "annotation": "Step 1: find the volume.",
+            "given": true
+          },
+          {
+            "math": "= 3.14 x 100 x 21 = 6594 cubic in",
+            "annotation": "Square the radius, then multiply.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Step 2: divide the volume by 231 to get gallons.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Round to the nearest tenth.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7GM3-S5",
+      "name": "Solve a problem that combines a cylinder and a rectangular prism",
+      "column": "on_grade",
+      "parent_standard": "7.GM.3",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7GM3-S1"
+      },
+      "i_do_script": "Some problems put a cylinder inside a box, so I work with both shapes at once. Watch a cylindrical candle, radius 3.5 and height 8, packed in the smallest rectangular box. The box's base must be as wide as the candle all the way across -- that's the DIAMETER, 2 times 3.5 = 7. So the box is 7 by 7 by 8, and its volume is 7 times 7 times 8 = 392 cubic inches. If the question wants the EMPTY space, I subtract the candle's volume from the box. The trap is using the radius 3.5 for the box side -- the box has to fit the full width, not the halfway distance.",
+      "canonical_error": {
+        "pattern": "Uses the radius (instead of the diameter) as the box's side length, making the box too small",
+        "example": "For a candle of radius 3.5, makes the box 3.5 by 3.5 by 8 = 98 instead of 7 by 7 by 8 = 392, because the box side must span the diameter 2 x 3.5 = 7",
+        "why": "The box base has to reach all the way across the circle, which is the diameter (twice the radius). The cylinder's height sets the box's height."
+      },
+      "item_template": "A cylinder fitted in the smallest rectangular box. Student finds the box volume or the empty space around the cylinder. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A cylindrical candle has a radius of 3.5 in and a height of 8 in. What is the volume of the smallest rectangular box that will hold it?",
+          "answer": "392 cubic in",
+          "distractor_logic": "Box side is the diameter 7: 7 x 7 x 8 = 392. Using the radius 3.5 gives 98."
+        },
+        {
+          "stem": "A cylindrical can has a radius of 2 cm and a height of 6 cm and is packed in the smallest rectangular box that fits it. Use 3.14 for pi. What is the volume of the empty space? Round to the nearest hundredth.",
+          "answer": "20.64 cubic cm",
+          "distractor_logic": "Box 4 x 4 x 6 = 96, can 3.14 x 4 x 6 = 75.36, empty 96 - 75.36 = 20.64."
+        },
+        {
+          "stem": "A cylinder has a radius of 5 in and a height of 10 in and sits in the smallest rectangular box that holds it. Use 3.14 for pi. What is the empty space in the box?",
+          "answer": "215 cubic in",
+          "distractor_logic": "Box 10 x 10 x 10 = 1000, cylinder 3.14 x 25 x 10 = 785, empty 215."
+        },
+        {
+          "stem": "A cylindrical mug of radius 3 cm and height 9 cm is boxed in the smallest rectangular box. Use 3.14 for pi. What volume of the box is not filled by the mug? Round to the nearest hundredth.",
+          "answer": "69.66 cubic cm",
+          "distractor_logic": "Box 6 x 6 x 9 = 324, mug 3.14 x 9 x 9 = 254.34, empty 69.66."
+        }
+      ],
+      "redirect_script": {
+        "stop": "How wide does the box have to be to fit the whole circle?",
+        "prompt": "The box side must span the full width of the cylinder -- that's the DIAMETER, two times the radius. Use the diameter for the base, the height for the box height.",
+        "praise": "You sized the box to the diameter -- now it actually fits the cylinder."
+      },
+      "vocabulary": [
+        {
+          "term": "Smallest box",
+          "definition": "The rectangular box just big enough to hold a solid; its base spans the solid's widest measure."
+        },
+        {
+          "term": "Empty space",
+          "definition": "The volume of a container not filled by the object inside; box volume minus object volume."
+        },
+        {
+          "term": "Fits",
+          "definition": "Encloses the object completely, so the box must be at least as wide as the object's diameter."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7GM3-S6",
+        "if_fail": "7GM3-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Candle radius 3.5, height 8. Smallest box volume?'"
+        },
+        {
+          "kind": "ask",
+          "text": "How wide across is the candle? Is that the radius or the diameter?"
+        },
+        {
+          "kind": "say",
+          "text": "All the way across is the diameter, 2 times 3.5 = 7. So the box is 7 by 7 by 8 = 392 cubic in."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student makes the box 3.5 wide, ask 'would a 3.5-wide box hold a candle that is 7 across?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a can of radius 2, height 6 -- find the smallest box's volume."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A cylinder has a radius of 3. What is its diameter (the full width across)?",
+          "answer": "6"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "For the smallest box around a cylinder of radius 2 and height 5, what are the box's length and width?",
+          "answer": "4 and 4 (the diameter)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cylindrical candle has a radius of 3.5 in and a height of 8 in. Find the volume of the smallest rectangular box that holds it.",
+          "answer": "392 cubic in (7 x 7 x 8)",
+          "notes": "Baits using the radius 3.5 for the box side."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cylindrical can of radius 2 cm and height 6 cm sits in the smallest box that fits it. Use 3.14 for pi. Find the empty space. Round to the nearest hundredth.",
+          "answer": "20.64 cubic cm (96 - 75.36)",
+          "notes": "Box minus cylinder."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Taylor found the smallest box for a candle of radius 3.5 in and height 8 in. Find and fix the mistake.",
+          "shown_work": [
+            "Taylor wrote: box = 3.5 x 3.5 x 8",
+            "V = 98 cubic in"
+          ],
+          "answer": "Taylor used the radius as the box's side. The box must span the DIAMETER, 2 x 3.5 = 7, so the box is 7 x 7 x 8 = 392 cubic in.",
+          "notes": "Canonical error: radius instead of diameter for the box base."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cylinder of radius 5 in and height 10 in sits in the smallest box that holds it. Use 3.14 for pi. Find the empty space.",
+          "answer": "215 cubic in (1000 - 785)",
+          "notes": "Box 10 x 10 x 10, cylinder 785."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A cylindrical mug of radius 3 cm and height 9 cm is boxed in the smallest box. Use 3.14 for pi. What volume of the box is empty? Round to the nearest hundredth.",
+          "answer": "69.66 cubic cm (324 - 254.34)",
+          "notes": "Larger empty-space computation."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A soup can of radius 4 cm and height 11 cm ships in the smallest rectangular box. Use 3.14 for pi. Give the box's volume and the empty space, each to the nearest hundredth.",
+          "answer": "Box 8 x 8 x 11 = 704 cubic cm; can 3.14 x 16 x 11 = 552.64; empty 704 - 552.64 = 151.36 cubic cm.",
+          "notes": "Two answers -- box volume and empty space."
+        }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Box It Right",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Card set of 6 cylinders (radius, height) and box cards, including 'radius-sized' decoy boxes"
+          ],
+          "instructions": "1. Match each cylinder to the smallest box that actually holds it.\n2. Set aside the decoy boxes that used the radius instead of the diameter for the base.\n3. To claim a match, say the diameter out loud and the box's three dimensions.\n4. Debrief: why does the box base equal the diameter and not the radius?",
+          "content": {
+            "pairs": [
+              {
+                "left": "cylinder radius 3.5, height 8",
+                "right": "box 7 by 7 by 8"
+              },
+              {
+                "left": "cylinder radius 2, height 6",
+                "right": "box 4 by 4 by 6"
+              },
+              {
+                "left": "cylinder radius 5, height 10",
+                "right": "box 10 by 10 by 10"
+              },
+              {
+                "left": "cylinder radius 3, height 9",
+                "right": "box 6 by 6 by 9"
+              }
+            ],
+            "decoys": [
+              "box 3.5 by 3.5 by 8",
+              "box 2 by 2 by 6"
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Diameter, Not Radius",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Taylor's radius-sized box"
+          ],
+          "instructions": "1. Read Taylor's 3.5 by 3.5 by 8 box.\n2. Ask: is 3.5 the full width of the candle or only half of it?\n3. Redo the box using the diameter for the base.\n4. Write the rule for the box base of any cylinder.",
+          "content": {
+            "worked_problem": "Candle radius 3.5, height 8. Taylor wrote box = 3.5 x 3.5 x 8 = 98.",
+            "error_step": "Taylor used the radius (3.5) as the box side instead of the diameter (7).",
+            "why": "The box must span the full width, 2 x 3.5 = 7: box = 7 x 7 x 8 = 392 cubic in."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Setting a real can inside a box makes 'the base is the diameter' visible before it is a formula."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The radius-for-diameter slip is precise and baitable, ideal for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'all the way across is the diameter' models the sizing decision students miss."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How wide is the cylinder all the way across?",
+          "Is the box side the radius or the diameter?",
+          "What sets the height of the box?",
+          "For empty space, what do you subtract from what?",
+          "Does your box actually fit the cylinder inside?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student uses the radius as the box's side length.",
+            "say": "The box side must span the full width of the cylinder -- that's the DIAMETER, two times the radius. Use the diameter for the base, the height for the box height.",
+            "praise": "You sized the box to the diameter -- now it actually fits the cylinder."
+          },
+          {
+            "if_you_see": "Student subtracts the box from the cylinder, or forgets to subtract for empty space.",
+            "say": "Empty space is what's left over: box volume MINUS the cylinder inside it.",
+            "praise": "You took box minus cylinder -- that's the leftover empty space."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A cylinder has radius 4. What is the side length of the smallest box's base?",
+            "look_for": "8 (the diameter). Answering 4 signals the radius/diameter confusion."
+          },
+          {
+            "prompt": "A box is 96 cubic cm and the cylinder inside is 75.36. What is the empty space?",
+            "look_for": "20.64 (96 - 75.36). Subtracting the wrong way flags the leftover misconception."
+          }
+        ]
+      },
+      "fluency_source": "7GM3-F2",
+      "sentence_starters": [
+        "The diameter is 2 x ___ = ___, so the box is ___ by ___ by ___.",
+        "Empty space = box - cylinder = ___ - ___ = ___."
+      ],
+      "worked_solution": {
+        "stem": "A cylindrical candle has a radius of 3.5 in and a height of 8 in. What is the volume of the smallest rectangular box that will hold it?",
+        "answer": "392 cubic in",
+        "steps": [
+          {
+            "math": "diameter = 2 x 3.5 = 7 in",
+            "annotation": "The box base must span the full width of the candle."
+          },
+          {
+            "math": "box base = 7 by 7",
+            "annotation": "Both base sides equal the diameter."
+          },
+          {
+            "math": "box height = 8 in",
+            "annotation": "The candle's height sets the box height."
+          },
+          {
+            "math": "V = 7 x 7 x 8 = 392 cubic in",
+            "annotation": "Multiply the box's three dimensions."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A cylindrical can of radius 2 cm and height 6 cm sits in the smallest rectangular box. Use 3.14 for pi. What is the volume of the empty space?",
+        "answer": "20.64 cubic cm",
+        "steps": [
+          {
+            "math": "diameter = 2 x 2 = 4, so box = 4 x 4 x 6",
+            "annotation": "Size the box to the diameter.",
+            "given": true
+          },
+          {
+            "math": "box volume = 4 x 4 x 6 = 96 cubic cm",
+            "annotation": "Volume of the box.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Find the can's volume with pi r squared h.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Subtract the can from the box for the empty space.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "7GM3-S6",
+      "name": "Solve a complex composite by removing cylinders or recovering a missing side",
+      "column": "looking_forward",
+      "parent_standard": "7.GM.3",
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7GM3-S2"
+      },
+      "i_do_script": "The hardest problems take material AWAY: a solid brick with cylindrical holes drilled through it. Watch a brick 4 by 6 by 8 with three holes of radius 1 drilled through the 8-inch length. Solid brick: 4 times 6 times 8 = 192. Each hole is a cylinder with radius 1 and height 8 (the length it goes through): 3.14 times 1 times 8 = 25.12. Three holes remove 3 times 25.12 = 75.36. Material left: 192 minus 75.36 = 116.64 cubic inches. The idea flips from adding pieces to SUBTRACTING every hollow -- once for each hole.",
+      "canonical_error": {
+        "pattern": "Adds the cylinder volume instead of subtracting it, or removes only one hole when several were drilled",
+        "example": "For a 192-cubic-inch brick with three radius-1 holes through the 8-in length, computes 192 + 75.36, or subtracts only one hole (192 - 25.12 = 166.88), instead of 192 - 3 x 25.12 = 116.64",
+        "why": "The holes are empty space removed from the solid, so each cylinder's volume is subtracted, once per hole. The remaining material is the prism minus every cylinder."
+      },
+      "item_template": "A prism with cylindrical holes removed, or a composite with a missing side recovered from its total volume. Student finds the remaining material or the missing length. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A rectangular brick is 4 in by 6 in by 8 in. Three cylindrical holes, each of radius 1 in, are drilled straight through the 8-in length. Use 3.14 for pi. What volume of material remains? Round to the nearest hundredth.",
+          "answer": "116.64 cubic in",
+          "distractor_logic": "192 - 3 x 25.12 = 116.64. Removing one hole leaves 166.88; adding gives 267.36."
+        },
+        {
+          "stem": "A rectangular block is 5 cm by 5 cm by 10 cm with two cylindrical holes of radius 1 cm drilled through its 10-cm length. Use 3.14 for pi. What volume of material remains? Round to the nearest hundredth.",
+          "answer": "187.2 cubic cm",
+          "distractor_logic": "250 - 2 x 31.4 = 187.2."
+        },
+        {
+          "stem": "A composite solid of two prisms has a total volume of 300 cubic ft. One prism is 10 ft by 4 ft by 5 ft. The second prism is 4 ft by 5 ft by x ft. What is x?",
+          "answer": "5 ft",
+          "distractor_logic": "300 - 200 = 100, and 100 / (4 x 5) = 5."
+        },
+        {
+          "stem": "A brick is 2 in by 4 in by 8 in. Five cylindrical holes of radius 1/2 in are drilled through the 4-in dimension. Use 3.14 for pi. How much material is used to make the brick? Round to the nearest tenth.",
+          "answer": "48.3 cubic in",
+          "distractor_logic": "64 - 5 x 3.14 = 64 - 15.7 = 48.3."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Are those holes adding material or taking it away?",
+        "prompt": "A drilled hole removes a cylinder of material, so SUBTRACT it -- and subtract once for every hole. Find the solid volume, then take away all the cylinders.",
+        "praise": "You subtracted every hole from the solid -- that's the leftover material."
+      },
+      "vocabulary": [
+        {
+          "term": "Removed volume",
+          "definition": "The material taken out of a solid, such as the cylinders drilled as holes; subtract it."
+        },
+        {
+          "term": "Remaining material",
+          "definition": "What is left after volume is removed; the solid volume minus the holes."
+        },
+        {
+          "term": "Composite object",
+          "definition": "A three-dimensional object built from, or with pieces removed from, prisms and cylinders."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for 8.GM.2 (volume of cones, cylinders, and spheres in problems).",
+        "if_fail": "7GM3-S2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Brick 4 by 6 by 8, three holes radius 1 through the 8-in length. Material left? (use 3.14)'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the solid brick's volume? What is the volume of ONE hole?"
+        },
+        {
+          "kind": "say",
+          "text": "Brick: 4 times 6 times 8 = 192. One hole: 3.14 times 1 times 8 = 25.12. Three holes: 75.36. Left: 192 minus 75.36 = 116.64."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student subtracts only one hole, ask 'how many holes were drilled? Subtract each one.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a 5 by 5 by 10 block with two holes of radius 1 through the 10-in length."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A brick is 4 by 6 by 8. What is its volume before any holes are drilled?",
+          "answer": "192 cubic units"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "One drilled hole removes 25.12 cubic in. How much do three identical holes remove?",
+          "answer": "75.36 cubic in (3 x 25.12)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A brick 4 in by 6 in by 8 in has three cylindrical holes of radius 1 in through the 8-in length. Use 3.14 for pi. What volume of material remains? Round to the nearest hundredth.",
+          "answer": "116.64 cubic in (192 - 75.36)",
+          "notes": "Subtract all three holes."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A block 5 cm by 5 cm by 10 cm has two cylindrical holes of radius 1 cm through the 10-cm length. Use 3.14 for pi. What volume of material remains? Round to the nearest hundredth.",
+          "answer": "187.2 cubic cm (250 - 62.8)",
+          "notes": "Two holes of height 10."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Morgan found the material left in a brick 4 in by 6 in by 8 in with three cylindrical holes (radius 1 in, through the 8-in length), using 3.14 for pi. Find and fix the mistake.",
+          "shown_work": [
+            "Morgan wrote: brick = 192, one hole = 3.14 x 1 x 8 = 25.12",
+            "192 - 25.12 = 166.88 cubic in"
+          ],
+          "answer": "Morgan subtracted only ONE hole. Three holes remove 3 x 25.12 = 75.36, so the material left is 192 - 75.36 = 116.64 cubic in.",
+          "notes": "Canonical error: subtracting one hole instead of all of them."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A composite solid of two prisms has a total volume of 300 cubic ft. One prism is 10 ft by 4 ft by 5 ft; the other is 4 ft by 5 ft by x ft. Find x.",
+          "answer": "5 ft (300 - 200 = 100, then 100 / 20)",
+          "notes": "Recover a missing side by subtracting the known prism."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A brick 2 in by 4 in by 8 in has five cylindrical holes of radius 1/2 in through the 4-in dimension. Use 3.14 for pi. How much material is used to make the brick? Round to the nearest tenth.",
+          "answer": "48.3 cubic in (64 - 5 x 3.14)",
+          "notes": "Small radius (0.5) and five holes through the 4-in side."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A concrete pipe is a cylinder of radius 6 in and length 30 in with a cylindrical hole of radius 4 in drilled all the way through. Use 3.14 for pi. What is the volume of concrete? Round to the nearest hundredth.",
+          "answer": "1884 cubic in (3391.2 - 1507.2)",
+          "notes": "Cylinder minus a cylinder -- the same subtract-the-hollow idea."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Subtract Every Hole",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Slip with Morgan's one-hole work"
+          ],
+          "instructions": "1. Read Morgan's answer of 166.88 for a brick with three holes.\n2. Count the holes in the problem and mark how many Morgan actually removed.\n3. Redo the problem subtracting all three holes.\n4. Write the rule: remaining material equals the solid minus ____ cylinder(s).",
+          "content": {
+            "worked_problem": "Brick 4 x 6 x 8 (192), three holes each 25.12. Morgan wrote 192 - 25.12 = 166.88.",
+            "error_step": "Morgan subtracted only one of the three holes.",
+            "why": "All three holes come out: 192 - 3 x 25.12 = 116.64 cubic in."
+          }
+        },
+        {
+          "type": "card_sort",
+          "title": "Add the Piece or Remove the Hollow?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 10 solids (some with a prism added, some with cylinders drilled out)"
+          ],
+          "instructions": "1. Sort each card into 'add a piece' or 'remove a hollow.'\n2. For each 'remove' card, write how many cylinders come out.\n3. Solve four cards, two of each kind, using 3.14 for pi.\n4. Debrief: how does the wording tell you whether to add or subtract?",
+          "content": {
+            "categories": [
+              "Add a piece",
+              "Remove a hollow"
+            ],
+            "cards": [
+              {
+                "text": "two prisms stacked, total volume",
+                "category": "Add a piece"
+              },
+              {
+                "text": "brick with 3 drilled holes",
+                "category": "Remove a hollow"
+              },
+              {
+                "text": "L-shaped solid of two prisms",
+                "category": "Add a piece"
+              },
+              {
+                "text": "block with 2 drilled holes",
+                "category": "Remove a hollow"
+              },
+              {
+                "text": "pipe: cylinder with a cylinder removed",
+                "category": "Remove a hollow"
+              },
+              {
+                "text": "step made of two boxes",
+                "category": "Add a piece"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Subtracting one hole instead of all of them is a precise, countable error made for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'the holes are empty, so subtract each one' models the flip from adding to subtracting."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "A journal note contrasting 'add a piece' with 'remove a hollow' consolidates when each direction applies."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Do the holes add material or remove it?",
+          "How many holes are drilled, and how deep is each one?",
+          "What is the height of each hole cylinder -- which dimension does it go through?",
+          "For the missing side, which prism can you subtract first?",
+          "Does your remaining material make sense as less than the solid brick?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds the cylinder volume, or subtracts only one of several holes.",
+            "say": "A drilled hole removes a cylinder of material, so SUBTRACT it -- and subtract once for every hole. Find the solid volume, then take away all the cylinders.",
+            "praise": "You subtracted every hole from the solid -- that's the leftover material."
+          },
+          {
+            "if_you_see": "Student uses the wrong length for the hole's height (not the dimension it is drilled through).",
+            "say": "The hole's height is the distance it travels through the brick -- the dimension it is drilled along.",
+            "praise": "You matched the hole's height to the drilling direction -- that's the right cylinder."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A 100-cubic-in solid has two holes, each 12 cubic in. What material remains?",
+            "look_for": "76 (100 - 24). An answer of 88 means only one hole was removed."
+          },
+          {
+            "prompt": "A brick is 60 cubic in with one 10-cubic-in hole. Remaining material?",
+            "look_for": "50 (60 - 10). An answer of 70 means the hole was added instead of subtracted."
+          }
+        ]
+      },
+      "fluency_source": "7GM3-F2",
+      "sentence_starters": [
+        "The solid is ___, and each hole removes ___, with ___ holes.",
+        "Material left = ___ - (___ x ___) = ___."
+      ],
+      "worked_solution": {
+        "stem": "A rectangular brick is 4 in by 6 in by 8 in. Three cylindrical holes, each of radius 1 in, are drilled through the 8-in length. Use 3.14 for pi. What volume of material remains?",
+        "answer": "116.64 cubic in",
+        "steps": [
+          {
+            "math": "solid brick = 4 x 6 x 8 = 192 cubic in",
+            "annotation": "Start with the whole prism, before drilling."
+          },
+          {
+            "math": "one hole = 3.14 x 1 squared x 8 = 25.12",
+            "annotation": "Each hole is a cylinder; its height is the 8-in length it passes through."
+          },
+          {
+            "math": "three holes = 3 x 25.12 = 75.36",
+            "annotation": "Subtract once for EVERY hole."
+          },
+          {
+            "math": "material left = 192 - 75.36 = 116.64",
+            "annotation": "Solid minus all the hollows."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A rectangular block is 5 cm by 5 cm by 10 cm with two cylindrical holes of radius 1 cm drilled through the 10-cm length. Use 3.14 for pi. What volume of material remains?",
+        "answer": "187.2 cubic cm",
+        "steps": [
+          {
+            "math": "solid block = 5 x 5 x 10 = 250 cubic cm",
+            "annotation": "Whole prism before drilling.",
+            "given": true
+          },
+          {
+            "math": "one hole = 3.14 x 1 squared x 10 = 31.4",
+            "annotation": "Cylinder of height 10 (the drilled length).",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply by the number of holes to remove.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Subtract the holes from the solid block.",
+            "given": false
+          }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "skills": [
+        "7GM3-F1",
+        "7GM3-F2"
+      ]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": [
+        "7GM3-S1",
+        "7GM3-S2"
+      ]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": [
+        "7GM3-S3",
+        "7GM3-S4",
+        "7GM3-S5"
+      ]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": [
+        "7GM3-S6"
+      ]
+    }
+  },
+  "skill_sequence": [
+    "7GM3-F1",
+    "7GM3-F2",
+    "7GM3-S1",
+    "7GM3-S2",
+    "7GM3-S3",
+    "7GM3-S4",
+    "7GM3-S5",
+    "7GM3-S6"
+  ],
+  "skill_tree": {
+    "7GM3-F1": [],
+    "7GM3-F2": [],
+    "7GM3-S1": [
+      "7GM3-F1",
+      "7GM3-F2"
+    ],
+    "7GM3-S2": [
+      "7GM3-F2"
+    ],
+    "7GM3-S3": [
+      "7GM3-S1"
+    ],
+    "7GM3-S4": [
+      "7GM3-S1"
+    ],
+    "7GM3-S5": [
+      "7GM3-S1",
+      "7GM3-S2"
+    ],
+    "7GM3-S6": [
+      "7GM3-S1",
+      "7GM3-S2"
+    ]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S1 (volume of a cylinder) -- the new grade-7 atom the whole standard rests on. If they pass, push to S4 (apply the volume in a real-world question) and S6 (complex composites with holes removed). If they fail, drop to F1 to check whether the base area (radius vs diameter, squaring) is even solid. S2 (composite prism volume), S3 (missing dimension), and S5 (cylinder inside a box) branch off the core as related contexts.",
+    "entry_skill": "7GM3-S1",
+    "if_pass": [
+      "7GM3-S4",
+      "7GM3-S6"
+    ],
+    "if_fail": [
+      "7GM3-F1"
+    ],
+    "branch_skills": [
+      "7GM3-S2",
+      "7GM3-S3",
+      "7GM3-S5"
+    ]
+  }
+}

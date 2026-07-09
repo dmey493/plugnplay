@@ -1,0 +1,1664 @@
+{
+  "standard_code": "8.DSP.3",
+  "standard_text": "Represent sample spaces and find probabilities of compound events (independent and dependent) using organized lists, tables, and tree diagrams.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "This standard asks students to do two connected things: REPRESENT the sample space of a compound event, and then FIND the probability of that event -- for both independent and dependent situations. So the arc begins with representation: a compound event has more than one part (flip a coin AND roll a number cube), and its sample space is every pairing of the parts. Students build that sample space as an organized list, a table, or a tree diagram, and count the outcomes with the counting principle -- multiply the number of choices at each stage, do not add them. Once the full sample space is on the table, a natural check is to hand students a partial list and ask which outcome is missing, which forces systematic, order-aware listing.\n\nFrom there the work is probability. A probability is favorable outcomes over total outcomes, and for a compound 'and' event students multiply the stage probabilities. First they do this for INDEPENDENT events, where one outcome does not affect the next (a coin and a die, a draw WITH replacement). Then they move to DEPENDENT events drawn WITHOUT replacement, where the second stage's counts shrink -- after a red marble is removed there is one fewer red and one fewer marble in all -- so the second probability changes. Finally, at the top of the progression, they combine an independent event with a dependent one in a single compound probability. The through-line we keep naming: a probability is favorable over total, and for 'and' you MULTIPLY the stages -- updating the counts whenever an earlier outcome is not replaced.",
+    "steps": [
+      {
+        "skill_id": "8DSP3-S1",
+        "verb": "represent",
+        "rationale": "The entry move: represent the sample space of a compound event as a list, table, or tree diagram and count the outcomes by multiplying the stage choices. Every probability downstream needs the total number of equally likely outcomes."
+      },
+      {
+        "skill_id": "8DSP3-S2",
+        "verb": "identify",
+        "rationale": "Given a partial sample space, find the missing outcome. This forces systematic, order-aware listing and is the spec's Approaching alternative to computing a probability."
+      },
+      {
+        "skill_id": "8DSP3-S3",
+        "verb": "calculate",
+        "rationale": "The core grade-level skill: find the probability of a compound INDEPENDENT event by writing each stage as favorable/total and multiplying. This is where 'multiply, don't add' must be settled."
+      },
+      {
+        "skill_id": "8DSP3-S4",
+        "verb": "calculate",
+        "rationale": "Extend to DEPENDENT events drawn without replacement, where the second stage's counts shrink. The trap is treating the second draw as if the first were replaced."
+      },
+      {
+        "skill_id": "8DSP3-S5",
+        "verb": "find",
+        "rationale": "The Above-proficiency synthesis: find the probability of a compound event that combines an independent event and a dependent (without-replacement) event."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "8DSP3-F1",
+      "name": "Write the probability of a simple event as favorable over total outcomes",
+      "column": "foundation",
+      "parent_standard": "8.DSP.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Given the favorable outcomes and the total outcomes, write the probability as a fraction.",
+        "check_question": "A bag has 3 red and 5 blue marbles. What is the probability of drawing a red marble?"
+      },
+      "i_do_script": "The probability of a simple event is the number of favorable outcomes over the total number of outcomes. Watch a bag with 3 red and 5 blue marbles: there are 3 red (favorable) out of 8 marbles total, so P(red) = 3/8. The favorable count goes on TOP, the total on the bottom. On a number cube, P(rolling a 4) = 1/6 because one face is a 4 out of six faces.",
+      "canonical_error": {
+        "pattern": "Writes total over favorable, or uses the number of OTHER outcomes as the top",
+        "example": "For 3 red out of 8 marbles, writes 8/3, or writes 5/8 (the blue count) instead of 3/8",
+        "why": "The student loses track of what 'favorable' means: it is the outcome you are asking about, on top, over the total. Flipping it or using the leftover count gives the wrong probability."
+      },
+      "item_template": "A simple event with a stated favorable count and total. Student writes the probability as a fraction. Short-response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "A bag has 3 red and 5 blue marbles (8 total). What is P(red)?",
+          "answer": "3/8"
+        },
+        {
+          "stem": "A fair number cube (1-6) is rolled. What is P(rolling a 4)?",
+          "answer": "1/6"
+        },
+        {
+          "stem": "A fair number cube (1-6) is rolled. What is P(rolling an even number)?",
+          "answer": "1/2"
+        },
+        {
+          "stem": "A spinner has 4 equal sections. What is P(landing on one chosen section)?",
+          "answer": "1/4"
+        },
+        {
+          "stem": "A standard deck has 52 cards, including 4 aces. What is P(drawing an ace)?",
+          "answer": "1/13"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which count goes on top -- favorable or total?",
+        "prompt": "Put the outcome you are asking about on TOP (favorable) and the total number of outcomes on the bottom. If your fraction is bigger than 1, you flipped it -- a probability is never more than 1.",
+        "praise": "You put the favorable outcomes over the total -- that's a probability, right-side up."
+      },
+      "vocabulary": [
+        {
+          "term": "Probability",
+          "definition": "How likely an event is, written as favorable outcomes over total outcomes."
+        },
+        {
+          "term": "Favorable outcome",
+          "definition": "An outcome that counts as the event you are asking about."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP3-S1",
+        "if_fail": "Review simple event probability (7.DSP.5)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A bag has 2 green and 6 yellow marbles. Find P(green).'"
+        },
+        {
+          "kind": "ask",
+          "text": "How many are favorable (green), and how many marbles are there in total?"
+        },
+        {
+          "kind": "say",
+          "text": "Favorable over total: 2 green out of 8 marbles, so P(green) = 2/8 = 1/4."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 8/2, ask 'is a probability ever bigger than 1?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a number cube -- find P(rolling a number greater than 4)."
+        }
+      ]
+    },
+    {
+      "skill_id": "8DSP3-F2",
+      "name": "Multiply two fractions and write the product in lowest terms",
+      "column": "foundation",
+      "parent_standard": "8.DSP.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Multiply two fractions by multiplying numerators and denominators, then simplify.",
+        "check_question": "What is 1/2 x 1/6?"
+      },
+      "i_do_script": "To multiply two fractions I multiply the tops together and the bottoms together, then simplify. Watch 1/2 x 1/6: top is 1 x 1 = 1, bottom is 2 x 6 = 12, so the answer is 1/12. Another: 1/2 x 3/6 = 3/12, and 3/12 simplifies to 1/4. I do NOT add across -- multiplying fractions means top times top over bottom times bottom.",
+      "canonical_error": {
+        "pattern": "Adds the fractions (or cross-adds) instead of multiplying numerators and denominators",
+        "example": "For 1/2 x 1/6 writes 1/2 + 1/6 = 4/6 = 2/3, or adds tops and bottoms to get 2/8",
+        "why": "The student confuses the rule for multiplying with the rule for adding. Multiplying is straight across (top x top, bottom x bottom); adding needs a common denominator and gives a different value."
+      },
+      "item_template": "Two fractions to multiply. Student multiplies straight across and simplifies. Short-response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "Multiply: 1/2 x 1/6.",
+          "answer": "1/12"
+        },
+        {
+          "stem": "Multiply and simplify: 1/2 x 3/6.",
+          "answer": "1/4"
+        },
+        {
+          "stem": "Multiply: 3/8 x 1/2.",
+          "answer": "3/16"
+        },
+        {
+          "stem": "Multiply and simplify: 4/52 x 3/51.",
+          "answer": "1/221"
+        },
+        {
+          "stem": "Multiply and simplify: 2/5 x 1/4.",
+          "answer": "1/10"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Are you multiplying, or adding these fractions?",
+        "prompt": "Multiply straight across: top times top over bottom times bottom. No common denominator is needed. Then simplify. If you found a common denominator, you started adding by mistake.",
+        "praise": "You multiplied tops and bottoms straight across and simplified -- that's fraction multiplication."
+      },
+      "vocabulary": [
+        {
+          "term": "Numerator",
+          "definition": "The top number of a fraction."
+        },
+        {
+          "term": "Simplify",
+          "definition": "Write a fraction in lowest terms by dividing top and bottom by a common factor."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP3-S3",
+        "if_fail": "Review multiplying fractions (6.NS.4/5)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write '1/3 x 2/5 = ?'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is top times top, and bottom times bottom?"
+        },
+        {
+          "kind": "say",
+          "text": "1 x 2 = 2 on top, 3 x 5 = 15 on the bottom, so 1/3 x 2/5 = 2/15."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 3/8, ask 'did you add the bottoms instead of multiplying?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: multiply 1/2 x 4/9 and simplify."
+        }
+      ]
+    },
+    {
+      "skill_id": "8DSP3-S1",
+      "name": "Represent and count the sample space of a compound event",
+      "column": "looking_back",
+      "parent_standard": "8.DSP.3",
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP3-F1"
+      },
+      "i_do_script": "A compound event has more than one part -- like flipping a coin AND rolling a number cube. The sample space is every pairing of the parts. To count it, I multiply the number of choices at each stage. Watch: a coin has 2 outcomes (H, T) and a number cube has 6 (1-6). Each coin result pairs with all 6 numbers, so 2 x 6 = 12 outcomes. I can list them (H1, H2, ... T6) in an organized list, a table, or a tree diagram to be sure I have all 12.",
+      "canonical_error": {
+        "pattern": "Adds the number of options at each stage instead of multiplying them",
+        "example": "For a coin (2) and a number cube (6), writes 2 + 6 = 8 outcomes instead of 2 x 6 = 12",
+        "why": "Each first-stage outcome pairs with EVERY second-stage outcome, so the total is the product, not the sum. Adding counts each stage once instead of pairing every option with every option."
+      },
+      "item_template": "A described compound event (two or three stages). Student lists or counts the outcomes in the sample space. MC or short response.",
+      "sample_items": [
+        {
+          "stem": "A coin is flipped and a number cube (1-6) is rolled. How many outcomes are in the sample space?",
+          "answer": "12"
+        },
+        {
+          "stem": "A spinner with 3 equal sections (Red, Blue, Green) is spun and a coin is flipped. How many outcomes are in the sample space?",
+          "answer": "6"
+        },
+        {
+          "stem": "Two coins are flipped. List all the outcomes in the sample space.",
+          "answer": "HH, HT, TH, TT (4 outcomes)"
+        },
+        {
+          "stem": "Two spinners, each with sections 1, 2, and 3, are spun. How many outcomes are in the sample space?",
+          "answer": "9"
+        },
+        {
+          "stem": "The table shows the sample space for flipping a coin and rolling a 4-sided number cube (1-4). How many outcomes are there?",
+          "answer": "8",
+          "render_data": {
+            "type": "data_table",
+            "headers": [
+              "",
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            "rows": [
+              [
+                "H",
+                "H1",
+                "H2",
+                "H3",
+                "H4"
+              ],
+              [
+                "T",
+                "T1",
+                "T2",
+                "T3",
+                "T4"
+              ]
+            ]
+          }
+        }
+      ],
+      "redirect_script": {
+        "stop": "Do you add the choices, or multiply them?",
+        "prompt": "Each first outcome pairs with EVERY second outcome, so multiply: (number of first choices) x (number of second choices). Draw a quick tree or table and count the branch ends if you're not sure.",
+        "praise": "You multiplied the choices at each stage -- that's the size of the sample space."
+      },
+      "vocabulary": [
+        {
+          "term": "Sample space",
+          "definition": "The set of all possible outcomes of an event."
+        },
+        {
+          "term": "Compound event",
+          "definition": "An event made of two or more parts, like a coin flip and a die roll."
+        },
+        {
+          "term": "Tree diagram",
+          "definition": "A branching diagram that pairs every first outcome with every second outcome."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP3-S2",
+        "if_fail": "8DSP3-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A coin is flipped and a spinner with 4 equal sections (1-4) is spun. How many outcomes?'"
+        },
+        {
+          "kind": "ask",
+          "text": "How many outcomes does each stage have, and do you add or multiply them?"
+        },
+        {
+          "kind": "say",
+          "text": "The coin has 2 and the spinner has 4. Each coin result pairs with all 4 numbers, so 2 x 4 = 8 outcomes."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 2 + 4 = 6, ask 'does each H pair with all 4 numbers, or just one?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a number cube and a coin -- how many outcomes in the sample space?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A number cube (1-6) is rolled once. How many outcomes are there?",
+          "answer": "6"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A coin has 2 outcomes and a spinner has 4. Do you add or multiply to count the sample space?",
+          "answer": "Multiply (2 x 4 = 8)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A coin is flipped and a number cube (1-6) is rolled. How many outcomes are in the sample space?",
+          "answer": "12 (2 x 6)",
+          "notes": "Baits adding to get 8."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A spinner (Red, Blue, Green) is spun and a coin is flipped. List every outcome.",
+          "answer": "Red-H, Red-T, Blue-H, Blue-T, Green-H, Green-T (6 outcomes)",
+          "notes": "Organized list; pair each color with H and T."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Sam counted a sample space. Find and fix the mistake.",
+          "shown_work": [
+            "A coin (H, T) is flipped and a number cube (1-6) is rolled.",
+            "Sam wrote: '2 + 6 = 8 outcomes.'"
+          ],
+          "answer": "Sam added instead of multiplying. Each of the 2 coin results pairs with all 6 numbers, so there are 2 x 6 = 12 outcomes.",
+          "notes": "Canonical error: adds stages instead of multiplying."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Two number cubes (1-6) are rolled. How many outcomes are in the sample space?",
+          "answer": "36 (6 x 6)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A sandwich shop offers 3 breads, 4 fillings, and 2 sauces. How many different sandwiches are possible?",
+          "answer": "24 (3 x 4 x 2)",
+          "notes": "Three stages -- multiply all three."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A sample space has 20 outcomes. One stage is a coin (2 outcomes). How many outcomes does the other stage have?",
+          "answer": "10, because 2 x 10 = 20",
+          "notes": "Reverse the counting principle."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Tree It Out",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Blank paper",
+            "Two-color counters or a coin and a number cube"
+          ],
+          "instructions": "1. Pick a compound event card (coin + number cube, spinner + coin, etc.).\n2. Draw a tree diagram: one branch per first outcome, then split each into the second outcomes.\n3. Count the branch ends -- that is the size of the sample space.\n4. Check by multiplying the stage counts. Debrief: why does the number of branch ends equal the product?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Added Instead of Multiplied",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Sam's count"
+          ],
+          "instructions": "1. Read Sam's claim that a coin and a number cube give 2 + 6 = 8 outcomes.\n2. Draw the tree diagram and count the ends.\n3. Write the correct number and how you got it.\n4. Write the rule: to count a sample space, do you add or multiply the stages?",
+          "content": {
+            "worked_problem": "A coin (H, T) and a number cube (1-6). Sam wrote 2 + 6 = 8 outcomes.",
+            "error_step": "Sam added the stage counts instead of multiplying.",
+            "why": "Each of the 2 coin results pairs with all 6 numbers, so there are 2 x 6 = 12 outcomes."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Drawing a tree diagram or table (concrete/representational) makes 'each first outcome pairs with every second' visible before it is just a product."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The add-instead-of-multiply mistake is a precise error a find-and-fix names cleanly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'each H pairs with 1, 2, 3, 4, 5, 6' models the pairing that produces the product."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many outcomes does each stage have?",
+          "Does each first outcome pair with ALL the second outcomes, or just one?",
+          "Do you add or multiply the stage counts?",
+          "How many branch ends does your tree have?",
+          "Can you list the sample space to check your count?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds the number of options at each stage instead of multiplying.",
+            "say": "Each first outcome pairs with EVERY second outcome, so multiply: (number of first choices) x (number of second choices). Draw a quick tree or table and count the branch ends if you're not sure.",
+            "praise": "You multiplied the choices at each stage -- that's the size of the sample space."
+          },
+          {
+            "if_you_see": "Student lists some outcomes but misses pairings (e.g., forgets H with 5 and 6).",
+            "say": "Go in a system: fix the first outcome, then list it with every second outcome, then move on. That way no pairing is skipped.",
+            "praise": "You paired the first outcome with every second one -- that's a complete, organized list."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A coin and a spinner with 3 sections are used. How many outcomes?",
+            "look_for": "6 (2 x 3). An answer of 5 means the student added the stages."
+          },
+          {
+            "prompt": "Two coins are flipped. How many outcomes?",
+            "look_for": "4 (HH, HT, TH, TT). An answer of 2 or 3 means the student missed pairings."
+          }
+        ]
+      },
+      "fluency_source": "8DSP3-F1",
+      "sentence_starters": [
+        "Stage one has ___ outcomes and stage two has ___, so the sample space has ___ x ___ = ___.",
+        "I know it's ___ outcomes because each ___ pairs with every ___."
+      ],
+      "worked_solution": {
+        "stem": "A coin is flipped and a spinner with 4 equal sections (1-4) is spun. How many outcomes are in the sample space?",
+        "answer": "8",
+        "steps": [
+          {
+            "math": "coin: 2 outcomes (H, T)",
+            "annotation": "Count the first stage's outcomes."
+          },
+          {
+            "math": "spinner: 4 outcomes (1, 2, 3, 4)",
+            "annotation": "Count the second stage's outcomes."
+          },
+          {
+            "math": "2 x 4 = 8",
+            "annotation": "Multiply the stages -- each H or T pairs with all 4 numbers."
+          },
+          {
+            "math": "8 outcomes",
+            "annotation": "The sample space has 8 outcomes (H1...T4)."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A number cube (1-6) is rolled and a coin is flipped. How many outcomes are in the sample space?",
+        "answer": "12",
+        "steps": [
+          {
+            "math": "number cube: 6 outcomes",
+            "annotation": "Count the first stage's outcomes.",
+            "given": true
+          },
+          {
+            "math": "coin: 2 outcomes",
+            "annotation": "Count the second stage's outcomes.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the two stage counts.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the number of outcomes in the sample space.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8DSP3-S2",
+      "name": "Identify the outcome missing from a partial sample space",
+      "column": "on_grade",
+      "parent_standard": "8.DSP.3",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP3-S1"
+      },
+      "i_do_script": "To find a missing outcome, I list the full sample space in a system and compare it to the one I was given. Watch two-letter codes from A, B, C, using each letter once: I fix the first letter and list every second letter -- AB, AC, then BA, BC, then CA, CB -- six ordered outcomes. If the given list has AB, AC, BA, BC, CA, the missing one is CB. Order matters here, so BC and CB are different outcomes.",
+      "canonical_error": {
+        "pattern": "Treats an outcome and its reverse as the same, so misses the reversed outcome",
+        "example": "For two-letter codes from A, B, C, thinks CB is already covered by BC, so does not notice CB is missing",
+        "why": "In an ordered sample space, AB and BA are different outcomes. Treating order as not mattering makes the student undercount and overlook the reversed pair that still belongs in the sample space."
+      },
+      "item_template": "A partial sample space (as an organized list) for a compound event. Student identifies the missing outcome. MC or short response.",
+      "sample_items": [
+        {
+          "stem": "Two-letter codes are made from A, B, C using each letter once. The sample space so far is: AB, AC, BA, BC, CA. Which outcome is missing?",
+          "answer": "CB"
+        },
+        {
+          "stem": "A coin is flipped and a number cube (1-6) is rolled. The sample space lists H1, H2, H3, H4, H5, H6, T1, T2, T3, T5, T6. Which outcome is missing?",
+          "answer": "T4"
+        },
+        {
+          "stem": "Two coins are flipped. The sample space shows HH, HT, TH. Which outcome is missing?",
+          "answer": "TT"
+        },
+        {
+          "stem": "Two-letter codes are made from A, B, C, D using each letter once. Listed: AB, AC, AD, BA, BC, BD, CA, CB, CD, DA, DB. Which outcome is missing?",
+          "answer": "DC"
+        },
+        {
+          "stem": "A spinner (1, 2, 3) is spun twice. Listed: (1,1), (1,2), (1,3), (2,1), (2,2), (2,3), (3,1), (3,2). Which outcome is missing?",
+          "answer": "(3,3)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Does order matter here -- is AB different from BA?",
+        "prompt": "List every ordered pair in a system: fix the first letter, list every second letter, then move to the next first letter. Compare to the given list -- the missing one is the pair you skipped.",
+        "praise": "You listed every ordered pair in a system -- that's how you catch the missing outcome."
+      },
+      "vocabulary": [
+        {
+          "term": "Outcome",
+          "definition": "One possible result of an event, like the code CB or the pair T4."
+        },
+        {
+          "term": "Sample space",
+          "definition": "The complete set of all possible outcomes."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP3-S3",
+        "if_fail": "8DSP3-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the given list: two-letter codes from A, B, C -- AB, AC, BA, CA, CB. What is missing?"
+        },
+        {
+          "kind": "ask",
+          "text": "If I list all of them in order, which ordered pair is not on the list?"
+        },
+        {
+          "kind": "say",
+          "text": "All six are AB, AC, BA, BC, CA, CB. The given list is missing BC."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 'none, BC is the same as CB,' ask 'is the code BC different from CB?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: two coins give HH, HT, TT. Which outcome is missing?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Two coins are flipped. Is HT a different outcome from TH?",
+          "answer": "Yes -- order matters, so HT and TH are different."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "How many two-letter codes use each of A, B, C exactly once?",
+          "answer": "6 (AB, AC, BA, BC, CA, CB)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Two-letter codes from A, B, C (each once). Given AB, AC, BA, BC, CA. Which is missing?",
+          "answer": "CB",
+          "notes": "Baits treating CB as the same as BC."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A coin and a number cube (1-6). Given H1, H2, H3, H4, H5, H6, T1, T2, T4, T5, T6. Which is missing?",
+          "answer": "T3",
+          "notes": "Scan the T-row for the gap."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Kim listed a sample space. Find and fix the mistake.",
+          "shown_work": [
+            "Two-letter codes from A, B, C, each letter used once.",
+            "Kim listed AB, AC, BA, BC, CA and wrote: 'That's all of them.'"
+          ],
+          "answer": "Kim missed CB. Order matters, so CB (C first, B second) is a different outcome from BC. The complete sample space is AB, AC, BA, BC, CA, CB -- six outcomes.",
+          "notes": "Canonical error: reversed pair treated as a duplicate."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A spinner (1, 2, 3) spun twice. Given (1,1),(1,2),(1,3),(2,1),(2,3),(3,1),(3,2),(3,3). Which is missing?",
+          "answer": "(2,2)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two-letter codes from A, B, C, D (each once) has 12 outcomes. A list shows 11 and is missing a code that starts with D. The codes DA and DB are present. Which is missing?",
+          "answer": "DC",
+          "notes": "Use the counting principle plus a system to pinpoint the gap."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A student lists a coin-and-die sample space and gets only 6 outcomes. Explain what they most likely forgot.",
+          "answer": "They likely listed only one coin result (all the H outcomes or all the T outcomes) and forgot to pair the other coin result with all six numbers -- the full space has 12.",
+          "notes": "Diagnose an incomplete list."
+        }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Find the Gap",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Cards, each with a partial sample space and a set of candidate outcomes"
+          ],
+          "instructions": "1. For each partial sample space, list the FULL space in a system on scratch paper.\n2. Match the card to the one outcome that is missing.\n3. For codes, check every pair AND its reverse.\n4. Debrief: how does going in order guarantee you find the gap?",
+          "content": {
+            "pairs": [
+              {
+                "left": "A,B,C codes missing one: AB, AC, BA, BC, CA",
+                "right": "CB"
+              },
+              {
+                "left": "Two coins: HH, HT, TH",
+                "right": "TT"
+              },
+              {
+                "left": "Spinner (1,2,3) twice: all but one; (2,2) absent",
+                "right": "(2,2)"
+              },
+              {
+                "left": "Coin & die: H1..H6, T1, T2, T3, T5, T6",
+                "right": "T4"
+              }
+            ],
+            "decoys": [
+              "BC",
+              "HH"
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Is CB the Same as BC?",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Kim's list"
+          ],
+          "instructions": "1. Read Kim's claim that AB, AC, BA, BC, CA is the complete list.\n2. List all six ordered codes in a system.\n3. Circle the outcome Kim missed.\n4. Write one sentence on why order makes CB different from BC.",
+          "content": {
+            "worked_problem": "Two-letter codes from A, B, C. Kim listed AB, AC, BA, BC, CA and said it was complete.",
+            "error_step": "Kim treated CB as a duplicate of BC and left it out.",
+            "why": "Order matters, so CB is a different outcome from BC; the full space has 6 outcomes."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The reversed-pair-as-duplicate error is precise; a find-and-fix that lists the full space exposes it."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'fix the first letter, list every second' models the systematic listing that finds the gap."
+        },
+        {
+          "strategy_id": "strat-math-008",
+          "why": "A whiteboard pass where each student adds the next ordered outcome builds the complete space collaboratively."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Does order matter here -- is AB different from BA?",
+          "If you list them in a system, which one is skipped?",
+          "How many outcomes SHOULD there be? (Use the counting principle.)",
+          "Did you check each pair and its reverse?",
+          "Which first outcome is missing one of its pairings?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student treats an outcome and its reverse as the same and misses the reversed outcome.",
+            "say": "List every ordered pair in a system: fix the first letter, list every second letter, then move to the next first letter. Compare to the given list -- the missing one is the pair you skipped.",
+            "praise": "You listed every ordered pair in a system -- that's how you catch the missing outcome."
+          },
+          {
+            "if_you_see": "Student guesses without knowing how many outcomes there should be.",
+            "say": "First use the counting principle to find how many outcomes there should be. Then you know exactly how many are missing.",
+            "praise": "You found the total first, so you knew exactly how many were missing."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Two coins: given HH, HT, TH. Which is missing?",
+            "look_for": "TT. 'None' means the student isn't tracking that all 4 belong."
+          },
+          {
+            "prompt": "A,B,C codes: given AB, AC, BA, BC, CB. Which is missing?",
+            "look_for": "CA. Naming BC or CB means order isn't being tracked."
+          }
+        ]
+      },
+      "fluency_source": "8DSP3-F1",
+      "sentence_starters": [
+        "There should be ___ outcomes, but only ___ are listed, so ___ is missing.",
+        "Order matters, so ___ is different from ___, and it belongs in the sample space."
+      ],
+      "worked_solution": {
+        "stem": "Two-letter codes are made from A, B, C using each letter once. Given: AB, AC, BA, CA, CB. Which outcome is missing?",
+        "answer": "BC",
+        "steps": [
+          {
+            "math": "count: 3 x 2 = 6 codes",
+            "annotation": "Three choices for the first letter, two for the second."
+          },
+          {
+            "math": "all: AB, AC, BA, BC, CA, CB",
+            "annotation": "List every ordered pair in a system."
+          },
+          {
+            "math": "given has 5, all has 6",
+            "annotation": "Compare the given list to the full space."
+          },
+          {
+            "math": "missing: BC",
+            "annotation": "BC is the only ordered pair not on the given list."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A spinner (1, 2, 3) is spun twice. Given: (1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,1),(3,3). Which outcome is missing?",
+        "answer": "(3,2)",
+        "steps": [
+          {
+            "math": "count: 3 x 3 = 9 outcomes",
+            "annotation": "Three choices each spin.",
+            "given": true
+          },
+          {
+            "math": "list all pairs in order",
+            "annotation": "Fix the first number, list every second number.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Compare the given 8 outcomes to the full 9.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the missing ordered pair.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8DSP3-S3",
+      "name": "Find the probability of a compound independent event",
+      "column": "on_grade",
+      "parent_standard": "8.DSP.3",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP3-S1"
+      },
+      "i_do_script": "For a compound INDEPENDENT event, one part does not affect the other -- a coin and a die, or a draw WITH replacement. I write each stage as favorable over total, then MULTIPLY for 'and.' Watch a coin and a number cube, P(heads AND a 3): P(heads) = 1/2 and P(3) = 1/6, so I multiply 1/2 x 1/6 = 1/12. I do not add them -- 'and' with independent events means multiply the stage probabilities.",
+      "canonical_error": {
+        "pattern": "Adds the stage probabilities instead of multiplying them for an 'and' event",
+        "example": "For P(heads and a 3) writes 1/2 + 1/6 = 4/6 = 2/3 instead of 1/2 x 1/6 = 1/12",
+        "why": "The student uses the addition rule where the multiplication rule belongs. For independent 'and' events you multiply; adding gives a probability that is far too large (and can even exceed the size of either part)."
+      },
+      "item_template": "A compound independent event (coin/die, two spinners, draw with replacement). Student finds the probability by multiplying stage probabilities. MC or short response.",
+      "sample_items": [
+        {
+          "stem": "A fair coin is flipped and a fair number cube (1-6) is rolled. What is P(heads AND a 3)?",
+          "answer": "1/12",
+          "choices": [
+            "1/12",
+            "2/3",
+            "1/8",
+            "7/12"
+          ],
+          "distractor_logic": "1/2 x 1/6 = 1/12. '2/3' baits adding 1/2 + 1/6."
+        },
+        {
+          "stem": "A fair coin is flipped and a fair number cube (1-6) is rolled. What is P(tails AND an even number)?",
+          "answer": "1/4",
+          "choices": [
+            "1/4",
+            "1",
+            "3/8",
+            "5/6"
+          ],
+          "distractor_logic": "1/2 x 3/6 = 1/2 x 1/2 = 1/4. '1' baits adding 1/2 + 1/2."
+        },
+        {
+          "stem": "Spinner A has 4 equal sections (1-4) and Spinner B has 3 equal sections (1-3). Both are spun. What is P(A lands on 2 AND B lands on 1)? Write as a fraction.",
+          "answer": "1/12"
+        },
+        {
+          "stem": "A bag has 3 red and 5 blue marbles (8 total). A marble is drawn and replaced, then a fair coin is flipped. What is P(red AND heads)? Write as a fraction.",
+          "answer": "3/16"
+        }
+      ],
+      "redirect_script": {
+        "stop": "For 'and' with independent events -- add or multiply?",
+        "prompt": "Write each stage as favorable over total, then MULTIPLY: P(A) x P(B). Adding is the wrong rule for 'and.' If your answer is bigger than either single probability, you added by mistake.",
+        "praise": "You multiplied the stage probabilities for the 'and' event -- that's the rule for independent events."
+      },
+      "vocabulary": [
+        {
+          "term": "Independent events",
+          "definition": "Events where one outcome does not change the probability of the other (a coin and a die, or a draw with replacement)."
+        },
+        {
+          "term": "Compound event",
+          "definition": "An event made of two or more parts joined by 'and'."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP3-S4",
+        "if_fail": "8DSP3-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A coin and a number cube: find P(tails and a 5).'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is P(tails), what is P(5), and do you add or multiply them?"
+        },
+        {
+          "kind": "say",
+          "text": "P(tails) = 1/2, P(5) = 1/6. For 'and' with independent events, multiply: 1/2 x 1/6 = 1/12."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 1/2 + 1/6 = 2/3, ask 'is a coin-and-die result really that likely?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: two spinners (1-4 and 1-2) -- find P(a 3 and heads... I mean a 3 and a 2)."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "For an 'and' event with independent stages, do you add or multiply the probabilities?",
+          "answer": "Multiply"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A coin is flipped and a die is rolled. What is P(heads)? What is P(a 2)?",
+          "answer": "P(heads) = 1/2, P(a 2) = 1/6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A fair coin and a fair number cube (1-6). What is P(heads AND a 3)?",
+          "answer": "1/12 (1/2 x 1/6)",
+          "notes": "Baits adding to get 2/3."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Spinner A (1-4) and Spinner B (1-3) are both spun. What is P(A shows 4 AND B shows 2)?",
+          "answer": "1/12 (1/4 x 1/3)"
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Jordan found a compound probability. Find and fix the mistake.",
+          "shown_work": [
+            "A fair coin is flipped and a number cube (1-6) is rolled.",
+            "Jordan wrote: P(heads and a 3) = 1/2 + 1/6 = 3/6 + 1/6 = 4/6 = 2/3."
+          ],
+          "answer": "Jordan added instead of multiplying. For 'and' with independent events, multiply: 1/2 x 1/6 = 1/12.",
+          "notes": "Canonical error: adds probabilities for 'and'."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bag has 2 red and 3 green marbles (5 total). One is drawn and replaced, then a coin is flipped. What is P(green AND tails)?",
+          "answer": "3/10 (3/5 x 1/2)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A coin, a number cube (1-6), and a spinner with 3 sections are all used. What is P(heads, a 6, and section 1)?",
+          "answer": "1/36 (1/2 x 1/6 x 1/3)",
+          "notes": "Three independent stages."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "The probability of a compound 'and' event is 1/20. One stage was a coin (P = 1/2). What was the probability of the other stage?",
+          "answer": "1/10, because 1/2 x 1/10 = 1/20",
+          "notes": "Reverse: work backward from the product."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Add or Multiply?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Cards showing compound 'and' events with two candidate setups: a sum and a product"
+          ],
+          "instructions": "1. For each event, decide the probability of each stage.\n2. Sort each card into 'Multiply the stages' (correct for 'and') or 'Sum -- the common mistake.'\n3. Compute the correct probability for each event.\n4. Debrief: why is the sum too big for an 'and' event?",
+          "content": {
+            "categories": [
+              "Multiply the stages (correct)",
+              "Sum (the common mistake)"
+            ],
+            "cards": [
+              {
+                "text": "P(heads and a 3) = 1/2 x 1/6 = 1/12",
+                "category": "Multiply the stages (correct)"
+              },
+              {
+                "text": "P(heads and a 3) = 1/2 + 1/6 = 2/3",
+                "category": "Sum (the common mistake)"
+              },
+              {
+                "text": "P(red and heads) = 3/8 x 1/2 = 3/16",
+                "category": "Multiply the stages (correct)"
+              },
+              {
+                "text": "P(red and heads) = 3/8 + 1/2 = 7/8",
+                "category": "Sum (the common mistake)"
+              },
+              {
+                "text": "P(4 and 2) = 1/4 x 1/3 = 1/12",
+                "category": "Multiply the stages (correct)"
+              },
+              {
+                "text": "P(4 and 2) = 1/4 + 1/3 = 7/12",
+                "category": "Sum (the common mistake)"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Added the Probabilities",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Jordan's work"
+          ],
+          "instructions": "1. Read Jordan's work: P(heads and a 3) = 1/2 + 1/6 = 2/3.\n2. Explain why 2/3 is too large for this event.\n3. Redo it with the correct rule for 'and.'\n4. Write the rule: for independent 'and' events, do you add or multiply?",
+          "content": {
+            "worked_problem": "A coin and a number cube. Jordan wrote P(heads and a 3) = 1/2 + 1/6 = 2/3.",
+            "error_step": "Jordan added the stage probabilities instead of multiplying.",
+            "why": "For 'and' with independent events, multiply: 1/2 x 1/6 = 1/12."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Adding instead of multiplying is a precise, common error a find-and-fix targets directly."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "A number talk on 'why is 1/2 x 1/6 smaller than either piece?' builds the sense that 'and' shrinks the probability."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'each stage as favorable over total, then multiply' models the full procedure."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the probability of each stage on its own?",
+          "For 'and' with independent events, do you add or multiply?",
+          "Should the combined probability be bigger or smaller than each piece?",
+          "Are the two events independent -- does one affect the other?",
+          "Write each stage as favorable over total before you combine."
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds the stage probabilities instead of multiplying for an 'and' event.",
+            "say": "Write each stage as favorable over total, then MULTIPLY: P(A) x P(B). Adding is the wrong rule for 'and.' If your answer is bigger than either single probability, you added by mistake.",
+            "praise": "You multiplied the stage probabilities for the 'and' event -- that's the rule for independent events."
+          },
+          {
+            "if_you_see": "Student multiplies but uses the wrong favorable/total for a stage.",
+            "say": "Recount that stage: how many outcomes are favorable, and how many total? P(even) on a die is 3/6, not 1/6.",
+            "praise": "You fixed the stage probability, so the product is right too."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A coin and a die: what is P(tails and a 6)?",
+            "look_for": "1/12 (1/2 x 1/6). An answer of 2/3 diagnoses adding."
+          },
+          {
+            "prompt": "Two spinners (1-2 and 1-5): what is P(a 1 and a 5)?",
+            "look_for": "1/10 (1/2 x 1/5). A sum (7/10) means the student added."
+          }
+        ]
+      },
+      "fluency_source": "8DSP3-F2",
+      "sentence_starters": [
+        "P(first) = ___ and P(second) = ___, so P(both) = ___ x ___ = ___.",
+        "It's an 'and' event with independent stages, so I ___ the probabilities."
+      ],
+      "worked_solution": {
+        "stem": "A fair coin is flipped and a fair number cube (1-6) is rolled. What is P(tails AND a number greater than 4)?",
+        "answer": "1/6",
+        "steps": [
+          {
+            "math": "P(tails) = 1/2",
+            "annotation": "One favorable coin face out of two."
+          },
+          {
+            "math": "P(greater than 4) = 2/6 = 1/3",
+            "annotation": "The numbers 5 and 6 are favorable, out of six."
+          },
+          {
+            "math": "1/2 x 1/3",
+            "annotation": "'And' with independent events -- multiply the stages."
+          },
+          {
+            "math": "= 1/6",
+            "annotation": "Multiply straight across and simplify."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A fair coin is flipped and a fair number cube (1-6) is rolled. What is P(heads AND an even number)?",
+        "answer": "1/4",
+        "steps": [
+          {
+            "math": "P(heads) = 1/2",
+            "annotation": "One favorable coin face out of two.",
+            "given": true
+          },
+          {
+            "math": "P(even) = 3/6 = 1/2",
+            "annotation": "The numbers 2, 4, 6 are favorable, out of six.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the two stage probabilities.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Simplify to write the final probability.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8DSP3-S4",
+      "name": "Find the probability of a compound dependent event (without replacement)",
+      "column": "on_grade",
+      "parent_standard": "8.DSP.3",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP3-S3"
+      },
+      "i_do_script": "For a DEPENDENT event -- drawing WITHOUT replacement -- the first draw changes what is left for the second. Watch a bag with 4 red and 6 blue marbles (10 total), drawing two without replacement, P(both red): the first red is 4/10. Now one red is gone and only 9 marbles remain, so the second red is 3/9. Multiply: 4/10 x 3/9 = 12/90 = 2/15. The key is to shrink BOTH the favorable count and the total by one after the first draw.",
+      "canonical_error": {
+        "pattern": "Treats the second draw as if the first were replaced -- keeps the same counts (independent)",
+        "example": "For P(both red) from 4 red of 10, writes 4/10 x 4/10 = 4/25 instead of 4/10 x 3/9 = 2/15",
+        "why": "Without replacement, the drawn marble is gone: there is one fewer favorable AND one fewer total for the second draw. Reusing the original counts treats a dependent event as independent and overstates the probability."
+      },
+      "item_template": "Two draws without replacement from a described set. Student finds the probability by updating the counts on the second draw. Short response (fraction).",
+      "sample_items": [
+        {
+          "stem": "A bag contains 4 red and 6 blue marbles (10 total). Two marbles are drawn without replacement. What is P(both red)? Write as a fraction.",
+          "answer": "2/15"
+        },
+        {
+          "stem": "A standard deck has 52 cards, including 4 aces. Two cards are drawn without replacement. What is P(both aces)? Write as a fraction.",
+          "answer": "1/221"
+        },
+        {
+          "stem": "A bag contains 5 green and 3 yellow marbles (8 total). Two are drawn without replacement. What is P(green then yellow)? Write as a fraction.",
+          "answer": "15/56"
+        },
+        {
+          "stem": "A bag contains 3 red, 4 blue, and 5 green marbles (12 total). Two are drawn without replacement. What is P(red then blue)? Write as a fraction.",
+          "answer": "1/11"
+        }
+      ],
+      "redirect_script": {
+        "stop": "After the first draw, how many are left?",
+        "prompt": "Without replacement, the first marble is gone. Subtract 1 from the favorable count AND 1 from the total for the second draw, then multiply. If both fractions have the same denominator, you forgot to shrink it.",
+        "praise": "You shrank the counts after the first draw -- that's what 'without replacement' means."
+      },
+      "vocabulary": [
+        {
+          "term": "Dependent events",
+          "definition": "Events where the first outcome changes the probability of the second (drawing without replacement)."
+        },
+        {
+          "term": "Without replacement",
+          "definition": "The first item is not put back, so there is one fewer item for the next draw."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP3-S5",
+        "if_fail": "8DSP3-S3"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A bag has 5 red and 5 blue (10). Draw two without replacement: P(both red)?'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the first draw's probability, and what changes for the second draw?"
+        },
+        {
+          "kind": "say",
+          "text": "First red is 5/10. Now 4 red are left of 9 marbles, so second red is 4/9. Multiply: 5/10 x 4/9 = 20/90 = 2/9."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 5/10 x 5/10, ask 'did you put the first marble back?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 6 red and 4 blue (10), draw two without replacement -- P(both blue)?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A bag has 4 red of 10 marbles. You draw 1 red and do NOT replace it. How many red are left, and how many marbles in all?",
+          "answer": "3 red left, 9 marbles total"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Does 'without replacement' make the two draws independent or dependent?",
+          "answer": "Dependent"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bag has 4 red and 6 blue (10 total). Draw two without replacement. What is P(both red)?",
+          "answer": "2/15 (4/10 x 3/9)",
+          "notes": "Baits using 4/10 x 4/10."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bag has 5 green and 3 yellow (8 total). Draw two without replacement. What is P(green then yellow)?",
+          "answer": "15/56 (5/8 x 3/7)"
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Riley found a probability. Find and fix the mistake.",
+          "shown_work": [
+            "A bag has 4 red and 6 blue marbles (10 total). Two are drawn without replacement.",
+            "Riley wrote: P(both red) = 4/10 x 4/10 = 16/100 = 4/25."
+          ],
+          "answer": "Riley treated the draws as if the first marble were replaced. Without replacement, after drawing one red there are 3 red left of 9 total, so P(both red) = 4/10 x 3/9 = 12/90 = 2/15.",
+          "notes": "Canonical error: does not shrink the second draw's counts."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A standard deck has 52 cards with 4 aces. Draw two without replacement. What is P(both aces)?",
+          "answer": "1/221 (4/52 x 3/51)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A bag has 3 red, 4 blue, and 5 green (12 total). Draw two without replacement. What is P(red then blue)?",
+          "answer": "1/11 (3/12 x 4/11)",
+          "notes": "Different colors -- only the total shrinks, not the favorable count for blue."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why P(both red) is smaller when you draw WITHOUT replacement than WITH replacement, using a bag of 4 red and 6 blue.",
+          "answer": "With replacement it is 4/10 x 4/10 = 4/25 = 0.16; without replacement it is 4/10 x 3/9 = 2/15 = 0.13. Removing the first red leaves fewer red for the second draw, so the probability is lower.",
+          "notes": "Compare the two models with numbers."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Draw and Don't Replace",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper bag",
+            "Colored counters (e.g., 4 red, 6 blue)"
+          ],
+          "instructions": "1. Write P(first red) = 4/10 before drawing.\n2. Draw one red and set it ASIDE (do not replace).\n3. Count what is left and write P(second red) with the new counts.\n4. Multiply the two fractions. Debrief: what two numbers changed after the first draw, and why?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Did You Put It Back?",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Riley's work"
+          ],
+          "instructions": "1. Read Riley's work: P(both red) = 4/10 x 4/10.\n2. Cross out the second 4/10 and write the correct second-draw fraction.\n3. Recompute the probability.\n4. Write the rule for what changes on a without-replacement draw.",
+          "content": {
+            "worked_problem": "4 red, 6 blue (10 total), two drawn without replacement. Riley wrote P(both red) = 4/10 x 4/10 = 4/25.",
+            "error_step": "Riley kept the same counts on the second draw (as if the marble were replaced).",
+            "why": "After one red is removed, 3 red remain of 9 total, so P(both red) = 4/10 x 3/9 = 2/15."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Reusing the original counts on the second draw is a precise error a find-and-fix corrects."
+        },
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Physically drawing and setting aside a counter makes the shrinking count concrete before it is a fraction."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'one fewer favorable, one fewer total' models the update the second draw needs."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the probability of the first draw?",
+          "After the first draw, how many favorable are left? How many total?",
+          "Did the denominator get smaller for the second draw?",
+          "Is this with or without replacement -- does the first draw change the second?",
+          "What do you multiply to get the probability of both?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student keeps the same counts on the second draw (treats it as independent).",
+            "say": "Without replacement, the first marble is gone. Subtract 1 from the favorable count AND 1 from the total for the second draw, then multiply. If both fractions have the same denominator, you forgot to shrink it.",
+            "praise": "You shrank the counts after the first draw -- that's what 'without replacement' means."
+          },
+          {
+            "if_you_see": "Student shrinks the total but not the favorable count when the two draws are the same color.",
+            "say": "If you already drew a red, there is one fewer RED too. Subtract 1 from both the red count and the total.",
+            "praise": "You subtracted 1 from the favorable count and the total -- both change for the same color."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A bag has 5 red and 5 blue (10). Draw two without replacement. What is P(both red)?",
+            "look_for": "2/9 (5/10 x 4/9). An answer of 1/4 (5/10 x 5/10) diagnoses treating it as independent."
+          },
+          {
+            "prompt": "After drawing one ace from a 52-card deck (not replaced), what is P(the next card is also an ace)?",
+            "look_for": "3/51 = 1/17. An answer of 4/52 means the counts were not updated."
+          }
+        ]
+      },
+      "fluency_source": "8DSP3-F2",
+      "sentence_starters": [
+        "First draw: ___/___. After removing one, second draw: ___/___.",
+        "It's without replacement, so I subtract 1 from the ___ and the ___ before multiplying."
+      ],
+      "worked_solution": {
+        "stem": "A bag contains 5 green and 3 yellow marbles (8 total). Two are drawn without replacement. What is P(green then yellow)?",
+        "answer": "15/56",
+        "steps": [
+          {
+            "math": "P(first green) = 5/8",
+            "annotation": "Five green out of eight marbles."
+          },
+          {
+            "math": "one marble gone: 7 left",
+            "annotation": "Without replacement, the total drops to 7."
+          },
+          {
+            "math": "P(second yellow) = 3/7",
+            "annotation": "All 3 yellow remain, now out of 7."
+          },
+          {
+            "math": "5/8 x 3/7 = 15/56",
+            "annotation": "Multiply the two draws."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A bag contains 4 red and 6 blue marbles (10 total). Two are drawn without replacement. What is P(both blue)?",
+        "answer": "1/3",
+        "steps": [
+          {
+            "math": "P(first blue) = 6/10",
+            "annotation": "Six blue out of ten marbles.",
+            "given": true
+          },
+          {
+            "math": "one blue gone: 5 blue, 9 total",
+            "annotation": "Subtract 1 from the blue count and the total.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the second draw's probability.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the two draws and simplify.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8DSP3-S5",
+      "name": "Find the probability of a compound event with independent and dependent parts",
+      "column": "looking_forward",
+      "parent_standard": "8.DSP.3",
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8DSP3-S4"
+      },
+      "i_do_script": "Some compound events mix an INDEPENDENT part with a DEPENDENT part. I handle each part with its own rule, then multiply everything for 'and.' Watch: roll a number cube, then draw two tiles without replacement from 2 red, 6 yellow, 4 blue, 3 green (15 total). P(roll a 3, then blue, then green): the die is independent, P(3) = 1/6. The first tile blue is 4/15. Now 14 tiles remain, so green is 3/14. Multiply all three: 1/6 x 4/15 x 3/14 = 12/1260 = 1/105.",
+      "canonical_error": {
+        "pattern": "Forgets to shrink the count on the dependent (without-replacement) draw while combining with the independent event",
+        "example": "For roll a 3 then draw blue then green, writes 1/6 x 4/15 x 3/15 instead of 1/6 x 4/15 x 3/14",
+        "why": "The die roll is independent, but the two tile draws are dependent -- after one tile is removed only 14 remain. Keeping 15 on the second draw treats the dependent part as independent and gives the wrong probability."
+      },
+      "item_template": "A compound event combining an independent stage (die/coin) with two without-replacement draws. Student multiplies all stage probabilities, updating counts on the dependent draw. Short response (fraction).",
+      "sample_items": [
+        {
+          "stem": "Roll a fair number cube (1-6), then draw two tiles without replacement from a bag of 2 red, 6 yellow, 4 blue, and 3 green tiles (15 total). What is P(roll a 3, then a blue tile, then a green tile)? Write as a fraction.",
+          "answer": "1/105 (equivalently 12/1260)"
+        },
+        {
+          "stem": "Flip a fair coin, then draw two marbles without replacement from a bag of 4 red and 2 blue (6 total). What is P(heads, then red, then red)? Write as a fraction.",
+          "answer": "1/5"
+        },
+        {
+          "stem": "Roll a fair number cube (1-6), then draw two chips without replacement from a bag of 3 red, 4 blue, and 5 green (12 total). What is P(roll a 5, then red, then green)? Write as a fraction.",
+          "answer": "5/264"
+        },
+        {
+          "stem": "Roll a fair number cube (1-6), then draw two marbles without replacement from a bag of 5 red and 5 blue (10 total). What is P(roll an even number, then blue, then blue)? Write as a fraction.",
+          "answer": "1/9"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which parts are independent, and which are without replacement?",
+        "prompt": "Do the die or coin with its own probability, then the first draw, then the second draw with the total reduced by 1. Multiply all of them. If the two draws share a denominator, you forgot to shrink it.",
+        "praise": "You kept the independent part separate and shrank the dependent draw -- then multiplied everything."
+      },
+      "vocabulary": [
+        {
+          "term": "Independent event",
+          "definition": "A stage whose probability does not depend on the others (a die roll, a coin flip)."
+        },
+        {
+          "term": "Dependent event",
+          "definition": "A stage whose probability depends on an earlier outcome (a second draw without replacement)."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for AII.MDS.3 (probability with combinations and conditional events).",
+        "if_fail": "8DSP3-S4"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Flip a coin, then draw two marbles without replacement from 3 red, 2 blue (5). P(heads, red, red)?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which part is independent, and which two draws are dependent?"
+        },
+        {
+          "kind": "say",
+          "text": "P(heads) = 1/2 (independent). First red = 3/5; then 2 red of 4 left = 2/4. Multiply: 1/2 x 3/5 x 2/4 = 6/40 = 3/20."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 3/5 x 3/5 for the draws, ask 'did you replace the first marble?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: roll a die, then draw two without replacement from 4 red, 2 blue (6) -- P(a 2, red, red)?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "In 'roll a die, then draw two without replacement,' which stage is independent?",
+          "answer": "The die roll"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "You draw one tile from 15 and keep it. How many tiles remain for the next draw?",
+          "answer": "14"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Roll a number cube, then draw two without replacement from 2 red, 6 yellow, 4 blue, 3 green (15). What is P(a 3, then blue, then green)?",
+          "answer": "1/105 (1/6 x 4/15 x 3/14)",
+          "notes": "Baits keeping 15 on the second draw."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Flip a coin, then draw two without replacement from 4 red and 2 blue (6). What is P(heads, then red, then red)?",
+          "answer": "1/5 (1/2 x 4/6 x 3/5)"
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Alex found a compound probability. Find and fix the mistake.",
+          "shown_work": [
+            "Roll a number cube, then draw two tiles without replacement from 2 red, 6 yellow, 4 blue, 3 green (15 total).",
+            "Alex wrote: P(a 3, then blue, then green) = 1/6 x 4/15 x 3/15 = 12/1350."
+          ],
+          "answer": "Alex forgot the tiles are drawn without replacement. After one tile is removed only 14 remain, so P = 1/6 x 4/15 x 3/14 = 12/1260 = 1/105.",
+          "notes": "Canonical error: dependent draw treated as independent."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Roll a number cube, then draw two without replacement from 3 red, 4 blue, 5 green (12). What is P(a 5, then red, then green)?",
+          "answer": "5/264 (1/6 x 3/12 x 5/11)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Roll a number cube, then draw two without replacement from 5 red and 5 blue (10). What is P(an even number, then blue, then blue)?",
+          "answer": "1/9 (1/2 x 5/10 x 4/9)",
+          "notes": "P(even) = 3/6 = 1/2; both draws are the same color, so shrink both."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A game is 'flip a coin, then draw two marbles without replacement.' Write a question about it whose answer is 1/2 x 5/8 x 4/7, and state what bag it uses.",
+          "answer": "Example: a bag of 5 red and 3 blue (8 total); P(heads, then red, then red) = 1/2 x 5/8 x 4/7 = 5/28.",
+          "notes": "Produce-your-own; reverse-engineer the bag from the fractions."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Three-Stage Game",
+          "time_minutes": 14,
+          "grouping": "small_group",
+          "materials": [
+            "A number cube or coin",
+            "A bag of colored tiles with a stated composition"
+          ],
+          "instructions": "1. Write the three stages of the game and label each independent or dependent.\n2. Write each stage's probability -- update the count after the first draw.\n3. Multiply all three fractions and simplify.\n4. Debrief: which stage's denominator changed, and which stayed the same?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Fifteen or Fourteen?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Slip with Alex's work",
+            "Whiteboards"
+          ],
+          "instructions": "1. Read Alex's work: P(a 3, then blue, then green) = 1/6 x 4/15 x 3/15.\n2. Circle the fraction that is wrong and write the correct one.\n3. Recompute and simplify.\n4. Debrief: why does the die keep its own probability while the second draw shrinks?",
+          "content": {
+            "worked_problem": "Roll a die, then draw two without replacement from 15 tiles (4 blue, 3 green among them). Alex wrote 1/6 x 4/15 x 3/15.",
+            "error_step": "Alex kept 15 in the denominator of the second draw.",
+            "why": "The tiles are drawn without replacement, so only 14 remain: P = 1/6 x 4/15 x 3/14 = 1/105."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-004",
+          "why": "Writing out which stages are independent vs dependent and justifying each fraction builds the explanation the DOK-3 item demands."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Keeping the denominator the same on the dependent draw is a precise error a find-and-fix names cleanly."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "A gradual-release ladder from one-stage to three-stage events supports the jump to combined independent-and-dependent problems."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which stage is independent, and which draws are without replacement?",
+          "What is the probability of the die or coin stage?",
+          "After the first draw, how many items are left for the second?",
+          "Do you multiply all the stages, or combine them another way?",
+          "How would you justify each fraction to a classmate?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student forgets to shrink the count on the without-replacement draw while combining with the independent event.",
+            "say": "Do the die or coin with its own probability, then the first draw, then the second draw with the total reduced by 1. Multiply all of them. If the two draws share a denominator, you forgot to shrink it.",
+            "praise": "You kept the independent part separate and shrank the dependent draw -- then multiplied everything."
+          },
+          {
+            "if_you_see": "Student multiplies the die probability but adds it to the draws instead of multiplying.",
+            "say": "Every stage is joined by 'and,' so multiply ALL of them together -- the die probability included.",
+            "praise": "You multiplied every stage, including the die -- that's the rule for 'and.'"
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Roll a die, then draw two without replacement from 4 red, 2 blue (6). What is P(a 2, then red, then red)?",
+            "look_for": "1/15 (1/6 x 4/6 x 3/5). Using 4/6 x 4/6 for the draws diagnoses the without-replacement error."
+          },
+          {
+            "prompt": "Which stage keeps its probability no matter what the draws are: the die roll or the second draw?",
+            "look_for": "The die roll (independent). Naming the second draw means independence isn't understood."
+          }
+        ]
+      },
+      "fluency_source": "8DSP3-F2",
+      "sentence_starters": [
+        "The ___ stage is independent, so P = ___; the two draws are dependent, so the second is ___/___.",
+        "Every stage is joined by 'and,' so I multiply ___ x ___ x ___ = ___."
+      ],
+      "worked_solution": {
+        "stem": "Flip a fair coin, then draw two marbles without replacement from a bag of 4 red and 2 blue (6 total). What is P(heads, then red, then red)?",
+        "answer": "1/5",
+        "steps": [
+          {
+            "math": "P(heads) = 1/2",
+            "annotation": "The coin is independent -- its own probability."
+          },
+          {
+            "math": "P(first red) = 4/6",
+            "annotation": "Four red out of six marbles."
+          },
+          {
+            "math": "P(second red) = 3/5",
+            "annotation": "One red gone: 3 red of 5 left (without replacement)."
+          },
+          {
+            "math": "1/2 x 4/6 x 3/5 = 12/60 = 1/5",
+            "annotation": "Multiply all three stages and simplify."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Roll a fair number cube (1-6), then draw two marbles without replacement from a bag of 5 red and 5 blue (10 total). What is P(an even number, then blue, then blue)?",
+        "answer": "1/9",
+        "steps": [
+          {
+            "math": "P(even) = 3/6 = 1/2",
+            "annotation": "The numbers 2, 4, 6 are favorable -- the die is independent.",
+            "given": true
+          },
+          {
+            "math": "P(first blue) = 5/10",
+            "annotation": "Five blue out of ten marbles.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the second blue draw's probability (one blue gone, one fewer total).",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply all three stages and simplify.",
+            "given": false
+          }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "skills": [
+        "8DSP3-F1",
+        "8DSP3-F2"
+      ]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": [
+        "8DSP3-S1"
+      ]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": [
+        "8DSP3-S2",
+        "8DSP3-S3",
+        "8DSP3-S4"
+      ]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": [
+        "8DSP3-S5"
+      ]
+    }
+  },
+  "skill_sequence": [
+    "8DSP3-F1",
+    "8DSP3-F2",
+    "8DSP3-S1",
+    "8DSP3-S2",
+    "8DSP3-S3",
+    "8DSP3-S4",
+    "8DSP3-S5"
+  ],
+  "skill_tree": {
+    "8DSP3-F1": [],
+    "8DSP3-F2": [],
+    "8DSP3-S1": [
+      "8DSP3-F1"
+    ],
+    "8DSP3-S2": [
+      "8DSP3-S1"
+    ],
+    "8DSP3-S3": [
+      "8DSP3-S1",
+      "8DSP3-F2"
+    ],
+    "8DSP3-S4": [
+      "8DSP3-S3"
+    ],
+    "8DSP3-S5": [
+      "8DSP3-S4"
+    ]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S3 (find the probability of a compound INDEPENDENT event) -- the core grade-level discriminator, and where the 'add instead of multiply' misconception lives. If they pass, move to S4 (dependent, without replacement) and S5 (mixed independent and dependent). If they fail, drop to S1 to check whether they can even represent and count the sample space, then to F1/F2. S2 (identify a missing outcome) branches off as a listing check, and S5 (mixed events) as the synthesis check.",
+    "entry_skill": "8DSP3-S3",
+    "if_pass": [
+      "8DSP3-S4",
+      "8DSP3-S5"
+    ],
+    "if_fail": [
+      "8DSP3-S1"
+    ],
+    "branch_skills": [
+      "8DSP3-S2",
+      "8DSP3-S5"
+    ]
+  }
+}

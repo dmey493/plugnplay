@@ -1,0 +1,1994 @@
+{
+  "standard_code": "8.GM.2",
+  "standard_text": "Solve real-world and other mathematical problems involving volume of cones, spheres, and pyramids and surface area of spheres.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "Every solid in this standard is a formula with one dangerous ingredient, so the progression teaches the formulas by their traps. A cone is a cylinder poured down to a point: its volume is exactly one third of the cylinder that shares its base and height, V = (1/3) pi r squared h. A square pyramid is the same story with a flat base, V = (1/3) B h, where B is the side squared. That shared one-third factor is the single most fragile move in the whole standard -- students find the full cylinder or prism and forget to take a third, tripling their answer. A sphere hides two different traps: its volume CUBES the radius, V = (4/3) pi r cubed, while its surface area SQUARES it, SA = 4 pi r squared, and both are almost always handed a diameter that must be halved first. So the arc opens by making each of the three volume computations automatic one shape at a time -- cone, sphere, pyramid -- naming the exact ingredient that goes missing in each.\n\nFrom those atoms the standard fans outward. First it runs a formula backwards: given the volume and all but one measurement, recover the missing height or side, which for a cone or pyramid means multiplying by 3 to undo the one-third, and for a sphere's radius means undoing a square root from the surface area (never a cube root -- the spec forbids it). Then it drops the computation into real-world questions -- paper cups, glass pyramids, spherical balloons -- where the volume is only step one and the story asks a further question or the diameter is buried in the wording. Finally it reaches the hardest problems, where one shape's measurement must be found before another's volume can be computed: a sphere's surface area gives its radius which gives its volume, a cone's volume compares against the cylinder around it, or a pyramid is stacked against a cube. The through-line we keep naming: pick the formula, halve the diameter if you were given one, remember the one-third for cones and pyramids, and then decide whether the volume is the answer or only the first step.",
+    "steps": [
+      {
+        "skill_id": "8GM2-S1",
+        "verb": "calculate",
+        "rationale": "The flagship grade-8 atom: the volume of a cone, V = (1/3) pi r squared h. It leads because the one-third factor is the standard's signature move and its most common failure -- a student who computes the full cylinder and forgets the third will carry that error into every later cone and pyramid problem."
+      },
+      {
+        "skill_id": "8GM2-S2",
+        "verb": "calculate",
+        "rationale": "The sphere: its volume CUBES the radius, V = (4/3) pi r cubed, while its surface area SQUARES it, SA = 4 pi r squared. It earns its own step because it carries two traps found nowhere else -- cube-versus-square and an almost-always-given diameter that must be halved first."
+      },
+      {
+        "skill_id": "8GM2-S3",
+        "verb": "calculate",
+        "rationale": "The square pyramid, V = (1/3) B h with B = s squared. It sits beside the cone as the other one-third shape, but with a flat square base instead of a circle, so the base area is squared, not pi r squared -- a clean place to isolate the one-third factor without the circle arithmetic."
+      },
+      {
+        "skill_id": "8GM2-S4",
+        "verb": "determine",
+        "rationale": "Runs a formula backwards: given a volume (or a sphere's surface area) and all but one measurement, recover the missing height, side, or radius. It is its own step because undoing the one-third means multiplying by 3, and undoing the sphere's surface area means a square root -- reverse moves the forward problems never require."
+      },
+      {
+        "skill_id": "8GM2-S5",
+        "verb": "solve",
+        "rationale": "The At-proficiency application: a real-world story -- a paper cup, a glass pyramid, a spherical ball -- where the diameter may be buried in the wording and the volume is only the first step toward the question actually asked. It exists because students who can compute a bare volume still stumble when the shape and the numbers are hidden in a context."
+      },
+      {
+        "skill_id": "8GM2-S6",
+        "verb": "apply",
+        "rationale": "The Above-proficiency chain: one shape's measurement must be found before another's volume can be computed -- a sphere's surface area yields its radius then its volume, a cone is compared to the cylinder around it, or a pyramid is stacked against a cube. It is the hardest turn because it links two formulas end to end, and every earlier trap can strike at either link."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "8GM2-F1",
+      "name": "Evaluate pi times the radius squared and square a radius",
+      "column": "foundation",
+      "parent_standard": "8.GM.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Square a number and evaluate pi times the radius squared, using the radius (half the diameter), not the diameter.",
+        "check_question": "A circle has a diameter of 10. What is the radius, and what is 3.14 times the radius squared?"
+      },
+      "i_do_script": "Every cone and every sphere in this standard leans on the same little computation: a radius squared, sometimes times pi. Squaring means the number times itself: 6 squared is 6 times 6 = 36, not 6 times 2. To find pi r squared with radius 6, I square first, then multiply by 3.14: 3.14 times 36 = 113.04. The trap is the diameter: if I am told the diameter is 10, the RADIUS is half of that, 5, and I square the 5, never the 10.",
+      "canonical_error": {
+        "pattern": "Uses the diameter in place of the radius, or reads 'squared' as 'times 2' instead of the number times itself",
+        "example": "For a circle with diameter 10, computes 3.14 times 10 squared = 314, or evaluates 5 squared as 5 times 2 = 10 instead of 5 times 5 = 25",
+        "why": "The student grabs the number handed to them (the diameter) and skips halving it, or treats the exponent as a multiplier; squaring is a number times itself, and the radius is half the diameter."
+      },
+      "item_template": "A radius or diameter, sometimes with 3.14 as a factor. Student squares the radius or evaluates pi r squared. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "A radius is 5. What is the radius squared (5 times 5)?",
+          "answer": "25"
+        },
+        {
+          "stem": "Evaluate 3.14 times 6 squared (this is pi r squared when r = 6). Use 3.14 for pi.",
+          "answer": "113.04"
+        },
+        {
+          "stem": "A circle has a diameter of 10. What is the radius, and what is 3.14 times the radius squared?",
+          "answer": "radius 5; 78.5"
+        },
+        {
+          "stem": "Evaluate 4 times 3.14 times 3 squared (this is 4 pi r squared when r = 3). Use 3.14 for pi.",
+          "answer": "113.04"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait -- is that number the radius or the diameter?",
+        "prompt": "If you were given the diameter, cut it in half to get the radius first. Then square the radius (radius times radius) before you multiply by 3.14.",
+        "praise": "You halved the diameter and squared the radius -- that keeps pi r squared right."
+      },
+      "vocabulary": [
+        {
+          "term": "Radius",
+          "definition": "The distance from the center of a circle or sphere to its edge; half the diameter."
+        },
+        {
+          "term": "Diameter",
+          "definition": "The distance across a circle or sphere through its center; twice the radius."
+        },
+        {
+          "term": "Squared",
+          "definition": "A number multiplied by itself; 6 squared means 6 times 6 = 36."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM2-S1",
+        "if_fail": "Review area of circles and exponents (7.GM.2 / 6.C)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A sphere has a diameter of 8. Find 3.14 times the radius squared.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the radius when the diameter is 8? Then what do we do to the radius?"
+        },
+        {
+          "kind": "say",
+          "text": "The radius is half of 8, which is 4. Square it: 4 times 4 = 16. Then 3.14 times 16 = 50.24."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student uses 8 as the radius, ask 'is that all the way across or halfway across? Which one is the radius?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: square a radius of 7, and evaluate 3.14 times 5 squared."
+        }
+      ]
+    },
+    {
+      "skill_id": "8GM2-F2",
+      "name": "Cube a number and take one third or four thirds of a product",
+      "column": "foundation",
+      "parent_standard": "8.GM.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Evaluate a number cubed and multiply a product by the fraction 1/3 or 4/3.",
+        "check_question": "Evaluate 3 cubed (3 times 3 times 3). Then find one third of 27 (that is, 27 divided by 3)."
+      },
+      "i_do_script": "The cone, the pyramid, and the sphere all end in a fraction the student has to actually apply. Cubing means a number times itself three times: 3 cubed is 3 times 3 times 3 = 27, not 3 times 3. Taking one third means dividing by 3: one third of 900 is 900 divided by 3 = 300. For a sphere I take four thirds, which is times 4 then divided by 3: four thirds of 27 is 4 times 27 = 108, then 108 divided by 3 = 36. The trap is skipping the fraction entirely and leaving the full product.",
+      "canonical_error": {
+        "pattern": "Reads 'cubed' as 'times 3,' or drops the 1/3 or 4/3 factor and reports the whole product",
+        "example": "Evaluates 3 cubed as 3 times 3 = 9 instead of 27, or reports 900 as one third of 900 instead of 300",
+        "why": "The student treats the exponent 3 as a multiplier and forgets that the volume formulas scale the product by a fraction; cubing is a number times itself three times, and one third means dividing by 3."
+      },
+      "item_template": "A number cubed, or a product multiplied by 1/3 or 4/3. Student evaluates it. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "Evaluate 4 cubed (4 times 4 times 4).",
+          "answer": "64"
+        },
+        {
+          "stem": "A radius is 3. What is r cubed (3 times 3 times 3)?",
+          "answer": "27"
+        },
+        {
+          "stem": "Find one third of 900 (that is, 900 divided by 3).",
+          "answer": "300"
+        },
+        {
+          "stem": "Evaluate four thirds of 27 (multiply by 4, then divide by 3).",
+          "answer": "36"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Hold on -- what does 'cubed' actually tell you to do?",
+        "prompt": "Cubed means the number times itself three times: 3 cubed is 3 times 3 times 3. And one third means divide by 3 -- don't leave the whole product.",
+        "praise": "You cubed by multiplying three times and kept the fraction -- that's the real value."
+      },
+      "vocabulary": [
+        {
+          "term": "Cubed",
+          "definition": "A number multiplied by itself three times; 3 cubed means 3 times 3 times 3 = 27."
+        },
+        {
+          "term": "One third",
+          "definition": "Dividing an amount into three equal parts and taking one; one third of 90 is 30."
+        },
+        {
+          "term": "Product",
+          "definition": "The result of multiplying numbers together."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM2-S1",
+        "if_fail": "Review exponents and multiplying by fractions (6.C / 7.C)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Evaluate four thirds of 4 cubed.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which piece comes first -- what is 4 cubed?"
+        },
+        {
+          "kind": "say",
+          "text": "4 cubed is 4 times 4 times 4 = 64. Four thirds of 64 is 4 times 64 = 256, then 256 divided by 3 is about 85.33."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 4 cubed as 12, stop: 'cubed is times itself three times, not times three -- 4 times 4 times 4.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: evaluate 5 cubed, and find one third of 300."
+        }
+      ]
+    },
+    {
+      "skill_id": "8GM2-S1",
+      "name": "Calculate the volume of a cone using V = (1/3) pi r squared h",
+      "column": "looking_back",
+      "parent_standard": "8.GM.2",
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8GM2-F1"
+      },
+      "i_do_script": "A cone is a cylinder poured down to a single point, and it fills exactly one third of that cylinder, so its volume is V = (1/3) pi r squared h. Watch a cone with radius 3 and height 4. First the base: 3 squared is 9. Times the height: 9 times 4 = 36. Now the one-third: 36 divided by 3 = 12, so the volume is 12 pi cubic units. The one move that keeps me honest is that one third -- if I stop at 36 pi I have found the whole cylinder, not the cone. And the r is the RADIUS, so a diameter gets halved first.",
+      "canonical_error": {
+        "pattern": "Forgets the one-third factor and reports the full cylinder volume (pi r squared h)",
+        "example": "For radius 6 and height 7, computes pi times 36 times 7 = 252 pi instead of taking a third to get 84 pi",
+        "why": "A cone fills only one third of the cylinder that shares its base and height. Skipping the one-third leaves the whole cylinder, tripling the true volume."
+      },
+      "item_template": "A cone given by radius (or diameter) and height. Student finds the volume, in terms of pi or using 3.14 with a rounding rule. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A cone has a radius of 3 and a height of 4. What is the volume in terms of pi?",
+          "answer": "12π cubic units",
+          "distractor_logic": "(1/3) x 9 x 4 = 12, so 12π. Forgetting the third gives the full cylinder, 36π."
+        },
+        {
+          "stem": "A cone has a radius of 6 and a height of 7. What is the volume in terms of pi?",
+          "answer": "84π cubic units",
+          "distractor_logic": "(1/3) x 36 x 7 = 84. Forgetting the third gives 252π."
+        },
+        {
+          "stem": "A cone has a radius of 5 cm and a height of 12 cm. What is the volume? Use 3.14 for pi. Round to the nearest hundredth.",
+          "answer": "314 cubic cm",
+          "distractor_logic": "(1/3) x 3.14 x 25 x 12 = 314. Forgetting the third gives 942."
+        },
+        {
+          "stem": "A cone has a diameter of 6 in and a height of 8 in. What is the volume in terms of pi?",
+          "answer": "24π cubic in",
+          "distractor_logic": "Radius is 3: (1/3) x 9 x 8 = 24, so 24π. Using the diameter 6 as the radius gives 96π."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you take the one third -- or is that the whole cylinder?",
+        "prompt": "A cone is one third of its cylinder. Find pi r squared h first, then divide by 3 (or multiply by one third). And if you were given a diameter, halve it for the radius.",
+        "praise": "You took a third of the cylinder -- that's the cone, not the can."
+      },
+      "vocabulary": [
+        {
+          "term": "Cone",
+          "definition": "A solid with a circular base that narrows to a single point, like an ice cream cone."
+        },
+        {
+          "term": "Volume",
+          "definition": "The amount of space a solid takes up, measured in cubic units."
+        },
+        {
+          "term": "Pi",
+          "definition": "The number of times a circle's diameter fits around it, about 3.14."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM2-S4",
+        "if_fail": "8GM2-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A cone has radius 3 and height 4. Volume in terms of pi?'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is 3 squared times the height? Then what does a cone make us do to that?"
+        },
+        {
+          "kind": "say",
+          "text": "3 squared is 9, times 4 is 36. A cone is one third: 36 divided by 3 = 12, so 12 pi cubic units."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 36 pi, stop: 'that's the whole cylinder -- a cone is only one third of it.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a cone with radius 6 and height 7, in terms of pi."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A cone and a cylinder have the same base and height. The cylinder's volume is 90π. What is the cone's volume?",
+          "answer": "30π cubic units (one third of 90π)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A cone has a radius of 3 and a height of 4. What is (1/3) pi r squared h in terms of pi?",
+          "answer": "12π cubic units"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cone has a radius of 6 and a height of 7. Find the volume in terms of pi.",
+          "answer": "84π cubic units ((1/3) x 36 x 7)",
+          "notes": "Base times height first, then take a third."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cone has a radius of 5 cm and a height of 12 cm. Find the volume. Use 3.14 for pi. Round to the nearest hundredth.",
+          "answer": "314 cubic cm ((1/3) x 3.14 x 25 x 12)",
+          "notes": "Baits stopping at the full cylinder 942."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Devin found the volume of a cone with radius 6 and height 7 (in terms of pi). Find and fix the mistake.",
+          "shown_work": [
+            "Devin wrote: V = pi x 6 squared x 7",
+            "V = 252π cubic units"
+          ],
+          "answer": "Devin found the whole cylinder and forgot the one-third. A cone is (1/3) pi r squared h = (1/3) x 36 x 7 = 84π cubic units.",
+          "notes": "Canonical error: dropped the one-third factor."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cone has a diameter of 6 in and a height of 8 in. Find the volume in terms of pi.",
+          "answer": "24π cubic in (radius 3: (1/3) x 9 x 8)",
+          "notes": "Baits using the diameter 6 as the radius."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A cone has a radius of 4 and a height of 9. Give its volume in terms of pi, then also using 3.14 (nearest hundredth).",
+          "answer": "48π cubic units, which is about 150.72 (3.14 x 48)",
+          "notes": "Connects 'in terms of pi' to a decimal answer."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Cone A has radius 6 and height 2. Cone B has radius 2 and height 6. Which has the greater volume? Explain.",
+          "answer": "A: (1/3) x 36 x 2 = 24π; B: (1/3) x 4 x 6 = 8π. A is greater -- squaring the larger radius matters more than the larger height.",
+          "notes": "Shows why the squared radius dominates."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Three Cones Fill the Cylinder",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "A cone and a cylinder with the same radius and height (nesting set or paper models)",
+            "Dry rice or water"
+          ],
+          "instructions": "1. Fill the cone level-full and pour it into the empty cylinder.\n2. Repeat and count how many cone-fulls it takes to fill the cylinder.\n3. Write what you found: the cone is ____ of the cylinder.\n4. Compute one cone's volume for radius 3, height 6 using your rule.\n5. Debrief: why does the cone formula divide by 3?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "That's the Whole Cylinder",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Devin's 252π work"
+          ],
+          "instructions": "1. Read Devin's claim that a cone with radius 6 and height 7 has volume 252π.\n2. Find the exact step where the one-third went missing.\n3. Redo the volume as one third of the cylinder.\n4. Write a one-line rule for what makes a cone different from its cylinder.",
+          "content": {
+            "worked_problem": "Radius 6, height 7. Devin wrote V = pi x 36 x 7 = 252π.",
+            "error_step": "Devin used pi r squared h (the full cylinder) and skipped the one-third.",
+            "why": "A cone is one third of that cylinder: (1/3) x 36 x 7 = 84π cubic units."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Pouring three cones into a cylinder makes the one-third factor concrete before it is a formula."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The dropped one-third is a clean, one-move error ideal for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'find the cylinder, then take a third' models the exact order students collapse."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is the number you were given the radius or the diameter?",
+          "What is pi r squared h before you take the third?",
+          "A cone is what fraction of its cylinder?",
+          "Should the cone hold more or less than the cylinder around it?",
+          "Where in your work did the one-third go?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student forgets the one-third factor and reports the full cylinder volume.",
+            "say": "A cone is one third of its cylinder. Find pi r squared h first, then divide by 3 (or multiply by one third). And if you were given a diameter, halve it for the radius.",
+            "praise": "You took a third of the cylinder -- that's the cone, not the can."
+          },
+          {
+            "if_you_see": "Student uses the diameter as the radius, so the base is four times too big.",
+            "say": "That number is all the way across -- that's the diameter. Halve it to get the radius before you square.",
+            "praise": "You halved the diameter first -- now the base is the right size."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A cone has radius 3 and height 4. Volume in terms of pi?",
+            "look_for": "12π. An answer of 36π means the one-third was skipped."
+          },
+          {
+            "prompt": "A cone has a diameter of 6 and a height of 8. What radius do you use?",
+            "look_for": "3 (half of 6). Using 6 signals the diameter/radius confusion."
+          }
+        ]
+      },
+      "fluency_source": "8GM2-F2",
+      "sentence_starters": [
+        "The cylinder would be ___, so the cone is one third of it: ___.",
+        "I was given the ___, so the radius is ___ before I square it."
+      ],
+      "worked_solution": {
+        "stem": "A cone has a radius of 3 and a height of 4. What is the volume in terms of pi?",
+        "answer": "12π cubic units",
+        "steps": [
+          {
+            "math": "V = (1/3) pi r squared h",
+            "annotation": "Write the cone formula -- note the one-third."
+          },
+          {
+            "math": "V = (1/3) pi x 3 squared x 4",
+            "annotation": "The radius is 3 -- substitute it for r."
+          },
+          {
+            "math": "= (1/3) pi x 9 x 4 = (1/3) pi x 36",
+            "annotation": "Square the radius and multiply by the height: that is the cylinder."
+          },
+          {
+            "math": "= 12π cubic units",
+            "annotation": "Take one third of the cylinder to get the cone."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A cone has a radius of 6 and a height of 7. What is the volume in terms of pi?",
+        "answer": "84π cubic units",
+        "steps": [
+          {
+            "math": "V = (1/3) pi r squared h",
+            "annotation": "Start from the cone formula.",
+            "given": true
+          },
+          {
+            "math": "V = (1/3) pi x 6 squared x 7",
+            "annotation": "Substitute the radius 6.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Square the radius and multiply by the height for the cylinder.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Take one third of that to finish the cone.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM2-S2",
+      "name": "Calculate the volume and surface area of a sphere",
+      "column": "looking_back",
+      "parent_standard": "8.GM.2",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8GM2-F2"
+      },
+      "i_do_script": "A sphere has two formulas that look almost alike but are not: its volume CUBES the radius, V = (4/3) pi r cubed, while its surface area SQUARES it, SA = 4 pi r squared. Watch a sphere with radius 3. Volume: 3 cubed is 27, times four thirds is 36, so 36 pi cubic units. Surface area: 3 squared is 9, times 4 is 36, so 36 pi square units -- same number here by coincidence, but volume cubes and area squares. The other trap is the diameter: spheres are almost always given a diameter, so I halve it to the radius before I cube or square.",
+      "canonical_error": {
+        "pattern": "Uses the diameter as the radius, or squares the radius for volume (or cubes it for surface area) instead of keeping cube for volume and square for area",
+        "example": "For a sphere with diameter 12, uses 12 as the radius to get (4/3) pi x 1728 = 2304 pi instead of halving to radius 6 for (4/3) pi x 216 = 288 pi",
+        "why": "The sphere volume cubes the radius and the surface area squares it, and both are usually handed a diameter; feeding in the diameter, or swapping the exponent, distorts the answer before pi is applied."
+      },
+      "item_template": "A sphere given by radius or diameter. Student finds the volume or the surface area, in terms of pi or using 3.14 with a rounding rule. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A sphere has a radius of 3. What is the volume in terms of pi?",
+          "answer": "36π cubic units",
+          "distractor_logic": "(4/3) x 27 = 36, so 36π. Squaring instead of cubing gives (4/3) x 9 = 12π."
+        },
+        {
+          "stem": "A sphere has a radius of 7. What is the surface area in terms of pi?",
+          "answer": "196π square units",
+          "distractor_logic": "4 x 49 = 196. Cubing instead of squaring gives 4 x 343 = 1372π."
+        },
+        {
+          "stem": "A sphere has a diameter of 12 in. What is the volume in terms of pi?",
+          "answer": "288π cubic in",
+          "distractor_logic": "Radius is 6: (4/3) x 216 = 288. Using the diameter 12 as the radius gives 2304π."
+        },
+        {
+          "stem": "A sphere has a radius of 3 cm. What is the surface area? Use 3.14 for pi. Round to the nearest hundredth.",
+          "answer": "113.04 square cm",
+          "distractor_logic": "4 x 3.14 x 9 = 113.04."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Volume or surface area -- cube or square?",
+        "prompt": "Volume CUBES the radius (four thirds pi r cubed); surface area SQUARES it (4 pi r squared). And if you were given a diameter, halve it to the radius first.",
+        "praise": "You matched the exponent to the question and used the radius -- that's the sphere done right."
+      },
+      "vocabulary": [
+        {
+          "term": "Sphere",
+          "definition": "A perfectly round solid where every point on the surface is the same distance from the center, like a ball."
+        },
+        {
+          "term": "Surface area",
+          "definition": "The total area of the outside of a solid, measured in square units."
+        },
+        {
+          "term": "Cubed",
+          "definition": "A number multiplied by itself three times; 3 cubed means 3 times 3 times 3 = 27."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM2-S4",
+        "if_fail": "8GM2-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A sphere has radius 3. Find the volume and the surface area, in terms of pi.'"
+        },
+        {
+          "kind": "ask",
+          "text": "For the volume, do we cube or square the radius? For the surface area?"
+        },
+        {
+          "kind": "say",
+          "text": "Volume cubes: 3 cubed is 27, four thirds of 27 is 36, so 36 pi. Surface area squares: 3 squared is 9, times 4 is 36, so 36 pi square units."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student squares for the volume, ask 'volume fills the inside -- does it cube or square the radius?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a sphere with radius 7 -- find the surface area in terms of pi."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A sphere has a radius of 3. What is r cubed (3 times 3 times 3)?",
+          "answer": "27"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A sphere has a radius of 5. What is r squared, the first step of its surface area?",
+          "answer": "25 (surface area is 100π)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A sphere has a radius of 3. Find the volume in terms of pi.",
+          "answer": "36π cubic units ((4/3) x 27)",
+          "notes": "Cube the radius, then take four thirds."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A sphere has a radius of 7. Find the surface area in terms of pi.",
+          "answer": "196π square units (4 x 49)",
+          "notes": "Square the radius for surface area."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Priya found the volume of a sphere with a diameter of 12 in (in terms of pi). Find and fix the mistake.",
+          "shown_work": [
+            "Priya wrote: V = (4/3) pi x 12 cubed",
+            "V = 2304π cubic in"
+          ],
+          "answer": "Priya used the diameter as the radius. The radius is half of 12, which is 6: V = (4/3) pi x 6 cubed = (4/3) x 216 = 288π cubic in.",
+          "notes": "Canonical error: diameter used as the radius."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A sphere has a radius of 6. Find the volume in terms of pi.",
+          "answer": "288π cubic units ((4/3) x 216)",
+          "notes": "Cube 6 to 216, then four thirds."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A sphere has a radius of 5 cm. Find the volume. Use 3.14 for pi. Round to the nearest hundredth.",
+          "answer": "523.33 cubic cm ((4/3) x 3.14 x 125)",
+          "notes": "Cube 5 to 125; the answer is a true decimal."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A sphere has a radius of 6. Find BOTH its surface area and its volume in terms of pi, and explain why one uses r squared and the other r cubed.",
+          "answer": "Surface area 4 x 36 = 144π (area is 2-D, so square); volume (4/3) x 216 = 288π (volume is 3-D, so cube).",
+          "notes": "Reverse direction -- contrast the two formulas and their exponents."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Cube It or Square It?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Card set of 10 sphere questions, each asking for either volume or surface area"
+          ],
+          "instructions": "1. Sort every card into 'volume (cube the radius)' or 'surface area (square the radius).'\n2. On any card that gives a diameter, write the radius before doing anything else.\n3. Solve four cards, two of each kind, in terms of pi.\n4. Debrief: how does the question tell you whether to cube or square?",
+          "content": {
+            "categories": [
+              "Volume (cube the radius)",
+              "Surface area (square the radius)"
+            ],
+            "cards": [
+              {
+                "text": "sphere radius 3, find volume",
+                "category": "Volume (cube the radius)"
+              },
+              {
+                "text": "sphere radius 7, find surface area",
+                "category": "Surface area (square the radius)"
+              },
+              {
+                "text": "sphere diameter 12, find volume",
+                "category": "Volume (cube the radius)"
+              },
+              {
+                "text": "sphere radius 5, find surface area",
+                "category": "Surface area (square the radius)"
+              },
+              {
+                "text": "sphere radius 6, find volume",
+                "category": "Volume (cube the radius)"
+              },
+              {
+                "text": "sphere diameter 10, find surface area",
+                "category": "Surface area (square the radius)"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Halve the Diameter First",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Priya's diameter-cubed work"
+          ],
+          "instructions": "1. Read Priya's claim that a sphere with diameter 12 has volume 2304π.\n2. Ask: is 12 the radius or the whole way across?\n3. Redo the volume using the radius.\n4. Write the rule for what to do first whenever a sphere gives a diameter.",
+          "content": {
+            "worked_problem": "Diameter 12. Priya wrote V = (4/3) pi x 12 cubed = 2304π.",
+            "error_step": "Priya cubed the diameter (12) instead of the radius (6).",
+            "why": "The radius is half the diameter: (4/3) pi x 6 cubed = 288π cubic in."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The diameter-as-radius and cube-versus-square slips are precise, baitable errors made for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral response on 'volume cubes, surface area squares' builds the automaticity that prevents the swap."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "A journal note contrasting the two sphere formulas consolidates when to cube and when to square."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is this asking for volume or surface area?",
+          "Does volume cube the radius or square it? What about surface area?",
+          "Were you given a radius or a diameter?",
+          "What is the radius before you raise it to a power?",
+          "Should surface area be measured in square units or cubic units?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student uses the diameter as the radius, or swaps cube and square between volume and surface area.",
+            "say": "Volume CUBES the radius (four thirds pi r cubed); surface area SQUARES it (4 pi r squared). And if you were given a diameter, halve it to the radius first.",
+            "praise": "You matched the exponent to the question and used the radius -- that's the sphere done right."
+          },
+          {
+            "if_you_see": "Student forgets the four-thirds factor on the volume.",
+            "say": "The sphere volume scales the cube by four thirds -- multiply by 4 and divide by 3 after you cube.",
+            "praise": "You applied the four thirds -- that's the full sphere volume."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A sphere has a radius of 3. Volume in terms of pi?",
+            "look_for": "36π. An answer of 12π means the radius was squared instead of cubed."
+          },
+          {
+            "prompt": "A sphere has a diameter of 12. What radius do you use for the volume?",
+            "look_for": "6 (half of 12). Using 12 signals the diameter/radius confusion."
+          }
+        ]
+      },
+      "fluency_source": "8GM2-F2",
+      "sentence_starters": [
+        "This asks for ___, so I ___ the radius: r = ___.",
+        "Volume cubes to ___, surface area squares to ___."
+      ],
+      "worked_solution": {
+        "stem": "A sphere has a radius of 3. What is the volume in terms of pi?",
+        "answer": "36π cubic units",
+        "steps": [
+          {
+            "math": "V = (4/3) pi r cubed",
+            "annotation": "Write the sphere volume formula -- the radius is cubed."
+          },
+          {
+            "math": "V = (4/3) pi x 3 cubed",
+            "annotation": "Substitute the radius 3."
+          },
+          {
+            "math": "= (4/3) pi x 27",
+            "annotation": "Cube the radius: 3 x 3 x 3 = 27."
+          },
+          {
+            "math": "= 36π cubic units",
+            "annotation": "Four thirds of 27 is 36."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A sphere has a diameter of 12 in. What is the volume in terms of pi?",
+        "answer": "288π cubic in",
+        "steps": [
+          {
+            "math": "radius = 12 / 2 = 6",
+            "annotation": "Halve the diameter to get the radius.",
+            "given": true
+          },
+          {
+            "math": "V = (4/3) pi x 6 cubed",
+            "annotation": "Substitute the radius into the volume formula.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Cube the radius: 6 x 6 x 6.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Take four thirds of the cube for the volume.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM2-S3",
+      "name": "Calculate the volume of a square pyramid using V = (1/3) B h",
+      "column": "looking_back",
+      "parent_standard": "8.GM.2",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8GM2-F2"
+      },
+      "i_do_script": "A square pyramid is like a cone with a flat square base, and it fills one third of the box that shares its base and height, so V = (1/3) B h, where B is the base area, side times side. Watch a pyramid with base side 6 and height 10. First the base: 6 squared is 36. Times the height: 36 times 10 = 360. Now the one-third: 360 divided by 3 = 120 cubic units. Same trap as the cone -- if I stop at 360 I have found the whole box (the prism), not the pyramid. The base is a square, so I square the side; there is no pi here.",
+      "canonical_error": {
+        "pattern": "Forgets the one-third factor and reports the full prism (B times h), or uses the side length instead of the side squared for the base",
+        "example": "For base side 6 and height 10, computes 36 times 10 = 360 (the whole prism) instead of taking a third to get 120",
+        "why": "A square pyramid fills only one third of the prism that shares its base and height. Skipping the one-third leaves the whole prism, tripling the true volume."
+      },
+      "item_template": "A right square pyramid given by base side length and height. Student finds the volume. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A square pyramid has a base side of 6 and a height of 10. What is the volume?",
+          "answer": "120 cubic units",
+          "distractor_logic": "(1/3) x 36 x 10 = 120. Forgetting the third gives the full prism, 360."
+        },
+        {
+          "stem": "A square pyramid has a base side of 8 and a height of 12. What is the volume?",
+          "answer": "256 cubic units",
+          "distractor_logic": "(1/3) x 64 x 12 = 256. Forgetting the third gives 768."
+        },
+        {
+          "stem": "A square pyramid has a base side of 3 and a height of 4. What is the volume?",
+          "answer": "12 cubic units",
+          "distractor_logic": "(1/3) x 9 x 4 = 12."
+        },
+        {
+          "stem": "A square pyramid has a base side of 9 and a height of 5. What is the volume?",
+          "answer": "135 cubic units",
+          "distractor_logic": "(1/3) x 81 x 5 = 135."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you take the one third -- or is that the whole box?",
+        "prompt": "A square pyramid is one third of its prism. Find the base area (side squared) times the height first, then divide by 3.",
+        "praise": "You took a third of the prism -- that's the pyramid, not the box."
+      },
+      "vocabulary": [
+        {
+          "term": "Square pyramid",
+          "definition": "A solid with a square base whose four triangular faces meet at one point on top."
+        },
+        {
+          "term": "Base area (B)",
+          "definition": "The area of the flat bottom of a solid; for a square base it is the side times the side."
+        },
+        {
+          "term": "Height",
+          "definition": "The straight-up distance from the base to the top point of the pyramid."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM2-S4",
+        "if_fail": "8GM2-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A square pyramid has base side 6 and height 10. Volume?'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the base area (side squared)? Then times the height?"
+        },
+        {
+          "kind": "say",
+          "text": "Base: 6 squared is 36. Times 10 is 360. A pyramid is one third: 360 divided by 3 = 120 cubic units."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 360, stop: 'that's the whole box -- a pyramid is only one third of it.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a square pyramid with base side 8 and height 12."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A square pyramid has a base side of 6. What is the base area B = s squared?",
+          "answer": "36"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A pyramid and a prism have the same base and height. The prism's volume is 300. What is the pyramid's volume?",
+          "answer": "100 cubic units (one third of 300)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A square pyramid has a base side of 6 and a height of 10. Find the volume.",
+          "answer": "120 cubic units ((1/3) x 36 x 10)",
+          "notes": "Base area times height, then take a third."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A square pyramid has a base side of 8 and a height of 12. Find the volume.",
+          "answer": "256 cubic units ((1/3) x 64 x 12)",
+          "notes": "Baits stopping at the full prism 768."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Marcus found the volume of a square pyramid with base side 6 and height 10. Find and fix the mistake.",
+          "shown_work": [
+            "Marcus wrote: V = 6 squared x 10",
+            "V = 360 cubic units"
+          ],
+          "answer": "Marcus found the whole prism and forgot the one-third. A pyramid is (1/3) B h = (1/3) x 36 x 10 = 120 cubic units.",
+          "notes": "Canonical error: dropped the one-third factor."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A square pyramid has a base side of 10 and a height of 12. Find the volume.",
+          "answer": "400 cubic units ((1/3) x 100 x 12)",
+          "notes": "Base area 100, then a third of 1200."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A square pyramid has a base side of 9 and a height of 5. Find the volume, and name the base area you used.",
+          "answer": "135 cubic units: base area 81, then (1/3) x 81 x 5 = 135.",
+          "notes": "Reverse direction -- state the base area explicitly."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A square pyramid has a base side of 3 and a volume of 12. Show that its height is 4.",
+          "answer": "Base area is 9; (1/3) x 9 x h = 12 means 3h = 12, so h = 4.",
+          "notes": "Light reverse -- work back to the height."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "One Third of the Box",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Slip with Marcus's 360 work"
+          ],
+          "instructions": "1. Read Marcus's claim that a pyramid with base side 6 and height 10 has volume 360.\n2. Point to the prism Marcus actually found.\n3. Redo the volume as one third of that prism.\n4. Write the rule for what a pyramid is compared to its box.",
+          "content": {
+            "worked_problem": "Base side 6, height 10. Marcus wrote V = 36 x 10 = 360.",
+            "error_step": "Marcus used B times h (the whole prism) and skipped the one-third.",
+            "why": "A pyramid is one third of that prism: (1/3) x 36 x 10 = 120 cubic units."
+          }
+        },
+        {
+          "type": "matching",
+          "title": "Pyramid to Its Prism",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Cards of square pyramids (base side, height) and cards of volumes, including full-prism decoys"
+          ],
+          "instructions": "1. Match each pyramid to its correct volume card.\n2. Set aside the decoy cards that give the full prism (three times too big).\n3. To claim a match, say the base area and the one-third out loud.\n4. Debrief: how can you spot a 'forgot the third' answer at a glance?",
+          "content": {
+            "pairs": [
+              {
+                "left": "base side 6, height 10",
+                "right": "120 cubic units"
+              },
+              {
+                "left": "base side 8, height 12",
+                "right": "256 cubic units"
+              },
+              {
+                "left": "base side 3, height 4",
+                "right": "12 cubic units"
+              },
+              {
+                "left": "base side 10, height 12",
+                "right": "400 cubic units"
+              }
+            ],
+            "decoys": [
+              "360 cubic units",
+              "768 cubic units"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The dropped one-third is a single, precise error that find-and-fix targets cleanly."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release from finding the base area, to the prism, to a third of the prism scaffolds the one-third habit."
+        },
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Filling a prism with three pyramid-fulls makes the one-third factor concrete before it is a formula."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the base area -- side times side?",
+          "What is the base area times the height (the whole prism)?",
+          "A pyramid is what fraction of that prism?",
+          "Where did the one-third go in your work?",
+          "Should the pyramid hold more or less than the box around it?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student forgets the one-third factor and reports the full prism volume.",
+            "say": "A square pyramid is one third of its prism. Find the base area (side squared) times the height first, then divide by 3.",
+            "praise": "You took a third of the prism -- that's the pyramid, not the box."
+          },
+          {
+            "if_you_see": "Student uses the side length instead of the side squared for the base area.",
+            "say": "The base is a square, so its area is the side TIMES the side -- square it before you multiply by the height.",
+            "praise": "You squared the side for the base area -- now the base is right."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A square pyramid has base side 6 and height 10. Volume?",
+            "look_for": "120. An answer of 360 means the one-third was skipped."
+          },
+          {
+            "prompt": "A square pyramid has base side 3 and height 4. Volume?",
+            "look_for": "12 ((1/3) x 9 x 4). An answer of 36 means the third was dropped."
+          }
+        ]
+      },
+      "fluency_source": "8GM2-F2",
+      "sentence_starters": [
+        "The base area is ___, times the height is ___, so the prism is ___.",
+        "The pyramid is one third of ___, which is ___."
+      ],
+      "worked_solution": {
+        "stem": "A square pyramid has a base side of 6 and a height of 10. What is the volume?",
+        "answer": "120 cubic units",
+        "steps": [
+          {
+            "math": "V = (1/3) B h, with B = s squared",
+            "annotation": "Write the pyramid formula -- note the one-third."
+          },
+          {
+            "math": "B = 6 squared = 36",
+            "annotation": "The base is a square: side times side."
+          },
+          {
+            "math": "B x h = 36 x 10 = 360",
+            "annotation": "Base area times height is the whole prism."
+          },
+          {
+            "math": "V = (1/3) x 360 = 120 cubic units",
+            "annotation": "Take one third of the prism to get the pyramid."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A square pyramid has a base side of 8 and a height of 12. What is the volume?",
+        "answer": "256 cubic units",
+        "steps": [
+          {
+            "math": "V = (1/3) B h, with B = s squared",
+            "annotation": "Start from the pyramid formula.",
+            "given": true
+          },
+          {
+            "math": "B = 8 squared = 64",
+            "annotation": "Square the base side for the base area.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the base area by the height for the prism.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Take one third of that for the pyramid.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM2-S4",
+      "name": "Find a missing height, side, or radius from a given volume or surface area",
+      "column": "on_grade",
+      "parent_standard": "8.GM.2",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8GM2-S1"
+      },
+      "i_do_script": "Sometimes I am handed the volume and have to find a missing measurement, so I run the formula backwards. Watch a cone with volume 120 pi and radius 6. V = (1/3) pi r squared h, so 120 pi = (1/3) pi times 36 times h, which is 120 = 12 h. Divide: h = 120 divided by 12 = 10. Because a cone divides by 3, undoing it means I effectively multiply back by 3 -- if I forget that, my height comes out three times too small. For a sphere's radius from surface area I divide out 4 pi, then take a square root; a cube root is never required.",
+      "canonical_error": {
+        "pattern": "When undoing a cone or pyramid, forgets to account for the one-third (height comes out too small); for a sphere's radius, reports r squared instead of taking the square root",
+        "example": "For a cone of volume 120 pi and radius 6, divides 120 by 36 to get about 3.33 instead of using (1/3) pi r squared = 12 to get h = 10",
+        "why": "Undoing a volume means dividing by everything multiplying the unknown -- including the one-third and the pi -- and undoing a squared radius requires a final square root."
+      },
+      "item_template": "A volume (or a sphere's surface area) with all but one measurement given. Student finds the missing height, side, or radius. No cube roots. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A cone has a volume of 100 pi and a radius of 5. What is the height?",
+          "answer": "12",
+          "distractor_logic": "(1/3) pi x 25 = (25/3) pi; 100 pi divided by that is 12. Ignoring the one-third gives 4."
+        },
+        {
+          "stem": "A square pyramid has a volume of 1296 cubic in and a height of 12 in. What is the base side length?",
+          "answer": "18 in",
+          "distractor_logic": "s squared = 3 x 1296 / 12 = 324, so s = 18. Reporting 324 skips the square root."
+        },
+        {
+          "stem": "A sphere has a surface area of 196 pi. What is the radius?",
+          "answer": "7",
+          "distractor_logic": "r squared = 196 / 4 = 49, so r = 7. Reporting 49 skips the square root."
+        },
+        {
+          "stem": "A square pyramid has a volume of 120 cubic units and a base side of 6. What is the height?",
+          "answer": "10",
+          "distractor_logic": "h = 3 x 120 / 36 = 10. Forgetting the times-3 gives about 3.33."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you undo the one-third -- and is that answer the radius yet?",
+        "prompt": "To find a missing measurement, divide the volume by everything else, including the one-third and the pi. For a radius, finish by taking the square root.",
+        "praise": "You undid the whole formula and took the square root -- that's the real measurement."
+      },
+      "vocabulary": [
+        {
+          "term": "Square root",
+          "definition": "The number that, multiplied by itself, gives the value; the square root of 49 is 7."
+        },
+        {
+          "term": "Missing dimension",
+          "definition": "A length you solve for by working a volume or surface-area formula backwards."
+        },
+        {
+          "term": "Inverse operation",
+          "definition": "The operation that undoes another; division undoes multiplication, and a square root undoes squaring."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM2-S5",
+        "if_fail": "8GM2-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A cone has volume 100 pi and radius 5. Find the height.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is (1/3) pi times 5 squared? What does that leave times the height?"
+        },
+        {
+          "kind": "say",
+          "text": "(1/3) times 25 is 25/3, so 100 pi = (25/3) pi times h. Divide: h = 100 divided by (25/3) = 12."
+        },
+        {
+          "kind": "watch",
+          "text": "If the missing value is a radius and the student stops at r squared, ask 'you found r times r -- what undoes the square?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a sphere with surface area 196 pi. Find the radius."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A pyramid's volume is 100 and its base area is 25. Use V = (1/3) B h to find the height.",
+          "answer": "12 (3 x 100 / 25)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "If r squared = 49, what is r?",
+          "answer": "7 (the square root of 49)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cone has a volume of 100 pi and a radius of 5. Find the height.",
+          "answer": "12 ((1/3) pi x 25 = (25/3) pi; 100 pi / (25/3) pi = 12)",
+          "notes": "Divide out the one-third and the pi."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A square pyramid has a volume of 1296 cubic in and a height of 12 in. Find the base side length.",
+          "answer": "18 in (s squared = 3 x 1296 / 12 = 324, then square root)",
+          "notes": "Baits reporting s squared = 324."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Harper found the height of a cone with volume 120 pi and radius 6. Find and fix the mistake.",
+          "shown_work": [
+            "Harper wrote: h = 120 / 36",
+            "h = 3.33"
+          ],
+          "answer": "Harper divided by the full base and forgot the cone's one-third. Since (1/3) x 36 = 12, the height is 120 / 12 = 10. (Undoing the one-third multiplies back by 3.)",
+          "notes": "Canonical error: ignored the one-third when working backwards."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A sphere has a surface area of 100 pi. Find the radius.",
+          "answer": "5 (r squared = 100 / 4 = 25, then square root)",
+          "notes": "Divide out 4 pi, then take the square root."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A square pyramid has a volume of 120 cubic units and a base side of 6. Find the height.",
+          "answer": "10 (h = 3 x 120 / 36)",
+          "notes": "Reverse of finding the side -- solve for the height."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A cone has a volume of 314 cubic cm and a radius of 5 cm. Use 3.14 for pi. Find the height.",
+          "answer": "12 cm ((1/3) x 3.14 x 25 = 26.166..., then 314 / 26.166... = 12)",
+          "notes": "Same reverse move with a decimal pi."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Divide, or Divide-Then-Root?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Card set of 10 'find the missing measurement' problems (some missing a height or side, some missing a radius)"
+          ],
+          "instructions": "1. Sort each card into 'missing height or side (just divide)' or 'missing radius (divide, then square root).'\n2. For each card, write the extra step the radius problems need.\n3. Solve four cards, two of each kind.\n4. Debrief: why does finding a radius take one more step than finding a height?",
+          "content": {
+            "categories": [
+              "Missing height or side (divide)",
+              "Missing radius (divide, then square root)"
+            ],
+            "cards": [
+              {
+                "text": "cone V = 100 pi, r = 5, find height",
+                "category": "Missing height or side (divide)"
+              },
+              {
+                "text": "sphere SA = 196 pi, find radius",
+                "category": "Missing radius (divide, then square root)"
+              },
+              {
+                "text": "pyramid V = 1296, h = 12, find side",
+                "category": "Missing height or side (divide)"
+              },
+              {
+                "text": "sphere SA = 100 pi, find radius",
+                "category": "Missing radius (divide, then square root)"
+              },
+              {
+                "text": "pyramid V = 120, s = 6, find height",
+                "category": "Missing height or side (divide)"
+              },
+              {
+                "text": "sphere SA = 144 pi, find radius",
+                "category": "Missing radius (divide, then square root)"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "You Forgot the One-Third",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Harper's 3.33 work"
+          ],
+          "instructions": "1. Read Harper's answer that the cone's height is 3.33.\n2. Ask: is 3.33 about three times too small? What did Harper skip?\n3. Redo the division accounting for the one-third.\n4. Write the rule for undoing a cone or pyramid formula.",
+          "content": {
+            "worked_problem": "Cone V = 120 pi, r = 6. Harper wrote h = 120 / 36 = 3.33.",
+            "error_step": "Harper divided by the full base (36) and ignored the cone's one-third.",
+            "why": "(1/3) x 36 = 12, so h = 120 / 12 = 10; undoing the one-third multiplies back by 3."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'divide out everything, including the one-third, then undo the square' models the reverse procedure step by step."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The forgot-the-third and r-squared-as-r slips are precise, single errors that find-and-fix targets cleanly."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release from find-the-height (just divide) to find-the-radius (divide then root) adds the square root deliberately."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is multiplying the unknown, and how do you undo all of it?",
+          "Did you divide out the one-third for the cone or pyramid?",
+          "After you divide, is your answer the radius or the radius squared?",
+          "What operation undoes squaring?",
+          "Does your missing length look reasonable next to the volume?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student ignores the one-third when undoing a cone or pyramid, or reports r squared as the radius.",
+            "say": "To find a missing measurement, divide the volume by everything else, including the one-third and the pi. For a radius, finish by taking the square root.",
+            "praise": "You undid the whole formula and took the square root -- that's the real measurement."
+          },
+          {
+            "if_you_see": "Student tries to find a sphere's radius from its volume (a cube root).",
+            "say": "We only find a radius from the surface area, which uses a square root. A radius from a sphere's volume would need a cube root -- not in this standard.",
+            "praise": "You used the surface area and a square root -- that's the allowed path to a radius."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A sphere has a surface area of 100 pi. Find the radius.",
+            "look_for": "5 (r squared = 25, then root). An answer of 25 means the square root was skipped."
+          },
+          {
+            "prompt": "A cone has volume 120 pi and radius 6. Find the height.",
+            "look_for": "10 (120 / 12). An answer near 3.33 means the one-third was ignored."
+          }
+        ]
+      },
+      "fluency_source": "8GM2-F2",
+      "sentence_starters": [
+        "The volume is ___, and everything times the unknown is ___, so the unknown is ___ / ___ = ___.",
+        "I found r squared = ___, so the radius is the square root, ___."
+      ],
+      "worked_solution": {
+        "stem": "A cone has a volume of 100 pi and a radius of 5. What is the height?",
+        "answer": "12",
+        "steps": [
+          {
+            "math": "V = (1/3) pi r squared h, so 100 pi = (1/3) pi x 25 x h",
+            "annotation": "Substitute the volume and the radius."
+          },
+          {
+            "math": "(1/3) x 25 = 25/3, so 100 pi = (25/3) pi x h",
+            "annotation": "Combine everything multiplying the height, including the one-third."
+          },
+          {
+            "math": "h = 100 / (25/3)",
+            "annotation": "Divide to undo the multiplication."
+          },
+          {
+            "math": "= 12",
+            "annotation": "The missing height."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A sphere has a surface area of 196 pi. What is the radius?",
+        "answer": "7",
+        "steps": [
+          {
+            "math": "SA = 4 pi r squared, so 196 pi = 4 pi r squared",
+            "annotation": "Substitute the surface area.",
+            "given": true
+          },
+          {
+            "math": "r squared = 196 / 4",
+            "annotation": "Divide out 4 and pi.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Simplify to find r squared.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Take the square root to get the radius.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM2-S5",
+      "name": "Solve a real-world problem by applying a volume or surface-area formula",
+      "column": "on_grade",
+      "parent_standard": "8.GM.2",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8GM2-S1"
+      },
+      "i_do_script": "In a real-world problem the shape and the numbers are buried in the story, and the volume may be only step one. Watch a cone-shaped paper cup with radius 4 cm and height 9 cm. I pick the cone formula: (1/3) pi times 16 times 9 = 48 pi, and with 3.14 that is 150.72 cubic cm. If the story then asks how many cups fill a jug, or a diameter is given instead of a radius, I handle that before I finish. The two traps carry over: I keep the one-third for cones and pyramids, and I halve any diameter to a radius.",
+      "canonical_error": {
+        "pattern": "In context, forgets the one-third for a cone or pyramid, misses a diameter buried in the wording, or stops at the volume instead of answering the question asked",
+        "example": "For a cone-shaped cup of radius 6 and height 7, computes the full cylinder pi times 36 times 7 = 252 pi instead of the cone (1/3) x 36 x 7 = 84 pi",
+        "why": "A real-world wrapper hides the shape and the numbers, so the same one-third and diameter traps strike, and the volume is often a means to the story's real question, not the final answer."
+      },
+      "item_template": "A real-world cone, sphere, or pyramid where the radius may be a diameter and the volume may feed a further step (cost, count, comparison). Student solves it. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A cone-shaped paper cup has a radius of 4 cm and a height of 9 cm. What is its volume? Use 3.14 for pi. Round to the nearest hundredth.",
+          "answer": "150.72 cubic cm",
+          "distractor_logic": "(1/3) x 3.14 x 16 x 9 = 150.72. Forgetting the third gives 452.16."
+        },
+        {
+          "stem": "A glass square pyramid has a base side of 8 ft and a height of 12 ft. Glass costs $2 per cubic foot. How much does it cost to fill the pyramid with glass?",
+          "answer": "$512",
+          "distractor_logic": "V = (1/3) x 64 x 12 = 256; 256 x $2 = $512. Stopping at the volume gives 256."
+        },
+        {
+          "stem": "A spherical ball has a radius of 6 in. What is its volume? Use 3.14 for pi. Round to the nearest hundredth.",
+          "answer": "904.32 cubic in",
+          "distractor_logic": "(4/3) x 3.14 x 216 = 904.32."
+        },
+        {
+          "stem": "A spherical balloon has a diameter of 12 in. What is its volume in terms of pi?",
+          "answer": "288π cubic in",
+          "distractor_logic": "Radius 6: (4/3) x 216 = 288. Using the diameter 12 as the radius gives 2304π."
+        }
+      ],
+      "redirect_script": {
+        "stop": "What shape is it, and did you answer what the story asked?",
+        "prompt": "Name the shape and pick its formula, halve any diameter, keep the one-third for a cone or pyramid, then reread the question -- the volume may only be step one.",
+        "praise": "You found the volume and used it to answer the real question -- that's the whole problem."
+      },
+      "vocabulary": [
+        {
+          "term": "Capacity",
+          "definition": "How much a container can hold, often measured as a volume."
+        },
+        {
+          "term": "Spherical",
+          "definition": "Shaped like a sphere, such as a ball or a balloon."
+        },
+        {
+          "term": "Cone-shaped",
+          "definition": "Shaped like a cone, such as a paper drinking cup or a party hat."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM2-S6",
+        "if_fail": "8GM2-S1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A glass square pyramid, base side 8 ft, height 12 ft. Glass is $2 per cubic foot. Total cost?'"
+        },
+        {
+          "kind": "ask",
+          "text": "What shape is it, and what is its volume first?"
+        },
+        {
+          "kind": "say",
+          "text": "It is a pyramid: (1/3) x 64 x 12 = 256 cubic ft. The question asks for cost, so multiply: 256 x $2 = $512."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student answers 256, ask 'is 256 a number of dollars, or a number of cubic feet?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a cone-shaped cup, radius 4 cm, height 9 cm -- find its volume using 3.14."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A cone-shaped cup holds (1/3) pi x 25 x 12 cubic cm. What is that in terms of pi?",
+          "answer": "100π cubic cm"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A spherical ball has a radius of 6. What is its volume in terms of pi?",
+          "answer": "288π cubic units"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cone-shaped paper cup has a radius of 4 cm and a height of 9 cm. Find its volume. Use 3.14 for pi. Round to the nearest hundredth.",
+          "answer": "150.72 cubic cm ((1/3) x 3.14 x 16 x 9)",
+          "notes": "Baits forgetting the one-third (which gives 452.16)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A glass square pyramid has a base side of 8 ft and a height of 12 ft. Glass costs $2 per cubic foot. What is the total cost to fill it?",
+          "answer": "$512 (V = 256; 256 x $2)",
+          "notes": "Two-step: find the volume, then the cost."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Jamie found the volume of a cone-shaped cup with radius 6 and height 7 (in terms of pi). Find and fix the mistake.",
+          "shown_work": [
+            "Jamie wrote: V = pi x 6 squared x 7",
+            "V = 252π cubic units"
+          ],
+          "answer": "Jamie used the full cylinder and forgot the cone's one-third. V = (1/3) x 36 x 7 = 84π cubic units.",
+          "notes": "Canonical error: dropped the one-third inside a real-world wrapper."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A spherical ball has a diameter of 10 in. What is its volume? Use 3.14 for pi. Round to the nearest hundredth.",
+          "answer": "523.33 cubic in (radius 5: (4/3) x 3.14 x 125)",
+          "notes": "Baits using the diameter 10 as the radius."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A spherical hot-air balloon has a diameter of 30 ft. It needs at least 14,000 cubic ft of hot air to lift its load. Use 3.14 for pi. Does it provide enough? Justify with the volume.",
+          "answer": "Radius 15: (4/3) x 3.14 x 3375 = 14,130 cubic ft. Since 14,130 > 14,000, yes, it provides enough.",
+          "notes": "Justify a decision from the computed volume."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "An ice cream treat is a cone (radius 3 cm, height 10 cm) topped by a half-sphere of the same radius. What is the total volume? Use 3.14 for pi. Round to the nearest hundredth.",
+          "answer": "150.72 cubic cm (cone 30π + half-sphere 18π = 48π; 3.14 x 48)",
+          "notes": "Two shapes added; keep the cone's one-third and halve the sphere."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Name the Shape, Then Solve",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Real-world story cards (cups, balls, pyramids, balloons) with dimensions",
+            "Recording sheet with 'Shape', 'Formula', 'Volume', 'Question answered' rows"
+          ],
+          "instructions": "1. Draw a card and name the shape and the correct formula.\n2. Circle whether the number given is a radius or a diameter, and fix it if needed.\n3. Compute the volume, keeping the one-third for a cone or pyramid.\n4. Do any final step the story asks for (cost, count, decision) and label the units.\n5. Debrief: which trap was hiding in your card -- the shape, the diameter, or the one-third?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "The Cone in Disguise",
+          "time_minutes": 8,
+          "grouping": "small_group",
+          "materials": [
+            "Slip with Jamie's 252π cup work"
+          ],
+          "instructions": "1. Read Jamie's claim that the cone-shaped cup holds 252π.\n2. Find where the one-third went missing in the real-world wrapper.\n3. Redo the volume as a cone.\n4. Write a reminder: in any story, first name the ____, then use its formula.",
+          "content": {
+            "worked_problem": "Cone-shaped cup, radius 6, height 7. Jamie wrote V = pi x 36 x 7 = 252π.",
+            "error_step": "Jamie used pi r squared h (a cylinder) and skipped the cone's one-third.",
+            "why": "A cup is a cone: (1/3) x 36 x 7 = 84π cubic units."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'what shape is it and what is the question really asking?' surfaces the hidden shape and second step before students calculate."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The forgot-the-third and stopped-at-the-volume errors are precise and baitable, ideal for find-and-fix with a units check."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release from bare formulas to story problems adds the naming-the-shape and finishing-the-question steps on purpose."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What shape is this, and which formula does it use?",
+          "Is the number given a radius or a diameter?",
+          "Did you keep the one-third for the cone or pyramid?",
+          "Is the volume the answer, or a step toward it?",
+          "Does your answer's size make sense for the story?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student forgets the one-third in context, misses a diameter, or stops at the volume.",
+            "say": "Name the shape and pick its formula, halve any diameter, keep the one-third for a cone or pyramid, then reread the question -- the volume may only be step one.",
+            "praise": "You found the volume and used it to answer the real question -- that's the whole problem."
+          },
+          {
+            "if_you_see": "Student computes the volume but never does the final cost or count the story asks for.",
+            "say": "The volume is step one. Reread the question -- it wants a cost, a number of cups, or a decision. Do one more operation on the volume.",
+            "praise": "You carried the volume into the final answer -- that second step is the point."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A cone-shaped cup has radius 4 and height 9. Volume (use 3.14)?",
+            "look_for": "150.72. An answer of 452.16 means the one-third was skipped."
+          },
+          {
+            "prompt": "A glass pyramid holds 256 cubic ft and glass is $2 per cubic foot. What is the cost?",
+            "look_for": "$512 (256 x 2). Answering 256 means the student stopped at the volume."
+          }
+        ]
+      },
+      "fluency_source": "8GM2-F2",
+      "sentence_starters": [
+        "The shape is a ___, so I use the formula ___.",
+        "The volume is ___, and the question asks for ___, so I ___."
+      ],
+      "worked_solution": {
+        "stem": "A cone-shaped paper cup has a radius of 4 cm and a height of 9 cm. What is its volume? Use 3.14 for pi. Round to the nearest hundredth.",
+        "answer": "150.72 cubic cm",
+        "steps": [
+          {
+            "math": "It is a cone: V = (1/3) pi r squared h",
+            "annotation": "Name the shape, then choose its formula."
+          },
+          {
+            "math": "V = (1/3) x 3.14 x 4 squared x 9",
+            "annotation": "Substitute the radius 4 and height 9."
+          },
+          {
+            "math": "= (1/3) x 3.14 x 16 x 9",
+            "annotation": "Square the radius: the cylinder would be 452.16."
+          },
+          {
+            "math": "= 150.72 cubic cm",
+            "annotation": "Take one third of the cylinder for the cone."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A spherical ball has a diameter of 12 in. What is its volume? Use 3.14 for pi. Round to the nearest hundredth.",
+        "answer": "904.32 cubic in",
+        "steps": [
+          {
+            "math": "It is a sphere; radius = 12 / 2 = 6",
+            "annotation": "Name the shape and halve the diameter.",
+            "given": true
+          },
+          {
+            "math": "V = (4/3) x 3.14 x 6 cubed",
+            "annotation": "Substitute the radius into the volume formula.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Cube the radius: 6 x 6 x 6.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Take four thirds and multiply by 3.14.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8GM2-S6",
+      "name": "Chain two shapes: use one measurement to find another shape's volume",
+      "column": "looking_forward",
+      "parent_standard": "8.GM.2",
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8GM2-S4"
+      },
+      "i_do_script": "The hardest problems link two shapes: I find one measurement, then use it in a second formula. Watch a sphere given only its surface area, 144 pi. First I work backwards: 144 pi = 4 pi r squared, so r squared = 36 and r = 6. Now I go forward with that radius: V = (4/3) pi times 216 = 288 pi cubic units. The whole problem is a chain -- surface area to radius to volume. Every earlier trap can strike at either link, so I keep the one-third for cones and pyramids and halve any diameter along the way.",
+      "canonical_error": {
+        "pattern": "Stops after finding the first measurement instead of chaining into the second shape's volume, or breaks a trap at one of the links (drops the one-third, mishandles the diameter)",
+        "example": "Given a sphere's surface area of 144 pi, finds the radius 6 and reports 6 as the answer, instead of continuing to V = (4/3) pi x 216 = 288 pi",
+        "why": "A two-shape problem requires using the result of the first step as the input to the second; stopping at the intermediate value, or slipping on the one-third or diameter at either link, leaves the chain unfinished."
+      },
+      "item_template": "A problem linking two shapes: a sphere's surface area to its volume, a cone versus the cylinder around it, or a pyramid against a cube. Student finds the requested final volume or count. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A sphere has a surface area of 144 pi. What is its volume in terms of pi?",
+          "answer": "288π cubic units",
+          "distractor_logic": "SA gives r squared = 36, so r = 6; then V = (4/3) x 216 = 288π. Stopping at r = 6 is the trap."
+        },
+        {
+          "stem": "A cone with radius 3 and height 6 sits inside a cylinder of the same radius and height. What is the volume of the empty space, in terms of pi?",
+          "answer": "36π cubic units",
+          "distractor_logic": "Cylinder pi x 9 x 6 = 54π; cone is one third = 18π; empty = 54π - 18π = 36π."
+        },
+        {
+          "stem": "A square pyramid has a base side of 6 and a height of 6. How many of these pyramids have the same total volume as a cube with side 6?",
+          "answer": "3 pyramids",
+          "distractor_logic": "Pyramid (1/3) x 36 x 6 = 72; cube 6 cubed = 216; 216 / 72 = 3."
+        },
+        {
+          "stem": "A cone has a radius of 3 and a height of 18. A square pyramid has base edges three times the cone's radius and the same height as the cone. What is the pyramid's volume?",
+          "answer": "486 cubic units",
+          "distractor_logic": "Base edge 3 x 3 = 9, height 18: (1/3) x 81 x 18 = 486."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is that the final volume, or just the first measurement?",
+        "prompt": "This links two shapes. Find the first measurement, then feed it into the second formula -- keep the one-third and halve any diameter at each link.",
+        "praise": "You carried the first result into the second formula -- that completes the chain."
+      },
+      "vocabulary": [
+        {
+          "term": "Chain (multi-step)",
+          "definition": "A problem where the answer to one step becomes the input to the next."
+        },
+        {
+          "term": "Empty space",
+          "definition": "The volume of a container not filled by the object inside; the larger volume minus the smaller."
+        },
+        {
+          "term": "Inscribed",
+          "definition": "Fitting exactly inside another solid, sharing its radius or height."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for G.TS.4 (three-dimensional figures and cross-sections in high school geometry).",
+        "if_fail": "8GM2-S4"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A sphere has surface area 144 pi. Find its volume in terms of pi.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the first thing to find from the surface area? Then what do we do with it?"
+        },
+        {
+          "kind": "say",
+          "text": "Surface area gives the radius: 144 pi = 4 pi r squared, so r squared = 36, r = 6. Then volume: (4/3) pi times 216 = 288 pi."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student stops at r = 6, ask 'is 6 a volume? What was the question actually asking for?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a cone radius 3, height 6, inside a matching cylinder -- find the empty space in terms of pi."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A sphere has a surface area of 144 pi. Find its radius.",
+          "answer": "6 (r squared = 36, then square root)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A cone fills one third of a cylinder with the same base and height. The cylinder holds 54π. How much does the cone hold?",
+          "answer": "18π cubic units"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A sphere has a surface area of 144 pi. Find its volume in terms of pi.",
+          "answer": "288π cubic units (r = 6, then (4/3) x 216)",
+          "notes": "Chain: surface area to radius to volume."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cone with radius 3 and height 6 sits inside a cylinder of the same radius and height. Find the volume of the empty space in terms of pi.",
+          "answer": "36π cubic units (cylinder 54π - cone 18π)",
+          "notes": "The cone is one third of the cylinder, so the empty space is two thirds."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Robin found the empty space when a cone (radius 3, height 6) sits inside a matching cylinder. Find and fix the mistake.",
+          "shown_work": [
+            "Robin wrote: cylinder = 54π, cone = half of that = 27π",
+            "Empty space = 54π - 27π = 27π"
+          ],
+          "answer": "A cone is one THIRD of its cylinder, not one half. Cone = 18π, so empty space = 54π - 18π = 36π cubic units.",
+          "notes": "Canonical error: treated the cone as one half instead of one third."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A square pyramid has a base side of 6 and a height of 6. How many of these pyramids equal the volume of a cube with side 6?",
+          "answer": "3 pyramids (pyramid 72, cube 216, 216 / 72)",
+          "notes": "Reinforces that a pyramid is one third of its prism."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A cone has a radius of 3 and a height of 18. A square pyramid has base edges three times the cone's radius and the same height. Find the pyramid's volume.",
+          "answer": "486 cubic units (base edge 9, height 18: (1/3) x 81 x 18)",
+          "notes": "Derive the pyramid's base side from the cone's radius, then compute."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A spherical water balloon has a surface area of 400π square cm. How much water can it hold? Use 3.14 for pi. Round to the nearest hundredth.",
+          "answer": "4186.67 cubic cm (r = 10, then (4/3) x 3.14 x 1000)",
+          "notes": "Surface area to radius to volume, finishing with a decimal."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "One Third, Not One Half",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Slip with Robin's one-half cone work"
+          ],
+          "instructions": "1. Read Robin's claim that the cone is half of the cylinder.\n2. Recall from the pouring activity how many cones fill a cylinder.\n3. Redo the empty space using the correct fraction.\n4. Write the rule: a cone fills ____ of its cylinder, so the empty space is ____.",
+          "content": {
+            "worked_problem": "Cone radius 3, height 6 in a matching cylinder. Robin wrote cone = 27π, empty = 27π.",
+            "error_step": "Robin treated the cone as one half of the cylinder instead of one third.",
+            "why": "The cone is one third: 18π, so empty space = 54π - 18π = 36π cubic units."
+          }
+        },
+        {
+          "type": "card_sort",
+          "title": "Which Link Comes First?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 8 two-shape problems"
+          ],
+          "instructions": "1. For each card, decide what the FIRST step finds (a radius, a base side, or a volume).\n2. Sort the cards by their first step.\n3. Solve four cards fully, carrying the first result into the second formula.\n4. Debrief: how do you know when the first number you find is not the final answer?",
+          "content": {
+            "categories": [
+              "First step finds a radius",
+              "First step finds a volume"
+            ],
+            "cards": [
+              {
+                "text": "sphere SA 144π, find volume",
+                "category": "First step finds a radius"
+              },
+              {
+                "text": "cone in a matching cylinder, find empty space",
+                "category": "First step finds a volume"
+              },
+              {
+                "text": "sphere SA 400π, find volume",
+                "category": "First step finds a radius"
+              },
+              {
+                "text": "pyramid vs cube, how many fit",
+                "category": "First step finds a volume"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'find the radius first, then use it in the volume' models the two-link chain students collapse."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Stopping at the intermediate value and the one-half-cone slip are precise errors ideal for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "A number talk on 'how many cones fill a cylinder?' anchors the one-third relationship the chains rely on."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What does the first step find, and is it the final answer?",
+          "How do you get from the surface area to the radius?",
+          "Once you have the radius, what formula gives the volume?",
+          "What fraction of the cylinder is the cone?",
+          "Did any trap (the one-third, the diameter) slip at either link?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student stops at the first measurement or slips on the one-third or diameter at a link.",
+            "say": "This links two shapes. Find the first measurement, then feed it into the second formula -- keep the one-third and halve any diameter at each link.",
+            "praise": "You carried the first result into the second formula -- that completes the chain."
+          },
+          {
+            "if_you_see": "Student treats the cone or pyramid as one half of its cylinder or prism.",
+            "say": "A cone and a pyramid are one THIRD of the solid around them -- three of them fill it, not two.",
+            "praise": "You used one third -- that's the right share of the cylinder or box."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A sphere has surface area 144π. Find its volume in terms of pi.",
+            "look_for": "288π (r = 6, then (4/3) x 216). Answering 6 means the student stopped at the radius."
+          },
+          {
+            "prompt": "A cone fills what fraction of the cylinder with its base and height?",
+            "look_for": "One third. 'One half' signals the fraction error that breaks the empty-space chain."
+          }
+        ]
+      },
+      "fluency_source": "8GM2-F2",
+      "sentence_starters": [
+        "First I find ___ from the ___, which is ___.",
+        "Then I use ___ in the ___ formula to get ___."
+      ],
+      "worked_solution": {
+        "stem": "A sphere has a surface area of 144 pi. What is its volume in terms of pi?",
+        "answer": "288π cubic units",
+        "steps": [
+          {
+            "math": "SA = 4 pi r squared, so 144 pi = 4 pi r squared",
+            "annotation": "Start from the surface area to find the radius."
+          },
+          {
+            "math": "r squared = 144 / 4 = 36, so r = 6",
+            "annotation": "Divide out 4 and pi, then take the square root."
+          },
+          {
+            "math": "V = (4/3) pi x 6 cubed = (4/3) pi x 216",
+            "annotation": "Now use that radius in the volume formula."
+          },
+          {
+            "math": "= 288π cubic units",
+            "annotation": "Four thirds of 216 completes the chain."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A cone with radius 3 and height 6 sits inside a cylinder of the same radius and height. What is the volume of the empty space, in terms of pi?",
+        "answer": "36π cubic units",
+        "steps": [
+          {
+            "math": "cylinder = pi x 3 squared x 6 = 54π",
+            "annotation": "Find the cylinder's volume first.",
+            "given": true
+          },
+          {
+            "math": "cone = (1/3) x 54π = 18π",
+            "annotation": "The cone is one third of that cylinder.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Subtract the cone from the cylinder for the empty space.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the empty space in terms of pi.",
+            "given": false
+          }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "skills": [
+        "8GM2-F1",
+        "8GM2-F2"
+      ]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": [
+        "8GM2-S1",
+        "8GM2-S2",
+        "8GM2-S3"
+      ]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": [
+        "8GM2-S4",
+        "8GM2-S5"
+      ]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": [
+        "8GM2-S6"
+      ]
+    }
+  },
+  "skill_sequence": [
+    "8GM2-F1",
+    "8GM2-F2",
+    "8GM2-S1",
+    "8GM2-S2",
+    "8GM2-S3",
+    "8GM2-S4",
+    "8GM2-S5",
+    "8GM2-S6"
+  ],
+  "skill_tree": {
+    "8GM2-F1": [],
+    "8GM2-F2": [],
+    "8GM2-S1": [
+      "8GM2-F1",
+      "8GM2-F2"
+    ],
+    "8GM2-S2": [
+      "8GM2-F1",
+      "8GM2-F2"
+    ],
+    "8GM2-S3": [
+      "8GM2-F2"
+    ],
+    "8GM2-S4": [
+      "8GM2-S1",
+      "8GM2-S2",
+      "8GM2-S3"
+    ],
+    "8GM2-S5": [
+      "8GM2-S1",
+      "8GM2-S2",
+      "8GM2-S3"
+    ],
+    "8GM2-S6": [
+      "8GM2-S1",
+      "8GM2-S2",
+      "8GM2-S4"
+    ]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S1 (volume of a cone) -- the flagship one-third shape the whole standard rests on. If they pass, push to S5 (apply a formula in a real-world story) and S6 (chain two shapes end to end). If they fail, drop to F1 to check whether the base computation (radius vs diameter, squaring) is even solid; F2 checks the one-third and cubing. S2 (sphere volume and surface area), S3 (pyramid volume), and S4 (missing dimension) branch off the core as related shapes and the backwards move.",
+    "entry_skill": "8GM2-S1",
+    "if_pass": [
+      "8GM2-S5",
+      "8GM2-S6"
+    ],
+    "if_fail": [
+      "8GM2-F1"
+    ],
+    "branch_skills": [
+      "8GM2-S2",
+      "8GM2-S3",
+      "8GM2-S4"
+    ]
+  }
+}

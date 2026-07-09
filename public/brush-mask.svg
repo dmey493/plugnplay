@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="turbulence" baseFrequency="0.015 0.02" numOctaves="4" seed="3" result="turbulence"/>
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="25" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <!-- Main shape with rough displacement filter for brushstroke edges -->
+  <rect x="30" y="25" width="740" height="550" rx="8" ry="8" fill="white" filter="url(#rough)"/>
+  <!-- Extra rough dabs at edges to break up the shape -->
+  <ellipse cx="60" cy="300" rx="40" ry="80" fill="white" filter="url(#rough)"/>
+  <ellipse cx="740" cy="250" rx="40" ry="90" fill="white" filter="url(#rough)"/>
+  <ellipse cx="400" cy="30" rx="100" ry="35" fill="white" filter="url(#rough)"/>
+  <ellipse cx="400" cy="570" rx="100" ry="35" fill="white" filter="url(#rough)"/>
+  <!-- Corner dabs -->
+  <ellipse cx="80" cy="60" rx="55" ry="40" fill="white" filter="url(#rough)" transform="rotate(-15 80 60)"/>
+  <ellipse cx="720" cy="60" rx="55" ry="40" fill="white" filter="url(#rough)" transform="rotate(15 720 60)"/>
+  <ellipse cx="80" cy="540" rx="55" ry="40" fill="white" filter="url(#rough)" transform="rotate(15 80 540)"/>
+  <ellipse cx="720" cy="540" rx="55" ry="40" fill="white" filter="url(#rough)" transform="rotate(-15 720 540)"/>
+</svg>

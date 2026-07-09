@@ -1,0 +1,2415 @@
+{
+  "standard_code": "8.AF.6",
+  "standard_text": "Construct a function to model a linear relationship between two quantities given a verbal description, table of values, or graph. Within the context of a problem, describe the meaning of m (rate of change) and b (y-intercept) in y = mx + b.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "8.AF.6 asks students to CONSTRUCT a linear function from a representation and then INTERPRET its two parameters in context. Reading the standard's own logic, a student cannot build y = mx + b until they can pull the two numbers that go into it out of a table, a graph, an equation, or a verbal description. So the arc begins by isolating those two pieces separately: the rate of change m (the constant amount y changes for each unit of x, found as change in y over change in x) and the initial value b (the y-value when x = 0, the point (0, b)). Only once both are secure does the student assemble them into the slope-intercept equation -- and the central trap the whole standard guards against is swapping the two, writing the starting amount as the coefficient of x or the rate as the constant.\n\nFrom construction the work turns to meaning. Students first match a described situation to the equation that models it (recognizing which number is the per-unit rate and which is the starting amount), then construct a function from a context or table and put the rate of change into words for that situation. At the top of the progression they write the equation -- including cases where the rate is negative or the initial value must be read from context ('at sea level', 'money to start') -- and interpret BOTH m and b, describing how the two quantities change together. The through-line we keep naming: m is the per-unit change (the slope), b is where the situation starts (the y-intercept), and y = mx + b ties them together.",
+    "steps": [
+      {
+        "skill_id": "8AF6-S1",
+        "verb": "determine",
+        "rationale": "The first parameter: find the rate of change m from a table by computing change in y over change in x -- including tables whose x-values are not consecutive, where the change in y alone is not the rate."
+      },
+      {
+        "skill_id": "8AF6-S2",
+        "verb": "determine",
+        "rationale": "The same parameter from a symbolic representation: read m directly as the coefficient of x in y = mx + b, separating it from the constant b."
+      },
+      {
+        "skill_id": "8AF6-S3",
+        "verb": "determine",
+        "rationale": "The second parameter: find the initial value b -- the y-value when x = 0, the point (0, b) -- from a table, description, or equation, even when x = 0 is not shown."
+      },
+      {
+        "skill_id": "8AF6-S4",
+        "verb": "construct",
+        "rationale": "Assemble m and b into the equation that models a described situation. This is where the m-and-b swap must be settled: the per-unit rate is the coefficient of x, the starting amount is the constant."
+      },
+      {
+        "skill_id": "8AF6-S5",
+        "verb": "interpret",
+        "rationale": "Construct the function from a context or table and put the rate of change into words for the situation -- the At-proficiency demand to interpret m in terms of what it models."
+      },
+      {
+        "skill_id": "8AF6-S6",
+        "verb": "interpret",
+        "rationale": "The Above-proficiency synthesis: write the equation (including negative rates and context-read initial values) and interpret BOTH m and b, describing how the two quantities change together."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "8AF6-F1",
+      "name": "Compute the rate of change (slope) from two points",
+      "column": "foundation",
+      "parent_standard": "8.AF.6",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Given two points, divide the change in y by the change in x to get the constant rate of change.",
+        "check_question": "For the points (2, 5) and (4, 11), what is the rate of change?"
+      },
+      "i_do_script": "The rate of change, or slope, is how much y goes up for each 1 that x goes up -- and I get it by dividing the change in y by the change in x. Watch the points (2, 5) and (4, 11): y went from 5 to 11, a change of 6; x went from 2 to 4, a change of 2. So the rate is 6 divided by 2 = 3. The change in y always goes on TOP, the change in x on the bottom, because I want the amount of y per 1 x.",
+      "canonical_error": {
+        "pattern": "Divides the change in x by the change in y, inverting the slope",
+        "example": "For (2, 5) and (4, 11), computes (4 - 2)/(11 - 5) = 2/6 = 1/3 instead of (11 - 5)/(4 - 2) = 3",
+        "why": "The student divides the two differences without tracking that slope is y-per-1-x, so the change in y must be on top. Inverting gives x per y, a completely different number."
+      },
+      "item_template": "Two points given. Student computes slope = (change in y)/(change in x). Short-response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "Find the rate of change between (2, 5) and (4, 11).",
+          "answer": "3"
+        },
+        {
+          "stem": "Find the rate of change between (1, 4) and (3, 10).",
+          "answer": "3"
+        },
+        {
+          "stem": "Find the rate of change between (0, 7) and (5, 22).",
+          "answer": "3"
+        },
+        {
+          "stem": "Find the rate of change between (2, 3) and (6, 5).",
+          "answer": "1/2"
+        },
+        {
+          "stem": "Find the rate of change between (1, 10) and (4, 4).",
+          "answer": "-2"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which change goes on top -- the y or the x?",
+        "prompt": "Slope is y for 1 x, so put the change in y on top: (change in y) over (change in x). If your answer is a tiny fraction when you expected a whole rate, you divided the wrong way -- flip it.",
+        "praise": "You put the change in y over the change in x -- that's the slope, right-side up."
+      },
+      "vocabulary": [
+        {
+          "term": "Rate of change",
+          "definition": "How much y changes for each 1 that x increases; the slope m in y = mx + b."
+        },
+        {
+          "term": "Slope",
+          "definition": "The constant rate of change of a line, m; change in y divided by change in x."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF6-S1",
+        "if_fail": "Review finding a unit rate (7.RP.3)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Find the rate of change between (1, 4) and (5, 16).'"
+        },
+        {
+          "kind": "ask",
+          "text": "To get the per-1 rate, what do you divide by what?"
+        },
+        {
+          "kind": "say",
+          "text": "(change in y)/(change in x) = (16 - 4)/(5 - 1) = 12/4 = 3. The rate is 3."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 4/12, ask 'is the rate the y for one x, or the x for one y?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: find the rate of change between (2, 3) and (6, 5)."
+        }
+      ]
+    },
+    {
+      "skill_id": "8AF6-F2",
+      "name": "Read the initial value (y-intercept) as the value when x is 0",
+      "column": "foundation",
+      "parent_standard": "8.AF.6",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 8,
+        "description": "Identify the y-intercept of a linear function as the y-value when x = 0, written as the point (0, b).",
+        "check_question": "In the equation y = 3x + 7, what is the y-intercept?"
+      },
+      "i_do_script": "The initial value, or y-intercept, is where a situation starts -- the value of y when x is 0. In y = mx + b it is the b, the number by itself with no x. Watch y = 3x + 7: the b is 7, so the y-intercept is 7, written as the point (0, 7). In a table it is the y-value in the row where x = 0. The trap is grabbing the number in front of x -- that is the slope, not the starting value.",
+      "canonical_error": {
+        "pattern": "Reads the coefficient of x (the slope) as the y-intercept",
+        "example": "For y = 3x + 7 says the y-intercept is 3 (the slope) instead of 7",
+        "why": "The student picks the first number they see instead of the value when x = 0. In y = mx + b the y-intercept is b, the constant term -- the coefficient of x is the rate of change."
+      },
+      "item_template": "An equation, table with x = 0, or short description. Student names the y-intercept (0, b). Short-response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "In the equation y = 3x + 7, what is the y-intercept?",
+          "answer": "7 (the point (0, 7))"
+        },
+        {
+          "stem": "A table has the rows (0, 5), (1, 8), (2, 11). What is the initial value?",
+          "answer": "5"
+        },
+        {
+          "stem": "A gym charges a $20 sign-up fee, then a monthly cost. What is the initial value?",
+          "answer": "20"
+        },
+        {
+          "stem": "In the equation y = 2x - 4, write the y-intercept as an ordered pair.",
+          "answer": "(0, -4)"
+        },
+        {
+          "stem": "A table has the rows (0, 9), (2, 15), (4, 21). What is the y-intercept?",
+          "answer": "9 (the point (0, 9))"
+        }
+      ],
+      "redirect_script": {
+        "stop": "What is y when x is zero?",
+        "prompt": "The y-intercept is the value when x = 0 -- the number by itself in y = mx + b, or the y in the row where x = 0. Circle the number with NO x next to it. The number in front of x is the slope, not the starting value.",
+        "praise": "You found the value when x = 0 -- that's the initial value, the y-intercept."
+      },
+      "vocabulary": [
+        {
+          "term": "y-intercept",
+          "definition": "The y-value where the line crosses the y-axis, when x = 0; written as the point (0, b)."
+        },
+        {
+          "term": "Initial value",
+          "definition": "The starting amount of a situation, the value of y when x = 0; the b in y = mx + b."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF6-S3",
+        "if_fail": "Review plotting and reading the point (0, b) on a graph."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'y = 5x + 12. What is the y-intercept?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which number is by itself, with no x next to it?"
+        },
+        {
+          "kind": "say",
+          "text": "The 12 has no x, so the y-intercept is 12 -- the point (0, 12). The 5 is the slope."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 5, ask 'is that the number with x, or the number alone?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: give the y-intercept of y = 2x - 4 as an ordered pair."
+        }
+      ]
+    },
+    {
+      "skill_id": "8AF6-S1",
+      "name": "Determine the rate of change (slope m) from a table of values",
+      "column": "looking_back",
+      "parent_standard": "8.AF.6",
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8AF6-F1"
+      },
+      "i_do_script": "To find the rate of change from a table, I pick two rows and divide the change in y by the change in x. Watch a table where x is 0, 2, 4, 6 and y is 5, 11, 17, 23: from the first two rows y goes up 6 while x goes up 2, so the rate is 6 divided by 2 = 3. The x-values here jump by 2, not by 1, so I MUST divide by the change in x -- the change in y (6) by itself is not the rate.",
+      "canonical_error": {
+        "pattern": "Uses the change in y as the rate without dividing by the change in x when the x-values are not consecutive",
+        "example": "For x = 0, 2, 4, 6 and y = 5, 11, 17, 23, says the rate of change is 6 (the y-difference) instead of 6/2 = 3",
+        "why": "The student assumes x steps by 1, so the change in y looks like the rate. When x steps by 2 (or any amount other than 1), the rate is the change in y DIVIDED BY the change in x."
+      },
+      "item_template": "A table (consecutive or non-consecutive x). Student computes slope = (change in y)/(change in x). MC.",
+      "sample_items": [
+        {
+          "stem": "The table shows a linear relationship. What is the rate of change (slope)?",
+          "answer": "5",
+          "choices": [
+            "5",
+            "2",
+            "12",
+            "1/5"
+          ],
+          "distractor_logic": "y rises 5 per step of 1 in x, so slope 5. '12' is a y-value change over 2 rows; '2' is the y-intercept.",
+          "render_data": {
+            "type": "data_table",
+            "headers": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              [
+                "1",
+                "7"
+              ],
+              [
+                "2",
+                "12"
+              ],
+              [
+                "3",
+                "17"
+              ],
+              [
+                "4",
+                "22"
+              ]
+            ]
+          }
+        },
+        {
+          "stem": "The table shows a linear relationship. What is the rate of change (slope)?",
+          "answer": "3",
+          "choices": [
+            "3",
+            "6",
+            "5",
+            "1/3"
+          ],
+          "distractor_logic": "x steps by 2, y steps by 6, so slope = 6/2 = 3. '6' baits forgetting to divide by the change in x.",
+          "render_data": {
+            "type": "data_table",
+            "headers": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              [
+                "0",
+                "5"
+              ],
+              [
+                "2",
+                "11"
+              ],
+              [
+                "4",
+                "17"
+              ],
+              [
+                "6",
+                "23"
+              ]
+            ]
+          }
+        },
+        {
+          "stem": "The table shows a linear relationship. What is the rate of change (slope)?",
+          "answer": "1/2",
+          "choices": [
+            "1/2",
+            "1",
+            "2",
+            "3"
+          ],
+          "distractor_logic": "x steps by 2, y steps by 1, so slope = 1/2. '1' baits using the change in y alone.",
+          "render_data": {
+            "type": "data_table",
+            "headers": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              [
+                "0",
+                "1"
+              ],
+              [
+                "2",
+                "2"
+              ],
+              [
+                "4",
+                "3"
+              ],
+              [
+                "6",
+                "4"
+              ]
+            ]
+          }
+        },
+        {
+          "stem": "The table shows a linear relationship. What is the rate of change (slope)?",
+          "answer": "2",
+          "choices": [
+            "2",
+            "4",
+            "-1",
+            "1/2"
+          ],
+          "distractor_logic": "x steps by 2, y steps by 4, so slope = 4/2 = 2. '4' forgets to divide by the change in x.",
+          "render_data": {
+            "type": "data_table",
+            "headers": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              [
+                "2",
+                "3"
+              ],
+              [
+                "4",
+                "7"
+              ],
+              [
+                "6",
+                "11"
+              ],
+              [
+                "8",
+                "15"
+              ]
+            ]
+          }
+        }
+      ],
+      "redirect_script": {
+        "stop": "By how much did x change here -- 1, or more?",
+        "prompt": "Check the x-column first. If x jumps by 2, the rate is the change in y DIVIDED by 2, not the change in y by itself. Slope = (change in y)/(change in x) every time.",
+        "praise": "You divided the change in y by the change in x -- that's the true rate, even when x skips."
+      },
+      "vocabulary": [
+        {
+          "term": "Rate of change",
+          "definition": "How much y changes for each 1 that x increases; the slope m in y = mx + b."
+        },
+        {
+          "term": "Slope",
+          "definition": "The constant rate of change of a line, m; change in y divided by change in x."
+        },
+        {
+          "term": "Linear relationship",
+          "definition": "A relationship with a constant rate of change; graphs as a straight line and is modeled by y = mx + b."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF6-S2",
+        "if_fail": "8AF6-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write a table: x = 0, 3, 6, 9 and y = 4, 10, 16, 22."
+        },
+        {
+          "kind": "ask",
+          "text": "How much does x change from row to row? How much does y change?"
+        },
+        {
+          "kind": "say",
+          "text": "x jumps by 3, y jumps by 6, so slope = 6/3 = 2. Not 6 -- divide by the change in x."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 6, ask 'did x go up by 1, or by 3?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: x = 2, 4, 6, 8 and y = 3, 7, 11, 15 -- what is the slope?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "In a table, y goes up 8 while x goes up 2. What is the slope?",
+          "answer": "4 (8 divided by 2)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "In a table, x goes up by 1 and y goes up by 6 each row. What is the rate of change?",
+          "answer": "6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A table has x = 0, 2, 4, 6 and y = 5, 11, 17, 23. Find the rate of change.",
+          "answer": "3 -- y changes 6 while x changes 2, and 6/2 = 3.",
+          "notes": "Baits saying 6 (forgetting to divide by the change in x)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A table has x = 1, 2, 3, 4 and y = 7, 12, 17, 22. Find the rate of change.",
+          "answer": "5 -- x steps by 1, y steps by 5.",
+          "notes": "Consecutive x, straightforward."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Jamal found the rate of change from a table. Find and fix the mistake.",
+          "shown_work": [
+            "Table: x = 0, 3, 6, 9 and y = 4, 10, 16, 22.",
+            "Jamal wrote: 'y goes up 6 each row, so the rate of change is 6.'"
+          ],
+          "answer": "Jamal forgot that x jumps by 3, not 1. The rate is (change in y)/(change in x) = 6/3 = 2, not 6.",
+          "notes": "Canonical error: change in y used as the rate when x is non-consecutive."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A table has x = 0, 2, 4, 6 and y = 1, 2, 3, 4. Find the rate of change.",
+          "answer": "1/2 -- y changes 1 while x changes 2, so 1/2.",
+          "notes": "Rational slope; 'change in y = 1' is not the rate."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two tables both show y rising by 6 between listed rows. In Table A x rises by 1; in Table B x rises by 3. Do they have the same slope? Explain.",
+          "answer": "No. Table A: 6/1 = 6. Table B: 6/3 = 2. The change in x matters, so the slopes differ.",
+          "notes": "Reverse the reasoning: same change in y, different change in x."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Divide by the Right Step",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 8 mini-tables, each labeled with its x-step"
+          ],
+          "instructions": "1. For each table card, write the change in y and the change in x between two rows.\n2. Divide to get the slope and write it on the card.\n3. Sort into 'x steps by 1' and 'x steps by more than 1.'\n4. Debrief: on the second pile, why is the change in y NOT the slope?",
+          "content": {
+            "categories": [
+              "x steps by 1 (slope = change in y)",
+              "x steps by more than 1 (must divide)"
+            ],
+            "cards": [
+              {
+                "text": "x: 1,2,3,4  y: 7,12,17,22",
+                "category": "x steps by 1 (slope = change in y)"
+              },
+              {
+                "text": "x: 0,2,4,6  y: 5,11,17,23",
+                "category": "x steps by more than 1 (must divide)"
+              },
+              {
+                "text": "x: 0,1,2,3  y: 4,10,16,22",
+                "category": "x steps by 1 (slope = change in y)"
+              },
+              {
+                "text": "x: 2,4,6,8  y: 3,7,11,15",
+                "category": "x steps by more than 1 (must divide)"
+              },
+              {
+                "text": "x: 0,3,6,9  y: 4,10,16,22",
+                "category": "x steps by more than 1 (must divide)"
+              },
+              {
+                "text": "x: 5,6,7,8  y: 2,5,8,11",
+                "category": "x steps by 1 (slope = change in y)"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "He Forgot to Divide",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Jamal's work"
+          ],
+          "instructions": "1. Read Jamal's claim that the rate is 6 for x = 0, 3, 6, 9 and y = 4, 10, 16, 22.\n2. Write the change in x between the rows.\n3. Divide the change in y by the change in x to get the true slope.\n4. Write one sentence on when the change in y is NOT the rate.",
+          "content": {
+            "worked_problem": "Table x = 0, 3, 6, 9 and y = 4, 10, 16, 22. Jamal wrote 'rate = 6.'",
+            "error_step": "Jamal used the change in y (6) without dividing by the change in x (3).",
+            "why": "x jumps by 3, so the rate is 6/3 = 2, not 6."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The 'forgot to divide by the change in x' slip is a precise error a find-and-fix exposes cleanly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'change in y over change in x' models the full division every time."
+        },
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Drawing the rise and run between two table points on a grid grounds the slope as a ratio, not a single difference."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How much does x change from one row to the next?",
+          "How much does y change over that same jump?",
+          "What do you divide to get the slope?",
+          "If x jumps by 2, is the change in y the rate?",
+          "Would you get the same slope using two different pairs of rows?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student uses the change in y as the rate when the x-values are not consecutive.",
+            "say": "Check the x-column first. If x jumps by 2, the rate is the change in y DIVIDED by 2, not the change in y by itself. Slope = (change in y)/(change in x) every time.",
+            "praise": "You divided the change in y by the change in x -- that's the true rate, even when x skips."
+          },
+          {
+            "if_you_see": "Student subtracts in a different order for x than for y (e.g., y later-minus-earlier but x earlier-minus-later).",
+            "say": "Keep the same order in both: later row minus earlier row for BOTH x and y. Then divide.",
+            "praise": "You subtracted x and y in the same direction -- that keeps the sign of the slope right."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A table has x = 0, 2, 4 and y = 3, 9, 15. What is the slope?",
+            "look_for": "3 (6/2). An answer of 6 means the student ignored the change in x."
+          },
+          {
+            "prompt": "A table has x = 1, 2, 3 and y = 4, 9, 14. What is the slope?",
+            "look_for": "5. A wrong answer here means the basic (change in y)/(change in x) is not secure even for consecutive x."
+          }
+        ]
+      },
+      "fluency_source": "8AF6-F1",
+      "sentence_starters": [
+        "x changes by ___ and y changes by ___, so the slope is ___ divided by ___.",
+        "The rate of change is ___ because ___."
+      ],
+      "worked_solution": {
+        "stem": "A table shows x = 0, 3, 6, 9 and y = 4, 10, 16, 22. What is the rate of change?",
+        "answer": "2",
+        "render_data": {
+          "type": "data_table",
+          "headers": [
+            "x",
+            "y"
+          ],
+          "rows": [
+            [
+              "0",
+              "4"
+            ],
+            [
+              "3",
+              "10"
+            ],
+            [
+              "6",
+              "16"
+            ],
+            [
+              "9",
+              "22"
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "math": "change in x = 3 - 0 = 3",
+            "annotation": "The x-values jump by 3, not by 1."
+          },
+          {
+            "math": "change in y = 10 - 4 = 6",
+            "annotation": "Find how much y changed over that same jump."
+          },
+          {
+            "math": "slope = 6 / 3 = 2",
+            "annotation": "Divide the change in y by the change in x."
+          },
+          {
+            "math": "rate of change = 2",
+            "annotation": "Not 6 -- you must divide by the change in x."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A table shows x = 0, 2, 4, 6 and y = 5, 8, 11, 14. What is the rate of change?",
+        "answer": "3/2",
+        "render_data": {
+          "type": "data_table",
+          "headers": [
+            "x",
+            "y"
+          ],
+          "rows": [
+            [
+              "0",
+              "5"
+            ],
+            [
+              "2",
+              "8"
+            ],
+            [
+              "4",
+              "11"
+            ],
+            [
+              "6",
+              "14"
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "math": "change in x = 2 - 0 = 2",
+            "annotation": "How much x jumps each row.",
+            "given": true
+          },
+          {
+            "math": "change in y = 8 - 5 = 3",
+            "annotation": "How much y changes over that jump.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Divide the change in y by the change in x.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the rate of change.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF6-S2",
+      "name": "Determine the rate of change (slope m) from an equation in y = mx + b form",
+      "column": "looking_back",
+      "parent_standard": "8.AF.6",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8AF6-F1"
+      },
+      "i_do_script": "When an equation is in y = mx + b form, the rate of change is m -- the number multiplied by x. Watch y = 4x + 9: the number with x is 4, so the rate of change is 4. The 9 is by itself, so that is the y-intercept, not the rate. The slope is always the coefficient of x, even when it is a fraction like the 3/4 in y = (3/4)x + 2.",
+      "canonical_error": {
+        "pattern": "Reads the constant term b as the rate of change instead of the coefficient m",
+        "example": "For y = 4x + 9 says the rate of change is 9 (the constant) instead of 4 (the coefficient of x)",
+        "why": "The student grabs a number without checking which one multiplies x. In y = mx + b the rate of change is m, the coefficient of x; b is the y-intercept."
+      },
+      "item_template": "An equation in y = mx + b form (m may be a fraction). Student identifies the rate of change m. MC.",
+      "sample_items": [
+        {
+          "stem": "What is the rate of change of the function y = 4x + 9?",
+          "answer": "4",
+          "choices": [
+            "4",
+            "9",
+            "13",
+            "-9"
+          ],
+          "distractor_logic": "m is the coefficient of x, 4. '9' baits reading the constant b as the rate."
+        },
+        {
+          "stem": "What is the rate of change of the function y = (3/4)x + 2?",
+          "answer": "3/4",
+          "choices": [
+            "3/4",
+            "2",
+            "4/3",
+            "3"
+          ],
+          "distractor_logic": "m = 3/4. '4/3' inverts it; '2' is the y-intercept."
+        },
+        {
+          "stem": "What is the rate of change of the function y = (2/5)x - 3?",
+          "answer": "2/5",
+          "choices": [
+            "2/5",
+            "-3",
+            "5/2",
+            "3"
+          ],
+          "distractor_logic": "m = 2/5. '-3' is the y-intercept; '5/2' inverts the slope."
+        },
+        {
+          "stem": "What is the rate of change of the function y = 7x?",
+          "answer": "7",
+          "choices": [
+            "7",
+            "0",
+            "1",
+            "1/7"
+          ],
+          "distractor_logic": "m = 7; b = 0. '0' baits reading the missing constant as the rate."
+        },
+        {
+          "stem": "What is the rate of change of the function y = -3x + 6?",
+          "answer": "-3",
+          "choices": [
+            "-3",
+            "6",
+            "3",
+            "-6"
+          ],
+          "distractor_logic": "m = -3. '6' is the y-intercept; '3' drops the negative sign."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which number is stuck to the x?",
+        "prompt": "The rate of change is the number multiplied by x -- the coefficient. Underline the number touching x. The number by itself (no x) is the y-intercept, not the rate.",
+        "praise": "You picked the coefficient of x -- that's the rate of change, m."
+      },
+      "vocabulary": [
+        {
+          "term": "Rate of change",
+          "definition": "How much y changes for each 1 that x increases; the slope m in y = mx + b."
+        },
+        {
+          "term": "Slope",
+          "definition": "The constant rate of change of a line, m; change in y divided by change in x."
+        },
+        {
+          "term": "Slope-intercept form",
+          "definition": "A linear equation written as y = mx + b, where m is the rate of change and b is the initial value."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF6-S3",
+        "if_fail": "8AF6-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'y = (5/6)x + 4. What is the rate of change?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which number is multiplied by x?"
+        },
+        {
+          "kind": "say",
+          "text": "The 5/6 is touching x, so the rate of change is 5/6. The 4 is by itself -- that's the y-intercept."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 4, ask 'is the 4 attached to an x, or standing alone?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: what is the rate of change of y = (2/3)x - 7?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "In y = mx + b, which letter is the rate of change?",
+          "answer": "m"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is the rate of change of y = 6x + 1?",
+          "answer": "6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is the rate of change of y = 4x + 9?",
+          "answer": "4 (the coefficient of x).",
+          "notes": "Baits reading the constant 9 as the rate."
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is the rate of change of y = (3/4)x + 2?",
+          "answer": "3/4.",
+          "notes": "Fractional slope; not the y-intercept 2."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Priya identified the rate of change. Find and fix the mistake.",
+          "shown_work": [
+            "Equation: y = -3x + 6.",
+            "Priya wrote: 'The rate of change is 6.'"
+          ],
+          "answer": "Priya read the constant instead of the coefficient of x. The rate of change is m = -3; the 6 is the y-intercept.",
+          "notes": "Canonical error: constant b read as the rate."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "For y = 7x, name both the rate of change and the y-intercept.",
+          "answer": "Rate of change = 7; y-intercept = 0 (the point (0, 0)).",
+          "notes": "b = 0 is implicit."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two functions: y = 2x + 5 and y = 5x + 2. Do they have the same rate of change? Explain.",
+          "answer": "No. The first has rate 2 (coefficient of x); the second has rate 5. The 5 and 2 swap roles -- coefficient vs constant.",
+          "notes": "Contrast coefficient vs constant with the same digits."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Coefficient or Constant?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Card set of 10 equations and label cards 'rate of change = __' and 'y-intercept = __'"
+          ],
+          "instructions": "1. For each equation, place the correct 'rate of change' value (the number with x).\n2. Place the correct 'y-intercept' value (the number alone).\n3. Say aloud 'm is the one touching x.'\n4. Debrief: in y = -3x + 6, why is 6 NOT the rate of change?",
+          "content": {
+            "categories": [
+              "Rate of change (number with x)",
+              "y-intercept (number alone)"
+            ],
+            "cards": [
+              {
+                "text": "the 4 in y = 4x + 9",
+                "category": "Rate of change (number with x)"
+              },
+              {
+                "text": "the 9 in y = 4x + 9",
+                "category": "y-intercept (number alone)"
+              },
+              {
+                "text": "the 3/4 in y = (3/4)x + 2",
+                "category": "Rate of change (number with x)"
+              },
+              {
+                "text": "the 2 in y = (3/4)x + 2",
+                "category": "y-intercept (number alone)"
+              },
+              {
+                "text": "the -3 in y = -3x + 6",
+                "category": "Rate of change (number with x)"
+              },
+              {
+                "text": "the 6 in y = -3x + 6",
+                "category": "y-intercept (number alone)"
+              }
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "title": "Equation to Slope",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "6 equation cards, 6 slope cards, 2 decoy slope cards"
+          ],
+          "instructions": "1. Match each equation to its rate of change.\n2. To claim a match, point to the number multiplying x.\n3. Two decoy cards are the y-intercepts -- set them aside and say why.\n4. Debrief: how do you spot the slope at a glance?",
+          "content": {
+            "pairs": [
+              {
+                "left": "y = 4x + 9",
+                "right": "slope 4"
+              },
+              {
+                "left": "y = (3/4)x + 2",
+                "right": "slope 3/4"
+              },
+              {
+                "left": "y = (2/5)x - 3",
+                "right": "slope 2/5"
+              },
+              {
+                "left": "y = 7x",
+                "right": "slope 7"
+              },
+              {
+                "left": "y = -3x + 6",
+                "right": "slope -3"
+              },
+              {
+                "left": "y = x + 8",
+                "right": "slope 1"
+              }
+            ],
+            "decoys": [
+              "slope 9",
+              "slope 6"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral 'the slope is the number with x' builds automatic recall so students stop grabbing the constant."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Reading b as the rate is a precise error a find-and-fix names cleanly."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'why is 6 not the slope in y = -3x + 6?' surfaces the coefficient-vs-constant idea."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which number is multiplied by x?",
+          "Which number stands alone with no x?",
+          "In y = mx + b, which letter is the rate of change?",
+          "Is the slope 6 or -3 in y = -3x + 6?",
+          "If the slope is a fraction, which part of the equation is it in?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reads the constant term b as the rate of change.",
+            "say": "The rate of change is the number multiplied by x -- the coefficient. Underline the number touching x. The number by itself (no x) is the y-intercept, not the rate.",
+            "praise": "You picked the coefficient of x -- that's the rate of change, m."
+          },
+          {
+            "if_you_see": "Student inverts a fractional slope (reads 3/4 as 4/3).",
+            "say": "Copy the coefficient exactly as it appears with x -- don't flip it. In y = (3/4)x + 2 the slope is 3/4.",
+            "praise": "You copied the coefficient exactly -- no flipping, so the slope is right."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "What is the rate of change of y = 5x + 2?",
+            "look_for": "5. An answer of 2 means the student is reading the y-intercept as the rate."
+          },
+          {
+            "prompt": "What is the rate of change of y = (2/3)x - 7?",
+            "look_for": "2/3. An answer of -7 (constant) or 3/2 (inverted) flags the two common errors."
+          }
+        ]
+      },
+      "fluency_source": "8AF6-F1",
+      "sentence_starters": [
+        "The number with x is ___, so the rate of change is ___.",
+        "The ___ is by itself, so it is the y-intercept, not the slope."
+      ],
+      "worked_solution": {
+        "stem": "What is the rate of change of the function y = (5/6)x + 4?",
+        "answer": "5/6",
+        "steps": [
+          {
+            "math": "y = mx + b",
+            "annotation": "Compare the equation to slope-intercept form."
+          },
+          {
+            "math": "coefficient of x = 5/6",
+            "annotation": "The number multiplied by x is the slope m."
+          },
+          {
+            "math": "constant = 4",
+            "annotation": "The number alone is b, the y-intercept -- not the rate."
+          },
+          {
+            "math": "rate of change = 5/6",
+            "annotation": "The rate of change is m = 5/6."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "What is the rate of change of the function y = (2/3)x - 7?",
+        "answer": "2/3",
+        "steps": [
+          {
+            "math": "y = mx + b",
+            "annotation": "Compare to slope-intercept form.",
+            "given": true
+          },
+          {
+            "math": "coefficient of x = 2/3",
+            "annotation": "The number touching x is the slope.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the constant term and say what it is (the y-intercept).",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the rate of change.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF6-S3",
+      "name": "Determine the initial value (y-intercept b) from a table, description, or equation",
+      "column": "looking_back",
+      "parent_standard": "8.AF.6",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8AF6-F2"
+      },
+      "i_do_script": "The initial value is y when x = 0 -- the y-intercept (0, b). Sometimes it is right there: a table row with x = 0, or the constant in y = mx + b. Sometimes it is hidden: a table might start at x = 1. Watch x = 1, 2, 3, 4 with y = 9, 13, 17, 21. y climbs 4 each step, so to get back to x = 0 I go one step below x = 1: 9 - 4 = 5. The initial value is 5, the point (0, 5) -- NOT the 9, because 9 is at x = 1, not x = 0.",
+      "canonical_error": {
+        "pattern": "Takes the first listed y-value as the y-intercept even when its x is not 0",
+        "example": "For x = 1, 2, 3, 4 and y = 9, 13, 17, 21, says the y-intercept is 9 (the first y) instead of 5 (the value at x = 0)",
+        "why": "The student equates 'first row' with 'x = 0.' The y-intercept is the value when x = 0; if the table starts at x = 1, you must step back by one rate to reach x = 0."
+      },
+      "item_template": "A table (with or without x = 0), description, or equation. Student finds the initial value (0, b). MC / short response. Hand-authored (no engine stem).",
+      "sample_items": [
+        {
+          "stem": "The table shows a linear relationship. What is the initial value (y-intercept)?",
+          "answer": "3 (the point (0, 3))",
+          "choices": [
+            "3",
+            "8",
+            "11",
+            "5"
+          ],
+          "distractor_logic": "x = 0 is shown with y = 3, so the intercept is 3. '8' is the slope; '11' is the y at x = 1.",
+          "render_data": {
+            "type": "data_table",
+            "headers": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              [
+                "0",
+                "3"
+              ],
+              [
+                "1",
+                "11"
+              ],
+              [
+                "2",
+                "19"
+              ],
+              [
+                "3",
+                "27"
+              ]
+            ]
+          }
+        },
+        {
+          "stem": "A student has $32 and saves the same amount each week. What is the initial value of her total savings?",
+          "answer": "32 (she starts with $32, so (0, 32))"
+        },
+        {
+          "stem": "The equation y = 5x + 12 models a linear relationship. Write the y-intercept as an ordered pair.",
+          "answer": "(0, 12)"
+        },
+        {
+          "stem": "The table shows a linear relationship. What is the initial value (y-intercept)?",
+          "answer": "5 (the point (0, 5))",
+          "choices": [
+            "5",
+            "9",
+            "4",
+            "13"
+          ],
+          "distractor_logic": "Table starts at x = 1 with y = 9; slope is 4, so at x = 0 y = 9 - 4 = 5. '9' baits reading the first y as the intercept.",
+          "render_data": {
+            "type": "data_table",
+            "headers": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              [
+                "1",
+                "9"
+              ],
+              [
+                "2",
+                "13"
+              ],
+              [
+                "3",
+                "17"
+              ],
+              [
+                "4",
+                "21"
+              ]
+            ]
+          }
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is that value really at x = 0?",
+        "prompt": "The y-intercept is y when x = 0. If the table starts at x = 1, step back one rate to reach x = 0: subtract the slope from the first y. Don't just grab the first number.",
+        "praise": "You found y at x = 0 -- that's the true initial value, even when x = 0 isn't listed."
+      },
+      "vocabulary": [
+        {
+          "term": "y-intercept",
+          "definition": "The y-value where the line crosses the y-axis, when x = 0; written as the point (0, b)."
+        },
+        {
+          "term": "Initial value",
+          "definition": "The starting amount of a situation, the value of y when x = 0; the b in y = mx + b."
+        },
+        {
+          "term": "Slope-intercept form",
+          "definition": "A linear equation written as y = mx + b, where m is the rate of change and b is the initial value."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF6-S4",
+        "if_fail": "8AF6-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write a table: x = 2, 4, 6 and y = 17, 25, 33."
+        },
+        {
+          "kind": "ask",
+          "text": "Is x = 0 in the table? How can we get back to it?"
+        },
+        {
+          "kind": "say",
+          "text": "Slope is 8/2 = 4 per 1 x. At x = 2, y = 17; step back to x = 0: 17 - 4 - 4 = 9. Initial value is 9, so (0, 9)."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 17, ask 'is 17 at x = 0, or at x = 2?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: x = 1, 2, 3 with y = 10, 14, 18 -- find the initial value."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "In y = 6x + 10, what is the y-intercept?",
+          "answer": "10 (the point (0, 10))"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A table has a row (0, 7). What is the initial value?",
+          "answer": "7"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A table has x = 0, 1, 2, 3 and y = 3, 11, 19, 27. What is the initial value?",
+          "answer": "3 -- the y-value where x = 0.",
+          "notes": "x = 0 is shown; straightforward."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A table has x = 1, 2, 3, 4 and y = 9, 13, 17, 21. What is the y-intercept?",
+          "answer": "5 -- slope is 4, so at x = 0, y = 9 - 4 = 5; the point (0, 5).",
+          "notes": "Baits reading the first y (9) as the intercept."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Ben found the y-intercept from a table. Find and fix the mistake.",
+          "shown_work": [
+            "Table: x = 1, 2, 3, 4 and y = 9, 13, 17, 21.",
+            "Ben wrote: 'The y-intercept is 9, the first y-value.'"
+          ],
+          "answer": "Ben used the value at x = 1, not x = 0. The slope is 4, so at x = 0 the value is 9 - 4 = 5. The y-intercept is 5, the point (0, 5).",
+          "notes": "Canonical error: first listed y taken as the intercept."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A tank is being filled. After 2 minutes it holds 26 gallons and it gains 6 gallons per minute. How much water did it start with?",
+          "answer": "14 gallons -- step back 2 minutes: 26 - 6 - 6 = 14, so (0, 14).",
+          "notes": "Initial value read from a rate and a later point."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why the first number in a table is not always the y-intercept.",
+          "answer": "The y-intercept is the value when x = 0. If the table's first row is at x = 1 (or any x other than 0), the first y is not the intercept -- you must find the value at x = 0.",
+          "notes": "Articulate the meaning of 'initial.'"
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "The First Number Trap",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Slip with Ben's work",
+            "Whiteboards"
+          ],
+          "instructions": "1. Read Ben's claim that the y-intercept is 9 for x = 1, 2, 3, 4 and y = 9, 13, 17, 21.\n2. Find the slope, then step back to x = 0.\n3. Write the correct y-intercept as an ordered pair.\n4. Debrief: when IS the first y-value the intercept?",
+          "content": {
+            "worked_problem": "Table x = 1, 2, 3, 4 and y = 9, 13, 17, 21. Ben wrote 'y-intercept = 9.'",
+            "error_step": "Ben took the first y-value, which sits at x = 1, not x = 0.",
+            "why": "Slope is 4, so at x = 0 the value is 9 - 4 = 5; the y-intercept is (0, 5)."
+          }
+        },
+        {
+          "type": "card_sort",
+          "title": "Where Does It Start?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 8 representations (tables, equations, descriptions)"
+          ],
+          "instructions": "1. For each card, find the initial value (the value at x = 0).\n2. Sort into 'x = 0 is given' and 'must work back to x = 0.'\n3. Write each initial value as an ordered pair (0, b).\n4. Debrief: what tells you a card needs you to work backward?",
+          "content": {
+            "categories": [
+              "x = 0 is given",
+              "Must work back to x = 0"
+            ],
+            "cards": [
+              {
+                "text": "y = 5x + 12",
+                "category": "x = 0 is given"
+              },
+              {
+                "text": "x: 1,2,3  y: 9,13,17",
+                "category": "Must work back to x = 0"
+              },
+              {
+                "text": "table row (0, 3), (1, 11)",
+                "category": "x = 0 is given"
+              },
+              {
+                "text": "x: 2,4,6  y: 17,25,33",
+                "category": "Must work back to x = 0"
+              },
+              {
+                "text": "'starts with $32, saves each week'",
+                "category": "x = 0 is given"
+              },
+              {
+                "text": "x: 3,4,5  y: 20,24,28",
+                "category": "Must work back to x = 0"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The 'first y-value = intercept' slip is a precise error a find-and-fix corrects."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "A number talk on 'what is y when x = 0?' focuses attention on the meaning of the intercept, not position in the table."
+        },
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Extending the table (or line) back to x = 0 on a grid makes the hidden intercept concrete."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the value of y when x = 0?",
+          "Is x = 0 shown, or do you need to work back to it?",
+          "What is the slope, and how do you use it to step back to x = 0?",
+          "How do you write the y-intercept as a point?",
+          "Why isn't the first y-value always the intercept?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student takes the first listed y-value as the y-intercept even when its x is not 0.",
+            "say": "The y-intercept is y when x = 0. If the table starts at x = 1, step back one rate to reach x = 0: subtract the slope from the first y. Don't just grab the first number.",
+            "praise": "You found y at x = 0 -- that's the true initial value, even when x = 0 isn't listed."
+          },
+          {
+            "if_you_see": "Student reads the slope (rate) as the initial value.",
+            "say": "The initial value is where the situation STARTS, at x = 0 -- not how fast it changes. Find y when x = 0.",
+            "praise": "You separated the starting amount from the rate -- the intercept is the value at x = 0."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A table has x = 0, 1, 2 and y = 4, 9, 14. What is the initial value?",
+            "look_for": "4 (value at x = 0). A wrong answer means x = 0 isn't being read correctly."
+          },
+          {
+            "prompt": "A table has x = 1, 2, 3 and y = 8, 11, 14. What is the y-intercept?",
+            "look_for": "5 (8 - 3). An answer of 8 diagnoses the first-value trap."
+          }
+        ]
+      },
+      "fluency_source": "8AF6-F2",
+      "sentence_starters": [
+        "The value when x = 0 is ___, so the y-intercept is (0, ___).",
+        "The table starts at x = ___, so I step back by the slope to get ___."
+      ],
+      "worked_solution": {
+        "stem": "A table shows x = 2, 4, 6 and y = 17, 25, 33. What is the initial value (y-intercept)?",
+        "answer": "9 (the point (0, 9))",
+        "render_data": {
+          "type": "data_table",
+          "headers": [
+            "x",
+            "y"
+          ],
+          "rows": [
+            [
+              "2",
+              "17"
+            ],
+            [
+              "4",
+              "25"
+            ],
+            [
+              "6",
+              "33"
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "math": "slope = (25 - 17)/(4 - 2) = 8/2 = 4",
+            "annotation": "First find the rate of change per 1 x."
+          },
+          {
+            "math": "at x = 2, y = 17",
+            "annotation": "The lowest x shown is 2, not 0."
+          },
+          {
+            "math": "step back to x = 0: 17 - 4 - 4 = 9",
+            "annotation": "Subtract the slope twice to move from x = 2 to x = 0."
+          },
+          {
+            "math": "y-intercept = (0, 9)",
+            "annotation": "The initial value is y when x = 0."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A table shows x = 1, 2, 3 and y = 10, 14, 18. What is the initial value (y-intercept)?",
+        "answer": "6 (the point (0, 6))",
+        "render_data": {
+          "type": "data_table",
+          "headers": [
+            "x",
+            "y"
+          ],
+          "rows": [
+            [
+              "1",
+              "10"
+            ],
+            [
+              "2",
+              "14"
+            ],
+            [
+              "3",
+              "18"
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "math": "slope = (14 - 10)/(2 - 1) = 4",
+            "annotation": "Find the rate of change first.",
+            "given": true
+          },
+          {
+            "math": "at x = 1, y = 10",
+            "annotation": "The table starts at x = 1, not 0.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Step back one rate to reach x = 0 (subtract the slope from 10).",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the y-intercept as the point (0, b).",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF6-S4",
+      "name": "Construct the equation that models a real-world linear situation",
+      "column": "on_grade",
+      "parent_standard": "8.AF.6",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8AF6-S3"
+      },
+      "i_do_script": "To model a situation with y = mx + b, I decide which number is the per-unit rate (m, the amount that repeats each x) and which is the starting amount (b, what you have before anything happens). Watch: 'A student has $32 and saves $8 each week.' The $8 repeats every week, so m = 8; the $32 is there at the start (week 0), so b = 32. The equation is y = 8x + 32. The classic trap is writing y = 32x + 8 -- swapping the rate and the starting amount.",
+      "canonical_error": {
+        "pattern": "Swaps m and b -- writes the starting amount as the coefficient of x and the per-unit rate as the constant",
+        "example": "For 'has $32, saves $8 each week' writes y = 32x + 8 instead of y = 8x + 32",
+        "why": "The student attaches x to the first (or bigger) number instead of the one that repeats each unit. The coefficient of x must be the per-unit rate; the constant is the one-time starting amount."
+      },
+      "item_template": "A described situation with a starting amount and a per-unit rate. Student selects the equation y = mx + b. MC.",
+      "sample_items": [
+        {
+          "stem": "A student has $32. She saves an additional $8 each week. Which equation models her total savings, y, after x weeks?",
+          "answer": "y = 8x + 32",
+          "choices": [
+            "y = 8x + 32",
+            "y = 32x + 8",
+            "y = 8x",
+            "y = 40x + 8"
+          ],
+          "distractor_logic": "$8 repeats each week (m), $32 is the start (b). 'y = 32x + 8' swaps m and b."
+        },
+        {
+          "stem": "At the start of the year a hiker had already walked 450 miles. He walks 75 miles each month. Which equation represents the total miles, y, after x months?",
+          "answer": "y = 75x + 450",
+          "choices": [
+            "y = 75x + 450",
+            "y = 450x + 75",
+            "y = 75x - 450",
+            "y = 75x"
+          ],
+          "distractor_logic": "75 per month (m), 450 already walked (b). 'y = 450x + 75' swaps them."
+        },
+        {
+          "stem": "A pool already holds 20 gallons. Water flows in at 6 gallons per minute. Which equation models the gallons, y, after x minutes?",
+          "answer": "y = 6x + 20",
+          "choices": [
+            "y = 6x + 20",
+            "y = 20x + 6",
+            "y = 6x - 20",
+            "y = 26x"
+          ],
+          "distractor_logic": "6 per minute (m), 20 to start (b). 'y = 20x + 6' swaps them."
+        },
+        {
+          "stem": "A phone has 100 photos stored. The user adds 12 photos each day. Which equation models the number of photos, y, after x days?",
+          "answer": "y = 12x + 100",
+          "choices": [
+            "y = 12x + 100",
+            "y = 100x + 12",
+            "y = 12x - 100",
+            "y = 112x"
+          ],
+          "distractor_logic": "12 per day (m), 100 stored (b). 'y = 100x + 12' swaps them."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which number repeats every x?",
+        "prompt": "Find the amount that happens EACH unit -- that is the number that goes with x (the rate m). The one-time starting amount goes alone (the y-intercept b). If you attached x to the starting amount, you swapped them.",
+        "praise": "You put the per-unit rate with x and the starting amount alone -- that's y = mx + b."
+      },
+      "vocabulary": [
+        {
+          "term": "Slope-intercept form",
+          "definition": "A linear equation written as y = mx + b, where m is the rate of change and b is the initial value."
+        },
+        {
+          "term": "Rate of change",
+          "definition": "How much y changes for each 1 that x increases; the slope m in y = mx + b."
+        },
+        {
+          "term": "Initial value",
+          "definition": "The starting amount of a situation, the value of y when x = 0; the b in y = mx + b."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF6-S5",
+        "if_fail": "8AF6-S3"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A gym charges a $75 sign-up fee, plus $30 each month. Write the equation for total cost y after x months.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which amount repeats every month? Which is a one-time amount?"
+        },
+        {
+          "kind": "say",
+          "text": "$30 repeats each month, so m = 30. $75 is one-time at the start, so b = 75. Equation: y = 30x + 75."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes y = 75x + 30, ask 'does the $75 happen every month, or just once?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a tree is 4 feet tall and grows 2 feet per year. Write the equation."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "In 'starts with 10, adds 3 each time,' which number goes with x?",
+          "answer": "3 (the per-unit rate)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Write the equation for 'starts at 5, increases 2 per hour.'",
+          "answer": "y = 2x + 5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A student has $32 and saves $8 each week. Write the equation for total savings y after x weeks.",
+          "answer": "y = 8x + 32.",
+          "notes": "Baits the swap y = 32x + 8."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A hiker has already walked 450 miles and walks 75 miles each month. Write the equation for total miles y after x months.",
+          "answer": "y = 75x + 450.",
+          "notes": "Bigger number (450) is the start, not the rate."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Dana wrote an equation for a situation. Find and fix the mistake.",
+          "shown_work": [
+            "Situation: A pool holds 20 gallons and fills at 6 gallons per minute.",
+            "Dana wrote: y = 20x + 6."
+          ],
+          "answer": "Dana swapped the rate and the start. 6 gallons repeats each minute (goes with x); 20 is the starting amount (alone). The equation is y = 6x + 20.",
+          "notes": "Canonical error: m and b swapped."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write your own situation that is modeled by y = 5x + 40, naming what 5 and 40 mean.",
+          "answer": "Example: 'A printer has 40 pages left and prints 5 more per minute; y = pages after x minutes.' 5 is pages per minute (rate), 40 is the starting pages.",
+          "notes": "Reverse direction: equation to story."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A classmate wrote y = 100x + 12 for 'has 100 photos, adds 12 each day.' Is that right? Explain and correct it.",
+          "answer": "No. 12 photos are added each day (goes with x); 100 is the starting count (alone). The correct equation is y = 12x + 100.",
+          "notes": "Diagnose a swapped equation."
+        }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Situation to Equation",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "6 situation cards, 6 equation cards, 2 swapped-equation decoys"
+          ],
+          "instructions": "1. Match each situation to its equation.\n2. To claim a match, point to the per-unit rate (goes with x) and the starting amount (alone).\n3. Two decoy equations are swapped (m and b flipped) -- set them aside and explain the swap.\n4. Debrief: how do you spot a swapped equation fast?",
+          "content": {
+            "pairs": [
+              {
+                "left": "has $32, saves $8 each week",
+                "right": "y = 8x + 32"
+              },
+              {
+                "left": "walked 450 mi, walks 75 mi/month",
+                "right": "y = 75x + 450"
+              },
+              {
+                "left": "pool holds 20 gal, +6 gal/min",
+                "right": "y = 6x + 20"
+              },
+              {
+                "left": "100 photos, +12 each day",
+                "right": "y = 12x + 100"
+              },
+              {
+                "left": "$75 fee, $30 each month",
+                "right": "y = 30x + 75"
+              },
+              {
+                "left": "4 ft tall, grows 2 ft/year",
+                "right": "y = 2x + 4"
+              }
+            ],
+            "decoys": [
+              "y = 32x + 8",
+              "y = 450x + 75"
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Spot the Swap",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Dana's equation"
+          ],
+          "instructions": "1. Read Dana's equation y = 20x + 6 for a pool that holds 20 gallons and fills 6 gal/min.\n2. Underline the amount that repeats each minute.\n3. Rewrite the equation with the rate on x and the start alone.\n4. Write one sentence on how to catch a swap.",
+          "content": {
+            "worked_problem": "Pool holds 20 gal, fills 6 gal/min. Dana wrote y = 20x + 6.",
+            "error_step": "Dana put the starting amount (20) with x and the rate (6) alone.",
+            "why": "6 repeats each minute so it is the coefficient of x; 20 is the one-time start. Correct: y = 6x + 20."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The m-and-b swap is a precise, high-frequency error a find-and-fix targets directly."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'which number repeats each unit?' forces students to justify the placement of m and b."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'per-unit rate goes with x, start goes alone' models the construction step by step."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which amount happens every unit (every week, minute, day)?",
+          "Which amount is there before anything happens?",
+          "Which number goes with x, and which stands alone?",
+          "Does the starting amount belong with x?",
+          "How would you check your equation with the numbers in the story?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student swaps m and b, attaching x to the starting amount instead of the per-unit rate.",
+            "say": "Find the amount that happens EACH unit -- that is the number that goes with x (the rate m). The one-time starting amount goes alone (the y-intercept b). If you attached x to the starting amount, you swapped them.",
+            "praise": "You put the per-unit rate with x and the starting amount alone -- that's y = mx + b."
+          },
+          {
+            "if_you_see": "Student drops the starting amount entirely (writes y = mx with no b).",
+            "say": "There is a starting amount before x = 0 -- include it as the constant b so the equation matches the story.",
+            "praise": "You included the starting amount as b -- the equation now fits the whole situation."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A tank holds 15 liters and gains 4 liters per minute. Write the equation.",
+            "look_for": "y = 4x + 15. 'y = 15x + 4' is the swap error."
+          },
+          {
+            "prompt": "In 'starts with 50 points, earns 10 per level,' which number is m?",
+            "look_for": "10 (per level). Naming 50 as m signals the swap."
+          }
+        ]
+      },
+      "fluency_source": "8AF6-F1",
+      "sentence_starters": [
+        "The amount that repeats each x is ___, so m = ___.",
+        "The starting amount is ___, so b = ___, and the equation is y = ___x + ___."
+      ],
+      "worked_solution": {
+        "stem": "A gym charges a $75 sign-up fee plus $30 each month. Write an equation for the total cost y after x months.",
+        "answer": "y = 30x + 75",
+        "steps": [
+          {
+            "math": "per-month amount = $30",
+            "annotation": "The $30 repeats every month, so it is the rate m."
+          },
+          {
+            "math": "one-time amount = $75",
+            "annotation": "The $75 sign-up happens once at the start, so it is b."
+          },
+          {
+            "math": "m = 30, b = 75",
+            "annotation": "Rate goes with x; starting amount stands alone."
+          },
+          {
+            "math": "y = 30x + 75",
+            "annotation": "Assemble into y = mx + b."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A tree is 4 feet tall and grows 2 feet each year. Write an equation for the height y after x years.",
+        "answer": "y = 2x + 4",
+        "steps": [
+          {
+            "math": "per-year growth = 2 ft",
+            "annotation": "The amount that repeats each year is the rate m.",
+            "given": true
+          },
+          {
+            "math": "starting height = 4 ft",
+            "annotation": "The height at year 0 is the starting amount b.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "State m and b (which goes with x, which stands alone).",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the equation in y = mx + b form.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF6-S5",
+      "name": "Construct a linear function from a context or table and interpret the rate of change",
+      "column": "on_grade",
+      "parent_standard": "8.AF.6",
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8AF6-S4"
+      },
+      "i_do_script": "Sometimes the rate isn't handed to me -- I build the function from two facts, then say what the rate means. Watch: a student starts with $50, and after 4 weeks has $130, after 5 weeks $150. The rate is the change in money over the change in weeks: (150 - 130)/(5 - 4) = 20. So m = 20 and the start is b = 50: y = 20x + 50. In context, the rate of change means he saves $20 PER WEEK. Notice the rate is 20 (per week), not 50 (the starting amount).",
+      "canonical_error": {
+        "pattern": "Interprets the initial value (starting amount) as the rate of change instead of the per-unit slope",
+        "example": "For y = 20x + 50 (start $50) says 'he saved $50 per week' instead of the rate $20 per week",
+        "why": "The student reads the starting amount as the per-week rate. The rate of change is m (the per-unit slope, 20), not b (the one-time starting value, 50)."
+      },
+      "item_template": "A context or table (rate not stated). Part A: construct y = mx + b. Part B: interpret the rate of change in context. Multi-part.",
+      "sample_items": [
+        {
+          "stem": "A student was given $50 to start saving. After 4 weeks he has $130; after 5 weeks he has $150. Part A: Write a linear function for his total savings y after x weeks. Part B: What does the rate of change mean in this situation?",
+          "answer": "Part A: y = 20x + 50. Part B: He saves $20 per week (the rate of change is $20 each week)."
+        },
+        {
+          "stem": "The table shows a fisherman's distance from the start, y miles, after x hours. Part A: Write a linear function for the distance. Part B: What does the rate of change mean in context?",
+          "answer": "Part A: y = 8x + 3. Part B: He rows 8 miles per hour (the rate of change is 8 mph).",
+          "render_data": {
+            "type": "data_table",
+            "headers": [
+              "Hour (x)",
+              "Distance (y)"
+            ],
+            "rows": [
+              [
+                "0",
+                "3"
+              ],
+              [
+                "1",
+                "11"
+              ],
+              [
+                "2",
+                "19"
+              ],
+              [
+                "3",
+                "27"
+              ]
+            ]
+          }
+        },
+        {
+          "stem": "A plant is 4 cm tall and grows the same amount each week; after 1 week it is 7 cm, after 2 weeks 10 cm. Part A: Write a linear function for the height y after x weeks. Part B: What does the rate of change mean in context?",
+          "answer": "Part A: y = 3x + 4. Part B: The plant grows 3 cm per week (the rate of change is 3 cm each week)."
+        },
+        {
+          "stem": "The table shows the gallons in a tank, y, after x minutes. Part A: Write a linear function. Part B: What does the rate of change mean in context?",
+          "answer": "Part A: y = 6x + 12. Part B: The tank fills at 6 gallons per minute (the rate of change is 6 gal/min).",
+          "render_data": {
+            "type": "data_table",
+            "headers": [
+              "Minute (x)",
+              "Gallons (y)"
+            ],
+            "rows": [
+              [
+                "0",
+                "12"
+              ],
+              [
+                "1",
+                "18"
+              ],
+              [
+                "2",
+                "24"
+              ],
+              [
+                "3",
+                "30"
+              ]
+            ]
+          }
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is that the PER-WEEK amount, or the start?",
+        "prompt": "The rate of change is how much y goes up for each 1 x -- the slope m. Compute (change in y)/(change in x), not the starting amount. 'Per week/per hour' is the rate; the one-time starting value is the y-intercept.",
+        "praise": "You read the rate as the per-unit change (m), not the starting amount -- that's the correct interpretation."
+      },
+      "vocabulary": [
+        {
+          "term": "Rate of change",
+          "definition": "How much y changes for each 1 that x increases; the slope m in y = mx + b."
+        },
+        {
+          "term": "Slope-intercept form",
+          "definition": "A linear equation written as y = mx + b, where m is the rate of change and b is the initial value."
+        },
+        {
+          "term": "Initial value",
+          "definition": "The starting amount of a situation, the value of y when x = 0; the b in y = mx + b."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF6-S6",
+        "if_fail": "8AF6-S4"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A pool has some water. After 2 min: 26 gal. After 5 min: 44 gal.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the change in gallons over the change in minutes?"
+        },
+        {
+          "kind": "say",
+          "text": "(44 - 26)/(5 - 2) = 18/3 = 6, so m = 6 (6 gallons per minute). Back to x = 0: 26 - 6 - 6 = 14, so y = 6x + 14. The rate means it fills 6 gal each minute."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says the rate is 14 (the start), ask 'is 14 a per-minute amount, or the starting water?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: after 1 hr, 9 gal; after 4 hr, 18 gal -- find the rate and say what it means."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "If y goes from 130 to 150 as x goes from 4 to 5, what is the rate of change?",
+          "answer": "20 per unit"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "In y = 20x + 50 modeling savings, what does the 20 mean?",
+          "answer": "$20 saved per week (the rate of change)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A student starts with $50; after 4 weeks he has $130, after 5 weeks $150. Write the function and state the rate of change in context.",
+          "answer": "y = 20x + 50; he saves $20 per week.",
+          "notes": "Baits saying $50 per week (the start)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A candle burns steadily: 20 cm at 0 hours, 18 cm at 1 hour, 16 cm at 2 hours. Write the function and interpret the rate of change.",
+          "answer": "y = -2x + 20; the candle burns 2 cm per hour (rate of change -2).",
+          "notes": "Negative rate interpreted as burning down."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Mia interpreted a savings model. Find and fix the mistake.",
+          "shown_work": [
+            "Model: y = 20x + 50, where x is weeks and y is dollars saved.",
+            "Mia wrote: 'The rate of change means he saved $50 per week.'"
+          ],
+          "answer": "Mia used the starting amount as the rate. The rate of change is m = 20, so he saves $20 per week; the $50 is the amount he started with (b).",
+          "notes": "Canonical error: initial value read as the rate."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A table of distance vs hours gives (0, 3), (1, 11), (2, 19). Write the function and explain, in a sentence, what the rate means for the trip.",
+          "answer": "y = 8x + 3; the rate of change is 8, meaning the traveler covers 8 miles every hour.",
+          "notes": "Interpret rate from a table."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two savers: A is modeled by y = 15x + 60 and B by y = 25x + 20. Who saves faster each week, and how do you know?",
+          "answer": "B saves faster: B's rate of change is 25 per week vs A's 15 per week. The starting amounts (60 and 20) don't affect the weekly rate.",
+          "notes": "Compare rates, ignore intercepts."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build It From Two Points",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Situation cards giving two (x, y) facts",
+            "Whiteboards"
+          ],
+          "instructions": "1. For each card, write the two given (x, y) facts.\n2. Compute the rate of change (change in y)/(change in x).\n3. Work back to the starting value and write y = mx + b.\n4. Say aloud what the rate means in that situation.\n5. Debrief: which number did you say 'per unit' about -- m or b?",
+          "content": {}
+        },
+        {
+          "type": "error_analysis",
+          "title": "Rate, Not Start",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Mia's interpretation"
+          ],
+          "instructions": "1. Read Mia's claim that y = 20x + 50 means he saved $50 per week.\n2. Circle the number that is the per-week rate.\n3. Rewrite the correct interpretation of the rate of change.\n4. Write one sentence naming what the 50 really means.",
+          "content": {
+            "worked_problem": "Model y = 20x + 50 (x = weeks). Mia wrote 'saved $50 per week.'",
+            "error_step": "Mia interpreted the starting amount (50) as the weekly rate.",
+            "why": "The rate of change is m = 20 ($20 per week); 50 is the starting savings (b)."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-004",
+          "why": "A math-journal sentence explaining what the rate means builds the interpret-in-context skill the At-proficiency item demands."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Reading the initial value as the rate is a precise error a find-and-fix names cleanly."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'is 50 a per-week amount?' surfaces the rate-vs-start distinction for debate."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What are the two facts you can use to find the rate?",
+          "What is (change in y) over (change in x)?",
+          "Does the rate describe a per-week (per-unit) amount, or the start?",
+          "What does the rate of change mean in this story?",
+          "Which number is the starting value, and where does it go in the equation?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student interprets the initial value (starting amount) as the rate of change.",
+            "say": "The rate of change is how much y goes up for each 1 x -- the slope m. Compute (change in y)/(change in x), not the starting amount. 'Per week/per hour' is the rate; the one-time starting value is the y-intercept.",
+            "praise": "You read the rate as the per-unit change (m), not the starting amount -- that's the correct interpretation."
+          },
+          {
+            "if_you_see": "Student writes the equation but leaves Part B as a bare number ('20') with no context.",
+            "say": "Say it as a full sentence with units: '$20 PER WEEK.' The interpretation must name what changes and per what.",
+            "praise": "You put the rate into words with units -- that's a complete interpretation."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A saver: y = 12x + 40. What does 12 mean in context?",
+            "look_for": "Saves $12 per week (the rate). '$40 per week' means the start is being read as the rate."
+          },
+          {
+            "prompt": "Points (0, 5) and (3, 20) model growth. What is the rate, and what does it mean?",
+            "look_for": "5 per unit; grows 5 each x. A wrong rate flags a slope-computation slip."
+          }
+        ]
+      },
+      "fluency_source": "8AF6-F1",
+      "sentence_starters": [
+        "The rate of change is ___, which means y goes up ___ for every ___.",
+        "In this situation, ___ increases by ___ each ___."
+      ],
+      "worked_solution": {
+        "stem": "A pool is filling steadily. After 2 minutes it holds 26 gallons; after 5 minutes it holds 44 gallons. Part A: Write a linear function for the gallons y after x minutes. Part B: What does the rate of change mean in context?",
+        "answer": "Part A: y = 6x + 14. Part B: The pool fills at 6 gallons per minute.",
+        "steps": [
+          {
+            "math": "rate = (44 - 26)/(5 - 2) = 18/3 = 6",
+            "annotation": "Rate of change is the change in gallons over the change in minutes."
+          },
+          {
+            "math": "at x = 2, y = 26  ->  x = 0: 26 - 6 - 6 = 14",
+            "annotation": "Step back to x = 0 to find the starting gallons (b)."
+          },
+          {
+            "math": "y = 6x + 14",
+            "annotation": "m = 6, b = 14 in slope-intercept form."
+          },
+          {
+            "math": "6 gallons per minute",
+            "annotation": "The rate of change describes how fast the pool fills."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A tank fills steadily. After 1 hour it holds 9 gallons; after 4 hours it holds 18 gallons. Part A: Write a linear function for the gallons y after x hours. Part B: What does the rate of change mean in context?",
+        "answer": "Part A: y = 3x + 6. Part B: The tank fills at 3 gallons per hour.",
+        "steps": [
+          {
+            "math": "rate = (18 - 9)/(4 - 1) = 9/3 = 3",
+            "annotation": "Change in gallons over change in hours.",
+            "given": true
+          },
+          {
+            "math": "at x = 1, y = 9  ->  x = 0: 9 - 3 = 6",
+            "annotation": "Step back one hour to reach x = 0.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the function in y = mx + b form.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State what the rate of change means, with units.",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF6-S6",
+      "name": "Write the equation and interpret both m and b in context",
+      "column": "looking_forward",
+      "parent_standard": "8.AF.6",
+      "engine_stems": [
+        5
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8AF6-S5"
+      },
+      "i_do_script": "At the top of this standard I write the equation AND explain both numbers, including when the rate is negative. Watch: 'A student has $20 and buys a $1.75 granola bar each day.' Each bar REMOVES $1.75, so the rate is negative: m = -1.75. The $20 is what he starts with: b = 20. So y = -1.75x + 20. The m means the money goes DOWN $1.75 for each bar; the b means he started with $20. The trap is saying the money goes UP, or swapping which number is the rate and which is the start.",
+      "canonical_error": {
+        "pattern": "Swaps the meanings of m and b, describing the y-intercept as the rate and the slope as the starting value",
+        "example": "For y = -1.75x + 20 says 'the rate of change is 20 and the starting amount is -1.75' instead of rate -1.75 (per bar) and start 20",
+        "why": "The student ties the interpretation to position or size instead of role. m (the coefficient of x) is always the per-unit rate of change; b (the constant) is always the initial value."
+      },
+      "item_template": "A context (rate may be negative; initial value may be read from context). Part A: write y = mx + b. Part B: interpret m. Part C: interpret b. Multi-part.",
+      "sample_items": [
+        {
+          "stem": "A student has $20 to spend and buys one granola bar for $1.75 each day. Part A: Write an equation in y = mx + b form for the money left, y, after buying x bars. Part B: What does m represent? Part C: What does b represent?",
+          "answer": "Part A: y = -1.75x + 20. Part B: m = -1.75 means the money left decreases by $1.75 for each granola bar bought. Part C: b = 20 means he starts with $20 (before buying any bars)."
+        },
+        {
+          "stem": "A submarine is 50 meters below sea level and rises 4 meters each second. Let y be its position (meters relative to sea level) after x seconds. Part A: Write the equation. Part B: What does m represent? Part C: What does b represent?",
+          "answer": "Part A: y = 4x - 50. Part B: m = 4 means it rises 4 meters per second. Part C: b = -50 means it starts 50 meters below sea level."
+        },
+        {
+          "stem": "A phone is 100% charged and loses 5% of charge each hour. Let y be the percent charge after x hours. Part A: Write the equation. Part B: What does m represent? Part C: What does b represent?",
+          "answer": "Part A: y = -5x + 100. Part B: m = -5 means the charge drops 5% per hour. Part C: b = 100 means it starts fully charged at 100%."
+        },
+        {
+          "stem": "A rideshare charges a $2.50 base fare plus $1.25 for each mile. Let y be the total cost after x miles. Part A: Write the equation. Part B: What does m represent? Part C: What does b represent?",
+          "answer": "Part A: y = 1.25x + 2.50. Part B: m = 1.25 means the cost rises $1.25 per mile. Part C: b = 2.50 means the base fare (cost at 0 miles) is $2.50."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which number goes with x -- that's the rate.",
+        "prompt": "m is ALWAYS the per-unit rate of change (the coefficient of x); b is ALWAYS the starting value (the constant). Check the sign too: a negative m means the quantity goes DOWN each step. Don't swap them or flip the direction.",
+        "praise": "You matched m to the per-unit rate and b to the starting value, with the right direction -- that's a full interpretation."
+      },
+      "vocabulary": [
+        {
+          "term": "Rate of change",
+          "definition": "How much y changes for each 1 that x increases; the slope m in y = mx + b."
+        },
+        {
+          "term": "y-intercept",
+          "definition": "The y-value where the line crosses the y-axis, when x = 0; written as the point (0, b)."
+        },
+        {
+          "term": "Slope-intercept form",
+          "definition": "A linear equation written as y = mx + b, where m is the rate of change and b is the initial value."
+        },
+        {
+          "term": "Initial value",
+          "definition": "The starting amount of a situation, the value of y when x = 0; the b in y = mx + b."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for AI.L.3 / AI.SEI.1 (write, graph, and interpret linear equations in Algebra I).",
+        "if_fail": "8AF6-S5"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'A submarine is 50 m below sea level and rises 4 m each second. Position y after x seconds.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which number goes with x (the per-second change)? Which is the starting position?"
+        },
+        {
+          "kind": "say",
+          "text": "It rises 4 m per second, so m = 4. It starts 50 m below sea level, so b = -50. Equation: y = 4x - 50. m = rate up; b = starting depth."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes b = 50, ask 'below sea level -- is that positive or negative?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a phone at 100% loses 5% per hour -- write the equation and interpret m and b."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "If a quantity DECREASES $1.75 each step, is the rate of change positive or negative?",
+          "answer": "Negative (m = -1.75)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "In y = -1.75x + 20, what does the 20 represent?",
+          "answer": "The starting amount (money before buying any bars)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A student has $20 and spends $1.75 per granola bar. Write the equation and say what m and b mean.",
+          "answer": "y = -1.75x + 20; m = -1.75 (money drops $1.75 per bar), b = 20 (started with $20).",
+          "notes": "Negative rate; b read from context."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A submarine is 50 m below sea level and rises 4 m/s. Write the equation and interpret m and b.",
+          "answer": "y = 4x - 50; m = 4 (rises 4 m each second), b = -50 (starts 50 m below sea level).",
+          "notes": "Negative intercept from 'below sea level.'"
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Omar interpreted a model. Find and fix the mistake.",
+          "shown_work": [
+            "Model: y = -1.75x + 20 (x = granola bars, y = money left).",
+            "Omar wrote: 'The rate of change is 20 and the starting amount is -1.75.'"
+          ],
+          "answer": "Omar swapped m and b. m is the number with x, -1.75, so the money drops $1.75 per bar. b is the constant, 20, so he started with $20.",
+          "notes": "Canonical error: m and b interpretations swapped."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "For y = -5x + 100 (percent charge after x hours), describe how the two quantities change together as x increases.",
+          "answer": "As the hours (x) increase, the percent charge (y) decreases by 5% each hour, starting from 100% at 0 hours.",
+          "notes": "Describe joint change, the Above-proficiency demand."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A rideshare is y = 1.25x + 2.50. A friend says 'b = 2.50 is the cost per mile.' Explain the error and give the correct meanings of m and b.",
+          "answer": "b is the base fare (cost at 0 miles), $2.50. The cost per mile is m = 1.25. The friend swapped the rate and the starting value.",
+          "notes": "Correct a swapped interpretation."
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Which One Is the Rate?",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Slip with Omar's interpretation",
+            "Whiteboards"
+          ],
+          "instructions": "1. Read Omar's claim that in y = -1.75x + 20 the rate is 20 and the start is -1.75.\n2. Circle the number attached to x -- label it 'rate (m).'\n3. Circle the number alone -- label it 'start (b).'\n4. Rewrite both interpretations correctly, with the right sign.\n5. Debrief: how do you decide which number is the rate, no matter the size?",
+          "content": {
+            "worked_problem": "y = -1.75x + 20 (x = bars). Omar wrote 'rate = 20, start = -1.75.'",
+            "error_step": "Omar swapped m and b, tying meaning to size/position instead of role.",
+            "why": "m is the coefficient of x (-1.75, the per-bar rate); b is the constant (20, the starting money)."
+          }
+        },
+        {
+          "type": "card_sort",
+          "title": "Up or Down?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 8 contexts with equations (some negative m, some negative b)"
+          ],
+          "instructions": "1. For each context, decide whether the quantity increases or decreases as x grows (check the sign of m).\n2. Sort into 'increases (m > 0)' and 'decreases (m < 0).'\n3. For each card, state what b means in that context.\n4. Debrief: how does the sign of m tell you the direction of change?",
+          "content": {
+            "categories": [
+              "Increases as x grows (m > 0)",
+              "Decreases as x grows (m < 0)"
+            ],
+            "cards": [
+              {
+                "text": "rideshare: y = 1.25x + 2.50",
+                "category": "Increases as x grows (m > 0)"
+              },
+              {
+                "text": "granola money: y = -1.75x + 20",
+                "category": "Decreases as x grows (m < 0)"
+              },
+              {
+                "text": "submarine: y = 4x - 50",
+                "category": "Increases as x grows (m > 0)"
+              },
+              {
+                "text": "phone charge: y = -5x + 100",
+                "category": "Decreases as x grows (m < 0)"
+              },
+              {
+                "text": "savings: y = 20x + 50",
+                "category": "Increases as x grows (m > 0)"
+              },
+              {
+                "text": "candle height: y = -2x + 20",
+                "category": "Decreases as x grows (m < 0)"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-004",
+          "why": "Writing full sentences for what m and b mean builds the interpret-both-parameters skill the Above-proficiency item demands."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Studying a correct-vs-swapped interpretation side by side makes the m/b role distinction explicit."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The swapped-interpretation error (and wrong direction on a negative rate) is precise and find-and-fix-ready."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'how do the two quantities change together?' rehearses the joint-change description aloud."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which number is attached to x -- what does it tell you?",
+          "Which number stands alone -- what does it tell you?",
+          "Is the rate positive or negative here, and what does that mean?",
+          "As x increases, does y go up or down, and by how much?",
+          "What does the y-intercept mean in this specific story?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student swaps the meanings of m and b, describing the y-intercept as the rate and the slope as the starting value.",
+            "say": "m is ALWAYS the per-unit rate of change (the coefficient of x); b is ALWAYS the starting value (the constant). Check the sign too: a negative m means the quantity goes DOWN each step. Don't swap them or flip the direction.",
+            "praise": "You matched m to the per-unit rate and b to the starting value, with the right direction -- that's a full interpretation."
+          },
+          {
+            "if_you_see": "Student says the quantity increases when the rate m is negative.",
+            "say": "Look at the sign of m. A negative rate means y goes DOWN each step -- describe it as decreasing.",
+            "praise": "You used the sign of m to get the direction right -- decreasing when m is negative."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "For y = -3x + 12, what does m mean and what does b mean?",
+            "look_for": "m = -3 (y drops 3 per x); b = 12 (starts at 12). Swapping or dropping the sign flags the error."
+          },
+          {
+            "prompt": "A diver at -30 m rises 5 m/s. Write the equation and interpret b.",
+            "look_for": "y = 5x - 30; b = -30 means starts 30 m below the surface. b = 30 misses the sign."
+          }
+        ]
+      },
+      "fluency_source": "8AF6-F2",
+      "sentence_starters": [
+        "m = ___ means y ___ (goes up/down) by ___ for each ___.",
+        "b = ___ means the situation starts at ___ when x = 0."
+      ],
+      "worked_solution": {
+        "stem": "A student has $20 to spend and buys one granola bar for $1.75 each day. Part A: Write an equation for the money left, y, after buying x bars. Part B: What does m mean? Part C: What does b mean?",
+        "answer": "Part A: y = -1.75x + 20. Part B: m = -1.75, the money drops $1.75 per bar. Part C: b = 20, he starts with $20.",
+        "steps": [
+          {
+            "math": "each bar removes $1.75  ->  m = -1.75",
+            "annotation": "Buying subtracts money, so the rate of change is negative."
+          },
+          {
+            "math": "starts with $20  ->  b = 20",
+            "annotation": "The money at x = 0 is the initial value."
+          },
+          {
+            "math": "y = -1.75x + 20",
+            "annotation": "Assemble into slope-intercept form."
+          },
+          {
+            "math": "m = per-bar decrease; b = starting money",
+            "annotation": "Interpret each parameter in the story's terms."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A submarine is 50 meters below sea level and rises 4 meters each second. Part A: Write an equation for its position y after x seconds. Part B: What does m mean? Part C: What does b mean?",
+        "answer": "Part A: y = 4x - 50. Part B: m = 4, it rises 4 m per second. Part C: b = -50, it starts 50 m below sea level.",
+        "steps": [
+          {
+            "math": "rises 4 m each second  ->  m = 4",
+            "annotation": "The per-second change is the rate m.",
+            "given": true
+          },
+          {
+            "math": "50 m below sea level  ->  b = -50",
+            "annotation": "Below sea level makes the starting value negative.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the equation in y = mx + b form.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Interpret m and b in the submarine's context.",
+            "given": false
+          }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "skills": [
+        "8AF6-F1",
+        "8AF6-F2"
+      ]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": [
+        "8AF6-S1",
+        "8AF6-S2",
+        "8AF6-S3"
+      ]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": [
+        "8AF6-S4",
+        "8AF6-S5"
+      ]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": [
+        "8AF6-S6"
+      ]
+    }
+  },
+  "skill_sequence": [
+    "8AF6-F1",
+    "8AF6-F2",
+    "8AF6-S1",
+    "8AF6-S2",
+    "8AF6-S3",
+    "8AF6-S4",
+    "8AF6-S5",
+    "8AF6-S6"
+  ],
+  "skill_tree": {
+    "8AF6-F1": [],
+    "8AF6-F2": [],
+    "8AF6-S1": [
+      "8AF6-F1"
+    ],
+    "8AF6-S2": [
+      "8AF6-F1"
+    ],
+    "8AF6-S3": [
+      "8AF6-F2"
+    ],
+    "8AF6-S4": [
+      "8AF6-S1",
+      "8AF6-S3"
+    ],
+    "8AF6-S5": [
+      "8AF6-S4"
+    ],
+    "8AF6-S6": [
+      "8AF6-S5"
+    ]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S4 (construct the equation for a described situation) -- the core act of the standard, and where the m-and-b swap lives. If they pass, move to S5 and S6 (construct and interpret the rate of change, then interpret both m and b in context). If they fail, drop to S1 to check whether they can even pull the rate of change out of a table, then to the foundations. S2 (rate from an equation) and S3 (find the initial value) branch off as the other two building blocks the construction depends on.",
+    "entry_skill": "8AF6-S4",
+    "if_pass": [
+      "8AF6-S5",
+      "8AF6-S6"
+    ],
+    "if_fail": [
+      "8AF6-S1"
+    ],
+    "branch_skills": [
+      "8AF6-S2",
+      "8AF6-S3"
+    ]
+  }
+}

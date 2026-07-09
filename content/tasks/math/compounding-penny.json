@@ -1,0 +1,88 @@
+{
+  "id": "task-math-043",
+  "type": "task",
+  "scope": "component",
+  "version": 1,
+  "title": "The Compounding Penny",
+  "subjects": [
+    "math"
+  ],
+  "gradeBand": "6-8",
+  "grades": [
+    8
+  ],
+  "standards": {
+    "indiana": [
+      "8.NS.4",
+      "8.AF.3"
+    ],
+    "commonCore": [
+      "8.EE.A.1",
+      "8.F.A.3"
+    ],
+    "ngss": []
+  },
+  "mtssTiers": [
+    1,
+    2
+  ],
+  "purposes": [
+    "guided-practice",
+    "investigation"
+  ],
+  "time": {
+    "estimatedMinutes": 30,
+    "minMinutes": 20,
+    "maxMinutes": 40
+  },
+  "tags": [
+    "exponents",
+    "exponential-growth",
+    "real-world",
+    "doubling",
+    "low-floor",
+    "high-ceiling"
+  ],
+  "preview": "Would you rather have $1,000,000 today, or a single penny that doubles every day for a month? Use exponents to settle the argument.",
+  "body": {
+    "goal": "Use exponents to model and reason about exponential growth (doubling). Compare exponential to linear growth and interpret the meaning of large powers of 2.",
+    "studentPrompt": "A boss offers you a choice for your one-month summer job (30 days):\n\n- **Option A:** A flat **$1,000,000** at the end of the month.\n- **Option B:** **$0.01 on Day 1**, then your daily pay doubles every day after — $0.02 on Day 2, $0.04 on Day 3, $0.08 on Day 4, and so on through Day 30.\n\n1. Write an expression with exponents that gives your **pay on Day n** under Option B.\n2. Compute your pay on Day 10, Day 20, Day 25, and Day 30 under Option B. Show how you used your expression each time.\n3. Which option pays more *total* by the end of Day 30? Roughly how much more?\n4. On what day does Option B's *daily* pay first exceed Option A's *total* lump sum?\n5. Make a quick sketch comparing the two options on a graph. Day on the x-axis, total dollars earned on the y-axis. Describe in words what's different about the *shape* of each option's graph.",
+    "image": {
+      "kind": "url",
+      "url": "https://images.pexels.com/photos/1006060/pexels-photo-1006060.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "alt": "Assorted silver and gold colored coins on a gray surface.",
+      "credit": "Photo by Steve Johnson on Pexels"
+    },
+    "launch": "Don't graph or compute first. Just read the offer aloud and ask each group: **which would you pick, and why?** Most groups will pick A on instinct. Send them to the boards with the prompt and let the doubling shock them.",
+    "materials": [
+      "Vertical whiteboards",
+      "Markers",
+      "Calculator allowed"
+    ],
+    "concepts": [
+      "exponents",
+      "exponential-growth",
+      "doubling",
+      "linear-vs-exponential",
+      "comparison"
+    ],
+    "taskType": "investigation",
+    "btcFit": "Classic BTC 'gotcha' investigation. Low floor: every group can list out doublings for the first few days. The diamond is realizing that exponential growth starts slow and then explodes — 2³⁰ pennies far exceeds $1M. Strong groups will derive a closed form. Q5 surfaces the *shape* difference between linear (flat line — Option A is a single number, not a function of days) and exponential.",
+    "anticipatedApproaches": "- Q1: Day n pay (in dollars) = 0.01 × 2^(n-1). Or equivalently, (2^(n-1)) / 100.\n- Q2: Day 10 → 0.01 × 2⁹ = 0.01 × 512 = $5.12. Day 20 → 0.01 × 2¹⁹ = 0.01 × 524,288 = $5,242.88. Day 25 → 0.01 × 2²⁴ = 0.01 × 16,777,216 = $167,772.16. Day 30 → 0.01 × 2²⁹ = 0.01 × 536,870,912 ≈ $5,368,709.12.\n- Q3: Option B total (sum of geometric series) = 0.01 × (2³⁰ − 1) ≈ **$10,737,418.23**. About **$9.7 million more** than Option A.\n- Q4: Day n pay exceeds 1,000,000 when 0.01 × 2^(n-1) > 1,000,000 → 2^(n-1) > 10⁸. Since 2²⁷ ≈ 1.34 × 10⁸, n - 1 = 27 → **Day 28**.\n- Q5: Option A graph: a single point at Day 30 worth $1,000,000 (or, if you draw a cumulative running total assuming the money lands at the end, a flat 0 then a vertical jump). Option B graph: curves upward — flat near zero for many days, then sharply rising, crossing Option A around Day 28.",
+    "commonMisconceptions": "- Writing the Day n formula as 0.01 × 2ⁿ instead of 0.01 × 2^(n-1). Day 1 should be $0.01, not $0.02.\n- Confusing 'doubling' with 'adding 2' (linear instead of exponential).\n- Stopping after computing Day 30's daily pay and forgetting that the question asks for the *total* over all 30 days.\n- Underestimating Q4 — guessing 'Day 30' without checking. The crossover is actually Day 28.\n- Treating Option A as exponential too (it's a fixed amount; the graph is flat).",
+    "discussionQuestions": "- Why do most people instinctively pick Option A? What does that say about how humans think about doubling?\n- Sketch what Option B looks like for the *first 15 days*. Now what does it look like over 30 days? Why is the same function so surprising on different scales?\n- If Option B started at $1 instead of $0.01 (so Day 1 = $1, Day 2 = $2, Day 3 = $4...), how much would Day 30 pay? (2²⁹ = $536,870,912 — over half a billion.) How does the *starting amount* affect the growth pattern?\n- Is there a number of days where Option A would actually win? (Yes — for ~27 days or fewer, Option A wins on totals. Doubling is slow to start.)",
+    "extensions": "- Suppose the boss switches to TRIPLING every day instead of doubling, starting from $0.01 on Day 1. On what day does Option B's daily pay first exceed $1,000,000 now? Compare to Day 28.\n- Same setup, but doubling stops at Day 20 and then daily pay stays flat at the Day 20 amount. What's the new total? Is Option A or Option B better in that case?\n- Real-world: a chessboard has 64 squares. A king is offered 1 grain of rice on the first square, 2 on the second, 4 on the third, doubling each square. Without computing all 64, estimate how many grains end up on the last square. Compare to the world's annual rice production (~750 million tonnes).\n- Find a value of $X (starting Option B daily pay instead of $0.01) such that the cumulative total Option B == Option A exactly after 30 days. Use exponents to solve for X.",
+    "sampleSolutions": "1. Day n daily pay = $0.01 × 2^(n-1).\n2. Day 10: 0.01 × 2⁹ = $5.12. Day 20: 0.01 × 2¹⁹ ≈ $5,242.88. Day 25: 0.01 × 2²⁴ ≈ $167,772.16. Day 30: 0.01 × 2²⁹ ≈ **$5,368,709.12** (just for Day 30).\n3. Option B total (sum across 30 days) = 0.01 × (2³⁰ − 1) ≈ **$10,737,418.23**. Beats Option A by **~$9.7M**.\n4. Solve 0.01 × 2^(n-1) > 1,000,000 → 2^(n-1) > 10⁸. 2²⁷ = 134,217,728 > 10⁸. So n − 1 = 27 → **Day 28** is the first day the daily pay alone exceeds $1M.\n5. Option A: flat horizontal at $1,000,000 (paid as a lump on Day 30). Option B: a curve that rises sharply — slow start, hockey-stick shape, crossing Option A around Day 28 and then exploding past it.",
+    "source": {
+      "name": "Plug N Play (original)",
+      "license": "CC BY-NC-SA 4.0",
+      "url": "",
+      "attribution": "Plug N Play. Original take on the classic doubling-penny exponential-growth investigation. Licensed under CC BY-NC-SA 4.0."
+    }
+  },
+  "authoring": {
+    "generatedBy": "seed",
+    "generatedAt": "2026-05-29",
+    "reviewedBy": null
+  }
+}

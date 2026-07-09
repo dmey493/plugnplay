@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light only"><title>Graph of the Week &middot; MS-PS2-5</title><style>
+  :root { color-scheme: light only; }
+  * { box-sizing: border-box; }
+  html { background: transparent; }
+  body { margin:0; font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         color:#111; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .sheet { width:8.5in; margin:18px auto; padding:0.55in 0.6in 0.5in; background:#fff;
+           box-shadow:0 2px 14px rgba(0,0,0,.18); }
+  .print-bar { max-width:8.5in; margin:14px auto 0; text-align:right; }
+  .print-btn { font:600 13px/1 inherit; padding:8px 14px; border:1px solid #111; background:#111;
+               color:#fff; border-radius:6px; cursor:pointer; }
+  .namebar { display:flex; gap:26px; font-size:12px; color:#333; margin-bottom:10px; }
+  .namebar .f { flex:1; display:flex; align-items:baseline; gap:8px; }
+  .namebar .ln { flex:1; border-bottom:1px solid #555; height:14px; }
+  h1.title { font-family:Georgia,"Times New Roman",serif; font-size:30px; line-height:1.05; margin:0;
+             color:#000; letter-spacing:.2px; }
+  .standline { font-size:11px; font-weight:700; letter-spacing:.4px; color:#222; margin:5px 0 9px;
+               text-transform:uppercase; }
+  .standline .sep { color:#888; }
+  .question { border:1px solid #999; background:#f3f3f3; border-radius:6px; padding:9px 14px; margin-bottom:9px; }
+  .question .lab { font-size:10.5px; font-weight:800; letter-spacing:.8px; text-transform:uppercase;
+                   color:#333; display:block; margin-bottom:3px; }
+  .question p { margin:0; font-size:15px; font-weight:600; color:#000; line-height:1.35; }
+  .howto { font-size:12px; font-style:italic; color:#555; margin:0 0 5px; }
+  .howto b { color:#222; font-style:normal; }
+  .legend { display:flex; gap:22px; justify-content:center; flex-wrap:wrap; font-size:12px; margin-bottom:4px; }
+  .legend span { display:inline-flex; align-items:center; }
+  .legend .sw { width:18px; height:12px; border:1px solid #000; margin-right:6px; }
+  .legend svg.mk { margin-right:6px; }
+  .chart { width:84%; height:auto; display:block; margin:2px auto 0; }
+  table { width:100%; border-collapse:collapse; margin:4px 0 4px; font-size:12.5px; }
+  thead th { background:#1c1c1c; color:#fff; font-size:12px; font-weight:700; line-height:1.2;
+             padding:7px 10px; text-align:center; vertical-align:middle; border:1px solid #1c1c1c; }
+  thead th:first-child { text-align:left; }
+  tbody td { border:1px solid #c9c9c9; padding:4px 10px; text-align:center; }
+  tbody td:first-child { text-align:left; }
+  tbody tr:nth-child(even) td { background:#f4f4f4; }
+  .src { font-size:10.5px; font-style:italic; color:#666; margin:3px 0 8px; }
+  .cer { display:flex; flex-direction:column; gap:6px; }
+  .step .hd { display:flex; align-items:baseline; gap:10px; margin-bottom:3px; }
+  .step .badge { font-size:11px; font-weight:800; letter-spacing:.7px; text-transform:uppercase;
+                 background:#222; color:#fff; padding:3px 9px; border-radius:3px; }
+  .step .ask { font-size:13px; font-weight:700; color:#000; }
+  .step .hint { font-size:11.5px; font-style:italic; color:#777; margin:0 0 5px; }
+  .rule { border-bottom:1px solid #b9b9b9; height:20px; }
+  .rule.r { height:23px; }
+  .foot { margin-top:12px; padding-top:9px; border-top:1px solid #ccc; display:flex;
+          justify-content:space-between; font-size:10.5px; color:#555; }
+  .foot .r { font-weight:700; color:#333; }
+
+  /* ---- double-sided: front "first look" + back analysis ---- */
+  .firstlook { border:1px solid #999; border-radius:6px; padding:8px 12px; margin-top:10px; }
+  .firstlook .fl-lab { font-size:10.5px; font-weight:800; letter-spacing:.7px; text-transform:uppercase; color:#333; }
+  .firstlook .row { font-size:12.5px; margin-top:7px; color:#000; line-height:1.5; }
+  .firstlook .u { display:inline-block; border-bottom:1px solid #999; min-width:140px; height:14px; vertical-align:middle; }
+  .firstlook .u.long { min-width:330px; }
+  .backhead { margin-bottom:12px; padding-bottom:8px; border-bottom:2px solid #1c1c1c; }
+  .backhead .t { font-family:Georgia,"Times New Roman",serif; font-size:20px; color:#000; }
+  .backhead .q { font-size:11.5px; color:#444; margin-top:3px; }
+  .backhead .q b { color:#222; }
+  .part { margin-bottom:12px; }
+  .part .lab { display:inline-block; font-size:11px; font-weight:800; letter-spacing:.6px; text-transform:uppercase;
+               background:#222; color:#fff; padding:3px 9px; border-radius:3px; margin-bottom:6px; }
+  .part .q2 { font-size:12.5px; color:#222; margin:7px 0 3px; }
+  .part .q2 b { color:#000; }
+  .part .hint { font-size:11px; font-style:italic; color:#777; margin:1px 0 4px; }
+
+  @media print { html{background:#fff;} .print-bar{display:none;}
+    .sheet{width:auto; min-height:0; margin:0; padding:0; box-shadow:none; page-break-after:always; }
+    .sheet:last-of-type{ page-break-after:auto; }
+    @page{ size:letter; margin:0.5in 0.55in; } }
+</style></head><body><div class="sheet"><div class="namebar"><span class="f">Name <span class="ln"></span></span><span class="f">Date <span class="ln"></span></span></div><h1 class="title">Graph of the Week</h1><div class="standline">Standard MS-PS2-5 <span class="sep">&middot;</span> Field Strength Profile <span class="sep">&middot;</span> Fields &amp; Distance</div><div class="question"><span class="lab">This Week's Question</span><p>Earth, a magnet, and a charged balloon all reach out through empty space. Use the graph to compare how three kinds of fields fade as you move away from their source.</p></div><div class="legend"><span><svg class="mk" width="26" height="12" viewBox="0 0 26 12"><line x1="1" y1="6" x2="25" y2="6" stroke="#111" stroke-width="2" stroke-dasharray="0"/><circle cx="13.0" cy="6.0" r="3.2" fill="#111" stroke="#111" stroke-width="1"/></svg>Gravitational</span><span><svg class="mk" width="26" height="12" viewBox="0 0 26 12"><line x1="1" y1="6" x2="25" y2="6" stroke="#111" stroke-width="2" stroke-dasharray="6,4"/><rect x="9.8" y="2.8" width="6.4" height="6.4" fill="#111" stroke="#111" stroke-width="1"/></svg>Magnetic (bar)</span></div><svg class="chart" style="width:96%" viewBox="0 0 700 250" role="img" aria-label="chart"><defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#1c1c1c" stroke-width="2.6"/></pattern><pattern id="cross" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#e9e9e9"/><path d="M0 0 L6 6 M6 0 L0 6" stroke="#1c1c1c" stroke-width="1"/></pattern><pattern id="dots" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#fff"/><circle cx="3" cy="3" r="1.3" fill="#1c1c1c"/></pattern></defs><g stroke="#cfcfcf" stroke-width="1"><line x1="60" y1="158.8" x2="680" y2="158.8"/><line x1="60" y1="112.5" x2="680" y2="112.5"/><line x1="60" y1="66.2" x2="680" y2="66.2"/><line x1="60" y1="20.0" x2="680" y2="20.0"/></g><g font-size="11" fill="#444" text-anchor="end"><text x="52" y="209.0">0</text><text x="52" y="162.8">25</text><text x="52" y="116.5">50</text><text x="52" y="70.2">75</text><text x="52" y="24.0">100</text></g><text x="16" y="112" font-size="10" fill="#444" text-anchor="middle" transform="rotate(-90 16 112)">Relative field strength (%)</text><line x1="60" y1="205" x2="680" y2="205" stroke="#000" stroke-width="1.5"/><polyline points="122.0,20.0 246.0,158.8 370.0,184.7 494.0,193.9 618.0,197.6" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="0"/><circle cx="122.0" cy="20.0" r="3.3" fill="#111" stroke="#111" stroke-width="1"/><circle cx="246.0" cy="158.8" r="3.3" fill="#111" stroke="#111" stroke-width="1"/><circle cx="370.0" cy="184.7" r="3.3" fill="#111" stroke="#111" stroke-width="1"/><circle cx="494.0" cy="193.9" r="3.3" fill="#111" stroke="#111" stroke-width="1"/><circle cx="618.0" cy="197.6" r="3.3" fill="#111" stroke="#111" stroke-width="1"/><polyline points="122.0,20.0 246.0,182.8 370.0,197.6 494.0,201.3 618.0,203.2" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="6,4"/><rect x="118.7" y="16.7" width="6.6" height="6.6" fill="#111" stroke="#111" stroke-width="1"/><rect x="242.7" y="179.5" width="6.6" height="6.6" fill="#111" stroke="#111" stroke-width="1"/><rect x="366.7" y="194.3" width="6.6" height="6.6" fill="#111" stroke="#111" stroke-width="1"/><rect x="490.7" y="198.0" width="6.6" height="6.6" fill="#111" stroke="#111" stroke-width="1"/><rect x="614.7" y="199.9" width="6.6" height="6.6" fill="#111" stroke="#111" stroke-width="1"/><g font-size="11" fill="#111" text-anchor="middle"><text x="122" y="222">1</text><text x="246" y="222">2</text><text x="370" y="222">3</text><text x="494" y="222">4</text><text x="618" y="222">5</text></g><text x="370" y="244" font-size="11" fill="#444" text-anchor="middle">Relative distance</text></svg><p class="src">Data: Representative field-strength profiles: gravity follows 1/r² (inverse-square); a bar magnet&#x27;s field falls faster (about 1/r³).</p><div class="firstlook"><span class="fl-lab">First look &mdash; before you flip over</span><div class="row"><b>This graph is about:</b> <span class="u long"></span></div><div class="row"><b>The x-axis shows</b> <span class="u"></span> &nbsp;<b>the y-axis shows</b> <span class="u"></span></div><div class="row"><b>I notice&hellip;</b> <span class="u long"></span></div><div class="row"><b>I wonder&hellip;</b> <span class="u long"></span></div></div></div><div class="sheet"><div class="backhead"><div class="t">Analyze the Graph</div><div class="q"><b>MS-PS2-5</b> &middot; Earth, a magnet, and a charged balloon all reach out through empty space. Use the graph to compare how three kinds of fields fade as you move away from their source.</div></div><div class="part"><span class="lab">Part A &middot; Analyze the Data</span><div class="q2">Which field fades the fastest as distance grows?</div><div class="rule"></div><div class="rule"></div><div class="q2">At distance 2, how do the gravitational and magnetic fields compare?</div><div class="rule"></div><div class="rule"></div><div class="q2">Which field would still be usable farther out?</div><div class="rule"></div><div class="rule"></div></div><div class="part"><span class="lab">Part B &middot; Claim &middot; Evidence &middot; Reasoning</span><div class="q2"><b>Claim</b> &mdash; answer this week's question in one sentence.</div><p class="hint">As distance from the source increases, every field&#x27;s strength…</p><div class="rule"></div><div class="rule"></div><div class="q2"><b>Evidence</b> &mdash; back it up with numbers from the graph.</div><p class="hint">At distance 2 the gravitational field is about ___ % while the magnetic field is about ___ % — the magnetic field fades ___.</p><div class="rule"></div><div class="rule"></div><div class="rule"></div><div class="q2"><b>Reasoning</b> &mdash; explain the physics behind the data.</div><p class="hint">Fields act at a distance but weaken with separation; inverse-square fields drop to one-fourth at double distance, while a bar magnet&#x27;s fades even faster…</p><div class="rule"></div><div class="rule"></div></div><div class="part"><span class="lab">Part C &middot; Predict &amp; Investigate</span><div class="q2"><b>Predict:</b> Predict each field&#x27;s strength at distance 6.</div><div class="rule"></div><div class="rule"></div><div class="q2"><b>Investigate:</b> How could you measure a magnet&#x27;s field strength at several distances?</div><div class="rule"></div><div class="rule"></div></div><div class="foot"><span>Graph of the Week</span><span class="r">MS-PS2-5 &middot; Field Strength Profile</span></div></div></body></html>

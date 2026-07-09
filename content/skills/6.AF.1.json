@@ -1,0 +1,3675 @@
+{
+  "standard_code": "6.AF.1",
+  "standard_text": "Define and use multiple variables when writing expressions to represent real-world and other mathematical problems, and evaluate them for given values.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "6.AF.1 asks students to do two things: WRITE expressions (from real-world and mathematical situations, using one or more variables) and EVALUATE them for given values. The logic of the standard runs in that order. First a student has to hear the operation hiding inside words (S1) and then commit it to symbols with one variable and one operation (S2) — the first place order matters ('7 less than n' is n − 7, not 7 − n). Writing then grows in two directions: compact exponent notation for repeated multiplication (S3), and modeling real contexts where one amount repeats and another happens once (S4). Once a student can write expressions, the standard reverses the process: substitute a value and compute (S5), respect the order of operations when several operations compete (S6), and finally track multiple variables, each carrying its own value (S7) — the full demand of 'define and use multiple variables… and evaluate them for given values.'",
+    "steps": [
+      {
+        "skill_id": "6AF1-S1",
+        "verb": "translate",
+        "rationale": "Hear the operation inside the words. Before a student can write n + 8, they must reliably map phrases like 'more than' and 'product of' to operations. Every later step decodes language through this skill."
+      },
+      {
+        "skill_id": "6AF1-S2",
+        "verb": "write",
+        "rationale": "Commit the phrase to symbols — one variable, one operation. This is the first true act of writing an expression, and the first place order matters: '7 less than a number' is n − 7, not 7 − n."
+      },
+      {
+        "skill_id": "6AF1-S3",
+        "verb": "write",
+        "rationale": "Extend writing to compact notation. 'Squared' and 'cubed' introduce exponents — the first place where the notation itself changes meaning (5x² is not (5x)²)."
+      },
+      {
+        "skill_id": "6AF1-S4",
+        "verb": "represent",
+        "rationale": "Model real situations, the heart of the standard's 'real-world problems' demand. Students decide which amount repeats (rate × variable) and which happens once (constant): 25m + 50, never 50m + 25."
+      },
+      {
+        "skill_id": "6AF1-S5",
+        "verb": "evaluate",
+        "rationale": "Reverse the process: substitution. Replace the letter with its value and compute — seeing 4n as 4 × n, never as digits pasted together to make 43."
+      },
+      {
+        "skill_id": "6AF1-S6",
+        "verb": "evaluate",
+        "rationale": "Evaluate when operations compete. With two or more operations in one expression, order of operations decides the answer and left-to-right reading breaks down."
+      },
+      {
+        "skill_id": "6AF1-S7",
+        "verb": "evaluate",
+        "rationale": "The full demand of the standard: multiple variables. Each letter carries its own value, and students must track them through substitution and order of operations together."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "6AF1-F1",
+      "name": "Identify the four basic operations from context",
+      "column": "foundation",
+      "parent_standard": "6.AF.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 3,
+        "description": "Understand addition, subtraction, multiplication, and division as actions",
+        "check_question": "If you have 3 groups of 4, what operation do you use to find the total?"
+      },
+      "i_do_script": "Today we're figuring out how to pick the right operation — add, subtract, multiply, or divide — just from reading a story. Don't tell students the rule. Ask what the story is doing and let them name the operation themselves.",
+      "canonical_error": {
+        "pattern": "Cannot distinguish between addition and multiplication in context — treats all 'combining' as addition",
+        "example": "For '3 bags with 5 apples each,' student adds 3 + 5 = 8 instead of multiplying 3 × 5 = 15",
+        "why": "Student sees two numbers and defaults to addition because it's the most familiar operation. They haven't learned to recognize 'each/every/per' as multiplication signals."
+      },
+      "item_template": "A one-sentence real-world scenario with two numbers. Student identifies which operation (add, subtract, multiply, or divide) to use. MC with 4 choices.",
+      "sample_items": [
+        {
+          "stem": "Liam picked 18 apples and Noah picked 14 apples. What operation do you use to find how many apples they picked altogether?",
+          "answer": "Addition",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student might subtract because two numbers are present and 14 is less than 18"
+        },
+        {
+          "stem": "A garden has 9 rows of tomato plants with 6 plants in every row. What operation do you use to find how many plants are in the garden?",
+          "answer": "Multiplication",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student defaults to addition and adds 9 + 6 instead of multiplying because the keyword 'every' is missed"
+        },
+        {
+          "stem": "There are 28 students in a classroom and 19 of them went to lunch. What operation do you use to find how many students are remaining?",
+          "answer": "Subtraction",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student might add because two numbers are present and addition feels familiar"
+        },
+        {
+          "stem": "A class of 32 students is divided into teams of 8. What operation do you use to find how many teams there are?",
+          "answer": "Division",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student might subtract 32 - 8 instead of dividing because they default to subtraction when one number is smaller"
+        },
+        {
+          "stem": "The library has 22 fiction books and 17 nonfiction books on a cart. What operation do you use to find the total number of books on the cart?",
+          "answer": "Addition",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student might multiply because both numbers describe the same kind of object"
+        },
+        {
+          "stem": "A baker has 56 muffins and packs 8 muffins per box. What operation do you use to find how many boxes the baker fills?",
+          "answer": "Division",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student defaults to addition or subtracts 56 - 8 instead of dividing because the keyword 'per' is missed"
+        },
+        {
+          "stem": "Carlos read 47 pages on Monday and Mia read 35 pages on Monday. What operation do you use to find how many more pages Carlos read than Mia?",
+          "answer": "Subtraction",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student might add because two numbers are present and addition is the most familiar operation"
+        },
+        {
+          "stem": "A toy store sells action figures in groups of 5, and Priya buys 4 groups. What operation do you use to find how many action figures Priya buys?",
+          "answer": "Multiplication",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student adds 5 + 4 = 9 instead of multiplying because they treat 'groups of' as combining rather than equal groups"
+        },
+        {
+          "stem": "Aiden has 24 marbles and gives 9 to his sister. What operation do you use to find how many marbles Aiden has left?",
+          "answer": "Subtraction",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student might add 24 + 9 because they default to addition when two numbers appear together"
+        },
+        {
+          "stem": "A pizza shop cuts each pizza into 8 slices. What operation do you use to find how many slices are in 7 pizzas?",
+          "answer": "Multiplication",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student adds 8 + 7 instead of multiplying because the keyword 'each' is missed"
+        },
+        {
+          "stem": "Maya saved $63 and her brother saved $48. What operation do you use to find the combined amount they saved?",
+          "answer": "Addition",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student might subtract because 48 is less than 63 and that pattern feels like 'find the difference'"
+        },
+        {
+          "stem": "A teacher arranges 45 chairs into rows of 9 chairs. What operation do you use to find how many rows there are?",
+          "answer": "Division",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student might multiply 45 x 9 because they see 'rows of' and treat it as equal groups instead of splitting"
+        },
+        {
+          "stem": "A runner jogged 7 miles on Monday and 5 miles on Tuesday. What operation do you use to find the total distance jogged?",
+          "answer": "Addition",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student might multiply 7 x 5 because both numbers describe the same activity"
+        },
+        {
+          "stem": "Each soccer team has 11 players, and there are 6 teams in the tournament. What operation do you use to find the total number of players?",
+          "answer": "Multiplication",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student adds 11 + 6 instead of multiplying because they default to addition when finding a total"
+        },
+        {
+          "stem": "A jar holds 72 jellybeans, and 4 friends share them equally. What operation do you use to find how many jellybeans each friend gets?",
+          "answer": "Division",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student might subtract 72 - 4 instead of dividing because they miss the phrase 'shared equally'"
+        },
+        {
+          "stem": "There were 50 cupcakes on a tray, and 18 were eaten at the party. What operation do you use to find how many cupcakes are left?",
+          "answer": "Subtraction",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student might add because two numbers are present and addition is the most familiar default"
+        },
+        {
+          "stem": "A store has 96 batteries packaged into boxes of 12 batteries per box. What operation do you use to find how many boxes there are?",
+          "answer": "Division",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student multiplies 96 x 12 because the keyword 'per' is misread as a multiplication signal in every context"
+        },
+        {
+          "stem": "Sofia ran 8 laps and Jamal ran 13 laps. What operation do you use to find how many fewer laps Sofia ran than Jamal?",
+          "answer": "Subtraction",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student adds 8 + 13 because they default to addition without recognizing 'how many fewer' as a subtraction signal"
+        },
+        {
+          "stem": "A bookshelf has 4 shelves, with 15 books on every shelf. What operation do you use to find how many books are on the bookshelf?",
+          "answer": "Multiplication",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student adds 4 + 15 instead of multiplying because they overlook the keyword 'every'"
+        },
+        {
+          "stem": "A bus had 26 passengers, and 11 more people got on at the next stop. What operation do you use to find how many passengers are on the bus now?",
+          "answer": "Addition",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Student might subtract because they see two numbers and assume one must be taken away from the other"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Let's read the problem again and look for the action word.",
+        "prompt": "Every word problem has an action hiding in it. Are we putting things together (add), taking away (subtract), making equal groups (multiply), or splitting into equal parts (divide)? Underline the action word in the problem.",
+        "praise": "You found the action word and matched it to the right operation. That's the first step in every word problem."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board: 'Liam picked 18 apples and Noah picked 14 apples. How many apples did they pick altogether?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Read this with me. What is actually happening in this story? Tell me in your own words."
+        },
+        {
+          "kind": "watch",
+          "text": "Listen for whether the student describes two people combining their apples. If they just repeat the numbers, ask: 'What are Liam and Noah doing with their apples?'"
+        },
+        {
+          "kind": "ask",
+          "text": "If you and a friend each had a pile of apples and someone asked how many you had altogether, what would you do with the two piles?"
+        },
+        {
+          "kind": "ask",
+          "text": "So which operation matches putting two piles together — adding, subtracting, multiplying, or dividing? Why that one?"
+        },
+        {
+          "kind": "show",
+          "text": "Underline the word 'altogether' in the problem."
+        },
+        {
+          "kind": "ask",
+          "text": "What does the word 'altogether' tell you to do? Are there other words you've heard that mean the same thing?"
+        },
+        {
+          "kind": "ask",
+          "text": "Now try this one on your own: 'A garden has 9 rows of tomato plants with 6 plants in every row.' What is the story doing this time, and which operation fits?"
+        }
+      ],
+      "printable_artifact": {
+        "title": "Match the Picture to the Operation",
+        "kind": "picture_sort",
+        "instructions": "Look at each picture. Sort it under the operation that matches what's happening.",
+        "categories": [
+          "+",
+          "-",
+          "x",
+          "/"
+        ],
+        "items": [
+          {
+            "label": "🍎🍎🍎 + 🍎🍎🍎🍎",
+            "answer": "+"
+          },
+          {
+            "label": "(2 🐶) + (3 🐶)",
+            "answer": "+"
+          },
+          {
+            "label": "6 🪙 + 7 🪙",
+            "answer": "+"
+          },
+          {
+            "label": "12 🍪 → 5 🍪",
+            "answer": "-"
+          },
+          {
+            "label": "🐦🐦🐦🐦🐦 → 🐦🐦",
+            "answer": "-"
+          },
+          {
+            "label": "15 - 8 = ?",
+            "answer": "-"
+          },
+          {
+            "label": "3 × (🍇🍇🍇🍇)",
+            "answer": "x"
+          },
+          {
+            "label": "4 × (🐟🐟🐟🐟🐟)",
+            "answer": "x"
+          },
+          {
+            "label": "2 rows × 6",
+            "answer": "x"
+          },
+          {
+            "label": "12 🪙 ÷ 4",
+            "answer": "/"
+          },
+          {
+            "label": "(🍕🍕🍕🍕🍕🍕) ÷ 3",
+            "answer": "/"
+          },
+          {
+            "label": "20 ÷ 5",
+            "answer": "/"
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "6AF1-F2",
+      "name": "Understand that a letter can stand for a number",
+      "column": "foundation",
+      "parent_standard": "6.AF.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 4,
+        "description": "Solve missing-number problems with blanks (e.g., ___ + 5 = 12)",
+        "check_question": "What number goes in the blank? ___ + 5 = 12"
+      },
+      "i_do_script": "We're going to look at a problem with a letter mixed in with the math. I'm not going to tell you what the letter means yet — I want you to figure it out by looking at the problem with me. Just answer what you notice, even if you're not sure.",
+      "canonical_error": {
+        "pattern": "Treats the variable as a label or abbreviation for a word, not as a placeholder for a number",
+        "example": "Student writes '5a' meaning '5 apples' instead of '5 times a,' or says 'n means nickels' instead of 'n is the number of nickels'",
+        "why": "In earlier grades and science, letters ARE labels (m = meters, L = liters). Students carry that habit into algebra where letters represent unknown quantities."
+      },
+      "item_template": "A sentence using a variable with a given value. Student replaces the letter with the number and computes. Fill-in response. Problems use only addition or subtraction.",
+      "sample_items": [
+        {
+          "stem": "There are k cookies on a plate. If k = 8, how many cookies are on the plate?",
+          "answer": "8",
+          "choices": null,
+          "distractor_logic": "Tests label-confusion: student may think k means 'cookies' rather than the number of cookies"
+        },
+        {
+          "stem": "If a = 4, what is a + 7?",
+          "answer": "11",
+          "choices": null,
+          "distractor_logic": "Common error: writing 'a7' or '47' from concatenating the letter and number"
+        },
+        {
+          "stem": "If t = 5, what is 12 - t?",
+          "answer": "7",
+          "choices": null,
+          "distractor_logic": "Letter on the right of the operator; student may freeze or compute 12 - 'something else'"
+        },
+        {
+          "stem": "Maria has p pencils. If p = 9, how many pencils does Maria have?",
+          "answer": "9",
+          "choices": null,
+          "distractor_logic": "Label-confusion risk: student may answer 'pencils' instead of the number 9"
+        },
+        {
+          "stem": "If b = 3, what is b + 6?",
+          "answer": "9",
+          "choices": null,
+          "distractor_logic": "Common error: '36' from concatenation instead of substituting and adding"
+        },
+        {
+          "stem": "If x = 11, what is x - 4?",
+          "answer": "7",
+          "choices": null,
+          "distractor_logic": "Common error: not substituting the value of x and leaving the answer in terms of the letter"
+        },
+        {
+          "stem": "If n = 8, what is 15 - n?",
+          "answer": "7",
+          "choices": null,
+          "distractor_logic": "Letter on the right of the operator; student may misorder and compute n - 15"
+        },
+        {
+          "stem": "A jar holds y marbles. If y = 14, how many marbles are in the jar?",
+          "answer": "14",
+          "choices": null,
+          "distractor_logic": "Label-confusion risk: student may think y stands for 'marbles' rather than the count"
+        },
+        {
+          "stem": "If m = 6, what is m + 5?",
+          "answer": "11",
+          "choices": null,
+          "distractor_logic": "Common error: writing '65' from concatenating the letter's value and the number instead of adding"
+        },
+        {
+          "stem": "If c = 10, what is the value of c?",
+          "answer": "10",
+          "choices": null,
+          "distractor_logic": "Tests that the student understands the letter simply equals the assigned number"
+        },
+        {
+          "stem": "If g = 2, what is g x 4?",
+          "answer": "8",
+          "choices": null,
+          "distractor_logic": "Student may treat g as a label and answer '24' or freeze at the multiplication symbol"
+        },
+        {
+          "stem": "There are h hats in a box. If h = 12, how many hats are in the box?",
+          "answer": "12",
+          "choices": null,
+          "distractor_logic": "Label-confusion: student may answer 'hats' rather than the number 12"
+        },
+        {
+          "stem": "If r = 9, what is r - 3?",
+          "answer": "6",
+          "choices": null,
+          "distractor_logic": "Common error: not substituting and leaving the answer as 'r - 3' or writing '93'"
+        },
+        {
+          "stem": "If d = 5, what is 8 + d?",
+          "answer": "13",
+          "choices": null,
+          "distractor_logic": "Letter on the right of the operator; student may concatenate as '85' instead of adding"
+        },
+        {
+          "stem": "A garden has f flowers. If f = 20, how many flowers are in the garden?",
+          "answer": "20",
+          "choices": null,
+          "distractor_logic": "Label-confusion: student may say 'flowers' instead of giving the count 20"
+        },
+        {
+          "stem": "If s = 4, what is s + s?",
+          "answer": "8",
+          "choices": null,
+          "distractor_logic": "Student may write 'ss' or '44' instead of substituting and adding the values"
+        },
+        {
+          "stem": "If w = 7, what is 20 - w?",
+          "answer": "13",
+          "choices": null,
+          "distractor_logic": "Letter on the right; student may misorder and compute w - 20 or freeze"
+        },
+        {
+          "stem": "Jamal collected z stickers. If z = 15, how many stickers did Jamal collect?",
+          "answer": "15",
+          "choices": null,
+          "distractor_logic": "Label-confusion: student may answer 'stickers' rather than the number 15"
+        },
+        {
+          "stem": "If e = 3, what is e x 6?",
+          "answer": "18",
+          "choices": null,
+          "distractor_logic": "Student may treat e as a label and write '36' from concatenation rather than multiplying"
+        },
+        {
+          "stem": "If q = 13, what is q + 2?",
+          "answer": "15",
+          "choices": null,
+          "distractor_logic": "Common error: writing '132' from concatenating the value of q with 2 instead of adding"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Remember, in math the letter stands for a number, not a word.",
+        "prompt": "Think of the letter like a box with a number hiding inside. When I say n = 6, it means the letter n is holding the number 6. Everywhere you see n, put 6 in its place. Try it.",
+        "praise": "You replaced the letter with the number and got the right answer. That's called substitution — you'll use it all the time in algebra."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Display the problem: 'There are k cookies on a plate. If k = 8, how many cookies are on the plate?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Read this with me. What's something that looks weird or different about this problem compared to a normal math problem?"
+        },
+        {
+          "kind": "ask",
+          "text": "There's a letter, k, sitting where you'd usually expect a number. What do you think that k is doing there?"
+        },
+        {
+          "kind": "ask",
+          "text": "The problem also tells us 'k = 8.' In your own words, what do you think that little piece is telling us?"
+        },
+        {
+          "kind": "ask",
+          "text": "So if someone said 'k is 8,' and the sentence says 'there are k cookies,' how many cookies are on the plate?"
+        },
+        {
+          "kind": "ask",
+          "text": "Quick check — does k mean the word 'cookies,' or does k mean the number of cookies? How can you tell?"
+        },
+        {
+          "kind": "say",
+          "text": "Yep — the letter is just standing in for a number we didn't know yet. Once the problem tells us what number it is, we swap it in. That trick has a name: substitution. You're going to use it a lot."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student answers 'cookies' or 'k cookies,' they're reading the letter as a label, not a number. Don't correct directly — ask: 'The problem said k = 8. If I crossed out the k and wrote 8 in its place, what would the sentence say?' Let them re-read it themselves."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Letter-Stands-for-a-Number Substitution Chart",
+        "kind": "chart",
+        "instructions": "When the teacher gives you a value for x, fill in each column by replacing x with that number and working it out. Write the number underneath the letter every time.",
+        "categories": [
+          "x",
+          "x + 5",
+          "2x",
+          "x - 3"
+        ],
+        "rows": 6
+      }
+    },
+    {
+      "skill_id": "6AF1-F3",
+      "name": "Recall basic multiplication facts fluently",
+      "column": "foundation",
+      "parent_standard": "6.AF.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 3,
+        "description": "Multiply single-digit numbers from memory",
+        "check_question": "What is 7 × 8?"
+      },
+      "i_do_script": "Multiplication facts need to come fast so you can focus on the algebra, not the arithmetic. If a fact isn't automatic yet, that's okay — we'll use a fact you DO know to get there. The goal is a strategy you trust, not a guess.",
+      "canonical_error": {
+        "pattern": "Cannot recall multiplication facts, causing errors to cascade into every expression evaluation",
+        "example": "For 6n when n = 7, student tries to compute 6 × 7 but gets 48 instead of 42 (counts wrong or confuses with 6 × 8)",
+        "why": "Multiplication facts weren't automatized in grades 3-4. The student understands WHAT to do but can't execute accurately because the computation itself is unreliable."
+      },
+      "item_template": "A straight multiplication fact (single digit × single digit). NR (numeric response). No context, no variables — just the fact.",
+      "sample_items": [
+        {
+          "stem": "What is 6 x 7?",
+          "answer": "42",
+          "choices": null,
+          "distractor_logic": "Common errors: 48 (confuses with 6x8), 36 (confuses with 6x6)"
+        },
+        {
+          "stem": "What is 8 x 9?",
+          "answer": "72",
+          "choices": null,
+          "distractor_logic": "Common errors: 64 (confuses with 8x8), 81 (confuses with 9x9)"
+        },
+        {
+          "stem": "What is 7 x 7?",
+          "answer": "49",
+          "choices": null,
+          "distractor_logic": "Common errors: 42 (confuses with 6x7), 56 (confuses with 7x8)"
+        },
+        {
+          "stem": "What is 6 x 8?",
+          "answer": "48",
+          "choices": null,
+          "distractor_logic": "Common errors: 42 (confuses with 6x7), 54 (confuses with 6x9)"
+        },
+        {
+          "stem": "What is 9 x 7?",
+          "answer": "63",
+          "choices": null,
+          "distractor_logic": "Common errors: 56 (confuses with 7x8), 72 (confuses with 9x8)"
+        },
+        {
+          "stem": "What is 8 x 8?",
+          "answer": "64",
+          "choices": null,
+          "distractor_logic": "Common errors: 56 (confuses with 7x8), 72 (confuses with 8x9)"
+        },
+        {
+          "stem": "What is 9 x 9?",
+          "answer": "81",
+          "choices": null,
+          "distractor_logic": "Common errors: 72 (confuses with 8x9), 89 (counts up wrong from 9x10=90)"
+        },
+        {
+          "stem": "What is 6 x 6?",
+          "answer": "36",
+          "choices": null,
+          "distractor_logic": "Common errors: 42 (confuses with 6x7), 30 (confuses with 6x5)"
+        },
+        {
+          "stem": "What is 7 x 8?",
+          "answer": "56",
+          "choices": null,
+          "distractor_logic": "Common errors: 54 (confuses with 6x9), 63 (confuses with 7x9)"
+        },
+        {
+          "stem": "What is 6 x 9?",
+          "answer": "54",
+          "choices": null,
+          "distractor_logic": "Common errors: 56 (confuses with 7x8), 48 (confuses with 6x8)"
+        },
+        {
+          "stem": "What is 11 x 7?",
+          "answer": "77",
+          "choices": null,
+          "distractor_logic": "Common errors: 88 (confuses with 11x8), 71 (writes digits without adding)"
+        },
+        {
+          "stem": "What is 12 x 6?",
+          "answer": "72",
+          "choices": null,
+          "distractor_logic": "Common errors: 60 (confuses with 12x5), 84 (confuses with 12x7)"
+        },
+        {
+          "stem": "What is 12 x 8?",
+          "answer": "96",
+          "choices": null,
+          "distractor_logic": "Common errors: 84 (confuses with 12x7), 108 (confuses with 12x9)"
+        },
+        {
+          "stem": "What is 9 x 8?",
+          "answer": "72",
+          "choices": null,
+          "distractor_logic": "Common errors: 64 (confuses with 8x8), 81 (confuses with 9x9)"
+        },
+        {
+          "stem": "What is 11 x 11?",
+          "answer": "121",
+          "choices": null,
+          "distractor_logic": "Common errors: 111 (writes digits without adding), 132 (confuses with 11x12)"
+        },
+        {
+          "stem": "What is 12 x 12?",
+          "answer": "144",
+          "choices": null,
+          "distractor_logic": "Common errors: 124 (writes digits incorrectly), 132 (confuses with 11x12)"
+        },
+        {
+          "stem": "What is 7 x 6?",
+          "answer": "42",
+          "choices": null,
+          "distractor_logic": "Common errors: 36 (confuses with 6x6), 48 (confuses with 6x8)"
+        },
+        {
+          "stem": "What is 9 x 11?",
+          "answer": "99",
+          "choices": null,
+          "distractor_logic": "Common errors: 108 (confuses with 9x12), 90 (drops the +9 in 11x trick)"
+        },
+        {
+          "stem": "What is 12 x 9?",
+          "answer": "108",
+          "choices": null,
+          "distractor_logic": "Common errors: 96 (confuses with 12x8), 117 (confuses with 12x10 then off by one)"
+        },
+        {
+          "stem": "What is 11 x 8?",
+          "answer": "88",
+          "choices": null,
+          "distractor_logic": "Common errors: 77 (confuses with 11x7), 99 (confuses with 11x9)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Let's slow down on the multiplication. Getting this right matters for everything else.",
+        "prompt": "If you're not sure about a fact, use a strategy: for 7 × 8, think '7 × 8 is one more 7 than 7 × 7. 7 × 7 = 49, plus 7 = 56.' Or: '8 × 7 = 8 × 5 + 8 × 2 = 40 + 16 = 56.' Pick a strategy that works for you.",
+        "praise": "You got it! Having those facts ready makes everything in algebra faster and more accurate."
+      },
+      "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Here's the problem: What is 6 times 7? Before you answer, tell me — is this one you just know, or do you need a second to figure it out?"
+        },
+        {
+          "kind": "ask",
+          "text": "If it's not automatic yet, let's build it from a fact you DO know. What's an easier 6-times fact that's close to 6 x 7? Something with smaller numbers or a double."
+        },
+        {
+          "kind": "ask",
+          "text": "Good — let's say you picked 6 x 6. What does 6 x 6 equal?"
+        },
+        {
+          "kind": "ask",
+          "text": "Nice, 36. Now think about 6 x 7 as groups of 6. If 6 x 6 is six groups of 6, how many groups of 6 is 6 x 7? How many MORE groups than 6 x 6?"
+        },
+        {
+          "kind": "ask",
+          "text": "Right, just one more group of 6. So if 6 x 6 = 36, what do you do to 36 to get 6 x 7?"
+        },
+        {
+          "kind": "ask",
+          "text": "Add 6. So what does 36 + 6 give you, and what does that mean 6 x 7 equals?"
+        },
+        {
+          "kind": "watch",
+          "text": "If they say 48, they jumped to 6 x 8 instead of 6 x 7. Walk them back: 'How many groups of 6 are in 6 x 7?' If they say 36, they stopped at 6 x 6 and forgot to add the extra group. Point at the '7' and ask, 'Did we add that last group of 6 yet?'"
+        },
+        {
+          "kind": "ask",
+          "text": "So 6 x 7 = 42. Next time you see this fact, can you get there without the strategy — or do you want to run the 'one more group of 6' move again to lock it in?"
+        }
+      ],
+      "printable_artifact": {
+        "title": "Multiplication Facts Quick Reference",
+        "kind": "reference_card",
+        "instructions": "Keep this nearby until you have these memorized. Glance, don't count.",
+        "items": [
+          "6 x 6 = 36",
+          "6 x 7 = 42",
+          "6 x 8 = 48",
+          "6 x 9 = 54",
+          "7 x 6 = 42",
+          "7 x 7 = 49",
+          "7 x 8 = 56",
+          "7 x 9 = 63",
+          "8 x 6 = 48",
+          "8 x 7 = 56",
+          "8 x 8 = 64",
+          "8 x 9 = 72",
+          "9 x 6 = 54",
+          "9 x 7 = 63",
+          "9 x 8 = 72",
+          "9 x 9 = 81"
+        ]
+      }
+    },
+    {
+      "skill_id": "6AF1-S1",
+      "name": "Translate verbal phrases to single operations",
+      "column": "looking_back",
+      "parent_standard": "6.AF.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Identify addition, subtraction, multiplication, and division in word problems",
+        "check_question": "What operation does the word 'each' usually tell you to use?",
+        "check_answer": "Multiplication. The word 'each' means every single one gets the same amount, which is repeated addition -- that's multiplication. For example, '3 cookies each for 5 kids' means 3 x 5 = 15.",
+        "if_student_says": "If they say 'addition' -- they're thinking of combining, which is close but not right. 'Each' implies equal groups, not combining different amounts. If they have no idea -- this student needs the Foundation skill (F1) first."
+      },
+      "i_do_script": "We're going to figure out which math operation a phrase is hinting at -- addition, subtraction, multiplication, or division. Instead of me telling you the rules, I'll ask questions and you'll spot the clue word that points to the right operation. Watch out for 'more than,' which sounds bigger but is actually just adding.",
+      "canonical_error": {
+        "pattern": "Confuses 'more than' with multiplication or 'times' with addition",
+        "example": "Student reads '5 more than n' and writes 5n instead of n + 5",
+        "why": "The word 'more' feels like 'bigger' which students associate with multiplication. They haven't built the phrase-to-operation mapping."
+      },
+      "item_template": "A verbal phrase using one key phrase (more than, less than, times, divided by) with a single number and 'a number.' Student identifies which operation the phrase indicates. MC with 4 choices: +, −, ×, ÷.",
+      "sample_items": [
+        {
+          "stem": "What operation does the phrase 'eight more than a number' tell you to use?",
+          "answer": "Addition",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Multiplication -- student thinks 'more' means 'bigger' which they link to multiplying"
+        },
+        {
+          "stem": "What operation does the phrase 'the product of 6 and a number' tell you to use?",
+          "answer": "Multiplication",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Addition -- student sees two values and defaults to adding"
+        },
+        {
+          "stem": "What operation does the phrase 'a number decreased by 12' tell you to use?",
+          "answer": "Subtraction",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Division -- student confuses 'decreased' with 'divided'"
+        },
+        {
+          "stem": "What operation does the phrase 'the quotient of a number and 5' tell you to use?",
+          "answer": "Division",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Multiplication -- student confuses 'quotient' with 'product'"
+        },
+        {
+          "stem": "What operation does the phrase 'twice a number' tell you to use?",
+          "answer": "Multiplication",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Addition -- student thinks 'twice' means 'add 2' instead of 'multiply by 2'"
+        },
+        {
+          "stem": "What operation does the phrase '15 less than a number' tell you to use?",
+          "answer": "Subtraction",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Division -- student may confuse 'less than' with 'divided into'"
+        },
+        {
+          "stem": "What operation does the phrase 'the sum of a number and 9' tell you to use?",
+          "answer": "Addition",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Multiplication -- student confuses 'sum' with 'product'"
+        },
+        {
+          "stem": "What operation does the phrase 'a number split into 4 equal groups' tell you to use?",
+          "answer": "Division",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Subtraction -- student thinks 'split' means 'take away'"
+        },
+        {
+          "stem": "What operation does the phrase 'the difference of a number and 7' tell you to use?",
+          "answer": "Subtraction",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Addition -- student confuses 'difference' with combining"
+        },
+        {
+          "stem": "What operation does the phrase 'a number increased by 11' tell you to use?",
+          "answer": "Addition",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Multiplication -- student thinks 'increased by' means 'times more'"
+        },
+        {
+          "stem": "What operation does the phrase 'three times a number' tell you to use?",
+          "answer": "Multiplication",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Addition -- student treats 'times' as repeated addition keyword"
+        },
+        {
+          "stem": "What operation does the phrase 'a number divided by 8' tell you to use?",
+          "answer": "Division",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Subtraction -- student confuses 'divided' with 'take away'"
+        },
+        {
+          "stem": "What operation does the phrase '20 more than a number' tell you to use?",
+          "answer": "Addition",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Multiplication -- student associates 'more' with 'bigger' which feels like multiplying"
+        },
+        {
+          "stem": "What operation does the phrase 'half of a number' tell you to use?",
+          "answer": "Division",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Subtraction -- student thinks 'half' means 'take away half'"
+        },
+        {
+          "stem": "What operation does the phrase 'the product of 9 and a number' tell you to use?",
+          "answer": "Multiplication",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Addition -- student confuses 'product' with 'sum'"
+        },
+        {
+          "stem": "What operation does the phrase '5 fewer than a number' tell you to use?",
+          "answer": "Subtraction",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Division -- student confuses 'fewer' with 'split into fewer groups'"
+        },
+        {
+          "stem": "What operation does the phrase 'a number per group of 3' tell you to use?",
+          "answer": "Division",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Multiplication -- student treats 'per' like 'each' = multiplication"
+        },
+        {
+          "stem": "What operation does the phrase 'the total of a number and 6' tell you to use?",
+          "answer": "Addition",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Multiplication -- student confuses 'total' with 'product'"
+        },
+        {
+          "stem": "What operation does the phrase 'a number shared equally among 6 friends' tell you to use?",
+          "answer": "Division",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Multiplication -- student sees 'equally' and 'friends' and thinks of equal groups as multiplication"
+        },
+        {
+          "stem": "What operation does the phrase '4 plus a number' tell you to use?",
+          "answer": "Addition",
+          "choices": [
+            "Addition",
+            "Subtraction",
+            "Multiplication",
+            "Division"
+          ],
+          "distractor_logic": "Multiplication -- student confuses 'plus' with 'times' as another combining word"
+        }
+      ],
+      "redirect_script": {
+        "stop": "I see you picked the wrong operation. Let's slow down and look at the key word.",
+        "prompt": "Underline the key phrase. Is it 'more than' (add), 'less than' (subtract), 'times/of/each' (multiply), or 'divided by/shared' (divide)? Read it again and match the phrase to the operation.",
+        "praise": "You matched the phrase to the right operation. That's the foundation for writing every expression."
+      },
+      "vocabulary": [
+        {
+          "term": "Sum",
+          "definition": "The result of adding two or more numbers. Key phrases: 'sum of,' 'more than,' 'increased by,' 'plus.'"
+        },
+        {
+          "term": "Difference",
+          "definition": "The result of subtracting. Key phrases: 'difference of,' 'less than,' 'decreased by,' 'minus.'"
+        },
+        {
+          "term": "Product",
+          "definition": "The result of multiplying. Key phrases: 'product of,' 'times,' 'twice,' 'of,' 'each.'"
+        },
+        {
+          "term": "Quotient",
+          "definition": "The result of dividing. Key phrases: 'quotient of,' 'divided by,' 'per,' 'split equally.'"
+        }
+      ],
+      "manipulative_visual": "Write each keyword on an index card with the operation symbol on the back. Student sorts word problem phrases under the correct operation card. Alternatively, use a four-column chart on a whiteboard labeled +, -, x, / and have the student place sticky notes with phrases into the correct column.",
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the phrase on the board: 'eight more than a number.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Read the phrase out loud. Which two or three words feel like they're telling you what to DO with the number?"
+        },
+        {
+          "kind": "ask",
+          "text": "If I have a number and I get 'eight more' of something, am I ending up with more total than I started with, or less?"
+        },
+        {
+          "kind": "ask",
+          "text": "When you end up with MORE than you started, which of the four operations did you just do -- add, subtract, multiply, or divide?"
+        },
+        {
+          "kind": "ask",
+          "text": "Some students see the word 'more' and pick multiplication because multiplying makes things bigger too. What's different between adding 8 and multiplying by 8?"
+        },
+        {
+          "kind": "ask",
+          "text": "So looking at the choices Addition, Subtraction, Multiplication, Division -- which one matches 'eight more than a number'?"
+        },
+        {
+          "kind": "watch",
+          "text": "If the student picks Multiplication, pause and ask them to draw or describe '8 more' versus '8 times.' Don't move on until they can explain that 'more than' just means putting extra on top, which is adding."
+        },
+        {
+          "kind": "say",
+          "text": "Nice -- 'more than' is a clue that points to addition. Circle Addition as the answer."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Operation Keyword Sort",
+        "instructions": "Cut along the dashed lines. Sort each keyword card under the operation it signals. Glue or tape onto a chart when finished.",
+        "kind": "sort_cards",
+        "categories": [
+          "+",
+          "-",
+          "x",
+          "/"
+        ],
+        "items": [
+          "sum of",
+          "more than",
+          "increased by",
+          "plus",
+          "difference",
+          "less than",
+          "decreased by",
+          "minus",
+          "product of",
+          "times",
+          "twice",
+          "of",
+          "quotient of",
+          "divided by",
+          "per",
+          "split equally"
+        ]
+      },
+      "next_steps": {
+        "if_pass": "Move to Skill S2: Write one-operation expressions from verbal phrases. The student can now identify the operation -- next they need to write the full expression.",
+        "if_fail": "Check the prerequisite: Can the student identify basic operations from real-world contexts (Skill F1)? If not, start there. If yes, repeat S1 with new items next session -- focus on the specific phrase they confused."
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What operation does the phrase 'the sum of a number and 3' tell you to use?",
+          "answer": "Addition"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What operation does the phrase 'a number split equally among 5 friends' tell you to use?",
+          "answer": "Division"
+        },
+        {
+          "difficulty": "core",
+          "stem": "What operation does the phrase '12 less than a number' tell you to use?",
+          "answer": "Subtraction",
+          "notes": "Watch for students who hear 'less' and reach for division."
+        },
+        {
+          "difficulty": "core",
+          "stem": "What operation does the phrase 'the product of a number and 8' tell you to use?",
+          "answer": "Multiplication"
+        },
+        {
+          "difficulty": "core",
+          "stem": "What operation does the phrase 'a number increased by 25' tell you to use?",
+          "answer": "Addition",
+          "notes": "'Increased' feels like growth, which some students link to multiplication."
+        },
+        {
+          "difficulty": "core",
+          "stem": "What operation does the phrase 'the quotient of a number and 6' tell you to use?",
+          "answer": "Division"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "What operation does the phrase 'triple a number' tell you to use?",
+          "answer": "Multiplication",
+          "notes": "No keyword from the sort list — the student has to reason about what 'triple' means."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Say or write a phrase that means subtraction WITHOUT using 'minus' or 'less.'",
+          "answer": "Any correct phrase, e.g. 'decreased by 4' or '4 fewer than a number'",
+          "notes": "Producing a phrase shows the mapping runs both directions, not just recognition."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Jayden read the phrase '9 more than a number' and picked his operation. Find his mistake and fix it.",
+          "shown_work": [
+            "'9 more than a number'",
+            "Jayden's answer: Multiplication"
+          ],
+          "answer": "Addition. 'More than' puts 9 extra on top of the number -- it doesn't make 9 copies of it.",
+          "notes": "Bait for the canonical 'more means multiply' error."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Keyword Four-Corner Sort",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Phrase cards (cut apart)",
+            "Four header cards: +, −, ×, ÷"
+          ],
+          "instructions": "1. Lay the four operation headers across the desk.\n2. Partners take turns drawing a phrase card, reading it aloud, and placing it under an operation.\n3. The partner must agree or challenge before the next draw — a challenge means both explain, then check the answer side.\n4. Finish by having each pair name the one card that caused the most argument and why.",
+          "content": {
+            "categories": [
+              "+",
+              "−",
+              "×",
+              "÷"
+            ],
+            "cards": [
+              {
+                "text": "more than",
+                "category": "+"
+              },
+              {
+                "text": "increased by",
+                "category": "+"
+              },
+              {
+                "text": "the total of",
+                "category": "+"
+              },
+              {
+                "text": "combined with",
+                "category": "+"
+              },
+              {
+                "text": "less than",
+                "category": "−"
+              },
+              {
+                "text": "decreased by",
+                "category": "−"
+              },
+              {
+                "text": "fewer than",
+                "category": "−"
+              },
+              {
+                "text": "the difference of",
+                "category": "−"
+              },
+              {
+                "text": "twice",
+                "category": "×"
+              },
+              {
+                "text": "the product of",
+                "category": "×"
+              },
+              {
+                "text": "each",
+                "category": "×"
+              },
+              {
+                "text": "triple",
+                "category": "×"
+              },
+              {
+                "text": "the quotient of",
+                "category": "÷"
+              },
+              {
+                "text": "shared equally",
+                "category": "÷"
+              },
+              {
+                "text": "per",
+                "category": "÷"
+              },
+              {
+                "text": "split into equal groups",
+                "category": "÷"
+              }
+            ]
+          }
+        },
+        {
+          "type": "game",
+          "title": "Operation Showdown",
+          "time_minutes": 10,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards or four fingers as +, −, ×, ÷ signals"
+          ],
+          "instructions": "1. Read a phrase aloud ('nine more than a number').\n2. On 'show,' every student holds up the operation at once — no answer hides.\n3. Pick one student with the majority answer and one with a different answer to each defend their choice in one sentence.\n4. Reveal, tally a class point for a correct majority, and keep a 'trap phrase' list of any phrase that split the room."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Why Did Jayden Pick Multiplication?",
+          "time_minutes": 8,
+          "grouping": "small_group",
+          "materials": [
+            "One printed problem card per group"
+          ],
+          "instructions": "1. Show the group Jayden's work and let them talk before you do.\n2. Ask: what was Jayden thinking? (His reasoning is sensible — 'more' does make numbers bigger.)\n3. Have the group state the difference between ADDING 9 and MULTIPLYING by 9 with a concrete example.\n4. Each student then writes Jayden a one-sentence tip.",
+          "content": {
+            "worked_problem": "Phrase: '9 more than a number.' Jayden's answer: Multiplication.",
+            "error_step": "Jayden matched the word 'more' to 'bigger' and picked the operation that makes numbers grow fastest.",
+            "why": "'More than' means putting an extra amount on top of what you have — addition. Multiplication would mean 9 copies of the number, which the phrase never says."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Fast choral phrase-to-operation rounds build the automatic recall this skill needs."
+        },
+        {
+          "strategy_id": "strat-math-008",
+          "why": "Whiteboard Pass makes every student's operation choice visible on each phrase."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Analyzing a wrong operation choice surfaces the 'more means multiply' misconception directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is this phrase asking you to DO to the number — not which numbers do you see?",
+          "Will the result be bigger or smaller than the number you started with? Which operations make it bigger?",
+          "'More than' and 'times' both make numbers bigger. What is different about HOW each one makes it bigger?",
+          "Cover the numbers with your finger. Can you still name the operation from the words alone?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reads '5 more than n' and picks multiplication because 'more' feels like 'bigger.'",
+            "say": "Underline the key phrase. Is it 'more than' (add), 'less than' (subtract), 'times/of/each' (multiply), or 'divided by/shared' (divide)? Read it again and match the phrase to the operation.",
+            "praise": "You matched the phrase to the right operation. That's the foundation for writing every expression."
+          },
+          {
+            "if_you_see": "Student picks subtraction for 'shared equally among 4' because things are being broken apart.",
+            "say": "Act it out: deal 12 counters to 4 people one at a time. Did we take some away and keep the rest, or split everything into equal groups? Which operation means equal groups?",
+            "praise": "Right — equal groups means division. Subtraction takes one amount away; division shares it all out."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Thumbs up or down: 'the difference of a number and 4' — is that addition?",
+            "look_for": "An instant 'down.' Hesitation means the vocabulary anchors (sum, difference, product, quotient) aren't set yet."
+          },
+          {
+            "prompt": "Give me a phrase that means multiply without saying 'times.'",
+            "look_for": "'Twice,' 'product of,' 'each,' 'of,' 'triple' — producing one shows the mapping works in both directions."
+          }
+        ]
+      },
+      "fluency_source": "6AF1-F2",
+      "sentence_starters": [
+        "I knew it was ___ because the phrase ___ means ___.",
+        "The key word is ___, and it tells me to ___."
+      ],
+      "worked_solution": {
+        "stem": "What operation does the phrase 'eight more than a number' tell you to use?",
+        "answer": "Addition",
+        "steps": [
+          {
+            "math": "eight MORE THAN a number",
+            "annotation": "Underline the key phrase -- the words that tell you what happens to the number."
+          },
+          {
+            "math": "'more than' -> the amount grows by 8",
+            "annotation": "'More than' means extra is put on top of what you already have."
+          },
+          {
+            "math": "grows by putting extra on top -> Addition",
+            "annotation": "Adding 8 makes it bigger by exactly 8. Multiplying would make 8 copies -- the phrase never says that."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "What operation does the phrase 'the quotient of a number and 5' tell you to use?",
+        "answer": "Division",
+        "steps": [
+          {
+            "math": "the QUOTIENT of a number and 5",
+            "annotation": "The key word is underlined for you.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "What does 'quotient' mean? Say it in your own words, then write it.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "So which operation is it?",
+            "given": false
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "6AF1-S2",
+      "name": "Write one-operation expressions from verbal phrases",
+      "column": "looking_back",
+      "parent_standard": "6.AF.1",
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "6AF1-S1"
+      },
+      "i_do_script": "We're going to turn a written phrase into an actual math expression -- letters, numbers, and an operation symbol. Instead of telling you the rule, I'll ask questions that get you to figure out which number goes first and which goes second. The order matters a lot here, especially when the phrase uses the words 'less than.'",
+      "canonical_error": {
+        "pattern": "Reverses the order of subtraction — writes 5 − n instead of n − 5 for 'five less than a number'",
+        "example": "Student writes 3 − x for 'three less than x' instead of x − 3",
+        "why": "English word order ('three less than x') puts the 3 first, so students write it first. But 'less than' means subtract FROM the number, so the variable comes first."
+      },
+      "item_template": "A verbal phrase with one operation and one variable. Student writes the algebraic expression. EQ response (type the expression). Phrases use 'more than,' 'less than,' 'times,' or 'the quotient of.'",
+      "sample_items": [
+        {
+          "stem": "Write an expression for: 'seven less than a number n'",
+          "answer": "n - 7",
+          "choices": null,
+          "distractor_logic": "Common errors: 7 - n (reversed order), 7n (wrong operation), n + 7 (wrong operation)"
+        },
+        {
+          "stem": "Write an expression for: 'the product of 4 and a number x'",
+          "answer": "4x",
+          "choices": null,
+          "distractor_logic": "Common errors: 4 + x (wrong operation), x/4 (wrong operation), x⁴ (confuses product with power)"
+        },
+        {
+          "stem": "Write an expression for: 'a number y divided by 3'",
+          "answer": "y/3",
+          "choices": null,
+          "distractor_logic": "Common errors: 3/y (reversed), 3y (wrong operation), y - 3 (wrong operation)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Let's check your expression by testing it with a number.",
+        "prompt": "Try plugging in a number. If the phrase is 'seven less than a number' and the number is 10, should the answer be 3 or -3? Since 10 minus 7 is 3, the expression must be n − 7, not 7 − n. Does your expression give the right answer?",
+        "praise": "Your expression works! You got the order right, which is the trickiest part of writing expressions."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the phrase on the board: 'seven less than a number n.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Read the phrase out loud. Which words tell you what operation to use, and what operation is it?"
+        },
+        {
+          "kind": "ask",
+          "text": "Let's test the order with real numbers. If 'a number' is 10, then 'seven less than 10' should be what value?"
+        },
+        {
+          "kind": "ask",
+          "text": "Now try writing it two ways: 10 - 7 and 7 - 10. Which one gives you the answer that matches 'seven less than 10'?"
+        },
+        {
+          "kind": "ask",
+          "text": "So when the phrase says 'seven less than a number,' which one comes first in the expression -- the 7 or the number?"
+        },
+        {
+          "kind": "ask",
+          "text": "If 'a number' is the letter n, what does the whole expression look like?"
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 7 - n, don't correct it directly. Ask them to plug in n = 10 and see if 7 - 10 matches 'seven less than 10.' Let the negative answer show them the order is flipped."
+        },
+        {
+          "kind": "say",
+          "text": "Good -- 'less than' tricks a lot of students because the number you hear first is actually the one you subtract. Write n - 7 in the answer box."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Write one-operation expressions from verbal phrases Reference",
+        "kind": "reference_card",
+        "instructions": "Keep this nearby until you have these patterns memorized. The variable usually comes first when the phrase says 'less than' or 'divided by.'",
+        "items": [
+          "the sum of n and 8  ->  n + 8",
+          "5 more than x  ->  x + 5",
+          "a number y increased by 12  ->  y + 12",
+          "9 plus a number n  ->  9 + n",
+          "7 less than a number n  ->  n - 7",
+          "a number x decreased by 4  ->  x - 4",
+          "the difference of y and 6  ->  y - 6",
+          "n minus 10  ->  n - 10",
+          "the product of 3 and y  ->  3y",
+          "4 times a number x  ->  4x",
+          "twice a number n  ->  2n",
+          "6 multiplied by a number k  ->  6k",
+          "a number y divided by 3  ->  y/3",
+          "the quotient of n and 5  ->  n/5",
+          "x split into 4 equal parts  ->  x/4",
+          "a number n per 2  ->  n/2"
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Write an expression for: 'the sum of n and 5.'",
+          "answer": "n + 5"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Write an expression for: '3 times a number x.'",
+          "answer": "3x"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write an expression for: '9 less than a number w.'",
+          "answer": "w - 9",
+          "notes": "The reversal trap — expect 9 - w. Have students test with w = 20."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write an expression for: 'the quotient of a number m and 4.'",
+          "answer": "m/4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write an expression for: 'a number k increased by 16.'",
+          "answer": "k + 16"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write an expression for: 'the product of 7 and a number y.'",
+          "answer": "7y",
+          "notes": "Accept 7 × y, then push toward the 7y convention."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Which is correct for '10 less than a number': n − 10 or 10 − n? Test both with n = 25 and explain how you know.",
+          "answer": "n - 10; with n = 25, '10 less than 25' should be 15, and 25 - 10 = 15 while 10 - 25 = -15.",
+          "notes": "Forces the substitution test instead of memorizing the rule."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write an expression for: 'a number divided into 8 equal parts,' then write a DIFFERENT phrase that gives the same expression.",
+          "answer": "n/8; e.g. 'the quotient of a number and 8'",
+          "notes": "Producing a second phrase shows flexible ownership of the notation."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Maria wrote an expression for 'three less than x.' Find her mistake and fix it.",
+          "shown_work": [
+            "'three less than x'",
+            "Maria wrote:  3 - x"
+          ],
+          "answer": "x - 3. 'Less than' starts AT x and removes 3. Test x = 10: 'three less than 10' is 7, and 10 - 3 = 7.",
+          "notes": "The subtraction-reversal error, as an item."
+        }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Phrase–Expression Match-Up",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "8 phrase cards and 10 expression cards (two extra near-miss expressions)"
+          ],
+          "instructions": "1. Spread all cards face up.\n2. Partners match each phrase to its expression — but two expressions are decoys that match nothing (7 − n and n + 3 style near-misses).\n3. For any subtraction or division match, the pair must prove it by substituting a number.\n4. Close by asking: which decoy almost fooled you, and what one word decided it?",
+          "content": {
+            "pairs": [
+              {
+                "left": "seven less than a number n",
+                "right": "n − 7"
+              },
+              {
+                "left": "the product of 4 and x",
+                "right": "4x"
+              },
+              {
+                "left": "a number y divided by 3",
+                "right": "y/3"
+              },
+              {
+                "left": "5 more than a number k",
+                "right": "k + 5"
+              },
+              {
+                "left": "the difference of m and 2",
+                "right": "m − 2"
+              },
+              {
+                "left": "twice a number b",
+                "right": "2b"
+              },
+              {
+                "left": "the quotient of 12 and a number p",
+                "right": "12/p"
+              },
+              {
+                "left": "a number t increased by 9",
+                "right": "t + 9"
+              }
+            ],
+            "decoys": [
+              "7 − n",
+              "3/y"
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Fix Maria's Expression",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Students read Maria's work silently and write down the exact step where it went wrong.\n2. They must PROVE the fix by substituting x = 10 into both versions.\n3. Share out: what does 'less than' do to the order that 'more than' doesn't?",
+          "content": {
+            "worked_problem": "Phrase: 'three less than x.' Maria wrote: 3 − x.",
+            "error_step": "Maria wrote the numbers in the order she heard them — 3 first, then x.",
+            "why": "'Three less than x' starts AT x and removes 3, so x comes first: x − 3. With x = 10, 'three less than 10' is 7, and only x − 3 gives 7."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Translation Relay",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Phrase deck",
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Partner A draws a phrase card and reads it aloud; Partner B writes the expression on the whiteboard.\n2. Partner A checks against the answer side — one point if correct, but Partner B can earn it back by finding and fixing their own error.\n3. Swap roles each card. First pair to 8 points wins.\n4. Reshuffle 'less than' cards back into the deck twice — they should come up more than once."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The reversal error (7 − n for 'seven less than n') is the classic find-and-fix target."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release fits the first true writing step: model one translation, write one together, then release."
+        },
+        {
+          "strategy_id": "strat-math-008",
+          "why": "Whiteboard Pass shows instantly who is reversing subtraction order."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Before you write anything: which operation did the phrase tell you, and which words told you?",
+          "Plug in a friendly number like 10. Does your expression give the answer the words describe?",
+          "In 'seven less than a number,' what are we starting with and what are we taking away?",
+          "Why do we write 4x instead of x4 or 4 × x? What's the convention doing for us?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student writes 5 − n for 'five less than a number' — the numbers in heard order.",
+            "say": "Try plugging in a number. If the phrase is 'five less than a number' and the number is 10, should the answer be 5 or -5? Since 10 minus 5 is 5, the expression must be n − 5, not 5 − n. Does your expression give the right answer?",
+            "praise": "Your expression works! You got the order right, which is the trickiest part of writing expressions."
+          },
+          {
+            "if_you_see": "Student writes n4 or leaves a × sign in the final answer for 'the product of 4 and n.'",
+            "say": "In algebra the number rides in front of the letter with nothing between them — 4n means 4 times n. Rewrite yours in that form.",
+            "praise": "That's the convention every algebra book uses — number first, letter second, multiplication understood."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Write '6 less than a number y' in the air with your finger, then tell me which symbol came first.",
+            "look_for": "y first. If 6 comes first, the reversal misconception is still live."
+          },
+          {
+            "prompt": "Is 'n + 5' the same as '5 + n'? Is 'n − 5' the same as '5 − n'? Why the difference?",
+            "look_for": "Recognition that addition commutes and subtraction doesn't — the underlying reason the order trap only bites on subtraction and division."
+          }
+        ]
+      },
+      "fluency_source": "6AF1-F2",
+      "sentence_starters": [
+        "I wrote ___ first because 'less than' starts AT the number.",
+        "I checked my expression by plugging in ___ and got ___."
+      ],
+      "worked_solution": {
+        "stem": "Write an expression for: 'seven less than a number n.'",
+        "answer": "n - 7",
+        "steps": [
+          {
+            "math": "seven LESS THAN a number n",
+            "annotation": "Underline the key phrase. 'Less than' means subtract."
+          },
+          {
+            "math": "start at n, take 7 away",
+            "annotation": "'Less than' starts AT the number and removes 7 -- so the number comes first."
+          },
+          {
+            "math": "n - 7",
+            "annotation": "Check with n = 10: 'seven less than 10' is 3, and 10 - 7 = 3. It works. (7 - 10 would give -3 -- wrong.)"
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Write an expression for: 'the quotient of a number m and 4.'",
+        "answer": "m/4",
+        "steps": [
+          {
+            "math": "the QUOTIENT of m and 4",
+            "annotation": "Quotient means divide.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Which comes first -- m or 4? Test with a friendly number.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the expression.",
+            "given": false
+          }
+        ]
+      },
+      "next_steps": {
+        "if_pass": "Move on to 6AF1-S3: Write expressions with exponents from verbal phrases.",
+        "if_fail": "Reteach 6AF1-S1: Translate verbal phrases to single operations next session before retrying this skill -- the miss usually traces to that prerequisite."
+      }
+    },
+    {
+      "skill_id": "6AF1-S3",
+      "name": "Write expressions with exponents from verbal phrases",
+      "column": "on_grade",
+      "parent_standard": "6.AF.1",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "6AF1-S2"
+      },
+      "i_do_script": "We're going to turn a word phrase that uses 'squared' or 'cubed' into a short math expression with a tiny number up top called an exponent. Instead of telling you the rule, I'll ask questions and you'll figure out where the regular number goes and where the little exponent goes. Watch out for the trap where students turn 'squared' into 'times 2' -- those are not the same.",
+      "canonical_error": {
+        "pattern": "Writes repeated multiplication instead of exponent notation, or misplaces the coefficient",
+        "example": "Student writes 3 × n × n instead of 3n², or writes (3n)² instead of 3n²",
+        "why": "Students understand squaring as 'multiply twice' but haven't internalized compact exponent notation, or they don't know where the coefficient goes relative to the exponent."
+      },
+      "item_template": "A verbal phrase including 'squared,' 'cubed,' or 'to the ___ power' combined with a coefficient. Student writes the expression using exponent notation. EQ response.",
+      "sample_items": [
+        {
+          "stem": "Write an expression for: 'five times a number x, squared'",
+          "answer": "5x²",
+          "choices": null,
+          "distractor_logic": "Common errors: (5x)² (squares everything), 5x·2 (writes ×2 not ²), 5 + x² (wrong operation)"
+        },
+        {
+          "stem": "Write an expression for: 'a number n cubed, minus 4'",
+          "answer": "n³ - 4",
+          "choices": null,
+          "distractor_logic": "Common errors: n·3 - 4 (multiplies by 3), 3n - 4 (coefficient instead of exponent), (n-4)³"
+        },
+        {
+          "stem": "Write an expression for: 'twice the square of a number y'",
+          "answer": "2y²",
+          "choices": null,
+          "distractor_logic": "Common errors: 2y·2, (2y)², 2 + y²"
+        }
+      ],
+      "redirect_script": {
+        "stop": "I see you wrote the exponent as multiplication. Let's look at what 'squared' really means.",
+        "prompt": "When we say 'n squared,' we mean n × n, which we write as n². The little 2 up top is the exponent — it tells us how many times to multiply. So 3n² means 3 × n × n. Can you rewrite your answer using the exponent?",
+        "praise": "You nailed the exponent notation. The coefficient goes in front, and the exponent goes up top on the variable."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the phrase on the board: 'five times a number x, squared.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Read it out loud. Which word in that phrase is doing something special to x by itself -- 'five,' 'times,' or 'squared'?"
+        },
+        {
+          "kind": "ask",
+          "text": "When something is 'squared,' it gets multiplied by itself one time. So if I square the number 4, I get 4 times 4, which is 16. What would x squared be, written as a multiplication?"
+        },
+        {
+          "kind": "ask",
+          "text": "Mathematicians don't like writing x times x over and over, so they invented a shortcut: a tiny number floating up on the shoulder of x that tells you how many x's are multiplied together. What tiny number should sit up top to mean 'squared'?"
+        },
+        {
+          "kind": "ask",
+          "text": "Now look back at the phrase. The 5 is 'five times' that squared piece. Should the 5 sit up top as a tiny number, or down on the line in front of the x?"
+        },
+        {
+          "kind": "ask",
+          "text": "Some students wrap the whole thing in parentheses and write (5x)² -- that would mean square BOTH the 5 and the x together. Does the phrase say to square just x, or to square the 5 along with it?"
+        },
+        {
+          "kind": "ask",
+          "text": "So put it all together: a 5 on the line in front, an x next to it, and a tiny 2 up top on the x. What does the final expression look like?"
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 5x times 2, or (5x)², or 5 + x², pause and ask them to point to the part of the phrase that tells them to square. Don't move on until they can show that 'squared' only attaches to x, and that the tiny 2 means multiply by itself, not multiply by 2."
+        },
+        {
+          "kind": "say",
+          "text": "Nice -- the answer is 5x², with the 2 written as a small superscript on the x."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Write expressions with exponents from verbal phrases Reference",
+        "kind": "reference_card",
+        "instructions": "Keep this nearby. The left side is what you hear or read; the right side is what you write.",
+        "items": [
+          "n squared  ->  n²",
+          "n cubed  ->  n³",
+          "the square of x  ->  x²",
+          "the cube of x  ->  x³",
+          "x to the 4th power  ->  x⁴",
+          "5 times a number squared  ->  5n²",
+          "5 times y squared  ->  5y²",
+          "twice the square of a number  ->  2n²",
+          "three times a number cubed  ->  3n³",
+          "the sum of n squared and 4  ->  n² + 4",
+          "n cubed minus 4  ->  n³ - 4",
+          "7 more than x squared  ->  x² + 7",
+          "(5n)² means square the whole thing: 5n × 5n  (NOT the same as 5n²)",
+          "5n² means square only n: 5 × n × n  (coefficient stays in front)"
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Write an expression for: 'a number n, squared.'",
+          "answer": "n²"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Write an expression for: 'the cube of a number y.'",
+          "answer": "y³"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write an expression for: 'four times a number x, squared.'",
+          "answer": "4x²",
+          "notes": "Watch for (4x)² — squaring the coefficient too."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write an expression for: 'a number cubed, plus 9.'",
+          "answer": "n³ + 9"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write an expression for: '7 more than x squared.'",
+          "answer": "x² + 7"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write an expression for: 'twice the square of m.'",
+          "answer": "2m²",
+          "notes": "Two layers: 'twice' is a coefficient, 'square' is the exponent."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write an expression for: 'the square of twice a number.' How is it different from 'twice the square of a number'?",
+          "answer": "(2n)², versus 2n² — the parentheses square the 2 as well.",
+          "notes": "The contrast IS the skill; have students evaluate both at n = 3 (36 vs 18)."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain the difference between 3n² and (3n)² using n = 2.",
+          "answer": "3n² = 3 × 4 = 12; (3n)² = 6² = 36. The exponent only touches what it sits on.",
+          "notes": "Written explanation, not just computation."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Deja wrote an expression for 'five times a number x, squared.' Find her mistake and fix it.",
+          "shown_work": [
+            "'five times x, squared'",
+            "Deja wrote:  5x * 2"
+          ],
+          "answer": "5x^2. 'Squared' means x times ITSELF (x * x), not times 2. At x = 3: 5x^2 = 45 but 5x * 2 = 30.",
+          "notes": "Squared-as-times-2 error."
+        }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Three-Way Notation Match",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Card sets in three colors: verbal phrases, exponent notation, expanded multiplication"
+          ],
+          "instructions": "1. Groups build complete triples: phrase ↔ exponent form ↔ written-out multiplication (e.g. 'twice the square of n' ↔ 2n² ↔ 2 × n × n).\n2. Two trap cards ((2n)² and 2 × n × 2) belong to different triples than students expect.\n3. A triple only scores when the group can read all three versions aloud as the same thing.",
+          "content": {
+            "triples": [
+              {
+                "phrase": "n squared",
+                "notation": "n²",
+                "expanded": "n × n"
+              },
+              {
+                "phrase": "n cubed",
+                "notation": "n³",
+                "expanded": "n × n × n"
+              },
+              {
+                "phrase": "twice the square of n",
+                "notation": "2n²",
+                "expanded": "2 × n × n"
+              },
+              {
+                "phrase": "the square of twice n",
+                "notation": "(2n)²",
+                "expanded": "2n × 2n"
+              },
+              {
+                "phrase": "five times x squared",
+                "notation": "5x²",
+                "expanded": "5 × x × x"
+              }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Deja's Doubling Mistake",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Pairs read Deja's work and name the exact wrong move.\n2. They check by evaluating both versions at x = 3 — the numbers expose the error.\n3. Each pair writes the rule in their own words: what does the little 2 actually mean?",
+          "content": {
+            "worked_problem": "Phrase: 'five times a number x, squared.' Deja wrote: 5x × 2.",
+            "error_step": "Deja turned 'squared' into 'times 2.'",
+            "why": "Squaring means multiplying by ITSELF, not by 2. At x = 3: 5x² = 5 × 9 = 45, but 5x × 2 = 30. The exponent counts how many copies of x are multiplied."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Notation Showdown",
+          "time_minutes": 10,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Say a phrase ('three times a number cubed'); students write the notation and hold it up on the count of three.\n2. Any split between answers like 3n³ and (3n)³ becomes an instant class debate: evaluate both at n = 2 and let the numbers referee.\n3. Track a running list of 'phrases that split the room' for the next session's warm-up."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Pairing a correct worked example (5x²) against the ×2 error is the fastest route to the notation rule."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud while unpacking 'twice the square of m' models the two-layer decision students must make."
+        },
+        {
+          "strategy_id": "strat-math-008",
+          "why": "Whiteboard rounds expose instantly who writes ×2 for 'squared.'"
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which word in the phrase is doing something to the variable all by itself?",
+          "What does the little 2 count — how many times you multiply by 2, or how many copies of the variable get multiplied?",
+          "Does the phrase square just the variable, or the coefficient along with it? How do the parentheses show that?",
+          "Write it the long way with × signs first. Now, what's the shortcut version?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student writes repeated multiplication as ×2, or puts the coefficient inside the square — 5x × 2 or (5x)² for 5x².",
+            "say": "When we say 'n squared,' we mean n × n, which we write as n². The little 2 up top is the exponent — it tells us how many times to multiply. So 3n² means 3 × n × n. Can you rewrite your answer using the exponent?",
+            "praise": "You nailed the exponent notation. The coefficient goes in front, and the exponent goes up top on the variable."
+          },
+          {
+            "if_you_see": "Student evaluates n² as n × 2 when checking their own written expression.",
+            "say": "Try both readings at n = 4: n × 2 gives 8, n × n gives 16. Which one is 'four squared'? Draw a 4-by-4 square of dots if you're not sure.",
+            "praise": "That's it — squaring builds a square, and the exponent counts the sides multiplied."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Hold up fingers: how many n's are being multiplied together in 4n³?",
+            "look_for": "Three fingers. 'Four' or 'twelve' means the exponent/coefficient roles are still tangled."
+          },
+          {
+            "prompt": "True or false: 2x² and (2x)² are the same. Prove it with x = 3.",
+            "look_for": "False, with 18 vs 36 — the substitution proof, not just the rule recited."
+          }
+        ]
+      },
+      "fluency_source": "6AF1-F3",
+      "sentence_starters": [
+        "The exponent only touches ___ because ___.",
+        "3n² and (3n)² are different because the parentheses ___."
+      ],
+      "worked_solution": {
+        "stem": "Write an expression for: 'five times a number x, squared.'",
+        "answer": "5x^2",
+        "steps": [
+          {
+            "math": "x squared = x * x",
+            "annotation": "'Squared' means multiplied by ITSELF -- not times 2."
+          },
+          {
+            "math": "shortcut: x^2",
+            "annotation": "The little 2 up top counts how many x's are multiplied together."
+          },
+          {
+            "math": "five times that: 5x^2",
+            "annotation": "The 5 sits in front on the line. Only x is squared -- (5x)^2 would square the 5 too, and the phrase doesn't say that."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Write an expression for: 'twice the square of a number m.'",
+        "answer": "2m^2",
+        "steps": [
+          {
+            "math": "the square of m -> m^2",
+            "annotation": "Handle the 'square' part first.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "'Twice' means what? Where does that number go?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the full expression.",
+            "given": false
+          }
+        ]
+      },
+      "next_steps": {
+        "if_pass": "Move on to 6AF1-S4: Write expressions from real-world contexts.",
+        "if_fail": "Reteach 6AF1-S2: Write one-operation expressions from verbal phrases next session before retrying this skill -- the miss usually traces to that prerequisite."
+      }
+    },
+    {
+      "skill_id": "6AF1-S4",
+      "name": "Write expressions from real-world contexts",
+      "column": "on_grade",
+      "parent_standard": "6.AF.1",
+      "engine_stems": [
+        3,
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "6AF1-S2"
+      },
+      "i_do_script": "We're going to turn a real-life money problem into a short math expression. Instead of me showing you the rule first, I'll ask questions and you tell me what you notice. The big idea we're hunting for: which number happens over and over, and which number happens just one time?",
+      "canonical_error": {
+        "pattern": "Picks the wrong operation because the context word is ambiguous — e.g., treats a fixed cost as a rate or swaps which quantity is the coefficient vs. the constant",
+        "example": "For 'charges $12 per ticket plus $3 fee,' student writes 3t + 12 (swaps the rate and fixed cost) or 12 + 3t (treats the fee as the rate)",
+        "why": "Students don't distinguish between the quantity that repeats (rate × variable) and the quantity that's fixed (constant). Both are 'part of the cost' so they guess which is which."
+      },
+      "item_template": "A real-world context with a fixed amount and a rate (cost per unit, earnings per hour, etc.). Student selects the correct expression from 4 choices. MC. Distractors swap the rate and constant, use wrong operation, or omit a term.",
+      "sample_items": [
+        {
+          "stem": "A gym charges $25 per month plus a one-time $50 registration fee. Which expression represents the total cost for m months?",
+          "answer": "25m + 50",
+          "choices": [
+            "25m + 50",
+            "50m + 25",
+            "25 + 50m",
+            "75m"
+          ],
+          "distractor_logic": "50m+25 swaps rate/constant, 25+50m swaps rate/constant, 75m combines them incorrectly"
+        },
+        {
+          "stem": "A pizza shop charges $8 per pizza and $3 for delivery. Which expression represents the cost of p pizzas with delivery?",
+          "answer": "8p + 3",
+          "choices": [
+            "8p + 3",
+            "3p + 8",
+            "8 + 3p",
+            "11p"
+          ],
+          "distractor_logic": "3p+8 swaps rate/constant, 8+3p swaps rate/constant, 11p combines incorrectly"
+        },
+        {
+          "stem": "Marcus earns $15 per hour. He already has $40 saved. Which expression shows his total savings after h hours of work?",
+          "answer": "15h + 40",
+          "choices": [
+            "15h + 40",
+            "40h + 15",
+            "15 + 40h",
+            "55h"
+          ],
+          "distractor_logic": "40h+15 swaps rate/saved, 15+40h swaps, 55h combines"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Let's figure out which number repeats and which is a one-time thing.",
+        "prompt": "Ask yourself: 'Which amount happens every time?' That's your rate — it gets multiplied by the variable. 'Which amount happens only once?' That's your constant — it gets added. In this problem, which number repeats?",
+        "praise": "You identified the rate and the constant correctly. That's the key to writing expressions from word problems."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Display the problem: 'A gym charges $25 per month plus a one-time $50 registration fee. Which expression represents the total cost for m months?'"
+        },
+        {
+          "kind": "ask",
+          "text": "If you joined this gym and stayed for 1 month, how much money would you owe in total? Walk me through it."
+        },
+        {
+          "kind": "ask",
+          "text": "Now imagine you stay for 2 months. How does the cost change? Which number gets paid again, and which number does not?"
+        },
+        {
+          "kind": "ask",
+          "text": "The letter m stands for the number of months. If the $25 has to be paid every month, what would we do with the 25 and the m to show that — add them, multiply them, or something else? Why?"
+        },
+        {
+          "kind": "ask",
+          "text": "What about the $50 registration fee? Does it get paid every month or just one time? So how should it show up in our expression?"
+        },
+        {
+          "kind": "ask",
+          "text": "Put the two pieces together. What does the whole expression look like?"
+        },
+        {
+          "kind": "watch",
+          "text": "If the student says 50m + 25, they swapped which number repeats. Ask: 'Does the registration fee happen every month, or just once when you sign up?' Then ask them to rebuild the expression."
+        },
+        {
+          "kind": "say",
+          "text": "Nice — 25m + 50. The number that repeats sits next to the variable, and the one-time number gets added on. That's the move you'll use every time a word problem mixes a 'per' amount with a flat fee."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Write expressions from real-world contexts Reference",
+        "kind": "reference_card",
+        "instructions": "Keep this nearby. Match the wording in the problem to one of these patterns, then plug in the numbers.",
+        "items": [
+          "$P per item plus $F flat fee  ->  Pn + F   (e.g., $8 per pizza plus $3 delivery -> 8p + 3)",
+          "$R per hour, already has $S saved  ->  Rh + S   (e.g., $15/hr, $40 saved -> 15h + 40)",
+          "$M per month plus one-time $F signup  ->  Mx + F   (e.g., $25/mo + $50 signup -> 25m + 50)",
+          "Starts with A, gains B each time  ->  A + Bn   (e.g., 100 points, +5 each level -> 100 + 5n)",
+          "Starts with A, loses B each time  ->  A - Bn   (e.g., $200 saved, spends $20/wk -> 200 - 20w)",
+          "X items shared equally among Y people  ->  X / Y   (e.g., 24 cookies, 6 kids -> 24/6)",
+          "Total T split into groups of g  ->  T / g   (e.g., 30 students in groups of 5 -> 30/5)",
+          "M miles at S miles per hour  ->  M / S hours   (e.g., 120 mi at 60 mph -> 120/60)",
+          "N times as many as x  ->  Nx   (e.g., three times as many apples -> 3x)",
+          "B more than x  ->  x + B   (e.g., 7 more than a number -> x + 7)",
+          "B less than x  ->  x - B   (NOT B - x; e.g., 4 less than n -> n - 4)",
+          "Twice a number, increased by C  ->  2x + C   (e.g., twice age plus 5 -> 2a + 5)",
+          "Rule: the amount that REPEATS gets multiplied by the variable (the rate). The amount that happens ONCE gets added as a constant."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Movie tickets cost $9 each. Write an expression for the cost of t tickets.",
+          "answer": "9t"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Ava has 12 markers and buys m more. Write an expression for how many markers she has now.",
+          "answer": "12 + m"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A ride app charges $2 per mile plus a $5 pickup fee. Write an expression for the total cost of a ride of m miles.",
+          "answer": "2m + 5",
+          "notes": "Rate vs. constant — expect 5m + 2 from students guessing."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bake sale starts with 60 cookies and sells c of them. Write an expression for the cookies left.",
+          "answer": "60 - c",
+          "notes": "Starting amount minus the variable — order matters."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A phone plan costs $30 per month, and the phone itself costs $80 one time. Write an expression for the total cost after m months.",
+          "answer": "30m + 80"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Ethan already has $35 and saves $10 every week. Write an expression for his total savings after w weeks.",
+          "answer": "10w + 35",
+          "notes": "Accept 35 + 10w; the point is the 10 rides with w."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write a real-world situation that the expression 15h + 20 could represent. Label what h, 15, and 20 each mean.",
+          "answer": "Any context with a $15-per-unit rate and one-time $20, e.g. babysitting $15/hour plus a flat $20 travel fee.",
+          "notes": "Reversing direction — from expression to story — is the deepest check of this skill."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A team orders p pizzas at $11 each and adds a $6 tip. A coupon then takes $4 off the total. Write an expression for what they pay.",
+          "answer": "11p + 6 - 4 (or 11p + 2)",
+          "notes": "Three quantities to classify: one repeats, two happen once in opposite directions."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "A gym charges $25 per month plus a one-time $50 fee. Priya wrote an expression for m months. Find her mistake and fix it.",
+          "shown_work": [
+            "Priya wrote:  50m + 25"
+          ],
+          "answer": "25m + 50. The $25 repeats every month, so it multiplies m. At 3 months Priya's bill charges $175 instead of $125.",
+          "notes": "Swapped rate and constant."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Repeats or Happens Once?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Quantity cards",
+            "Two header cards: 'Repeats → multiplies the variable' and 'Happens once → constant'"
+          ],
+          "instructions": "1. Partners sort each quantity card under Repeats or Happens Once.\n2. For every card they must say the test question aloud: 'Does this amount happen again each month/ride/hour?'\n3. After sorting, pairs pick any Repeats card and any Happens-Once card and combine them into a full expression.",
+          "content": {
+            "categories": [
+              "Repeats → multiplies the variable",
+              "Happens once → constant"
+            ],
+            "cards": [
+              {
+                "text": "$25 per month",
+                "category": "Repeats → multiplies the variable"
+              },
+              {
+                "text": "$3 per ride",
+                "category": "Repeats → multiplies the variable"
+              },
+              {
+                "text": "$15 for every hour worked",
+                "category": "Repeats → multiplies the variable"
+              },
+              {
+                "text": "8 laps each practice",
+                "category": "Repeats → multiplies the variable"
+              },
+              {
+                "text": "$50 sign-up fee",
+                "category": "Happens once → constant"
+              },
+              {
+                "text": "one-time $12 deposit",
+                "category": "Happens once → constant"
+              },
+              {
+                "text": "$80 for the phone itself",
+                "category": "Happens once → constant"
+              },
+              {
+                "text": "started with $35 already saved",
+                "category": "Happens once → constant"
+              }
+            ]
+          }
+        },
+        {
+          "type": "hands_on",
+          "title": "Cup-a-Month Gym Model",
+          "time_minutes": 15,
+          "grouping": "small_group",
+          "materials": [
+            "Paper cups",
+            "Play money or counters",
+            "One 'sign-up' envelope"
+          ],
+          "instructions": "1. Pose the gym problem: $25 per month plus a $50 sign-up fee.\n2. Month 1: students put $25 in a cup AND $50 in the sign-up envelope. Month 2: add another cup with $25 — ask 'do we pay the envelope again?'\n3. Build to month 4, then ask for the total two ways: counting, and as an expression with m cups.\n4. The cups are 25m; the envelope is + 50. Have students say which physical object is the variable part and why."
+        },
+        {
+          "type": "error_analysis",
+          "title": "The Swapped Gym Bill",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Students compute what Priya's expression would charge for 3 months and compare it to the real bill.\n2. They name the exact mix-up and write the corrected expression.\n3. Exit question: what test tells you which number belongs next to the variable?",
+          "content": {
+            "worked_problem": "Gym: $25 per month plus one-time $50 fee. Priya wrote: 50m + 25.",
+            "error_step": "Priya attached the one-time fee to the variable and made the monthly rate the constant.",
+            "why": "The amount that repeats every month must multiply m. At 3 months Priya's expression charges 50(3) + 25 = $175, but the real cost is 25(3) + 50 = $125."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "CRA is the backbone here — cups and counters make 'repeats vs. happens once' physical before it's symbolic."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Which number repeats is a genuine discussion question; think-pair-share surfaces the reasoning."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The swapped rate/constant error (50m + 25) is made for find-and-fix analysis."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which amount happens every single time? Which amount happens only once?",
+          "If you stayed one more month, which numbers on the bill change and which stay the same?",
+          "The variable counts something. What exactly is it counting in this story?",
+          "Read your expression back as a sentence. Does it tell the same story as the problem?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student swaps the rate and the constant — writes 50m + 25 for a $25/month, $50-once situation.",
+            "say": "Ask yourself: 'Which amount happens every time?' That's your rate — it gets multiplied by the variable. 'Which amount happens only once?' That's your constant — it gets added. In this problem, which number repeats?",
+            "praise": "You identified the rate and the constant correctly. That's the key to writing expressions from word problems."
+          },
+          {
+            "if_you_see": "Student adds everything into one number — writes 75m for $25/month plus $50 once.",
+            "say": "Test it at 2 months. Your expression says $150; count the real bill month by month: 25 + 25 + 50 = $100. Which part of the story did the 75 accidentally repeat?",
+            "praise": "Exactly — the fee can't ride along with every month. Keeping the two pieces separate keeps the bill honest."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "In '$12 per ticket plus a $4 fee,' point to the number that goes next to the variable.",
+            "look_for": "The 12, with 'because it repeats for every ticket' as the reason — not keyword hunting."
+          },
+          {
+            "prompt": "Give your expression for 3 of whatever the variable counts. Does the total match counting it out by hand?",
+            "look_for": "Students who verify by substitution; refusal to check signals fragile understanding."
+          }
+        ]
+      },
+      "fluency_source": "6AF1-F3",
+      "sentence_starters": [
+        "___ repeats every ___, so it multiplies the variable.",
+        "___ only happens once, so I add it as a constant."
+      ],
+      "worked_solution": {
+        "stem": "A gym charges $25 per month plus a one-time $50 sign-up fee. Write an expression for the total cost for m months.",
+        "answer": "25m + 50",
+        "steps": [
+          {
+            "math": "$25 happens EVERY month",
+            "annotation": "Ask: which amount repeats? The repeating amount (the rate) multiplies the variable: 25m."
+          },
+          {
+            "math": "$50 happens ONCE",
+            "annotation": "The one-time amount is a constant -- it gets added, never multiplied by m."
+          },
+          {
+            "math": "25m + 50",
+            "annotation": "Check with 2 months: 25(2) + 50 = $100. Count it by hand: 25 + 25 + 50 = $100. It matches."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A ride app charges $2 per mile plus a $5 pickup fee. Write an expression for the cost of a ride of m miles.",
+        "answer": "2m + 5",
+        "steps": [
+          {
+            "math": "Which number repeats every mile? -> that one multiplies m",
+            "annotation": "Find the rate first.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Which number happens only once?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Put the two pieces together.",
+            "given": false
+          }
+        ]
+      },
+      "next_steps": {
+        "if_pass": "Move on to 6AF1-S5: Evaluate one-operation expressions by substitution.",
+        "if_fail": "Reteach 6AF1-S2: Write one-operation expressions from verbal phrases next session before retrying this skill -- the miss usually traces to that prerequisite."
+      }
+    },
+    {
+      "skill_id": "6AF1-S5",
+      "name": "Evaluate one-operation expressions by substitution",
+      "column": "on_grade",
+      "parent_standard": "6.AF.1",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "6AF1-S2"
+      },
+      "i_do_script": "We're going to walk through evaluating an expression by asking the student what each piece means, instead of telling them the rule up front. Your goal is to let them notice that the number sitting next to a variable signals multiplication, and to catch the moment a student might paste digits together instead. Stay curious with your questions and let their answers steer the pacing.",
+      "canonical_error": {
+        "pattern": "Forgets that a coefficient means multiplication — treats 4n as '4 and n' or '43' instead of 4 × 3",
+        "example": "For 4n when n = 3, student writes 43 instead of 12",
+        "why": "Students see the number and variable next to each other and concatenate them like digits instead of multiplying. The implied multiplication is invisible."
+      },
+      "item_template": "An expression with one variable and one or two operations (but no PEMDAS conflict). Given a value for the variable, student computes the result. NR (numeric response).",
+      "sample_items": [
+        {
+          "stem": "Evaluate 4n when n = 7.",
+          "answer": "28",
+          "choices": null,
+          "distractor_logic": "Common errors: 47 (concatenation), 11 (addition 4+7)"
+        },
+        {
+          "stem": "Evaluate 5x when x = 6.",
+          "answer": "30",
+          "choices": null,
+          "distractor_logic": "Common errors: 56 (concatenation), 11 (addition 5+6)"
+        },
+        {
+          "stem": "Evaluate 7y when y = 3.",
+          "answer": "21",
+          "choices": null,
+          "distractor_logic": "Common errors: 73 (concatenation), 10 (addition 7+3)"
+        },
+        {
+          "stem": "Evaluate 9k when k = 2.",
+          "answer": "18",
+          "choices": null,
+          "distractor_logic": "Common errors: 92 (concatenation), 11 (addition 9+2)"
+        },
+        {
+          "stem": "Evaluate 8m when m = 4.",
+          "answer": "32",
+          "choices": null,
+          "distractor_logic": "Common errors: 84 (concatenation), 12 (addition 8+4)"
+        },
+        {
+          "stem": "Evaluate 6t when t = 5.",
+          "answer": "30",
+          "choices": null,
+          "distractor_logic": "Common errors: 65 (concatenation), 11 (addition 6+5)"
+        },
+        {
+          "stem": "Evaluate 3p when p = 9.",
+          "answer": "27",
+          "choices": null,
+          "distractor_logic": "Common errors: 39 (concatenation), 12 (addition 3+9)"
+        },
+        {
+          "stem": "Evaluate 5b when b = 8.",
+          "answer": "40",
+          "choices": null,
+          "distractor_logic": "Common errors: 58 (concatenation), 13 (addition 5+8)"
+        },
+        {
+          "stem": "Evaluate a + 12 when a = 9.",
+          "answer": "21",
+          "choices": null,
+          "distractor_logic": "Common errors: 912 (concatenation), 3 (subtraction 12-9)"
+        },
+        {
+          "stem": "Evaluate k + 8 when k = 15.",
+          "answer": "23",
+          "choices": null,
+          "distractor_logic": "Common errors: 158 (concatenation), 7 (subtraction 15-8)"
+        },
+        {
+          "stem": "Evaluate y + 6 when y = 14.",
+          "answer": "20",
+          "choices": null,
+          "distractor_logic": "Common errors: 146 (concatenation), 8 (subtraction 14-6)"
+        },
+        {
+          "stem": "Evaluate d + 11 when d = 7.",
+          "answer": "18",
+          "choices": null,
+          "distractor_logic": "Common errors: 711 (concatenation), 4 (subtraction 11-7)"
+        },
+        {
+          "stem": "Evaluate 20 - x when x = 6.",
+          "answer": "14",
+          "choices": null,
+          "distractor_logic": "Common errors: 26 (addition instead of subtraction), 206 (concatenation)"
+        },
+        {
+          "stem": "Evaluate n - 3 when n = 11.",
+          "answer": "8",
+          "choices": null,
+          "distractor_logic": "Common errors: 14 (addition instead of subtraction), 113 (concatenation)"
+        },
+        {
+          "stem": "Evaluate 15 - t when t = 9.",
+          "answer": "6",
+          "choices": null,
+          "distractor_logic": "Common errors: 24 (addition instead of subtraction), 159 (concatenation)"
+        },
+        {
+          "stem": "Evaluate 24 / x when x = 4.",
+          "answer": "6",
+          "choices": null,
+          "distractor_logic": "Common errors: 96 (multiplication 24x4), 20 (subtraction 24-4)"
+        },
+        {
+          "stem": "Evaluate 30 / m when m = 6.",
+          "answer": "5",
+          "choices": null,
+          "distractor_logic": "Common errors: 180 (multiplication 30x6), 24 (subtraction 30-6)"
+        },
+        {
+          "stem": "Evaluate 36 / p when p = 9.",
+          "answer": "4",
+          "choices": null,
+          "distractor_logic": "Common errors: 324 (multiplication 36x9), 27 (subtraction 36-9)"
+        },
+        {
+          "stem": "Evaluate 2c when c = 11.",
+          "answer": "22",
+          "choices": null,
+          "distractor_logic": "Common errors: 211 (concatenation), 13 (addition 2+11)"
+        },
+        {
+          "stem": "Evaluate 18 / r when r = 3.",
+          "answer": "6",
+          "choices": null,
+          "distractor_logic": "Common errors: 54 (multiplication 18x3), 15 (subtraction 18-3)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "It looks like you put the numbers next to each other instead of multiplying. Let's fix that.",
+        "prompt": "Remember: when a number is right next to a variable like 4n, it means 4 TIMES n. So if n = 3, then 4n = 4 × 3 = 12, not 43. Try rewriting the expression with a × sign to make it clear, then compute.",
+        "praise": "You multiplied correctly! Seeing 4n as '4 times n' is one of the most important skills in algebra."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the problem on the board: Evaluate 4n when n = 7."
+        },
+        {
+          "kind": "ask",
+          "text": "Looking at 4n, what do you think the letter n stands for here?"
+        },
+        {
+          "kind": "ask",
+          "text": "We're told n equals 7. If n is the same as 7, what number could we put in the spot where n is right now?"
+        },
+        {
+          "kind": "ask",
+          "text": "So if we swap n out for 7, what does the expression look like written out?"
+        },
+        {
+          "kind": "ask",
+          "text": "When a number sits right next to a variable like that — with no plus or minus sign between them — what operation do you think the math is asking us to do?"
+        },
+        {
+          "kind": "watch",
+          "text": "If the student answers 47, that's the concatenation error. Pause and ask: 'If I told you 4 and 7 are not being smushed together, but instead one is being repeated the other's number of times, what would that look like?' Then have them rewrite 4n as 4 times 7 with a visible times sign before computing."
+        },
+        {
+          "kind": "ask",
+          "text": "Good — it's 4 times 7. What does 4 times 7 equal?"
+        },
+        {
+          "kind": "ask",
+          "text": "So what's our final answer for 4n when n = 7?"
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate n + 9 when n = 6.",
+          "answer": "15"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate 12 - t when t = 5.",
+          "answer": "7"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 6k when k = 7.",
+          "answer": "42",
+          "notes": "The concatenation trap — watch for 67."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 45/m when m = 9.",
+          "answer": "5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 8y when y = 12.",
+          "answer": "96"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate p - 14 when p = 30.",
+          "answer": "16"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Evaluate 3.5x when x = 4.",
+          "answer": "14",
+          "notes": "A decimal rate — same move, less friendly number."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "If 5n = 40, what is n? How is this question different from 'evaluate 5n when n = 40'?",
+          "answer": "n = 8. Evaluating plugs a known value in; here we reverse to find the value that makes it 40 (which would evaluate to 200 if n were 40).",
+          "notes": "Previews solving; the contrast sharpens what 'evaluate' means."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Marcus evaluated 4n when n = 3. Find his mistake and fix it.",
+          "shown_work": [
+            "4n, when n = 3",
+            "Marcus wrote:  43"
+          ],
+          "answer": "12. 4n means 4 TIMES n, so 4 * 3 = 12. The digits never glue together.",
+          "notes": "The concatenation error."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "number_line",
+          "stem": "Evaluate m + 6 when m = 9. Then mark your answer on the number line.",
+          "answer": "15",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18
+            ],
+            "point_value": null
+          },
+          "notes": "Placement connects the computed value to magnitude (IES recs 3-4)."
+        }
+      ],
+      "activities": [
+        {
+          "type": "game",
+          "title": "Substitution Bingo",
+          "time_minutes": 15,
+          "grouping": "whole_class",
+          "materials": [
+            "Bingo boards pre-filled with answer values",
+            "Expression call cards ('4n when n = 7')"
+          ],
+          "instructions": "1. Each student gets a board of numbers (answers in disguise).\n2. Call an expression with a value ('3k when k = 6'). Students evaluate on scratch paper, then mark the answer if they have it.\n3. A bingo only counts when the student can re-derive each marked square out loud.\n4. Seed call cards with concatenation bait: 4n at n = 3 while some boards show 43 — anyone who marks 43 gets the class's best explanation of why it's 12."
+        },
+        {
+          "type": "hands_on",
+          "title": "Variable Envelopes",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Envelopes labeled with letters (n, x, k)",
+            "Number cards inside",
+            "Large expression frames on paper"
+          ],
+          "instructions": "1. Build the expression frame '4 × [ n ]' with the sealed n envelope sitting in the variable spot.\n2. Open the envelope, take out the card (say, 7), and physically place it where the envelope sat.\n3. Ask: the envelope was never glued to the 4 — what operation connects them? Compute.\n4. Repeat with the SAME envelope in a new frame (n + 9) to show one value flowing into different expressions."
+        },
+        {
+          "type": "error_analysis",
+          "title": "The 43 Problem",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Show Marcus's work; pairs identify what he did with the 4 and the 3.\n2. Have pairs rewrite 4n with a visible × sign, then substitute.\n3. Exit prompt: why does 43 LOOK reasonable, and what does 4n actually mean?",
+          "content": {
+            "worked_problem": "Evaluate 4n when n = 3. Marcus wrote: 43.",
+            "error_step": "Marcus replaced n with 3 and pasted the digits together — 4 next to 3 became forty-three.",
+            "why": "A coefficient touching a variable means multiplication. 4n is 4 × n, so 4 × 3 = 12. Digits only 'stick together' in place value, never in algebra."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The envelope model is CRA in action — concrete substitution before symbolic."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Rapid choral evaluation rounds ('6k, k = 7… 42!') automatize the multiply-not-concatenate move."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The '43' concatenation error deserves direct find-and-fix treatment."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Before computing: what number is the letter holding today?",
+          "When a number sits right against a letter with nothing between them, what operation is hiding there?",
+          "Rewrite the expression with the × sign showing. Now substitute. What changed?",
+          "Could the same expression give a different answer tomorrow? What would have to change?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student evaluates 4n at n = 3 and writes 43 — digits pasted together instead of multiplied.",
+            "say": "Remember: when a number is right next to a variable like 4n, it means 4 TIMES n. So if n = 3, then 4n = 4 × 3 = 12, not 43. Try rewriting the expression with a × sign to make it clear, then compute.",
+            "praise": "You multiplied correctly! Seeing 4n as '4 times n' is one of the most important skills in algebra."
+          },
+          {
+            "if_you_see": "Student leaves the answer 'in terms of n' — writes n + 9 = n + 9 without substituting the given value.",
+            "say": "The problem handed you n's value — it's not a mystery anymore. Cross out every n and write its number in that exact spot, then compute what's left.",
+            "praise": "That's a full evaluation — every letter traded for its number, then arithmetic to the end."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Fingers up: 5x when x = 2 — is it 52 or 10?",
+            "look_for": "Instant 10. Any 52s mean the invisible multiplication still isn't visible."
+          },
+          {
+            "prompt": "Evaluate y - 4 when y = 20, and tell me the FIRST thing you wrote down.",
+            "look_for": "'20 - 4' — substitution before arithmetic. Students who just say '16' may be fine, but ask for the middle step once."
+          }
+        ]
+      },
+      "fluency_source": "6AF1-F3",
+      "sentence_starters": [
+        "First I substituted ___ for ___, then I ___.",
+        "4n means 4 TIMES n because a number touching a letter is hidden multiplication."
+      ],
+      "worked_solution": {
+        "stem": "Evaluate 4n when n = 7.",
+        "answer": "28",
+        "steps": [
+          {
+            "math": "4n means 4 * n",
+            "annotation": "A number touching a letter is hidden multiplication -- the digits never glue together."
+          },
+          {
+            "math": "4 * 7",
+            "annotation": "Substitute: every n becomes 7."
+          },
+          {
+            "math": "28",
+            "annotation": "4 * 7 = 28. (Not 47 -- that would be gluing the digits, which isn't an operation.)"
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Evaluate 6k when k = 5.",
+        "answer": "30",
+        "steps": [
+          {
+            "math": "6k means 6 * k",
+            "annotation": "The multiplication is invisible, but it's there.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Substitute k's value.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Compute.",
+            "given": false
+          }
+        ]
+      },
+      "next_steps": {
+        "if_pass": "Move on to 6AF1-S6: Evaluate multi-operation expressions using order of operations.",
+        "if_fail": "Reteach 6AF1-S2: Write one-operation expressions from verbal phrases next session before retrying this skill -- the miss usually traces to that prerequisite."
+      }
+    },
+    {
+      "skill_id": "6AF1-S6",
+      "name": "Evaluate multi-operation expressions using order of operations",
+      "column": "looking_forward",
+      "parent_standard": "6.AF.1",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "6AF1-S5"
+      },
+      "i_do_script": "Today's expression has more than one operation packed into it, and the order we tackle them changes the answer. Instead of me telling you the rule, I'll ask questions and let you discover which step has to come first. Watch what happens when we try the problem two different ways and see which one holds up.",
+      "canonical_error": {
+        "pattern": "Evaluates left to right without following order of operations",
+        "example": "For 3 + 4x when x = 2, student computes 3 + 4 = 7, then 7 × 2 = 14, instead of 3 + 8 = 11",
+        "why": "Left-to-right reading feels natural. Students haven't internalized that multiplication takes priority over addition regardless of position."
+      },
+      "item_template": "An expression with both multiplication (or exponent) and addition/subtraction, creating a PEMDAS conflict. Given a variable value, student computes the result. MC with 4 choices: correct answer, left-to-right error, wrong substitution, arithmetic error.",
+      "sample_items": [
+        {
+          "stem": "Evaluate 3x + 5 when x = 4.",
+          "answer": "17",
+          "distractor_logic": "Left-to-right error: (3+5)*4 = 32. PEMDAS-correct: 3*4 + 5 = 12 + 5 = 17."
+        },
+        {
+          "stem": "Evaluate 7 + 4n when n = 3.",
+          "answer": "19",
+          "distractor_logic": "Left-to-right error: (7+4)*3 = 33. PEMDAS-correct: 7 + 4*3 = 7 + 12 = 19."
+        },
+        {
+          "stem": "Evaluate 6y - 8 when y = 5.",
+          "answer": "22",
+          "distractor_logic": "Left-to-right slip: 6*(y-8) = 6*-3 = -18. PEMDAS-correct: 6*5 - 8 = 30 - 8 = 22."
+        },
+        {
+          "stem": "Evaluate 20 - 3t when t = 4.",
+          "answer": "8",
+          "distractor_logic": "Left-to-right error: (20-3)*4 = 68. PEMDAS-correct: 20 - 3*4 = 20 - 12 = 8."
+        },
+        {
+          "stem": "Evaluate 2(x + 6) when x = 5.",
+          "answer": "22",
+          "distractor_logic": "Skip parens error: 2*x + 6 = 10 + 6 = 16. PEMDAS-correct: 2*(5+6) = 2*11 = 22."
+        },
+        {
+          "stem": "Evaluate b² + 7 when b = 4.",
+          "answer": "23",
+          "distractor_logic": "Treat exponent as *2: 4*2 + 7 = 15. PEMDAS-correct: 16 + 7 = 23."
+        },
+        {
+          "stem": "Evaluate 9 + 2k when k = 7.",
+          "answer": "23",
+          "distractor_logic": "Left-to-right error: (9+2)*7 = 77. PEMDAS-correct: 9 + 2*7 = 9 + 14 = 23."
+        },
+        {
+          "stem": "Evaluate 5p - 6 when p = 4.",
+          "answer": "14",
+          "distractor_logic": "Left-to-right slip: 5*(p-6) = 5*-2 = -10. PEMDAS-correct: 5*4 - 6 = 20 - 6 = 14."
+        },
+        {
+          "stem": "Evaluate 4 + 5a when a = 8.",
+          "answer": "44",
+          "distractor_logic": "Left-to-right error: (4+5)*8 = 72. PEMDAS-correct: 4 + 5*8 = 4 + 40 = 44."
+        },
+        {
+          "stem": "Evaluate 3(m + 4) when m = 7.",
+          "answer": "33",
+          "distractor_logic": "Skip parens error: 3*m + 4 = 21 + 4 = 25. PEMDAS-correct: 3*(7+4) = 3*11 = 33."
+        },
+        {
+          "stem": "Evaluate x² + 9 when x = 6.",
+          "answer": "45",
+          "distractor_logic": "Treat exponent as *2: 6*2 + 9 = 21. PEMDAS-correct: 36 + 9 = 45."
+        },
+        {
+          "stem": "Evaluate 30 - 4y when y = 5.",
+          "answer": "10",
+          "distractor_logic": "Left-to-right error: (30-4)*5 = 130. PEMDAS-correct: 30 - 4*5 = 30 - 20 = 10."
+        },
+        {
+          "stem": "Evaluate 8 + 6t when t = 2.",
+          "answer": "20",
+          "distractor_logic": "Left-to-right error: (8+6)*2 = 28. PEMDAS-correct: 8 + 6*2 = 8 + 12 = 20."
+        },
+        {
+          "stem": "Evaluate 5(k - 2) when k = 9.",
+          "answer": "35",
+          "distractor_logic": "Skip parens error: 5*k - 2 = 45 - 2 = 43. PEMDAS-correct: 5*(9-2) = 5*7 = 35."
+        },
+        {
+          "stem": "Evaluate 2b² when b = 5.",
+          "answer": "50",
+          "distractor_logic": "Square the product: (2*5)² = 100. PEMDAS-correct: 2*(5²) = 2*25 = 50."
+        },
+        {
+          "stem": "Evaluate 6 + 2a when a = 9.",
+          "answer": "24",
+          "distractor_logic": "Left-to-right error: (6+2)*9 = 72. PEMDAS-correct: 6 + 2*9 = 6 + 18 = 24."
+        },
+        {
+          "stem": "Evaluate 15 - 2w when w = 6.",
+          "answer": "3",
+          "distractor_logic": "Left-to-right error: (15-2)*6 = 78. PEMDAS-correct: 15 - 2*6 = 15 - 12 = 3."
+        },
+        {
+          "stem": "Evaluate 4(n - 3) when n = 10.",
+          "answer": "28",
+          "distractor_logic": "Skip parens error: 4*n - 3 = 40 - 3 = 37. PEMDAS-correct: 4*(10-3) = 4*7 = 28."
+        },
+        {
+          "stem": "Evaluate c² - 5 when c = 7.",
+          "answer": "44",
+          "distractor_logic": "Treat exponent as *2: 7*2 - 5 = 9. PEMDAS-correct: 49 - 5 = 44."
+        },
+        {
+          "stem": "Evaluate 11 + 3h when h = 6.",
+          "answer": "29",
+          "distractor_logic": "Left-to-right error: (11+3)*6 = 84. PEMDAS-correct: 11 + 3*6 = 11 + 18 = 29."
+        }
+      ],
+      "redirect_script": {
+        "stop": "You computed left to right, but there's an order we need to follow.",
+        "prompt": "Remember PEMDAS: Parentheses, Exponents, Multiply/Divide, Add/Subtract. Circle the multiplication or exponent part first. Compute THAT part. Then do the addition or subtraction. Try again — what's the multiplication part?",
+        "praise": "You followed the order of operations correctly! Multiply first, then add. That's exactly right."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Display the problem: 'Evaluate 3x + 5 when x = 4.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Before we compute anything, what is the very first thing we should do with that x? What does x equal here?"
+        },
+        {
+          "kind": "ask",
+          "text": "Good — we swap x for 4. So now we're looking at 3 times 4, plus 5. There are two operations sitting in this expression. Point to them — what are they?"
+        },
+        {
+          "kind": "ask",
+          "text": "Let's try this two ways and see which one works. Way #1: do the addition first — what is 3 plus 5, and then what do we get when we multiply that by 4?"
+        },
+        {
+          "kind": "ask",
+          "text": "Way #2: do the multiplication first — what is 3 times 4, and then what do we get when we add 5?"
+        },
+        {
+          "kind": "ask",
+          "text": "We got two different answers, 32 and 17. Both can't be right. Which operation do you think mathematicians agreed always goes first when multiplication and addition are sitting next to each other?"
+        },
+        {
+          "kind": "say",
+          "text": "Multiplication wins. So the answer is 17. The shorthand for that rule is PEMDAS — multiply and divide always happen before add and subtract, no matter which one you read first."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student insists on 32 because they read left to right, do not lecture. Ask them to circle the multiplication piece first, compute only that, then rewrite the expression with the new number in place. The error usually fixes itself once the multiplication is done in isolation."
+        }
+      ],
+      "printable_artifact": {
+        "title": "PEMDAS Order of Operations Reference",
+        "kind": "reference_card",
+        "instructions": "Keep this card on the desk while you work. Check each rule against your problem before you compute.",
+        "items": [
+          "PEMDAS = Parentheses, Exponents, Multiply/Divide, Add/Subtract.",
+          "Parentheses first: do anything inside ( ) before anything else. Example: 2(5 + 6) = 2 × 11 = 22.",
+          "Exponents next: b² means b × b, NOT b × 2. Example: 4² = 16, not 8.",
+          "Multiply and divide before add and subtract, no matter the order they appear. Example: 3 + 2 × 4 = 3 + 8 = 11, not 5 × 4 = 20.",
+          "Multiply/divide are equal — do them left to right when both appear.",
+          "Add/subtract are equal — do them left to right when both appear.",
+          "Substitute first: replace the variable with its value before applying PEMDAS. Example: 3x + 5 with x = 4 becomes 3(4) + 5.",
+          "A number written next to parentheses or a variable means multiply: 3x means 3 × x; 2(x + 6) means 2 × (x + 6).",
+          "Left-to-right is NOT a rule — order of operations beats reading order every time.",
+          "Quick check: circle the highest-priority operation first, compute it, then rewrite the expression and repeat."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate 2x + 1 when x = 3.",
+          "answer": "7"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate 10 - 2k when k = 2.",
+          "answer": "6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 4m - 9 when m = 5.",
+          "answer": "11"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 7 + 3y when y = 6.",
+          "answer": "25",
+          "notes": "Left-to-right bait: (7 + 3) × 6 = 60."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 2(a + 3) when a = 8.",
+          "answer": "22",
+          "notes": "Parentheses first; expect 2 × 8 + 3 = 19 from skippers."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate d² - 10 when d = 6.",
+          "answer": "26",
+          "notes": "Exponent-as-×2 gives 2."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Evaluate 3n² when n = 4, then evaluate (3n)² when n = 4. Why are the answers different?",
+          "answer": "48 and 144 — the parentheses square the 3 as well.",
+          "notes": "Connects back to S3's notation distinction under evaluation."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Evaluate 36/(x + 5) + 2 when x = 4.",
+          "answer": "6",
+          "notes": "Grouping inside division plus a trailing addition — three ordered decisions."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Jordan evaluated 3x + 5 when x = 4. Find the mistake and fix it.",
+          "shown_work": [
+            "3x + 5, when x = 4",
+            "Jordan:  3 + 5 = 8, then 8 * 4 = 32"
+          ],
+          "answer": "17. Multiply first: 3(4) = 12, then 12 + 5 = 17. Order of operations beats reading order.",
+          "notes": "Left-to-right error."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "number_line",
+          "stem": "Evaluate 2k + 1 when k = 3. Then mark your answer on the number line.",
+          "answer": "7",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "point_value": null
+          }
+        }
+      ],
+      "activities": [
+        {
+          "type": "error_analysis",
+          "title": "Two Students, Two Answers",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip showing both solutions side by side"
+          ],
+          "instructions": "1. Show both solutions to 3x + 5 at x = 4: Kai got 17, Jordan got 32.\n2. Pairs must name the EXACT line where the two solutions split, not just pick a winner.\n3. Ask: why does Jordan's way feel natural? (Reading order.) What rule beats reading order?\n4. Pairs write one sentence Jordan could tape to his desk.",
+          "content": {
+            "worked_problem": "Evaluate 3x + 5 when x = 4. Kai: 3(4) + 5 = 12 + 5 = 17. Jordan: 3 + 5 = 8 first, then 8 × 4 = 32.",
+            "error_step": "Jordan added 3 + 5 before multiplying — left-to-right reading instead of order of operations.",
+            "why": "Multiplication binds before addition no matter where it sits. The 3 belongs to the x (3 × 4), and only then does the + 5 apply."
+          }
+        },
+        {
+          "type": "card_sort",
+          "title": "First-Move Sort",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Expression cards",
+            "Header cards: 'Parentheses first', 'Exponent first', 'Multiply/divide first'"
+          ],
+          "instructions": "1. Groups sort each expression card by the FIRST operation they would perform after substituting.\n2. No computing allowed during the sort — this is a planning skill, not an arithmetic race.\n3. After sorting, each student picks one card from each column and evaluates it fully.",
+          "content": {
+            "categories": [
+              "Parentheses first",
+              "Exponent first",
+              "Multiply/divide first"
+            ],
+            "cards": [
+              {
+                "text": "2(x + 6), x = 5",
+                "category": "Parentheses first"
+              },
+              {
+                "text": "5(k - 2), k = 9",
+                "category": "Parentheses first"
+              },
+              {
+                "text": "36/(x + 5), x = 4",
+                "category": "Parentheses first"
+              },
+              {
+                "text": "b² + 7, b = 4",
+                "category": "Exponent first"
+              },
+              {
+                "text": "2b², b = 5",
+                "category": "Exponent first"
+              },
+              {
+                "text": "c² - 5, c = 7",
+                "category": "Exponent first"
+              },
+              {
+                "text": "3x + 5, x = 4",
+                "category": "Multiply/divide first"
+              },
+              {
+                "text": "20 - 3t, t = 4",
+                "category": "Multiply/divide first"
+              },
+              {
+                "text": "8 + 6t, t = 2",
+                "category": "Multiply/divide first"
+              }
+            ]
+          }
+        },
+        {
+          "type": "game",
+          "title": "Order-of-Operations Referee",
+          "time_minutes": 12,
+          "grouping": "whole_class",
+          "materials": [
+            "Document camera or board",
+            "One 'whistle' card per student (any red card)"
+          ],
+          "instructions": "1. Evaluate an expression at the board on purpose making ONE order error somewhere in the work.\n2. Students throw their whistle card the moment the illegal move happens — not at the final answer.\n3. The first correct referee explains the violation and the correct next step, then takes over as the next (sneaky) solver.\n4. Rotate 4–5 rounds, saving one clean solution so students can't assume every round has a foul."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Side-by-side correct and left-to-right solutions make the order rule visible and discussable."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Narrating 'I see multiplication and addition — multiplication goes first' models the planning step students skip."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Order of operations needs a tight I-do/we-do/you-do arc before independent mixed practice."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Before touching the numbers: how many operations live in this expression, and which one goes first?",
+          "Circle the multiplication piece only. What is it worth by itself?",
+          "You read left to right in English — why doesn't math work that way here?",
+          "Both answers can't be right. What could we substitute or count to decide?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student computes left to right — for 3 + 4x at x = 2 they do 3 + 4 = 7 first, then × 2.",
+            "say": "Remember PEMDAS: Parentheses, Exponents, Multiply/Divide, Add/Subtract. Circle the multiplication or exponent part first. Compute THAT part. Then do the addition or subtraction. Try again — what's the multiplication part?",
+            "praise": "You followed the order of operations correctly! Multiply first, then add. That's exactly right."
+          },
+          {
+            "if_you_see": "Student skips the parentheses — evaluates 2(x + 6) at x = 5 as 2 × 5 + 6 = 16.",
+            "say": "Parentheses are a package deal — everything inside gets finished before anything outside touches it. What does x + 6 equal on its own? Now what does the 2 do to that whole package?",
+            "praise": "That's the move — finish the package first, then multiply the whole thing."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "In 5 + 2k, which operation happens first? Don't compute — just point.",
+            "look_for": "The multiplication (2k). Pointing at the + means the left-to-right habit is still steering."
+          },
+          {
+            "prompt": "Evaluate 10 - 2m at m = 3 and show me your first written step.",
+            "look_for": "'10 - 6' — the multiplication resolved before the subtraction, in writing."
+          }
+        ]
+      },
+      "fluency_source": "6AF1-F3",
+      "sentence_starters": [
+        "___ comes first because multiply and divide beat add and subtract.",
+        "I circled the ___ part and did it by itself first."
+      ],
+      "worked_solution": {
+        "stem": "Evaluate 3x + 5 when x = 4.",
+        "answer": "17",
+        "steps": [
+          {
+            "math": "3(4) + 5",
+            "annotation": "Substitute first: every x becomes 4."
+          },
+          {
+            "math": "12 + 5",
+            "annotation": "Multiply BEFORE adding -- order of operations beats reading order."
+          },
+          {
+            "math": "17",
+            "annotation": "Reading left to right would give 8 * 4 = 32 -- wrong, because the 3 belongs to the x."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Evaluate 20 - 3t when t = 4.",
+        "answer": "8",
+        "steps": [
+          {
+            "math": "20 - 3(4)",
+            "annotation": "Substituted. Two operations remain -- which goes first?",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Do the multiplication piece only.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Finish with the subtraction.",
+            "given": false
+          }
+        ]
+      },
+      "next_steps": {
+        "if_pass": "Move on to 6AF1-S7: Evaluate multi-variable expressions by substitution.",
+        "if_fail": "Reteach 6AF1-S5: Evaluate one-operation expressions by substitution next session before retrying this skill -- the miss usually traces to that prerequisite."
+      }
+    },
+    {
+      "skill_id": "6AF1-S7",
+      "name": "Evaluate multi-variable expressions by substitution",
+      "column": "looking_forward",
+      "parent_standard": "6.AF.1",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "6AF1-S6"
+      },
+      "i_do_script": "Now there are two different letters in the same expression, so the student has to track which value belongs to which letter. Don't tell them the rule up front — let your questions force them to pause and match each letter to its own number before computing. The big watch-out is them grabbing one value and using it for both variables, so slow down at the substitution step.",
+      "canonical_error": {
+        "pattern": "Substitutes the same value into both variables, or puts the right value into the wrong variable",
+        "example": "For 2a + 3b when a=5 and b=4, student computes 2(5) + 3(5) = 25 (uses a's value for both)",
+        "why": "With multiple variables, students lose track of which value belongs to which letter, especially when substituting quickly."
+      },
+      "item_template": "An expression with 2-3 variables. Given values for each variable, student computes the result. NR (numeric response). Expression uses at least two different operations.",
+      "sample_items": [
+        {
+          "stem": "Evaluate 4a + b when a = 2 and b = 7.",
+          "answer": "15",
+          "choices": null,
+          "distractor_logic": "Common errors: 15 swap (4(7)+2=30 if swaps a/b), 10 (uses 2 for both: 4(2)+2), 35 (uses 7 for both: 4(7)+7)"
+        },
+        {
+          "stem": "Evaluate 2x + 3y when x = 5 and y = 6.",
+          "answer": "28",
+          "choices": null,
+          "distractor_logic": "Common errors: 27 (swaps x and y: 2(6)+3(5)), 25 (uses 5 for both: 2(5)+3(5)), 30 (uses 6 for both)"
+        },
+        {
+          "stem": "Evaluate 6p - q when p = 3 and q = 8.",
+          "answer": "10",
+          "choices": null,
+          "distractor_logic": "Common errors: 45 (swaps p and q: 6(8)-3), 15 (uses 3 for both: 6(3)-3), 40 (uses 8 for both)"
+        },
+        {
+          "stem": "Evaluate h + 4k when h = 9 and k = 2.",
+          "answer": "17",
+          "choices": null,
+          "distractor_logic": "Common errors: 38 (swaps h and k: 2+4(9)), 45 (uses 9 for both: 9+4(9)), 10 (uses 2 for both)"
+        },
+        {
+          "stem": "Evaluate ab + 5 when a = 4 and b = 3.",
+          "answer": "17",
+          "choices": null,
+          "distractor_logic": "Common errors: 21 (uses 4 for both: 4(4)+5), 14 (uses 3 for both: 3(3)+5), 12 (forgets the +5)"
+        },
+        {
+          "stem": "Evaluate 2rs when r = 3 and s = 5.",
+          "answer": "30",
+          "choices": null,
+          "distractor_logic": "Common errors: 18 (uses 3 for both: 2(3)(3)), 50 (uses 5 for both: 2(5)(5)), 13 (adds instead of multiplies: 2+3+5+r+s confusion)"
+        },
+        {
+          "stem": "Evaluate x^2 + y when x = 4 and y = 6.",
+          "answer": "22",
+          "choices": null,
+          "distractor_logic": "Common errors: 14 (treats x^2 as 2x: 2(4)+6), 42 (uses 4 for both: 4^2+4=20, or swaps to get 6^2+4=40), 10 (just x+y: 4+6)"
+        },
+        {
+          "stem": "Evaluate m + n^2 when m = 7 and n = 3.",
+          "answer": "16",
+          "choices": null,
+          "distractor_logic": "Common errors: 13 (treats n^2 as 2n: 7+2(3)), 56 (uses 7 for both: 7+7^2), 18 (uses 3 for both: 3+3^2), 10 (just m+n)"
+        },
+        {
+          "stem": "Evaluate 3p + 4q - 2 when p = 5 and q = 2.",
+          "answer": "21",
+          "choices": null,
+          "distractor_logic": "Common errors: 21 swap variations (3(2)+4(5)-2=24 swap), 33 (uses 5 for both: 3(5)+4(5)-2), 18 (uses 2 for both)"
+        },
+        {
+          "stem": "Evaluate 7a - 2b when a = 4 and b = 5.",
+          "answer": "18",
+          "choices": null,
+          "distractor_logic": "Common errors: 27 (swaps a and b: 7(5)-2(4)), 20 (uses 4 for both: 7(4)-2(4)), 25 (uses 5 for both: 7(5)-2(5))"
+        },
+        {
+          "stem": "Evaluate 2h + 3k + 1 when h = 6 and k = 4.",
+          "answer": "25",
+          "choices": null,
+          "distractor_logic": "Common errors: 22 (swaps h and k: 2(4)+3(6)+1), 31 (uses 6 for both: 2(6)+3(6)+1), 21 (uses 4 for both)"
+        },
+        {
+          "stem": "Evaluate 5x - 3y when x = 7 and y = 2.",
+          "answer": "29",
+          "choices": null,
+          "distractor_logic": "Common errors: -11 (swaps x and y: 5(2)-3(7)), 14 (uses 2 for both: 5(2)-3(2)+ confusion), 14 (uses 7 for both: 5(7)-3(7))"
+        },
+        {
+          "stem": "Evaluate r^2 + 2s when r = 5 and s = 4.",
+          "answer": "33",
+          "choices": null,
+          "distractor_logic": "Common errors: 18 (treats r^2 as 2r: 2(5)+2(4)), 24 (uses 4 for both: 4^2+2(4)), 35 (uses 5 for both: 5^2+2(5))"
+        },
+        {
+          "stem": "Evaluate 4mn when m = 2 and n = 6.",
+          "answer": "48",
+          "choices": null,
+          "distractor_logic": "Common errors: 16 (uses 2 for both: 4(2)(2)), 144 (uses 6 for both: 4(6)(6)), 12 (adds the variables: 4(2+6) confusion or 4+m+n)"
+        },
+        {
+          "stem": "Evaluate a + b + c when a = 4, b = 7, and c = 5.",
+          "answer": "16",
+          "choices": null,
+          "distractor_logic": "Common errors: 12 (uses 4 for all three: 4+4+4), 21 (uses 7 for all three), 15 (uses 5 for all three), 11 (drops one variable)"
+        },
+        {
+          "stem": "Evaluate 2x + y - z when x = 6, y = 5, and z = 3.",
+          "answer": "14",
+          "choices": null,
+          "distractor_logic": "Common errors: 7 (swaps y and z: 2(6)+3-5), 15 (uses 6 for all three: 2(6)+6-3), 12 (uses 5 for all three or drops the -z)"
+        },
+        {
+          "stem": "Evaluate p + 3q + 2r when p = 8, q = 2, and r = 4.",
+          "answer": "22",
+          "choices": null,
+          "distractor_logic": "Common errors: 38 (uses 8 for all three: 8+3(8)+2(8)... or swap q and r), 16 (uses 2 for all three), 30 (swaps q and r: 8+3(4)+2(2))"
+        },
+        {
+          "stem": "Evaluate 3m + 2n when m = 5 and n = 7.",
+          "answer": "29",
+          "choices": null,
+          "distractor_logic": "Common errors: 31 (swaps m and n: 3(7)+2(5)), 25 (uses 5 for both: 3(5)+2(5)), 35 (uses 7 for both: 3(7)+2(7))"
+        },
+        {
+          "stem": "Evaluate 3a + 2b when a = 4 and b = 5.",
+          "answer": "22",
+          "choices": null,
+          "distractor_logic": "Common errors: 23 (swaps a and b: 3(5)+2(4)), 20 (uses 4 for both: 3(4)+2(4)), 25 (uses 5 for both: 3(5)+2(5))"
+        },
+        {
+          "stem": "Evaluate 8c - 5d when c = 3 and d = 2.",
+          "answer": "14",
+          "choices": null,
+          "distractor_logic": "Common errors: 1 (swaps c and d: 8(2)-5(3)=16-15), 9 (uses 3 for both: 8(3)-5(3)), 6 (uses 2 for both: 8(2)-5(2))"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Check — did each variable get its own correct value?",
+        "prompt": "Before you compute, point to each variable and say its value out loud. 'a is 5, b is 4.' Now write the expression with those numbers in the right spots. Make sure a's value goes ONLY where a is, and b's value goes ONLY where b is.",
+        "praise": "Every variable got the right value, and you computed in the right order. That's a complete substitution — great work."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board: Evaluate 4a + b when a = 2 and b = 7."
+        },
+        {
+          "kind": "ask",
+          "text": "Take a look at the expression 4a + b. How many different letters do you see, and what are they?"
+        },
+        {
+          "kind": "ask",
+          "text": "We're told a = 2 and b = 7. Which number goes with the letter a, and which number goes with the letter b?"
+        },
+        {
+          "kind": "ask",
+          "text": "If we swap each letter for its own number, what should we write where the a is? And what should we write where the b is?"
+        },
+        {
+          "kind": "ask",
+          "text": "So when we rewrite 4a + b with the numbers in place of the letters, what does the expression look like now?"
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 4(2) + 2, they used a's value for both letters. If they write 4(7) + 2, they swapped the values. Stop and have them point to the original a and say 'a is 2,' then point to the original b and say 'b is 7,' before rewriting."
+        },
+        {
+          "kind": "ask",
+          "text": "Now we have 4(2) + 7. Which part should we handle first, and what does that part equal?"
+        },
+        {
+          "kind": "ask",
+          "text": "So 4 times 2 is 8, and we still need to add the 7. What's the final answer for 4a + b when a = 2 and b = 7?"
+        }
+      ],
+      "printable_artifact": {
+        "title": "Two-Variable Substitution Chart",
+        "kind": "chart",
+        "instructions": "For each row, use the values of x and y to evaluate every expression in the chart. Write x's value ONLY in expressions where you see x, and y's value ONLY where you see y.",
+        "categories": [
+          "x",
+          "y",
+          "x + y",
+          "2x + y",
+          "3x + 2y",
+          "xy",
+          "x^2 + y"
+        ],
+        "rows": 6
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate a + b when a = 4 and b = 9.",
+          "answer": "13"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate 3x + y when x = 2 and y = 5.",
+          "answer": "11"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 5p - 2q when p = 6 and q = 4.",
+          "answer": "22",
+          "notes": "Watch for value-swapping: 5(4) - 2(6) = 8."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate mn + 7 when m = 3 and n = 8.",
+          "answer": "31",
+          "notes": "Two letters touching means multiplied — mn is m × n."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 2c + 3d when c = 7 and d = 2.",
+          "answer": "20"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate x² + 2y when x = 3 and y = 6.",
+          "answer": "21",
+          "notes": "Combines S3's exponent with two-variable tracking."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Evaluate 2(a + b) - c when a = 5, b = 3, and c = 9.",
+          "answer": "7",
+          "notes": "Three variables plus grouping — full order-of-operations load."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "The perimeter of a rectangle is 2l + 2w. Find the perimeter when l = 12 and w = 7, and explain what each term counted.",
+          "answer": "38; 2l counts the two lengths (24) and 2w counts the two widths (14).",
+          "notes": "A real formula — the payoff of the whole progression."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Zoe evaluated 2a + 3b when a = 5 and b = 4. Find her mistake and fix it.",
+          "shown_work": [
+            "2a + 3b, when a = 5 and b = 4",
+            "Zoe wrote:  2(5) + 3(5) = 25"
+          ],
+          "answer": "22. b is 4, not 5 -- each letter keeps its own value: 2(5) + 3(4) = 10 + 12 = 22.",
+          "notes": "Same-value-for-both-letters error."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "number_line",
+          "stem": "Evaluate a + 2b when a = 3 and b = 4. Then mark your answer on the number line.",
+          "answer": "11",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ],
+            "point_value": null
+          }
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Color-Coded Substitution",
+          "time_minutes": 10,
+          "grouping": "individual",
+          "materials": [
+            "Two highlighters per student",
+            "Problem strip with expression and values"
+          ],
+          "instructions": "1. Students highlight every a in the expression AND the value a = 5 in one color; every b and b = 4 in the second color.\n2. Rewrite the expression with each value in its color-matched spot before any computing.\n3. Rule of the routine: no arithmetic until every letter has a colored number standing in its place.\n4. Fade the highlighters after a few problems — ask students to 'color it in their head' and point instead."
+        },
+        {
+          "type": "game",
+          "title": "Formula Plug-In Stations",
+          "time_minutes": 15,
+          "grouping": "small_group",
+          "materials": [
+            "Station cards with real formulas (perimeter 2l + 2w; ticket cost 8a + 5c; distance rt)",
+            "Dice"
+          ],
+          "instructions": "1. At each station, groups roll dice to generate values for each variable (roll once per letter — say the assignment out loud: 'l is 6, w is 3').\n2. Evaluate the station's formula for those values; every member records the substitution line, not just the answer.\n3. Rotate stations every 4 minutes.\n4. Close with: which station punished you for mixing up which value went where?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "One Value, Two Letters",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Pairs inspect Zoe's work and find the moment both letters got the same number.\n2. They fix it with the color-coding routine (or by pointing and saying 'a is 5, b is 4' aloud).\n3. Exit prompt: what habit stops this error before it starts?",
+          "content": {
+            "worked_problem": "Evaluate 2a + 3b when a = 5 and b = 4. Zoe wrote: 2(5) + 3(5) = 25.",
+            "error_step": "Zoe used a's value for both letters — b never got its own number.",
+            "why": "Each variable holds its own value. Matching letter to value first — a is 5, b is 4 — gives 2(5) + 3(4) = 10 + 12 = 22."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud — 'a is 5, so 5 goes ONLY where a is' — models the tracking discipline this skill demands."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The same-value-for-both-letters error is the canonical find-and-fix for multi-variable work."
+        },
+        {
+          "strategy_id": "strat-math-008",
+          "why": "Whiteboard rounds reveal instantly whose substitution line swapped or reused values."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many different letters are in this expression? Say each one's value out loud before you write.",
+          "Point to where a's value will land. Now point to where b's value will land. Are they different spots?",
+          "What does it mean when two letters sit right next to each other, like mn?",
+          "After substituting, which operation does order of operations send you to first?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student substitutes one value into both variables, or puts the right values in swapped spots.",
+            "say": "Before you compute, point to each variable and say its value out loud. 'a is 5, b is 4.' Now write the expression with those numbers in the right spots. Make sure a's value goes ONLY where a is, and b's value goes ONLY where b is.",
+            "praise": "Every variable got the right value, and you computed in the right order. That's a complete substitution — great work."
+          },
+          {
+            "if_you_see": "Student adds the two letters in mn + 7 — computes m + n + 7 instead of m × n + 7.",
+            "say": "Letters touching is the same rule as a number touching a letter: hidden multiplication. Rewrite mn with the × showing, then substitute both values.",
+            "praise": "Right — mn means m times n. The invisible × doesn't disappear just because both pieces are letters."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "For 4x + y with x = 2 and y = 7: say the substitution line out loud before computing.",
+            "look_for": "'4 times 2, plus 7.' Any 4(7) + 2 means values are floating loose from their letters."
+          },
+          {
+            "prompt": "In 3ab when a = 2 and b = 5, how many things get multiplied together?",
+            "look_for": "Three: 3 × 2 × 5 = 30. Answers of 65 or 37 signal concatenation or addition sneaking back in."
+          }
+        ]
+      },
+      "fluency_source": "6AF1-F3",
+      "sentence_starters": [
+        "___ is ___ and ___ is ___ -- each letter keeps its OWN value.",
+        "I put ___'s value ONLY where ___ is."
+      ],
+      "worked_solution": {
+        "stem": "Evaluate 4a + b when a = 2 and b = 7.",
+        "answer": "15",
+        "steps": [
+          {
+            "math": "a is 2.  b is 7.",
+            "annotation": "Point to each letter and say its value out loud -- every letter keeps its OWN number."
+          },
+          {
+            "math": "4(2) + 7",
+            "annotation": "a's value goes only where a is; b's value goes only where b is."
+          },
+          {
+            "math": "8 + 7 = 15",
+            "annotation": "Multiply first, then add."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Evaluate 2x + 3y when x = 5 and y = 6.",
+        "answer": "28",
+        "steps": [
+          {
+            "math": "x is 5.  y is 6.",
+            "annotation": "Say the assignment out loud before you write anything.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Rewrite the expression with each number in its own letter's spot.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Order of operations: multiply, then add.",
+            "given": false
+          }
+        ]
+      },
+      "next_steps": {
+        "if_pass": "Top skill for 6.AF.1 -- the student is ready for grade-level enrichment or the next unit (6.AF.2: one-step equations).",
+        "if_fail": "Reteach 6AF1-S6: Evaluate multi-operation expressions using order of operations next session before retrying this skill -- the miss usually traces to that prerequisite."
+      }
+    }
+  ],
+  "skill_sequence": [
+    "6AF1-F1",
+    "6AF1-F2",
+    "6AF1-F3",
+    "6AF1-S1",
+    "6AF1-S2",
+    "6AF1-S3",
+    "6AF1-S4",
+    "6AF1-S5",
+    "6AF1-S6",
+    "6AF1-S7"
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation",
+      "description": "Tier III — 2+ grade levels below. If a student can't access Looking Back, start here.",
+      "skills": [
+        "6AF1-F1",
+        "6AF1-F2",
+        "6AF1-F3"
+      ]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Prerequisite skills — fix these first if a student can't access grade-level work",
+      "skills": [
+        "6AF1-S1",
+        "6AF1-S2"
+      ]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "Core 6.AF.1 skills — the standard itself",
+      "skills": [
+        "6AF1-S3",
+        "6AF1-S4",
+        "6AF1-S5"
+      ]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Extension skills — for students ready to push ahead",
+      "skills": [
+        "6AF1-S6",
+        "6AF1-S7"
+      ]
+    }
+  },
+  "skill_tree": {
+    "6AF1-F1": [],
+    "6AF1-F2": [
+      "6AF1-F1"
+    ],
+    "6AF1-F3": [],
+    "6AF1-S1": [
+      "6AF1-F1",
+      "6AF1-F2"
+    ],
+    "6AF1-S2": [
+      "6AF1-S1"
+    ],
+    "6AF1-S3": [
+      "6AF1-S2"
+    ],
+    "6AF1-S4": [
+      "6AF1-S2"
+    ],
+    "6AF1-S5": [
+      "6AF1-S2",
+      "6AF1-F3"
+    ],
+    "6AF1-S6": [
+      "6AF1-S5"
+    ],
+    "6AF1-S7": [
+      "6AF1-S6"
+    ]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S5 (evaluate by substitution) — if they pass, move to S6/S7. If they fail, check if the issue is S1 (phrase→operation) or S2 (writing the expression). This avoids testing all 7 skills when the student may only need 1-2.",
+    "entry_skill": "6AF1-S5",
+    "if_pass": [
+      "6AF1-S6",
+      "6AF1-S7"
+    ],
+    "if_fail": [
+      "6AF1-S1",
+      "6AF1-S2"
+    ],
+    "branch_skills": [
+      "6AF1-S3",
+      "6AF1-S4"
+    ]
+  }
+}

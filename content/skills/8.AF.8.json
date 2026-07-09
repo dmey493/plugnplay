@@ -1,0 +1,1187 @@
+{
+  "standard_code": "8.AF.8",
+  "standard_text": "Understand that solutions to a system of two linear equations correspond to the point(s) of intersection of their graphs; solve and approximate solutions of a system by graphing (and interpret whether a system has one solution, no solution, or infinitely many).",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "The whole standard rests on one idea: a solution to a system of two linear equations is an ordered pair (x, y) that makes BOTH equations true at once, and on a graph that pair is exactly the point where the two lines cross. So the arc begins by settling what 'solution' means for a system — the intersection point — and how the graph tells you how many there are: one if the lines cross once, none if they are parallel and never cross, infinitely many if they are the very same line. From there students learn to read that intersection point off a given graph (and to approximate it when it falls between gridlines), then to produce the graph themselves from two equations in y = mx + b form and find where the lines meet.\n\nBecause the intersection point must satisfy both equations, verification by substitution is the spine that keeps the whole thing honest: a candidate point is only the solution if it checks in BOTH equations, not just one. That check is what separates a real solution from a coordinate swap or a point that happens to sit on one line. The capstone takes the idea into context — two cost plans graphed as lines whose crossing is the break-even point — where students estimate the solution and interpret which option is better before and after that point. The through-line we keep naming: the solution is the shared point; parallel means no shared point (no solution); identical means every point is shared (infinitely many); and any answer can be tested by putting it back into both equations."
+  ,
+    "steps": [
+      {
+        "skill_id": "8AF8-S1",
+        "verb": "determine",
+        "rationale": "The conceptual entry: read a graph and decide how many solutions the system has — one (lines cross), none (parallel), infinitely many (same line). This settles what 'solution' means before any point is found."
+      },
+      {
+        "skill_id": "8AF8-S2",
+        "verb": "verify",
+        "rationale": "A solution must lie on BOTH lines, so it must satisfy BOTH equations. Checking a candidate (x, y) by substitution into each equation is the verification spine that makes every later 'find the solution' honest."
+      },
+      {
+        "skill_id": "8AF8-S3",
+        "verb": "approximate",
+        "rationale": "Given the graph, read the intersection point as the solution — and approximate it when the crossing falls between gridlines. This is the Approaching-band expectation and where the coordinate-swap error surfaces."
+      },
+      {
+        "skill_id": "8AF8-S4",
+        "verb": "graph",
+        "rationale": "Reverse the flow: from two equations in y = mx + b form, plot both lines and find where they meet. This is the At-band capstone that requires the graphing mechanic and reporting the full ordered pair."
+      },
+      {
+        "skill_id": "8AF8-S5",
+        "verb": "solve",
+        "rationale": "Given a system, determine the solution (or the coordinate plane that shows it) and confirm it by substitution. Distinguishing the true point from a reversed or sign-flipped one proves the intersection is understood, not guessed."
+      },
+      {
+        "skill_id": "8AF8-S6",
+        "verb": "interpret",
+        "rationale": "The Above-band synthesis: estimate the solution of a real-world system from its graph and interpret the intersection as a break-even point — which option is better before it and after it."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "8AF8-F1",
+      "name": "Graph a linear equation given in slope-intercept form",
+      "column": "foundation",
+      "parent_standard": "8.AF.8",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 8,
+        "description": "Plot a line y = mx + b by starting at the y-intercept (0, b) and using the slope m as rise over run.",
+        "check_question": "For y = 2x + 1, where do you put your first point, and where does the next point go?"
+      },
+      "i_do_script": "To graph a line written as y = mx + b, I start with b — that is the y-intercept, the spot on the y-axis where x is 0. Watch y = 2x + 1: b is 1, so my first point is (0, 1), right on the y-axis. Then the slope 2 means rise over run = 2 over 1, so from (0, 1) I go up 2 and right 1 to (1, 3), and draw the straight line. If the slope were negative, like -2, I would go DOWN 2 and right 1.",
+      "canonical_error": {
+        "pattern": "Puts the y-intercept b on the x-axis, or applies the slope as run-over-rise (across first in the wrong ratio)",
+        "example": "For y = 2x + 3, plots the starting point at (3, 0) instead of (0, 3), or moves right 2 and up 1 instead of up 2 and right 1",
+        "why": "b is the y-value when x = 0, so it sits on the y-axis at (0, b). The slope m is rise over run — up m for every 1 across; flipping it draws the wrong steepness."
+      },
+      "item_template": "A linear equation in y = mx + b form. Student names the y-intercept point and the slope moves (rise/run). Short response fluency bank.",
+      "sample_items": [
+        { "stem": "For y = 2x + 1, what point is the y-intercept?", "answer": "(0, 1)" },
+        { "stem": "For y = 3x - 2, from the y-intercept, describe the slope move to the next point.", "answer": "Up 3, right 1" },
+        { "stem": "For y = -x + 4, where is the y-intercept, and which way does the line go?", "answer": "(0, 4); down 1, right 1 (falls)" },
+        { "stem": "For y = (1/2)x, name the y-intercept and one more point.", "answer": "(0, 0) and (2, 1)" }
+      ],
+      "redirect_script": {
+        "stop": "Is b on the y-axis or the x-axis?",
+        "prompt": "Start at (0, b) on the y-axis — that is where x = 0. Then use the slope as UP m and RIGHT 1 (down if m is negative). Point to b and say 'up the y-axis first.'",
+        "praise": "You anchored at (0, b) and used rise over run — that's the line drawn right."
+      },
+      "vocabulary": [
+        { "term": "Slope-intercept form", "definition": "An equation written y = mx + b, where m is the slope and b is the y-intercept." },
+        { "term": "y-intercept (b)", "definition": "The y-value where a line crosses the y-axis; the point (0, b)." },
+        { "term": "Slope (m)", "definition": "How steep a line is: rise over run, the up (or down) move for every 1 to the right." }
+      ],
+      "next_steps": { "if_pass": "8AF8-S1", "if_fail": "Review graphing lines (8.AF.4)." },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Graph y = 3x - 1.'" },
+        { "kind": "ask", "text": "What is b, and where does the first point go?" },
+        { "kind": "say", "text": "b is -1, so start at (0, -1). Slope 3 is up 3, right 1, landing at (1, 2). Draw the line through both." },
+        { "kind": "watch", "text": "If a student starts at (-1, 0), ask 'is -1 the x-value or the y-value when x = 0?'" },
+        { "kind": "ask", "text": "Your turn: graph y = -2x + 4 — name the y-intercept and the next point." }
+      ]
+    },
+    {
+      "skill_id": "8AF8-F2",
+      "name": "Check whether an ordered pair satisfies a linear equation",
+      "column": "foundation",
+      "parent_standard": "8.AF.8",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Substitute the x-value and y-value of a point into an equation and decide whether the equation is true.",
+        "check_question": "Is (2, 5) a solution of y = 2x + 1? How would you check?"
+      },
+      "i_do_script": "To test if a point (x, y) fits an equation, I substitute the first number for x and the second for y, then see if the two sides are equal. Watch (2, 5) in y = 2x + 1: I put 2 in for x, so 2 times 2 plus 1 = 5, and the y is 5 — they match, so (2, 5) works. If I plug in a point and the sides do NOT match, that point is not on the line.",
+      "canonical_error": {
+        "pattern": "Substitutes the x-value in for y (or y for x), reversing the coordinates when checking",
+        "example": "To test (2, 5) in y = 2x + 1, plugs 5 in for x: 2(5) + 1 = 11, then compares to 2, instead of using x = 2 to get 2(2) + 1 = 5",
+        "why": "In (x, y) the first number is x and the second is y. Substitute x, compute the right side, and compare it to the given y — mixing them up tests a different point."
+      },
+      "item_template": "An ordered pair and a linear equation. Student substitutes and answers yes/no whether the point is on the line. Short response fluency bank.",
+      "sample_items": [
+        { "stem": "Is (2, 5) a solution of y = 2x + 1? Show the check.", "answer": "Yes: 2(2) + 1 = 5, matches y = 5" },
+        { "stem": "Is (1, 4) a solution of y = x + 3?", "answer": "Yes: 1 + 3 = 4" },
+        { "stem": "Is (3, 2) a solution of y = 2x - 5?", "answer": "No: 2(3) - 5 = 1, not 2" },
+        { "stem": "Is (0, 4) a solution of y = -2x + 4?", "answer": "Yes: -2(0) + 4 = 4" }
+      ],
+      "redirect_script": {
+        "stop": "Which number goes in for x — the first or the second?",
+        "prompt": "The first number is x, the second is y. Put the x-value into the equation, work out the right side, and see if it equals the y-value. Point to each number and say 'x' then 'y.'",
+        "praise": "You put the x in for x and checked against the y — that's a real substitution test."
+      },
+      "vocabulary": [
+        { "term": "Substitute", "definition": "Replace a variable with its number, then compute." },
+        { "term": "Ordered pair", "definition": "Two numbers (x, y) naming a point: x first (across), y second (up)." },
+        { "term": "Solution of an equation", "definition": "A point (x, y) that makes the equation true when substituted in." }
+      ],
+      "next_steps": { "if_pass": "8AF8-S2", "if_fail": "Review substitution (6.AF.2)." },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Is (4, 5) a solution of y = x + 1?'" },
+        { "kind": "ask", "text": "What goes in for x? What is the y we compare against?" },
+        { "kind": "say", "text": "x is 4: 4 + 1 = 5. The y is 5, so it matches — (4, 5) is on the line." },
+        { "kind": "watch", "text": "If a student computes 5 + 1 = 6, ask 'is 5 the x or the y? Which one do we substitute for x?'" },
+        { "kind": "ask", "text": "Your turn: is (3, 7) a solution of y = 2x + 1?" }
+      ]
+    },
+    {
+      "skill_id": "8AF8-S1",
+      "name": "Determine the number of solutions of a system from its graph",
+      "column": "looking_back",
+      "parent_standard": "8.AF.8",
+      "engine_stems": [1],
+      "prerequisite_skill": { "type": "skill", "skill_id": "8AF8-F1" },
+      "i_do_script": "The number of solutions a system has is just how many points its two lines share. Watch: if the lines cross at one point, there is ONE solution. If the lines are parallel — same slope, different y-intercept — they never cross, so NO solution. If the two equations are the exact same line — same slope AND same y-intercept — they overlap everywhere, so INFINITELY many solutions. I look at the slopes and intercepts: y = 3x + 2 and y = 3x - 1 have the same slope 3 but different b, so they are parallel — no solution.",
+      "canonical_error": {
+        "pattern": "Decides the number of solutions from the number of lines or how steep they look, not from how many points the lines share",
+        "example": "Sees two lines and answers 'two solutions,' or sees non-crossing parallel lines and answers 'one solution' instead of 'no solution'",
+        "why": "The student hasn't connected 'solution' to 'shared point.' One solution = the lines cross once; no solution = parallel lines that never meet; infinitely many = the same line, which shares every point."
+      },
+      "item_template": "A system in y = mx + b form (graph provided or described). Student states one / none / infinitely many by comparing slopes and intercepts. MC.",
+      "sample_items": [
+        {
+          "stem": "How many solutions does this system have?  y = 2x + 1  and  y = -x + 4",
+          "answer": "One solution",
+          "choices": ["One solution", "No solution", "Infinitely many solutions", "Two solutions"],
+          "distractor_logic": "Different slopes (2 and -1) mean the lines cross once, at (1, 3). 'Two solutions' counts the lines."
+        },
+        {
+          "stem": "How many solutions does this system have?  y = 3x + 2  and  y = 3x - 1",
+          "answer": "No solution",
+          "choices": ["One solution", "No solution", "Infinitely many solutions", "Two solutions"],
+          "distractor_logic": "Same slope 3, different intercepts (2 vs -1): parallel, never cross."
+        },
+        {
+          "stem": "How many solutions does this system have?  y = 9x  and  y = 9x - 7",
+          "answer": "No solution",
+          "choices": ["One solution", "No solution", "Infinitely many solutions", "Two solutions"],
+          "distractor_logic": "Same slope 9, different intercepts (0 vs -7): parallel lines."
+        },
+        {
+          "stem": "How many solutions does this system have?  y = -2x + 5  and  y = -2x + 5",
+          "answer": "Infinitely many solutions",
+          "choices": ["One solution", "No solution", "Infinitely many solutions", "Two solutions"],
+          "distractor_logic": "Identical slope AND intercept: the same line, so every point is shared."
+        }
+      ],
+      "redirect_script": {
+        "stop": "How many points do the two lines actually share?",
+        "prompt": "Compare the slopes and the y-intercepts. Different slopes cross once (one solution). Same slope but different b means parallel (no solution). Same slope AND same b is one line (infinitely many). Count shared points, not lines.",
+        "praise": "You compared slopes and intercepts to count the shared points — that's how the graph tells you the number of solutions."
+      },
+      "vocabulary": [
+        { "term": "System of two linear equations", "definition": "Two linear equations considered together; its solution is the point(s) both lines share." },
+        { "term": "Point of intersection", "definition": "The point where two lines cross; the solution to the system." },
+        { "term": "Parallel lines", "definition": "Lines with the same slope but different y-intercepts; they never cross, so the system has no solution." }
+      ],
+      "next_steps": { "if_pass": "8AF8-S3", "if_fail": "8AF8-F1" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'How many solutions?  y = (1/2)x + 2  and  y = (1/2)x + 2.'" },
+        { "kind": "ask", "text": "Compare the slopes. Now compare the y-intercepts. What do you notice?" },
+        { "kind": "say", "text": "Same slope 1/2 and same intercept 2 — it's the exact same line, so infinitely many solutions." },
+        { "kind": "watch", "text": "If a student says 'two solutions,' ask 'are you counting lines, or the points where they cross?'" },
+        { "kind": "ask", "text": "Your turn: y = -3x + 1 and y = -3x + 6 — how many solutions?" }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Two lines cross at exactly one point. How many solutions does the system have?", "answer": "One solution." },
+        { "difficulty": "warm_up", "stem": "Lines with the same slope but different y-intercepts are called what, and how many solutions?", "answer": "Parallel; no solution." },
+        { "difficulty": "core", "stem": "How many solutions?  y = 4x - 2  and  y = 4x - 2", "answer": "Infinitely many (same line).", "notes": "Same slope and intercept." },
+        { "difficulty": "core", "stem": "How many solutions?  y = 2x + 3  and  y = -x + 3", "answer": "One solution (different slopes, cross at (0, 3)).", "notes": "Baits 'two solutions.'" },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Maya judged the number of solutions. Find and fix her mistake.",
+          "shown_work": [
+            "System: y = 5x + 1 and y = 5x - 4.",
+            "Maya wrote: 'There are two lines, so there are two solutions.'"
+          ],
+          "answer": "Maya counted the lines, not the shared points. Both lines have slope 5 but different intercepts (1 and -4), so they are parallel and never cross: the system has NO solution.",
+          "notes": "Canonical error: counting lines instead of intersection points."
+        },
+        { "difficulty": "core", "stem": "How many solutions?  y = 9x  and  y = 9x - 7", "answer": "No solution (parallel).", "notes": "Same slope 9, different b." },
+        { "difficulty": "stretch", "stem": "Write a second equation so that y = 2x + 5 forms a system with NO solution.", "answer": "Any line with slope 2 and a different intercept, e.g. y = 2x + 1 (parallel).", "notes": "Produce-your-own; must keep slope, change b." },
+        { "difficulty": "stretch", "stem": "Two lines have different slopes. Explain why the system must have exactly one solution.", "answer": "Different slopes are not parallel, so the lines head in different directions and meet at exactly one point — one shared point means one solution.", "notes": "Explain-why; connects slope to intersection count." }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "One, None, or Infinitely Many",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": ["Card set of 12 systems written in y = mx + b form"],
+          "instructions": "1. Sort each system card into 'One solution,' 'No solution,' or 'Infinitely many solutions.'\n2. For each card, underline the two slopes and the two y-intercepts.\n3. Say the rule you used: different slopes = one; same slope, different b = none; same slope and b = infinitely many.\n4. Debrief: which two cases are easy to mix up, and how do the intercepts tell them apart?",
+          "content": {
+            "categories": ["One solution", "No solution", "Infinitely many solutions"],
+            "cards": [
+              { "text": "y = 2x + 1 and y = -x + 4", "category": "One solution" },
+              { "text": "y = 3x + 2 and y = 3x - 1", "category": "No solution" },
+              { "text": "y = -2x + 5 and y = -2x + 5", "category": "Infinitely many solutions" },
+              { "text": "y = 9x and y = 9x - 7", "category": "No solution" },
+              { "text": "y = 4x - 2 and y = 4x - 2", "category": "Infinitely many solutions" },
+              { "text": "y = x + 3 and y = -2x", "category": "One solution" },
+              { "text": "y = -3x + 1 and y = -3x + 6", "category": "No solution" },
+              { "text": "y = (1/2)x + 2 and y = (1/2)x + 2", "category": "Infinitely many solutions" }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Count the Crossings",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Maya's two-solutions claim"],
+          "instructions": "1. Read Maya's claim that y = 5x + 1 and y = 5x - 4 has 'two solutions' because there are two lines.\n2. Compare the two slopes, then the two y-intercepts.\n3. Decide how many points the lines share and state the correct number of solutions.\n4. Write the rule for reading solution count from slopes and intercepts.",
+          "content": {
+            "worked_problem": "System y = 5x + 1 and y = 5x - 4. Maya wrote 'two solutions.'",
+            "error_step": "Maya counted the number of lines instead of the number of shared points.",
+            "why": "Same slope 5, different intercepts means parallel lines that never cross: no solution."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "Counting-the-lines and mixing up parallel with identical are precise errors that a find-and-fix names cleanly." },
+        { "strategy_id": "strat-math-009", "why": "Comparing a one-solution system to a parallel one side by side makes the slope-and-intercept criterion explicit." },
+        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'compare slopes, then intercepts, then count shared points' models the full read." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many points do the two lines share?",
+          "Are the slopes the same or different?",
+          "If the slopes match, are the y-intercepts the same or different?",
+          "What does 'no solution' look like on a graph?",
+          "What does 'infinitely many' look like on a graph?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student decides the number of solutions from the number of lines or how steep they look, not from shared points.",
+            "say": "Compare the slopes and the y-intercepts. Different slopes cross once (one solution). Same slope but different b means parallel (no solution). Same slope AND same b is one line (infinitely many). Count shared points, not lines.",
+            "praise": "You compared slopes and intercepts to count the shared points — that's how the graph tells you the number of solutions."
+          },
+          {
+            "if_you_see": "Student calls parallel lines 'infinitely many' or identical lines 'no solution' (swaps the two special cases).",
+            "say": "Check the y-intercepts. Same slope with DIFFERENT b never touches (no solution); same slope with the SAME b is one line (infinitely many).",
+            "praise": "You used the intercepts to tell parallel from identical — that's the key difference."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "How many solutions?  y = 2x + 4 and y = 2x - 1",
+            "look_for": "No solution (parallel). 'Infinitely many' means the student ignored the different intercepts."
+          },
+          {
+            "prompt": "How many solutions?  y = x + 2 and y = 3x - 1",
+            "look_for": "One solution (different slopes). 'Two solutions' diagnoses counting the lines."
+          }
+        ]
+      },
+      "fluency_source": "8AF8-F1",
+      "sentence_starters": [
+        "The slopes are ___ and ___, so the lines ___, which means ___ solution(s).",
+        "Because the y-intercepts are ___, this system has ___."
+      ],
+      "worked_solution": {
+        "stem": "How many solutions does this system have?  y = -3x + 1  and  y = -3x + 6",
+        "answer": "No solution",
+        "steps": [
+          { "math": "slope of line 1 = -3, slope of line 2 = -3", "annotation": "Compare the slopes first — they are the same." },
+          { "math": "y-intercepts: 1 and 6 (different)", "annotation": "Same slope, different intercepts means the lines are parallel." },
+          { "math": "parallel lines never cross", "annotation": "No shared point, so no solution." },
+          { "math": "number of solutions = none", "annotation": "State the answer as 'no solution.'" }
+        ]
+      },
+      "faded_example": {
+        "stem": "How many solutions does this system have?  y = 4x - 2  and  y = 4x - 2",
+        "answer": "Infinitely many solutions",
+        "steps": [
+          { "math": "slope of line 1 = 4, slope of line 2 = 4", "annotation": "Compare the slopes — they match.", "given": true },
+          { "math": "y-intercepts: -2 and -2 (the same)", "annotation": "Same slope AND same intercept.", "given": true },
+          { "math": null, "annotation": "What kind of line is this — how many points do they share?", "given": false },
+          { "math": null, "annotation": "State the number of solutions.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF8-S2",
+      "name": "Verify a point is the solution to a system using both equations",
+      "column": "on_grade",
+      "parent_standard": "8.AF.8",
+      "prerequisite_skill": { "type": "skill", "skill_id": "8AF8-F2" },
+      "i_do_script": "A point is the solution to a SYSTEM only if it sits on both lines — so it has to make BOTH equations true, not just one. Watch (2, 5) with y = x + 3 and y = 2x + 1. First equation: 2 + 3 = 5, matches. Second equation: 2 times 2 plus 1 = 5, matches. It passed both, so (2, 5) is the solution. If a point passes only one equation, it is on one line but not the crossing point, so it is NOT the solution.",
+      "canonical_error": {
+        "pattern": "Confirms a point in only ONE equation and calls it the solution to the system",
+        "example": "For y = x - 1 and y = 2x - 5, checks (3, 2) in the first equation only (3 - 1 = 2), says 'solution,' and never tests the second (2·3 - 5 = 1, not 2)",
+        "why": "A system's solution must lie on BOTH lines, so it must satisfy BOTH equations. Passing one equation only means the point is on one line, not the shared intersection point."
+      },
+      "item_template": "A system in y = mx + b form and a candidate ordered pair. Student substitutes into both equations and answers whether it is the solution. Short/MC response. No engine stem — hand-authored.",
+      "sample_items": [
+        {
+          "stem": "Is (2, 5) the solution to this system?  y = x + 3  and  y = 2x + 1. Check both equations.",
+          "answer": "Yes. Eq 1: 2 + 3 = 5. Eq 2: 2(2) + 1 = 5. It satisfies both, so (2, 5) is the solution."
+        },
+        {
+          "stem": "Is (3, 2) the solution to this system?  y = x - 1  and  y = 2x - 5. Check both equations.",
+          "answer": "No. Eq 1: 3 - 1 = 2 (true), but Eq 2: 2(3) - 5 = 1, not 2. It fails the second equation, so it is not the solution."
+        },
+        {
+          "stem": "Is (0, 4) the solution to this system?  y = -2x + 4  and  y = x + 4. Check both equations.",
+          "answer": "Yes. Eq 1: -2(0) + 4 = 4. Eq 2: 0 + 4 = 4. Both true, so (0, 4) is the solution."
+        },
+        {
+          "stem": "Is (4, 5) the solution to this system?  y = x + 1  and  y = 2x - 3. Check both equations.",
+          "answer": "Yes. Eq 1: 4 + 1 = 5. Eq 2: 2(4) - 3 = 5. Both true, so (4, 5) is the solution."
+        },
+        {
+          "stem": "Is (5, 3) the solution to this system?  y = x - 2  and  y = 2x - 6. Check both equations.",
+          "answer": "No. Eq 1: 5 - 2 = 3 (true), but Eq 2: 2(5) - 6 = 4, not 3. It is on the first line only, so it is not the solution."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you test the point in BOTH equations?",
+        "prompt": "The solution has to be on both lines, so substitute the point into each equation. It only counts if it makes BOTH true. If it passes one and fails the other, cross it out — it's on one line, not the crossing point.",
+        "praise": "You checked the point in both equations — that's how you confirm it's the real intersection."
+      },
+      "vocabulary": [
+        { "term": "Solution to a system", "definition": "An ordered pair that makes both equations true; the point where the two lines intersect." },
+        { "term": "Satisfies", "definition": "A point satisfies an equation when substituting it makes the equation true." },
+        { "term": "Both", "definition": "For a system, the solution must work in each of the two equations, not just one." }
+      ],
+      "next_steps": { "if_pass": "8AF8-S3", "if_fail": "8AF8-F2" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Is (1, 4) the solution to y = 3x + 1 and y = x + 3?'" },
+        { "kind": "ask", "text": "What do we substitute into the FIRST equation? Does it make it true?" },
+        { "kind": "say", "text": "Eq 1: 3(1) + 1 = 4, true. Now Eq 2: 1 + 3 = 4, true. It passed both, so (1, 4) is the solution." },
+        { "kind": "watch", "text": "If a student stops after one equation, ask 'is the point on BOTH lines? Test the other equation too.'" },
+        { "kind": "ask", "text": "Your turn: is (2, 7) the solution to y = 2x + 3 and y = 4x - 1?" }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "How many equations must a system's solution make true?", "answer": "Both of them." },
+        { "difficulty": "warm_up", "stem": "Check (2, 5) in y = 2x + 1. Does it satisfy that equation?", "answer": "Yes: 2(2) + 1 = 5." },
+        { "difficulty": "core", "stem": "Is (3, 2) the solution to y = x - 1 and y = 2x - 5? Show both checks.", "answer": "No. Eq 1: 3 - 1 = 2 (true); Eq 2: 2(3) - 5 = 1 (not 2). Fails the second, so not the solution.", "notes": "Baits stopping after one equation." },
+        { "difficulty": "core", "stem": "Is (2, 5) the solution to y = x + 3 and y = 2x + 1?", "answer": "Yes: 2 + 3 = 5 and 2(2) + 1 = 5. Both true.", "notes": "Passes both." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Leo decided whether a point is the solution to a system. Find and fix his mistake.",
+          "shown_work": [
+            "System: y = x - 2 and y = 2x - 6. Point: (5, 3).",
+            "Leo wrote: 'Eq 1: 5 - 2 = 3. It works, so (5, 3) is the solution.'"
+          ],
+          "answer": "Leo checked only the first equation. Testing the second: 2(5) - 6 = 4, not 3. The point is on the first line only, so (5, 3) is NOT the solution to the system.",
+          "notes": "Canonical error: verifying one equation and stopping."
+        },
+        { "difficulty": "core", "stem": "Is (0, 4) the solution to y = -2x + 4 and y = x + 4?", "answer": "Yes: -2(0) + 4 = 4 and 0 + 4 = 4. Both true.", "notes": "Solution at a y-intercept both lines share." },
+        { "difficulty": "stretch", "stem": "A point makes the first equation true but the second false. Is it the solution? What is it, then?", "answer": "No. It is a point on the first line only, not the intersection. Only a point on BOTH lines is the solution.", "notes": "Explain-why; separates 'on a line' from 'the solution.'" },
+        { "difficulty": "stretch", "stem": "The solution to y = x + 1 and y = 3x - 3 is claimed to be (2, 3). Verify it, then explain how the check proves it.", "answer": "Eq 1: 2 + 1 = 3 (true); Eq 2: 3(2) - 3 = 3 (true). Because it satisfies both equations, (2, 3) lies on both lines, so it is their intersection — the solution.", "notes": "Verify-and-justify a given solution." }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Solution or Just One Line?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": ["Card set: 6 systems and candidate points; a 'both,' 'one only,' and 'neither' bin"],
+          "instructions": "1. For each system-and-point card, substitute the point into BOTH equations.\n2. Sort into 'satisfies both' (the solution), 'satisfies one only' (on one line), or 'neither.'\n3. Only the 'both' cards are true solutions — set the 'one only' cards aside and say which line the point sits on.\n4. Debrief: why isn't passing one equation enough?",
+          "content": {
+            "pairs": [
+              { "left": "(2, 5) with y = x + 3 and y = 2x + 1", "right": "satisfies both (solution)" },
+              { "left": "(0, 4) with y = -2x + 4 and y = x + 4", "right": "satisfies both (solution)" },
+              { "left": "(4, 5) with y = x + 1 and y = 2x - 3", "right": "satisfies both (solution)" },
+              { "left": "(3, 2) with y = x - 1 and y = 2x - 5", "right": "satisfies one only (first line)" },
+              { "left": "(5, 3) with y = x - 2 and y = 2x - 6", "right": "satisfies one only (first line)" },
+              { "left": "(1, 4) with y = 3x + 1 and y = x + 3", "right": "satisfies both (solution)" }
+            ],
+            "decoys": ["satisfies neither equation"]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Test Both, Then Decide",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Leo's one-equation check"],
+          "instructions": "1. Read Leo's claim that (5, 3) solves y = x - 2 and y = 2x - 6 because it fits the first equation.\n2. Substitute (5, 3) into the SECOND equation.\n3. Decide whether the point is the solution and explain which line it is actually on.\n4. Write the rule for confirming a system's solution.",
+          "content": {
+            "worked_problem": "System y = x - 2 and y = 2x - 6, point (5, 3). Leo checked only the first equation.",
+            "error_step": "Leo confirmed one equation and stopped.",
+            "why": "The second equation gives 2(5) - 6 = 4, not 3, so (5, 3) is on the first line only — not the intersection."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "Stopping after one equation is a precise, high-value error that a find-and-fix with the second substitution exposes." },
+        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'check equation one, now check equation two' models the both-equations habit." },
+        { "strategy_id": "strat-math-002", "why": "A number-talk on 'why does the solution have to work in both?' surfaces the on-both-lines meaning of intersection." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which equation did you test first? What did the other one give?",
+          "Does the point make BOTH equations true?",
+          "If it passes one and fails the other, what does that tell you?",
+          "Which line is this point on?",
+          "What must be true for a point to be the intersection?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student confirms a point in only one equation and calls it the solution to the system.",
+            "say": "The solution has to be on both lines, so substitute the point into each equation. It only counts if it makes BOTH true. If it passes one and fails the other, cross it out — it's on one line, not the crossing point.",
+            "praise": "You checked the point in both equations — that's how you confirm it's the real intersection."
+          },
+          {
+            "if_you_see": "Student swaps the x and y when substituting (uses y-value in place of x).",
+            "say": "The first number is x, the second is y. Put the x-value in for x, work out the right side, then compare to the y-value.",
+            "praise": "You substituted x for x and y for y — the check is set up right."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Is (1, 4) the solution to y = 3x + 1 and y = x + 3?",
+            "look_for": "Yes — 3(1) + 1 = 4 and 1 + 3 = 4. A 'no' means the student mis-substituted."
+          },
+          {
+            "prompt": "Is (3, 2) the solution to y = x - 1 and y = 2x - 5?",
+            "look_for": "No — it fails the second equation (gives 1). A 'yes' diagnoses checking only the first equation."
+          }
+        ]
+      },
+      "fluency_source": "8AF8-F2",
+      "sentence_starters": [
+        "In equation 1, the point gives ___; in equation 2 it gives ___, so it ___ the solution.",
+        "The point is on both lines because ___ and ___ are both true."
+      ],
+      "worked_solution": {
+        "stem": "Is (-1, 2) the solution to this system?  y = x + 3  and  y = -2x. Check both equations.",
+        "answer": "Yes, (-1, 2) is the solution.",
+        "steps": [
+          { "math": "Eq 1: y = x + 3 -> (-1) + 3 = 2", "annotation": "Substitute x = -1; the right side equals the y-value 2." },
+          { "math": "true for equation 1", "annotation": "The point is on the first line." },
+          { "math": "Eq 2: y = -2x -> -2(-1) = 2", "annotation": "Substitute x = -1; it equals 2 again." },
+          { "math": "true for both -> (-1, 2) is the solution", "annotation": "Passing both equations means it is the intersection." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Is (2, 7) the solution to this system?  y = 2x + 3  and  y = 4x - 1. Check both equations.",
+        "answer": "Yes, (2, 7) is the solution.",
+        "steps": [
+          { "math": "Eq 1: y = 2x + 3 -> 2(2) + 3 = 7", "annotation": "Substitute x = 2; it matches y = 7.", "given": true },
+          { "math": "true for equation 1", "annotation": "The point is on the first line.", "given": true },
+          { "math": null, "annotation": "Substitute x = 2 into the second equation, y = 4x - 1.", "given": false },
+          { "math": null, "annotation": "If both are true, state whether (2, 7) is the solution.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF8-S3",
+      "name": "Identify or approximate the solution of a system from a given graph",
+      "column": "on_grade",
+      "parent_standard": "8.AF.8",
+      "engine_stems": [2],
+      "prerequisite_skill": { "type": "skill", "skill_id": "8AF8-S1" },
+      "i_do_script": "When a graph of a system is given, the solution is the point where the two lines cross — I read its x first (how far across) and its y second (how far up). Watch two lines that meet at the point 2 across and 3 up: the solution is (2, 3), not (3, 2). When the crossing lands between the gridlines, I estimate — if it looks a little past 0 across and about 2 and a third up, I'd say roughly (0.7, 2.3). The best answer is the ordered pair closest to where the lines actually meet.",
+      "canonical_error": {
+        "pattern": "Reads the intersection with x and y swapped, or reports where a line crosses an axis instead of where the two lines meet",
+        "example": "The lines cross at (0.7, 2.3) but the student writes (2.3, 0.7), reversing the coordinates",
+        "why": "The solution is the (x, y) of the crossing point: x first (across), y second (up). Swapping the order — or reading a single line's axis-crossing — names a point that isn't the shared point."
+      },
+      "item_template": "A system with its graph (provided or given as a value table for both lines). Student reads or approximates the intersection as an ordered pair. MC.",
+      "sample_items": [
+        {
+          "stem": "The table shows points on both lines of a system. Which ordered pair is the solution (where the lines meet)?",
+          "answer": "(2, 3)",
+          "choices": ["(2, 3)", "(3, 2)", "(0, 1)", "(0, 7)"],
+          "distractor_logic": "Both lines pass through (2, 3) — that shared row is the solution. (3, 2) swaps the coordinates; (0, 1) and (0, 7) are the separate y-intercepts.",
+          "render_data": { "type": "data_table", "headers": ["x", "Line 1: y = x + 1", "Line 2: y = -2x + 7"], "rows": [["0", "1", "7"], ["1", "2", "5"], ["2", "3", "3"], ["3", "4", "1"]] }
+        },
+        {
+          "stem": "The table shows points on both lines of a system. Which ordered pair is the solution?",
+          "answer": "(2, 4)",
+          "choices": ["(2, 4)", "(4, 2)", "(0, -2)", "(0, 6)"],
+          "distractor_logic": "Both lines share (2, 4). (4, 2) reverses it; the others are y-intercepts of one line each.",
+          "render_data": { "type": "data_table", "headers": ["x", "Line 1: y = 3x - 2", "Line 2: y = -x + 6"], "rows": [["0", "-2", "6"], ["1", "1", "5"], ["2", "4", "4"], ["3", "7", "3"]] }
+        },
+        {
+          "stem": "A graph shows y = 2x + 1 and y = -x + 3 crossing between the gridlines, a little right of 0 and between 2 and 3 up. Which ordered pair BEST approximates the solution?",
+          "answer": "(0.7, 2.3)",
+          "choices": ["(0.7, 2.3)", "(2.3, 0.7)", "(1, 3)", "(0, 1)"],
+          "distractor_logic": "The exact crossing is (2/3, 7/3) ≈ (0.7, 2.3). (2.3, 0.7) swaps the coordinates; (1, 3) and (0, 1) are lattice points, not the crossing."
+        },
+        {
+          "stem": "A graph shows y = x - 1 and y = -2x + 3 crossing a bit past 1 across and just above 0 up. Which ordered pair BEST approximates the solution?",
+          "answer": "(1.3, 0.3)",
+          "choices": ["(1.3, 0.3)", "(0.3, 1.3)", "(1, 0)", "(0, -1)"],
+          "distractor_logic": "The exact crossing is (4/3, 1/3) ≈ (1.3, 0.3). (0.3, 1.3) reverses it; the others are nearby lattice points."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which number is across, and which is up?",
+        "prompt": "Find where the two lines actually cross. Read the x (across) first, then the y (up). If the crossing is between lines, estimate each coordinate. Don't read where one line hits an axis — that's not the shared point.",
+        "praise": "You read the crossing point x-first, y-second — that's the solution off the graph."
+      },
+      "vocabulary": [
+        { "term": "Point of intersection", "definition": "Where the two lines cross; its coordinates are the solution to the system." },
+        { "term": "Approximate", "definition": "Give a close estimate when the crossing falls between gridlines." },
+        { "term": "Ordered pair", "definition": "(x, y): x is the across-value, y is the up-value of the point." }
+      ],
+      "next_steps": { "if_pass": "8AF8-S4", "if_fail": "8AF8-S1" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Show a value table: Line 1 (y = -x + 4) and Line 2 (y = x - 2), with rows for x = 0..4." },
+        { "kind": "ask", "text": "At which x do both lines give the SAME y? What is that y?" },
+        { "kind": "say", "text": "At x = 3 both give 1, so the lines cross at (3, 1) — that's the solution." },
+        { "kind": "watch", "text": "If a student writes (1, 3), ask 'is 3 the across-number or the up-number? Which comes first?'" },
+        { "kind": "ask", "text": "Your turn: two lines meet 2 across and 3 up — write the solution." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "On a graph, where is the solution to a system?", "answer": "The point where the two lines cross." },
+        { "difficulty": "warm_up", "stem": "Two lines cross 2 across and 5 up. Write the solution as an ordered pair.", "answer": "(2, 5)" },
+        { "difficulty": "core", "stem": "Two lines of a system both pass through (2, 3). What is the solution?", "answer": "(2, 3)", "notes": "The shared point is the solution." },
+        { "difficulty": "core", "stem": "A graph shows lines crossing a little right of 0 and about 2.3 up (exact point 2/3, 7/3). Best approximation?", "answer": "About (0.7, 2.3)", "notes": "Approximation between gridlines." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Priya read a solution off a graph. Find and fix her mistake.",
+          "shown_work": [
+            "The two lines cross 4 across and 1 up.",
+            "Priya wrote the solution as (1, 4)."
+          ],
+          "answer": "Priya reversed the coordinates. The across-value (x) comes first and the up-value (y) second, so the solution is (4, 1), not (1, 4).",
+          "notes": "Canonical error: swapping x and y."
+        },
+        { "difficulty": "core", "stem": "The lines y = 3x - 2 and y = -x + 6 both pass through (2, 4). What is the solution?", "answer": "(2, 4)", "notes": "Confirm the shared point." },
+        { "difficulty": "stretch", "stem": "A student reads a crossing point as (3, 2) but the true crossing is at 2 across and 3 up. Explain the error and give the correct solution.", "answer": "The student swapped the coordinates. Across (x) is 2 and up (y) is 3, so the solution is (2, 3).", "notes": "Diagnose a swap and correct it." },
+        { "difficulty": "stretch", "stem": "Why is an approximate solution acceptable when reading a graph, and how could you make it exact?", "answer": "The crossing can fall between gridlines, so you estimate the closest coordinates. To make it exact, substitute the estimate into both equations (or solve algebraically) and adjust.", "notes": "Explain-why; links approximation to verification." }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Where Do They Cross?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": ["Card set: 6 value-table graphs and 8 ordered-pair cards (two coordinate-swap decoys)"],
+          "instructions": "1. For each table, find the x where both lines give the same y — that row is the crossing.\n2. Match the table to the ordered pair (x, y) of the crossing.\n3. Two ordered-pair cards are the coordinates reversed — set them aside as traps.\n4. Debrief: which number do you always write first, and why?",
+          "content": {
+            "pairs": [
+              { "left": "Lines meet where both give y at x = 2, y = 3", "right": "(2, 3)" },
+              { "left": "Lines meet at x = 3, y = 1", "right": "(3, 1)" },
+              { "left": "Lines meet at x = 2, y = 4", "right": "(2, 4)" },
+              { "left": "Lines meet at x = 0, y = 3", "right": "(0, 3)" },
+              { "left": "Lines meet at x = 1, y = 1", "right": "(1, 1)" },
+              { "left": "Lines meet at x = 2, y = 0", "right": "(2, 0)" }
+            ],
+            "decoys": ["(3, 2)", "(4, 2)"]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Across First, Then Up",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Priya's reversed pair"],
+          "instructions": "1. Read Priya's solution (1, 4) for lines that cross 4 across and 1 up.\n2. Mark on a sketch where (1, 4) is versus where (4, 1) is.\n3. Write the correct solution and explain the order of the coordinates.\n4. Write the rule for reading an intersection point.",
+          "content": {
+            "worked_problem": "Two lines cross 4 across and 1 up. Priya wrote (1, 4).",
+            "error_step": "Priya wrote the up-value first and the across-value second.",
+            "why": "An ordered pair is (x, y): across first, up second, so the solution is (4, 1)."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-007", "why": "Tracing across then up from the crossing to the axes builds the concrete link between the point and its (x, y)." },
+        { "strategy_id": "strat-math-003", "why": "The coordinate-swap error is precise and plottable, ideal for a find-and-fix." },
+        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'x is across, y is up' models the read that prevents swapping." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Where do the two lines cross?",
+          "Which coordinate is 'across,' and which is 'up'?",
+          "Is the crossing on a gridline, or between them?",
+          "If it's between, what's your best estimate for each coordinate?",
+          "Could you check your point by substituting into both equations?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reads the intersection with x and y swapped, or reports an axis-crossing instead of the meeting point.",
+            "say": "Find where the two lines actually cross. Read the x (across) first, then the y (up). If the crossing is between lines, estimate each coordinate. Don't read where one line hits an axis — that's not the shared point.",
+            "praise": "You read the crossing point x-first, y-second — that's the solution off the graph."
+          },
+          {
+            "if_you_see": "Student reads a y-intercept of one line as the solution.",
+            "say": "The solution is where BOTH lines meet, not where a single line crosses the y-axis. Find the point the two lines share.",
+            "praise": "You found the shared crossing point instead of a single line's intercept."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Two lines cross 3 across and 5 up. Write the solution.",
+            "look_for": "(3, 5). An answer of (5, 3) diagnoses the coordinate swap."
+          },
+          {
+            "prompt": "The crossing looks like it's about 1 across and 2.5 up. Give an approximate solution.",
+            "look_for": "About (1, 2.5). Reversing to (2.5, 1) shows the swap error."
+          }
+        ]
+      },
+      "fluency_source": "8AF8-F2",
+      "sentence_starters": [
+        "The lines cross at ___ across and ___ up, so the solution is (___, ___).",
+        "My best estimate for the crossing is about (___, ___)."
+      ],
+      "worked_solution": {
+        "stem": "The table shows points on both lines of a system. Find the solution (where the lines meet).",
+        "answer": "(3, 1)",
+        "render_data": { "type": "data_table", "headers": ["x", "Line 1: y = -x + 4", "Line 2: y = x - 2"], "rows": [["1", "3", "-1"], ["2", "2", "0"], ["3", "1", "1"], ["4", "0", "2"]] },
+        "steps": [
+          { "math": "look for the x where both lines give the same y", "annotation": "The solution is the row the two lines share." },
+          { "math": "at x = 3: Line 1 = 1 and Line 2 = 1", "annotation": "Both lines pass through the same point here." },
+          { "math": "shared point: 3 across, 1 up", "annotation": "Read x first (across), then y (up)." },
+          { "math": "solution = (3, 1)", "annotation": "Write the ordered pair x, then y." }
+        ]
+      },
+      "faded_example": {
+        "stem": "The table shows points on both lines of a system. Find the solution.",
+        "answer": "(1, 1)",
+        "render_data": { "type": "data_table", "headers": ["x", "Line 1: y = 2x - 1", "Line 2: y = -x + 2"], "rows": [["0", "-1", "2"], ["1", "1", "1"], ["2", "3", "0"], ["3", "5", "-1"]] },
+        "steps": [
+          { "math": "find the x where both lines give the same y", "annotation": "Scan the two columns for a matching y.", "given": true },
+          { "math": "at x = 1: Line 1 = 1 and Line 2 = 1", "annotation": "The lines share this point.", "given": true },
+          { "math": null, "annotation": "Write the across-value (x) then the up-value (y).", "given": false },
+          { "math": null, "annotation": "State the solution as an ordered pair.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF8-S4",
+      "name": "Graph a system of two equations and find the solution",
+      "column": "on_grade",
+      "parent_standard": "8.AF.8",
+      "engine_stems": [3],
+      "prerequisite_skill": { "type": "skill", "skill_id": "8AF8-S3" },
+      "i_do_script": "To solve a system by graphing, I graph BOTH lines from their y = mx + b form, then find where they cross. Watch y = 2x - 1 and y = -x + 5. Line 1 starts at (0, -1) and rises 2 for every 1 right. Line 2 starts at (0, 5) and FALLS 1 for every 1 right (the slope is negative). I draw both and they meet at (2, 3). I report the full point, x and y — the solution is (2, 3), not just 'x = 2.'",
+      "canonical_error": {
+        "pattern": "Graphs a negative-slope line going the wrong way (up instead of down), so the lines meet at the wrong point",
+        "example": "For y = -x + 5, goes UP 1 for each step right instead of DOWN 1, so it crosses y = 2x - 1 somewhere other than the true point (2, 3)",
+        "why": "A negative slope falls as you move right. Rising a negative-slope line shifts the whole line, moving the intersection to a point that solves neither original equation."
+      },
+      "item_template": "A system in y = mx + b form (with different slopes so there is one solution). Student graphs both lines and states the solution point. Multi-part (graph + solution).",
+      "sample_items": [
+        {
+          "stem": "Graph the system and find the solution.  y = 3x + 3  and  y = -4x + 3",
+          "answer": "(0, 3). Both lines share the y-intercept (0, 3), so they cross there.",
+          "distractor_logic": "Line 1 starts at (0, 3) rising 3; line 2 starts at (0, 3) falling 4. Same start point is the crossing."
+        },
+        {
+          "stem": "Graph the system and find the solution.  y = 2x - 1  and  y = -x + 5",
+          "answer": "(2, 3). Check: 2(2) - 1 = 3 and -(2) + 5 = 3.",
+          "distractor_logic": "Reporting 'x = 2' only, or misdrawing the falling line, gives a wrong or partial answer."
+        },
+        {
+          "stem": "Graph the system and find the solution.  y = x + 2  and  y = -x + 4",
+          "answer": "(1, 3). Check: 1 + 2 = 3 and -(1) + 4 = 3.",
+          "distractor_logic": "The rising and falling lines meet at (1, 3); (3, 1) reverses it."
+        },
+        {
+          "stem": "Graph the system and find the solution.  y = -2x + 1  and  y = x - 5",
+          "answer": "(2, -3). Check: -2(2) + 1 = -3 and 2 - 5 = -3.",
+          "distractor_logic": "The solution has a negative y; drawing the -2 slope upward would miss (2, -3)."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which way does a negative slope go — up or down?",
+        "prompt": "Start each line at its y-intercept (0, b). For a positive slope go UP as you move right; for a NEGATIVE slope go DOWN. Then read the full crossing point — both the x and the y.",
+        "praise": "You drew the falling line downward and named the whole point (x, y) — that's the solution by graphing."
+      },
+      "vocabulary": [
+        { "term": "Solve by graphing", "definition": "Draw both lines and read the point where they cross as the solution." },
+        { "term": "Negative slope", "definition": "A slope less than 0; the line falls as you move to the right." },
+        { "term": "Solution (ordered pair)", "definition": "Both coordinates of the crossing point, written (x, y)." }
+      ],
+      "next_steps": { "if_pass": "8AF8-S5", "if_fail": "8AF8-S3" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Graph y = x + 2 and y = -x + 4, then find the solution.'" },
+        { "kind": "ask", "text": "Where does each line start? Which one falls as it goes right?" },
+        { "kind": "say", "text": "Line 1: start (0, 2), rise 1. Line 2: start (0, 4), FALL 1. They meet at (1, 3), so the solution is (1, 3)." },
+        { "kind": "watch", "text": "If a student draws y = -x + 4 going up, ask 'is the slope positive or negative? Which way does it go?'" },
+        { "kind": "ask", "text": "Your turn: graph y = 2x - 1 and y = -x + 5 and give the solution." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Where do you start graphing y = -4x + 3?", "answer": "At the y-intercept (0, 3)." },
+        { "difficulty": "warm_up", "stem": "A slope of -1 means you go which way for each step right?", "answer": "Down 1." },
+        { "difficulty": "core", "stem": "Graph and solve:  y = 2x - 1 and y = -x + 5.", "answer": "(2, 3)", "notes": "Report the full pair, not just x = 2." },
+        { "difficulty": "core", "stem": "Graph and solve:  y = 3x + 3 and y = -4x + 3.", "answer": "(0, 3)", "notes": "Both share the y-intercept." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Diego graphed a system. Find and fix his mistake.",
+          "shown_work": [
+            "System: y = 2x - 1 and y = -x + 5.",
+            "Diego graphed y = -x + 5 by going UP 1 for each step right and got the crossing at about (4, 7)."
+          ],
+          "answer": "The slope -1 falls, so Diego should go DOWN 1 for each step right, not up. Drawn correctly, the lines cross at (2, 3) — check: 2(2) - 1 = 3 and -(2) + 5 = 3.",
+          "notes": "Canonical error: graphing a negative slope upward."
+        },
+        { "difficulty": "core", "stem": "Graph and solve:  y = x + 2 and y = -x + 4.", "answer": "(1, 3)", "notes": "Rising and falling line meet at (1, 3)." },
+        { "difficulty": "stretch", "stem": "Graph and solve:  y = -2x + 1 and y = x - 5. What makes this one trickier?", "answer": "(2, -3). The solution has a negative y, so the crossing is below the x-axis — you must extend both lines into the fourth quadrant.", "notes": "Negative-y solution." },
+        { "difficulty": "stretch", "stem": "After graphing, a student says the solution is 'x = 2.' What is missing, and how do you finish?", "answer": "The y-coordinate is missing. Substitute x = 2 into either equation to get y, then write the full ordered pair (x, y).", "notes": "Reports only x; secondary error." }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Draw Both, Find the Cross",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": ["Blank coordinate grids", "System cards in y = mx + b form", "Two colors of pencil"],
+          "instructions": "1. Draw a system card. Graph line 1 in one color: start at (0, b), then use the slope.\n2. Graph line 2 in the other color, watching the sign of the slope (down if negative).\n3. Circle where the two colors cross and write the point (x, y).\n4. Substitute your point into BOTH equations to confirm.\n5. Debrief: how did the sign of the slope change the direction you drew?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Which Way Does It Fall?",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Diego's upward negative slope"],
+          "instructions": "1. Read Diego's graph of y = -x + 5 drawn going UP.\n2. Redraw it going DOWN 1 for each step right.\n3. Find the correct crossing with y = 2x - 1 and write the solution.\n4. Verify the point in both equations, and write the rule for graphing a negative slope.",
+          "content": {
+            "worked_problem": "System y = 2x - 1 and y = -x + 5. Diego drew y = -x + 5 going upward.",
+            "error_step": "Diego treated the negative slope as if it rose.",
+            "why": "Slope -1 falls: down 1, right 1. Drawn correctly, the lines cross at (2, 3), not (4, 7)."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-007", "why": "Physically graphing both lines and circling the crossing bridges the concrete graph to the abstract solution." },
+        { "strategy_id": "strat-math-003", "why": "Graphing a negative slope upward is a precise, visible error that a find-and-fix corrects." },
+        { "strategy_id": "strat-math-006", "why": "Gradual release from 'graph one line' to 'graph both and find the point' scaffolds the full procedure." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Where does each line start (its y-intercept)?",
+          "Is each slope positive or negative — which way does the line go?",
+          "Where do the two lines cross?",
+          "Did you write BOTH coordinates of the solution?",
+          "Does your point check in both equations?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student graphs a negative-slope line going up, so the lines meet at the wrong point.",
+            "say": "Start each line at its y-intercept (0, b). For a positive slope go UP as you move right; for a NEGATIVE slope go DOWN. Then read the full crossing point — both the x and the y.",
+            "praise": "You drew the falling line downward and named the whole point (x, y) — that's the solution by graphing."
+          },
+          {
+            "if_you_see": "Student reports only the x-coordinate (or only y) as the solution.",
+            "say": "The solution is the whole point where the lines cross. Substitute your x into either equation to get y, then write (x, y).",
+            "praise": "You gave both coordinates — that's the complete solution."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Graph and solve:  y = x + 2 and y = -x + 4.",
+            "look_for": "(1, 3). If a line was drawn upward when it should fall, the crossing (and answer) will be off."
+          },
+          {
+            "prompt": "A student says the solution is 'x = 2.' Is that complete?",
+            "look_for": "No — the y-value is missing. A 'yes' shows the student stops at one coordinate."
+          }
+        ]
+      },
+      "fluency_source": "8AF8-F1",
+      "sentence_starters": [
+        "Line 1 starts at (0, ___) and goes ___; line 2 starts at (0, ___) and goes ___.",
+        "The lines cross at (___, ___), so the solution is ___."
+      ],
+      "worked_solution": {
+        "stem": "Graph the system and find the solution.  y = x - 4  and  y = -2x + 5",
+        "answer": "(3, -1)",
+        "steps": [
+          { "math": "Line 1: start (0, -4), slope 1 -> up 1, right 1", "annotation": "Graph the first line from its y-intercept." },
+          { "math": "Line 2: start (0, 5), slope -2 -> DOWN 2, right 1", "annotation": "The negative slope falls as you go right." },
+          { "math": "the lines cross at (3, -1)", "annotation": "Read the full point where they meet." },
+          { "math": "check: 3 - 4 = -1 and -2(3) + 5 = -1", "annotation": "Both equations confirm (3, -1)." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Graph the system and find the solution.  y = (1/2)x + 1  and  y = -x + 4",
+        "answer": "(2, 2)",
+        "steps": [
+          { "math": "Line 1: start (0, 1), slope 1/2 -> up 1, right 2", "annotation": "Graph the first line from its y-intercept.", "given": true },
+          { "math": "Line 2: start (0, 4), slope -1 -> down 1, right 1", "annotation": "The negative slope falls to the right.", "given": true },
+          { "math": null, "annotation": "Find and write the point where the two lines cross.", "given": false },
+          { "math": null, "annotation": "Check your point in both equations.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF8-S5",
+      "name": "Determine the solution of a system given its equations",
+      "column": "on_grade",
+      "parent_standard": "8.AF.8",
+      "engine_stems": [4],
+      "prerequisite_skill": { "type": "skill", "skill_id": "8AF8-S4" },
+      "i_do_script": "When I am given a system and asked which point (or which graph) is the solution, I find the crossing point and then CONFIRM it by substituting into both equations. Watch y = -2/3 x + 3 and y = 4/3 x - 3. Setting them equal, the lines cross at (3, 1). I check: -2/3 times 3 plus 3 = 1, and 4/3 times 3 minus 3 = 1 — both work, so (3, 1) is the solution. A point like (1, 3) with the coordinates reversed would fail both, so I never pick a point without testing it.",
+      "canonical_error": {
+        "pattern": "Selects a solution or a graph by matching a labeled point without substituting it back, so coordinate swaps or sign flips slip through",
+        "example": "For y = -2/3 x + 3 and y = 4/3 x - 3 (solution (3, 1)), the student picks (1, 3) — the coordinates reversed — because it 'looks right'",
+        "why": "The true solution must satisfy both equations. Testing (3, 1) passes both; testing the reversed (1, 3) fails both. Substituting is what rules out swapped or sign-flipped points."
+      },
+      "item_template": "A system in y = mx + b form (possibly with candidate solutions or candidate graphs). Student determines the solution and confirms by substitution. MC.",
+      "sample_items": [
+        {
+          "stem": "What is the solution to this system?  y = -2/3x + 3  and  y = 4/3x - 3",
+          "answer": "(3, 1)",
+          "choices": ["(3, 1)", "(1, 3)", "(-3, 1)", "(1, -3)"],
+          "distractor_logic": "Only (3, 1) satisfies both: -2/3(3) + 3 = 1 and 4/3(3) - 3 = 1. The others are coordinate swaps or sign flips that fail the check."
+        },
+        {
+          "stem": "What is the solution to this system?  y = 2x - 4  and  y = -x + 2",
+          "answer": "(2, 0)",
+          "choices": ["(2, 0)", "(0, 2)", "(-2, 0)", "(0, -2)"],
+          "distractor_logic": "2(2) - 4 = 0 and -(2) + 2 = 0, so (2, 0). (0, 2) reverses the coordinates."
+        },
+        {
+          "stem": "What is the solution to this system?  y = -3x + 5  and  y = x - 3",
+          "answer": "(2, -1)",
+          "choices": ["(2, -1)", "(-1, 2)", "(2, 1)", "(-2, -1)"],
+          "distractor_logic": "-3(2) + 5 = -1 and 2 - 3 = -1, so (2, -1). (-1, 2) swaps; (2, 1) flips the sign of y."
+        },
+        {
+          "stem": "What is the solution to this system?  y = (1/2)x + 2  and  y = 2x - 1",
+          "answer": "(2, 3)",
+          "choices": ["(2, 3)", "(3, 2)", "(2, -3)", "(-2, 3)"],
+          "distractor_logic": "1/2(2) + 2 = 3 and 2(2) - 1 = 3, so (2, 3). (3, 2) reverses it; the others flip signs."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you substitute your point back into both equations?",
+        "prompt": "Don't pick a point because it looks right — test it. Put the x and y into BOTH equations. The real solution makes both true; a reversed or sign-flipped point will fail. If it fails either one, it's not the answer.",
+        "praise": "You confirmed the point in both equations before choosing — that's how you rule out swaps and sign errors."
+      },
+      "vocabulary": [
+        { "term": "Determine the solution", "definition": "Find the point where the lines cross and confirm it works in both equations." },
+        { "term": "Coordinate swap", "definition": "Writing (y, x) instead of (x, y); a common wrong answer that fails the check." },
+        { "term": "Confirm", "definition": "Substitute a candidate point into both equations to make sure it is the solution." }
+      ],
+      "next_steps": { "if_pass": "8AF8-S6", "if_fail": "8AF8-S4" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Which is the solution to y = -3x + 5 and y = x - 3: (2, -1) or (-1, 2)?'" },
+        { "kind": "ask", "text": "Let's test (2, -1) first. What does each equation give?" },
+        { "kind": "say", "text": "-3(2) + 5 = -1 and 2 - 3 = -1 — both true, so (2, -1). Testing (-1, 2) fails both, so it's out." },
+        { "kind": "watch", "text": "If a student picks (-1, 2), ask 'does it make BOTH equations true? Substitute and see.'" },
+        { "kind": "ask", "text": "Your turn: find the solution to y = 2x - 4 and y = -x + 2 and confirm it." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "How do you confirm a candidate point is the solution to a system?", "answer": "Substitute it into both equations; it must make both true." },
+        { "difficulty": "warm_up", "stem": "Test (2, 0) in y = 2x - 4. Does it work?", "answer": "Yes: 2(2) - 4 = 0." },
+        { "difficulty": "core", "stem": "What is the solution to y = -2/3x + 3 and y = 4/3x - 3?", "answer": "(3, 1)", "notes": "Baits the swap (1, 3)." },
+        { "difficulty": "core", "stem": "What is the solution to y = 2x - 4 and y = -x + 2?", "answer": "(2, 0)", "notes": "Confirm both give 0." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Nadia chose a solution for a system. Find and fix her mistake.",
+          "shown_work": [
+            "System: y = -3x + 5 and y = x - 3.",
+            "Nadia picked (-1, 2) because 'it looked like the crossing.'"
+          ],
+          "answer": "Nadia never substituted. Testing (-1, 2): first equation gives -3(-1) + 5 = 8, not 2 — it fails. The correct solution is (2, -1): -3(2) + 5 = -1 and 2 - 3 = -1. She had the coordinates reversed.",
+          "notes": "Canonical error: choosing without substituting; coordinate swap."
+        },
+        { "difficulty": "core", "stem": "What is the solution to y = x + 1 and y = 3x - 3?", "answer": "(2, 3)", "notes": "Both give 3 at x = 2." },
+        { "difficulty": "stretch", "stem": "A classmate says the solution to y = -x + 6 and y = 2x - 3 is (3, 3). Verify or correct it.", "answer": "Correct: -(3) + 6 = 3 and 2(3) - 3 = 3, both true, so (3, 3) is the solution.", "notes": "Verify a given point." },
+        { "difficulty": "stretch", "stem": "Two candidate answers for a system are (2, -1) and (-1, 2). Explain how substitution alone decides which is right, without a graph.", "answer": "Substitute each into both equations. The one that makes both true is the solution; the reversed point will fail at least one equation. No graph is needed — the check is definitive.", "notes": "Explain-why; substitution as the decider." }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Substitute Before You Choose",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": ["Card set: 6 systems, each with a correct point and a reversed/sign-flipped decoy"],
+          "instructions": "1. For each system, you have two candidate points.\n2. Substitute BOTH candidates into BOTH equations.\n3. Sort candidates into 'solution' (passes both) and 'reject' (fails one or both).\n4. For each reject, name the trap: coordinate swap or sign flip.\n5. Debrief: why can't you choose a solution just by how it looks?",
+          "content": {
+            "categories": ["Solution (passes both)", "Reject (fails the check)"],
+            "cards": [
+              { "text": "(3, 1) for y = -2/3x + 3 and y = 4/3x - 3", "category": "Solution (passes both)" },
+              { "text": "(1, 3) for y = -2/3x + 3 and y = 4/3x - 3", "category": "Reject (fails the check)" },
+              { "text": "(2, 0) for y = 2x - 4 and y = -x + 2", "category": "Solution (passes both)" },
+              { "text": "(0, 2) for y = 2x - 4 and y = -x + 2", "category": "Reject (fails the check)" },
+              { "text": "(2, -1) for y = -3x + 5 and y = x - 3", "category": "Solution (passes both)" },
+              { "text": "(-1, 2) for y = -3x + 5 and y = x - 3", "category": "Reject (fails the check)" }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Looked Right, Failed the Check",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Nadia's unsubstituted pick"],
+          "instructions": "1. Read Nadia's choice of (-1, 2) for y = -3x + 5 and y = x - 3.\n2. Substitute (-1, 2) into both equations and show it fails.\n3. Find the point that passes both and write it.\n4. Write the rule: always substitute before choosing a solution.",
+          "content": {
+            "worked_problem": "System y = -3x + 5 and y = x - 3. Nadia picked (-1, 2) by eye.",
+            "error_step": "Nadia chose a point without substituting it back.",
+            "why": "(-1, 2) gives -3(-1) + 5 = 8, not 2, so it fails. The solution is (2, -1), which passes both equations."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "Coordinate swaps and sign flips are precise errors that a substitution-based find-and-fix rules out." },
+        { "strategy_id": "strat-math-009", "why": "Comparing a passing point to a reversed one, each substituted into both equations, makes the check the deciding move." },
+        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'test it in both equations before I choose' models verification over eyeballing." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Did you substitute your point into BOTH equations?",
+          "Which candidate makes both equations true?",
+          "How would a coordinate swap show up in the check?",
+          "What does the failing candidate get wrong — the order or a sign?",
+          "Can you decide this without a graph, just by substituting?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student selects a solution or graph by matching a labeled point without substituting it back.",
+            "say": "Don't pick a point because it looks right — test it. Put the x and y into BOTH equations. The real solution makes both true; a reversed or sign-flipped point will fail. If it fails either one, it's not the answer.",
+            "praise": "You confirmed the point in both equations before choosing — that's how you rule out swaps and sign errors."
+          },
+          {
+            "if_you_see": "Student writes the coordinates in reversed order (y, x).",
+            "say": "Write x first, then y. Substitute the x-value for x in both equations to make sure the pair is in the right order.",
+            "praise": "You kept x first and y second and confirmed it — the order is right."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "What is the solution to y = 2x - 4 and y = -x + 2?",
+            "look_for": "(2, 0). An answer of (0, 2) diagnoses a coordinate swap."
+          },
+          {
+            "prompt": "Is (1, 3) the solution to y = -2/3x + 3 and y = 4/3x - 3?",
+            "look_for": "No — it fails both; the solution is (3, 1). A 'yes' shows the student didn't substitute."
+          }
+        ]
+      },
+      "fluency_source": "8AF8-F2",
+      "sentence_starters": [
+        "Testing (___, ___): equation 1 gives ___ and equation 2 gives ___.",
+        "The solution is (___, ___) because it makes both equations true."
+      ],
+      "worked_solution": {
+        "stem": "What is the solution to this system?  y = -x + 6  and  y = 2x - 3",
+        "answer": "(3, 3)",
+        "steps": [
+          { "math": "set the equations equal: -x + 6 = 2x - 3", "annotation": "The lines meet where their y-values are equal." },
+          { "math": "6 + 3 = 2x + x -> 9 = 3x -> x = 3", "annotation": "Solve for the x-coordinate of the crossing." },
+          { "math": "y = -(3) + 6 = 3", "annotation": "Substitute x = 3 to get y." },
+          { "math": "check: 2(3) - 3 = 3 -> (3, 3)", "annotation": "The second equation confirms the point." }
+        ]
+      },
+      "faded_example": {
+        "stem": "What is the solution to this system?  y = x + 1  and  y = 3x - 3",
+        "answer": "(2, 3)",
+        "steps": [
+          { "math": "set equal: x + 1 = 3x - 3", "annotation": "The lines meet where the y-values match.", "given": true },
+          { "math": "1 + 3 = 3x - x -> 4 = 2x -> x = 2", "annotation": "Solve for the x-coordinate.", "given": true },
+          { "math": null, "annotation": "Substitute x = 2 into either equation to find y.", "given": false },
+          { "math": null, "annotation": "Confirm the point in the other equation and write (x, y).", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "8AF8-S6",
+      "name": "Interpret and estimate the solution of a real-world system",
+      "column": "looking_forward",
+      "parent_standard": "8.AF.8",
+      "engine_stems": [5],
+      "prerequisite_skill": { "type": "skill", "skill_id": "8AF8-S5" },
+      "i_do_script": "In a real-world system, each line is an option — like two price plans — and the point where they cross is the break-even point, where both options cost the same. Watch: Gym A is y = 10x + 30 (a $30 join fee plus $10 a month) and Gym B is y = 20x ($20 a month, no fee). They cross at (3, 60): at 3 months both cost $60. Before 3 months, Gym B (lower starting cost) is cheaper; after 3 months, Gym A (lower monthly rate) is cheaper. I read the crossing AND explain what it means.",
+      "canonical_error": {
+        "pattern": "Interprets the intersection or the 'better deal' backwards — assuming the option that starts higher (or lower) is always the more expensive one",
+        "example": "Two plans meet at (3, 60). The student says Gym A (higher starting cost) is always more expensive, missing that after 3 months Gym A becomes the cheaper option",
+        "why": "The intersection is the break-even point where costs are equal. Before it, the option with the lower starting value is cheaper; after it, the option with the lower rate (slope) is cheaper — the advantage switches at the crossing."
+      },
+      "item_template": "A real-world system in y = mx + b form (with a graph or description). Student estimates the intersection and interprets it as a break-even point. Multi-part.",
+      "sample_items": [
+        {
+          "stem": "Gym A charges a $30 join fee plus $10 per month: y = 10x + 30. Gym B charges $20 per month with no fee: y = 20x. At how many months do they cost the same, and which is cheaper after that?",
+          "answer": "They cost the same at 3 months ($60). After 3 months Gym A is cheaper (lower monthly rate).",
+          "distractor_logic": "Crossing at (3, 60). Saying A is 'always more expensive' ignores that its lower rate wins after the break-even point."
+        },
+        {
+          "stem": "Company A charges $50 up front plus $5 per hour: y = 5x + 50. Company B charges $15 per hour: y = 15x. When is the cost equal, and who is cheaper before that time?",
+          "answer": "Equal at 5 hours ($75). Before 5 hours, Company B is cheaper (no up-front cost).",
+          "distractor_logic": "Crossing at (5, 75). Before break-even, the lower starting cost (B) wins; after, A's lower rate wins."
+        },
+        {
+          "stem": "Ava has $50 and saves $10 per week: y = 10x + 50. Ben has $20 and saves $16 per week: y = 16x + 20. In how many weeks will they have the same amount?",
+          "answer": "In 5 weeks, both have $100.",
+          "distractor_logic": "Crossing at (5, 100). Ben starts lower but saves faster, catching up at week 5."
+        },
+        {
+          "stem": "Plan A costs $40 plus $2 per gigabyte: y = 2x + 40. Plan B costs $20 plus $6 per gigabyte: y = 6x + 20. At what usage are the costs equal, and which plan is better for heavy users (more gigabytes)?",
+          "answer": "Equal at 5 gigabytes ($50). For heavy users (more than 5 GB), Plan A is better (lower rate per GB).",
+          "distractor_logic": "Crossing at (5, 50). Above break-even the lower-rate plan (A) wins; below it, B's lower base wins."
+        }
+      ],
+      "redirect_script": {
+        "stop": "What does the crossing point mean here?",
+        "prompt": "The crossing is the break-even point where both options cost the same. Before it, the one that STARTS lower is cheaper; after it, the one with the smaller rate (per month/hour) is cheaper. Say which is better BEFORE and which is better AFTER.",
+        "praise": "You read the break-even point and explained who wins before and after — that's interpreting the system."
+      },
+      "vocabulary": [
+        { "term": "Break-even point", "definition": "The intersection where two options cost the same; the solution of the real-world system." },
+        { "term": "Rate (slope)", "definition": "The per-unit cost (per month, hour, GB); the steeper line costs more per unit." },
+        { "term": "Initial value (y-intercept)", "definition": "The starting cost when x = 0, such as a fee or up-front charge." }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for AI.SEI.2 (solve systems of linear equations algebraically and by graphing).",
+        "if_fail": "8AF8-S5"
+      },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Plan A: y = 5x + 50. Plan B: y = 15x. When are they equal, and who is cheaper before then?'" },
+        { "kind": "ask", "text": "What does the crossing point tell you? Where is it?" },
+        { "kind": "say", "text": "They cross at (5, 75): at 5 hours both cost $75. Before 5 hours, Plan B (no up-front cost) is cheaper; after, Plan A's lower rate wins." },
+        { "kind": "watch", "text": "If a student says one plan is 'always' cheaper, ask 'is that true before AND after the crossing? Check a value on each side.'" },
+        { "kind": "ask", "text": "Your turn: Gym A y = 10x + 30, Gym B y = 20x — when equal, and who's cheaper after?" }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "What does the intersection of two cost lines represent?", "answer": "The break-even point where both options cost the same." },
+        { "difficulty": "warm_up", "stem": "Two plans cross at (5, 75). What does that mean in words?", "answer": "At 5 (hours/months), both plans cost $75." },
+        { "difficulty": "core", "stem": "Gym A: y = 10x + 30. Gym B: y = 20x. When equal, and who's cheaper after?", "answer": "Equal at 3 months ($60); Gym A cheaper after (lower monthly rate).", "notes": "Baits 'A always costs more.'" },
+        { "difficulty": "core", "stem": "Company A: y = 5x + 50. Company B: y = 15x. When equal, and who's cheaper before?", "answer": "Equal at 5 hours ($75); Company B cheaper before (no up-front cost).", "notes": "Before/after break-even." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Omar interpreted a real-world system. Find and fix his mistake.",
+          "shown_work": [
+            "Gym A: y = 10x + 30. Gym B: y = 20x. They cross at (3, 60).",
+            "Omar wrote: 'Gym A has the higher join fee, so Gym A is always more expensive.'"
+          ],
+          "answer": "The advantage switches at the break-even point. Before 3 months Gym B is cheaper, but after 3 months Gym A's lower monthly rate ($10 vs $20) makes it cheaper. 'Always more expensive' is wrong — check a value on each side (e.g., month 5: A = $80, B = $100).",
+          "notes": "Canonical error: assuming the higher starting cost is always worse."
+        },
+        { "difficulty": "core", "stem": "Ava: y = 10x + 50. Ben: y = 16x + 20. When do they have the same amount?", "answer": "In 5 weeks, both have $100.", "notes": "Catch-up interpretation." },
+        { "difficulty": "stretch", "stem": "For Plan A: y = 2x + 40 and Plan B: y = 6x + 20, explain who should pick which plan, using the break-even point.", "answer": "They break even at 5 GB ($50). A light user (under 5 GB) should pick B (lower base cost); a heavy user (over 5 GB) should pick A (lower rate per GB).", "notes": "Recommend based on the crossing." },
+        { "difficulty": "stretch", "stem": "Two plans have the SAME monthly rate but different fees. What does that mean for the graph and the number of solutions?", "answer": "Same rate means parallel lines that never cross — no break-even point (no solution). One plan is always cheaper by the fixed fee difference.", "notes": "Connects no-solution to context." }
+      ],
+      "activities": [
+        {
+          "type": "game",
+          "title": "Which Plan Wins?",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": ["Plan cards (two options each, in y = mx + b form)", "A 'usage' spinner or number cards"],
+          "instructions": "1. Draw a plan card with two options and find the break-even point.\n2. Spin a usage value (months/hours/GB).\n3. Each player predicts which plan is cheaper at that usage BEFORE computing.\n4. Compute both costs to check; a correct before/after prediction scores a point.\n5. Debrief: how does the break-even point tell you who wins on each side?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Not Always More Expensive",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Omar's 'always more expensive' claim"],
+          "instructions": "1. Read Omar's claim that Gym A (higher join fee) is always more expensive.\n2. Compute both gym costs at month 1 and at month 5.\n3. Find when A becomes cheaper and connect it to the break-even point (3, 60).\n4. Write the rule for who wins before and after the crossing.",
+          "content": {
+            "worked_problem": "Gym A: y = 10x + 30, Gym B: y = 20x, crossing at (3, 60). Omar said A is always more expensive.",
+            "error_step": "Omar assumed the higher starting fee means higher cost forever.",
+            "why": "After 3 months A's lower rate wins: at month 5, A = $80 but B = $100. The advantage switches at the break-even point."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "The 'always cheaper' claim is a precise interpretation error a find-and-fix corrects with a value on each side of break-even." },
+        { "strategy_id": "strat-math-001", "why": "Think-pair-share on 'which plan would you choose and why' surfaces before/after reasoning about the crossing." },
+        { "strategy_id": "strat-math-004", "why": "A journal entry explaining what the break-even point means consolidates the interpretation of the solution." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What does the crossing point mean in this situation?",
+          "Which option is cheaper BEFORE the break-even point? Which AFTER?",
+          "What do the slope and the y-intercept mean in context (rate and starting cost)?",
+          "Test a value on each side — does the cheaper option switch?",
+          "Which plan would you recommend, and for whom?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student interprets the 'better deal' backwards, assuming the higher (or lower) starting option is always more expensive.",
+            "say": "The crossing is the break-even point where both options cost the same. Before it, the one that STARTS lower is cheaper; after it, the one with the smaller rate (per month/hour) is cheaper. Say which is better BEFORE and which is better AFTER.",
+            "praise": "You read the break-even point and explained who wins before and after — that's interpreting the system."
+          },
+          {
+            "if_you_see": "Student reads the answer off the wrong axis (gives the cost when asked for the time, or vice versa).",
+            "say": "Match the question to the axis: the x-value is the time/usage, the y-value is the cost. Read the coordinate the question asks for.",
+            "praise": "You pulled the right coordinate for what the question asked — time from x, cost from y."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Two plans cross at (4, 80). What does that mean?",
+            "look_for": "At 4 units both cost $80. Naming only one number, or the wrong axis, signals a misread."
+          },
+          {
+            "prompt": "Gym A: y = 10x + 30, Gym B: y = 20x. Who is cheaper at month 5?",
+            "look_for": "Gym A ($80 vs $100). Saying B diagnoses the 'higher fee = always worse' error."
+          }
+        ]
+      },
+      "fluency_source": "8AF8-F2",
+      "sentence_starters": [
+        "The plans break even at ___ ___, where both cost $___.",
+        "Before the crossing, ___ is cheaper; after it, ___ is cheaper."
+      ],
+      "worked_solution": {
+        "stem": "Ava has $50 and saves $10 per week (y = 10x + 50). Ben has $20 and saves $16 per week (y = 16x + 20). In how many weeks will they have the same amount, and what does that mean?",
+        "answer": "In 5 weeks, both have $100.",
+        "steps": [
+          { "math": "set equal: 10x + 50 = 16x + 20", "annotation": "They have the same amount where the two lines meet." },
+          { "math": "50 - 20 = 16x - 10x -> 30 = 6x -> x = 5", "annotation": "Solve for the week (the x-value)." },
+          { "math": "y = 10(5) + 50 = 100", "annotation": "Both have $100 at week 5." },
+          { "math": "break-even at (5, 100)", "annotation": "Ben started lower but saves faster, catching Ava at week 5." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Company A charges $50 plus $5 per hour (y = 5x + 50). Company B charges $15 per hour (y = 15x). When is the cost equal, and who is cheaper before that time?",
+        "answer": "Equal at 5 hours ($75); Company B is cheaper before 5 hours.",
+        "steps": [
+          { "math": "set equal: 5x + 50 = 15x", "annotation": "Costs are equal where the lines meet.", "given": true },
+          { "math": "50 = 15x - 5x -> 50 = 10x -> x = 5", "annotation": "Solve for the hour (the x-value).", "given": true },
+          { "math": null, "annotation": "Find the cost y at 5 hours by substituting.", "given": false },
+          { "math": null, "annotation": "State who is cheaper before the break-even point and why.", "given": false }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites — fix these first.",
+      "skills": ["8AF8-F1", "8AF8-F2"]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": ["8AF8-S1"]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": ["8AF8-S2", "8AF8-S3", "8AF8-S4", "8AF8-S5"]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": ["8AF8-S6"]
+    }
+  },
+  "skill_sequence": ["8AF8-F1", "8AF8-F2", "8AF8-S1", "8AF8-S2", "8AF8-S3", "8AF8-S4", "8AF8-S5", "8AF8-S6"],
+  "skill_tree": {
+    "8AF8-F1": [],
+    "8AF8-F2": [],
+    "8AF8-S1": ["8AF8-F1"],
+    "8AF8-S2": ["8AF8-F2"],
+    "8AF8-S3": ["8AF8-S1", "8AF8-F1"],
+    "8AF8-S4": ["8AF8-S3", "8AF8-F1"],
+    "8AF8-S5": ["8AF8-S4", "8AF8-F2"],
+    "8AF8-S6": ["8AF8-S5"]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S3 (read or approximate the solution from a given graph) -- the Approaching-band core and where the coordinate-swap error lives. If they pass, move up through S4 (graph a system yourself) and S5 (determine and confirm the solution from equations). If they fail, drop to S1 (determine the number of solutions from a graph) and, if needed, F1 (graph a line). S2 (verify a point in both equations) and S6 (interpret a real-world system) branch off as the verification and application checks.",
+    "entry_skill": "8AF8-S3",
+    "if_pass": ["8AF8-S4", "8AF8-S5"],
+    "if_fail": ["8AF8-S1", "8AF8-F1"],
+    "branch_skills": ["8AF8-S2", "8AF8-S6"]
+  }
+}

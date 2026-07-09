@@ -1,0 +1,1207 @@
+{
+  "standard_code": "7.AF.6",
+  "standard_text": "Graph a line given its slope and a point on the line. Find the slope of a line given its graph.",
+  "schema_version": 3,
+  "progression": {
+    "narrative": "The standard names two reciprocal moves: FIND the slope of a line from its graph, and GRAPH a line from a slope and a point. Both rest on one idea -- slope is the constant ratio of vertical change to horizontal change (rise over run), and its sign tells you which way the line leans. So the arc starts by making slope qualitative: is the line climbing, falling, flat, or vertical (positive, negative, zero, or undefined)? Students who jump straight to a number too early invert rise and run or drop the sign, so we settle direction first.\n\nFrom there students quantify: count the rise and run between two lattice points and write slope as rise over run, first with friendly positive whole-number points, then with integer points that force a negative slope (the spec allows positive OR negative slopes). Next they reverse the machine -- given a slope and a point, they PLOT the point and use the rise/run to step to a second point and draw the line, honoring the sign (down for a negative slope). The capstone extensions push past the two core moves: use a slope and one point to generate OTHER points on the same line, and read a slope straight out of a real-world rate (vertical change over horizontal change). The through-line we keep naming: slope is rise over run with a sign, and every task here -- reading a graph, drawing a line, finding new points, interpreting a rate -- is that one ratio used forward or backward."
+  ,
+    "steps": [
+      {
+        "skill_id": "7AF6-S1",
+        "verb": "classify",
+        "rationale": "Before computing a value, students must read a line's orientation: positive (rising), negative (falling), zero (horizontal), or undefined (vertical). Settling direction first prevents the sign errors that plague slope calculation later."
+      },
+      {
+        "skill_id": "7AF6-S2",
+        "verb": "find",
+        "rationale": "The core reading move: pick two lattice points on a graph, count rise and run, and write slope as rise over run. Kept to positive whole-number points so the only new demand is forming the ratio right-side up."
+      },
+      {
+        "skill_id": "7AF6-S3",
+        "verb": "find",
+        "rationale": "The same reading move extended to integer coordinates and falling lines, where the slope is negative. The spec explicitly allows negative slopes; the new trap is dropping the sign."
+      },
+      {
+        "skill_id": "7AF6-S4",
+        "verb": "graph",
+        "rationale": "The standard's other half: reverse the machine. Plot the given point, then use the slope's rise and run to step to a second point and draw the line -- honoring the sign for a negative slope."
+      },
+      {
+        "skill_id": "7AF6-S5",
+        "verb": "identify",
+        "rationale": "An Above-proficiency extension: given a slope and one point, generate OTHER points on the same line by stepping forward and backward. Proves students can use slope, not just measure it."
+      },
+      {
+        "skill_id": "7AF6-S6",
+        "verb": "determine",
+        "rationale": "The Above-proficiency synthesis: read a slope straight out of a real-world rate as vertical change over horizontal change, then express and reduce it as a fraction. Connects slope to proportional rate."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "skill_id": "7AF6-F1",
+      "name": "Plot and read ordered pairs on a coordinate grid",
+      "column": "foundation",
+      "parent_standard": "7.AF.6",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Plot a point (x, y) and read a marked point's coordinates in all four quadrants.",
+        "check_question": "Where is the point (3, -2) on a grid -- how far right or left, and how far up or down?"
+      },
+      "i_do_script": "A point (x, y) is two moves from the origin: the first number is how far RIGHT (or left if negative), the second is how far UP (or down if negative). Watch (3, 2): start at (0, 0), go right 3, then up 2. For (2, -1): right 2, then DOWN 1. To READ a point I reverse it -- count across for x, up or down for y. The order never changes: x first (across), y second (up).",
+      "canonical_error": {
+        "pattern": "Reverses the coordinates -- goes up by x and right by y",
+        "example": "Plots (3, 2) by going up 3 and right 2, landing on (2, 3) instead",
+        "why": "The student forgets the fixed order (x across, then y up) and swaps the two moves. The first coordinate is always the horizontal one."
+      },
+      "item_template": "Plot a given ordered pair, or read the coordinates of a marked point (integers, including negatives). Short response.",
+      "sample_items": [
+        { "stem": "To plot (5, 3), how far do you go right, and how far up?", "answer": "Right 5, up 3" },
+        { "stem": "A point is 2 to the right and 4 down from the origin. Write its coordinates.", "answer": "(2, -4)" },
+        { "stem": "Which coordinate tells you how far to move up or down?", "answer": "The second one (the y)" },
+        { "stem": "Describe the moves to plot (-3, 1).", "answer": "Left 3, up 1" }
+      ],
+      "redirect_script": {
+        "stop": "Which number is the 'across' one?",
+        "prompt": "Always x first, then y: go RIGHT (or left) by the first number, then UP (or down) by the second. Point to the first number and say 'across'; the second, 'up.'",
+        "praise": "You moved across before up -- x always comes first."
+      },
+      "vocabulary": [
+        { "term": "Ordered pair", "definition": "Two numbers (x, y) giving a point's position: across, then up or down." },
+        { "term": "x-coordinate", "definition": "The first number in (x, y); how far across from the origin." },
+        { "term": "y-coordinate", "definition": "The second number in (x, y); how far up or down from the origin." }
+      ],
+      "next_steps": { "if_pass": "7AF6-S1", "if_fail": "Review plotting points (6.AF.5)." },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Plot the point (4, -1).'" },
+        { "kind": "ask", "text": "Which move comes first -- across or up/down? By how much?" },
+        { "kind": "say", "text": "Across first: right 4. Then down 1 (because the y is negative). That lands us at (4, -1)." },
+        { "kind": "watch", "text": "If a student goes down 4 and right 1, ask 'which number is the x -- the across number?'" },
+        { "kind": "ask", "text": "Your turn: plot (2, 3), then read back where you landed." }
+      ]
+    },
+    {
+      "skill_id": "7AF6-F2",
+      "name": "Count the rise and run between two points on a grid",
+      "column": "foundation",
+      "parent_standard": "7.AF.6",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Find the vertical change (rise) and horizontal change (run) between two points, keeping the direction of each move.",
+        "check_question": "From (1, 2) to (4, 8), how far up do you go, and how far across?"
+      },
+      "i_do_script": "To get from one point to another I count two moves: the RISE is the up-or-down change in y, the RUN is the across change in x. Watch (1, 2) to (4, 8): I go UP from 2 to 8, that's a rise of 6; I go ACROSS from 1 to 4, that's a run of 3. If the second point is LOWER, the rise is negative: from (2, 5) to (5, 2) I go DOWN 3, so the rise is -3, and the run is 3. Rise is always the vertical (y) change; run is always the horizontal (x) change.",
+      "canonical_error": {
+        "pattern": "Swaps rise and run -- counts the horizontal change as the rise -- or ignores a downward move's negative sign",
+        "example": "From (1, 2) to (4, 8) reports rise 3, run 6 (swapped), or from (2, 5) to (5, 2) reports rise 3 instead of -3",
+        "why": "The student mixes up which axis is which, or forgets that going DOWN makes the rise negative. Rise is the change in y (up positive, down negative); run is the change in x."
+      },
+      "item_template": "Two points (integers). Student states rise (change in y) and run (change in x) with correct sign. Short response fluency bank.",
+      "sample_items": [
+        { "stem": "From (1, 2) to (4, 8): what is the rise, and what is the run?", "answer": "Rise 6, run 3" },
+        { "stem": "From (0, 1) to (2, 7): rise and run?", "answer": "Rise 6, run 2" },
+        { "stem": "From (2, 5) to (5, 2): rise and run? (Watch the direction.)", "answer": "Rise -3, run 3 (down 3, right 3)" },
+        { "stem": "From (1, 4) to (3, 0): rise and run?", "answer": "Rise -4, run 2 (down 4, right 2)" }
+      ],
+      "redirect_script": {
+        "stop": "Which change is the rise -- up/down or across?",
+        "prompt": "Rise is the UP-or-DOWN change (the y numbers); run is the ACROSS change (the x numbers). If the second point is lower, the rise is negative. Say 'rise then run' as you count.",
+        "praise": "You counted the vertical change as the rise and kept its sign -- that's exactly right."
+      },
+      "vocabulary": [
+        { "term": "Rise", "definition": "The vertical change between two points (the change in y); negative if the line goes down." },
+        { "term": "Run", "definition": "The horizontal change between two points (the change in x)." },
+        { "term": "Vertical change", "definition": "How far up or down you move from one point to another." },
+        { "term": "Horizontal change", "definition": "How far left or right you move from one point to another." }
+      ],
+      "next_steps": { "if_pass": "7AF6-S2", "if_fail": "Review reading coordinates (7AF6-F1)." },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'From (2, 1) to (6, 9): find the rise and the run.'" },
+        { "kind": "ask", "text": "Which numbers give the up/down move? Which give the across move?" },
+        { "kind": "say", "text": "Up from 1 to 9 is a rise of 8; across from 2 to 6 is a run of 4. Rise 8, run 4." },
+        { "kind": "watch", "text": "If a student says rise 4, run 8, ask 'is 4 the up amount or the across amount?'" },
+        { "kind": "ask", "text": "Your turn: from (3, 7) to (5, 1), find the rise and run -- watch the direction." }
+      ]
+    },
+    {
+      "skill_id": "7AF6-S1",
+      "name": "Classify the slope of a line as positive, negative, zero, or undefined",
+      "column": "looking_back",
+      "parent_standard": "7.AF.6",
+      "engine_stems": [1],
+      "prerequisite_skill": { "type": "skill", "skill_id": "7AF6-F1" },
+      "i_do_script": "Before I find a number, I read which way a line leans. Reading left to right: if it CLIMBS, the slope is positive; if it FALLS, the slope is negative; if it's FLAT (horizontal), the slope is zero; if it's straight UP-and-down (vertical), the slope is undefined. Watch a line through (0, 1) and (3, 5): as x goes right, y goes up, so it climbs -- positive. A line through (1, 3) and (5, 3) stays at y = 3 the whole way -- flat, so zero. A vertical line like x = 2 goes straight up -- undefined.",
+      "canonical_error": {
+        "pattern": "Swaps zero and undefined -- calls a vertical line 'zero' and a horizontal line 'undefined'",
+        "example": "For a horizontal line through (1, 3) and (5, 3) says 'undefined,' and for the vertical line x = 2 says 'zero'",
+        "why": "The student hears 'no slope / flat' and attaches it to the wrong picture. A FLAT (horizontal) line has slope zero (rise 0). A VERTICAL line has undefined slope (run 0, so you can't divide)."
+      },
+      "item_template": "A line described by two points or a graph. Student classifies the slope as positive, negative, zero, or undefined. MC.",
+      "sample_items": [
+        {
+          "stem": "A line passes through (0, 1) and (3, 5). Is its slope positive, negative, zero, or undefined?",
+          "answer": "Positive",
+          "choices": ["Positive", "Negative", "Zero", "Undefined"],
+          "distractor_logic": "As x increases the line climbs (y goes 1 to 5), so positive. 'Negative' reads it right-to-left.",
+          "render_data": { "type": "data_table", "headers": ["x", "y"], "rows": [["0", "1"], ["3", "5"]] }
+        },
+        {
+          "stem": "A line passes through (0, 5) and (4, 1). Classify its slope.",
+          "answer": "Negative",
+          "choices": ["Positive", "Negative", "Zero", "Undefined"],
+          "distractor_logic": "As x increases the line falls (y goes 5 to 1), so negative.",
+          "render_data": { "type": "data_table", "headers": ["x", "y"], "rows": [["0", "5"], ["4", "1"]] }
+        },
+        {
+          "stem": "A line passes through (1, 3) and (5, 3). Classify its slope.",
+          "answer": "Zero",
+          "choices": ["Positive", "Negative", "Zero", "Undefined"],
+          "distractor_logic": "The y-value never changes (3 to 3), so the line is horizontal: slope zero. 'Undefined' is the classic swap."
+        },
+        {
+          "stem": "A line passes through (2, 0) and (2, 6). Classify its slope.",
+          "answer": "Undefined",
+          "choices": ["Positive", "Negative", "Zero", "Undefined"],
+          "distractor_logic": "The x-value never changes (2 to 2), so the line is vertical: slope undefined. 'Zero' is the classic swap."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Flat like the floor, or straight up like a wall?",
+        "prompt": "A FLAT (horizontal) line has slope ZERO -- no rise. A line straight UP-and-down (vertical) is UNDEFINED -- you can't run across it to divide. Trace the line: does it climb, fall, lie flat, or stand up?",
+        "praise": "You matched flat to zero and vertical to undefined -- that's the orientation nailed."
+      },
+      "vocabulary": [
+        { "term": "Slope", "definition": "A number that tells how steep a line is and which way it leans." },
+        { "term": "Steepness", "definition": "How quickly a line rises or falls; steeper lines have slopes farther from zero." },
+        { "term": "Undefined slope", "definition": "The slope of a vertical line; the run is 0, so slope cannot be computed." }
+      ],
+      "next_steps": { "if_pass": "7AF6-S2", "if_fail": "7AF6-F1" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Describe four lines: through (0,2)&(3,6); (0,6)&(3,0); (1,4)&(6,4); (3,1)&(3,7)." },
+        { "kind": "ask", "text": "For each, does it climb, fall, lie flat, or stand straight up?" },
+        { "kind": "say", "text": "Climbs -> positive; falls -> negative; flat (same y) -> zero; vertical (same x) -> undefined." },
+        { "kind": "watch", "text": "If a student calls the flat line 'undefined,' ask 'which one is like a floor and which is like a wall?'" },
+        { "kind": "ask", "text": "Your turn: a line through (0, 4) and (5, 1) -- climbing or falling? What sign?" }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "A line climbs from left to right. Positive or negative slope?", "answer": "Positive" },
+        { "difficulty": "warm_up", "stem": "A perfectly flat (horizontal) line has what slope?", "answer": "Zero" },
+        { "difficulty": "core", "stem": "A line passes through (0, 5) and (4, 1). Classify its slope.", "answer": "Negative (it falls as x increases)", "notes": "Falling line." },
+        { "difficulty": "core", "stem": "A line passes through (2, 0) and (2, 6). Classify its slope.", "answer": "Undefined (vertical line, same x)", "notes": "Baits the zero/undefined swap." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Dev classified a line's slope. Find and fix the mistake.",
+          "shown_work": [
+            "The line passes through (1, 3) and (5, 3).",
+            "Dev wrote: 'The x changes but y stays the same, so the slope is undefined.'"
+          ],
+          "answer": "This line is HORIZONTAL (y stays 3), so its slope is ZERO, not undefined. Dev swapped the two. Undefined is for a VERTICAL line, where x stays the same and the run is 0.",
+          "notes": "Canonical error: zero/undefined swap."
+        },
+        { "difficulty": "core", "stem": "A line passes through (0, 1) and (3, 5). Classify its slope.", "answer": "Positive (it climbs)", "notes": "Rising line." },
+        { "difficulty": "stretch", "stem": "Two lines: line A through (0, 0) and (2, 6); line B through (0, 6) and (2, 0). Which has positive slope and which negative? Explain.", "answer": "A is positive (climbs from 0 to 6); B is negative (falls from 6 to 0). Same steepness, opposite lean.", "notes": "Contrast a rising and falling pair." },
+        { "difficulty": "stretch", "stem": "Describe a real object that models a line with zero slope and one with undefined slope.", "answer": "Zero slope: a flat table top or the horizon. Undefined slope: a flagpole or a wall standing straight up.", "notes": "Produce-your-own model of the two flat/vertical cases." }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Which Way Does It Lean?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": ["Card set of 12 lines (each given by two points), 4 label cards: positive / negative / zero / undefined"],
+          "instructions": "1. Read each line card's two points aloud.\n2. Decide: does the line climb, fall, lie flat, or stand vertical?\n3. Place it under positive, negative, zero, or undefined.\n4. Debrief: what do you look at first to tell zero from undefined?",
+          "content": {
+            "categories": ["positive", "negative", "zero", "undefined"],
+            "cards": [
+              { "text": "(0, 1) and (3, 5)", "category": "positive" },
+              { "text": "(1, 2) and (4, 6)", "category": "positive" },
+              { "text": "(0, 5) and (4, 1)", "category": "negative" },
+              { "text": "(1, 7) and (5, 2)", "category": "negative" },
+              { "text": "(1, 3) and (5, 3)", "category": "zero" },
+              { "text": "(0, 4) and (6, 4)", "category": "zero" },
+              { "text": "(2, 0) and (2, 6)", "category": "undefined" },
+              { "text": "(4, 1) and (4, 7)", "category": "undefined" }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Floor or Wall?",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Dev's swapped classification"],
+          "instructions": "1. Read Dev's claim that (1, 3) and (5, 3) has an undefined slope.\n2. Sketch or describe the line -- is it flat or standing up?\n3. Give the correct classification and say why.\n4. Write a rule to tell zero from undefined.",
+          "content": {
+            "worked_problem": "Line through (1, 3) and (5, 3). Dev wrote 'undefined.'",
+            "error_step": "Dev called a horizontal line undefined.",
+            "why": "Same y means a flat line: slope 0. Undefined is for a vertical line (same x, run 0)."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "The zero/undefined swap is a precise, high-frequency error that find-and-fix names cleanly." },
+        { "strategy_id": "strat-math-001", "why": "Think-pair-share on 'floor vs wall' surfaces the horizontal/vertical distinction for discussion." },
+        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'does it climb, fall, lie flat, or stand up?' models the orientation check." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Reading left to right, does the line climb or fall?",
+          "Does the y-value change, stay the same, or does x stay the same?",
+          "Which one is like a floor (zero) and which is like a wall (undefined)?",
+          "What is the sign of the slope before you compute anything?",
+          "Could this line have a slope of exactly zero? How do you know?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student swaps zero and undefined -- calls a vertical line zero and a horizontal line undefined.",
+            "say": "A FLAT (horizontal) line has slope ZERO -- no rise. A line straight UP-and-down (vertical) is UNDEFINED -- you can't run across it to divide. Trace the line: does it climb, fall, lie flat, or stand up?",
+            "praise": "You matched flat to zero and vertical to undefined -- that's the orientation nailed."
+          },
+          {
+            "if_you_see": "Student calls a falling line positive (reads the graph right-to-left).",
+            "say": "Always read left to right. If the line is lower on the right than the left, it FALLS -- that's a negative slope.",
+            "praise": "You read left to right and caught the fall -- that's a negative slope."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A line goes through (0, 4) and (5, 1). Positive or negative slope?",
+            "look_for": "Negative -- it falls. 'Positive' means the student read it backwards."
+          },
+          {
+            "prompt": "Is the slope of a horizontal line zero or undefined?",
+            "look_for": "Zero. 'Undefined' diagnoses the zero/undefined swap."
+          }
+        ]
+      },
+      "fluency_source": "7AF6-F1",
+      "sentence_starters": [
+        "Reading left to right the line ___, so the slope is ___.",
+        "The line is flat/vertical, so the slope is ___ (zero/undefined)."
+      ],
+      "worked_solution": {
+        "stem": "A line passes through (0, 6) and (4, 2). Classify its slope as positive, negative, zero, or undefined.",
+        "answer": "Negative",
+        "render_data": { "type": "data_table", "headers": ["x", "y"], "rows": [["0", "6"], ["4", "2"]] },
+        "steps": [
+          { "math": "read left to right: x goes 0 -> 4", "annotation": "Always scan the line from left to right." },
+          { "math": "y goes 6 -> 2 (it drops)", "annotation": "The line is lower on the right, so it falls." },
+          { "math": "a falling line has a negative slope", "annotation": "Direction sets the sign before any number." },
+          { "math": "slope is negative", "annotation": "No division needed -- orientation alone answers it." }
+        ]
+      },
+      "faded_example": {
+        "stem": "A line passes through (1, 2) and (1, 7). Classify its slope.",
+        "answer": "Undefined",
+        "steps": [
+          { "math": "compare the x-values: 1 and 1", "annotation": "Check whether x changes at all.", "given": true },
+          { "math": "x stays the same, so the line is vertical", "annotation": "Same x every point means straight up-and-down.", "given": true },
+          { "math": null, "annotation": "Decide: is a vertical line zero or undefined?", "given": false },
+          { "math": null, "annotation": "State the classification.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "7AF6-S2",
+      "name": "Find the slope of a line from its graph using rise over run",
+      "column": "on_grade",
+      "parent_standard": "7.AF.6",
+      "engine_stems": [2],
+      "prerequisite_skill": { "type": "skill", "skill_id": "7AF6-F2" },
+      "i_do_script": "To find slope from a graph I pick two points the line passes through, count the rise (up) and the run (across), and write slope = rise / run. Watch a line through (0, 1) and (2, 7): from the first point I go UP 6 (that's the rise) and ACROSS 2 (that's the run), so slope = 6 / 2 = 3. Rise goes on TOP, run on the BOTTOM -- always vertical over horizontal. If I flip them I get run over rise, which is a different, wrong number.",
+      "canonical_error": {
+        "pattern": "Inverts the ratio -- writes run over rise instead of rise over run",
+        "example": "For a line through (0, 1) and (2, 7) writes slope = 2 / 6 = 1/3 instead of 6 / 2 = 3",
+        "why": "The student divides the horizontal change by the vertical change. Slope is RISE over RUN: the vertical change (y) must be on top, the horizontal change (x) on the bottom."
+      },
+      "item_template": "A line (given by two whole-number lattice points, positive slope). Student computes slope = rise / run. MC or numeric response.",
+      "sample_items": [
+        {
+          "stem": "A line passes through (0, 0) and (1, 4). What is its slope?",
+          "answer": "4",
+          "choices": ["4", "1/4", "1", "5"],
+          "distractor_logic": "Rise 4 over run 1 = 4. '1/4' inverts (run over rise).",
+          "render_data": { "type": "data_table", "headers": ["x", "y"], "rows": [["0", "0"], ["1", "4"]] }
+        },
+        {
+          "stem": "A line passes through (0, 1) and (2, 7). What is its slope?",
+          "answer": "3",
+          "choices": ["3", "1/3", "6", "2/6"],
+          "distractor_logic": "Rise 6 over run 2 = 3. '1/3' inverts; '6' forgets the run.",
+          "render_data": { "type": "data_table", "headers": ["x", "y"], "rows": [["0", "1"], ["2", "7"]] }
+        },
+        {
+          "stem": "A line passes through (1, 2) and (4, 8). What is its slope?",
+          "answer": "2",
+          "choices": ["2", "1/2", "6", "3"],
+          "distractor_logic": "Rise 6 over run 3 = 2. '1/2' inverts; '3' uses run as rise.",
+          "render_data": { "type": "data_table", "headers": ["x", "y"], "rows": [["1", "2"], ["4", "8"]] }
+        },
+        {
+          "stem": "A line passes through (0, 0) and (4, 2). What is its slope?",
+          "answer": "1/2",
+          "choices": ["1/2", "2", "4", "2/4 unreduced"],
+          "distractor_logic": "Rise 2 over run 4 = 1/2. '2' inverts (run over rise).",
+          "render_data": { "type": "data_table", "headers": ["x", "y"], "rows": [["0", "0"], ["4", "2"]] }
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which change goes on TOP -- up or across?",
+        "prompt": "Slope is RISE over RUN: the up-and-down change goes on top, the across change on the bottom. Count the rise first and write it above the line; then the run below. If your answer is a tiny fraction when the line is steep, you flipped it.",
+        "praise": "You put rise over run -- vertical on top -- so that's the true slope."
+      },
+      "vocabulary": [
+        { "term": "Rise over run", "definition": "Slope written as vertical change divided by horizontal change (rise on top)." },
+        { "term": "Slope", "definition": "The constant rate a line rises or falls: rise / run." },
+        { "term": "Vertical change", "definition": "The up-or-down change in y between two points (the rise)." }
+      ],
+      "next_steps": { "if_pass": "7AF6-S3", "if_fail": "7AF6-F2" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Describe a line through (0, 0) and (3, 6)." },
+        { "kind": "ask", "text": "What is the rise from the first point to the second? What is the run?" },
+        { "kind": "say", "text": "Up 6 (rise), across 3 (run). Slope = rise / run = 6 / 3 = 2." },
+        { "kind": "watch", "text": "If a student writes 3 / 6, ask 'is the up-change on top or the across-change?'" },
+        { "kind": "ask", "text": "Your turn: a line through (0, 2) and (2, 8). Find rise, run, and slope." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "In slope = rise / run, which change goes on top?", "answer": "The rise (vertical / up change)." },
+        { "difficulty": "warm_up", "stem": "A line rises 6 and runs 2. What is the slope?", "answer": "3 (6/2)" },
+        { "difficulty": "core", "stem": "A line passes through (0, 1) and (2, 7). Find the slope.", "answer": "3 (rise 6 / run 2)", "notes": "Baits 1/3 (inverted)." },
+        { "difficulty": "core", "stem": "A line passes through (1, 2) and (4, 8). Find the slope.", "answer": "2 (rise 6 / run 3)", "notes": "Reduce 6/3." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Mia found a slope from a graph. Find and fix her mistake.",
+          "shown_work": [
+            "The line passes through (0, 0) and (2, 8).",
+            "Mia wrote: 'run 2, rise 8, so slope = 2/8 = 1/4.'"
+          ],
+          "answer": "Mia put the run on top. Slope is RISE over RUN: rise 8 over run 2 = 8/2 = 4. She inverted the ratio.",
+          "notes": "Canonical error: run over rise inversion."
+        },
+        { "difficulty": "core", "stem": "A line passes through (0, 0) and (4, 2). Find the slope.", "answer": "1/2 (rise 2 / run 4)", "notes": "Fractional slope; reduce 2/4." },
+        { "difficulty": "stretch", "stem": "A line has a slope of 5 and passes through (0, 0). Name another point on it and explain how the rise and run give 5.", "answer": "(1, 5): rise 5, run 1, so 5/1 = 5. Any point (k, 5k) works.", "notes": "Reverse direction: produce a point from a slope." },
+        { "difficulty": "stretch", "stem": "Two lines: A through (0, 0) and (2, 6); B through (0, 0) and (3, 6). Which is steeper, and what are their slopes?", "answer": "A: 6/2 = 3; B: 6/3 = 2. A is steeper (larger slope).", "notes": "Compare steepness via slope value." }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Two Points to Slope",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": ["Card set: 6 lines (two points each) and 8 slope cards (two inverted decoys)"],
+          "instructions": "1. Match each line's two points to its slope.\n2. To claim a match, count the rise (up) and run (across) out loud and write rise / run.\n3. Two slope cards are inverted (run / rise) -- set them aside as traps.\n4. Debrief: how do you know which number goes on top?",
+          "content": {
+            "pairs": [
+              { "left": "(0, 0) and (1, 4)", "right": "4" },
+              { "left": "(0, 1) and (2, 7)", "right": "3" },
+              { "left": "(1, 2) and (4, 8)", "right": "2" },
+              { "left": "(0, 0) and (4, 2)", "right": "1/2" },
+              { "left": "(0, 0) and (2, 6)", "right": "3" },
+              { "left": "(0, 0) and (3, 3)", "right": "1" }
+            ],
+            "decoys": ["1/4", "1/3"]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Rise Goes On Top",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Mia's inverted ratio"],
+          "instructions": "1. Read Mia's slope of 1/4 for a line through (0, 0) and (2, 8).\n2. Count the rise and run yourself.\n3. Write the correct rise / run and reduce it.\n4. Write the rule for which change goes on top.",
+          "content": {
+            "worked_problem": "Line through (0, 0) and (2, 8). Mia wrote slope = 2/8 = 1/4.",
+            "error_step": "Mia put the run (2) on top and the rise (8) on the bottom.",
+            "why": "Slope is rise / run: 8 / 2 = 4. The vertical change belongs on top."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-007", "why": "Physically counting rise up and run across on a grid builds the concrete-to-abstract bridge for rise/run." },
+        { "strategy_id": "strat-math-003", "why": "The run-over-rise inversion is a precise error a find-and-fix targets directly." },
+        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'rise on top, run on bottom' models the correct order every time." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the rise from one point to the other? What is the run?",
+          "Which number goes on top of the slope fraction?",
+          "Did you count up first, then across?",
+          "Can you reduce your rise / run fraction?",
+          "Does a steeper line have a bigger or smaller slope?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student inverts the ratio -- writes run over rise instead of rise over run.",
+            "say": "Slope is RISE over RUN: the up-and-down change goes on top, the across change on the bottom. Count the rise first and write it above the line; then the run below. If your answer is a tiny fraction when the line is steep, you flipped it.",
+            "praise": "You put rise over run -- vertical on top -- so that's the true slope."
+          },
+          {
+            "if_you_see": "Student forgets to reduce the fraction (writes 6/3 or 2/4 as the final slope).",
+            "say": "A slope should be in simplest form -- divide top and bottom by the same number. 6/3 becomes 2; 2/4 becomes 1/2.",
+            "praise": "You reduced the fraction -- that's the slope in simplest form."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A line goes through (0, 0) and (3, 9). What is the slope?",
+            "look_for": "3 (rise 9 / run 3). An answer of 1/3 diagnoses the inversion."
+          },
+          {
+            "prompt": "A line goes through (0, 0) and (4, 2). What is the slope?",
+            "look_for": "1/2 (rise 2 / run 4). An answer of 2 means run over rise."
+          }
+        ]
+      },
+      "fluency_source": "7AF6-F2",
+      "sentence_starters": [
+        "The rise is ___ and the run is ___, so slope = ___ / ___.",
+        "Rise goes on top, so the slope reduces to ___."
+      ],
+      "worked_solution": {
+        "stem": "A line passes through the points (0, 0) and (3, 6). Find its slope.",
+        "answer": "2",
+        "render_data": { "type": "data_table", "headers": ["x", "y"], "rows": [["0", "0"], ["3", "6"]] },
+        "steps": [
+          { "math": "rise = change in y = 6 - 0 = 6", "annotation": "Count the up move (vertical change) first." },
+          { "math": "run = change in x = 3 - 0 = 3", "annotation": "Count the across move (horizontal change)." },
+          { "math": "slope = rise / run = 6 / 3", "annotation": "Rise on top, run on the bottom." },
+          { "math": "= 2", "annotation": "Reduce to simplest form." }
+        ]
+      },
+      "faded_example": {
+        "stem": "A line passes through (0, 1) and (2, 9). Find its slope.",
+        "answer": "4",
+        "steps": [
+          { "math": "rise = 9 - 1 = 8", "annotation": "Vertical change goes on top.", "given": true },
+          { "math": "run = 2 - 0 = 2", "annotation": "Horizontal change goes on the bottom.", "given": true },
+          { "math": null, "annotation": "Write slope as rise / run.", "given": false },
+          { "math": null, "annotation": "Reduce to simplest form.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "7AF6-S3",
+      "name": "Find the slope of a line from its graph, including negative slopes",
+      "column": "on_grade",
+      "parent_standard": "7.AF.6",
+      "engine_stems": [3],
+      "prerequisite_skill": { "type": "skill", "skill_id": "7AF6-S2" },
+      "i_do_script": "Slope is still rise over run, but now the line may FALL and the points may be negative -- so I have to keep the sign. Watch a line through (0, 5) and (2, 1): reading left to right the y goes DOWN from 5 to 1, so the rise is -4; the run is +2. Slope = -4 / 2 = -2. The negative says 'falling.' Watch the subtraction order too: rise = y2 - y1 and run = x2 - x1 must use the SAME two points in the same order.",
+      "canonical_error": {
+        "pattern": "Drops the negative sign -- reports a falling line's slope as positive",
+        "example": "For a line through (0, 5) and (2, 1) writes slope = 2 instead of -2, ignoring that the line falls",
+        "why": "The student counts the rise as a distance (4) instead of a signed change (-4). A line that goes DOWN as x increases has a NEGATIVE rise, so its slope is negative."
+      },
+      "item_template": "A line (given by integer lattice points; slope positive or negative). Student computes slope = rise / run with correct sign. MC or numeric response.",
+      "sample_items": [
+        {
+          "stem": "A line passes through (0, 5) and (2, 1). What is its slope?",
+          "answer": "-2",
+          "choices": ["-2", "2", "-1/2", "1/2"],
+          "distractor_logic": "Rise -4 over run 2 = -2. '2' drops the sign; '-1/2' inverts.",
+          "render_data": { "type": "data_table", "headers": ["x", "y"], "rows": [["0", "5"], ["2", "1"]] }
+        },
+        {
+          "stem": "A line passes through (-1, 2) and (2, -4). What is its slope?",
+          "answer": "-2",
+          "choices": ["-2", "2", "-1/2", "-6"],
+          "distractor_logic": "Rise = -4 - 2 = -6 over run = 2 - (-1) = 3, so -6/3 = -2. '-6' forgets the run.",
+          "render_data": { "type": "data_table", "headers": ["x", "y"], "rows": [["-1", "2"], ["2", "-4"]] }
+        },
+        {
+          "stem": "A line passes through (0, 0) and (3, -2). What is its slope?",
+          "answer": "-2/3",
+          "choices": ["-2/3", "2/3", "-3/2", "-2"],
+          "distractor_logic": "Rise -2 over run 3 = -2/3. '2/3' drops the sign; '-3/2' inverts.",
+          "render_data": { "type": "data_table", "headers": ["x", "y"], "rows": [["0", "0"], ["3", "-2"]] }
+        },
+        {
+          "stem": "A line passes through (-2, -1) and (2, 3). What is its slope?",
+          "answer": "1",
+          "choices": ["1", "-1", "2", "1/2"],
+          "distractor_logic": "Rise = 3 - (-1) = 4 over run = 2 - (-2) = 4, so 4/4 = 1. It rises, so positive.",
+          "render_data": { "type": "data_table", "headers": ["x", "y"], "rows": [["-2", "-1"], ["2", "3"]] }
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is the line rising or falling here?",
+        "prompt": "If the line goes DOWN as you read left to right, the rise is NEGATIVE, so the slope is negative. Compute rise = y2 - y1 (keep the sign) over run = x2 - x1, using the same two points in the same order.",
+        "praise": "You kept the negative rise -- your slope's sign matches the falling line."
+      },
+      "vocabulary": [
+        { "term": "Negative slope", "definition": "The slope of a line that falls from left to right (negative rise)." },
+        { "term": "Signed change", "definition": "A change that keeps its direction: up/right positive, down/left negative." },
+        { "term": "y2 - y1 over x2 - x1", "definition": "The slope formula: change in y over change in x for the same two points." }
+      ],
+      "next_steps": { "if_pass": "7AF6-S4", "if_fail": "7AF6-S2" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Describe a line through (0, 6) and (3, 0)." },
+        { "kind": "ask", "text": "Reading left to right, does y go up or down? So is the rise positive or negative?" },
+        { "kind": "say", "text": "Down from 6 to 0: rise = -6. Run = 3. Slope = -6 / 3 = -2." },
+        { "kind": "watch", "text": "If a student writes 2, ask 'the line falls -- should the slope be positive or negative?'" },
+        { "kind": "ask", "text": "Your turn: a line through (0, 4) and (4, 0). Find the slope with its sign." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "A line falls from left to right. Is its slope positive or negative?", "answer": "Negative" },
+        { "difficulty": "warm_up", "stem": "A line drops 6 over a run of 3. What is the slope?", "answer": "-2 (-6/3)" },
+        { "difficulty": "core", "stem": "A line passes through (0, 5) and (2, 1). Find the slope.", "answer": "-2 (rise -4 / run 2)", "notes": "Baits dropping the sign (answer 2)." },
+        { "difficulty": "core", "stem": "A line passes through (0, 0) and (3, -2). Find the slope.", "answer": "-2/3 (rise -2 / run 3)", "notes": "Negative fractional slope." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Leo found the slope of a falling line. Find and fix his mistake.",
+          "shown_work": [
+            "The line passes through (-1, 2) and (2, -4).",
+            "Leo wrote: 'rise 6, run 3, so slope = 2.'"
+          ],
+          "answer": "The line FALLS (y goes 2 down to -4), so the rise is -6, not 6. Slope = -6 / 3 = -2. Leo counted the rise as a distance and dropped the negative sign.",
+          "notes": "Canonical error: dropped negative sign on a falling line."
+        },
+        { "difficulty": "core", "stem": "A line passes through (-2, -1) and (2, 3). Find the slope.", "answer": "1 (rise 4 / run 4)", "notes": "Rising line with negative coordinates." },
+        { "difficulty": "stretch", "stem": "A line has slope -3 and passes through (0, 4). Name another point on the line and explain the rise and run.", "answer": "(1, 1): from (0, 4) go right 1, down 3 (rise -3, run 1), so slope -3/1 = -3.", "notes": "Reverse direction: build a point from a negative slope." },
+        { "difficulty": "stretch", "stem": "Explain why a line through (0, 5) and (2, 1) has a different slope than a line through (0, 1) and (2, 5).", "answer": "The first falls (rise -4, slope -2); the second rises (rise 4, slope 2). Same steepness, opposite signs.", "notes": "Contrast a falling and rising pair with the same numbers." }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Positive or Negative Slope?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": ["Card set: 10 lines (two integer points each)"],
+          "instructions": "1. For each line, compute the slope with its sign (rise / run).\n2. Sort into 'positive slope' and 'negative slope' piles.\n3. For each negative card, underline where the y-value drops.\n4. Debrief: what in the points tells you the slope is negative before you divide?",
+          "content": {
+            "categories": ["positive slope", "negative slope"],
+            "cards": [
+              { "text": "(0, 5) and (2, 1)", "category": "negative slope" },
+              { "text": "(-1, 2) and (2, -4)", "category": "negative slope" },
+              { "text": "(0, 0) and (3, -2)", "category": "negative slope" },
+              { "text": "(1, 6) and (4, 0)", "category": "negative slope" },
+              { "text": "(-2, -1) and (2, 3)", "category": "positive slope" },
+              { "text": "(0, 1) and (2, 7)", "category": "positive slope" },
+              { "text": "(0, 0) and (4, 2)", "category": "positive slope" },
+              { "text": "(-3, -2) and (0, 4)", "category": "positive slope" }
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Keep the Sign",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Leo's positive answer"],
+          "instructions": "1. Read Leo's slope of 2 for a line through (-1, 2) and (2, -4).\n2. Decide whether the line rises or falls.\n3. Recompute the rise as a signed change and find the correct slope.\n4. Write the rule for when a slope is negative.",
+          "content": {
+            "worked_problem": "Line through (-1, 2) and (2, -4). Leo wrote slope = 2.",
+            "error_step": "Leo counted the rise as +6 for a line that falls.",
+            "why": "y drops from 2 to -4, so the rise is -6 and the slope is -6/3 = -2."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "Dropping the negative sign is a precise, plottable error that find-and-fix exposes with a test point." },
+        { "strategy_id": "strat-math-007", "why": "Tracing the down-move on a grid makes the negative rise concrete before it becomes a signed number." },
+        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'is it rising or falling?' models the sign check that prevents the error." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Reading left to right, does this line rise or fall?",
+          "Is the rise positive or negative here?",
+          "Did you use the same two points in the same order for rise and run?",
+          "What does the sign of your slope tell you about the line?",
+          "Can you reduce your fraction and keep the sign?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student drops the negative sign -- reports a falling line's slope as positive.",
+            "say": "If the line goes DOWN as you read left to right, the rise is NEGATIVE, so the slope is negative. Compute rise = y2 - y1 (keep the sign) over run = x2 - x1, using the same two points in the same order.",
+            "praise": "You kept the negative rise -- your slope's sign matches the falling line."
+          },
+          {
+            "if_you_see": "Student subtracts the coordinates in opposite orders (y2 - y1 over x1 - x2), flipping the sign.",
+            "say": "Pick a first point and a second point, and keep that order for BOTH the rise and the run. Mixing the order flips the sign.",
+            "praise": "You kept the same order top and bottom -- that's why the sign came out right."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A line goes through (0, 4) and (4, 0). What is the slope?",
+            "look_for": "-1 (rise -4 / run 4). An answer of 1 diagnoses the dropped sign."
+          },
+          {
+            "prompt": "A line goes through (0, 0) and (3, -2). What is the slope?",
+            "look_for": "-2/3. An answer of 2/3 means the student ignored the falling direction."
+          }
+        ]
+      },
+      "fluency_source": "7AF6-F2",
+      "sentence_starters": [
+        "The line ___ (rises/falls), so the rise is ___ and the slope is ___.",
+        "Using the same order, slope = (y2 - y1) / (x2 - x1) = ___."
+      ],
+      "worked_solution": {
+        "stem": "A line passes through (0, 6) and (3, 0). Find its slope.",
+        "answer": "-2",
+        "render_data": { "type": "data_table", "headers": ["x", "y"], "rows": [["0", "6"], ["3", "0"]] },
+        "steps": [
+          { "math": "rise = y2 - y1 = 0 - 6 = -6", "annotation": "The line drops, so the rise is negative." },
+          { "math": "run = x2 - x1 = 3 - 0 = 3", "annotation": "Use the same two points, same order." },
+          { "math": "slope = -6 / 3", "annotation": "Rise over run, sign included." },
+          { "math": "= -2", "annotation": "Negative slope -- the line falls." }
+        ]
+      },
+      "faded_example": {
+        "stem": "A line passes through (0, 4) and (4, 0). Find its slope.",
+        "answer": "-1",
+        "steps": [
+          { "math": "rise = 0 - 4 = -4", "annotation": "The line falls, so the rise is negative.", "given": true },
+          { "math": "run = 4 - 0 = 4", "annotation": "Same order for the run.", "given": true },
+          { "math": null, "annotation": "Write slope as rise / run, keeping the sign.", "given": false },
+          { "math": null, "annotation": "Reduce to simplest form.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "7AF6-S4",
+      "name": "Graph a line given its slope and a point on the line",
+      "column": "on_grade",
+      "parent_standard": "7.AF.6",
+      "prerequisite_skill": { "type": "skill", "skill_id": "7AF6-S2" },
+      "i_do_script": "To graph a line from a slope and a point, I PLOT the point first, then use the slope's rise and run to step to a second point, and draw the line through both. Slope is rise / run, so a slope of 2 means rise 2, run 1: from the point go RIGHT 1 and UP 2. Watch: slope 2 through (0, 1). Plot (0, 1); go right 1, up 2 to (1, 3); draw the line. For a NEGATIVE slope like -2, the rise is down: right 1, DOWN 2. For 3/4, run 4 and rise 3: right 4, up 3.",
+      "canonical_error": {
+        "pattern": "Reverses rise and run when stepping, or steps up instead of down for a negative slope",
+        "example": "For slope 2/3 through (0, 0) moves right 2 and up 3 (landing on (2, 3)) instead of right 3 and up 2, or for slope -2 goes UP 2 instead of down",
+        "why": "The student treats the numerator as the run or ignores the sign. In slope = rise / run the numerator is the RISE (up/down) and the denominator is the RUN (across); a negative slope means the rise goes DOWN."
+      },
+      "item_template": "A slope (positive or negative, possibly a fraction) and a point. Student names a second point to plot and describes the line. Numeric/short response; the packet renders the grid.",
+      "sample_items": [
+        {
+          "stem": "A line has slope 2 and passes through (0, 1). Starting from (0, 1), name the next point you plot (right 1, up 2).",
+          "answer": "(1, 3)",
+          "distractor_logic": "Rise 2, run 1: right 1, up 2 lands on (1, 3). (2, 1) reverses rise and run."
+        },
+        {
+          "stem": "A line has slope 3/4 and passes through (0, 0). Name the point you reach by one rise-run step.",
+          "answer": "(4, 3)",
+          "distractor_logic": "Run 4, rise 3: right 4, up 3 lands on (4, 3). (3, 4) reverses them."
+        },
+        {
+          "stem": "A line has slope -2 and passes through (1, 4). Name the next point (right 1, down 2).",
+          "answer": "(2, 2)",
+          "distractor_logic": "Negative slope: rise -2, run 1: right 1, DOWN 2 to (2, 2). (2, 6) goes up instead."
+        },
+        {
+          "stem": "A line has slope -1/3 and passes through (3, 2). Name the point after one rise-run step.",
+          "answer": "(6, 1)",
+          "distractor_logic": "Run 3, rise -1: right 3, down 1 to (6, 1). (6, 3) ignores the negative."
+        },
+        {
+          "stem": "A line has slope 1/2 and passes through (0, -1). Name the next point (right 2, up 1).",
+          "answer": "(2, 0)",
+          "distractor_logic": "Run 2, rise 1: right 2, up 1 to (2, 0). (1, 1) reverses rise and run."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is the top number the up-move or the across-move?",
+        "prompt": "Slope is rise / run: the TOP number is the up/down step, the BOTTOM is the across step. Plot your point, then move ACROSS by the run and UP (or DOWN, if the slope is negative) by the rise. Say 'run across, rise up' as you step.",
+        "praise": "You stepped run across and rise up (down for negative) -- that second point is on the line."
+      },
+      "vocabulary": [
+        { "term": "Slope-point graphing", "definition": "Plotting a point, then using rise/run to find a second point and draw the line." },
+        { "term": "Rise", "definition": "The up-or-down step (numerator of the slope); down when the slope is negative." },
+        { "term": "Run", "definition": "The across step (denominator of the slope)." }
+      ],
+      "next_steps": { "if_pass": "7AF6-S5", "if_fail": "7AF6-S2" },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'Graph the line with slope 3 through the point (0, 2).'" },
+        { "kind": "ask", "text": "Slope 3 is 3 over 1 -- what is the rise, and what is the run?" },
+        { "kind": "say", "text": "Rise 3, run 1. Plot (0, 2); from there go right 1, up 3 to (1, 5). Draw the line through (0, 2) and (1, 5)." },
+        { "kind": "watch", "text": "If a student plots (3, 3), ask 'which number is the across step -- the 3 or the 1?'" },
+        { "kind": "ask", "text": "Your turn: graph slope -1 through (0, 3) -- name the next point after one step." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "Slope 4 written as a fraction is 4/1. What is the rise? The run?", "answer": "Rise 4, run 1" },
+        { "difficulty": "warm_up", "stem": "To graph a line, what do you plot first?", "answer": "The given point." },
+        { "difficulty": "core", "stem": "A line has slope 2 and passes through (0, 1). Name the next point (one rise-run step).", "answer": "(1, 3)", "notes": "Baits reversing to (2, 1)." },
+        { "difficulty": "core", "stem": "A line has slope 3/4 and passes through (0, 0). Name the next point.", "answer": "(4, 3)", "notes": "Run 4, rise 3." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Ana graphed a line with slope 2/3 through (0, 0). Find and fix her mistake.",
+          "shown_work": [
+            "Ana wrote: 'Slope 2/3, so from (0, 0) I go right 2 and up 3 to (2, 3).'"
+          ],
+          "answer": "Ana reversed rise and run. Slope 2/3 means rise 2, run 3: from (0, 0) go RIGHT 3 and UP 2 to (3, 2), not (2, 3). The bottom number is the across step.",
+          "notes": "Canonical error: rise/run reversed when stepping."
+        },
+        { "difficulty": "core", "stem": "A line has slope -2 and passes through (1, 4). Name the next point.", "answer": "(2, 2)", "notes": "Negative: right 1, down 2." },
+        { "difficulty": "stretch", "stem": "A line has slope -1/3 through (3, 2). Name TWO points on the line: one stepping right, one stepping left.", "answer": "Right 3, down 1: (6, 1). Left 3, up 1: (0, 3).", "notes": "Step both directions from a point." },
+        { "difficulty": "stretch", "stem": "Describe, step by step, how you would graph a line with slope 1/2 through (0, -1). Name two points.", "answer": "Plot (0, -1). Run 2, rise 1: right 2, up 1 to (2, 0). Step again to (4, 1). Draw the line through them.", "notes": "Explain-your-process with a fractional slope through a negative point." }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Plot, Step, Draw",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": ["Blank coordinate grids", "Slope-and-point cards (some negative slopes)"],
+          "instructions": "1. Draw a card like 'slope 3/4 through (0, 0).'\n2. Plot the given point first.\n3. Say 'run across, rise up' and step: across by the bottom number, up (or down if negative) by the top number.\n4. Mark the second point, then draw the line through both and extend it.\n5. Debrief: how did a negative slope change your step?",
+          "content": {}
+        },
+        {
+          "type": "error_analysis",
+          "title": "Across Is the Bottom Number",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Ana's reversed step"],
+          "instructions": "1. Read Ana's plan: slope 2/3, from (0, 0) go right 2 and up 3.\n2. Mark where (2, 3) lands and where (3, 2) lands.\n3. Decide which point is actually on a line of slope 2/3.\n4. Write the rule for which number is the across step.",
+          "content": {
+            "worked_problem": "Graph slope 2/3 through (0, 0). Ana stepped right 2, up 3 to (2, 3).",
+            "error_step": "Ana used the numerator as the run.",
+            "why": "Slope 2/3 is rise 2 over run 3: right 3, up 2 to (3, 2). The denominator is the across step."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-007", "why": "Plotting the point and stepping rise/run by hand builds the concrete-to-abstract bridge for graphing a line." },
+        { "strategy_id": "strat-math-006", "why": "Gradual release from 'name the next point' to 'draw the whole line' scaffolds the graphing procedure." },
+        { "strategy_id": "strat-math-003", "why": "The reversed-step and up-instead-of-down errors are precise, plottable mistakes for find-and-fix." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What do you plot first before you use the slope?",
+          "Which number is the across step, and which is the up/down step?",
+          "For a negative slope, does the rise go up or down?",
+          "How many points do you need to draw the line?",
+          "Does your line's steepness match the slope you were given?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reverses rise and run when stepping, or steps up instead of down for a negative slope.",
+            "say": "Slope is rise / run: the TOP number is the up/down step, the BOTTOM is the across step. Plot your point, then move ACROSS by the run and UP (or DOWN, if the slope is negative) by the rise. Say 'run across, rise up' as you step.",
+            "praise": "You stepped run across and rise up (down for negative) -- that second point is on the line."
+          },
+          {
+            "if_you_see": "Student plots only the given point and cannot find a second one.",
+            "say": "You need two points to draw a line. Use the slope: step across by the run and up/down by the rise to get the second point.",
+            "praise": "You used the slope to make a second point -- now the line is set."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Slope 2 through (0, 0): name the next point after one step.",
+            "look_for": "(1, 2). An answer of (2, 1) diagnoses the reversed rise/run."
+          },
+          {
+            "prompt": "Slope -3 through (0, 5): name the next point.",
+            "look_for": "(1, 2) -- right 1, down 3. An answer of (1, 8) means the student went up instead of down."
+          }
+        ]
+      },
+      "fluency_source": "7AF6-F2",
+      "sentence_starters": [
+        "I plot ___ first, then step run ___ across and rise ___ up/down.",
+        "Slope ___ means rise ___ over run ___, so the next point is ___."
+      ],
+      "worked_solution": {
+        "stem": "Graph the line with slope 3 that passes through (0, 2). Name a second point and describe the line.",
+        "answer": "Second point (1, 5); draw the line through (0, 2) and (1, 5).",
+        "steps": [
+          { "math": "plot the given point (0, 2)", "annotation": "Always start by plotting the point you are given." },
+          { "math": "slope 3 = rise 3 / run 1", "annotation": "Write the slope as rise over run." },
+          { "math": "from (0, 2): right 1, up 3 -> (1, 5)", "annotation": "Run across, rise up to the second point." },
+          { "math": "draw the straight line through (0, 2) and (1, 5)", "annotation": "Two points determine the line." }
+        ]
+      },
+      "faded_example": {
+        "stem": "Graph the line with slope -2 through (0, 4). Name a second point and describe the line.",
+        "answer": "Second point (1, 2); draw the line through (0, 4) and (1, 2).",
+        "steps": [
+          { "math": "plot the given point (0, 4)", "annotation": "Start with the point you are given.", "given": true },
+          { "math": "slope -2 = rise -2 / run 1", "annotation": "A negative slope means the rise goes down.", "given": true },
+          { "math": null, "annotation": "From (0, 4), step right 1 and down 2 to name the second point.", "given": false },
+          { "math": null, "annotation": "Describe the line through both points.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "7AF6-S5",
+      "name": "Identify additional points on a line given its slope and one point",
+      "column": "looking_forward",
+      "parent_standard": "7.AF.6",
+      "engine_stems": [4],
+      "prerequisite_skill": { "type": "skill", "skill_id": "7AF6-S4" },
+      "i_do_script": "Given one point and the slope, I can find OTHER points on the line by stepping with the rise and run -- forward OR backward. Slope 2/3 means each right-3 step goes up 2, and each left-3 step goes down 2. Watch: line through (0, 0), slope 2/3. Forward: right 3, up 2 -> (3, 2); again -> (6, 4). Backward: left 3, down 2 -> (-3, -2). All three are on the line. To CHECK a candidate point, I make sure the rise and run from the known point reduce to the given slope.",
+      "canonical_error": {
+        "pattern": "Steps by the slope in the wrong direction or inverts rise/run, so the produced point is off the line",
+        "example": "For (0, 0) with slope 2/3, picks (2, 3) (rise/run reversed) or (3, -2) (stepped down instead of up) instead of (3, 2)",
+        "why": "The student swaps which number is the across step, or moves against the sign of the slope. A point is on the line only if (its rise) / (its run) from the known point equals the given slope."
+      },
+      "item_template": "A point and a slope, with candidate points. Student selects the point(s) that lie on the same line by checking rise/run. MC or multi-select.",
+      "sample_items": [
+        {
+          "stem": "A line passes through (2, 1) and has slope 3. Which of these points is also on the line: (3, 4), (4, 4), or (1, 0)?",
+          "answer": "(3, 4)",
+          "distractor_logic": "From (2, 1) with slope 3: right 1, up 3 -> (3, 4). (4, 4) gives rise 3 over run 2 = 3/2; (1, 0) gives 1."
+        },
+        {
+          "stem": "A line passes through (0, 0) and has slope 2/3. Select the points that lie on it: (3, 2), (6, 4), (2, 3).",
+          "answer": "(3, 2) and (6, 4)",
+          "distractor_logic": "Both give rise/run = 2/3. (2, 3) gives 3/2, the inverted slope."
+        },
+        {
+          "stem": "A line passes through (4, -2) and has slope -1. Which point is on the line: (5, -3) or (5, -1)?",
+          "answer": "(5, -3)",
+          "distractor_logic": "From (4, -2): right 1, down 1 -> (5, -3). (5, -1) went up instead of down."
+        },
+        {
+          "stem": "A line passes through (1, 5) and has slope -3/2. Which points lie on it: (3, 2) and (-1, 8)?",
+          "answer": "Both (3, 2) and (-1, 8)",
+          "distractor_logic": "(3, 2): right 2, down 3 = -3/2. (-1, 8): left 2, up 3 = -3/2. Both check out."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Does the rise over run to that point match the slope?",
+        "prompt": "From the known point, count the rise (up/down) and run (across) to your candidate. That rise / run must reduce to the given slope -- same value AND same sign. If you stepped the wrong way, the sign won't match.",
+        "praise": "You checked that rise over run equals the slope -- that point really is on the line."
+      },
+      "vocabulary": [
+        { "term": "Point on a line", "definition": "A point whose rise/run from a known point equals the line's slope." },
+        { "term": "Step forward and backward", "definition": "Adding or subtracting the run and rise to move along the line in either direction." },
+        { "term": "Slope check", "definition": "Confirming a candidate point by computing its rise/run from a known point." }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for 8.AF.4 (write and use the equation of a line, y = mx + b).",
+        "if_fail": "7AF6-S4"
+      },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'A line passes through (0, 0) with slope 2/3. Find two more points.'" },
+        { "kind": "ask", "text": "What is one right-and-up step? What is one left-and-down step?" },
+        { "kind": "say", "text": "Right 3, up 2 -> (3, 2). Right 3 again -> (6, 4). Left 3, down 2 -> (-3, -2). All on the line." },
+        { "kind": "watch", "text": "If a student names (2, 3), ask 'is that right 3 up 2, or did you flip them?'" },
+        { "kind": "ask", "text": "Your turn: from (1, 2) with slope 4, name one more point on the line." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "A line has slope 2/3. One step forward moves right 3 and up how many?", "answer": "Up 2" },
+        { "difficulty": "warm_up", "stem": "How do you check whether a point is on a line through a known point?", "answer": "Its rise/run from the known point must equal the slope." },
+        { "difficulty": "core", "stem": "A line through (2, 1) has slope 3. Name a point reached by stepping forward once.", "answer": "(3, 4)", "notes": "Right 1, up 3." },
+        { "difficulty": "core", "stem": "A line through (0, 0) has slope 2/3. Is (2, 3) on the line? Explain.", "answer": "No -- rise 3 over run 2 = 3/2, not 2/3. It reverses the slope.", "notes": "Baits the inverted-slope point." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Sam listed points on a line through (4, -2) with slope -1. Find and fix the mistake.",
+          "shown_work": [
+            "Sam wrote: 'From (4, -2), slope -1, one step gives (5, -1).'"
+          ],
+          "answer": "Slope -1 means right 1, DOWN 1: from (4, -2) that is (5, -3), not (5, -1). Sam stepped up instead of down -- ignoring the negative sign.",
+          "notes": "Canonical error: stepped against the slope's sign."
+        },
+        { "difficulty": "core", "stem": "A line through (1, 5) has slope -3/2. Name a point reached by one forward step (right 2).", "answer": "(3, 2)", "notes": "Right 2, down 3." },
+        { "difficulty": "stretch", "stem": "A line passes through (0, 0) with slope 2/3. From the list (3, 2), (6, 4), (2, 3), (-3, -2), pick ALL points on the line and justify each.", "answer": "(3, 2), (6, 4), and (-3, -2) -- each has rise/run = 2/3. (2, 3) gives 3/2, so it is off the line.", "notes": "Multi-select with a forward, a repeat, and a backward step." },
+        { "difficulty": "stretch", "stem": "A line goes through (1, 5) with slope -3/2. Find one point to the LEFT of (1, 5) on the line and show the step.", "answer": "(-1, 8): left 2, up 3 (rise 3 over run -2 = -3/2).", "notes": "Step backward with a negative slope." }
+      ],
+      "activities": [
+        {
+          "type": "game",
+          "title": "On the Line or Off?",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": ["Point-and-slope cards", "Candidate-point cards", "Whiteboards"],
+          "instructions": "1. Flip a point-and-slope card (like '(0, 0), slope 2/3').\n2. Flip a candidate-point card. Race your partner: is it ON the line?\n3. To win the point, show the rise/run from the known point and compare it to the slope.\n4. Keep score; the first to 5 correct justifications wins.\n5. Debrief: which candidates fooled you, and why?",
+          "content": {}
+        },
+        {
+          "type": "error_analysis",
+          "title": "Which Way Does the Step Go?",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Sam's wrong-direction step"],
+          "instructions": "1. Read Sam's point (5, -1) for a line through (4, -2) with slope -1.\n2. Compute the rise and run from (4, -2) to (5, -1).\n3. Compare it to the slope -1 and decide if the point is on the line.\n4. Find the correct point and write the rule for negative-slope steps.",
+          "content": {
+            "worked_problem": "Line through (4, -2), slope -1. Sam named (5, -1).",
+            "error_step": "Sam stepped up 1 for a slope of -1.",
+            "why": "Slope -1 means down 1 for right 1: the point is (5, -3). From (4, -2) to (5, -1) the rise/run is +1, not -1."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "The inverted-slope and wrong-direction points are precise errors a check-the-rise/run find-and-fix exposes." },
+        { "strategy_id": "strat-math-007", "why": "Stepping forward and backward on a grid makes 'a point is on the line if rise/run matches' concrete." },
+        { "strategy_id": "strat-math-001", "why": "Think-pair-share on 'is this point on the line?' surfaces the sign and inversion reasoning for debate." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the rise and run from the known point to your candidate?",
+          "Does that rise/run reduce to the given slope, sign and all?",
+          "Which direction does a negative slope step -- up or down?",
+          "Can you find a point to the left as well as the right?",
+          "How could you check your point a second way?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student steps by the slope in the wrong direction or inverts rise/run, producing a point off the line.",
+            "say": "From the known point, count the rise (up/down) and run (across) to your candidate. That rise / run must reduce to the given slope -- same value AND same sign. If you stepped the wrong way, the sign won't match.",
+            "praise": "You checked that rise over run equals the slope -- that point really is on the line."
+          },
+          {
+            "if_you_see": "Student adds the slope to the coordinates as if it were a point shift (e.g. adds 2/3 to both x and y).",
+            "say": "The slope isn't added to the point -- it tells you the STEP: run across by the denominator, rise by the numerator. Move by those amounts to reach a new point.",
+            "praise": "You stepped by the run and rise instead of adding the slope -- that's how points on a line grow."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A line through (0, 0) has slope 2/3. Is (6, 4) on it?",
+            "look_for": "Yes -- rise 4 / run 6 = 2/3. A 'no' means the student mis-stepped or mis-reduced."
+          },
+          {
+            "prompt": "A line through (4, -2) has slope -1. Is (5, -3) on it?",
+            "look_for": "Yes -- right 1, down 1. If the student picks (5, -1), they stepped the wrong way."
+          }
+        ]
+      },
+      "fluency_source": "7AF6-F2",
+      "sentence_starters": [
+        "From (___, ___) I step run ___ across and rise ___ to reach (___, ___).",
+        "The point is on/off the line because rise/run = ___, which does/doesn't match the slope."
+      ],
+      "worked_solution": {
+        "stem": "A line passes through (0, 0) and has slope 2/3. Find two more points on the line.",
+        "answer": "(3, 2) and (6, 4) (also (-3, -2))",
+        "steps": [
+          { "math": "slope 2/3 = rise 2 / run 3", "annotation": "One step is right 3, up 2." },
+          { "math": "from (0, 0): right 3, up 2 -> (3, 2)", "annotation": "Step forward once." },
+          { "math": "from (3, 2): right 3, up 2 -> (6, 4)", "annotation": "Step forward again -- still on the line." },
+          { "math": "check: 2/3, 4/6 both reduce to 2/3", "annotation": "Each point's rise/run matches the slope." }
+        ]
+      },
+      "faded_example": {
+        "stem": "A line passes through (1, 2) and has slope 3. Find two more points on the line.",
+        "answer": "(2, 5) and (0, -1)",
+        "steps": [
+          { "math": "slope 3 = rise 3 / run 1", "annotation": "One step is right 1, up 3.", "given": true },
+          { "math": "from (1, 2): right 1, up 3 -> (2, 5)", "annotation": "Step forward once.", "given": true },
+          { "math": null, "annotation": "Step backward from (1, 2): left 1, down 3.", "given": false },
+          { "math": null, "annotation": "Check each point's rise/run equals 3.", "given": false }
+        ]
+      }
+    },
+    {
+      "skill_id": "7AF6-S6",
+      "name": "Determine the slope of a real-world linear relationship as a rate",
+      "column": "looking_forward",
+      "parent_standard": "7.AF.6",
+      "engine_stems": [5],
+      "prerequisite_skill": { "type": "skill", "skill_id": "7AF6-S3" },
+      "i_do_script": "In a real-world linear relationship the slope IS the rate: the vertical change (the quantity on the y-axis) over the horizontal change (the time or amount on the x-axis). Watch: a mail carrier delivers to 20 houses every 15 minutes. Houses are on the y-axis, minutes on the x-axis, so slope = vertical / horizontal = 20 / 15, which reduces to 4/3. I keep the units straight -- y-quantity on top, x-quantity on the bottom -- then reduce the fraction.",
+      "canonical_error": {
+        "pattern": "Inverts the rate -- puts the x-quantity (time/amount) on top instead of the y-quantity",
+        "example": "For '20 houses every 15 minutes' writes 15 / 20 = 3/4 instead of 20 / 15 = 4/3",
+        "why": "The student divides in the order the words appear instead of by axis. Slope is the y-axis quantity (vertical change) over the x-axis quantity (horizontal change), then reduced."
+      },
+      "item_template": "A real-world constant rate described in words, with named axes. Student writes the slope as a reduced fraction (vertical change / horizontal change). Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A mail carrier delivers to 20 houses every 15 minutes. The y-axis is houses and the x-axis is minutes. What is the slope?",
+          "answer": "4/3",
+          "distractor_logic": "20 houses / 15 minutes = 4/3. Writing 15/20 = 3/4 inverts the rate."
+        },
+        {
+          "stem": "A tank fills 9 liters every 6 minutes (y-axis liters, x-axis minutes). What is the slope of the line?",
+          "answer": "3/2",
+          "distractor_logic": "9 / 6 = 3/2. '6/9 = 2/3' inverts."
+        },
+        {
+          "stem": "A runner completes 8 laps every 12 minutes (y-axis laps, x-axis minutes). What is the slope?",
+          "answer": "2/3",
+          "distractor_logic": "8 / 12 = 2/3. '12/8 = 3/2' inverts."
+        },
+        {
+          "stem": "A store charges $10 for every 4 items (y-axis dollars, x-axis items). What is the slope?",
+          "answer": "5/2",
+          "distractor_logic": "10 / 4 = 5/2 (or 2.5). '4/10 = 2/5' inverts."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which quantity is on the y-axis -- that goes on top.",
+        "prompt": "Slope is the y-axis quantity over the x-axis quantity: vertical change on top, horizontal change on the bottom. Read the axes, not the word order. Put the y-quantity first, then reduce the fraction.",
+        "praise": "You put the y-axis quantity over the x-axis quantity -- that's the rate as a slope."
+      },
+      "vocabulary": [
+        { "term": "Rate", "definition": "How much one quantity changes for each unit of another; the slope of a real-world line." },
+        { "term": "Vertical change", "definition": "The change in the y-axis quantity (goes on top of the slope)." },
+        { "term": "Horizontal change", "definition": "The change in the x-axis quantity (goes on the bottom of the slope)." }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for 8.AF.4 (interpret slope as a unit rate in y = mx + b).",
+        "if_fail": "7AF6-S3"
+      },
+      "worked_example_script": [
+        { "kind": "show", "text": "Write 'A printer prints 12 pages every 8 seconds. y-axis pages, x-axis seconds. Find the slope.'" },
+        { "kind": "ask", "text": "Which quantity is on the y-axis? Which is on the x-axis?" },
+        { "kind": "say", "text": "Pages (y) over seconds (x): 12 / 8 = 3/2. The slope is 3/2 pages per second." },
+        { "kind": "watch", "text": "If a student writes 8/12, ask 'which quantity is vertical -- which goes on top?'" },
+        { "kind": "ask", "text": "Your turn: 6 miles every 4 minutes, y-axis miles. Find the slope." }
+      ],
+      "practice_problems": [
+        { "difficulty": "warm_up", "stem": "In a real-world graph, which quantity goes on top of the slope -- the y-axis or x-axis one?", "answer": "The y-axis quantity (vertical change)." },
+        { "difficulty": "warm_up", "stem": "A line rises 9 for a run of 6. Write the slope reduced.", "answer": "3/2" },
+        { "difficulty": "core", "stem": "A mail carrier delivers to 20 houses every 15 minutes (y houses, x minutes). Find the slope.", "answer": "4/3 (20/15)", "notes": "Baits 15/20 = 3/4 (inverted)." },
+        { "difficulty": "core", "stem": "A tank fills 9 liters every 6 minutes (y liters, x minutes). Find the slope.", "answer": "3/2 (9/6)", "notes": "Reduce 9/6." },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Rae found the slope of a real-world rate. Find and fix the mistake.",
+          "shown_work": [
+            "A runner completes 8 laps every 12 minutes (y-axis laps, x-axis minutes).",
+            "Rae wrote: 'slope = 12 / 8 = 3/2.'"
+          ],
+          "answer": "Rae inverted the rate. Laps are on the y-axis, so laps go on top: 8 / 12 = 2/3. She used minutes over laps instead of laps over minutes.",
+          "notes": "Canonical error: inverted rate (x over y)."
+        },
+        { "difficulty": "core", "stem": "A store charges $10 for every 4 items (y dollars, x items). Find the slope.", "answer": "5/2 or 2.5 (10/4)", "notes": "Reduce 10/4." },
+        { "difficulty": "stretch", "stem": "A car travels 45 miles every 30 minutes (y miles, x minutes). Find the slope and explain what it means.", "answer": "45/30 = 3/2 miles per minute -- the car gains 3 miles every 2 minutes.", "notes": "Reduce and interpret the rate." },
+        { "difficulty": "stretch", "stem": "Two rates: A is 8 laps per 12 minutes; B is 6 laps per 8 minutes. Which is faster? Compare the slopes.", "answer": "A = 8/12 = 2/3; B = 6/8 = 3/4. Since 3/4 > 2/3, B is faster.", "notes": "Compare two rates as slopes." }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Rate to Slope",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": ["Card set: 6 real-world rate descriptions and 8 slope cards (two inverted decoys)"],
+          "instructions": "1. Match each real-world rate to its slope.\n2. To claim a match, name which quantity is on the y-axis and put it on top.\n3. Two slope cards are inverted rates -- set them aside as traps.\n4. Debrief: how do you decide which quantity goes on top?",
+          "content": {
+            "pairs": [
+              { "left": "20 houses every 15 minutes", "right": "4/3" },
+              { "left": "9 liters every 6 minutes", "right": "3/2" },
+              { "left": "8 laps every 12 minutes", "right": "2/3" },
+              { "left": "$10 for every 4 items", "right": "5/2" },
+              { "left": "45 miles every 30 minutes", "right": "3/2" },
+              { "left": "6 cups every 8 servings", "right": "3/4" }
+            ],
+            "decoys": ["3/4 (from 15/20)", "2/3 (from 6/9)"]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Y-Quantity On Top",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": ["Slip with Rae's inverted rate"],
+          "instructions": "1. Read Rae's slope of 3/2 for '8 laps every 12 minutes' (y-axis laps).\n2. Identify which quantity is on the y-axis.\n3. Write the correct slope with the y-quantity on top and reduce it.\n4. Write the rule for which quantity goes on top.",
+          "content": {
+            "worked_problem": "8 laps every 12 minutes, y-axis laps. Rae wrote 12/8 = 3/2.",
+            "error_step": "Rae put minutes (x-axis) on top instead of laps (y-axis).",
+            "why": "Slope is y over x: 8 laps / 12 minutes = 2/3."
+          }
+        }
+      ],
+      "strategy_links": [
+        { "strategy_id": "strat-math-003", "why": "The inverted-rate error is precise; a find-and-fix that names the axes catches it cleanly." },
+        { "strategy_id": "strat-math-004", "why": "A journal note on 'y-quantity over x-quantity' consolidates why the rate is a slope." },
+        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'which quantity is on the y-axis?' models the axis check before dividing." }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which quantity is on the y-axis, and which is on the x-axis?",
+          "Which one goes on top of the slope fraction?",
+          "Can you reduce your rate to simplest form?",
+          "What does this slope mean in the real situation?",
+          "If you flipped it, would the units still make sense?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student inverts the rate -- puts the x-quantity (time/amount) on top instead of the y-quantity.",
+            "say": "Slope is the y-axis quantity over the x-axis quantity: vertical change on top, horizontal change on the bottom. Read the axes, not the word order. Put the y-quantity first, then reduce the fraction.",
+            "praise": "You put the y-axis quantity over the x-axis quantity -- that's the rate as a slope."
+          },
+          {
+            "if_you_see": "Student leaves the rate unreduced (writes 20/15 or 9/6 as the final slope).",
+            "say": "Reduce the rate to simplest form -- divide top and bottom by the same number. 20/15 becomes 4/3; 9/6 becomes 3/2.",
+            "praise": "You reduced the rate -- that's the slope in simplest form."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A pump moves 12 gallons every 8 minutes (y-axis gallons). What is the slope?",
+            "look_for": "3/2 (12/8). An answer of 2/3 diagnoses the inverted rate."
+          },
+          {
+            "prompt": "Reduce the slope 20/15 to simplest form.",
+            "look_for": "4/3. Leaving it as 20/15 means the student didn't reduce."
+          }
+        ]
+      },
+      "fluency_source": "7AF6-F2",
+      "sentence_starters": [
+        "The y-axis quantity is ___ and the x-axis quantity is ___, so slope = ___ / ___.",
+        "Reduced, the rate (slope) is ___."
+      ],
+      "worked_solution": {
+        "stem": "A printer prints 12 pages every 8 seconds. The y-axis is pages and the x-axis is seconds. Find the slope.",
+        "answer": "3/2",
+        "steps": [
+          { "math": "y-axis quantity = pages = 12", "annotation": "The vertical change goes on top." },
+          { "math": "x-axis quantity = seconds = 8", "annotation": "The horizontal change goes on the bottom." },
+          { "math": "slope = 12 / 8", "annotation": "y-quantity over x-quantity." },
+          { "math": "= 3/2", "annotation": "Reduce to simplest form: 3/2 pages per second." }
+        ]
+      },
+      "faded_example": {
+        "stem": "A car travels 45 miles every 30 minutes (y-axis miles, x-axis minutes). Find the slope.",
+        "answer": "3/2",
+        "steps": [
+          { "math": "y-axis quantity = miles = 45", "annotation": "Vertical change on top.", "given": true },
+          { "math": "x-axis quantity = minutes = 30", "annotation": "Horizontal change on the bottom.", "given": true },
+          { "math": null, "annotation": "Write the slope as y over x (45 / 30).", "given": false },
+          { "math": null, "annotation": "Reduce to simplest form.", "given": false }
+        ]
+      }
+    }
+  ],
+  "skill_columns": {
+    "foundation": {
+      "label": "Foundation (Tier III)",
+      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "skills": ["7AF6-F1", "7AF6-F2"]
+    },
+    "looking_back": {
+      "label": "Looking Back",
+      "description": "Skills the student should have but may need re-teaching.",
+      "skills": ["7AF6-S1"]
+    },
+    "on_grade": {
+      "label": "On Grade",
+      "description": "The standard's actual grade-level expectations.",
+      "skills": ["7AF6-S2", "7AF6-S3", "7AF6-S4"]
+    },
+    "looking_forward": {
+      "label": "Looking Forward",
+      "description": "Bridge to the next standard.",
+      "skills": ["7AF6-S5", "7AF6-S6"]
+    }
+  },
+  "skill_sequence": ["7AF6-F1", "7AF6-F2", "7AF6-S1", "7AF6-S2", "7AF6-S3", "7AF6-S4", "7AF6-S5", "7AF6-S6"],
+  "skill_tree": {
+    "7AF6-F1": [],
+    "7AF6-F2": [],
+    "7AF6-S1": ["7AF6-F1"],
+    "7AF6-S2": ["7AF6-F2", "7AF6-F1"],
+    "7AF6-S3": ["7AF6-S2", "7AF6-F2"],
+    "7AF6-S4": ["7AF6-S2", "7AF6-F1"],
+    "7AF6-S5": ["7AF6-S4", "7AF6-S3"],
+    "7AF6-S6": ["7AF6-S3"]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S2 (find slope from a graph using rise over run) -- the entry grade-level expectation. If they pass, move through S3 (negative slopes) and S4 (graph a line from slope and a point). If they fail, drop to S1 to check whether they can even classify a slope's direction, then to F2 for the rise/run mechanic. S5 (find other points) and S6 (real-world rate) branch off as the Above-proficiency extensions.",
+    "entry_skill": "7AF6-S2",
+    "if_pass": ["7AF6-S3", "7AF6-S4"],
+    "if_fail": ["7AF6-S1", "7AF6-F2"],
+    "branch_skills": ["7AF6-S5", "7AF6-S6"]
+  }
+}
