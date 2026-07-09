@@ -87,8 +87,10 @@ def main():
     # Generate questions
     all_questions = get_questions(standard, seed)
 
-    # Output directory
-    tmp_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".tmp")
+    # Output directory — system temp dir: always writable, including on
+    # read-only container filesystems (e.g. Cloud Run, only /tmp guaranteed).
+    import tempfile
+    tmp_dir = tempfile.gettempdir()
     os.makedirs(tmp_dir, exist_ok=True)
 
     safe_standard = standard.replace(".", "_")

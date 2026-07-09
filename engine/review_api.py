@@ -202,7 +202,10 @@ def handle_review_pdf(params):
     if not selected:
         return {"error": "No matching questions found"}
 
-    tmp_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".tmp")
+    # System temp dir: always writable, including on read-only container
+    # filesystems (e.g. Cloud Run, where only /tmp is guaranteed writable).
+    import tempfile
+    tmp_dir = tempfile.gettempdir()
     os.makedirs(tmp_dir, exist_ok=True)
     safe = standard.replace(".", "_")
     output_path = os.path.join(tmp_dir, f"review_{safe}_{fmt}_{random.randint(1000,9999)}.pdf")

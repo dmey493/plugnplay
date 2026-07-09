@@ -6,7 +6,10 @@ const PYTHON_PATH =
   process.env.PYTHON_PATH ??
   "C:/Users/meyedl01/AppData/Local/Python/pythoncore-3.14-64/python.exe";
 
-const PROJECT_ROOT = path.join(process.cwd(), "..");
+// The Python engine ships in the repo at ./engine, so it deploys with the app.
+// process.cwd() is the app root in dev (`next dev` from web/) and in production
+// (`next start` / the Docker image's WORKDIR).
+const PROJECT_ROOT = process.cwd();
 const REVIEW_SCRIPT = path.join(PROJECT_ROOT, "engine", "review_api.py");
 const GENERATE_SCRIPT = path.join(PROJECT_ROOT, "engine", "generate_pdf_api.py");
 
