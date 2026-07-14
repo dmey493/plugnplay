@@ -109,8 +109,13 @@ export default function ProblemGenerator({ lessonNav }: { lessonNav: LessonNav }
 
   // Mode-specific options
   const [exitProficiency, setExitProficiency] = useState("any");
-  const [exitDifficulty, setExitDifficulty] = useState("any");
-  const [mmsAxis, setMmsAxis] = useState("difficulty");
+  // Difficulty is a display-only label on generated problems, not a teacher
+  // input: forcing a difficulty a proficiency level doesn't offer (e.g. Below +
+  // Difficult on 7.NS.1) produced mismatched questions and confused the axis
+  // with proficiency. Exit tickets always request "any" difficulty, and the
+  // Mild/Medium/Spicy set always tiers by proficiency.
+  const [exitDifficulty] = useState("any");
+  const [mmsAxis] = useState("proficiency");
   const [mmsPerTier, setMmsPerTier] = useState(1);
   const [profLevel, setProfLevel] = useState("at");
   const [profCount, setProfCount] = useState(4);
@@ -304,46 +309,11 @@ export default function ProblemGenerator({ lessonNav }: { lessonNav: LessonNav }
               <option value="above">Above</option>
             </select>
           </div>
-          <div>
-            <label className="text-xs font-bold uppercase tracking-widest text-pnp-gray-500">
-              Difficulty
-            </label>
-            <select
-              value={exitDifficulty}
-              onChange={(e) => setExitDifficulty(e.target.value)}
-              className="mt-2 block rounded-lg border-2 border-pnp-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-pnp-navy outline-none focus:border-pnp-accent"
-            >
-              <option value="any">Any</option>
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="difficult">Difficult</option>
-            </select>
-          </div>
         </div>
       )}
 
       {mode === "mms" && (
         <div className="mt-6 flex flex-wrap gap-4">
-          <div>
-            <label className="text-xs font-bold uppercase tracking-widest text-pnp-gray-500">
-              Tier Axis
-            </label>
-            <div className="mt-2 flex gap-2">
-              {["difficulty", "proficiency"].map((axis) => (
-                <button
-                  key={axis}
-                  onClick={() => setMmsAxis(axis)}
-                  className={`rounded-lg border-2 px-4 py-2 text-sm font-semibold capitalize transition-all ${
-                    mmsAxis === axis
-                      ? "border-pnp-accent bg-pnp-accent text-white"
-                      : "border-pnp-gray-200 text-pnp-gray-700 hover:border-pnp-gray-300"
-                  }`}
-                >
-                  {axis}
-                </button>
-              ))}
-            </div>
-          </div>
           <div>
             <label className="text-xs font-bold uppercase tracking-widest text-pnp-gray-500">
               Questions Per Tier
