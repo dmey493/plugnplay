@@ -158,12 +158,12 @@ class Stem7NS6:
 
         sq, root = rng.choice(pool)
 
-        stem_text = f"Calculate the square root of {sq}."
+        stem_text = f"Calculate √{sq}."
         answer_str = str(root)
 
         worked = (
             f"We need to find a number n such that n^2 = {sq}.\n"
-            f"Since {root} x {root} = {sq}, the square root of {sq} is {root}."
+            f"Since {root} x {root} = {sq}, √{sq} is {root}."
         )
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING, ItemType.NR,
@@ -226,12 +226,12 @@ class Stem7NS6:
 
         correct_letter = next(c.key for c in choices if c.is_correct)
 
-        stem_text = f"What is the value of the square root of {sq}?"
+        stem_text = f"What is the value of √{sq}?"
         stem_latex = f"What is the value of $\\sqrt{{{sq}}}$?"
 
         worked = (
-            f"The square root of {sq} is the number that, when multiplied by itself, equals {sq}.\n"
-            f"Since {root} x {root} = {sq}, the square root of {sq} is {root}."
+            f"√{sq} is the number that, when multiplied by itself, equals {sq}.\n"
+            f"Since {root} x {root} = {sq}, √{sq} is {root}."
         )
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING, ItemType.MC,
@@ -269,7 +269,7 @@ class Stem7NS6:
         sq, root = rng.choice(pool)
 
         # Correct answer: sqrt(sq) = root
-        correct_text = f"square root of {sq}"
+        correct_text = f"√{sq}"
         correct_latex = f"$\\sqrt{{{sq}}}$"
 
         # Distractors: expressions that do NOT equal root
@@ -279,14 +279,14 @@ class Stem7NS6:
         for offset in [1, -1, 2, -2]:
             candidate = sq + offset
             if candidate > 0 and candidate not in PERFECT_SQUARES:
-                wrong_exprs.append((f"square root of {candidate}", f"$\\sqrt{{{candidate}}}$"))
+                wrong_exprs.append((f"√{candidate}", f"$\\sqrt{{{candidate}}}$"))
                 break
 
         # Wrong: sqrt of a different perfect square
         other_squares = [(s, r) for s, r in PERFECT_SQUARES.items() if r != root and s <= 400]
         rng.shuffle(other_squares)
         for os_sq, os_root in other_squares[:2]:
-            wrong_exprs.append((f"square root of {os_sq}", f"$\\sqrt{{{os_sq}}}$"))
+            wrong_exprs.append((f"√{os_sq}", f"$\\sqrt{{{os_sq}}}$"))
 
         # Wrong: root^2 (confusing square with square root)
         wrong_exprs.append((f"{root}^2", f"${root}^2$"))
@@ -314,7 +314,7 @@ class Stem7NS6:
 
         worked = (
             f"We need the expression that equals {root}.\n"
-            f"The square root of {sq} = {root} because {root} x {root} = {sq}.\n"
+            f"√{sq} = {root} because {root} x {root} = {sq}.\n"
             f"{root}^2 = {root * root}, which is {sq}, not {root}."
         )
 
@@ -364,13 +364,13 @@ class Stem7NS6:
 
             worked = (
                 f"The area of a square is side length squared: A = s^2.\n"
-                f"If A = {sq}, then s = square root of {sq}.\n"
+                f"If A = {sq}, then s = √{sq}.\n"
                 f"Since {root} x {root} = {sq}, the side length is {root} {unit}."
             )
         else:
             stem_text = (
                 f"An equation is given.\n\n"
-                f"square root of x = {root}\n\n"
+                f"√x = {root}\n\n"
                 f"What is the value of x?"
             )
             stem_latex = (
@@ -381,7 +381,7 @@ class Stem7NS6:
             answer_str = str(sq)
 
             worked = (
-                f"If the square root of x = {root}, then x = {root}^2.\n"
+                f"If √x = {root}, then x = {root}^2.\n"
                 f"{root} x {root} = {sq}.\n"
                 f"Therefore x = {sq}."
             )
@@ -429,12 +429,12 @@ class Stem7NS6:
                 if d != correct_text and d not in distractors:
                     distractors.append(d)
             stem_text = (
-                f"What is the value of (square root of {sq})^2?"
+                f"What is the value of (√{sq})^2?"
             )
             worked = (
-                f"square root of {sq} = {root}\n"
+                f"√{sq} = {root}\n"
                 f"({root})^2 = {sq}\n"
-                f"Squaring undoes the square root, so (square root of {sq})^2 = {sq}."
+                f"Squaring undoes the square root, so (√{sq})^2 = {sq}."
             )
 
         elif fmt == 1:
@@ -457,7 +457,7 @@ class Stem7NS6:
                 f"in square feet?"
             )
             worked = (
-                f"Original area = {sq}, so side = square root of {sq} = {root} ft.\n"
+                f"Original area = {sq}, so side = √{sq} = {root} ft.\n"
                 f"New side = 2 x {root} = {new_side} ft.\n"
                 f"New area = {new_side}^2 = {new_area} sq ft."
             )
@@ -465,11 +465,11 @@ class Stem7NS6:
         elif fmt == 2:
             # Format C: Which shows the inverse relationship?
             sq, root = rng.choice(pool)
-            correct_text = f"(square root of {sq})^2 = {sq}"
+            correct_text = f"(√{sq})^2 = {sq}"
             distractors = [
-                f"square root of {sq} = {sq}",
+                f"√{sq} = {sq}",
                 f"{root}^2 = {root}",
-                f"square root of {root} = {sq}",
+                f"√{root} = {sq}",
             ]
             stem_text = (
                 f"Squaring and finding the square root are inverse operations.\n\n"
@@ -477,8 +477,8 @@ class Stem7NS6:
             )
             worked = (
                 f"Inverse operations undo each other.\n"
-                f"square root of {sq} = {root}, and {root}^2 = {sq}.\n"
-                f"So (square root of {sq})^2 = {sq} demonstrates the inverse relationship."
+                f"√{sq} = {root}, and {root}^2 = {sq}.\n"
+                f"So (√{sq})^2 = {sq} demonstrates the inverse relationship."
             )
 
         else:
@@ -494,11 +494,11 @@ class Stem7NS6:
                 if d != correct_text and d not in distractors:
                     distractors.append(d)
             stem_text = (
-                f"What is the value of square root of ({root}^2)?"
+                f"What is the value of √({root}^2)?"
             )
             worked = (
                 f"{root}^2 = {sq}\n"
-                f"square root of {sq} = {root}\n"
+                f"√{sq} = {root}\n"
                 f"The square root undoes the squaring, so the answer is {root}."
             )
 

@@ -74,6 +74,23 @@ _FONT_CANDIDATES = [
 ]
 
 
+def _fmt_tick(v):
+    """Format a number-line tick label.
+
+    Ticks are often passed as floats (e.g. -1.0, 0.0, 1.0). When a tick lands on
+    a whole number, show it as an integer ("-1", "0", "1") rather than "-1.0" so
+    integer-stepped number lines read correctly; keep genuine fractional ticks
+    (e.g. 0.5) as clean decimals.
+    """
+    try:
+        fv = float(v)
+    except (TypeError, ValueError):
+        return str(v)
+    if fv == int(fv):
+        return str(int(fv))
+    return f"{fv:.2f}".rstrip("0").rstrip(".")
+
+
 def _clip_line_to_rect(lx1, ly1, lx2, ly2, rx_min, rx_max, ry_min, ry_max):
     """Clip a line segment to a rectangle using Liang-Barsky algorithm.
 
@@ -582,7 +599,7 @@ class MathPDF(FPDF):
             for i in range(n_ticks):
                 tick_val = tick_start + i
                 tx = tick_x1 + i * tick_spacing
-                label = str(tick_val)
+                label = _fmt_tick(tick_val)
                 lw = self.get_string_width(label)
                 self.set_xy(tx - lw / 2, line_y + 2)
                 self.cell(lw + 0.5, 3, label, align="C")
@@ -666,7 +683,7 @@ class MathPDF(FPDF):
         for i, tick_val in enumerate(ticks):
             tx = line_x1 + i * tick_spacing
             self.line(tx, line_y - 2, tx, line_y + 2)
-            label = str(tick_val)
+            label = _fmt_tick(tick_val)
             lw = self.get_string_width(label)
             self.set_xy(tx - lw / 2, line_y + 3)
             self.cell(lw + 0.5, 3, label, align="C")
@@ -737,7 +754,7 @@ class MathPDF(FPDF):
             for i, tick_val in enumerate(ticks):
                 tx = line_x1 + i * tick_spacing
                 self.line(tx, line_y - 1.5, tx, line_y + 1.5)
-                t_label = str(tick_val)
+                t_label = _fmt_tick(tick_val)
                 lw = self.get_string_width(t_label)
                 if is_top:
                     self.set_xy(tx - lw / 2, line_y - 5)

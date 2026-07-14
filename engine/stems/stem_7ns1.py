@@ -37,6 +37,7 @@ from engine.models import (
 )
 from engine.number_generators import NumberGenerator
 from engine.context_pools import CONTEXTS_7NS1, pick_name
+from engine.svg_helpers import addition_jump_svg
 
 
 STANDARD_CODE = "7.NS.1"
@@ -410,7 +411,7 @@ class Stem7NS1:
         else:
             b_display = b_str
 
-        stem_text = ctx["template"].format(name=name, a=a_str, b=b_display)
+        stem_text = ctx["template"].format(name=name, a=a_str, b=b_display) + "\n\n[FIGURE]"
         correct_str = _fmt(total)
 
         worked = (
@@ -422,10 +423,10 @@ class Stem7NS1:
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.AT, ItemType.NR,
                                Difficulty.MEDIUM, 5, variant_idx)
 
-        # Number line with labeled points
-        nl_min = min(int(a) - 1, -10)
-        nl_max = max(int(b) + 1, 10)
-        ticks = list(range(nl_min, nl_max + 1))
+        # Model the sum as a single directed jump: start at a, move by b, land on
+        # a+b. This shows ADDITION rather than the distance between two independent
+        # points -- the old two-dot number line read like a subtraction (b - a).
+        nl_svg = addition_jump_svg(a, b)
 
         return GeneratedQuestion(
             question_id=qid, standard_code=STANDARD_CODE,
@@ -437,14 +438,7 @@ class Stem7NS1:
             context_scenario=f"real-world sum of rationals ({ctx['unit']})",
             seed=self.base_seed * 1000 + 500 + variant_idx,
             stem_index=5, variant_index=variant_idx,
-            render_data={
-                "type": "number_line_point",
-                "ticks": ticks,
-                "points": [
-                    {"value": float(a), "label": "A"},
-                    {"value": float(b), "label": "B"},
-                ],
-            }
+            render_data={"svg_html": nl_svg, "type": "svg_html"},
         )
 
     # ================================================================

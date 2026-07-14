@@ -1770,6 +1770,84 @@ def multiplication_jumps_svg(jump_size, num_jumps, width=420, height=160):
     return d.as_svg()
 
 
+def addition_jump_svg(start, addend, width=440, height=150):
+    """Draw a number line that models ``start + addend`` as a single directed jump.
+
+    Marks the starting value, draws one arc of length ``|addend|`` in the
+    direction of its sign, and lands the arrowhead on ``start + addend`` (marked
+    "?" so the student still computes it). This models ADDITION -- a running total
+    that moves by the addend -- rather than the distance between two independent
+    points, so a scenario like -4.1 + 9.4 reads as intended instead of looking
+    like 9.4 - (-4.1).
+
+    Returns an SVG string.
+    """
+    import math
+    start = float(start)
+    addend = float(addend)
+    result = start + addend
+
+    def fmt(v):
+        return str(int(v)) if v == int(v) else f"{v:.2f}".rstrip('0').rstrip('.')
+
+    lo = min(start, result)
+    hi = max(start, result)
+    line_min = int(math.floor(lo)) - 1
+    line_max = int(math.ceil(hi)) + 1
+
+    d = draw.Drawing(width, height)
+    margin_l = 30
+    margin_r = 30
+    line_y = height - 45
+    line_w = width - margin_l - margin_r
+
+    def to_x(val):
+        return margin_l + (val - line_min) / (line_max - line_min) * line_w
+
+    # Number line with arrowheads on both ends
+    d.append(draw.Line(margin_l - 8, line_y, margin_l + line_w + 8, line_y,
+                       stroke='#374151', stroke_width=2))
+    for ax_x, direction in [(margin_l - 8, -1), (margin_l + line_w + 8, 1)]:
+        d.append(draw.Lines(ax_x, line_y, ax_x + direction * (-6), line_y - 4,
+                            ax_x + direction * (-6), line_y + 4,
+                            close=True, fill='#374151', stroke='none'))
+
+    # Integer tick marks and labels
+    for val in range(line_min, line_max + 1):
+        px = to_x(val)
+        th = 8 if val == 0 else 5
+        sw = 2 if val == 0 else 1
+        d.append(draw.Line(px, line_y - th, px, line_y + th,
+                           stroke='#374151', stroke_width=sw))
+        d.append(draw.Text(str(val), 15, px, line_y + 22,
+                           text_anchor='middle', fill='#374151'))
+
+    # The single jump arc from start to result
+    arc_color = '#2563eb'
+    x1, x2 = to_x(start), to_x(result)
+    mid_x = (x1 + x2) / 2
+    mid_y = line_y - 34
+    p = draw.Path(fill='none', stroke=arc_color, stroke_width=2)
+    p.M(x1, line_y - 2)
+    p.Q(mid_x, mid_y, x2, line_y - 2)
+    d.append(p)
+    # Arrowhead tip landing on the result
+    d.append(draw.Lines(x2, line_y, x2 - 3, line_y - 7, x2 + 3, line_y - 7,
+                        close=True, fill=arc_color, stroke='none'))
+    addend_lbl = f"+ {fmt(addend)}" if addend >= 0 else f"- {fmt(abs(addend))}"
+    d.append(draw.Text(addend_lbl, 15, mid_x, mid_y - 5,
+                       text_anchor='middle', fill=arc_color))
+
+    # Start dot (labeled) and result dot (marked "?" -- the student finds it)
+    d.append(draw.Circle(x1, line_y, 4, fill='#22c55e', stroke='#166534', stroke_width=1.5))
+    d.append(draw.Text(f"start {fmt(start)}", 13, x1, line_y - 11,
+                       text_anchor='middle', fill='#166534'))
+    d.append(draw.Circle(x2, line_y, 4, fill='#ef4444', stroke='#991b1b', stroke_width=1.5))
+    d.append(draw.Text("?", 16, x2, line_y - 12, text_anchor='middle', fill='#991b1b'))
+
+    return d.as_svg()
+
+
 # ============================================================
 # QUALITATIVE GRAPH (for 8.AF.4 — linear + curved segments)
 # ============================================================

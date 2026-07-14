@@ -164,10 +164,11 @@ class Stem7DSP2:
         gen, rng = self._make_gen(2, variant_idx)
         label_a, label_b, topic = rng.choice(COMPARISON_CONTEXTS)
 
-        n = rng.randint(7, 12)
-        data_a, data_b = self._make_pair(gen, rng, n, 10, 50)
-
         measure = rng.choice(["IQR", "MAD"])
+        # MAD is computed by hand from the listed values, so cap it at 10 values to
+        # keep it a quick check; IQR is read off a box plot, so it can run larger.
+        n = rng.randint(6, 10) if measure == "MAD" else rng.randint(7, 12)
+        data_a, data_b = self._make_pair(gen, rng, n, 10, 50)
 
         if measure == "IQR":
             fns_a = five_number_summary(data_a)

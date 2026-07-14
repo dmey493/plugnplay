@@ -73,6 +73,19 @@ def _fmt_dec(val: Fraction) -> str:
     return s
 
 
+def _fmt_num(val: Fraction) -> str:
+    """Format a rational as a clean decimal, stripping trailing zeros.
+
+    Used for the approaching-proficiency stems whose 1-place decimal
+    coefficients would otherwise reduce to ugly improper fractions like
+    312/5 instead of reading as the intended 62.4.
+    """
+    f = float(val)
+    if f == int(f):
+        return str(int(f))
+    return f"{f:.4f}".rstrip("0").rstrip(".")
+
+
 def _is_in_solution(x_val: Fraction, boundary: Fraction, op: str) -> bool:
     """Check if x_val is in the solution set for x {op} boundary."""
     if op == ">":
@@ -434,17 +447,17 @@ class Stem7AF4:
             is_sol = _is_in_solution(val, boundary, op)
             choices.append(QuestionChoice(
                 key=chr(ord('a') + i),
-                text=_fmt(val),
-                text_latex=_fmt(val),
+                text=_fmt_num(val),
+                text_latex=_fmt_num(val),
                 is_correct=is_sol,
             ))
 
         correct_letters = [c.key for c in choices if c.is_correct]
         correct_vals = [c.text for c in choices if c.is_correct]
 
-        p_str = _fmt(p)
-        q_str = _fmt(q)
-        r_str = _fmt(r)
+        p_str = _fmt_num(p)
+        q_str = _fmt_num(q)
+        r_str = _fmt_num(r)
         ineq_text = f"{p_str}x + {q_str} {op_disp} {r_str}"
 
         stem_text = (
@@ -456,7 +469,7 @@ class Stem7AF4:
         worked = (
             f"Solve: {ineq_text}\n"
             f"  {p_str}x {op_disp} {r_str} - {q_str}\n"
-            f"  {p_str}x {op_disp} {_fmt(r - q)}\n"
+            f"  {p_str}x {op_disp} {_fmt_num(r - q)}\n"
             f"  x {op_disp} {boundary_int}\n"
             f"Solutions: {', '.join(correct_vals)}"
         )
@@ -565,9 +578,9 @@ class Stem7AF4:
 
         distractors = distractors[:3]
 
-        p_str = _fmt(p)
-        q_str = _fmt(abs(q))
-        r_str = _fmt(r)
+        p_str = _fmt_num(p)
+        q_str = _fmt_num(abs(q))
+        r_str = _fmt_num(r)
 
         if q >= 0:
             ineq_text = f"{p_str}x + {q_str} {op_disp} {r_str}"
@@ -589,9 +602,9 @@ class Stem7AF4:
 
         worked = (
             f"{ineq_text}\n"
-            f"  {p_str}x {op_disp} {r_str} - ({_fmt(q)})\n"
-            f"  {p_str}x {op_disp} {_fmt(r - q)}\n"
-            f"  x {solution_disp} {_fmt(r - q)} / {p_str}"
+            f"  {p_str}x {op_disp} {r_str} - ({_fmt_num(q)})\n"
+            f"  {p_str}x {op_disp} {_fmt_num(r - q)}\n"
+            f"  x {solution_disp} {_fmt_num(r - q)} / {p_str}"
             f"{flip_note}\n"
             f"  x {solution_disp} {boundary}"
         )

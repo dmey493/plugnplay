@@ -264,13 +264,20 @@ class Stem7AF2:
         ctx = rng.choice(CONTEXTS_7AF2_UNIT_PRICE)
         name = pick_name(rng)
 
-        # Generate quantity as mixed number: whole + fraction
+        # Generate quantity as mixed number: whole + fraction. Use a terminating
+        # fraction (halves or quarters) so the money product has no repeating
+        # decimal -- 7.AF.2 is a non-calculator standard, so 4 2/3 x a price
+        # (which forces repeating decimals) is exactly what we want to avoid.
         whole_part = gen.small_whole(1, 4)
-        frac_part = gen.proper_fraction(4)  # max denom 4 for hand-calc
+        frac_part = rng.choice([Fraction(1, 2), Fraction(1, 4), Fraction(3, 4)])
         quantity = whole_part + frac_part
 
-        # Generate unit price as money (1-5 dollars, 2 decimals)
-        unit_price = gen.money(Fraction(100, 100), Fraction(500, 100))
+        # Unit price in cents, divisible by the fraction's denominator so the
+        # total is exact to the cent (e.g. 2 1/4 lb x $3.40 = $7.65).
+        den = frac_part.denominator
+        cents = rng.randint(100, 500)
+        cents -= cents % den
+        unit_price = Fraction(cents, 100)
 
         # Ensure clean multiplication
         total = quantity * unit_price

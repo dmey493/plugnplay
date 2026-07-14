@@ -39,11 +39,13 @@ VARIANTS_PER_STEM = 20
 
 
 CONTEXTS = [
-    ("Class A scores", "Class B scores", "scores"),
-    ("Team 1 times", "Team 2 times", "times"),
-    ("Morning group", "Afternoon group", "results"),
-    ("Store A sales", "Store B sales", "sales"),
-    ("Diet A weights", "Diet B weights", "weights"),
+    # (label_a, label_b, topic, higher_is_better) -- the direction makes clear
+    # whether a higher or lower value counts as "better" for this metric.
+    ("Class A", "Class B", "test scores", True),
+    ("Runner A", "Runner B", "race times", False),
+    ("Store A", "Store B", "weekly sales", True),
+    ("Plant group A", "Plant group B", "plant heights", True),
+    ("Golfer A", "Golfer B", "golf scores", False),
 ]
 
 
@@ -114,7 +116,7 @@ class Stem7DSP3:
     # ----------------------------------------------------------------
     def _stem1(self, variant_idx):
         gen, rng = self._make_gen(1, variant_idx)
-        label_a, label_b, topic = rng.choice(CONTEXTS)
+        label_a, label_b, topic, _hib = rng.choice(CONTEXTS)
 
         overlap_type = rng.choice(["full", "partial", "none"])
         data_a, data_b = self._make_overlap_data(rng, gen, overlap_type)
@@ -170,7 +172,7 @@ class Stem7DSP3:
     # ----------------------------------------------------------------
     def _stem2(self, variant_idx):
         gen, rng = self._make_gen(2, variant_idx)
-        label_a, label_b, topic = rng.choice(CONTEXTS)
+        label_a, label_b, topic, _hib = rng.choice(CONTEXTS)
 
         data_a, data_b = self._make_overlap_data(rng, gen, "partial")
         fns_a = five_number_summary(data_a)
@@ -291,7 +293,7 @@ class Stem7DSP3:
     # ----------------------------------------------------------------
     def _stem4(self, variant_idx):
         gen, rng = self._make_gen(4, variant_idx)
-        label_a, label_b, topic = rng.choice(CONTEXTS)
+        label_a, label_b, topic, higher_better = rng.choice(CONTEXTS)
 
         overlap = rng.choice(["partial", "full"])
         data_a, data_b = self._make_overlap_data(rng, gen, overlap)
@@ -304,28 +306,34 @@ class Stem7DSP3:
         svg = box_plot_svg([fns_a, fns_b], [label_a, label_b],
                            x_min=all_min - 2, x_max=all_max + 2)
 
-        # Present a student claim
-        higher = label_a if med_a >= med_b else label_b
-        lower = label_b if higher == label_a else label_a
-        claim = f"{higher} always outperforms {lower} in {topic}."
+        # Which group is actually "better" depends on the metric's direction, so
+        # state that direction in the prompt (a race time is better when lower; a
+        # test score is better when higher). Basing "outperforms" purely on a higher
+        # median would be wrong for a lower-is-better metric like race times.
+        high_median = label_a if med_a >= med_b else label_b
+        low_median = label_b if high_median == label_a else label_a
+        better = high_median if higher_better else low_median
+        worse = low_median if higher_better else high_median
+        direction = "a higher value is better" if higher_better else "a lower value is better"
 
-        stem = (f"The box plots show {topic}. [FIGURE] "
+        claim = f"In {topic}, {better} always outperforms {worse}."
+        stem = (f"The box plots show {topic}, where {direction}. [FIGURE] "
                 f"A student says: \"{claim}\" "
                 f"Which response best evaluates this claim?")
 
         if overlap == "full":
-            correct = (f"The claim is not supported. Although {higher} may have a "
-                       f"higher median, the full overlap means many values in {lower} "
-                       f"exceed values in {higher}.")
+            correct = (f"The claim is not supported. Even though {better} has a better "
+                       f"median, the full overlap means many {worse} values outperform "
+                       f"{better} values, so 'always' is wrong.")
         else:
-            correct = (f"The claim is too strong. While {higher} has a higher median, "
-                       f"the partial overlap means some {lower} values are higher than "
-                       f"some {higher} values. 'Always' is not justified.")
+            correct = (f"The claim is too strong. {better} has a better median, but the "
+                       f"partial overlap means some {worse} values outperform some "
+                       f"{better} values. 'Always' is not justified.")
 
         wrong = [
-            f"The claim is correct because the median of {higher} is higher.",
+            f"The claim is correct because {better} has a better median.",
             f"The claim is correct because box plots show all individual values.",
-            f"Neither group performs better because they have overlap.",
+            f"Neither group is better because the box plots overlap.",
         ]
 
         all_choices = [(correct, True)] + [(w, False) for w in wrong]

@@ -447,20 +447,25 @@ class Stem7AF1:
 
         var = rng.choice(["x", "y"])
 
-        # Generate: a(bx + c + dx) where student must distribute a to all terms
-        # Use decimals for medium difficulty
-        a = gen.decimal_coefficient(1.0, 5.0)
-        while a == 0:
-            a = gen.decimal_coefficient(1.0, 5.0)
-        b = gen.decimal_coefficient(1.0, 9.0)
-        while b == 0:
-            b = gen.decimal_coefficient(1.0, 9.0)
-        c_val = gen.decimal_coefficient(-9.0, 9.0)
-        while c_val == 0:
-            c_val = gen.decimal_coefficient(-9.0, 9.0)
-        d = gen.decimal_coefficient(1.0, 5.0)
-        while d == 0:
-            d = gen.decimal_coefficient(1.0, 5.0)
+        # Generate: a(bx + c + dx) where student must distribute a to all terms.
+        # Use a simple fractional coefficient (denominator in the "nice" set) times
+        # integer inner terms so every distributed product stays a small, simple
+        # fraction — single/double-digit numerator and a simple denominator — instead
+        # of decimals that render as triple/quadruple-digit fractions like 3071/100x.
+        a = rng.choice([
+            Fraction(1, 2), Fraction(1, 3), Fraction(2, 3), Fraction(1, 4),
+            Fraction(3, 4), Fraction(1, 5), Fraction(1, 6), Fraction(5, 6),
+            Fraction(3, 2), Fraction(4, 3),
+        ]) * rng.choice([1, -1])
+        b = Fraction(rng.randint(1, 8))
+        c_val = Fraction(rng.choice([n for n in range(-9, 10) if n != 0]))
+        d = Fraction(rng.randint(1, 8))
+
+        # Format a fraction/integer value as an improper fraction (no decimals),
+        # matching how the distributed terms are displayed.
+        def fd(v):
+            v = Fraction(v)
+            return f"{v.numerator}/{v.denominator}" if v.denominator != 1 else str(v.numerator)
 
         # Correct steps:
         # Step 1: a(bx + c + dx)  (given)
@@ -474,10 +479,10 @@ class Stem7AF1:
         correct_const = ac
 
         # Format step 1
-        inner = _format_expression(Fraction(b), Fraction(0), var)
+        inner = _format_expression(b, Fraction(0), var)
         inner += _fmt_const(c_val)
         inner += _fmt_coeff(d, var)
-        step1 = f"{float(a):g}({inner})"
+        step1 = f"{fd(a)}({inner})"
 
         # Pick an error type
         error_type = rng.choice(["sign_error", "forgot_term", "wrong_combine"])
@@ -491,13 +496,12 @@ class Stem7AF1:
                 f"{_fmt_coeff(ad, var)}"
             )
             step3_correct_for_wrong = _format_expression(ab + ad, wrong_ac, var)
-            error_step = "Step 2"
-            error_desc = f"The sign of {float(ac):g} is wrong. {float(a):g} * ({float(c_val):g}) = {float(ac):g}, not {float(wrong_ac):g}."
-            # Steps for display
+            error_step = "Step 1"
+            error_desc = f"The sign of {fd(ac)} is wrong. {fd(a)} * ({fd(c_val)}) = {fd(ac)}, not {fd(wrong_ac)}."
+            # Two real steps: Step 1 = distribute (result line), Step 2 = combine like terms.
             steps = [
-                ("Step 1", step1, True),
-                ("Step 2", step2_wrong, False),  # ERROR here
-                ("Step 3", step3_correct_for_wrong, True),  # Consistent with wrong step 2
+                ("Step 1", step2_wrong, False),  # ERROR: distributing
+                ("Step 2", step3_correct_for_wrong, True),  # combine (consistent with wrong Step 1)
             ]
 
         elif error_type == "forgot_term":
@@ -508,12 +512,11 @@ class Stem7AF1:
                 f"{_fmt_coeff(ad, var)}"
             )
             wrong_combined = _format_expression(ab + ad, c_val, var)
-            error_step = "Step 2"
-            error_desc = f"The student forgot to multiply {float(c_val):g} by {float(a):g}. It should be {float(ac):g}."
+            error_step = "Step 1"
+            error_desc = f"The student forgot to multiply {fd(c_val)} by {fd(a)}. It should be {fd(ac)}."
             steps = [
-                ("Step 1", step1, True),
-                ("Step 2", step2_wrong, False),  # ERROR
-                ("Step 3", wrong_combined, True),
+                ("Step 1", step2_wrong, False),  # ERROR: distributing
+                ("Step 2", wrong_combined, True),  # combine
             ]
 
         else:  # wrong_combine
@@ -525,32 +528,31 @@ class Stem7AF1:
             )
             wrong_combined_coeff = ab - ad  # subtracted instead of added
             step3_wrong = _format_expression(wrong_combined_coeff, ac, var)
-            error_step = "Step 3"
+            error_step = "Step 2"
             error_desc = (
-                f"When combining {float(ab):g}{var} and {float(ad):g}{var}, "
-                f"the result should be {float(correct_combined_coeff):g}{var}, "
-                f"not {float(wrong_combined_coeff):g}{var}."
+                f"When combining {fd(ab)}{var} and {fd(ad)}{var}, "
+                f"the result should be {fd(correct_combined_coeff)}{var}, "
+                f"not {fd(wrong_combined_coeff)}{var}."
             )
             steps = [
-                ("Step 1", step1, True),
-                ("Step 2", step2_correct, True),
-                ("Step 3", step3_wrong, False),  # ERROR
+                ("Step 1", step2_correct, True),  # distribute (correct)
+                ("Step 2", step3_wrong, False),  # ERROR: combining
             ]
 
         # Build stem text showing student's work
         student_name = rng.choice(["Alex", "Jordan", "Morgan", "Taylor", "Riley", "Casey"])
         step_lines = "\n".join(f"  {label}: {expr}" for label, expr, _ in steps)
         stem_text = (
-            f"{student_name} simplified the expression below. Identify the step "
-            f"where the first error occurs.\n\n"
+            f"{student_name} simplified the expression below. Each step shows the "
+            f"result after one operation. Identify the step where the error occurs.\n\n"
             f"  Given: {step1}\n\n"
             f"{student_name}'s work:\n"
             f"{step_lines}"
         )
 
-        # Choices: Step 1, Step 2, Step 3, No error
+        # Choices: Step 1 (distribute), Step 2 (combine), or no error.
         correct_answer = error_step
-        all_options = ["Step 1", "Step 2", "Step 3", "There is no error"]
+        all_options = ["Step 1", "Step 2", "There is no error"]
         distractors = [opt for opt in all_options if opt != correct_answer]
 
         choices = shuffle_choices(correct_answer, correct_answer, distractors, rng)
