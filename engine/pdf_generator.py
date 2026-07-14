@@ -516,11 +516,14 @@ class MathPDF(FPDF):
                     elif trailing:
                         x += 1    # general gap from preceding text
                 w = self._draw_stacked_fraction(x, y_center, seg[1], seg[2], fs)
-                x += w + 0.6
-                # Gap before closing paren/bracket
-                if si + 1 < len(segments):
-                    nxt = segments[si + 1]
-                    if nxt[0] == 'text' and nxt[1].lstrip().startswith((')', ']')):
+                nxt = segments[si + 1] if si + 1 < len(segments) else None
+                # A fraction coefficient hugs its variable (e.g. 9/2y); otherwise
+                # leave a normal gap, plus extra before a closing paren/bracket.
+                if nxt and nxt[0] == 'text' and nxt[1].lstrip()[:1].isalpha():
+                    x += w + 0.15
+                else:
+                    x += w + 0.6
+                    if nxt and nxt[0] == 'text' and nxt[1].lstrip().startswith((')', ']')):
                         x += 0.4
             elif seg[0] == 'mixed':
                 # Whole number part
@@ -532,11 +535,12 @@ class MathPDF(FPDF):
                 x += ww + 1.0  # gap between whole number and fraction
                 # Fraction part
                 w = self._draw_stacked_fraction(x, y_center, seg[2], seg[3], fs)
-                x += w + 0.6
-                # Gap before a closing paren/bracket (snug, like a fraction)
-                if si + 1 < len(segments):
-                    nxt = segments[si + 1]
-                    if nxt[0] == 'text' and nxt[1].lstrip().startswith((')', ']')):
+                nxt = segments[si + 1] if si + 1 < len(segments) else None
+                if nxt and nxt[0] == 'text' and nxt[1].lstrip()[:1].isalpha():
+                    x += w + 0.15  # mixed-number coefficient hugs its variable
+                else:
+                    x += w + 0.6
+                    if nxt and nxt[0] == 'text' and nxt[1].lstrip().startswith((')', ']')):
                         x += 0.4
             prev_seg = seg
 
