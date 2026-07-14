@@ -1628,19 +1628,23 @@ def brick_with_holes_svg(l_val, w_val, h_val, n_holes, r_hole,
     d.append(draw.Rectangle(fx, fy, fw, fh,
                             fill=front_fill, stroke=stroke_c, stroke_width=2))
 
-    # Draw cylindrical holes on front face (evenly spaced)
+    # Draw cylindrical holes on the front face, laid out with equal gaps so the
+    # circles never overlap. If the true radius would collide, shrink the DRAWN
+    # radius (the labeled value still carries the real measurement). No dashed
+    # inner circle -- a single clean circle per hole.
     r_px = r_hole * scale
-    spacing = fw / (n_holes + 1)
+    min_gap = 7.0
+    max_r_px = (fw - (n_holes + 1) * min_gap) / (2 * n_holes)
+    if max_r_px > 3 and r_px > max_r_px:
+        r_px = max_r_px
+    gap = (fw - n_holes * 2 * r_px) / (n_holes + 1)
     hole_cy = fy + fh / 2  # vertically centered
+    hole_centers = []
     for i in range(n_holes):
-        hole_cx = fx + spacing * (i + 1)
-        # Hole circle (light fill to show it goes through)
+        hole_cx = fx + gap * (i + 1) + r_px * (2 * i + 1)
+        hole_centers.append(hole_cx)
         d.append(draw.Circle(hole_cx, hole_cy, r_px,
                              fill=hole_fill, stroke=hole_stroke, stroke_width=1.5))
-        # Dashed inner circle for depth effect
-        d.append(draw.Circle(hole_cx, hole_cy, r_px * 0.7,
-                             fill='none', stroke=hole_stroke, stroke_width=0.8,
-                             stroke_dasharray='3,2'))
 
     # Dimension labels
     label_c = '#1e40af'
@@ -1663,7 +1667,7 @@ def brick_with_holes_svg(l_val, w_val, h_val, n_holes, r_hole,
 
     # Hole radius label (on first hole)
     if n_holes > 0:
-        h1_cx = fx + spacing
+        h1_cx = hole_centers[0]
         # Radius line from center to edge
         d.append(draw.Line(h1_cx, hole_cy, h1_cx + r_px, hole_cy,
                            stroke='#dc2626', stroke_width=1.5,

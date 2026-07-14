@@ -826,6 +826,37 @@ class MathPDF(FPDF):
     # DATA TABLE RENDERING
     # ============================================================
 
+    def _draw_table_cell(self, cx, cy, cw, cell_h, text, fs):
+        """Draw one data-cell's text centered in its box.
+
+        A mixed number ("2 1/2") or simple fraction ("3/4") is rendered as a
+        real stacked fraction (numerator over denominator) instead of a slash;
+        anything else (integers, decimals) is drawn as plain centered text.
+        """
+        text = str(text)
+        mixed = re.fullmatch(r'\s*(-?\d+)\s+(\d+)/(\d+)\s*', text)
+        simple = re.fullmatch(r'\s*(-?\d+)/(\d+)\s*', text)
+        y_center = cy + cell_h / 2
+        if mixed:
+            whole, num, den = mixed.group(1), mixed.group(2), mixed.group(3)
+            self.set_font(self.ff, "", fs)
+            whole_w = self.get_string_width(whole + " ")
+            frac_w = self._measure_stacked_fraction(num, den, fs)
+            start_x = cx + (cw - (whole_w + frac_w)) / 2
+            self.set_xy(start_x, cy)
+            self.cell(whole_w, cell_h, whole + " ", align="L")
+            self._draw_stacked_fraction(start_x + whole_w, y_center, num, den, fs)
+            self.set_font(self.ff, "", fs)
+        elif simple:
+            num, den = simple.group(1), simple.group(2)
+            frac_w = self._measure_stacked_fraction(num, den, fs)
+            self._draw_stacked_fraction(cx + (cw - frac_w) / 2, y_center, num, den, fs)
+            self.set_font(self.ff, "", fs)
+        else:
+            self.set_font(self.ff, "", fs)
+            self.set_xy(cx, cy)
+            self.cell(cw, cell_h, text, align="C")
+
     def _draw_data_table(self, x, y, headers, rows, orientation="vertical",
                          compact=False, max_width=None):
         """Draw a bordered data table. Returns total height consumed.
@@ -880,8 +911,11 @@ class MathPDF(FPDF):
                         text = str(rows[c - 1][r])
                     cy = y + r * cell_h
                     self.rect(cx, cy, cw, cell_h)
-                    self.set_xy(cx, cy)
-                    self.cell(cw, cell_h, text, align="C")
+                    if c == 0:
+                        self.set_xy(cx, cy)
+                        self.cell(cw, cell_h, text, align="C")
+                    else:
+                        self._draw_table_cell(cx, cy, cw, cell_h, text, fs)
 
             total_h = n_rows * cell_h + 3
         else:
@@ -923,8 +957,7 @@ class MathPDF(FPDF):
                 cx = x
                 for i, cell in enumerate(row):
                     self.rect(cx, ry, col_widths[i], cell_h)
-                    self.set_xy(cx, ry)
-                    self.cell(col_widths[i], cell_h, str(cell), align="C")
+                    self._draw_table_cell(cx, ry, col_widths[i], cell_h, str(cell), fs)
                     cx += col_widths[i]
 
             total_h = (len(rows) + 1) * cell_h + 3
@@ -938,10 +971,12 @@ class MathPDF(FPDF):
 
     def _draw_coordinate_grid(self, x, y, x_range, y_range, points, lines,
                               grid_size=55, label_step=None,
-                              hide_labels=False):
+                              hide_labels=False, x_label=None, y_label=None):
         """Draw a coordinate grid with axes, grid lines, points, and lines.
 
-        Returns total height consumed.
+        x_label / y_label add axis titles (the x title is centered below the
+        grid; the y title is rotated up the left side). Returns total height
+        consumed.
         """
         x_min, x_max = x_range
         y_min, y_max = y_range
@@ -1060,13 +1095,30 @@ class MathPDF(FPDF):
                 self.set_xy(lx, ly)
                 self.cell(lw + 1, 3.2, pt["label"])
 
+        # Axis titles (for labeled grids that provide them).
+        if not hide_labels and (x_label or y_label):
+            self.set_font(self.ff, "", 8)
+            self.set_text_color(0, 0, 0)
+            if x_label:
+                lw = self.get_string_width(x_label)
+                self.set_xy(x + grid_size / 2 - lw / 2, y + grid_size + 5.5)
+                self.cell(lw, 3, x_label, align="C")
+            if y_label:
+                lw = self.get_string_width(y_label)
+                # Rotate 90 deg CCW around the text's own anchor so it reads
+                # bottom-to-top up the left side, vertically centered on the axis.
+                px = x - 9
+                py = y + grid_size / 2 + lw / 2
+                with self.rotation(angle=90, x=px, y=py):
+                    self.text(px, py, y_label)
+
         # Reset
         self.set_draw_color(0, 0, 0)
         self.set_fill_color(255, 255, 255)
         self.set_text_color(0, 0, 0)
         self.set_line_width(0.3)
         self.set_font(self.ff, "", FONT_SIZE_BODY)
-        return grid_size + 10
+        return grid_size + (16 if (x_label and not hide_labels) else 10)
 
     # ============================================================
     # SVG FIGURE RENDERING
@@ -1271,7 +1323,7 @@ class MathPDF(FPDF):
                         x_range=rd['x_range'], y_range=rd['y_range'],
                         points=rd.get('points', []), lines=rd.get('lines', []),
                         grid_size=grid_sz, label_step=rd.get('label_step'),
-                        hide_labels=rd.get('hide_labels', False))
+                        hide_labels=rd.get('hide_labels', False), x_label=rd.get('x_label'), y_label=rd.get('y_label'))
                     self.set_y(grid_y + h)
                 elif rd.get('type') in ('number_line', 'number_line_point', 'double_number_line'):
                     self.ln(_sp)
@@ -1501,7 +1553,7 @@ class MathPDF(FPDF):
                 lines=rd.get('lines', []),
                 grid_size=grid_sz,
                 label_step=rd.get('label_step'),
-                hide_labels=rd.get('hide_labels', False),
+                hide_labels=rd.get('hide_labels', False), x_label=rd.get('x_label'), y_label=rd.get('y_label'),
             )
             self.set_y(grid_y + h)
         elif rd.get('type') == 'number_line':
@@ -2946,7 +2998,7 @@ def generate_exit_ticket_pdf(question, output_path, standard_code="",
                 lines=rd.get('lines', []),
                 grid_size=grid_sz,
                 label_step=rd.get('label_step'),
-                hide_labels=rd.get('hide_labels', False),
+                hide_labels=rd.get('hide_labels', False), x_label=rd.get('x_label'), y_label=rd.get('y_label'),
             )
             cur_y += h
         elif rd.get('type') == 'rectangle_diagram' and remaining_h > 25:
@@ -3170,7 +3222,7 @@ def _write_column_question(pdf, question, num, col_x, col_w, start_y,
             lines=rd.get('lines', []),
             grid_size=grid_sz,
             label_step=rd.get('label_step'),
-            hide_labels=rd.get('hide_labels', False),
+            hide_labels=rd.get('hide_labels', False), x_label=rd.get('x_label'), y_label=rd.get('y_label'),
         )
         cur_y += h
     elif rd.get('tables'):

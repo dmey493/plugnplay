@@ -377,9 +377,11 @@ class Stem7GM3:
             w = rng.randint(6, 14)
             h = rng.randint(6, 12)
             n_holes = rng.choice([2, 3, 4])
-            # Radius must fit: diameter < height AND all holes fit across length
-            max_r_height = h // 2 - 1       # leave margin so circles don't touch edges
-            max_r_width = l // (2 * n_holes) # circles fit side by side
+            # Radius must fit: diameter < height AND all holes fit across the
+            # length with a gap between them (reserve n_holes+1 units for gaps so
+            # the circles never touch or overlap).
+            max_r_height = h // 2 - 1
+            max_r_width = (l - (n_holes + 1)) // (2 * n_holes)
             max_r = min(max_r_height, max_r_width, 3)
             r = rng.randint(1, max(1, max_r))
 

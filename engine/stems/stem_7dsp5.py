@@ -273,13 +273,19 @@ class Stem7DSP5:
         observed_target = observed[target_number]
         observed_freq = Fraction(observed_target, n_trials)
 
-        # Build observed frequency description
-        obs_desc = ", ".join(f"{s}: {observed[s]} times" for s in sides)
+        # Observed frequencies as a compact table (clearer than a long inline
+        # list that ran off the edge of the page).
+        freq_table = {
+            "type": "data_table",
+            "headers": ["Roll", "Frequency"],
+            "rows": [[str(s), str(observed[s])] for s in sides],
+            "orientation": "horizontal",
+        }
 
         partA_prompt = f"What is the theoretical probability of rolling a {target_number}?"
         partA_answer = _frac_str(theoretical_prob)
 
-        partB_prompt = (f"The observed results are: {obs_desc}. "
+        partB_prompt = (f"The observed results are shown in the table. "
                         f"The observed relative frequency of rolling a {target_number} "
                         f"is {observed_target}/{n_trials}. "
                         f"Is the observed frequency close to the theoretical probability? "
@@ -298,7 +304,7 @@ class Stem7DSP5:
                         f"Differences are due to random chance in a finite number of trials.")
 
         stem = (f"A student rolls a fair number cube (sides 1-6) {n_trials} times "
-                f"and records the results.\n\n"
+                f"and records the results in the table below.\n\n"
                 f"Part A: {partA_prompt}\n\n"
                 f"Part B: {partB_prompt}")
 
@@ -324,6 +330,7 @@ class Stem7DSP5:
             answer_latex=f"A: {partA_answer} B: {partB_answer}",
             worked_solution=f"P(theoretical) = {_frac_str(theoretical_prob)}. Observed = {observed_target}/{n_trials} = {_frac_str(observed_freq)}. Difference due to random variation.",
             parts=parts,
+            render_data=freq_table,
             seed=gen.seed, stem_index=4, variant_index=variant_idx,
         )
 

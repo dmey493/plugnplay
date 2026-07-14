@@ -41,6 +41,7 @@ from engine.distractor_engine import shuffle_choices
 from engine.context_pools import (
     CONTEXTS_7AF4_INEQUALITY, CONTEXTS_7AF4_INEQUALITY_SUB, pick_name
 )
+from engine.svg_helpers import rectangle_svg
 
 
 STANDARD_CODE = "7.AF.4"
@@ -840,6 +841,7 @@ class Stem7AF4:
             f"The length of a rectangular yard is {d} yards more than the width. "
             f"The yard has a fence around it. {op_word.title()} {max_perimeter} yards "
             f"of fence is needed to go around the entire perimeter.\n\n"
+            f"[FIGURE]\n\n"
             f"Part A: A student says the width could be {too_large} yards. "
             f"Is this reasonable? Explain.\n\n"
             f"Part B: Write an inequality to represent this problem.\n\n"
@@ -883,16 +885,10 @@ class Stem7AF4:
             f"  Perimeter = {valid_perim} {op_disp} {max_perimeter}. Valid."
         )
 
-        # Blank number line for students to graph the solution
-        circle_type = "open" if op in [">", "<"] else "closed"
-        nl_direction = "right" if op in [">", ">="] else "left"
-        nl_render = {
-            "type": "number_line",
-            "value": float(boundary),
-            "circle_type": circle_type,
-            "direction": nl_direction,
-            "blank": True,
-        }
+        # Labeled rectangle so students can see the width (w) and length (w + d)
+        # of the yard -- the horizontal (longer) side is the length.
+        rect_svg = rectangle_svg(w_val=1, h_val=1,
+                                 label_w=f"w + {d}", label_h="w")
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE, ItemType.MP,
                                Difficulty.EASY, 6, variant_idx)
@@ -913,7 +909,7 @@ class Stem7AF4:
             seed=self.base_seed * 1000 + 600 + variant_idx,
             stem_index=6,
             variant_index=variant_idx,
-            render_data=nl_render,
+            render_data={"svg_html": rect_svg, "type": "svg_html"},
         )
 
     # ================================================================

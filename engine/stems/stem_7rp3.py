@@ -605,14 +605,16 @@ class Stem7RP3:
             f"where {ctx['y_var']} = {ctx['y_name']} and {ctx['x_var']} = {ctx['x_name']}."
         )
 
-        # Blank 10x10 quadrant-1 grid for students to draw on
+        # Numbered, labeled blank grid (NOT hide_labels) so students have a scale
+        # to plot on: axes show the numbers 0-10 and the context's axis titles.
         blank_grid = {
             "type": "coordinate_grid",
             "x_range": [0, 10],
             "y_range": [0, 10],
             "points": [],
             "lines": [],
-            "hide_labels": True,
+            "x_label": ctx["x_label"],
+            "y_label": ctx["y_label"],
         }
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.AT, ItemType.MP,
