@@ -466,10 +466,76 @@ CONTEXTS_7AF3_PAREN = [
     },
 ]
 
+CONTEXTS_7AF3_SUB = [
+    # a - bx = c form: "starting amount, decreasing by b per unit, ends at c".
+    # Here {r} = starting amount, {p} = amount removed per unit, {q} = amount left.
+    {
+        "setup": "{name} has ${r} on a gift card and spends ${p} on each movie ticket. After buying {var} tickets, ${q} is left on the card.",
+        "question": "How many movie tickets did {name} buy?",
+        "equation_form": "{r} - {p}{var} = {q}",
+        "var_letter": "t",
+    },
+    {
+        "setup": "A water tank holds {r} liters and drains {p} liters each hour. After {var} hours, {q} liters remain.",
+        "question": "For how many hours did the tank drain?",
+        "equation_form": "{r} - {p}{var} = {q}",
+        "var_letter": "h",
+    },
+    {
+        "setup": "{name} begins a road trip with {r} miles left to drive and covers {p} miles each hour. After {var} hours, {q} miles remain.",
+        "question": "How many hours did {name} drive?",
+        "equation_form": "{r} - {p}{var} = {q}",
+        "var_letter": "h",
+    },
+    {
+        "setup": "{name} has ${r} in a checking account and pays ${p} for each monthly subscription. After paying for {var} subscriptions, ${q} remains.",
+        "question": "How many subscriptions did {name} pay for?",
+        "equation_form": "{r} - {p}{var} = {q}",
+        "var_letter": "s",
+    },
+    {
+        "setup": "A delivery van starts with {r} gallons of fuel and uses {p} gallons on each delivery. After {var} deliveries, {q} gallons remain.",
+        "question": "How many deliveries did the van make?",
+        "equation_form": "{r} - {p}{var} = {q}",
+        "var_letter": "d",
+    },
+]
+
 
 # ============================================================
 # CONTEXTS FOR 7.AF.4 — TWO-STEP INEQUALITIES
 # ============================================================
+
+# Subtraction inequalities of the form a - bx {op} c: a starting amount that
+# decreases by b per unit and must stay at/above a threshold. Isolating x from
+# -bx flips the inequality. {r} = starting amount (a), {p} = removed per unit
+# (b), {q} = threshold (c).
+CONTEXTS_7AF4_INEQUALITY_SUB = [
+    {
+        "setup": "{name} has ${r} on a gift card and spends ${p} on each arcade game. {name} wants to keep at least ${q} on the card.",
+        "question": "Write an inequality for {var}, the number of games {name} can play.",
+        "op": ">=",
+        "var_letter": "g",
+    },
+    {
+        "setup": "A truck starts a trip with {r} gallons of fuel and burns {p} gallons each hour. At least {q} gallons must remain for the return trip.",
+        "question": "Write an inequality for {var}, the number of hours the truck can drive.",
+        "op": ">=",
+        "var_letter": "h",
+    },
+    {
+        "setup": "{name} has {r} GB of data this month, and each movie streamed uses {p} GB. {name} wants more than {q} GB left to avoid slowdowns.",
+        "question": "Write an inequality for {var}, the number of movies {name} can stream.",
+        "op": ">",
+        "var_letter": "m",
+    },
+    {
+        "setup": "{name}'s phone is at {r} percent battery and drops {p} percent for each hour of video. {name} needs at least {q} percent remaining.",
+        "question": "Write an inequality for {var}, the number of hours {name} can watch.",
+        "op": ">=",
+        "var_letter": "h",
+    },
+]
 
 CONTEXTS_7AF4_INEQUALITY = [
     {

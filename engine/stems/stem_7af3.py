@@ -40,7 +40,7 @@ from engine.models import (
 from engine.number_generators import NumberGenerator
 from engine.distractor_engine import shuffle_choices
 from engine.context_pools import (
-    CONTEXTS_7AF3_PX_PLUS_Q, CONTEXTS_7AF3_PAREN, pick_name
+    CONTEXTS_7AF3_PX_PLUS_Q, CONTEXTS_7AF3_PAREN, CONTEXTS_7AF3_SUB, pick_name
 )
 
 
@@ -49,12 +49,15 @@ VARIANTS_PER_STEM = 20
 
 
 def _fmt_num(val: Fraction) -> str:
-    """Format a number for equation display (improper fractions, no mixed)."""
-    if val.denominator == 1:
-        return str(int(val))
-    if val < 0:
-        return f"-{abs(val).numerator}/{abs(val).denominator}"
-    return f"{val.numerator}/{val.denominator}"
+    """Format a number for equation display as a clean decimal.
+
+    7.AF.3 values are always integers or terminating decimals, so render them as
+    decimals (0.8, 19.6) rather than reduced improper fractions (4/5, 98/5).
+    """
+    f = float(val)
+    if f == int(f):
+        return str(int(f))
+    return f"{f:.4f}".rstrip("0").rstrip(".")
 
 
 def _fmt_money(val: Fraction) -> str:
@@ -441,11 +444,20 @@ class Stem7AF3:
         """
         gen, rng = self._make_gen(5, variant_idx)
 
-        ctx = rng.choice(CONTEXTS_7AF3_PX_PLUS_Q)
         name = pick_name(rng)
-        var = ctx["var_letter"]
 
-        p, q, r, x = gen.two_step_add_pair("medium")
+        # Half the variants use a subtraction scenario (a - bx = c) so the bank is
+        # not limited to addition (ax + b = c).
+        use_sub = (variant_idx % 2 == 1)
+        if use_sub:
+            # Build a - bx = c with an integer count x and a realistic per-unit
+            # amount, so "how many tickets/reports" always has a whole answer.
+            p = gen.decimal_1place(1.0, 9.0)      # amount removed per unit
+            x = gen.whole_number(3, 12)           # integer count
+            q = gen.decimal_1place(1.0, 20.0)     # amount remaining
+            r = q + p * x                         # starting amount
+        else:
+            p, q, r, x = gen.two_step_add_pair("medium")
 
         p_str = _fmt_num(p)
         q_str = _fmt_num(q)
@@ -457,11 +469,38 @@ class Stem7AF3:
         q_money = _fmt_money(q)
         r_money = _fmt_money(r)
 
-        setup_text = ctx["setup"].format(
-            name=name, p=p_money, q=q_money, r=r_money, var=var, q2=q_money
-        )
-
-        correct_eq = f"{p_str}{var} + {q_str} = {r_str}"
+        if use_sub:
+            ctx = rng.choice(CONTEXTS_7AF3_SUB)
+            var = ctx["var_letter"]
+            setup_text = ctx["setup"].format(
+                name=name, p=p_money, q=q_money, r=r_money, var=var
+            )
+            correct_eq = f"{r_str} - {p_str}{var} = {q_str}"
+            worked = (
+                f"Part A: {correct_eq}\n"
+                f"Part B:\n"
+                f"  {r_str} - {p_str}{var} = {q_str}\n"
+                f"  {r_str} - {q_str} = {p_str}{var}\n"
+                f"  {_fmt_num(r - q)} = {p_str}{var}\n"
+                f"  {var} = {_fmt_num(r - q)} / {p_str}\n"
+                f"  {var} = {x_str}"
+            )
+        else:
+            ctx = rng.choice(CONTEXTS_7AF3_PX_PLUS_Q)
+            var = ctx["var_letter"]
+            setup_text = ctx["setup"].format(
+                name=name, p=p_money, q=q_money, r=r_money, var=var, q2=q_money
+            )
+            correct_eq = f"{p_str}{var} + {q_str} = {r_str}"
+            worked = (
+                f"Part A: {correct_eq}\n"
+                f"Part B:\n"
+                f"  {p_str}{var} + {q_str} = {r_str}\n"
+                f"  {p_str}{var} = {r_str} - {q_str}\n"
+                f"  {p_str}{var} = {_fmt_num(r - q)}\n"
+                f"  {var} = {_fmt_num(r - q)} / {p_str}\n"
+                f"  {var} = {x_str}"
+            )
 
         stem_text = (
             f"{setup_text}\n\n"
@@ -484,17 +523,6 @@ class Stem7AF3:
             answer=f"{var} = {x_str}",
             answer_latex=f"{var} = {x_str}",
             item_type=ItemType.NR
-        )
-
-        step1_val = r - q
-        worked = (
-            f"Part A: {correct_eq}\n"
-            f"Part B:\n"
-            f"  {p_str}{var} + {q_str} = {r_str}\n"
-            f"  {p_str}{var} = {r_str} - {q_str}\n"
-            f"  {p_str}{var} = {_fmt_num(step1_val)}\n"
-            f"  {var} = {_fmt_num(step1_val)} / {p_str}\n"
-            f"  {var} = {x_str}"
         )
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.AT, ItemType.MP,

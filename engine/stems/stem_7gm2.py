@@ -281,7 +281,8 @@ class Stem7GM2:
         name = pick_name(rng)
 
         context_type = rng.choice([
-            "garden_fence", "pool_cover", "pizza", "wheel_distance", "sprinkler"
+            "garden_fence", "pool_cover", "pizza", "wheel_distance", "sprinkler",
+            "track_lap", "table_trim"
         ])
 
         if context_type == "garden_fence":
@@ -363,6 +364,46 @@ class Stem7GM2:
             )
             difficulty = Difficulty.MEDIUM
             svg = circle_svg(r, label_text=f"r = {r} ft", show_radius=True)
+
+        elif context_type == "track_lap":
+            # Circumference: distance around a circular track (one lap) -- a
+            # non-fencing real-world use of circumference.
+            r = rng.randint(10, 40)
+            circumference = round(PI * 2 * r, 2)
+            stem_text = (
+                f"A circular running track has a radius of {r} meters.\n\n"
+                f"How far does a runner travel in one lap around the track? "
+                f"Round to the nearest hundredth."
+            )
+            answer = f"{circumference}"
+            solution = f"C = 2πr = 2π({r}) = {circumference} meters"
+            difficulty = Difficulty.MEDIUM
+            svg = circle_svg(r, label_text=f"r = {r} m", show_radius=True)
+
+        elif context_type == "table_trim":
+            # Circumference: decorative trim around a circular tabletop -- another
+            # non-fencing real-world use of circumference.
+            r = rng.randint(2, 9)
+            d = 2 * r
+            circumference = round(PI * d, 2)
+            given_what = rng.choice(["radius", "diameter"])
+            if given_what == "radius":
+                given_val = r
+                given_str = f"radius of {r} feet"
+            else:
+                given_val = d
+                given_str = f"diameter of {d} feet"
+            stem_text = (
+                f"{name} is gluing decorative trim around the edge of a circular "
+                f"tabletop with a {given_str}.\n\n"
+                f"How many feet of trim does {name} need? Round to the nearest hundredth."
+            )
+            answer = f"{circumference}"
+            solution = f"C = πd = π({d}) = {circumference} feet"
+            difficulty = Difficulty.MEDIUM
+            svg = circle_svg(r, label_text=f"{given_what[0]} = {given_val} ft",
+                             show_radius=(given_what == "radius"),
+                             show_diameter=(given_what == "diameter"))
 
         else:  # sprinkler
             # Area: circular coverage

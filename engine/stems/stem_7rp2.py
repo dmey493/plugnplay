@@ -360,7 +360,19 @@ class Stem7RP2:
         tax = _round2(food_cost * Fraction(tax_rate, 100))
         total = food_cost + tip + tax
         total = _round2(total)
-        answer = _fmt_money(total)
+
+        # Vary what is asked: the full total, or just the tip, or just the tax --
+        # so the bank isn't limited to "find the total after tip and tax."
+        q_type = rng.choice(["total", "tip_only", "tax_only"])
+        if q_type == "tip_only":
+            answer = _fmt_money(tip)
+            question = "How much was the tip?"
+        elif q_type == "tax_only":
+            answer = _fmt_money(tax)
+            question = "How much was the sales tax?"
+        else:
+            answer = _fmt_money(total)
+            question = "What is the total cost of the meal?"
 
         family_sizes = [
             ("A family", "The family"),
@@ -374,7 +386,7 @@ class Stem7RP2:
             f"The food costs {_fmt_money(food_cost)}.\n"
             f"{who_ref} gave the server a {tip_rate}% tip before tax was applied.\n"
             f"There is a {tax_rate_str}% sales tax on the food only.\n\n"
-            f"What is the total cost of the meal?"
+            f"{question}"
         )
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.AT, ItemType.NR,
@@ -389,7 +401,7 @@ class Stem7RP2:
             worked_solution=(
                 f"Tip = {tip_rate}% of {_fmt_money(food_cost)} = {_fmt_money(tip)}\n"
                 f"Tax = {tax_rate_str}% of {_fmt_money(food_cost)} = {_fmt_money(tax)}\n"
-                f"Total = {_fmt_money(food_cost)} + {_fmt_money(tip)} + {_fmt_money(tax)} = {answer}"
+                f"Total = {_fmt_money(food_cost)} + {_fmt_money(tip)} + {_fmt_money(tax)} = {_fmt_money(total)}"
             ),
             context_scenario="meal with tip and tax",
             seed=self.base_seed * 1000 + 500 + variant_idx,
@@ -406,28 +418,74 @@ class Stem7RP2:
         gen, rng = self._make_gen(6, variant_idx)
         name = pick_name(rng)
 
-        # Start with a clean original price, compute the total
-        original_cents = rng.randint(10, 50) * 100 + rng.choice([0, 24, 50, 75, 99])
-        original = Fraction(original_cents, 100)
+        # Rotate through several above-proficiency percent problem types so the
+        # bank isn't limited to "work backwards from a total."
+        q_type = variant_idx % 3
 
-        tax_rate = rng.choice([5, 6, 7, 8, 9])
-        tip_rate = rng.choice([15, 18, 19, 20, 22])
+        if q_type == 0:
+            # Work backwards from a total meal cost to the original price.
+            original_cents = rng.randint(10, 50) * 100 + rng.choice([0, 24, 50, 75, 99])
+            original = Fraction(original_cents, 100)
+            tax_rate = rng.choice([5, 6, 7, 8, 9])
+            tip_rate = rng.choice([15, 18, 19, 20, 22])
+            multiplier = Fraction(1) + Fraction(tax_rate, 100) + Fraction(tip_rate, 100)
+            total = _round2(original * multiplier)
+            total_str = _fmt_money(total)
+            answer = _fmt_money(original)
+            stem_text = (
+                f"{name} buys a meal.\n\n"
+                f"A {tax_rate}% sales tax was applied to the original cost.\n"
+                f"{name} tips {tip_rate}% on the original cost.\n"
+                f"{name} pays a total of {total_str}.\n\n"
+                f"What was the original cost of the meal?"
+            )
+            worked = (
+                f"Total = original x (1 + {tax_rate}/100 + {tip_rate}/100)\n"
+                f"{total_str} = original x {_fmt(multiplier)}\n"
+                f"Original = {total_str} / {_fmt(multiplier)} = {answer}"
+            )
+            scenario = "work backwards from total"
 
-        # Total = original * (1 + tax/100 + tip/100)
-        multiplier = Fraction(1) + Fraction(tax_rate, 100) + Fraction(tip_rate, 100)
-        total = _round2(original * multiplier)
-        total_str = _fmt_money(total)
+        elif q_type == 1:
+            # Commission: total pay = base + commission% of sales; find the sales.
+            base = rng.choice([500, 800, 1000, 1200, 1500])
+            comm_rate = rng.choice([2, 3, 4, 5])
+            sales = rng.choice([10000, 15000, 20000, 25000, 40000, 50000])
+            total_pay = Fraction(base) + Fraction(comm_rate, 100) * sales
+            answer = _fmt_money(Fraction(sales))
+            stem_text = (
+                f"{name} earns a base pay of ${base} per month plus a "
+                f"{comm_rate}% commission on total sales.\n\n"
+                f"Last month {name} was paid {_fmt_money(total_pay)} in all.\n\n"
+                f"What were {name}'s total sales last month?"
+            )
+            worked = (
+                f"Total pay = base + {comm_rate}% of sales\n"
+                f"{_fmt_money(total_pay)} = ${base} + {comm_rate}/100 x sales\n"
+                f"{_fmt_money(total_pay - base)} = {comm_rate}/100 x sales\n"
+                f"sales = {_fmt_money(total_pay - base)} / ({comm_rate}/100) = {answer}"
+            )
+            scenario = "commission (find sales)"
 
-        # The answer is the original price
-        answer = _fmt_money(original)
-
-        stem_text = (
-            f"{name} buys a meal.\n\n"
-            f"A {tax_rate}% sales tax was applied to the original cost.\n"
-            f"{name} tips {tip_rate}% on the original cost.\n"
-            f"{name} pays a total of {total_str}.\n\n"
-            f"What was the original cost of the meal?"
-        )
+        else:
+            # Successive percent change: markup then discount; find the final price.
+            cost = rng.choice([40, 50, 60, 80, 100, 120])
+            markup = rng.choice([20, 25, 50])
+            discount = rng.choice([10, 20, 25])
+            marked = Fraction(cost) * (Fraction(1) + Fraction(markup, 100))
+            final = _round2(marked * (Fraction(1) - Fraction(discount, 100)))
+            answer = _fmt_money(final)
+            stem_text = (
+                f"A store buys a jacket for ${cost}.\n\n"
+                f"The store marks up the price by {markup}%.\n"
+                f"Later the jacket is put on sale for {discount}% off the marked-up price.\n\n"
+                f"What is the final sale price?"
+            )
+            worked = (
+                f"Marked-up price = ${cost} x (1 + {markup}/100) = {_fmt_money(marked)}\n"
+                f"Final price = {_fmt_money(marked)} x (1 - {discount}/100) = {answer}"
+            )
+            scenario = "successive markup and discount"
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE, ItemType.NR,
                                Difficulty.DIFFICULT, 6, variant_idx)
@@ -438,12 +496,8 @@ class Stem7RP2:
             difficulty=Difficulty.DIFFICULT, dok=3, item_type=ItemType.NR,
             stem_text=stem_text, stem_latex=stem_text,
             answer_text=answer, answer_latex=answer,
-            worked_solution=(
-                f"Total = original x (1 + {tax_rate}/100 + {tip_rate}/100)\n"
-                f"{total_str} = original x {_fmt(multiplier)}\n"
-                f"Original = {total_str} / {_fmt(multiplier)} = {answer}"
-            ),
-            context_scenario="work backwards from total",
+            worked_solution=worked,
+            context_scenario=scenario,
             seed=self.base_seed * 1000 + 600 + variant_idx,
             stem_index=6, variant_index=variant_idx
         )

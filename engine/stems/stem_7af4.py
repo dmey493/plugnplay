@@ -38,7 +38,9 @@ from engine.models import (
 )
 from engine.number_generators import NumberGenerator
 from engine.distractor_engine import shuffle_choices
-from engine.context_pools import CONTEXTS_7AF4_INEQUALITY, pick_name
+from engine.context_pools import (
+    CONTEXTS_7AF4_INEQUALITY, CONTEXTS_7AF4_INEQUALITY_SUB, pick_name
+)
 
 
 STANDARD_CODE = "7.AF.4"
@@ -657,31 +659,60 @@ class Stem7AF4:
         """
         gen, rng = self._make_gen(5, variant_idx)
 
-        ctx = rng.choice(CONTEXTS_7AF4_INEQUALITY)
         name = pick_name(rng)
-        var = ctx["var_letter"]
-        op = ctx["op"]
-        op_disp = OP_DISPLAY[op]
 
-        # Generate values with decimals for medium
-        p = gen.decimal_1place(1.0, 8.0)
-        q = gen.decimal_1place(1.0, 20.0)
-        # boundary should be clean
-        boundary = int(gen.whole_number(2, 15))
-        r = p * Fraction(boundary) + q
+        # Generate clean values with a whole-number boundary.
+        p = gen.decimal_1place(1.0, 8.0)          # per-unit amount
+        q = gen.decimal_1place(1.0, 20.0)         # flat / threshold amount
+        boundary = int(gen.whole_number(3, 15))
 
-        # Use decimal formatting for money contexts (setup contains "$")
-        fmt = _fmt_dec if "$" in ctx["setup"] else _fmt
-
-        p_str = fmt(p)
-        q_str = fmt(q)
-        r_str = fmt(r)
-
-        setup_text = ctx["setup"].format(
-            name=name, p=p_str, q=q_str, r=r_str, var=var
-        )
-
-        correct_ineq = f"{p_str}{var} + {q_str} {op_disp} {r_str}"
+        # Half the variants use a subtraction inequality (a - bx {op} c) so the
+        # bank isn't limited to addition (ax + b {op} c). Isolating x from -bx
+        # flips the inequality sign -- the key skill these variants add.
+        use_sub = (variant_idx % 2 == 1)
+        if use_sub:
+            ctx = rng.choice(CONTEXTS_7AF4_INEQUALITY_SUB)
+            var = ctx["var_letter"]
+            op = ctx["op"]
+            op_disp = OP_DISPLAY[op]
+            sol_op = OP_FLIP[op]                   # dividing by -b flips the sign
+            sol_disp = OP_DISPLAY[sol_op]
+            fmt = _fmt_dec if "$" in ctx["setup"] else _fmt_num
+            # a - b*boundary = c, so boundary is the exact critical value.
+            b, c = p, q
+            a = c + b * Fraction(boundary)
+            a_str, b_str, c_str = fmt(a), fmt(b), fmt(c)
+            setup_text = ctx["setup"].format(name=name, p=b_str, q=c_str, r=a_str, var=var)
+            correct_ineq = f"{a_str} - {b_str}{var} {op_disp} {c_str}"
+            sol_text = f"{var} {sol_disp} {boundary}"
+            worked = (
+                f"Part A: {correct_ineq}\n"
+                f"Part B:\n"
+                f"  {a_str} - {b_str}{var} {op_disp} {c_str}\n"
+                f"  -{b_str}{var} {op_disp} {fmt(c - a)}\n"
+                f"  {var} {sol_disp} {boundary}   (dividing by -{b_str} flips the inequality)"
+            )
+            nl_op = sol_op
+        else:
+            ctx = rng.choice(CONTEXTS_7AF4_INEQUALITY)
+            var = ctx["var_letter"]
+            op = ctx["op"]
+            op_disp = OP_DISPLAY[op]
+            fmt = _fmt_dec if "$" in ctx["setup"] else _fmt
+            r = p * Fraction(boundary) + q
+            p_str, q_str, r_str = fmt(p), fmt(q), fmt(r)
+            setup_text = ctx["setup"].format(name=name, p=p_str, q=q_str, r=r_str, var=var)
+            correct_ineq = f"{p_str}{var} + {q_str} {op_disp} {r_str}"
+            sol_text = f"{var} {op_disp} {boundary}"
+            worked = (
+                f"Part A: {correct_ineq}\n"
+                f"Part B:\n"
+                f"  {p_str}{var} + {q_str} {op_disp} {r_str}\n"
+                f"  {p_str}{var} {op_disp} {r_str} - {q_str}\n"
+                f"  {p_str}{var} {op_disp} {fmt(r - q)}\n"
+                f"  {var} {op_disp} {boundary}"
+            )
+            nl_op = op
 
         stem_text = (
             f"{setup_text}\n\n"
@@ -698,7 +729,6 @@ class Stem7AF4:
             item_type=ItemType.EQ
         )
 
-        sol_text = f"{var} {op_disp} {boundary}"
         part_b = QuestionPart(
             label="Part B",
             prompt="Solve the inequality and interpret.",
@@ -708,18 +738,10 @@ class Stem7AF4:
             item_type=ItemType.NR
         )
 
-        worked = (
-            f"Part A: {correct_ineq}\n"
-            f"Part B:\n"
-            f"  {p_str}{var} + {q_str} {op_disp} {r_str}\n"
-            f"  {p_str}{var} {op_disp} {r_str} - {q_str}\n"
-            f"  {p_str}{var} {op_disp} {fmt(r - q)}\n"
-            f"  {var} {op_disp} {boundary}"
-        )
-
-        # Blank number line for students to graph the solution
-        circle_type = "open" if op in [">", "<"] else "closed"
-        nl_direction = "right" if op in [">", ">="] else "left"
+        # Blank number line for students to graph the solution (uses the SOLVED
+        # inequality's direction, which is flipped for the subtraction form).
+        circle_type = "open" if nl_op in [">", "<"] else "closed"
+        nl_direction = "right" if nl_op in [">", ">="] else "left"
         nl_render = {
             "type": "number_line",
             "value": float(boundary),

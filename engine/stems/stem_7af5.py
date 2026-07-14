@@ -458,28 +458,35 @@ class Stem7AF5:
 
         name = pick_name(rng)
 
-        # Generate two segments with different slopes
-        rate1 = int(gen.small_whole(2, 10))
-        rate2 = int(gen.small_whole(2, 10))
-        while rate2 == rate1:
-            rate2 = int(gen.small_whole(2, 10))
+        # Half the variants are a single linear function (one constant rate) and
+        # half are piecewise (two different rates). The bank needs both so the
+        # "can this be modeled by a single linear function?" answer is sometimes
+        # yes -- previously every table was piecewise.
+        is_linear = (variant_idx % 2 == 0)
 
-        # Segment 1: x = 0,1,2 with slope rate1
-        # Segment 2: x = 2,3,4,5 with slope rate2
+        rate1 = int(gen.small_whole(2, 10))
         intercept = int(gen.whole_number(0, 20))
         breakpoint_x = rng.choice([2, 3])
 
-        points = []
-        y = Fraction(intercept)
-        for i in range(breakpoint_x + 1):
-            points.append((Fraction(i), y))
-            if i < breakpoint_x:
-                y += Fraction(rate1)
-
-        # Continue from breakpoint with rate2
-        for i in range(1, 4):
-            y += Fraction(rate2)
-            points.append((Fraction(breakpoint_x + i), y))
+        if is_linear:
+            # One constant rate across the whole table.
+            rate2 = rate1
+            points = [(Fraction(i), Fraction(intercept + rate1 * i))
+                      for i in range(breakpoint_x + 4)]
+        else:
+            # Two segments with different slopes (piecewise, not one linear fn).
+            rate2 = int(gen.small_whole(2, 10))
+            while rate2 == rate1:
+                rate2 = int(gen.small_whole(2, 10))
+            points = []
+            y = Fraction(intercept)
+            for i in range(breakpoint_x + 1):
+                points.append((Fraction(i), y))
+                if i < breakpoint_x:
+                    y += Fraction(rate1)
+            for i in range(1, 4):
+                y += Fraction(rate2)
+                points.append((Fraction(breakpoint_x + i), y))
 
         # Pick a context
         contexts = [
@@ -538,16 +545,37 @@ class Stem7AF5:
             answer_latex=f"{rate1_text} {ctx['rate_unit']}",
             item_type=ItemType.NR
         )
-        part_b = QuestionPart(
-            label="Part B",
-            prompt="Can this be modeled by a single linear function?",
-            prompt_latex="Can this be modeled by a single linear function?",
-            answer=(
+        if is_linear:
+            part_b_answer = (
+                f"Yes. The rate of change is constant at {rate1_text} {ctx['rate_unit']} "
+                f"across the whole table, so it can be modeled by a single linear function."
+            )
+            worked_b = (
+                f"Part B:\n"
+                f"  The rate of change is {rate1_text} {ctx['rate_unit']} for every step "
+                f"in the table.\n"
+                f"  Because the rate of change is constant, a single linear function "
+                f"models this data."
+            )
+        else:
+            part_b_answer = (
                 f"No. From {ctx['x_label']} 0 to {breakpoint_x}, the rate is {rate1_text} "
                 f"{ctx['rate_unit']}. From {ctx['x_label']} {breakpoint_x} to "
                 f"{breakpoint_x + 3}, the rate is {rate2_text} {ctx['rate_unit']}. "
                 f"Since the rates differ, it cannot be one linear function."
-            ),
+            )
+            worked_b = (
+                f"Part B:\n"
+                f"  Rate from 0 to {breakpoint_x}: {rate1_text} {ctx['rate_unit']}\n"
+                f"  Rate from {breakpoint_x} to {breakpoint_x + 3}: {rate2_text} {ctx['rate_unit']}\n"
+                f"  The rates are different, so a single linear function cannot model this data."
+            )
+
+        part_b = QuestionPart(
+            label="Part B",
+            prompt="Can this be modeled by a single linear function?",
+            prompt_latex="Can this be modeled by a single linear function?",
+            answer=part_b_answer,
             answer_latex="",
             item_type=ItemType.ER
         )
@@ -558,10 +586,7 @@ class Stem7AF5:
             f"  Change in {ctx['y_label']}: {_fmt(points[breakpoint_x][1])} - {_fmt(points[0][1])} = {rate1 * breakpoint_x}\n"
             f"  Change in {ctx['x_label']}: {breakpoint_x} - 0 = {breakpoint_x}\n"
             f"  Rate = {rate1 * breakpoint_x} / {breakpoint_x} = {rate1_text} {ctx['rate_unit']}\n\n"
-            f"Part B:\n"
-            f"  Rate from 0 to {breakpoint_x}: {rate1_text} {ctx['rate_unit']}\n"
-            f"  Rate from {breakpoint_x} to {breakpoint_x + 3}: {rate2_text} {ctx['rate_unit']}\n"
-            f"  The rates are different, so a single linear function cannot model this data."
+            f"{worked_b}"
         )
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE, ItemType.MP,
@@ -576,8 +601,8 @@ class Stem7AF5:
             item_type=ItemType.MP,
             stem_text=stem_text,
             stem_latex=stem_text,
-            answer_text=f"Part A: {rate1_text} {ctx['rate_unit']}; Part B: No, rates differ.",
-            answer_latex=f"Part A: {rate1_text} {ctx['rate_unit']}; Part B: No, rates differ.",
+            answer_text=f"Part A: {rate1_text} {ctx['rate_unit']}; Part B: {'Yes, constant rate.' if is_linear else 'No, rates differ.'}",
+            answer_latex=f"Part A: {rate1_text} {ctx['rate_unit']}; Part B: {'Yes, constant rate.' if is_linear else 'No, rates differ.'}",
             worked_solution=worked,
             parts=[part_a, part_b],
             render_data=table_render_data,
