@@ -423,15 +423,17 @@ class Stem7RP1:
             "rows": [[str(x), _fmt_money(y)] for x, y in zip(table_xs, table_ys)],
         }
 
+        # Use the "Part A:" / "Part B:" single-line format so the renderer places
+        # the MC choices right after Part A and draws a write-on answer line for
+        # Part B (its built-in behavior keys on the "Part B:" prefix).
         stem_text = (
             f"The cost of {item[0]} is proportional to its {item[5]}. "
             f"{item[0].capitalize()} costs {_fmt_money(total_price)} for {quantity} {item[1]}.\n\n"
             f"The table shows the relationship.\n\n"
-            f"Part A\n"
-            f"Identify the equation that represents the relationship between "
+            f"[FIGURE]\n\n"
+            f"Part A: Identify the equation that represents the relationship between "
             f"{item[2]} and {item[3]}.\n\n"
-            f"Part B\n"
-            f"What is the cost of {target_qty} {item[1]} of {item[0]}?"
+            f"Part B: What is the cost of {target_qty} {item[1]} of {item[0]}?"
         )
 
         part_a = QuestionPart(

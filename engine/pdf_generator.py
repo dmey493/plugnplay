@@ -1286,7 +1286,8 @@ class MathPDF(FPDF):
                         self.add_page()
                         fig_y = self.get_y()
                     h = self._render_svg_figure(x_body + 5, fig_y, rd['svg_html'],
-                                                max_width=90, max_height=80)
+                                                max_width=rd.get('fig_max_w', 90),
+                                                max_height=rd.get('fig_max_h', 80))
                     self.set_font(self.ff, "", FONT_SIZE_BODY)
                     self.set_y(fig_y + h + 2)
                 elif rd.get('type') == 'rectangle_diagram':
@@ -1650,7 +1651,8 @@ class MathPDF(FPDF):
                 fig_y = self.get_y()
             h = self._render_svg_figure(
                 x_body + 5, fig_y, rd['svg_html'],
-                max_width=90, max_height=80,
+                max_width=rd.get('fig_max_w', 90),
+                max_height=rd.get('fig_max_h', 80),
             )
             self.set_font(self.ff, "", FONT_SIZE_BODY)
             self.set_y(fig_y + h + 2)

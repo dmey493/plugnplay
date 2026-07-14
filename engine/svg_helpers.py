@@ -93,7 +93,7 @@ def circle_svg(radius_val, label_text="", show_radius=True, show_diameter=False,
     """
     d = draw.Drawing(width, height)
     cx, cy = width / 2, height / 2
-    r_px = min(width, height) / 2 - 30  # pixel radius
+    r_px = min(width, height) / 2 - 18  # pixel radius (tight margin -> less whitespace)
 
     # Circle
     d.append(draw.Circle(cx, cy, r_px,

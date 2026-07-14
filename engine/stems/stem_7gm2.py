@@ -209,7 +209,7 @@ class Stem7GM2:
             context_scenario=f"circle {what}",
             seed=self.base_seed * 1000 + 100 + variant_idx,
             stem_index=1, variant_index=variant_idx,
-            render_data={"svg_html": svg, "type": "svg_html"},
+            render_data={"svg_html": svg, "type": "svg_html", "fig_max_w": 55, "fig_max_h": 50},
         )
 
     # ================================================================
@@ -426,7 +426,7 @@ class Stem7GM2:
             solution = f"A = \u03c0r\u00b2 = \u03c0({r})\u00b2 = {_fmt_pi(area_pi)} = {area_dec} sq yd"
             svg = circle_svg(r, label_text=f"r = {r} yd", show_radius=True)
 
-        render = {"svg_html": svg, "type": "svg_html"}
+        render = {"svg_html": svg, "type": "svg_html", "fig_max_w": 55, "fig_max_h": 50}
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.AT, ItemType.NR,
                                difficulty, 3, variant_idx)
@@ -582,7 +582,7 @@ class Stem7GM2:
                              label_outer=f"R = {r_outer} in.",
                              label_inner=f"r = {r_inner} in.")
 
-        render = {"svg_html": svg, "type": "svg_html"}
+        render = {"svg_html": svg, "type": "svg_html", "fig_max_w": 55, "fig_max_h": 50}
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE, ItemType.MP,
                                Difficulty.EASY, 4, variant_idx)
