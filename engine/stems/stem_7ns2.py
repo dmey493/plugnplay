@@ -538,9 +538,14 @@ class Stem7NS2:
                 (f"The distance between a and b is |a - b|.", True),
                 (f"|a - b| = |b - a|", True),
                 (f"The distance is always positive.", True),
-                (f"a - b is always positive.", a > b),
-                (f"|a - b| = a + b", abs(a - b) == a + b),
-                (f"a - b = b - a", a == b),
+                # These are NOT universally true (the question asks for "always
+                # true"): a - b is only positive when a > b, and |a-b| = a+b /
+                # a-b = b-a hold only for specific values. Keep them as fixed
+                # distractors so the key never marks them correct on a
+                # coincidental a,b draw.
+                (f"a - b is always positive.", False),
+                (f"|a - b| = a + b", False),
+                (f"a - b = b - a", False),
             ]
             # Keep first 5 to have mix of true/false
             statements = all_statements[:5]

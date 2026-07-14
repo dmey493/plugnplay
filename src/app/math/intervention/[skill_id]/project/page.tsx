@@ -34,7 +34,10 @@ const PYTHON_PATH =
   "C:/Users/meyedl01/AppData/Local/Python/pythoncore-3.14-64/python.exe";
 
 async function loadAllSkills() {
-  const root = path.join(process.cwd(), "..", "Cooties", "data", "skills");
+  // Skills ship in the app at content/skills (the same files lib/skills.ts
+  // loads and the intervention pages link from). process.cwd() is the app
+  // root in dev and production, so this resolves on Cloud Run too.
+  const root = path.join(process.cwd(), "content", "skills");
   let entries: string[] = [];
   try {
     entries = await fs.readdir(root);
@@ -117,8 +120,8 @@ interface ResolvedItems {
  * printout and project the same problems on the board.
  */
 async function resolveItems(standard: string, skillId: string, session: 1 | 2): Promise<ResolvedItems | null> {
-  const scriptPath = path.join(process.cwd(), "..", "engine", "generate_skill_packet.py");
-  const projectRoot = path.join(process.cwd(), "..");
+  const scriptPath = path.join(process.cwd(), "engine", "generate_skill_packet.py");
+  const projectRoot = process.cwd();
   const payload = JSON.stringify({ standard, skill_id: skillId, session, mode: "items" });
   return new Promise<ResolvedItems | null>((resolve) => {
     const child = execFile(

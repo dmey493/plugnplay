@@ -220,6 +220,16 @@ class MathPDF(FPDF):
     @staticmethod
     def _parse_fractions(text: str) -> list:
         """Parse text into segments: ('text', str), ('fraction', n, d), ('mixed', w, n, d)."""
+        # Tighten stray spaces just inside parentheses/brackets so math like
+        # "( -3/2 )" lays out as "(-3/2)" instead of with gaps. Shared by the
+        # measurer and the writer, so wrapping stays in sync.
+        text = re.sub(r"([(\[])[ \t]+", r"\1", text)
+        text = re.sub(r"[ \t]+([)\]])", r"\1", text)
+        # Tighten a fraction coefficient onto its single-letter variable
+        # ("33/10 y" -> "33/10y") so it reads as a coefficient, not a fraction
+        # with a stray gap. Only a lone variable letter (word boundary) is
+        # affected, so words like "3/4 of" are left alone.
+        text = re.sub(r"(\d+[ \t]*/[ \t]*\d+)[ \t]+([a-z])(?![a-zA-Z])", r"\1\2", text)
         segments = []
         last_end = 0
         for m in FRAC_RE.finditer(text):
@@ -361,24 +371,28 @@ class MathPDF(FPDF):
                     x += self.get_string_width(piece)
             elif seg[0] == 'neg':
                 self.set_font(self.ff, "B", fs * 1.2)
-                x += 1 + self.get_string_width("-") + 0.5
+                x += 0.5 + self.get_string_width("-") + 1.0
                 self.set_font(self.ff, font_style, fs)
             elif seg[0] == 'fraction':
                 if prev_seg and prev_seg[0] == 'text':
                     trailing = prev_seg[1].rstrip()
                     if trailing.endswith(('(', '[')):
-                        x += 2.5
+                        x += 0.8
                     elif trailing:
                         x += 1
-                x += self._measure_stacked_fraction(seg[1], seg[2], fs) + 1
+                x += self._measure_stacked_fraction(seg[1], seg[2], fs) + 0.6
                 if si + 1 < len(segments):
                     nxt = segments[si + 1]
                     if nxt[0] == 'text' and nxt[1].lstrip().startswith((')', ']')):
-                        x += 2
+                        x += 0.4
             elif seg[0] == 'mixed':
                 self.set_font(self.ff, font_style, fs)
-                x += self.get_string_width(seg[1]) + 1.5
-                x += self._measure_stacked_fraction(seg[2], seg[3], fs) + 1
+                x += self.get_string_width(seg[1]) + 1.0
+                x += self._measure_stacked_fraction(seg[2], seg[3], fs) + 0.6
+                if si + 1 < len(segments):
+                    nxt = segments[si + 1]
+                    if nxt[0] == 'text' and nxt[1].lstrip().startswith((')', ']')):
+                        x += 0.4
             prev_seg = seg
         self.set_font(self.ff, font_style, fs)
         return x
@@ -470,27 +484,27 @@ class MathPDF(FPDF):
                 neg_fs = fs * 1.2
                 self.set_font(self.ff, "B", neg_fs)
                 neg_w = self.get_string_width("-")
-                x += 1
+                x += 0.5  # small gap before the minus (keep it near an open paren)
                 neg_cell_h = 4
                 self.set_xy(x, y_center - neg_cell_h / 2)
                 self.cell(neg_w, neg_cell_h, "-")
-                x += neg_w + 0.5
+                x += neg_w + 1.0  # more breathing room between the sign and the fraction
                 self.set_font(self.ff, font_style, fs)
             elif seg[0] == 'fraction':
                 # Gap before fraction so it isn't cramped against text
                 if prev_seg and prev_seg[0] == 'text':
                     trailing = prev_seg[1].rstrip()
                     if trailing.endswith(('(', '[')):
-                        x += 2.5  # wider gap after opening paren
+                        x += 0.8  # snug gap after an opening paren
                     elif trailing:
                         x += 1    # general gap from preceding text
                 w = self._draw_stacked_fraction(x, y_center, seg[1], seg[2], fs)
-                x += w + 1
+                x += w + 0.6
                 # Gap before closing paren/bracket
                 if si + 1 < len(segments):
                     nxt = segments[si + 1]
                     if nxt[0] == 'text' and nxt[1].lstrip().startswith((')', ']')):
-                        x += 2
+                        x += 0.4
             elif seg[0] == 'mixed':
                 # Whole number part
                 self.set_font(self.ff, font_style, fs)
@@ -498,10 +512,15 @@ class MathPDF(FPDF):
                 ww = self.get_string_width(ws)
                 self.set_xy(x, y + (lh - LINE_HEIGHT) / 2)
                 self.cell(ww, LINE_HEIGHT, ws)
-                x += ww + 1.5  # gap between whole number and fraction
+                x += ww + 1.0  # gap between whole number and fraction
                 # Fraction part
                 w = self._draw_stacked_fraction(x, y_center, seg[2], seg[3], fs)
-                x += w + 1
+                x += w + 0.6
+                # Gap before a closing paren/bracket (snug, like a fraction)
+                if si + 1 < len(segments):
+                    nxt = segments[si + 1]
+                    if nxt[0] == 'text' and nxt[1].lstrip().startswith((')', ']')):
+                        x += 0.4
             prev_seg = seg
 
         self.set_font(self.ff, font_style, fs)

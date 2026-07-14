@@ -89,13 +89,20 @@ class Stem7DSP3:
             data_a = sorted([center + rng.randint(-spread, spread) for _ in range(n)])
             data_b = sorted([center + rng.randint(-spread, spread) for _ in range(n)])
         elif overlap_type == "partial":
-            # Overlapping but shifted ranges
-            center_a = rng.randint(15, 25)
-            center_b = center_a + rng.randint(8, 15)
-            spread = rng.randint(5, 8)
+            # Overlapping but shifted ranges. Keep the shift below the combined
+            # spread so the whisker ranges genuinely overlap (otherwise the box
+            # plots look separate and a "partial overlap" key is wrong), but
+            # large enough that the medians are clearly different.
+            spread = rng.randint(6, 9)
             n = rng.randint(6, 10)
+            center_a = rng.randint(15, 22)
+            center_b = center_a + rng.randint(spread, 2 * spread - 2)
             data_a = sorted([center_a + rng.randint(-spread, spread) for _ in range(n)])
             data_b = sorted([center_b + rng.randint(-spread, spread) for _ in range(n)])
+            # Guarantee the ranges actually overlap even on an unlucky draw.
+            if max(data_a) < min(data_b):
+                data_a[-1] = min(data_b) + rng.randint(1, spread)
+                data_a.sort()
         else:  # none
             n = rng.randint(5, 8)
             data_a = sorted([rng.randint(5, 15) for _ in range(n)])

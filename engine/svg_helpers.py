@@ -524,14 +524,14 @@ def scale_pair_svg(actual_sides, drawing_sides, shape_type="rectangle",
                                 fill='#e8f4fd', stroke='#2563eb', stroke_width=2))
 
         la = (dim_labels_a[0] if dim_labels_a else f"{actual_sides[0]}") + (f" {unit_a}" if unit_a else "")
-        d.append(draw.Text(la, 11, ax + aw / 2, ay + ah + 15,
+        d.append(draw.Text(la, 15, ax + aw / 2, ay + ah + 15,
                            text_anchor='middle', fill='#1e40af', font_weight='bold'))
         lb = (dim_labels_a[1] if dim_labels_a else f"{actual_sides[1]}") + (f" {unit_a}" if unit_a else "")
-        d.append(draw.Text(lb, 11, ax - 8, ay + ah / 2,
+        d.append(draw.Text(lb, 15, ax - 8, ay + ah / 2,
                            text_anchor='end', fill='#1e40af', font_weight='bold',
                            dominant_baseline='middle'))
 
-        d.append(draw.Text(label_a, 12, half_w / 2, height - 8,
+        d.append(draw.Text(label_a, 16, half_w / 2, height - 8,
                            text_anchor='middle', fill='#6b7280', font_weight='bold'))
 
         # Figure B (right side)
@@ -546,14 +546,14 @@ def scale_pair_svg(actual_sides, drawing_sides, shape_type="rectangle",
                                 fill='#fef3c7', stroke='#d97706', stroke_width=2))
 
         la2 = (dim_labels_b[0] if dim_labels_b else f"{drawing_sides[0]}") + (f" {unit_b}" if unit_b else "")
-        d.append(draw.Text(la2, 11, bx + bw / 2, by + bh + 15,
+        d.append(draw.Text(la2, 15, bx + bw / 2, by + bh + 15,
                            text_anchor='middle', fill='#92400e', font_weight='bold'))
         lb2 = (dim_labels_b[1] if dim_labels_b else f"{drawing_sides[1]}") + (f" {unit_b}" if unit_b else "")
-        d.append(draw.Text(lb2, 11, bx - 8, by + bh / 2,
+        d.append(draw.Text(lb2, 15, bx - 8, by + bh / 2,
                            text_anchor='end', fill='#92400e', font_weight='bold',
                            dominant_baseline='middle'))
 
-        d.append(draw.Text(label_b, 12, half_w + half_w / 2, height - 8,
+        d.append(draw.Text(label_b, 16, half_w + half_w / 2, height - 8,
                            text_anchor='middle', fill='#6b7280', font_weight='bold'))
 
     elif shape_type == "triangle":
@@ -580,15 +580,15 @@ def scale_pair_svg(actual_sides, drawing_sides, shape_type="rectangle",
             u = unit_a if i == 0 else unit_b
             dlabels = dim_labels_a if i == 0 else dim_labels_b
             bl_str = (dlabels[0] if dlabels else f"{sides[0]}") + (f" {u}" if u else "")
-            d.append(draw.Text(bl_str, 11, cx_t, bot_y + 15,
+            d.append(draw.Text(bl_str, 15, cx_t, bot_y + 15,
                                text_anchor='middle', fill=txt_c, font_weight='bold'))
 
             hl_str = (dlabels[1] if dlabels else f"{sides[1]}") + (f" {u}" if u else "")
-            d.append(draw.Text(hl_str, 11, p3[0] - 15, (p3[1] + p1[1]) / 2,
+            d.append(draw.Text(hl_str, 15, p3[0] - 15, (p3[1] + p1[1]) / 2,
                                text_anchor='end', fill=txt_c, font_weight='bold',
                                dominant_baseline='middle'))
 
-            d.append(draw.Text(lbl, 12, x_off + half_w / 2, height - 5,
+            d.append(draw.Text(lbl, 16, x_off + half_w / 2, height - 5,
                                text_anchor='middle', fill='#6b7280', font_weight='bold'))
 
     return d.as_svg()
@@ -650,27 +650,27 @@ def coord_grid_polygon_svg(x_range, y_range, preimage=None, image=None,
             continue
         px, py0 = to_px(x, 0)
         ref_py = py0 if y_min <= 0 <= y_max else margin + gh
-        d.append(draw.Text(str(x), 10, px, ref_py + 14,
+        d.append(draw.Text(str(x), 15, px, ref_py + 14,
                            text_anchor='middle', fill='#6b7280'))
     for y in range(y_min, y_max + 1, step):
         if y == 0:
             continue
         px0, py = to_px(0, y)
         ref_px = px0 if x_min <= 0 <= x_max else margin
-        d.append(draw.Text(str(y), 10, ref_px - 8, py + 4,
+        d.append(draw.Text(str(y), 15, ref_px - 8, py + 4,
                            text_anchor='end', fill='#6b7280'))
 
     # Axis names
-    d.append(draw.Text('x', 13, margin + gw + 8, (margin + gh + 14) if y_min <= 0 <= y_max else margin + gh + 14,
+    d.append(draw.Text('x', 16, margin + gw + 8, (margin + gh + 14) if y_min <= 0 <= y_max else margin + gh + 14,
                        fill='#374151', font_weight='bold'))
     _, y_ax_top = to_px(0, y_max)
-    d.append(draw.Text('y', 13, (margin + (0 - x_min) / (x_max - x_min) * gw - 14) if x_min <= 0 <= x_max else margin - 14,
+    d.append(draw.Text('y', 16, (margin + (0 - x_min) / (x_max - x_min) * gw - 14) if x_min <= 0 <= x_max else margin - 14,
                        margin - 8, fill='#374151', font_weight='bold'))
 
     # Origin label
     if x_min <= 0 <= x_max and y_min <= 0 <= y_max:
         opx, opy = to_px(0, 0)
-        d.append(draw.Text('O', 10, opx - 10, opy + 14, fill='#6b7280'))
+        d.append(draw.Text('O', 15, opx - 10, opy + 14, fill='#6b7280'))
 
     vertex_labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
@@ -693,7 +693,7 @@ def coord_grid_polygon_svg(x_range, y_range, preimage=None, image=None,
             ox = 8 if vx >= 0 else -8
             oy = -8 if vy >= 0 else 12
             anchor = 'start' if vx >= 0 else 'end'
-            d.append(draw.Text(lbl, 11, px + ox, py + oy,
+            d.append(draw.Text(lbl, 15, px + ox, py + oy,
                                text_anchor=anchor, fill=color, font_weight='bold'))
 
     draw_polygon(preimage, pre_color, pre_label)
@@ -759,7 +759,7 @@ def dot_plot_svg(data, x_label="Value", x_min=None, x_max=None,
             lbl = str(int(v))
         else:
             lbl = str(v)
-        d.append(draw.Text(lbl, 10, px, baseline_y + 16,
+        d.append(draw.Text(lbl, 15, px, baseline_y + 16,
                            text_anchor='middle', fill='#374151'))
         v += step
 
@@ -772,12 +772,12 @@ def dot_plot_svg(data, x_label="Value", x_min=None, x_max=None,
                                  fill='#3b82f6', stroke='#1e40af', stroke_width=1))
 
     # X-axis label
-    d.append(draw.Text(x_label, 11, margin_l + gw / 2, height - 4,
+    d.append(draw.Text(x_label, 15, margin_l + gw / 2, height - 4,
                        text_anchor='middle', fill='#374151', font_weight='bold'))
 
     # Title
     if title:
-        d.append(draw.Text(title, 12, width / 2, 14,
+        d.append(draw.Text(title, 16, width / 2, 14,
                            text_anchor='middle', fill='#1f2937', font_weight='bold'))
 
     return d.as_svg()
@@ -817,7 +817,7 @@ def histogram_svg(bins, frequencies, x_label="Value", y_label="Frequency",
         py = margin_top + gh - (y_val / max_freq) * gh
         d.append(draw.Line(margin_l - 4, py, margin_l, py,
                            stroke='#374151', stroke_width=1))
-        d.append(draw.Text(str(y_val), 10, margin_l - 8, py + 4,
+        d.append(draw.Text(str(y_val), 15, margin_l - 8, py + 4,
                            text_anchor='end', fill='#374151'))
         if y_val == 0 and y_step == 0:
             break
@@ -832,25 +832,25 @@ def histogram_svg(bins, frequencies, x_label="Value", y_label="Frequency",
                                 fill='#93c5fd', stroke='#2563eb', stroke_width=1.5))
         # Frequency label on top of bar
         if freq > 0:
-            d.append(draw.Text(str(freq), 10, bx + bar_w / 2, by - 4,
+            d.append(draw.Text(str(freq), 15, bx + bar_w / 2, by - 4,
                                text_anchor='middle', fill='#1e40af', font_weight='bold'))
 
     # Bin edge labels
     for i, edge in enumerate(bins):
         px = margin_l + i * bar_w
         lbl = str(int(edge)) if isinstance(edge, float) and edge == int(edge) else str(edge)
-        d.append(draw.Text(lbl, 10, px, margin_top + gh + 14,
+        d.append(draw.Text(lbl, 15, px, margin_top + gh + 14,
                            text_anchor='middle', fill='#374151'))
 
     # Axis labels
-    d.append(draw.Text(x_label, 11, margin_l + gw / 2, height - 4,
+    d.append(draw.Text(x_label, 15, margin_l + gw / 2, height - 4,
                        text_anchor='middle', fill='#374151', font_weight='bold'))
-    d.append(draw.Text(y_label, 11, 10, margin_top + gh / 2,
+    d.append(draw.Text(y_label, 15, 10, margin_top + gh / 2,
                        text_anchor='middle', fill='#374151', font_weight='bold',
                        transform=f'rotate(-90,10,{margin_top + gh / 2})'))
 
     if title:
-        d.append(draw.Text(title, 12, width / 2, 14,
+        d.append(draw.Text(title, 16, width / 2, 14,
                            text_anchor='middle', fill='#1f2937', font_weight='bold'))
 
     return d.as_svg()
@@ -919,7 +919,7 @@ def box_plot_svg(summaries, labels=None, x_min=None, x_max=None,
         d.append(draw.Line(px, axis_y, px, axis_y + 5,
                            stroke='#374151', stroke_width=1))
         lbl = str(int(tick_val)) if tick_val == int(tick_val) else f"{tick_val:.1f}"
-        d.append(draw.Text(lbl, 10, px, axis_y + 16,
+        d.append(draw.Text(lbl, 15, px, axis_y + 16,
                            text_anchor='middle', fill='#374151'))
         tick_val += step
 
@@ -958,15 +958,15 @@ def box_plot_svg(summaries, labels=None, x_min=None, x_max=None,
         # Label
         if n_plots == 1:
             # Single box plot: label centered below the axis
-            d.append(draw.Text(label, 10, margin_l + gw / 2, axis_y + 30,
+            d.append(draw.Text(label, 15, margin_l + gw / 2, axis_y + 30,
                                text_anchor='middle', fill='#374151', font_weight='bold'))
         else:
             # Multiple plots: label on the left to identify each dataset
-            d.append(draw.Text(label, 10, margin_l - 5, cy + 4,
+            d.append(draw.Text(label, 15, margin_l - 5, cy + 4,
                                text_anchor='end', fill='#374151', font_weight='bold'))
 
     if title:
-        d.append(draw.Text(title, 12, width / 2, 14,
+        d.append(draw.Text(title, 16, width / 2, 14,
                            text_anchor='middle', fill='#1f2937', font_weight='bold'))
 
     return d.as_svg()
@@ -1068,7 +1068,7 @@ def scatter_plot_svg(points, x_label="x", y_label="y", line_eq=None,
     while gx <= x_hi:
         px, _ = to_px(gx, 0)
         lbl = str(int(gx)) if gx == int(gx) else f"{gx:.1f}"
-        d.append(draw.Text(lbl, 9, px, margin_top + gh + 14,
+        d.append(draw.Text(lbl, 15, px, margin_top + gh + 14,
                            text_anchor='middle', fill='#6b7280'))
         gx += x_step
 
@@ -1076,7 +1076,7 @@ def scatter_plot_svg(points, x_label="x", y_label="y", line_eq=None,
     while gy <= y_hi:
         _, py = to_px(0, gy)
         lbl = str(int(gy)) if gy == int(gy) else f"{gy:.1f}"
-        d.append(draw.Text(lbl, 9, margin_l - 6, py + 3,
+        d.append(draw.Text(lbl, 15, margin_l - 6, py + 3,
                            text_anchor='end', fill='#6b7280'))
         gy += y_step
 
@@ -1130,19 +1130,19 @@ def scatter_plot_svg(points, x_label="x", y_label="y", line_eq=None,
                              fill='#3b82f6', stroke='#1e40af', stroke_width=1))
 
     # Axis labels
-    d.append(draw.Text(x_label, 11, margin_l + gw / 2, height - 4,
+    d.append(draw.Text(x_label, 15, margin_l + gw / 2, height - 4,
                        text_anchor='middle', fill='#374151', font_weight='bold'))
     # Y-axis label: rotated -90 so it reads bottom-to-top (Western convention
     # for vertical axis titles). Positioned at x=14 — just inside the widened
     # left margin and clear of the tick numbers.
     y_label_cx = 14
     y_label_cy = margin_top + gh / 2
-    d.append(draw.Text(y_label, 11, y_label_cx, y_label_cy,
+    d.append(draw.Text(y_label, 15, y_label_cx, y_label_cy,
                        text_anchor='middle', fill='#374151', font_weight='bold',
                        transform=f'rotate(-90,{y_label_cx},{y_label_cy})'))
 
     if title:
-        d.append(draw.Text(title, 12, width / 2, 14,
+        d.append(draw.Text(title, 16, width / 2, 14,
                            text_anchor='middle', fill='#1f2937', font_weight='bold'))
 
     return d.as_svg()
@@ -1222,7 +1222,7 @@ def proportional_graph_svg(points, x_label="x", y_label="y",
     while gx <= ax_max:
         px, _ = to_px(gx, 0)
         lbl = str(int(gx)) if gx == int(gx) else f"{gx:.1f}"
-        d.append(draw.Text(lbl, 9, px, oy + 14,
+        d.append(draw.Text(lbl, 15, px, oy + 14,
                            text_anchor='middle', fill='#6b7280'))
         gx += x_step
 
@@ -1231,12 +1231,12 @@ def proportional_graph_svg(points, x_label="x", y_label="y",
     while gy <= ay_max:
         _, py = to_px(0, gy)
         lbl = str(int(gy)) if gy == int(gy) else f"{gy:.1f}"
-        d.append(draw.Text(lbl, 9, ox - 8, py + 3,
+        d.append(draw.Text(lbl, 15, ox - 8, py + 3,
                            text_anchor='end', fill='#6b7280'))
         gy += y_step
 
     # Origin label
-    d.append(draw.Text("0", 9, ox - 8, oy + 14,
+    d.append(draw.Text("0", 15, ox - 8, oy + 14,
                        text_anchor='end', fill='#6b7280'))
 
     # Proportional line through origin (solid)
@@ -1273,7 +1273,7 @@ def proportional_graph_svg(points, x_label="x", y_label="y",
                        transform=f'rotate(-90,6,{margin_top + gh / 2})'))
 
     if title:
-        d.append(draw.Text(title, 12, width / 2, 14,
+        d.append(draw.Text(title, 16, width / 2, 14,
                            text_anchor='middle', fill='#1f2937', font_weight='bold'))
 
     return d.as_svg()
@@ -1828,10 +1828,10 @@ def qualitative_graph_svg(segments, x_label="Time", y_label="Value",
                        stroke='#374151', stroke_width=2))
 
     # Axis labels
-    d.append(draw.Text(x_label, 12, origin_px + plot_w / 2, height - 8,
+    d.append(draw.Text(x_label, 16, origin_px + plot_w / 2, height - 8,
                        text_anchor='middle', fill='#374151'))
     # Y-label rotated
-    d.append(draw.Text(y_label, 12, 12, margin_t + plot_h / 2,
+    d.append(draw.Text(y_label, 16, 12, margin_t + plot_h / 2,
                        text_anchor='middle', fill='#374151',
                        transform=f'rotate(-90, 12, {margin_t + plot_h / 2})'))
 
@@ -1859,7 +1859,7 @@ def qualitative_graph_svg(segments, x_label="Time", y_label="Value",
             px, _ = to_px(xv, y_lo)
             d.append(draw.Line(px, origin_py - 3, px, origin_py + 3,
                                stroke='#374151', stroke_width=1))
-            d.append(draw.Text(str(xv), 10, px, origin_py + 16,
+            d.append(draw.Text(str(xv), 15, px, origin_py + 16,
                                text_anchor='middle', fill='#6b7280'))
 
         y_int_lo = math.ceil(y_lo)
@@ -1868,7 +1868,7 @@ def qualitative_graph_svg(segments, x_label="Time", y_label="Value",
             _, py = to_px(x_lo, yv)
             d.append(draw.Line(origin_px - 3, py, origin_px + 3, py,
                                stroke='#374151', stroke_width=1))
-            d.append(draw.Text(str(yv), 10, origin_px - 8, py + 4,
+            d.append(draw.Text(str(yv), 15, origin_px - 8, py + 4,
                                text_anchor='end', fill='#6b7280'))
 
     # Draw each segment
