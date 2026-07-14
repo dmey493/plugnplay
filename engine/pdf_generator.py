@@ -965,7 +965,7 @@ class MathPDF(FPDF):
 
         # Tick labels (skip when hide_labels is set for blank grids)
         if not hide_labels:
-            self.set_font(self.ff, "", 6)
+            self.set_font(self.ff, "", 8)  # readable axis numbers when printed
             # Auto-compute label_step if not provided: show at most ~10 labels
             if label_step is None:
                 label_step = max(1, (x_span + 1) // 10)
@@ -1011,7 +1011,15 @@ class MathPDF(FPDF):
                 self.line(to_pdf_x(cx1), to_pdf_y(cy1),
                           to_pdf_x(cx2), to_pdf_y(cy2))
 
-        # Points (filled circles)
+        # Points (filled circles). Labels are placed to avoid sitting on the
+        # graphed line: below-right for an up-right (non-negative slope) line,
+        # above-right otherwise, and flipped to the left of the point if the
+        # label would run past the right edge of the grid.
+        line_slope = None
+        if lines:
+            _l = lines[0]
+            _dx = _l["x2"] - _l["x1"]
+            line_slope = (_l["y2"] - _l["y1"]) / _dx if _dx != 0 else float("inf")
         self.set_fill_color(0, 80, 180)
         self.set_draw_color(0, 80, 180)
         self.set_line_width(0.3)
@@ -1021,11 +1029,19 @@ class MathPDF(FPDF):
             r = 1.2
             self.ellipse(px - r, py - r, 2 * r, 2 * r, style="DF")
             if pt.get("label"):
-                self.set_font(self.ff, "", 6)
+                self.set_font(self.ff, "", 8)  # readable point labels
                 self.set_text_color(0, 0, 0)
                 lw = self.get_string_width(pt["label"])
-                self.set_xy(px + 1.5, py - 3)
-                self.cell(lw + 1, 3, pt["label"])
+                # Vertical: put the label on the side away from the line.
+                ly = py + 1.6 if (line_slope is not None and line_slope >= 0) else py - 4.0
+                # Horizontal: right of the point; flip left near the right edge
+                # or for points just left of the y-axis (so the label doesn't
+                # run across the axis and its numbers).
+                near_yaxis = (x_min <= 0 <= x_max) and (-2 <= pt["x"] <= 0)
+                flip_left = (px + 2 + lw > x + grid_size) or (near_yaxis and px - lw - 2 >= x)
+                lx = px - lw - 2 if flip_left else px + 2
+                self.set_xy(lx, ly)
+                self.cell(lw + 1, 3.2, pt["label"])
 
         # Reset
         self.set_draw_color(0, 0, 0)
@@ -1282,7 +1298,8 @@ class MathPDF(FPDF):
                 self.cell(5, LINE_HEIGHT, "\u2022", new_x="RIGHT", new_y="TOP")
                 bullet_text = line[2:]
                 if self._has_math(bullet_text):
-                    self._write_line_with_math(bullet_text, self.get_x())
+                    self._write_line_with_math(bullet_text, self.get_x(),
+                                               max_width=self.w - self.get_x() - PAGE_MARGIN)
                 else:
                     self.multi_cell(self.w - x_body - PAGE_MARGIN - 10, LINE_HEIGHT,
                                    bullet_text, new_x="LMARGIN", new_y="NEXT")
@@ -1317,7 +1334,8 @@ class MathPDF(FPDF):
                           part_label, new_x="RIGHT", new_y="TOP")
                 self.set_font(ff, "", FONT_SIZE_BODY)
                 if self._has_math(rest):
-                    self._write_line_with_math(rest, self.get_x())
+                    self._write_line_with_math(rest, self.get_x(),
+                                               max_width=self.w - self.get_x() - PAGE_MARGIN)
                 else:
                     self.multi_cell(self.w - self.get_x() - PAGE_MARGIN, LINE_HEIGHT,
                                    rest, new_x="LMARGIN", new_y="NEXT")
@@ -1616,15 +1634,21 @@ class MathPDF(FPDF):
         use_single_col = max_text_len > 20
 
         if use_single_col:
+            # Wrap long choices within the page so they never run off the
+            # right edge (a common complaint on wordy DSP answer choices).
+            avail_w = self.w - PAGE_MARGIN - (x_body + 5)
             for choice in choices:
                 self.set_x(x_body + 5)
                 text = f"{choice.key}. {self._clean_text(choice.text)}"
                 if self._has_math(text):
                     self._write_line_with_math(text, x_body + 5,
-                                               font_style=expr_style)
+                                               font_style=expr_style,
+                                               max_width=avail_w)
                 else:
                     self.set_font(self.ff, expr_style, FONT_SIZE_BODY)
-                    self.cell(0, LINE_HEIGHT, text, new_x="LMARGIN", new_y="NEXT")
+                    self.set_x(x_body + 5)
+                    self.multi_cell(avail_w, LINE_HEIGHT, text,
+                                    new_x="LMARGIN", new_y="NEXT")
             self.ln(1)
         else:
             # 2-column layout with stacked-fraction / exponent support

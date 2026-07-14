@@ -1749,16 +1749,16 @@ def multiplication_jumps_svg(jump_size, num_jumps, width=420, height=160):
         mid_y = line_y - arc_radius_y - i * 3  # stack slightly
 
         p = draw.Path(fill='none', stroke=arc_color, stroke_width=1.8)
-        p.M(x1, line_y - 3)
-        p.Q(mid_x, mid_y, x2, line_y - 3)
+        p.M(x1, line_y - 2)
+        p.Q(mid_x, mid_y, x2, line_y - 2)
         d.append(p)
 
-        # Arrowhead at the landing end
-        arrow_dir = 1 if x2 > x1 else -1
+        # Downward arrowhead whose tip lands exactly on the destination tick,
+        # so every jump visibly ends on a tick mark.
         d.append(draw.Lines(
-            x2, line_y - 3,
-            x2 - arrow_dir * 5, line_y - 8,
-            x2 - arrow_dir * 5, line_y + 2,
+            x2, line_y,          # tip on the number line at the tick
+            x2 - 3, line_y - 6,
+            x2 + 3, line_y - 6,
             close=True, fill=arc_color, stroke='none'))
 
         current = nxt
