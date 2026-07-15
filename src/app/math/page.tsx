@@ -117,7 +117,7 @@ const TOOLS: TileEntry[] = [
   {
     title: "Whiteboard",
     description:
-      "Full-screen digital whiteboard. Draw, sketch, or work through problems with pen, highlighter, and eraser — projector-ready.",
+      "Full-screen digital whiteboard with built-in manipulatives. Draw with pen, highlighter, shapes, and math text; drag out counters, fraction tiles, algebra tiles, and base-ten blocks; import a PDF to annotate — projector-ready.",
     href: "/math/tools/whiteboard",
     color: "#1a1f3d",
     icon: (

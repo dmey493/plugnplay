@@ -95,6 +95,29 @@ body {
   }
 }
 
+/* Manipulatives board — piece animations. Both are one-shot and are
+   neutralized by the global reduced-motion guard above. */
+/* Colour sweep: the clip rect slides across the piece, revealing the new
+   colour left-to-right. --sweep-w is set inline to the piece's width. */
+@keyframes pnp-sweep {
+  from { transform: translateX(calc(-1 * var(--sweep-w, 100px))); }
+  to { transform: translateX(0); }
+}
+.pnp-sweep-rect {
+  animation: pnp-sweep 350ms ease-out both;
+}
+/* Coin flip: squash to a sliver and back about the piece's own centre. */
+@keyframes pnp-flip {
+  0% { transform: scaleX(1); }
+  50% { transform: scaleX(0.06); }
+  100% { transform: scaleX(1); }
+}
+.pnp-flip-anim {
+  animation: pnp-flip 350ms ease-in-out both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
 /* Modal animations */
 @keyframes fadeIn {
   from { opacity: 0; }

@@ -1,12 +1,22 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+// Stroke model, renderer, and geometry helpers are shared with the
+// standalone canvas tools (whiteboard / manipulatives) via canvas/ink.
+import {
+  StrokeShape,
+  pointsToList,
+  eraserHits,
+  PEN_COLORS,
+  HIGHLIGHTER_COLOR,
+  type Stroke,
+} from "@/components/tools/canvas/ink";
 
 /**
  * Whiteboard-style drawing overlay for the projection.
  *
- * SVG strokes captured from pointer events (mouse / finger / stylus).
- * Rendered as <polyline> elements so we can erase per-stroke and undo
+ * SVG strokes captured from pointer events (mouse / finger / stylus),
+ * rendered via the shared StrokeShape so we can erase per-stroke and undo
  * cheaply. Lives above the projection content card via fixed positioning;
  * pointer-events toggle on/off so the underlying problem stays clickable
  * when the teacher isn't actively drawing.
@@ -15,21 +25,14 @@ import { useCallback, useEffect, useRef, useState } from "react";
  * are stashed under the old key and the new key's strokes (if any) are
  * restored — so a teacher can flip back to a problem and their annotations
  * are still there. "Clear" wipes only the current slide.
+ *
+ * The infinite-canvas whiteboard that used to live in here (camera,
+ * shapes, text/KaTeX, PDF pages, autosave) moved to the unified
+ * tools/canvas/CanvasEngine — this overlay is deliberately just the
+ * pen / highlighter / eraser annotator the projection views need.
  */
 
 type Tool = "pen" | "highlighter" | "eraser";
-
-interface Stroke {
-  id: string;
-  points: string;          // SVG points attribute string: "x,y x,y x,y"
-  color: string;
-  width: number;
-  opacity: number;
-  tool: Tool;
-}
-
-const PEN_COLORS = ["#111827", "#dc2626", "#2563eb", "#16a34a"]; // black, red, blue, green
-const HIGHLIGHTER_COLOR = "#facc15";
 
 interface Props {
   active: boolean;
@@ -40,32 +43,9 @@ interface Props {
    *  stashed under the old key and the new key's strokes are restored.
    *  Pass `${item}-${session}-${mode}` from the parent. */
   wipeKey: string;
-  /** When true, the canvas is an infinite world: strokes are stored in
-   *  world coordinates, the view supports pan + pinch/wheel zoom, and a
-   *  dot grid scrolls behind the strokes. Defaults to false so existing
-   *  callers (the projection draw mode) keep the fixed-viewport
-   *  behaviour they were built for. */
-  infinite?: boolean;
 }
 
-// Camera model for infinite mode. World point (wx, wy) renders at
-// screen point (wx*zoom + tx, wy*zoom + ty). Pan moves (tx, ty); pinch
-// changes zoom. Stored in a ref to avoid React-state churn during
-// gestures — we `setTick` to re-render when needed.
-interface Camera {
-  tx: number;
-  ty: number;
-  zoom: number;
-}
-const ZOOM_MIN = 0.2;
-const ZOOM_MAX = 6;
-
-export default function DrawingOverlay({
-  active,
-  setActive,
-  wipeKey,
-  infinite = false,
-}: Props) {
+export default function DrawingOverlay({ active, setActive, wipeKey }: Props) {
   const [strokes, setStrokes] = useState<Stroke[]>([]);
   const [tool, setTool] = useState<Tool>("pen");
   const [color, setColor] = useState<string>(PEN_COLORS[0]);
@@ -83,67 +63,6 @@ export default function DrawingOverlay({
   const [paletteXY, setPaletteXY] = useState<{ x: number; y: number } | null>(null);
   const paletteDragOffset = useRef<{ x: number; y: number } | null>(null);
   const paletteRef = useRef<HTMLDivElement | null>(null);
-
-  // Infinite-canvas camera. Lives in a ref so pan/pinch/wheel can update
-  // it at 60+ fps without thrashing React state; we bump `tick` to
-  // re-render the SVG transform. Initial origin is (0,0) at top-left of
-  // the viewport with zoom = 1 (1 screen px = 1 world px), so when
-  // `infinite=false` the math is identity and behaves like the legacy
-  // viewport-locked mode.
-  const cameraRef = useRef<Camera>({ tx: 0, ty: 0, zoom: 1 });
-  // Multi-pointer tracking for pinch + two-finger pan. Maps pointerId →
-  // last-seen screen coords. Only consulted when `infinite=true`.
-  const pointersRef = useRef<Map<number, { x: number; y: number }>>(new Map());
-  // Cached two-finger gesture origin so each move computes a delta
-  // relative to gesture start, not pointermove-to-pointermove (which
-  // would drift). Null when fewer than 2 pointers are down.
-  const gestureRef = useRef<
-    | null
-    | {
-        startCam: Camera;
-        startMid: { x: number; y: number };
-        startDist: number;
-      }
-  >(null);
-  // Spacebar-held flag — while held, primary pointer pan instead of
-  // drawing. Two-finger pan still works without space.
-  const spaceHeldRef = useRef(false);
-  // True while the pen is currently driving a pan (space+drag). When
-  // active we render a grab cursor and skip stroke creation.
-  const panDragRef = useRef<null | { startX: number; startY: number; startCam: Camera }>(null);
-
-  // Convert a screen pixel coord (relative to the SVG bounding rect) to
-  // a world coordinate via the inverse camera transform. When
-  // infinite=false this is identity, so the legacy code path is
-  // unchanged.
-  const screenToWorld = useCallback((sx: number, sy: number) => {
-    if (!infinite) return { x: sx, y: sy };
-    const c = cameraRef.current;
-    return { x: (sx - c.tx) / c.zoom, y: (sy - c.ty) / c.zoom };
-  }, [infinite]);
-
-  // Apply a zoom delta about a screen-pixel anchor (keeps the world
-  // point under the cursor stationary). Clamped to [ZOOM_MIN, ZOOM_MAX].
-  const zoomAt = useCallback(
-    (anchorX: number, anchorY: number, factor: number) => {
-      const c = cameraRef.current;
-      const newZoom = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, c.zoom * factor));
-      const wx = (anchorX - c.tx) / c.zoom;
-      const wy = (anchorY - c.ty) / c.zoom;
-      cameraRef.current = {
-        zoom: newZoom,
-        tx: anchorX - wx * newZoom,
-        ty: anchorY - wy * newZoom,
-      };
-      setTick((t) => t + 1);
-    },
-    []
-  );
-
-  const resetView = useCallback(() => {
-    cameraRef.current = { tx: 0, ty: 0, zoom: 1 };
-    setTick((t) => t + 1);
-  }, []);
 
   // Reset palette to default placement whenever drawing turns off.
   useEffect(() => {
@@ -181,184 +100,52 @@ export default function DrawingOverlay({
     return () => window.removeEventListener("keydown", onKey, true);
   }, [active, setActive]);
 
-  // Spacebar tracking — only meaningful in infinite mode where space+drag
-  // pans the camera. Tracked via a ref (no re-render) but we bump tick
-  // on transitions so the cursor flips between crosshair and grab.
-  useEffect(() => {
-    if (!infinite || !active) return;
-    const onDown = (e: KeyboardEvent) => {
-      // Ignore key repeats so the cursor swap only happens on first
-      // press. Some browsers will also fire Space as " " — handle both.
-      if (e.repeat) return;
-      if (e.code === "Space" || e.key === " ") {
-        if (spaceHeldRef.current) return;
-        spaceHeldRef.current = true;
-        setTick((t) => t + 1);
-        // Prevent scroll-page-on-space; we own the canvas.
-        e.preventDefault();
-      }
-    };
-    const onUp = (e: KeyboardEvent) => {
-      if (e.code === "Space" || e.key === " ") {
-        spaceHeldRef.current = false;
-        panDragRef.current = null;
-        setTick((t) => t + 1);
-      }
-    };
-    window.addEventListener("keydown", onDown, true);
-    window.addEventListener("keyup", onUp, true);
-    return () => {
-      window.removeEventListener("keydown", onDown, true);
-      window.removeEventListener("keyup", onUp, true);
-    };
-  }, [infinite, active]);
-
-  // SVG viewBox tracks viewport so coordinates land at pointer location.
-  // Refs the SVG width/height directly via 100% / 100%; the viewBox we
-  // compute on the fly so points use raw pixel coords.
+  // Fixed viewport: screen pixels ARE the stroke coordinates, so points
+  // land exactly at the pointer location.
   const onPointerDown = useCallback(
     (e: React.PointerEvent<SVGSVGElement>) => {
       if (!active) return;
       const svg = svgRef.current;
       if (!svg) return;
       const rect = svg.getBoundingClientRect();
-      const sx = e.clientX - rect.left;
-      const sy = e.clientY - rect.top;
-
-      // INFINITE MODE — track every pointer for two-finger pan/pinch.
-      // When 2+ pointers are down, ANY in-progress single-pointer stroke
-      // gets abandoned and the two-finger gesture takes over.
-      if (infinite) {
-        pointersRef.current.set(e.pointerId, { x: sx, y: sy });
-        if (pointersRef.current.size >= 2) {
-          // Drop any in-progress stroke; starting gesture instead.
-          drawingRef.current = null;
-          panDragRef.current = null;
-          const pts = Array.from(pointersRef.current.values());
-          const p0 = pts[0];
-          const p1 = pts[1];
-          const midX = (p0.x + p1.x) / 2;
-          const midY = (p0.y + p1.y) / 2;
-          const dx = p1.x - p0.x;
-          const dy = p1.y - p0.y;
-          const dist = Math.max(1, Math.hypot(dx, dy));
-          gestureRef.current = {
-            startCam: { ...cameraRef.current },
-            startMid: { x: midX, y: midY },
-            startDist: dist,
-          };
-          setTick((t) => t + 1);
-          return;
-        }
-
-        // Single pointer + space held = pan-drag (mouse-friendly).
-        if (spaceHeldRef.current) {
-          svg.setPointerCapture(e.pointerId);
-          panDragRef.current = {
-            startX: sx,
-            startY: sy,
-            startCam: { ...cameraRef.current },
-          };
-          return;
-        }
-      }
-
-      // STROKE PATH — convert screen coords to world coords (identity in
-      // legacy mode) and begin a polyline. Store points as world-space
-      // strings; the camera transform on the rendered group handles
-      // putting them on screen.
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
       svg.setPointerCapture(e.pointerId);
-      const w = screenToWorld(sx, sy);
       const id = `s-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-      drawingRef.current = { id, pts: `${w.x},${w.y}` };
+      drawingRef.current = { id, pts: `${x},${y}` };
       setTick((t) => t + 1);
     },
-    [active, infinite, screenToWorld]
+    [active]
   );
 
   const onPointerMove = useCallback(
     (e: React.PointerEvent<SVGSVGElement>) => {
-      if (!active) return;
+      if (!active || !drawingRef.current) return;
       const svg = svgRef.current;
       if (!svg) return;
       const rect = svg.getBoundingClientRect();
-      const sx = e.clientX - rect.left;
-      const sy = e.clientY - rect.top;
-
-      // INFINITE MODE — update pointer tracking + handle gestures first.
-      if (infinite) {
-        if (pointersRef.current.has(e.pointerId)) {
-          pointersRef.current.set(e.pointerId, { x: sx, y: sy });
-        }
-
-        // Two-finger pan + pinch: drive camera from the change in
-        // midpoint (pan) and distance (zoom) since gesture start.
-        if (pointersRef.current.size >= 2 && gestureRef.current) {
-          const pts = Array.from(pointersRef.current.values());
-          const p0 = pts[0];
-          const p1 = pts[1];
-          const midX = (p0.x + p1.x) / 2;
-          const midY = (p0.y + p1.y) / 2;
-          const dx = p1.x - p0.x;
-          const dy = p1.y - p0.y;
-          const dist = Math.max(1, Math.hypot(dx, dy));
-          const g = gestureRef.current;
-          const factor = dist / g.startDist;
-          const newZoom = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, g.startCam.zoom * factor));
-          // Anchor zoom on the gesture-start midpoint so the world
-          // point under the user's fingers stays under them.
-          const wx = (g.startMid.x - g.startCam.tx) / g.startCam.zoom;
-          const wy = (g.startMid.y - g.startCam.ty) / g.startCam.zoom;
-          const tx = midX - wx * newZoom;
-          const ty = midY - wy * newZoom;
-          cameraRef.current = { tx, ty, zoom: newZoom };
-          setTick((t) => t + 1);
-          return;
-        }
-
-        // Single-pointer pan (space+drag).
-        if (panDragRef.current) {
-          const p = panDragRef.current;
-          cameraRef.current = {
-            ...p.startCam,
-            tx: p.startCam.tx + (sx - p.startX),
-            ty: p.startCam.ty + (sy - p.startY),
-          };
-          setTick((t) => t + 1);
-          return;
-        }
-      }
-
-      if (!drawingRef.current) return;
-      const w = screenToWorld(sx, sy);
-      drawingRef.current.pts += ` ${w.x},${w.y}`;
+      drawingRef.current.pts += ` ${e.clientX - rect.left},${e.clientY - rect.top}`;
       setTick((t) => t + 1);
     },
-    [active, infinite, screenToWorld]
+    [active]
   );
 
-  const finishStroke = useCallback(() => {
+  const onPointerUp = useCallback(() => {
     if (!drawingRef.current) return;
     const cur = drawingRef.current;
     drawingRef.current = null;
     if (tool === "eraser") {
-      // Eraser hit-test in world coords: a 18px screen radius becomes
-      // 18 / zoom world units, so the eraser "feels" the same size at
-      // any zoom level. Hits at end-of-stroke for predictability.
+      // Hit-test at end-of-stroke for predictability: any stroke within
+      // an 18px radius of the eraser path is removed whole.
       const eraserPts = pointsToList(cur.pts);
       if (eraserPts.length === 0) return;
-      const screenRadius = 18;
-      const worldRadius = infinite
-        ? screenRadius / cameraRef.current.zoom
-        : screenRadius;
-      setStrokes((cur) =>
-        cur.filter((s) => !strokeIntersectsAny(s.points, eraserPts, worldRadius))
-      );
+      setStrokes((s) => s.filter((st) => !eraserHits(st, eraserPts, 18)));
       setTick((t) => t + 1);
       return;
     }
     const newStroke: Stroke = {
       id: cur.id,
+      kind: "path",
       points: cur.pts,
       color: tool === "highlighter" ? HIGHLIGHTER_COLOR : color,
       width: tool === "highlighter" ? 18 : 3,
@@ -366,59 +153,7 @@ export default function DrawingOverlay({
       tool,
     };
     setStrokes((s) => [...s, newStroke]);
-  }, [tool, color, infinite]);
-
-  const onPointerUp = useCallback(
-    (e: React.PointerEvent<SVGSVGElement>) => {
-      // Clean up pointer tracking on release / cancel / leave. End any
-      // in-flight gesture when fewer than 2 pointers remain.
-      if (infinite) {
-        pointersRef.current.delete(e.pointerId);
-        if (pointersRef.current.size < 2) {
-          gestureRef.current = null;
-        }
-        if (panDragRef.current) {
-          panDragRef.current = null;
-          return;
-        }
-      }
-      finishStroke();
-    },
-    [finishStroke, infinite]
-  );
-
-  // Wheel handling for infinite mode. Ctrl/Cmd + wheel = zoom toward
-  // cursor; plain wheel = pan (vertical + horizontal). Attached via
-  // raw addEventListener with {passive: false} so we can preventDefault
-  // and stop the page from scroll-jacking; React's synthetic onWheel
-  // is passive in current versions and can't do that.
-  useEffect(() => {
-    if (!infinite || !active) return;
-    const svg = svgRef.current;
-    if (!svg) return;
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      const rect = svg.getBoundingClientRect();
-      const sx = e.clientX - rect.left;
-      const sy = e.clientY - rect.top;
-      if (e.ctrlKey || e.metaKey) {
-        // Smoother zoom: ~10% per typical wheel notch (deltaY ≈ ±100).
-        const factor = Math.exp(-e.deltaY * 0.0015);
-        zoomAt(sx, sy, factor);
-      } else {
-        // Plain wheel scrolls the camera. Shift+wheel for horizontal is
-        // browser-conventional but we just respect deltaX/deltaY as-is.
-        cameraRef.current = {
-          ...cameraRef.current,
-          tx: cameraRef.current.tx - e.deltaX,
-          ty: cameraRef.current.ty - e.deltaY,
-        };
-        setTick((t) => t + 1);
-      }
-    };
-    svg.addEventListener("wheel", onWheel, { passive: false });
-    return () => svg.removeEventListener("wheel", onWheel);
-  }, [infinite, active, zoomAt]);
+  }, [tool, color]);
 
   const undo = useCallback(() => {
     setStrokes((s) => s.slice(0, -1));
@@ -434,6 +169,7 @@ export default function DrawingOverlay({
   const previewStroke =
     drawingRef.current
       ? {
+          kind: "path" as const,
           points: drawingRef.current.pts,
           color: tool === "highlighter" ? HIGHLIGHTER_COLOR : tool === "eraser" ? "#9ca3af" : color,
           width: tool === "highlighter" ? 18 : tool === "eraser" ? 18 : 3,
@@ -446,24 +182,7 @@ export default function DrawingOverlay({
   // pass through to the underlying problem (we still render the strokes
   // so they remain visible until wiped — but the canvas doesn't intercept).
   const interactive = active;
-
-  // Camera transform for the rendered stroke layer. In legacy mode this
-  // is "translate(0,0) scale(1)" — a no-op — so existing callers render
-  // identically. In infinite mode the camera ref drives the transform.
-  // `vector-effect="non-scaling-stroke"` keeps strokes the same width
-  // on screen regardless of zoom; otherwise zooming would make a 3px
-  // pen turn into a 18px bar.
-  const cam = cameraRef.current;
-  const groupTransform = infinite
-    ? `translate(${cam.tx} ${cam.ty}) scale(${cam.zoom})`
-    : undefined;
-  const cursor = !interactive
-    ? "default"
-    : infinite && (panDragRef.current || spaceHeldRef.current)
-      ? "grab"
-      : tool === "eraser"
-        ? "cell"
-        : "crosshair";
+  const cursor = !interactive ? "default" : tool === "eraser" ? "cell" : "crosshair";
 
   return (
     <>
@@ -494,123 +213,11 @@ export default function DrawingOverlay({
         // stroke even though we mutate the ref instead of state.
         data-tick={tick}
       >
-        {/* Dot-grid background in infinite mode so the teacher has
-            visual cues during pan + zoom — a blank white field plus
-            mouse motion is disorienting. The pattern is anchored to
-            the camera so dots scroll with the canvas. Plain white in
-            legacy mode (don't render a pattern at all). */}
-        {infinite && (
-          <defs>
-            <pattern
-              id="pnp-wb-dots"
-              x={cam.tx}
-              y={cam.ty}
-              width={40 * cam.zoom}
-              height={40 * cam.zoom}
-              patternUnits="userSpaceOnUse"
-            >
-              <circle
-                cx={20 * cam.zoom}
-                cy={20 * cam.zoom}
-                r={Math.max(0.6, 1 * cam.zoom)}
-                fill="#d4d4d8"
-                opacity={0.6}
-              />
-            </pattern>
-          </defs>
-        )}
-        {infinite && (
-          <rect x="0" y="0" width="100%" height="100%" fill="url(#pnp-wb-dots)" />
-        )}
-
-        {/* All strokes live inside this group so the camera transform
-            moves them together. `vector-effect="non-scaling-stroke"`
-            keeps pen / highlighter widths constant on screen. */}
-        <g transform={groupTransform}>
-          {strokes.map((s) => (
-            <polyline
-              key={s.id}
-              points={s.points}
-              fill="none"
-              stroke={s.color}
-              strokeWidth={s.width}
-              strokeOpacity={s.opacity}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              vectorEffect={infinite ? "non-scaling-stroke" : undefined}
-            />
-          ))}
-          {previewStroke && (
-            <polyline
-              points={previewStroke.points}
-              fill="none"
-              stroke={previewStroke.color}
-              strokeWidth={previewStroke.width}
-              strokeOpacity={previewStroke.opacity}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeDasharray={previewStroke.dashed ? "4 4" : undefined}
-              vectorEffect={infinite ? "non-scaling-stroke" : undefined}
-            />
-          )}
-        </g>
+        {strokes.map((s) => (
+          <StrokeShape key={s.id} item={s} nonScaling={false} />
+        ))}
+        {previewStroke && <StrokeShape item={previewStroke} nonScaling={false} />}
       </svg>
-
-      {/* Camera HUD — only in infinite mode. Shows the current zoom
-          level, lets the teacher reset the view, and provides discrete
-          +/- buttons for keyboard/no-trackpad scenarios. Bottom-right
-          so it doesn't fight the tool palette (bottom-centre). */}
-      {infinite && active && (
-        <div
-          className="fixed bottom-6 right-6 z-[220] flex items-center gap-1 rounded-md border border-pnp-gray-200 bg-white/95 px-2 py-1.5 text-xs font-semibold text-pnp-gray-700 shadow-lg backdrop-blur"
-          // Don't let the HUD steal pointerdowns from the canvas in
-          // case the teacher reaches for it mid-gesture.
-          onPointerDown={(e) => e.stopPropagation()}
-        >
-          <button
-            type="button"
-            onClick={() => {
-              const rect = svgRef.current?.getBoundingClientRect();
-              if (!rect) return;
-              zoomAt(rect.width / 2, rect.height / 2, 1 / 1.25);
-            }}
-            title="Zoom out"
-            aria-label="Zoom out"
-            className="flex h-7 w-7 items-center justify-center rounded hover:bg-pnp-gray-100"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <path d="M5 12h14" />
-            </svg>
-          </button>
-          <span className="min-w-[3.25rem] text-center tabular-nums">
-            {Math.round(cam.zoom * 100)}%
-          </span>
-          <button
-            type="button"
-            onClick={() => {
-              const rect = svgRef.current?.getBoundingClientRect();
-              if (!rect) return;
-              zoomAt(rect.width / 2, rect.height / 2, 1.25);
-            }}
-            title="Zoom in"
-            aria-label="Zoom in"
-            className="flex h-7 w-7 items-center justify-center rounded hover:bg-pnp-gray-100"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <path d="M12 5v14M5 12h14" />
-            </svg>
-          </button>
-          <div className="mx-1 h-5 w-px bg-pnp-gray-200" />
-          <button
-            type="button"
-            onClick={resetView}
-            title="Reset view"
-            className="rounded px-2 py-1 hover:bg-pnp-gray-100"
-          >
-            Reset view
-          </button>
-        </div>
-      )}
 
       {/* Floating tool palette — visible only while drawing is active.
           Draggable via the grip on the left so it can be moved out of the
@@ -706,12 +313,14 @@ export default function DrawingOverlay({
             <button
               key={c}
               onClick={() => {
-                setTool("pen");
                 setColor(c);
+                // Colour applies to the pen — only the eraser has no colour,
+                // so switch to pen if that was selected.
+                if (tool === "eraser") setTool("pen");
               }}
-              title={`Pen color`}
+              title={`Colour`}
               className={`h-7 w-7 rounded-full border-2 transition-all ${
-                color === c && tool === "pen"
+                color === c && tool !== "eraser"
                   ? "border-pnp-navy scale-110"
                   : "border-pnp-gray-200 hover:scale-105"
               }`}
@@ -768,39 +377,6 @@ function ToolButton({
       {children}
     </button>
   );
-}
-
-// ────────── helpers ──────────
-
-function pointsToList(s: string): Array<[number, number]> {
-  return s
-    .trim()
-    .split(/\s+/)
-    .map((pt) => {
-      const [a, b] = pt.split(",");
-      return [parseFloat(a), parseFloat(b)] as [number, number];
-    })
-    .filter(([a, b]) => !Number.isNaN(a) && !Number.isNaN(b));
-}
-
-/** True if any point in `strokePts` is within `radius` of any point in `eraserPts`.
- *  We sample the stroke densely enough that this is a fine approximation;
- *  proper segment-distance is overkill for a whiteboard. */
-function strokeIntersectsAny(
-  strokePtsStr: string,
-  eraserPts: Array<[number, number]>,
-  radius: number
-): boolean {
-  const r2 = radius * radius;
-  const strokePts = pointsToList(strokePtsStr);
-  for (const [sx, sy] of strokePts) {
-    for (const [ex, ey] of eraserPts) {
-      const dx = sx - ex;
-      const dy = sy - ey;
-      if (dx * dx + dy * dy <= r2) return true;
-    }
-  }
-  return false;
 }
 
 // ────────── icons ──────────
