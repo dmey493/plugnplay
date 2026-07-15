@@ -1,11 +1,11 @@
 /**
- * Class roster data layer — localStorage-backed for the no-auth draft.
+ * Class roster data layer — localStorage-backed, no login required.
  *
- * Shape mirrors what a real database row will eventually hold, so when
- * Supabase / NextAuth lands we can migrate by writing the same JSON to
- * a table without reworking callers. Everything is keyed off a fake
- * "user" stored in localStorage; the moment real auth ships, swap
- * getUser() for the session reader.
+ * Classes live under a single anonymous key in this browser. There's no
+ * account and no sign-in: a teacher can build classes and form groups
+ * immediately. The shape still mirrors what a real database row would
+ * hold, so if a real account system ever lands we can migrate by writing
+ * the same JSON to a per-user table without reworking callers.
  *
  * No constraints (lock-with, lock-apart, fixed-board) in this draft per
  * Dave's instructions — students are just `{ id, name }` for now. The
@@ -13,12 +13,6 @@
  * existing rosters (they'll be undefined for old records, which is
  * fine: the randomizer treats undefined as "no constraint").
  */
-
-export interface User {
-  id: string;
-  name: string;
-  createdAt: string;
-}
 
 export interface Student {
   id: string;
@@ -41,8 +35,10 @@ export interface Class {
 // Storage keys + low-level helpers
 // ─────────────────────────────────────────────────────────────────────
 
-const USER_KEY = "pnp:user";
-const classesKey = (userId: string) => `pnp:classes:${userId}`;
+const CLASSES_KEY = "pnp:classes";
+// Legacy per-user key prefix from the old fake-login draft. Kept only so
+// migrateLegacy() can adopt classes saved before sign-in was removed.
+const LEGACY_CLASSES_PREFIX = "pnp:classes:";
 
 /** Read JSON from localStorage; return null on miss or parse error.
  *  SSR-safe — returns null when `window` is undefined. */
@@ -73,37 +69,46 @@ function nowISO(): string {
 }
 
 // ─────────────────────────────────────────────────────────────────────
-// User (fake login)
+// One-time migration off the old fake-login store
 // ─────────────────────────────────────────────────────────────────────
 
-export function getUser(): User | null {
-  return readJSON<User>(USER_KEY);
-}
-
-export function setUser(name: string): User {
-  const trimmed = name.trim();
-  const existing = getUser();
-  if (existing) {
-    const updated: User = { ...existing, name: trimmed };
-    writeJSON(USER_KEY, updated);
-    return updated;
-  }
-  const user: User = { id: newId(), name: trimmed, createdAt: nowISO() };
-  writeJSON(USER_KEY, user);
-  return user;
-}
-
-export function clearUser(): void {
+/** If classes were saved under the old per-user key (`pnp:classes:<id>`)
+ *  before sign-in was removed, adopt them into the new anonymous key so
+ *  the teacher doesn't lose their rosters. Runs lazily on first read and
+ *  is a no-op once the new key exists. Picks the largest legacy roster
+ *  set if more than one name was ever used in this browser. */
+function migrateLegacy(): void {
   if (typeof window === "undefined") return;
-  window.localStorage.removeItem(USER_KEY);
+  // Already migrated (or already has data) — nothing to do.
+  if (window.localStorage.getItem(CLASSES_KEY) !== null) return;
+
+  let best: Class[] | null = null;
+  let bestKey: string | null = null;
+  for (let i = 0; i < window.localStorage.length; i++) {
+    const key = window.localStorage.key(i);
+    // Match `pnp:classes:<id>` but not the new bare `pnp:classes`.
+    if (!key || !key.startsWith(LEGACY_CLASSES_PREFIX)) continue;
+    const list = readJSON<Class[]>(key);
+    if (list && list.length > (best?.length ?? 0)) {
+      best = list;
+      bestKey = key;
+    }
+  }
+
+  // Write something to CLASSES_KEY either way so this migration doesn't
+  // re-scan on every read. An empty array is a valid "no classes" state.
+  writeJSON(CLASSES_KEY, best ?? []);
+  // Clean up the adopted legacy key so it can't shadow future edits.
+  if (bestKey) window.localStorage.removeItem(bestKey);
 }
 
 // ─────────────────────────────────────────────────────────────────────
 // Classes CRUD
 // ─────────────────────────────────────────────────────────────────────
 
-export function getClasses(userId: string): Class[] {
-  const list = readJSON<Class[]>(classesKey(userId));
+export function getClasses(): Class[] {
+  migrateLegacy();
+  const list = readJSON<Class[]>(CLASSES_KEY);
   if (!list) return [];
   // Sort newest-first so the most recently edited class is at the top.
   return [...list].sort((a, b) =>
@@ -111,11 +116,11 @@ export function getClasses(userId: string): Class[] {
   );
 }
 
-export function getClass(userId: string, classId: string): Class | null {
-  return getClasses(userId).find((c) => c.id === classId) ?? null;
+export function getClass(classId: string): Class | null {
+  return getClasses().find((c) => c.id === classId) ?? null;
 }
 
-export function createClass(userId: string, name: string): Class {
+export function createClass(name: string): Class {
   const cls: Class = {
     id: newId(),
     name: name.trim() || "Untitled class",
@@ -123,17 +128,16 @@ export function createClass(userId: string, name: string): Class {
     createdAt: nowISO(),
     updatedAt: nowISO(),
   };
-  const all = getClasses(userId);
-  writeJSON(classesKey(userId), [cls, ...all]);
+  const all = getClasses();
+  writeJSON(CLASSES_KEY, [cls, ...all]);
   return cls;
 }
 
 export function updateClass(
-  userId: string,
   classId: string,
   patch: Partial<Pick<Class, "name" | "students">>
 ): Class | null {
-  const all = getClasses(userId);
+  const all = getClasses();
   const idx = all.findIndex((c) => c.id === classId);
   if (idx === -1) return null;
   const updated: Class = {
@@ -143,14 +147,14 @@ export function updateClass(
   };
   const next = [...all];
   next[idx] = updated;
-  writeJSON(classesKey(userId), next);
+  writeJSON(CLASSES_KEY, next);
   return updated;
 }
 
-export function deleteClass(userId: string, classId: string): void {
-  const all = getClasses(userId);
+export function deleteClass(classId: string): void {
+  const all = getClasses();
   writeJSON(
-    classesKey(userId),
+    CLASSES_KEY,
     all.filter((c) => c.id !== classId)
   );
 }
@@ -174,15 +178,11 @@ export function parseRosterPaste(text: string): Student[] {
 
 /** Add a single student to a class. Returns the updated class, or null
  *  if the class doesn't exist. */
-export function addStudent(
-  userId: string,
-  classId: string,
-  name: string
-): Class | null {
-  const cls = getClass(userId, classId);
+export function addStudent(classId: string, name: string): Class | null {
+  const cls = getClass(classId);
   if (!cls) return null;
   const student: Student = { id: newId(), name: name.trim() };
-  return updateClass(userId, classId, {
+  return updateClass(classId, {
     students: [...cls.students, student],
   });
 }
@@ -230,6 +230,42 @@ export function shuffle<T>(items: readonly T[]): T[] {
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// Last-formed groups — persisted so closing the projection overlay
+// doesn't lose the assignment. A student who forgot their board can
+// reopen Groups and see exactly where they were placed. One slot,
+// latest-wins; "Clear" / "New groups" reset it.
+// ─────────────────────────────────────────────────────────────────────
+
+const LAST_GROUPS_KEY = "pnp:groups:last";
+
+export interface SavedGroups {
+  /** Class name or "Quick group" — shown so the teacher knows whose
+   *  groups these are. */
+  label: string;
+  groups: Student[][];
+  /** ISO timestamp of when they were formed. */
+  formedAt: string;
+}
+
+export function getLastGroups(): SavedGroups | null {
+  const saved = readJSON<SavedGroups>(LAST_GROUPS_KEY);
+  // Guard against a malformed/empty payload from an older shape.
+  if (!saved || !Array.isArray(saved.groups) || saved.groups.length === 0) {
+    return null;
+  }
+  return saved;
+}
+
+export function saveLastGroups(label: string, groups: Student[][]): void {
+  writeJSON(LAST_GROUPS_KEY, { label, groups, formedAt: nowISO() });
+}
+
+export function clearLastGroups(): void {
+  if (typeof window === "undefined") return;
+  window.localStorage.removeItem(LAST_GROUPS_KEY);
 }
 
 /** Form groups from a flat list of students.  v1 logic: shuffle, then

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useUser } from "@/lib/use-user";
 import {
   getClass,
   parseRosterPaste,
@@ -30,34 +29,20 @@ import {
  * them out. They slot back in here when ready.
  */
 export default function ClassDetail({ classId }: { classId: string }) {
-  const { user } = useUser();
   const [cls, setCls] = useState<Class | null | undefined>(undefined);
   const [name, setName] = useState("");
   const [paste, setPaste] = useState("");
   const [addingOne, setAddingOne] = useState("");
 
-  // Re-read whenever user changes or classId changes.
+  // Read the class from localStorage on mount + when classId changes.
   useEffect(() => {
-    if (!user) {
-      setCls(user === undefined ? undefined : null);
-      return;
-    }
-    const found = getClass(user.id, classId);
+    const found = getClass(classId);
     setCls(found);
     if (found) setName(found.name);
-  }, [user, classId]);
+  }, [classId]);
 
   if (cls === undefined) {
     return <div className="py-12 text-center text-sm text-pnp-gray-500">Loading…</div>;
-  }
-
-  if (user === null) {
-    return (
-      <EmptyChrome
-        title="Sign in to view this class"
-        body="Use the Sign in button in the top-right corner. Classes are saved per name in this browser."
-      />
-    );
   }
 
   if (cls === null) {
@@ -70,11 +55,8 @@ export default function ClassDetail({ classId }: { classId: string }) {
     );
   }
 
-  // Safe to assume user is non-null here.
-  const userId = user!.id;
-
   const save = (patch: Partial<Pick<Class, "name" | "students">>) => {
-    const next = updateClass(userId, cls.id, patch);
+    const next = updateClass(cls.id, patch);
     if (next) setCls(next);
   };
 

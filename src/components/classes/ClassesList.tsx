@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useUser } from "@/lib/use-user";
 import {
   createClass,
   deleteClass,
@@ -11,59 +10,40 @@ import {
 } from "@/lib/classes";
 
 /**
- * Classes index — list every class the fake-logged-in user has saved
- * locally, plus a "+ New class" inline create row.
+ * Classes index — list every class saved locally in this browser, plus
+ * a "+ New class" inline create row.
  *
- * Empty states:
- *   - hydrating (user === undefined): renders a quiet placeholder.
- *   - not signed in (user === null): renders a sign-in nudge. The nudge
- *     opens the same NamePrompt the header chip uses.
- *   - signed in but no classes: encouragement to create the first.
+ * No login: classes save to this browser immediately. Two states:
+ *   - hydrating (before the mount effect reads localStorage): quiet
+ *     placeholder so SSR + CSR markup match.
+ *   - hydrated: the create row + either the empty nudge or the grid.
  *
  * Deliberately client-side — localStorage is browser-only. When real
  * auth + a DB land we'll refactor this into a server component reading
  * from Supabase, but the JSON shape is already aligned.
  */
 export default function ClassesList() {
-  const { user } = useUser();
   const [classes, setClasses] = useState<Class[]>([]);
   const [newName, setNewName] = useState("");
   const [hydrated, setHydrated] = useState(false);
 
-  // Re-read whenever the user changes (e.g. after sign-in or rename).
+  // Read from localStorage once on mount. localStorage is browser-only,
+  // so this can't run during SSR.
   useEffect(() => {
-    if (!user) {
-      setClasses([]);
-      setHydrated(true);
-      return;
-    }
-    setClasses(getClasses(user.id));
+    setClasses(getClasses());
     setHydrated(true);
-  }, [user]);
+  }, []);
 
-  if (user === undefined || !hydrated) {
+  if (!hydrated) {
     return <div className="py-12 text-center text-sm text-pnp-gray-500">Loading…</div>;
-  }
-
-  if (user === null) {
-    return (
-      <div className="rounded-lg border-2 border-dashed border-pnp-gray-300 bg-white p-10 text-center">
-        <h2 className="font-heading text-xl font-bold text-pnp-navy">
-          Sign in to save classes
-        </h2>
-        <p className="mx-auto mt-2 max-w-md text-sm text-pnp-gray-500">
-          Use the <span className="font-semibold">Sign in</span> button in the top-right corner to pick a name. There's no real account yet — your classes save locally to this browser.
-        </p>
-      </div>
-    );
   }
 
   const handleCreate = (e: React.FormEvent) => {
     e.preventDefault();
     const trimmed = newName.trim();
     if (!trimmed) return;
-    createClass(user.id, trimmed);
-    setClasses(getClasses(user.id));
+    createClass(trimmed);
+    setClasses(getClasses());
     setNewName("");
   };
 
@@ -75,8 +55,8 @@ export default function ClassesList() {
     ) {
       return;
     }
-    deleteClass(user.id, cls.id);
-    setClasses(getClasses(user.id));
+    deleteClass(cls.id);
+    setClasses(getClasses());
   };
 
   return (

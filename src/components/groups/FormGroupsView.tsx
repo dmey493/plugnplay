@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { useUser } from "@/lib/use-user";
 import {
   formGroups,
   getClass,
@@ -37,7 +36,6 @@ const ALL_STYLES: AnimationStyle[] = ["magnet-snap", "slot-reels"];
 const STYLE_STORAGE_KEY = "pnp:groups:lastStyle";
 
 export default function FormGroupsView({ classId }: { classId: string }) {
-  const { user } = useUser();
   const [cls, setCls] = useState<Class | null | undefined>(undefined);
   // Set of student ids marked PRESENT (default = everyone). Stored as a
   // Set for O(1) toggle; converted to a filtered array at draw time.
@@ -52,16 +50,12 @@ export default function FormGroupsView({ classId }: { classId: string }) {
   // it from scratch (cleanest way to reset all the per-card timers).
   const [animationRun, setAnimationRun] = useState(0);
 
-  // Load the class on mount + when the user changes.
+  // Load the class from localStorage on mount + when classId changes.
   useEffect(() => {
-    if (!user) {
-      setCls(user === undefined ? undefined : null);
-      return;
-    }
-    const found = getClass(user.id, classId);
+    const found = getClass(classId);
     setCls(found);
     if (found) setPresent(new Set(found.students.map((s) => s.id)));
-  }, [user, classId]);
+  }, [classId]);
 
   // Restore the last-picked animation style.
   useEffect(() => {
@@ -79,15 +73,6 @@ export default function FormGroupsView({ classId }: { classId: string }) {
   // ── Empty / error states ──
   if (cls === undefined) {
     return <CenteredMessage title="Loading…" />;
-  }
-  if (user === null) {
-    return (
-      <CenteredMessage
-        title="Sign in to form groups"
-        body="Use the Sign in button in the top-right corner. Classes are saved per name in this browser."
-        cta={{ href: "/classes", label: "Back to Classes" }}
-      />
-    );
   }
   if (cls === null) {
     return (

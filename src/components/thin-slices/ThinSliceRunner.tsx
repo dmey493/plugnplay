@@ -9,6 +9,7 @@ import OrganizerOverlay, { type OrganizerKind } from "./OrganizerOverlay";
 import { useBubblePhysics } from "./useBubblePhysics";
 import DrawingOverlay from "@/components/intervention/DrawingOverlay";
 import TimerOverlay from "@/components/tasks/TimerOverlay";
+import GroupsButton from "@/components/groups/GroupsButton";
 
 interface Props {
   sliceId: string;
@@ -592,6 +593,8 @@ export default function ThinSliceRunner({
           >
             {drawing ? "Drawing…" : "Draw"}
           </button>
+
+          <GroupsButton isDark={isDark} />
 
           <button
             onClick={exit}

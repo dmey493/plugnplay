@@ -353,6 +353,25 @@ export interface ProjectionState {
     remainingSec: number;
     running: boolean;
   };
+  /** Random-groups mirror. The projection broadcasts the currently-saved
+   *  assignment (or null) plus the list of saved classes, so the phone can
+   *  display the groups and offer a class to form from. Optional so older
+   *  state builders (and non-groups surfaces) stay valid. */
+  groups?: GroupsMirror | null;
+  classes?: GroupsClassSummary[];
+}
+
+/** A class the phone can form groups from — id + name + roster size. */
+export interface GroupsClassSummary {
+  id: string;
+  name: string;
+  count: number;
+}
+
+/** The projection's current group assignment, mirrored to the phone. */
+export interface GroupsMirror {
+  label: string;
+  groups: { id: string; name: string }[][];
 }
 
 /** Commands the phone can issue. The projection's heartbeat loop drains
@@ -366,7 +385,13 @@ export type RemoteCommand =
   | { type: "set-timer-visible"; visible: boolean }
   | { type: "timer-set-duration"; seconds: number }
   | { type: "timer-set-running"; running: boolean }
-  | { type: "timer-reset" };
+  | { type: "timer-reset" }
+  // Random groups — the phone drives the projection's Groups overlay.
+  | { type: "groups-open" }
+  | { type: "groups-close" }
+  | { type: "groups-form-class"; classId: string }
+  | { type: "groups-reshuffle" }
+  | { type: "groups-clear" };
 
 /** Reference fields the phone shows in collapsible cards. Pulled from
  *  `TaskBody` and bundled at join time so the phone doesn't fetch the

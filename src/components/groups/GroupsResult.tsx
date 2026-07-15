@@ -32,14 +32,29 @@ interface Props {
   groups: Student[][];
   onReshuffle: () => void;
   onBack: () => void;
+  /** Optional — start over from a different class/roster. Shown only
+   *  when provided (the projection overlay passes it; the standalone
+   *  page doesn't). */
+  onNew?: () => void;
+  /** Optional — forget the saved groups entirely. */
+  onClear?: () => void;
+  /** Optional label ("Period 3", "Quick group") shown above the count. */
+  label?: string;
 }
 
-export default function GroupsResult({ groups, onReshuffle, onBack }: Props) {
+export default function GroupsResult({
+  groups,
+  onReshuffle,
+  onBack,
+  onNew,
+  onClear,
+  label,
+}: Props) {
   return (
     <section className="bg-pnp-navy py-10 md:py-14">
       <div className="mx-auto max-w-[1200px] px-4 md:px-6">
         <p className="text-center text-xs font-bold uppercase tracking-[0.3em] text-white/50">
-          Today's groups
+          {label ? label : "Today's groups"}
         </p>
         <h1 className="mt-2 text-center font-heading text-3xl font-extrabold uppercase tracking-wide text-white md:text-4xl">
           {groups.length} group{groups.length === 1 ? "" : "s"}
@@ -102,6 +117,15 @@ export default function GroupsResult({ groups, onReshuffle, onBack }: Props) {
           >
             Change attendance
           </button>
+          {onNew && (
+            <button
+              type="button"
+              onClick={onNew}
+              className="rounded-md border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-white/20"
+            >
+              New groups
+            </button>
+          )}
           <button
             type="button"
             onClick={() => window.print()}
@@ -109,6 +133,15 @@ export default function GroupsResult({ groups, onReshuffle, onBack }: Props) {
           >
             Print
           </button>
+          {onClear && (
+            <button
+              type="button"
+              onClick={onClear}
+              className="rounded-md px-5 py-2.5 text-sm font-bold text-white/60 transition-colors hover:text-white"
+            >
+              Clear
+            </button>
+          )}
         </div>
       </div>
     </section>

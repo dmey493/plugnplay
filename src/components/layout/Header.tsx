@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
-import UserChip from "@/components/classes/UserChip";
 
 type DropItem = { label: string; href: string; soon?: boolean };
 
@@ -125,9 +124,6 @@ export default function Header() {
               Browse units
             </Button>
           </div>
-          <div className="hidden md:block">
-            <UserChip />
-          </div>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -188,9 +184,6 @@ export default function Header() {
             >
               Browse units
             </Button>
-          </div>
-          <div className="mt-3 px-6">
-            <UserChip />
           </div>
         </nav>
       )}

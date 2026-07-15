@@ -6,6 +6,7 @@ import type {
   RemoteCommand,
   RemoteTaskBundle,
 } from "@/lib/types";
+import { formGroups } from "@/lib/classes";
 import RemoteDashboard from "./RemoteDashboard";
 
 /**
@@ -79,6 +80,39 @@ export default function RemotePreviewClient() {
               running: false,
             },
           };
+        case "groups-form-class": {
+          const roster = SAMPLE_ROSTERS[cmd.classId] ?? [];
+          if (roster.length < 2) return s;
+          const cls = (s.classes ?? []).find((c) => c.id === cmd.classId);
+          return {
+            ...s,
+            groups: {
+              label: cls?.name ?? "Groups",
+              groups: formGroups(roster).map((g) =>
+                g.map((x) => ({ id: x.id, name: x.name }))
+              ),
+            },
+          };
+        }
+        case "groups-reshuffle": {
+          if (!s.groups) return s;
+          const flat = s.groups.groups.flat();
+          return {
+            ...s,
+            groups: {
+              ...s.groups,
+              groups: formGroups(flat).map((g) =>
+                g.map((x) => ({ id: x.id, name: x.name }))
+              ),
+            },
+          };
+        }
+        case "groups-clear":
+          return { ...s, groups: null };
+        case "groups-open":
+        case "groups-close":
+          // No overlay in the sandbox — these are projection-side only.
+          return s;
       }
     });
   };
@@ -131,6 +165,17 @@ const SAMPLE_BUNDLE: RemoteTaskBundle = {
     "- Sound speed depends on air temperature. At 50°F it's ~1100 ft/s; at 90°F it's ~1158 ft/s. Build a temperature-adjusted model.\n- Convert the function to give distance in kilometers. Sound is 343 m/s at 20°C.",
 };
 
+// Sample rosters so the preview's Groups card actually forms groups.
+const SAMPLE_ROSTERS: Record<string, { id: string; name: string }[]> = {
+  "sample-p3": [
+    "Amy Chen", "Ben Rodriguez", "Carmen Ng", "Deshawn Ford",
+    "Elena Petrov", "Frank Liu", "Grace Osei", "Hugo Martín",
+  ].map((name, i) => ({ id: `p3-${i}`, name })),
+  "sample-p5": [
+    "Ivy Park", "Jamal Reed", "Kira Volkov", "Leo Santos", "Mona Haddad",
+  ].map((name, i) => ({ id: `p5-${i}`, name })),
+};
+
 const INITIAL_STATE: ProjectionState = {
   taskId: "task-math-040",
   totalQuestions: SAMPLE_BUNDLE.questions.length,
@@ -144,4 +189,9 @@ const INITIAL_STATE: ProjectionState = {
     remainingSec: 300,
     running: false,
   },
+  groups: null,
+  classes: [
+    { id: "sample-p3", name: "Period 3 — Grade 7", count: SAMPLE_ROSTERS["sample-p3"].length },
+    { id: "sample-p5", name: "Period 5 — Grade 7", count: SAMPLE_ROSTERS["sample-p5"].length },
+  ],
 };

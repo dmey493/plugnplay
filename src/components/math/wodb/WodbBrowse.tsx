@@ -6,6 +6,7 @@ import { renderBox } from "@/lib/wodb-render";
 import type { WodbGrade, WodbSet } from "@/lib/wodb";
 import Tag from "@/components/ui/Tag";
 import Button from "@/components/ui/Button";
+import GroupsButton from "@/components/groups/GroupsButton";
 
 /**
  * WodbBrowse — the "Which One Doesn't Belong?" warm-up browser.
@@ -197,9 +198,15 @@ function Projection({
               {set.title}
             </h2>
           </div>
-          <Button tier="secondary" size="small" onClick={onClose}>
-            Close ✕
-          </Button>
+          <div className="flex items-center gap-2">
+            <GroupsButton
+              isDark={false}
+              className="inline-flex items-center gap-1.5 rounded-md border-2 border-pnp-navy bg-white px-3 py-1.5 text-xs font-bold text-pnp-navy transition-colors hover:bg-pnp-gray-50"
+            />
+            <Button tier="secondary" size="small" onClick={onClose}>
+              Close ✕
+            </Button>
+          </div>
         </div>
 
         <p className="mb-3 text-center font-heading text-base font-bold text-pnp-navy md:text-lg">

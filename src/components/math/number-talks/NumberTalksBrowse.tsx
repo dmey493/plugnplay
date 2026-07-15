@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import type { NumberTalk, NumberTalkGrade } from "@/lib/number-talks";
 import Tag from "@/components/ui/Tag";
 import Button from "@/components/ui/Button";
+import GroupsButton from "@/components/groups/GroupsButton";
 
 /**
  * NumberTalksBrowse — browse + project short mental-math warm-ups.
@@ -150,9 +151,15 @@ function Projection({
               {talk.title}
             </h2>
           </div>
-          <Button tier="secondary" size="small" onClick={onClose}>
-            Close ✕
-          </Button>
+          <div className="flex items-center gap-2">
+            <GroupsButton
+              isDark={false}
+              className="inline-flex items-center gap-1.5 rounded-md border-2 border-pnp-navy bg-white px-3 py-1.5 text-xs font-bold text-pnp-navy transition-colors hover:bg-pnp-gray-50"
+            />
+            <Button tier="secondary" size="small" onClick={onClose}>
+              Close ✕
+            </Button>
+          </div>
         </div>
 
         {talk.launch && (

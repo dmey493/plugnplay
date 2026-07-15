@@ -21,6 +21,28 @@ import type { TaskImage } from "@/lib/types";
 import InteractiveImage from "./interactive/InteractiveImage";
 import DrawingOverlay from "@/components/intervention/DrawingOverlay";
 import TimerOverlay from "./TimerOverlay";
+import GroupsButton, { type GroupsRemoteAction } from "@/components/groups/GroupsButton";
+import { getClasses, getLastGroups } from "@/lib/classes";
+
+/** Read the current groups mirror + class list from localStorage for the
+ *  heartbeat broadcast. Called on the client only (connect + each tick),
+ *  so it always reflects the latest saved assignment / rosters. */
+function groupsBroadcast(): Pick<ProjectionState, "groups" | "classes"> {
+  const saved = getLastGroups();
+  return {
+    groups: saved
+      ? {
+          label: saved.label,
+          groups: saved.groups.map((g) => g.map((s) => ({ id: s.id, name: s.name }))),
+        }
+      : null,
+    classes: getClasses().map((c) => ({
+      id: c.id,
+      name: c.name,
+      count: c.students.length,
+    })),
+  };
+}
 
 interface Props {
   taskId: string;
@@ -109,6 +131,15 @@ export default function ProjectionView({
   const [connectModalOpen, setConnectModalOpen] = useState(false);
   // `connectInFlight` blocks double-clicks while we're still minting.
   const [connectInFlight, setConnectInFlight] = useState(false);
+
+  // Relay for phone → Groups overlay. Each drained groups command bumps
+  // the nonce so GroupsButton applies it exactly once.
+  const groupsNonce = useRef(0);
+  const [groupsAction, setGroupsAction] = useState<GroupsRemoteAction | undefined>();
+  const bumpGroups = useCallback((a: Omit<GroupsRemoteAction, "nonce">) => {
+    groupsNonce.current += 1;
+    setGroupsAction({ ...a, nonce: groupsNonce.current });
+  }, []);
 
   // Parse prompt into intro + ordered questions, plus extensions as a group.
   const parts = useMemo(() => parsePrompt(studentPrompt), [studentPrompt]);
@@ -207,9 +238,24 @@ export default function ProjectionView({
           setTimerRemaining(timerDuration);
           setTimerRunning(false);
           break;
+        case "groups-open":
+          bumpGroups({ type: "open" });
+          break;
+        case "groups-close":
+          bumpGroups({ type: "close" });
+          break;
+        case "groups-form-class":
+          bumpGroups({ type: "form-class", classId: cmd.classId });
+          break;
+        case "groups-reshuffle":
+          bumpGroups({ type: "reshuffle" });
+          break;
+        case "groups-clear":
+          bumpGroups({ type: "clear" });
+          break;
       }
     },
-    [advance, retreat, timerDuration]
+    [advance, retreat, timerDuration, bumpGroups]
   );
 
   // ─── Connect / disconnect from phone ───────────────────────────────
@@ -234,6 +280,7 @@ export default function ProjectionView({
           remainingSec: timerRemaining,
           running: timerRunning,
         },
+        ...groupsBroadcast(),
       };
       const res = await fetch("/api/remote/connect-projection", {
         method: "POST",
@@ -301,6 +348,7 @@ export default function ProjectionView({
         remainingSec: timerRemaining,
         running: timerRunning,
       },
+      ...groupsBroadcast(),
     }),
     [
       taskId,
@@ -636,6 +684,8 @@ export default function ProjectionView({
           >
             {drawing ? "Drawing…" : "Draw"}
           </button>
+
+          <GroupsButton isDark={isDark} remoteAction={groupsAction} />
 
           <button
             onClick={exit}

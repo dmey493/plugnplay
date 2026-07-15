@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import type {
+  GroupsClassSummary,
+  GroupsMirror,
   ProjectionState,
   RemoteCommand,
   RemoteTaskBundle,
@@ -109,6 +111,13 @@ export default function RemoteDashboard({
         {/* Timer card */}
         <TimerCard state={state.timer} onCommand={onCommand} />
 
+        {/* Random groups — view the current assignment + form from a class */}
+        <GroupsCard
+          groups={state.groups ?? null}
+          classes={state.classes ?? []}
+          onCommand={onCommand}
+        />
+
         {/* Theme picker */}
         <ThemeCard activeId={state.themeId} onCommand={onCommand} />
 
@@ -144,6 +153,134 @@ export default function RemoteDashboard({
         </div>
       </main>
     </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// Groups card — mirror the projection's assignment + drive it
+// ─────────────────────────────────────────────────────────────────────
+
+// Matches the group colours on the projection (GroupsResult) so a board
+// reads the same on the phone and the big screen.
+const GROUP_COLORS = [
+  "#0d9488", "#f97316", "#0ea5e9", "#16a34a", "#dc2626",
+  "#475569", "#facc15", "#3f42d9", "#ec4899",
+];
+const groupColor = (i: number) => GROUP_COLORS[i % GROUP_COLORS.length];
+
+function GroupsCard({
+  groups,
+  classes,
+  onCommand,
+}: {
+  groups: GroupsMirror | null;
+  classes: GroupsClassSummary[];
+  onCommand: (c: RemoteCommand) => void;
+}) {
+  return (
+    <section className="mt-4 rounded-2xl bg-white p-4 shadow-sm">
+      <div className="flex items-center justify-between">
+        <div className="text-xs font-bold uppercase tracking-wider text-pnp-gray-500">
+          Groups
+        </div>
+        {groups && (
+          <button
+            type="button"
+            onClick={() => onCommand({ type: "groups-clear" })}
+            className="text-xs font-semibold text-pnp-gray-400 hover:text-pnp-gray-700"
+          >
+            Clear
+          </button>
+        )}
+      </div>
+
+      {groups ? (
+        <>
+          <div className="mt-1 text-xs font-semibold text-pnp-gray-500">
+            {groups.label}
+          </div>
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            {groups.groups.map((g, i) => (
+              <div
+                key={i}
+                className="rounded-xl border border-pnp-gray-200 p-2.5"
+              >
+                <div
+                  className="text-[11px] font-bold uppercase tracking-wide"
+                  style={{ color: groupColor(i) }}
+                >
+                  Group {i + 1}
+                </div>
+                <ul className="mt-1 space-y-0.5">
+                  {g.map((s) => (
+                    <li
+                      key={s.id}
+                      className="text-sm font-semibold leading-snug text-pnp-navy"
+                    >
+                      {s.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={() => onCommand({ type: "groups-reshuffle" })}
+            className="mt-3 w-full rounded-md bg-pnp-blue py-2.5 text-sm font-bold text-white hover:bg-pnp-navy"
+          >
+            Reshuffle
+          </button>
+        </>
+      ) : (
+        <p className="mt-2 text-sm text-pnp-gray-500">
+          No groups formed yet. Pick a class below to form them on the
+          projection.
+        </p>
+      )}
+
+      {classes.length > 0 ? (
+        <div className="mt-4">
+          <div className="text-xs font-bold uppercase tracking-wider text-pnp-gray-400">
+            {groups ? "Form from another class" : "Form from a class"}
+          </div>
+          <div className="mt-2 space-y-1.5">
+            {classes.map((c) => {
+              const groupable = c.count >= 2;
+              return (
+                <button
+                  key={c.id}
+                  type="button"
+                  disabled={!groupable}
+                  onClick={() =>
+                    onCommand({ type: "groups-form-class", classId: c.id })
+                  }
+                  className={`flex w-full items-center justify-between gap-3 rounded-lg border px-4 py-3 text-left transition-colors ${
+                    groupable
+                      ? "border-pnp-gray-200 hover:border-pnp-accent hover:bg-pnp-accent-soft/40"
+                      : "cursor-not-allowed border-pnp-gray-100 opacity-50"
+                  }`}
+                >
+                  <span className="min-w-0 flex-1 truncate font-heading font-bold text-pnp-navy">
+                    {c.name}
+                  </span>
+                  <span className="shrink-0 text-xs font-semibold text-pnp-gray-500">
+                    {c.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      ) : (
+        !groups && (
+          <p className="mt-3 text-xs text-pnp-gray-400">
+            No saved classes on the projection's device. Build one on the
+            Classes page first.
+          </p>
+        )
+      )}
+    </section>
   );
 }
 
