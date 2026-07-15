@@ -49,7 +49,7 @@
         "description": "Plot a point (x, y) by moving right then up from the origin, and read the coordinates of a plotted point.",
         "check_question": "Where is the point (3, 5): how far right and how far up from the origin?"
       },
-      "i_do_script": "A point on a scatter plot is an ordered pair (x, y): the FIRST number tells how far to go along the horizontal x-axis, the SECOND how far up the vertical y-axis. Watch (3, 5): start at the origin, go 3 to the right, then 5 up. Reading is the reverse -- for a plotted dot I read its across value first, then its up value. The order never changes: x always comes before y.",
+      "i_do_script": "Finding a stadium seat has a fixed order: walk ALONG the ground to your section first, THEN climb up to your row -- along 2 then up 6 is a different seat from along 6 then up 2. A point on a scatter plot is an ordered pair (x, y): the FIRST number tells how far to go along the horizontal x-axis, the SECOND how far up the vertical y-axis. Watch (3, 5): start at the origin, go 3 to the right, then 5 up. Reading is the reverse -- for a plotted dot I read its across value first, then its up value. The order never changes: x always comes before y.",
       "canonical_error": {
         "pattern": "Reverses the coordinates -- moves up by the first number and across by the second, plotting (a, b) where (b, a) belongs.",
         "example": "Plots (3, 5) by going 5 right and 3 up (landing at (5, 3)) instead of 3 right and 5 up.",
@@ -84,7 +84,7 @@
       ],
       "redirect_script": {
         "stop": "Which number goes across and which goes up?",
-        "prompt": "Read the pair left to right: the first number is steps RIGHT along the bottom, the second is steps UP. Point to the x-axis for the first, the y-axis for the second.",
+        "prompt": "Mark BOTH orders on the grid -- right 2 then up 6, and right 6 then up 2 -- and see that they are two different dots. Read the pair left to right: the first number is steps RIGHT along the bottom, the second is steps UP. Point to the x-axis for the first, the y-axis for the second.",
         "praise": "You moved across first, then up -- that's the ordered pair read correctly."
       },
       "vocabulary": [
@@ -110,6 +110,33 @@
         "if_fail": "Review plotting points on the coordinate plane (5.G.1)."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Show two dots built from the same numbers 2 and 6: dot A is right 2, up 6; dot B is right 6, up 2. Same numbers, two different spots -- only one of them is the point (2, 6), and the order decides which.",
+          "visual": {
+            "type": "coordinate_grid",
+            "x_range": [
+              0,
+              8
+            ],
+            "y_range": [
+              0,
+              8
+            ],
+            "points": [
+              {
+                "x": 2,
+                "y": 6,
+                "label": "A"
+              },
+              {
+                "x": 6,
+                "y": 2,
+                "label": "B"
+              }
+            ]
+          }
+        },
         {
           "kind": "show",
           "text": "Write 'Plot (2, 6).'"
@@ -143,7 +170,7 @@
         "description": "Compute slope as the change in y over the change in x between two points on a line.",
         "check_question": "What is the slope of the line through (2, 3) and (6, 11)?"
       },
-      "i_do_script": "Slope is how steep a line is: the change in y (rise) divided by the change in x (run). Watch the points (2, 3) and (6, 11). The y-values change by 11 - 3 = 8, and the x-values change by 6 - 2 = 4, so the slope is 8/4 = 2. Two rules: rise goes on top and run on the bottom, and I subtract in the SAME order for both -- second point minus first point, top and bottom.",
+      "i_do_script": "Rise over run is a staircase you can draw: plot (2, 3) and (6, 11), then draw the step between them -- 8 squares up, 4 squares across. The slope 8/4 = 2 says the line climbs 2 for every 1 it moves right; the subtraction y2 - y1 and x2 - x1 just counts those squares without the picture. Slope is how steep a line is: the change in y (rise) divided by the change in x (run). Watch the points (2, 3) and (6, 11). The y-values change by 11 - 3 = 8, and the x-values change by 6 - 2 = 4, so the slope is 8/4 = 2. Two rules: rise goes on top and run on the bottom, and I subtract in the SAME order for both -- second point minus first point, top and bottom.",
       "canonical_error": {
         "pattern": "Computes run over rise (flips the ratio), or subtracts the coordinates in a different order on top than on the bottom.",
         "example": "For (2, 3) and (6, 11) writes slope = (6 - 2)/(11 - 3) = 4/8 = 1/2 instead of (11 - 3)/(6 - 2) = 8/4 = 2.",
@@ -206,6 +233,42 @@
       "worked_example_script": [
         {
           "kind": "show",
+          "text": "Plot (1, 4) and (5, 16) and draw the staircase between them: up 12, across 4.",
+          "visual": {
+            "type": "coordinate_grid",
+            "x_range": [
+              0,
+              8
+            ],
+            "y_range": [
+              0,
+              18
+            ],
+            "points": [
+              {
+                "x": 1,
+                "y": 4,
+                "label": "start"
+              },
+              {
+                "x": 1,
+                "y": 16,
+                "label": "up 12"
+              },
+              {
+                "x": 5,
+                "y": 16,
+                "label": "across 4"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Count the staircase: how many up, how many across? So how much does the line climb per single step right?"
+        },
+        {
+          "kind": "show",
           "text": "Write 'Find the slope through (1, 4) and (5, 16).'"
         },
         {
@@ -235,7 +298,7 @@
         "type": "skill",
         "skill_id": "8DSP2-F1"
       },
-      "i_do_script": "Before I ever draw a line, I ask whether the data even LOOKS like a line. I scan the points from left to right. If as x increases the y-values mostly climb, that is a positive linear association; if they mostly fall, that is a negative linear association; if they bounce up and down with no steady direction, there is NO linear association and a straight line would not model them. Watch (1,4), (2,7), (3,9), (4,12), (5,15): every step right, y climbs by about 3 -- a clear positive linear association, so a line is a reasonable model.",
+      "i_do_script": "Try the pencil test: lay a pencil across the plotted dots and tilt it -- if ONE tilt lets the whole set of dots hug the pencil, the data marches like a line; if no single tilt works, it doesn't. Before I ever draw a line, I ask whether the data even LOOKS like a line. I scan the points from left to right. If as x increases the y-values mostly climb, that is a positive linear association; if they mostly fall, that is a negative linear association; if they bounce up and down with no steady direction, there is NO linear association and a straight line would not model them. Watch (1,4), (2,7), (3,9), (4,12), (5,15): every step right, y climbs by about 3 -- a clear positive linear association, so a line is a reasonable model.",
       "canonical_error": {
         "pattern": "Decides there is a linear association by looking at only one or two points (or whether y is 'big'), instead of whether the whole set of points trends steadily up or steadily down.",
         "example": "For the scattered set (1,5), (2,12), (3,4), (4,15), (5,3) a student says 'yes, linear -- the numbers are large,' even though the points jump up and down with no consistent direction.",
@@ -262,7 +325,7 @@
       ],
       "redirect_script": {
         "stop": "Look at ALL the points -- do they trend one direction?",
-        "prompt": "Scan left to right: as x grows, do the y-values mostly go up (positive), mostly go down (negative), or jump around with no pattern (none)? One point can't decide it.",
+        "prompt": "Do the pencil test first: can one tilted pencil hug the WHOLE set of dots? Scan left to right: as x grows, do the y-values mostly go up (positive), mostly go down (negative), or jump around with no pattern (none)? One point can't decide it.",
         "praise": "You read the whole trend, not one point -- that's how you spot a linear association."
       },
       "vocabulary": [
@@ -288,6 +351,51 @@
         "if_fail": "8DSP2-F1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Plot the five points (1, 3), (2, 5), (3, 8), (4, 10), (5, 12) as dots on a grid.",
+          "visual": {
+            "type": "coordinate_grid",
+            "x_range": [
+              0,
+              6
+            ],
+            "y_range": [
+              0,
+              14
+            ],
+            "points": [
+              {
+                "x": 1,
+                "y": 3
+              },
+              {
+                "x": 2,
+                "y": 5
+              },
+              {
+                "x": 3,
+                "y": 8
+              },
+              {
+                "x": 4,
+                "y": 10
+              },
+              {
+                "x": 5,
+                "y": 12
+              }
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Lay a pencil across the dots and tilt it until as many dots as possible hug it. Can you find ONE tilt that fits the whole set? Which way does the pencil lean -- uphill or downhill?"
+        },
+        {
+          "kind": "say",
+          "text": "One uphill tilt catches every dot -- the WHOLE set marches up together, and that march is the linear association. No single point, and no 'big number,' can make the march; only the whole set marching one way can."
+        },
         {
           "kind": "show",
           "text": "Write the points (1,3), (2,5), (3,8), (4,10), (5,12)."
@@ -533,7 +641,7 @@
         "type": "skill",
         "skill_id": "8DSP2-F2"
       },
-      "i_do_script": "When a scatter plot already has its line of best fit drawn and its equation given, my job is to say what the two numbers MEAN in the story. The slope is a rate: how much the y-quantity changes for each 1 more of the x-quantity. The y-intercept is the starting value: the y-quantity when x is 0. Watch a line y = 4.5x + 50 for test score (y) versus hours studied (x): the slope 4.5 means the score goes up about 4.5 points for each extra hour studied, and the intercept 50 means a student who studies 0 hours is predicted to score about 50.",
+      "i_do_script": "When a line of best fit comes with its equation, my job is to say what the two numbers MEAN in the story -- and each number's meaning is how it behaves in the table. Take y = 4.5x + 50 for test score (y) versus hours studied (x). At x = 0 (no studying), the equation predicts 50 -- the y-intercept is the starting value. Each extra hour adds 4.5 more points -- the slope is a rate: how much y changes for each 1 more of x. Say both with units and direction: 'about 4.5 points per hour of studying' and 'about 50 points with no studying.' A negative slope reads as a drop: -1.75 means y falls 1.75 for each 1 more of x.",
       "canonical_error": {
         "pattern": "Swaps the roles of slope and y-intercept -- reads the y-intercept as the rate of change and the slope as the starting value.",
         "example": "For a line of best fit y = 4.5x + 50 (test score vs hours studied), the student says '50 means the score rises 50 points per hour' and '4.5 is the score with no studying,' reversing the two.",
@@ -560,7 +668,7 @@
       ],
       "redirect_script": {
         "stop": "Which number is the rate, and which is the start?",
-        "prompt": "In y = mx + b, m (the slope) is the change PER one x -- a rate. b (the y-intercept) is the value when x = 0 -- the starting amount. Label each number with its role before you write the sentence.",
+        "prompt": "Plug in x = 0 first: that value is the start. Then add one to x: the change you see is the rate, with units. In y = mx + b, m (the slope) is the change PER one x -- a rate. b (the y-intercept) is the value when x = 0 -- the starting amount. Label each number with its role before you write the sentence.",
         "praise": "You matched slope to the rate and intercept to the starting value -- that's the interpretation nailed."
       },
       "vocabulary": [
@@ -586,6 +694,18 @@
         "if_fail": "8DSP2-F2"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "For y = 3x + 12 (x = items, y = cost), fill a quick table: x = 0 gives 12; x = 1 gives 15; x = 2 gives 18."
+        },
+        {
+          "kind": "ask",
+          "text": "What does the 12 mean in the story -- what are you paying for zero items? And what happens to the cost each time you add one item?"
+        },
+        {
+          "kind": "say",
+          "text": "The 12 is the starting cost (the y-intercept, at x = 0); the 3 is the rate -- about $3 more per item. Numbers earn their meaning from what they DO, not where they sit."
+        },
         {
           "kind": "show",
           "text": "Write 'Line of best fit y = 3x + 12, x = number of items, y = total cost in dollars.'"
@@ -1420,7 +1540,7 @@
         "type": "skill",
         "skill_id": "8DSP2-S4"
       },
-      "i_do_script": "A line of best fit is a prediction machine: put in an x, get a predicted y. I substitute the known value for its matching variable, multiply by the slope FIRST, then add the intercept. Watch y = -2/3 x + 25 for flour (y) after x batches: to predict after 12 batches, y = -2/3(12) + 25 = -8 + 25 = 17 pounds. I also name the prediction: if the x is INSIDE the data range it is interpolation (usually safe); if it is BEYOND the range it is extrapolation (use with care). Twelve batches inside data that ran 1 to 20 is interpolation.",
+      "i_do_script": "Before the equation predicts anything, MY eye should: find x on the plot, ride up to the line, and read across -- about what y does the line promise? The substitution then confirms the eyeball number, and if the two disagree wildly, something got typed wrong. A line of best fit is a prediction machine: put in an x, get a predicted y. I substitute the known value for its matching variable, multiply by the slope FIRST, then add the intercept. Watch y = -2/3 x + 25 for flour (y) after x batches: to predict after 12 batches, y = -2/3(12) + 25 = -8 + 25 = 17 pounds. I also name the prediction: if the x is INSIDE the data range it is interpolation (usually safe); if it is BEYOND the range it is extrapolation (use with care). Twelve batches inside data that ran 1 to 20 is interpolation.",
       "canonical_error": {
         "pattern": "Substitutes the given number for the wrong variable, or breaks the order of operations -- adding before multiplying by the slope.",
         "example": "To predict flour after 12 batches with y = -2/3 x + 25, the student computes -2/3 + 25 x 12 = 299.33, or plugs 12 in for y, instead of y = -2/3(12) + 25 = 17.",
@@ -1473,6 +1593,10 @@
         "if_fail": "8DSP2-S4"
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Before substituting x = 6: on the scatter plot, ride up from 6 to the line and across -- about what height does the line promise? Keep that number; the equation must land near it."
+        },
         {
           "kind": "show",
           "text": "Write 'y = 1.5x + 4 models plant height (y, cm) after x weeks; data from x = 1 to x = 10. Predict at x = 6.'"

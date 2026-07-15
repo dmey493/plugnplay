@@ -49,7 +49,7 @@
         "description": "Whole-number and simple decimal division to find a per-unit amount.",
         "check_question": "12 dollars buys 4 pounds. How many dollars per 1 pound?"
       },
-      "i_do_script": "A unit rate is always the answer to 'how much for exactly 1?' To get it I divide the total by the number of units. Watch: 12 dollars for 4 pounds. I divide the dollars by the pounds — 12 divided by 4 — and get 3 dollars per 1 pound. The trick is which number goes on top: whatever the 'per' word points AT (dollars per pound) is the total I divide, and the thing after 'per' is what I divide BY.",
+      "i_do_script": "Picture the 15 dollars laid out as one long bar, then cut it into 3 equal chunks -- one chunk for each pound. Each chunk holds 15 / 3 = 5 dollars, and that one-pound chunk IS the unit rate: the money is what gets cut, the pounds are how many pieces. A unit rate is always the answer to 'how much for exactly 1?' To get it I divide the total by the number of units. Watch: 12 dollars for 4 pounds. I divide the dollars by the pounds — 12 divided by 4 — and get 3 dollars per 1 pound. The trick is which number goes on top: whatever the 'per' word points AT (dollars per pound) is the total I divide, and the thing after 'per' is what I divide BY.",
       "canonical_error": {
         "pattern": "Divides in the wrong order — amount by total instead of total by amount",
         "example": "For '12 dollars for 4 pounds, dollars per pound?' the student computes 4 / 12 = 0.33 instead of 12 / 4 = 3",
@@ -57,32 +57,100 @@
       },
       "item_template": "A two-number rate ('A units of X for B units of Y') and a 'X per 1 Y?' question. Student divides the correct quantity by the other. Short numeric response; whole-number and simple decimal quotients for fluency.",
       "sample_items": [
-        { "stem": "20 dollars for 5 shirts. How many dollars per 1 shirt?", "answer": "4" },
-        { "stem": "36 miles on 4 gallons. How many miles per 1 gallon?", "answer": "9" },
-        { "stem": "45 words in 5 minutes. How many words per 1 minute?", "answer": "9" },
-        { "stem": "14 dollars for 4 pounds. How many dollars per 1 pound?", "answer": "3.5" },
-        { "stem": "21 dollars for 6 tickets. How many dollars per 1 ticket?", "answer": "3.5" },
-        { "stem": "48 students on 3 buses. How many students per 1 bus?", "answer": "16" }
+        {
+          "stem": "20 dollars for 5 shirts. How many dollars per 1 shirt?",
+          "answer": "4"
+        },
+        {
+          "stem": "36 miles on 4 gallons. How many miles per 1 gallon?",
+          "answer": "9"
+        },
+        {
+          "stem": "45 words in 5 minutes. How many words per 1 minute?",
+          "answer": "9"
+        },
+        {
+          "stem": "14 dollars for 4 pounds. How many dollars per 1 pound?",
+          "answer": "3.5"
+        },
+        {
+          "stem": "21 dollars for 6 tickets. How many dollars per 1 ticket?",
+          "answer": "3.5"
+        },
+        {
+          "stem": "48 students on 3 buses. How many students per 1 bus?",
+          "answer": "16"
+        }
       ],
       "redirect_script": {
         "stop": "Wait — which number are you solving for?",
-        "prompt": "Underline the words after 'per' — that is what you divide BY. The other quantity goes on top. Say it out loud: 'dollars per 1 pound means dollars on top, pounds on the bottom.'",
+        "prompt": "Look at the bar first: the dollars are the amount that gets cut up, and the pounds are how many pieces you cut it into. Underline the words after 'per' — that is what you divide BY. The other quantity goes on top. Say it out loud: 'dollars per 1 pound means dollars on top, pounds on the bottom.'",
         "praise": "You put the right quantity on top before dividing — that is what keeps a unit rate right-side up."
       },
       "vocabulary": [
-        { "term": "Unit rate", "definition": "How much of one quantity you get for exactly 1 of the other." },
-        { "term": "Per", "definition": "A word meaning 'for each 1'; the quantity right after 'per' is what you divide by." }
+        {
+          "term": "Unit rate",
+          "definition": "How much of one quantity you get for exactly 1 of the other."
+        },
+        {
+          "term": "Per",
+          "definition": "A word meaning 'for each 1'; the quantity right after 'per' is what you divide by."
+        }
       ],
       "next_steps": {
         "if_pass": "7RP1-S1",
         "if_fail": "Review division to find a per-unit amount (6.RP.2)."
       },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '15 dollars for 3 pounds. Dollars per 1 pound?'" },
-        { "kind": "ask", "text": "The question says 'dollars per 1 pound.' Which quantity are we solving FOR — dollars or pounds?" },
-        { "kind": "say", "text": "Dollars. So dollars go on top. Pounds is the 'per' word, so pounds is what we divide BY: 15 divided by 3." },
-        { "kind": "watch", "text": "If the student writes 3 / 15, don't correct the arithmetic — ask 'is your answer bigger or smaller than 1 dollar? Does 20 cents a pound make sense?'" },
-        { "kind": "ask", "text": "Your turn: 24 dollars for 6 hours. Dollars per 1 hour? What goes on top?" }
+        {
+          "kind": "show",
+          "text": "Draw a bar worth 15 dollars and cut it into 3 equal pieces, one piece per pound. Each piece holds 5 dollars -- the cost of exactly 1 pound.",
+          "visual": {
+            "type": "percent_bar",
+            "label": "$15 cut into 3 pounds",
+            "segments": [
+              {
+                "span": 5,
+                "label": "$5",
+                "shaded": true
+              },
+              {
+                "span": 5,
+                "label": "$5",
+                "shaded": true
+              },
+              {
+                "span": 5,
+                "label": "$5",
+                "shaded": true
+              }
+            ],
+            "end_labels": [
+              "$0",
+              "$15"
+            ]
+          }
+        },
+        {
+          "kind": "show",
+          "text": "Write '15 dollars for 3 pounds. Dollars per 1 pound?'"
+        },
+        {
+          "kind": "ask",
+          "text": "The question says 'dollars per 1 pound.' Which quantity are we solving FOR — dollars or pounds?"
+        },
+        {
+          "kind": "say",
+          "text": "Dollars. So dollars go on top. Pounds is the 'per' word, so pounds is what we divide BY: 15 divided by 3."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 3 / 15, don't correct the arithmetic — ask 'is your answer bigger or smaller than 1 dollar? Does 20 cents a pound make sense?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 24 dollars for 6 hours. Dollars per 1 hour? What goes on top?"
+        }
       ]
     },
     {
@@ -96,7 +164,7 @@
         "description": "Vocabulary: the words unit rate, per, and each name the amount for exactly one unit.",
         "check_question": "'A store sells apples for $2 per pound.' What is the unit rate, and what does the 1 refer to?"
       },
-      "i_do_script": "This standard has two names for the same number. 'Unit rate' and 'constant of proportionality' both mean: how much y you get for exactly 1 x. We write it as the letter k. If a car goes 50 miles every 1 hour, then k is 50 — miles per 1 hour. The word 'constant' is a promise: it never changes across the whole relationship. Two hours is 100 miles, three hours is 150, but the per-1 number stays 50.",
+      "i_do_script": "Stack the car's trip hour by hour: hour 1 adds 50 miles, hour 2 adds another 50, hour 3 another 50. The number worth naming is the size of ONE hour's chunk -- and that per-1 chunk is exactly what both fancy names point at. This standard has two names for the same number. 'Unit rate' and 'constant of proportionality' both mean: how much y you get for exactly 1 x. We write it as the letter k. If a car goes 50 miles every 1 hour, then k is 50 — miles per 1 hour. The word 'constant' is a promise: it never changes across the whole relationship. Two hours is 100 miles, three hours is 150, but the per-1 number stays 50.",
       "canonical_error": {
         "pattern": "Treats any pair of numbers in the problem as 'the rate' without checking that one of them is 1",
         "example": "Told '100 miles in 2 hours,' the student says the unit rate is 100 (or '100 to 2') instead of 50",
@@ -104,31 +172,96 @@
       },
       "item_template": "A verbal rate statement. Student states the unit rate / constant of proportionality and names what the '1' refers to. Short response and MC.",
       "sample_items": [
-        { "stem": "'A printer prints 8 pages every 1 minute.' What is the constant of proportionality, and what does the 1 refer to?", "answer": "8; the 1 refers to 1 minute (8 pages per 1 minute)" },
-        { "stem": "True or false: the constant of proportionality can change from one row of a table to another.", "answer": "False — 'constant' means it stays the same across the whole relationship." },
-        { "stem": "'Ribbon costs $3 per foot.' Another name for the $3 is the ____ of proportionality.", "answer": "constant" },
-        { "stem": "'A recipe uses 2 cups of flour for every 1 egg.' What is the unit rate of cups per egg?", "answer": "2" }
+        {
+          "stem": "'A printer prints 8 pages every 1 minute.' What is the constant of proportionality, and what does the 1 refer to?",
+          "answer": "8; the 1 refers to 1 minute (8 pages per 1 minute)"
+        },
+        {
+          "stem": "True or false: the constant of proportionality can change from one row of a table to another.",
+          "answer": "False — 'constant' means it stays the same across the whole relationship."
+        },
+        {
+          "stem": "'Ribbon costs $3 per foot.' Another name for the $3 is the ____ of proportionality.",
+          "answer": "constant"
+        },
+        {
+          "stem": "'A recipe uses 2 cups of flour for every 1 egg.' What is the unit rate of cups per egg?",
+          "answer": "2"
+        }
       ],
       "redirect_script": {
         "stop": "Hold on — is one of your numbers a 1?",
-        "prompt": "A unit rate has to pair with exactly 1. Point to the '1' in your rate. If you don't see one, you still have to divide down to it.",
+        "prompt": "Point at the bar: which chunk covers exactly ONE hour, and how many miles does that one chunk hold? A unit rate has to pair with exactly 1. Point to the '1' in your rate. If you don't see one, you still have to divide down to it.",
         "praise": "You pinned the rate to exactly 1 — that is what makes it a UNIT rate."
       },
       "vocabulary": [
-        { "term": "Constant of proportionality", "definition": "The fixed 'per 1' number (k) that connects the two quantities; another name for the unit rate." },
-        { "term": "Constant", "definition": "A value that does not change across the whole relationship." },
-        { "term": "k", "definition": "The letter used for the constant of proportionality in y = kx." }
+        {
+          "term": "Constant of proportionality",
+          "definition": "The fixed 'per 1' number (k) that connects the two quantities; another name for the unit rate."
+        },
+        {
+          "term": "Constant",
+          "definition": "A value that does not change across the whole relationship."
+        },
+        {
+          "term": "k",
+          "definition": "The letter used for the constant of proportionality in y = kx."
+        }
       ],
       "next_steps": {
         "if_pass": "7RP1-S2",
         "if_fail": "Review unit-rate vocabulary (6.RP.2)."
       },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'A car travels 50 miles every 1 hour.'" },
-        { "kind": "say", "text": "This is a unit rate because it already pairs with exactly 1 hour. The 50 is the constant of proportionality — we call it k." },
-        { "kind": "ask", "text": "If the car keeps this speed, what does k tell us about 3 hours? Does k itself change?" },
-        { "kind": "say", "text": "k stays 50. That is the 'constant' promise. We just multiply: 50 times 3 is 150 miles." },
-        { "kind": "ask", "text": "Your turn: 'A faucet drips 6 milliliters every 1 second.' Name k and what the 1 refers to." }
+        {
+          "kind": "show",
+          "text": "Draw the trip as a bar of one-hour chunks: 50 miles, then 50 more, then 50 more. Three hours total 150 miles, but every single-hour chunk is the same size -- 50.",
+          "visual": {
+            "type": "percent_bar",
+            "label": "50 miles each hour",
+            "segments": [
+              {
+                "span": 50,
+                "label": "hour 1: 50",
+                "shaded": true
+              },
+              {
+                "span": 50,
+                "label": "hour 2: 50",
+                "shaded": true
+              },
+              {
+                "span": 50,
+                "label": "hour 3: 50",
+                "shaded": true
+              }
+            ],
+            "end_labels": [
+              "0",
+              "150 miles"
+            ]
+          }
+        },
+        {
+          "kind": "show",
+          "text": "Write 'A car travels 50 miles every 1 hour.'"
+        },
+        {
+          "kind": "say",
+          "text": "This is a unit rate because it already pairs with exactly 1 hour. The 50 is the constant of proportionality — we call it k."
+        },
+        {
+          "kind": "ask",
+          "text": "If the car keeps this speed, what does k tell us about 3 hours? Does k itself change?"
+        },
+        {
+          "kind": "say",
+          "text": "k stays 50. That is the 'constant' promise. We just multiply: 50 times 3 is 150 miles."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 'A faucet drips 6 milliliters every 1 second.' Name k and what the 1 refers to."
+        }
       ]
     },
     {
@@ -136,8 +269,13 @@
       "name": "Determine whether a relationship is proportional",
       "column": "looking_back",
       "parent_standard": "7.RP.1",
-      "engine_stems": [1],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7RP1-F2" },
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7RP1-F2"
+      },
       "i_do_script": "Before I can find a constant of proportionality, I have to know the relationship even has one. A relationship is proportional when it grows by a steady 'per 1' amount and nothing else — no fee, no head start. Watch two stories. 'A gym costs $80 per month' — proportional: 2 months is $160, the ratio 80/1 holds every time. Now 'A cleaner charges $56 per hour PLUS a $10 fee' — not proportional, because the $10 gets added no matter what, so the ratio total/hours keeps changing. My test: does it pass through zero (buy 0, pay 0) and stay the same ratio? If yes, proportional.",
       "canonical_error": {
         "pattern": "Calls any relationship with a rate 'proportional,' ignoring an added fixed fee or starting amount",
@@ -169,8 +307,24 @@
           "distractor_logic": "B and D have a constant difference but not a constant ratio; C does not pass through (0,0); only A keeps y/x = 4 for every row.",
           "render_data": {
             "type": "data_table",
-            "headers": ["x", "y"],
-            "rows": [["1", "4"], ["2", "8"], ["3", "12"]]
+            "headers": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              [
+                "1",
+                "4"
+              ],
+              [
+                "2",
+                "8"
+              ],
+              [
+                "3",
+                "12"
+              ]
+            ]
           }
         },
         {
@@ -202,24 +356,72 @@
         "praise": "You caught the hidden fee — checking the zero point is exactly how you spot a fake."
       },
       "vocabulary": [
-        { "term": "Proportional relationship", "definition": "A relationship where y is always the same constant times x, so the graph passes through (0, 0)." },
-        { "term": "Origin", "definition": "The point (0, 0); a proportional relationship must pass through it." },
-        { "term": "Constant ratio", "definition": "The value y/x is the same for every pair in the relationship." }
+        {
+          "term": "Proportional relationship",
+          "definition": "A relationship where y is always the same constant times x, so the graph passes through (0, 0)."
+        },
+        {
+          "term": "Origin",
+          "definition": "The point (0, 0); a proportional relationship must pass through it."
+        },
+        {
+          "term": "Constant ratio",
+          "definition": "The value y/x is the same for every pair in the relationship."
+        }
       ],
-      "next_steps": { "if_pass": "7RP1-S2", "if_fail": "7RP1-F2" },
+      "next_steps": {
+        "if_pass": "7RP1-S2",
+        "if_fail": "7RP1-F2"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write two stories side by side: (A) 'Apples cost $2 per pound.' (B) 'A booth charges $5 to enter, then $2 per pound of apples.'" },
-        { "kind": "ask", "text": "In each story, what do you pay if you buy 0 pounds?" },
-        { "kind": "say", "text": "Story A: 0 pounds costs $0 — it passes through the origin. Story B: 0 pounds still costs $5 — the entry fee. That fee is what breaks proportionality." },
-        { "kind": "ask", "text": "Check the ratio too. In A, 2/1, 4/2, 6/3 are all 2. In B, is 7/1 the same as 9/2?" },
-        { "kind": "watch", "text": "If a student calls B proportional 'because it has a per-pound rate,' point only to the 0-pound cost — let the $5 give it away." },
-        { "kind": "ask", "text": "Your turn: 'A phone plan is $30 per month.' Proportional? What does 0 months cost?" }
+        {
+          "kind": "show",
+          "text": "Write two stories side by side: (A) 'Apples cost $2 per pound.' (B) 'A booth charges $5 to enter, then $2 per pound of apples.'"
+        },
+        {
+          "kind": "ask",
+          "text": "In each story, what do you pay if you buy 0 pounds?"
+        },
+        {
+          "kind": "say",
+          "text": "Story A: 0 pounds costs $0 — it passes through the origin. Story B: 0 pounds still costs $5 — the entry fee. That fee is what breaks proportionality."
+        },
+        {
+          "kind": "ask",
+          "text": "Check the ratio too. In A, 2/1, 4/2, 6/3 are all 2. In B, is 7/1 the same as 9/2?"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student calls B proportional 'because it has a per-pound rate,' point only to the 0-pound cost — let the $5 give it away."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 'A phone plan is $30 per month.' Proportional? What does 0 months cost?"
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "A table shows (1, 5), (2, 10), (3, 15). Is y/x the same every row? Is it proportional?", "answer": "Yes — y/x = 5 every row, and it passes through (0,0)." },
-        { "difficulty": "warm_up", "stem": "Fill in the blank: a proportional graph always passes through the point ____.", "answer": "(0, 0), the origin" },
-        { "difficulty": "core", "stem": "'A rideshare charges a $4 pickup fee plus $2 per mile.' Proportional or not? How do you know?", "answer": "Not proportional — 0 miles still costs $4, so it does not pass through the origin.", "notes": "Baits the canonical error: a rate word is present but a fee breaks the origin." },
-        { "difficulty": "core", "stem": "Which is proportional? (A) y = 3x   (B) y = 3x + 2", "answer": "A. y = 3x passes through (0,0); y = 3x + 2 starts at 2.", "notes": "First look at proportional vs non-proportional in equation form; the +2 is the fee in disguise." },
+        {
+          "difficulty": "warm_up",
+          "stem": "A table shows (1, 5), (2, 10), (3, 15). Is y/x the same every row? Is it proportional?",
+          "answer": "Yes — y/x = 5 every row, and it passes through (0,0)."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Fill in the blank: a proportional graph always passes through the point ____.",
+          "answer": "(0, 0), the origin"
+        },
+        {
+          "difficulty": "core",
+          "stem": "'A rideshare charges a $4 pickup fee plus $2 per mile.' Proportional or not? How do you know?",
+          "answer": "Not proportional — 0 miles still costs $4, so it does not pass through the origin.",
+          "notes": "Baits the canonical error: a rate word is present but a fee breaks the origin."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which is proportional? (A) y = 3x   (B) y = 3x + 2",
+          "answer": "A. y = 3x passes through (0,0); y = 3x + 2 starts at 2.",
+          "notes": "First look at proportional vs non-proportional in equation form; the +2 is the fee in disguise."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -231,9 +433,24 @@
           "answer": "Only (a) is proportional. Choice (b) adds a fixed $10 sign-up fee, so 0 hours still costs $10 — it does not pass through the origin. A per-hour rate alone is not enough.",
           "notes": "Canonical error with fresh numbers: 'has a rate, therefore proportional.'"
         },
-        { "difficulty": "core", "stem": "A table shows (2, 6), (4, 12), (5, 14). Is it proportional?", "answer": "No — 6/2 = 3 and 12/4 = 3, but 14/5 = 2.8. The ratio is not constant.", "notes": "Two rows agree, the third betrays it — students must check every row." },
-        { "difficulty": "stretch", "stem": "Write one proportional and one non-proportional story about the cost of buying pencils. Explain what makes each one what it is.", "answer": "Sample: proportional — 'pencils cost $0.25 each' (0 pencils, $0). Non-proportional — 'a $1 box plus $0.25 per pencil' (0 pencils still $1).", "notes": "Reversed direction — produce and justify both, not just recognize." },
-        { "difficulty": "stretch", "stem": "A graph is a straight line through (0, 0). A classmate says 'straight lines are always proportional.' Are they right?", "answer": "Not always — a straight line is proportional only if it passes through the origin. A line through (0, 3) is straight but not proportional. This one is proportional because it goes through (0,0).", "notes": "Separates 'linear' from 'proportional' — the classic over-generalization." }
+        {
+          "difficulty": "core",
+          "stem": "A table shows (2, 6), (4, 12), (5, 14). Is it proportional?",
+          "answer": "No — 6/2 = 3 and 12/4 = 3, but 14/5 = 2.8. The ratio is not constant.",
+          "notes": "Two rows agree, the third betrays it — students must check every row."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write one proportional and one non-proportional story about the cost of buying pencils. Explain what makes each one what it is.",
+          "answer": "Sample: proportional — 'pencils cost $0.25 each' (0 pencils, $0). Non-proportional — 'a $1 box plus $0.25 per pencil' (0 pencils still $1).",
+          "notes": "Reversed direction — produce and justify both, not just recognize."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A graph is a straight line through (0, 0). A classmate says 'straight lines are always proportional.' Are they right?",
+          "answer": "Not always — a straight line is proportional only if it passes through the origin. A line through (0, 3) is straight but not proportional. This one is proportional because it goes through (0,0).",
+          "notes": "Separates 'linear' from 'proportional' — the classic over-generalization."
+        }
       ],
       "activities": [
         {
@@ -241,21 +458,56 @@
           "title": "Origin or Not: Proportional Sort",
           "time_minutes": 12,
           "grouping": "small_group",
-          "materials": ["Card set of 12 rate stories/tables (6 proportional, 6 with a hidden fee or head start)"],
+          "materials": [
+            "Card set of 12 rate stories/tables (6 proportional, 6 with a hidden fee or head start)"
+          ],
           "instructions": "1. Spread all 12 cards face up.\n2. Sort into two piles: 'Proportional' and 'Not proportional.'\n3. Rule to place a card: say out loud what it costs (or where it is) at zero. If zero gives zero, it's proportional.\n4. For any 'not proportional' card, circle the exact word that adds a fee or head start.\n5. Debrief: what did every non-proportional card have in common?",
           "content": {
-            "categories": ["Proportional", "Not proportional"],
+            "categories": [
+              "Proportional",
+              "Not proportional"
+            ],
             "cards": [
-              { "text": "$5 per hour of babysitting", "category": "Proportional" },
-              { "text": "$5 per hour plus a $12 flat fee", "category": "Not proportional" },
-              { "text": "Table (1,3),(2,6),(3,9)", "category": "Proportional" },
-              { "text": "Table (0,4),(1,7),(2,10)", "category": "Not proportional" },
-              { "text": "3 cups of flour per 1 cup of sugar", "category": "Proportional" },
-              { "text": "A $20 deposit plus $8 per day", "category": "Not proportional" },
-              { "text": "y = 7x", "category": "Proportional" },
-              { "text": "y = 7x + 1", "category": "Not proportional" },
-              { "text": "60 miles every 1 hour from a standing start", "category": "Proportional" },
-              { "text": "A 2-mile head start, then 60 miles per hour", "category": "Not proportional" }
+              {
+                "text": "$5 per hour of babysitting",
+                "category": "Proportional"
+              },
+              {
+                "text": "$5 per hour plus a $12 flat fee",
+                "category": "Not proportional"
+              },
+              {
+                "text": "Table (1,3),(2,6),(3,9)",
+                "category": "Proportional"
+              },
+              {
+                "text": "Table (0,4),(1,7),(2,10)",
+                "category": "Not proportional"
+              },
+              {
+                "text": "3 cups of flour per 1 cup of sugar",
+                "category": "Proportional"
+              },
+              {
+                "text": "A $20 deposit plus $8 per day",
+                "category": "Not proportional"
+              },
+              {
+                "text": "y = 7x",
+                "category": "Proportional"
+              },
+              {
+                "text": "y = 7x + 1",
+                "category": "Not proportional"
+              },
+              {
+                "text": "60 miles every 1 hour from a standing start",
+                "category": "Proportional"
+              },
+              {
+                "text": "A 2-mile head start, then 60 miles per hour",
+                "category": "Not proportional"
+              }
             ]
           }
         },
@@ -264,7 +516,9 @@
           "title": "The Rate-Word Trap",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Printed slip with Priya's work"],
+          "materials": [
+            "Printed slip with Priya's work"
+          ],
           "instructions": "1. Students read Priya's claim that both '$6 per hour' and '$10 sign-up plus $6 per hour' are proportional.\n2. They write what Priya noticed correctly (both have a rate) and exactly what she skipped (the origin test).\n3. They fix the answer and state the zero-cost of each option.\n4. Share out: why isn't 'has a per-hour rate' enough to call something proportional?",
           "content": {
             "worked_problem": "Which is proportional? (a) $6 per hour, (b) $10 sign-up plus $6 per hour. Priya says both.",
@@ -277,14 +531,26 @@
           "title": "Zero Check Lightning Round",
           "time_minutes": 6,
           "grouping": "whole_class",
-          "materials": ["Slide deck or index cards of rate stories", "Student whiteboards"],
+          "materials": [
+            "Slide deck or index cards of rate stories",
+            "Student whiteboards"
+          ],
           "instructions": "1. Flash a rate story for 5 seconds.\n2. Students write only the cost (or position) at zero on their whiteboard.\n3. On 'reveal,' everyone holds up boards: a 0 means proportional, anything else means not.\n4. Award a point for the correct zero value, not just the label.\n5. Debrief the trickiest card: where was the fee hiding?"
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-003", "why": "The whole skill is a discrimination task; sorting correct proportional cards against fee-carrying decoys is error analysis in its purest form." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'what does zero cost here?' models the origin check students skip when they hear a rate word." },
-        { "strategy_id": "strat-math-001", "why": "Think-pair-share on 'is this proportional and how do you know' surfaces the hidden-fee reasoning students otherwise keep silent." }
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The whole skill is a discrimination task; sorting correct proportional cards against fee-carrying decoys is error analysis in its purest form."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'what does zero cost here?' models the origin check students skip when they hear a rate word."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'is this proportional and how do you know' surfaces the hidden-fee reasoning students otherwise keep silent."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -326,20 +592,48 @@
         "stem": "Which is a proportional relationship? (a) 'A pool charges $4 to enter plus $3 per hour.' (b) 'A pool charges $3 per hour.'",
         "answer": "(b)",
         "steps": [
-          { "math": "(a) cost at 0 hours = $4 (the entry fee)", "annotation": "Test the origin first. A fee means zero hours still costs money." },
-          { "math": "(b) cost at 0 hours = $0", "annotation": "Pure rate, no fee — it passes through (0, 0)." },
-          { "math": "(a) ratios: 7/1, 10/2, 13/3 are 7, 5, 4.33 — not constant", "annotation": "The changing ratio confirms (a) is not proportional." },
-          { "math": "answer: (b), constant ratio 3 through the origin", "annotation": "Only (b) is proportional; its constant of proportionality is 3." }
+          {
+            "math": "(a) cost at 0 hours = $4 (the entry fee)",
+            "annotation": "Test the origin first. A fee means zero hours still costs money."
+          },
+          {
+            "math": "(b) cost at 0 hours = $0",
+            "annotation": "Pure rate, no fee — it passes through (0, 0)."
+          },
+          {
+            "math": "(a) ratios: 7/1, 10/2, 13/3 are 7, 5, 4.33 — not constant",
+            "annotation": "The changing ratio confirms (a) is not proportional."
+          },
+          {
+            "math": "answer: (b), constant ratio 3 through the origin",
+            "annotation": "Only (b) is proportional; its constant of proportionality is 3."
+          }
         ]
       },
       "faded_example": {
         "stem": "Which is proportional? (a) 'A bike rental is $8 plus $5 per hour.' (b) 'A bike rental is $5 per hour.'",
         "answer": "(b)",
         "steps": [
-          { "math": "(a) cost at 0 hours = $8", "annotation": "The flat $8 is charged even for zero hours.", "given": true },
-          { "math": "(b) cost at 0 hours = $0", "annotation": "No fee — through the origin.", "given": true },
-          { "math": null, "annotation": "Which option passes through (0, 0)?", "given": false },
-          { "math": null, "annotation": "State the answer and its constant of proportionality.", "given": false }
+          {
+            "math": "(a) cost at 0 hours = $8",
+            "annotation": "The flat $8 is charged even for zero hours.",
+            "given": true
+          },
+          {
+            "math": "(b) cost at 0 hours = $0",
+            "annotation": "No fee — through the origin.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Which option passes through (0, 0)?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the answer and its constant of proportionality.",
+            "given": false
+          }
         ]
       }
     },
@@ -348,9 +642,14 @@
       "name": "Identify the constant of proportionality when the pair (1, r) is shown",
       "column": "on_grade",
       "parent_standard": "7.RP.1",
-      "engine_stems": [2],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7RP1-S1" },
-      "i_do_script": "The easiest place to find the constant of proportionality is when the relationship hands you the pair with a 1 in it. In a table, if a row says (1, 5), then k is 5 — five y for one x, done. In a list of rate statements, the one that already uses 'per 1' or shows 1 of something is the unit rate. Watch four statements: '$2 for 1 apple,' '$5 for 2 apples,' '$7 for 3 apples,' '$1 for 5 apples.' Only the first pairs with exactly 1, so its number, $2, is the unit rate.",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7RP1-S1"
+      },
+      "i_do_script": "Think of each price tag as dollars spread over a row of pound-blocks. The question 'dollars per 1 pound' is asking about a picture with exactly ONE pound-block -- not about a picture that happens to have a $1 bill in it somewhere. The easiest place to find the constant of proportionality is when the relationship hands you the pair with a 1 in it. In a table, if a row says (1, 5), then k is 5 — five y for one x, done. In a list of rate statements, the one that already uses 'per 1' or shows 1 of something is the unit rate. Watch four statements: '$2 for 1 apple,' '$5 for 2 apples,' '$7 for 3 apples,' '$1 for 5 apples.' Only the first pairs with exactly 1, so its number, $2, is the unit rate.",
       "canonical_error": {
         "pattern": "Picks the statement or row with the smallest total, or the largest quantity, instead of the one paired with 1",
         "example": "Chooses '$1 for 5 apples' as the unit rate because '$1' looks like a unit, instead of '$2 for 1 apple'",
@@ -361,55 +660,161 @@
         {
           "stem": "Which statement represents a unit rate?",
           "answer": "$2 for 1 apple",
-          "choices": ["$2 for 1 apple", "$5 for 2 apples", "$7 for 3 apples", "$1 for 5 apples"],
+          "choices": [
+            "$2 for 1 apple",
+            "$5 for 2 apples",
+            "$7 for 3 apples",
+            "$1 for 5 apples"
+          ],
           "distractor_logic": "$5/2, $7/3 pair with more than one apple; '$1 for 5 apples' baits the student who grabs the numeral 1 from the price. Only '$2 for 1 apple' pairs the quantity with 1."
         },
         {
           "stem": "A table of a proportional relationship includes the row (1, 9). What is the constant of proportionality?",
           "answer": "9",
-          "choices": ["1", "9", "10", "1/9"],
+          "choices": [
+            "1",
+            "9",
+            "10",
+            "1/9"
+          ],
           "distractor_logic": "1 grabs the x-value; 10 adds the pair; 1/9 inverts the ratio. When x = 1, k is simply the y-value, 9.",
           "render_data": {
             "type": "data_table",
-            "headers": ["x", "y"],
-            "rows": [["1", "9"], ["2", "18"], ["3", "27"]]
+            "headers": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              [
+                "1",
+                "9"
+              ],
+              [
+                "2",
+                "18"
+              ],
+              [
+                "3",
+                "27"
+              ]
+            ]
           }
         },
         {
           "stem": "A graph of a proportional relationship passes through (1, 4). What is the unit rate?",
           "answer": "4",
-          "choices": ["1", "4", "5", "1/4"],
+          "choices": [
+            "1",
+            "4",
+            "5",
+            "1/4"
+          ],
           "distractor_logic": "The point (1, 4) hands over the unit rate directly: 4 y for 1 x. Distractors grab the x, sum the pair, or invert."
         },
         {
           "stem": "Which rate is the unit rate for miles per gallon?",
           "answer": "24 miles for 1 gallon",
-          "choices": ["24 miles for 1 gallon", "48 miles for 2 gallons", "12 miles for 1/2 gallon", "1 mile for 24 gallons"],
+          "choices": [
+            "24 miles for 1 gallon",
+            "48 miles for 2 gallons",
+            "12 miles for 1/2 gallon",
+            "1 mile for 24 gallons"
+          ],
           "distractor_logic": "'1 mile for 24 gallons' baits the numeral-1 grab but pairs 1 with the wrong quantity; only '24 miles for 1 gallon' has 1 gallon as the unit."
         }
       ],
       "redirect_script": {
         "stop": "Which of your numbers is the amount, and is IT a 1?",
-        "prompt": "The unit rate pairs with 1 of the thing you measure per — usually the SECOND quantity. Point to the second number in each choice; keep only the choice where that number is 1.",
+        "prompt": "Sketch the choice as pound-blocks first: how many blocks are in your picture? The unit rate pairs with 1 of the thing you measure per — usually the SECOND quantity. Point to the second number in each choice; keep only the choice where that number is 1.",
         "praise": "You made the quantity — not just any 1 — equal to one. That's the real unit rate."
       },
       "vocabulary": [
-        { "term": "Unit rate", "definition": "The amount of the first quantity for exactly 1 of the second quantity." },
-        { "term": "(1, r) pair", "definition": "A table row or graph point where x = 1; its y-value is the constant of proportionality." }
+        {
+          "term": "Unit rate",
+          "definition": "The amount of the first quantity for exactly 1 of the second quantity."
+        },
+        {
+          "term": "(1, r) pair",
+          "definition": "A table row or graph point where x = 1; its y-value is the constant of proportionality."
+        }
       ],
-      "next_steps": { "if_pass": "7RP1-S3", "if_fail": "7RP1-S1" },
+      "next_steps": {
+        "if_pass": "7RP1-S3",
+        "if_fail": "7RP1-S1"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "List: '$3 for 1 pound,' '$8 for 3 pounds,' '$1 for 4 pounds,' '$6 for 2 pounds.'" },
-        { "kind": "ask", "text": "We want dollars per 1 POUND. Which choice has exactly 1 pound?" },
-        { "kind": "watch", "text": "If a student picks '$1 for 4 pounds' because of the $1, ask 'is the POUND number a 1 there? What is it?'" },
-        { "kind": "say", "text": "Only '$3 for 1 pound' pairs with 1 pound, so the unit rate is $3. The $1 in the trap answer is dollars, not pounds." },
-        { "kind": "ask", "text": "Your turn: a table row reads (1, 12). What is k? Where did you look?" }
+        {
+          "kind": "show",
+          "text": "Sketch two of the choices as pound-blocks: '$3 for 1 pound' is a single block carrying all $3; '$1 for 4 pounds' is FOUR blocks sharing one dollar between them.",
+          "visual": {
+            "type": "fraction_bars",
+            "label": "pound-blocks",
+            "bars": [
+              {
+                "parts": 1,
+                "shaded": 1,
+                "label": "$3 for 1 pound -- one block"
+              },
+              {
+                "parts": 4,
+                "shaded": 4,
+                "label": "$1 for 4 pounds -- four blocks"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Which sketch has exactly ONE pound-block? In the four-block sketch, how much does each single block get -- is it $1?"
+        },
+        {
+          "kind": "say",
+          "text": "Only '$3 for 1 pound' is a one-block picture, so the unit rate is $3. In the other sketch the $1 is smeared across 4 blocks -- each pound gets just 25 cents. The 1 has to be on the POUNDS, not the price."
+        },
+        {
+          "kind": "show",
+          "text": "List: '$3 for 1 pound,' '$8 for 3 pounds,' '$1 for 4 pounds,' '$6 for 2 pounds.'"
+        },
+        {
+          "kind": "ask",
+          "text": "We want dollars per 1 POUND. Which choice has exactly 1 pound?"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student picks '$1 for 4 pounds' because of the $1, ask 'is the POUND number a 1 there? What is it?'"
+        },
+        {
+          "kind": "say",
+          "text": "Only '$3 for 1 pound' pairs with 1 pound, so the unit rate is $3. The $1 in the trap answer is dollars, not pounds."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a table row reads (1, 12). What is k? Where did you look?"
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "A table row of a proportional relationship is (1, 7). What is k?", "answer": "7" },
-        { "difficulty": "warm_up", "stem": "A graph passes through (1, 3). What is the unit rate?", "answer": "3" },
-        { "difficulty": "core", "stem": "Which is the unit rate? '$10 for 4 tickets,' '$5 for 2 tickets,' '$2.50 for 1 ticket,' '$1 for 10 tickets.'", "answer": "$2.50 for 1 ticket", "notes": "'$1 for 10 tickets' is the numeral-1 bait." },
-        { "difficulty": "core", "stem": "A table shows (1, 6), (2, 12), (5, 30). Which single row tells you k at a glance, and what is k?", "answer": "The row (1, 6); k = 6.", "notes": "Directs attention to the (1, r) row rather than dividing." },
+        {
+          "difficulty": "warm_up",
+          "stem": "A table row of a proportional relationship is (1, 7). What is k?",
+          "answer": "7"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A graph passes through (1, 3). What is the unit rate?",
+          "answer": "3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which is the unit rate? '$10 for 4 tickets,' '$5 for 2 tickets,' '$2.50 for 1 ticket,' '$1 for 10 tickets.'",
+          "answer": "$2.50 for 1 ticket",
+          "notes": "'$1 for 10 tickets' is the numeral-1 bait."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A table shows (1, 6), (2, 12), (5, 30). Which single row tells you k at a glance, and what is k?",
+          "answer": "The row (1, 6); k = 6.",
+          "notes": "Directs attention to the (1, r) row rather than dividing."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -421,9 +826,24 @@
           "answer": "The 1 has to be on the YARDS (the quantity we measure per), not on the dollars. '$1 for 6 yards' pairs 1 with dollars. The correct unit rate is '$4 for 1 yard,' so k = 4.",
           "notes": "Canonical error: grabbing the numeral 1 from the wrong quantity."
         },
-        { "difficulty": "core", "stem": "A graph passes through (1, 2.5). What is the constant of proportionality?", "answer": "2.5", "notes": "The (1, r) value can be a decimal — still read directly." },
-        { "difficulty": "stretch", "stem": "A table shows (2, 10) and (3, 15) but no row with x = 1. Can you still name k just by recognizing a pair, or must you compute? Explain.", "answer": "You must compute here — no (1, r) pair is shown. Dividing 10/2 (or 15/3) gives k = 5. Recognition only works when the 1 is present.", "notes": "Marks the boundary of this skill and sets up S3 (compute)." },
-        { "difficulty": "stretch", "stem": "Write a table for a proportional relationship whose constant of proportionality is 6, and include the row that shows it at a glance.", "answer": "Sample: (1, 6), (2, 12), (3, 18). The (1, 6) row shows k = 6 directly.", "notes": "Produce-your-own; forces including the (1, r) row." }
+        {
+          "difficulty": "core",
+          "stem": "A graph passes through (1, 2.5). What is the constant of proportionality?",
+          "answer": "2.5",
+          "notes": "The (1, r) value can be a decimal — still read directly."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A table shows (2, 10) and (3, 15) but no row with x = 1. Can you still name k just by recognizing a pair, or must you compute? Explain.",
+          "answer": "You must compute here — no (1, r) pair is shown. Dividing 10/2 (or 15/3) gives k = 5. Recognition only works when the 1 is present.",
+          "notes": "Marks the boundary of this skill and sets up S3 (compute)."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write a table for a proportional relationship whose constant of proportionality is 6, and include the row that shows it at a glance.",
+          "answer": "Sample: (1, 6), (2, 12), (3, 18). The (1, 6) row shows k = 6 directly.",
+          "notes": "Produce-your-own; forces including the (1, r) row."
+        }
       ],
       "activities": [
         {
@@ -431,7 +851,9 @@
           "title": "Find the One",
           "time_minutes": 10,
           "grouping": "pairs",
-          "materials": ["Card set: 6 mini rate-lists, each with one true unit-rate card and three decoys"],
+          "materials": [
+            "Card set: 6 mini rate-lists, each with one true unit-rate card and three decoys"
+          ],
           "instructions": "1. Each pair gets a stack of rate-list cards.\n2. For each list, slide out the ONE statement that pairs the measured quantity with exactly 1.\n3. To claim it, say the sentence: 'This one has 1 ___, so the unit rate is ___.'\n4. Set aside any decoy that only had a 1 in the price and explain why it's a trap.\n5. Debrief: where does the 1 have to be for a unit rate?"
         },
         {
@@ -439,27 +861,65 @@
           "title": "Unit Rate vs Just-a-Rate",
           "time_minutes": 10,
           "grouping": "small_group",
-          "materials": ["Card set of 12 rate statements (6 pair with 1, 6 pair with 2+ )"],
+          "materials": [
+            "Card set of 12 rate statements (6 pair with 1, 6 pair with 2+ )"
+          ],
           "instructions": "1. Sort every card into 'Unit rate' (pairs with exactly 1) or 'Not yet a unit rate.'\n2. For each 'not yet' card, write what you'd divide by to fix it.\n3. Trade piles with another group and check.\n4. Debrief: a unit rate isn't the smallest number — it's the one attached to 1.",
           "content": {
-            "categories": ["Unit rate", "Not yet a unit rate"],
+            "categories": [
+              "Unit rate",
+              "Not yet a unit rate"
+            ],
             "cards": [
-              { "text": "$5 for 1 pound", "category": "Unit rate" },
-              { "text": "$12 for 3 pounds", "category": "Not yet a unit rate" },
-              { "text": "60 miles in 1 hour", "category": "Unit rate" },
-              { "text": "150 miles in 3 hours", "category": "Not yet a unit rate" },
-              { "text": "8 pages in 1 minute", "category": "Unit rate" },
-              { "text": "$1 for 4 oranges", "category": "Not yet a unit rate" },
-              { "text": "$2 for 1 orange", "category": "Unit rate" },
-              { "text": "$9 for 2 sandwiches", "category": "Not yet a unit rate" }
+              {
+                "text": "$5 for 1 pound",
+                "category": "Unit rate"
+              },
+              {
+                "text": "$12 for 3 pounds",
+                "category": "Not yet a unit rate"
+              },
+              {
+                "text": "60 miles in 1 hour",
+                "category": "Unit rate"
+              },
+              {
+                "text": "150 miles in 3 hours",
+                "category": "Not yet a unit rate"
+              },
+              {
+                "text": "8 pages in 1 minute",
+                "category": "Unit rate"
+              },
+              {
+                "text": "$1 for 4 oranges",
+                "category": "Not yet a unit rate"
+              },
+              {
+                "text": "$2 for 1 orange",
+                "category": "Unit rate"
+              },
+              {
+                "text": "$9 for 2 sandwiches",
+                "category": "Not yet a unit rate"
+              }
             ]
           }
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-003", "why": "The core failure is picking a decoy 1; comparing the true (1, r) pair against numeral-1 traps is targeted error analysis." },
-        { "strategy_id": "strat-math-010", "why": "Choral response on 'where does the 1 have to be?' builds the automatic habit of checking the second quantity." },
-        { "strategy_id": "strat-math-001", "why": "Think-pair-share on which card is the unit rate exposes the wrong-quantity-1 reasoning before it hardens." }
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The core failure is picking a decoy 1; comparing the true (1, r) pair against numeral-1 traps is targeted error analysis."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral response on 'where does the 1 have to be?' builds the automatic habit of checking the second quantity."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on which card is the unit rate exposes the wrong-quantity-1 reasoning before it hardens."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -502,14 +962,42 @@
         "answer": "7",
         "render_data": {
           "type": "data_table",
-          "headers": ["x", "y"],
-          "rows": [["1", "7"], ["2", "14"], ["4", "28"]]
+          "headers": [
+            "x",
+            "y"
+          ],
+          "rows": [
+            [
+              "1",
+              "7"
+            ],
+            [
+              "2",
+              "14"
+            ],
+            [
+              "4",
+              "28"
+            ]
+          ]
         },
         "steps": [
-          { "math": "find the row where x = 1", "annotation": "The constant is easiest to read where x is exactly 1." },
-          { "math": "row (1, 7): x = 1, y = 7", "annotation": "No dividing needed — the y at x = 1 IS the constant." },
-          { "math": "check: 14/2 = 7 and 28/4 = 7", "annotation": "Every row gives the same k, confirming 7." },
-          { "math": "k = 7", "annotation": "Seven y for one x." }
+          {
+            "math": "find the row where x = 1",
+            "annotation": "The constant is easiest to read where x is exactly 1."
+          },
+          {
+            "math": "row (1, 7): x = 1, y = 7",
+            "annotation": "No dividing needed — the y at x = 1 IS the constant."
+          },
+          {
+            "math": "check: 14/2 = 7 and 28/4 = 7",
+            "annotation": "Every row gives the same k, confirming 7."
+          },
+          {
+            "math": "k = 7",
+            "annotation": "Seven y for one x."
+          }
         ]
       },
       "faded_example": {
@@ -517,14 +1005,46 @@
         "answer": "12",
         "render_data": {
           "type": "data_table",
-          "headers": ["x", "y"],
-          "rows": [["1", "12"], ["3", "36"], ["5", "60"]]
+          "headers": [
+            "x",
+            "y"
+          ],
+          "rows": [
+            [
+              "1",
+              "12"
+            ],
+            [
+              "3",
+              "36"
+            ],
+            [
+              "5",
+              "60"
+            ]
+          ]
         },
         "steps": [
-          { "math": "look for the row where x = 1", "annotation": "That row hands over k directly.", "given": true },
-          { "math": "row (1, 12): x = 1", "annotation": "The y-value here is the constant.", "given": true },
-          { "math": null, "annotation": "Write the constant of proportionality (the y at x = 1).", "given": false },
-          { "math": null, "annotation": "Check it against another row: is 36/3 the same?", "given": false }
+          {
+            "math": "look for the row where x = 1",
+            "annotation": "That row hands over k directly.",
+            "given": true
+          },
+          {
+            "math": "row (1, 12): x = 1",
+            "annotation": "The y-value here is the constant.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the constant of proportionality (the y at x = 1).",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check it against another row: is 36/3 the same?",
+            "given": false
+          }
         ]
       }
     },
@@ -533,9 +1053,14 @@
       "name": "Calculate the constant of proportionality as y divided by x",
       "column": "on_grade",
       "parent_standard": "7.RP.1",
-      "engine_stems": [3],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7RP1-S2" },
-      "i_do_script": "Most of the time the relationship will NOT hand you a 1 — you have to make one by dividing. The constant of proportionality is always y divided by x for any pair. Watch: a student writes 93 words in 4 minutes. There's no '1 minute' row, so I divide: 93 divided by 4 is 23 and a quarter words per minute. It's fine that it's not a whole number — the spec expects that. The move never changes: pick any pair, divide the output by the input.",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7RP1-S2"
+      },
+      "i_do_script": "Most of the time the relationship will NOT hand you a 1 -- you have to make one, and a double number line shows what the division is doing. A runner goes 17 miles in 2 hours: draw hours on top (0, 1, 2) and miles beneath (0, ?, 17). The unit rate is whatever lines up with 1 hour -- halfway, 8.5 miles. Dividing y by x IS that move: it shrinks the pair (17, 2) down to the pair (8.5, 1). It works for any pair, any numbers: 93 words in 4 minutes gives 93/4 = 23.25 words per minute -- not a whole number, and that's fine. The setup habit: the unit after 'per' is the one you squeeze to 1, so it goes on the bottom.",
       "canonical_error": {
         "pattern": "Divides x by y (input by output) instead of y by x, inverting the constant",
         "example": "For '93 words in 4 minutes, words per minute?' the student computes 4 / 93 instead of 93 / 4",
@@ -559,8 +1084,24 @@
           "distractor_logic": "27/6 = 4.5; 6/27 inverts it.",
           "render_data": {
             "type": "data_table",
-            "headers": ["x", "y"],
-            "rows": [["6", "27"], ["8", "36"], ["10", "45"]]
+            "headers": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              [
+                "6",
+                "27"
+              ],
+              [
+                "8",
+                "36"
+              ],
+              [
+                "10",
+                "45"
+              ]
+            ]
           }
         },
         {
@@ -571,27 +1112,84 @@
       ],
       "redirect_script": {
         "stop": "Which unit should end up on top?",
-        "prompt": "Read the 'per' phrase — 'words per minute' means words on top. Write the fraction words over minutes, THEN divide. If your answer is a tiny decimal below 1, you flipped it.",
+        "prompt": "Sketch the double number line: which side must shrink to 1? What lines up with it? Read the 'per' phrase — 'words per minute' means words on top. Write the fraction words over minutes, THEN divide. If your answer is a tiny decimal below 1, you flipped it.",
         "praise": "You put the output on top and divided — that's the constant of proportionality, decimal and all."
       },
       "vocabulary": [
-        { "term": "Constant of proportionality", "definition": "The value k = y/x, the same for every pair in a proportional relationship." },
-        { "term": "Output (y)", "definition": "The quantity you are measuring per 1 — it goes on top when you divide." },
-        { "term": "Input (x)", "definition": "The 'per' quantity — it goes on the bottom (you divide by it)." }
+        {
+          "term": "Constant of proportionality",
+          "definition": "The value k = y/x, the same for every pair in a proportional relationship."
+        },
+        {
+          "term": "Output (y)",
+          "definition": "The quantity you are measuring per 1 — it goes on top when you divide."
+        },
+        {
+          "term": "Input (x)",
+          "definition": "The 'per' quantity — it goes on the bottom (you divide by it)."
+        }
       ],
-      "next_steps": { "if_pass": "7RP1-S4", "if_fail": "7RP1-S2" },
+      "next_steps": {
+        "if_pass": "7RP1-S4",
+        "if_fail": "7RP1-S2"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'A runner goes 17 miles in 2 hours. Miles per hour?'" },
-        { "kind": "ask", "text": "The phrase 'miles per hour' — which unit goes on top?" },
-        { "kind": "say", "text": "Miles on top, hours on the bottom: 17 over 2. Now divide: 17 divided by 2 is 8.5 miles per hour." },
-        { "kind": "watch", "text": "If a student writes 2/17 = 0.12, ask 'does one-tenth of a mile an hour make sense for a runner? Which unit did you put on top?'" },
-        { "kind": "ask", "text": "Your turn: 45 dollars for 6 hours of work. Dollars per hour? Set up the fraction first, then divide." }
+        {
+          "kind": "show",
+          "text": "Draw a double number line: hours on top marked 0, 1, 2; miles beneath marked 0, ?, 17."
+        },
+        {
+          "kind": "ask",
+          "text": "The 17 miles lines up with 2 hours. What lines up with 1 hour -- and what operation finds it?"
+        },
+        {
+          "kind": "say",
+          "text": "Half of 17 -- dividing by 2 slides the pair down to (8.5, 1). Dividing y by x always manufactures the 1; 'per hour' tells you hours is the side being squeezed to 1."
+        },
+        {
+          "kind": "show",
+          "text": "Write 'A runner goes 17 miles in 2 hours. Miles per hour?'"
+        },
+        {
+          "kind": "ask",
+          "text": "The phrase 'miles per hour' — which unit goes on top?"
+        },
+        {
+          "kind": "say",
+          "text": "Miles on top, hours on the bottom: 17 over 2. Now divide: 17 divided by 2 is 8.5 miles per hour."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 2/17 = 0.12, ask 'does one-tenth of a mile an hour make sense for a runner? Which unit did you put on top?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 45 dollars for 6 hours of work. Dollars per hour? Set up the fraction first, then divide."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "A table row is (2, 9). What is y divided by x?", "answer": "4.5" },
-        { "difficulty": "warm_up", "stem": "For 'miles per gallon,' which quantity goes on top before you divide?", "answer": "Miles (the output)." },
-        { "difficulty": "core", "stem": "A worker earns $58 for 8 hours. What is the unit rate, in dollars per hour?", "answer": "$7.25 (58 / 8)", "notes": "Non-whole result is expected." },
-        { "difficulty": "core", "stem": "A table shows (4, 30) for a proportional relationship. Find k.", "answer": "7.5 (30 / 4)", "notes": "No (1, r) row — must divide." },
+        {
+          "difficulty": "warm_up",
+          "stem": "A table row is (2, 9). What is y divided by x?",
+          "answer": "4.5"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "For 'miles per gallon,' which quantity goes on top before you divide?",
+          "answer": "Miles (the output)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A worker earns $58 for 8 hours. What is the unit rate, in dollars per hour?",
+          "answer": "$7.25 (58 / 8)",
+          "notes": "Non-whole result is expected."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A table shows (4, 30) for a proportional relationship. Find k.",
+          "answer": "7.5 (30 / 4)",
+          "notes": "No (1, r) row — must divide."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -603,9 +1201,24 @@
           "answer": "Lena divided hours by miles. 'Miles per hour' needs miles on top: 78 / 5 = 15.6 miles per hour. Her 0.064 is hours per mile — the flipped quantity.",
           "notes": "Canonical error: inverting the division."
         },
-        { "difficulty": "core", "stem": "A recipe uses 25 grams of cocoa for 4 servings. Grams per serving?", "answer": "6.25 (25 / 4)", "notes": "Bakes in a non-whole k." },
-        { "difficulty": "stretch", "stem": "Two pay rates: $95 for 8 hours, or $70 for 6 hours. Which is the higher unit rate?", "answer": "$95/8 = $11.875 vs $70/6 ≈ $11.67, so the $95-for-8-hours rate is higher.", "notes": "Comparing forces two correct divisions and guards against comparing raw totals." },
-        { "difficulty": "stretch", "stem": "A unit rate came out to exactly 12.5 dollars per hour. Write one pair of whole numbers (dollars, hours) that produces it.", "answer": "Sample: $25 for 2 hours (25 / 2 = 12.5), or $50 for 4 hours.", "notes": "Reversed direction — build a pair from the constant." }
+        {
+          "difficulty": "core",
+          "stem": "A recipe uses 25 grams of cocoa for 4 servings. Grams per serving?",
+          "answer": "6.25 (25 / 4)",
+          "notes": "Bakes in a non-whole k."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two pay rates: $95 for 8 hours, or $70 for 6 hours. Which is the higher unit rate?",
+          "answer": "$95/8 = $11.875 vs $70/6 ≈ $11.67, so the $95-for-8-hours rate is higher.",
+          "notes": "Comparing forces two correct divisions and guards against comparing raw totals."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A unit rate came out to exactly 12.5 dollars per hour. Write one pair of whole numbers (dollars, hours) that produces it.",
+          "answer": "Sample: $25 for 2 hours (25 / 2 = 12.5), or $50 for 4 hours.",
+          "notes": "Reversed direction — build a pair from the constant."
+        }
       ],
       "activities": [
         {
@@ -613,7 +1226,11 @@
           "title": "Top-or-Bottom Setup Station",
           "time_minutes": 12,
           "grouping": "pairs",
-          "materials": ["Rate-story cards", "Two labeled trays: 'TOP (per...)' and 'BOTTOM (...per)'", "Mini whiteboards"],
+          "materials": [
+            "Rate-story cards",
+            "Two labeled trays: 'TOP (per...)' and 'BOTTOM (...per)'",
+            "Mini whiteboards"
+          ],
           "instructions": "1. Draw a rate-story card ('84 beats in 5 seconds, beats per second?').\n2. Before any dividing, place the two numbers into the TOP and BOTTOM trays using the 'per' phrase.\n3. Only then write the division on the whiteboard and compute.\n4. Check: if the answer is less than 1 and that seems wrong for the story, you swapped the trays.\n5. Debrief: how does the 'per' phrase decide the top every time?"
         },
         {
@@ -621,7 +1238,9 @@
           "title": "Flip Detector",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Lena's inverted work"],
+          "materials": [
+            "Slip with Lena's inverted work"
+          ],
           "instructions": "1. Read Lena's claim that the unit rate is 0.064 miles per hour.\n2. Decide whether her answer is too big or too small for the story, and say how you know.\n3. Redo the division with the right unit on top.\n4. Write one sentence: how can a quick 'does this size make sense?' check catch a flip?",
           "content": {
             "worked_problem": "78 miles in 5 hours. Miles per hour? Lena wrote 5 / 78 = 0.064.",
@@ -631,9 +1250,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-007", "why": "Physically placing numbers into TOP/BOTTOM trays before dividing is the representational bridge to the abstract y/x rule." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'miles per hour, so miles on top' models the unit-tracking that prevents the inversion error." },
-        { "strategy_id": "strat-math-002", "why": "Number-talk estimation ('about how many miles per hour?') builds the size-sense that flags a flipped answer." }
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Physically placing numbers into TOP/BOTTOM trays before dividing is the representational bridge to the abstract y/x rule."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'miles per hour, so miles on top' models the unit-tracking that prevents the inversion error."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Number-talk estimation ('about how many miles per hour?') builds the size-sense that flags a flipped answer."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -675,20 +1303,48 @@
         "stem": "A garden hose fills a tank with 74 liters in 8 minutes. What is the unit rate, in liters per minute?",
         "answer": "9.25 liters per minute",
         "steps": [
-          { "math": "'liters per minute' -> liters on top", "annotation": "The 'per' phrase decides the setup: liters over minutes." },
-          { "math": "74 / 8", "annotation": "Divide the output by the input. No 1-minute value is given, so we make one by dividing." },
-          { "math": "= 9.25", "annotation": "74 does not split evenly by 8; keep dividing past the decimal." },
-          { "math": "k = 9.25 liters per minute", "annotation": "A non-whole constant is expected and correct." }
+          {
+            "math": "'liters per minute' -> liters on top",
+            "annotation": "The 'per' phrase decides the setup: liters over minutes."
+          },
+          {
+            "math": "74 / 8",
+            "annotation": "Divide the output by the input. No 1-minute value is given, so we make one by dividing."
+          },
+          {
+            "math": "= 9.25",
+            "annotation": "74 does not split evenly by 8; keep dividing past the decimal."
+          },
+          {
+            "math": "k = 9.25 liters per minute",
+            "annotation": "A non-whole constant is expected and correct."
+          }
         ]
       },
       "faded_example": {
         "stem": "A machine caps 90 bottles in 8 seconds. What is the unit rate, in bottles per second?",
         "answer": "11.25 bottles per second",
         "steps": [
-          { "math": "'bottles per second' -> bottles on top", "annotation": "Use the 'per' phrase to set the top.", "given": true },
-          { "math": "90 / 8", "annotation": "Divide output by input.", "given": true },
-          { "math": null, "annotation": "Finish the division, including past the decimal point.", "given": false },
-          { "math": null, "annotation": "State k with its unit (bottles per second).", "given": false }
+          {
+            "math": "'bottles per second' -> bottles on top",
+            "annotation": "Use the 'per' phrase to set the top.",
+            "given": true
+          },
+          {
+            "math": "90 / 8",
+            "annotation": "Divide output by input.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Finish the division, including past the decimal point.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State k with its unit (bottles per second).",
+            "given": false
+          }
         ]
       }
     },
@@ -697,9 +1353,14 @@
       "name": "Find a unit rate when the quantities are fractions",
       "column": "on_grade",
       "parent_standard": "7.RP.1",
-      "engine_stems": [4],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7RP1-S3" },
-      "i_do_script": "The rule doesn't change when fractions show up — it's still y divided by x — but now the division is a fraction divided by a number. Watch: a bus travels 1/2 mile in 7 minutes; miles per minute? I divide 1/2 by 7. Dividing by 7 is the same as multiplying by 1/7, so 1/2 times 1/7 is 1/14 mile per minute. The unit rate is small because 7 minutes is a long time for half a mile — that size makes sense.",
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7RP1-S3"
+      },
+      "i_do_script": "The rule doesn't change when fractions show up -- it's still y divided by x -- but picture what the division does: the amount gets shared across the time. A bus travels 1/2 mile in 7 minutes: that half mile is spread over 7 minutes, so each single minute gets a seventh of the half -- 1/2 divided by 7 = 1/2 x 1/7 = 1/14 mile per minute. Estimate BEFORE computing: 7 minutes for half a mile is slow, so the per-minute rate must be much smaller than 1/2 -- and 1/14 is. If your answer comes out bigger than the amount you started with, the division was probably upside down.",
       "canonical_error": {
         "pattern": "Divides the whole number by the fraction (or ignores the fraction), instead of the fraction by the whole number",
         "example": "For '1/2 mile in 7 minutes, miles per minute?' the student computes 7 divided by 1/2 = 14, or just 1/2 divided into 7 backwards",
@@ -730,26 +1391,92 @@
       ],
       "redirect_script": {
         "stop": "Which number is the miles, and which is the minutes?",
-        "prompt": "Miles per minute means miles on top — that's the FRACTION, 1/2. Minutes is on the bottom, so you divide 1/2 by 7. Dividing by 7 is timesing by 1/7.",
+        "prompt": "Estimate first: the amount is being SHARED across the time, so the per-unit rate must be smaller than the amount. Miles per minute means miles on top — that's the FRACTION, 1/2. Minutes is on the bottom, so you divide 1/2 by 7. Dividing by 7 is timesing by 1/7.",
         "praise": "You divided the fraction by the whole number and kept the units straight — that's a real fractional unit rate."
       },
       "vocabulary": [
-        { "term": "Reciprocal", "definition": "The flip of a number; dividing by 7 is the same as multiplying by its reciprocal, 1/7." },
-        { "term": "Complex fraction", "definition": "A fraction whose top or bottom is itself a fraction, like (1/2) over 7 — it means (1/2) divided by 7." }
+        {
+          "term": "Reciprocal",
+          "definition": "The flip of a number; dividing by 7 is the same as multiplying by its reciprocal, 1/7."
+        },
+        {
+          "term": "Complex fraction",
+          "definition": "A fraction whose top or bottom is itself a fraction, like (1/2) over 7 — it means (1/2) divided by 7."
+        }
       ],
-      "next_steps": { "if_pass": "7RP1-S5", "if_fail": "7RP1-S3" },
+      "next_steps": {
+        "if_pass": "7RP1-S5",
+        "if_fail": "7RP1-S3"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'A tap drips 1/3 of a cup in 5 minutes. Cups per minute?'" },
-        { "kind": "ask", "text": "'Cups per minute' — which quantity goes on top? Is it a whole number or a fraction?" },
-        { "kind": "say", "text": "Cups on top: that's 1/3. Minutes on the bottom: 5. So we divide 1/3 by 5, which is 1/3 times 1/5 = 1/15 cup per minute." },
-        { "kind": "watch", "text": "If a student writes 5 divided by 1/3 = 15, ask 'is your answer bigger or smaller than 1 cup? Can one minute really give 15 cups from a slow drip?'" },
-        { "kind": "ask", "text": "Your turn: 2/5 of a lap in 3 minutes. Laps per minute? Set it up as a fraction divided by a whole number." }
+        {
+          "kind": "show",
+          "text": "Draw a 1-mile bar. Shade the 1/2 mile traveled, then cut that half into 7 equal shares -- one share per minute.",
+          "visual": {
+            "type": "fraction_bars",
+            "label": "The 1/2 mile is 7 shares of the mile's 14ths -- each minute gets one share",
+            "bars": [
+              {
+                "parts": 14,
+                "shaded": 7,
+                "label": "1/2 mi"
+              },
+              {
+                "parts": 14,
+                "shaded": 1,
+                "label": "1 min"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Before any computing: will the per-minute distance be bigger or smaller than 1/2? A lot smaller or a little?"
+        },
+        {
+          "kind": "show",
+          "text": "Write 'A tap drips 1/3 of a cup in 5 minutes. Cups per minute?'"
+        },
+        {
+          "kind": "ask",
+          "text": "'Cups per minute' — which quantity goes on top? Is it a whole number or a fraction?"
+        },
+        {
+          "kind": "say",
+          "text": "Cups on top: that's 1/3. Minutes on the bottom: 5. So we divide 1/3 by 5, which is 1/3 times 1/5 = 1/15 cup per minute."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 5 divided by 1/3 = 15, ask 'is your answer bigger or smaller than 1 cup? Can one minute really give 15 cups from a slow drip?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 2/5 of a lap in 3 minutes. Laps per minute? Set it up as a fraction divided by a whole number."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Dividing by 6 is the same as multiplying by what?", "answer": "1/6" },
-        { "difficulty": "warm_up", "stem": "Compute (1/2) / 4.", "answer": "1/8" },
-        { "difficulty": "core", "stem": "A hose delivers 3/4 gallon in 9 minutes. Gallons per minute?", "answer": "1/12 ((3/4) / 9 = 3/36)", "notes": "Fraction over whole number." },
-        { "difficulty": "core", "stem": "A worm moves 2/3 foot in 8 seconds. Feet per second?", "answer": "1/12 ((2/3) / 8 = 2/24)", "notes": "Baits inversion 8 / (2/3) = 12... which is wrong; correct is 1/12." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Dividing by 6 is the same as multiplying by what?",
+          "answer": "1/6"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Compute (1/2) / 4.",
+          "answer": "1/8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A hose delivers 3/4 gallon in 9 minutes. Gallons per minute?",
+          "answer": "1/12 ((3/4) / 9 = 3/36)",
+          "notes": "Fraction over whole number."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A worm moves 2/3 foot in 8 seconds. Feet per second?",
+          "answer": "1/12 ((2/3) / 8 = 2/24)",
+          "notes": "Baits inversion 8 / (2/3) = 12... which is wrong; correct is 1/12."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -761,9 +1488,24 @@
           "answer": "Theo divided minutes by miles. Miles per minute puts the miles (1/4) on top: (1/4) / 6 = 1/24 mile per minute. 24 miles in one minute is impossible for this trip — the size should have warned him.",
           "notes": "Canonical error: dividing the whole number by the fraction."
         },
-        { "difficulty": "core", "stem": "A candle burns 2/5 inch in 3 hours. Inches per hour?", "answer": "2/15 ((2/5) / 3)", "notes": "Answer stays a fraction, not 1 in numerator." },
-        { "difficulty": "stretch", "stem": "Which is faster: 1/2 mile in 6 minutes, or 1/3 mile in 5 minutes?", "answer": "1/2 mile in 6 min = 1/12 mi/min; 1/3 mile in 5 min = 1/15 mi/min. 1/12 > 1/15, so the first is faster.", "notes": "Comparing two fractional unit rates; requires common reasoning about small fractions." },
-        { "difficulty": "stretch", "stem": "A unit rate is 1/10 gallon per minute. Write one fractional-quantity story (gallons in minutes) that produces it.", "answer": "Sample: 1/2 gallon in 5 minutes ((1/2) / 5 = 1/10), or 3/10 gallon in 3 minutes.", "notes": "Reversed direction from a fractional k." }
+        {
+          "difficulty": "core",
+          "stem": "A candle burns 2/5 inch in 3 hours. Inches per hour?",
+          "answer": "2/15 ((2/5) / 3)",
+          "notes": "Answer stays a fraction, not 1 in numerator."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Which is faster: 1/2 mile in 6 minutes, or 1/3 mile in 5 minutes?",
+          "answer": "1/2 mile in 6 min = 1/12 mi/min; 1/3 mile in 5 min = 1/15 mi/min. 1/12 > 1/15, so the first is faster.",
+          "notes": "Comparing two fractional unit rates; requires common reasoning about small fractions."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A unit rate is 1/10 gallon per minute. Write one fractional-quantity story (gallons in minutes) that produces it.",
+          "answer": "Sample: 1/2 gallon in 5 minutes ((1/2) / 5 = 1/10), or 3/10 gallon in 3 minutes.",
+          "notes": "Reversed direction from a fractional k."
+        }
       ],
       "activities": [
         {
@@ -771,18 +1513,41 @@
           "title": "Fraction Rate Match",
           "time_minutes": 10,
           "grouping": "small_group",
-          "materials": ["Card set: 6 fractional rate stories and 8 unit-rate cards (two inverted decoys)"],
+          "materials": [
+            "Card set: 6 fractional rate stories and 8 unit-rate cards (two inverted decoys)"
+          ],
           "instructions": "1. Lay out the story cards and the unit-rate cards.\n2. Match each story to its correct fractional unit rate.\n3. Two rate cards are inverted traps (like 14 for the 1/2-mile-in-7-min story) — set them aside and name why they're flipped.\n4. To claim a match, say the setup: 'fraction on top, divided by the whole number.'\n5. Debrief: how can the SIZE of the answer tell you if you divided the right way?",
           "content": {
             "pairs": [
-              { "left": "1/2 mile in 7 minutes", "right": "1/14 mi/min" },
-              { "left": "3/4 foot in 6 seconds", "right": "1/8 ft/sec" },
-              { "left": "2/3 gallon in 4 hours", "right": "1/6 gal/hr" },
-              { "left": "3/5 chapter in 9 minutes", "right": "1/15 chapters/min" },
-              { "left": "1/3 cup in 5 minutes", "right": "1/15 cups/min" },
-              { "left": "2/5 lap in 3 minutes", "right": "2/15 laps/min" }
+              {
+                "left": "1/2 mile in 7 minutes",
+                "right": "1/14 mi/min"
+              },
+              {
+                "left": "3/4 foot in 6 seconds",
+                "right": "1/8 ft/sec"
+              },
+              {
+                "left": "2/3 gallon in 4 hours",
+                "right": "1/6 gal/hr"
+              },
+              {
+                "left": "3/5 chapter in 9 minutes",
+                "right": "1/15 chapters/min"
+              },
+              {
+                "left": "1/3 cup in 5 minutes",
+                "right": "1/15 cups/min"
+              },
+              {
+                "left": "2/5 lap in 3 minutes",
+                "right": "2/15 laps/min"
+              }
             ],
-            "decoys": ["14 mi/min", "8 ft/sec"]
+            "decoys": [
+              "14 mi/min",
+              "8 ft/sec"
+            ]
           }
         },
         {
@@ -790,7 +1555,9 @@
           "title": "Size-Sense Check",
           "time_minutes": 8,
           "grouping": "pairs",
-          "materials": ["Slip with Theo's inverted work"],
+          "materials": [
+            "Slip with Theo's inverted work"
+          ],
           "instructions": "1. Read Theo's claim of 24 miles per minute for a trip of 1/4 mile in 6 minutes.\n2. Without computing, decide: should the answer be bigger or smaller than 1? Why?\n3. Redo the division correctly (fraction on top).\n4. Write the rule you'd tell Theo so he never makes this flip again.",
           "content": {
             "worked_problem": "1/4 mile in 6 minutes. Miles per minute? Theo wrote 6 / (1/4) = 24.",
@@ -800,9 +1567,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-007", "why": "Fraction bars or a number line make 'a fraction split into equal minutes' concrete before the reciprocal rule." },
-        { "strategy_id": "strat-math-003", "why": "Inverted answers (14 instead of 1/14) are the signature error; matching correct rates against flipped decoys targets it." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud about the SIZE of the answer ('a quarter mile in 6 minutes must be tiny') models the estimate that catches inversion." }
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Fraction bars or a number line make 'a fraction split into equal minutes' concrete before the reciprocal rule."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Inverted answers (14 instead of 1/14) are the signature error; matching correct rates against flipped decoys targets it."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud about the SIZE of the answer ('a quarter mile in 6 minutes must be tiny') models the estimate that catches inversion."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -844,20 +1620,48 @@
         "stem": "A leaky faucet loses 2/3 of a liter in 8 minutes. What is the unit rate, in liters per minute?",
         "answer": "1/12 liter per minute",
         "steps": [
-          { "math": "'liters per minute' -> liters (2/3) on top, minutes (8) on bottom", "annotation": "Set up y/x with the fraction as the output." },
-          { "math": "(2/3) / 8 = (2/3) x (1/8)", "annotation": "Dividing by 8 is multiplying by its reciprocal, 1/8." },
-          { "math": "= 2/24 = 1/12", "annotation": "Multiply straight across, then simplify." },
-          { "math": "k = 1/12 liter per minute", "annotation": "Less than 1 — sensible for a slow leak." }
+          {
+            "math": "'liters per minute' -> liters (2/3) on top, minutes (8) on bottom",
+            "annotation": "Set up y/x with the fraction as the output."
+          },
+          {
+            "math": "(2/3) / 8 = (2/3) x (1/8)",
+            "annotation": "Dividing by 8 is multiplying by its reciprocal, 1/8."
+          },
+          {
+            "math": "= 2/24 = 1/12",
+            "annotation": "Multiply straight across, then simplify."
+          },
+          {
+            "math": "k = 1/12 liter per minute",
+            "annotation": "Less than 1 — sensible for a slow leak."
+          }
         ]
       },
       "faded_example": {
         "stem": "A glacier moves 3/4 of a meter in 9 days. What is the unit rate, in meters per day?",
         "answer": "1/12 meter per day",
         "steps": [
-          { "math": "meters (3/4) on top, days (9) on bottom", "annotation": "Output over input.", "given": true },
-          { "math": "(3/4) / 9 = (3/4) x (1/9)", "annotation": "Divide by 9 = multiply by 1/9.", "given": true },
-          { "math": null, "annotation": "Multiply across and simplify the fraction.", "given": false },
-          { "math": null, "annotation": "State k; check that it is less than 1 for this slow motion.", "given": false }
+          {
+            "math": "meters (3/4) on top, days (9) on bottom",
+            "annotation": "Output over input.",
+            "given": true
+          },
+          {
+            "math": "(3/4) / 9 = (3/4) x (1/9)",
+            "annotation": "Divide by 9 = multiply by 1/9.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply across and simplify the fraction.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State k; check that it is less than 1 for this slow motion.",
+            "given": false
+          }
         ]
       }
     },
@@ -866,8 +1670,11 @@
       "name": "Identify the constant of proportionality from an equation or a graph",
       "column": "on_grade",
       "parent_standard": "7.RP.1",
-      "prerequisite_skill": { "type": "skill", "skill_id": "7RP1-S3" },
-      "i_do_script": "Two representations give up the constant almost for free once you know where to look. In an equation written as y = kx, the constant is the number multiplying x — nothing to compute. In y = 4x, k is 4. On a graph of a proportional line, the constant is the y-value at x = 1 — find where the line crosses the vertical gridline above 1, and read straight up. Both are just 'where does k hide in THIS costume.'",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7RP1-S3"
+      },
+      "i_do_script": "One test unmasks k in any costume: feed in x = 1. In y = 6x, one x gives y = 6; in y = x/2, one x gives y = 1/2 -- not 2. Whatever y pops out at x = 1 is the constant, no matter which number is biggest on the page. Two representations give up the constant almost for free once you know where to look. In an equation written as y = kx, the constant is the number multiplying x — nothing to compute. In y = 4x, k is 4. On a graph of a proportional line, the constant is the y-value at x = 1 — find where the line crosses the vertical gridline above 1, and read straight up. Both are just 'where does k hide in THIS costume.'",
       "canonical_error": {
         "pattern": "In an equation, reads a number that is added or is the y-variable as k; on a graph, reads a convenient point instead of the value at x = 1",
         "example": "For y = x/4 the student says k = 4 instead of 1/4; or on a graph through (2, 6) and (1, 3), reports k = 6 (from the point (2,6)) instead of 3",
@@ -878,56 +1685,172 @@
         {
           "stem": "What is the constant of proportionality for y = 8x?",
           "answer": "8",
-          "choices": ["1", "8", "1/8", "9"],
+          "choices": [
+            "1",
+            "8",
+            "1/8",
+            "9"
+          ],
           "distractor_logic": "k is the coefficient of x. 1 grabs the implied 1 on y; 1/8 inverts; 9 adds."
         },
         {
           "stem": "What is the constant of proportionality for y = x/4?",
           "answer": "1/4",
-          "choices": ["4", "1/4", "1", "x"],
+          "choices": [
+            "4",
+            "1/4",
+            "1",
+            "x"
+          ],
           "distractor_logic": "y = x/4 is y = (1/4)x, so k = 1/4. '4' is the classic trap of reading the visible number."
         },
         {
           "stem": "A proportional line passes through (1, 5) and (3, 15). What is the constant of proportionality?",
           "answer": "5",
-          "choices": ["15", "5", "3", "1/5"],
+          "choices": [
+            "15",
+            "5",
+            "3",
+            "1/5"
+          ],
           "distractor_logic": "The value at x = 1 is 5, so k = 5. '15' reads the point (3,15) without dividing; '3' grabs an x-value.",
           "render_data": {
             "type": "data_table",
-            "headers": ["x", "y"],
-            "rows": [["1", "5"], ["3", "15"], ["5", "25"]]
+            "headers": [
+              "x",
+              "y"
+            ],
+            "rows": [
+              [
+                "1",
+                "5"
+              ],
+              [
+                "3",
+                "15"
+              ],
+              [
+                "5",
+                "25"
+              ]
+            ]
           }
         },
         {
           "stem": "A proportional graph passes through the origin and the point (4, 10). What is the unit rate?",
           "answer": "2.5",
-          "choices": ["10", "4", "2.5", "0.4"],
+          "choices": [
+            "10",
+            "4",
+            "2.5",
+            "0.4"
+          ],
           "distractor_logic": "No (1, r) point is shown, so divide: 10/4 = 2.5. '10' reads the point raw; '0.4' inverts."
         }
       ],
       "redirect_script": {
         "stop": "In y = kx, which number multiplies the x?",
-        "prompt": "Circle the number stuck to the x — that's k. If the equation is y = x/4, rewrite it as y = (1/4)x first. On a graph, only the point above 1 gives k directly; for any other point, divide y by x.",
+        "prompt": "Run the x = 1 test first: when x is exactly 1, what y does your equation (or your line) actually give? Circle the number stuck to the x — that's k. If the equation is y = x/4, rewrite it as y = (1/4)x first. On a graph, only the point above 1 gives k directly; for any other point, divide y by x.",
         "praise": "You read the multiplier of x — that's the constant, no computing needed."
       },
       "vocabulary": [
-        { "term": "Coefficient", "definition": "The number multiplied by a variable; in y = kx the coefficient of x is the constant k." },
-        { "term": "y = kx", "definition": "The equation form of every proportional relationship; k is the constant of proportionality." }
+        {
+          "term": "Coefficient",
+          "definition": "The number multiplied by a variable; in y = kx the coefficient of x is the constant k."
+        },
+        {
+          "term": "y = kx",
+          "definition": "The equation form of every proportional relationship; k is the constant of proportionality."
+        }
       ],
-      "next_steps": { "if_pass": "7RP1-S6", "if_fail": "7RP1-S3" },
+      "next_steps": {
+        "if_pass": "7RP1-S6",
+        "if_fail": "7RP1-S3"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write two equations: y = 6x and y = x/2." },
-        { "kind": "ask", "text": "In y = 6x, what number is multiplying the x? That's k." },
-        { "kind": "say", "text": "k = 6. Now y = x/2 is sneaky — dividing by 2 is the same as multiplying by 1/2, so y = (1/2)x and k = 1/2, not 2." },
-        { "kind": "show", "text": "Sketch a proportional line through (0,0) and (1, 3); mark the vertical line at x = 1." },
-        { "kind": "watch", "text": "If a student reads a random point like (2, 6) and says k = 6, ask 'what x does that go with? Where is x exactly 1?'" },
-        { "kind": "ask", "text": "Your turn: y = x/5, and a line through (1, 4). Give k for each." }
+        {
+          "kind": "ask",
+          "text": "Plug x = 1 into y = 6x. What y comes out? Now plug x = 1 into y = x/2 -- what y comes out this time?"
+        },
+        {
+          "kind": "say",
+          "text": "y = 6 and y = 1/2. The output at x = 1 IS the constant: k = 6 for the first, k = 1/2 for the second -- even though the 2 is the number you SEE on the page."
+        },
+        {
+          "kind": "show",
+          "text": "On a graph, run the same test with your finger: slide to x = 1 and read the height. The line through (0, 0) and (1, 3) stands at height 3 above x = 1, so its k is 3.",
+          "visual": {
+            "type": "coordinate_grid",
+            "x_range": [
+              0,
+              3
+            ],
+            "y_range": [
+              0,
+              7
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 1,
+                "y": 3,
+                "label": "k = 3 at x = 1"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "show",
+          "text": "Write two equations: y = 6x and y = x/2."
+        },
+        {
+          "kind": "ask",
+          "text": "In y = 6x, what number is multiplying the x? That's k."
+        },
+        {
+          "kind": "say",
+          "text": "k = 6. Now y = x/2 is sneaky — dividing by 2 is the same as multiplying by 1/2, so y = (1/2)x and k = 1/2, not 2."
+        },
+        {
+          "kind": "show",
+          "text": "Sketch a proportional line through (0,0) and (1, 3); mark the vertical line at x = 1."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student reads a random point like (2, 6) and says k = 6, ask 'what x does that go with? Where is x exactly 1?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: y = x/5, and a line through (1, 4). Give k for each."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "What is k in y = 12x?", "answer": "12" },
-        { "difficulty": "warm_up", "stem": "On a proportional graph, the constant is the y-value at x = ____.", "answer": "1" },
-        { "difficulty": "core", "stem": "What is k in y = x/3?", "answer": "1/3 (because y = (1/3)x)", "notes": "Baits the 'read the 3' error." },
-        { "difficulty": "core", "stem": "A proportional line passes through (1, 7). What is the constant of proportionality?", "answer": "7", "notes": "Value at x = 1 read directly." },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is k in y = 12x?",
+          "answer": "12"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "On a proportional graph, the constant is the y-value at x = ____.",
+          "answer": "1"
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is k in y = x/3?",
+          "answer": "1/3 (because y = (1/3)x)",
+          "notes": "Baits the 'read the 3' error."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A proportional line passes through (1, 7). What is the constant of proportionality?",
+          "answer": "7",
+          "notes": "Value at x = 1 read directly."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -938,9 +1861,24 @@
           "answer": "y = x/6 means y = (1/6)x, so k = 1/6. Dividing x by 6 is multiplying by 1/6 — the constant is the multiplier of x, not the number you happen to see.",
           "notes": "Canonical error: reading the visible number instead of the coefficient."
         },
-        { "difficulty": "core", "stem": "A proportional graph passes through (2, 9). What is k?", "answer": "4.5 (9 / 2, since x is not 1)", "notes": "Point isn't at x = 1, so divide." },
-        { "difficulty": "stretch", "stem": "Line A is y = 3x. Line B passes through (1, 5). Which has the greater constant of proportionality?", "answer": "Line B — k = 5 (from the point at x = 1) beats Line A's k = 3.", "notes": "Compares k across two representations." },
-        { "difficulty": "stretch", "stem": "Write an equation in the form y = kx whose constant is 2/3, and give the point it passes through at x = 1.", "answer": "y = (2/3)x, passing through (1, 2/3).", "notes": "Reversed direction — build the equation and its (1, r) point from k." }
+        {
+          "difficulty": "core",
+          "stem": "A proportional graph passes through (2, 9). What is k?",
+          "answer": "4.5 (9 / 2, since x is not 1)",
+          "notes": "Point isn't at x = 1, so divide."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Line A is y = 3x. Line B passes through (1, 5). Which has the greater constant of proportionality?",
+          "answer": "Line B — k = 5 (from the point at x = 1) beats Line A's k = 3.",
+          "notes": "Compares k across two representations."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write an equation in the form y = kx whose constant is 2/3, and give the point it passes through at x = 1.",
+          "answer": "y = (2/3)x, passing through (1, 2/3).",
+          "notes": "Reversed direction — build the equation and its (1, r) point from k."
+        }
       ],
       "activities": [
         {
@@ -948,19 +1886,49 @@
           "title": "Where's k? Across Representations",
           "time_minutes": 12,
           "grouping": "small_group",
-          "materials": ["Card set mixing equations (y = kx, y = x/n) and described graph points"],
+          "materials": [
+            "Card set mixing equations (y = kx, y = x/n) and described graph points"
+          ],
           "instructions": "1. Each card shows a proportional relationship as either an equation or a point on a graph.\n2. Sort cards by their constant of proportionality (group all the 'k = 1/2' cards together, etc.).\n3. For each equation like y = x/4, rewrite it as y = (1/4)x on the card before sorting.\n4. For each graph point not at x = 1, write the division you used.\n5. Debrief: how do you find k in an equation vs on a graph?",
           "content": {
-            "categories": ["k = 1/2", "k = 3", "k = 4"],
+            "categories": [
+              "k = 1/2",
+              "k = 3",
+              "k = 4"
+            ],
             "cards": [
-              { "text": "y = 3x", "category": "k = 3" },
-              { "text": "y = x/2", "category": "k = 1/2" },
-              { "text": "line through (1, 3)", "category": "k = 3" },
-              { "text": "y = 4x", "category": "k = 4" },
-              { "text": "line through (2, 1)", "category": "k = 1/2" },
-              { "text": "line through (1, 4)", "category": "k = 4" },
-              { "text": "y = (1/2)x", "category": "k = 1/2" },
-              { "text": "line through (3, 9)", "category": "k = 3" }
+              {
+                "text": "y = 3x",
+                "category": "k = 3"
+              },
+              {
+                "text": "y = x/2",
+                "category": "k = 1/2"
+              },
+              {
+                "text": "line through (1, 3)",
+                "category": "k = 3"
+              },
+              {
+                "text": "y = 4x",
+                "category": "k = 4"
+              },
+              {
+                "text": "line through (2, 1)",
+                "category": "k = 1/2"
+              },
+              {
+                "text": "line through (1, 4)",
+                "category": "k = 4"
+              },
+              {
+                "text": "y = (1/2)x",
+                "category": "k = 1/2"
+              },
+              {
+                "text": "line through (3, 9)",
+                "category": "k = 3"
+              }
             ]
           }
         },
@@ -969,7 +1937,9 @@
           "title": "The Number I See Trap",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Ava's y = x/6 work"],
+          "materials": [
+            "Slip with Ava's y = x/6 work"
+          ],
           "instructions": "1. Read Ava's claim that k = 6 for y = x/6.\n2. Rewrite the equation so the constant is easy to see.\n3. State the correct k and explain why dividing by 6 makes the constant 1/6.\n4. Write one sentence Ava can memorize about where k lives in y = kx.",
           "content": {
             "worked_problem": "y = x/6. Ava says k = 6.",
@@ -979,9 +1949,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-003", "why": "The y = x/n trap and the wrong-point-on-a-graph trap are precise, baitable errors that error analysis exposes." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'the constant multiplies x, so I rewrite x/6 as (1/6)x' models the structural read this skill needs." },
-        { "strategy_id": "strat-math-006", "why": "Gradual release across three representations (equation, then graph, then mixed) scaffolds the transfer of 'find k' between costumes." }
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The y = x/n trap and the wrong-point-on-a-graph trap are precise, baitable errors that error analysis exposes."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'the constant multiplies x, so I rewrite x/6 as (1/6)x' models the structural read this skill needs."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release across three representations (equation, then graph, then mixed) scaffolds the transfer of 'find k' between costumes."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -1023,20 +2002,48 @@
         "stem": "A proportional relationship is written as y = x/8. What is the constant of proportionality, and what point does the graph pass through at x = 1?",
         "answer": "k = 1/8; it passes through (1, 1/8)",
         "steps": [
-          { "math": "rewrite y = x/8 as y = (1/8)x", "annotation": "Dividing x by 8 is multiplying by 1/8 — this exposes k." },
-          { "math": "the multiplier of x is 1/8", "annotation": "In y = kx, k is whatever multiplies x." },
-          { "math": "at x = 1, y = (1/8)(1) = 1/8", "annotation": "The graph crosses x = 1 at height 1/8 — the same constant." },
-          { "math": "k = 1/8", "annotation": "Equation and graph agree." }
+          {
+            "math": "rewrite y = x/8 as y = (1/8)x",
+            "annotation": "Dividing x by 8 is multiplying by 1/8 — this exposes k."
+          },
+          {
+            "math": "the multiplier of x is 1/8",
+            "annotation": "In y = kx, k is whatever multiplies x."
+          },
+          {
+            "math": "at x = 1, y = (1/8)(1) = 1/8",
+            "annotation": "The graph crosses x = 1 at height 1/8 — the same constant."
+          },
+          {
+            "math": "k = 1/8",
+            "annotation": "Equation and graph agree."
+          }
         ]
       },
       "faded_example": {
         "stem": "A proportional relationship is written as y = x/10. What is the constant of proportionality, and what point does the graph pass through at x = 1?",
         "answer": "k = 1/10; it passes through (1, 1/10)",
         "steps": [
-          { "math": "rewrite y = x/10 as y = (___)x", "annotation": "Turn 'divide by 10' into a multiplier.", "given": true },
-          { "math": "the multiplier of x is the constant", "annotation": "Read k as the coefficient of x.", "given": true },
-          { "math": null, "annotation": "State k.", "given": false },
-          { "math": null, "annotation": "Find the y at x = 1 to give the point (1, ___).", "given": false }
+          {
+            "math": "rewrite y = x/10 as y = (___)x",
+            "annotation": "Turn 'divide by 10' into a multiplier.",
+            "given": true
+          },
+          {
+            "math": "the multiplier of x is the constant",
+            "annotation": "Read k as the coefficient of x.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "State k.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Find the y at x = 1 to give the point (1, ___).",
+            "given": false
+          }
         ]
       }
     },
@@ -1045,8 +2052,13 @@
       "name": "Interpret the constant of proportionality and use it to predict",
       "column": "looking_forward",
       "parent_standard": "7.RP.1",
-      "engine_stems": [5],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7RP1-S5" },
+      "engine_stems": [
+        5
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7RP1-S5"
+      },
       "i_do_script": "Finding k is only worth it if you can USE it. Once I have the constant, the whole relationship is y = kx, and I can predict any value. Watch: granola costs $2.80 for 7 ounces, so k = 2.80 / 7 = $0.40 per ounce, and the equation is c = 0.40w. Now I can answer a question the table never listed: 26 ounces costs 0.40 times 26 = $10.40. The constant is the engine; the equation lets me drive it anywhere.",
       "canonical_error": {
         "pattern": "Finds k correctly but then adds or scales incorrectly when predicting, or multiplies by the wrong quantity",
@@ -1061,8 +2073,24 @@
           "distractor_logic": "k = 2.80/7 = 0.40 gives c = 0.40w; Part B is 0.40 x 26 = 10.40. Adding (0.40 + 26) or reusing 7 oz are the traps.",
           "render_data": {
             "type": "data_table",
-            "headers": ["Weight (w)", "Cost (c)"],
-            "rows": [["1", "$0.40"], ["2", "$0.80"], ["3", "$1.20"]]
+            "headers": [
+              "Weight (w)",
+              "Cost (c)"
+            ],
+            "rows": [
+              [
+                "1",
+                "$0.40"
+              ],
+              [
+                "2",
+                "$0.80"
+              ],
+              [
+                "3",
+                "$1.20"
+              ]
+            ]
           }
         },
         {
@@ -1087,27 +2115,72 @@
         "praise": "You drove the equation to a new input — multiplying by k is exactly how proportional prediction works."
       },
       "vocabulary": [
-        { "term": "Predict", "definition": "Use the equation y = kx to find an output for an input that wasn't listed." },
-        { "term": "y = kx", "definition": "The proportional equation; multiply the constant k by any input x to get the output." }
+        {
+          "term": "Predict",
+          "definition": "Use the equation y = kx to find an output for an input that wasn't listed."
+        },
+        {
+          "term": "y = kx",
+          "definition": "The proportional equation; multiply the constant k by any input x to get the output."
+        }
       ],
       "next_steps": {
         "if_pass": "Ready for 7.RP.3 (write y = mx equations) and 7.RP.2 (percent applications).",
         "if_fail": "7RP1-S5"
       },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'Fabric costs $6.00 for 8 yards, at a constant rate.'" },
-        { "kind": "ask", "text": "First find k: cost per 1 yard. What do you divide?" },
-        { "kind": "say", "text": "6.00 / 8 = $0.75 per yard. So the equation is c = 0.75y." },
-        { "kind": "ask", "text": "Now predict the cost of 20 yards. Do we add, or multiply by the constant?" },
-        { "kind": "watch", "text": "If a student writes 0.75 + 20 or reuses the 8 yards, point at the equation c = 0.75y and ask 'what does y equal now?'" },
-        { "kind": "say", "text": "Multiply: 0.75 x 20 = $15.00. The constant let us answer a question the problem never asked directly." },
-        { "kind": "ask", "text": "Your turn: 90 miles in 2 hours, constant speed. Find k, then predict the distance in 5 hours." }
+        {
+          "kind": "show",
+          "text": "Write 'Fabric costs $6.00 for 8 yards, at a constant rate.'"
+        },
+        {
+          "kind": "ask",
+          "text": "First find k: cost per 1 yard. What do you divide?"
+        },
+        {
+          "kind": "say",
+          "text": "6.00 / 8 = $0.75 per yard. So the equation is c = 0.75y."
+        },
+        {
+          "kind": "ask",
+          "text": "Now predict the cost of 20 yards. Do we add, or multiply by the constant?"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 0.75 + 20 or reuses the 8 yards, point at the equation c = 0.75y and ask 'what does y equal now?'"
+        },
+        {
+          "kind": "say",
+          "text": "Multiply: 0.75 x 20 = $15.00. The constant let us answer a question the problem never asked directly."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 90 miles in 2 hours, constant speed. Find k, then predict the distance in 5 hours."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "If k = 5 and the equation is y = kx, what is y when x = 4?", "answer": "20" },
-        { "difficulty": "warm_up", "stem": "A rate is $3 per pound. Write the equation for cost c and pounds p.", "answer": "c = 3p" },
-        { "difficulty": "core", "stem": "Apples cost $4.50 for 6 pounds (constant rate). Write c = kp, then find the cost of 15 pounds.", "answer": "c = 0.75p; 0.75 x 15 = $11.25", "notes": "Two-step: find k, then predict." },
-        { "difficulty": "core", "stem": "A printer runs at a constant rate: 84 pages in 6 minutes. How many pages in 15 minutes?", "answer": "k = 14 pages/min; 14 x 15 = 210 pages", "notes": "Predict a value not in the problem." },
+        {
+          "difficulty": "warm_up",
+          "stem": "If k = 5 and the equation is y = kx, what is y when x = 4?",
+          "answer": "20"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A rate is $3 per pound. Write the equation for cost c and pounds p.",
+          "answer": "c = 3p"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Apples cost $4.50 for 6 pounds (constant rate). Write c = kp, then find the cost of 15 pounds.",
+          "answer": "c = 0.75p; 0.75 x 15 = $11.25",
+          "notes": "Two-step: find k, then predict."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A printer runs at a constant rate: 84 pages in 6 minutes. How many pages in 15 minutes?",
+          "answer": "k = 14 pages/min; 14 x 15 = 210 pages",
+          "notes": "Predict a value not in the problem."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -1119,9 +2192,24 @@
           "answer": "Prediction with a constant means MULTIPLY, not add: c = 0.40 x 26 = $10.40. Sam added the constant to the weight, which breaks the equation c = 0.40w.",
           "notes": "Canonical error: adding instead of multiplying by k."
         },
-        { "difficulty": "core", "stem": "At a constant rate, 3 workers build 2 sheds. Using the same rate, how many sheds do 12 workers build? (k = sheds per worker)", "answer": "k = 2/3 shed per worker; (2/3) x 12 = 8 sheds", "notes": "k is a fraction; still multiply by the new input." },
-        { "difficulty": "stretch", "stem": "A car uses gas proportionally and goes 96 miles on 3 gallons. A trip is 400 miles. About how many gallons are needed? Explain which quantity you multiply.", "answer": "k = 32 miles per gallon, so gallons = miles / k = 400 / 32 = 12.5 gallons. Here you divide by k because you're going from miles back to gallons.", "notes": "Reversed use of the constant — predict the INPUT from an output." },
-        { "difficulty": "stretch", "stem": "Two proportional plans: Plan A charges $0.50 per mile, Plan B charges $0.45 per mile. For a 60-mile trip, how much do you save with Plan B? Show the equations.", "answer": "A: 0.50 x 60 = $30; B: 0.45 x 60 = $27; savings = $3.", "notes": "Two predictions plus a comparison." }
+        {
+          "difficulty": "core",
+          "stem": "At a constant rate, 3 workers build 2 sheds. Using the same rate, how many sheds do 12 workers build? (k = sheds per worker)",
+          "answer": "k = 2/3 shed per worker; (2/3) x 12 = 8 sheds",
+          "notes": "k is a fraction; still multiply by the new input."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A car uses gas proportionally and goes 96 miles on 3 gallons. A trip is 400 miles. About how many gallons are needed? Explain which quantity you multiply.",
+          "answer": "k = 32 miles per gallon, so gallons = miles / k = 400 / 32 = 12.5 gallons. Here you divide by k because you're going from miles back to gallons.",
+          "notes": "Reversed use of the constant — predict the INPUT from an output."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two proportional plans: Plan A charges $0.50 per mile, Plan B charges $0.45 per mile. For a 60-mile trip, how much do you save with Plan B? Show the equations.",
+          "answer": "A: 0.50 x 60 = $30; B: 0.45 x 60 = $27; savings = $3.",
+          "notes": "Two predictions plus a comparison."
+        }
       ],
       "activities": [
         {
@@ -1129,7 +2217,10 @@
           "title": "Find k, Then Drive It",
           "time_minutes": 14,
           "grouping": "pairs",
-          "materials": ["Context cards (price-for-amount)", "Recording sheet with 'k =', 'equation:', 'prediction:' rows"],
+          "materials": [
+            "Context cards (price-for-amount)",
+            "Recording sheet with 'k =', 'equation:', 'prediction:' rows"
+          ],
           "instructions": "1. Draw a context card ('$5.60 for 8 pounds').\n2. Fill the sheet in order: compute k (per 1), write the equation y = kx, then answer a prediction question on the card ('cost of 22 pounds?').\n3. The prediction line must show a MULTIPLICATION by k — no adding.\n4. Swap sheets with another pair and check each other's equation and prediction.\n5. Debrief: why does prediction always multiply the constant by the new amount?"
         },
         {
@@ -1137,7 +2228,9 @@
           "title": "Add or Multiply?",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Sam's added-instead-of-multiplied work"],
+          "materials": [
+            "Slip with Sam's added-instead-of-multiplied work"
+          ],
           "instructions": "1. Read Sam's prediction: c = 0.40 + 26 = $26.40 for 26 ounces at $0.40/ounce.\n2. Decide whether $26.40 is a reasonable cost for 26 ounces and say why it isn't.\n3. Redo the prediction using the equation c = 0.40w.\n4. Write the rule: to predict with a constant, you ____ (not ____).",
           "content": {
             "worked_problem": "Trail mix is $0.40 per ounce. Cost of 26 ounces? Sam wrote c = 0.40 + 26 = $26.40.",
@@ -1150,14 +2243,26 @@
           "title": "Prediction Relay",
           "time_minutes": 10,
           "grouping": "small_group",
-          "materials": ["Deck of proportional-context cards", "Timer"],
+          "materials": [
+            "Deck of proportional-context cards",
+            "Timer"
+          ],
           "instructions": "1. Team draws a card and must, in order: state k, write y = kx, and give a prediction for a new input.\n2. Each correct step earns a point; a wrong prediction that came from a right k earns partial credit.\n3. Pass the card to the next student for the next round's new input.\n4. Fastest team with all-correct predictions wins.\n5. Debrief the card that tripped teams up — where did the structure y = kx get lost?"
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-006", "why": "The find-k-then-predict arc is a natural I Do / We Do / You Do sequence, each stage adding one step of the multi-step task." },
-        { "strategy_id": "strat-math-003", "why": "The add-instead-of-multiply error is a clean, high-frequency mistake for a find-and-fix routine." },
-        { "strategy_id": "strat-math-004", "why": "A journal prompt ('why does prediction multiply by k?') consolidates the meaning of the constant as an engine for the whole relationship." }
+        {
+          "strategy_id": "strat-math-006",
+          "why": "The find-k-then-predict arc is a natural I Do / We Do / You Do sequence, each stage adding one step of the multi-step task."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The add-instead-of-multiply error is a clean, high-frequency mistake for a find-and-fix routine."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "A journal prompt ('why does prediction multiply by k?') consolidates the meaning of the constant as an engine for the whole relationship."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -1199,20 +2304,48 @@
         "stem": "The cost of cashews is proportional to weight: 6 ounces cost $4.20. What does 22 ounces cost?",
         "answer": "$15.40",
         "steps": [
-          { "math": "k = 4.20 / 6 = 0.70 per ounce", "annotation": "Find the constant of proportionality first — dollars per 1 ounce." },
-          { "math": "equation: c = 0.70w", "annotation": "The constant becomes the multiplier in y = kx." },
-          { "math": "c = 0.70 x 22", "annotation": "Predict by multiplying k by the NEW weight, 22 ounces." },
-          { "math": "= $15.40", "annotation": "A value the problem never listed, found with the constant." }
+          {
+            "math": "k = 4.20 / 6 = 0.70 per ounce",
+            "annotation": "Find the constant of proportionality first — dollars per 1 ounce."
+          },
+          {
+            "math": "equation: c = 0.70w",
+            "annotation": "The constant becomes the multiplier in y = kx."
+          },
+          {
+            "math": "c = 0.70 x 22",
+            "annotation": "Predict by multiplying k by the NEW weight, 22 ounces."
+          },
+          {
+            "math": "= $15.40",
+            "annotation": "A value the problem never listed, found with the constant."
+          }
         ]
       },
       "faded_example": {
         "stem": "A drone flies at a constant speed: 45 meters in 5 seconds. How far in 12 seconds?",
         "answer": "108 meters",
         "steps": [
-          { "math": "k = 45 / 5", "annotation": "Meters per 1 second — the constant.", "given": true },
-          { "math": "equation: d = k x t", "annotation": "The constant is the multiplier of time.", "given": true },
-          { "math": null, "annotation": "Compute k, then set up d = k x 12.", "given": false },
-          { "math": null, "annotation": "Multiply to predict the distance at 12 seconds.", "given": false }
+          {
+            "math": "k = 45 / 5",
+            "annotation": "Meters per 1 second — the constant.",
+            "given": true
+          },
+          {
+            "math": "equation: d = k x t",
+            "annotation": "The constant is the multiplier of time.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Compute k, then set up d = k x 12.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply to predict the distance at 12 seconds.",
+            "given": false
+          }
         ]
       }
     }
@@ -1221,40 +2354,84 @@
     "foundation": {
       "label": "Foundation (Tier III)",
       "description": "Pre-grade-level prerequisites — fix these first.",
-      "skills": ["7RP1-F1", "7RP1-F2"]
+      "skills": [
+        "7RP1-F1",
+        "7RP1-F2"
+      ]
     },
     "looking_back": {
       "label": "Looking Back",
       "description": "Skills the student should have but may need re-teaching.",
-      "skills": ["7RP1-S1"]
+      "skills": [
+        "7RP1-S1"
+      ]
     },
     "on_grade": {
       "label": "On Grade",
       "description": "The standard's actual grade-level expectations.",
-      "skills": ["7RP1-S2", "7RP1-S3", "7RP1-S4", "7RP1-S5"]
+      "skills": [
+        "7RP1-S2",
+        "7RP1-S3",
+        "7RP1-S4",
+        "7RP1-S5"
+      ]
     },
     "looking_forward": {
       "label": "Looking Forward",
       "description": "Bridge to the next standard.",
-      "skills": ["7RP1-S6"]
+      "skills": [
+        "7RP1-S6"
+      ]
     }
   },
-  "skill_sequence": ["7RP1-F1", "7RP1-F2", "7RP1-S1", "7RP1-S2", "7RP1-S3", "7RP1-S4", "7RP1-S5", "7RP1-S6"],
+  "skill_sequence": [
+    "7RP1-F1",
+    "7RP1-F2",
+    "7RP1-S1",
+    "7RP1-S2",
+    "7RP1-S3",
+    "7RP1-S4",
+    "7RP1-S5",
+    "7RP1-S6"
+  ],
   "skill_tree": {
     "7RP1-F1": [],
     "7RP1-F2": [],
-    "7RP1-S1": ["7RP1-F2"],
-    "7RP1-S2": ["7RP1-S1", "7RP1-F2"],
-    "7RP1-S3": ["7RP1-S2", "7RP1-F1"],
-    "7RP1-S4": ["7RP1-S3"],
-    "7RP1-S5": ["7RP1-S3"],
-    "7RP1-S6": ["7RP1-S5", "7RP1-S3"]
+    "7RP1-S1": [
+      "7RP1-F2"
+    ],
+    "7RP1-S2": [
+      "7RP1-S1",
+      "7RP1-F2"
+    ],
+    "7RP1-S3": [
+      "7RP1-S2",
+      "7RP1-F1"
+    ],
+    "7RP1-S4": [
+      "7RP1-S3"
+    ],
+    "7RP1-S5": [
+      "7RP1-S3"
+    ],
+    "7RP1-S6": [
+      "7RP1-S5",
+      "7RP1-S3"
+    ]
   },
   "diagnostic_flow": {
     "description": "Start with S3 (compute k = y/x from a table or description) -- the At-Proficiency core of the standard. If they pass, push forward to S5 (read k from equations/graphs) and S6 (interpret and predict). If they fail, split the diagnosis: S1 checks whether they can even tell proportional from non-proportional, and S2 checks whether they recognize k when the (1, r) pair is handed to them. S4 (fractional quantities) branches off S3.",
     "entry_skill": "7RP1-S3",
-    "if_pass": ["7RP1-S5", "7RP1-S6"],
-    "if_fail": ["7RP1-S1", "7RP1-S2"],
-    "branch_skills": ["7RP1-S4"]
+    "if_pass": [
+      "7RP1-S5",
+      "7RP1-S6"
+    ],
+    "if_fail": [
+      "7RP1-S1",
+      "7RP1-S2"
+    ],
+    "branch_skills": [
+      "7RP1-S4"
+    ]
   }
 }

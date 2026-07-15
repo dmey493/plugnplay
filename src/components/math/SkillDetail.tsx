@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import type { ContentEnvelope } from "@/lib/types";
 import {
   ACTIVITY_TYPE_LABELS,
@@ -18,6 +19,8 @@ import Badge from "@/components/ui/Badge";
 import Tag from "@/components/ui/Tag";
 import StrategyCard from "@/components/library/StrategyCard";
 import SkillPacketModal from "./SkillPacketModal";
+import type { WarmupLink } from "@/lib/warmups";
+import { InlineDiagram, type RenderData } from "@/components/intervention/InlineMath";
 
 /**
  * SkillDetail — the drill-in view for one v2 skill: everything a teacher
@@ -35,6 +38,9 @@ interface Props {
   rationale?: string;
   /** Strategy envelopes resolved server-side from skill.strategy_links. */
   strategies: Array<{ envelope: ContentEnvelope; why: string }>;
+  /** Library warm-ups (Number Talks / WODB) matched to this standard,
+   *  resolved server-side from the decks' std tags. */
+  warmups?: WarmupLink[];
 }
 
 export default function SkillDetail({
@@ -43,8 +49,15 @@ export default function SkillDetail({
   standardText,
   rationale,
   strategies,
+  warmups,
 }: Props) {
-  const [tab, setTab] = useState<TabName>("Practice");
+  // ?tab=Activities deep-links a tab (the progression view's per-skill
+  // "Activities" chip lands here) — invalid values fall back to Practice.
+  const searchParams = useSearchParams();
+  const requestedTab = searchParams?.get("tab");
+  const [tab, setTab] = useState<TabName>(
+    TABS.includes(requestedTab as TabName) ? (requestedTab as TabName) : "Practice"
+  );
   const [showModal, setShowModal] = useState(false);
   const ready = isPacketReady(skill);
   const meta = COLUMN_META[skill.column];
@@ -82,6 +95,31 @@ export default function SkillDetail({
         </p>
       )}
 
+      {/* Library warm-ups — five-minute conceptual openers matched to this
+          standard. Deep-links into the Number Talks / WODB tools. */}
+      {warmups && warmups.length > 0 && (
+        <div className="mt-5 max-w-3xl rounded-lg border border-pnp-gray-200 bg-white px-4 py-3">
+          <p className="text-xs font-bold uppercase tracking-wide text-pnp-gray-500">
+            Warm-ups from the library
+          </p>
+          <ul className="mt-2 flex flex-wrap gap-2">
+            {warmups.map((w) => (
+              <li key={`${w.kind}-${w.id}`}>
+                <a
+                  href={w.href}
+                  className="inline-flex items-center gap-1.5 rounded-md border border-pnp-gray-200 bg-pnp-gray-50 px-2.5 py-1.5 text-sm font-semibold text-pnp-navy transition-colors hover:border-pnp-accent hover:bg-pnp-accent-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pnp-accent"
+                >
+                  <span className="text-[10px] font-bold uppercase tracking-wide text-pnp-accent">
+                    {w.kind === "talk" ? "Number talk" : "WODB"}
+                  </span>
+                  {w.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {/* Tabs */}
       <div
         role="tablist"
@@ -112,7 +150,13 @@ export default function SkillDetail({
 
       <div className="mt-6" role="tabpanel">
         {tab === "Practice" && <PracticeTab problems={skill.practice_problems ?? []} />}
-        {tab === "Activities" && <ActivitiesTab activities={skill.activities ?? []} />}
+        {tab === "Activities" && (
+          <ActivitiesTab
+            activities={skill.activities ?? []}
+            skillId={skill.skill_id}
+            standardCode={standardCode}
+          />
+        )}
         {tab === "Strategies" && <StrategiesTab strategies={strategies} />}
         {tab === "Teacher Moves" && <TeacherMovesTab skill={skill} />}
       </div>
@@ -160,6 +204,11 @@ function PracticeTab({ problems }: { problems: PracticeProblem[] }) {
                     <Badge tone="blue" className="mb-2">Number line</Badge>
                   )}
                   <p className="text-sm leading-relaxed text-pnp-navy">{p.stem}</p>
+                  {p.render_data && (
+                    <div className="mt-2 text-pnp-navy [&_svg]:h-auto [&_svg]:max-w-full">
+                      <InlineDiagram data={p.render_data as RenderData} />
+                    </div>
+                  )}
                   {p.shown_work && p.shown_work.length > 0 && (
                     <div className="mt-2 rounded border border-pnp-red/30 bg-pnp-red/5 px-3 py-2">
                       {p.shown_work.map((line, j) => (
@@ -198,7 +247,15 @@ const ACTIVITY_TONE: Record<Activity["type"], "blue" | "red" | "teal" | "orange"
   game: "yellow",
 };
 
-function ActivitiesTab({ activities }: { activities: Activity[] }) {
+function ActivitiesTab({
+  activities,
+  skillId,
+  standardCode,
+}: {
+  activities: Activity[];
+  skillId: string;
+  standardCode: string;
+}) {
   if (activities.length === 0) return <EmptyState label="No activities authored yet." />;
 
   return (
@@ -209,6 +266,13 @@ function ActivitiesTab({ activities }: { activities: Activity[] }) {
             <Badge tone={ACTIVITY_TONE[a.type]}>{ACTIVITY_TYPE_LABELS[a.type]}</Badge>
             <Tag>{a.time_minutes} min</Tag>
             <Tag>{GROUPING_LABELS[a.grouping]}</Tag>
+            <div className="ml-auto">
+              <PrintMaterialsButton
+                skillId={skillId}
+                standardCode={standardCode}
+                activityIndex={i}
+              />
+            </div>
           </div>
           <h3 className="mt-3 font-heading text-lg font-bold text-pnp-navy">{a.title}</h3>
 
@@ -231,6 +295,55 @@ function ActivitiesTab({ activities }: { activities: Activity[] }) {
         </Card>
       ))}
     </div>
+  );
+}
+
+/**
+ * One-click hand-outs: run sheet + cut-apart decks / student slips / any
+ * referenced blackline masters, generated by the packet engine's
+ * activity_materials mode and opened in a new tab for printing.
+ */
+function PrintMaterialsButton({
+  skillId,
+  standardCode,
+  activityIndex,
+}: {
+  skillId: string;
+  standardCode: string;
+  activityIndex: number;
+}) {
+  const [loading, setLoading] = useState(false);
+
+  const print = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/generate-skill-packet", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          standard: standardCode,
+          skill_id: skillId,
+          mode: "activity_materials",
+          activity_index: activityIndex,
+        }),
+      });
+      if (!res.ok) return;
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      window.open(url, "_blank", "noopener");
+      // Give the new tab time to load the blob before revoking.
+      setTimeout(() => URL.revokeObjectURL(url), 60_000);
+    } catch {
+      // ignore — the button simply re-enables
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Button tier="secondary" size="small" onClick={print} disabled={loading}>
+      {loading ? "Building…" : "Print materials"}
+    </Button>
   );
 }
 

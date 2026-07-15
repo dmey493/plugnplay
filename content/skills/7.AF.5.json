@@ -49,7 +49,7 @@
         "description": "Given how much y changes and how much x changes, divide to get the rate of change.",
         "check_question": "If y goes up by 12 while x goes up by 3, what is the rate of change?"
       },
-      "i_do_script": "A rate of change is how much y changes for each 1 that x changes -- and I get it by dividing the change in y by the change in x. Watch: if y goes up 12 while x goes up 3, I do 12 divided by 3 = 4, so the rate is 4. The change in y always goes on TOP, the change in x on the bottom, because I want the amount per 1 x.",
+      "i_do_script": "Picture x ticking up 1 at a time: if y climbs 21 while x takes 3 steps, each single step must carry an equal share -- 21 split across 3 steps is 7 per step. That per-step share is why the y-change sits on top when we divide. A rate of change is how much y changes for each 1 that x changes -- and I get it by dividing the change in y by the change in x. Watch: if y goes up 12 while x goes up 3, I do 12 divided by 3 = 4, so the rate is 4. The change in y always goes on TOP, the change in x on the bottom, because I want the amount per 1 x.",
       "canonical_error": {
         "pattern": "Divides the change in x by the change in y, inverting the rate",
         "example": "For a change in y of 12 and change in x of 3, computes 3/12 = 0.25 instead of 12/3 = 4",
@@ -80,7 +80,7 @@
       ],
       "redirect_script": {
         "stop": "Which change goes on top -- the y or the x?",
-        "prompt": "The rate is y for 1 x, so put the change in y on top: change in y divided by change in x. If your answer is a tiny fraction when you expected a whole rate, you divided the wrong way.",
+        "prompt": "Look back at the bar: the 21 of y is the amount that gets cut up, and the 3 x-steps are the pieces you cut it into. The rate is y for 1 x, so put the change in y on top: change in y divided by change in x. If your answer is a tiny fraction when you expected a whole rate, you divided the wrong way.",
         "praise": "You put the change in y over the change in x -- that's the rate, right-side up."
       },
       "vocabulary": [
@@ -98,6 +98,35 @@
         "if_fail": "Review finding a unit rate (6.RP.5)."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a bar for 'y climbs 21' and cut it into 3 equal pieces -- one piece for each 1-step of x. Each piece holds 21 / 3 = 7, so y gains 7 for every single step of x.",
+          "visual": {
+            "type": "percent_bar",
+            "label": "y climbs 21 across 3 x-steps",
+            "segments": [
+              {
+                "span": 7,
+                "label": "7",
+                "shaded": true
+              },
+              {
+                "span": 7,
+                "label": "7",
+                "shaded": true
+              },
+              {
+                "span": 7,
+                "label": "7",
+                "shaded": true
+              }
+            ],
+            "end_labels": [
+              "0",
+              "21"
+            ]
+          }
+        },
         {
           "kind": "show",
           "text": "Write 'y goes up by 21 while x goes up by 3. Find the rate of change.'"
@@ -131,7 +160,7 @@
         "description": "Read a table and compute the change between one row and the next (later value minus earlier value).",
         "check_question": "A table's y-values are 5, 8, 11. How much does y change from one row to the next?"
       },
-      "i_do_script": "To see how a table is changing, I subtract each value from the one right after it -- later minus earlier -- for consecutive rows. Watch the y-values 5, 8, 11, 14: 8 - 5 = 3, 11 - 8 = 3, 14 - 11 = 3. Every step changes by 3. I do the same for the x-values to be sure they step by the same amount, so the differences are fair to compare.",
+      "i_do_script": "Think of the values 4, 9, 14, 19 as stepping stones on a path -- the question is how big ONE hop is, from a stone to the very next one. A hop from 4 straight to 14 is really two hops glued together, so it can't tell you the size of a single step. To see how a table is changing, I subtract each value from the one right after it -- later minus earlier -- for consecutive rows. Watch the y-values 5, 8, 11, 14: 8 - 5 = 3, 11 - 8 = 3, 14 - 11 = 3. Every step changes by 3. I do the same for the x-values to be sure they step by the same amount, so the differences are fair to compare.",
       "canonical_error": {
         "pattern": "Subtracts across non-consecutive rows or reverses the order, producing a wrong change",
         "example": "For y-values 5, 8, 11 computes 11 - 5 = 6 (skipping a row) or 5 - 8 = -3 (reversed) instead of 8 - 5 = 3 between consecutive rows",
@@ -158,7 +187,7 @@
       ],
       "redirect_script": {
         "stop": "Are those two rows right next to each other?",
-        "prompt": "Take each value away from the one directly after it -- next minus current -- and go one step at a time. Don't skip a row and don't flip the order.",
+        "prompt": "Go back to the stepping stones: put your finger on one value and hop only to the stone right after it. Take each value away from the one directly after it -- next minus current -- and go one step at a time. Don't skip a row and don't flip the order.",
         "praise": "You subtracted consecutive rows in order -- that's the true step-by-step change."
       },
       "vocabulary": [
@@ -176,6 +205,10 @@
         "if_fail": "Review reading tables and subtraction (6.AF.5)."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Put your finger on 4 and hop to the very next stone, 9. How far was that one hop? Now hop 9 to 14, then 14 to 19 -- is every single hop the same size?"
+        },
         {
           "kind": "show",
           "text": "Write the y-values 4, 9, 14, 19."
@@ -207,7 +240,7 @@
         "type": "skill",
         "skill_id": "7AF5-F1"
       },
-      "i_do_script": "Slope means vertical change for each unit of horizontal change -- how far up for how far across. In a slope written as a fraction, the TOP number is the vertical change and the BOTTOM number is the horizontal change. Watch a slope of 9/4: the 9 is the vertical change (up 9) and the 4 is the horizontal change (across 4). So this line goes up 9 for every 4 it moves across.",
+      "i_do_script": "Slope means vertical change for each unit of horizontal change -- how far up for how far across -- and the way to own that is to draw the ramp. A slope of 9/4: starting anywhere, go up 9 and across 4, and the line through those corners IS the ramp the fraction describes. The top number is the vertical change and the bottom is the horizontal, because slope answers 'how much UP per ACROSS.' Drawn on a grid, 9/4 is a steep ramp (more up than across) while 4/9 is a shallow one -- flipping the fraction changes the hill, which is why the positions matter.",
       "canonical_error": {
         "pattern": "Swaps vertical and horizontal -- reads the top number as horizontal change and the bottom as vertical",
         "example": "For a slope of 9/4, says 9 is the horizontal change and 4 is the vertical change, reading the slope upside down",
@@ -238,7 +271,7 @@
       ],
       "redirect_script": {
         "stop": "Which part of the slope is the UP part?",
-        "prompt": "Slope is vertical change OVER horizontal change: the top number is how far you go up (vertical), the bottom number is how far you go across (horizontal). Point to the top and say 'up'; the bottom, 'across.'",
+        "prompt": "Draw the ramp: from a dot, count up the top number and across the bottom, and look at the hill you made. Slope is vertical change OVER horizontal change: the top number is how far you go up (vertical), the bottom number is how far you go across (horizontal). Point to the top and say 'up'; the bottom, 'across.'",
         "praise": "You read the top as the vertical change and the bottom as the horizontal change -- that's what slope means."
       },
       "vocabulary": [
@@ -260,6 +293,42 @@
         "if_fail": "7AF5-F1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "On a grid, start at (0, 0), count UP 9 and ACROSS 4, and mark the corner points of the ramp for slope 9/4.",
+          "visual": {
+            "type": "coordinate_grid",
+            "x_range": [
+              -1,
+              10
+            ],
+            "y_range": [
+              -1,
+              10
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "start"
+              },
+              {
+                "x": 0,
+                "y": 9,
+                "label": "up 9"
+              },
+              {
+                "x": 4,
+                "y": 9,
+                "label": "across 4"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Is this ramp steep or shallow? What ramp would 4/9 draw instead -- and why does swapping top and bottom change the hill?"
+        },
         {
           "kind": "show",
           "text": "Write 'The slope of a line is 5/2. What does each number represent?'"
@@ -336,12 +405,22 @@
       ],
       "activities": [
         {
+          "type": "hands_on",
+          "title": "Draw the Ramp",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper (or the grid-paper printable)"
+          ],
+          "instructions": "1. Call out a slope fraction (5/2, 2/5, 3/3, 1/6). Pairs draw its ramp from a dot: count up the top number, across the bottom, connect.\n2. After each ramp, pairs write one sentence: 'up ___ for every ___ across -- steep/shallow.'\n3. Trap round: draw 5/2 and 2/5 on the same grid. Which is steeper? What did swapping the numbers do to the hill?\n4. Debrief: the fraction's positions aren't arbitrary -- top is the climb, bottom is the walk, and the ramp shows why."
+        },
+        {
           "type": "card_sort",
           "title": "Up or Across?",
           "time_minutes": 10,
           "grouping": "small_group",
           "materials": [
-            "Card set of 10 slope fractions and 20 label cards ('vertical change = __', 'horizontal change = __')"
+            "Card set of 4 slope fractions and 8 label cards ('vertical change = __', 'horizontal change = __')"
           ],
           "instructions": "1. Lay out each slope fraction card.\n2. For each slope, place the correct 'vertical change' card (the top number) and 'horizontal change' card (the bottom number) beside it.\n3. Say aloud 'up ___ for every across ___' for each slope.\n4. Debrief: which number is ALWAYS the vertical change, no matter the slope?",
           "content": {
@@ -1596,7 +1675,7 @@
         "type": "skill",
         "skill_id": "7AF5-S1"
       },
-      "i_do_script": "To interpret a slope in context, I read the top number as the vertical rise and the bottom as the horizontal distance. Watch a ramp with slope 1/12: the top 1 is the vertical rise, the bottom 12 is the horizontal distance, so it means 'the ramp rises 1 foot for every 12 feet of horizontal distance.' The trap is saying 'rises 12 feet for every 1 foot' -- that flips the meaning.",
+      "i_do_script": "Draw the ramp before saying any words: from the ground go 9 across and only 2 up -- a long, gentle ramp. Now draw the flipped one, 2 across and 9 up: that's nearly a wall. Slope 2/9 can only be one of those two pictures, and the drawing decides which. To interpret a slope in context, I read the top number as the vertical rise and the bottom as the horizontal distance. Watch a ramp with slope 1/12: the top 1 is the vertical rise, the bottom 12 is the horizontal distance, so it means 'the ramp rises 1 foot for every 12 feet of horizontal distance.' The trap is saying 'rises 12 feet for every 1 foot' -- that flips the meaning.",
       "canonical_error": {
         "pattern": "Reverses the meaning -- states the horizontal number as the rise and the vertical number as the across distance",
         "example": "For a ramp with slope 1/12, says 'it rises 12 feet for every 1 foot across' instead of 'rises 1 foot for every 12 feet across'",
@@ -1633,7 +1712,7 @@
       ],
       "redirect_script": {
         "stop": "Which number is the UP and which is the ACROSS?",
-        "prompt": "The top number of the slope is the vertical rise; the bottom is the horizontal distance. Read it as 'rises TOP for every BOTTOM across.' If you say 'rises 12 for every 1' on a slope of 1/12, you flipped it -- read the top as the rise.",
+        "prompt": "Look back at the two ramps on the grid -- the gentle one ends at (9, 2) and the wall ends at (2, 9). Which one did your sentence just describe? The top number of the slope is the vertical rise; the bottom is the horizontal distance. Read it as 'rises TOP for every BOTTOM across.' If you say 'rises 12 for every 1' on a slope of 1/12, you flipped it -- read the top as the rise.",
         "praise": "You matched the top number to the rise and the bottom to the across distance -- that's the correct interpretation."
       },
       "vocabulary": [
@@ -1651,6 +1730,46 @@
         "if_fail": "7AF5-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Plot the slope-2/9 ramp: start at (0, 0) and end 9 across, 2 up, at (9, 2). Then mark where the FLIPPED reading would end -- 2 across, 9 up, at (2, 9).",
+          "visual": {
+            "type": "coordinate_grid",
+            "x_range": [
+              0,
+              10
+            ],
+            "y_range": [
+              0,
+              10
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "start"
+              },
+              {
+                "x": 9,
+                "y": 2,
+                "label": "(9, 2)"
+              },
+              {
+                "x": 2,
+                "y": 9,
+                "label": "flipped: (2, 9)"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Which point ends a gentle wheelchair ramp, and which ends something close to a climbing wall? If a ramp 'rose 9 feet for every 2 across,' which point would it hit?"
+        },
+        {
+          "kind": "say",
+          "text": "The gentle ramp rises 2 for every 9 across -- the top of 2/9 is the small UP move and the bottom is the long ACROSS move. Saying it backward describes the wall."
+        },
         {
           "kind": "show",
           "text": "Write 'A ramp has a slope of 2/9. What does it mean?'"

@@ -386,7 +386,7 @@
         "type": "skill",
         "skill_id": "6NS5-F1"
       },
-      "i_do_script": "We're going to evaluate an expression that mixes operations, like 6 x (42 / 7) + 100. The parentheses are the author of the problem telling us 'do THIS piece first.' Watch: 42 / 7 = 6, so the expression becomes 6 x 6 + 100. Then multiplication beats addition: 36 + 100 = 136. The one rule I'll keep asking about: which step does the expression let you do first?",
+      "i_do_script": "An expression is a story squeezed onto one line. Here's this one's story: 42 kids share 7 vans equally, 6 vans of that size arrive at the museum, and 100 more kids walk. The story forces an order -- you can't count the riders before you know how many kids fit per van -- and the symbols simply record that forced order. We're going to evaluate an expression that mixes operations, like 6 x (42 / 7) + 100. The parentheses are the author of the problem telling us 'do THIS piece first.' Watch: 42 / 7 = 6, so the expression becomes 6 x 6 + 100. Then multiplication beats addition: 36 + 100 = 136. The one rule I'll keep asking about: which step does the expression let you do first?",
       "canonical_error": {
         "pattern": "Works strictly left to right, ignoring parentheses and the priority of multiplication and division over addition and subtraction",
         "example": "For 60 - 5 x 8, computes 60 - 5 = 55 first, then 55 x 8 = 440, instead of 5 x 8 = 40, then 60 - 40 = 20",
@@ -394,7 +394,7 @@
       },
       "redirect_script": {
         "stop": "Wait -- did you check what comes first?",
-        "prompt": "Circle the parentheses first, then underline any multiplication or division. Those steps happen BEFORE adding or subtracting, no matter where they sit in the line. Now which piece do you compute first?",
+        "prompt": "Go back to the van story: which amount does the story force you to find first? Circle the parentheses first, then underline any multiplication or division. Those steps happen BEFORE adding or subtracting, no matter where they sit in the line. Now which piece do you compute first?",
         "praise": "You found the first step by rule, not by position. That's exactly how order of operations works."
       },
       "item_template": "A numerical expression with whole numbers, one set of parentheses containing one operation, and one or two operations outside. Student evaluates. NR response.",
@@ -447,6 +447,18 @@
         "if_fail": "Check 6NS5-F1 (fact fluency). If facts are solid, re-teach with the circle-the-parentheses routine and one-step-per-line recording."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Tell the story behind 6 x (42 / 7) + 100 before computing anything: 42 kids split equally among 7 vans -- that's the (42 / 7) chunk. Then 6 vans of that size arrive, and 100 more kids walk. The whole expression counts kids at the museum."
+        },
+        {
+          "kind": "ask",
+          "text": "Try reading it like a book, left to right: could you compute 6 x 42 first? What would 252 even count in this story, before the splitting into 7 vans has happened? And could you add the 100 walkers before you know how many kids rode? Which piece does the STORY force you to settle first?"
+        },
+        {
+          "kind": "say",
+          "text": "The story computes itself from the inside out: kids per van first (42 / 7 = 6), then the riders (6 x 6 = 36), then everybody (36 + 100 = 136). Parentheses and operation ranks are just the written record of the order the story already demanded."
+        },
         {
           "kind": "show",
           "text": "Write on the board: 6 x (42 / 7) + 100."
@@ -565,16 +577,6 @@
           }
         },
         {
-          "type": "game",
-          "title": "First Step Showdown",
-          "time_minutes": 10,
-          "grouping": "whole_class",
-          "materials": [
-            "Mini whiteboards"
-          ],
-          "instructions": "1. Project an expression like 40 - 2 x (6 + 8).\n2. Students write ONLY the first step (the piece they'd compute first) -- not the answer.\n3. On 'show,' everyone reveals at once. One student defends the majority choice, one defends any different choice.\n4. Then evaluate the whole expression together, one step per line. Score a class point when the room agrees on the first step immediately."
-        },
-        {
           "type": "card_sort",
           "title": "What Comes First?",
           "time_minutes": 8,
@@ -625,6 +627,16 @@
               }
             ]
           }
+        },
+        {
+          "type": "game",
+          "title": "First Step Showdown",
+          "time_minutes": 10,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Project an expression like 40 - 2 x (6 + 8).\n2. Students write ONLY the first step (the piece they'd compute first) -- not the answer.\n3. On 'show,' everyone reveals at once. One student defends the majority choice, one defends any different choice.\n4. Then evaluate the whole expression together, one step per line. Score a class point when the room agrees on the first step immediately."
         }
       ],
       "strategy_links": [
@@ -1078,7 +1090,7 @@
         "type": "skill",
         "skill_id": "6NS5-S1"
       },
-      "i_do_script": "Now the expressions have layers: brackets on the outside, parentheses on the inside, like [(54 / 9 + 14) / 4]. We work from the INSIDE out: 54 / 9 = 6 first, then 6 + 14 = 20 inside the parentheses, then 20 / 4 = 5 for the brackets. One more rule to lock in: multiplication and division are the SAME rank -- inside any layer you take them left to right, never 'multiplication always first.'",
+      "i_do_script": "Here's the story hiding in the layers: 54 stickers shared equally by 9 kids, then 14 bonus stickers handed to each kid, then each kid splits their whole pile evenly across 4 album pages. You can't hand out bonuses before the shares exist, and you can't fill pages before the piles are complete -- the story runs inside-out, and the brackets record it. Now the expressions have layers: brackets on the outside, parentheses on the inside, like [(54 / 9 + 14) / 4]. We work from the INSIDE out: 54 / 9 = 6 first, then 6 + 14 = 20 inside the parentheses, then 20 / 4 = 5 for the brackets. One more rule to lock in: multiplication and division are the SAME rank -- inside any layer you take them left to right, never 'multiplication always first.'",
       "canonical_error": {
         "pattern": "Believes multiplication always comes before division because M comes before D in PEMDAS",
         "example": "For 36 / 6 x 2, computes 6 x 2 = 12 first and gets 36 / 12 = 3, instead of working left to right: 36 / 6 = 6, then 6 x 2 = 12",
@@ -1086,7 +1098,7 @@
       },
       "redirect_script": {
         "stop": "Careful -- M and D are teammates, not ranked.",
-        "prompt": "Multiplication and division are the same step. When both appear, sweep left to right like reading. Put your finger on the leftmost x or / and do that one first.",
+        "prompt": "Think of the sticker story: sharing out and scaling up are the same kind of resize move -- they happen in the order they come, left to right. Multiplication and division are the same step. When both appear, sweep left to right like reading. Put your finger on the leftmost x or / and do that one first.",
         "praise": "You swept left to right through the same-rank operations. That's the rule most people miss."
       },
       "item_template": "A numerical expression with whole numbers, two operations inside grouping symbols or two sets of grouping symbols (parentheses inside brackets). Student evaluates. NR or MC response.",
@@ -1135,6 +1147,18 @@
         "if_fail": "Drop back to 6NS5-S1 for single-layer grouping, then re-introduce nesting with the inside-out highlighting routine."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Map [(54 / 9 + 14) / 4] to its story before computing: 54 stickers shared by 9 kids (the 54 / 9), plus 14 bonus stickers each (the + 14), and then each kid spreads their whole pile across 4 album pages (the outer / 4)."
+        },
+        {
+          "kind": "ask",
+          "text": "Could you do the + 14 first? What would 14 be added TO, before each kid's share of the 54 even exists? Which piece does the story force you to settle before anything else can happen?"
+        },
+        {
+          "kind": "say",
+          "text": "The story runs inside-out on its own: 54 / 9 = 6 stickers each, plus 14 makes 20, spread over 4 pages is 5 per page. And notice sharing out (dividing) and scaling up (multiplying) are the same kind of resize move in the story -- neither one outranks the other; they just happen in the order they come."
+        },
         {
           "kind": "show",
           "text": "Write on the board: [(54 / 9 + 14) / 4]."
@@ -1240,17 +1264,6 @@
           }
         },
         {
-          "type": "game",
-          "title": "Inside-Out Relay",
-          "time_minutes": 12,
-          "grouping": "small_group",
-          "materials": [
-            "Nested-expression cards",
-            "One whiteboard per group"
-          ],
-          "instructions": "1. Each group gets a nested expression like 100 - [4 x (3 + 2) + 30].\n2. Relay rule: each student computes exactly ONE step, rewrites the full line, and passes the board.\n3. If a teammate spots an out-of-order step, they say 'layer check!' and the team talks before continuing.\n4. First group to a correct final answer with every line true wins; any skipped rewrite voids the run."
-        },
-        {
           "type": "hands_on",
           "title": "Highlight the Layers",
           "time_minutes": 8,
@@ -1260,6 +1273,17 @@
             "Problem strip"
           ],
           "instructions": "1. Students highlight the innermost parentheses in one color and the outer brackets in the second color.\n2. Rule: you may only compute inside the innermost color still standing; when a layer collapses to one number, cross out its highlights.\n3. Work three expressions; on the last one, students narrate the layer order aloud before touching any numbers.\n4. Debrief question: what tells you a layer is finished?"
+        },
+        {
+          "type": "game",
+          "title": "Inside-Out Relay",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Nested-expression cards",
+            "One whiteboard per group"
+          ],
+          "instructions": "1. Each group gets a nested expression like 100 - [4 x (3 + 2) + 30].\n2. Relay rule: each student computes exactly ONE step, rewrites the full line, and passes the board.\n3. If a teammate spots an out-of-order step, they say 'layer check!' and the team talks before continuing.\n4. First group to a correct final answer with every line true wins; any skipped rewrite voids the run."
         }
       ],
       "strategy_links": [
@@ -2236,22 +2260,6 @@
       ],
       "activities": [
         {
-          "type": "game",
-          "title": "Parentheses Golf",
-          "time_minutes": 12,
-          "grouping": "pairs",
-          "materials": [
-            "Course cards (equation + target)",
-            "Mini whiteboards"
-          ],
-          "instructions": "1. Each 'hole' is an equation missing its parentheses, like 6 + 4 x 5 = 50.\n2. Partner A places one set of parentheses -- that's the swing. Partner B evaluates the result -- that's the scorecard. A placement that hits the target scores in one; each miss is another stroke.\n3. Swap roles each hole. Lowest total strokes after 5 holes wins.\n4. House rule: an unchecked placement counts as two strokes -- checking IS the game.",
-          "content": {
-            "worked_problem": "Hole example: 6 + 4 x 5 = 50. Swing: (6 + 4) x 5. Check: 10 x 5 = 50. Hole in one.",
-            "error_step": "A swing without a check -- writing parentheses and calling it done.",
-            "why": "Parentheses change the value; only evaluating proves the target is hit."
-          }
-        },
-        {
           "type": "error_analysis",
           "title": "Tia's Unchecked Parentheses",
           "time_minutes": 8,
@@ -2311,6 +2319,22 @@
                 "category": "Impostor"
               }
             ]
+          }
+        },
+        {
+          "type": "game",
+          "title": "Parentheses Golf",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Course cards (equation + target)",
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Each 'hole' is an equation missing its parentheses, like 6 + 4 x 5 = 50.\n2. Partner A places one set of parentheses -- that's the swing. Partner B evaluates the result -- that's the scorecard. A placement that hits the target scores in one; each miss is another stroke.\n3. Swap roles each hole. Lowest total strokes after 5 holes wins.\n4. House rule: an unchecked placement counts as two strokes -- checking IS the game.",
+          "content": {
+            "worked_problem": "Hole example: 6 + 4 x 5 = 50. Swing: (6 + 4) x 5. Check: 10 x 5 = 50. Hole in one.",
+            "error_step": "A swing without a check -- writing parentheses and calling it done.",
+            "why": "Parentheses change the value; only evaluating proves the target is hit."
           }
         }
       ],

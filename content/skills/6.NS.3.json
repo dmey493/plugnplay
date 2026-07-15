@@ -49,7 +49,7 @@
         "description": "Tell which of two whole numbers is larger",
         "check_question": "Which is more: 45 or 54?"
       },
-      "i_do_script": "Today we're making sure the two comparison symbols, < and >, always come out pointing the right way. Here's the anchor: the symbol OPENS toward the bigger number and its point pokes the smaller one. Watch me compare 34 and 29: 34 is bigger, so the open mouth faces the 34 -- I write 34 > 29. Read it left to right: '34 is greater than 29.'",
+      "i_do_script": "The symbols < and > aren't decorations between numbers -- each one is a whole sentence you can read out loud, left to right. So the work starts with the true SPOKEN sentence, and the symbol's only job is to write that sentence down. Today we're making sure the two comparison symbols, < and >, always come out pointing the right way. Here's the anchor: the symbol OPENS toward the bigger number and its point pokes the smaller one. Watch me compare 34 and 29: 34 is bigger, so the open mouth faces the 34 -- I write 34 > 29. Read it left to right: '34 is greater than 29.'",
       "canonical_error": {
         "pattern": "Points the symbol the wrong way -- writes 34 < 29 while correctly saying '34 is bigger'",
         "example": "Student knows 34 is more than 29 but writes 34 < 29 because they can't remember which way the symbol faces",
@@ -166,6 +166,10 @@
         "if_fail": "Practice reading every symbol as a spoken sentence -- 'is less than,' 'is greater than' -- with whole numbers under 100 until the direction is automatic."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Before any symbol touches the board: say a true sentence out loud comparing 34 and 29. ('34 is greater than 29.') Whatever symbol we pick has to say exactly that sentence -- if reading the symbol out loud produces a lie, the symbol is facing the wrong way."
+        },
         {
           "kind": "show",
           "text": "Write on the board: 34 __ 29, with a blank between the numbers."
@@ -1143,17 +1147,6 @@
       ],
       "activities": [
         {
-          "type": "game",
-          "title": "Inequality Showdown",
-          "time_minutes": 10,
-          "grouping": "pairs",
-          "materials": [
-            "Deck of integer cards from -12 to 12",
-            "Mini whiteboards"
-          ],
-          "instructions": "1. Each partner flips one card face up.\n2. Both race to write the true inequality comparing the two cards (like -7 < 4).\n3. First correct statement read ALOUD as a sentence earns the point -- a statement written but misread earns nothing.\n4. Any negative-negative pair (like -7 and -2) is worth double, because that's where the trap lives.\n5. Play to 10. Debrief: which pairs of cards caused wrong answers, and what did they have in common?"
-        },
-        {
           "type": "error_analysis",
           "title": "Tia's Trap",
           "time_minutes": 8,
@@ -1234,6 +1227,17 @@
               }
             ]
           }
+        },
+        {
+          "type": "game",
+          "title": "Inequality Showdown",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Deck of integer cards from -12 to 12",
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Each partner flips one card face up.\n2. Both race to write the true inequality comparing the two cards (like -7 < 4).\n3. First correct statement read ALOUD as a sentence earns the point -- a statement written but misread earns nothing.\n4. Any negative-negative pair (like -7 and -2) is worth double, because that's where the trap lives.\n5. Play to 10. Debrief: which pairs of cards caused wrong answers, and what did they have in common?"
         }
       ],
       "strategy_links": [
@@ -1762,7 +1766,7 @@
         ]
       },
       "worked_solution": {
-        "stem": "The table shows Bo with -25 points and Cam with -4 points. True or false: Bo's points > Cam's points.",
+        "stem": "The table shows each player's points. True or false: Bo's points > Cam's points.",
         "answer": "False",
         "steps": [
           {
@@ -1781,10 +1785,27 @@
             "math": "The claim says Bo > Cam. Verdict: FALSE.",
             "annotation": "Compare your result to the claim last -- that's the actual true/false decision."
           }
-        ]
+        ],
+        "render_data": {
+          "type": "data_table",
+          "headers": [
+            "Player",
+            "Points"
+          ],
+          "rows": [
+            [
+              "Bo",
+              "-25"
+            ],
+            [
+              "Cam",
+              "-4"
+            ]
+          ]
+        }
       },
       "faded_example": {
-        "stem": "The table shows Fay with -17 points and Eli with 0 points. True or false: Fay's points > Eli's points.",
+        "stem": "The table shows each player's points. True or false: Fay's points > Eli's points.",
         "answer": "False",
         "steps": [
           {
@@ -1802,7 +1823,24 @@
             "annotation": "Does the claim agree with your comparison? Write TRUE or FALSE.",
             "given": false
           }
-        ]
+        ],
+        "render_data": {
+          "type": "data_table",
+          "headers": [
+            "Player",
+            "Points"
+          ],
+          "rows": [
+            [
+              "Fay",
+              "-17"
+            ],
+            [
+              "Eli",
+              "0"
+            ]
+          ]
+        }
       },
       "sentence_starters": [
         "The statement is ___ because ___ is farther to the ___ on the number line.",
@@ -2827,6 +2865,16 @@
           }
         },
         {
+          "type": "hands_on",
+          "title": "Zoom Lens Number Line",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Two number line strips per pair: one from -80 to -60, one 'zoomed' from -72.5 to -71.5"
+          ],
+          "instructions": "1. Pairs plot -72 and -71.99 on the wide strip -- the points look identical.\n2. They re-plot on the zoomed strip, where the gap becomes visible: -71.99 sits just right of -72.\n3. Ask: did zooming change which number is greater, or just make it visible?\n4. Debrief: when two numbers are close, what tool settles the comparison? (Zoom in, or compare distance from zero digit by digit.)"
+        },
+        {
           "type": "game",
           "title": "Convince the Judge",
           "time_minutes": 12,
@@ -2836,16 +2884,6 @@
             "A rotating 'judge' role"
           ],
           "instructions": "1. One student is the judge. Another draws a claim card ('-5.5 > -5.05') and must argue FOR or AGAINST it.\n2. The judge scores the argument, not the answer: 1 point for the right verdict, 2 more if the reason names distance from zero or a real-world restatement.\n3. 'Because the digits are bigger' scores zero even with a right verdict.\n4. Rotate the judge each round. Debrief: which argument style won the most points?"
-        },
-        {
-          "type": "hands_on",
-          "title": "Zoom Lens Number Line",
-          "time_minutes": 10,
-          "grouping": "pairs",
-          "materials": [
-            "Two number line strips per pair: one from -80 to -60, one 'zoomed' from -72.5 to -71.5"
-          ],
-          "instructions": "1. Pairs plot -72 and -71.99 on the wide strip -- the points look identical.\n2. They re-plot on the zoomed strip, where the gap becomes visible: -71.99 sits just right of -72.\n3. Ask: did zooming change which number is greater, or just make it visible?\n4. Debrief: when two numbers are close, what tool settles the comparison? (Zoom in, or compare distance from zero digit by digit.)"
         }
       ],
       "strategy_links": [

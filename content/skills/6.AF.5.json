@@ -44,7 +44,7 @@
         "description": "Recognize that an ordered pair (x, y) means 'go x along the horizontal axis first, then y along the vertical axis,' and that the axes meet at the origin (0, 0).",
         "check_question": "Point your finger at the origin. Now show me where (3, 0) is. Now show me where (0, 3) is. Are those the same place?"
       },
-      "i_do_script": "An ordered pair has two numbers in parentheses, like (4, -2). The FIRST number always tells me how far to go left or right along the x-axis — that is the horizontal axis. The SECOND number tells me how far to go up or down along the y-axis — that is the vertical axis. Watch: for (4, -2), I start at the origin, count 4 to the right, then 2 down. The order matters — (4, -2) and (-2, 4) land in totally different spots.",
+      "i_do_script": "Reaching a point is like reaching an apartment: you walk down the street first, THEN take the stairs -- across before up or down, every single time. An ordered pair has two numbers in parentheses, like (4, -2). The FIRST number always tells me how far to go left or right along the x-axis — that is the horizontal axis. The SECOND number tells me how far to go up or down along the y-axis — that is the vertical axis. Watch: for (4, -2), I start at the origin, count 4 to the right, then 2 down. The order matters — (4, -2) and (-2, 4) land in totally different spots.",
       "canonical_error": {
         "pattern": "Reverses the ordered pair — uses the first number for vertical and the second for horizontal.",
         "example": "Asked to plot (3, -5), the student goes up 3 and then left 5, landing at (-5, 3) instead.",
@@ -52,7 +52,7 @@
       },
       "redirect_script": {
         "stop": "Hold on — which number goes which way?",
-        "prompt": "Underline the FIRST number in the pair and say 'x — left or right.' Then underline the SECOND number and say 'y — up or down.'",
+        "prompt": "Feet before stairs: which number in the pair is the walk along the floor? Underline the FIRST number in the pair and say 'x — left or right.' Then underline the SECOND number and say 'y — up or down.'",
         "praise": "Yes — x first, y second. You got it."
       },
       "vocabulary": [
@@ -137,6 +137,30 @@
           "answer": "The x-axis",
           "choices": null,
           "distractor_logic": "Reversing the pair puts the point on the y-axis."
+        }
+      ],
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Act out (4, -2) starting at the origin: WALK first -- 4 to the right along the floor, the x-axis -- then take the stairs DOWN 2. Walk, then climb; the parentheses store the trip in exactly that order.",
+          "visual": {
+            "type": "coordinate_grid",
+            "x_range": [
+              -5,
+              5
+            ],
+            "y_range": [
+              -5,
+              5
+            ],
+            "points": [
+              {
+                "x": 4,
+                "y": -2,
+                "label": "(4, -2)"
+              }
+            ]
+          }
         }
       ]
     },
@@ -274,7 +298,7 @@
         "description": "Know which axis is x and which is y, and that the four quadrants are numbered I, II, III, IV starting from the top-right and moving counterclockwise.",
         "check_question": "If a point has a negative x and a positive y, which quadrant is it in?"
       },
-      "i_do_script": "The coordinate plane has four quadrants. Quadrant I is top-right (both x and y are positive). Quadrant II is top-left (x is negative, y is positive). Quadrant III is bottom-left (both negative). Quadrant IV is bottom-right (x is positive, y is negative). I count the quadrants like a backwards C, starting at the top-right. Watch: for the point (-4, 3), x is negative and y is positive, so this is Quadrant II.",
+      "i_do_script": "The quadrant numbers aren't sprinkled at random -- they ride one counterclockwise sweep that launches from the all-positive corner, so find that corner first and let your finger count the rest. The coordinate plane has four quadrants. Quadrant I is top-right (both x and y are positive). Quadrant II is top-left (x is negative, y is positive). Quadrant III is bottom-left (both negative). Quadrant IV is bottom-right (x is positive, y is negative). I count the quadrants like a backwards C, starting at the top-right. Watch: for the point (-4, 3), x is negative and y is positive, so this is Quadrant II.",
       "canonical_error": {
         "pattern": "Numbers the quadrants clockwise starting from top-right (I, IV, III, II) instead of counterclockwise (I, II, III, IV).",
         "example": "Asked to name the quadrant of (-4, 3), the student says Quadrant IV because they think 'top-left = the second one I count going clockwise.'",
@@ -380,17 +404,6 @@
       ],
       "activities": [
         {
-          "type": "game",
-          "title": "Four Corners Quadrants",
-          "time_minutes": 8,
-          "grouping": "whole_class",
-          "materials": [
-            "Four corner signs: Quadrant I, II, III, IV (hung counterclockwise)",
-            "Ordered-pair call list"
-          ],
-          "instructions": "1. Hang the quadrant signs so the room matches a coordinate plane: I front-right, II front-left, III back-left, IV back-right.\n2. Call an ordered pair, like (-3, 7). On 'move,' every student walks to the matching corner.\n3. Ask one student in the majority corner to justify with signs: 'negative x means left, positive y means up.'\n4. Sneak in axis points like (0, 5) -- the correct move is to stand in the middle aisle, not a corner.\n5. Debrief question: which sign pattern goes with each corner?"
-        },
-        {
           "type": "card_sort",
           "title": "Sign Pattern Sort",
           "time_minutes": 10,
@@ -466,6 +479,17 @@
             "error_step": "Maya numbered the quadrants clockwise, the way she reads a page.",
             "why": "Quadrants count counterclockwise starting at the top-right: I (top-right), II (top-left), III (bottom-left), IV (bottom-right). Top-left is Quadrant II."
           }
+        },
+        {
+          "type": "game",
+          "title": "Four Corners Quadrants",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Four corner signs: Quadrant I, II, III, IV (hung counterclockwise)",
+            "Ordered-pair call list"
+          ],
+          "instructions": "1. Hang the quadrant signs so the room matches a coordinate plane: I front-right, II front-left, III back-left, IV back-right.\n2. Call an ordered pair, like (-3, 7). On 'move,' every student walks to the matching corner.\n3. Ask one student in the majority corner to justify with signs: 'negative x means left, positive y means up.'\n4. Sneak in axis points like (0, 5) -- the correct move is to stand in the middle aisle, not a corner.\n5. Debrief question: which sign pattern goes with each corner?"
         }
       ],
       "strategy_links": [
@@ -515,6 +539,47 @@
       "worked_example_script": [
         {
           "kind": "show",
+          "text": "Sketch the plane and mark the corner where BOTH coordinates come out positive -- top-right. That all-positive corner is the starting block, Quadrant I. Now sweep counterclockwise -- the same turn that lifts the positive x-axis up toward the positive y-axis -- stamping II, III, IV as you go.",
+          "visual": {
+            "type": "coordinate_grid",
+            "x_range": [
+              -5,
+              5
+            ],
+            "y_range": [
+              -5,
+              5
+            ],
+            "points": [
+              {
+                "x": 3,
+                "y": 3,
+                "label": "I"
+              },
+              {
+                "x": -3,
+                "y": 3,
+                "label": "II"
+              },
+              {
+                "x": -3,
+                "y": -3,
+                "label": "III"
+              },
+              {
+                "x": 3,
+                "y": -3,
+                "label": "IV"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Sweep with your finger from the starting block and count: one... two. Where is your finger when you say 'two'? Top-left -- the region where x is negative and y is positive. Which of those signs match the point (-4, 3)?"
+        },
+        {
+          "kind": "show",
           "text": "Sketch a coordinate plane with the four quadrants and write the point (-4, 3) on the board -- but do not plot it yet."
         },
         {
@@ -551,10 +616,20 @@
         "answer": "Quadrant II",
         "render_data": {
           "type": "coordinate_grid",
-          "x_range": [-7, 7],
-          "y_range": [-7, 7],
+          "x_range": [
+            -7,
+            7
+          ],
+          "y_range": [
+            -7,
+            7
+          ],
           "points": [
-            {"x": -4, "y": 3, "label": "(-4, 3)"}
+            {
+              "x": -4,
+              "y": 3,
+              "label": "(-4, 3)"
+            }
           ]
         },
         "steps": [
@@ -581,10 +656,20 @@
         "answer": "Quadrant IV",
         "render_data": {
           "type": "coordinate_grid",
-          "x_range": [-7, 7],
-          "y_range": [-7, 7],
+          "x_range": [
+            -7,
+            7
+          ],
+          "y_range": [
+            -7,
+            7
+          ],
           "points": [
-            {"x": 5, "y": -6, "label": "(5, -6)"}
+            {
+              "x": 5,
+              "y": -6,
+              "label": "(5, -6)"
+            }
           ]
         },
         "steps": [
@@ -876,14 +961,33 @@
         "answer": "20 units",
         "render_data": {
           "type": "coordinate_grid",
-          "x_range": [-16, 8],
-          "y_range": [-2, 10],
+          "x_range": [
+            -16,
+            8
+          ],
+          "y_range": [
+            -2,
+            10
+          ],
           "points": [
-            {"x": -14, "y": 8, "label": "A"},
-            {"x": 6, "y": 8, "label": "B"}
+            {
+              "x": -14,
+              "y": 8,
+              "label": "A"
+            },
+            {
+              "x": 6,
+              "y": 8,
+              "label": "B"
+            }
           ],
           "lines": [
-            {"x1": -14, "y1": 8, "x2": 6, "y2": 8}
+            {
+              "x1": -14,
+              "y1": 8,
+              "x2": 6,
+              "y2": 8
+            }
           ]
         },
         "steps": [
@@ -910,14 +1014,33 @@
         "answer": "10 units",
         "render_data": {
           "type": "coordinate_grid",
-          "x_range": [-3, 7],
-          "y_range": [-9, 5],
+          "x_range": [
+            -3,
+            7
+          ],
+          "y_range": [
+            -9,
+            5
+          ],
           "points": [
-            {"x": 5, "y": -7, "label": "A"},
-            {"x": 5, "y": 3, "label": "B"}
+            {
+              "x": 5,
+              "y": -7,
+              "label": "A"
+            },
+            {
+              "x": 5,
+              "y": 3,
+              "label": "B"
+            }
           ],
           "lines": [
-            {"x1": 5, "y1": -7, "x2": 5, "y2": 3}
+            {
+              "x1": 5,
+              "y1": -7,
+              "x2": 5,
+              "y2": 3
+            }
           ]
         },
         "steps": [
@@ -1427,21 +1550,67 @@
         "answer": "(6, 9), (-22, 9), (-8, 23), and (-8, -5)",
         "render_data": {
           "type": "coordinate_grid",
-          "x_range": [-25, 9],
-          "y_range": [-8, 26],
+          "x_range": [
+            -25,
+            9
+          ],
+          "y_range": [
+            -8,
+            26
+          ],
           "label_step": 5,
           "points": [
-            {"x": -8, "y": 9, "label": "(-8, 9)"},
-            {"x": 6, "y": 9, "label": "(6, 9)"},
-            {"x": -22, "y": 9, "label": "(-22, 9)"},
-            {"x": -8, "y": 23, "label": "(-8, 23)"},
-            {"x": -8, "y": -5, "label": "(-8, -5)"}
+            {
+              "x": -8,
+              "y": 9,
+              "label": "(-8, 9)"
+            },
+            {
+              "x": 6,
+              "y": 9,
+              "label": "(6, 9)"
+            },
+            {
+              "x": -22,
+              "y": 9,
+              "label": "(-22, 9)"
+            },
+            {
+              "x": -8,
+              "y": 23,
+              "label": "(-8, 23)"
+            },
+            {
+              "x": -8,
+              "y": -5,
+              "label": "(-8, -5)"
+            }
           ],
           "lines": [
-            {"x1": -8, "y1": 9, "x2": 6, "y2": 9},
-            {"x1": -8, "y1": 9, "x2": -22, "y2": 9},
-            {"x1": -8, "y1": 9, "x2": -8, "y2": 23},
-            {"x1": -8, "y1": 9, "x2": -8, "y2": -5}
+            {
+              "x1": -8,
+              "y1": 9,
+              "x2": 6,
+              "y2": 9
+            },
+            {
+              "x1": -8,
+              "y1": 9,
+              "x2": -22,
+              "y2": 9
+            },
+            {
+              "x1": -8,
+              "y1": 9,
+              "x2": -8,
+              "y2": 23
+            },
+            {
+              "x1": -8,
+              "y1": 9,
+              "x2": -8,
+              "y2": -5
+            }
           ]
         },
         "steps": [
@@ -1468,20 +1637,66 @@
         "answer": "(8, -2), (-2, -2), (3, 3), and (3, -7)",
         "render_data": {
           "type": "coordinate_grid",
-          "x_range": [-4, 10],
-          "y_range": [-9, 5],
+          "x_range": [
+            -4,
+            10
+          ],
+          "y_range": [
+            -9,
+            5
+          ],
           "points": [
-            {"x": 3, "y": -2, "label": "(3, -2)"},
-            {"x": 8, "y": -2, "label": "(8, -2)"},
-            {"x": -2, "y": -2, "label": "(-2, -2)"},
-            {"x": 3, "y": 3, "label": "(3, 3)"},
-            {"x": 3, "y": -7, "label": "(3, -7)"}
+            {
+              "x": 3,
+              "y": -2,
+              "label": "(3, -2)"
+            },
+            {
+              "x": 8,
+              "y": -2,
+              "label": "(8, -2)"
+            },
+            {
+              "x": -2,
+              "y": -2,
+              "label": "(-2, -2)"
+            },
+            {
+              "x": 3,
+              "y": 3,
+              "label": "(3, 3)"
+            },
+            {
+              "x": 3,
+              "y": -7,
+              "label": "(3, -7)"
+            }
           ],
           "lines": [
-            {"x1": 3, "y1": -2, "x2": 8, "y2": -2},
-            {"x1": 3, "y1": -2, "x2": -2, "y2": -2},
-            {"x1": 3, "y1": -2, "x2": 3, "y2": 3},
-            {"x1": 3, "y1": -2, "x2": 3, "y2": -7}
+            {
+              "x1": 3,
+              "y1": -2,
+              "x2": 8,
+              "y2": -2
+            },
+            {
+              "x1": 3,
+              "y1": -2,
+              "x2": -2,
+              "y2": -2
+            },
+            {
+              "x1": 3,
+              "y1": -2,
+              "x2": 3,
+              "y2": 3
+            },
+            {
+              "x1": 3,
+              "y1": -2,
+              "x2": 3,
+              "y2": -7
+            }
           ]
         },
         "steps": [
@@ -1896,14 +2111,34 @@
         "answer": "Right 4 to (4, 0), then up 3 -- the dot goes at (4, 3).",
         "render_data": {
           "type": "coordinate_grid",
-          "x_range": [0, 10],
-          "y_range": [0, 10],
+          "x_range": [
+            0,
+            10
+          ],
+          "y_range": [
+            0,
+            10
+          ],
           "points": [
-            {"x": 4, "y": 3, "label": "(4, 3)"}
+            {
+              "x": 4,
+              "y": 3,
+              "label": "(4, 3)"
+            }
           ],
           "lines": [
-            {"x1": 0, "y1": 0, "x2": 4, "y2": 0},
-            {"x1": 4, "y1": 0, "x2": 4, "y2": 3}
+            {
+              "x1": 0,
+              "y1": 0,
+              "x2": 4,
+              "y2": 0
+            },
+            {
+              "x1": 4,
+              "y1": 0,
+              "x2": 4,
+              "y2": 3
+            }
           ]
         },
         "steps": [
@@ -1930,10 +2165,20 @@
         "answer": "Right 5 to (5, 0), then up 2 -- the dot goes at (5, 2).",
         "render_data": {
           "type": "coordinate_grid",
-          "x_range": [0, 10],
-          "y_range": [0, 10],
+          "x_range": [
+            0,
+            10
+          ],
+          "y_range": [
+            0,
+            10
+          ],
           "points": [
-            {"x": 5, "y": 2, "label": "(5, 2)"}
+            {
+              "x": 5,
+              "y": 2,
+              "label": "(5, 2)"
+            }
           ]
         },
         "steps": [

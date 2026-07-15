@@ -49,7 +49,7 @@
         "description": "In an expression like mx + b, name the number multiplied by x (the coefficient) and the number by itself (the constant term).",
         "check_question": "In the expression 4x + 7, which number is multiplied by x, and which number stands alone?"
       },
-      "i_do_script": "In an expression like mx + b, two numbers do two different jobs. The number multiplied by x is the coefficient; the number sitting by itself is the constant term. Watch 4x + 7: the 4 is attached to x (the coefficient), and the 7 stands alone (the constant). If I see 2x - 5, the coefficient is 2 and the constant is -5 -- I carry the minus sign with the 5. And in x + 3, the coefficient is 1, because x means 1x.",
+      "i_do_script": "The two numbers have two different JOBS, which is why they get different names: in 4x + 7, the 4 repeats -- it's applied again for every unit of x (the 4x part contributes 4 at x = 1, 8 at x = 2...) -- while the 7 happens once, the same no matter what x is. The repeating number is the coefficient; the one-time number is the constant. In an expression like mx + b, two numbers do two different jobs. The number multiplied by x is the coefficient; the number sitting by itself is the constant term. Watch 4x + 7: the 4 is attached to x (the coefficient), and the 7 stands alone (the constant). If I see 2x - 5, the coefficient is 2 and the constant is -5 -- I carry the minus sign with the 5. And in x + 3, the coefficient is 1, because x means 1x.",
       "canonical_error": {
         "pattern": "Swaps the two -- calls the standalone number the coefficient and the number attached to x the constant",
         "example": "For 4x + 7, says the coefficient is 7 and the constant is 4, reading the wrong number as attached to x",
@@ -80,7 +80,7 @@
       ],
       "redirect_script": {
         "stop": "Which number is actually touching the x?",
-        "prompt": "Point to the x. The number multiplied by it is the coefficient; the number with no x is the constant. If you named the lonely number as the coefficient, you have them backwards -- the coefficient hugs the x.",
+        "prompt": "Test x = 1, 2, 3: which number's effect keeps growing, and which stays put? The grower is the coefficient. Point to the x. The number multiplied by it is the coefficient; the number with no x is the constant. If you named the lonely number as the coefficient, you have them backwards -- the coefficient hugs the x.",
         "praise": "You matched the number touching x to the coefficient and the lonely number to the constant -- exactly right."
       },
       "vocabulary": [
@@ -98,6 +98,10 @@
         "if_fail": "Review parts of an expression (6.AF.3)."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "In 6x - 8, test x = 1, 2, 3: which number's effect keeps growing with x, and which stays put? That difference is what the two names record."
+        },
         {
           "kind": "show",
           "text": "Write the expression 6x - 8."
@@ -131,7 +135,7 @@
         "description": "Read a table and compute the change between one row and the next (later value minus earlier value).",
         "check_question": "A table's y-values are 4, 7, 10. How much does y change from one row to the next?"
       },
-      "i_do_script": "To see how a table changes, I subtract each value from the one right after it -- later minus earlier -- for consecutive rows. Watch the y-values 4, 7, 10, 13: 7 - 4 = 3, 10 - 7 = 3, 13 - 10 = 3. Every step changes by 3. I do the same for the x-values so I know they step by equal amounts, which makes the y-changes fair to compare later.",
+      "i_do_script": "Picture the y-values 4, 7, 10, 13 as stepping stones in a row -- one hop always lands on the very NEXT stone, so the size of a hop is the next stone minus the one you're standing on. To see how a table changes, I subtract each value from the one right after it -- later minus earlier -- for consecutive rows. Watch the y-values 4, 7, 10, 13: 7 - 4 = 3, 10 - 7 = 3, 13 - 10 = 3. Every step changes by 3. I do the same for the x-values so I know they step by equal amounts, which makes the y-changes fair to compare later.",
       "canonical_error": {
         "pattern": "Subtracts across non-consecutive rows or reverses the order, producing a wrong change",
         "example": "For y-values 4, 7, 10 computes 10 - 4 = 6 (skipping a row) or 4 - 7 = -3 (reversed) instead of 7 - 4 = 3 between consecutive rows",
@@ -158,7 +162,7 @@
       ],
       "redirect_script": {
         "stop": "Are those two rows right next to each other?",
-        "prompt": "Take each value away from the one directly after it -- next minus current -- and go one step at a time. Don't skip a row and don't flip the order.",
+        "prompt": "Look at the stepping stones first: does your subtraction cover exactly ONE hop, or did it jump over a stone or hop backwards? Take each value away from the one directly after it -- next minus current -- and go one step at a time. Don't skip a row and don't flip the order.",
         "praise": "You subtracted consecutive rows in order -- that's the true step-by-step change."
       },
       "vocabulary": [
@@ -176,6 +180,10 @@
         "if_fail": "Review reading tables and subtraction (6.AF.5)."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "The values 5, 9, 13, 17 are stepping stones in a row. One hop lands on the very next stone. How far is the single hop from 5 to 9? And is going from 5 to 13 one hop, or two hops added together?"
+        },
         {
           "kind": "show",
           "text": "Write the y-values 5, 9, 13, 17."
@@ -210,7 +218,7 @@
         "type": "skill",
         "skill_id": "8AF5-F1"
       },
-      "i_do_script": "In y = mx + b, two letters name the two parts of a line: m is the slope (the number multiplied by x) and b is the y-intercept (the number by itself). Watch y = 2x + 3: the 2 is multiplied by x, so the slope is 2; the 3 stands alone, so the y-intercept is 3. In y = -5x + 7 the slope is -5 (carry the minus sign) and the y-intercept is 7. The slope is always the number with the x; the y-intercept is always the number without it.",
+      "i_do_script": "The two numbers in y = mx + b each DO something, and a table catches them in the act. Tabulate y = 2x + 3 at x = 0, 1, 2, 3: y = 3, 5, 7, 9. The 3 shows up immediately -- it's the value at x = 0, where the line starts. The 2 shows up between every pair of rows -- each step of 1 in x jumps y by 2. So m is the per-step jump (the slope) and b is the row-zero start (the y-intercept). That's why m sits WITH the x -- it gets applied for every unit of x -- and b stands alone -- it happens once, before any x. Watch y = 6x - 4: the 6 is the jump per step, the -4 is the start (carry the sign). Position is the shortcut; the jobs are the meaning.",
       "canonical_error": {
         "pattern": "Swaps m and b -- names the constant as the slope and the coefficient of x as the y-intercept",
         "example": "For y = 2x + 3, says the slope is 3 and the y-intercept is 2, reading the standalone number as the slope",
@@ -241,7 +249,7 @@
       ],
       "redirect_script": {
         "stop": "Which number is multiplied by x?",
-        "prompt": "In y = mx + b the slope m is the number attached to x, and the y-intercept b is the number by itself. Point to the x: the number touching it is the slope. If you called the lonely number the slope, you swapped them.",
+        "prompt": "Build the table at x = 0, 1, 2: which number appears at x = 0, and which number is the jump between rows? The jump is the slope; the x = 0 value is the intercept.",
         "praise": "You matched m to the number with x (slope) and b to the lonely number (y-intercept) -- exactly the form."
       },
       "vocabulary": [
@@ -263,6 +271,48 @@
         "if_fail": "8AF5-F1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Tabulate y = 2x + 3 at x = 0, 1, 2, 3 and plot the points: (0,3), (1,5), (2,7), (3,9).",
+          "visual": {
+            "type": "coordinate_grid",
+            "x_range": [
+              -1,
+              5
+            ],
+            "y_range": [
+              -1,
+              10
+            ],
+            "points": [
+              {
+                "x": 0,
+                "y": 3,
+                "label": "start"
+              },
+              {
+                "x": 1,
+                "y": 5
+              },
+              {
+                "x": 2,
+                "y": 7
+              },
+              {
+                "x": 3,
+                "y": 9
+              }
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Where does the 3 from the equation show up in the table -- which row? And the 2 -- what happens between every pair of rows?"
+        },
+        {
+          "kind": "say",
+          "text": "The 3 is the value at x = 0 (the start); the 2 is the jump y makes for each step of 1 in x. m is the per-step jump, b is the row-zero start -- 'the number with the x' is just where the jump lives."
+        },
         {
           "kind": "show",
           "text": "Write 'y = 6x - 4. Identify the slope and the y-intercept.'"
@@ -338,6 +388,16 @@
         }
       ],
       "activities": [
+        {
+          "type": "hands_on",
+          "title": "Two Lines, Two Jobs",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper (or the grid-paper printable)"
+          ],
+          "instructions": "1. Pairs graph y = 2x + 3 and y = 3x + 2 on the same grid (tabulate x = 0, 1, 2, 3 first).\n2. The equations use the same digits -- but which line is steeper? Which starts higher on the y-axis?\n3. Write the claim: the number WITH x sets the steepness (jump per step); the number ALONE sets where the line starts.\n4. Test the claim on y = x + 5 vs y = 5x + 1 without graphing -- predict steeper/higher, then spot-check one point each."
+        },
         {
           "type": "card_sort",
           "title": "Slope or Intercept?",
@@ -842,7 +902,7 @@
         "type": "skill",
         "skill_id": "8AF5-S2"
       },
-      "i_do_script": "An equation is linear only when x appears to the first power -- just plain x, no exponent, and never in a denominator or as a power. That is the y = mx + b family. Watch four equations: y = -4x + 1 is linear (plain x). y = x^2 + 2 is nonlinear (x is squared). y = 1/x + 3 is nonlinear (x is in the bottom of a fraction). y = 10x^2 + 5 is nonlinear (x squared again). Only y = -4x + 1 is a straight line. The signal to hunt for is anything happening to x besides multiplying by a number and adding a constant.",
+      "i_do_script": "A straight line climbs by the same amount every single step -- and only one thing produces that steady climb: multiplying x by a fixed number and adding a constant. The moment x gets squared or dropped into a denominator, the steps stop being equal and the graph bends. An equation is linear only when x appears to the first power -- just plain x, no exponent, and never in a denominator or as a power. That is the y = mx + b family. Watch four equations: y = -4x + 1 is linear (plain x). y = x^2 + 2 is nonlinear (x is squared). y = 1/x + 3 is nonlinear (x is in the bottom of a fraction). y = 10x^2 + 5 is nonlinear (x squared again). Only y = -4x + 1 is a straight line. The signal to hunt for is anything happening to x besides multiplying by a number and adding a constant.",
       "canonical_error": {
         "pattern": "Calls a nonlinear equation linear because it 'has an x' or 'looks like an equation,' ignoring the exponent or the x in the denominator",
         "example": "Says y = 1/x + 3 is linear because it has +3 and a single x, missing that x is in the denominator (nonlinear); or calls y = x^2 + 2 linear because it has no visible number in front",
@@ -897,7 +957,7 @@
       ],
       "redirect_script": {
         "stop": "What is being done to the x?",
-        "prompt": "Linear means x to the first power only -- multiplied by a number and added to a constant, nothing else. If x is squared, cubed, in a denominator, or an exponent, it's nonlinear. Circle what happens to x before you decide.",
+        "prompt": "Table it fast at x = 0, 1, 2, 3: do the y-values climb by the same amount every step, or do the hops change size? Linear means x to the first power only -- multiplied by a number and added to a constant, nothing else. If x is squared, cubed, in a denominator, or an exponent, it's nonlinear. Circle what happens to x before you decide.",
         "praise": "You checked what happens to x, not just that an x is there -- that's how you spot a linear equation."
       },
       "vocabulary": [
@@ -915,6 +975,18 @@
         "if_fail": "8AF5-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Make quick value tables for y = 3x - 5 and y = x^2 + 1 at x = 0, 1, 2, 3. First equation: y = -5, -2, 1, 4. Second equation: y = 1, 2, 5, 10."
+        },
+        {
+          "kind": "ask",
+          "text": "Both equations 'have an x.' Now look at the hops in each y-column: what does y = 3x - 5 climb by from step to step? What does y = x^2 + 1 climb by?"
+        },
+        {
+          "kind": "say",
+          "text": "y = 3x - 5 climbs by 3 every time -- a steady climb, so its graph is a straight line. y = x^2 + 1 climbs by 1, then 3, then 5 -- speeding up, so its graph bends. 'Has an x' cannot be the test, because BOTH have an x. What matters is what is being done to the x."
+        },
         {
           "kind": "show",
           "text": "Write four equations: y = 3x - 5, y = x^2 + 1, y = 2/x, y = 4^x."

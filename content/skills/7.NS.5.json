@@ -3,8 +3,7 @@
   "standard_text": "Find the prime factorization of whole numbers and write the results using exponents.",
   "schema_version": 3,
   "progression": {
-    "narrative": "Prime factorization rests on one idea: every whole number greater than 1 is either prime -- divisible only by 1 and itself -- or it is composite and can be broken down into a product of primes. The standard asks students to find that product and write it compactly with exponents, so the arc must begin with the vocabulary the whole topic depends on. Before a student can factor anything, they have to look at a number and decide whether it is prime or composite, because a composite number is the only kind that factors further, and the classic trap is calling an odd number like 21 or 51 prime without ever testing 3, 5, or 7.\n\nFrom there the work is a controlled descent. Students take a composite number and pull out one prime factor at a time -- a factor tree or a division ladder -- until every branch ends in a prime, then write the result as a product like 2 x 2 x 2 x 3. Once that product is reliable, exponent notation is just shorthand: repeated primes get collected, so 2 x 2 x 2 x 3 becomes 2^3 x 3, and 72 = 2 x 2 x 2 x 3 x 3 becomes 2^3 x 3^2. Numbers then grow from under 100 into the 100-200 range, which raises the arithmetic load without changing the method. The capstone flips the task around: students analyze a factorization someone else wrote -- supplying a missing exponent, or judging whether a claimed factorization is correct and fully reduced to primes -- which is only possible once the forward procedure is automatic. The through-line we keep naming: keep dividing until every factor is prime, then collect the repeats into exponents, and always multiply back to check."
-  ,
+    "narrative": "Prime factorization rests on one idea: every whole number greater than 1 is either prime -- divisible only by 1 and itself -- or it is composite and can be broken down into a product of primes. The standard asks students to find that product and write it compactly with exponents, so the arc must begin with the vocabulary the whole topic depends on. Before a student can factor anything, they have to look at a number and decide whether it is prime or composite, because a composite number is the only kind that factors further, and the classic trap is calling an odd number like 21 or 51 prime without ever testing 3, 5, or 7.\n\nFrom there the work is a controlled descent. Students take a composite number and pull out one prime factor at a time -- a factor tree or a division ladder -- until every branch ends in a prime, then write the result as a product like 2 x 2 x 2 x 3. Once that product is reliable, exponent notation is just shorthand: repeated primes get collected, so 2 x 2 x 2 x 3 becomes 2^3 x 3, and 72 = 2 x 2 x 2 x 3 x 3 becomes 2^3 x 3^2. Numbers then grow from under 100 into the 100-200 range, which raises the arithmetic load without changing the method. The capstone flips the task around: students analyze a factorization someone else wrote -- supplying a missing exponent, or judging whether a claimed factorization is correct and fully reduced to primes -- which is only possible once the forward procedure is automatic. The through-line we keep naming: keep dividing until every factor is prime, then collect the repeats into exponents, and always multiply back to check.",
     "steps": [
       {
         "skill_id": "7NS5-S1",
@@ -50,7 +49,7 @@
         "description": "Decide whether a whole number is prime (only factors 1 and itself) or composite (has more factors).",
         "check_question": "Is 13 prime or composite? What about 15?"
       },
-      "i_do_script": "A prime number has exactly two factors: 1 and itself. A composite number has more than two factors, so it can be split into smaller whole-number factors. Watch: 13 is prime because nothing from 2 to 12 divides it evenly. 15 is composite because 3 x 5 = 15. To test a number I try dividing by 2, then 3, then 5, then 7 -- if any divides evenly, it is composite.",
+      "i_do_script": "Before any definitions, try to build the number into equal rows: 51 counters stack into 3 rows of 17 with none left over, so 51 hides a factor pair even though it is odd. A number that builds a rectangle like that is composite; a number that only ever makes one long line is prime. A prime number has exactly two factors: 1 and itself. A composite number has more than two factors, so it can be split into smaller whole-number factors. Watch: 13 is prime because nothing from 2 to 12 divides it evenly. 15 is composite because 3 x 5 = 15. To test a number I try dividing by 2, then 3, then 5, then 7 -- if any divides evenly, it is composite.",
       "canonical_error": {
         "pattern": "Calls an odd number prime without testing whether 3, 5, or 7 divides it",
         "example": "Says 51 is prime, missing that 51 = 3 x 17",
@@ -58,29 +57,75 @@
       },
       "item_template": "A whole number under 100. Student states prime or composite. Short response fluency bank.",
       "sample_items": [
-        { "stem": "Is 13 prime or composite?", "answer": "Prime" },
-        { "stem": "Is 15 prime or composite?", "answer": "Composite (3 x 5)" },
-        { "stem": "Is 51 prime or composite?", "answer": "Composite (3 x 17)" },
-        { "stem": "Is 47 prime or composite?", "answer": "Prime" },
-        { "stem": "Is 1 prime or composite?", "answer": "Neither -- 1 has only one factor" },
-        { "stem": "Is 91 prime or composite?", "answer": "Composite (7 x 13)" }
+        {
+          "stem": "Is 13 prime or composite?",
+          "answer": "Prime"
+        },
+        {
+          "stem": "Is 15 prime or composite?",
+          "answer": "Composite (3 x 5)"
+        },
+        {
+          "stem": "Is 51 prime or composite?",
+          "answer": "Composite (3 x 17)"
+        },
+        {
+          "stem": "Is 47 prime or composite?",
+          "answer": "Prime"
+        },
+        {
+          "stem": "Is 1 prime or composite?",
+          "answer": "Neither -- 1 has only one factor"
+        },
+        {
+          "stem": "Is 91 prime or composite?",
+          "answer": "Composite (7 x 13)"
+        }
       ],
       "redirect_script": {
         "stop": "Did you test 3, 5, and 7, not just 2?",
-        "prompt": "Odd does not mean prime. Try dividing by 3, then 5, then 7. If any goes in evenly, it is composite. 51 looks prime, but 3 x 17 = 51.",
+        "prompt": "Try building the number into equal rows first: 51 stacks into 3 rows of 17 with none left over, so it cannot be prime. Odd does not mean prime. Try dividing by 3, then 5, then 7. If any goes in evenly, it is composite. 51 looks prime, but 3 x 17 = 51.",
         "praise": "You checked the small primes before deciding -- that's how you spot a hidden factor."
       },
       "vocabulary": [
-        { "term": "Prime number", "definition": "A whole number greater than 1 with exactly two factors: 1 and itself." },
-        { "term": "Composite number", "definition": "A whole number greater than 1 that has more than two factors, so it can be broken into smaller factors." }
+        {
+          "term": "Prime number",
+          "definition": "A whole number greater than 1 with exactly two factors: 1 and itself."
+        },
+        {
+          "term": "Composite number",
+          "definition": "A whole number greater than 1 that has more than two factors, so it can be broken into smaller factors."
+        }
       ],
-      "next_steps": { "if_pass": "7NS5-S1", "if_fail": "Review prime and composite numbers (5.NS)." },
+      "next_steps": {
+        "if_pass": "7NS5-S1",
+        "if_fail": "Review prime and composite numbers (5.NS)."
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write the number 51." },
-        { "kind": "ask", "text": "It's odd -- but is it prime? What might divide it?" },
-        { "kind": "say", "text": "Add the digits: 5 + 1 = 6, a multiple of 3, so 3 divides 51. 51 = 3 x 17 -- composite." },
-        { "kind": "watch", "text": "If a student says 51 is prime, ask 'did you try dividing by 3?'" },
-        { "kind": "ask", "text": "Your turn: is 47 prime or composite?" }
+        {
+          "kind": "show",
+          "text": "Deal 51 counters into rows of 3: you get 17 full rows and nothing left over. 51 builds a perfect rectangle, so something besides 1 and 51 divides it."
+        },
+        {
+          "kind": "show",
+          "text": "Write the number 51."
+        },
+        {
+          "kind": "ask",
+          "text": "It's odd -- but is it prime? What might divide it?"
+        },
+        {
+          "kind": "say",
+          "text": "Add the digits: 5 + 1 = 6, a multiple of 3, so 3 divides 51. 51 = 3 x 17 -- composite."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 51 is prime, ask 'did you try dividing by 3?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: is 47 prime or composite?"
+        }
       ]
     },
     {
@@ -94,7 +139,7 @@
         "description": "Recall basic multiplication facts and use divisibility rules for 2, 3, 5, and 10.",
         "check_question": "Name a factor pair for 24. Is 72 divisible by 3?"
       },
-      "i_do_script": "Factoring quickly depends on knowing multiplication facts and a few divisibility shortcuts. A number is divisible by 2 if it ends in an even digit, by 5 if it ends in 0 or 5, and by 3 if its digits add to a multiple of 3. Watch 72: it is even, so 2 goes in; and 7 + 2 = 9, a multiple of 3, so 3 goes in too. Knowing 8 x 9 = 72 lets me split it instantly.",
+      "i_do_script": "The divisibility shortcuts aren't magic. Ends-in-even means divisible by 2 because every ten is already even, so only the last digit matters. The digit-sum trick for 3 works because every 10 is 9 + 1 and every 100 is 99 + 1: 72 = 7 tens + 2 = 7 x (9 + 1) + 2, and the 9s are already divisible by 3, so only 7 + 2 has to be. Factoring quickly depends on knowing multiplication facts and a few divisibility shortcuts. A number is divisible by 2 if it ends in an even digit, by 5 if it ends in 0 or 5, and by 3 if its digits add to a multiple of 3. Watch 72: it is even, so 2 goes in; and 7 + 2 = 9, a multiple of 3, so 3 goes in too. Knowing 8 x 9 = 72 lets me split it instantly.",
       "canonical_error": {
         "pattern": "Applies the last-digit test to divisibility by 3 instead of adding the digits",
         "example": "Says 72 is not divisible by 3 because it does not end in 3, 6, or 9",
@@ -102,12 +147,30 @@
       },
       "item_template": "A divisibility or factor-pair question. Short response fluency bank.",
       "sample_items": [
-        { "stem": "Is 72 divisible by 3?", "answer": "Yes (7 + 2 = 9)" },
-        { "stem": "Name a factor pair for 24.", "answer": "e.g., 4 x 6, 3 x 8, or 2 x 12" },
-        { "stem": "Is 95 divisible by 5?", "answer": "Yes (ends in 5)" },
-        { "stem": "What is 8 x 9?", "answer": "72" },
-        { "stem": "Is 84 divisible by 2?", "answer": "Yes (it is even)" },
-        { "stem": "Is 81 divisible by 3?", "answer": "Yes (8 + 1 = 9)" }
+        {
+          "stem": "Is 72 divisible by 3?",
+          "answer": "Yes (7 + 2 = 9)"
+        },
+        {
+          "stem": "Name a factor pair for 24.",
+          "answer": "e.g., 4 x 6, 3 x 8, or 2 x 12"
+        },
+        {
+          "stem": "Is 95 divisible by 5?",
+          "answer": "Yes (ends in 5)"
+        },
+        {
+          "stem": "What is 8 x 9?",
+          "answer": "72"
+        },
+        {
+          "stem": "Is 84 divisible by 2?",
+          "answer": "Yes (it is even)"
+        },
+        {
+          "stem": "Is 81 divisible by 3?",
+          "answer": "Yes (8 + 1 = 9)"
+        }
       ],
       "redirect_script": {
         "stop": "For 3, add the digits -- did you?",
@@ -115,16 +178,48 @@
         "praise": "You used the digit-sum rule for 3 -- that's the right shortcut."
       },
       "vocabulary": [
-        { "term": "Factor", "definition": "A whole number that divides another evenly, with no remainder." },
-        { "term": "Divisibility rule", "definition": "A quick test that tells you whether one number divides another without doing the full division." }
+        {
+          "term": "Factor",
+          "definition": "A whole number that divides another evenly, with no remainder."
+        },
+        {
+          "term": "Divisibility rule",
+          "definition": "A quick test that tells you whether one number divides another without doing the full division."
+        }
       ],
-      "next_steps": { "if_pass": "7NS5-S2", "if_fail": "Review multiplication facts and divisibility (4.C)." },
+      "next_steps": {
+        "if_pass": "7NS5-S2",
+        "if_fail": "Review multiplication facts and divisibility (4.C)."
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write the number 72." },
-        { "kind": "ask", "text": "Is it divisible by 2? By 3? How can you tell?" },
-        { "kind": "say", "text": "It's even, so 2 works. 7 + 2 = 9, a multiple of 3, so 3 works. 72 = 8 x 9." },
-        { "kind": "watch", "text": "If a student says 72 isn't divisible by 3 'because it doesn't end in 3,' remind them to add the digits." },
-        { "kind": "ask", "text": "Your turn: is 84 divisible by 3?" }
+        {
+          "kind": "show",
+          "text": "Write 72 = 70 + 2 = 7 x (9 + 1) + 2. Circle the 7 x 9 part."
+        },
+        {
+          "kind": "ask",
+          "text": "The circled part is made of 9s -- is it already divisible by 3? So what's the only part left to check? That's why we add the digits: 7 + 2."
+        },
+        {
+          "kind": "show",
+          "text": "Write the number 72."
+        },
+        {
+          "kind": "ask",
+          "text": "Is it divisible by 2? By 3? How can you tell?"
+        },
+        {
+          "kind": "say",
+          "text": "It's even, so 2 works. 7 + 2 = 9, a multiple of 3, so 3 works. 72 = 8 x 9."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 72 isn't divisible by 3 'because it doesn't end in 3,' remind them to add the digits."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: is 84 divisible by 3?"
+        }
       ]
     },
     {
@@ -132,9 +227,14 @@
       "name": "Classify whole numbers as prime or composite",
       "column": "looking_back",
       "parent_standard": "7.NS.5",
-      "engine_stems": [1],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7NS5-F1" },
-      "i_do_script": "To classify a list, I test each number for factors other than 1 and itself. Watch this set: 2, 21, 47, 73, 76. 2 is prime. 21 = 3 x 7, composite. 47 -- no small prime divides it, prime. 73 -- prime. 76 is even, composite. So the three primes are 2, 47, and 73. The traps are the odd composites like 21 that look prime until you try dividing by 3.",
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS5-F1"
+      },
+      "i_do_script": "Before you call anything prime, try to build it into a rectangle of equal rows. 21 is odd, but it stacks into 3 neat rows of 7 -- odd numbers can hide rectangles too, and only the numbers that refuse every rectangle are prime. To classify a list, I test each number for factors other than 1 and itself. Watch this set: 2, 21, 47, 73, 76. 2 is prime. 21 = 3 x 7, composite. 47 -- no small prime divides it, prime. 73 -- prime. 76 is even, composite. So the three primes are 2, 47, and 73. The traps are the odd composites like 21 that look prime until you try dividing by 3.",
       "canonical_error": {
         "pattern": "Selects an odd composite as prime because it was never tested past divisibility by 2",
         "example": "Picks 21 as prime, missing 21 = 3 x 7; or calls 51 prime",
@@ -145,19 +245,35 @@
         {
           "stem": "Select three prime numbers.",
           "answer": "2, 47, 73",
-          "choices": ["2", "21", "47", "73", "76"],
+          "choices": [
+            "2",
+            "21",
+            "47",
+            "73",
+            "76"
+          ],
           "distractor_logic": "2, 47, 73 are prime. 21 = 3 x 7 and 76 = 2^2 x 19 are composite (76 is even; 21 fails the digit-sum test for 3)."
         },
         {
           "stem": "Which of these numbers is prime? 51, 53, 55, 57",
           "answer": "53",
-          "choices": ["51", "53", "55", "57"],
+          "choices": [
+            "51",
+            "53",
+            "55",
+            "57"
+          ],
           "distractor_logic": "53 is prime. 51 = 3 x 17, 55 = 5 x 11, 57 = 3 x 19 are all odd composites."
         },
         {
           "stem": "Select the two prime numbers: 15, 17, 19, 21",
           "answer": "17, 19",
-          "choices": ["15", "17", "19", "21"],
+          "choices": [
+            "15",
+            "17",
+            "19",
+            "21"
+          ],
           "distractor_logic": "17 and 19 are prime. 15 = 3 x 5 and 21 = 3 x 7."
         },
         {
@@ -168,26 +284,80 @@
       ],
       "redirect_script": {
         "stop": "Did you try dividing that odd number by 3 and 7?",
-        "prompt": "Being odd is not enough to be prime. For each number, test 3, then 7. If one divides evenly, it is composite. 21 = 3 x 7, so it is composite, not prime.",
+        "prompt": "Try to build the rectangle first: does that odd number stack into equal rows of 3 or 7? Being odd is not enough to be prime. For each number, test 3, then 7. If one divides evenly, it is composite. 21 = 3 x 7, so it is composite, not prime.",
         "praise": "You tested the small primes before calling it prime -- that's careful classifying."
       },
       "vocabulary": [
-        { "term": "Prime number", "definition": "A whole number greater than 1 whose only factors are 1 and itself." },
-        { "term": "Composite number", "definition": "A whole number greater than 1 with more than two factors." }
+        {
+          "term": "Prime number",
+          "definition": "A whole number greater than 1 whose only factors are 1 and itself."
+        },
+        {
+          "term": "Composite number",
+          "definition": "A whole number greater than 1 with more than two factors."
+        }
       ],
-      "next_steps": { "if_pass": "7NS5-S2", "if_fail": "7NS5-F1" },
+      "next_steps": {
+        "if_pass": "7NS5-S2",
+        "if_fail": "7NS5-F1"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write the set 2, 21, 47, 73, 76." },
-        { "kind": "ask", "text": "Test each one: does anything besides 1 and itself divide it?" },
-        { "kind": "say", "text": "2, 47, 73 are prime. 21 = 3 x 7 and 76 is even -- both composite. The three primes are 2, 47, 73." },
-        { "kind": "watch", "text": "If a student picks 21, ask 'what is 3 x 7?'" },
-        { "kind": "ask", "text": "Your turn: which of 51, 53, 55 are prime?" }
+        {
+          "kind": "show",
+          "text": "Sketch 21 dots as 3 rows of 7 -- a perfect rectangle with nothing left over."
+        },
+        {
+          "kind": "ask",
+          "text": "Now try 47: can you build a rectangle taller than one row? Test rows of 2, 3, 5, 7 -- something always sticks out."
+        },
+        {
+          "kind": "say",
+          "text": "A number that builds a rectangle has a hidden factor pair, like 21 = 3 x 7. 'Odd' tells you nothing until you have tried to build the rectangle."
+        },
+        {
+          "kind": "show",
+          "text": "Write the set 2, 21, 47, 73, 76."
+        },
+        {
+          "kind": "ask",
+          "text": "Test each one: does anything besides 1 and itself divide it?"
+        },
+        {
+          "kind": "say",
+          "text": "2, 47, 73 are prime. 21 = 3 x 7 and 76 is even -- both composite. The three primes are 2, 47, 73."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student picks 21, ask 'what is 3 x 7?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: which of 51, 53, 55 are prime?"
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Is 7 prime or composite?", "answer": "Prime" },
-        { "difficulty": "warm_up", "stem": "Is 9 prime or composite?", "answer": "Composite (3 x 3)" },
-        { "difficulty": "core", "stem": "Select three prime numbers: 2, 21, 47, 73, 76", "answer": "2, 47, 73", "notes": "Baits picking 21 (= 3 x 7) as prime." },
-        { "difficulty": "core", "stem": "Classify each as prime or composite: 51, 53, 57", "answer": "51 composite (3 x 17), 53 prime, 57 composite (3 x 19)", "notes": "Two odd composites flanking a prime." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Is 7 prime or composite?",
+          "answer": "Prime"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Is 9 prime or composite?",
+          "answer": "Composite (3 x 3)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Select three prime numbers: 2, 21, 47, 73, 76",
+          "answer": "2, 47, 73",
+          "notes": "Baits picking 21 (= 3 x 7) as prime."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Classify each as prime or composite: 51, 53, 57",
+          "answer": "51 composite (3 x 17), 53 prime, 57 composite (3 x 19)",
+          "notes": "Two odd composites flanking a prime."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -198,9 +368,24 @@
           "answer": "51 is composite: 5 + 1 = 6 is a multiple of 3, so 3 divides 51, and 51 = 3 x 17. Being odd is not enough to be prime.",
           "notes": "Canonical error: treating 'odd' as 'prime.'"
         },
-        { "difficulty": "core", "stem": "Is 49 prime or composite? Explain.", "answer": "Composite: 49 = 7 x 7 = 7^2.", "notes": "A perfect-square composite that looks prime." },
-        { "difficulty": "stretch", "stem": "Explain why 2 is the only even prime number.", "answer": "Every other even number has 2 as a factor besides 1 and itself, so it is composite. Only 2 has exactly two factors (1 and 2), so it is the only even prime.", "notes": "Reverse: justify a general fact." },
-        { "difficulty": "stretch", "stem": "Find the one composite number hiding in this 'all prime' list: 13, 17, 23, 27, 31.", "answer": "27 = 3 x 3 x 3 (= 3^3) is the composite; the rest are prime.", "notes": "Spot the odd composite among primes." }
+        {
+          "difficulty": "core",
+          "stem": "Is 49 prime or composite? Explain.",
+          "answer": "Composite: 49 = 7 x 7 = 7^2.",
+          "notes": "A perfect-square composite that looks prime."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why 2 is the only even prime number.",
+          "answer": "Every other even number has 2 as a factor besides 1 and itself, so it is composite. Only 2 has exactly two factors (1 and 2), so it is the only even prime.",
+          "notes": "Reverse: justify a general fact."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Find the one composite number hiding in this 'all prime' list: 13, 17, 23, 27, 31.",
+          "answer": "27 = 3 x 3 x 3 (= 3^3) is the composite; the rest are prime.",
+          "notes": "Spot the odd composite among primes."
+        }
       ],
       "activities": [
         {
@@ -208,17 +393,40 @@
           "title": "Prime or Composite Sort",
           "time_minutes": 10,
           "grouping": "small_group",
-          "materials": ["Card set of whole numbers under 100 (mix of primes and odd composites)"],
+          "materials": [
+            "Card set of whole numbers under 100 (mix of primes and odd composites)"
+          ],
           "instructions": "1. Spread the number cards face up.\n2. Sort each card into 'Prime' or 'Composite.'\n3. To place a composite, name a factor pair out loud (e.g., '21 = 3 x 7').\n4. For any 'Prime' card, say which small primes you tested (2, 3, 5, 7).\n5. Debrief: which odd numbers fooled you into thinking they were prime?",
           "content": {
-            "categories": ["Prime", "Composite"],
+            "categories": [
+              "Prime",
+              "Composite"
+            ],
             "cards": [
-              { "text": "2", "category": "Prime" },
-              { "text": "21", "category": "Composite" },
-              { "text": "47", "category": "Prime" },
-              { "text": "51", "category": "Composite" },
-              { "text": "73", "category": "Prime" },
-              { "text": "91", "category": "Composite" }
+              {
+                "text": "2",
+                "category": "Prime"
+              },
+              {
+                "text": "21",
+                "category": "Composite"
+              },
+              {
+                "text": "47",
+                "category": "Prime"
+              },
+              {
+                "text": "51",
+                "category": "Composite"
+              },
+              {
+                "text": "73",
+                "category": "Prime"
+              },
+              {
+                "text": "91",
+                "category": "Composite"
+              }
             ]
           }
         },
@@ -227,7 +435,9 @@
           "title": "Odd Isn't Prime",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Priya's '51 is prime' claim"],
+          "materials": [
+            "Slip with Priya's '51 is prime' claim"
+          ],
           "instructions": "1. Read Priya's claim that 51 is prime because it is odd.\n2. Add the digits of 51 and test divisibility by 3.\n3. Write the factor pair that proves 51 is composite.\n4. Write one sentence: why isn't 'odd' the same as 'prime'?",
           "content": {
             "worked_problem": "Is 51 prime? Priya said yes because it is odd.",
@@ -237,9 +447,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-010", "why": "Choral response on 'prime or composite?' for a rapid-fire number set builds the automatic recall this skill needs." },
-        { "strategy_id": "strat-math-003", "why": "The odd-composite trap (21, 51, 57) is a precise, high-frequency error a find-and-fix directly targets." },
-        { "strategy_id": "strat-math-002", "why": "A number talk on 'how do you know 91 isn't prime?' surfaces divisibility strategies students can share." }
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral response on 'prime or composite?' for a rapid-fire number set builds the automatic recall this skill needs."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The odd-composite trap (21, 51, 57) is a precise, high-frequency error a find-and-fix directly targets."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "A number talk on 'how do you know 91 isn't prime?' surfaces divisibility strategies students can share."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -281,20 +500,48 @@
         "stem": "From the set 3, 33, 41, 57, 89, select all the prime numbers.",
         "answer": "3, 41, 89",
         "steps": [
-          { "math": "3: only factors are 1 and 3", "annotation": "Prime." },
-          { "math": "33 = 3 x 11 and 57 = 3 x 19", "annotation": "Digit sums 6 and 12 are multiples of 3, so both are composite." },
-          { "math": "41 and 89: no prime up to their square roots divides them", "annotation": "Both prime." },
-          { "math": "primes: 3, 41, 89", "annotation": "The composites 33 and 57 were the odd-looking traps." }
+          {
+            "math": "3: only factors are 1 and 3",
+            "annotation": "Prime."
+          },
+          {
+            "math": "33 = 3 x 11 and 57 = 3 x 19",
+            "annotation": "Digit sums 6 and 12 are multiples of 3, so both are composite."
+          },
+          {
+            "math": "41 and 89: no prime up to their square roots divides them",
+            "annotation": "Both prime."
+          },
+          {
+            "math": "primes: 3, 41, 89",
+            "annotation": "The composites 33 and 57 were the odd-looking traps."
+          }
         ]
       },
       "faded_example": {
         "stem": "From the set 5, 15, 19, 27, 53, select all the prime numbers.",
         "answer": "5, 19, 53",
         "steps": [
-          { "math": "5 and 19: only factors are 1 and themselves", "annotation": "Prime.", "given": true },
-          { "math": "15 = 3 x 5", "annotation": "Composite.", "given": true },
-          { "math": null, "annotation": "Test 27: what is 2 + 7, and does 3 divide it?", "given": false },
-          { "math": null, "annotation": "List all the primes in the set.", "given": false }
+          {
+            "math": "5 and 19: only factors are 1 and themselves",
+            "annotation": "Prime.",
+            "given": true
+          },
+          {
+            "math": "15 = 3 x 5",
+            "annotation": "Composite.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Test 27: what is 2 + 7, and does 3 divide it?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "List all the primes in the set.",
+            "given": false
+          }
         ]
       }
     },
@@ -303,9 +550,14 @@
       "name": "Write the prime factorization of a number without exponents",
       "column": "looking_back",
       "parent_standard": "7.NS.5",
-      "engine_stems": [2],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7NS5-S1" },
-      "i_do_script": "To factor a number, I break it into a product and keep breaking any composite piece until everything is prime. Watch 42: 42 = 6 x 7, but 6 is composite, so 6 = 2 x 3. Now every factor is prime: 42 = 2 x 3 x 7. I stop only when no factor can be split further, and I write the primes small to large.",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS5-S1"
+      },
+      "i_do_script": "Picture a factor tree: a branch is only finished when the number at its tip cannot split any further. 42 splits into 6 and 7 -- but the 6 branch is still growing, because 6 can split again. To factor a number, I break it into a product and keep breaking any composite piece until everything is prime. Watch 42: 42 = 6 x 7, but 6 is composite, so 6 = 2 x 3. Now every factor is prime: 42 = 2 x 3 x 7. I stop only when no factor can be split further, and I write the primes small to large.",
       "canonical_error": {
         "pattern": "Stops factoring while a composite factor remains, leaving the factorization incomplete",
         "example": "Writes 42 = 6 x 7 and stops, leaving 6 (composite) unfactored instead of 2 x 3 x 7",
@@ -313,33 +565,99 @@
       },
       "item_template": "A composite number under 100 with three or four prime factors. Student writes the prime factorization as a product without exponents. Numeric response.",
       "sample_items": [
-        { "stem": "What is the prime factorization of 42?", "answer": "2 x 3 x 7" },
-        { "stem": "What is the prime factorization of 60?", "answer": "2 x 2 x 3 x 5" },
-        { "stem": "What is the prime factorization of 66?", "answer": "2 x 3 x 11" },
-        { "stem": "What is the prime factorization of 90?", "answer": "2 x 3 x 3 x 5" }
+        {
+          "stem": "What is the prime factorization of 42?",
+          "answer": "2 x 3 x 7"
+        },
+        {
+          "stem": "What is the prime factorization of 60?",
+          "answer": "2 x 2 x 3 x 5"
+        },
+        {
+          "stem": "What is the prime factorization of 66?",
+          "answer": "2 x 3 x 11"
+        },
+        {
+          "stem": "What is the prime factorization of 90?",
+          "answer": "2 x 3 x 3 x 5"
+        }
       ],
       "redirect_script": {
         "stop": "Is every factor you wrote a prime?",
-        "prompt": "Check each factor: can it be broken down more? 6 isn't prime -- split it into 2 x 3. Keep going until every factor is prime.",
+        "prompt": "Look at your tree: does every branch end in a prime, or is a branch still growing? Check each factor: can it be broken down more? 6 isn't prime -- split it into 2 x 3. Keep going until every factor is prime.",
         "praise": "You broke it all the way down to primes -- that's a complete factorization."
       },
       "vocabulary": [
-        { "term": "Prime factorization", "definition": "A number written as a product of only prime numbers." },
-        { "term": "Factor tree", "definition": "A diagram that breaks a number into factors, then breaks each composite factor again until every branch is prime." }
+        {
+          "term": "Prime factorization",
+          "definition": "A number written as a product of only prime numbers."
+        },
+        {
+          "term": "Factor tree",
+          "definition": "A diagram that breaks a number into factors, then breaks each composite factor again until every branch is prime."
+        }
       ],
-      "next_steps": { "if_pass": "7NS5-S3", "if_fail": "7NS5-S1" },
+      "next_steps": {
+        "if_pass": "7NS5-S3",
+        "if_fail": "7NS5-S1"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '42 = ?'" },
-        { "kind": "ask", "text": "Give me any factor pair of 42." },
-        { "kind": "say", "text": "42 = 6 x 7. But 6 isn't prime: 6 = 2 x 3. So 42 = 2 x 3 x 7 -- all primes." },
-        { "kind": "watch", "text": "If a student stops at 6 x 7, ask 'is 6 a prime number?'" },
-        { "kind": "ask", "text": "Your turn: factor 60 all the way down to primes." }
+        {
+          "kind": "show",
+          "text": "Start a factor tree for 42: draw two branches down to 6 and 7."
+        },
+        {
+          "kind": "ask",
+          "text": "Look at each branch tip. Can 6 still be split into smaller whole-number factors? Can 7?"
+        },
+        {
+          "kind": "say",
+          "text": "The 6 branch keeps growing: 6 splits into 2 and 3. The tree only stops when every branch tip is prime -- 2, 3, and 7."
+        },
+        {
+          "kind": "show",
+          "text": "Write '42 = ?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Give me any factor pair of 42."
+        },
+        {
+          "kind": "say",
+          "text": "42 = 6 x 7. But 6 isn't prime: 6 = 2 x 3. So 42 = 2 x 3 x 7 -- all primes."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student stops at 6 x 7, ask 'is 6 a prime number?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: factor 60 all the way down to primes."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Break 12 into primes.", "answer": "2 x 2 x 3" },
-        { "difficulty": "warm_up", "stem": "Factor 30 into primes.", "answer": "2 x 3 x 5" },
-        { "difficulty": "core", "stem": "Prime factorization of 42?", "answer": "2 x 3 x 7", "notes": "Baits stopping at 6 x 7." },
-        { "difficulty": "core", "stem": "Prime factorization of 60?", "answer": "2 x 2 x 3 x 5", "notes": "Four factors; the 2 is used twice." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Break 12 into primes.",
+          "answer": "2 x 2 x 3"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Factor 30 into primes.",
+          "answer": "2 x 3 x 5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Prime factorization of 42?",
+          "answer": "2 x 3 x 7",
+          "notes": "Baits stopping at 6 x 7."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Prime factorization of 60?",
+          "answer": "2 x 2 x 3 x 5",
+          "notes": "Four factors; the 2 is used twice."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -350,9 +668,24 @@
           "answer": "6 is not prime: 6 = 2 x 3. So 42 = 2 x 3 x 7. Marco stopped before every factor was prime.",
           "notes": "Canonical error: stopping with a composite factor still in the product."
         },
-        { "difficulty": "core", "stem": "Prime factorization of 66?", "answer": "2 x 3 x 11", "notes": "11 is prime -- don't try to split it." },
-        { "difficulty": "stretch", "stem": "Two students factor 90 different ways: one starts 2 x 45, the other starts 9 x 10. Show they finish at the same prime factorization.", "answer": "2 x 45 = 2 x (9 x 5) = 2 x 3 x 3 x 5; 9 x 10 = (3 x 3) x (2 x 5) = 2 x 3 x 3 x 5. Same result either way.", "notes": "Different trees, same primes (uniqueness)." },
-        { "difficulty": "stretch", "stem": "A number's prime factorization is 2 x 2 x 5. What is the number?", "answer": "20", "notes": "Reverse: multiply the primes back." }
+        {
+          "difficulty": "core",
+          "stem": "Prime factorization of 66?",
+          "answer": "2 x 3 x 11",
+          "notes": "11 is prime -- don't try to split it."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two students factor 90 different ways: one starts 2 x 45, the other starts 9 x 10. Show they finish at the same prime factorization.",
+          "answer": "2 x 45 = 2 x (9 x 5) = 2 x 3 x 3 x 5; 9 x 10 = (3 x 3) x (2 x 5) = 2 x 3 x 3 x 5. Same result either way.",
+          "notes": "Different trees, same primes (uniqueness)."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A number's prime factorization is 2 x 2 x 5. What is the number?",
+          "answer": "20",
+          "notes": "Reverse: multiply the primes back."
+        }
       ],
       "activities": [
         {
@@ -360,7 +693,10 @@
           "title": "Factor Tree Race",
           "time_minutes": 12,
           "grouping": "pairs",
-          "materials": ["Number cards (composites under 100)", "Scratch paper for trees"],
+          "materials": [
+            "Number cards (composites under 100)",
+            "Scratch paper for trees"
+          ],
           "instructions": "1. Each pair draws a number card.\n2. Both partners build a factor tree, but starting from DIFFERENT first factor pairs.\n3. Circle every prime at the bottom of each branch.\n4. Compare: you should reach the same set of primes even though the trees look different.\n5. Debrief: how do you know when a branch is finished?"
         },
         {
@@ -368,7 +704,9 @@
           "title": "Finish the Factoring",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Marco's '6 x 7' work"],
+          "materials": [
+            "Slip with Marco's '6 x 7' work"
+          ],
           "instructions": "1. Read Marco's claim that the prime factorization of 42 is 6 x 7.\n2. Check each factor -- is it prime?\n3. Break down the composite factor and rewrite the full prime factorization.\n4. Write the rule for when factoring is finished.",
           "content": {
             "worked_problem": "Prime factorization of 42. Marco wrote 6 x 7.",
@@ -378,9 +716,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-007", "why": "A factor tree is the concrete-to-abstract representation that makes 'keep splitting composites' visible before the rule is abstracted." },
-        { "strategy_id": "strat-math-003", "why": "Stopping with a composite factor is a precise error a find-and-fix corrects by checking each factor for primeness." },
-        { "strategy_id": "strat-math-006", "why": "Modeling one tree, then doing one together, then releasing builds the factoring routine step by step." }
+        {
+          "strategy_id": "strat-math-007",
+          "why": "A factor tree is the concrete-to-abstract representation that makes 'keep splitting composites' visible before the rule is abstracted."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Stopping with a composite factor is a precise error a find-and-fix corrects by checking each factor for primeness."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Modeling one tree, then doing one together, then releasing builds the factoring routine step by step."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -422,20 +769,48 @@
         "stem": "Write the prime factorization of 84 (no exponents).",
         "answer": "2 x 2 x 3 x 7",
         "steps": [
-          { "math": "84 = 4 x 21", "annotation": "Start with any factor pair." },
-          { "math": "4 = 2 x 2 and 21 = 3 x 7", "annotation": "Break each composite piece into primes." },
-          { "math": "84 = 2 x 2 x 3 x 7", "annotation": "Every factor is now prime; write them small to large." },
-          { "math": "check: 2 x 2 x 3 x 7 = 84", "annotation": "Multiply back to confirm." }
+          {
+            "math": "84 = 4 x 21",
+            "annotation": "Start with any factor pair."
+          },
+          {
+            "math": "4 = 2 x 2 and 21 = 3 x 7",
+            "annotation": "Break each composite piece into primes."
+          },
+          {
+            "math": "84 = 2 x 2 x 3 x 7",
+            "annotation": "Every factor is now prime; write them small to large."
+          },
+          {
+            "math": "check: 2 x 2 x 3 x 7 = 84",
+            "annotation": "Multiply back to confirm."
+          }
         ]
       },
       "faded_example": {
         "stem": "Write the prime factorization of 36 (no exponents).",
         "answer": "2 x 2 x 3 x 3",
         "steps": [
-          { "math": "36 = 6 x 6", "annotation": "Pick a factor pair.", "given": true },
-          { "math": "each 6 = 2 x 3", "annotation": "Break down both sixes.", "given": true },
-          { "math": null, "annotation": "Write all four prime factors in order.", "given": false },
-          { "math": null, "annotation": "Multiply back to check you get 36.", "given": false }
+          {
+            "math": "36 = 6 x 6",
+            "annotation": "Pick a factor pair.",
+            "given": true
+          },
+          {
+            "math": "each 6 = 2 x 3",
+            "annotation": "Break down both sixes.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write all four prime factors in order.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply back to check you get 36.",
+            "given": false
+          }
         ]
       }
     },
@@ -444,9 +819,14 @@
       "name": "Write a prime factorization using exponents",
       "column": "on_grade",
       "parent_standard": "7.NS.5",
-      "engine_stems": [3],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7NS5-S2" },
-      "i_do_script": "Once I have the prime factors, I collect repeats into exponents. Watch 63: 63 = 3 x 3 x 7. The 3 appears twice, so I write 3^2, giving 3^2 x 7. And 72 = 2 x 2 x 2 x 3 x 3 = 2^3 x 3^2. The exponent just counts how many times a prime is used. A prime that appears once, like the 7 in 63, gets no exponent.",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS5-S2"
+      },
+      "i_do_script": "Before writing any exponent, circle the repeats: in 3 x 3 x 7 the two 3s get one circle together and the lone 7 stays outside. The exponent is nothing but the count of what is inside the circle. Once I have the prime factors, I collect repeats into exponents. Watch 63: 63 = 3 x 3 x 7. The 3 appears twice, so I write 3^2, giving 3^2 x 7. And 72 = 2 x 2 x 2 x 3 x 3 = 2^3 x 3^2. The exponent just counts how many times a prime is used. A prime that appears once, like the 7 in 63, gets no exponent.",
       "canonical_error": {
         "pattern": "Attaches the exponent to the wrong prime or leaves repeated primes uncollected",
         "example": "Writes 63 = 3 x 7^2 (exponent on the wrong base) or 3 x 3 x 7 instead of 3^2 x 7",
@@ -457,13 +837,23 @@
         {
           "stem": "What is the prime factorization of 63?",
           "answer": "3^2 x 7",
-          "choices": ["3 x 7", "3 x 21", "3 x 7^2", "3^2 x 7"],
+          "choices": [
+            "3 x 7",
+            "3 x 21",
+            "3 x 7^2",
+            "3^2 x 7"
+          ],
           "distractor_logic": "63 = 3 x 3 x 7 = 3^2 x 7. '3 x 7' drops a factor; '3 x 21' keeps a composite; '3 x 7^2' puts the exponent on the wrong prime."
         },
         {
           "stem": "What is the prime factorization of 72?",
           "answer": "2^3 x 3^2",
-          "choices": ["2^3 x 3^2", "2^2 x 3^3", "2 x 3^2", "6^2 x 2"],
+          "choices": [
+            "2^3 x 3^2",
+            "2^2 x 3^3",
+            "2 x 3^2",
+            "6^2 x 2"
+          ],
           "distractor_logic": "72 = 2 x 2 x 2 x 3 x 3 = 2^3 x 3^2. The distractors swap the exponents, drop 2s, or keep a composite base."
         },
         {
@@ -479,26 +869,80 @@
       ],
       "redirect_script": {
         "stop": "How many times does that prime actually appear?",
-        "prompt": "Count each prime separately. 63 = 3 x 3 x 7 -- the 3 is used twice, so 3^2, and the 7 once. The exponent belongs to the prime that repeats.",
+        "prompt": "Circle the repeats first: which prime is inside your circle, and how many copies of it? Count each prime separately. 63 = 3 x 3 x 7 -- the 3 is used twice, so 3^2, and the 7 once. The exponent belongs to the prime that repeats.",
         "praise": "You counted each prime and put the exponent on the right base -- that's correct exponent form."
       },
       "vocabulary": [
-        { "term": "Exponent", "definition": "A small raised number that tells how many times the base is multiplied by itself; in 3^2 the exponent is 2." },
-        { "term": "Base", "definition": "The number being multiplied repeatedly; in 3^2 the base is 3." }
+        {
+          "term": "Exponent",
+          "definition": "A small raised number that tells how many times the base is multiplied by itself; in 3^2 the exponent is 2."
+        },
+        {
+          "term": "Base",
+          "definition": "The number being multiplied repeatedly; in 3^2 the base is 3."
+        }
       ],
-      "next_steps": { "if_pass": "7NS5-S4", "if_fail": "7NS5-S2" },
+      "next_steps": {
+        "if_pass": "7NS5-S4",
+        "if_fail": "7NS5-S2"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '63 = 3 x 3 x 7.'" },
-        { "kind": "ask", "text": "How many times does the 3 appear? How many times the 7?" },
-        { "kind": "say", "text": "Three appears twice, so 3^2; seven once, so just 7. 63 = 3^2 x 7." },
-        { "kind": "watch", "text": "If a student writes 3 x 7^2, ask 'which number actually repeats?'" },
-        { "kind": "ask", "text": "Your turn: write 72 = 2 x 2 x 2 x 3 x 3 using exponents." }
+        {
+          "kind": "show",
+          "text": "Write 63 = 3 x 3 x 7 and draw one circle around the two 3s. Leave the 7 outside the circle."
+        },
+        {
+          "kind": "ask",
+          "text": "Which prime is inside the circle, and how many copies of it did you circle? How many 7s are there?"
+        },
+        {
+          "kind": "say",
+          "text": "Two 3s in the circle means 3^2; the single 7 stays plain. If you wrote 7^2 instead, your circle would have to hold two 7s -- and it doesn't."
+        },
+        {
+          "kind": "show",
+          "text": "Write '63 = 3 x 3 x 7.'"
+        },
+        {
+          "kind": "ask",
+          "text": "How many times does the 3 appear? How many times the 7?"
+        },
+        {
+          "kind": "say",
+          "text": "Three appears twice, so 3^2; seven once, so just 7. 63 = 3^2 x 7."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 3 x 7^2, ask 'which number actually repeats?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: write 72 = 2 x 2 x 2 x 3 x 3 using exponents."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Write 2 x 2 x 2 using an exponent.", "answer": "2^3" },
-        { "difficulty": "warm_up", "stem": "Write 5 x 5 using an exponent.", "answer": "5^2" },
-        { "difficulty": "core", "stem": "Prime factorization of 63 with exponents?", "answer": "3^2 x 7", "notes": "Baits 3 x 7^2 (exponent on the wrong base)." },
-        { "difficulty": "core", "stem": "Prime factorization of 72 with exponents?", "answer": "2^3 x 3^2", "notes": "Two different exponents in one answer." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Write 2 x 2 x 2 using an exponent.",
+          "answer": "2^3"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Write 5 x 5 using an exponent.",
+          "answer": "5^2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Prime factorization of 63 with exponents?",
+          "answer": "3^2 x 7",
+          "notes": "Baits 3 x 7^2 (exponent on the wrong base)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Prime factorization of 72 with exponents?",
+          "answer": "2^3 x 3^2",
+          "notes": "Two different exponents in one answer."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -509,9 +953,24 @@
           "answer": "The 3 repeats, not the 5: 45 = 3^2 x 5. Dev put the exponent on the wrong prime. Check: 3^2 x 5 = 9 x 5 = 45.",
           "notes": "Canonical error: exponent on the wrong base."
         },
-        { "difficulty": "core", "stem": "Write the prime factorization of 36 using exponents.", "answer": "2^2 x 3^2", "notes": "Both primes are squared." },
-        { "difficulty": "stretch", "stem": "Which is greater, 2^3 x 3 or 2 x 3^3? Find each value and compare.", "answer": "2^3 x 3 = 24; 2 x 3^3 = 54. So 2 x 3^3 is greater.", "notes": "Reverse: where the exponent sits changes the value." },
-        { "difficulty": "stretch", "stem": "A prime factorization is written as 2^3 x 5^2. What number does it equal?", "answer": "200 (8 x 25 = 200)", "notes": "Reverse: expand the exponents and multiply." }
+        {
+          "difficulty": "core",
+          "stem": "Write the prime factorization of 36 using exponents.",
+          "answer": "2^2 x 3^2",
+          "notes": "Both primes are squared."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Which is greater, 2^3 x 3 or 2 x 3^3? Find each value and compare.",
+          "answer": "2^3 x 3 = 24; 2 x 3^3 = 54. So 2 x 3^3 is greater.",
+          "notes": "Reverse: where the exponent sits changes the value."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A prime factorization is written as 2^3 x 5^2. What number does it equal?",
+          "answer": "200 (8 x 25 = 200)",
+          "notes": "Reverse: expand the exponents and multiply."
+        }
       ],
       "activities": [
         {
@@ -519,16 +978,34 @@
           "title": "Collect the Repeats",
           "time_minutes": 10,
           "grouping": "pairs",
-          "materials": ["Expanded-form cards", "Exponent-form cards"],
+          "materials": [
+            "Expanded-form cards",
+            "Exponent-form cards"
+          ],
           "instructions": "1. Lay out the expanded-form cards (like 2 x 2 x 2 x 3) and the exponent-form cards (like 2^3 x 3).\n2. Match each expanded product to its exponent form.\n3. For each match, say how many times each prime repeats.\n4. Two exponent cards are decoys with no match -- set them aside and say why.\n5. Debrief: how do you decide which prime gets an exponent?",
           "content": {
             "pairs": [
-              { "left": "2 x 2 x 2 x 3", "right": "2^3 x 3" },
-              { "left": "3 x 3 x 7", "right": "3^2 x 7" },
-              { "left": "2 x 5 x 5", "right": "2 x 5^2" },
-              { "left": "2 x 2 x 3 x 3", "right": "2^2 x 3^2" }
+              {
+                "left": "2 x 2 x 2 x 3",
+                "right": "2^3 x 3"
+              },
+              {
+                "left": "3 x 3 x 7",
+                "right": "3^2 x 7"
+              },
+              {
+                "left": "2 x 5 x 5",
+                "right": "2 x 5^2"
+              },
+              {
+                "left": "2 x 2 x 3 x 3",
+                "right": "2^2 x 3^2"
+              }
             ],
-            "decoys": ["2^2 x 3", "5^2 x 2"]
+            "decoys": [
+              "2^2 x 3",
+              "5^2 x 2"
+            ]
           }
         },
         {
@@ -536,7 +1013,9 @@
           "title": "Right Base, Right Power",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Dev's '3 x 5^2' work"],
+          "materials": [
+            "Slip with Dev's '3 x 5^2' work"
+          ],
           "instructions": "1. Read Dev's claim that 45 = 3 x 5^2.\n2. Write 45 in fully expanded form (3 x 3 x 5).\n3. Circle which prime actually repeats.\n4. Rewrite the exponent form correctly and check by multiplying.",
           "content": {
             "worked_problem": "Prime factorization of 45. Dev wrote 3 x 5^2.",
@@ -546,9 +1025,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-007", "why": "Bridging expanded form (3 x 3 x 7) to exponent form (3^2 x 7) is exactly the representational-to-abstract move CRA supports." },
-        { "strategy_id": "strat-math-003", "why": "Putting the exponent on the wrong base is a precise, recurring error a find-and-fix corrects." },
-        { "strategy_id": "strat-math-010", "why": "Choral response on 'how many times does this prime appear?' hard-wires the collect-the-repeats habit." }
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Bridging expanded form (3 x 3 x 7) to exponent form (3^2 x 7) is exactly the representational-to-abstract move CRA supports."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Putting the exponent on the wrong base is a precise, recurring error a find-and-fix corrects."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral response on 'how many times does this prime appear?' hard-wires the collect-the-repeats habit."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -590,20 +1078,48 @@
         "stem": "Write the prime factorization of 200 using exponents.",
         "answer": "2^3 x 5^2",
         "steps": [
-          { "math": "200 = 8 x 25", "annotation": "Start with a convenient factor pair." },
-          { "math": "8 = 2 x 2 x 2 and 25 = 5 x 5", "annotation": "Break each part into primes." },
-          { "math": "three 2s and two 5s", "annotation": "Count how many times each prime appears." },
-          { "math": "200 = 2^3 x 5^2", "annotation": "Write each prime with its exponent." }
+          {
+            "math": "200 = 8 x 25",
+            "annotation": "Start with a convenient factor pair."
+          },
+          {
+            "math": "8 = 2 x 2 x 2 and 25 = 5 x 5",
+            "annotation": "Break each part into primes."
+          },
+          {
+            "math": "three 2s and two 5s",
+            "annotation": "Count how many times each prime appears."
+          },
+          {
+            "math": "200 = 2^3 x 5^2",
+            "annotation": "Write each prime with its exponent."
+          }
         ]
       },
       "faded_example": {
         "stem": "Write the prime factorization of 40 using exponents.",
         "answer": "2^3 x 5",
         "steps": [
-          { "math": "40 = 2 x 2 x 2 x 5", "annotation": "First factor completely into primes.", "given": true },
-          { "math": "the 2 appears three times", "annotation": "Count the repeated prime.", "given": true },
-          { "math": null, "annotation": "Write the 2 with its exponent (the 5 appears once).", "given": false },
-          { "math": null, "annotation": "Multiply back to check you get 40.", "given": false }
+          {
+            "math": "40 = 2 x 2 x 2 x 5",
+            "annotation": "First factor completely into primes.",
+            "given": true
+          },
+          {
+            "math": "the 2 appears three times",
+            "annotation": "Count the repeated prime.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the 2 with its exponent (the 5 appears once).",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply back to check you get 40.",
+            "given": false
+          }
         ]
       }
     },
@@ -612,9 +1128,14 @@
       "name": "Generate the prime factorization of a number from 100 to 200 using exponents",
       "column": "on_grade",
       "parent_standard": "7.NS.5",
-      "engine_stems": [4],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7NS5-S3" },
-      "i_do_script": "For a bigger number I use a division ladder: divide by the smallest prime that fits, then keep dividing the quotient. Watch 120: 120 / 2 = 60, 60 / 2 = 30, 30 / 2 = 15, 15 / 3 = 5, and 5 is prime. The primes I divided by are 2, 2, 2, 3, 5, so 120 = 2^3 x 3 x 5. A bigger number doesn't change the method -- I just keep dividing until the quotient is prime, then multiply back to check.",
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS5-S3"
+      },
+      "i_do_script": "Think of factoring as peeling: every division peels exactly one prime off the number, and the peels must multiply back to rebuild it. Watch 120 get halved: 60, then 30, then 15 -- three peels of 2 before the 2s run out. For a bigger number I use a division ladder: divide by the smallest prime that fits, then keep dividing the quotient. Watch 120: 120 / 2 = 60, 60 / 2 = 30, 30 / 2 = 15, 15 / 3 = 5, and 5 is prime. The primes I divided by are 2, 2, 2, 3, 5, so 120 = 2^3 x 3 x 5. A bigger number doesn't change the method -- I just keep dividing until the quotient is prime, then multiply back to check.",
       "canonical_error": {
         "pattern": "Stops the division ladder early or drops a prime, so the factorization does not multiply back to the number",
         "example": "For 120 writes 2^2 x 3 x 5 (= 60), having divided by 2 only twice instead of three times",
@@ -622,10 +1143,22 @@
       },
       "item_template": "A whole number from 100 to 200. Student generates the prime factorization using exponents. Numeric/expression response.",
       "sample_items": [
-        { "stem": "Find the prime factorization of 120. Write the answer using exponents.", "answer": "2^3 x 3 x 5" },
-        { "stem": "Find the prime factorization of 144. Write the answer using exponents.", "answer": "2^4 x 3^2" },
-        { "stem": "Find the prime factorization of 126. Write the answer using exponents.", "answer": "2 x 3^2 x 7" },
-        { "stem": "Find the prime factorization of 175. Write the answer using exponents.", "answer": "5^2 x 7" }
+        {
+          "stem": "Find the prime factorization of 120. Write the answer using exponents.",
+          "answer": "2^3 x 3 x 5"
+        },
+        {
+          "stem": "Find the prime factorization of 144. Write the answer using exponents.",
+          "answer": "2^4 x 3^2"
+        },
+        {
+          "stem": "Find the prime factorization of 126. Write the answer using exponents.",
+          "answer": "2 x 3^2 x 7"
+        },
+        {
+          "stem": "Find the prime factorization of 175. Write the answer using exponents.",
+          "answer": "5^2 x 7"
+        }
       ],
       "redirect_script": {
         "stop": "Does your answer multiply back to the number?",
@@ -633,22 +1166,76 @@
         "praise": "You divided all the way to a prime and checked the product -- that's a complete factorization."
       },
       "vocabulary": [
-        { "term": "Division ladder", "definition": "A method that divides a number by primes one at a time, stacking the quotients until a prime is reached." },
-        { "term": "Prime factorization", "definition": "A number written as a product of only prime numbers, using exponents for repeats." }
+        {
+          "term": "Division ladder",
+          "definition": "A method that divides a number by primes one at a time, stacking the quotients until a prime is reached."
+        },
+        {
+          "term": "Prime factorization",
+          "definition": "A number written as a product of only prime numbers, using exponents for repeats."
+        }
       ],
-      "next_steps": { "if_pass": "7NS5-S5", "if_fail": "7NS5-S3" },
+      "next_steps": {
+        "if_pass": "7NS5-S5",
+        "if_fail": "7NS5-S3"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '120' and set up a division ladder." },
-        { "kind": "ask", "text": "What's the smallest prime that divides 120?" },
-        { "kind": "say", "text": "120 / 2 = 60, / 2 = 30, / 2 = 15, / 3 = 5. Primes: 2, 2, 2, 3, 5, so 120 = 2^3 x 3 x 5." },
-        { "kind": "watch", "text": "If a student writes 2^2 x 3 x 5, ask 'does that multiply back to 120?'" },
-        { "kind": "ask", "text": "Your turn: find the prime factorization of 144." }
+        {
+          "kind": "show",
+          "text": "Write 120 and peel one 2 off at a time: 120 -> 60 -> 30 -> 15. Make a tally mark for every 2 you peel."
+        },
+        {
+          "kind": "ask",
+          "text": "How many tally marks did you make before landing on the odd number 15? Count them."
+        },
+        {
+          "kind": "say",
+          "text": "Three halvings means three 2s in the factorization -- and the peels have to rebuild the number: 2 x 2 x 2 x 3 x 5 = 120. If your primes multiply back to something else, a peel went missing."
+        },
+        {
+          "kind": "show",
+          "text": "Write '120' and set up a division ladder."
+        },
+        {
+          "kind": "ask",
+          "text": "What's the smallest prime that divides 120?"
+        },
+        {
+          "kind": "say",
+          "text": "120 / 2 = 60, / 2 = 30, / 2 = 15, / 3 = 5. Primes: 2, 2, 2, 3, 5, so 120 = 2^3 x 3 x 5."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 2^2 x 3 x 5, ask 'does that multiply back to 120?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: find the prime factorization of 144."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "120 / 2 = ? Then divide that by 2 again.", "answer": "60, then 30" },
-        { "difficulty": "warm_up", "stem": "Find the prime factorization of 100 using exponents.", "answer": "2^2 x 5^2" },
-        { "difficulty": "core", "stem": "Prime factorization of 120 (exponents)?", "answer": "2^3 x 3 x 5", "notes": "Baits 2^2 x 3 x 5 (= 60), one 2 too few." },
-        { "difficulty": "core", "stem": "Prime factorization of 180 (exponents)?", "answer": "2^2 x 3^2 x 5", "notes": "Three distinct primes, two of them squared." },
+        {
+          "difficulty": "warm_up",
+          "stem": "120 / 2 = ? Then divide that by 2 again.",
+          "answer": "60, then 30"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Find the prime factorization of 100 using exponents.",
+          "answer": "2^2 x 5^2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Prime factorization of 120 (exponents)?",
+          "answer": "2^3 x 3 x 5",
+          "notes": "Baits 2^2 x 3 x 5 (= 60), one 2 too few."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Prime factorization of 180 (exponents)?",
+          "answer": "2^2 x 3^2 x 5",
+          "notes": "Three distinct primes, two of them squared."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -659,9 +1246,24 @@
           "answer": "That product is only 60, not 120. 120 = 2 x 2 x 2 x 3 x 5 = 2^3 x 3 x 5 -- she divided by 2 one time too few. Check: 8 x 3 x 5 = 120.",
           "notes": "Canonical error: stopping the ladder early; the product doesn't match the number."
         },
-        { "difficulty": "core", "stem": "Prime factorization of 168 (exponents)?", "answer": "2^3 x 3 x 7", "notes": "168 = 8 x 21." },
-        { "difficulty": "stretch", "stem": "Find the prime factorization of 189, then explain how you know you're finished.", "answer": "189 = 3^3 x 7. You're finished because 7 is prime and nothing divides further; check: 27 x 7 = 189.", "notes": "Odd number -- 2 never divides it, so start at 3." },
-        { "difficulty": "stretch", "stem": "Two numbers have prime factorizations 2^2 x 3^2 x 5 and 2^3 x 3 x 5. Which is larger, and what are the numbers?", "answer": "2^2 x 3^2 x 5 = 180 and 2^3 x 3 x 5 = 120, so the first (180) is larger.", "notes": "Reverse: compare via expanded values." }
+        {
+          "difficulty": "core",
+          "stem": "Prime factorization of 168 (exponents)?",
+          "answer": "2^3 x 3 x 7",
+          "notes": "168 = 8 x 21."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Find the prime factorization of 189, then explain how you know you're finished.",
+          "answer": "189 = 3^3 x 7. You're finished because 7 is prime and nothing divides further; check: 27 x 7 = 189.",
+          "notes": "Odd number -- 2 never divides it, so start at 3."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two numbers have prime factorizations 2^2 x 3^2 x 5 and 2^3 x 3 x 5. Which is larger, and what are the numbers?",
+          "answer": "2^2 x 3^2 x 5 = 180 and 2^3 x 3 x 5 = 120, so the first (180) is larger.",
+          "notes": "Reverse: compare via expanded values."
+        }
       ],
       "activities": [
         {
@@ -669,7 +1271,10 @@
           "title": "Division Ladder Relay",
           "time_minutes": 12,
           "grouping": "small_group",
-          "materials": ["Number cards 100-200", "Prime-divisor reference strip (2, 3, 5, 7, 11, 13)"],
+          "materials": [
+            "Number cards 100-200",
+            "Prime-divisor reference strip (2, 3, 5, 7, 11, 13)"
+          ],
           "instructions": "1. Draw a number card between 100 and 200.\n2. Build a division ladder: divide by the smallest prime that fits, write the quotient below, repeat.\n3. Stop when the quotient is prime; the primes down the side are your factors.\n4. Collect repeats into exponents and MULTIPLY BACK to confirm you get the card's number.\n5. Debrief: what tells you the ladder is done?"
         },
         {
@@ -677,7 +1282,9 @@
           "title": "Multiply It Back",
           "time_minutes": 8,
           "grouping": "pairs",
-          "materials": ["Slip with Lena's '2^2 x 3 x 5' work"],
+          "materials": [
+            "Slip with Lena's '2^2 x 3 x 5' work"
+          ],
           "instructions": "1. Read Lena's answer of 2^2 x 3 x 5 for 120.\n2. Multiply her factorization out -- what number do you actually get?\n3. Redo the division ladder for 120 and count the 2s.\n4. Write the corrected factorization and the product check.",
           "content": {
             "worked_problem": "Prime factorization of 120. Lena wrote 2^2 x 3 x 5.",
@@ -687,9 +1294,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-006", "why": "Modeling the division ladder, then doing one together, then releasing is the gradual-release routine this multi-step procedure needs." },
-        { "strategy_id": "strat-math-003", "why": "The dropped-prime error (product doesn't match) is precisely the mistake a multiply-back find-and-fix catches." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'keep dividing until the quotient is prime, then check the product' models the self-monitoring the skill requires." }
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Modeling the division ladder, then doing one together, then releasing is the gradual-release routine this multi-step procedure needs."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The dropped-prime error (product doesn't match) is precisely the mistake a multiply-back find-and-fix catches."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'keep dividing until the quotient is prime, then check the product' models the self-monitoring the skill requires."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -731,20 +1347,48 @@
         "stem": "Find the prime factorization of 150 using exponents.",
         "answer": "2 x 3 x 5^2",
         "steps": [
-          { "math": "150 / 2 = 75", "annotation": "Divide by the smallest prime, 2." },
-          { "math": "75 / 3 = 25", "annotation": "2 won't go into 75; try 3." },
-          { "math": "25 / 5 = 5, and 5 is prime", "annotation": "Keep dividing until the quotient is prime." },
-          { "math": "150 = 2 x 3 x 5 x 5 = 2 x 3 x 5^2", "annotation": "Collect the two 5s into an exponent." }
+          {
+            "math": "150 / 2 = 75",
+            "annotation": "Divide by the smallest prime, 2."
+          },
+          {
+            "math": "75 / 3 = 25",
+            "annotation": "2 won't go into 75; try 3."
+          },
+          {
+            "math": "25 / 5 = 5, and 5 is prime",
+            "annotation": "Keep dividing until the quotient is prime."
+          },
+          {
+            "math": "150 = 2 x 3 x 5 x 5 = 2 x 3 x 5^2",
+            "annotation": "Collect the two 5s into an exponent."
+          }
         ]
       },
       "faded_example": {
         "stem": "Find the prime factorization of 108 using exponents.",
         "answer": "2^2 x 3^3",
         "steps": [
-          { "math": "108 / 2 = 54, 54 / 2 = 27", "annotation": "Divide out both 2s.", "given": true },
-          { "math": "27 / 3 = 9, 9 / 3 = 3, 3 is prime", "annotation": "Divide out the 3s until the quotient is prime.", "given": true },
-          { "math": null, "annotation": "Count the primes -- two 2s and three 3s -- and write them with exponents.", "given": false },
-          { "math": null, "annotation": "Multiply back to check you get 108.", "given": false }
+          {
+            "math": "108 / 2 = 54, 54 / 2 = 27",
+            "annotation": "Divide out both 2s.",
+            "given": true
+          },
+          {
+            "math": "27 / 3 = 9, 9 / 3 = 3, 3 is prime",
+            "annotation": "Divide out the 3s until the quotient is prime.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Count the primes -- two 2s and three 3s -- and write them with exponents.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply back to check you get 108.",
+            "given": false
+          }
         ]
       }
     },
@@ -753,9 +1397,14 @@
       "name": "Find a missing exponent in a given prime factorization",
       "column": "looking_forward",
       "parent_standard": "7.NS.5",
-      "engine_stems": [5],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7NS5-S4" },
-      "i_do_script": "When a factorization is given with one exponent hidden, I work out how many times that prime must divide the number. Watch: 2 x 3 x 5^x = 150. I know 2 x 3 = 6, and 150 / 6 = 25 = 5 x 5, so 5 is used twice: x = 2. I can also just factor 150 myself (2 x 3 x 5^2) and read the exponent off. The exponent counts how many times its prime appears.",
+      "engine_stems": [
+        5
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS5-S4"
+      },
+      "i_do_script": "An equation like this is a target: the product has to land exactly on 150, so any guess for x can be tested by multiplying it out. Try x = 1: 2 x 3 x 5 = 30 -- one whole factor of 5 short of the target. When a factorization is given with one exponent hidden, I work out how many times that prime must divide the number. Watch: 2 x 3 x 5^x = 150. I know 2 x 3 = 6, and 150 / 6 = 25 = 5 x 5, so 5 is used twice: x = 2. I can also just factor 150 myself (2 x 3 x 5^2) and read the exponent off. The exponent counts how many times its prime appears.",
       "canonical_error": {
         "pattern": "Guesses the missing exponent without checking that the product equals the number",
         "example": "For 2 x 3 x 5^x = 150 answers x = 1 (giving 30) instead of x = 2 (giving 150)",
@@ -766,25 +1415,45 @@
         {
           "stem": "The prime factorization of 150 is 2 x 3 x 5^x = 150. What is the missing exponent x?",
           "answer": "2",
-          "choices": ["1", "2", "3", "4"],
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
           "distractor_logic": "2 x 3 x 5^2 = 6 x 25 = 150, so x = 2. x = 1 gives only 30."
         },
         {
           "stem": "The prime factorization of 120 is 2^x x 3 x 5 = 120. What is the missing exponent x?",
           "answer": "3",
-          "choices": ["2", "3", "4", "5"],
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
           "distractor_logic": "2^3 x 3 x 5 = 8 x 15 = 120, so x = 3. x = 2 gives only 60."
         },
         {
           "stem": "The prime factorization of 144 is 2^x x 3^2 = 144. What is the missing exponent x?",
           "answer": "4",
-          "choices": ["2", "3", "4", "5"],
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
           "distractor_logic": "2^4 x 3^2 = 16 x 9 = 144, so x = 4."
         },
         {
           "stem": "The prime factorization of 108 is 2^2 x 3^x = 108. What is the missing exponent x?",
           "answer": "3",
-          "choices": ["1", "2", "3", "4"],
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
           "distractor_logic": "2^2 x 3^3 = 4 x 27 = 108, so x = 3."
         }
       ],
@@ -794,22 +1463,76 @@
         "praise": "You checked the exponent by multiplying back to the number -- that's how you verify it."
       },
       "vocabulary": [
-        { "term": "Exponent", "definition": "A raised number telling how many times the base is multiplied by itself." },
-        { "term": "Prime factorization", "definition": "A number written as a product of only primes, with exponents for repeated primes." }
+        {
+          "term": "Exponent",
+          "definition": "A raised number telling how many times the base is multiplied by itself."
+        },
+        {
+          "term": "Prime factorization",
+          "definition": "A number written as a product of only primes, with exponents for repeated primes."
+        }
       ],
-      "next_steps": { "if_pass": "7NS5-S6", "if_fail": "7NS5-S4" },
+      "next_steps": {
+        "if_pass": "7NS5-S6",
+        "if_fail": "7NS5-S4"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '2 x 3 x 5^x = 150.'" },
-        { "kind": "ask", "text": "What is 2 x 3? What is 150 divided by that?" },
-        { "kind": "say", "text": "2 x 3 = 6, and 150 / 6 = 25 = 5 x 5, so 5 is used twice: x = 2." },
-        { "kind": "watch", "text": "If a student answers x = 1, ask 'does 2 x 3 x 5 equal 150?'" },
-        { "kind": "ask", "text": "Your turn: 2^x x 3 x 5 = 120. Find x." }
+        {
+          "kind": "show",
+          "text": "Write 2 x 3 x 5^x = 150 and test the smallest guess, x = 1: 2 x 3 x 5 = 30."
+        },
+        {
+          "kind": "ask",
+          "text": "30 misses the target of 150. What does raising the exponent by one -- multiplying by one more 5 -- do to the product?"
+        },
+        {
+          "kind": "say",
+          "text": "Each extra 5 multiplies the whole product by 5: 30 x 5 = 150, dead on the target. So x = 2 -- the exponent is whatever makes the product hit the number, never a guess."
+        },
+        {
+          "kind": "show",
+          "text": "Write '2 x 3 x 5^x = 150.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is 2 x 3? What is 150 divided by that?"
+        },
+        {
+          "kind": "say",
+          "text": "2 x 3 = 6, and 150 / 6 = 25 = 5 x 5, so 5 is used twice: x = 2."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers x = 1, ask 'does 2 x 3 x 5 equal 150?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 2^x x 3 x 5 = 120. Find x."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "What is 5^2?", "answer": "25" },
-        { "difficulty": "warm_up", "stem": "If 2^x = 8, what is x?", "answer": "3" },
-        { "difficulty": "core", "stem": "2 x 3 x 5^x = 150. Find x.", "answer": "2", "notes": "Baits x = 1 (which gives only 30)." },
-        { "difficulty": "core", "stem": "2^x x 3 x 5 = 120. Find x.", "answer": "3", "notes": "x = 2 gives only 60." },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is 5^2?",
+          "answer": "25"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "If 2^x = 8, what is x?",
+          "answer": "3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2 x 3 x 5^x = 150. Find x.",
+          "answer": "2",
+          "notes": "Baits x = 1 (which gives only 30)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "2^x x 3 x 5 = 120. Find x.",
+          "answer": "3",
+          "notes": "x = 2 gives only 60."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -821,9 +1544,24 @@
           "answer": "x counts how many 2s, not how many different primes. 200 / 25 = 8 = 2^3, so x = 3. Check: 8 x 25 = 200.",
           "notes": "Canonical error: guessing from the look of the expression without checking the product."
         },
-        { "difficulty": "core", "stem": "2^2 x 3^x = 108. Find x.", "answer": "3", "notes": "4 x 27 = 108." },
-        { "difficulty": "stretch", "stem": "2^2 x 3^2 x 5^x = 180. Find x, and explain how you checked.", "answer": "x = 1: 2^2 x 3^2 = 36, and 180 / 36 = 5 = 5^1, so x = 1. Check: 36 x 5 = 180.", "notes": "An exponent of 1 -- the 'difficult' band's exponent-of-1 case." },
-        { "difficulty": "stretch", "stem": "Fill in BOTH missing exponents: 2^a x 3^b = 144. Find a and b.", "answer": "a = 4, b = 2 (16 x 9 = 144).", "notes": "Two unknowns -- factor 144 fully first." }
+        {
+          "difficulty": "core",
+          "stem": "2^2 x 3^x = 108. Find x.",
+          "answer": "3",
+          "notes": "4 x 27 = 108."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "2^2 x 3^2 x 5^x = 180. Find x, and explain how you checked.",
+          "answer": "x = 1: 2^2 x 3^2 = 36, and 180 / 36 = 5 = 5^1, so x = 1. Check: 36 x 5 = 180.",
+          "notes": "An exponent of 1 -- the 'difficult' band's exponent-of-1 case."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Fill in BOTH missing exponents: 2^a x 3^b = 144. Find a and b.",
+          "answer": "a = 4, b = 2 (16 x 9 = 144).",
+          "notes": "Two unknowns -- factor 144 fully first."
+        }
       ],
       "activities": [
         {
@@ -831,16 +1569,34 @@
           "title": "Exponent to Number",
           "time_minutes": 10,
           "grouping": "pairs",
-          "materials": ["Exponent-expression cards", "Value cards"],
+          "materials": [
+            "Exponent-expression cards",
+            "Value cards"
+          ],
           "instructions": "1. Match each prime-factorization expression to the number it equals.\n2. For each match, name the exponent you'd hide and what x would be.\n3. Two value cards are decoys with no matching expression -- explain why.\n4. Debrief: how does multiplying the factors let you check a missing exponent?",
           "content": {
             "pairs": [
-              { "left": "2^3 x 3 x 5", "right": "120" },
-              { "left": "2 x 3 x 5^2", "right": "150" },
-              { "left": "2^4 x 3^2", "right": "144" },
-              { "left": "2^2 x 3^3", "right": "108" }
+              {
+                "left": "2^3 x 3 x 5",
+                "right": "120"
+              },
+              {
+                "left": "2 x 3 x 5^2",
+                "right": "150"
+              },
+              {
+                "left": "2^4 x 3^2",
+                "right": "144"
+              },
+              {
+                "left": "2^2 x 3^3",
+                "right": "108"
+              }
             ],
-            "decoys": ["60", "96"]
+            "decoys": [
+              "60",
+              "96"
+            ]
           }
         },
         {
@@ -848,7 +1604,9 @@
           "title": "Check by Multiplying",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Omar's 'x = 2' work"],
+          "materials": [
+            "Slip with Omar's 'x = 2' work"
+          ],
           "instructions": "1. Read Omar's claim that x = 2 for 2^x x 5^2 = 200.\n2. Divide 200 by 5^2 to isolate the powers of 2.\n3. Factor the result into 2s and count them -- that is x.\n4. Substitute your x and multiply back to confirm it equals 200.",
           "content": {
             "worked_problem": "2^x x 5^2 = 200. Omar wrote x = 2 'because there are two primes.'",
@@ -858,9 +1616,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-003", "why": "Guessing an exponent without checking is a precise error a find-and-fix that ends in a product check corrects." },
-        { "strategy_id": "strat-math-009", "why": "Studying a correct worked solution beside a flawed one trains students to verify a missing exponent by multiplying back." },
-        { "strategy_id": "strat-math-001", "why": "Think-pair-share on 'how do you know x isn't 1?' pushes students to justify the exponent, not just state it." }
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Guessing an exponent without checking is a precise error a find-and-fix that ends in a product check corrects."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Studying a correct worked solution beside a flawed one trains students to verify a missing exponent by multiplying back."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'how do you know x isn't 1?' pushes students to justify the exponent, not just state it."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -902,20 +1669,48 @@
         "stem": "The prime factorization of 200 is 2^3 x 5^x = 200. Find x.",
         "answer": "2",
         "steps": [
-          { "math": "2^3 = 8", "annotation": "Evaluate the part you already know." },
-          { "math": "200 / 8 = 25", "annotation": "Divide the number by the known part to isolate 5^x." },
-          { "math": "25 = 5 x 5 = 5^2", "annotation": "25 is 5 squared, so the exponent is 2." },
-          { "math": "x = 2; check 8 x 25 = 200", "annotation": "Multiply back to confirm." }
+          {
+            "math": "2^3 = 8",
+            "annotation": "Evaluate the part you already know."
+          },
+          {
+            "math": "200 / 8 = 25",
+            "annotation": "Divide the number by the known part to isolate 5^x."
+          },
+          {
+            "math": "25 = 5 x 5 = 5^2",
+            "annotation": "25 is 5 squared, so the exponent is 2."
+          },
+          {
+            "math": "x = 2; check 8 x 25 = 200",
+            "annotation": "Multiply back to confirm."
+          }
         ]
       },
       "faded_example": {
         "stem": "The prime factorization of 160 is 2^x x 5 = 160. Find x.",
         "answer": "5",
         "steps": [
-          { "math": "160 / 5 = 32", "annotation": "Divide out the known prime, 5.", "given": true },
-          { "math": "32 = 2 x 2 x 2 x 2 x 2", "annotation": "Factor 32 into 2s.", "given": true },
-          { "math": null, "annotation": "Count the 2s -- that is x.", "given": false },
-          { "math": null, "annotation": "Check that 2^x x 5 = 160.", "given": false }
+          {
+            "math": "160 / 5 = 32",
+            "annotation": "Divide out the known prime, 5.",
+            "given": true
+          },
+          {
+            "math": "32 = 2 x 2 x 2 x 2 x 2",
+            "annotation": "Factor 32 into 2s.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Count the 2s -- that is x.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check that 2^x x 5 = 160.",
+            "given": false
+          }
         ]
       }
     },
@@ -924,7 +1719,10 @@
       "name": "Verify and justify a prime factorization",
       "column": "looking_forward",
       "parent_standard": "7.NS.5",
-      "prerequisite_skill": { "type": "skill", "skill_id": "7NS5-S4" },
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS5-S4"
+      },
       "i_do_script": "To check someone's prime factorization I ask two things: does it multiply back to the number, and is every factor actually prime (fully reduced)? Watch two claims for 40: '2 x 4 x 5' multiplies to 40, but 4 isn't prime, so it is NOT a prime factorization -- the correct one is 2^3 x 5. And for a prime like 83, the prime factorization is just 83 itself, because 83's only factors are 1 and 83.",
       "canonical_error": {
         "pattern": "Accepts a factorization that multiplies to the number without checking that every factor is prime, or factors a prime number",
@@ -965,22 +1763,64 @@
         "praise": "You checked both the product and that every factor is prime -- that's a real verification."
       },
       "vocabulary": [
-        { "term": "Justify", "definition": "Give the reasons that show why an answer is correct." },
-        { "term": "Fully reduced", "definition": "Broken down so that every factor is prime and none can be split further." }
+        {
+          "term": "Justify",
+          "definition": "Give the reasons that show why an answer is correct."
+        },
+        {
+          "term": "Fully reduced",
+          "definition": "Broken down so that every factor is prime and none can be split further."
+        }
       ],
-      "next_steps": { "if_pass": "Ready for 8.NS.3 (roots and irrational numbers).", "if_fail": "7NS5-S4" },
+      "next_steps": {
+        "if_pass": "Ready for 8.NS.3 (roots and irrational numbers).",
+        "if_fail": "7NS5-S4"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write two claims for 40: '2 x 4 x 5' and '2^3 x 5.'" },
-        { "kind": "ask", "text": "Both multiply to 40 -- but is every factor prime in each?" },
-        { "kind": "say", "text": "4 is composite (2 x 2), so '2 x 4 x 5' isn't a prime factorization. '2^3 x 5' is correct." },
-        { "kind": "watch", "text": "If a student accepts 2 x 4 x 5, ask 'can 4 be broken down more?'" },
-        { "kind": "ask", "text": "Your turn: is 5 x 9 the prime factorization of 45?" }
+        {
+          "kind": "show",
+          "text": "Write two claims for 40: '2 x 4 x 5' and '2^3 x 5.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Both multiply to 40 -- but is every factor prime in each?"
+        },
+        {
+          "kind": "say",
+          "text": "4 is composite (2 x 2), so '2 x 4 x 5' isn't a prime factorization. '2^3 x 5' is correct."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student accepts 2 x 4 x 5, ask 'can 4 be broken down more?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: is 5 x 9 the prime factorization of 45?"
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Is 4 a prime factor? Why or why not?", "answer": "No -- 4 = 2 x 2 is composite." },
-        { "difficulty": "warm_up", "stem": "What is the prime factorization of the prime number 29?", "answer": "29 (a prime's factorization is itself)." },
-        { "difficulty": "core", "stem": "Is 2 x 4 x 5 the prime factorization of 40? Explain.", "answer": "No -- 4 is composite. The correct form is 2^3 x 5.", "notes": "Baits accepting a correct product that hides a composite factor." },
-        { "difficulty": "core", "stem": "Is 90 = 2 x 3^2 x 5 correct? Justify.", "answer": "Yes -- all factors are prime and 2 x 9 x 5 = 90.", "notes": "A correct one, to prevent an 'always wrong' bias." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Is 4 a prime factor? Why or why not?",
+          "answer": "No -- 4 = 2 x 2 is composite."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is the prime factorization of the prime number 29?",
+          "answer": "29 (a prime's factorization is itself)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is 2 x 4 x 5 the prime factorization of 40? Explain.",
+          "answer": "No -- 4 is composite. The correct form is 2^3 x 5.",
+          "notes": "Baits accepting a correct product that hides a composite factor."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is 90 = 2 x 3^2 x 5 correct? Justify.",
+          "answer": "Yes -- all factors are prime and 2 x 9 x 5 = 90.",
+          "notes": "A correct one, to prevent an 'always wrong' bias."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -992,9 +1832,24 @@
           "answer": "Student B is correct. 83 is prime (only factors 1 and 83), so its prime factorization is 83. Student A wrongly treated 83 as composite; 3 x 2^4 x 5 = 240, not 83.",
           "notes": "Canonical error: factoring a prime number; the product doesn't even match."
         },
-        { "difficulty": "core", "stem": "Is 5 x 9 the prime factorization of 45? Explain.", "answer": "No -- 9 = 3^2. The correct form is 3^2 x 5.", "notes": "Not fully reduced." },
-        { "difficulty": "stretch", "stem": "Write a WRONG prime factorization of 60 that still multiplies to 60, and explain what makes it wrong.", "answer": "e.g., 2 x 6 x 5 = 60, but 6 is composite (2 x 3). The correct form is 2^2 x 3 x 5; it is wrong because a factor isn't prime.", "notes": "Produce-your-own error (reverse direction)." },
-        { "difficulty": "stretch", "stem": "A student says every number has a different prime factorization. Is that true? Explain with an example.", "answer": "Each number has exactly ONE prime factorization, and different numbers have different ones. For example, 12 = 2^2 x 3 always -- you can't write 12 using a different set of primes.", "notes": "Uniqueness of prime factorization." }
+        {
+          "difficulty": "core",
+          "stem": "Is 5 x 9 the prime factorization of 45? Explain.",
+          "answer": "No -- 9 = 3^2. The correct form is 3^2 x 5.",
+          "notes": "Not fully reduced."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write a WRONG prime factorization of 60 that still multiplies to 60, and explain what makes it wrong.",
+          "answer": "e.g., 2 x 6 x 5 = 60, but 6 is composite (2 x 3). The correct form is 2^2 x 3 x 5; it is wrong because a factor isn't prime.",
+          "notes": "Produce-your-own error (reverse direction)."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A student says every number has a different prime factorization. Is that true? Explain with an example.",
+          "answer": "Each number has exactly ONE prime factorization, and different numbers have different ones. For example, 12 = 2^2 x 3 always -- you can't write 12 using a different set of primes.",
+          "notes": "Uniqueness of prime factorization."
+        }
       ],
       "activities": [
         {
@@ -1002,17 +1857,40 @@
           "title": "Valid or Not a Prime Factorization",
           "time_minutes": 10,
           "grouping": "small_group",
-          "materials": ["Card set of claimed factorizations (some valid, some with a composite factor or a 1)"],
+          "materials": [
+            "Card set of claimed factorizations (some valid, some with a composite factor or a 1)"
+          ],
           "instructions": "1. Read each card, which claims a prime factorization for a number.\n2. Sort into 'Valid prime factorization' or 'Not valid (or not reduced).'\n3. For every 'not valid' card, name the factor that isn't prime (or the 1) and fix it.\n4. Confirm every valid card multiplies back to its number.\n5. Debrief: what are the two things every valid prime factorization must satisfy?",
           "content": {
-            "categories": ["Valid prime factorization", "Not valid (or not reduced)"],
+            "categories": [
+              "Valid prime factorization",
+              "Not valid (or not reduced)"
+            ],
             "cards": [
-              { "text": "40 = 2^3 x 5", "category": "Valid prime factorization" },
-              { "text": "40 = 2 x 4 x 5", "category": "Not valid (or not reduced)" },
-              { "text": "45 = 3^2 x 5", "category": "Valid prime factorization" },
-              { "text": "45 = 5 x 9", "category": "Not valid (or not reduced)" },
-              { "text": "83 = 83", "category": "Valid prime factorization" },
-              { "text": "42 = 1 x 2 x 3 x 7", "category": "Not valid (or not reduced)" }
+              {
+                "text": "40 = 2^3 x 5",
+                "category": "Valid prime factorization"
+              },
+              {
+                "text": "40 = 2 x 4 x 5",
+                "category": "Not valid (or not reduced)"
+              },
+              {
+                "text": "45 = 3^2 x 5",
+                "category": "Valid prime factorization"
+              },
+              {
+                "text": "45 = 5 x 9",
+                "category": "Not valid (or not reduced)"
+              },
+              {
+                "text": "83 = 83",
+                "category": "Valid prime factorization"
+              },
+              {
+                "text": "42 = 1 x 2 x 3 x 7",
+                "category": "Not valid (or not reduced)"
+              }
             ]
           }
         },
@@ -1021,7 +1899,9 @@
           "title": "Fully Reduced?",
           "time_minutes": 8,
           "grouping": "pairs",
-          "materials": ["Slip with the '2 x 4 x 5 = 40' claim"],
+          "materials": [
+            "Slip with the '2 x 4 x 5 = 40' claim"
+          ],
           "instructions": "1. Read the claim that 2 x 4 x 5 is the prime factorization of 40.\n2. Multiply it out -- does it equal 40?\n3. Check each factor -- is any of them composite?\n4. Rewrite the fully reduced prime factorization and justify why yours is complete.",
           "content": {
             "worked_problem": "Is 2 x 4 x 5 the prime factorization of 40?",
@@ -1031,9 +1911,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-009", "why": "Judging two students' factorizations side by side is exactly the worked-example-plus-error-analysis move this verify-and-justify skill demands." },
-        { "strategy_id": "strat-math-003", "why": "Spotting the hidden composite factor (4, 9) or the stray 1 is a targeted find-and-fix." },
-        { "strategy_id": "strat-math-001", "why": "Think-pair-share on 'which student is right and why?' builds the justification the DOK 3 task requires." }
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Judging two students' factorizations side by side is exactly the worked-example-plus-error-analysis move this verify-and-justify skill demands."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Spotting the hidden composite factor (4, 9) or the stray 1 is a targeted find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'which student is right and why?' builds the justification the DOK 3 task requires."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -1075,20 +1964,48 @@
         "stem": "Is 2 x 2 x 15 the prime factorization of 60? If not, correct it and justify.",
         "answer": "No; the prime factorization is 2^2 x 3 x 5.",
         "steps": [
-          { "math": "2 x 2 x 15 = 60", "annotation": "The product is right, so check the factors next." },
-          { "math": "15 = 3 x 5 is composite", "annotation": "15 can still be broken down, so it isn't fully reduced." },
-          { "math": "60 = 2 x 2 x 3 x 5 = 2^2 x 3 x 5", "annotation": "Now every factor is prime." },
-          { "math": "all factors prime and product = 60", "annotation": "Both checks pass -- this is the prime factorization." }
+          {
+            "math": "2 x 2 x 15 = 60",
+            "annotation": "The product is right, so check the factors next."
+          },
+          {
+            "math": "15 = 3 x 5 is composite",
+            "annotation": "15 can still be broken down, so it isn't fully reduced."
+          },
+          {
+            "math": "60 = 2 x 2 x 3 x 5 = 2^2 x 3 x 5",
+            "annotation": "Now every factor is prime."
+          },
+          {
+            "math": "all factors prime and product = 60",
+            "annotation": "Both checks pass -- this is the prime factorization."
+          }
         ]
       },
       "faded_example": {
         "stem": "Is 2 x 9 x 5 the prime factorization of 90? If not, correct it and justify.",
         "answer": "No; it is 2 x 3^2 x 5.",
         "steps": [
-          { "math": "2 x 9 x 5 = 90", "annotation": "The product is correct -- now check every factor.", "given": true },
-          { "math": "9 is composite: 9 = 3 x 3", "annotation": "9 can be broken down further.", "given": true },
-          { "math": null, "annotation": "Rewrite 90 using only primes, with exponents.", "given": false },
-          { "math": null, "annotation": "State why your version is fully reduced.", "given": false }
+          {
+            "math": "2 x 9 x 5 = 90",
+            "annotation": "The product is correct -- now check every factor.",
+            "given": true
+          },
+          {
+            "math": "9 is composite: 9 = 3 x 3",
+            "annotation": "9 can be broken down further.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Rewrite 90 using only primes, with exponents.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State why your version is fully reduced.",
+            "given": false
+          }
         ]
       }
     }
@@ -1097,40 +2014,84 @@
     "foundation": {
       "label": "Foundation (Tier III)",
       "description": "Pre-grade-level prerequisites -- fix these first.",
-      "skills": ["7NS5-F1", "7NS5-F2"]
+      "skills": [
+        "7NS5-F1",
+        "7NS5-F2"
+      ]
     },
     "looking_back": {
       "label": "Looking Back",
       "description": "Skills the student should have but may need re-teaching.",
-      "skills": ["7NS5-S1", "7NS5-S2"]
+      "skills": [
+        "7NS5-S1",
+        "7NS5-S2"
+      ]
     },
     "on_grade": {
       "label": "On Grade",
       "description": "The standard's actual grade-level expectations.",
-      "skills": ["7NS5-S3", "7NS5-S4"]
+      "skills": [
+        "7NS5-S3",
+        "7NS5-S4"
+      ]
     },
     "looking_forward": {
       "label": "Looking Forward",
       "description": "Bridge to the next standard.",
-      "skills": ["7NS5-S5", "7NS5-S6"]
+      "skills": [
+        "7NS5-S5",
+        "7NS5-S6"
+      ]
     }
   },
-  "skill_sequence": ["7NS5-F1", "7NS5-F2", "7NS5-S1", "7NS5-S2", "7NS5-S3", "7NS5-S4", "7NS5-S5", "7NS5-S6"],
+  "skill_sequence": [
+    "7NS5-F1",
+    "7NS5-F2",
+    "7NS5-S1",
+    "7NS5-S2",
+    "7NS5-S3",
+    "7NS5-S4",
+    "7NS5-S5",
+    "7NS5-S6"
+  ],
   "skill_tree": {
     "7NS5-F1": [],
     "7NS5-F2": [],
-    "7NS5-S1": ["7NS5-F1"],
-    "7NS5-S2": ["7NS5-S1", "7NS5-F2"],
-    "7NS5-S3": ["7NS5-S2"],
-    "7NS5-S4": ["7NS5-S3"],
-    "7NS5-S5": ["7NS5-S4", "7NS5-S3"],
-    "7NS5-S6": ["7NS5-S4", "7NS5-S1"]
+    "7NS5-S1": [
+      "7NS5-F1"
+    ],
+    "7NS5-S2": [
+      "7NS5-S1",
+      "7NS5-F2"
+    ],
+    "7NS5-S3": [
+      "7NS5-S2"
+    ],
+    "7NS5-S4": [
+      "7NS5-S3"
+    ],
+    "7NS5-S5": [
+      "7NS5-S4",
+      "7NS5-S3"
+    ],
+    "7NS5-S6": [
+      "7NS5-S4",
+      "7NS5-S1"
+    ]
   },
   "diagnostic_flow": {
     "description": "Start with S4 (generate the prime factorization of a 100-200 number using exponents) -- the At-proficiency computational core. If they pass, move to S5 (find a missing exponent) and S6 (verify and justify a factorization). If they fail, split: S1 checks whether prime vs composite is understood, and S2 checks whether a number can be broken into primes at all. S3 (collecting repeats into exponents) branches off as the notation support check.",
     "entry_skill": "7NS5-S4",
-    "if_pass": ["7NS5-S5", "7NS5-S6"],
-    "if_fail": ["7NS5-S1", "7NS5-S2"],
-    "branch_skills": ["7NS5-S3"]
+    "if_pass": [
+      "7NS5-S5",
+      "7NS5-S6"
+    ],
+    "if_fail": [
+      "7NS5-S1",
+      "7NS5-S2"
+    ],
+    "branch_skills": [
+      "7NS5-S3"
+    ]
   }
 }

@@ -49,7 +49,7 @@
         "description": "Multiply a whole number by itself to build the square facts up to 20 x 20.",
         "check_question": "What is 12 x 12?"
       },
-      "i_do_script": "Squaring a number means multiplying it by itself. Watch: 12 squared is 12 x 12 = 144, and 15 squared is 15 x 15 = 225. I keep a short list in my head: 11 x 11 = 121, 12 x 12 = 144, 13 x 13 = 169, on up to 20 x 20 = 400. Knowing these facts cold is what lets me find a square root fast, because a square root just asks 'which number did I multiply by itself?'",
+      "i_do_script": "Squaring gets its name from a shape: 14 squared is the number of tiles in a full 14-by-14 square. Doubling only builds a skinny 2-by-14 strip -- 28 tiles, nowhere near a whole square. Squaring a number means multiplying it by itself. Watch: 12 squared is 12 x 12 = 144, and 15 squared is 15 x 15 = 225. I keep a short list in my head: 11 x 11 = 121, 12 x 12 = 144, 13 x 13 = 169, on up to 20 x 20 = 400. Knowing these facts cold is what lets me find a square root fast, because a square root just asks 'which number did I multiply by itself?'",
       "canonical_error": {
         "pattern": "Doubles the number instead of multiplying it by itself",
         "example": "Says 12 squared is 24 (12 + 12) instead of 144 (12 x 12)",
@@ -84,7 +84,7 @@
       ],
       "redirect_script": {
         "stop": "Squared means times itself, not times 2.",
-        "prompt": "Write the number twice with a multiplication sign: 12 squared is 12 x 12. Multiply those, don't add or double.",
+        "prompt": "Picture the shape: squaring builds a full square of tiles, not a two-row strip. Write the number twice with a multiplication sign: 12 squared is 12 x 12. Multiply those, don't add or double.",
         "praise": "You used the number as a factor twice -- that's squaring."
       },
       "vocabulary": [
@@ -102,6 +102,10 @@
         "if_fail": "Review multiplication facts (3.OA)."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Sketch a 14-by-14 square of tiles next to a skinny 2-by-14 strip. The square holds 14 rows of 14 tiles; the strip holds only 28."
+        },
         {
           "kind": "show",
           "text": "Write '14 squared' and read it as 14 x 14."
@@ -544,7 +548,7 @@
         "type": "skill",
         "skill_id": "7NS6-S1"
       },
-      "i_do_script": "To find a square root, I ask 'what whole number, multiplied by itself, gives this number?' Watch the square root of 256. I run through my square facts: 15 x 15 = 225, too small; 16 x 16 = 256 -- that's it. So the square root of 256 is 16. I am NOT dividing by 2; I'm finding the factor that was multiplied by itself. For 144, it's 12, because 12 x 12 = 144.",
+      "i_do_script": "A square root is a side length: if a square holds 196 tiles, the root asks how long each side is. Half of 196 cannot be the side -- a 98-by-98 square would hold nearly ten thousand tiles. To find a square root, I ask 'what whole number, multiplied by itself, gives this number?' Watch the square root of 256. I run through my square facts: 15 x 15 = 225, too small; 16 x 16 = 256 -- that's it. So the square root of 256 is 16. I am NOT dividing by 2; I'm finding the factor that was multiplied by itself. For 144, it's 12, because 12 x 12 = 144.",
       "canonical_error": {
         "pattern": "Halves the number instead of finding the factor that was squared",
         "example": "Says the square root of 256 is 128 (256 / 2) instead of 16",
@@ -575,7 +579,7 @@
       ],
       "redirect_script": {
         "stop": "Are you halving, or finding what times itself?",
-        "prompt": "Run through your square facts until one lands exactly on the number: 16 x 16 = 256. Take that factor, not half the number.",
+        "prompt": "Picture the square first: the number is the AREA, and you are hunting the length of one side. Run through your square facts until one lands exactly on the number: 16 x 16 = 256. Take that factor, not half the number.",
         "praise": "You found the factor that squares to it -- that's the square root."
       },
       "vocabulary": [
@@ -593,6 +597,18 @@
         "if_fail": "7NS6-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a square and label its area 196 tiles. The square root asks one question: how long is each side?"
+        },
+        {
+          "kind": "ask",
+          "text": "Could the side be 98, half of 196? A 98-by-98 square would hold 9604 tiles -- way too many. So what side length, times itself, gives exactly 196?"
+        },
+        {
+          "kind": "say",
+          "text": "The side has to multiply by itself to make the area: 14 x 14 = 196, so the side -- the square root -- is 14. Halving the area builds the wrong shape entirely."
+        },
         {
           "kind": "show",
           "text": "Write 'the square root of 196.'"
@@ -843,7 +859,7 @@
         "type": "skill",
         "skill_id": "7NS6-S2"
       },
-      "i_do_script": "When a square root is given with answer choices, I still find the whole number that squares to the value -- I don't just grab a nearby number. Watch the square root of 64 with choices 6, 7, 8, 32. I test: 8 x 8 = 64, so the answer is 8. The choice 32 is half of 64 (a trap), and 7 is close but 7 x 7 = 49, not 64. I lock in my pick by squaring it to check.",
+      "i_do_script": "Every answer choice is claiming to be the side of a square that holds 25 tiles -- and you can test a claimed side by rebuilding the square. Only one side, times itself, lands exactly on 25. When a square root is given with answer choices, I still find the whole number that squares to the value -- I don't just grab a nearby number. Watch the square root of 64 with choices 6, 7, 8, 32. I test: 8 x 8 = 64, so the answer is 8. The choice 32 is half of 64 (a trap), and 7 is close but 7 x 7 = 49, not 64. I lock in my pick by squaring it to check.",
       "canonical_error": {
         "pattern": "Picks a value one off from the true root, or the halved value, without checking by squaring",
         "example": "For the square root of 64 chooses 7 (because it feels close) instead of 8, or 32 (half)",
@@ -916,6 +932,18 @@
         "if_fail": "7NS6-S2"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Sketch a square with area 25 tiles. Each answer choice -- 4, 5, 12.5, 10 -- is claiming to be the length of one side."
+        },
+        {
+          "kind": "ask",
+          "text": "Rebuild the square from each claim: a 4-by-4 square holds only 16 tiles, and a 12.5-by-12.5 square holds 156.25. Which claimed side actually rebuilds 25 tiles?"
+        },
+        {
+          "kind": "say",
+          "text": "Only 5 works: 5 x 5 = 25 exactly. Squaring a choice is just rebuilding the square to see if the area matches -- close is not enough."
+        },
         {
           "kind": "show",
           "text": "Write 'the square root of 25' with choices 4, 5, 12.5, 10."

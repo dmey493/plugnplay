@@ -49,7 +49,7 @@
         "description": "Evaluate a number squared (n²) as n times n, and recognize a square root as the number that undoes squaring.",
         "check_question": "What is 6², and what is the square root of 36?"
       },
-      "i_do_script": "The Pythagorean Theorem needs two arithmetic moves: squaring and square roots. Squaring means multiplying a number by ITSELF, not by 2: 6² = 6 x 6 = 36. A square root undoes squaring -- the square root of 36 is 6, because 6 x 6 = 36. Watch how they work together: 3² = 9, 4² = 16, 9 + 16 = 25, and the square root of 25 is 5. A calculator is allowed, so when a root is not a whole number I round it, like the square root of 56 ≈ 7.48.",
+      "i_do_script": "Squaring is drawing a square -- 6 squared is a 6-by-6 square holding 36 cells -- and a square root walks the other way: the square root of 36 asks what side length builds a 36-cell square. The Pythagorean Theorem needs two arithmetic moves: squaring and square roots. Squaring means multiplying a number by ITSELF, not by 2: 6² = 6 x 6 = 36. A square root undoes squaring -- the square root of 36 is 6, because 6 x 6 = 36. Watch how they work together: 3² = 9, 4² = 16, 9 + 16 = 25, and the square root of 25 is 5. A calculator is allowed, so when a root is not a whole number I round it, like the square root of 56 ≈ 7.48.",
       "canonical_error": {
         "pattern": "Doubles the base instead of squaring it, or reports the squared value without taking the root",
         "example": "Computes 6² as 12 (6 x 2) instead of 36, or leaves the answer as 25 when the square root of 25 = 5 was needed",
@@ -107,6 +107,10 @@
       },
       "worked_example_script": [
         {
+          "kind": "ask",
+          "text": "Picture the square root of 64 as a question about a square: 64 cells arranged into a perfect square -- how long must each side be?"
+        },
+        {
           "kind": "show",
           "text": "Write '7² = ?' and 'square root of 64 = ?'"
         },
@@ -139,7 +143,7 @@
         "description": "Recognize the right angle in a right triangle and that the longest side lies opposite it.",
         "check_question": "In a right triangle, which side is the longest?"
       },
-      "i_do_script": "Every right triangle has one right angle (90 degrees). The two sides that FORM the right angle are the LEGS. The side directly across from the right angle -- the longest side -- is the HYPOTENUSE. In the formula a² + b² = c², the legs are a and b, and the hypotenuse is always c. Watch: a triangle with sides 6, 8, and 10 -- the 6 and 8 meet at the corner, so they are the legs; 10 is the longest, so it is the hypotenuse.",
+      "i_do_script": "Stand at a corner of a room: the two walls meeting at the square corner are the short walks, and the straight cut ACROSS the room -- away from that corner -- is the longest walk there is. Right triangles work exactly the same way. Every right triangle has one right angle (90 degrees). The two sides that FORM the right angle are the LEGS. The side directly across from the right angle -- the longest side -- is the HYPOTENUSE. In the formula a² + b² = c², the legs are a and b, and the hypotenuse is always c. Watch: a triangle with sides 6, 8, and 10 -- the 6 and 8 meet at the corner, so they are the legs; 10 is the longest, so it is the hypotenuse.",
       "canonical_error": {
         "pattern": "Calls a leg the hypotenuse (or the hypotenuse a leg), usually by not checking which side is longest / opposite the right angle",
         "example": "For a triangle with sides 5, 12, and 13, names 12 as the hypotenuse instead of 13",
@@ -174,7 +178,7 @@
       ],
       "redirect_script": {
         "stop": "Wait -- which side is the longest?",
-        "prompt": "The hypotenuse is the longest side and sits across from the right angle; the two sides that form the right angle are the legs. Find the right angle first, then look straight across from it.",
+        "prompt": "Find the square corner first: the side cutting across, away from it, is the long one. The hypotenuse is the longest side and sits across from the right angle; the two sides that form the right angle are the legs. Find the right angle first, then look straight across from it.",
         "praise": "You found the hypotenuse across from the right angle -- exactly right."
       },
       "vocabulary": [
@@ -196,6 +200,10 @@
         "if_fail": "Review right angles and right triangles."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "In a 5-12-13 triangle, the 5 and 12 meet at the square corner like two walls. Which side cuts across, away from that corner -- and is it the longest of the three?"
+        },
         {
           "kind": "show",
           "text": "Write 'A right triangle has sides 5, 12, and 13. Name the legs and the hypotenuse.'"
@@ -230,7 +238,7 @@
         "type": "skill",
         "skill_id": "8GM3-F2"
       },
-      "i_do_script": "The Pythagorean Theorem says leg² + leg² = hypotenuse², written a² + b² = c². The one rule that makes it correct: c is always the HYPOTENUSE -- the longest side, opposite the right angle -- so it stands alone on one side of the equation. Watch, a triangle with sides 5, 12, 13: the legs 5 and 12 go in the sum, so 5² + 12² = 13². Check: 25 + 144 = 169 = 13². If I put 13 in the sum -- 5² + 13² = 12² -- that is false, because 13 is the hypotenuse and cannot be a leg.",
+      "i_do_script": "The theorem is a picture: build a square on each side of the triangle, and the two SMALL squares' areas together exactly fill the BIG one. The biggest square always sits on the longest side, so the longest side's square must be the total -- alone on its side of the equal sign. The Pythagorean Theorem says leg² + leg² = hypotenuse², written a² + b² = c². The one rule that makes it correct: c is always the HYPOTENUSE -- the longest side, opposite the right angle -- so it stands alone on one side of the equation. Watch, a triangle with sides 5, 12, 13: the legs 5 and 12 go in the sum, so 5² + 12² = 13². Check: 25 + 144 = 169 = 13². If I put 13 in the sum -- 5² + 13² = 12² -- that is false, because 13 is the hypotenuse and cannot be a leg.",
       "canonical_error": {
         "pattern": "Places the hypotenuse inside the a² + b² sum (treats it as a leg), so the equation does not hold",
         "example": "For sides 5, 12, 13, writes 5² + 13² = 12² instead of 5² + 12² = 13²",
@@ -261,7 +269,7 @@
       ],
       "redirect_script": {
         "stop": "Wait -- which side is the hypotenuse?",
-        "prompt": "The hypotenuse is the longest side, across from the right angle. It has to stand alone as c in a² + b² = c². Put the two shorter sides (the legs) in the sum.",
+        "prompt": "Picture the three squares first: the biggest square sits on which side? The hypotenuse is the longest side, across from the right angle. It has to stand alone as c in a² + b² = c². Put the two shorter sides (the legs) in the sum.",
         "praise": "You put the hypotenuse as c and the two legs in the sum -- that's the theorem."
       },
       "vocabulary": [
@@ -283,6 +291,18 @@
         "if_fail": "8GM3-F2"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "For sides 8, 15, and 17, write the area of the square built on each side: 64, 225, and 289."
+        },
+        {
+          "kind": "ask",
+          "text": "Which two of those areas add up to the third? Does 64 + 225 make 289? Could 64 + 289 ever make 225 -- can adding onto 289 give something SMALLER?"
+        },
+        {
+          "kind": "say",
+          "text": "64 + 225 = 289, so the two small squares fill the big one: 8^2 + 15^2 = 17^2. Putting 17 in the sum asks the biggest square to help fill a smaller one -- impossible, so the longest side always stands alone as c."
+        },
         {
           "kind": "show",
           "text": "Write 'A right triangle has sides 8, 15, and 17. Write the Pythagorean equation.'"
@@ -535,7 +555,7 @@
         "type": "skill",
         "skill_id": "8GM3-S1"
       },
-      "i_do_script": "To find the hypotenuse c from the two legs, I do three moves: square each leg, add them, then take the square root: c = the square root of (a² + b²). Watch, legs 6 and 8: 6² + 8² = 36 + 64 = 100, and c = the square root of 100 = 10. Two traps to avoid: do NOT just add the legs (6 + 8 = 14 is wrong), and do NOT stop at 100 -- take the square root. A calculator is allowed, so when the root is not a whole number I round to the hundredth: legs 5 and 8 give the square root of 89 ≈ 9.43.",
+      "i_do_script": "The Pythagorean theorem is an area fact about squares before it's a three-step recipe: build a square on each side of a right triangle, and the two leg squares together hold exactly as much area as the hypotenuse square. On a 3-4-5 triangle: the leg squares hold 9 and 16 tiles, and 9 + 16 = 25 -- precisely the hypotenuse square. That's why the recipe squares, adds, then unsquares: c = the square root of (a squared + b squared). Watch, legs 6 and 8: 36 + 64 = 100, and c = the square root of 100 = 10. Two traps the picture blocks: adding the legs (6 + 8 = 14 adds LENGTHS, but the theorem trades in AREAS), and stopping at 100 (100 is the square's area -- the side still needs the root). A calculator is allowed for non-perfect roots.",
       "canonical_error": {
         "pattern": "Adds the legs (a + b) instead of squaring, adding, and taking the root -- or computes a² + b² and forgets the final square root",
         "example": "For legs 6 and 8, answers 14 (6 + 8) or 100 (6² + 8² with no root) instead of the square root of 100 = 10",
@@ -588,6 +608,18 @@
         "if_fail": "8GM3-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a right triangle with legs 3 and 4 on grid paper. Build the square on each leg: 9 cells and 16 cells."
+        },
+        {
+          "kind": "ask",
+          "text": "Count the two leg squares' cells together. Now build the square on the hypotenuse -- how many cells must it hold?"
+        },
+        {
+          "kind": "say",
+          "text": "9 + 16 = 25, so the hypotenuse square holds 25 cells and the side is 5. Square-add-root is this picture as a recipe: the squares' AREAS add, then the root recovers the side."
+        },
         {
           "kind": "show",
           "text": "Write 'A right triangle has legs 9 and 12. Find the hypotenuse.'"
@@ -663,6 +695,18 @@
         }
       ],
       "activities": [
+        {
+          "type": "hands_on",
+          "title": "Tile the Squares",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper (or the grid-paper printable)",
+            "Scissors",
+            "Two colors of pencil"
+          ],
+          "instructions": "1. Pairs draw a 3-4-5 right triangle on grid paper and the full square on each side (9, 16, and 25 cells).\n2. Color the 9-square one color and the 16-square the other. Cut both leg squares into pieces.\n3. Rearrange ALL the pieces onto the hypotenuse square -- they tile it exactly, no gaps, no leftovers.\n4. Debrief: what does a squared + b squared = c squared literally say about these three squares?\n5. Quick test: why can't 6 + 8 = 14 be the hypotenuse of a 6-8 triangle? (Lengths don't add -- areas do.)"
+        },
         {
           "type": "error_analysis",
           "title": "Added the Legs",
@@ -1144,7 +1188,7 @@
         "type": "skill",
         "skill_id": "8GM3-S2"
       },
-      "i_do_script": "Real-world problems hide a right triangle in a story -- a ladder against a wall, a diagonal across a field, a screen's diagonal. First I find the right angle and decide which distance is the HYPOTENUSE: it is the slanted or longest distance, opposite the right angle (the ladder, the diagonal, the straight-line path). Then I set up a² + b² = c² and solve. Watch: a 13-ft ladder's base is 5 ft from a wall -- the ladder is the hypotenuse, so the wall height is a LEG: square root of (13² - 5²) = square root of 144 = 12 ft. But if a person walks 6 blocks east then 8 north, the straight-line distance is the HYPOTENUSE: square root of (6² + 8²) = square root of 100 = 10 blocks.",
+      "i_do_script": "Before any formula, look at the picture: the ramp is the slant, and nothing in a right triangle is longer than the slant. So the horizontal run must come out SHORTER than 10 feet -- if your setup produces something longer than the ramp itself, the setup is backwards. Real-world problems hide a right triangle in a story -- a ladder against a wall, a diagonal across a field, a screen's diagonal. First I find the right angle and decide which distance is the HYPOTENUSE: it is the slanted or longest distance, opposite the right angle (the ladder, the diagonal, the straight-line path). Then I set up a² + b² = c² and solve. Watch: a 13-ft ladder's base is 5 ft from a wall -- the ladder is the hypotenuse, so the wall height is a LEG: square root of (13² - 5²) = square root of 144 = 12 ft. But if a person walks 6 blocks east then 8 north, the straight-line distance is the HYPOTENUSE: square root of (6² + 8²) = square root of 100 = 10 blocks.",
       "canonical_error": {
         "pattern": "Mis-identifies which distance in the story is the hypotenuse, so adds when it should subtract (or the reverse)",
         "example": "For a 13-ft ladder 5 ft from the wall, adds 13² + 5² to 'find the ladder' -- but the ladder IS the hypotenuse, so the wall height is the square root of (13² - 5²) = 12 ft",
@@ -1175,7 +1219,7 @@
       ],
       "redirect_script": {
         "stop": "Which distance in the story is the hypotenuse?",
-        "prompt": "Find the right angle. The slanted or longest distance -- the ladder, the diagonal, the straight-line path -- is the hypotenuse. If the unknown is that slant, add the legs and take the root; if it's a leg, subtract.",
+        "prompt": "Sketch it and size-check: a leg can never come out longer than the slant. Find the right angle. The slanted or longest distance -- the ladder, the diagonal, the straight-line path -- is the hypotenuse. If the unknown is that slant, add the legs and take the root; if it's a leg, subtract.",
         "praise": "You spotted the hypotenuse in the story and set it up right."
       },
       "vocabulary": [
@@ -1197,6 +1241,18 @@
         "if_fail": "8GM3-S2"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Sketch the story: the flat ground, a 6-ft vertical rise at the wall, and the 10-ft ramp as the slanted side connecting them. The square corner is where the rise meets the ground."
+        },
+        {
+          "kind": "ask",
+          "text": "Which of the three distances is the slant? Can the horizontal run along the ground be LONGER than the 10-ft ramp leaning over it?"
+        },
+        {
+          "kind": "say",
+          "text": "The ramp is the hypotenuse, so the run is a leg and must be shorter than 10: square root of (10^2 - 6^2) = square root of 64 = 8 ft. Adding would give the square root of 136, about 11.7 ft -- a run longer than the ramp itself, which the picture forbids."
+        },
         {
           "kind": "show",
           "text": "Write 'A 10-ft ramp rises 6 ft vertically. How far does it extend horizontally?'"
@@ -1722,7 +1778,7 @@
         "type": "skill",
         "skill_id": "8GM3-S4"
       },
-      "i_do_script": "Some problems need the Pythagorean Theorem more than once, or combine it with perimeter and area in a compound figure. I solve one right triangle first, then carry that result into the next step. Watch, a rectangular field 9 m by 12 m: first the diagonal is square root of (9² + 12²) = square root of 225 = 15 m. If someone walks the perimeter 2(9 + 12) = 42 m and then the diagonal, the total is 42 + 15 = 57 m. Two traps: stopping after the first triangle, and reusing a computed length in the wrong place. I reread the question to see how the pieces combine before I stop.",
+      "i_do_script": "Count the pieces of wood before you compute: this frame needs FIVE sticks -- four sides plus the diagonal brace. The theorem only prices one of them, the brace, so its answer alone cannot be the whole lumber order. Some problems need the Pythagorean Theorem more than once, or combine it with perimeter and area in a compound figure. I solve one right triangle first, then carry that result into the next step. Watch, a rectangular field 9 m by 12 m: first the diagonal is square root of (9² + 12²) = square root of 225 = 15 m. If someone walks the perimeter 2(9 + 12) = 42 m and then the diagonal, the total is 42 + 15 = 57 m. Two traps: stopping after the first triangle, and reusing a computed length in the wrong place. I reread the question to see how the pieces combine before I stop.",
       "canonical_error": {
         "pattern": "Stops after one application, or plugs a computed length into the wrong part of the second step",
         "example": "For a field 9 m by 12 m, finds the diagonal 15 m but forgets to add the 42 m perimeter for the 'total distance,' answering 15 m or 42 m instead of 57 m",
@@ -1753,7 +1809,7 @@
       ],
       "redirect_script": {
         "stop": "Are you finished, or is there a second step?",
-        "prompt": "Solve one right triangle first, then carry that length into the next step. Reread the question to see how the pieces combine before you stop.",
+        "prompt": "Count the pieces the question pays for first: how many lengths belong in the total? Solve one right triangle first, then carry that length into the next step. Reread the question to see how the pieces combine before you stop.",
         "praise": "You carried the first result into the second step instead of stopping early."
       },
       "vocabulary": [
@@ -1775,6 +1831,14 @@
         "if_fail": "8GM3-S4"
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "List every piece of wood in the 8 in. by 15 in. frame: how many sides, plus how many braces? So how many lengths must the final answer include?"
+        },
+        {
+          "kind": "say",
+          "text": "Five pieces: sides of 8, 15, 8, and 15, plus the brace. The theorem finds the brace -- square root of (8^2 + 15^2) = 17 in. -- and the total wood is 8 + 15 + 8 + 15 + 17 = 63 in. Stopping at 17 buys one stick and leaves the frame empty."
+        },
         {
           "kind": "show",
           "text": "Write 'A rectangular frame is 8 in. by 15 in. Find the diagonal brace, then the total wood for the 4 sides plus the brace.'"

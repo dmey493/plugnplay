@@ -49,7 +49,7 @@
         "description": "Given a linear equation in y = mx + b form, name the number that is the slope (rate of change) and the number that is the y-intercept (initial value).",
         "check_question": "In y = 4x + 9, which number is the rate of change and which is the starting value?"
       },
-      "i_do_script": "Every equation written as y = mx + b hands you the two properties directly: the number multiplied by x is the slope (rate of change) and the number added on is the y-intercept (initial value). Watch y = 3x + 5: the 3 is the slope because it multiplies x, and the 5 is the y-intercept because it is the amount added. So this function changes by 3 for each 1 of x and starts at 5 when x is 0.",
+      "i_do_script": "The reading rule has a reason: in y = 3x + 5, plug in x = 0 and only the 5 survives -- that's why the added-on number is the initial value (y-intercept). Step x up by 1 and y grows by exactly 3 -- that's why the number with x is the rate (slope). Position is the shortcut; the jobs are why it works. Every equation written as y = mx + b hands you the two properties directly: the number multiplied by x is the slope (rate of change) and the number added on is the y-intercept (initial value). Watch y = 3x + 5: the 3 is the slope because it multiplies x, and the 5 is the y-intercept because it is the amount added. So this function changes by 3 for each 1 of x and starts at 5 when x is 0.",
       "canonical_error": {
         "pattern": "Swaps the two numbers -- calls the added constant the slope and the coefficient of x the y-intercept",
         "example": "For y = 3x + 5, says the slope is 5 and the y-intercept is 3, reading the equation backwards",
@@ -80,7 +80,7 @@
       ],
       "redirect_script": {
         "stop": "Which number is multiplied by x?",
-        "prompt": "Point to the number sitting right next to the x -- that is the slope (rate of change). The number by itself, with no x, is the y-intercept (starting value). Label them before you compare anything.",
+        "prompt": "Plug in x = 0: the survivor is the intercept. Step x up by 1: the growth is the slope. Point to the number sitting right next to the x -- that is the slope (rate of change). The number by itself, with no x, is the y-intercept (starting value). Label them before you compare anything.",
         "praise": "You matched the slope to the number times x and the y-intercept to the lone constant -- exactly right."
       },
       "vocabulary": [
@@ -98,6 +98,10 @@
         "if_fail": "Review slope-intercept form y = mx + b (7.AF.3)."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "For y = 7x + 2: what is y when x = 0? And how much does y grow when x steps from 0 to 1? Which number did each job?"
+        },
         {
           "kind": "show",
           "text": "Write 'y = 7x + 2. Name the slope and the y-intercept.'"
@@ -131,7 +135,7 @@
         "description": "Given a table of values, compute the rate of change by dividing the change in y by the change in x.",
         "check_question": "A table has x = 0, 2, 4 and y = 1, 7, 13. What is the rate of change?"
       },
-      "i_do_script": "To find a table's rate of change, I pick two rows and divide the change in y by the change in x. Watch x = 0, 2, 4, 6 with y = 1, 7, 13, 19: from the first two rows y goes up 6 while x goes up 2, so the rate is 6 divided by 2 = 3. I must divide by the change in x -- if x jumps by 2, the 6 is NOT the rate by itself.",
+      "i_do_script": "When x skips from 0 straight to 2, a row is hidden -- so the jump you see in y is really two steps of climbing rolled into one, and the per-step rate means splitting that jump across the skipped steps. To find a table's rate of change, I pick two rows and divide the change in y by the change in x. Watch x = 0, 2, 4, 6 with y = 1, 7, 13, 19: from the first two rows y goes up 6 while x goes up 2, so the rate is 6 divided by 2 = 3. I must divide by the change in x -- if x jumps by 2, the 6 is NOT the rate by itself.",
       "canonical_error": {
         "pattern": "Uses the change in y as the rate without dividing by the change in x when x does not step by 1",
         "example": "For x = 0, 2, 4 and y = 1, 7, 13, says the rate is 6 (the change in y) instead of 6 / 2 = 3",
@@ -162,7 +166,7 @@
       ],
       "redirect_script": {
         "stop": "How much did x change between those rows?",
-        "prompt": "Find the change in y AND the change in x, then divide: change in y over change in x. If x jumped by 2, don't stop at the change in y -- divide it by 2.",
+        "prompt": "Look for the hidden rows first: how many skipped steps is that y-jump rolling together? Find the change in y AND the change in x, then divide: change in y over change in x. If x jumped by 2, don't stop at the change in y -- divide it by 2.",
         "praise": "You divided the change in y by the change in x -- that's the true rate of change."
       },
       "vocabulary": [
@@ -183,6 +187,10 @@
         {
           "kind": "show",
           "text": "Write a table: x = 0, 3, 6 and y = 4, 10, 16."
+        },
+        {
+          "kind": "ask",
+          "text": "In the table x = 0, 3, 6 with y = 4, 10, 16, the rows x = 1 and x = 2 are hidden. y climbed 6 across those 3 steps -- how much per single step? Fill in the hidden y-values for x = 1 and x = 2."
         },
         {
           "kind": "ask",
@@ -1611,7 +1619,7 @@
         "type": "skill",
         "skill_id": "8AF7-S4"
       },
-      "i_do_script": "Sometimes the comparison must be a number: how much greater is one rate of change than the other? I find each function's rate of change first, then subtract. Watch Function J (table 2, 5, 8, 11 at x = 0,1,2,3) and Function K (table 1, 2, 3, 4 at x = 0,2,4,6). J's rate is 3; K climbs 1 while x climbs 2, so K's rate is 1/2. The difference is 3 - 1/2 = 5/2. I subtract the RATES, never the raw y-values.",
+      "i_do_script": "Two climbers can start at different heights AND climb at different speeds -- and 'how much faster' is a question about the speeds, not about the starting heights. Find each speed first; only then does subtracting mean anything. Sometimes the comparison must be a number: how much greater is one rate of change than the other? I find each function's rate of change first, then subtract. Watch Function J (table 2, 5, 8, 11 at x = 0,1,2,3) and Function K (table 1, 2, 3, 4 at x = 0,2,4,6). J's rate is 3; K climbs 1 while x climbs 2, so K's rate is 1/2. The difference is 3 - 1/2 = 5/2. I subtract the RATES, never the raw y-values.",
       "canonical_error": {
         "pattern": "Subtracts corresponding y-values or the initial values instead of first finding and then subtracting the two rates of change",
         "example": "For J (rate 3) and K with y-values 1, 2, 3, 4, subtracts a pair of y-values (or uses K's change 1) to get a difference like 2 instead of 3 - 1/2 = 5/2",
@@ -1842,7 +1850,7 @@
       ],
       "redirect_script": {
         "stop": "Did you find each RATE before subtracting?",
-        "prompt": "Compute each table's rate of change first (change in y over change in x), write the two rates down, THEN subtract them. Never subtract the y-values in the tables.",
+        "prompt": "Ask the climber question first: how fast does EACH one rise per step? Write both speeds down before you subtract anything. Compute each table's rate of change first (change in y over change in x), write the two rates down, THEN subtract them. Never subtract the y-values in the tables.",
         "praise": "You found both rates of change and subtracted those -- that's the difference in rates."
       },
       "vocabulary": [
@@ -1860,6 +1868,18 @@
         "if_fail": "8AF7-F2"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write both tables side by side for x = 0, 1, 2, 3: Climber J at heights 4, 7, 10, 13 and Climber K at heights 1, 3, 5, 7."
+        },
+        {
+          "kind": "ask",
+          "text": "J starts 3 higher than K (4 vs 1) -- but is that a speed? How fast does each climber rise per step? And watch the gap between them: 3, then 4, then 5, then 6 -- what is the gap doing?"
+        },
+        {
+          "kind": "say",
+          "text": "J climbs 3 per step and K climbs 2 per step, so the gap grows by exactly 1 each step -- that growing-by-1 IS the difference in their rates: 3 - 2 = 1. Subtracting the starting heights (4 - 1 = 3) only tells you the head start, and a head start never changes with time."
+        },
         {
           "kind": "show",
           "text": "Write Table J: 4, 7, 10, 13 (x = 0,1,2,3) and Table K: 1, 3, 5, 7 (x = 0,1,2,3)."

@@ -49,7 +49,7 @@
         "description": "Given two points, divide the change in y by the change in x to get the constant rate of change.",
         "check_question": "For the points (2, 5) and (4, 11), what is the rate of change?"
       },
-      "i_do_script": "The rate of change, or slope, is how much y goes up for each 1 that x goes up -- and I get it by dividing the change in y by the change in x. Watch the points (2, 5) and (4, 11): y went from 5 to 11, a change of 6; x went from 2 to 4, a change of 2. So the rate is 6 divided by 2 = 3. The change in y always goes on TOP, the change in x on the bottom, because I want the amount of y per 1 x.",
+      "i_do_script": "Slope answers a per-1 question: for every single step x takes to the right, how far does y climb? If y climbs 6 while x takes 2 steps, I share that 6 climb across the 2 steps to get the climb per single step. The rate of change, or slope, is how much y goes up for each 1 that x goes up -- and I get it by dividing the change in y by the change in x. Watch the points (2, 5) and (4, 11): y went from 5 to 11, a change of 6; x went from 2 to 4, a change of 2. So the rate is 6 divided by 2 = 3. The change in y always goes on TOP, the change in x on the bottom, because I want the amount of y per 1 x.",
       "canonical_error": {
         "pattern": "Divides the change in x by the change in y, inverting the slope",
         "example": "For (2, 5) and (4, 11), computes (4 - 2)/(11 - 5) = 2/6 = 1/3 instead of (11 - 5)/(4 - 2) = 3",
@@ -80,7 +80,7 @@
       ],
       "redirect_script": {
         "stop": "Which change goes on top -- the y or the x?",
-        "prompt": "Slope is y for 1 x, so put the change in y on top: (change in y) over (change in x). If your answer is a tiny fraction when you expected a whole rate, you divided the wrong way -- flip it.",
+        "prompt": "Point at the two dots: the CLIMB in y gets shared across the STEPS in x, so the climb goes on top. Slope is y for 1 x, so put the change in y on top: (change in y) over (change in x). If your answer is a tiny fraction when you expected a whole rate, you divided the wrong way -- flip it.",
         "praise": "You put the change in y over the change in x -- that's the slope, right-side up."
       },
       "vocabulary": [
@@ -98,6 +98,33 @@
         "if_fail": "Review finding a unit rate (7.RP.3)."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Plot (1, 4) and (5, 16). Walking from the first dot to the second, x takes 4 steps right while y climbs 12. If y climbs 12 across 4 steps, how much does it climb per single step?",
+          "visual": {
+            "type": "coordinate_grid",
+            "x_range": [
+              0,
+              6
+            ],
+            "y_range": [
+              0,
+              18
+            ],
+            "points": [
+              {
+                "x": 1,
+                "y": 4,
+                "label": "A"
+              },
+              {
+                "x": 5,
+                "y": 16,
+                "label": "B"
+              }
+            ]
+          }
+        },
         {
           "kind": "show",
           "text": "Write 'Find the rate of change between (1, 4) and (5, 16).'"
@@ -131,7 +158,7 @@
         "description": "Identify the y-intercept of a linear function as the y-value when x = 0, written as the point (0, b).",
         "check_question": "In the equation y = 3x + 7, what is the y-intercept?"
       },
-      "i_do_script": "The initial value, or y-intercept, is where a situation starts -- the value of y when x is 0. In y = mx + b it is the b, the number by itself with no x. Watch y = 3x + 7: the b is 7, so the y-intercept is 7, written as the point (0, 7). In a table it is the y-value in the row where x = 0. The trap is grabbing the number in front of x -- that is the slope, not the starting value.",
+      "i_do_script": "The start of a situation is the moment x = 0 -- and when x is 0, the x-term wipes itself out: 3 x 0 is nothing, so only the lone number is left standing. The initial value, or y-intercept, is where a situation starts -- the value of y when x is 0. In y = mx + b it is the b, the number by itself with no x. Watch y = 3x + 7: the b is 7, so the y-intercept is 7, written as the point (0, 7). In a table it is the y-value in the row where x = 0. The trap is grabbing the number in front of x -- that is the slope, not the starting value.",
       "canonical_error": {
         "pattern": "Reads the coefficient of x (the slope) as the y-intercept",
         "example": "For y = 3x + 7 says the y-intercept is 3 (the slope) instead of 7",
@@ -181,6 +208,10 @@
       },
       "worked_example_script": [
         {
+          "kind": "ask",
+          "text": "In y = 5x + 12, set x = 0 and compute: 5 x 0 + 12 = ? Which number survives when x is 0, and which number gets wiped out?"
+        },
+        {
           "kind": "show",
           "text": "Write 'y = 5x + 12. What is the y-intercept?'"
         },
@@ -214,7 +245,7 @@
         "type": "skill",
         "skill_id": "8AF6-F1"
       },
-      "i_do_script": "To find the rate of change from a table, I pick two rows and divide the change in y by the change in x. Watch a table where x is 0, 2, 4, 6 and y is 5, 11, 17, 23: from the first two rows y goes up 6 while x goes up 2, so the rate is 6 divided by 2 = 3. The x-values here jump by 2, not by 1, so I MUST divide by the change in x -- the change in y (6) by itself is not the rate.",
+      "i_do_script": "Some tables hide rows -- when x skips from 0 straight to 2, each y-jump is really TWO steps' worth of climbing rolled together, so getting the per-step rate means splitting that jump across the skipped steps. To find the rate of change from a table, I pick two rows and divide the change in y by the change in x. Watch a table where x is 0, 2, 4, 6 and y is 5, 11, 17, 23: from the first two rows y goes up 6 while x goes up 2, so the rate is 6 divided by 2 = 3. The x-values here jump by 2, not by 1, so I MUST divide by the change in x -- the change in y (6) by itself is not the rate.",
       "canonical_error": {
         "pattern": "Uses the change in y as the rate without dividing by the change in x when the x-values are not consecutive",
         "example": "For x = 0, 2, 4, 6 and y = 5, 11, 17, 23, says the rate of change is 6 (the y-difference) instead of 6/2 = 3",
@@ -369,7 +400,7 @@
       ],
       "redirect_script": {
         "stop": "By how much did x change here -- 1, or more?",
-        "prompt": "Check the x-column first. If x jumps by 2, the rate is the change in y DIVIDED by 2, not the change in y by itself. Slope = (change in y)/(change in x) every time.",
+        "prompt": "Check the hidden rows first: how many skipped steps is that y-jump covering? Check the x-column first. If x jumps by 2, the rate is the change in y DIVIDED by 2, not the change in y by itself. Slope = (change in y)/(change in x) every time.",
         "praise": "You divided the change in y by the change in x -- that's the true rate, even when x skips."
       },
       "vocabulary": [
@@ -393,7 +424,15 @@
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write a table: x = 0, 3, 6, 9 and y = 4, 10, 16, 22."
+          "text": "Write the table x = 0, 3, 6, 9 with y = 4, 10, 16, 22 -- and notice the hidden rows: x = 1 and x = 2 are skipped between the first two rows. y climbed 6 across those 3 steps."
+        },
+        {
+          "kind": "ask",
+          "text": "If y climbs 6 total across 3 equal steps, how much does it climb per single step? Fill in the hidden rows: x = 1, y = ? and x = 2, y = ?"
+        },
+        {
+          "kind": "say",
+          "text": "Each hidden step climbs 2: y goes 4, 6, 8, 10. The rate is 2 per step -- the 6 you see in the table is three steps' worth of climb rolled together, not the rate itself."
         },
         {
           "kind": "ask",
@@ -679,7 +718,7 @@
         "type": "skill",
         "skill_id": "8AF6-F1"
       },
-      "i_do_script": "When an equation is in y = mx + b form, the rate of change is m -- the number multiplied by x. Watch y = 4x + 9: the number with x is 4, so the rate of change is 4. The 9 is by itself, so that is the y-intercept, not the rate. The slope is always the coefficient of x, even when it is a fraction like the 3/4 in y = (3/4)x + 2.",
+      "i_do_script": "The rate of change is how much y moves per single step of x -- and a table catches it red-handed. Tabulate y = 4x + 9 at x = 0, 1, 2, 3: y = 9, 13, 17, 21. Every step of 1 in x jumps y by 4 -- the coefficient IS the jump between rows. The 9 never repeats; it's the one-time value at x = 0, the y-intercept, not the rate. So in y = mx + b form, the rate of change is m, the number multiplied by x -- even when it's a fraction like the 3/4 in y = (3/4)x + 2, where each step of 1 in x nudges y up three quarters.",
       "canonical_error": {
         "pattern": "Reads the constant term b as the rate of change instead of the coefficient m",
         "example": "For y = 4x + 9 says the rate of change is 9 (the constant) instead of 4 (the coefficient of x)",
@@ -745,7 +784,7 @@
       ],
       "redirect_script": {
         "stop": "Which number is stuck to the x?",
-        "prompt": "The rate of change is the number multiplied by x -- the coefficient. Underline the number touching x. The number by itself (no x) is the y-intercept, not the rate.",
+        "prompt": "Tabulate two or three rows: which number is the jump between rows, and which is the one-time x = 0 value? The jump is the rate of change.",
         "praise": "You picked the coefficient of x -- that's the rate of change, m."
       },
       "vocabulary": [
@@ -767,6 +806,18 @@
         "if_fail": "8AF6-F1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Tabulate y = (5/6)x + 4 at x = 0, 6, 12 (friendly steps for the fraction): y = 4, 9, 14."
+        },
+        {
+          "kind": "ask",
+          "text": "Over each step of 6 in x, y climbs by 5 -- so how much does y climb per SINGLE step of x? Which number in the equation is doing that?"
+        },
+        {
+          "kind": "say",
+          "text": "5/6 per step -- the coefficient is the per-step jump, which is what 'rate of change' means. The 4 only shows up once, at x = 0."
+        },
         {
           "kind": "show",
           "text": "Write 'y = (5/6)x + 4. What is the rate of change?'"
@@ -842,7 +893,7 @@
           "time_minutes": 10,
           "grouping": "pairs",
           "materials": [
-            "Card set of 10 equations and label cards 'rate of change = __' and 'y-intercept = __'"
+            "Card set of 6 equations and label cards 'rate of change = __' and 'y-intercept = __'"
           ],
           "instructions": "1. For each equation, place the correct 'rate of change' value (the number with x).\n2. Place the correct 'y-intercept' value (the number alone).\n3. Say aloud 'm is the one touching x.'\n4. Debrief: in y = -3x + 6, why is 6 NOT the rate of change?",
           "content": {

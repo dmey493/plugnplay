@@ -49,7 +49,7 @@
         "description": "Read an ordered pair (x, y): the first number is x, the second is y.",
         "check_question": "In the ordered pair (7, 2), which number is the x-value?"
       },
-      "i_do_script": "An ordered pair is written (x, y): the FIRST number is always the x-value, the SECOND is always the y-value. The order is fixed and never changes. Watch (7, 2): the x-value is 7 (first), the y-value is 2 (second). If I flip them I get a different point, so I read left to right: x first, y second.",
+      "i_do_script": "An ordered pair is walking directions to a spot: (7, 2) says walk 7 ACROSS, then 2 UP. The order is fixed because the walk is -- across first, up second -- and (2, 7) walks to a different spot entirely. An ordered pair is written (x, y): the FIRST number is always the x-value, the SECOND is always the y-value. The order is fixed and never changes. Watch (7, 2): the x-value is 7 (first), the y-value is 2 (second). If I flip them I get a different point, so I read left to right: x first, y second.",
       "canonical_error": {
         "pattern": "Reverses the pair -- reads the second number as x and the first as y",
         "example": "For (7, 2) says the x-value is 2 and the y-value is 7",
@@ -104,6 +104,37 @@
       "worked_example_script": [
         {
           "kind": "show",
+          "text": "Plot both (5, 8) and (8, 5) -- same digits, different walks, different spots.",
+          "visual": {
+            "type": "coordinate_grid",
+            "x_range": [
+              0,
+              10
+            ],
+            "y_range": [
+              0,
+              10
+            ],
+            "points": [
+              {
+                "x": 5,
+                "y": 8,
+                "label": "(5, 8)"
+              },
+              {
+                "x": 8,
+                "y": 5,
+                "label": "(8, 5)"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Why do (5, 8) and (8, 5) land on different spots? What does the FIRST number always do in the walk?"
+        },
+        {
+          "kind": "show",
           "text": "Write 'Name the x-value and y-value of (5, 8).'"
         },
         {
@@ -135,7 +166,7 @@
         "description": "Pair each input with its output to turn a table or mapping into ordered pairs (x, y).",
         "check_question": "A table shows x = 3 with y = 8 in the same row. Write that as an ordered pair."
       },
-      "i_do_script": "A table and a mapping hold the same information as a set of ordered pairs -- I just pair each input with the output next to it. Watch a table with rows x = 1, 2, 3 and y = 4, 5, 6: the first row is (1, 4), the second (2, 5), the third (3, 6). A mapping arrow from 2 to 7 is just the pair (2, 7): the value the arrow starts at is x, the value it points to is y.",
+      "i_do_script": "A table row and an ordered pair are the same fact in different clothes: the row 'x = 1, y = 4' IS the point (1, 4) -- one input matched with its output. Reading a table as pairs is just re-dressing each row. A table and a mapping hold the same information as a set of ordered pairs -- I just pair each input with the output next to it. Watch a table with rows x = 1, 2, 3 and y = 4, 5, 6: the first row is (1, 4), the second (2, 5), the third (3, 6). A mapping arrow from 2 to 7 is just the pair (2, 7): the value the arrow starts at is x, the value it points to is y.",
       "canonical_error": {
         "pattern": "Pairs values across rows or reverses input and output when reading a table",
         "example": "From a row x = 3, y = 8 writes (8, 3), or pairs the x from one row with the y from the next",
@@ -260,7 +291,7 @@
         "type": "skill",
         "skill_id": "8AF3-F1"
       },
-      "i_do_script": "The independent variable is the INPUT -- the x-value, the first number in each ordered pair, the quantity you choose or control. The dependent variable is the OUTPUT -- the y-value, the second number, the quantity that responds. Watch the set {(3, -5), (-2, 4), (7, 1)}: the independent variables (x-values) are 3, -2, and 7, the first number in each pair. The dependent variables (y-values) are -5, 4, and 1. Input first, output second, every time.",
+      "i_do_script": "Picture each ordered pair as one run of a machine: you drop the FIRST number in the IN slot, and the machine hands the SECOND number back out. In (3, -5), you chose the 3 -- the -5 is what came back in response. The independent variable is the INPUT -- the x-value, the first number in each ordered pair, the quantity you choose or control. The dependent variable is the OUTPUT -- the y-value, the second number, the quantity that responds. Watch the set {(3, -5), (-2, 4), (7, 1)}: the independent variables (x-values) are 3, -2, and 7, the first number in each pair. The dependent variables (y-values) are -5, 4, and 1. Input first, output second, every time.",
       "canonical_error": {
         "pattern": "Swaps the roles -- names the y-value (output) as the independent variable",
         "example": "For (3, -5) calls -5 the independent variable instead of 3",
@@ -291,7 +322,7 @@
       ],
       "redirect_script": {
         "stop": "Which number do you choose -- the first or the second?",
-        "prompt": "The independent variable is the input: the x, the FIRST number in the pair, the one you control. The dependent (output) is the y, the second number. Point to the first number and say 'input.'",
+        "prompt": "Picture the machine: which number got dropped IN, and which one came OUT? The independent variable is the input: the x, the FIRST number in the pair, the one you control. The dependent (output) is the y, the second number. Point to the first number and say 'input.'",
         "praise": "You picked the x-value as the input -- that's the independent variable."
       },
       "vocabulary": [
@@ -317,6 +348,18 @@
         "if_fail": "8AF3-F1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a machine with an IN slot on the left and an OUT slot on the right. Feed it the pair (4, 9): the 4 goes IN, and the 9 comes OUT."
+        },
+        {
+          "kind": "ask",
+          "text": "Run the machine on (6, 2) and (8, 5). In each pair, which number did YOU choose to feed in, and which one came out in response?"
+        },
+        {
+          "kind": "say",
+          "text": "The first number is always the one you feed in -- you control it, so it's called independent. The second is what the machine hands back -- it depends on what went in, so it's called dependent."
+        },
         {
           "kind": "show",
           "text": "Write the set {(4, 9), (6, 2), (8, 5)}."
@@ -1192,7 +1235,7 @@
         "type": "skill",
         "skill_id": "8AF3-S3"
       },
-      "i_do_script": "A table or mapping is a function by the same test as ordered pairs: read the input (x) column and look for a repeated input tied to different outputs. Watch a table with x = 1, 2, 3, 5 and y = 4, 4, 4, 4: every x is different, so even though the outputs are all 4, each input has exactly one output -- it IS a function. Now a table with x = 2, 4, 2, 6 and y = 5, 7, 8, 9: x = 2 appears twice with 5 and 8, two outputs for one input, so it is NOT a function. In a mapping, a function has exactly one arrow leaving each input.",
+      "i_do_script": "Think of the table as a machine's logbook: each row records what went IN and what came OUT. A working machine is allowed to give the same answer to different inputs -- but it can NEVER give two different answers to the same input. So the only column that can break a function is the input column. A table or mapping is a function by the same test as ordered pairs: read the input (x) column and look for a repeated input tied to different outputs. Watch a table with x = 1, 2, 3, 5 and y = 4, 4, 4, 4: every x is different, so even though the outputs are all 4, each input has exactly one output -- it IS a function. Now a table with x = 2, 4, 2, 6 and y = 5, 7, 8, 9: x = 2 appears twice with 5 and 8, two outputs for one input, so it is NOT a function. In a mapping, a function has exactly one arrow leaving each input.",
       "canonical_error": {
         "pattern": "Judges the table by the OUTPUT column -- calls repeated y-values a non-function (or requires all outputs to differ)",
         "example": "Says a table with x = 1, 2, 3 and y = 5, 5, 8 is 'not a function' because two outputs are 5, when every input is different so it IS a function",
@@ -1323,7 +1366,7 @@
       ],
       "redirect_script": {
         "stop": "Which column are you scanning -- the inputs or the outputs?",
-        "prompt": "Run your finger down the x (input) column only. A function fails when the SAME input shows up with two DIFFERENT outputs. Matching numbers in the y column are fine.",
+        "prompt": "Read the row like a machine log: did the SAME button get pressed twice with two different answers? Run your finger down the x (input) column only. A function fails when the SAME input shows up with two DIFFERENT outputs. Matching numbers in the y column are fine.",
         "praise": "You checked the input column for a repeat with different outputs -- exactly the right test."
       },
       "vocabulary": [
@@ -1341,6 +1384,18 @@
         "if_fail": "8AF3-S3"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw the table x = 4, 6, 4, 9 with y = 3, 5, 8, 1, and read it as a machine log: 'I fed in 4 and got 3... I fed in 4 again and got 8.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Same button, two different answers -- can you trust this machine? Now imagine a log where different buttons all return 7: is anything broken there?"
+        },
+        {
+          "kind": "say",
+          "text": "A machine that answers 4 with 3 one time and 8 the next is broken -- that's what 'not a function' means. Different inputs sharing an output is fine. So run your finger down the INPUT column: a repeat there, with different outputs, is the only thing that breaks it."
+        },
         {
           "kind": "show",
           "text": "Draw a table: x = 4, 6, 4, 9 and y = 3, 5, 8, 1."

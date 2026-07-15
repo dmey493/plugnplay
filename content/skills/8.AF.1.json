@@ -3,8 +3,7 @@
   "standard_text": "Solve linear equations and inequalities with rational number coefficients fluently, including those whose solutions require expanding expressions using the distributive property and collecting like terms. Represent real-world problems using linear equations and inequalities in one variable and solve such problems.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard is the fluency capstone of middle-school algebra: solve any one-variable linear equation or inequality, even when it first has to be untangled by distributing and combining like terms, and then use that machinery to model real situations. The word 'fluently' is doing a lot of work — students are expected to run a reliable procedure, not rediscover it each time. So the progression starts by nailing down what a solution even IS: a value that makes the statement true. Checking a candidate by substitution (the Below-proficiency task) is the anchor every solving move is judged against — if you can't tell whether 6 works, you can't trust your answer of x = 6.\n\nFrom there the two mechanical engines the standard names get their own steps: distributing a coefficient (now including negatives and fractions — the real jump from 7th grade, where the thing inside the parentheses always had a coefficient of 1) and combining like terms on one side. With those in hand, the core fluency step is solving multi-step equations that require both. Inequalities come next, because they add one genuinely new rule that trips students for years: flip the direction when you multiply or divide by a negative. Finally the standard turns outward — translate a real-world story into a one-variable equation or inequality, solve it, and (at the top band) justify the answer. The order is deliberate: check, then distribute and combine, then solve equations, then solve inequalities, then model. Underneath all of it runs one habit we keep returning to — every legal move keeps both sides balanced, and the answer is only finished when substitution proves it true."
-  ,
+    "narrative": "This standard is the fluency capstone of middle-school algebra: solve any one-variable linear equation or inequality, even when it first has to be untangled by distributing and combining like terms, and then use that machinery to model real situations. The word 'fluently' is doing a lot of work — students are expected to run a reliable procedure, not rediscover it each time. So the progression starts by nailing down what a solution even IS: a value that makes the statement true. Checking a candidate by substitution (the Below-proficiency task) is the anchor every solving move is judged against — if you can't tell whether 6 works, you can't trust your answer of x = 6.\n\nFrom there the two mechanical engines the standard names get their own steps: distributing a coefficient (now including negatives and fractions — the real jump from 7th grade, where the thing inside the parentheses always had a coefficient of 1) and combining like terms on one side. With those in hand, the core fluency step is solving multi-step equations that require both. Inequalities come next, because they add one genuinely new rule that trips students for years: flip the direction when you multiply or divide by a negative. Finally the standard turns outward — translate a real-world story into a one-variable equation or inequality, solve it, and (at the top band) justify the answer. The order is deliberate: check, then distribute and combine, then solve equations, then solve inequalities, then model. Underneath all of it runs one habit we keep returning to — every legal move keeps both sides balanced, and the answer is only finished when substitution proves it true.",
     "steps": [
       {
         "skill_id": "8AF1-S1",
@@ -50,7 +49,7 @@
         "description": "Solve two-step equations (px + q = r) by undoing operations in reverse order.",
         "check_question": "Solve 3x + 5 = 20."
       },
-      "i_do_script": "To get a variable by itself I undo whatever is happening to it, in reverse order — like taking off shoes before socks. Watch: 3x + 5 = 20. The x is multiplied by 3, then 5 is added. I undo the adding first: subtract 5 from both sides, giving 3x = 15. Then I undo the multiplying: divide both sides by 3, giving x = 5. Whatever I do to one side, I do to the other — that keeps the scale balanced.",
+      "i_do_script": "3x + 5 = 20 was BUILT forwards: some number x was tripled, then 5 was added, and it landed on 20. Undoing walks the same road backwards -- last thing on, first thing off -- which is why the +5 comes off before the tripling. 'Shoes before socks' is just that walk named. To get a variable by itself I undo whatever is happening to it, in reverse order — like taking off shoes before socks. Watch: 3x + 5 = 20. The x is multiplied by 3, then 5 is added. I undo the adding first: subtract 5 from both sides, giving 3x = 15. Then I undo the multiplying: divide both sides by 3, giving x = 5. Whatever I do to one side, I do to the other — that keeps the scale balanced.",
       "canonical_error": {
         "pattern": "Undoes operations in the wrong order, or divides before subtracting",
         "example": "For 3x + 5 = 20 the student divides by 3 first (getting x + 5 = 20/3) instead of subtracting 5 first",
@@ -58,29 +57,75 @@
       },
       "item_template": "A two-step equation px + q = r with integer or simple rational values. Student isolates x. Short numeric response; good short fluency bank.",
       "sample_items": [
-        { "stem": "Solve 3x + 5 = 20.", "answer": "x = 5" },
-        { "stem": "Solve 2x - 7 = 9.", "answer": "x = 8" },
-        { "stem": "Solve 5x + 4 = 24.", "answer": "x = 4" },
-        { "stem": "Solve (1/2)x - 3 = 4.", "answer": "x = 14" },
-        { "stem": "Solve -4x + 10 = 2.", "answer": "x = 2" },
-        { "stem": "Solve 7x - 6 = 15.", "answer": "x = 3" }
+        {
+          "stem": "Solve 3x + 5 = 20.",
+          "answer": "x = 5"
+        },
+        {
+          "stem": "Solve 2x - 7 = 9.",
+          "answer": "x = 8"
+        },
+        {
+          "stem": "Solve 5x + 4 = 24.",
+          "answer": "x = 4"
+        },
+        {
+          "stem": "Solve (1/2)x - 3 = 4.",
+          "answer": "x = 14"
+        },
+        {
+          "stem": "Solve -4x + 10 = 2.",
+          "answer": "x = 2"
+        },
+        {
+          "stem": "Solve 7x - 6 = 15.",
+          "answer": "x = 3"
+        }
       ],
       "redirect_script": {
         "stop": "Wait — what is being done to the x LAST?",
-        "prompt": "Undo in reverse order. Clear the added or subtracted number FIRST (do the opposite to both sides), and only then divide by the number multiplying x.",
+        "prompt": "Say how the equation was BUILT from x, step by step -- then take the steps off in reverse, last on, first off. Undo in reverse order. Clear the added or subtracted number FIRST (do the opposite to both sides), and only then divide by the number multiplying x.",
         "praise": "You cleared the constant before touching the coefficient — that's the right order."
       },
       "vocabulary": [
-        { "term": "Inverse operation", "definition": "The operation that undoes another (subtraction undoes addition; division undoes multiplication)." },
-        { "term": "Isolate", "definition": "Get the variable alone on one side of the equation." }
+        {
+          "term": "Inverse operation",
+          "definition": "The operation that undoes another (subtraction undoes addition; division undoes multiplication)."
+        },
+        {
+          "term": "Isolate",
+          "definition": "Get the variable alone on one side of the equation."
+        }
       ],
-      "next_steps": { "if_pass": "8AF1-S1", "if_fail": "Review two-step equations (7.AF.3)." },
+      "next_steps": {
+        "if_pass": "8AF1-S1",
+        "if_fail": "Review two-step equations (7.AF.3)."
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '4x - 3 = 17.'" },
-        { "kind": "ask", "text": "What is happening to x? In what order?" },
-        { "kind": "say", "text": "x is multiplied by 4, then 3 is subtracted. I undo the subtraction first: add 3 to both sides, getting 4x = 20." },
-        { "kind": "watch", "text": "If the student divides by 4 first, ask 'what number is stuck to the x by adding or subtracting? Clear that one first.'" },
-        { "kind": "ask", "text": "Now undo the times 4. What do you do to both sides? Your turn: 6x + 2 = 20." }
+        {
+          "kind": "ask",
+          "text": "How was 4x - 3 = 17 built from x, step by step? (Times 4 first, then minus 3.) To walk backwards to x, which step must come off first, and why?"
+        },
+        {
+          "kind": "show",
+          "text": "Write '4x - 3 = 17.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is happening to x? In what order?"
+        },
+        {
+          "kind": "say",
+          "text": "x is multiplied by 4, then 3 is subtracted. I undo the subtraction first: add 3 to both sides, getting 4x = 20."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student divides by 4 first, ask 'what number is stuck to the x by adding or subtracting? Clear that one first.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Now undo the times 4. What do you do to both sides? Your turn: 6x + 2 = 20."
+        }
       ]
     },
     {
@@ -94,7 +139,7 @@
         "description": "Combine terms with the same variable, keeping constants separate.",
         "check_question": "Simplify 3x + 5 + 2x - 1."
       },
-      "i_do_script": "Like terms are terms with the exact same variable part — the x-terms live together and the plain numbers live together, but they never mix. Watch: 3x + 5 + 2x − 1. I gather the x-terms: 3x and 2x make 5x. Then the numbers: 5 and −1 make 4. So the whole thing is 5x + 4. I can't add 5x and 4 — a variable and a number aren't like terms.",
+      "i_do_script": "Like terms are like units: 3x + 2x is 3 boxes plus 2 boxes -- 5 boxes -- while the plain 5 is loose marbles. Boxes add with boxes and marbles with marbles, but 5x + 5 can't collapse to 10-of-anything because a box and a marble aren't the same unit. Like terms are terms with the exact same variable part — the x-terms live together and the plain numbers live together, but they never mix. Watch: 3x + 5 + 2x − 1. I gather the x-terms: 3x and 2x make 5x. Then the numbers: 5 and −1 make 4. So the whole thing is 5x + 4. I can't add 5x and 4 — a variable and a number aren't like terms.",
       "canonical_error": {
         "pattern": "Combines a variable term with a constant, or adds coefficients of unlike terms",
         "example": "Simplifies 3x + 5 to 8x, treating the 5 as if it were 5x",
@@ -102,11 +147,26 @@
       },
       "item_template": "An expression with 2-3 like variable terms and 1-2 constants on one side. Student simplifies. Short response fluency bank.",
       "sample_items": [
-        { "stem": "Simplify 3x + 5 + 2x - 1.", "answer": "5x + 4" },
-        { "stem": "Simplify 7x - 2x + 8.", "answer": "5x + 8" },
-        { "stem": "Simplify 4x + 6 - x - 10.", "answer": "3x - 4" },
-        { "stem": "Simplify -2x + 9 + 5x.", "answer": "3x + 9" },
-        { "stem": "Simplify 6 + 2x - 3x + 1.", "answer": "-x + 7" }
+        {
+          "stem": "Simplify 3x + 5 + 2x - 1.",
+          "answer": "5x + 4"
+        },
+        {
+          "stem": "Simplify 7x - 2x + 8.",
+          "answer": "5x + 8"
+        },
+        {
+          "stem": "Simplify 4x + 6 - x - 10.",
+          "answer": "3x - 4"
+        },
+        {
+          "stem": "Simplify -2x + 9 + 5x.",
+          "answer": "3x + 9"
+        },
+        {
+          "stem": "Simplify 6 + 2x - 3x + 1.",
+          "answer": "-x + 7"
+        }
       ],
       "redirect_script": {
         "stop": "Hold on — are those two terms really alike?",
@@ -114,17 +174,48 @@
         "praise": "You kept the x-terms and the numbers in separate piles — that's what 'like terms' means."
       },
       "vocabulary": [
-        { "term": "Like terms", "definition": "Terms with the exact same variable part, so their number parts can be added." },
-        { "term": "Coefficient", "definition": "The number multiplied by a variable, like the 3 in 3x." },
-        { "term": "Constant", "definition": "A plain number with no variable." }
+        {
+          "term": "Like terms",
+          "definition": "Terms with the exact same variable part, so their number parts can be added."
+        },
+        {
+          "term": "Coefficient",
+          "definition": "The number multiplied by a variable, like the 3 in 3x."
+        },
+        {
+          "term": "Constant",
+          "definition": "A plain number with no variable."
+        }
       ],
-      "next_steps": { "if_pass": "8AF1-S2", "if_fail": "Review combining like terms (7.AF.1)." },
+      "next_steps": {
+        "if_pass": "8AF1-S2",
+        "if_fail": "Review combining like terms (7.AF.1)."
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '5x + 3 - 2x + 7.'" },
-        { "kind": "ask", "text": "Which terms have an x? Which are just numbers?" },
-        { "kind": "say", "text": "x-terms: 5x and -2x combine to 3x. Numbers: 3 and 7 combine to 10. Result: 3x + 10." },
-        { "kind": "watch", "text": "If the student writes 13x, ask 'is 7 a number of x's, or just a number?'" },
-        { "kind": "ask", "text": "Your turn: 8x - 4 - 3x + 9. Two piles — combine each." }
+        {
+          "kind": "ask",
+          "text": "In 5x + 3 - 2x + 7, which terms are 'boxes' (x-units) and which are 'loose marbles' (plain numbers)? Why can the boxes only combine with boxes?"
+        },
+        {
+          "kind": "show",
+          "text": "Write '5x + 3 - 2x + 7.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which terms have an x? Which are just numbers?"
+        },
+        {
+          "kind": "say",
+          "text": "x-terms: 5x and -2x combine to 3x. Numbers: 3 and 7 combine to 10. Result: 3x + 10."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 13x, ask 'is 7 a number of x's, or just a number?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 8x - 4 - 3x + 9. Two piles — combine each."
+        }
       ]
     },
     {
@@ -132,8 +223,13 @@
       "name": "Determine whether a value is a solution by substituting",
       "column": "looking_back",
       "parent_standard": "8.AF.1",
-      "engine_stems": [1],
-      "prerequisite_skill": { "type": "skill", "skill_id": "8AF1-F1" },
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8AF1-F1"
+      },
       "i_do_script": "A solution is a value that makes the statement TRUE. To test one, I put the number in for the variable everywhere and check if the two sides really match. Watch: is 6 a solution to 4(x − 3) − x = 15? I replace every x with 6: 4(6 − 3) − 6 = 4 times 3 minus 6 = 12 − 6 = 6. The left side is 6, but the right side is 15, and 6 does not equal 15 — so 6 is NOT a solution. The check is the same for an inequality, except I ask whether the final statement (like 2 > 4) is true or false.",
       "canonical_error": {
         "pattern": "Declares a value a solution without finishing the arithmetic, or ignores order of operations while substituting",
@@ -193,24 +289,72 @@
         "praise": "You evaluated in the right order and then compared — that's a real solution check."
       },
       "vocabulary": [
-        { "term": "Solution", "definition": "A value that makes an equation or inequality true when substituted for the variable." },
-        { "term": "Substitute", "definition": "Replace the variable with a number everywhere it appears." },
-        { "term": "Linear equation", "definition": "An equation where the variable is only to the first power, like 4(x - 3) - x = 15." }
+        {
+          "term": "Solution",
+          "definition": "A value that makes an equation or inequality true when substituted for the variable."
+        },
+        {
+          "term": "Substitute",
+          "definition": "Replace the variable with a number everywhere it appears."
+        },
+        {
+          "term": "Linear equation",
+          "definition": "An equation where the variable is only to the first power, like 4(x - 3) - x = 15."
+        }
       ],
-      "next_steps": { "if_pass": "8AF1-S2", "if_fail": "8AF1-F1" },
+      "next_steps": {
+        "if_pass": "8AF1-S2",
+        "if_fail": "8AF1-F1"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'Is x = 3 a solution to 2(x + 4) - x = 12?'" },
-        { "kind": "ask", "text": "Where does the 3 go? How many x's do we replace?" },
-        { "kind": "say", "text": "Every x becomes 3: 2(3 + 4) - 3. Parentheses first: 3 + 4 = 7, then 2 times 7 = 14, then minus 3 = 11." },
-        { "kind": "ask", "text": "Left side is 11, right side is 12. Equal or not? So is 3 a solution?" },
-        { "kind": "watch", "text": "If a student does 2 times 3 + 4 = 10 (skipping the parenthesis), stop and ask 'what has to happen inside the parentheses first?'" },
-        { "kind": "ask", "text": "Your turn: is x = 4 a solution to 3(x - 1) + x = 13?" }
+        {
+          "kind": "show",
+          "text": "Write 'Is x = 3 a solution to 2(x + 4) - x = 12?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Where does the 3 go? How many x's do we replace?"
+        },
+        {
+          "kind": "say",
+          "text": "Every x becomes 3: 2(3 + 4) - 3. Parentheses first: 3 + 4 = 7, then 2 times 7 = 14, then minus 3 = 11."
+        },
+        {
+          "kind": "ask",
+          "text": "Left side is 11, right side is 12. Equal or not? So is 3 a solution?"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student does 2 times 3 + 4 = 10 (skipping the parenthesis), stop and ask 'what has to happen inside the parentheses first?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: is x = 4 a solution to 3(x - 1) + x = 13?"
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Is x = 2 a solution to 5x = 10?", "answer": "Yes — 5(2) = 10." },
-        { "difficulty": "warm_up", "stem": "When you check a solution, what does it mean if the two sides are NOT equal?", "answer": "The value is not a solution." },
-        { "difficulty": "core", "stem": "Is x = 6 a solution to 4(x - 3) - x = 15?", "answer": "No — 4(6-3) - 6 = 12 - 6 = 6, and 6 ≠ 15.", "notes": "Baits left-to-right evaluation that would falsely accept 6." },
-        { "difficulty": "core", "stem": "Is x = -3 a solution to -2x + 1 = 7?", "answer": "Yes — -2(-3) + 1 = 6 + 1 = 7.", "notes": "Negative-times-negative check." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Is x = 2 a solution to 5x = 10?",
+          "answer": "Yes — 5(2) = 10."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "When you check a solution, what does it mean if the two sides are NOT equal?",
+          "answer": "The value is not a solution."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is x = 6 a solution to 4(x - 3) - x = 15?",
+          "answer": "No — 4(6-3) - 6 = 12 - 6 = 6, and 6 ≠ 15.",
+          "notes": "Baits left-to-right evaluation that would falsely accept 6."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is x = -3 a solution to -2x + 1 = 7?",
+          "answer": "Yes — -2(-3) + 1 = 6 + 1 = 7.",
+          "notes": "Negative-times-negative check."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -222,9 +366,24 @@
           "answer": "Jordan skipped the parentheses. It should be 2(5 + 1) - 5 = 2 times 6 - 5 = 12 - 5 = 7. Still not 9, so 5 is not a solution — but Jordan got the right verdict for the wrong reason, and on another problem that shortcut would give a false answer.",
           "notes": "Canonical error: substituting correctly but evaluating out of order."
         },
-        { "difficulty": "core", "stem": "Is x = 4 a solution to 3(x - 2) ≥ 5?", "answer": "Yes — 3(4-2) = 6, and 6 ≥ 5 is true.", "notes": "Inequality check — compare with the correct direction." },
-        { "difficulty": "stretch", "stem": "For which equation is x = 2 a solution: (a) 5x - 1 = 9, or (b) 5x - 1 = 11? Explain how you know without solving.", "answer": "(a) — 5(2) - 1 = 9, which matches equation (a); for (b), 9 does not equal 11, so x = 2 is not a solution to (b).", "notes": "Forces evaluating and comparing to two right-hand sides." },
-        { "difficulty": "stretch", "stem": "Write an equation of the form a(x - 1) = b for which x = 4 is a solution. Show your check.", "answer": "Sample: 2(x - 1) = 6, since 2(4 - 1) = 2 times 3 = 6.", "notes": "Reversed direction — build an equation with a known solution." }
+        {
+          "difficulty": "core",
+          "stem": "Is x = 4 a solution to 3(x - 2) ≥ 5?",
+          "answer": "Yes — 3(4-2) = 6, and 6 ≥ 5 is true.",
+          "notes": "Inequality check — compare with the correct direction."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "For which equation is x = 2 a solution: (a) 5x - 1 = 9, or (b) 5x - 1 = 11? Explain how you know without solving.",
+          "answer": "(a) — 5(2) - 1 = 9, which matches equation (a); for (b), 9 does not equal 11, so x = 2 is not a solution to (b).",
+          "notes": "Forces evaluating and comparing to two right-hand sides."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write an equation of the form a(x - 1) = b for which x = 4 is a solution. Show your check.",
+          "answer": "Sample: 2(x - 1) = 6, since 2(4 - 1) = 2 times 3 = 6.",
+          "notes": "Reversed direction — build an equation with a known solution."
+        }
       ],
       "activities": [
         {
@@ -232,19 +391,48 @@
           "title": "Solution or Not",
           "time_minutes": 12,
           "grouping": "small_group",
-          "materials": ["Card set: 10 (equation/inequality + candidate value) cards"],
+          "materials": [
+            "Card set: 10 (equation/inequality + candidate value) cards"
+          ],
           "instructions": "1. Each card shows an equation or inequality and a value to test.\n2. Substitute the value and evaluate — parentheses first — on scratch paper.\n3. Sort the card into 'Solution' or 'Not a solution.'\n4. Rule to place a card: you must write the final true/false comparison (like '6 = 15? No').\n5. Debrief: which cards were traps because someone evaluated left to right?",
           "content": {
-            "categories": ["Solution", "Not a solution"],
+            "categories": [
+              "Solution",
+              "Not a solution"
+            ],
             "cards": [
-              { "text": "3(x-1)=12; x=5", "category": "Solution" },
-              { "text": "4(x-3)-x=15; x=6", "category": "Not a solution" },
-              { "text": "5x+8=-2; x=-2", "category": "Solution" },
-              { "text": "2(x+1)-x=9; x=5", "category": "Not a solution" },
-              { "text": "(1/2)x-3>4; x=10", "category": "Not a solution" },
-              { "text": "3(x-2) >= 5; x=4", "category": "Solution" },
-              { "text": "-2x+1=7; x=-3", "category": "Solution" },
-              { "text": "6x-4=20; x=3", "category": "Not a solution" }
+              {
+                "text": "3(x-1)=12; x=5",
+                "category": "Solution"
+              },
+              {
+                "text": "4(x-3)-x=15; x=6",
+                "category": "Not a solution"
+              },
+              {
+                "text": "5x+8=-2; x=-2",
+                "category": "Solution"
+              },
+              {
+                "text": "2(x+1)-x=9; x=5",
+                "category": "Not a solution"
+              },
+              {
+                "text": "(1/2)x-3>4; x=10",
+                "category": "Not a solution"
+              },
+              {
+                "text": "3(x-2) >= 5; x=4",
+                "category": "Solution"
+              },
+              {
+                "text": "-2x+1=7; x=-3",
+                "category": "Solution"
+              },
+              {
+                "text": "6x-4=20; x=3",
+                "category": "Not a solution"
+              }
             ]
           }
         },
@@ -253,7 +441,9 @@
           "title": "Order of Operations Detective",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Jordan's out-of-order check"],
+          "materials": [
+            "Slip with Jordan's out-of-order check"
+          ],
           "instructions": "1. Read Jordan's check of x = 5 in 2(x + 1) - x = 9.\n2. Circle the exact spot where Jordan broke the order of operations.\n3. Redo the substitution correctly, parentheses first.\n4. Explain why a right substitution done in the wrong order can give a wrong verdict.",
           "content": {
             "worked_problem": "Is x = 5 a solution to 2(x + 1) - x = 9? Jordan wrote 2 times 5 + 1 - 5 = 6.",
@@ -263,9 +453,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-003", "why": "Sorting true solutions from traps that only fail because of bad order-of-operations is error analysis at the point of the misconception." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'parenthesis first, THEN multiply' models the evaluation discipline substitution depends on." },
-        { "strategy_id": "strat-math-010", "why": "Choral response on 'what do we do inside the parentheses first?' builds the automatic order-of-operations habit." }
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Sorting true solutions from traps that only fail because of bad order-of-operations is error analysis at the point of the misconception."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'parenthesis first, THEN multiply' models the evaluation discipline substitution depends on."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral response on 'what do we do inside the parentheses first?' builds the automatic order-of-operations habit."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -307,20 +506,48 @@
         "stem": "Is x = 4 a solution to 3(x - 2) + 2x = 14?",
         "answer": "Yes — 3(4 - 2) + 2(4) = 6 + 8 = 14, and 14 = 14.",
         "steps": [
-          { "math": "substitute x = 4: 3(4 - 2) + 2(4)", "annotation": "Replace every x with 4." },
-          { "math": "parentheses first: 4 - 2 = 2", "annotation": "Order of operations — inside the parentheses before multiplying." },
-          { "math": "3(2) + 8 = 6 + 8 = 14", "annotation": "Multiply, then add the terms." },
-          { "math": "14 = 14, true -> x = 4 IS a solution", "annotation": "Both sides match, so the value is a solution." }
+          {
+            "math": "substitute x = 4: 3(4 - 2) + 2(4)",
+            "annotation": "Replace every x with 4."
+          },
+          {
+            "math": "parentheses first: 4 - 2 = 2",
+            "annotation": "Order of operations — inside the parentheses before multiplying."
+          },
+          {
+            "math": "3(2) + 8 = 6 + 8 = 14",
+            "annotation": "Multiply, then add the terms."
+          },
+          {
+            "math": "14 = 14, true -> x = 4 IS a solution",
+            "annotation": "Both sides match, so the value is a solution."
+          }
         ]
       },
       "faded_example": {
         "stem": "Is x = 3 a solution to 5(x - 1) - 2x = 7?",
         "answer": "No — 5(3 - 1) - 2(3) = 10 - 6 = 4, and 4 does not equal 7.",
         "steps": [
-          { "math": "substitute x = 3: 5(3 - 1) - 2(3)", "annotation": "Replace every x with 3.", "given": true },
-          { "math": "parentheses first: 3 - 1 = 2", "annotation": "Do the inside first.", "given": true },
-          { "math": null, "annotation": "Multiply 5(2) and 2(3), then combine.", "given": false },
-          { "math": null, "annotation": "Compare your left side to 7 and state whether 3 is a solution.", "given": false }
+          {
+            "math": "substitute x = 3: 5(3 - 1) - 2(3)",
+            "annotation": "Replace every x with 3.",
+            "given": true
+          },
+          {
+            "math": "parentheses first: 3 - 1 = 2",
+            "annotation": "Do the inside first.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply 5(2) and 2(3), then combine.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Compare your left side to 7 and state whether 3 is a solution.",
+            "given": false
+          }
         ]
       }
     },
@@ -329,8 +556,11 @@
       "name": "Distribute a rational coefficient over a parenthesis",
       "column": "on_grade",
       "parent_standard": "8.AF.1",
-      "prerequisite_skill": { "type": "skill", "skill_id": "8AF1-F2" },
-      "i_do_script": "Distributing means the number outside the parentheses multiplies EVERY term inside — no term gets skipped, and the signs come along for the ride. Watch a tricky one: −4(x − 2). The −4 hits the x: −4 times x is −4x. Then the −4 hits the −2: negative times negative is positive, so −4 times −2 is +8. The result is −4x + 8. The two places students slip are forgetting the second term and losing a sign — so I say each product out loud with its sign.",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8AF1-F2"
+      },
+      "i_do_script": "Distribution is an area box before it's an arrow rule. 4(x + 2) is a box 4 tall whose width splits into x and 2: the box's area is 4 of EVERY piece of the width -- 4x plus 8 -- because both pieces sit under the same height. Nothing gets skipped, because a box has no gaps. A negative outside works the same way and the signs come along for the ride: -4(x - 2) is the opposite of 4(x - 2) = 4x - 8, so it's -4x + 8 -- the -4 hits the x (-4x) AND the -2 (-4 times -2 = +8). Watch the arrows run the same box on −4(x − 2): the −4 hits the x: −4 times x is −4x. Then the −4 hits the −2: negative times negative is positive, so −4 times −2 is +8. The result is −4x + 8. The two places students slip are forgetting the second term and losing a sign — so I say each product out loud with its sign.",
       "canonical_error": {
         "pattern": "Distributes to the first term only, or drops/mishandles the sign on the second product",
         "example": "For -4(x - 2) the student writes -4x - 8 (keeping the minus) or -4x - 2 (only multiplying the first term)",
@@ -366,26 +596,80 @@
       ],
       "redirect_script": {
         "stop": "Did the outside number reach the SECOND term too?",
-        "prompt": "Draw an arrow from the outside number to each term inside. Say each product with its sign out loud: 'negative four times x, negative four times negative two.' Negative times negative is positive.",
+        "prompt": "Draw the box: outside number is the height, the width splits at each term. Fill in every piece's area -- did any piece of the width end up with no area? Draw an arrow from the outside number to each term inside. Say each product with its sign out loud: 'negative four times x, negative four times negative two.' Negative times negative is positive.",
         "praise": "You multiplied both terms and kept the signs straight — that's clean distribution."
       },
       "vocabulary": [
-        { "term": "Distributive property", "definition": "A rule that says the number outside parentheses multiplies each term inside: a(b + c) = ab + ac." },
-        { "term": "Term", "definition": "A single number or variable piece separated by + or -, like the 2x and the -8 in 2x - 8." }
+        {
+          "term": "Distributive property",
+          "definition": "A rule that says the number outside parentheses multiplies each term inside: a(b + c) = ab + ac."
+        },
+        {
+          "term": "Term",
+          "definition": "A single number or variable piece separated by + or -, like the 2x and the -8 in 2x - 8."
+        }
       ],
-      "next_steps": { "if_pass": "8AF1-S3", "if_fail": "8AF1-F2" },
+      "next_steps": {
+        "if_pass": "8AF1-S3",
+        "if_fail": "8AF1-F2"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '-5(2x - 3).'" },
-        { "kind": "ask", "text": "How many terms are inside? So how many products will we get?" },
-        { "kind": "say", "text": "Two terms, two products. -5 times 2x is -10x. -5 times -3 is +15 — negative times negative is positive. Result: -10x + 15." },
-        { "kind": "watch", "text": "If a student writes -10x - 15, ask 'what is negative times negative?'" },
-        { "kind": "ask", "text": "Your turn: (1/3)(9x - 6). Multiply both terms." }
+        {
+          "kind": "show",
+          "text": "Draw the box for 4(x + 2): height 4, width split into a piece labeled x and a piece labeled 2. Write the area of each piece inside it."
+        },
+        {
+          "kind": "ask",
+          "text": "Why does the 4 have to multiply BOTH pieces of the width? Could a box have area over the x-part but none over the 2-part?"
+        },
+        {
+          "kind": "say",
+          "text": "The box has no gaps -- 4(x + 2) = 4x + 8, every piece of width under the same height. For -5(2x - 3), the same box runs on signs: -5 hits the 2x AND the -3, giving -10x + 15."
+        },
+        {
+          "kind": "show",
+          "text": "Write '-5(2x - 3).'"
+        },
+        {
+          "kind": "ask",
+          "text": "How many terms are inside? So how many products will we get?"
+        },
+        {
+          "kind": "say",
+          "text": "Two terms, two products. -5 times 2x is -10x. -5 times -3 is +15 — negative times negative is positive. Result: -10x + 15."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes -10x - 15, ask 'what is negative times negative?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: (1/3)(9x - 6). Multiply both terms."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Distribute: 2(x + 4).", "answer": "2x + 8" },
-        { "difficulty": "warm_up", "stem": "How many terms does the outside number have to multiply in 5(3x - 2)?", "answer": "Both terms (two products): 15x - 10." },
-        { "difficulty": "core", "stem": "Distribute: -3(x - 5).", "answer": "-3x + 15", "notes": "Negative times negative on the second term." },
-        { "difficulty": "core", "stem": "Distribute: (2/3)(9x + 6).", "answer": "6x + 4", "notes": "Fractional coefficient over both terms." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Distribute: 2(x + 4).",
+          "answer": "2x + 8"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "How many terms does the outside number have to multiply in 5(3x - 2)?",
+          "answer": "Both terms (two products): 15x - 10."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Distribute: -3(x - 5).",
+          "answer": "-3x + 15",
+          "notes": "Negative times negative on the second term."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Distribute: (2/3)(9x + 6).",
+          "answer": "6x + 4",
+          "notes": "Fractional coefficient over both terms."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -398,28 +682,76 @@
           "answer": "The second product is wrong: -2 times -6 is +12, not -12. Negative times negative is positive. The correct answer is -8x + 12.",
           "notes": "Canonical error: sign slip on the negative-times-negative product."
         },
-        { "difficulty": "core", "stem": "Distribute: -(5x + 2).", "answer": "-5x - 2", "notes": "Leading minus = -1 times each term." },
-        { "difficulty": "stretch", "stem": "Distribute and simplify: 2(3x - 1) - 4(x + 2).", "answer": "6x - 2 - 4x - 8 = 2x - 10", "notes": "Two distributions plus combining — the exact structure of the solving step ahead." },
-        { "difficulty": "stretch", "stem": "Fill in the blank: -3(2x ___ ) = -6x + 9. What term is missing?", "answer": "-3 (since -3 times -3 = 9). The parenthesis is (2x - 3).", "notes": "Reversed direction — recover the inside term from the expanded form." }
+        {
+          "difficulty": "core",
+          "stem": "Distribute: -(5x + 2).",
+          "answer": "-5x - 2",
+          "notes": "Leading minus = -1 times each term."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Distribute and simplify: 2(3x - 1) - 4(x + 2).",
+          "answer": "6x - 2 - 4x - 8 = 2x - 10",
+          "notes": "Two distributions plus combining — the exact structure of the solving step ahead."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Fill in the blank: -3(2x ___ ) = -6x + 9. What term is missing?",
+          "answer": "-3 (since -3 times -3 = 9). The parenthesis is (2x - 3).",
+          "notes": "Reversed direction — recover the inside term from the expanded form."
+        }
       ],
       "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build the Box",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper (or the grid-paper printable)"
+          ],
+          "instructions": "1. Pairs draw the box for 3(x + 2) on grid paper: 3 rows tall, width split into an x-strip and a 2-strip. Fill each region's area.\n2. Repeat for 5(2x + 3). Check: does every piece of the width carry area?\n3. Now -5(2x - 3): first build 5(2x - 3) = 10x - 15, then take the OPPOSITE of the whole box: -10x + 15.\n4. Debrief: the classic error drops the second term (writes -10x - 3 or -10x - 15). Where does the box make that impossible?"
+        },
         {
           "type": "matching",
           "title": "Expand and Match",
           "time_minutes": 10,
           "grouping": "pairs",
-          "materials": ["Card set: 8 p(ax + q) cards and 10 expanded-form cards (two sign-trap decoys)"],
+          "materials": [
+            "Card set: 8 p(ax + q) cards and 10 expanded-form cards (two sign-trap decoys)"
+          ],
           "instructions": "1. Lay out the folded-form cards and the expanded-form cards.\n2. Match each p(ax + q) to its correct expansion.\n3. Two expanded cards are decoys with a flipped sign on the second term — set them aside and name the error.\n4. To claim a match, say both products out loud with their signs.\n5. Debrief: which sign rule caught the most decoys?",
           "content": {
             "pairs": [
-              { "left": "3(2x + 5)", "right": "6x + 15" },
-              { "left": "-4(x - 2)", "right": "-4x + 8" },
-              { "left": "(1/2)(6x - 8)", "right": "3x - 4" },
-              { "left": "-6((1/2)x + 2)", "right": "-3x - 12" },
-              { "left": "-(3x - 7)", "right": "-3x + 7" },
-              { "left": "5(2x - 1)", "right": "10x - 5" }
+              {
+                "left": "3(2x + 5)",
+                "right": "6x + 15"
+              },
+              {
+                "left": "-4(x - 2)",
+                "right": "-4x + 8"
+              },
+              {
+                "left": "(1/2)(6x - 8)",
+                "right": "3x - 4"
+              },
+              {
+                "left": "-6((1/2)x + 2)",
+                "right": "-3x - 12"
+              },
+              {
+                "left": "-(3x - 7)",
+                "right": "-3x + 7"
+              },
+              {
+                "left": "5(2x - 1)",
+                "right": "10x - 5"
+              }
             ],
-            "decoys": ["-4x - 8", "-3x + 12"]
+            "decoys": [
+              "-4x - 8",
+              "-3x + 12"
+            ]
           }
         },
         {
@@ -427,7 +759,9 @@
           "title": "Sign Slip Hunt",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Riley's distribution"],
+          "materials": [
+            "Slip with Riley's distribution"
+          ],
           "instructions": "1. Read Riley's expansion of -2(4x - 6) ending in -8x - 12.\n2. Check each product separately: is -2 times -6 positive or negative?\n3. Rewrite the correct expansion.\n4. Write the one sign rule that fixes this error forever.",
           "content": {
             "worked_problem": "-2(4x - 6). Riley wrote -8x - 12.",
@@ -437,9 +771,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-007", "why": "An area/box model for distribution makes 'every term inside gets multiplied' concrete before the abstract two-product rule." },
-        { "strategy_id": "strat-math-003", "why": "The sign-slip and skip-the-second-term errors are precise and baitable — ideal for find-and-fix." },
-        { "strategy_id": "strat-math-010", "why": "Choral drill of signed products ('negative times negative is...') builds the automaticity distribution fluency requires." }
+        {
+          "strategy_id": "strat-math-007",
+          "why": "An area/box model for distribution makes 'every term inside gets multiplied' concrete before the abstract two-product rule."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The sign-slip and skip-the-second-term errors are precise and baitable — ideal for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral drill of signed products ('negative times negative is...') builds the automaticity distribution fluency requires."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -481,20 +824,48 @@
         "stem": "Distribute and simplify: -3(2x - 5) + 4x.",
         "answer": "-2x + 15",
         "steps": [
-          { "math": "-3 times 2x = -6x", "annotation": "Multiply the outside number by the first inside term." },
-          { "math": "-3 times -5 = +15", "annotation": "Negative times negative is positive — the classic slip point." },
-          { "math": "-6x + 15 + 4x", "annotation": "Write the full expansion, then look for like terms." },
-          { "math": "-6x + 4x + 15 = -2x + 15", "annotation": "Combine the x-terms; the constant stays." }
+          {
+            "math": "-3 times 2x = -6x",
+            "annotation": "Multiply the outside number by the first inside term."
+          },
+          {
+            "math": "-3 times -5 = +15",
+            "annotation": "Negative times negative is positive — the classic slip point."
+          },
+          {
+            "math": "-6x + 15 + 4x",
+            "annotation": "Write the full expansion, then look for like terms."
+          },
+          {
+            "math": "-6x + 4x + 15 = -2x + 15",
+            "annotation": "Combine the x-terms; the constant stays."
+          }
         ]
       },
       "faded_example": {
         "stem": "Distribute and simplify: -2(3x - 4) + 5x.",
         "answer": "-x + 8",
         "steps": [
-          { "math": "-2 times 3x = -6x", "annotation": "First product.", "given": true },
-          { "math": "-2 times -4 = +8", "annotation": "Negative times negative is positive.", "given": true },
-          { "math": null, "annotation": "Write the expansion -6x + 8, then add the 5x.", "given": false },
-          { "math": null, "annotation": "Combine the x-terms to finish.", "given": false }
+          {
+            "math": "-2 times 3x = -6x",
+            "annotation": "First product.",
+            "given": true
+          },
+          {
+            "math": "-2 times -4 = +8",
+            "annotation": "Negative times negative is positive.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the expansion -6x + 8, then add the 5x.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Combine the x-terms to finish.",
+            "given": false
+          }
         ]
       }
     },
@@ -503,9 +874,14 @@
       "name": "Solve a multi-step equation with distribution and like terms",
       "column": "on_grade",
       "parent_standard": "8.AF.1",
-      "engine_stems": [2],
-      "prerequisite_skill": { "type": "skill", "skill_id": "8AF1-S2" },
-      "i_do_script": "Now I put the pieces together. When an equation has parentheses and repeated variables, I clean up ONE side first, then solve like normal. Watch: 3(x + 2) + 4x = 27. First distribute: 3x + 6 + 4x. Then combine like terms: 7x + 6 = 27. Now it's a plain two-step equation: subtract 6 to get 7x = 21, divide by 7 to get x = 3. The order is always: distribute, combine, then undo with inverse operations. And I finish by checking x = 3 back in the original.",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8AF1-S2"
+      },
+      "i_do_script": "Each cleanup move keeps its picture: 3(x + 2) is three copies of the WHOLE width -- the box from the previous skill -- which is why the parentheses must be cleared before anything can combine; and combining is adding like units, x-boxes with x-boxes. Now I put the pieces together. When an equation has parentheses and repeated variables, I clean up ONE side first, then solve like normal. Watch: 3(x + 2) + 4x = 27. First distribute: 3x + 6 + 4x. Then combine like terms: 7x + 6 = 27. Now it's a plain two-step equation: subtract 6 to get 7x = 21, divide by 7 to get x = 3. The order is always: distribute, combine, then undo with inverse operations. And I finish by checking x = 3 back in the original.",
       "canonical_error": {
         "pattern": "Distributes a negative incorrectly or fails to combine like terms before solving, corrupting the rest of the solution",
         "example": "For 2(x - 4) - 7(x + 4) = -1 the student writes 2x - 8 - 7x + 28 (making -7 times +4 positive), gets -5x + 20 = -1, and solves to the wrong value",
@@ -540,22 +916,68 @@
         "praise": "You cleaned up the side completely before solving — distribute, combine, then undo."
       },
       "vocabulary": [
-        { "term": "Multi-step equation", "definition": "An equation that needs several moves — distributing, combining, and inverse operations — to solve." },
-        { "term": "Collect like terms", "definition": "Combine the x-terms into one and the constants into one on the same side." }
+        {
+          "term": "Multi-step equation",
+          "definition": "An equation that needs several moves — distributing, combining, and inverse operations — to solve."
+        },
+        {
+          "term": "Collect like terms",
+          "definition": "Combine the x-terms into one and the constants into one on the same side."
+        }
       ],
-      "next_steps": { "if_pass": "8AF1-S4", "if_fail": "8AF1-S2" },
+      "next_steps": {
+        "if_pass": "8AF1-S4",
+        "if_fail": "8AF1-S2"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '4(x + 1) + 2(x - 3) = 16.'" },
-        { "kind": "ask", "text": "What has to happen before we can undo anything?" },
-        { "kind": "say", "text": "Distribute both: 4x + 4 + 2x - 6. Combine: 6x - 2 = 16. Now solve: add 2 to get 6x = 18, divide by 6 to get x = 3." },
-        { "kind": "watch", "text": "If a student jumps to dividing before combining, ask 'how many x-terms do you have right now? Can you divide yet?'" },
-        { "kind": "ask", "text": "Check it: put x = 3 back into the original. Does it give 16? Your turn: 3(x - 1) + 5x = 21." }
+        {
+          "kind": "ask",
+          "text": "In 4(x + 1) + 2(x - 3) = 16, why can't the x's combine yet? What are the 4 and the 2 each copying?"
+        },
+        {
+          "kind": "show",
+          "text": "Write '4(x + 1) + 2(x - 3) = 16.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What has to happen before we can undo anything?"
+        },
+        {
+          "kind": "say",
+          "text": "Distribute both: 4x + 4 + 2x - 6. Combine: 6x - 2 = 16. Now solve: add 2 to get 6x = 18, divide by 6 to get x = 3."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student jumps to dividing before combining, ask 'how many x-terms do you have right now? Can you divide yet?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Check it: put x = 3 back into the original. Does it give 16? Your turn: 3(x - 1) + 5x = 21."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Solve 2x + 3x = 20.", "answer": "x = 4" },
-        { "difficulty": "warm_up", "stem": "In 3(x + 2) + 4x = 27, what are the first two clean-up moves before solving?", "answer": "Distribute the 3, then combine 3x and 4x." },
-        { "difficulty": "core", "stem": "Solve 3(x + 2) + 4x = 27.", "answer": "x = 3 (7x + 6 = 27)", "notes": "Distribute + combine + two-step." },
-        { "difficulty": "core", "stem": "Solve -6((1/2)x + 2) = 15.", "answer": "x = -9 (-3x - 12 = 15)", "notes": "Fractional inside term with a negative outside." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Solve 2x + 3x = 20.",
+          "answer": "x = 4"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "In 3(x + 2) + 4x = 27, what are the first two clean-up moves before solving?",
+          "answer": "Distribute the 3, then combine 3x and 4x."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve 3(x + 2) + 4x = 27.",
+          "answer": "x = 3 (7x + 6 = 27)",
+          "notes": "Distribute + combine + two-step."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve -6((1/2)x + 2) = 15.",
+          "answer": "x = -9 (-3x - 12 = 15)",
+          "notes": "Fractional inside term with a negative outside."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -567,9 +989,24 @@
           "answer": "Casey made -7 times +4 positive. It should be -28: 2x - 8 - 7x - 28 = -5x - 36 = -1, so -5x = 35 and x = -7.",
           "notes": "Canonical error: sign slip in the distribution corrupts the whole solve."
         },
-        { "difficulty": "core", "stem": "Solve 5x - 2(x - 3) = 18.", "answer": "x = 4 (3x + 6 = 18)", "notes": "Subtracting a distributed parenthesis." },
-        { "difficulty": "stretch", "stem": "Solve (1/2)(4x - 6) + x = 9.", "answer": "2x - 3 + x = 3x - 3 = 9, so 3x = 12, x = 4.", "notes": "Fractional distribution plus a loose x-term." },
-        { "difficulty": "stretch", "stem": "Solve 4(2x - 1) - 3(x + 5) = 0. Then check your answer by substitution.", "answer": "8x - 4 - 3x - 15 = 5x - 19 = 0, so 5x = 19, x = 19/5 = 3.8. Check: 4(2(3.8)-1) - 3(3.8+5) = 4(6.6) - 3(8.8) = 26.4 - 26.4 = 0.", "notes": "Non-integer solution with a required check — models the fluency + verification loop." }
+        {
+          "difficulty": "core",
+          "stem": "Solve 5x - 2(x - 3) = 18.",
+          "answer": "x = 4 (3x + 6 = 18)",
+          "notes": "Subtracting a distributed parenthesis."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Solve (1/2)(4x - 6) + x = 9.",
+          "answer": "2x - 3 + x = 3x - 3 = 9, so 3x = 12, x = 4.",
+          "notes": "Fractional distribution plus a loose x-term."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Solve 4(2x - 1) - 3(x + 5) = 0. Then check your answer by substitution.",
+          "answer": "8x - 4 - 3x - 15 = 5x - 19 = 0, so 5x = 19, x = 19/5 = 3.8. Check: 4(2(3.8)-1) - 3(3.8+5) = 4(6.6) - 3(8.8) = 26.4 - 26.4 = 0.",
+          "notes": "Non-integer solution with a required check — models the fluency + verification loop."
+        }
       ],
       "activities": [
         {
@@ -577,7 +1014,10 @@
           "title": "Clean Up, Then Solve",
           "time_minutes": 14,
           "grouping": "pairs",
-          "materials": ["Equation cards", "Three-column mat: 'Distribute', 'Combine', 'Solve'"],
+          "materials": [
+            "Equation cards",
+            "Three-column mat: 'Distribute', 'Combine', 'Solve'"
+          ],
           "instructions": "1. Draw an equation card with parentheses (like 3(x + 2) + 4x = 27).\n2. Work it across the mat, one column at a time — you may not move to 'Solve' until 'Combine' shows a single x-term and a single number.\n3. Write the solution, then check it by substituting into the original card.\n4. Swap with another pair and verify each other's checks.\n5. Debrief: what happens later if the 'Distribute' column has a sign slip?"
         },
         {
@@ -585,7 +1025,9 @@
           "title": "Trace the Slip",
           "time_minutes": 8,
           "grouping": "small_group",
-          "materials": ["Slip with Casey's corrupted solve"],
+          "materials": [
+            "Slip with Casey's corrupted solve"
+          ],
           "instructions": "1. Read Casey's full solution to 2(x - 4) - 7(x + 4) = -1.\n2. Find the FIRST line where an error appears — don't just look at the final answer.\n3. Redo the problem from that line forward.\n4. Discuss: why does one early sign slip make every later step wrong even if the algebra is perfect?",
           "content": {
             "worked_problem": "2(x - 4) - 7(x + 4) = -1. Casey wrote 2x - 8 - 7x + 28 = -1 and got x = 21/5.",
@@ -595,9 +1037,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-006", "why": "The distribute-combine-solve sequence is a natural gradual-release script, adding one clean-up move at a time before independent solving." },
-        { "strategy_id": "strat-math-009", "why": "Pairing a correct solve against Casey's sign-slip version makes the 'clean up exactly before solving' habit explicit." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'distribute, then combine, then undo' models the fixed procedure fluency requires." }
+        {
+          "strategy_id": "strat-math-006",
+          "why": "The distribute-combine-solve sequence is a natural gradual-release script, adding one clean-up move at a time before independent solving."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Pairing a correct solve against Casey's sign-slip version makes the 'clean up exactly before solving' habit explicit."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'distribute, then combine, then undo' models the fixed procedure fluency requires."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -639,20 +1090,48 @@
         "stem": "Solve 4(x - 1) + 3(x + 2) = 23.",
         "answer": "x = 3",
         "steps": [
-          { "math": "distribute: 4x - 4 + 3x + 6", "annotation": "Multiply each parenthesis out; watch every sign." },
-          { "math": "combine like terms: 7x + 2 = 23", "annotation": "4x + 3x = 7x; -4 + 6 = 2. One x-term, one number." },
-          { "math": "subtract 2: 7x = 21", "annotation": "Clear the constant first." },
-          { "math": "divide by 7: x = 3", "annotation": "Check: 4(2) + 3(5) = 8 + 15 = 23. True." }
+          {
+            "math": "distribute: 4x - 4 + 3x + 6",
+            "annotation": "Multiply each parenthesis out; watch every sign."
+          },
+          {
+            "math": "combine like terms: 7x + 2 = 23",
+            "annotation": "4x + 3x = 7x; -4 + 6 = 2. One x-term, one number."
+          },
+          {
+            "math": "subtract 2: 7x = 21",
+            "annotation": "Clear the constant first."
+          },
+          {
+            "math": "divide by 7: x = 3",
+            "annotation": "Check: 4(2) + 3(5) = 8 + 15 = 23. True."
+          }
         ]
       },
       "faded_example": {
         "stem": "Solve 5(x + 1) - 2(x - 4) = 25.",
         "answer": "x = 4",
         "steps": [
-          { "math": "distribute: 5x + 5 - 2x + 8", "annotation": "-2 times -4 = +8; keep signs exact.", "given": true },
-          { "math": "combine: 3x + 13 = 25", "annotation": "5x - 2x = 3x; 5 + 8 = 13.", "given": true },
-          { "math": null, "annotation": "Clear the constant 13 from both sides.", "given": false },
-          { "math": null, "annotation": "Divide to find x, then check in the original.", "given": false }
+          {
+            "math": "distribute: 5x + 5 - 2x + 8",
+            "annotation": "-2 times -4 = +8; keep signs exact.",
+            "given": true
+          },
+          {
+            "math": "combine: 3x + 13 = 25",
+            "annotation": "5x - 2x = 3x; 5 + 8 = 13.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Clear the constant 13 from both sides.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Divide to find x, then check in the original.",
+            "given": false
+          }
         ]
       }
     },
@@ -661,9 +1140,14 @@
       "name": "Solve a linear inequality, reversing the sign for a negative",
       "column": "on_grade",
       "parent_standard": "8.AF.1",
-      "engine_stems": [3],
-      "prerequisite_skill": { "type": "skill", "skill_id": "8AF1-S3" },
-      "i_do_script": "Solving an inequality uses the exact same moves as an equation, with one new rule: if you multiply or divide BOTH sides by a negative number, you flip the inequality sign. Watch: −3x + 5 ≤ 20. Subtract 5: −3x ≤ 15. Now divide by −3 — that's the negative move, so the ≤ flips to ≥: x ≥ −5. If I don't flip, I'd get the wrong half of the number line. Adding or subtracting never flips; only multiplying or dividing by a negative does.",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8AF1-S3"
+      },
+      "i_do_script": "Try it with plain numbers first: 2 < 6 is true. Divide both sides by -2 and you get -1 and -3 -- but -1 < -3 is FALSE, because dividing by a negative drags both numbers to the other side of zero and reverses their order. The sign has to flip just to keep a true statement true. Solving an inequality uses the exact same moves as an equation, with one new rule: if you multiply or divide BOTH sides by a negative number, you flip the inequality sign. Watch: −3x + 5 ≤ 20. Subtract 5: −3x ≤ 15. Now divide by −3 — that's the negative move, so the ≤ flips to ≥: x ≥ −5. If I don't flip, I'd get the wrong half of the number line. Adding or subtracting never flips; only multiplying or dividing by a negative does.",
       "canonical_error": {
         "pattern": "Fails to reverse the inequality sign when multiplying or dividing by a negative (or flips it when only adding/subtracting)",
         "example": "For -3x ≤ 15 the student divides by -3 and writes x ≤ -5 instead of x ≥ -5",
@@ -694,27 +1178,84 @@
       ],
       "redirect_script": {
         "stop": "Did you just multiply or divide by a NEGATIVE?",
-        "prompt": "If the number you divided by is negative, flip the inequality sign — greater becomes less, less becomes greater. Circle the negative divisor as a reminder. Adding or subtracting never flips.",
+        "prompt": "Check it with plain numbers first: 2 < 6 is true, but divide both sides by -2 -- is -1 < -3 still true? If the number you divided by is negative, flip the inequality sign — greater becomes less, less becomes greater. Circle the negative divisor as a reminder. Adding or subtracting never flips.",
         "praise": "You flipped the sign for the negative divide — that's the one rule inequalities add."
       },
       "vocabulary": [
-        { "term": "Linear inequality", "definition": "A statement like 2x - 8 > 10 comparing two expressions with <, >, ≤, or ≥." },
-        { "term": "Solution set", "definition": "All the values that make the inequality true, like x ≥ -5." },
-        { "term": "Reverse the inequality", "definition": "Flip < to > (or ≤ to ≥) when you multiply or divide both sides by a negative." }
+        {
+          "term": "Linear inequality",
+          "definition": "A statement like 2x - 8 > 10 comparing two expressions with <, >, ≤, or ≥."
+        },
+        {
+          "term": "Solution set",
+          "definition": "All the values that make the inequality true, like x ≥ -5."
+        },
+        {
+          "term": "Reverse the inequality",
+          "definition": "Flip < to > (or ≤ to ≥) when you multiply or divide both sides by a negative."
+        }
       ],
-      "next_steps": { "if_pass": "8AF1-S5", "if_fail": "8AF1-S3" },
+      "next_steps": {
+        "if_pass": "8AF1-S5",
+        "if_fail": "8AF1-S3"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '-2x + 1 > 9.'" },
-        { "kind": "ask", "text": "Solve it like an equation first — what do you do to clear the +1?" },
-        { "kind": "say", "text": "Subtract 1: -2x > 8. Now divide by -2. Because -2 is negative, the > flips to <: x < -4." },
-        { "kind": "watch", "text": "If a student writes x > -4, stop: 'you divided by a negative — what has to happen to the sign?'" },
-        { "kind": "ask", "text": "Test it: is x = -5 a solution to the original? Your turn: -4x - 3 <= 5." }
+        {
+          "kind": "show",
+          "text": "Write the true statement 2 < 6. Now divide BOTH sides by -2 and write what comes out: -1 and -3."
+        },
+        {
+          "kind": "ask",
+          "text": "Is -1 < -3 still true? Which of the two is farther LEFT on the number line?"
+        },
+        {
+          "kind": "say",
+          "text": "-3 is farther left, so -1 is the bigger one: the truth is -1 > -3. Dividing by the negative reversed the order of the numbers, so the sign must reverse too. Keep that flip in mind -- our problem divides by -2 as well."
+        },
+        {
+          "kind": "show",
+          "text": "Write '-2x + 1 > 9.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Solve it like an equation first — what do you do to clear the +1?"
+        },
+        {
+          "kind": "say",
+          "text": "Subtract 1: -2x > 8. Now divide by -2. Because -2 is negative, the > flips to <: x < -4."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes x > -4, stop: 'you divided by a negative — what has to happen to the sign?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Test it: is x = -5 a solution to the original? Your turn: -4x - 3 <= 5."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Solve 2x < 10.", "answer": "x < 5 (no flip — divided by a positive)" },
-        { "difficulty": "warm_up", "stem": "You divide both sides of an inequality by -4. What must happen to the sign?", "answer": "It flips (e.g., < becomes >)." },
-        { "difficulty": "core", "stem": "Solve -5x >= 20.", "answer": "x <= -4 (divide by -5, flip)", "notes": "Pure sign-flip case." },
-        { "difficulty": "core", "stem": "Solve 3(x - 2) < 9.", "answer": "x < 5 (3x - 6 < 9, 3x < 15). No flip — divide by +3.", "notes": "Distribution with no flip — guards against over-flipping." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Solve 2x < 10.",
+          "answer": "x < 5 (no flip — divided by a positive)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "You divide both sides of an inequality by -4. What must happen to the sign?",
+          "answer": "It flips (e.g., < becomes >)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve -5x >= 20.",
+          "answer": "x <= -4 (divide by -5, flip)",
+          "notes": "Pure sign-flip case."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve 3(x - 2) < 9.",
+          "answer": "x < 5 (3x - 6 < 9, 3x < 15). No flip — divide by +3.",
+          "notes": "Distribution with no flip — guards against over-flipping."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -726,9 +1267,24 @@
           "answer": "Sam divided by -2 without flipping. Dividing by a negative reverses the sign: x < -3. Sam's -2x > 6 step is correct; only the final direction is wrong.",
           "notes": "Canonical error: no flip on a negative divide."
         },
-        { "difficulty": "core", "stem": "Solve (2/3)x + 1 < 3/2.", "answer": "x < 3/4 ((2/3)x < 1/2, x < 3/4). No flip.", "notes": "Fractional coefficient, positive divide." },
-        { "difficulty": "stretch", "stem": "Solve -3(x - 1) >= 12 and describe the solution in words.", "answer": "-3x + 3 >= 12, -3x >= 9, divide by -3 and flip: x <= -3. 'All numbers -3 or less.'", "notes": "Distribute + negative divide + interpret." },
-        { "difficulty": "stretch", "stem": "A classmate says '5 - 2x > 1 solves to x > 2.' Without redoing it fully, argue why the direction must be wrong.", "answer": "Isolating gives -2x > -4; dividing by -2 flips to x < 2. Testing x = 0: 5 - 0 = 5 > 1 is true, and 0 < 2, so the solution must include 0 — meaning x < 2, not x > 2.", "notes": "Justify with a test point that the flip is required." }
+        {
+          "difficulty": "core",
+          "stem": "Solve (2/3)x + 1 < 3/2.",
+          "answer": "x < 3/4 ((2/3)x < 1/2, x < 3/4). No flip.",
+          "notes": "Fractional coefficient, positive divide."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Solve -3(x - 1) >= 12 and describe the solution in words.",
+          "answer": "-3x + 3 >= 12, -3x >= 9, divide by -3 and flip: x <= -3. 'All numbers -3 or less.'",
+          "notes": "Distribute + negative divide + interpret."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A classmate says '5 - 2x > 1 solves to x > 2.' Without redoing it fully, argue why the direction must be wrong.",
+          "answer": "Isolating gives -2x > -4; dividing by -2 flips to x < 2. Testing x = 0: 5 - 0 = 5 > 1 is true, and 0 < 2, so the solution must include 0 — meaning x < 2, not x > 2.",
+          "notes": "Justify with a test point that the flip is required."
+        }
       ],
       "activities": [
         {
@@ -736,19 +1292,48 @@
           "title": "Flip or No Flip",
           "time_minutes": 10,
           "grouping": "small_group",
-          "materials": ["Card set of 12 inequality solving steps (each ends in a divide or multiply move)"],
+          "materials": [
+            "Card set of 12 inequality solving steps (each ends in a divide or multiply move)"
+          ],
           "instructions": "1. Each card shows the last move of an inequality solve (like 'divide both sides by -3').\n2. Sort each card into 'Flip the sign' or 'Keep the sign.'\n3. Rule: only multiplying or dividing by a NEGATIVE flips. Adding, subtracting, and positive multiply/divide keep it.\n4. For each 'flip' card, write the resulting inequality with the sign reversed.\n5. Debrief: why does dividing by a negative reverse the number line?",
           "content": {
-            "categories": ["Flip the sign", "Keep the sign"],
+            "categories": [
+              "Flip the sign",
+              "Keep the sign"
+            ],
             "cards": [
-              { "text": "divide both sides by -3", "category": "Flip the sign" },
-              { "text": "divide both sides by 2", "category": "Keep the sign" },
-              { "text": "subtract 5 from both sides", "category": "Keep the sign" },
-              { "text": "multiply both sides by -1", "category": "Flip the sign" },
-              { "text": "add 4 to both sides", "category": "Keep the sign" },
-              { "text": "divide both sides by -1/2", "category": "Flip the sign" },
-              { "text": "multiply both sides by 3", "category": "Keep the sign" },
-              { "text": "divide both sides by -10", "category": "Flip the sign" }
+              {
+                "text": "divide both sides by -3",
+                "category": "Flip the sign"
+              },
+              {
+                "text": "divide both sides by 2",
+                "category": "Keep the sign"
+              },
+              {
+                "text": "subtract 5 from both sides",
+                "category": "Keep the sign"
+              },
+              {
+                "text": "multiply both sides by -1",
+                "category": "Flip the sign"
+              },
+              {
+                "text": "add 4 to both sides",
+                "category": "Keep the sign"
+              },
+              {
+                "text": "divide both sides by -1/2",
+                "category": "Flip the sign"
+              },
+              {
+                "text": "multiply both sides by 3",
+                "category": "Keep the sign"
+              },
+              {
+                "text": "divide both sides by -10",
+                "category": "Flip the sign"
+              }
             ]
           }
         },
@@ -757,7 +1342,9 @@
           "title": "Test-Point Trap Check",
           "time_minutes": 8,
           "grouping": "pairs",
-          "materials": ["Slip with Sam's un-flipped inequality"],
+          "materials": [
+            "Slip with Sam's un-flipped inequality"
+          ],
           "instructions": "1. Read Sam's solution x > -3 for -2x + 4 > 10.\n2. Pick a test value from Sam's answer (like x = 0) and check it in the original.\n3. Since it fails, correct the direction of the inequality.\n4. Write the rule and one test value you could always use to catch a missing flip.",
           "content": {
             "worked_problem": "-2x + 4 > 10. Sam wrote x > -3.",
@@ -767,9 +1354,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-003", "why": "The missing-flip error is the single most common inequality mistake; find-and-fix with a test point targets it directly." },
-        { "strategy_id": "strat-math-010", "why": "Choral response on 'divide by a negative means...' hard-wires the flip rule that has no equation analog." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'I divided by a negative, so I flip' models the self-check that prevents the error." }
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The missing-flip error is the single most common inequality mistake; find-and-fix with a test point targets it directly."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral response on 'divide by a negative means...' hard-wires the flip rule that has no equation analog."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'I divided by a negative, so I flip' models the self-check that prevents the error."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -811,20 +1407,48 @@
         "stem": "Solve -4x + 7 < 19.",
         "answer": "x > -3",
         "steps": [
-          { "math": "subtract 7: -4x < 12", "annotation": "Subtracting never flips the sign." },
-          { "math": "divide by -4", "annotation": "This is the negative move — the sign will reverse." },
-          { "math": "x > -3", "annotation": "< flips to > because we divided by a negative." },
-          { "math": "check x = 0: -4(0) + 7 = 7 < 19, true", "annotation": "A test point from the solution confirms the direction." }
+          {
+            "math": "subtract 7: -4x < 12",
+            "annotation": "Subtracting never flips the sign."
+          },
+          {
+            "math": "divide by -4",
+            "annotation": "This is the negative move — the sign will reverse."
+          },
+          {
+            "math": "x > -3",
+            "annotation": "< flips to > because we divided by a negative."
+          },
+          {
+            "math": "check x = 0: -4(0) + 7 = 7 < 19, true",
+            "annotation": "A test point from the solution confirms the direction."
+          }
         ]
       },
       "faded_example": {
         "stem": "Solve -2x - 5 >= 1.",
         "answer": "x <= -3",
         "steps": [
-          { "math": "add 5: -2x >= 6", "annotation": "Adding does not flip the sign.", "given": true },
-          { "math": "divide by -2 (negative -> flip)", "annotation": "The >= will reverse to <=.", "given": true },
-          { "math": null, "annotation": "Write the solution with the flipped sign.", "given": false },
-          { "math": null, "annotation": "Test a value from your solution in the original to confirm.", "given": false }
+          {
+            "math": "add 5: -2x >= 6",
+            "annotation": "Adding does not flip the sign.",
+            "given": true
+          },
+          {
+            "math": "divide by -2 (negative -> flip)",
+            "annotation": "The >= will reverse to <=.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the solution with the flipped sign.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Test a value from your solution in the original to confirm.",
+            "given": false
+          }
         ]
       }
     },
@@ -833,8 +1457,13 @@
       "name": "Write and solve a one-variable equation or inequality for a real-world problem",
       "column": "on_grade",
       "parent_standard": "8.AF.1",
-      "engine_stems": [4],
-      "prerequisite_skill": { "type": "skill", "skill_id": "8AF1-S3" },
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8AF1-S3"
+      },
       "i_do_script": "The hardest part of a word problem is turning the words into an equation — the solving is the easy part once it's built. My routine: name the unknown with a variable, write each quantity in terms of it, then set the total equal to what the problem says. Watch: a gym's enrollment fee is 4 times the monthly fee x, with $15 off, and a new member pays enrollment plus 5 months for $228. Enrollment is 4x − 15; five months is 5x. Total: 4x − 15 + 5x = 228, which is 9x − 15 = 228. Solve: 9x = 243, x = $27 a month. Every number in the story has a job in the equation.",
       "canonical_error": {
         "pattern": "Attaches the coefficient to the wrong quantity when translating, or misplaces which amount is multiplied by the variable",
@@ -870,23 +1499,68 @@
         "praise": "You mapped each number to its real job — the per-item rate on the variable, the fixed part alone."
       },
       "vocabulary": [
-        { "term": "Variable", "definition": "A letter standing for the unknown quantity you are solving for." },
-        { "term": "Represent", "definition": "Turn the words of a situation into an equation or inequality." },
-        { "term": "Fixed amount", "definition": "A one-time value (a fee, a base charge) that is added on its own, not multiplied by the variable." }
+        {
+          "term": "Variable",
+          "definition": "A letter standing for the unknown quantity you are solving for."
+        },
+        {
+          "term": "Represent",
+          "definition": "Turn the words of a situation into an equation or inequality."
+        },
+        {
+          "term": "Fixed amount",
+          "definition": "A one-time value (a fee, a base charge) that is added on its own, not multiplied by the variable."
+        }
       ],
-      "next_steps": { "if_pass": "8AF1-S6", "if_fail": "8AF1-S3" },
+      "next_steps": {
+        "if_pass": "8AF1-S6",
+        "if_fail": "8AF1-S3"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'A plumber charges a $40 visit fee plus $25 per hour. A job cost $190. How many hours?'" },
-        { "kind": "ask", "text": "What are we solving for? Call it x. Which number is a one-time fee, and which is per hour?" },
-        { "kind": "say", "text": "The $40 is fixed; the $25 multiplies the hours x. So 40 + 25x = 190. Solve: 25x = 150, x = 6 hours." },
-        { "kind": "watch", "text": "If a student writes 40x + 25 = 190, ask 'does the $40 happen once, or every hour?'" },
-        { "kind": "ask", "text": "Your turn: a fair charges $6 to enter plus $2 per ride; you spend $22. Write and solve for the number of rides." }
+        {
+          "kind": "show",
+          "text": "Write 'A plumber charges a $40 visit fee plus $25 per hour. A job cost $190. How many hours?'"
+        },
+        {
+          "kind": "ask",
+          "text": "What are we solving for? Call it x. Which number is a one-time fee, and which is per hour?"
+        },
+        {
+          "kind": "say",
+          "text": "The $40 is fixed; the $25 multiplies the hours x. So 40 + 25x = 190. Solve: 25x = 150, x = 6 hours."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 40x + 25 = 190, ask 'does the $40 happen once, or every hour?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a fair charges $6 to enter plus $2 per ride; you spend $22. Write and solve for the number of rides."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Let x be a number. Write 'a $5 fee plus $2 per item, x items' as an expression.", "answer": "5 + 2x" },
-        { "difficulty": "warm_up", "stem": "In '30 + 4x = 50,' which part is the one-time fee?", "answer": "30 (the constant)." },
-        { "difficulty": "core", "stem": "A membership costs a $20 sign-up plus $8 per month. The total paid is $76. Write and solve for the months m.", "answer": "20 + 8m = 76; m = 7 months", "notes": "Fixed fee plus per-unit rate." },
-        { "difficulty": "core", "stem": "A shop sells 4 standard mugs at $0.30 each profit and premium mugs at $0.75 each. To beat $20 profit, write the inequality for premium mugs x.", "answer": "0.3(4) + 0.75x > 20", "notes": "Baits the swap 0.3x + 0.75(4)." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Let x be a number. Write 'a $5 fee plus $2 per item, x items' as an expression.",
+          "answer": "5 + 2x"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "In '30 + 4x = 50,' which part is the one-time fee?",
+          "answer": "30 (the constant)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A membership costs a $20 sign-up plus $8 per month. The total paid is $76. Write and solve for the months m.",
+          "answer": "20 + 8m = 76; m = 7 months",
+          "notes": "Fixed fee plus per-unit rate."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A shop sells 4 standard mugs at $0.30 each profit and premium mugs at $0.75 each. To beat $20 profit, write the inequality for premium mugs x.",
+          "answer": "0.3(4) + 0.75x > 20",
+          "notes": "Baits the swap 0.3x + 0.75(4)."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -898,9 +1572,24 @@
           "answer": "Nia attached the variable to the fixed fee. The $5 is one-time and the $3 is per ticket: 3x + 5 = 26, so 3x = 21 and x = 7 tickets.",
           "notes": "Canonical error: coefficient on the wrong quantity."
         },
-        { "difficulty": "core", "stem": "A rectangle's length is 3 more than twice the width w; the perimeter is 36. Write and solve for w.", "answer": "2w + 2(2w + 3) = 36; 6w + 6 = 36; w = 5", "notes": "Translation that requires distributing and combining." },
-        { "difficulty": "stretch", "stem": "A phone plan is $15 plus $0.05 per text. You want to spend no more than $30. Write and solve an inequality for texts t, and state the most texts you can send.", "answer": "15 + 0.05t <= 30; 0.05t <= 15; t <= 300. At most 300 texts.", "notes": "Inequality model with a decimal rate and interpretation." },
-        { "difficulty": "stretch", "stem": "Write your own word problem that leads to the equation 9x - 15 = 228, then solve it.", "answer": "Sample: 'Enrollment is 4 times the $x monthly fee minus a $15 discount, plus 5 months, totals $228.' Solve: 9x = 243, x = 27.", "notes": "Reversed direction — build a story to fit an equation." }
+        {
+          "difficulty": "core",
+          "stem": "A rectangle's length is 3 more than twice the width w; the perimeter is 36. Write and solve for w.",
+          "answer": "2w + 2(2w + 3) = 36; 6w + 6 = 36; w = 5",
+          "notes": "Translation that requires distributing and combining."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A phone plan is $15 plus $0.05 per text. You want to spend no more than $30. Write and solve an inequality for texts t, and state the most texts you can send.",
+          "answer": "15 + 0.05t <= 30; 0.05t <= 15; t <= 300. At most 300 texts.",
+          "notes": "Inequality model with a decimal rate and interpretation."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write your own word problem that leads to the equation 9x - 15 = 228, then solve it.",
+          "answer": "Sample: 'Enrollment is 4 times the $x monthly fee minus a $15 discount, plus 5 months, totals $228.' Solve: 9x = 243, x = 27.",
+          "notes": "Reversed direction — build a story to fit an equation."
+        }
       ],
       "activities": [
         {
@@ -908,18 +1597,41 @@
           "title": "Story to Equation",
           "time_minutes": 12,
           "grouping": "pairs",
-          "materials": ["Card set: 6 word problems and 8 equations/inequalities (two swap-the-coefficient decoys)"],
+          "materials": [
+            "Card set: 6 word problems and 8 equations/inequalities (two swap-the-coefficient decoys)"
+          ],
           "instructions": "1. Match each word problem to the equation or inequality that models it.\n2. Two equation cards are decoys where the coefficient is on the wrong quantity — set them aside and explain the mismatch.\n3. To claim a match, name what the variable stands for and what each number does.\n4. Solve two of your matched pairs.\n5. Debrief: how do you decide which number multiplies the variable?",
           "content": {
             "pairs": [
-              { "left": "$5 fee + $3 per ticket, x tickets, total $26", "right": "3x + 5 = 26" },
-              { "left": "$40 visit + $25/hr, x hours, total $190", "right": "40 + 25x = 190" },
-              { "left": "$3 base + $2.50/mile, at most $18, m miles", "right": "3 + 2.5m <= 18" },
-              { "left": "4 mugs at $0.30 + premium at $0.75, over $20, x premium", "right": "0.3(4) + 0.75x > 20" },
-              { "left": "length = 2w + 3, perimeter 36", "right": "2w + 2(2w + 3) = 36" },
-              { "left": "$20 sign-up + $8/month, total $76, m months", "right": "20 + 8m = 76" }
+              {
+                "left": "$5 fee + $3 per ticket, x tickets, total $26",
+                "right": "3x + 5 = 26"
+              },
+              {
+                "left": "$40 visit + $25/hr, x hours, total $190",
+                "right": "40 + 25x = 190"
+              },
+              {
+                "left": "$3 base + $2.50/mile, at most $18, m miles",
+                "right": "3 + 2.5m <= 18"
+              },
+              {
+                "left": "4 mugs at $0.30 + premium at $0.75, over $20, x premium",
+                "right": "0.3(4) + 0.75x > 20"
+              },
+              {
+                "left": "length = 2w + 3, perimeter 36",
+                "right": "2w + 2(2w + 3) = 36"
+              },
+              {
+                "left": "$20 sign-up + $8/month, total $76, m months",
+                "right": "20 + 8m = 76"
+              }
             ],
-            "decoys": ["5x + 3 = 26", "0.3x + 0.75(4) > 20"]
+            "decoys": [
+              "5x + 3 = 26",
+              "0.3x + 0.75(4) > 20"
+            ]
           }
         },
         {
@@ -927,7 +1639,9 @@
           "title": "Whose Job Is That Number?",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Nia's mislabeled equation"],
+          "materials": [
+            "Slip with Nia's mislabeled equation"
+          ],
           "instructions": "1. Read Nia's equation 5x + 3 = 26 for 'a $5 base fee plus $3 per ticket.'\n2. Underline the fixed fee and circle the per-ticket rate in the words.\n3. Rewrite the equation with each number in the right job, then solve.\n4. Write a rule for deciding which number multiplies the variable.",
           "content": {
             "worked_problem": "A $5 base fee plus $3 per ticket (x tickets) totals $26. Nia wrote 5x + 3 = 26.",
@@ -937,9 +1651,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-006", "why": "Define-the-variable, build-the-equation, solve is a gradual-release routine that scaffolds the translation students find hardest." },
-        { "strategy_id": "strat-math-003", "why": "The wrong-coefficient error is a clean, high-frequency translation mistake for a find-and-fix routine." },
-        { "strategy_id": "strat-math-004", "why": "A journal entry explaining what each number 'does' in the equation cements mapping by meaning rather than word order." }
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Define-the-variable, build-the-equation, solve is a gradual-release routine that scaffolds the translation students find hardest."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The wrong-coefficient error is a clean, high-frequency translation mistake for a find-and-fix routine."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "A journal entry explaining what each number 'does' in the equation cements mapping by meaning rather than word order."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -981,20 +1704,48 @@
         "stem": "A caterer charges a $60 setup fee plus $12 per guest. A party's bill was $240. How many guests?",
         "answer": "15 guests",
         "steps": [
-          { "math": "let x = number of guests", "annotation": "Name the unknown first." },
-          { "math": "60 + 12x = 240", "annotation": "The $60 is fixed (once); the $12 is per guest, so it multiplies x." },
-          { "math": "12x = 180", "annotation": "Clear the fixed fee." },
-          { "math": "x = 15", "annotation": "15 guests — a whole number, sensible for the context." }
+          {
+            "math": "let x = number of guests",
+            "annotation": "Name the unknown first."
+          },
+          {
+            "math": "60 + 12x = 240",
+            "annotation": "The $60 is fixed (once); the $12 is per guest, so it multiplies x."
+          },
+          {
+            "math": "12x = 180",
+            "annotation": "Clear the fixed fee."
+          },
+          {
+            "math": "x = 15",
+            "annotation": "15 guests — a whole number, sensible for the context."
+          }
         ]
       },
       "faded_example": {
         "stem": "A gym charges a $30 joining fee plus $18 per month. A member has paid $156 so far. How many months?",
         "answer": "7 months",
         "steps": [
-          { "math": "let x = number of months", "annotation": "Define the variable.", "given": true },
-          { "math": "30 + 18x = 156", "annotation": "$30 is one-time; $18 multiplies the months.", "given": true },
-          { "math": null, "annotation": "Clear the fixed $30 from both sides.", "given": false },
-          { "math": null, "annotation": "Divide to find the months; check it fits the context.", "given": false }
+          {
+            "math": "let x = number of months",
+            "annotation": "Define the variable.",
+            "given": true
+          },
+          {
+            "math": "30 + 18x = 156",
+            "annotation": "$30 is one-time; $18 multiplies the months.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Clear the fixed $30 from both sides.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Divide to find the months; check it fits the context.",
+            "given": false
+          }
         ]
       }
     },
@@ -1003,8 +1754,13 @@
       "name": "Model a complex real-world problem, solve, and justify the solution",
       "column": "looking_forward",
       "parent_standard": "8.AF.1",
-      "engine_stems": [5],
-      "prerequisite_skill": { "type": "skill", "skill_id": "8AF1-S5" },
+      "engine_stems": [
+        5
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8AF1-S5"
+      },
       "i_do_script": "At the top level I handle problems where two quantities depend on each other, and I have to explain WHY my answer is right, not just report it. Watch: paperbacks cost $8, hardcovers $10, and a student buys 2 MORE paperbacks than hardcovers, spending $34. I let h be the hardcovers, so paperbacks are h + 2. Cost: 8(h + 2) + 10h = 34. That's 8h + 16 + 10h = 18h + 16 = 34, so 18h = 18 and h = 1 hardcover. To justify: 1 hardcover ($10) and 3 paperbacks ($24) total $34 — it checks, and the answer is a whole number of books, which makes sense.",
       "canonical_error": {
         "pattern": "Sets up the related quantities incorrectly (adds the relationship to the wrong variable) or asserts the answer without a justification tied to the context",
@@ -1040,26 +1796,68 @@
         "praise": "You attached 'more than' to the right quantity AND justified by checking the totals — that's complete modeling."
       },
       "vocabulary": [
-        { "term": "Justify", "definition": "Explain why an answer is correct, usually by showing it satisfies the original situation." },
-        { "term": "Express in terms of", "definition": "Write one quantity using another, like paperbacks = h + 2 when h is the hardcovers." }
+        {
+          "term": "Justify",
+          "definition": "Explain why an answer is correct, usually by showing it satisfies the original situation."
+        },
+        {
+          "term": "Express in terms of",
+          "definition": "Write one quantity using another, like paperbacks = h + 2 when h is the hardcovers."
+        }
       ],
       "next_steps": {
         "if_pass": "Ready for 8.AF.2 (equations with one, none, or infinite solutions) and high-school AI.L.1.",
         "if_fail": "8AF1-S5"
       },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'Pencils cost $2, pens $3. Ana buys 4 fewer pens than pencils and spends $23. How many pencils?'" },
-        { "kind": "ask", "text": "Let p = pencils. How do we write the number of pens in terms of p?" },
-        { "kind": "say", "text": "Pens are '4 fewer than pencils,' so pens = p - 4. Cost: 2p + 3(p - 4) = 23, which is 5p - 12 = 23, so 5p = 35, p = 7 pencils." },
-        { "kind": "ask", "text": "Justify it: how many pens is that, and does the money add to $23?" },
-        { "kind": "watch", "text": "If a student writes pens = p + 4, ask 'does Ana buy MORE pens or FEWER? Which way does the 4 go?'" },
-        { "kind": "ask", "text": "Your turn: adults $12, children $8, 3 more children than adults, total $164. Model, solve, and justify." }
+        {
+          "kind": "show",
+          "text": "Write 'Pencils cost $2, pens $3. Ana buys 4 fewer pens than pencils and spends $23. How many pencils?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Let p = pencils. How do we write the number of pens in terms of p?"
+        },
+        {
+          "kind": "say",
+          "text": "Pens are '4 fewer than pencils,' so pens = p - 4. Cost: 2p + 3(p - 4) = 23, which is 5p - 12 = 23, so 5p = 35, p = 7 pencils."
+        },
+        {
+          "kind": "ask",
+          "text": "Justify it: how many pens is that, and does the money add to $23?"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes pens = p + 4, ask 'does Ana buy MORE pens or FEWER? Which way does the 4 go?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: adults $12, children $8, 3 more children than adults, total $164. Model, solve, and justify."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "If h is the number of hardcovers and there are 2 more paperbacks than hardcovers, write the number of paperbacks.", "answer": "h + 2" },
-        { "difficulty": "warm_up", "stem": "What does it mean to 'justify' a solution to a word problem?", "answer": "Show the answer actually satisfies the original situation (e.g., the totals match)." },
-        { "difficulty": "core", "stem": "Paperbacks $8, hardcovers $10, 2 more paperbacks than hardcovers, total $34. Find the hardcovers and justify.", "answer": "8(h+2) + 10h = 34; 18h + 16 = 34; h = 1. Check: 1(10) + 3(8) = 34.", "notes": "Spec item; relationship on the right variable, plus a check." },
-        { "difficulty": "core", "stem": "Adults $12, children $8, 3 more children than adults, total $164. Find the adults.", "answer": "12a + 8(a+3) = 164; 20a + 24 = 164; a = 7.", "notes": "Second variable expressed in terms of the first." },
+        {
+          "difficulty": "warm_up",
+          "stem": "If h is the number of hardcovers and there are 2 more paperbacks than hardcovers, write the number of paperbacks.",
+          "answer": "h + 2"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What does it mean to 'justify' a solution to a word problem?",
+          "answer": "Show the answer actually satisfies the original situation (e.g., the totals match)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Paperbacks $8, hardcovers $10, 2 more paperbacks than hardcovers, total $34. Find the hardcovers and justify.",
+          "answer": "8(h+2) + 10h = 34; 18h + 16 = 34; h = 1. Check: 1(10) + 3(8) = 34.",
+          "notes": "Spec item; relationship on the right variable, plus a check."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Adults $12, children $8, 3 more children than adults, total $164. Find the adults.",
+          "answer": "12a + 8(a+3) = 164; 20a + 24 = 164; a = 7.",
+          "notes": "Second variable expressed in terms of the first."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -1071,9 +1869,24 @@
           "answer": "'4 fewer pens' means pens = p - 4, not p + 4. Correct: 3(p - 4) + 2p = 23, so 5p - 12 = 23, p = 7 pencils. The non-whole 2.2 was a clue the setup was off.",
           "notes": "Canonical error: 'fewer/more' attached the wrong direction."
         },
-        { "difficulty": "core", "stem": "A landscaper charges $40 plus $25/hr; budget is at most $190. Most whole hours, and justify.", "answer": "40 + 25h <= 190; h <= 6. Justify: 6 hrs = $190 exactly; 7 hrs = $215 > $190.", "notes": "Inequality with a boundary justification." },
-        { "difficulty": "stretch", "stem": "A rectangle's length is 5 less than 3 times the width; the perimeter is 46. Find the dimensions and justify.", "answer": "Length = 3w - 5. 2w + 2(3w - 5) = 46; 8w - 10 = 46; w = 7, length = 16. Check: 2(7) + 2(16) = 14 + 32 = 46.", "notes": "Compound relationship (3 times, then 5 less) plus a check." },
-        { "difficulty": "stretch", "stem": "Two gyms: Gym A is $25/month with no fee; Gym B is $10/month plus a $90 one-time fee. For how many months is Gym B cheaper? Justify with the boundary.", "answer": "10m + 90 < 25m; 90 < 15m; m > 6. Gym B is cheaper after 6 months. At m = 6 both cost $150 (a tie); at m = 7, B = $160 < A = $175.", "notes": "Compare two expressions (variable one side only after rearranging) and justify the crossover." }
+        {
+          "difficulty": "core",
+          "stem": "A landscaper charges $40 plus $25/hr; budget is at most $190. Most whole hours, and justify.",
+          "answer": "40 + 25h <= 190; h <= 6. Justify: 6 hrs = $190 exactly; 7 hrs = $215 > $190.",
+          "notes": "Inequality with a boundary justification."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A rectangle's length is 5 less than 3 times the width; the perimeter is 46. Find the dimensions and justify.",
+          "answer": "Length = 3w - 5. 2w + 2(3w - 5) = 46; 8w - 10 = 46; w = 7, length = 16. Check: 2(7) + 2(16) = 14 + 32 = 46.",
+          "notes": "Compound relationship (3 times, then 5 less) plus a check."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two gyms: Gym A is $25/month with no fee; Gym B is $10/month plus a $90 one-time fee. For how many months is Gym B cheaper? Justify with the boundary.",
+          "answer": "10m + 90 < 25m; 90 < 15m; m > 6. Gym B is cheaper after 6 months. At m = 6 both cost $150 (a tie); at m = 7, B = $160 < A = $175.",
+          "notes": "Compare two expressions (variable one side only after rearranging) and justify the crossover."
+        }
       ],
       "activities": [
         {
@@ -1081,7 +1894,10 @@
           "title": "Model, Solve, Prove",
           "time_minutes": 15,
           "grouping": "pairs",
-          "materials": ["Rich context cards", "Recording sheet: 'variable =', 'other quantity =', 'equation', 'solution', 'justification'"],
+          "materials": [
+            "Rich context cards",
+            "Recording sheet: 'variable =', 'other quantity =', 'equation', 'solution', 'justification'"
+          ],
           "instructions": "1. Draw a context card where one quantity is described using another ('3 more children than adults').\n2. Fill the sheet top to bottom: name the variable, write the OTHER quantity in terms of it, build the equation, solve.\n3. The 'justification' line must put the numbers back and show the totals match.\n4. Trade sheets; a partner only accepts the answer if the justification actually reproduces the total.\n5. Debrief: how did you decide which way the 'more/fewer' phrase pointed?"
         },
         {
@@ -1089,7 +1905,9 @@
           "title": "Which Way Does the 4 Go?",
           "time_minutes": 8,
           "grouping": "small_group",
-          "materials": ["Slip with Devon's reversed relationship"],
+          "materials": [
+            "Slip with Devon's reversed relationship"
+          ],
           "instructions": "1. Read Devon's model 3(p + 4) + 2p = 23 for '4 FEWER pens than pencils.'\n2. Decide whether pens should be p + 4 or p - 4 and explain in words.\n3. Redo the model, solve, and justify with the totals.\n4. Discuss: how can a non-whole or negative answer warn you the relationship was reversed?",
           "content": {
             "worked_problem": "Pens $3, pencils $2, 4 fewer pens than pencils, total $23 (p = pencils). Devon wrote 3(p + 4) + 2p = 23.",
@@ -1099,9 +1917,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-004", "why": "Justifying a solution in writing is exactly the reflective-writing move; a journal frame ('my answer is right because...') builds the habit." },
-        { "strategy_id": "strat-math-006", "why": "The model-solve-justify arc is a gradual-release routine that adds the justification step onto the modeling students can already do." },
-        { "strategy_id": "strat-math-003", "why": "The reversed 'more/fewer' relationship is a precise, high-value error for a find-and-fix routine, flagged by an implausible answer." }
+        {
+          "strategy_id": "strat-math-004",
+          "why": "Justifying a solution in writing is exactly the reflective-writing move; a journal frame ('my answer is right because...') builds the habit."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "The model-solve-justify arc is a gradual-release routine that adds the justification step onto the modeling students can already do."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The reversed 'more/fewer' relationship is a precise, high-value error for a find-and-fix routine, flagged by an implausible answer."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -1143,20 +1970,48 @@
         "stem": "Muffins cost $2 and scones $3. A baker sells 5 more muffins than scones and collects $60. How many scones, and how do you know?",
         "answer": "10 scones",
         "steps": [
-          { "math": "let s = scones; muffins = s + 5", "annotation": "Name one quantity; express the other in terms of it (5 MORE muffins)." },
-          { "math": "2(s + 5) + 3s = 60", "annotation": "Muffins at $2, scones at $3, total $60." },
-          { "math": "2s + 10 + 3s = 5s + 10 = 60, so 5s = 50", "annotation": "Distribute and combine, then clear the constant." },
-          { "math": "s = 10 scones (15 muffins): 2(15) + 3(10) = 30 + 30 = 60, true", "annotation": "Justify by substituting back — the totals reproduce $60." }
+          {
+            "math": "let s = scones; muffins = s + 5",
+            "annotation": "Name one quantity; express the other in terms of it (5 MORE muffins)."
+          },
+          {
+            "math": "2(s + 5) + 3s = 60",
+            "annotation": "Muffins at $2, scones at $3, total $60."
+          },
+          {
+            "math": "2s + 10 + 3s = 5s + 10 = 60, so 5s = 50",
+            "annotation": "Distribute and combine, then clear the constant."
+          },
+          {
+            "math": "s = 10 scones (15 muffins): 2(15) + 3(10) = 30 + 30 = 60, true",
+            "annotation": "Justify by substituting back — the totals reproduce $60."
+          }
         ]
       },
       "faded_example": {
         "stem": "Pens cost $3 and pencils $1. A student buys 4 more pencils than pens and spends $24. How many pens, and justify.",
         "answer": "5 pens (9 pencils): 3(5) + 1(9) = 15 + 9 = 24",
         "steps": [
-          { "math": "let p = pens; pencils = p + 4", "annotation": "Express pencils in terms of pens (4 MORE pencils).", "given": true },
-          { "math": "3p + 1(p + 4) = 24", "annotation": "Pens at $3, pencils at $1, total $24.", "given": true },
-          { "math": null, "annotation": "Distribute and combine to get one x-term and one number, then solve.", "given": false },
-          { "math": null, "annotation": "Justify: put the counts back and show the money totals $24.", "given": false }
+          {
+            "math": "let p = pens; pencils = p + 4",
+            "annotation": "Express pencils in terms of pens (4 MORE pencils).",
+            "given": true
+          },
+          {
+            "math": "3p + 1(p + 4) = 24",
+            "annotation": "Pens at $3, pencils at $1, total $24.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Distribute and combine to get one x-term and one number, then solve.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Justify: put the counts back and show the money totals $24.",
+            "given": false
+          }
         ]
       }
     }
@@ -1165,40 +2020,84 @@
     "foundation": {
       "label": "Foundation (Tier III)",
       "description": "Pre-grade-level prerequisites — fix these first.",
-      "skills": ["8AF1-F1", "8AF1-F2"]
+      "skills": [
+        "8AF1-F1",
+        "8AF1-F2"
+      ]
     },
     "looking_back": {
       "label": "Looking Back",
       "description": "Skills the student should have but may need re-teaching.",
-      "skills": ["8AF1-S1"]
+      "skills": [
+        "8AF1-S1"
+      ]
     },
     "on_grade": {
       "label": "On Grade",
       "description": "The standard's actual grade-level expectations.",
-      "skills": ["8AF1-S2", "8AF1-S3", "8AF1-S4", "8AF1-S5"]
+      "skills": [
+        "8AF1-S2",
+        "8AF1-S3",
+        "8AF1-S4",
+        "8AF1-S5"
+      ]
     },
     "looking_forward": {
       "label": "Looking Forward",
       "description": "Bridge to the next standard.",
-      "skills": ["8AF1-S6"]
+      "skills": [
+        "8AF1-S6"
+      ]
     }
   },
-  "skill_sequence": ["8AF1-F1", "8AF1-F2", "8AF1-S1", "8AF1-S2", "8AF1-S3", "8AF1-S4", "8AF1-S5", "8AF1-S6"],
+  "skill_sequence": [
+    "8AF1-F1",
+    "8AF1-F2",
+    "8AF1-S1",
+    "8AF1-S2",
+    "8AF1-S3",
+    "8AF1-S4",
+    "8AF1-S5",
+    "8AF1-S6"
+  ],
   "skill_tree": {
     "8AF1-F1": [],
     "8AF1-F2": [],
-    "8AF1-S1": ["8AF1-F1"],
-    "8AF1-S2": ["8AF1-F2"],
-    "8AF1-S3": ["8AF1-S2", "8AF1-F1", "8AF1-F2"],
-    "8AF1-S4": ["8AF1-S3"],
-    "8AF1-S5": ["8AF1-S3"],
-    "8AF1-S6": ["8AF1-S5", "8AF1-S4"]
+    "8AF1-S1": [
+      "8AF1-F1"
+    ],
+    "8AF1-S2": [
+      "8AF1-F2"
+    ],
+    "8AF1-S3": [
+      "8AF1-S2",
+      "8AF1-F1",
+      "8AF1-F2"
+    ],
+    "8AF1-S4": [
+      "8AF1-S3"
+    ],
+    "8AF1-S5": [
+      "8AF1-S3"
+    ],
+    "8AF1-S6": [
+      "8AF1-S5",
+      "8AF1-S4"
+    ]
   },
   "diagnostic_flow": {
     "description": "Start with S3 (solve a multi-step equation that needs distributing and combining) -- the fluency core of the standard. If they pass, push to S4 (inequalities, with the negative-flip rule) and S5 (model real-world problems). If they fail, split the diagnosis: S1 checks whether they understand what a solution even is (substitution), and S2 checks whether the distribution mechanic is intact. S6 (complex modeling with justification) branches off the application side.",
     "entry_skill": "8AF1-S3",
-    "if_pass": ["8AF1-S4", "8AF1-S5"],
-    "if_fail": ["8AF1-S1", "8AF1-S2"],
-    "branch_skills": ["8AF1-S6"]
+    "if_pass": [
+      "8AF1-S4",
+      "8AF1-S5"
+    ],
+    "if_fail": [
+      "8AF1-S1",
+      "8AF1-S2"
+    ],
+    "branch_skills": [
+      "8AF1-S6"
+    ]
   }
 }

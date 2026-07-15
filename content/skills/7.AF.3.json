@@ -49,7 +49,7 @@
         "description": "Understand that an equation is balanced and that operations undo each other.",
         "check_question": "What number makes x + 5 = 9 true?"
       },
-      "i_do_script": "A one-step equation has just one thing happening to the variable, and I undo it with the opposite operation. Watch: x + 6 = 10. Six is ADDED to x, so I subtract 6 from BOTH sides: x = 4. Another: 3x = 21. Here x is MULTIPLIED by 3, so I divide both sides by 3: x = 7. Addition undoes subtraction; multiplication undoes division. Whatever I do to one side I do to the other so the equation stays balanced.",
+      "i_do_script": "An equation is a riddle about a hidden number, and solving is walking BACKWARD to it -- if 8 was taken away from the number, you put 8 back. A one-step equation has just one thing happening to the variable, and I undo it with the opposite operation. Watch: x + 6 = 10. Six is ADDED to x, so I subtract 6 from BOTH sides: x = 4. Another: 3x = 21. Here x is MULTIPLIED by 3, so I divide both sides by 3: x = 7. Addition undoes subtraction; multiplication undoes division. Whatever I do to one side I do to the other so the equation stays balanced.",
       "canonical_error": {
         "pattern": "Uses the same operation shown in the equation instead of its inverse",
         "example": "For x + 6 = 10 the student ADDS 6 to get x = 16, instead of subtracting 6",
@@ -84,7 +84,7 @@
       ],
       "redirect_script": {
         "stop": "Wait -- do the OPPOSITE, not the same.",
-        "prompt": "Ask what is happening to x: is it added, subtracted, multiplied, or divided? Do the inverse to BOTH sides. Added six? Subtract six.",
+        "prompt": "Read it as the riddle first: what happened to the hidden number, and what move puts it back? Ask what is happening to x: is it added, subtracted, multiplied, or divided? Do the inverse to BOTH sides. Added six? Subtract six.",
         "praise": "You undid the operation with its inverse -- that isolates x."
       },
       "vocabulary": [
@@ -106,6 +106,10 @@
         "if_fail": "Review one-step equations (6.AF.3)."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Cover the x in x - 8 = 5 with your finger and read it as a riddle: 'some hidden number, take away 8, leaves 5.' Was the hidden number bigger or smaller than 5 before the 8 was taken? So which way do you move to get back to it?"
+        },
         {
           "kind": "show",
           "text": "Write 'x - 8 = 5.'"
@@ -139,7 +143,7 @@
         "description": "Add, subtract, multiply, and divide fractions and decimals.",
         "check_question": "What is 12 divided by 0.5?"
       },
-      "i_do_script": "Solving equations with rational numbers means I have to add, subtract, multiply, and divide fractions and decimals without freezing up. Watch a division that surprises people: 12 divided by 0.5. Dividing by one-half is the same as multiplying by 2, so 12 / 0.5 = 24 -- the answer gets BIGGER. And 9 / 1.5 = 6. With fractions, two-thirds of 9 is (2/3) x 9 = 6. A calculator is allowed on this standard, so the goal is knowing WHICH operation to do and trusting the result.",
+      "i_do_script": "Division asks 'how many of THIS fit inside THAT?' -- and lots of small pieces fit inside a big amount, so dividing by something smaller than 1 gives a count BIGGER than what you started with. Solving equations with rational numbers means I have to add, subtract, multiply, and divide fractions and decimals without freezing up. Watch a division that surprises people: 12 divided by 0.5. Dividing by one-half is the same as multiplying by 2, so 12 / 0.5 = 24 -- the answer gets BIGGER. And 9 / 1.5 = 6. With fractions, two-thirds of 9 is (2/3) x 9 = 6. A calculator is allowed on this standard, so the goal is knowing WHICH operation to do and trusting the result.",
       "canonical_error": {
         "pattern": "Assumes dividing always makes a number smaller (or multiplying always bigger), mishandling division by a number less than 1",
         "example": "Thinks 12 / 0.5 = 6 because 'dividing makes it smaller,' instead of 24",
@@ -174,7 +178,7 @@
       ],
       "redirect_script": {
         "stop": "Hold on -- check that with the calculator.",
-        "prompt": "Ask: am I dividing by a number LESS than 1? If so, the answer grows. Estimate first: 12 split into halves gives 24 halves.",
+        "prompt": "Picture the coins first: how many quarter-dollars would fit inside that amount? Ask: am I dividing by a number LESS than 1? If so, the answer grows. Estimate first: 12 split into halves gives 24 halves.",
         "praise": "You trusted the math over the 'dividing shrinks' myth -- exactly right."
       },
       "vocabulary": [
@@ -192,6 +196,10 @@
         "if_fail": "Review rational-number operations (7.C standards)."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Read 8 / 0.25 as a coin question: how many quarter-dollars fit in 8 dollars? Picture the stacks -- 4 quarters make each dollar. Before any rule: will the count of quarters be bigger or smaller than 8?"
+        },
         {
           "kind": "show",
           "text": "Write '8 / 0.25.'"
@@ -226,7 +234,7 @@
         "type": "skill",
         "skill_id": "7AF3-F1"
       },
-      "i_do_script": "A two-step equation has TWO things happening to x, and I undo them in reverse order -- like taking off shoes before socks. Watch the spec's example: 3x - 6 = 27. The x is multiplied by 3, then 6 is subtracted. I clear the subtraction FIRST: add 6 to both sides, giving 3x = 33. Then I undo the multiplication: divide both sides by 3, giving x = 11. I finish by checking: 3(11) - 6 = 33 - 6 = 27. It works, so x = 11.",
+      "i_do_script": "An equation is a machine that ran forward on x, and solving is walking back out the way you came in -- the last door you entered is the first door you exit. Trace the machine before reaching for a rule. A two-step equation has TWO things happening to x, and I undo them in reverse order -- like taking off shoes before socks. Watch the spec's example: 3x - 6 = 27. The x is multiplied by 3, then 6 is subtracted. I clear the subtraction FIRST: add 6 to both sides, giving 3x = 33. Then I undo the multiplication: divide both sides by 3, giving x = 11. I finish by checking: 3(11) - 6 = 33 - 6 = 27. It works, so x = 11.",
       "canonical_error": {
         "pattern": "Undoes the multiplication before clearing the added or subtracted constant",
         "example": "For 3x - 6 = 27 the student divides by 3 first (getting x - 2 = 9) instead of adding 6 first",
@@ -267,7 +275,7 @@
       ],
       "redirect_script": {
         "stop": "Wait -- what is done to x LAST?",
-        "prompt": "Undo in reverse: clear the added or subtracted number FIRST (do the opposite to both sides), and only THEN divide by the number multiplying x. Underline the constant and deal with it first.",
+        "prompt": "Sketch the machine doors again: which door did x pass through LAST on the way in? Undo in reverse: clear the added or subtracted number FIRST (do the opposite to both sides), and only THEN divide by the number multiplying x. Underline the constant and deal with it first.",
         "praise": "You cleared the constant before touching the coefficient -- that's the right order."
       },
       "vocabulary": [
@@ -289,6 +297,18 @@
         "if_fail": "7AF3-F1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw the forward machine for 5x + 2 = 17: x goes in, passes through the 'times 5' door, then the '+ 2' door, and comes out as 17."
+        },
+        {
+          "kind": "ask",
+          "text": "To walk BACK from 17 to x, which door do you exit through first -- the '+ 2' door or the 'times 5' door? And what is the undo of + 2?"
+        },
+        {
+          "kind": "say",
+          "text": "You leave through the LAST door first: subtract 2 to get back to 15, then undo the 'times 5' door by dividing, landing on x = 3. Exiting the 'times 5' door first shoves the +2 through a division it never went through going in."
+        },
         {
           "kind": "show",
           "text": "Write '5x + 2 = 17.'"
@@ -540,7 +560,7 @@
         "type": "skill",
         "skill_id": "7AF3-S1"
       },
-      "i_do_script": "When the variable sits inside parentheses, p(x + q) = r, I have two good routes. Watch the spec's example: 0.5(x - 3) = 7.5. Route 1 -- divide first: divide both sides by 0.5 to get x - 3 = 15, then add 3 to get x = 18. Route 2 -- distribute first: 0.5 times x is 0.5x and 0.5 times -3 is -1.5, giving 0.5x - 1.5 = 7.5, then add 1.5 and divide by 0.5 to get x = 18. Both land on x = 18. The trap in distributing is forgetting to multiply the SECOND number inside, so I say both products out loud.",
+      "i_do_script": "4(x + 3) means FOUR full copies of everything in the parentheses -- four x's and four 3s sitting on the table. See all the copies before any arrow rule. When the variable sits inside parentheses, p(x + q) = r, I have two good routes. Watch the spec's example: 0.5(x - 3) = 7.5. Route 1 -- divide first: divide both sides by 0.5 to get x - 3 = 15, then add 3 to get x = 18. Route 2 -- distribute first: 0.5 times x is 0.5x and 0.5 times -3 is -1.5, giving 0.5x - 1.5 = 7.5, then add 1.5 and divide by 0.5 to get x = 18. Both land on x = 18. The trap in distributing is forgetting to multiply the SECOND number inside, so I say both products out loud.",
       "canonical_error": {
         "pattern": "Distributes p to the variable only, forgetting to multiply the constant inside the parentheses",
         "example": "For 0.5(x - 3) = 7.5 the student writes 0.5x - 3 = 7.5 (never multiplied -3 by 0.5) instead of 0.5x - 1.5 = 7.5",
@@ -568,7 +588,7 @@
       ],
       "redirect_script": {
         "stop": "Did the outside number reach BOTH terms?",
-        "prompt": "If you distribute, draw an arrow from the outside number to EACH term inside and say both products aloud. If you divide first, divide the whole right side by p before you touch the parentheses.",
+        "prompt": "Draw the baskets first: how many copies of that inside number are really on the table? If you distribute, draw an arrow from the outside number to EACH term inside and say both products aloud. If you divide first, divide the whole right side by p before you touch the parentheses.",
         "praise": "You multiplied both terms (or divided the whole side) -- that's a clean parenthesis solve."
       },
       "vocabulary": [
@@ -590,6 +610,18 @@
         "if_fail": "7AF3-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw 4 identical baskets, each holding one x and three 1s. Together the 4 baskets total 32."
+        },
+        {
+          "kind": "ask",
+          "text": "Count what is on the table: how many x's in all? How many 1s in all? Did the 3 in each basket get counted once, or four times?"
+        },
+        {
+          "kind": "say",
+          "text": "Four x's and twelve 1s: 4x + 12 = 32, so 4x = 20 and x = 5. Writing 4x + 3 counts the 3 from only ONE basket -- the drawing shows the other three 3s still sitting there uncounted."
+        },
         {
           "kind": "show",
           "text": "Write '4(x + 3) = 32.'"
@@ -1423,7 +1455,7 @@
         "type": "skill",
         "skill_id": "7AF3-S4"
       },
-      "i_do_script": "This is the same modeling as before, but now the numbers are fractions or decimals -- so I have to keep the arithmetic clean. Watch the spec's example: a baker uses 3 cups of flour for bread and 1.5 cups for each batch of cookies, using 12 cups total. The 1.5 is per batch, so it multiplies x: 1.5x; the 3 cups is a one-time amount: + 3; the total is 12. So 1.5x + 3 = 12. I subtract 3 to get 1.5x = 9, then divide by 1.5 to get x = 6 batches. Dividing by 1.5 is the step people skip -- I never leave the coefficient attached.",
+      "i_do_script": "Draw the total as one money bar: the one-time fee is a chunk you peel off the end, and what remains is still MONEY that the per-item price must chop into cases. The bar keeps you from stopping a step early. This is the same modeling as before, but now the numbers are fractions or decimals -- so I have to keep the arithmetic clean. Watch the spec's example: a baker uses 3 cups of flour for bread and 1.5 cups for each batch of cookies, using 12 cups total. The 1.5 is per batch, so it multiplies x: 1.5x; the 3 cups is a one-time amount: + 3; the total is 12. So 1.5x + 3 = 12. I subtract 3 to get 1.5x = 9, then divide by 1.5 to get x = 6 batches. Dividing by 1.5 is the step people skip -- I never leave the coefficient attached.",
       "canonical_error": {
         "pattern": "Clears the constant but then fails to divide by the fractional or decimal coefficient (or divides incorrectly)",
         "example": "For 1.5x + 3 = 12 the student gets 1.5x = 9 and then writes x = 9, forgetting to divide by 1.5",
@@ -1451,7 +1483,7 @@
       ],
       "redirect_script": {
         "stop": "You are not done -- is x still multiplied?",
-        "prompt": "After you clear the constant, look at the number stuck to x. If it is a fraction or decimal, divide BOTH sides by it (a calculator is allowed). Only x, alone, means you are finished.",
+        "prompt": "Look at the bar: is the number you are holding dollars, or cases? After you clear the constant, look at the number stuck to x. If it is a fraction or decimal, divide BOTH sides by it (a calculator is allowed). Only x, alone, means you are finished.",
         "praise": "You divided out the decimal coefficient -- that's the last step people skip."
       },
       "vocabulary": [
@@ -1475,6 +1507,38 @@
       "worked_example_script": [
         {
           "kind": "show",
+          "text": "Draw the $35 order as one bar: a $5 shipping chunk at the front, and the rest of the bar is money for cases at $7.50 each.",
+          "visual": {
+            "type": "tape_diagram",
+            "label": "Order total $35",
+            "segments": [
+              {
+                "span": 5,
+                "label": "shipping $5",
+                "shaded": false
+              },
+              {
+                "span": 30,
+                "label": "cases at $7.50 each",
+                "shaded": true
+              }
+            ],
+            "end_labels": [
+              "$0",
+              "$35"
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Peel the $5 shipping off the bar -- how much bar is left for cases? Careful: is that leftover the NUMBER of cases, or the MONEY for cases?"
+        },
+        {
+          "kind": "say",
+          "text": "The $30 left is money, not cases. Each case eats $7.50 of it, so count the chunks: 30 / 7.5 = 4 cases. The bar makes 'x = 30' impossible -- 30 cases would cost far more than the whole bar."
+        },
+        {
+          "kind": "show",
           "text": "Write 'Cases cost $7.50 each; flat shipping is $5; an order totaled $35. How many cases?'"
         },
         {
@@ -1491,7 +1555,7 @@
         },
         {
           "kind": "ask",
-          "text": "Your turn: $1.50 per batch plus 3 cups, total 12 -- write and solve."
+          "text": "Your turn: 1.5 cups per batch plus 3 cups already used, total 12 cups -- write and solve."
         }
       ],
       "practice_problems": [

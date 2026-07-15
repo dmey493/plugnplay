@@ -49,7 +49,7 @@
         "description": "Multiply a whole number by itself to build the perfect squares up to 15 x 15, and read a square root as its inverse.",
         "check_question": "What is 12 x 12? What number times itself is 49?"
       },
-      "i_do_script": "To approximate the square root of a number without a calculator, I lean on the perfect squares -- the numbers that come from a whole number times itself. Watch: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, on up to 225 (15 x 15). I know each one both ways: 7 x 7 = 49, so the square root of 49 is 7. Knowing these cold is what lets me say the square root of 30 is a little more than 5, because 30 sits just past 25.",
+      "i_do_script": "Build squares out of tiles first: a 1-by-1 square uses 1 tile, a 2-by-2 uses 4, a 3-by-3 uses 9 -- each count is the side times ITSELF, which is why 3 doubled (6) is not on the list. To approximate the square root of a number without a calculator, I lean on the perfect squares -- the numbers that come from a whole number times itself. Watch: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, on up to 225 (15 x 15). I know each one both ways: 7 x 7 = 49, so the square root of 49 is 7. Knowing these cold is what lets me say the square root of 30 is a little more than 5, because 30 sits just past 25.",
       "canonical_error": {
         "pattern": "Confuses a perfect square with double the number, or a square root with half the number",
         "example": "Says 7 squared is 14 (7 + 7) instead of 49, or that the square root of 36 is 18 instead of 6",
@@ -84,7 +84,7 @@
       ],
       "redirect_script": {
         "stop": "Squared means times itself, not times 2.",
-        "prompt": "Write the number twice with a multiplication sign: 7 squared is 7 x 7 = 49. A square root runs it backward -- what times itself gives the number?",
+        "prompt": "Picture the tile square first: a 7-by-7 square holds 49 tiles, not 14. Write the number twice with a multiplication sign: 7 squared is 7 x 7 = 49. A square root runs it backward -- what times itself gives the number?",
         "praise": "You used the number as a factor twice -- that's a perfect square."
       },
       "vocabulary": [
@@ -102,6 +102,10 @@
         "if_fail": "Review multiplication facts (3.OA)."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Sketch tiny tile squares under the row 1, 4, 9, 16, 25: the 3-by-3 square holds 9 tiles, not 6 -- and a 7-by-7 square holds 49 tiles, not 14."
+        },
         {
           "kind": "show",
           "text": "Write the perfect squares in a row: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100."
@@ -135,7 +139,7 @@
         "description": "Locate integers, halves, and decimals on a number line marked with equal intervals.",
         "check_question": "On a line from 0 to 10, where does 5.5 go? Which is farther right, 4.2 or 4.8?"
       },
-      "i_do_script": "A number line puts numbers in order from left to right, and every point has a spot based on its value. Watch a line from 3 to 4 divided into tenths: 3.4 sits four ticks past 3, and 3.7 sits three ticks before 4, so 3.7 is farther right -- it is larger. To place a decimal like 5.5, I find the whole numbers it falls between (5 and 6) and step over to the halfway tick. Ordering numbers this way is exactly how I will later place an irrational number once I know its approximate value.",
+      "i_do_script": "A longer name does not make a bigger number -- money shows it: $3.60 is more than $3.25 even though 325 has more digits. The number line is where that becomes visible. A number line puts numbers in order from left to right, and every point has a spot based on its value. Watch a line from 3 to 4 divided into tenths: 3.4 sits four ticks past 3, and 3.7 sits three ticks before 4, so 3.7 is farther right -- it is larger. To place a decimal like 5.5, I find the whole numbers it falls between (5 and 6) and step over to the halfway tick. Ordering numbers this way is exactly how I will later place an irrational number once I know its approximate value.",
       "canonical_error": {
         "pattern": "Places or orders decimals by digit count instead of value",
         "example": "Puts 3.12 to the right of 3.7 because '312 is bigger than 37'",
@@ -170,7 +174,7 @@
       ],
       "redirect_script": {
         "stop": "More digits does not mean farther right.",
-        "prompt": "Line up the numbers by place value: 3.12 is between 3.1 and 3.2, so it sits left of 3.7. Read the tenths first.",
+        "prompt": "Say both numbers as money first: which amount is worth more? Line up the numbers by place value: 3.12 is between 3.1 and 3.2, so it sits left of 3.7. Read the tenths first.",
         "praise": "You ordered by value, not by how many digits -- that's reading the number line right."
       },
       "vocabulary": [
@@ -189,6 +193,10 @@
       },
       "worked_example_script": [
         {
+          "kind": "ask",
+          "text": "Before any ticks: which is more money, $3.60 or $3.25? So which of 3.6 and 3.25 should land farther right on a line from 3 to 4?"
+        },
+        {
           "kind": "show",
           "text": "Draw a line from 3 to 4 and mark tenths."
         },
@@ -198,7 +206,7 @@
         },
         {
           "kind": "say",
-          "text": "3.6 is six ticks past 3. 3.25 is between the 2nd and 3rd ticks -- a quarter of the way from 3.2 to 3.3. 3.6 is farther right, so it is larger."
+          "text": "3.6 is six ticks past 3. 3.25 is between the 2nd and 3rd ticks -- exactly halfway from 3.2 to 3.3. 3.6 is farther right, so it is larger."
         },
         {
           "kind": "watch",

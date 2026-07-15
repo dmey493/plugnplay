@@ -185,7 +185,11 @@
         },
         {
           "kind": "show",
-          "text": "Now show a hundredths grid with 45 squares shaded."
+          "text": "Now show a hundredths grid with 45 squares shaded.",
+          "visual": {
+            "type": "hundredths_grid",
+            "shaded": 45
+          }
         },
         {
           "kind": "ask",
@@ -208,7 +212,7 @@
         "description": "Write decimals in tenths and hundredths.",
         "check_question": "What is 45/100 as a decimal?"
       },
-      "i_do_script": "When we write a fraction like 7/10 as a decimal, we write it in the tenths place, which is the first spot to the right of the decimal point: 0.7. For 7/100, we need it in the hundredths place: 0.07.",
+      "i_do_script": "Picture a 10-by-10 grid of 100 little squares: 7/10 fills seven whole columns -- 70 little squares -- while 7/100 is just 7 tiny squares. Same digit 7, wildly different amounts, and the decimal we write has to show that difference. When we write a fraction like 7/10 as a decimal, we write it in the tenths place, which is the first spot to the right of the decimal point: 0.7. For 7/100, we need it in the hundredths place: 0.07.",
       "canonical_error": {
         "pattern": "Places the numerator in the wrong decimal place value.",
         "example": "Writes 7/100 as 0.7 instead of 0.07.",
@@ -216,7 +220,7 @@
       },
       "redirect_script": {
         "stop": "Check the place value.",
-        "prompt": "If the denominator is 100, the last digit must be in the hundredths place. Where does the digit go?",
+        "prompt": "Picture the grid first: is 7/100 seven full columns, or seven tiny squares? If the denominator is 100, the last digit must be in the hundredths place. Where does the digit go?",
         "praise": "Yes, 0.07 is correct."
       },
       "vocabulary": [
@@ -324,6 +328,15 @@
       "worked_example_script": [
         {
           "kind": "show",
+          "text": "Show a 10-by-10 grid with seven full columns shaded -- that's 7/10, which is 70 of the 100 little squares. Point out how much bigger that is than shading just 7 little squares (7/100). The two fractions are ten times apart, so their decimals cannot look the same.",
+          "visual": {
+            "type": "hundredths_grid",
+            "shaded": 70,
+            "label": "7/10 = 70 of 100 squares"
+          }
+        },
+        {
+          "kind": "show",
           "text": "Write 7/10 on the board, and next to it a place-value chart: ones . tenths hundredths."
         },
         {
@@ -367,16 +380,16 @@
         "description": "Understand that percent means out of 100.",
         "check_question": "What does 30% mean?"
       },
-      "i_do_script": "To convert a percent to a decimal, remember that percent means 'per 100'. So 30% is 30/100, which is written as 0.30 or 0.3. This is equivalent to moving the decimal point two places to the left.",
+      "i_do_script": "Percent means per 100, and the hundredths grid shows the whole conversion at once: shade 30 of its 100 squares and you are looking at 30% AND 0.30 -- same shading, two names. Converting a percent to a decimal is dividing by 100, and that's why the digits shift two places: 30% becomes 0.30 (or 0.3). The shift is the shortcut; the grid is why it works. Check every answer against the picture: is the shading more or less than one whole grid?",
       "canonical_error": {
         "pattern": "Moves the decimal point in the wrong direction or the wrong number of places.",
         "example": "Writes 30% as 3.0 or 30.0.",
         "why": "Does not divide by 100 to remove the percent sign."
       },
       "redirect_script": {
-        "stop": "Percent means out of 100.",
-        "prompt": "Divide the percent value by 100. Which way does the decimal point move?",
-        "praise": "Right! Moving it two places left gives 0.3."
+        "stop": "Look at the grid before you move anything.",
+        "prompt": "Shade the percent on a hundredths grid: is the shading more or less than one whole grid? So should the decimal be more or less than 1? Now divide by 100 and check the shift against the picture.",
+        "praise": "You checked the decimal against the grid -- the shift means per-100, and you used it that way."
       },
       "vocabulary": [
         {
@@ -628,6 +641,11 @@
                 "text": "1.20",
                 "category": "120%"
               }
+            ],
+            "decoys": [
+              "3.0",
+              "0.03",
+              "0.75"
             ]
           }
         },
@@ -720,7 +738,11 @@
             "math": "30/100 = 0.30",
             "annotation": "Thirty hundredths: dividing by 100 moves the decimal point TWO places left, so 30 becomes 0.30. The 3 sits in the tenths place, the 0 in the hundredths."
           }
-        ]
+        ],
+        "render_data": {
+          "type": "hundredths_grid",
+          "shaded": 30
+        }
       },
       "faded_example": {
         "stem": "The model shows 65% of the grid shaded. Write the equivalent decimal.",
@@ -741,7 +763,11 @@
             "annotation": "Write the final decimal.",
             "given": false
           }
-        ]
+        ],
+        "render_data": {
+          "type": "hundredths_grid",
+          "shaded": 65
+        }
       },
       "sentence_starters": [
         "___% means ___ out of 100, so the decimal is ___.",
@@ -751,7 +777,12 @@
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Project a hundredths grid with 30 squares shaded, and write '30%' beside it."
+          "text": "Project a hundredths grid with 30 squares shaded, and write '30%' beside it.",
+          "visual": {
+            "type": "hundredths_grid",
+            "shaded": 30,
+            "label": "30 out of 100"
+          }
         },
         {
           "kind": "ask",
@@ -1146,7 +1177,11 @@
             "math": "45/100 = 9/20",
             "annotation": "Simplify: 5 divides both. 45 / 5 = 9 and 100 / 5 = 20. No number bigger than 1 divides both 9 and 20, so it's in simplest form."
           }
-        ]
+        ],
+        "render_data": {
+          "type": "hundredths_grid",
+          "shaded": 45
+        }
       },
       "faded_example": {
         "stem": "The model shows 0.35. Write the equivalent fraction in simplest form.",
@@ -1167,7 +1202,11 @@
             "annotation": "Write the simplified fraction and check nothing else divides both parts.",
             "given": false
           }
-        ]
+        ],
+        "render_data": {
+          "type": "hundredths_grid",
+          "shaded": 35
+        }
       },
       "sentence_starters": [
         "I read 0.___ as ___ (place-value name), so the fraction is ___/___.",
@@ -1177,7 +1216,11 @@
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Project a hundredths grid with 25 squares shaded, and write '0.25' beside it."
+          "text": "Project a hundredths grid with 25 squares shaded, and write '0.25' beside it.",
+          "visual": {
+            "type": "hundredths_grid",
+            "shaded": 25
+          }
         },
         {
           "kind": "ask",
@@ -1220,7 +1263,7 @@
         "description": "Convert percents to fractions.",
         "check_question": "Convert 60% to a fraction."
       },
-      "i_do_script": "A percent is always a fraction out of 100. 60% is 60/100. Simplify by dividing the numerator and denominator by 20 to get 3/5.",
+      "i_do_script": "Shade 60 squares of a 100-square grid -- that's 60%. Now bundle the grid into equal chunks of 20 squares: 5 chunks total, and exactly 3 of them are shaded. Nothing was added or removed -- 60 out of 100 and 3 out of 5 are the same picture in bigger pieces. A percent is always a fraction out of 100. 60% is 60/100. Simplify by dividing the numerator and denominator by 20 to get 3/5.",
       "canonical_error": {
         "pattern": "Fails to simplify the fraction or divides incorrectly.",
         "example": "Writes 60% as 6/10 or simplifies to 3/10.",
@@ -1228,7 +1271,7 @@
       },
       "redirect_script": {
         "stop": "Let's simplify 60/100 step-by-step.",
-        "prompt": "Divide both numbers by 10 first. Now divide by 2. What fraction do you get?",
+        "prompt": "Look back at the grid: in chunks of 20 squares, how many chunks are shaded, out of how many chunks total? Divide both numbers by 10 first. Now divide by 2. What fraction do you get?",
         "praise": "Yes! 3/5 is the simplified fraction."
       },
       "vocabulary": [
@@ -1392,16 +1435,6 @@
           }
         },
         {
-          "type": "game",
-          "title": "Whiteboard Simplify-Off",
-          "time_minutes": 10,
-          "grouping": "whole_class",
-          "materials": [
-            "Mini whiteboards"
-          ],
-          "instructions": "1. Call out a percent; students write it over 100, simplify fully, and hold up boards on the count of three.\n2. Any split between answers like 6/10 and 3/5 becomes a class debate: are they equal? Is either one DONE?\n3. Score a point only for simplest form -- equivalent-but-unfinished earns a 'keep going.'\n4. End with 5% and 150% to stretch the range."
-        },
-        {
           "type": "matching",
           "title": "Percent-Fraction-Grid Threes",
           "time_minutes": 12,
@@ -1439,6 +1472,16 @@
               }
             ]
           }
+        },
+        {
+          "type": "game",
+          "title": "Whiteboard Simplify-Off",
+          "time_minutes": 10,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Call out a percent; students write it over 100, simplify fully, and hold up boards on the count of three.\n2. Any split between answers like 6/10 and 3/5 becomes a class debate: are they equal? Is either one DONE?\n3. Score a point only for simplest form -- equivalent-but-unfinished earns a 'keep going.'\n4. End with 5% and 150% to stretch the range."
         }
       ],
       "strategy_links": [
@@ -1533,6 +1576,23 @@
       "worked_example_script": [
         {
           "kind": "show",
+          "text": "Shade 60 of the 100 squares on a hundredths grid and label it 60%.",
+          "visual": {
+            "type": "hundredths_grid",
+            "shaded": 60,
+            "label": "60% = 60 of 100 squares"
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Now bundle the grid into equal chunks of 20 squares each. How many chunks does the whole grid make? How many of those chunks are shaded?"
+        },
+        {
+          "kind": "say",
+          "text": "3 shaded chunks out of 5 chunks -- and not one square changed. That is all simplifying is: regrouping into bigger equal pieces, so the top count AND the bottom count shrink together. If only one of them shrinks, you've changed the picture."
+        },
+        {
+          "kind": "show",
           "text": "Write '60%' on the board."
         },
         {
@@ -1576,16 +1636,16 @@
         "description": "Convert decimals to percents.",
         "check_question": "Write 0.45 as a percent."
       },
-      "i_do_script": "To write a decimal as a percent, multiply by 100. This is the same as moving the decimal point two places to the right and adding a % symbol.",
+      "i_do_script": "Percent means per 100, so a decimal in hundredths already IS a percent wearing a different name: 0.45 is 45 hundredths -- 45 per 100 -- which is 45%. Multiplying by 100 just renames hundredths as 'per 100', and that is why the digits shift two places: 0.45 becomes 45%. Check every conversion against the grid: 0.45 shades less than half the grid, and 45% is less than half -- the names agree.",
       "canonical_error": {
         "pattern": "Moves the decimal point in the wrong direction.",
         "example": "Writes 0.45 as 0.0045%.",
         "why": "Divides by 100 instead of multiplying."
       },
       "redirect_script": {
-        "stop": "Remember that percents are larger numbers than their decimal equivalents.",
-        "prompt": "Move the decimal point two places to the RIGHT. Where does it go?",
-        "praise": "Perfect, 45% is correct."
+        "stop": "Say the decimal by its place-value name first.",
+        "prompt": "0.45 is forty-five HUNDREDTHS -- 45 per 100. Percent means per 100, so what is it as a percent? Check the grid: does your percent shade the same amount as the decimal?",
+        "praise": "You renamed hundredths as per-100 -- that's what the two-place shift really is."
       },
       "vocabulary": [
         {
@@ -1686,16 +1746,6 @@
       ],
       "activities": [
         {
-          "type": "game",
-          "title": "Two-Places-Right Showdown",
-          "time_minutes": 8,
-          "grouping": "whole_class",
-          "materials": [
-            "Mini whiteboards"
-          ],
-          "instructions": "1. Call out a decimal (start with 0.4, then 0.45, then 0.06, then 1.5); students write the percent and hold boards up on three.\n2. Any split (6% vs 60% for 0.06) becomes a debate: shade it on a hundredths grid and let the squares referee.\n3. Reverse round: call a percent, students write the decimal -- direction is the whole skill.\n4. Track 'traps that split the room' for tomorrow's warm-up."
-        },
-        {
           "type": "matching",
           "title": "Decimal-Percent Pairs",
           "time_minutes": 10,
@@ -1753,6 +1803,16 @@
             "error_step": "Jordan moved the decimal point two places LEFT (divided by 100) instead of two places right.",
             "why": "A percent counts hundredths, so decimal-to-percent multiplies by 100: 0.32 x 100 = 32%. The grid check: 0.32 is 32 shaded squares out of 100 -- clearly 32%, not a hair above zero percent."
           }
+        },
+        {
+          "type": "game",
+          "title": "Two-Places-Right Showdown",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Call out a decimal (start with 0.4, then 0.45, then 0.06, then 1.5); students write the percent and hold boards up on three.\n2. Any split (6% vs 60% for 0.06) becomes a debate: shade it on a hundredths grid and let the squares referee.\n3. Reverse round: call a percent, students write the decimal -- direction is the whole skill.\n4. Track 'traps that split the room' for tomorrow's warm-up."
         }
       ],
       "strategy_links": [
@@ -1842,7 +1902,12 @@
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write '0.45' on the board next to a hundredths grid with 45 squares shaded."
+          "text": "Write '0.45' on the board next to a hundredths grid with 45 squares shaded.",
+          "visual": {
+            "type": "hundredths_grid",
+            "shaded": 45,
+            "label": "0.45 = 45 per 100"
+          }
         },
         {
           "kind": "ask",

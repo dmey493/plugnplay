@@ -1693,6 +1693,8 @@ def _write_printable_artifact_page(pdf, artifact, skill, standard_code, usable_w
         _render_chart(pdf, artifact, usable_w)
     elif kind == "reference_card":
         _render_reference_card(pdf, artifact, usable_w)
+    elif kind in _MASTER_RENDERERS:
+        _MASTER_RENDERERS[kind](pdf, artifact, usable_w)
     else:
         # Unknown kind — fall back to a plain text panel so we don't fail.
         pdf.set_font(ff, "", 10)
@@ -1979,6 +1981,196 @@ def _render_reference_card(pdf, artifact, usable_w):
     pdf.rect(PAGE_MARGIN, y0, usable_w, y_end - y0, style="D")
     pdf.set_draw_color(0, 0, 0)
     pdf.set_line_width(0.3)
+
+
+# ── Blackline masters (grounded-rote plan, Layer B) ──────────────────────
+# Six reusable math-model masters activities can reference by name. All are
+# blank templates the student writes on — the model is the point, so keep
+# every line crisp and every label slot empty unless the artifact says
+# otherwise.
+
+def _render_hundredths_grid(pdf, artifact, usable_w):
+    """`copies` (default 4) blank 10x10 hundredths grids, two per row.
+    Optional `shaded` fills that many cells (row-major) on the FIRST grid
+    only — a worked demo the student mirrors on the blank ones."""
+    copies = int(artifact.get("copies") or 4)
+    shaded = int(artifact.get("shaded") or 0)
+    per_row = 2
+    gap = 12
+    gsize = min((usable_w - gap * (per_row - 1)) / per_row, 78)
+    cell = gsize / 10
+    y = pdf.get_y() + 2
+    pdf.set_line_width(0.25)
+    for c in range(copies):
+        col = c % per_row
+        if col == 0 and c > 0:
+            y += gsize + 10
+        x0 = PAGE_MARGIN + col * (gsize + gap)
+        for i in range(100):
+            cx = x0 + (i % 10) * cell
+            cy = y + (i // 10) * cell
+            if c == 0 and i < shaded:
+                pdf.set_fill_color(180, 205, 245)
+                pdf.rect(cx, cy, cell, cell, style="DF")
+            else:
+                pdf.rect(cx, cy, cell, cell, style="D")
+        pdf.set_line_width(0.7)
+        pdf.rect(x0, y, gsize, gsize, style="D")
+        pdf.set_line_width(0.25)
+        # Write-on line under each grid: fraction / decimal / percent.
+        pdf.set_font(pdf.ff, "", 9)
+        pdf.set_text_color(110, 110, 110)
+        pdf.text(x0, y + gsize + 5.5, "/100 =            = ______ %")
+        pdf.set_text_color(*SB_DARK)
+    pdf.set_y(y + gsize + 12)
+
+
+def _render_percent_bar(pdf, artifact, usable_w):
+    """`bars` (default 5) percent/tape bars. Each bar spans the page,
+    divided into `parts` (default 10) equal pieces, with 0%/100% end labels
+    (override with `end_labels: [left, right]`) and a blank line above for
+    the quantity the bar represents."""
+    bars = int(artifact.get("bars") or 5)
+    parts = int(artifact.get("parts") or 10)
+    left_lab, right_lab = (artifact.get("end_labels") or ["0%", "100%"])[:2]
+    bar_h = 13
+    block_h = bar_h + 22
+    y = pdf.get_y() + 4
+    for _b in range(bars):
+        # Write-on line above the bar (what does the whole bar stand for?)
+        pdf.set_font(pdf.ff, "", 9)
+        pdf.set_text_color(110, 110, 110)
+        pdf.text(PAGE_MARGIN, y, "The whole bar is: ______________")
+        pdf.set_text_color(*SB_DARK)
+        by = y + 3
+        pdf.set_line_width(0.25)
+        pw = usable_w / parts
+        for i in range(parts):
+            pdf.rect(PAGE_MARGIN + i * pw, by, pw, bar_h, style="D")
+        pdf.set_line_width(0.7)
+        pdf.rect(PAGE_MARGIN, by, usable_w, bar_h, style="D")
+        pdf.set_line_width(0.25)
+        pdf.set_font(pdf.ff, "", 9)
+        pdf.text(PAGE_MARGIN, by + bar_h + 5, str(left_lab))
+        rw = pdf.get_string_width(str(right_lab))
+        pdf.text(PAGE_MARGIN + usable_w - rw, by + bar_h + 5, str(right_lab))
+        y += block_h
+    pdf.set_y(y)
+
+
+def _render_number_line_strip(pdf, artifact, usable_w):
+    """`lines` (default 6) blank number lines with `tick_count` (default 11)
+    unlabeled ticks and arrowheads both ways — students label the ticks."""
+    lines = int(artifact.get("lines") or 6)
+    tick_count = max(2, int(artifact.get("tick_count") or 11))
+    block_h = 24
+    y = pdf.get_y() + 8
+    pad = 8
+    span = usable_w - 2 * pad
+    step = span / (tick_count - 1)
+    for _l in range(lines):
+        ly = y
+        pdf.set_line_width(0.5)
+        pdf.line(PAGE_MARGIN + 2, ly, PAGE_MARGIN + usable_w - 2, ly)
+        # arrowheads
+        for ax, s in ((PAGE_MARGIN + 2, 1), (PAGE_MARGIN + usable_w - 2, -1)):
+            pdf.line(ax, ly, ax + 2.5 * s, ly - 1.8)
+            pdf.line(ax, ly, ax + 2.5 * s, ly + 1.8)
+        pdf.set_line_width(0.35)
+        for t in range(tick_count):
+            tx = PAGE_MARGIN + pad + t * step
+            pdf.line(tx, ly - 2.2, tx, ly + 2.2)
+        y += block_h
+    pdf.set_y(y)
+
+
+def _render_fraction_bars(pdf, artifact, usable_w):
+    """The classic fraction-bar anchor chart: one whole on top, then rows
+    split into `rows` (default [2,3,4,5,6,8,10,12]) equal pieces, each
+    piece labeled with its unit fraction."""
+    rows = artifact.get("rows") or [2, 3, 4, 5, 6, 8, 10, 12]
+    bar_h = 12
+    gap = 3
+    y = pdf.get_y() + 2
+    pdf.set_line_width(0.35)
+    pdf.set_font(pdf.ff, "B", 10)
+
+    def draw_bar(parts, label_num):
+        nonlocal y
+        pw = usable_w / parts
+        for i in range(parts):
+            pdf.rect(PAGE_MARGIN + i * pw, y, pw, bar_h, style="D")
+            lab = "1" if parts == 1 else f"1/{parts}"
+            lw = pdf.get_string_width(lab)
+            pdf.text(PAGE_MARGIN + i * pw + (pw - lw) / 2, y + bar_h / 2 + 1.6, lab)
+        y += bar_h + gap
+
+    draw_bar(1, "1")
+    for parts in rows:
+        draw_bar(int(parts), None)
+    pdf.set_y(y)
+
+
+def _render_grid_paper(pdf, artifact, usable_w):
+    """Full-remaining-page square grid (`cell_mm`, default 7) for slope
+    staircases, tile proofs, and area work."""
+    cell = float(artifact.get("cell_mm") or 7)
+    y0 = pdf.get_y() + 2
+    y_end = pdf.h - SB_FOOTER_HEIGHT - 8
+    cols = int(usable_w // cell)
+    rows_n = int((y_end - y0) // cell)
+    w = cols * cell
+    h = rows_n * cell
+    pdf.set_draw_color(150, 165, 195)
+    pdf.set_line_width(0.18)
+    for i in range(cols + 1):
+        pdf.line(PAGE_MARGIN + i * cell, y0, PAGE_MARGIN + i * cell, y0 + h)
+    for j in range(rows_n + 1):
+        pdf.line(PAGE_MARGIN, y0 + j * cell, PAGE_MARGIN + w, y0 + j * cell)
+    pdf.set_draw_color(0, 0, 0)
+    pdf.set_line_width(0.3)
+    pdf.set_y(y0 + h)
+
+
+def _render_dot_plot_frame(pdf, artifact, usable_w):
+    """`frames` (default 3) blank dot-plot axes: a horizontal line with
+    `tick_count` (default 11) ticks, label blanks beneath each tick, and
+    stacking room above for the dots."""
+    frames = int(artifact.get("frames") or 3)
+    tick_count = max(2, int(artifact.get("tick_count") or 11))
+    stack_h = 42
+    block_h = stack_h + 22
+    pad = 10
+    span = usable_w - 2 * pad
+    step = span / (tick_count - 1)
+    y = pdf.get_y() + 4
+    for _f in range(frames):
+        ly = y + stack_h
+        pdf.set_line_width(0.5)
+        pdf.line(PAGE_MARGIN + 2, ly, PAGE_MARGIN + usable_w - 2, ly)
+        pdf.set_line_width(0.35)
+        pdf.set_font(pdf.ff, "", 8)
+        pdf.set_text_color(110, 110, 110)
+        for t in range(tick_count):
+            tx = PAGE_MARGIN + pad + t * step
+            pdf.line(tx, ly, tx, ly + 2.5)
+            pdf.line(tx - 3.5, ly + 8, tx + 3.5, ly + 8)  # label blank
+        # Title blank for the axis.
+        pdf.text(PAGE_MARGIN + usable_w / 2 - 14, ly + 15, "____________")
+        pdf.set_text_color(*SB_DARK)
+        y += block_h
+    pdf.set_y(y)
+
+
+_MASTER_RENDERERS = {
+    "hundredths_grid": _render_hundredths_grid,
+    "percent_bar": _render_percent_bar,
+    "tape_diagram": _render_percent_bar,        # same master, different name
+    "number_line_strip": _render_number_line_strip,
+    "fraction_bars": _render_fraction_bars,
+    "grid_paper": _render_grid_paper,
+    "dot_plot_frame": _render_dot_plot_frame,
+}
 
 
 def _estimate_exit_ticket_height(exit_items):
@@ -2999,6 +3191,291 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
     return output_path
 
 
+# ── Activity materials (grounded-rote plan follow-up) ────────────────────
+# Turns an activity's `content` payload into hand-out-ready pages: cut-apart
+# decks for card sorts and matchings, student slips for error analyses, and
+# auto-attached blackline masters for hands-on work. Every activity card in
+# the web app gets a "Print materials" button that calls this via
+# mode: "activity_materials".
+
+_MATERIALS_MASTER_MAP = [
+    ("grid paper", "grid_paper", "Grid Paper"),
+    ("graph paper", "grid_paper", "Grid Paper"),
+    ("fraction strip", "fraction_bars", "Fraction Bar Chart"),
+    ("fraction bar", "fraction_bars", "Fraction Bar Chart"),
+    ("fraction-bar", "fraction_bars", "Fraction Bar Chart"),
+    ("hundredths grid", "hundredths_grid", "Hundredths Grids"),
+    ("hundred grid", "hundredths_grid", "Hundredths Grids"),
+    ("percent bar", "percent_bar", "Percent Bars"),
+    ("tape diagram", "percent_bar", "Percent / Tape Bars"),
+    ("number line", "number_line_strip", "Number Line Strips"),
+    ("dot plot", "dot_plot_frame", "Dot Plot Frames"),
+    ("mini grid", "grid_paper", "Grid Paper"),
+]
+
+
+def _wrap_lines(pdf, text, w):
+    """Greedy word-wrap for card text at the current font. Returns lines."""
+    words = str(text).split()
+    lines, cur = [], ""
+    for word in words:
+        trial = (cur + " " + word).strip()
+        if pdf.get_string_width(trial) <= w or not cur:
+            cur = trial
+        else:
+            lines.append(cur)
+            cur = word
+    if cur:
+        lines.append(cur)
+    return lines or [""]
+
+
+def _cut_card_grid(pdf, items, usable_w, cols=3, fill=(248, 250, 253),
+                   border=(120, 140, 180), tcolor=(40, 60, 110), font_size=11,
+                   min_h=16):
+    """Dashed cut-apart card grid with wrapped text; adaptive row height."""
+    ff = pdf.ff
+    card_w = usable_w / cols
+    inner = card_w - 8
+    pdf.set_font(ff, "B", font_size)
+    line_h = font_size * 0.42
+    i = 0
+    while i < len(items):
+        row = items[i:i + cols]
+        wrapped = [_wrap_lines(pdf, it, inner) for it in row]
+        card_h = max(min_h, max(len(wl) for wl in wrapped) * line_h + 7)
+        # page-break if the row won't fit above the footer
+        if pdf.get_y() + card_h > pdf.h - SB_FOOTER_HEIGHT - 8:
+            pdf.add_page()
+        y0 = pdf.get_y()
+        for c, wl in enumerate(wrapped):
+            x0 = PAGE_MARGIN + c * card_w
+            pdf.set_fill_color(*fill)
+            pdf.set_draw_color(*border)
+            pdf.set_line_width(0.4)
+            pdf.set_dash_pattern(dash=1.2, gap=1.2)
+            pdf.rect(x0 + 2, y0, card_w - 4, card_h, style="DF")
+            pdf.set_dash_pattern()
+            pdf.set_text_color(*tcolor)
+            ty = y0 + (card_h - len(wl) * line_h) / 2 + line_h * 0.75
+            for ln in wl:
+                lw = pdf.get_string_width(ln)
+                pdf.text(x0 + (card_w - lw) / 2, ty, ln)
+                ty += line_h
+        pdf.set_y(y0 + card_h + 3)
+        i += cols
+    pdf.set_text_color(*SB_DARK)
+    pdf.set_draw_color(0, 0, 0)
+    pdf.set_line_width(0.3)
+
+
+def _materials_subhead(pdf, usable_w, label):
+    pdf.ln(2)
+    pdf.set_font(pdf.ff, "B", 11)
+    pdf.set_text_color(*SB_DARK)
+    pdf.set_x(PAGE_MARGIN)
+    pdf.cell(usable_w, 7, label, new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(1)
+
+
+def write_activity_materials_pdf(standard_code, skill, activity, output_path):
+    """One activity, teacher-ready: run sheet + student materials + masters."""
+    import hashlib
+    title = activity.get("title") or "Activity"
+    pdf = MathPDF(title=f"Activity: {title}", standard=standard_code)
+    # Manual page management throughout — the grids/keys check remaining
+    # height themselves, and footers draw near the bottom margin, so fpdf's
+    # auto page break would only spawn ghost pages.
+    pdf.set_auto_page_break(auto=False, margin=0)
+    pdf.add_page()
+    ff = pdf.ff
+    usable_w = pdf.w - 2 * PAGE_MARGIN
+
+    # ---- run sheet -------------------------------------------------------
+    pdf.set_font(ff, "B", 16)
+    pdf.set_text_color(*SB_DARK)
+    pdf.set_x(PAGE_MARGIN)
+    pdf.cell(usable_w, 9, title, new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font(ff, "I", 9)
+    pdf.set_text_color(110, 110, 110)
+    pdf.set_x(PAGE_MARGIN)
+    meta_bits = [t for t in (
+        (activity.get("type") or "").replace("_", " "),
+        f"{activity.get('time_minutes')} min" if activity.get("time_minutes") else "",
+        (activity.get("grouping") or "").replace("_", " "),
+    ) if t]
+    pdf.multi_cell(usable_w, 4.5,
+                   f"For: {skill.get('name','')} ({standard_code})  |  " + "  ·  ".join(meta_bits),
+                   new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(2)
+
+    mats = activity.get("materials") or []
+    if mats:
+        _materials_subhead(pdf, usable_w, "Materials")
+        pdf.set_font(ff, "", 10)
+        pdf.set_text_color(60, 60, 60)
+        for m in mats:
+            pdf.set_x(PAGE_MARGIN + 2)
+            pdf.multi_cell(usable_w - 4, 5, f"[  ]  {m}", new_x="LMARGIN", new_y="NEXT")
+        pdf.set_text_color(*SB_DARK)
+
+    instr = activity.get("instructions") or ""
+    if instr:
+        _materials_subhead(pdf, usable_w, "How to run it")
+        pdf.set_font(ff, "", 10)
+        pdf.set_text_color(60, 60, 60)
+        for line in instr.split("\n"):
+            pdf.set_x(PAGE_MARGIN + 2)
+            pdf.multi_cell(usable_w - 4, 5, line, new_x="LMARGIN", new_y="NEXT")
+            pdf.ln(0.5)
+        pdf.set_text_color(*SB_DARK)
+
+    content = activity.get("content") or {}
+
+    # Teacher answer key on the run sheet (never on student pages).
+    key_rows = []
+    if content.get("cards"):
+        key_rows = [(c.get("text", ""), c.get("category", "")) for c in content["cards"]]
+        key_head = ("Card", "Belongs under")
+    elif content.get("pairs"):
+        key_rows = [(p.get("left", ""), p.get("right", "")) for p in content["pairs"]]
+        key_head = ("Left card", "Matches")
+    if key_rows:
+        _materials_subhead(pdf, usable_w, "Answer key (teacher only)")
+        pdf.set_font(ff, "B", 8.5)
+        pdf.set_text_color(90, 90, 100)
+        cw1, cw2 = usable_w * 0.62, usable_w * 0.38
+        pdf.set_x(PAGE_MARGIN)
+        pdf.cell(cw1, 5, key_head[0])
+        pdf.cell(cw2, 5, key_head[1], new_x="LMARGIN", new_y="NEXT")
+        pdf.set_font(ff, "", 8.5)
+        for left, right in key_rows:
+            if pdf.get_y() > pdf.h - SB_FOOTER_HEIGHT - 12:
+                pdf.add_page()
+            y0 = pdf.get_y()
+            pdf.set_xy(PAGE_MARGIN, y0)
+            pdf.multi_cell(cw1, 4.2, str(left), new_x="RIGHT", new_y="TOP")
+            x_after = PAGE_MARGIN + cw1
+            pdf.set_xy(x_after, y0)
+            pdf.multi_cell(cw2, 4.2, str(right), new_x="LMARGIN", new_y="NEXT")
+            pdf.set_y(max(pdf.get_y(), y0 + 4.2))
+        pdf.set_text_color(*SB_DARK)
+    if content.get("decoys"):
+        pdf.set_font(ff, "I", 8.5)
+        pdf.set_text_color(150, 60, 60)
+        pdf.set_x(PAGE_MARGIN)
+        pdf.multi_cell(usable_w, 4.2,
+                       "Decoys (match nothing): " + ", ".join(str(d) for d in content["decoys"]),
+                       new_x="LMARGIN", new_y="NEXT")
+        pdf.set_text_color(*SB_DARK)
+    if content.get("error_step") or content.get("why"):
+        _materials_subhead(pdf, usable_w, "Teacher key")
+        pdf.set_font(ff, "", 9)
+        pdf.set_text_color(60, 60, 60)
+        if content.get("error_step"):
+            pdf.set_x(PAGE_MARGIN + 2)
+            pdf.multi_cell(usable_w - 4, 4.6, "The wrong move: " + content["error_step"],
+                           new_x="LMARGIN", new_y="NEXT")
+        if content.get("why"):
+            pdf.set_x(PAGE_MARGIN + 2)
+            pdf.multi_cell(usable_w - 4, 4.6, "Why / the fix: " + content["why"],
+                           new_x="LMARGIN", new_y="NEXT")
+        pdf.set_text_color(*SB_DARK)
+    _draw_footer(pdf, standard_code, skill.get("name", ""))
+
+    # ---- student materials ----------------------------------------------
+    rng_seed = int(hashlib.md5((skill.get("skill_id", "") + title).encode()).hexdigest()[:8], 16)
+    rng = random.Random(rng_seed)
+    atype = (activity.get("type") or "").lower()
+
+    if content.get("cards"):
+        pdf.set_auto_page_break(auto=False, margin=0)
+        pdf.add_page()
+        pdf.set_font(ff, "B", 13)
+        pdf.set_x(PAGE_MARGIN)
+        pdf.cell(usable_w, 8, f"{title} -- cut-apart cards", new_x="LMARGIN", new_y="NEXT")
+        pdf.ln(2)
+        cats = content.get("categories") or sorted({c.get("category", "") for c in content["cards"]} - {""})
+        if cats:
+            _materials_subhead(pdf, usable_w, "Category headers")
+            _cut_card_grid(pdf, cats, usable_w, cols=min(3, max(1, len(cats))),
+                           fill=(255, 247, 220), border=(180, 130, 20),
+                           tcolor=(146, 64, 14), font_size=13, min_h=18)
+        deck = [c.get("text", "") for c in content["cards"]]
+        # Trap decoys belong in students' hands, not just the teacher key —
+        # skip any decoy that duplicates a real card's text.
+        deck += [str(d) for d in (content.get("decoys") or []) if str(d) not in deck]
+        rng.shuffle(deck)
+        _materials_subhead(pdf, usable_w, "Cards (shuffled)")
+        _cut_card_grid(pdf, deck, usable_w, cols=3)
+        _draw_footer(pdf, standard_code, skill.get("name", ""))
+
+    if content.get("pairs"):
+        pdf.set_auto_page_break(auto=False, margin=0)
+        pdf.add_page()
+        pdf.set_font(ff, "B", 13)
+        pdf.set_x(PAGE_MARGIN)
+        pdf.cell(usable_w, 8, f"{title} -- matching decks", new_x="LMARGIN", new_y="NEXT")
+        pdf.ln(2)
+        lefts = [p.get("left", "") for p in content["pairs"]]
+        rights = [p.get("right", "") for p in content["pairs"]] + [str(d) for d in (content.get("decoys") or [])]
+        rng.shuffle(lefts)
+        rng.shuffle(rights)
+        _materials_subhead(pdf, usable_w, "Deck A")
+        _cut_card_grid(pdf, lefts, usable_w, cols=3)
+        _materials_subhead(pdf, usable_w, "Deck B (includes decoys)")
+        _cut_card_grid(pdf, rights, usable_w, cols=3,
+                       fill=(240, 252, 244), border=(60, 150, 90), tcolor=(20, 100, 50))
+        _draw_footer(pdf, standard_code, skill.get("name", ""))
+
+    if content.get("worked_problem"):
+        pdf.set_auto_page_break(auto=False, margin=0)
+        pdf.add_page()
+        pdf.set_font(ff, "B", 13)
+        pdf.set_x(PAGE_MARGIN)
+        pdf.cell(usable_w, 8, f"{title} -- student slips", new_x="LMARGIN", new_y="NEXT")
+        pdf.ln(2)
+        slip_h = (pdf.h - SB_FOOTER_HEIGHT - pdf.get_y() - 16) / 3
+        for _s in range(3):
+            y0 = pdf.get_y()
+            pdf.set_draw_color(120, 140, 180)
+            pdf.set_line_width(0.4)
+            pdf.set_dash_pattern(dash=1.5, gap=1.5)
+            pdf.rect(PAGE_MARGIN, y0, usable_w, slip_h, style="D")
+            pdf.set_dash_pattern()
+            pdf.set_xy(PAGE_MARGIN + 4, y0 + 3)
+            pdf.set_font(ff, "B", 10)
+            pdf.multi_cell(usable_w - 8, 5, content["worked_problem"],
+                           new_x="LMARGIN", new_y="NEXT")
+            pdf.set_x(PAGE_MARGIN + 4)
+            pdf.set_font(ff, "", 9)
+            pdf.set_text_color(80, 80, 80)
+            pdf.multi_cell(usable_w - 8, 4.6,
+                           "1. Circle the exact line where the work goes wrong.\n"
+                           "2. Fix it and finish the problem correctly.\n"
+                           "3. In one sentence: WHY is the wrong move tempting, and what does the model say instead?",
+                           new_x="LMARGIN", new_y="NEXT")
+            pdf.set_text_color(*SB_DARK)
+            pdf.set_y(y0 + slip_h + 4)
+        _draw_footer(pdf, standard_code, skill.get("name", ""))
+
+    # ---- auto-attached blackline masters ---------------------------------
+    attached = set()
+    for m in mats:
+        ml = str(m).lower()
+        for kw, kind, mtitle in _MATERIALS_MASTER_MAP:
+            if kw in ml and kind not in attached:
+                attached.add(kind)
+                _write_printable_artifact_page(
+                    pdf,
+                    {"kind": kind, "title": mtitle,
+                     "instructions": f"Master for '{title}' -- print one per pair/group as the materials list calls for."},
+                    skill, standard_code, usable_w)
+
+    pdf.output(output_path)
+    return output_path
+
+
 def main():
     raw = sys.stdin.read()
     params = json.loads(raw)
@@ -3031,6 +3508,20 @@ def main():
     # rendering a PDF. The projection page calls this so the projected
     # problems match the printed packet exactly for the same (skill, session).
     mode = (params.get("mode") or "pdf").lower()
+    # `mode: "activity_materials"` renders one activity's hand-out pages
+    # (cut-apart decks, slips, masters) instead of the packet.
+    if mode == "activity_materials":
+        idx = int(params.get("activity_index", 0))
+        acts = skill.get("activities") or []
+        if idx < 0 or idx >= len(acts):
+            print(json.dumps({"error": f"activity_index {idx} out of range (skill has {len(acts)} activities)"}))
+            sys.exit(1)
+        write_activity_materials_pdf(
+            standard_data["standard_code"] if isinstance(standard_data, dict) else standard,
+            skill, acts[idx], output_path)
+        print(json.dumps({"path": output_path}))
+        return
+
     if mode == "items":
         items = _fill_items_from_engine(skill, standard["standard_code"] if isinstance(standard, dict) else standard,
                                         target_count=10, session=session)

@@ -538,17 +538,6 @@
       ],
       "activities": [
         {
-          "type": "game",
-          "title": "Test It or Toss It",
-          "time_minutes": 8,
-          "grouping": "whole_class",
-          "materials": [
-            "Mini whiteboards",
-            "A list of equations with one candidate value each"
-          ],
-          "instructions": "1. Write an equation and one candidate value on the board, e.g. 'x + 7 = 12, try x = 5.'\n2. Every student substitutes, computes, and writes TEST PASSED or TOSS IT with the check shown (5 + 7 = 12).\n3. On 'show,' all boards go up at once.\n4. Pick one student to read their check out loud: substitute, compute, compare.\n5. Debrief after 6-8 rounds: what did you do before deciding, every single time?"
-        },
-        {
           "type": "card_sort",
           "title": "Does 6 Make It True?",
           "time_minutes": 10,
@@ -621,6 +610,17 @@
             "error_step": "Marcus matched a number he could see in the equation instead of substituting each choice and checking.",
             "why": "Substituting 14 gives 14 + 6 = 20, which is not 14 -- so 14 fails its own test. Only testing reveals that 8 + 6 = 14 is true. The visible numbers in an equation are almost never the solution."
           }
+        },
+        {
+          "type": "game",
+          "title": "Test It or Toss It",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards",
+            "A list of equations with one candidate value each"
+          ],
+          "instructions": "1. Write an equation and one candidate value on the board, e.g. 'x + 7 = 12, try x = 5.'\n2. Every student substitutes, computes, and writes TEST PASSED or TOSS IT with the check shown (5 + 7 = 12).\n3. On 'show,' all boards go up at once.\n4. Pick one student to read their check out loud: substitute, compute, compare.\n5. Debrief after 6-8 rounds: what did you do before deciding, every single time?"
         }
       ],
       "strategy_links": [
@@ -895,16 +895,6 @@
           }
         },
         {
-          "type": "game",
-          "title": "Exact or Out",
-          "time_minutes": 8,
-          "grouping": "whole_class",
-          "materials": [
-            "Mini whiteboards"
-          ],
-          "instructions": "1. Post a decimal equation with ONE candidate value, e.g. '2.4x = 7.44, try x = 3.'\n2. Students must write the full computation (2.4 x 3 = 7.20), then EXACT if it lands on the right side or OUT if it misses -- even by a penny.\n3. Boards up together. Anyone who wrote 'close enough' owes the class the exact product.\n4. After 6 rounds, ask: why is 'about right' never good enough for an equation?"
-        },
-        {
           "type": "error_analysis",
           "title": "Dana's Shortcut",
           "time_minutes": 8,
@@ -918,6 +908,16 @@
             "error_step": "Dana stopped at the estimate and picked the nearest-looking choice instead of multiplying each candidate exactly.",
             "why": "When the choices differ by a tenth, estimation cannot tell them apart: 2.6 x 3.1 = 8.06 and 2.6 x 3.2 = 8.32. Only exact multiplication reveals which one lands on 8.32."
           }
+        },
+        {
+          "type": "game",
+          "title": "Exact or Out",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Post a decimal equation with ONE candidate value, e.g. '2.4x = 7.44, try x = 3.'\n2. Students must write the full computation (2.4 x 3 = 7.20), then EXACT if it lands on the right side or OUT if it misses -- even by a penny.\n3. Boards up together. Anyone who wrote 'close enough' owes the class the exact product.\n4. After 6 rounds, ask: why is 'about right' never good enough for an equation?"
         }
       ],
       "strategy_links": [
@@ -1024,7 +1024,7 @@
         "description": "Substitute one fixed value into many different equations and verify each one.",
         "check_question": "Which of these equations are true when y = 4: y + 3 = 7, 2y = 9, y - 1 = 3?"
       },
-      "i_do_script": "On these items the value is fixed and you have a list of different equations — your student's job is to test that one value in every single equation and mark each one that turns out true. The trap is treating it like regular multiple choice and stopping at the first match. Coach them to slow down, work the list top to bottom, and only commit after every equation has been checked.",
+      "i_do_script": "Think of the given value as one key and each equation as its own locked door -- the key might open one door, three doors, or none at all, and the only way to know is to try it in every single lock. On these items the value is fixed and you have a list of different equations — your student's job is to test that one value in every single equation and mark each one that turns out true. The trap is treating it like regular multiple choice and stopping at the first match. Coach them to slow down, work the list top to bottom, and only commit after every equation has been checked.",
       "canonical_error": {
         "pattern": "Student selects only one equation, treating the prompt like a single-answer multiple choice instead of select-all-that-apply, or only checks until they find the first match.",
         "example": "For 'select all equations with solution y = 4,' the student finds y + 3 = 7 is true, bubbles it, and stops without testing 2y = 8 or y - 1 = 3, missing two correct answers.",
@@ -1032,7 +1032,7 @@
       },
       "redirect_script": {
         "stop": "Pause — how many can you pick?",
-        "prompt": "Read the directions again — the word 'all' means you must test every choice. Number the equations 1 through 5 and check off each one as you substitute.",
+        "prompt": "Back to the key: you have only tried it in one lock -- how many doors are still sitting untested? Read the directions again — the word 'all' means you must test every choice. Number the equations 1 through 5 and check off each one as you substitute.",
         "praise": "Yes — you tested every option, not just the first one that worked."
       },
       "vocabulary": [
@@ -1054,6 +1054,18 @@
         2
       ],
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Hold up the value y = 4 like a single key, and lay the five equations A through E out on the desk like five locked doors in a hallway."
+        },
+        {
+          "kind": "ask",
+          "text": "If the key opens door A, does that tell you anything at all about doors B, C, D, or E? Could one key open three of these doors? Could it open none?"
+        },
+        {
+          "kind": "say",
+          "text": "Each door is its own separate test. The job is never 'find the first door that opens' -- it's 'try the key in all five locks and report every door that opened.'"
+        },
         {
           "kind": "show",
           "text": "Let's work this one together. The directions say: 'Select ALL equations that are true when y = 4.' Here is the list:  A) y + 3 = 7   B) 2y = 8   C) y - 1 = 3   D) y / 2 = 3   E) y + 5 = 10"
@@ -1201,17 +1213,6 @@
           }
         },
         {
-          "type": "game",
-          "title": "Checklist Challenge",
-          "time_minutes": 10,
-          "grouping": "small_group",
-          "materials": [
-            "One sheet per pair: five equations and one value",
-            "Pencils"
-          ],
-          "instructions": "1. Each pair gets the same five equations and one value (e.g., n = 7).\n2. Speed matters, but a finish only counts if EVERY equation has a written substitution and a T or F next to it -- five checks, no blanks.\n3. First complete-and-correct checklist wins the round; incomplete sheets are sent back.\n4. Debrief: on the real test, what does the word 'all' force you to do before bubbling?"
-        },
-        {
           "type": "error_analysis",
           "title": "Why Did Priya Stop?",
           "time_minutes": 8,
@@ -1225,6 +1226,17 @@
             "error_step": "Priya treated a select-ALL prompt like single-answer multiple choice and quit after her first success.",
             "why": "On multi-select items every choice is its own true/false question. B and C are also true when y = 6 (2 x 6 = 12 and 6 - 6 = 0), so stopping early left two correct answers on the table."
           }
+        },
+        {
+          "type": "game",
+          "title": "Checklist Challenge",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "One sheet per pair: five equations and one value",
+            "Pencils"
+          ],
+          "instructions": "1. Each pair gets the same five equations and one value (e.g., n = 7).\n2. Speed matters, but a finish only counts if EVERY equation has a written substitution and a T or F next to it -- five checks, no blanks.\n3. First complete-and-correct checklist wins the round; incomplete sheets are sent back.\n4. Debrief: on the real test, what does the word 'all' force you to do before bubbling?"
         }
       ],
       "strategy_links": [
@@ -1806,17 +1818,6 @@
           }
         },
         {
-          "type": "game",
-          "title": "Solution Scramble",
-          "time_minutes": 12,
-          "grouping": "small_group",
-          "materials": [
-            "Inequality cards posted around the room",
-            "One target number on the board"
-          ],
-          "instructions": "1. Post 8-10 inequality cards around the room and write one target number (say, 16) on the board.\n2. Teams walk the room and collect ONLY the inequalities the target number satisfies.\n3. Back at base, each capture must be defended with a spoken substitution: '16 < 40 -- true, keep it.'\n4. A wrong capture costs two points; a missed solution costs one -- so testing beats grabbing.\n5. Debrief: why is 'the numbers look close' the most expensive mistake in this game?"
-        },
-        {
           "type": "error_analysis",
           "title": "Ava's Close Call",
           "time_minutes": 8,
@@ -1830,6 +1831,17 @@
             "error_step": "Ava judged B by how near 14 is to 11 instead of substituting and reading the direction of the symbol.",
             "why": "Substitution gives 11 > 14 -- 'is 11 greater than 14?' -- which is false no matter how close the numbers are. Truth comes from the comparison's direction, not the distance between the numbers."
           }
+        },
+        {
+          "type": "game",
+          "title": "Solution Scramble",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Inequality cards posted around the room",
+            "One target number on the board"
+          ],
+          "instructions": "1. Post 8-10 inequality cards around the room and write one target number (say, 16) on the board.\n2. Teams walk the room and collect ONLY the inequalities the target number satisfies.\n3. Back at base, each capture must be defended with a spoken substitution: '16 < 40 -- true, keep it.'\n4. A wrong capture costs two points; a missed solution costs one -- so testing beats grabbing.\n5. Debrief: why is 'the numbers look close' the most expensive mistake in this game?"
         }
       ],
       "strategy_links": [

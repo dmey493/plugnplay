@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Container from "@/components/layout/Container";
 import PageBanner from "@/components/ui/PageBanner";
 import SkillDetail from "@/components/math/SkillDetail";
@@ -11,6 +12,7 @@ import {
   progressionStep,
 } from "@/lib/skills";
 import type { ContentEnvelope } from "@/lib/types";
+import { getWarmupsForStandard } from "@/lib/warmups";
 
 /**
  * Skill detail page — the drill-in for one skill of a standard's learning
@@ -76,6 +78,10 @@ export default async function SkillDetailPage({
 
   const step = progressionStep(data, skill.skill_id);
 
+  // Library warm-ups (Number Talks / WODB) tagged with this standard — the
+  // five-minute conceptual opener, matched with zero per-skill authoring.
+  const warmups = getWarmupsForStandard(data.standard_code);
+
   return (
     <>
       <PageBanner
@@ -87,13 +93,17 @@ export default async function SkillDetailPage({
 
       <section className="bg-pnp-gray-50 py-10 md:py-14">
         <Container>
-          <SkillDetail
-            skill={skill}
-            standardCode={data.standard_code}
-            standardText={data.standard_text}
-            rationale={step?.rationale}
-            strategies={strategies}
-          />
+          {/* Suspense: SkillDetail reads ?tab= via useSearchParams. */}
+          <Suspense fallback={<div className="min-h-[40vh]" />}>
+            <SkillDetail
+              skill={skill}
+              standardCode={data.standard_code}
+              standardText={data.standard_text}
+              rationale={step?.rationale}
+              strategies={strategies}
+              warmups={warmups}
+            />
+          </Suspense>
         </Container>
       </section>
     </>

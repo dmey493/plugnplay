@@ -49,7 +49,7 @@
         "description": "Given the favorable outcomes and the total outcomes, write the probability as a fraction.",
         "check_question": "A bag has 3 red and 5 blue marbles. What is the probability of drawing a red marble?"
       },
-      "i_do_script": "The probability of a simple event is the number of favorable outcomes over the total number of outcomes. Watch a bag with 3 red and 5 blue marbles: there are 3 red (favorable) out of 8 marbles total, so P(red) = 3/8. The favorable count goes on TOP, the total on the bottom. On a number cube, P(rolling a 4) = 1/6 because one face is a 4 out of six faces. Every compound-event probability we build later is just these simple fractions multiplied together, so the fraction has to be right first.",
+      "i_do_script": "Picture the bag as a strip of 8 boxes, one box per marble, with the 3 red ones shaded -- the probability is just the shaded part of the whole strip, and you could never shade 8 boxes on a strip that only has 3. The probability of a simple event is the number of favorable outcomes over the total number of outcomes. Watch a bag with 3 red and 5 blue marbles: there are 3 red (favorable) out of 8 marbles total, so P(red) = 3/8. The favorable count goes on TOP, the total on the bottom. On a number cube, P(rolling a 4) = 1/6 because one face is a 4 out of six faces. Every compound-event probability we build later is just these simple fractions multiplied together, so the fraction has to be right first.",
       "canonical_error": {
         "pattern": "Writes total over favorable, or uses the number of OTHER outcomes as the top",
         "example": "For 3 red out of 8 marbles, writes 8/3, or writes 5/8 (the blue count) instead of 3/8",
@@ -80,7 +80,7 @@
       ],
       "redirect_script": {
         "stop": "Which count goes on top -- favorable or total?",
-        "prompt": "Put the outcome you are asking about on TOP (favorable) and the total number of outcomes on the bottom. If your fraction is bigger than 1, you flipped it -- a probability is never more than 1.",
+        "prompt": "Draw the strip of boxes first: shade the marbles you are asking about, and read the probability as shaded out of the whole strip. Put the outcome you are asking about on TOP (favorable) and the total number of outcomes on the bottom. If your fraction is bigger than 1, you flipped it -- a probability is never more than 1.",
         "praise": "You put the favorable outcomes over the total -- that's a probability, right-side up."
       },
       "vocabulary": [
@@ -98,6 +98,21 @@
         "if_fail": "Review simple event probability (7.DSP.5)."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw the bag as a strip of 8 boxes, one box per marble, and shade the 2 green ones. The probability of green is the shaded part of the whole strip.",
+          "visual": {
+            "type": "fraction_bars",
+            "label": "The bag as a strip",
+            "bars": [
+              {
+                "parts": 8,
+                "shaded": 2,
+                "label": "2 green out of 8 marbles"
+              }
+            ]
+          }
+        },
         {
           "kind": "show",
           "text": "Write 'A bag has 2 green and 6 yellow marbles. Find P(green).'"
@@ -131,7 +146,7 @@
         "description": "Multiply two fractions by multiplying numerators and denominators, then simplify.",
         "check_question": "What is 1/2 x 1/6?"
       },
-      "i_do_script": "To multiply two fractions I multiply the tops together and the bottoms together, then simplify. Watch 1/2 x 1/6: top is 1 x 1 = 1, bottom is 2 x 6 = 12, so the answer is 1/12. Another: 4/12 x 1/11 = 4/132, and 4/132 simplifies to 1/33. I do NOT add across -- multiplying fractions means top times top over bottom times bottom. This is the engine of every compound 'and' probability, so it has to be automatic.",
+      "i_do_script": "'Times' with fractions means OF, and a bar shows it: 1/3 x 2/5 is one third OF two fifths. Shade 2/5 of a bar, then take a third of just that shaded piece -- you land on 2 of the bar's 15 equal slivers, 2/15. Tops times tops and bottoms times bottoms is that picture as arithmetic: the bottoms multiply because slicing fifths into thirds makes fifteenths; the tops multiply because you keep 1 of the 3 slices of each of the 2 shaded fifths. To multiply two fractions I multiply the tops together and the bottoms together, then simplify. Watch 1/2 x 1/6: top is 1 x 1 = 1, bottom is 2 x 6 = 12, so the answer is 1/12. Another: 4/12 x 1/11 = 4/132, and 4/132 simplifies to 1/33. I do NOT add across -- multiplying fractions means top times top over bottom times bottom. This is the engine of every compound 'and' probability, so it has to be automatic.",
       "canonical_error": {
         "pattern": "Adds the fractions (or cross-adds) instead of multiplying numerators and denominators",
         "example": "For 1/2 x 1/6 writes 1/2 + 1/6 = 4/6 = 2/3, or adds tops and bottoms to get 2/8",
@@ -182,6 +197,30 @@
       "worked_example_script": [
         {
           "kind": "show",
+          "text": "Shade 2/5 of a bar. Now slice the bar into thirds the other way and keep one third of the shaded part.",
+          "visual": {
+            "type": "fraction_bars",
+            "label": "1/3 of 2/5 lands on 2 of 15 slivers",
+            "bars": [
+              {
+                "parts": 5,
+                "shaded": 2,
+                "label": "2/5"
+              },
+              {
+                "parts": 15,
+                "shaded": 2,
+                "label": "1/3 of it"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "How many equal slivers does the whole bar have after both cuts? How many stay shaded? So what is 1/3 of 2/5 -- before any rule?"
+        },
+        {
+          "kind": "show",
           "text": "Write '1/3 x 2/5 = ?'"
         },
         {
@@ -214,7 +253,7 @@
         "type": "skill",
         "skill_id": "8DSP4-F1"
       },
-      "i_do_script": "This standard gives four words for how events relate, and naming the type comes first because it decides how you compute later. INDEPENDENT: one outcome does not affect the other -- a coin and a die, or a draw WITH replacement. DEPENDENT: the first outcome changes the second -- a draw WITHOUT replacement. COMPLEMENTARY: 'A' and 'not A' -- they cover every outcome and add to 1. MUTUALLY EXCLUSIVE: two events that cannot both happen at once, like rolling a 2 and rolling a 5 on one roll. Watch: 'flip a coin and roll a number cube' -- the coin does not change the cube, so these are independent.",
+      "i_do_script": "Before naming anything, sketch the situation and COUNT the trials: two separate arrows (a first draw, then a second draw) is a different picture from one arrow with two possible landing spots -- and the count decides which vocabulary question you are even asking. This standard gives four words for how events relate, and naming the type comes first because it decides how you compute later. INDEPENDENT: one outcome does not affect the other -- a coin and a die, or a draw WITH replacement. DEPENDENT: the first outcome changes the second -- a draw WITHOUT replacement. COMPLEMENTARY: 'A' and 'not A' -- they cover every outcome and add to 1. MUTUALLY EXCLUSIVE: two events that cannot both happen at once, like rolling a 2 and rolling a 5 on one roll. Watch: 'flip a coin and roll a number cube' -- the coin does not change the cube, so these are independent.",
       "canonical_error": {
         "pattern": "Confuses mutually exclusive with independent -- assumes 'two different events' automatically means independent",
         "example": "For 'rolling a 2 and rolling a 5 on ONE roll of a number cube,' says independent instead of mutually exclusive",
@@ -280,7 +319,7 @@
       ],
       "redirect_script": {
         "stop": "Same trial, or two separate trials?",
-        "prompt": "Ask two things: (1) Are these two separate trials, or two outcomes of ONE trial? (2) Does the first change the second? Two separate trials that don't affect each other = independent; two outcomes of one trial that can't both happen = mutually exclusive; 'A' and 'not A' = complementary; without replacement = dependent.",
+        "prompt": "Sketch it before you label it: how many separate draws or rolls does your picture show -- one arrow or two? Ask two things: (1) Are these two separate trials, or two outcomes of ONE trial? (2) Does the first change the second? Two separate trials that don't affect each other = independent; two outcomes of one trial that can't both happen = mutually exclusive; 'A' and 'not A' = complementary; without replacement = dependent.",
         "praise": "You read the relationship, not just 'two events' -- that's how you pick the right term."
       },
       "vocabulary": [
@@ -306,6 +345,18 @@
         "if_fail": "8DSP4-F1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Sketch the scene: a full deck, an arrow to a first card that gets KEPT to the side, then a second arrow drawing from the now-smaller deck. Count the arrows: two separate draws."
+        },
+        {
+          "kind": "ask",
+          "text": "How many draws does the picture show -- one or two? And is the deck the same size for the second arrow as it was for the first?"
+        },
+        {
+          "kind": "say",
+          "text": "Two separate draws, so the question is 'does the first change the second?' The kept card leaves a smaller deck -- yes, it changes -- so these are DEPENDENT. If the picture had only ONE arrow with two landing spots that can't both happen, THAT would be mutually exclusive. Count the trials first; the picture tells you which question to ask."
+        },
         {
           "kind": "show",
           "text": "Write 'Draw a card, keep it, then draw a second card. What type of events?'"
@@ -834,7 +885,7 @@
         "type": "skill",
         "skill_id": "8DSP4-S1"
       },
-      "i_do_script": "For a compound INDEPENDENT 'and' event, I write each stage as favorable over total and MULTIPLY them: P(A and B) = P(A) x P(B). Because the events are independent -- a coin and a die, or a draw WITH replacement -- both totals stay the same. Watch a bag of 3 red and 5 green (8 total), drawing one, putting it back, and drawing again: P(red then green) = 3/8 x 5/8. Both draws are out of 8 because the marble was replaced. I do NOT add, and I do NOT shrink the second total -- that's only for without replacement.",
+      "i_do_script": "P(A and B) = P(A) x P(B) isn't a keyword rule -- the multiplication counts cells in the sample-space table. A coin and a die make 12 cells; 'heads and a 3' is one of them, and 1/2 x 1/6 = 1/12 keeps half the rows and a sixth of the columns -- the same one cell. Because the events are independent (a coin and a die, or a draw WITH replacement), both totals stay the same at each stage. Watch a bag of 3 red and 5 green (8 total), drawing with replacement: P(red then red) = 3/8 x 3/8 = 9/64 -- the second 3/8 is honest because the first marble went back. Size check: an 'and' probability must come out smaller than either stage alone.",
       "canonical_error": {
         "pattern": "Adds the stage probabilities, or shrinks the second total even though the event is with replacement",
         "example": "For P(red then green) from 3 red and 5 green of 8 with replacement, writes 3/8 + 5/8, or writes 3/8 x 5/7 as if the marble were kept",
@@ -911,6 +962,14 @@
         "if_fail": "8DSP4-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Sketch the 2-by-6 sample-space table for a coin and a number cube. Point at the single cell where 'heads AND a 3' lives."
+        },
+        {
+          "kind": "ask",
+          "text": "The expression 1/2 x 1/6 -- what part of this table does each factor keep? Why does the product land on exactly one cell of twelve?"
+        },
         {
           "kind": "show",
           "text": "Write 'A coin is flipped and a number cube is rolled. Write the expression for P(heads and a 3).'"
@@ -1267,28 +1326,27 @@
       "activities": [
         {
           "type": "hands_on",
-          "title": "Draw and Don't Replace",
+          "title": "Class Raffle, No Repeats",
           "time_minutes": 12,
           "grouping": "pairs",
           "materials": [
-            "Paper bag",
-            "Colored counters (e.g., 4 red, 6 blue)"
+            "10 numbered raffle tickets (or index cards), 3 marked WINNER"
           ],
-          "instructions": "1. Write P(first red) = 4/10 before drawing.\n2. Draw one red and set it ASIDE (do not replace).\n3. Count what is left and write P(second red) with the new counts.\n4. Multiply the two fractions. Debrief: what two numbers changed after the first draw, and why?"
+          "instructions": "1. Before any draw, write P(first winner) = 3/10 and say the event type out loud: is drawing two tickets without putting the first back independent or dependent? Justify with the test question: will the counts change?\n2. Draw one ticket and set it ASIDE. Recount what is left and write P(second winner) with the new counts.\n3. Multiply the two fractions for P(both winners).\n4. Debrief: name the two numbers that changed after the first draw, and say WHY the word 'dependent' fits -- the first outcome changed the situation the second draw sees."
         },
         {
           "type": "error_analysis",
-          "title": "Did You Put It Back?",
+          "title": "Shrunk the Bottom, Kept the Top",
           "time_minutes": 8,
           "grouping": "individual",
           "materials": [
-            "Slip with Riley's work"
+            "Slip with Amara's work"
           ],
-          "instructions": "1. Read Riley's work: P(both red) = 4/10 x 4/10.\n2. Cross out the second 4/10 and write the correct second-draw fraction.\n3. Recompute the probability.\n4. Write the rule for what changes on a without-replacement draw.",
+          "instructions": "1. Read Amara's work: P(both green) = 5/8 x 5/7. She DID shrink the total to 7 -- so what did she miss?\n2. Name the exact wrong move: the drawn candy was green, so the green count must shrink too, not just the total.\n3. Rewrite the second fraction with both counts updated and recompute.\n4. Write the rule: on a without-replacement draw, EVERY count touched by the first outcome changes -- ask 'what did the first draw take away?' before writing the second fraction.",
           "content": {
-            "worked_problem": "4 red, 6 blue (10 total), two drawn without replacement. Riley wrote P(both red) = 4/10 x 4/10 = 4/25.",
-            "error_step": "Riley kept the same counts on the second draw (as if the marble were replaced).",
-            "why": "After one red is removed, 3 red remain of 9 total, so P(both red) = 4/10 x 3/9 = 2/15."
+            "worked_problem": "A bag holds 5 green and 3 yellow candies (8 total). Two are drawn without replacement. Amara wrote P(both green) = 5/8 x 5/7 = 25/56.",
+            "error_step": "Amara reduced the total (8 -> 7) but kept 5 green on the second draw, as if the removed candy weren't one of the greens.",
+            "why": "After one green leaves, 4 green remain of 7 total, so P(both green) = 5/8 x 4/7 = 5/14. Partial updating is still independent-style thinking -- the first draw changes every count it touches."
           }
         }
       ],
@@ -1400,7 +1458,7 @@
         "type": "skill",
         "skill_id": "8DSP4-S1"
       },
-      "i_do_script": "Two of the standard's four words are about single-trial relationships. COMPLEMENTARY events are 'A' and 'not A': together they cover every outcome, so their probabilities add to 1, which means P(not A) = 1 - P(A). Watch: if P(rain) = 3/10, then P(no rain) = 1 - 3/10 = 7/10. MUTUALLY EXCLUSIVE events cannot both happen at once, so for 'A or B' you ADD: on one roll of a number cube, P(a 2 or a 5) = 1/6 + 1/6 = 2/6 = 1/3. Complements subtract from 1; disjoint 'or' events add.",
+      "i_do_script": "Two of the standard's four words are about single-trial relationships -- and both are pictures before they are rules. COMPLEMENTARY events are 'A' and 'not A': shade the outcomes where A happens, and 'not A' is everything left unshaded. Together the two parts tile the whole, so their probabilities add to 1 -- which is all P(not A) = 1 - P(A) says: the unshaded part is whatever the shaded part leaves behind. If P(rain) = 3/10, the other 7 tenths of the outcomes are dry: P(no rain) = 7/10. MUTUALLY EXCLUSIVE events can't both happen at once -- their shaded regions don't overlap -- so for 'A or B' their probabilities add without double-counting.",
       "canonical_error": {
         "pattern": "Multiplies (uses the 'and' rule) for complementary or mutually exclusive 'or'/'not' events instead of subtracting from 1 or adding",
         "example": "For P(not A) when P(A) = 3/10, writes 3/10 x something; or for P(a 2 or a 5) writes 1/6 x 1/6 = 1/36 instead of 1/6 + 1/6 = 1/3",
@@ -1431,7 +1489,7 @@
       ],
       "redirect_script": {
         "stop": "Is this 'and,' or 'or'/'not'?",
-        "prompt": "Check the words. For 'not A' (a complement), subtract from 1: P(not A) = 1 - P(A). For 'A or B' when they can't both happen, ADD: P(A) + P(B). Multiplying is only for 'and' with independent events.",
+        "prompt": "Draw the outcomes as one bar and shade the event. The complement is the unshaded part -- what must the two parts add to? Check the words. For 'not A' (a complement), subtract from 1: P(not A) = 1 - P(A). For 'A or B' when they can't both happen, ADD: P(A) + P(B). Multiplying is only for 'and' with independent events.",
         "praise": "You matched the operation to the words -- subtract from 1 for a complement, add for disjoint 'or.'"
       },
       "vocabulary": [
@@ -1453,6 +1511,29 @@
         "if_fail": "8DSP4-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw the bus's 7 equally likely outcomes as one bar of 7 boxes. Shade the 4 'on time' boxes.",
+          "visual": {
+            "type": "fraction_bars",
+            "label": "on time (shaded) and NOT on time tile the whole",
+            "bars": [
+              {
+                "parts": 7,
+                "shaded": 4,
+                "label": "4/7"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "What fraction of the bar is NOT shaded? What do the shaded and unshaded parts add up to -- and could they ever add to anything else?"
+        },
+        {
+          "kind": "say",
+          "text": "The two parts tile the whole bar, so they must add to 1. Subtracting from 1 just finds the unshaded part: P(not on time) = 1 - 4/7 = 3/7."
+        },
         {
           "kind": "show",
           "text": "Write 'P(a bus is on time) = 4/7. Find P(the bus is NOT on time).'"

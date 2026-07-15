@@ -49,7 +49,7 @@
         "description": "Add a short list of whole numbers and divide to find a simple average.",
         "check_question": "What is the average of 4 and 10?"
       },
-      "i_do_script": "The mean is the 'fair share' -- what everybody would get if we split the total evenly. I add up all the values, then divide by how many there are. Watch: for 6, 9, and 12, I add to get 27, then divide by 3 values: 27 divided by 3 is 9. For 4, 8, 8, 12, 8, the total is 40 and there are 5 numbers, so 40 divided by 5 is 8. Always count the values so you divide by the right number.",
+      "i_do_script": "Picture three kids holding 6, 9, and 12 pretzels who pool them and deal them back out evenly -- each kid ends up holding 9, a number in the middle of the group, never the size of the whole pile. The mean is the 'fair share' -- what everybody would get if we split the total evenly. I add up all the values, then divide by how many there are. Watch: for 6, 9, and 12, I add to get 27, then divide by 3 values: 27 divided by 3 is 9. For 4, 8, 8, 12, 8, the total is 40 and there are 5 numbers, so 40 divided by 5 is 8. Always count the values so you divide by the right number.",
       "canonical_error": {
         "pattern": "Adds the values but forgets to divide by how many there are, reporting the sum as the mean",
         "example": "For 6, 9, 12 writes 27 instead of 27 / 3 = 9",
@@ -84,7 +84,7 @@
       ],
       "redirect_script": {
         "stop": "Wait -- did you divide by how many?",
-        "prompt": "The mean shares the total equally: add every value, then divide by how many values there are. Count them -- 3 numbers means divide by 3.",
+        "prompt": "Look at the towers -- is any one tower that tall, or is that number ALL the blocks piled together? The mean shares the total equally: add every value, then divide by how many values there are. Count them -- 3 numbers means divide by 3.",
         "praise": "You divided the total by the count -- that's the mean."
       },
       "vocabulary": [
@@ -102,6 +102,10 @@
         "if_fail": "Review finding the mean (6.DS.3)."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Picture three block towers that are 5, 10, and 12 blocks tall. Move blocks from the tall towers to the short one until all three towers are the SAME height -- how tall does each tower end up? Could a single tower ever be 27 blocks tall?"
+        },
         {
           "kind": "show",
           "text": "Write 'Find the mean of 5, 10, 12.'"
@@ -135,7 +139,7 @@
         "description": "Identify the largest and smallest values in a list and subtract them.",
         "check_question": "In 3, 9, 5, what is the largest minus the smallest?"
       },
-      "i_do_script": "The range tells me how far the data spreads, from the smallest value to the largest. I find the biggest number and the smallest number, then subtract. Watch: for 8, 15, 3, 10, the biggest is 15 and the smallest is 3, so the range is 15 minus 3 = 12. It doesn't matter what order the numbers are written in -- I hunt for the true max and min, not the first and last value.",
+      "i_do_script": "The range is a distance you can see: put the data on a number line -- dots at 8, 15, 3, 10 -- and the range is the span from the leftmost dot to the rightmost, 3 to 15, a stretch of 12. Biggest-minus-smallest just measures that stretch without drawing it. The range tells me how far the data spreads, from the smallest value to the largest. I find the biggest number and the smallest number, then subtract. Watch: for 8, 15, 3, 10, the biggest is 15 and the smallest is 3, so the range is 15 minus 3 = 12. It doesn't matter what order the numbers are written in -- I hunt for the true max and min, not the first and last value.",
       "canonical_error": {
         "pattern": "Subtracts the first value from the last (or two arbitrary values) instead of the largest minus the smallest",
         "example": "For 8, 15, 3, 10 computes 10 - 8 = 2 instead of 15 - 3 = 12",
@@ -190,6 +194,14 @@
       "worked_example_script": [
         {
           "kind": "show",
+          "text": "On the board, draw a number line 0 to 10 and plot the data 7, 2, 9, 4 as dots. Bracket the span from the leftmost dot to the rightmost."
+        },
+        {
+          "kind": "ask",
+          "text": "Which dot sits farthest left, which farthest right? How wide is the stretch between them -- and what does that width tell you about the data?"
+        },
+        {
+          "kind": "show",
           "text": "Write 'Find the range of 7, 2, 9, 4.'"
         },
         {
@@ -222,7 +234,7 @@
         "type": "skill",
         "skill_id": "7DSP2-F1"
       },
-      "i_do_script": "To compare two groups I first describe each one with three numbers: the mean, the median, and the range. The mean and median are 'typical' values; the range is how spread out they are. Watch two samples: A is 4, 6, 8, 10, 12 and B is 5, 7, 9, 11, 13. The mean of A is 40/5 = 8; the mean of B is 45/5 = 9, so B is one higher. For the median I ORDER each set and take the middle: A's is 8, B's is 9. The range is largest minus smallest: both are 8. The big trap is the median -- always order the numbers by size first.",
+      "i_do_script": "Data lives on a number line, not in a list -- the 'middle' value is the one with just as many values below it as above it BY SIZE, no matter what order the numbers happened to be written in. To compare two groups I first describe each one with three numbers: the mean, the median, and the range. The mean and median are 'typical' values; the range is how spread out they are. Watch two samples: A is 4, 6, 8, 10, 12 and B is 5, 7, 9, 11, 13. The mean of A is 40/5 = 8; the mean of B is 45/5 = 9, so B is one higher. For the median I ORDER each set and take the middle: A's is 8, B's is 9. The range is largest minus smallest: both are 8. The big trap is the median -- always order the numbers by size first.",
       "canonical_error": {
         "pattern": "Finds the median from the unordered list -- picks the physical middle of the numbers as written instead of ordering them by size first",
         "example": "For 12, 8, 5, 20, 15 reports 5 (the middle of the list) instead of ordering to 5, 8, 12, 15, 20 and getting 12",
@@ -249,7 +261,7 @@
       ],
       "redirect_script": {
         "stop": "Did you put the numbers in order first?",
-        "prompt": "The median is the middle value BY SIZE, so line the numbers up from smallest to largest first, then find the middle one.",
+        "prompt": "Put the values on the number line first -- which one has the same count of values below it as above it? The median is the middle value BY SIZE, so line the numbers up from smallest to largest first, then find the middle one.",
         "praise": "You ordered the data before finding the middle -- that's a correct median."
       },
       "vocabulary": [
@@ -275,6 +287,30 @@
         "if_fail": "7DSP2-F1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write Sample B scrambled: 10, 6, 14, 8, 12. Circle the number sitting in the middle POSITION of the list as written -- that's 14."
+        },
+        {
+          "kind": "ask",
+          "text": "Now place all five values on a number line. Which number has exactly two values below it and two values above it -- 14, or 10?",
+          "visual": {
+            "type": "number_line_point",
+            "ticks": [
+              6,
+              8,
+              10,
+              12,
+              14
+            ],
+            "point_value": 10,
+            "point_label": "median: 2 below, 2 above"
+          }
+        },
+        {
+          "kind": "say",
+          "text": "On the number line, 10 sits dead center -- 6 and 8 below it, 12 and 14 above it -- so 10 is the median. The middle of the list as written lied; the middle of the number line never does."
+        },
         {
           "kind": "show",
           "text": "Write 'Sample A: 3, 5, 7, 9, 11. Sample B: 6, 8, 10, 12, 14. Compare the medians.'"

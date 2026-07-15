@@ -59,7 +59,7 @@
         "description": "Understand that addition and subtraction are opposites, and multiplication and division are opposites, so one undoes the other.",
         "check_question": "If I add 7 to a number and get 12, what should I do to find the original number?"
       },
-      "i_do_script": "Solving an equation means getting the variable alone on one side. To do that we use the OPPOSITE operation to undo what is happening to the variable. Watch: in x + 5 = 12, the x has 5 added to it, so I subtract 5 from BOTH sides and get x = 7. In 4x = 20, the x is multiplied by 4, so I divide BOTH sides by 4 and get x = 5. The rule is simple: addition undoes subtraction, multiplication undoes division.",
+      "i_do_script": "An equation is a balanced scale: x + 5 = 12 says a mystery bag plus 5 cubes weighs the same as 12 cubes. To see what's in the bag WITHOUT opening it, take 5 cubes off BOTH pans -- the scale stays level and the bag stands alone against 7. That's all 'undo with the opposite operation on both sides' means. Solving an equation means getting the variable alone on one side. To do that we use the OPPOSITE operation to undo what is happening to the variable. Watch: in x + 5 = 12, the x has 5 added to it, so I subtract 5 from BOTH sides and get x = 7. In 4x = 20, the x is multiplied by 4, so I divide BOTH sides by 4 and get x = 5. The rule is simple: addition undoes subtraction, multiplication undoes division.",
       "canonical_error": {
         "pattern": "Student uses the same operation that appears in the equation instead of its inverse.",
         "example": "For x + 5 = 12, student writes x = 12 + 5 = 17 instead of x = 12 - 5 = 7.",
@@ -67,7 +67,7 @@
       },
       "redirect_script": {
         "stop": "Hold on. What is happening to x?",
-        "prompt": "Point to x and say what is being done to it. If something is added, subtract on both sides. If something is multiplied, divide on both sides. The opposite undoes it.",
+        "prompt": "Picture the scale: what sits on each pan? To leave the bag alone, what must come off BOTH pans? Point to x and say what is being done to it. If something is added, subtract on both sides. If something is multiplied, divide on both sides. The opposite undoes it.",
         "praise": "You picked the opposite operation. That's how solving works."
       },
       "vocabulary": [
@@ -174,7 +174,7 @@
         "description": "Add, subtract, multiply, and divide nonneg fractions, mixed numbers, and decimals without a calculator.",
         "check_question": "What is 2.5 - 1.25? What is 3 1/3 divided by 2/3?"
       },
-      "i_do_script": "On 6.AF.3 the calculator is not allowed, and many problems use decimals or fractions. Watch: 2.5 - 1.25. I line up the decimal points and subtract: 2.50 - 1.25 = 1.25. For fractions: 3 1/3 divided by 2/3 means 10/3 times 3/2 = 30/6 = 5. We need to be quick with these because solving the equation comes AFTER the arithmetic.",
+      "i_do_script": "Two meanings keep this arithmetic honest. Lining up decimal points is lining up place values -- tenths must sit over tenths, or you'd be subtracting cents from dollars. And dividing by a fraction is a fitting question: 3 1/3 divided by 2/3 asks how many 2/3-size pieces fit in 3 1/3 (five do). On 6.AF.3 the calculator is not allowed, and many problems use decimals or fractions. Watch: 2.5 - 1.25. I line up the decimal points and subtract: 2.50 - 1.25 = 1.25. For fractions: 3 1/3 divided by 2/3 means 10/3 times 3/2 = 30/6 = 5. We need to be quick with these because solving the equation comes AFTER the arithmetic.",
       "canonical_error": {
         "pattern": "Student loses track of decimal place value or flips a fraction operation, producing arithmetic errors that hide a correct solving method.",
         "example": "For x + 1.25 = 2.5, student computes 2.5 - 1.25 = 1.35 (forgetting to align decimals) and reports x = 1.35 instead of 1.25.",
@@ -1441,7 +1441,7 @@
         "description": "Apply division as the inverse of multiplication to isolate x in px = q.",
         "check_question": "Solve 5/8 x = 40."
       },
-      "i_do_script": "When the variable is multiplied by a number, divide both sides by that number to undo it. Watch: 5/8 x = 40. The x is multiplied by 5/8, so I multiply both sides by the reciprocal 8/5 (or divide both sides by 5/8). That gives x = 40 times 8/5 = 320/5 = 64. I check: 5/8 of 64 = 40. Correct.",
+      "i_do_script": "When the variable is multiplied by a fraction, a bar shows what's going on. 5/8 x = 40 says: cut x into 8 equal parts, and five of those parts hold 40. So ONE part holds 40 / 5 = 8, and the whole x is all eight parts: 8 x 8 = 64. That two-step move -- divide by 5, multiply by 8 -- is exactly multiplying by the reciprocal 8/5. The flip isn't a trick: it reverses both cuts at once. So to undo multiplying by a number, divide both sides by it (or multiply by its reciprocal): x = 40 x 8/5 = 64. Check: 5/8 of 64 = 40. Correct.",
       "canonical_error": {
         "pattern": "Student multiplies instead of divides, or only divides one side of the equation.",
         "example": "For 5/8 x = 40, student computes 5/8 times 40 = 25 and answers x = 25 instead of x = 64.",
@@ -1449,7 +1449,7 @@
       },
       "redirect_script": {
         "stop": "Stop — what is x being multiplied by?",
-        "prompt": "Circle the coefficient. To get x by itself, divide BOTH sides by that number, or multiply both sides by its reciprocal. Then check by plugging your answer back in.",
+        "prompt": "Draw the bar: the coefficient tells you how the variable was cut and how many parts you can see. Undo it -- one part first, then all the parts. That's the reciprocal. Then check by plugging your answer back in.",
         "praise": "You undid the multiplication on both sides. That is solving."
       },
       "vocabulary": [
@@ -1494,6 +1494,65 @@
         3
       ],
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw x as a bar cut into 8 equal parts. Shade 5 of them -- the equation says those 5 parts hold 40.",
+          "visual": {
+            "type": "bar_model",
+            "label": "5 shaded parts together hold 40 -- how big is each part, and all of x?",
+            "segments": [
+              {
+                "span": 1,
+                "label": "?",
+                "shaded": true
+              },
+              {
+                "span": 1,
+                "label": "?",
+                "shaded": true
+              },
+              {
+                "span": 1,
+                "label": "?",
+                "shaded": true
+              },
+              {
+                "span": 1,
+                "label": "?",
+                "shaded": true
+              },
+              {
+                "span": 1,
+                "label": "?",
+                "shaded": true
+              },
+              {
+                "span": 1,
+                "label": ""
+              },
+              {
+                "span": 1,
+                "label": ""
+              },
+              {
+                "span": 1,
+                "label": ""
+              }
+            ],
+            "end_labels": [
+              "",
+              "x"
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "If 5 parts hold 40, how much does ONE part hold? So what do all 8 parts hold?"
+        },
+        {
+          "kind": "say",
+          "text": "Divide by 5, then multiply by 8 -- that's multiplying by 8/5. The reciprocal undoes 5/8 because it reverses both cuts at once."
+        },
         {
           "kind": "show",
           "text": "Write on the board: 5/8 x = 40."
@@ -2823,17 +2882,6 @@
       ],
       "activities": [
         {
-          "type": "game",
-          "title": "Shopping Spree",
-          "time_minutes": 12,
-          "grouping": "small_group",
-          "materials": [
-            "A price list (poster $3.25, snack $1.60, book $4.99, marker pack $2.40)",
-            "Budget cards ($12, $15, $20)"
-          ],
-          "instructions": "1. Each group draws a budget card; each student picks ONE item type from the price list.\n2. Everyone writes the equation (price times n = budget) and solves it.\n3. Each student states the whole-number answer AND the leftover money.\n4. Group audit: does buying one more item bust the budget? Prove it with one multiplication.\n5. Debrief: when did the equation's exact answer differ from the real-world answer?"
-        },
-        {
           "type": "error_analysis",
           "title": "Did Kim Overspend?",
           "time_minutes": 8,
@@ -2847,6 +2895,17 @@
             "error_step": "Kim rounded 5.92 up to 6 because that is the usual rounding rule.",
             "why": "Six bars cost 6 x 1.35 = $8.10 -- ten cents more than Kim has. On a budget you round DOWN: 5 bars cost $6.75 and fit. The story, not the rounding rule, decides the direction."
           }
+        },
+        {
+          "type": "game",
+          "title": "Shopping Spree",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "A price list (poster $3.25, snack $1.60, book $4.99, marker pack $2.40)",
+            "Budget cards ($12, $15, $20)"
+          ],
+          "instructions": "1. Each group draws a budget card; each student picks ONE item type from the price list.\n2. Everyone writes the equation (price times n = budget) and solves it.\n3. Each student states the whole-number answer AND the leftover money.\n4. Group audit: does buying one more item bust the budget? Prove it with one multiplication.\n5. Debrief: when did the equation's exact answer differ from the real-world answer?"
         }
       ],
       "strategy_links": [

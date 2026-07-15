@@ -54,7 +54,7 @@
         "description": "Count two groups of objects and compare them with words (more, fewer, for every)",
         "check_question": "There are 3 cats and 5 dogs. Say a sentence comparing the cats to the dogs."
       },
-      "i_do_script": "Today we're turning a plain sentence into a ratio. If a fish tank has 3 goldfish and 4 guppies, the ratio of goldfish to guppies is 3:4 -- the first word named goes first, the second word named goes second. I always underline the two things being compared and write them in the exact order they were asked for.",
+      "i_do_script": "Before any numbers move, the question's own phrase builds two labeled slots in order -- first word named, first slot. Each amount can only sit in the slot wearing its name, no matter what order the story listed things. Today we're turning a plain sentence into a ratio. If a fish tank has 3 goldfish and 4 guppies, the ratio of goldfish to guppies is 3:4 -- the first word named goes first, the second word named goes second. I always underline the two things being compared and write them in the exact order they were asked for.",
       "canonical_error": {
         "pattern": "Writes the two numbers in the order they appear in the story instead of the order the question asks for",
         "example": "Story says '5 dogs and 2 cats'; question asks for cats to dogs; student writes 5:2 instead of 2:5",
@@ -173,6 +173,10 @@
       "worked_example_script": [
         {
           "kind": "show",
+          "text": "Before touching the story's numbers, write the question's phrase 'comic books to chapter books' and draw an empty slot under each word. The phrase built two labeled parking spots in a fixed order -- the 4 can only park under 'comic books' and the 7 can only park under 'chapter books.'"
+        },
+        {
+          "kind": "show",
           "text": "Write on the board: 'A shelf has 4 comic books and 7 chapter books.' Below it write the question: 'What is the ratio of comic books to chapter books?'"
         },
         {
@@ -216,7 +220,7 @@
         "description": "Graph points in the first quadrant of the coordinate plane and name plotted points (5.CA.11)",
         "check_question": "To plot the point (2, 5), which way do you move first, and how far?"
       },
-      "i_do_script": "We're plotting points like (3, 4). The first number is the x-coordinate -- how far I walk RIGHT from the origin along the floor. The second is the y-coordinate -- how far I climb UP. I say 'run before you jump': right 3, up 4, dot. The order never changes.",
+      "i_do_script": "Two moves done in the wrong order land you on a different dot: 'right 2 then up 5' and 'right 5 then up 2' are two different addresses on the grid. That's why the pair comes with a fixed order built in. We're plotting points like (3, 4). The first number is the x-coordinate -- how far I walk RIGHT from the origin along the floor. The second is the y-coordinate -- how far I climb UP. I say 'run before you jump': right 3, up 4, dot. The order never changes.",
       "canonical_error": {
         "pattern": "Reverses the coordinates -- moves up by the first number and right by the second",
         "example": "Asked to plot (2, 6), the student goes up 2 and right 6, landing on (6, 2)",
@@ -224,7 +228,7 @@
       },
       "redirect_script": {
         "stop": "Hold on -- which number moves you sideways?",
-        "prompt": "Put your pencil on the origin. Say 'run, then jump': slide RIGHT the first number, then UP the second number. Trace it with your finger before you draw the dot.",
+        "prompt": "Remember the two dots: (2, 5) and (5, 2) sit in different places, so the order of your moves decides where you land. Put your pencil on the origin. Say 'run, then jump': slide RIGHT the first number, then UP the second number. Trace it with your finger before you draw the dot.",
         "praise": "Right first, up second -- you followed the ordered pair exactly."
       },
       "item_template": "A first-quadrant coordinate grid (ranges 0-8 or smaller). Student either names a plotted point as an ordered pair or describes/executes the moves to plot a given pair. MC or short response.",
@@ -424,6 +428,33 @@
         "if_fail": "Practice 'run, then jump' on a floor grid or large grid paper with single points until the order is automatic."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Show two dots on the same grid: one from 'right 2, up 5' and one from 'right 5, up 2.' Same two numbers, different places -- so the order of the two moves must matter.",
+          "visual": {
+            "type": "coordinate_grid",
+            "x_range": [
+              0,
+              6
+            ],
+            "y_range": [
+              0,
+              6
+            ],
+            "points": [
+              {
+                "x": 2,
+                "y": 5,
+                "label": "(2, 5)"
+              },
+              {
+                "x": 5,
+                "y": 2,
+                "label": "(5, 2)"
+              }
+            ]
+          }
+        },
         {
           "kind": "show",
           "text": "Draw a first-quadrant grid from 0 to 6 on both axes. Write the ordered pair (2, 5) beside it."
@@ -950,6 +981,16 @@
           }
         },
         {
+          "type": "hands_on",
+          "title": "Recipe Doubling Table",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Two colors of snap cubes or counters"
+          ],
+          "instructions": "1. Build the ratio 2:3 with cubes -- 2 red, 3 blue -- as one 'batch.'\n2. Build two batches, then three batches. Count each color: 4:6, then 6:9.\n3. Now TRY the wrong move: add one cube to each color of a single batch (3:4). Ask: is that just a bigger batch of the same recipe? Compare 3:4 batches against 2:3 batches side by side.\n4. Debrief: batches multiply the whole recipe; adding sneaks in extra of one flavor."
+        },
+        {
           "type": "game",
           "title": "Impostor Ratio",
           "time_minutes": 12,
@@ -959,16 +1000,6 @@
             "Prepared sets of 4 ratios (3 equivalent + 1 impostor)"
           ],
           "instructions": "1. Show a set of four ratios, like 2:3, 4:6, 6:8, 10:15.\n2. Everyone writes the impostor on their whiteboard and holds it up on your signal.\n3. A correct catch only scores if the student states the multiplier test that exposes it ('6:8 is 3:4, not 2:3').\n4. Let students build their own impostor sets for the group -- the best impostors use the add-the-same-number trick.\n5. Debrief: why does adding the same number to both parts always break a ratio (unless the ratio is 1:1)?"
-        },
-        {
-          "type": "hands_on",
-          "title": "Recipe Doubling Table",
-          "time_minutes": 10,
-          "grouping": "small_group",
-          "materials": [
-            "Two colors of snap cubes or counters"
-          ],
-          "instructions": "1. Build the ratio 2:3 with cubes -- 2 red, 3 blue -- as one 'batch.'\n2. Build two batches, then three batches. Count each color: 4:6, then 6:9.\n3. Now TRY the wrong move: add one cube to each color of a single batch (3:4). Ask: is that just a bigger batch of the same recipe? Compare 3:4 batches against 2:3 batches side by side.\n4. Debrief: batches multiply the whole recipe; adding sneaks in extra of one flavor."
         }
       ],
       "strategy_links": [
@@ -1760,17 +1791,6 @@
           }
         },
         {
-          "type": "game",
-          "title": "Whiteboard Table Court",
-          "time_minutes": 10,
-          "grouping": "whole_class",
-          "materials": [
-            "Whiteboards",
-            "Projected pairs of tables"
-          ],
-          "instructions": "1. Project a reference table and one candidate table.\n2. Students write a verdict -- MATCH or NO MATCH -- plus the one row that proves it.\n3. Boards up together; pick one MATCH and one NO MATCH student to defend their proof row.\n4. Seed at least one candidate that shares its first row with the reference but drifts additively after -- the debate it starts is the lesson."
-        },
-        {
           "type": "matching",
           "title": "Ratio Family Reunion",
           "time_minutes": 8,
@@ -1803,6 +1823,17 @@
               "4:3, 5:4, 6:5 (constant difference of 1)"
             ]
           }
+        },
+        {
+          "type": "game",
+          "title": "Whiteboard Table Court",
+          "time_minutes": 10,
+          "grouping": "whole_class",
+          "materials": [
+            "Whiteboards",
+            "Projected pairs of tables"
+          ],
+          "instructions": "1. Project a reference table and one candidate table.\n2. Students write a verdict -- MATCH or NO MATCH -- plus the one row that proves it.\n3. Boards up together; pick one MATCH and one NO MATCH student to defend their proof row.\n4. Seed at least one candidate that shares its first row with the reference but drifts additively after -- the debate it starts is the lesson."
         }
       ],
       "strategy_links": [
@@ -1851,7 +1882,7 @@
         ]
       },
       "worked_solution": {
-        "stem": "The table shows 2:6, 3:9, 4:12. Does the set 5:15, 6:18, 7:21 show the same ratio relationship?",
+        "stem": "The table shows three ratio pairs. Does the set 5:15, 6:18, 7:21 show the same ratio relationship?",
         "answer": "Yes",
         "steps": [
           {
@@ -1866,7 +1897,29 @@
             "math": "All rows = 1:3, so the tables match",
             "annotation": "Same relationship means every row of both tables simplifies to the same ratio -- growth alone proves nothing."
           }
-        ]
+        ],
+        "render_data": {
+          "type": "data_table",
+          "headers": [
+            "First",
+            "Second"
+          ],
+          "rows": [
+            [
+              "2",
+              "6"
+            ],
+            [
+              "3",
+              "9"
+            ],
+            [
+              "4",
+              "12"
+            ]
+          ],
+          "title": "The given table"
+        }
       },
       "faded_example": {
         "stem": "The ratio of x to y is 3:4. Does the table 6:8, 9:12, 12:15 show ratios equivalent to 3:4?",
@@ -2848,17 +2901,6 @@
       ],
       "activities": [
         {
-          "type": "game",
-          "title": "Ratio Table Race",
-          "time_minutes": 12,
-          "grouping": "small_group",
-          "materials": [
-            "Blank two-column tables",
-            "Problem cards with a base ratio and a target"
-          ],
-          "instructions": "1. Deal a problem card: 'Base ratio 3 granola bars : $4. Target: 21 bars.'\n2. Teams race to build the table row by row until the target row, saying each multiplier as they write it.\n3. A finished table only scores if the team can answer 'how many batches did you use?' without looking.\n4. Twist round: give a target that skips rows (like 30 bars) so teams must jump straight to the multiplier.\n5. Debrief: which was faster, building every row or jumping by the multiplier -- and when might each be safer?"
-        },
-        {
           "type": "hands_on",
           "title": "Scale the Recipe",
           "time_minutes": 15,
@@ -2884,6 +2926,17 @@
             "error_step": "The student multiplied the 20 tickets by the ratio's 2 -- two numbers that both count tickets -- and called the result dollars.",
             "why": "The bridge is the multiplier: 20 / 2 = 10 batches. Ten batches of $5 is $50. Multiplying tickets by tickets can never produce dollars."
           }
+        },
+        {
+          "type": "game",
+          "title": "Ratio Table Race",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Blank two-column tables",
+            "Problem cards with a base ratio and a target"
+          ],
+          "instructions": "1. Deal a problem card: 'Base ratio 3 granola bars : $4. Target: 21 bars.'\n2. Teams race to build the table row by row until the target row, saying each multiplier as they write it.\n3. A finished table only scores if the team can answer 'how many batches did you use?' without looking.\n4. Twist round: give a target that skips rows (like 30 bars) so teams must jump straight to the multiplier.\n5. Debrief: which was faster, building every row or jumping by the multiplier -- and when might each be safer?"
         }
       ],
       "strategy_links": [

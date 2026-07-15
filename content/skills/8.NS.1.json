@@ -49,7 +49,7 @@
         "description": "Divide the numerator by the denominator to write a fraction as a decimal.",
         "check_question": "What is 3/4 written as a decimal?"
       },
-      "i_do_script": "A fraction is a division problem: the bar means 'divide the top by the bottom.' Watch: 3/4 means 3 divided by 4 = 0.75, and 1/8 means 1 divided by 8 = 0.125. I keep the common ones in my head -- 1/2 = 0.5, 1/4 = 0.25, 1/5 = 0.2, 1/8 = 0.125. Being able to divide a fraction into a decimal is what later lets me see whether that decimal terminates or repeats.",
+      "i_do_script": "Think of 3/4 as 3 candy bars shared fairly among 4 people -- each person gets less than one whole bar, so the answer has to come out smaller than 1. That sharing picture is the whole meaning of the bar. A fraction is a division problem: the bar means 'divide the top by the bottom.' Watch: 3/4 means 3 divided by 4 = 0.75, and 1/8 means 1 divided by 8 = 0.125. I keep the common ones in my head -- 1/2 = 0.5, 1/4 = 0.25, 1/5 = 0.2, 1/8 = 0.125. Being able to divide a fraction into a decimal is what later lets me see whether that decimal terminates or repeats.",
       "canonical_error": {
         "pattern": "Divides the denominator by the numerator, or reads the fraction bar backward",
         "example": "Writes 1/4 as 4.0 (dividing 4 by 1) or 0.4 instead of 0.25",
@@ -84,7 +84,7 @@
       ],
       "redirect_script": {
         "stop": "The bar means top divided by bottom.",
-        "prompt": "Rewrite the fraction as a division: 3/4 is 3 divided by 4. Put a decimal point and zeros on the top, then divide.",
+        "prompt": "Picture the sharing first: 3 bars among 4 people means each share is less than a whole bar, so the decimal must be less than 1. Rewrite the fraction as a division: 3/4 is 3 divided by 4. Put a decimal point and zeros on the top, then divide.",
         "praise": "You divided the numerator by the denominator -- that's the decimal."
       },
       "vocabulary": [
@@ -102,6 +102,21 @@
         "if_fail": "Review long division (6.NS.2)."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "3 bars shared among 8 people: does each person get more than one whole bar, or less? So when we divide, should 3/8 come out bigger than 1 or smaller than 1?",
+          "visual": {
+            "type": "fraction_bars",
+            "label": "One person's share: 3/8 of a bar",
+            "bars": [
+              {
+                "parts": 8,
+                "shaded": 3,
+                "label": "3/8"
+              }
+            ]
+          }
+        },
         {
           "kind": "show",
           "text": "Write 3/8 and read it as '3 divided by 8.'"
@@ -135,7 +150,7 @@
         "description": "Recognize a perfect square and state its whole-number square root.",
         "check_question": "Is 25 a perfect square, and what is its square root?"
       },
-      "i_do_script": "A perfect square is a whole number that equals some whole number times itself, so its square root is a whole number. Watch: 25 = 5 x 5, so √25 = 5, a whole number. But 20 is not a perfect square -- 4 x 4 = 16 and 5 x 5 = 25, and nothing whole squares to 20, so √20 is not a whole number. Knowing which numbers are perfect squares is what lets me decide whether a square root is a tidy rational number or not.",
+      "i_do_script": "Picture building a square floor out of tiles: 49 tiles snap into a perfect 7-by-7 square with none left over, but 50 tiles always leave one tile sticking out -- no whole-number square uses exactly 50. A perfect square is a whole number that equals some whole number times itself, so its square root is a whole number. Watch: 25 = 5 x 5, so √25 = 5, a whole number. But 20 is not a perfect square -- 4 x 4 = 16 and 5 x 5 = 25, and nothing whole squares to 20, so √20 is not a whole number. Knowing which numbers are perfect squares is what lets me decide whether a square root is a tidy rational number or not.",
       "canonical_error": {
         "pattern": "Assumes every square root is a whole number, or that any number under a root is a perfect square",
         "example": "Says √20 = 10 (half of 20) or treats √20 as a whole number, instead of recognizing 20 is not a perfect square",
@@ -188,6 +203,10 @@
         "if_fail": "Review square roots of perfect squares (7.NS.6)."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Try to arrange 49 tiles into a square: how many rows of how many? Now try 50 tiles -- 7 rows of 7 is only 49, and 8 rows of 8 is 64, so where does the extra tile go?"
+        },
         {
           "kind": "show",
           "text": "Write 49 and 50 side by side."

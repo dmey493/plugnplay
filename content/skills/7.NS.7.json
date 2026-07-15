@@ -3,8 +3,7 @@
   "standard_text": "Compute fluently with rational numbers using order of operations.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard is a fluency standard, but the word 'fluently' hides two separate demands that have to fire together: you must run the order of operations as a fixed algorithm, AND you must compute each individual operation correctly on signed rational numbers. A student can know that multiplication comes before addition and still land on the wrong answer because a negative sign slipped; a student can be perfect with negatives and still fail because they worked left to right. So the progression pins down both engines before combining them: first name the order of operations (grouping, then exponents, then multiply and divide left to right, then add and subtract left to right), and separately be reliable computing with two signed rationals. Those are the two foundations.\n\nFrom there the arc holds the ORDER constant and slowly raises the NUMBER difficulty, exactly the way the item spec bands the work. It opens with signed integers and two operations, where the whole game is 'multiply before you add' -- the left-to-right trap in its purest form. Next it adds grouping symbols, where a parenthesis has to be cleared first and the implied multiplication in 12(6 - 2) has to be seen. Then the numbers get harder without the logic changing: decimals to the hundredths, then expressions that mix fractions, decimals, and integers in the same problem, and finally multi-step expressions with three or more operations and grouping where one early slip corrupts everything after it. The capstone turns the process around -- given one expression, decide which others are equal to it, which forces a student to read order of operations and the properties of operations rather than just execute them. The single habit we name at every step: do the operations in the right order, and carry every sign faithfully as you go. The two errors we hunt all the way up are working left to right and losing a negative."
-  ,
+    "narrative": "This standard is a fluency standard, but the word 'fluently' hides two separate demands that have to fire together: you must run the order of operations as a fixed algorithm, AND you must compute each individual operation correctly on signed rational numbers. A student can know that multiplication comes before addition and still land on the wrong answer because a negative sign slipped; a student can be perfect with negatives and still fail because they worked left to right. So the progression pins down both engines before combining them: first name the order of operations (grouping, then exponents, then multiply and divide left to right, then add and subtract left to right), and separately be reliable computing with two signed rationals. Those are the two foundations.\n\nFrom there the arc holds the ORDER constant and slowly raises the NUMBER difficulty, exactly the way the item spec bands the work. It opens with signed integers and two operations, where the whole game is 'multiply before you add' -- the left-to-right trap in its purest form. Next it adds grouping symbols, where a parenthesis has to be cleared first and the implied multiplication in 12(6 - 2) has to be seen. Then the numbers get harder without the logic changing: decimals to the hundredths, then expressions that mix fractions, decimals, and integers in the same problem, and finally multi-step expressions with three or more operations and grouping where one early slip corrupts everything after it. The capstone turns the process around -- given one expression, decide which others are equal to it, which forces a student to read order of operations and the properties of operations rather than just execute them. The single habit we name at every step: do the operations in the right order, and carry every sign faithfully as you go. The two errors we hunt all the way up are working left to right and losing a negative.",
     "steps": [
       {
         "skill_id": "7NS7-S1",
@@ -50,7 +49,7 @@
         "description": "Name the order of operations and say which operation comes first in a simple expression.",
         "check_question": "In 3 + 4 x 5, which operation do you do first?"
       },
-      "i_do_script": "Order of operations is the agreed-upon order for cleaning up an expression, so everyone gets the same answer. The order is: grouping symbols first (parentheses, brackets), then exponents, then multiply and divide as they come left to right, then add and subtract as they come left to right. Watch: 3 + 4 x 5. The multiplication has to happen before the addition, so 4 x 5 = 20 first, then 3 + 20 = 23. NOT 3 + 4 = 7 then times 5. Multiply and divide outrank add and subtract every time.",
+      "i_do_script": "The order isn't arbitrary -- it matches what the symbols mean. In 8 + 3 x 2, the '3 x 2' is one bundled quantity: three 2s, like 8 loose pencils plus 3 boxes of 2. You count the boxes' contents before adding them to the loose ones -- 8 + 6 = 14, never (8 + 3) x 2. Multiplication outranks addition because a product IS a single amount. Order of operations is the agreed-upon order for cleaning up an expression, so everyone gets the same answer. The order is: grouping symbols first (parentheses, brackets), then exponents, then multiply and divide as they come left to right, then add and subtract as they come left to right. Watch: 3 + 4 x 5. The multiplication has to happen before the addition, so 4 x 5 = 20 first, then 3 + 20 = 23. NOT 3 + 4 = 7 then times 5. Multiply and divide outrank add and subtract every time.",
       "canonical_error": {
         "pattern": "Works strictly left to right, doing whatever operation comes first in reading order",
         "example": "For 3 + 4 x 5 the student computes 3 + 4 = 7, then 7 x 5 = 35 instead of 23",
@@ -58,12 +57,30 @@
       },
       "item_template": "A short expression or a question naming which operation is done first. Short response fluency bank about the order itself, not the final value.",
       "sample_items": [
-        { "stem": "In 3 + 4 x 5, which operation do you do first?", "answer": "Multiply (4 x 5)" },
-        { "stem": "List the order of operations from first to last.", "answer": "Grouping, exponents, multiply/divide (left to right), add/subtract (left to right)" },
-        { "stem": "In (2 + 3) x 4, what do you do first?", "answer": "The parentheses (2 + 3 = 5)" },
-        { "stem": "Do you multiply or add first in 6 + 2 x 3?", "answer": "Multiply (2 x 3 = 6)" },
-        { "stem": "In 12 / 4 x 2, do you divide or multiply first?", "answer": "Divide -- left to right, so 12 / 4 first" },
-        { "stem": "In 10 - 2^3, what happens before the subtraction?", "answer": "The exponent (2^3 = 8)" }
+        {
+          "stem": "In 3 + 4 x 5, which operation do you do first?",
+          "answer": "Multiply (4 x 5)"
+        },
+        {
+          "stem": "List the order of operations from first to last.",
+          "answer": "Grouping, exponents, multiply/divide (left to right), add/subtract (left to right)"
+        },
+        {
+          "stem": "In (2 + 3) x 4, what do you do first?",
+          "answer": "The parentheses (2 + 3 = 5)"
+        },
+        {
+          "stem": "Do you multiply or add first in 6 + 2 x 3?",
+          "answer": "Multiply (2 x 3 = 6)"
+        },
+        {
+          "stem": "In 12 / 4 x 2, do you divide or multiply first?",
+          "answer": "Divide -- left to right, so 12 / 4 first"
+        },
+        {
+          "stem": "In 10 - 2^3, what happens before the subtraction?",
+          "answer": "The exponent (2^3 = 8)"
+        }
       ],
       "redirect_script": {
         "stop": "Wait -- is reading order the same as doing order?",
@@ -71,17 +88,48 @@
         "praise": "You picked the operation by rank, not by what came first -- that's the order of operations."
       },
       "vocabulary": [
-        { "term": "Order of operations", "definition": "The set order for evaluating an expression: grouping, exponents, multiply/divide, then add/subtract." },
-        { "term": "Grouping symbols", "definition": "Parentheses or brackets that must be evaluated before anything outside them." },
-        { "term": "Exponent", "definition": "A small raised number telling how many times to multiply the base by itself, like the 3 in 2^3." }
+        {
+          "term": "Order of operations",
+          "definition": "The set order for evaluating an expression: grouping, exponents, multiply/divide, then add/subtract."
+        },
+        {
+          "term": "Grouping symbols",
+          "definition": "Parentheses or brackets that must be evaluated before anything outside them."
+        },
+        {
+          "term": "Exponent",
+          "definition": "A small raised number telling how many times to multiply the base by itself, like the 3 in 2^3."
+        }
       ],
-      "next_steps": { "if_pass": "7NS7-S1", "if_fail": "Review order of operations (6.AF.1)." },
+      "next_steps": {
+        "if_pass": "7NS7-S1",
+        "if_fail": "Review order of operations (6.AF.1)."
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '8 + 3 x 2.'" },
-        { "kind": "ask", "text": "Which two operations are here? Which one outranks the other?" },
-        { "kind": "say", "text": "Multiply outranks add, so 3 x 2 = 6 first, then 8 + 6 = 14. Not 8 + 3 = 11 then times 2." },
-        { "kind": "watch", "text": "If a student says 22, ask 'did you multiply first, or add first?'" },
-        { "kind": "ask", "text": "Your turn: in 10 - 4 x 2, which do you do first, and what is the answer?" }
+        {
+          "kind": "ask",
+          "text": "Read 8 + 3 x 2 as a story: 8 loose pencils and 3 boxes of 2. Do you add the 3 boxes to the loose pencils, or their contents? So which part must be computed first, and why?"
+        },
+        {
+          "kind": "show",
+          "text": "Write '8 + 3 x 2.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which two operations are here? Which one outranks the other?"
+        },
+        {
+          "kind": "say",
+          "text": "Multiply outranks add, so 3 x 2 = 6 first, then 8 + 6 = 14. Not 8 + 3 = 11 then times 2."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 22, ask 'did you multiply first, or add first?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: in 10 - 4 x 2, which do you do first, and what is the answer?"
+        }
       ]
     },
     {
@@ -95,7 +143,7 @@
         "description": "Add, subtract, multiply, or divide two signed integers, fractions, or decimals.",
         "check_question": "What is 3 x (-8)?"
       },
-      "i_do_script": "Before I can run a long expression, I have to be automatic with ONE operation on two signed numbers. The sign rules: same signs multiply/divide to a positive, different signs to a negative; adding two negatives makes a bigger negative; subtracting is adding the opposite. Watch: 3 x (-8). Different signs, so the answer is negative: -24. And -6 - (-2) is -6 + 2 = -4. I say the sign out loud before I write the number.",
+      "i_do_script": "The sign rules aren't magic -- two pictures explain them. Multiplication is repeated jumps: 3 x (-8) means three jumps of 8 to the LEFT from 0, landing at -24 -- that's why a positive times a negative is negative. And the pattern 3 x (-8) = -24, 2 x (-8) = -16, 1 x (-8) = -8, 0 x (-8) = 0 climbs by 8 each step, so past zero (-1) x (-8) must be +8 -- that's why same signs give a positive. With the why in hand, here are the rules I run: same signs multiply/divide to a positive, different signs to a negative; adding two negatives makes a bigger negative; subtracting is adding the opposite. Watch: 3 x (-8): different signs, so -24. And -6 - (-2) is -6 + 2 = -4. I say the sign out loud before I write the number.",
       "canonical_error": {
         "pattern": "Loses or mishandles a sign -- makes a negative product positive, or subtracts instead of adding a negative",
         "example": "For 3 x (-8) writes 24 (dropping the negative) or for -6 - (-2) writes -8 (subtracting instead of adding the opposite)",
@@ -103,30 +151,97 @@
       },
       "item_template": "A single operation on two signed integers, fractions, or decimals. Short response fluency bank -- short, no choices, feeds the timed sprint.",
       "sample_items": [
-        { "stem": "-7 + (-5)", "answer": "-12" },
-        { "stem": "3 x (-8)", "answer": "-24" },
-        { "stem": "-6 - (-2)", "answer": "-4" },
-        { "stem": "-3/4 x 8", "answer": "-6" },
-        { "stem": "-15 / 3", "answer": "-5" },
-        { "stem": "2.5 + (-4)", "answer": "-1.5" }
+        {
+          "stem": "-7 + (-5)",
+          "answer": "-12"
+        },
+        {
+          "stem": "3 x (-8)",
+          "answer": "-24"
+        },
+        {
+          "stem": "-6 - (-2)",
+          "answer": "-4"
+        },
+        {
+          "stem": "-3/4 x 8",
+          "answer": "-6"
+        },
+        {
+          "stem": "-15 / 3",
+          "answer": "-5"
+        },
+        {
+          "stem": "2.5 + (-4)",
+          "answer": "-1.5"
+        }
       ],
       "redirect_script": {
         "stop": "What sign should this answer have?",
-        "prompt": "Decide the sign first: different signs multiplying gives negative; subtracting a negative turns into adding. Then compute the size. Say the sign out loud before you write it.",
+        "prompt": "Picture the jumps first: which direction do they go, so which side of zero do you land on? Decide the sign first: different signs multiplying gives negative; subtracting a negative turns into adding. Then compute the size. Say the sign out loud before you write it.",
         "praise": "You set the sign first, then the size -- signed computation done right."
       },
       "vocabulary": [
-        { "term": "Rational number", "definition": "Any number that can be written as a fraction, including integers and decimals." },
-        { "term": "Opposite", "definition": "The same number with the sign flipped; subtracting a number is adding its opposite." },
-        { "term": "Signed number", "definition": "A number carrying a positive or negative sign." }
+        {
+          "term": "Rational number",
+          "definition": "Any number that can be written as a fraction, including integers and decimals."
+        },
+        {
+          "term": "Opposite",
+          "definition": "The same number with the sign flipped; subtracting a number is adding its opposite."
+        },
+        {
+          "term": "Signed number",
+          "definition": "A number carrying a positive or negative sign."
+        }
       ],
-      "next_steps": { "if_pass": "7NS7-S1", "if_fail": "Review operations with rational numbers (7.NS.1-7.NS.6)." },
+      "next_steps": {
+        "if_pass": "7NS7-S1",
+        "if_fail": "Review operations with rational numbers (7.NS.1-7.NS.6)."
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '-4 x 6.'" },
-        { "kind": "ask", "text": "Same signs or different signs? So what sign is the answer?" },
-        { "kind": "say", "text": "Different signs, so negative. 4 x 6 = 24, so the answer is -24." },
-        { "kind": "watch", "text": "If a student writes 24, ask 'a negative times a positive gives what sign?'" },
-        { "kind": "ask", "text": "Your turn: -9 - (-4). Rewrite the subtraction as adding the opposite first." }
+        {
+          "kind": "show",
+          "text": "Draw the jumps for 3 x (-8): starting at 0, three jumps of 8 to the left.",
+          "visual": {
+            "type": "number_line_point",
+            "ticks": [
+              -24,
+              -20,
+              -16,
+              -12,
+              -8,
+              -4,
+              0
+            ],
+            "point_value": -24,
+            "point_label": "3 x (-8)"
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Where do the jumps land? So what sign must 3 x (-8) have -- and why does a positive times a negative always land on the negative side?"
+        },
+        {
+          "kind": "show",
+          "text": "Write '-4 x 6.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Same signs or different signs? So what sign is the answer?"
+        },
+        {
+          "kind": "say",
+          "text": "Different signs, so negative. 4 x 6 = 24, so the answer is -24."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 24, ask 'a negative times a positive gives what sign?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: -9 - (-4). Rewrite the subtraction as adding the opposite first."
+        }
       ]
     },
     {
@@ -134,9 +249,14 @@
       "name": "Simplify a two-operation signed-integer expression in the correct order",
       "column": "looking_back",
       "parent_standard": "7.NS.7",
-      "engine_stems": [1],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7NS7-F1" },
-      "i_do_script": "When an expression has a multiply or divide AND an add or subtract, I do the multiply or divide FIRST, then the add or subtract. Watch: 4 + 6 x (-3). I do not go left to right. I multiply first: 6 x (-3) = -18. Now the expression is 4 + (-18) = -14. If I had gone left to right I would have gotten 4 + 6 = 10, times -3 = -30, which is wrong. Multiply first, then add -- and I keep the negative sign the whole way.",
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS7-F1"
+      },
+      "i_do_script": "Read -2 + 5 x 4 as a money story: you owe 2 dollars, then collect 5 payments of 4 dollars each. The '5 x 4' is one glued-together amount of money -- you cannot add your debt to a count of payments. When an expression has a multiply or divide AND an add or subtract, I do the multiply or divide FIRST, then the add or subtract. Watch: 4 + 6 x (-3). I do not go left to right. I multiply first: 6 x (-3) = -18. Now the expression is 4 + (-18) = -14. If I had gone left to right I would have gotten 4 + 6 = 10, times -3 = -30, which is wrong. Multiply first, then add -- and I keep the negative sign the whole way.",
       "canonical_error": {
         "pattern": "Evaluates left to right, adding or subtracting before multiplying",
         "example": "For 4 + 6 x (-3) the student computes 4 + 6 = 10, then 10 x (-3) = -30 instead of multiplying 6 x (-3) = -18 first to get -14",
@@ -144,35 +264,112 @@
       },
       "item_template": "A two-operation signed-integer expression (a x b + c, a + b x c, a x b - c) with no grouping. Student multiplies first, then adds/subtracts, keeping signs. Short numeric response.",
       "sample_items": [
-        { "stem": "Simplify: 4 + 6 x (-3).", "answer": "-14", "distractor_logic": "-30 comes from adding 4 + 6 first (left to right). Correct: 6 x (-3) = -18, then 4 + (-18) = -14." },
-        { "stem": "Simplify: -5 x 4 + 12.", "answer": "-8", "distractor_logic": "Multiply first: -5 x 4 = -20, then -20 + 12 = -8. Dropping the sign gives 32." },
-        { "stem": "Simplify: 7 - 2 x 8.", "answer": "-9", "distractor_logic": "40 comes from 7 - 2 = 5 then x 8. Correct: 2 x 8 = 16 first, then 7 - 16 = -9." },
-        { "stem": "Simplify: -3 x (-6) - 10.", "answer": "8", "distractor_logic": "Negative times negative is +18, then 18 - 10 = 8. Making the product -18 gives -28." },
-        { "stem": "Simplify: 8 x (-2) + 15.", "answer": "-1", "distractor_logic": "8 x (-2) = -16 first, then -16 + 15 = -1. Left to right gives 6 x 15 = 90." }
+        {
+          "stem": "Simplify: 4 + 6 x (-3).",
+          "answer": "-14",
+          "distractor_logic": "-30 comes from adding 4 + 6 first (left to right). Correct: 6 x (-3) = -18, then 4 + (-18) = -14."
+        },
+        {
+          "stem": "Simplify: -5 x 4 + 12.",
+          "answer": "-8",
+          "distractor_logic": "Multiply first: -5 x 4 = -20, then -20 + 12 = -8. Dropping the sign gives 32."
+        },
+        {
+          "stem": "Simplify: 7 - 2 x 8.",
+          "answer": "-9",
+          "distractor_logic": "40 comes from 7 - 2 = 5 then x 8. Correct: 2 x 8 = 16 first, then 7 - 16 = -9."
+        },
+        {
+          "stem": "Simplify: -3 x (-6) - 10.",
+          "answer": "8",
+          "distractor_logic": "Negative times negative is +18, then 18 - 10 = 8. Making the product -18 gives -28."
+        },
+        {
+          "stem": "Simplify: 8 x (-2) + 15.",
+          "answer": "-1",
+          "distractor_logic": "8 x (-2) = -16 first, then -16 + 15 = -1. Left to right gives 6 x 15 = 90."
+        }
       ],
       "redirect_script": {
         "stop": "Before you add -- is there a multiply hiding in there?",
-        "prompt": "Underline the multiplication and do it FIRST, sign and all. Only after the expression is down to one addition or subtraction do you finish. Reading order is not doing order.",
+        "prompt": "Tell the story first: which part is the glued-together payment chunk that has to be settled before anything is added? Underline the multiplication and do it FIRST, sign and all. Only after the expression is down to one addition or subtraction do you finish. Reading order is not doing order.",
         "praise": "You multiplied before you added and held the sign -- that's the order of operations working."
       },
       "vocabulary": [
-        { "term": "Simplify", "definition": "Carry out the operations to reduce an expression to a single number." },
-        { "term": "Expression", "definition": "A combination of numbers and operations with no equal sign, like 4 + 6 x (-3)." },
-        { "term": "Product", "definition": "The result of multiplying, done before adding or subtracting." }
+        {
+          "term": "Simplify",
+          "definition": "Carry out the operations to reduce an expression to a single number."
+        },
+        {
+          "term": "Expression",
+          "definition": "A combination of numbers and operations with no equal sign, like 4 + 6 x (-3)."
+        },
+        {
+          "term": "Product",
+          "definition": "The result of multiplying, done before adding or subtracting."
+        }
       ],
-      "next_steps": { "if_pass": "7NS7-S2", "if_fail": "7NS7-F1" },
+      "next_steps": {
+        "if_pass": "7NS7-S2",
+        "if_fail": "7NS7-F1"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '-2 + 5 x 4.'" },
-        { "kind": "ask", "text": "Which operation outranks the other? What do we do first?" },
-        { "kind": "say", "text": "Multiply first: 5 x 4 = 20. Then -2 + 20 = 18. Not -2 + 5 = 3 then times 4." },
-        { "kind": "watch", "text": "If a student writes 12, ask 'did you add before you multiplied?'" },
-        { "kind": "ask", "text": "Your turn: 6 + (-2) x 7. Multiply first, keep the sign." }
+        {
+          "kind": "ask",
+          "text": "You owe 2 dollars. Then you collect 5 payments of 4 dollars each. Where does your money stand?"
+        },
+        {
+          "kind": "say",
+          "text": "The payments arrive as one chunk: 5 x 4 = 20 dollars collected. Settle it against the debt: -2 + 20 = 18."
+        },
+        {
+          "kind": "ask",
+          "text": "Now try it in reading order: -2 + 5 = 3, then 3 x 4 = 12. But 3 of what, times 4? Adding your debt to your NUMBER of payments means nothing -- the glued chunk has to be settled first. Does 12 match the story?"
+        },
+        {
+          "kind": "show",
+          "text": "Write '-2 + 5 x 4.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which operation outranks the other? What do we do first?"
+        },
+        {
+          "kind": "say",
+          "text": "Multiply first: 5 x 4 = 20. Then -2 + 20 = 18. Not -2 + 5 = 3 then times 4."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 12, ask 'did you add before you multiplied?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 6 + (-2) x 7. Multiply first, keep the sign."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Simplify: 2 x 5 + 3.", "answer": "13" },
-        { "difficulty": "warm_up", "stem": "In 8 + 4 x 2, which operation do you do first, and what is the answer?", "answer": "Multiply first (4 x 2 = 8), then 8 + 8 = 16." },
-        { "difficulty": "core", "stem": "Simplify: 4 + 6 x (-3).", "answer": "-14", "notes": "Baits the left-to-right 4 + 6 = 10 error." },
-        { "difficulty": "core", "stem": "Simplify: -5 x 4 + 12.", "answer": "-8", "notes": "Negative product then add." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Simplify: 2 x 5 + 3.",
+          "answer": "13"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "In 8 + 4 x 2, which operation do you do first, and what is the answer?",
+          "answer": "Multiply first (4 x 2 = 8), then 8 + 8 = 16."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Simplify: 4 + 6 x (-3).",
+          "answer": "-14",
+          "notes": "Baits the left-to-right 4 + 6 = 10 error."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Simplify: -5 x 4 + 12.",
+          "answer": "-8",
+          "notes": "Negative product then add."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -184,9 +381,24 @@
           "answer": "Marco added before multiplying. Multiplication comes first: 5 x 4 = 20, then -2 + 20 = 18. The answer is 18, not 12.",
           "notes": "Canonical error: left-to-right evaluation."
         },
-        { "difficulty": "core", "stem": "Simplify: 7 - 2 x 8.", "answer": "-9", "notes": "Subtract after multiplying; result is negative." },
-        { "difficulty": "stretch", "stem": "Simplify: -3 x (-6) - 10.", "answer": "8", "notes": "Negative times negative, then subtract -- two sign checks." },
-        { "difficulty": "stretch", "stem": "Place the numbers 2, 3, and 4 into '__ + __ x __' to get the SMALLEST possible value, and give that value.", "answer": "4 + 3 x 2 = 10 is one option, but 2 + 4 x 3 = 14 and 3 + 2 x 4 = 11; the smallest is 4 + 3 x 2 = 10. (Multiplying the two larger numbers and adding the smallest is not smallest here because the added term also matters -- students should test and compare.)", "notes": "Reversed direction: forces evaluating several arrangements in correct order." }
+        {
+          "difficulty": "core",
+          "stem": "Simplify: 7 - 2 x 8.",
+          "answer": "-9",
+          "notes": "Subtract after multiplying; result is negative."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Simplify: -3 x (-6) - 10.",
+          "answer": "8",
+          "notes": "Negative times negative, then subtract -- two sign checks."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Place the numbers 2, 3, and 4 into '__ + __ x __' to get the SMALLEST possible value, and give that value.",
+          "answer": "4 + 3 x 2 = 10 is one option, but 2 + 4 x 3 = 14 and 3 + 2 x 4 = 11; the smallest is 4 + 3 x 2 = 10. (Multiplying the two larger numbers and adding the smallest is not smallest here because the added term also matters -- students should test and compare.)",
+          "notes": "Reversed direction: forces evaluating several arrangements in correct order."
+        }
       ],
       "activities": [
         {
@@ -194,19 +406,48 @@
           "title": "Multiply First or Add First?",
           "time_minutes": 10,
           "grouping": "small_group",
-          "materials": ["Card set: 8 two-operation integer expressions"],
+          "materials": [
+            "Card set: 8 two-operation integer expressions"
+          ],
           "instructions": "1. Each card shows an expression like 4 + 6 x (-3).\n2. Before computing, sort each card by which operation you must do FIRST: 'Multiply/Divide first' or 'It's already just one step.'\n3. Then compute each card's value on scratch paper, doing the higher-rank operation first.\n4. Rule to keep a card: you must write the two steps, not just the answer.\n5. Debrief: which cards tricked someone into working left to right?",
           "content": {
-            "categories": ["Multiply/Divide first", "Add/Subtract only"],
+            "categories": [
+              "Multiply/Divide first",
+              "Add/Subtract only"
+            ],
             "cards": [
-              { "text": "4 + 6 x (-3)", "category": "Multiply/Divide first" },
-              { "text": "-5 x 4 + 12", "category": "Multiply/Divide first" },
-              { "text": "7 - 2 x 8", "category": "Multiply/Divide first" },
-              { "text": "-9 + (-4)", "category": "Add/Subtract only" },
-              { "text": "8 x (-2) + 15", "category": "Multiply/Divide first" },
-              { "text": "20 + (-4) x 5", "category": "Multiply/Divide first" },
-              { "text": "-3 - 7", "category": "Add/Subtract only" },
-              { "text": "-3 x (-6) - 10", "category": "Multiply/Divide first" }
+              {
+                "text": "4 + 6 x (-3)",
+                "category": "Multiply/Divide first"
+              },
+              {
+                "text": "-5 x 4 + 12",
+                "category": "Multiply/Divide first"
+              },
+              {
+                "text": "7 - 2 x 8",
+                "category": "Multiply/Divide first"
+              },
+              {
+                "text": "-9 + (-4)",
+                "category": "Add/Subtract only"
+              },
+              {
+                "text": "8 x (-2) + 15",
+                "category": "Multiply/Divide first"
+              },
+              {
+                "text": "20 + (-4) x 5",
+                "category": "Multiply/Divide first"
+              },
+              {
+                "text": "-3 - 7",
+                "category": "Add/Subtract only"
+              },
+              {
+                "text": "-3 x (-6) - 10",
+                "category": "Multiply/Divide first"
+              }
             ]
           }
         },
@@ -215,7 +456,9 @@
           "title": "Caught Going Left to Right",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Marco's left-to-right work"],
+          "materials": [
+            "Slip with Marco's left-to-right work"
+          ],
           "instructions": "1. Read Marco's work on -2 + 5 x 4 that ends in 12.\n2. Circle the exact step where Marco broke the order of operations.\n3. Redo it correctly, multiplying before adding.\n4. Write the one rule that would have saved Marco.",
           "content": {
             "worked_problem": "Simplify -2 + 5 x 4. Marco wrote -2 + 5 = 3, then 3 x 4 = 12.",
@@ -225,9 +468,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-003", "why": "The left-to-right slip is a single, high-frequency, baitable error -- ideal for find-and-fix at the point of the misconception." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'multiply first, THEN add' models the scanning-by-rank habit that replaces reading left to right." },
-        { "strategy_id": "strat-math-010", "why": "Choral response on 'which comes first, multiply or add?' builds the automatic ranking the skill depends on." }
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The left-to-right slip is a single, high-frequency, baitable error -- ideal for find-and-fix at the point of the misconception."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'multiply first, THEN add' models the scanning-by-rank habit that replaces reading left to right."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral response on 'which comes first, multiply or add?' builds the automatic ranking the skill depends on."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -269,20 +521,48 @@
         "stem": "Simplify: -9 + 3 x (-4).",
         "answer": "-21",
         "steps": [
-          { "math": "-9 + 3 x (-4)", "annotation": "Scan first: there is a multiply and an add. Multiply outranks add." },
-          { "math": "3 x (-4) = -12", "annotation": "Different signs give a negative product." },
-          { "math": "-9 + (-12)", "annotation": "Now it is a single addition of two negatives." },
-          { "math": "= -21", "annotation": "Two negatives add to a bigger negative." }
+          {
+            "math": "-9 + 3 x (-4)",
+            "annotation": "Scan first: there is a multiply and an add. Multiply outranks add."
+          },
+          {
+            "math": "3 x (-4) = -12",
+            "annotation": "Different signs give a negative product."
+          },
+          {
+            "math": "-9 + (-12)",
+            "annotation": "Now it is a single addition of two negatives."
+          },
+          {
+            "math": "= -21",
+            "annotation": "Two negatives add to a bigger negative."
+          }
         ]
       },
       "faded_example": {
         "stem": "Simplify: 20 + (-4) x 5.",
         "answer": "0",
         "steps": [
-          { "math": "20 + (-4) x 5", "annotation": "Find the highest-rank operation -- the multiplication.", "given": true },
-          { "math": "(-4) x 5 = -20", "annotation": "Different signs give a negative product.", "given": true },
-          { "math": null, "annotation": "Rewrite as 20 + (-20) and add.", "given": false },
-          { "math": null, "annotation": "State the final value.", "given": false }
+          {
+            "math": "20 + (-4) x 5",
+            "annotation": "Find the highest-rank operation -- the multiplication.",
+            "given": true
+          },
+          {
+            "math": "(-4) x 5 = -20",
+            "annotation": "Different signs give a negative product.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Rewrite as 20 + (-20) and add.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the final value.",
+            "given": false
+          }
         ]
       }
     },
@@ -291,9 +571,14 @@
       "name": "Evaluate an integer expression with grouping symbols first",
       "column": "looking_back",
       "parent_standard": "7.NS.7",
-      "engine_stems": [2],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7NS7-S1" },
-      "i_do_script": "Grouping symbols jump the line -- whatever is inside parentheses gets done before anything else, even before multiplying. And a number sitting right against a parenthesis, like 12(6 - 2), means multiply. Watch: -17 + 12(6 - 2). First the parentheses: 6 - 2 = 4. Now -17 + 12 x 4. Multiply next: 12 x 4 = 48. Then add: -17 + 48 = 31. The order is parentheses, then multiply, then add -- and 12(4) means 12 times 4.",
+      "engine_stems": [
+        2
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS7-S1"
+      },
+      "i_do_script": "Parentheses are a bag: 5(2 - 8) means 5 identical bags, each holding a 2-dollar bill and an 8-dollar debt. You cannot count up five bags until you know what ONE bag is worth. Grouping symbols jump the line -- whatever is inside parentheses gets done before anything else, even before multiplying. And a number sitting right against a parenthesis, like 12(6 - 2), means multiply. Watch: -17 + 12(6 - 2). First the parentheses: 6 - 2 = 4. Now -17 + 12 x 4. Multiply next: 12 x 4 = 48. Then add: -17 + 48 = 31. The order is parentheses, then multiply, then add -- and 12(4) means 12 times 4.",
       "canonical_error": {
         "pattern": "Ignores the grouping symbols, multiplying or adding before evaluating inside the parentheses",
         "example": "For -17 + 12(6 - 2) the student writes -17 + 12 x 6 - 2 = -17 + 72 - 2 = 53 instead of clearing the parenthesis (6 - 2 = 4) first to get 31",
@@ -301,35 +586,112 @@
       },
       "item_template": "An integer expression with parentheses and often an implied multiplication a + b(c - d) or a - b(c + d). Student clears the parenthesis, then multiplies, then adds/subtracts. Short numeric response.",
       "sample_items": [
-        { "stem": "Enter the value of -17 + 12(6 - 2).", "answer": "31", "distractor_logic": "Parentheses first: 6 - 2 = 4, then 12 x 4 = 48, then -17 + 48 = 31. Ignoring the parenthesis gives 53." },
-        { "stem": "Enter the value of 3(4 - 9) + 2.", "answer": "-13", "distractor_logic": "4 - 9 = -5, 3 x (-5) = -15, -15 + 2 = -13. Distributing wrong or dropping the sign changes it." },
-        { "stem": "Enter the value of -4(2 - 7) - 5.", "answer": "15", "distractor_logic": "2 - 7 = -5, -4 x (-5) = +20, 20 - 5 = 15. Making the product negative gives -25." },
-        { "stem": "Enter the value of 30 - 5(3 + 1).", "answer": "10", "distractor_logic": "3 + 1 = 4, 5 x 4 = 20, 30 - 20 = 10. Doing 30 - 5 = 25 first (ignoring grouping) gives 100." },
-        { "stem": "Enter the value of 2(-3 - 4) + 6.", "answer": "-8", "distractor_logic": "-3 - 4 = -7, 2 x (-7) = -14, -14 + 6 = -8. Adding inside wrong or losing the sign changes it." }
+        {
+          "stem": "Enter the value of -17 + 12(6 - 2).",
+          "answer": "31",
+          "distractor_logic": "Parentheses first: 6 - 2 = 4, then 12 x 4 = 48, then -17 + 48 = 31. Ignoring the parenthesis gives 53."
+        },
+        {
+          "stem": "Enter the value of 3(4 - 9) + 2.",
+          "answer": "-13",
+          "distractor_logic": "4 - 9 = -5, 3 x (-5) = -15, -15 + 2 = -13. Distributing wrong or dropping the sign changes it."
+        },
+        {
+          "stem": "Enter the value of -4(2 - 7) - 5.",
+          "answer": "15",
+          "distractor_logic": "2 - 7 = -5, -4 x (-5) = +20, 20 - 5 = 15. Making the product negative gives -25."
+        },
+        {
+          "stem": "Enter the value of 30 - 5(3 + 1).",
+          "answer": "10",
+          "distractor_logic": "3 + 1 = 4, 5 x 4 = 20, 30 - 20 = 10. Doing 30 - 5 = 25 first (ignoring grouping) gives 100."
+        },
+        {
+          "stem": "Enter the value of 2(-3 - 4) + 6.",
+          "answer": "-8",
+          "distractor_logic": "-3 - 4 = -7, 2 x (-7) = -14, -14 + 6 = -8. Adding inside wrong or losing the sign changes it."
+        }
       ],
       "redirect_script": {
         "stop": "What is trapped inside the parentheses? Clear it first.",
-        "prompt": "Draw a box around the parentheses and finish everything inside before you touch anything outside. A number touching a parenthesis, like 12(4), means multiply. Then follow the normal order.",
+        "prompt": "What is ONE bag worth? Settle everything inside the parentheses before you copy the bag. Draw a box around the parentheses and finish everything inside before you touch anything outside. A number touching a parenthesis, like 12(4), means multiply. Then follow the normal order.",
         "praise": "You cleared the parentheses first and read 12( ) as multiply -- exactly right."
       },
       "vocabulary": [
-        { "term": "Parentheses", "definition": "Grouping symbols; everything inside is evaluated before anything outside." },
-        { "term": "Implied multiplication", "definition": "A number written against a parenthesis, like 12(6 - 2), which means 12 times the value inside." },
-        { "term": "Evaluate", "definition": "Find the single numerical value of an expression." }
+        {
+          "term": "Parentheses",
+          "definition": "Grouping symbols; everything inside is evaluated before anything outside."
+        },
+        {
+          "term": "Implied multiplication",
+          "definition": "A number written against a parenthesis, like 12(6 - 2), which means 12 times the value inside."
+        },
+        {
+          "term": "Evaluate",
+          "definition": "Find the single numerical value of an expression."
+        }
       ],
-      "next_steps": { "if_pass": "7NS7-S3", "if_fail": "7NS7-S1" },
+      "next_steps": {
+        "if_pass": "7NS7-S3",
+        "if_fail": "7NS7-S1"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '5(2 - 8) + 3.'" },
-        { "kind": "ask", "text": "What has to happen before we multiply or add?" },
-        { "kind": "say", "text": "Clear the parenthesis: 2 - 8 = -6. Now 5 x (-6) = -30. Then -30 + 3 = -27." },
-        { "kind": "watch", "text": "If a student writes 5 x 2 = 10 first, ask 'what is inside the parentheses, and does it get done before or after the multiply?'" },
-        { "kind": "ask", "text": "Your turn: (3 - 11) x 2 + 4. Box the parentheses first." }
+        {
+          "kind": "ask",
+          "text": "Picture 5 identical bags. Each bag holds a 2-dollar bill and an 8-dollar debt slip. What is ONE bag worth?"
+        },
+        {
+          "kind": "say",
+          "text": "One bag is worth 2 - 8 = -6 dollars. Five bags: 5 x (-6) = -30. Then the loose 3 dollars sitting outside the bags: -30 + 3 = -27."
+        },
+        {
+          "kind": "ask",
+          "text": "Could you multiply the 5 by just the 2 first? No -- the 5 copies the WHOLE bag, debt and all, so the bag has to be settled before you can count five of it."
+        },
+        {
+          "kind": "show",
+          "text": "Write '5(2 - 8) + 3.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What has to happen before we multiply or add?"
+        },
+        {
+          "kind": "say",
+          "text": "Clear the parenthesis: 2 - 8 = -6. Now 5 x (-6) = -30. Then -30 + 3 = -27."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 5 x 2 = 10 first, ask 'what is inside the parentheses, and does it get done before or after the multiply?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: (3 - 11) x 2 + 4. Box the parentheses first."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Enter the value of (2 + 3) x 4.", "answer": "20" },
-        { "difficulty": "warm_up", "stem": "In -6(1 - 4), what do you do first, and what is the answer?", "answer": "Parentheses first (1 - 4 = -3), then -6 x (-3) = 18." },
-        { "difficulty": "core", "stem": "Enter the value of -17 + 12(6 - 2).", "answer": "31", "notes": "Spec item; baits ignoring the grouping." },
-        { "difficulty": "core", "stem": "Enter the value of 3(4 - 9) + 2.", "answer": "-13", "notes": "Negative inside the parentheses." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Enter the value of (2 + 3) x 4.",
+          "answer": "20"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "In -6(1 - 4), what do you do first, and what is the answer?",
+          "answer": "Parentheses first (1 - 4 = -3), then -6 x (-3) = 18."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Enter the value of -17 + 12(6 - 2).",
+          "answer": "31",
+          "notes": "Spec item; baits ignoring the grouping."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Enter the value of 3(4 - 9) + 2.",
+          "answer": "-13",
+          "notes": "Negative inside the parentheses."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -341,9 +703,24 @@
           "answer": "Priya broke apart the parenthesis instead of clearing it. 12(6 - 2) means 12 times (6 - 2): do 6 - 2 = 4 first, then 12 x 4 = 48, then -17 + 48 = 31. The answer is 31, not 53.",
           "notes": "Canonical error: ignoring grouping / misreading implied multiplication."
         },
-        { "difficulty": "core", "stem": "Enter the value of 30 - 5(3 + 1).", "answer": "10", "notes": "Guards against doing 30 - 5 first." },
-        { "difficulty": "stretch", "stem": "Enter the value of -4(2 - 7) - 5.", "answer": "15", "notes": "Negative outside AND a negative inside -- two sign checks after the parenthesis." },
-        { "difficulty": "stretch", "stem": "Write an expression of the form a(b - c) + d using integers that equals exactly 0. Show your steps.", "answer": "Sample: 2(3 - 5) + 4 = 2(-2) + 4 = -4 + 4 = 0.", "notes": "Reversed direction -- build a grouped expression with a target value." }
+        {
+          "difficulty": "core",
+          "stem": "Enter the value of 30 - 5(3 + 1).",
+          "answer": "10",
+          "notes": "Guards against doing 30 - 5 first."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Enter the value of -4(2 - 7) - 5.",
+          "answer": "15",
+          "notes": "Negative outside AND a negative inside -- two sign checks after the parenthesis."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write an expression of the form a(b - c) + d using integers that equals exactly 0. Show your steps.",
+          "answer": "Sample: 2(3 - 5) + 4 = 2(-2) + 4 = -4 + 4 = 0.",
+          "notes": "Reversed direction -- build a grouped expression with a target value."
+        }
       ],
       "activities": [
         {
@@ -351,18 +728,41 @@
           "title": "Clear the Parentheses",
           "time_minutes": 10,
           "grouping": "pairs",
-          "materials": ["Card set: 6 grouped expressions and 8 value cards (two are ignore-the-grouping traps)"],
+          "materials": [
+            "Card set: 6 grouped expressions and 8 value cards (two are ignore-the-grouping traps)"
+          ],
           "instructions": "1. Match each expression like -17 + 12(6 - 2) to its correct value.\n2. Two value cards are traps that come from ignoring the parentheses -- set them aside and name the mistake.\n3. To claim a match, say the inside value first, then the rest.\n4. Solve two matched pairs fully on paper.\n5. Debrief: how does a number touching a parenthesis tell you to multiply?",
           "content": {
             "pairs": [
-              { "left": "-17 + 12(6 - 2)", "right": "31" },
-              { "left": "3(4 - 9) + 2", "right": "-13" },
-              { "left": "-4(2 - 7) - 5", "right": "15" },
-              { "left": "30 - 5(3 + 1)", "right": "10" },
-              { "left": "2(-3 - 4) + 6", "right": "-8" },
-              { "left": "(8 - 12) x 5", "right": "-20" }
+              {
+                "left": "-17 + 12(6 - 2)",
+                "right": "31"
+              },
+              {
+                "left": "3(4 - 9) + 2",
+                "right": "-13"
+              },
+              {
+                "left": "-4(2 - 7) - 5",
+                "right": "15"
+              },
+              {
+                "left": "30 - 5(3 + 1)",
+                "right": "10"
+              },
+              {
+                "left": "2(-3 - 4) + 6",
+                "right": "-8"
+              },
+              {
+                "left": "(8 - 12) x 5",
+                "right": "-20"
+              }
             ],
-            "decoys": ["53", "100"]
+            "decoys": [
+              "53",
+              "100"
+            ]
           }
         },
         {
@@ -370,7 +770,9 @@
           "title": "Barrier Broken",
           "time_minutes": 8,
           "grouping": "small_group",
-          "materials": ["Slip with Priya's broken-parenthesis work"],
+          "materials": [
+            "Slip with Priya's broken-parenthesis work"
+          ],
           "instructions": "1. Read Priya's work turning 12(6 - 2) into 12 x 6 - 2.\n2. Explain why 12(6 - 2) is NOT the same as 12 x 6 - 2.\n3. Redo the problem clearing the parenthesis first.\n4. Write a rule for what a number touching a parenthesis means.",
           "content": {
             "worked_problem": "-17 + 12(6 - 2). Priya wrote -17 + 12 x 6 - 2 = 53.",
@@ -380,9 +782,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-003", "why": "The ignore-the-grouping error produces a clean, wrong number -- a strong anchor for a find-and-fix routine." },
-        { "strategy_id": "strat-math-007", "why": "Boxing the parenthesis and treating it as a single chip makes the 'grouping goes first' idea concrete before the abstract rule." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'inside the parentheses first, and 12( ) means times' models reading grouped notation correctly." }
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The ignore-the-grouping error produces a clean, wrong number -- a strong anchor for a find-and-fix routine."
+        },
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Boxing the parenthesis and treating it as a single chip makes the 'grouping goes first' idea concrete before the abstract rule."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'inside the parentheses first, and 12( ) means times' models reading grouped notation correctly."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -424,20 +835,48 @@
         "stem": "Evaluate: 2(-3 - 4) + 6.",
         "answer": "-8",
         "steps": [
-          { "math": "2(-3 - 4) + 6", "annotation": "Clear the parentheses first -- they jump the line." },
-          { "math": "-3 - 4 = -7", "annotation": "Inside the grouping: subtracting gives a negative." },
-          { "math": "2 x (-7) = -14", "annotation": "The number against the parenthesis means multiply; carry the sign." },
-          { "math": "-14 + 6 = -8", "annotation": "Finish with the addition." }
+          {
+            "math": "2(-3 - 4) + 6",
+            "annotation": "Clear the parentheses first -- they jump the line."
+          },
+          {
+            "math": "-3 - 4 = -7",
+            "annotation": "Inside the grouping: subtracting gives a negative."
+          },
+          {
+            "math": "2 x (-7) = -14",
+            "annotation": "The number against the parenthesis means multiply; carry the sign."
+          },
+          {
+            "math": "-14 + 6 = -8",
+            "annotation": "Finish with the addition."
+          }
         ]
       },
       "faded_example": {
         "stem": "Evaluate: -4(2 - 7) - 5.",
         "answer": "15",
         "steps": [
-          { "math": "-4(2 - 7) - 5", "annotation": "Box the parentheses and clear them first.", "given": true },
-          { "math": "2 - 7 = -5", "annotation": "Inside the grouping is negative.", "given": true },
-          { "math": null, "annotation": "Multiply -4 by (-5); watch the sign (negative times negative).", "given": false },
-          { "math": null, "annotation": "Subtract 5 to finish.", "given": false }
+          {
+            "math": "-4(2 - 7) - 5",
+            "annotation": "Box the parentheses and clear them first.",
+            "given": true
+          },
+          {
+            "math": "2 - 7 = -5",
+            "annotation": "Inside the grouping is negative.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply -4 by (-5); watch the sign (negative times negative).",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Subtract 5 to finish.",
+            "given": false
+          }
         ]
       }
     },
@@ -446,9 +885,14 @@
       "name": "Simplify an expression with signed decimals in the correct order",
       "column": "on_grade",
       "parent_standard": "7.NS.7",
-      "engine_stems": [3],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7NS7-S1" },
-      "i_do_script": "The order of operations does not change when the numbers become decimals -- I still multiply before I add, and I still carry every sign. The only new job is computing carefully with decimals to the hundredths. Watch: -3.4 x 2.5 + 1.2. Multiply first: 3.4 x 2.5 = 8.5, and different signs make it -8.5. Then -8.5 + 1.2 = -7.3. I line up the decimal points and keep the negative the whole way.",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS7-S1"
+      },
+      "i_do_script": "Decimals tell the same money story: 0.5 x (-8) is 'half of a debt of 8 dollars' -- one glued-together chunk. You have to know how big that half-debt is before the 2.40 you earned can touch it. The order of operations does not change when the numbers become decimals -- I still multiply before I add, and I still carry every sign. The only new job is computing carefully with decimals to the hundredths. Watch: -3.4 x 2.5 + 1.2. Multiply first: 3.4 x 2.5 = 8.5, and different signs make it -8.5. Then -8.5 + 1.2 = -7.3. I line up the decimal points and keep the negative the whole way.",
       "canonical_error": {
         "pattern": "Works left to right or mishandles the decimal or sign while computing",
         "example": "For 2.5 + 1.5 x 4 the student computes 2.5 + 1.5 = 4, then 4 x 4 = 16 instead of 1.5 x 4 = 6 first, giving 2.5 + 6 = 8.5",
@@ -456,35 +900,112 @@
       },
       "item_template": "A one- or two-operation expression with signed decimals to the hundredths. Student multiplies first, then adds/subtracts, tracking decimals and signs. Short numeric response.",
       "sample_items": [
-        { "stem": "Simplify: -3.4 x 2.5 + 1.2.", "answer": "-7.3", "distractor_logic": "Multiply first: -3.4 x 2.5 = -8.5, then -8.5 + 1.2 = -7.3. Adding 2.5 + 1.2 first (left to right) is wrong." },
-        { "stem": "Simplify: 4.5 - 1.2 x 3.", "answer": "0.9", "distractor_logic": "1.2 x 3 = 3.6 first, then 4.5 - 3.6 = 0.9. Doing 4.5 - 1.2 first gives 9.9." },
-        { "stem": "Simplify: -2.5 x 4 + 6.75.", "answer": "-3.25", "distractor_logic": "-2.5 x 4 = -10, then -10 + 6.75 = -3.25. Dropping the sign gives 16.75." },
-        { "stem": "Simplify: 1.6 + 2.5 x (-3).", "answer": "-5.9", "distractor_logic": "2.5 x (-3) = -7.5 first, then 1.6 + (-7.5) = -5.9. Left to right gives 4.1 x -3." },
-        { "stem": "Simplify: -2.8 x 4.9.", "answer": "-13.72", "distractor_logic": "One operation to the hundredths: different signs, so -13.72. A misplaced decimal gives -1.372 or -137.2." }
+        {
+          "stem": "Simplify: -3.4 x 2.5 + 1.2.",
+          "answer": "-7.3",
+          "distractor_logic": "Multiply first: -3.4 x 2.5 = -8.5, then -8.5 + 1.2 = -7.3. Adding 2.5 + 1.2 first (left to right) is wrong."
+        },
+        {
+          "stem": "Simplify: 4.5 - 1.2 x 3.",
+          "answer": "0.9",
+          "distractor_logic": "1.2 x 3 = 3.6 first, then 4.5 - 3.6 = 0.9. Doing 4.5 - 1.2 first gives 9.9."
+        },
+        {
+          "stem": "Simplify: -2.5 x 4 + 6.75.",
+          "answer": "-3.25",
+          "distractor_logic": "-2.5 x 4 = -10, then -10 + 6.75 = -3.25. Dropping the sign gives 16.75."
+        },
+        {
+          "stem": "Simplify: 1.6 + 2.5 x (-3).",
+          "answer": "-5.9",
+          "distractor_logic": "2.5 x (-3) = -7.5 first, then 1.6 + (-7.5) = -5.9. Left to right gives 4.1 x -3."
+        },
+        {
+          "stem": "Simplify: -2.8 x 4.9.",
+          "answer": "-13.72",
+          "distractor_logic": "One operation to the hundredths: different signs, so -13.72. A misplaced decimal gives -1.372 or -137.2."
+        }
       ],
       "redirect_script": {
         "stop": "Same rules as integers -- what has to happen before you add?",
-        "prompt": "Do the multiply first, exactly like with whole numbers. Line up the decimal points, decide the sign (different signs make a negative), then add or subtract. The decimals do not change the order.",
+        "prompt": "Say it as the money story first: which piece is the glued 'half of the debt' chunk? Do the multiply first, exactly like with whole numbers. Line up the decimal points, decide the sign (different signs make a negative), then add or subtract. The decimals do not change the order.",
         "praise": "You kept the order and the sign and just computed the decimals carefully -- that's fluency."
       },
       "vocabulary": [
-        { "term": "Decimal", "definition": "A number written with a decimal point; here limited to the hundredths place." },
-        { "term": "Hundredths", "definition": "The second place after the decimal point, like the 2 in 0.02." },
-        { "term": "Place value", "definition": "The value a digit has because of its position, which must line up when adding or subtracting decimals." }
+        {
+          "term": "Decimal",
+          "definition": "A number written with a decimal point; here limited to the hundredths place."
+        },
+        {
+          "term": "Hundredths",
+          "definition": "The second place after the decimal point, like the 2 in 0.02."
+        },
+        {
+          "term": "Place value",
+          "definition": "The value a digit has because of its position, which must line up when adding or subtracting decimals."
+        }
       ],
-      "next_steps": { "if_pass": "7NS7-S4", "if_fail": "7NS7-S1" },
+      "next_steps": {
+        "if_pass": "7NS7-S4",
+        "if_fail": "7NS7-S1"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '0.5 x (-8) + 2.4.'" },
-        { "kind": "ask", "text": "Which operation is first? Does the decimal change that?" },
-        { "kind": "say", "text": "Multiply first: 0.5 x (-8) = -4. Then -4 + 2.4 = -1.6. Same order as integers." },
-        { "kind": "watch", "text": "If a student adds -8 + 2.4 first, ask 'is there a multiply that outranks the add?'" },
-        { "kind": "ask", "text": "Your turn: -1.25 x 4 - 0.5. Multiply first, watch the sign." }
+        {
+          "kind": "ask",
+          "text": "You take on half of a debt of 8 dollars, then you earn 2.40. How big is the half-debt on its own?"
+        },
+        {
+          "kind": "say",
+          "text": "Half of a debt of 8 is a debt of 4: 0.5 x (-8) = -4. Now bring in the earnings: -4 + 2.4 = -1.6 -- still in the hole."
+        },
+        {
+          "kind": "say",
+          "text": "Reading order would combine the -8 and the 2.40 first -- but the 0.5 is glued to the -8 as 'half of THAT debt,' so the multiply settles first, decimals or not."
+        },
+        {
+          "kind": "show",
+          "text": "Write '0.5 x (-8) + 2.4.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which operation is first? Does the decimal change that?"
+        },
+        {
+          "kind": "say",
+          "text": "Multiply first: 0.5 x (-8) = -4. Then -4 + 2.4 = -1.6. Same order as integers."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student adds -8 + 2.4 first, ask 'is there a multiply that outranks the add?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: -1.25 x 4 - 0.5. Multiply first, watch the sign."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Simplify: -6.4 + 2.9.", "answer": "-3.5" },
-        { "difficulty": "warm_up", "stem": "Simplify: 3.2 x (-1.5).", "answer": "-4.8" },
-        { "difficulty": "core", "stem": "Simplify: -3.4 x 2.5 + 1.2.", "answer": "-7.3", "notes": "Multiply first with a negative product." },
-        { "difficulty": "core", "stem": "Simplify: 4.5 - 1.2 x 3.", "answer": "0.9", "notes": "Baits 4.5 - 1.2 done first." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Simplify: -6.4 + 2.9.",
+          "answer": "-3.5"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Simplify: 3.2 x (-1.5).",
+          "answer": "-4.8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Simplify: -3.4 x 2.5 + 1.2.",
+          "answer": "-7.3",
+          "notes": "Multiply first with a negative product."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Simplify: 4.5 - 1.2 x 3.",
+          "answer": "0.9",
+          "notes": "Baits 4.5 - 1.2 done first."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -496,9 +1017,24 @@
           "answer": "Dana added before multiplying. Do 1.5 x 4 = 6 first, then 2.5 + 6 = 8.5. The answer is 8.5, not 16.",
           "notes": "Canonical error: left-to-right, now with decimals."
         },
-        { "difficulty": "core", "stem": "Simplify: -2.5 x 4 + 6.75.", "answer": "-3.25", "notes": "Hundredths in the addition." },
-        { "difficulty": "stretch", "stem": "Simplify: -2.8 x 4.9.", "answer": "-13.72", "notes": "One operation, hundredths product -- decimal place-value care." },
-        { "difficulty": "stretch", "stem": "A student got 16 for 2.5 + 1.5 x 4. Without redoing every step, explain in one sentence how you know that is too big.", "answer": "Multiplying first gives only 1.5 x 4 = 6, and 2.5 + 6 = 8.5; getting 16 means they added before multiplying, which inflates the result.", "notes": "Reversed direction -- reason about why a wrong answer is wrong." }
+        {
+          "difficulty": "core",
+          "stem": "Simplify: -2.5 x 4 + 6.75.",
+          "answer": "-3.25",
+          "notes": "Hundredths in the addition."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Simplify: -2.8 x 4.9.",
+          "answer": "-13.72",
+          "notes": "One operation, hundredths product -- decimal place-value care."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A student got 16 for 2.5 + 1.5 x 4. Without redoing every step, explain in one sentence how you know that is too big.",
+          "answer": "Multiplying first gives only 1.5 x 4 = 6, and 2.5 + 6 = 8.5; getting 16 means they added before multiplying, which inflates the result.",
+          "notes": "Reversed direction -- reason about why a wrong answer is wrong."
+        }
       ],
       "activities": [
         {
@@ -506,7 +1042,9 @@
           "title": "Decimal Left-to-Right Trap",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Dana's decimal work"],
+          "materials": [
+            "Slip with Dana's decimal work"
+          ],
           "instructions": "1. Read Dana's work on 2.5 + 1.5 x 4 ending in 16.\n2. Circle where Dana broke the order of operations.\n3. Redo it, multiplying 1.5 x 4 first.\n4. Explain why decimals do not change which operation comes first.",
           "content": {
             "worked_problem": "Simplify 2.5 + 1.5 x 4. Dana wrote 2.5 + 1.5 = 4, then 4 x 4 = 16.",
@@ -519,27 +1057,66 @@
           "title": "Estimate, Then Check",
           "time_minutes": 12,
           "grouping": "pairs",
-          "materials": ["Card set: 8 decimal expressions", "Estimate/actual recording sheet"],
+          "materials": [
+            "Card set: 8 decimal expressions",
+            "Estimate/actual recording sheet"
+          ],
           "instructions": "1. For each expression, first ESTIMATE by rounding the decimals (e.g., -3.4 x 2.5 is about -3 x 3 = -9).\n2. Sort each card as 'positive answer' or 'negative answer' using only the estimate.\n3. Then compute the exact value, doing multiply/divide first.\n4. Check your exact answer against the estimate -- if the sign flips, find the slip.\n5. Debrief: how did estimating catch a lost negative or a place-value error?",
           "content": {
-            "categories": ["Negative answer", "Positive answer"],
+            "categories": [
+              "Negative answer",
+              "Positive answer"
+            ],
             "cards": [
-              { "text": "-3.4 x 2.5 + 1.2", "category": "Negative answer" },
-              { "text": "4.5 - 1.2 x 3", "category": "Positive answer" },
-              { "text": "-2.5 x 4 + 6.75", "category": "Negative answer" },
-              { "text": "1.6 + 2.5 x (-3)", "category": "Negative answer" },
-              { "text": "0.5 x (-8) + 2.4", "category": "Negative answer" },
-              { "text": "-6.4 + 2.9", "category": "Negative answer" },
-              { "text": "3.2 x 1.5 + 0.5", "category": "Positive answer" },
-              { "text": "-1.25 x 4 + 6", "category": "Positive answer" }
+              {
+                "text": "-3.4 x 2.5 + 1.2",
+                "category": "Negative answer"
+              },
+              {
+                "text": "4.5 - 1.2 x 3",
+                "category": "Positive answer"
+              },
+              {
+                "text": "-2.5 x 4 + 6.75",
+                "category": "Negative answer"
+              },
+              {
+                "text": "1.6 + 2.5 x (-3)",
+                "category": "Negative answer"
+              },
+              {
+                "text": "0.5 x (-8) + 2.4",
+                "category": "Negative answer"
+              },
+              {
+                "text": "-6.4 + 2.9",
+                "category": "Negative answer"
+              },
+              {
+                "text": "3.2 x 1.5 + 0.5",
+                "category": "Positive answer"
+              },
+              {
+                "text": "-1.25 x 4 + 6",
+                "category": "Positive answer"
+              }
             ]
           }
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-002", "why": "A number talk on estimating a decimal expression before computing surfaces the sign and place-value reasoning that catches slips." },
-        { "strategy_id": "strat-math-003", "why": "The decimal left-to-right error mirrors the integer one with finer arithmetic -- a clean find-and-fix target." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'same order, just careful decimals' models transferring the integer procedure to decimals." }
+        {
+          "strategy_id": "strat-math-002",
+          "why": "A number talk on estimating a decimal expression before computing surfaces the sign and place-value reasoning that catches slips."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The decimal left-to-right error mirrors the integer one with finer arithmetic -- a clean find-and-fix target."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'same order, just careful decimals' models transferring the integer procedure to decimals."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -581,20 +1158,48 @@
         "stem": "Simplify: 1.6 + 2.5 x (-3).",
         "answer": "-5.9",
         "steps": [
-          { "math": "1.6 + 2.5 x (-3)", "annotation": "Multiply outranks add, even with decimals." },
-          { "math": "2.5 x (-3) = -7.5", "annotation": "Different signs give a negative product." },
-          { "math": "1.6 + (-7.5)", "annotation": "Now a single addition; line up the decimal points." },
-          { "math": "= -5.9", "annotation": "The negative is larger, so the sum is negative." }
+          {
+            "math": "1.6 + 2.5 x (-3)",
+            "annotation": "Multiply outranks add, even with decimals."
+          },
+          {
+            "math": "2.5 x (-3) = -7.5",
+            "annotation": "Different signs give a negative product."
+          },
+          {
+            "math": "1.6 + (-7.5)",
+            "annotation": "Now a single addition; line up the decimal points."
+          },
+          {
+            "math": "= -5.9",
+            "annotation": "The negative is larger, so the sum is negative."
+          }
         ]
       },
       "faded_example": {
         "stem": "Simplify: -2.5 x 4 + 6.75.",
         "answer": "-3.25",
         "steps": [
-          { "math": "-2.5 x 4 + 6.75", "annotation": "Do the multiplication first.", "given": true },
-          { "math": "-2.5 x 4 = -10", "annotation": "Different signs give a negative product.", "given": true },
-          { "math": null, "annotation": "Add 6.75 to -10; line up the decimals.", "given": false },
-          { "math": null, "annotation": "State the final value to the hundredths.", "given": false }
+          {
+            "math": "-2.5 x 4 + 6.75",
+            "annotation": "Do the multiplication first.",
+            "given": true
+          },
+          {
+            "math": "-2.5 x 4 = -10",
+            "annotation": "Different signs give a negative product.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Add 6.75 to -10; line up the decimals.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the final value to the hundredths.",
+            "given": false
+          }
         ]
       }
     },
@@ -603,9 +1208,14 @@
       "name": "Simplify a two-operation expression that mixes fractions, decimals, and integers",
       "column": "on_grade",
       "parent_standard": "7.NS.7",
-      "engine_stems": [4],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7NS7-S3" },
-      "i_do_script": "Now the same expression can hold a fraction, a decimal, and an integer at once. The order of operations still rules -- multiply before add -- but I first pick a common form so the numbers can combine. Watch: 3/4 x (-9) + 1.5. Multiply first: 3/4 x 9 = 27/4 = 6.75, and different signs make it -6.75. Now -6.75 + 1.5. I keep both as decimals: -6.75 + 1.5 = -5.25. The trick is doing the multiply first AND converting the fraction and decimal to the same form before I add.",
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS7-S3"
+      },
+      "i_do_script": "A fraction times a number is one glued phrase: 1/2 x 6 just means 'half of 6.' In money, you receive half of 6 dollars and THEN spend 4.50 -- so the half-of chunk has to be settled before anything is spent. Now the same expression can hold a fraction, a decimal, and an integer at once. The order of operations still rules -- multiply before add -- but I first pick a common form so the numbers can combine. Watch: 3/4 x (-9) + 1.5. Multiply first: 3/4 x 9 = 27/4 = 6.75, and different signs make it -6.75. Now -6.75 + 1.5. I keep both as decimals: -6.75 + 1.5 = -5.25. The trick is doing the multiply first AND converting the fraction and decimal to the same form before I add.",
       "canonical_error": {
         "pattern": "Adds before multiplying, or combines a fraction and a decimal without converting to a common form",
         "example": "For 3.5 + 1/2 x 8 the student adds 3.5 + 1/2 = 4 first, then 4 x 8 = 32, instead of 1/2 x 8 = 4 first, giving 3.5 + 4 = 7.5",
@@ -613,35 +1223,112 @@
       },
       "item_template": "A two-operation expression mixing a fraction, a decimal, and/or an integer, where the product is clean. Student multiplies first, converts to a common form, then adds/subtracts. Short numeric response.",
       "sample_items": [
-        { "stem": "Simplify: 3/4 x (-9) + 1.5.", "answer": "-5.25", "distractor_logic": "Multiply first: 3/4 x -9 = -6.75, then -6.75 + 1.5 = -5.25. Adding 3/4 + 1.5 first is the left-to-right trap." },
-        { "stem": "Simplify: -3/4 x 8 + 5.25.", "answer": "-0.75", "distractor_logic": "-3/4 x 8 = -6, then -6 + 5.25 = -0.75. Forgetting the sign gives 11.25." },
-        { "stem": "Simplify: 2.5 + 3/4 x 8.", "answer": "8.5", "distractor_logic": "3/4 x 8 = 6 first, then 2.5 + 6 = 8.5. Adding 2.5 + 3/4 first (left to right) is wrong." },
-        { "stem": "Simplify: 10 - 2/5 x 15.", "answer": "4", "distractor_logic": "2/5 x 15 = 6, then 10 - 6 = 4. Doing 10 - 2/5 first is the error." },
-        { "stem": "Simplify: 6.5 + (-1/2) x 5.", "answer": "4", "distractor_logic": "-1/2 x 5 = -2.5, then 6.5 + (-2.5) = 4. Dropping the sign gives 9." }
+        {
+          "stem": "Simplify: 3/4 x (-9) + 1.5.",
+          "answer": "-5.25",
+          "distractor_logic": "Multiply first: 3/4 x -9 = -6.75, then -6.75 + 1.5 = -5.25. Adding 3/4 + 1.5 first is the left-to-right trap."
+        },
+        {
+          "stem": "Simplify: -3/4 x 8 + 5.25.",
+          "answer": "-0.75",
+          "distractor_logic": "-3/4 x 8 = -6, then -6 + 5.25 = -0.75. Forgetting the sign gives 11.25."
+        },
+        {
+          "stem": "Simplify: 2.5 + 3/4 x 8.",
+          "answer": "8.5",
+          "distractor_logic": "3/4 x 8 = 6 first, then 2.5 + 6 = 8.5. Adding 2.5 + 3/4 first (left to right) is wrong."
+        },
+        {
+          "stem": "Simplify: 10 - 2/5 x 15.",
+          "answer": "4",
+          "distractor_logic": "2/5 x 15 = 6, then 10 - 6 = 4. Doing 10 - 2/5 first is the error."
+        },
+        {
+          "stem": "Simplify: 6.5 + (-1/2) x 5.",
+          "answer": "4",
+          "distractor_logic": "-1/2 x 5 = -2.5, then 6.5 + (-2.5) = 4. Dropping the sign gives 9."
+        }
       ],
       "redirect_script": {
         "stop": "Multiply first -- then are your numbers in the same form to add?",
-        "prompt": "Do the multiplication before anything else. Then convert the fraction and the decimal to ONE form (usually decimals) so you can add them. Never add a fraction straight onto a decimal without converting.",
+        "prompt": "Say the glued phrase first: what is 'half of 6' worth before anything gets spent or added? Do the multiplication before anything else. Then convert the fraction and the decimal to ONE form (usually decimals) so you can add them. Never add a fraction straight onto a decimal without converting.",
         "praise": "You multiplied first and matched the forms before adding -- that's clean rational computation."
       },
       "vocabulary": [
-        { "term": "Common form", "definition": "Writing all numbers as decimals (or all as fractions) so they can be combined." },
-        { "term": "Convert", "definition": "Rewrite a fraction as a decimal or a decimal as a fraction, keeping the same value." },
-        { "term": "Mixed rational expression", "definition": "An expression that contains fractions, decimals, and/or integers together." }
+        {
+          "term": "Common form",
+          "definition": "Writing all numbers as decimals (or all as fractions) so they can be combined."
+        },
+        {
+          "term": "Convert",
+          "definition": "Rewrite a fraction as a decimal or a decimal as a fraction, keeping the same value."
+        },
+        {
+          "term": "Mixed rational expression",
+          "definition": "An expression that contains fractions, decimals, and/or integers together."
+        }
       ],
-      "next_steps": { "if_pass": "7NS7-S5", "if_fail": "7NS7-S3" },
+      "next_steps": {
+        "if_pass": "7NS7-S5",
+        "if_fail": "7NS7-S3"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '1/2 x 6 - 4.5.'" },
-        { "kind": "ask", "text": "What is the first operation, and what form should the answer be in?" },
-        { "kind": "say", "text": "Multiply first: 1/2 x 6 = 3. Now 3 - 4.5. Same form already, so 3 - 4.5 = -1.5." },
-        { "kind": "watch", "text": "If a student subtracts 6 - 4.5 first, ask 'is there a multiply that comes before the subtract?'" },
-        { "kind": "ask", "text": "Your turn: -1/3 x 9 + 7.5. Multiply first, then convert to add." }
+        {
+          "kind": "ask",
+          "text": "You receive half of 6 dollars, then you spend 4.50. How much did you actually receive?"
+        },
+        {
+          "kind": "say",
+          "text": "Half of 6 is 3 dollars. Now spend the 4.50: 3 - 4.5 = -1.5 -- you end up 1.50 short."
+        },
+        {
+          "kind": "say",
+          "text": "Reading order would do 6 - 4.5 first, but the 6 is trapped inside 'half of 6' -- the fraction is glued to it, so that chunk settles before any spending happens."
+        },
+        {
+          "kind": "show",
+          "text": "Write '1/2 x 6 - 4.5.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the first operation, and what form should the answer be in?"
+        },
+        {
+          "kind": "say",
+          "text": "Multiply first: 1/2 x 6 = 3. Now 3 - 4.5. Same form already, so 3 - 4.5 = -1.5."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student subtracts 6 - 4.5 first, ask 'is there a multiply that comes before the subtract?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: -1/3 x 9 + 7.5. Multiply first, then convert to add."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Simplify: 1/2 x 6 - 4.5.", "answer": "-1.5" },
-        { "difficulty": "warm_up", "stem": "Write 3/4 as a decimal so it can be added to 1.5.", "answer": "0.75" },
-        { "difficulty": "core", "stem": "Simplify: 3/4 x (-9) + 1.5.", "answer": "-5.25", "notes": "Spec-style At-proficiency value; negative product then add." },
-        { "difficulty": "core", "stem": "Simplify: 2.5 + 3/4 x 8.", "answer": "8.5", "notes": "Baits adding 2.5 + 3/4 first." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Simplify: 1/2 x 6 - 4.5.",
+          "answer": "-1.5"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Write 3/4 as a decimal so it can be added to 1.5.",
+          "answer": "0.75"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Simplify: 3/4 x (-9) + 1.5.",
+          "answer": "-5.25",
+          "notes": "Spec-style At-proficiency value; negative product then add."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Simplify: 2.5 + 3/4 x 8.",
+          "answer": "8.5",
+          "notes": "Baits adding 2.5 + 3/4 first."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -653,9 +1340,24 @@
           "answer": "Leo added before multiplying. Do 1/2 x 8 = 4 first, then 3.5 + 4 = 7.5. The answer is 7.5, not 32.",
           "notes": "Canonical error: left-to-right with a mixed fraction/decimal."
         },
-        { "difficulty": "core", "stem": "Simplify: 10 - 2/5 x 15.", "answer": "4", "notes": "Fraction times integer, then subtract." },
-        { "difficulty": "stretch", "stem": "Simplify: 6.5 + (-1/2) x 5.", "answer": "4", "notes": "Negative fraction times integer gives a decimal to add." },
-        { "difficulty": "stretch", "stem": "Fill in the missing number so the expression equals 0: ___ x 8 + 6 = 0, where the blank is a fraction. Show your check.", "answer": "-3/4, since -3/4 x 8 = -6 and -6 + 6 = 0.", "notes": "Reversed direction -- recover a fractional factor from a target value." }
+        {
+          "difficulty": "core",
+          "stem": "Simplify: 10 - 2/5 x 15.",
+          "answer": "4",
+          "notes": "Fraction times integer, then subtract."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Simplify: 6.5 + (-1/2) x 5.",
+          "answer": "4",
+          "notes": "Negative fraction times integer gives a decimal to add."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Fill in the missing number so the expression equals 0: ___ x 8 + 6 = 0, where the blank is a fraction. Show your check.",
+          "answer": "-3/4, since -3/4 x 8 = -6 and -6 + 6 = 0.",
+          "notes": "Reversed direction -- recover a fractional factor from a target value."
+        }
       ],
       "activities": [
         {
@@ -663,18 +1365,42 @@
           "title": "Same Value, Different Form",
           "time_minutes": 12,
           "grouping": "pairs",
-          "materials": ["Card set: mixed expressions and their values", "Fraction-to-decimal reference strip"],
+          "materials": [
+            "Card set: mixed expressions and their values",
+            "Fraction-to-decimal reference strip"
+          ],
           "instructions": "1. Match each mixed expression to its correct value.\n2. Before claiming a match, rewrite any fraction in the expression as a decimal on scratch paper.\n3. Two value cards are left-to-right traps -- set them aside and name the error.\n4. Solve two matched pairs fully, multiplying first.\n5. Debrief: why must a fraction and a decimal be in the same form before you add?",
           "content": {
             "pairs": [
-              { "left": "3/4 x (-9) + 1.5", "right": "-5.25" },
-              { "left": "-3/4 x 8 + 5.25", "right": "-0.75" },
-              { "left": "2.5 + 3/4 x 8", "right": "8.5" },
-              { "left": "10 - 2/5 x 15", "right": "4" },
-              { "left": "6.5 + (-1/2) x 5", "right": "4" },
-              { "left": "1/2 x 6 - 4.5", "right": "-1.5" }
+              {
+                "left": "3/4 x (-9) + 1.5",
+                "right": "-5.25"
+              },
+              {
+                "left": "-3/4 x 8 + 5.25",
+                "right": "-0.75"
+              },
+              {
+                "left": "2.5 + 3/4 x 8",
+                "right": "8.5"
+              },
+              {
+                "left": "10 - 2/5 x 15",
+                "right": "4"
+              },
+              {
+                "left": "6.5 + (-1/2) x 5",
+                "right": "4"
+              },
+              {
+                "left": "1/2 x 6 - 4.5",
+                "right": "-1.5"
+              }
             ],
-            "decoys": ["32", "9"]
+            "decoys": [
+              "32",
+              "9"
+            ]
           }
         },
         {
@@ -682,7 +1408,9 @@
           "title": "Form Mismatch",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Leo's mixed-form work"],
+          "materials": [
+            "Slip with Leo's mixed-form work"
+          ],
           "instructions": "1. Read Leo's work on 3.5 + 1/2 x 8 ending in 32.\n2. Circle the step where Leo broke the order of operations.\n3. Redo it, multiplying 1/2 x 8 first and keeping a common form.\n4. Write a rule for combining a fraction with a decimal.",
           "content": {
             "worked_problem": "Simplify 3.5 + 1/2 x 8. Leo wrote 3.5 + 1/2 = 4, then 4 x 8 = 32.",
@@ -692,9 +1420,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-007", "why": "Converting between fraction and decimal forms is a representational move; a CRA/representation focus supports matching forms before combining." },
-        { "strategy_id": "strat-math-003", "why": "The add-before-multiply and mismatched-form errors are precise and baitable in a find-and-fix routine." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'multiply first, then convert to one form' models the two-part discipline this skill needs." }
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Converting between fraction and decimal forms is a representational move; a CRA/representation focus supports matching forms before combining."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The add-before-multiply and mismatched-form errors are precise and baitable in a find-and-fix routine."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'multiply first, then convert to one form' models the two-part discipline this skill needs."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -736,20 +1473,48 @@
         "stem": "Simplify: -3/4 x 8 + 5.25.",
         "answer": "-0.75",
         "steps": [
-          { "math": "-3/4 x 8 + 5.25", "annotation": "Multiply first, whatever the number types." },
-          { "math": "-3/4 x 8 = -6", "annotation": "3 x 8 = 24, 24 / 4 = 6; different signs make it -6." },
-          { "math": "-6 + 5.25", "annotation": "Both are now in decimal form, so they can be added." },
-          { "math": "= -0.75", "annotation": "The negative is larger, so the sum is negative." }
+          {
+            "math": "-3/4 x 8 + 5.25",
+            "annotation": "Multiply first, whatever the number types."
+          },
+          {
+            "math": "-3/4 x 8 = -6",
+            "annotation": "3 x 8 = 24, 24 / 4 = 6; different signs make it -6."
+          },
+          {
+            "math": "-6 + 5.25",
+            "annotation": "Both are now in decimal form, so they can be added."
+          },
+          {
+            "math": "= -0.75",
+            "annotation": "The negative is larger, so the sum is negative."
+          }
         ]
       },
       "faded_example": {
         "stem": "Simplify: 2.5 + 3/4 x 8.",
         "answer": "8.5",
         "steps": [
-          { "math": "2.5 + 3/4 x 8", "annotation": "Find the multiplication and do it first.", "given": true },
-          { "math": "3/4 x 8 = 6", "annotation": "Numerator times 8, then divide by 4.", "given": true },
-          { "math": null, "annotation": "Add 2.5 + 6 (already a common form).", "given": false },
-          { "math": null, "annotation": "State the final value.", "given": false }
+          {
+            "math": "2.5 + 3/4 x 8",
+            "annotation": "Find the multiplication and do it first.",
+            "given": true
+          },
+          {
+            "math": "3/4 x 8 = 6",
+            "annotation": "Numerator times 8, then divide by 4.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Add 2.5 + 6 (already a common form).",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the final value.",
+            "given": false
+          }
         ]
       }
     },
@@ -758,9 +1523,14 @@
       "name": "Evaluate a multi-step expression with grouping and mixed rationals",
       "column": "on_grade",
       "parent_standard": "7.NS.7",
-      "engine_stems": [5],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7NS7-S4" },
-      "i_do_script": "This is the full standard: three or more operations, grouping, and mixed rationals, all in one expression. The whole game is discipline -- one step at a time, in order, carrying every sign, because an early slip wrecks everything after it. Watch: -2 x (3/4 + 1.5) - 6. Grouping first: 3/4 + 1.5 = 0.75 + 1.5 = 2.25. Then multiply: -2 x 2.25 = -4.5. Then subtract: -4.5 - 6 = -10.5. Parentheses, then multiply, then subtract -- and I write each line so I can trace any mistake.",
+      "engine_stems": [
+        5
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS7-S4"
+      },
+      "i_do_script": "A long expression is a running money story: -4 + 3 x (-2) - 0.5 says you owe 4 dollars, take on 3 new debts of 2 dollars each, then spend 50 cents. Each glued chunk has to be settled before the running tally can move on. This is the full standard: three or more operations, grouping, and mixed rationals, all in one expression. The whole game is discipline -- one step at a time, in order, carrying every sign, because an early slip wrecks everything after it. Watch: -2 x (3/4 + 1.5) - 6. Grouping first: 3/4 + 1.5 = 0.75 + 1.5 = 2.25. Then multiply: -2 x 2.25 = -4.5. Then subtract: -4.5 - 6 = -10.5. Parentheses, then multiply, then subtract -- and I write each line so I can trace any mistake.",
       "canonical_error": {
         "pattern": "Breaks the order somewhere in the chain (works left to right or skips the grouping) or lets an early sign slip corrupt the rest",
         "example": "For -2 x (3/4 + 1.5) - 6 the student multiplies -2 x 3/4 before adding inside the parentheses, or does -4.5 - 6 = -10.5 but earlier made 3/4 + 1.5 = 2.25 into 2.15, so every later step is wrong",
@@ -768,35 +1538,112 @@
       },
       "item_template": "A three-or-more-operation expression with grouping and a mix of fractions, decimals, and integers. Student clears grouping, then multiplies/divides, then adds/subtracts, line by line. Short numeric response.",
       "sample_items": [
-        { "stem": "Simplify: -2 x (3/4 + 1.5) - 6.", "answer": "-10.5", "distractor_logic": "Inside first: 0.75 + 1.5 = 2.25, then -2 x 2.25 = -4.5, then -4.5 - 6 = -10.5. Multiplying before clearing the parenthesis breaks it." },
-        { "stem": "Simplify: 2 x (1/2 + 3.5) + 12.", "answer": "20", "distractor_logic": "Inside: 0.5 + 3.5 = 4, then 2 x 4 = 8, then 8 + 12 = 20. Matches the spec 'difficult' value of 20." },
-        { "stem": "Simplify: 3 + 4 x (-2) - 1.5.", "answer": "-6.5", "distractor_logic": "Multiply first: 4 x -2 = -8, then 3 + (-8) - 1.5 = -6.5. Left to right gives (3+4) x -2 which is wrong." },
-        { "stem": "Simplify: 6 - 2 x (1/4 + 0.75).", "answer": "4", "distractor_logic": "Inside: 0.25 + 0.75 = 1, then 2 x 1 = 2, then 6 - 2 = 4. Subtracting 6 - 2 first is the error." },
-        { "stem": "Simplify: -3 x (2 - 5) + 1.5.", "answer": "10.5", "distractor_logic": "Inside: 2 - 5 = -3, then -3 x -3 = 9, then 9 + 1.5 = 10.5. Making the product negative gives -7.5." }
+        {
+          "stem": "Simplify: -2 x (3/4 + 1.5) - 6.",
+          "answer": "-10.5",
+          "distractor_logic": "Inside first: 0.75 + 1.5 = 2.25, then -2 x 2.25 = -4.5, then -4.5 - 6 = -10.5. Multiplying before clearing the parenthesis breaks it."
+        },
+        {
+          "stem": "Simplify: 2 x (1/2 + 3.5) + 12.",
+          "answer": "20",
+          "distractor_logic": "Inside: 0.5 + 3.5 = 4, then 2 x 4 = 8, then 8 + 12 = 20. Matches the spec 'difficult' value of 20."
+        },
+        {
+          "stem": "Simplify: 3 + 4 x (-2) - 1.5.",
+          "answer": "-6.5",
+          "distractor_logic": "Multiply first: 4 x -2 = -8, then 3 + (-8) - 1.5 = -6.5. Left to right gives (3+4) x -2 which is wrong."
+        },
+        {
+          "stem": "Simplify: 6 - 2 x (1/4 + 0.75).",
+          "answer": "4",
+          "distractor_logic": "Inside: 0.25 + 0.75 = 1, then 2 x 1 = 2, then 6 - 2 = 4. Subtracting 6 - 2 first is the error."
+        },
+        {
+          "stem": "Simplify: -3 x (2 - 5) + 1.5.",
+          "answer": "10.5",
+          "distractor_logic": "Inside: 2 - 5 = -3, then -3 x -3 = 9, then 9 + 1.5 = 10.5. Making the product negative gives -7.5."
+        }
       ],
       "redirect_script": {
         "stop": "One step at a time -- what is the very first thing, and is it exact?",
-        "prompt": "Write a new line for every step: clear the grouping first, then multiply or divide, then add or subtract, carrying every sign. Check each line before the next, because one slip early makes the whole answer wrong.",
+        "prompt": "Tell it as the money story: which chunk is glued together and must be settled before the tally moves? Write a new line for every step: clear the grouping first, then multiply or divide, then add or subtract, carrying every sign. Check each line before the next, because one slip early makes the whole answer wrong.",
         "praise": "You went one exact step at a time in the right order -- that's how multi-step fluency stays correct."
       },
       "vocabulary": [
-        { "term": "Multi-step expression", "definition": "An expression needing three or more operations to evaluate." },
-        { "term": "Chain of steps", "definition": "The sequence of moves in order; an early error carries forward to the answer." },
-        { "term": "Properties of operations", "definition": "Rules like the distributive property that can reorganize an expression without changing its value." }
+        {
+          "term": "Multi-step expression",
+          "definition": "An expression needing three or more operations to evaluate."
+        },
+        {
+          "term": "Chain of steps",
+          "definition": "The sequence of moves in order; an early error carries forward to the answer."
+        },
+        {
+          "term": "Properties of operations",
+          "definition": "Rules like the distributive property that can reorganize an expression without changing its value."
+        }
       ],
-      "next_steps": { "if_pass": "7NS7-S6", "if_fail": "7NS7-S4" },
+      "next_steps": {
+        "if_pass": "7NS7-S6",
+        "if_fail": "7NS7-S4"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write '-4 + 3 x (-2) - 0.5.'" },
-        { "kind": "ask", "text": "There is no grouping here -- what is the highest-rank operation?" },
-        { "kind": "say", "text": "Multiply first: 3 x (-2) = -6. Now -4 + (-6) - 0.5, left to right: -10 - 0.5 = -10.5." },
-        { "kind": "watch", "text": "If a student adds -4 + 3 first, ask 'which operation outranks the others in this line?'" },
-        { "kind": "ask", "text": "Your turn: 6 - 2 x (1/4 + 0.75). Clear the parentheses first." }
+        {
+          "kind": "ask",
+          "text": "You owe 4 dollars, you take on 3 more debts of 2 dollars each, then you spend 50 cents. Where do you stand?"
+        },
+        {
+          "kind": "say",
+          "text": "The 3 debts arrive as one glued chunk: 3 x (-2) = -6. Now run the tally: -4 + (-6) - 0.5 = -10.5 -- ten fifty in the hole."
+        },
+        {
+          "kind": "say",
+          "text": "One story piece at a time: settle the glued chunk first, then let the plain adds and subtracts run left to right. Get one piece sloppy and every number after it in the tally is wrong."
+        },
+        {
+          "kind": "show",
+          "text": "Write '-4 + 3 x (-2) - 0.5.'"
+        },
+        {
+          "kind": "ask",
+          "text": "There is no grouping here -- what is the highest-rank operation?"
+        },
+        {
+          "kind": "say",
+          "text": "Multiply first: 3 x (-2) = -6. Now -4 + (-6) - 0.5, left to right: -10 - 0.5 = -10.5."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student adds -4 + 3 first, ask 'which operation outranks the others in this line?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 6 - 2 x (1/4 + 0.75). Clear the parentheses first."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Simplify: 2 + 3 x 4 - 1.", "answer": "13" },
-        { "difficulty": "warm_up", "stem": "In -2 x (3/4 + 1.5) - 6, what is the very first step?", "answer": "Clear the parentheses: 3/4 + 1.5 = 2.25." },
-        { "difficulty": "core", "stem": "Simplify: -2 x (3/4 + 1.5) - 6.", "answer": "-10.5", "notes": "Grouping, multiply, subtract -- three steps with a negative." },
-        { "difficulty": "core", "stem": "Simplify: 2 x (1/2 + 3.5) + 12.", "answer": "20", "notes": "Spec 'difficult' value of 20." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Simplify: 2 + 3 x 4 - 1.",
+          "answer": "13"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "In -2 x (3/4 + 1.5) - 6, what is the very first step?",
+          "answer": "Clear the parentheses: 3/4 + 1.5 = 2.25."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Simplify: -2 x (3/4 + 1.5) - 6.",
+          "answer": "-10.5",
+          "notes": "Grouping, multiply, subtract -- three steps with a negative."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Simplify: 2 x (1/2 + 3.5) + 12.",
+          "answer": "20",
+          "notes": "Spec 'difficult' value of 20."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -808,9 +1655,24 @@
           "answer": "Sam added 3 + 4 before multiplying. Do 4 x (-2) = -8 first, then 3 + (-8) - 1.5 = -5 - 1.5 = -6.5. The answer is -6.5, not -15.5.",
           "notes": "Canonical error: left-to-right in a multi-step chain."
         },
-        { "difficulty": "core", "stem": "Simplify: -3 x (2 - 5) + 1.5.", "answer": "10.5", "notes": "Negative outside and inside -- two sign checks." },
-        { "difficulty": "stretch", "stem": "Simplify: 4 + 2 x (-3)^2.", "answer": "22", "notes": "Exponent before multiply: (-3)^2 = 9, then 2 x 9 = 18, then 4 + 18." },
-        { "difficulty": "stretch", "stem": "Explain in one sentence why (-3)^2 = 9 but -3^2 = -9, then evaluate 5 - 2 x (-3)^2.", "answer": "In (-3)^2 the whole -3 is squared, so (-3)(-3) = 9; in -3^2 only the 3 is squared and the sign is applied after, giving -(9) = -9. Then 5 - 2 x (-3)^2 = 5 - 2 x 9 = 5 - 18 = -13.", "notes": "Exponent-on-negative distinction plus a multi-step evaluation." }
+        {
+          "difficulty": "core",
+          "stem": "Simplify: -3 x (2 - 5) + 1.5.",
+          "answer": "10.5",
+          "notes": "Negative outside and inside -- two sign checks."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Simplify: 4 + 2 x (-3)^2.",
+          "answer": "22",
+          "notes": "Exponent before multiply: (-3)^2 = 9, then 2 x 9 = 18, then 4 + 18."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain in one sentence why (-3)^2 = 9 but -3^2 = -9, then evaluate 5 - 2 x (-3)^2.",
+          "answer": "In (-3)^2 the whole -3 is squared, so (-3)(-3) = 9; in -3^2 only the 3 is squared and the sign is applied after, giving -(9) = -9. Then 5 - 2 x (-3)^2 = 5 - 2 x 9 = 5 - 18 = -13.",
+          "notes": "Exponent-on-negative distinction plus a multi-step evaluation."
+        }
       ],
       "activities": [
         {
@@ -818,7 +1680,10 @@
           "title": "One Line at a Time",
           "time_minutes": 14,
           "grouping": "pairs",
-          "materials": ["Multi-step expression cards", "Four-row recording strip: 'grouping', 'exponents', 'multiply/divide', 'add/subtract'"],
+          "materials": [
+            "Multi-step expression cards",
+            "Four-row recording strip: 'grouping', 'exponents', 'multiply/divide', 'add/subtract'"
+          ],
           "instructions": "1. Draw a multi-step card like -2 x (3/4 + 1.5) - 6.\n2. Fill the strip top to bottom, writing a new line for each stage; skip a row only if that operation is not present.\n3. You may not move to a lower row until the row above is fully cleared.\n4. Trade strips with another pair and check each line, not just the final answer.\n5. Debrief: on which row did most errors happen, and how does an early slip show up at the end?"
         },
         {
@@ -826,7 +1691,9 @@
           "title": "Trace the Slip",
           "time_minutes": 8,
           "grouping": "small_group",
-          "materials": ["Slip with Sam's left-to-right multi-step work"],
+          "materials": [
+            "Slip with Sam's left-to-right multi-step work"
+          ],
           "instructions": "1. Read Sam's full solution to 3 + 4 x (-2) - 1.5.\n2. Find the FIRST line where an error appears -- do not just look at the last line.\n3. Redo the problem from that line forward, in the correct order.\n4. Discuss why one early slip in a long expression makes every later step wrong.",
           "content": {
             "worked_problem": "Simplify 3 + 4 x (-2) - 1.5. Sam wrote 3 + 4 = 7, then 7 x (-2) = -14, then -15.5.",
@@ -836,9 +1703,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-006", "why": "Working the four stages one row at a time is a gradual-release script that adds a step at a time before fully independent multi-step evaluation." },
-        { "strategy_id": "strat-math-009", "why": "Comparing a correct line-by-line solve against Sam's corrupted one makes the 'each step exact before the next' habit explicit." },
-        { "strategy_id": "strat-math-003", "why": "The early-slip-corrupts-everything pattern is a high-value find-and-fix target where students hunt the FIRST wrong line." }
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Working the four stages one row at a time is a gradual-release script that adds a step at a time before fully independent multi-step evaluation."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Comparing a correct line-by-line solve against Sam's corrupted one makes the 'each step exact before the next' habit explicit."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The early-slip-corrupts-everything pattern is a high-value find-and-fix target where students hunt the FIRST wrong line."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -880,20 +1756,48 @@
         "stem": "Simplify: 2 x (1/2 + 3.5) + 12.",
         "answer": "20",
         "steps": [
-          { "math": "2 x (1/2 + 3.5) + 12", "annotation": "Grouping first -- clear the parentheses before anything else." },
-          { "math": "1/2 + 3.5 = 0.5 + 3.5 = 4", "annotation": "Convert 1/2 to 0.5 so the forms match, then add." },
-          { "math": "2 x 4 = 8", "annotation": "Now multiply the cleared value." },
-          { "math": "8 + 12 = 20", "annotation": "Finish with the addition." }
+          {
+            "math": "2 x (1/2 + 3.5) + 12",
+            "annotation": "Grouping first -- clear the parentheses before anything else."
+          },
+          {
+            "math": "1/2 + 3.5 = 0.5 + 3.5 = 4",
+            "annotation": "Convert 1/2 to 0.5 so the forms match, then add."
+          },
+          {
+            "math": "2 x 4 = 8",
+            "annotation": "Now multiply the cleared value."
+          },
+          {
+            "math": "8 + 12 = 20",
+            "annotation": "Finish with the addition."
+          }
         ]
       },
       "faded_example": {
         "stem": "Simplify: -2 x (3/4 + 1.5) - 6.",
         "answer": "-10.5",
         "steps": [
-          { "math": "-2 x (3/4 + 1.5) - 6", "annotation": "Clear the grouping first.", "given": true },
-          { "math": "3/4 + 1.5 = 0.75 + 1.5 = 2.25", "annotation": "Convert to a common form, then add inside.", "given": true },
-          { "math": null, "annotation": "Multiply -2 by 2.25; keep the sign.", "given": false },
-          { "math": null, "annotation": "Subtract 6 to finish.", "given": false }
+          {
+            "math": "-2 x (3/4 + 1.5) - 6",
+            "annotation": "Clear the grouping first.",
+            "given": true
+          },
+          {
+            "math": "3/4 + 1.5 = 0.75 + 1.5 = 2.25",
+            "annotation": "Convert to a common form, then add inside.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply -2 by 2.25; keep the sign.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Subtract 6 to finish.",
+            "given": false
+          }
         ]
       }
     },
@@ -902,8 +1806,13 @@
       "name": "Identify expressions equal to a given expression using order of operations",
       "column": "looking_forward",
       "parent_standard": "7.NS.7",
-      "engine_stems": [6],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7NS7-S5" },
+      "engine_stems": [
+        6
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS7-S5"
+      },
       "i_do_script": "At the top level I turn the process around: instead of computing one value, I decide which of several expressions are EQUAL to a given one. Two things make expressions equal -- they simplify to the same number, or a property of operations (like the distributive property) rewrites one into another. Watch: 4(3/4 + 2) - 5. Its value is 4 x 2.75 - 5 = 11 - 5 = 6. Now 4 x 3/4 + 4 x 2 - 5 is the distributed form: 3 + 8 - 5 = 6 -- equal. But 4 x 2 - 5 = 3 is NOT equal, because it forgot to distribute to the 3/4. I test each option by simplifying it or by checking the property.",
       "canonical_error": {
         "pattern": "Judges expressions equal by surface appearance, applying the distributive property incompletely or with a sign error",
@@ -955,26 +1864,68 @@
         "praise": "You checked each candidate to the same value and distributed to every term -- that's real equivalence."
       },
       "vocabulary": [
-        { "term": "Equivalent expressions", "definition": "Expressions that have the same value for the operations shown." },
-        { "term": "Distributive property", "definition": "a(b + c) = a x b + a x c -- multiply the outside number by every term inside." },
-        { "term": "Multiple-select", "definition": "A question where more than one answer choice can be correct." }
+        {
+          "term": "Equivalent expressions",
+          "definition": "Expressions that have the same value for the operations shown."
+        },
+        {
+          "term": "Distributive property",
+          "definition": "a(b + c) = a x b + a x c -- multiply the outside number by every term inside."
+        },
+        {
+          "term": "Multiple-select",
+          "definition": "A question where more than one answer choice can be correct."
+        }
       ],
       "next_steps": {
         "if_pass": "Ready for 8.NS.4 (operations in scientific notation) and further work with the properties of operations.",
         "if_fail": "7NS7-S5"
       },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'Which are equal to 2(5 - 1) + 3? (i) 2 x 5 - 2 x 1 + 3  (ii) 2 x 5 - 1 + 3  (iii) 11.'" },
-        { "kind": "ask", "text": "What is the value of the original? Clear the parenthesis first." },
-        { "kind": "say", "text": "2(5 - 1) + 3 = 2 x 4 + 3 = 11. (i) distributes to both terms: 10 - 2 + 3 = 11, equal. (iii) is 11, equal. (ii) only distributed to the 5, so it is not equal." },
-        { "kind": "watch", "text": "If a student picks (ii), ask 'did the 2 get multiplied by BOTH numbers inside?'" },
-        { "kind": "ask", "text": "Your turn: which are equal to 3(4 - 2) + 1? Test each by simplifying." }
+        {
+          "kind": "show",
+          "text": "Write 'Which are equal to 2(5 - 1) + 3? (i) 2 x 5 - 2 x 1 + 3  (ii) 2 x 5 - 1 + 3  (iii) 11.'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the value of the original? Clear the parenthesis first."
+        },
+        {
+          "kind": "say",
+          "text": "2(5 - 1) + 3 = 2 x 4 + 3 = 11. (i) distributes to both terms: 10 - 2 + 3 = 11, equal. (iii) is 11, equal. (ii) only distributed to the 5, so it is not equal."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student picks (ii), ask 'did the 2 get multiplied by BOTH numbers inside?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: which are equal to 3(4 - 2) + 1? Test each by simplifying."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "What is the value of 2(5 - 1) + 3?", "answer": "11" },
-        { "difficulty": "warm_up", "stem": "Distribute: 4(3/4 + 2).", "answer": "4 x 3/4 + 4 x 2 = 3 + 8 = 11" },
-        { "difficulty": "core", "stem": "Is 4 x 2 - 5 equal to 4(3/4 + 2) - 5? Explain.", "answer": "No. 4(3/4 + 2) - 5 = 6, but 4 x 2 - 5 = 3; the 3/4 term was never multiplied by 4.", "notes": "Baits distributing to only one term." },
-        { "difficulty": "core", "stem": "Select all equal to -3(2/3 + 5) + 4: (a) -3 x 2/3 + (-3) x 5 + 4  (b) -13  (c) -3 x 5 + 4.", "answer": "a and b", "notes": "(c) skips the 2/3 term." },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is the value of 2(5 - 1) + 3?",
+          "answer": "11"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Distribute: 4(3/4 + 2).",
+          "answer": "4 x 3/4 + 4 x 2 = 3 + 8 = 11"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is 4 x 2 - 5 equal to 4(3/4 + 2) - 5? Explain.",
+          "answer": "No. 4(3/4 + 2) - 5 = 6, but 4 x 2 - 5 = 3; the 3/4 term was never multiplied by 4.",
+          "notes": "Baits distributing to only one term."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Select all equal to -3(2/3 + 5) + 4: (a) -3 x 2/3 + (-3) x 5 + 4  (b) -13  (c) -3 x 5 + 4.",
+          "answer": "a and b",
+          "notes": "(c) skips the 2/3 term."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -986,9 +1937,24 @@
           "answer": "Kim flipped the sign on the -5. The -5 is outside the distribution and stays negative: 4 x 3/4 + 4 x 2 - 5 = 3 + 8 - 5 = 6, not 16. Only the 4 distributes; the -5 keeps its sign.",
           "notes": "Canonical error: sign flip on a term outside the distribution."
         },
-        { "difficulty": "core", "stem": "Select all equal to 2(5 - 1) + 3: (a) 2 x 5 - 2 x 1 + 3  (b) 11  (c) 2 x 5 - 1 + 3.", "answer": "a and b", "notes": "(c) distributes to only the 5." },
-        { "difficulty": "stretch", "stem": "Write one expression equal to 3(2 + 4) - 1 using the distributive property, and one that LOOKS similar but is not equal. Say why the second one fails.", "answer": "Equal: 3 x 2 + 3 x 4 - 1 = 6 + 12 - 1 = 17. Not equal: 3 x 2 + 4 - 1 = 9 (only distributed to the 2). The original is 3 x 6 - 1 = 17.", "notes": "Reversed direction -- produce both an equivalent and a near-miss." },
-        { "difficulty": "stretch", "stem": "Without fully simplifying, explain how you can tell 5(3 - 1) - 2 is NOT equal to 5 x 3 - 1 - 2.", "answer": "The second expression distributed the 5 only to the 3, not to the -1; it is missing the 5 x (-1) = -5 term, so it must be larger than the original.", "notes": "Structural reasoning about incomplete distribution." }
+        {
+          "difficulty": "core",
+          "stem": "Select all equal to 2(5 - 1) + 3: (a) 2 x 5 - 2 x 1 + 3  (b) 11  (c) 2 x 5 - 1 + 3.",
+          "answer": "a and b",
+          "notes": "(c) distributes to only the 5."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write one expression equal to 3(2 + 4) - 1 using the distributive property, and one that LOOKS similar but is not equal. Say why the second one fails.",
+          "answer": "Equal: 3 x 2 + 3 x 4 - 1 = 6 + 12 - 1 = 17. Not equal: 3 x 2 + 4 - 1 = 9 (only distributed to the 2). The original is 3 x 6 - 1 = 17.",
+          "notes": "Reversed direction -- produce both an equivalent and a near-miss."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Without fully simplifying, explain how you can tell 5(3 - 1) - 2 is NOT equal to 5 x 3 - 1 - 2.",
+          "answer": "The second expression distributed the 5 only to the 3, not to the -1; it is missing the 5 x (-1) = -5 term, so it must be larger than the original.",
+          "notes": "Structural reasoning about incomplete distribution."
+        }
       ],
       "activities": [
         {
@@ -996,17 +1962,41 @@
           "title": "Equal or Not Equal",
           "time_minutes": 12,
           "grouping": "small_group",
-          "materials": ["Given-expression header cards", "Candidate cards (some equal, some trap)"],
+          "materials": [
+            "Given-expression header cards",
+            "Candidate cards (some equal, some trap)"
+          ],
           "instructions": "1. Put a given expression like 4(3/4 + 2) - 5 at the top.\n2. For each candidate card, simplify it to a single number on scratch paper.\n3. Sort it under 'Equal' or 'Not equal' based on whether it reaches the same value.\n4. For every 'Not equal' card, name the error (skipped a term, flipped a sign, dropped the factor).\n5. Debrief: which traps looked equal but were not, and why?",
           "content": {
-            "categories": ["Equal", "Not equal"],
+            "categories": [
+              "Equal",
+              "Not equal"
+            ],
             "cards": [
-              { "text": "4 x 3/4 + 4 x 2 - 5", "category": "Equal" },
-              { "text": "6", "category": "Equal" },
-              { "text": "4 x 2 - 5", "category": "Not equal" },
-              { "text": "4 x 3/4 + 4 x 2 + 5", "category": "Not equal" },
-              { "text": "3 + 8 - 5", "category": "Equal" },
-              { "text": "3/4 + 2 - 5", "category": "Not equal" }
+              {
+                "text": "4 x 3/4 + 4 x 2 - 5",
+                "category": "Equal"
+              },
+              {
+                "text": "6",
+                "category": "Equal"
+              },
+              {
+                "text": "4 x 2 - 5",
+                "category": "Not equal"
+              },
+              {
+                "text": "4 x 3/4 + 4 x 2 + 5",
+                "category": "Not equal"
+              },
+              {
+                "text": "3 + 8 - 5",
+                "category": "Equal"
+              },
+              {
+                "text": "3/4 + 2 - 5",
+                "category": "Not equal"
+              }
             ]
           }
         },
@@ -1015,7 +2005,9 @@
           "title": "Whose Sign Is That?",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Kim's sign-flip claim"],
+          "materials": [
+            "Slip with Kim's sign-flip claim"
+          ],
           "instructions": "1. Read Kim's claim that 4(3/4 + 2) - 5 equals 4 x 3/4 + 4 x 2 + 5.\n2. Decide whether the -5 should stay negative and explain why.\n3. Simplify both expressions to show whether they are equal.\n4. Write a rule for what happens to a term that is OUTSIDE the parentheses.",
           "content": {
             "worked_problem": "Is 4 x 3/4 + 4 x 2 + 5 equal to 4(3/4 + 2) - 5? Kim said yes and got 16.",
@@ -1025,9 +2017,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-003", "why": "Sorting truly-equal expressions from skip-a-term and sign-flip traps is error analysis aimed at the exact equivalence misconception." },
-        { "strategy_id": "strat-math-009", "why": "Pairing a correct distribution against Kim's sign-flipped one makes the 'distribute to every term, keep every sign' rule explicit." },
-        { "strategy_id": "strat-math-004", "why": "Writing why a near-miss expression is not equivalent cements structural reasoning over surface matching." }
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Sorting truly-equal expressions from skip-a-term and sign-flip traps is error analysis aimed at the exact equivalence misconception."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Pairing a correct distribution against Kim's sign-flipped one makes the 'distribute to every term, keep every sign' rule explicit."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "Writing why a near-miss expression is not equivalent cements structural reasoning over surface matching."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -1069,20 +2070,48 @@
         "stem": "Select all expressions equal to 2(5 - 1) + 3.",
         "answer": "2 x 5 - 2 x 1 + 3 and 11",
         "steps": [
-          { "math": "2(5 - 1) + 3 = 2 x 4 + 3 = 11", "annotation": "Find the value of the original: parentheses, then multiply, then add." },
-          { "math": "2 x 5 - 2 x 1 + 3 = 10 - 2 + 3 = 11", "annotation": "Distributive property applied to BOTH terms -- equal." },
-          { "math": "11 = 11", "annotation": "The single number 11 is equal by definition." },
-          { "math": "2 x 5 - 1 + 3 = 12  (NOT equal)", "annotation": "This distributed only to the 5, so it fails." }
+          {
+            "math": "2(5 - 1) + 3 = 2 x 4 + 3 = 11",
+            "annotation": "Find the value of the original: parentheses, then multiply, then add."
+          },
+          {
+            "math": "2 x 5 - 2 x 1 + 3 = 10 - 2 + 3 = 11",
+            "annotation": "Distributive property applied to BOTH terms -- equal."
+          },
+          {
+            "math": "11 = 11",
+            "annotation": "The single number 11 is equal by definition."
+          },
+          {
+            "math": "2 x 5 - 1 + 3 = 12  (NOT equal)",
+            "annotation": "This distributed only to the 5, so it fails."
+          }
         ]
       },
       "faded_example": {
         "stem": "Select all expressions equal to -3(2/3 + 5) + 4.",
         "answer": "-3 x 2/3 + (-3) x 5 + 4 and -13",
         "steps": [
-          { "math": "-3(2/3 + 5) + 4 = -3 x (17/3) + 4 = -17 + 4 = -13", "annotation": "Value of the original.", "given": true },
-          { "math": "-3 x 2/3 + (-3) x 5 + 4 = -2 - 15 + 4 = -13", "annotation": "Distribute -3 to every term; the +4 outside keeps its sign -- equal.", "given": true },
-          { "math": null, "annotation": "Check the single-number option: does it equal -13?", "given": false },
-          { "math": null, "annotation": "Reject any option that skips the 2/3 term or flips the +4 sign.", "given": false }
+          {
+            "math": "-3(2/3 + 5) + 4 = -3 x (17/3) + 4 = -17 + 4 = -13",
+            "annotation": "Value of the original.",
+            "given": true
+          },
+          {
+            "math": "-3 x 2/3 + (-3) x 5 + 4 = -2 - 15 + 4 = -13",
+            "annotation": "Distribute -3 to every term; the +4 outside keeps its sign -- equal.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Check the single-number option: does it equal -13?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Reject any option that skips the 2/3 term or flips the +4 sign.",
+            "given": false
+          }
         ]
       }
     }
@@ -1091,40 +2120,83 @@
     "foundation": {
       "label": "Foundation (Tier III)",
       "description": "Pre-grade-level prerequisites -- fix these first.",
-      "skills": ["7NS7-F1", "7NS7-F2"]
+      "skills": [
+        "7NS7-F1",
+        "7NS7-F2"
+      ]
     },
     "looking_back": {
       "label": "Looking Back",
       "description": "Skills the student should have but may need re-teaching.",
-      "skills": ["7NS7-S1", "7NS7-S2"]
+      "skills": [
+        "7NS7-S1",
+        "7NS7-S2"
+      ]
     },
     "on_grade": {
       "label": "On Grade",
       "description": "The standard's actual grade-level expectations.",
-      "skills": ["7NS7-S3", "7NS7-S4", "7NS7-S5"]
+      "skills": [
+        "7NS7-S3",
+        "7NS7-S4",
+        "7NS7-S5"
+      ]
     },
     "looking_forward": {
       "label": "Looking Forward",
       "description": "Bridge to the next standard.",
-      "skills": ["7NS7-S6"]
+      "skills": [
+        "7NS7-S6"
+      ]
     }
   },
-  "skill_sequence": ["7NS7-F1", "7NS7-F2", "7NS7-S1", "7NS7-S2", "7NS7-S3", "7NS7-S4", "7NS7-S5", "7NS7-S6"],
+  "skill_sequence": [
+    "7NS7-F1",
+    "7NS7-F2",
+    "7NS7-S1",
+    "7NS7-S2",
+    "7NS7-S3",
+    "7NS7-S4",
+    "7NS7-S5",
+    "7NS7-S6"
+  ],
   "skill_tree": {
     "7NS7-F1": [],
     "7NS7-F2": [],
-    "7NS7-S1": ["7NS7-F1", "7NS7-F2"],
-    "7NS7-S2": ["7NS7-S1"],
-    "7NS7-S3": ["7NS7-S1"],
-    "7NS7-S4": ["7NS7-S2", "7NS7-S3"],
-    "7NS7-S5": ["7NS7-S4"],
-    "7NS7-S6": ["7NS7-S5"]
+    "7NS7-S1": [
+      "7NS7-F1",
+      "7NS7-F2"
+    ],
+    "7NS7-S2": [
+      "7NS7-S1"
+    ],
+    "7NS7-S3": [
+      "7NS7-S1"
+    ],
+    "7NS7-S4": [
+      "7NS7-S2",
+      "7NS7-S3"
+    ],
+    "7NS7-S5": [
+      "7NS7-S4"
+    ],
+    "7NS7-S6": [
+      "7NS7-S5"
+    ]
   },
   "diagnostic_flow": {
     "description": "Start with S4 (simplify a two-operation expression mixing fractions, decimals, and integers) -- the At-proficiency median that requires both correct order and correct signed computation on real rational numbers. If they pass, push to S5 (multi-step expressions with grouping) and S6 (identify equivalent expressions). If they fail, split the diagnosis: S1 checks whether they run multiply-before-add on plain integers, and S2 checks whether the grouping mechanic is intact. S3 (decimals) branches off as the number-type bridge when integer order is solid but decimal computation is the weak spot.",
     "entry_skill": "7NS7-S4",
-    "if_pass": ["7NS7-S5", "7NS7-S6"],
-    "if_fail": ["7NS7-S1", "7NS7-S2"],
-    "branch_skills": ["7NS7-S3"]
+    "if_pass": [
+      "7NS7-S5",
+      "7NS7-S6"
+    ],
+    "if_fail": [
+      "7NS7-S1",
+      "7NS7-S2"
+    ],
+    "branch_skills": [
+      "7NS7-S3"
+    ]
   }
 }

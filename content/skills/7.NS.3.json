@@ -49,7 +49,7 @@
         "description": "Recall products of whole numbers through 12 x 12 quickly and accurately.",
         "check_question": "What is 7 x 8?"
       },
-      "i_do_script": "Multiplying signed numbers still needs the times tables for the SIZE of the answer -- and the calculator is not allowed. Watch: 7 x 8 = 56, 6 x 9 = 54, 12 x 4 = 48. I want these to come out without counting. When I later see (-7)(8), the 56 has to be automatic so I can focus on the sign.",
+      "i_do_script": "A times fact is an array: 8 x 6 is 8 rows of 6, and a stuck fact rebuilds from a friendly one -- 8 x 6 is 8 x 5 (40) plus one more 8, 48. Multiplying signed numbers still needs the times tables for the SIZE of the answer -- and the calculator is not allowed. Watch: 7 x 8 = 56, 6 x 9 = 54, 12 x 4 = 48. I want these to come out without counting. When I later see (-7)(8), the 56 has to be automatic so I can focus on the sign.",
       "canonical_error": {
         "pattern": "Mis-recalls a basic fact, often confusing neighboring products",
         "example": "Says 7 x 8 = 54 (mixing it up with 6 x 9) instead of 56",
@@ -80,7 +80,7 @@
       ],
       "redirect_script": {
         "stop": "Let's lock in that fact first.",
-        "prompt": "Skip-count or use a fact you know: 7 x 8 is 7 x 4 doubled, 28 doubled is 56. Rehearse it three times so it becomes automatic.",
+        "prompt": "Skip-count or use a fact you know: 7 x 8 is 7 x 5 (35) plus three more 7s -- or any friendly fact you own, 28 doubled is 56. Rehearse it three times so it becomes automatic.",
         "praise": "You anchored the fact to one you already knew -- that builds the recall."
       },
       "vocabulary": [
@@ -99,6 +99,10 @@
       },
       "worked_example_script": [
         {
+          "kind": "ask",
+          "text": "Stuck on 8 x 6? What is 8 x 5? So 8 x 6 is that plus one more what? Rebuild from the friendly fact, then say the whole fact."
+        },
+        {
           "kind": "show",
           "text": "Write '8 x 6.'"
         },
@@ -108,7 +112,7 @@
         },
         {
           "kind": "say",
-          "text": "8 x 6 = 48. If it's not automatic, use 8 x 3 = 24, then double to 48."
+          "text": "If it doesn't come instantly, rebuild from the friendly fact: 8 x 5 = 40, plus one more 8, is 48. Say the whole fact: 8 x 6 = 48."
         },
         {
           "kind": "watch",
@@ -131,10 +135,10 @@
         "description": "Multiply positive fractions (numerator times numerator, denominator times denominator) and positive decimals.",
         "check_question": "What is 2/3 x 9?"
       },
-      "i_do_script": "Before I add signs, I need to multiply the sizes of fractions and decimals. For fractions, multiply the tops and multiply the bottoms: 2/3 x 9 = 2/3 x 9/1 = 18/3 = 6. For decimals, multiply as whole numbers and then place the decimal point: 1.5 x 0.25 = 0.375. These are the magnitudes; the sign comes later.",
+      "i_do_script": "A fraction times a whole number is a 'part of' question: 2/3 x 9 means 2/3 OF 9. Cut 9 into 3 equal groups of 3 and take 2 of them -- that's 6, and no 'part of 9' could ever be a tiny sliver like 2/12. Before I add signs, I need to multiply the sizes of fractions and decimals. For fractions, multiply the tops and multiply the bottoms: 2/3 x 9 = 2/3 x 9/1 = 18/3 = 6. For decimals, multiply as whole numbers and then place the decimal point: 1.5 x 0.25 = 0.375. These are the magnitudes; the sign comes later.",
       "canonical_error": {
         "pattern": "Adds denominators, forgets to multiply both parts, or misplaces the decimal point",
-        "example": "Writes 2/3 x 9 = 2/12 (multiplied 3 x ... nothing sensible) or 1.5 x 0.25 = 3.75 (decimal misplaced)",
+        "example": "Writes 2/3 x 9 = 2/27 (put the 9 under the fraction bar with the 3 instead of multiplying the top) or 1.5 x 0.25 = 3.75 (decimal misplaced)",
         "why": "The student does not treat the whole factor as a fraction over 1 or does not count decimal places. The magnitude then comes out wrong before any sign is applied."
       },
       "item_template": "A positive fraction or decimal multiplication. Short response fluency bank.",
@@ -162,7 +166,7 @@
       ],
       "redirect_script": {
         "stop": "Write the whole number over 1 first.",
-        "prompt": "For fractions, multiply top x top and bottom x bottom (put 9 over 1). For decimals, multiply without the points, then count decimal places to place the point.",
+        "prompt": "Say it as a 'part of' question first: 3/4 OF 8 -- split 8 into 4 equal groups and take 3 of them. For fractions, multiply top x top and bottom x bottom (put 9 over 1). For decimals, multiply without the points, then count decimal places to place the point.",
         "praise": "You multiplied both parts (or placed the decimal) correctly -- that's the size nailed down."
       },
       "vocabulary": [
@@ -180,6 +184,21 @@
         "if_fail": "Review multiplying fractions and decimals (grade 6)."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "3/4 x 8 asks for 3/4 OF 8. Split 8 into 4 equal groups -- how many in each group? Now take 3 of those groups. Could 3/4 of 8 possibly be a tiny number like 3/32?",
+          "visual": {
+            "type": "fraction_bars",
+            "label": "8 split into 4 equal groups of 2; take 3 groups",
+            "bars": [
+              {
+                "parts": 4,
+                "shaded": 3,
+                "label": "3 of the 4 groups = 6"
+              }
+            ]
+          }
+        },
         {
           "kind": "show",
           "text": "Write '3/4 x 8.'"
@@ -511,7 +530,7 @@
         "type": "skill",
         "skill_id": "7NS3-S1"
       },
-      "i_do_script": "The sign of a product depends ONLY on how many negative factors there are. A positive times a positive is positive; a negative times a positive is negative; and -- the key one -- a negative times a negative is positive, so (-1)(-1) = 1. Watch: (-2)(-5) has two negatives, which is even, so the product is positive. (-2)(-5)(-1) has three negatives, which is odd, so the product is negative. Count the negatives: even means positive, odd means negative.",
+      "i_do_script": "Nobody has to take 'a negative times a negative is positive' on faith -- the pattern proves it. Watch this column: 3 x (-4) = -12, 2 x (-4) = -8, 1 x (-4) = -4, 0 x (-4) = 0. Every time the first factor drops by 1, the answer climbs by 4. Keep the pattern going past zero: (-1) x (-4) must be +4, and (-2) x (-4) must be +8. The distributive property says the same thing: (-4)(-1 + 1) = (-4)(0) = 0, and distributing gives (-4)(-1) + (-4) = 0, so (-4)(-1) has to be +4 to cancel the -4. THAT is why two negatives make a positive. Once the why is settled, the shortcut is counting: the sign of a product depends only on how many negative factors there are -- even count means positive, odd count means negative. (-2)(-5) has two negatives (even): positive. (-2)(-5)(-1) has three (odd): negative.",
       "canonical_error": {
         "pattern": "Thinks two negatives make a negative (treats multiplication like adding negatives)",
         "example": "Says (-2)(-5) is negative because 'two negatives,' instead of positive",
@@ -563,7 +582,7 @@
       ],
       "redirect_script": {
         "stop": "Count the negatives -- even or odd?",
-        "prompt": "Circle every negative factor and count them. Even number of negatives means the product is positive; odd means negative. Two negatives make a positive.",
+        "prompt": "Run the pattern: 3 x (-4) = -12, 2 x (-4) = -8, 1 x (-4) = -4, 0 x (-4) = 0 -- keep going. What must (-1) x (-4) be? Now circle every negative factor and count them: even means positive, odd means negative.",
         "praise": "You counted the negatives and used even/odd to set the sign -- that's the rule."
       },
       "vocabulary": [
@@ -581,6 +600,26 @@
         "if_fail": "7NS3-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the pattern column: 3 x (-4) = -12, 2 x (-4) = -8, 1 x (-4) = -4, 0 x (-4) = 0."
+        },
+        {
+          "kind": "ask",
+          "text": "Each time the first factor drops by 1, what happens to the answer? So keep the pattern going: (-1) x (-4) = ? And (-2) x (-4) = ?"
+        },
+        {
+          "kind": "say",
+          "text": "The pattern climbs by 4 every step, so (-1) x (-4) MUST be +4 -- two negatives make a positive because the pattern forces it, not because someone said so."
+        },
+        {
+          "kind": "say",
+          "text": "The distributive property agrees: (-4)(-1 + 1) = 0, and distributing gives (-4)(-1) + (-4) = 0, so (-4)(-1) must be +4 to cancel the -4."
+        },
+        {
+          "kind": "say",
+          "text": "Now the shortcut earns its keep: for a longer product, just count the negative factors -- even count positive, odd count negative."
+        },
         {
           "kind": "show",
           "text": "Write '(-3)(-4)(-2).'"
@@ -655,6 +694,17 @@
         }
       ],
       "activities": [
+        {
+          "type": "hands_on",
+          "title": "The Pattern That Proves It",
+          "time_minutes": 10,
+          "grouping": "whole_class",
+          "materials": [
+            "Board or projected column",
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Write the column 4 x (-2), 3 x (-2), 2 x (-2), 1 x (-2), 0 x (-2) and compute down it together.\n2. Ask: what happens to each answer as the first factor drops by 1? (It climbs by 2.)\n3. Students continue the column on whiteboards past zero: (-1) x (-2), (-2) x (-2), (-3) x (-2), and hold up.\n4. Debrief: what sign did the pattern FORCE below zero? Write the sentence together: 'A negative times a negative is positive because the pattern climbs past zero.'\n5. Challenge pairs to prove it a second way with the distributive property: (-2)(-1 + 1) = 0, so (-2)(-1) must cancel -2."
+        },
         {
           "type": "card_sort",
           "title": "Positive or Negative Product",
@@ -835,7 +885,7 @@
         "type": "skill",
         "skill_id": "7NS3-S2"
       },
-      "i_do_script": "Now I put the sign and the size together for whole-number factors. Do it in two moves: multiply the sizes, then decide the sign by counting negatives. Watch (-2)(5)(-3): sizes 2 x 5 x 3 = 30; two negatives is even, so the product is positive -- 30. And (-7)(2): size 14, one negative, so -14. The size and the sign are separate jobs.",
+      "i_do_script": "Why do two negatives make a positive? A pattern forces it: 2 x (-3) = -6, 1 x (-3) = -3, 0 x (-3) = 0 -- each step the answer climbs by 3, so (-1) x (-3) must be +3. The pattern, not a memorized trick, flips the sign. Now I put the sign and the size together for whole-number factors. Do it in two moves: multiply the sizes, then decide the sign by counting negatives. Watch (-2)(5)(-3): sizes 2 x 5 x 3 = 30; two negatives is even, so the product is positive -- 30. And (-7)(2): size 14, one negative, so -14. The size and the sign are separate jobs.",
       "canonical_error": {
         "pattern": "Computes the magnitude correctly but assigns the wrong sign, especially for a negative times a negative",
         "example": "For (-4)(-5) writes -20 (kept the product negative) instead of 20",
@@ -866,7 +916,7 @@
       ],
       "redirect_script": {
         "stop": "Size first, then count the negatives.",
-        "prompt": "Multiply the sizes to get the amount. Then count the negative factors: two negatives cancel to a positive. Don't stop at 'there's a negative.'",
+        "prompt": "Look back at the pattern column: when the first factor crossed below zero, which way did the answers keep moving? Multiply the sizes to get the amount. Then count the negative factors: two negatives cancel to a positive. Don't stop at 'there's a negative.'",
         "praise": "You multiplied the size and then set the sign by counting negatives -- both jobs done."
       },
       "vocabulary": [
@@ -884,6 +934,18 @@
         "if_fail": "7NS3-S2"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Take the (-3) from our problem and build a pattern column: 2 x (-3) = -6, 1 x (-3) = -3, 0 x (-3) = 0."
+        },
+        {
+          "kind": "ask",
+          "text": "Each step the first factor drops by 1 and the answer climbs by 3. Keep the pattern going: (-1) x (-3) = ? Then (-2) x (-3) = ?"
+        },
+        {
+          "kind": "say",
+          "text": "The pattern forces +3, then +6 -- a negative times a negative HAS to come out positive. So in (-2)(5)(-3): first (-2) x 5 = -10, and when that -10 meets the (-3), the product flips positive: 30."
+        },
         {
           "kind": "show",
           "text": "Write '(-2)(5)(-3).'"
@@ -959,16 +1021,6 @@
       ],
       "activities": [
         {
-          "type": "game",
-          "title": "Three-Factor Countdown",
-          "time_minutes": 10,
-          "grouping": "small_group",
-          "materials": [
-            "Deck of signed integer cards (-6 to 6, no zero)"
-          ],
-          "instructions": "1. Each player flips three cards and multiplies them.\n2. Compute the size first, then count negatives for the sign.\n3. The largest signed product wins the round (so a positive beats a negative).\n4. Debrief: how did counting negatives decide who won?"
-        },
-        {
           "type": "error_analysis",
           "title": "Keep or Flip the Sign",
           "time_minutes": 8,
@@ -982,6 +1034,16 @@
             "error_step": "Marco kept the product negative despite two negative factors.",
             "why": "Two negatives make a positive: (-4)(-5) = 20."
           }
+        },
+        {
+          "type": "game",
+          "title": "Three-Factor Countdown",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Deck of signed integer cards (-6 to 6, no zero)"
+          ],
+          "instructions": "1. Each player flips three cards and multiplies them.\n2. Compute the size first, then count negatives for the sign.\n3. The largest signed product wins the round (so a positive beats a negative).\n4. Debrief: how did counting negatives decide who won?"
         }
       ],
       "strategy_links": [
@@ -1095,7 +1157,7 @@
         "type": "skill",
         "skill_id": "7NS3-S3"
       },
-      "i_do_script": "The sign rule does not change when the numbers become fractions or decimals -- only the size arithmetic gets harder. Same two moves: multiply the sizes, then count negatives for the sign. Watch (-1 1/2)(0.25)(-3): write 1 1/2 as 1.5, then 1.5 x 0.25 = 0.375, and 0.375 x 3 = 1.125; two negatives, so positive -- 1.125. And (-3/4)(8): size 6, one negative, so -6.",
+      "i_do_script": "Take a quarter of a debt and you still have a debt -- (-1 1/2)(0.25) has to come out negative before the last factor even shows up. Fractions and decimals shrink or stretch the SIZE; they never touch the sign. The sign rule does not change when the numbers become fractions or decimals -- only the size arithmetic gets harder. Same two moves: multiply the sizes, then count negatives for the sign. Watch (-1 1/2)(0.25)(-3): write 1 1/2 as 1.5, then 1.5 x 0.25 = 0.375, and 0.375 x 3 = 1.125; two negatives, so positive -- 1.125. And (-3/4)(8): size 6, one negative, so -6.",
       "canonical_error": {
         "pattern": "Gets the magnitude of a fraction/decimal product right but drops or misassigns the sign",
         "example": "For (-2.5)(4) writes 10 (dropped the negative) instead of -10",
@@ -1126,7 +1188,7 @@
       ],
       "redirect_script": {
         "stop": "You found the size -- now the sign.",
-        "prompt": "Multiply the fractions or decimals for the size, then count the negative factors and apply the sign. A negative answer can be a fraction or decimal too.",
+        "prompt": "Think 'part of a debt' first: does taking a fraction or a decimal of a negative ever change whether it's negative? Multiply the fractions or decimals for the size, then count the negative factors and apply the sign. A negative answer can be a fraction or decimal too.",
         "praise": "You handled the harder size AND set the sign -- that's the full product."
       },
       "vocabulary": [
@@ -1144,6 +1206,14 @@
         "if_fail": "7NS3-F2"
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Before any arithmetic on (-1 1/2)(0.25)(-3): the first part, (-1 1/2)(0.25), means a quarter OF -1 1/2. If you take a quarter of a debt, do you have a debt or a gain?"
+        },
+        {
+          "kind": "say",
+          "text": "Still a debt: a quarter of -1 1/2 is -0.375 -- smaller in size, same sign. Then that negative meets the (-3), and two negatives flip it positive. The decimals only changed the size work; the negatives still get counted exactly like before."
+        },
         {
           "kind": "show",
           "text": "Write '(-1 1/2)(0.25)(-3).'"
@@ -1388,7 +1458,7 @@
         "type": "skill",
         "skill_id": "7NS3-S4"
       },
-      "i_do_script": "The distributive property says a(b + c) = a x b + a x c -- the factor outside multiplies EVERY term inside, not just the first. Watch -1/2(9 + 3): multiply -1/2 x 9 = -4.5 AND -1/2 x 3 = -1.5, then add: -4.5 + (-1.5) = -6. I could also add inside first, 9 + 3 = 12, then -1/2 x 12 = -6 -- same answer. The trap is distributing to only the first term.",
+      "i_do_script": "Picture 9 + 3 as one bar made of a 9-piece and a 3-piece. Taking -1/2 of the bar means taking -1/2 of BOTH pieces -- skip a piece and you haven't taken half of the whole thing. The distributive property says a(b + c) = a x b + a x c -- the factor outside multiplies EVERY term inside, not just the first. Watch -1/2(9 + 3): multiply -1/2 x 9 = -4.5 AND -1/2 x 3 = -1.5, then add: -4.5 + (-1.5) = -6. I could also add inside first, 9 + 3 = 12, then -1/2 x 12 = -6 -- same answer. The trap is distributing to only the first term.",
       "canonical_error": {
         "pattern": "Distributes the outside factor to the first term only, leaving the second term unchanged",
         "example": "For -1/2(9 + 3) writes -4.5 + 3 = -1.5 instead of -4.5 + (-1.5) = -6",
@@ -1419,7 +1489,7 @@
       ],
       "redirect_script": {
         "stop": "Did you multiply the SECOND term too?",
-        "prompt": "The outside factor hits every term inside: -1/2 times 9 AND -1/2 times 3. Draw arrows from -1/2 to both numbers, then add the two products.",
+        "prompt": "Look at the bar: did your -1/2 touch both pieces, or did the 3-piece escape? The outside factor hits every term inside: -1/2 times 9 AND -1/2 times 3. Draw arrows from -1/2 to both numbers, then add the two products.",
         "praise": "You distributed to both terms and then added -- that's the distributive property."
       },
       "vocabulary": [
@@ -1437,6 +1507,38 @@
         "if_fail": "7NS3-S4"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw one bar made of two pieces: a 9-piece and a 3-piece. The whole bar is 12.",
+          "visual": {
+            "type": "tape_diagram",
+            "label": "the whole bar is 9 + 3 = 12",
+            "segments": [
+              {
+                "span": 9,
+                "label": "9",
+                "shaded": true
+              },
+              {
+                "span": 3,
+                "label": "3",
+                "shaded": true
+              }
+            ],
+            "end_labels": [
+              "0",
+              "12"
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "-1/2(9 + 3) means -1/2 of the WHOLE bar. Half of 12, made negative -- what must the answer be?"
+        },
+        {
+          "kind": "say",
+          "text": "-6. If -1/2 only touched the 9-piece and skipped the 3-piece, we'd get -4.5 + 3 = -1.5 -- but the bar shows -1/2 has to hit BOTH pieces: -4.5 and -1.5 together make -6."
+        },
         {
           "kind": "show",
           "text": "Write '-1/2(9 + 3).'"

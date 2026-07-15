@@ -49,7 +49,7 @@
         "description": "Find equivalent ratios by multiplying or dividing both quantities by the same number.",
         "check_question": "A recipe uses 1 cup of rice for every 3 cups of water. How much water for 4 cups of rice?"
       },
-      "i_do_script": "A scale is just a ratio -- 'for every 1 of these, that many of those' -- and I keep it true by multiplying or dividing BOTH numbers by the same amount, never by adding. Watch: 1 inch stands for 6 feet. For 4 inches I multiply both by 4, so 4 inches stands for 24 feet. The number I multiply by is what turns the drawing into the real thing. If a ratio is 2 to 10, the unit rate is 10 divided by 2 = 5, so it is really 1 to 5.",
+      "i_do_script": "Picture each inch of a drawing as a box that carries 6 feet of the real thing -- 4 inches means 4 boxes, so the feet get copied right along with the inches. A scale is just a ratio -- 'for every 1 of these, that many of those' -- and I keep it true by multiplying or dividing BOTH numbers by the same amount, never by adding. Watch: 1 inch stands for 6 feet. For 4 inches I multiply both by 4, so 4 inches stands for 24 feet. The number I multiply by is what turns the drawing into the real thing. If a ratio is 2 to 10, the unit rate is 10 divided by 2 = 5, so it is really 1 to 5.",
       "canonical_error": {
         "pattern": "Keeps a ratio equivalent by ADDING the same number to both quantities instead of multiplying",
         "example": "For 1 in : 6 ft, finds 4 in by writing 1 + 3 = 4 and 6 + 3 = 9, saying 4 in : 9 ft instead of 4 in : 24 ft",
@@ -57,30 +57,109 @@
       },
       "item_template": "A ratio with one term missing, or a ratio to reduce to a unit rate. Short-response fluency bank.",
       "sample_items": [
-        { "stem": "A scale is 1 inch : 6 feet. How many feet does 4 inches stand for?", "answer": "24 feet" },
-        { "stem": "Reduce the ratio 2 : 10 to a unit rate (1 : ?).", "answer": "1 : 5" },
-        { "stem": "A scale is 1 cm : 4 m. How many meters for 3 cm?", "answer": "12 m" },
-        { "stem": "Fill in the blank: 3 : 12 = 1 : ?", "answer": "4" },
-        { "stem": "A scale is 1 in : 5 ft. How many inches represent 35 feet?", "answer": "7 inches" },
-        { "stem": "Reduce 5 : 15 to a unit rate.", "answer": "1 : 3" }
+        {
+          "stem": "A scale is 1 inch : 6 feet. How many feet does 4 inches stand for?",
+          "answer": "24 feet"
+        },
+        {
+          "stem": "Reduce the ratio 2 : 10 to a unit rate (1 : ?).",
+          "answer": "1 : 5"
+        },
+        {
+          "stem": "A scale is 1 cm : 4 m. How many meters for 3 cm?",
+          "answer": "12 m"
+        },
+        {
+          "stem": "Fill in the blank: 3 : 12 = 1 : ?",
+          "answer": "4"
+        },
+        {
+          "stem": "A scale is 1 in : 5 ft. How many inches represent 35 feet?",
+          "answer": "7 inches"
+        },
+        {
+          "stem": "Reduce 5 : 15 to a unit rate.",
+          "answer": "1 : 3"
+        }
       ],
       "redirect_script": {
         "stop": "Wait -- did you add, or multiply?",
-        "prompt": "Keep the ratio true by MULTIPLYING both numbers by the same amount, not adding. If 1 inch is 6 feet, then 4 inches is 4 times 6 = 24 feet.",
+        "prompt": "Point at the boxes: every inch is a whole box of 6 feet -- how many boxes do 4 inches make? Keep the ratio true by MULTIPLYING both numbers by the same amount, not adding. If 1 inch is 6 feet, then 4 inches is 4 times 6 = 24 feet.",
         "praise": "You scaled both numbers by the same factor -- that keeps the rate the same."
       },
       "vocabulary": [
-        { "term": "Ratio", "definition": "A comparison of two quantities, like 1 inch to 6 feet." },
-        { "term": "Unit rate", "definition": "A ratio written with 1 as the first quantity, like 1 inch to 6 feet." },
-        { "term": "Equivalent ratios", "definition": "Ratios that show the same relationship, found by multiplying or dividing both terms by the same number." }
+        {
+          "term": "Ratio",
+          "definition": "A comparison of two quantities, like 1 inch to 6 feet."
+        },
+        {
+          "term": "Unit rate",
+          "definition": "A ratio written with 1 as the first quantity, like 1 inch to 6 feet."
+        },
+        {
+          "term": "Equivalent ratios",
+          "definition": "Ratios that show the same relationship, found by multiplying or dividing both terms by the same number."
+        }
       ],
-      "next_steps": { "if_pass": "7GM1-S1", "if_fail": "Review equivalent ratios and unit rate (6.RP.2)." },
+      "next_steps": {
+        "if_pass": "7GM1-S1",
+        "if_fail": "Review equivalent ratios and unit rate (6.RP.2)."
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'A scale is 1 inch : 6 feet. How many feet is 4 inches?'" },
-        { "kind": "ask", "text": "To keep the ratio true, do we add the same number to both, or multiply both by the same number?" },
-        { "kind": "say", "text": "Multiply both by 4: 1 inch becomes 4 inches, and 6 feet becomes 4 times 6 = 24 feet." },
-        { "kind": "watch", "text": "If the student writes 9 feet (adding 3 to both), ask 'is 4 inches 4 TIMES 1 inch, or 3 more than 1 inch?'" },
-        { "kind": "ask", "text": "Your turn: a scale is 1 cm : 4 m. How many meters is 3 cm?" }
+        {
+          "kind": "show",
+          "text": "Draw 4 boxes in a row, one box for each inch of the drawing, and write 6 ft inside every box. Count them up: 6, 12, 18, 24 -- so 4 inches stands for 24 feet. Adding 3 to the feet would only change ONE box, not all four.",
+          "visual": {
+            "type": "tape_diagram",
+            "label": "4 inches of drawing, each inch carries 6 ft",
+            "segments": [
+              {
+                "span": 6,
+                "label": "6 ft",
+                "shaded": true
+              },
+              {
+                "span": 6,
+                "label": "6 ft",
+                "shaded": true
+              },
+              {
+                "span": 6,
+                "label": "6 ft",
+                "shaded": true
+              },
+              {
+                "span": 6,
+                "label": "6 ft",
+                "shaded": true
+              }
+            ],
+            "end_labels": [
+              "0",
+              "24 ft"
+            ]
+          }
+        },
+        {
+          "kind": "show",
+          "text": "Write 'A scale is 1 inch : 6 feet. How many feet is 4 inches?'"
+        },
+        {
+          "kind": "ask",
+          "text": "To keep the ratio true, do we add the same number to both, or multiply both by the same number?"
+        },
+        {
+          "kind": "say",
+          "text": "Multiply both by 4: 1 inch becomes 4 inches, and 6 feet becomes 4 times 6 = 24 feet."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 9 feet (adding 3 to both), ask 'is 4 inches 4 TIMES 1 inch, or 3 more than 1 inch?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a scale is 1 cm : 4 m. How many meters is 3 cm?"
+        }
       ]
     },
     {
@@ -94,7 +173,7 @@
         "description": "Compute the area of a rectangle as length times width in square units.",
         "check_question": "What is the area of a rectangle 5 cm long and 3 cm wide?"
       },
-      "i_do_script": "Area is the space inside a shape, and for a rectangle it is length times width -- and the answer is in SQUARE units. Watch: a rectangle 5 cm by 3 cm has area 5 times 3 = 15 square cm. Do not confuse it with perimeter, which is the distance AROUND (5 + 3 + 5 + 3 = 16 cm). Area multiplies; perimeter adds.",
+      "i_do_script": "Cover a 5 by 3 rectangle with unit squares and you get 3 rows of 5 squares -- counting those 15 squares IS the area, and 5 x 3 is just the fast way to count them. Area is the space inside a shape, and for a rectangle it is length times width -- and the answer is in SQUARE units. Watch: a rectangle 5 cm by 3 cm has area 5 times 3 = 15 square cm. Do not confuse it with perimeter, which is the distance AROUND (5 + 3 + 5 + 3 = 16 cm). Area multiplies; perimeter adds.",
       "canonical_error": {
         "pattern": "Adds length and width (or finds perimeter) instead of multiplying to get area",
         "example": "For a 5 cm by 3 cm rectangle answers 16 cm (the perimeter) or 8 (5 + 3) instead of 15 square cm",
@@ -102,29 +181,96 @@
       },
       "item_template": "A rectangle's length and width in words; student finds the area in square units. Short-response fluency bank.",
       "sample_items": [
-        { "stem": "A rectangle is 5 cm long and 3 cm wide. What is its area?", "answer": "15 square cm" },
-        { "stem": "A rectangle is 8 ft by 4 ft. What is its area?", "answer": "32 square ft" },
-        { "stem": "A square is 6 in on each side. What is its area?", "answer": "36 square in" },
-        { "stem": "A rectangle is 14 ft by 28 ft. What is its area?", "answer": "392 square ft" },
-        { "stem": "A rectangle is 12 m by 3 m. What is its area?", "answer": "36 square m" }
+        {
+          "stem": "A rectangle is 5 cm long and 3 cm wide. What is its area?",
+          "answer": "15 square cm"
+        },
+        {
+          "stem": "A rectangle is 8 ft by 4 ft. What is its area?",
+          "answer": "32 square ft"
+        },
+        {
+          "stem": "A square is 6 in on each side. What is its area?",
+          "answer": "36 square in"
+        },
+        {
+          "stem": "A rectangle is 14 ft by 28 ft. What is its area?",
+          "answer": "392 square ft"
+        },
+        {
+          "stem": "A rectangle is 12 m by 3 m. What is its area?",
+          "answer": "36 square m"
+        }
       ],
       "redirect_script": {
         "stop": "Area or perimeter -- which one multiplies?",
-        "prompt": "Area is the space INSIDE: multiply length times width and label it square units. Adding the sides gives perimeter, a different measure.",
+        "prompt": "Look at the rows of squares inside the rectangle: does your number count those squares, or the walk around the edge? Area is the space INSIDE: multiply length times width and label it square units. Adding the sides gives perimeter, a different measure.",
         "praise": "You multiplied length by width and used square units -- that is area."
       },
       "vocabulary": [
-        { "term": "Area", "definition": "The amount of space inside a flat shape, measured in square units." },
-        { "term": "Square units", "definition": "The unit for area, like square feet, because area covers a two-dimensional region." },
-        { "term": "Perimeter", "definition": "The distance around a shape, found by adding the side lengths." }
+        {
+          "term": "Area",
+          "definition": "The amount of space inside a flat shape, measured in square units."
+        },
+        {
+          "term": "Square units",
+          "definition": "The unit for area, like square feet, because area covers a two-dimensional region."
+        },
+        {
+          "term": "Perimeter",
+          "definition": "The distance around a shape, found by adding the side lengths."
+        }
       ],
-      "next_steps": { "if_pass": "7GM1-S4", "if_fail": "Review area of rectangles (4.M.2 / 5.M.2)." },
+      "next_steps": {
+        "if_pass": "7GM1-S4",
+        "if_fail": "Review area of rectangles (4.M.2 / 5.M.2)."
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'Rectangle 5 cm by 3 cm. Find the area.'" },
-        { "kind": "ask", "text": "For area, do we add the sides or multiply length by width?" },
-        { "kind": "say", "text": "Multiply: 5 times 3 = 15, and area is in SQUARE cm, so 15 square cm." },
-        { "kind": "watch", "text": "If the student writes 16 cm, ask 'is 16 the space inside, or the distance around the edge?'" },
-        { "kind": "ask", "text": "Your turn: a rectangle 8 ft by 4 ft -- find the area." }
+        {
+          "kind": "show",
+          "text": "Draw the 5 cm by 3 cm rectangle and cut it into unit squares: 3 rows with 5 squares in each row. Count the squares: 5, 10, 15. Adding 5 + 3 = 8 counts nothing you can see, and 16 cm is a walk around the edge, not the squares inside.",
+          "visual": {
+            "type": "fraction_bars",
+            "label": "3 rows of 5 unit squares = 15 squares",
+            "bars": [
+              {
+                "parts": 5,
+                "shaded": 5,
+                "label": "row 1"
+              },
+              {
+                "parts": 5,
+                "shaded": 5,
+                "label": "row 2"
+              },
+              {
+                "parts": 5,
+                "shaded": 5,
+                "label": "row 3"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "show",
+          "text": "Write 'Rectangle 5 cm by 3 cm. Find the area.'"
+        },
+        {
+          "kind": "ask",
+          "text": "For area, do we add the sides or multiply length by width?"
+        },
+        {
+          "kind": "say",
+          "text": "Multiply: 5 times 3 = 15, and area is in SQUARE cm, so 15 square cm."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 16 cm, ask 'is 16 the space inside, or the distance around the edge?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a rectangle 8 ft by 4 ft -- find the area."
+        }
       ]
     },
     {
@@ -132,9 +278,14 @@
       "name": "Determine the scale factor between a figure and its scaled image",
       "column": "looking_back",
       "parent_standard": "7.GM.1",
-      "engine_stems": [1],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7GM1-F1" },
-      "i_do_script": "The scale factor is the number that multiplies every side of the original figure to get the matching side of the copy. To find it, I divide a side of the NEW figure by the corresponding side of the ORIGINAL. Watch: Figure A has a side of 3 cm and the matching side of Figure B is 12 cm. Scale factor = 12 divided by 3 = 4. I check with another pair of sides -- they should give the same 4. If the copy is smaller, the scale factor is a fraction, like one half.",
+      "engine_stems": [
+        1
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7GM1-F1"
+      },
+      "i_do_script": "Lay the original 3 cm side end to end along the 12 cm side of the copy -- it fits exactly 4 times, and that count of copies is the scale factor. The scale factor is the number that multiplies every side of the original figure to get the matching side of the copy. To find it, I divide a side of the NEW figure by the corresponding side of the ORIGINAL. Watch: Figure A has a side of 3 cm and the matching side of Figure B is 12 cm. Scale factor = 12 divided by 3 = 4. I check with another pair of sides -- they should give the same 4. If the copy is smaller, the scale factor is a fraction, like one half.",
       "canonical_error": {
         "pattern": "Subtracts corresponding sides to find the scale factor instead of dividing",
         "example": "For a side of 3 on Figure A and 12 on Figure B, answers 9 (12 - 3) instead of 4 (12 / 3)",
@@ -142,34 +293,137 @@
       },
       "item_template": "Two figures described by corresponding side lengths; student finds the scale factor from A to B. Numeric response.",
       "sample_items": [
-        { "stem": "Figure A is a rectangle 3 cm by 5 cm. Figure B is a scale copy measuring 12 cm by 20 cm. What scale factor maps Figure A onto Figure B?", "answer": "4", "distractor_logic": "12/3 = 4 (and 20/5 = 4). Subtracting 12 - 3 = 9 is the additive error." },
-        { "stem": "A triangle has a base of 4 in. A scale copy has a matching base of 10 in. What is the scale factor?", "answer": "2.5", "distractor_logic": "10/4 = 2.5. Subtracting gives 6." },
-        { "stem": "Figure A has a side of 6 m; the corresponding side of Figure B is 9 m. What scale factor maps A to B?", "answer": "1.5", "distractor_logic": "9/6 = 1.5. The difference 3 is the wrong, additive answer." },
-        { "stem": "A large rectangle has an 8 cm side. A reduced scale copy has the matching side of 2 cm. What scale factor maps the large figure to the small one?", "answer": "1/4 (0.25)", "distractor_logic": "2/8 = 1/4, a reduction. Subtracting gives 6, which misses that the copy is smaller." }
+        {
+          "stem": "Figure A is a rectangle 3 cm by 5 cm. Figure B is a scale copy measuring 12 cm by 20 cm. What scale factor maps Figure A onto Figure B?",
+          "answer": "4",
+          "distractor_logic": "12/3 = 4 (and 20/5 = 4). Subtracting 12 - 3 = 9 is the additive error."
+        },
+        {
+          "stem": "A triangle has a base of 4 in. A scale copy has a matching base of 10 in. What is the scale factor?",
+          "answer": "2.5",
+          "distractor_logic": "10/4 = 2.5. Subtracting gives 6."
+        },
+        {
+          "stem": "Figure A has a side of 6 m; the corresponding side of Figure B is 9 m. What scale factor maps A to B?",
+          "answer": "1.5",
+          "distractor_logic": "9/6 = 1.5. The difference 3 is the wrong, additive answer."
+        },
+        {
+          "stem": "A large rectangle has an 8 cm side. A reduced scale copy has the matching side of 2 cm. What scale factor maps the large figure to the small one?",
+          "answer": "1/4 (0.25)",
+          "distractor_logic": "2/8 = 1/4, a reduction. Subtracting gives 6, which misses that the copy is smaller."
+        }
       ],
       "redirect_script": {
         "stop": "Did you divide the sides, or subtract them?",
-        "prompt": "A scale factor tells how many TIMES as big, so divide the new side by the matching original side. For 3 becoming 12, that is 12 / 3 = 4, not 12 - 3.",
+        "prompt": "Go back to the copies: how many times does the original side fit along the new side? A scale factor tells how many TIMES as big, so divide the new side by the matching original side. For 3 becoming 12, that is 12 / 3 = 4, not 12 - 3.",
         "praise": "You divided matching sides -- that is the multiplier that maps one figure onto the other."
       },
       "vocabulary": [
-        { "term": "Scale factor", "definition": "The number every length is multiplied by to go from the original figure to its scale copy." },
-        { "term": "Scale drawing", "definition": "A drawing that shows an object with every length multiplied by the same scale factor." },
-        { "term": "Corresponding sides", "definition": "Sides in the same position on the two figures, which you compare to find the scale factor." }
+        {
+          "term": "Scale factor",
+          "definition": "The number every length is multiplied by to go from the original figure to its scale copy."
+        },
+        {
+          "term": "Scale drawing",
+          "definition": "A drawing that shows an object with every length multiplied by the same scale factor."
+        },
+        {
+          "term": "Corresponding sides",
+          "definition": "Sides in the same position on the two figures, which you compare to find the scale factor."
+        }
       ],
-      "next_steps": { "if_pass": "7GM1-S2", "if_fail": "7GM1-F1" },
+      "next_steps": {
+        "if_pass": "7GM1-S2",
+        "if_fail": "7GM1-F1"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'Figure A side 3 cm; matching Figure B side 12 cm. Scale factor?'" },
-        { "kind": "ask", "text": "To find how many times as big, do we divide the sides or subtract them?" },
-        { "kind": "say", "text": "Divide the new side by the original: 12 / 3 = 4. Check another pair to be sure it is also 4." },
-        { "kind": "watch", "text": "If the student writes 9 (from 12 - 3), ask 'is 12 nine times 3, or four times 3?'" },
-        { "kind": "ask", "text": "Your turn: a 4-inch base becomes 10 inches in the copy. Find the scale factor." }
+        {
+          "kind": "show",
+          "text": "Draw Figure A's side as a 3 cm segment. Below it, draw Figure B's 12 cm side and lay copies of the 3 cm segment along it: 3, 6, 9, 12 -- exactly 4 copies fit.",
+          "visual": {
+            "type": "tape_diagram",
+            "label": "Copies of the 3 cm side laid along the 12 cm side",
+            "segments": [
+              {
+                "span": 3,
+                "label": "3",
+                "shaded": true
+              },
+              {
+                "span": 3,
+                "label": "3",
+                "shaded": true
+              },
+              {
+                "span": 3,
+                "label": "3",
+                "shaded": true
+              },
+              {
+                "span": 3,
+                "label": "3",
+                "shaded": true
+              }
+            ],
+            "end_labels": [
+              "0",
+              "12"
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "How many copies of the original side fit along the new side? Is that count anywhere near 12 - 3 = 9? Would 9 copies of 3 really give you 12?"
+        },
+        {
+          "kind": "say",
+          "text": "Four copies fit, so the new side is 4 TIMES the original -- and counting how many 3s fit in 12 is exactly the division 12 / 3 = 4. Subtracting gives 9, but 9 copies of 3 would be 27, way past 12."
+        },
+        {
+          "kind": "show",
+          "text": "Write 'Figure A side 3 cm; matching Figure B side 12 cm. Scale factor?'"
+        },
+        {
+          "kind": "ask",
+          "text": "To find how many times as big, do we divide the sides or subtract them?"
+        },
+        {
+          "kind": "say",
+          "text": "Divide the new side by the original: 12 / 3 = 4. Check another pair to be sure it is also 4."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 9 (from 12 - 3), ask 'is 12 nine times 3, or four times 3?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a 4-inch base becomes 10 inches in the copy. Find the scale factor."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "A side of 2 becomes 8 in a scale copy. Divide to find the scale factor.", "answer": "4 (8/2)" },
-        { "difficulty": "warm_up", "stem": "If every side is multiplied by 3, what is the scale factor?", "answer": "3" },
-        { "difficulty": "core", "stem": "Figure A is 3 cm by 5 cm; Figure B is 12 cm by 20 cm. Scale factor from A to B?", "answer": "4 (12/3 = 20/5)", "notes": "Two side pairs confirm the same factor." },
-        { "difficulty": "core", "stem": "A base of 4 in becomes 10 in in the copy. Scale factor?", "answer": "2.5 (10/4)", "notes": "Non-integer factor." },
+        {
+          "difficulty": "warm_up",
+          "stem": "A side of 2 becomes 8 in a scale copy. Divide to find the scale factor.",
+          "answer": "4 (8/2)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "If every side is multiplied by 3, what is the scale factor?",
+          "answer": "3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Figure A is 3 cm by 5 cm; Figure B is 12 cm by 20 cm. Scale factor from A to B?",
+          "answer": "4 (12/3 = 20/5)",
+          "notes": "Two side pairs confirm the same factor."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A base of 4 in becomes 10 in in the copy. Scale factor?",
+          "answer": "2.5 (10/4)",
+          "notes": "Non-integer factor."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -181,9 +435,24 @@
           "answer": "Sam subtracted. A scale factor is a multiplier: divide the new side by the original, 12 / 3 = 4. Check: 3 x 4 = 12.",
           "notes": "Canonical error: additive instead of multiplicative."
         },
-        { "difficulty": "core", "stem": "A large figure's 8 cm side becomes 2 cm in a reduced copy. Scale factor?", "answer": "1/4 (2/8)", "notes": "Reduction gives a fractional scale factor." },
-        { "difficulty": "stretch", "stem": "Figure B is a scale copy of Figure A with scale factor 3, and Figure A's side is 5 cm. Write Figure B's matching side, then explain how to get back to A.", "answer": "B's side is 15 cm (5 x 3). To go from B back to A, divide by 3 -- the reverse scale factor is 1/3.", "notes": "Reverses direction: the inverse scale factor." },
-        { "difficulty": "stretch", "stem": "Two figures have corresponding sides 6 and 9, and another pair 8 and 12. Is one a scale copy of the other? Justify with the scale factor.", "answer": "Yes -- 9/6 = 1.5 and 12/8 = 1.5, the same factor, so it is a valid scale copy.", "notes": "Justify similarity by a constant factor." }
+        {
+          "difficulty": "core",
+          "stem": "A large figure's 8 cm side becomes 2 cm in a reduced copy. Scale factor?",
+          "answer": "1/4 (2/8)",
+          "notes": "Reduction gives a fractional scale factor."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Figure B is a scale copy of Figure A with scale factor 3, and Figure A's side is 5 cm. Write Figure B's matching side, then explain how to get back to A.",
+          "answer": "B's side is 15 cm (5 x 3). To go from B back to A, divide by 3 -- the reverse scale factor is 1/3.",
+          "notes": "Reverses direction: the inverse scale factor."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two figures have corresponding sides 6 and 9, and another pair 8 and 12. Is one a scale copy of the other? Justify with the scale factor.",
+          "answer": "Yes -- 9/6 = 1.5 and 12/8 = 1.5, the same factor, so it is a valid scale copy.",
+          "notes": "Justify similarity by a constant factor."
+        }
       ],
       "activities": [
         {
@@ -191,19 +460,48 @@
           "title": "Enlargement or Reduction?",
           "time_minutes": 10,
           "grouping": "small_group",
-          "materials": ["Card set of 10 'original -> image' side pairs"],
+          "materials": [
+            "Card set of 10 'original -> image' side pairs"
+          ],
           "instructions": "1. For each card, divide the image side by the original side to get the scale factor.\n2. Sort the card into 'Enlargement (factor greater than 1)' or 'Reduction (factor less than 1).'\n3. Write the scale factor on each card.\n4. Debrief: how can you tell a reduction just by comparing the two side lengths, before you divide?",
           "content": {
-            "categories": ["Enlargement (factor greater than 1)", "Reduction (factor less than 1)"],
+            "categories": [
+              "Enlargement (factor greater than 1)",
+              "Reduction (factor less than 1)"
+            ],
             "cards": [
-              { "text": "3 -> 12", "category": "Enlargement (factor greater than 1)" },
-              { "text": "4 -> 10", "category": "Enlargement (factor greater than 1)" },
-              { "text": "6 -> 9", "category": "Enlargement (factor greater than 1)" },
-              { "text": "8 -> 2", "category": "Reduction (factor less than 1)" },
-              { "text": "10 -> 5", "category": "Reduction (factor less than 1)" },
-              { "text": "5 -> 20", "category": "Enlargement (factor greater than 1)" },
-              { "text": "12 -> 3", "category": "Reduction (factor less than 1)" },
-              { "text": "9 -> 6", "category": "Reduction (factor less than 1)" }
+              {
+                "text": "3 -> 12",
+                "category": "Enlargement (factor greater than 1)"
+              },
+              {
+                "text": "4 -> 10",
+                "category": "Enlargement (factor greater than 1)"
+              },
+              {
+                "text": "6 -> 9",
+                "category": "Enlargement (factor greater than 1)"
+              },
+              {
+                "text": "8 -> 2",
+                "category": "Reduction (factor less than 1)"
+              },
+              {
+                "text": "10 -> 5",
+                "category": "Reduction (factor less than 1)"
+              },
+              {
+                "text": "5 -> 20",
+                "category": "Enlargement (factor greater than 1)"
+              },
+              {
+                "text": "12 -> 3",
+                "category": "Reduction (factor less than 1)"
+              },
+              {
+                "text": "9 -> 6",
+                "category": "Reduction (factor less than 1)"
+              }
             ]
           }
         },
@@ -212,7 +510,9 @@
           "title": "Times, Not Minus",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Sam's subtraction work"],
+          "materials": [
+            "Slip with Sam's subtraction work"
+          ],
           "instructions": "1. Read Sam's claim that the scale factor from 3 to 12 is 9.\n2. Ask: is 12 nine times 3, or four times 3?\n3. Redo it by dividing the new side by the original.\n4. Write the one-sentence rule for finding a scale factor.",
           "content": {
             "worked_problem": "Figure A side 3, Figure B side 12. Sam wrote 12 - 3 = 9, so the scale factor is 9.",
@@ -222,9 +522,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-003", "why": "The additive 'subtract the sides' error is precise and baitable; find-and-fix with a multiply-back check targets it directly." },
-        { "strategy_id": "strat-math-002", "why": "Number talks on 'how many times as big' build the multiplicative fluency that replaces additive comparison." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'divide the new side by the original' models the choice students skip when they subtract." }
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The additive 'subtract the sides' error is precise and baitable; find-and-fix with a multiply-back check targets it directly."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Number talks on 'how many times as big' build the multiplicative fluency that replaces additive comparison."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'divide the new side by the original' models the choice students skip when they subtract."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -266,20 +575,48 @@
         "stem": "Figure A has a side of 5 cm. The matching side of its scale copy, Figure B, is 20 cm. What scale factor maps Figure A onto Figure B?",
         "answer": "4",
         "steps": [
-          { "math": "identify corresponding sides: 5 cm and 20 cm", "annotation": "Match the side on A to the side in the same position on B." },
-          { "math": "scale factor = new / original = 20 / 5", "annotation": "Divide the image side by the original side." },
-          { "math": "= 4", "annotation": "The copy is 4 times as big -- an enlargement." },
-          { "math": "check: 5 x 4 = 20", "annotation": "Multiply back to confirm the factor is right." }
+          {
+            "math": "identify corresponding sides: 5 cm and 20 cm",
+            "annotation": "Match the side on A to the side in the same position on B."
+          },
+          {
+            "math": "scale factor = new / original = 20 / 5",
+            "annotation": "Divide the image side by the original side."
+          },
+          {
+            "math": "= 4",
+            "annotation": "The copy is 4 times as big -- an enlargement."
+          },
+          {
+            "math": "check: 5 x 4 = 20",
+            "annotation": "Multiply back to confirm the factor is right."
+          }
         ]
       },
       "faded_example": {
         "stem": "Figure A has a side of 6 in. The matching side of Figure B is 18 in. What scale factor maps A onto B?",
         "answer": "3",
         "steps": [
-          { "math": "corresponding sides: 6 in and 18 in", "annotation": "Match sides in the same position.", "given": true },
-          { "math": "scale factor = 18 / 6", "annotation": "Divide the new side by the original.", "given": true },
-          { "math": null, "annotation": "Divide to find the scale factor.", "given": false },
-          { "math": null, "annotation": "Check by multiplying 6 by your factor -- do you get 18?", "given": false }
+          {
+            "math": "corresponding sides: 6 in and 18 in",
+            "annotation": "Match sides in the same position.",
+            "given": true
+          },
+          {
+            "math": "scale factor = 18 / 6",
+            "annotation": "Divide the new side by the original.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Divide to find the scale factor.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check by multiplying 6 by your factor -- do you get 18?",
+            "given": false
+          }
         ]
       }
     },
@@ -288,9 +625,15 @@
       "name": "Use a scale to compute an actual length or a missing corresponding side",
       "column": "on_grade",
       "parent_standard": "7.GM.1",
-      "engine_stems": [2, 4],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7GM1-S1" },
-      "i_do_script": "Once I know the scale, finding a real length is one multiplication: multiply the drawing length by the scale. Watch a boat drawing at 1 inch : 6 feet. The picture is 7 inches, so the actual boat is 7 times 6 = 42 feet. The same idea finds a missing side on a scaled figure: if the scale factor is 2 and the original side is 5 cm, the matching side on the copy is 5 times 2 = 10 cm. I always ask which way I am going -- a real object is bigger than its shrunken drawing, so the number should grow.",
+      "engine_stems": [
+        2,
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7GM1-S1"
+      },
+      "i_do_script": "Each inch of the drawing is a little box that stands for 6 feet of real boat -- stack up one 6 for every inch, and the real length has to come out bigger. Once I know the scale, finding a real length is one multiplication: multiply the drawing length by the scale. Watch a boat drawing at 1 inch : 6 feet. The picture is 7 inches, so the actual boat is 7 times 6 = 42 feet. The same idea finds a missing side on a scaled figure: if the scale factor is 2 and the original side is 5 cm, the matching side on the copy is 5 times 2 = 10 cm. I always ask which way I am going -- a real object is bigger than its shrunken drawing, so the number should grow.",
       "canonical_error": {
         "pattern": "Divides by the scale (or applies it backward) when the actual length should be found by multiplying",
         "example": "For 1 inch : 6 feet with a 7-inch drawing, computes 7 / 6 = about 1.17 feet instead of 7 x 6 = 42 feet",
@@ -298,33 +641,148 @@
       },
       "item_template": "A scale plus a drawing length (or a scale factor plus an original side); student finds the actual length or missing side. Numeric response.",
       "sample_items": [
-        { "stem": "A student's drawing of a boat uses the scale 1 inch : 6 feet. The picture is 7 inches long. How long is the actual boat?", "answer": "42 feet", "distractor_logic": "7 x 6 = 42. Dividing 7/6 ~ 1.17 reverses the direction." },
-        { "stem": "Figure B is a scale image of Figure A with scale 1 : 2. A side of Figure A is 5 cm. Find the matching side x on Figure B.", "answer": "10 cm", "distractor_logic": "5 x 2 = 10. Using 5/2 = 2.5 applies the factor backward." },
-        { "stem": "A map uses 1 inch : 8 feet. A path is drawn 3 inches long. What is the actual length?", "answer": "24 feet", "distractor_logic": "3 x 8 = 24." },
-        { "stem": "A scale drawing uses 1 inch : 4 feet. A wall is 9 inches in the drawing. Find the actual length.", "answer": "36 feet", "distractor_logic": "9 x 4 = 36." }
+        {
+          "stem": "A student's drawing of a boat uses the scale 1 inch : 6 feet. The picture is 7 inches long. How long is the actual boat?",
+          "answer": "42 feet",
+          "distractor_logic": "7 x 6 = 42. Dividing 7/6 ~ 1.17 reverses the direction."
+        },
+        {
+          "stem": "Figure B is a scale image of Figure A with scale 1 : 2. A side of Figure A is 5 cm. Find the matching side x on Figure B.",
+          "answer": "10 cm",
+          "distractor_logic": "5 x 2 = 10. Using 5/2 = 2.5 applies the factor backward."
+        },
+        {
+          "stem": "A map uses 1 inch : 8 feet. A path is drawn 3 inches long. What is the actual length?",
+          "answer": "24 feet",
+          "distractor_logic": "3 x 8 = 24."
+        },
+        {
+          "stem": "A scale drawing uses 1 inch : 4 feet. A wall is 9 inches in the drawing. Find the actual length.",
+          "answer": "36 feet",
+          "distractor_logic": "9 x 4 = 36."
+        }
       ],
       "redirect_script": {
         "stop": "Should the real object be bigger or smaller than the drawing?",
-        "prompt": "Going from the drawing to the real thing, MULTIPLY by the scale. 1 inch is 6 feet, so 7 inches is 7 x 6 = 42 feet -- the answer grows.",
+        "prompt": "Look at the boxes first: each drawing inch holds 6 whole feet -- count them up before you pick an operation. Going from the drawing to the real thing, MULTIPLY by the scale. 1 inch is 6 feet, so 7 inches is 7 x 6 = 42 feet -- the answer grows.",
         "praise": "You multiplied by the scale and your answer got bigger -- that is the drawing-to-real direction."
       },
       "vocabulary": [
-        { "term": "Scale", "definition": "The rule that links a drawing length to a real length, like 1 inch : 6 feet." },
-        { "term": "Actual length", "definition": "The real-world length, found by applying the scale to the drawing length." }
+        {
+          "term": "Scale",
+          "definition": "The rule that links a drawing length to a real length, like 1 inch : 6 feet."
+        },
+        {
+          "term": "Actual length",
+          "definition": "The real-world length, found by applying the scale to the drawing length."
+        }
       ],
-      "next_steps": { "if_pass": "7GM1-S3", "if_fail": "7GM1-S1" },
+      "next_steps": {
+        "if_pass": "7GM1-S3",
+        "if_fail": "7GM1-S1"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'Scale 1 inch : 6 feet. Drawing is 7 inches. Actual length?'" },
-        { "kind": "ask", "text": "Is the real boat bigger or smaller than the 7-inch picture? So do we multiply or divide?" },
-        { "kind": "say", "text": "The real boat is bigger, so multiply: 7 x 6 = 42 feet." },
-        { "kind": "watch", "text": "If the student writes 1.17 (from 7 / 6), ask 'a boat only about 1 foot long? Which way makes it bigger?'" },
-        { "kind": "ask", "text": "Your turn: scale 1 inch : 8 feet, drawing 3 inches -- find the actual length." }
+        {
+          "kind": "show",
+          "text": "Draw the boat picture as 7 inch-boxes in a row, and write 6 ft inside each box -- every inch of drawing carries 6 feet of real boat.",
+          "visual": {
+            "type": "tape_diagram",
+            "label": "7 drawing inches, each carrying 6 ft of real boat",
+            "segments": [
+              {
+                "span": 6,
+                "label": "6 ft",
+                "shaded": true
+              },
+              {
+                "span": 6,
+                "label": "6 ft",
+                "shaded": true
+              },
+              {
+                "span": 6,
+                "label": "6 ft",
+                "shaded": true
+              },
+              {
+                "span": 6,
+                "label": "6 ft",
+                "shaded": true
+              },
+              {
+                "span": 6,
+                "label": "6 ft",
+                "shaded": true
+              },
+              {
+                "span": 6,
+                "label": "6 ft",
+                "shaded": true
+              },
+              {
+                "span": 6,
+                "label": "6 ft",
+                "shaded": true
+              }
+            ],
+            "end_labels": [
+              "0",
+              "42 ft"
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Count the feet along the boxes: 6, 12, 18, 24, 30, 36, 42. Could the real boat be about 1 foot long, the way 7 / 6 says?"
+        },
+        {
+          "kind": "say",
+          "text": "Every inch carries 6 whole feet, so 7 inches carries 7 x 6 = 42 feet. A real boat shorter than its own picture number makes no sense -- going from drawing to real, the count has to grow."
+        },
+        {
+          "kind": "show",
+          "text": "Write 'Scale 1 inch : 6 feet. Drawing is 7 inches. Actual length?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Is the real boat bigger or smaller than the 7-inch picture? So do we multiply or divide?"
+        },
+        {
+          "kind": "say",
+          "text": "The real boat is bigger, so multiply: 7 x 6 = 42 feet."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 1.17 (from 7 / 6), ask 'a boat only about 1 foot long? Which way makes it bigger?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: scale 1 inch : 8 feet, drawing 3 inches -- find the actual length."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "A scale is 1 inch : 10 feet. A line is 2 inches long. How many feet?", "answer": "20 feet (2 x 10)" },
-        { "difficulty": "warm_up", "stem": "Scale factor 3, original side 4 cm. What is the copy's matching side?", "answer": "12 cm (4 x 3)" },
-        { "difficulty": "core", "stem": "A boat drawing uses 1 inch : 6 feet and is 7 inches long. Actual length?", "answer": "42 feet (7 x 6)", "notes": "Baits dividing 7/6." },
-        { "difficulty": "core", "stem": "Scale 1 : 2, Figure A side 5 cm. Find the matching side x on Figure B.", "answer": "10 cm (5 x 2)", "notes": "Missing-side form of the same move." },
+        {
+          "difficulty": "warm_up",
+          "stem": "A scale is 1 inch : 10 feet. A line is 2 inches long. How many feet?",
+          "answer": "20 feet (2 x 10)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Scale factor 3, original side 4 cm. What is the copy's matching side?",
+          "answer": "12 cm (4 x 3)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A boat drawing uses 1 inch : 6 feet and is 7 inches long. Actual length?",
+          "answer": "42 feet (7 x 6)",
+          "notes": "Baits dividing 7/6."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Scale 1 : 2, Figure A side 5 cm. Find the matching side x on Figure B.",
+          "answer": "10 cm (5 x 2)",
+          "notes": "Missing-side form of the same move."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -336,9 +794,24 @@
           "answer": "Ivan divided. The real room is bigger than the 8-inch drawing, so multiply: 8 x 5 = 40 feet.",
           "notes": "Canonical error: dividing / reversing the direction."
         },
-        { "difficulty": "core", "stem": "A garden is drawn at 1 inch : 12 feet and is 5 inches long. Actual length?", "answer": "60 feet (5 x 12)", "notes": "Larger scale number." },
-        { "difficulty": "stretch", "stem": "A drawing at 1 inch : 6 feet shows an actual 54-foot bridge. How long is the drawing? Explain which way you went.", "answer": "9 inches -- going from real to drawing you divide: 54 / 6 = 9 inches (the drawing is smaller).", "notes": "Reverses direction: actual to drawing divides." },
-        { "difficulty": "stretch", "stem": "Two drawings of the same 48-foot wall: one at 1 inch : 4 feet, one at 1 inch : 8 feet. Which drawing is longer, and by how much?", "answer": "1 in : 4 ft gives 48/4 = 12 in; 1 in : 8 ft gives 48/8 = 6 in. The first is longer by 6 inches.", "notes": "A smaller scale number makes a bigger drawing." }
+        {
+          "difficulty": "core",
+          "stem": "A garden is drawn at 1 inch : 12 feet and is 5 inches long. Actual length?",
+          "answer": "60 feet (5 x 12)",
+          "notes": "Larger scale number."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A drawing at 1 inch : 6 feet shows an actual 54-foot bridge. How long is the drawing? Explain which way you went.",
+          "answer": "9 inches -- going from real to drawing you divide: 54 / 6 = 9 inches (the drawing is smaller).",
+          "notes": "Reverses direction: actual to drawing divides."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two drawings of the same 48-foot wall: one at 1 inch : 4 feet, one at 1 inch : 8 feet. Which drawing is longer, and by how much?",
+          "answer": "1 in : 4 ft gives 48/4 = 12 in; 1 in : 8 ft gives 48/8 = 6 in. The first is longer by 6 inches.",
+          "notes": "A smaller scale number makes a bigger drawing."
+        }
       ],
       "activities": [
         {
@@ -346,18 +819,41 @@
           "title": "Drawing to Real",
           "time_minutes": 10,
           "grouping": "pairs",
-          "materials": ["Card set: 6 scale-and-drawing situations and answer cards (correct actual lengths plus 'divided-by-mistake' decoys)"],
+          "materials": [
+            "Card set: 6 scale-and-drawing situations and answer cards (correct actual lengths plus 'divided-by-mistake' decoys)"
+          ],
           "instructions": "1. Match each situation to its correct ACTUAL length.\n2. Some answer cards are 'reversed' decoys (drawing divided by the scale) -- set them aside and label them.\n3. To claim a match, say whether the real length should be bigger or smaller than the drawing.\n4. Debrief: how does knowing the answer must GROW help you avoid dividing?",
           "content": {
             "pairs": [
-              { "left": "1 in : 6 ft, drawing 7 in", "right": "42 ft" },
-              { "left": "1 in : 8 ft, drawing 3 in", "right": "24 ft" },
-              { "left": "1 in : 4 ft, drawing 9 in", "right": "36 ft" },
-              { "left": "1 in : 10 ft, drawing 2 in", "right": "20 ft" },
-              { "left": "1 in : 12 ft, drawing 5 in", "right": "60 ft" },
-              { "left": "1 in : 5 ft, drawing 8 in", "right": "40 ft" }
+              {
+                "left": "1 in : 6 ft, drawing 7 in",
+                "right": "42 ft"
+              },
+              {
+                "left": "1 in : 8 ft, drawing 3 in",
+                "right": "24 ft"
+              },
+              {
+                "left": "1 in : 4 ft, drawing 9 in",
+                "right": "36 ft"
+              },
+              {
+                "left": "1 in : 10 ft, drawing 2 in",
+                "right": "20 ft"
+              },
+              {
+                "left": "1 in : 12 ft, drawing 5 in",
+                "right": "60 ft"
+              },
+              {
+                "left": "1 in : 5 ft, drawing 8 in",
+                "right": "40 ft"
+              }
             ],
-            "decoys": ["1.17 ft", "0.375 ft"]
+            "decoys": [
+              "1.17 ft",
+              "0.375 ft"
+            ]
           }
         },
         {
@@ -365,7 +861,9 @@
           "title": "Which Way Grows?",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Ivan's divided answer"],
+          "materials": [
+            "Slip with Ivan's divided answer"
+          ],
           "instructions": "1. Read Ivan's claim that a room drawn 8 inches long at 1 inch : 5 feet is only 1.6 feet.\n2. Ask: is a real room bigger or smaller than an 8-inch drawing?\n3. Redo it by multiplying the drawing length by the scale.\n4. Write the rule: from drawing to real you ____.",
           "content": {
             "worked_problem": "Scale 1 in : 5 ft, drawing 8 in. Ivan wrote 8 / 5 = 1.6 feet.",
@@ -375,9 +873,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-006", "why": "Gradual release from 'find the scale factor' to 'apply it to a length' scaffolds this two-part move." },
-        { "strategy_id": "strat-math-003", "why": "The reversed-direction division error is a clean single-point mistake ideal for find-and-fix." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'the real object is bigger, so multiply' models the direction check students skip." }
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release from 'find the scale factor' to 'apply it to a length' scaffolds this two-part move."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The reversed-direction division error is a clean single-point mistake ideal for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'the real object is bigger, so multiply' models the direction check students skip."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -419,20 +926,48 @@
         "stem": "A scale drawing of a car uses 1 inch : 5 feet. The drawing is 3 inches long. How long is the actual car?",
         "answer": "15 feet",
         "steps": [
-          { "math": "scale: 1 inch = 5 feet", "annotation": "Each drawing inch stands for 5 real feet." },
-          { "math": "the real car is bigger than the 3-inch drawing", "annotation": "So we multiply, not divide." },
-          { "math": "3 x 5 = 15", "annotation": "Multiply the drawing length by the feet-per-inch." },
-          { "math": "= 15 feet", "annotation": "A sensible real length -- larger than the drawing." }
+          {
+            "math": "scale: 1 inch = 5 feet",
+            "annotation": "Each drawing inch stands for 5 real feet."
+          },
+          {
+            "math": "the real car is bigger than the 3-inch drawing",
+            "annotation": "So we multiply, not divide."
+          },
+          {
+            "math": "3 x 5 = 15",
+            "annotation": "Multiply the drawing length by the feet-per-inch."
+          },
+          {
+            "math": "= 15 feet",
+            "annotation": "A sensible real length -- larger than the drawing."
+          }
         ]
       },
       "faded_example": {
         "stem": "A scale drawing of a bridge uses 1 inch : 9 feet. The drawing is 6 inches long. How long is the actual bridge?",
         "answer": "54 feet",
         "steps": [
-          { "math": "scale: 1 inch = 9 feet", "annotation": "Each drawing inch is 9 real feet.", "given": true },
-          { "math": "the real bridge is bigger than the drawing", "annotation": "So multiply by the scale.", "given": true },
-          { "math": null, "annotation": "Multiply the drawing length by the feet-per-inch.", "given": false },
-          { "math": null, "annotation": "State the actual length; check it is larger than 6 inches' worth.", "given": false }
+          {
+            "math": "scale: 1 inch = 9 feet",
+            "annotation": "Each drawing inch is 9 real feet.",
+            "given": true
+          },
+          {
+            "math": "the real bridge is bigger than the drawing",
+            "annotation": "So multiply by the scale.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the drawing length by the feet-per-inch.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the actual length; check it is larger than 6 inches' worth.",
+            "given": false
+          }
         ]
       }
     },
@@ -441,9 +976,14 @@
       "name": "Compute an actual length when the scale or lengths use fractions or decimals",
       "column": "on_grade",
       "parent_standard": "7.GM.1",
-      "engine_stems": [3],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7GM1-S2" },
-      "i_do_script": "When the scale is not a clean '1 inch to something,' I first find the unit rate -- how many real units ONE inch stands for -- then multiply. Watch a scale of 1.5 inches : 6.5 feet. One inch stands for 6.5 divided by 1.5 = about 4.33 feet. If the drawing is 7.25 inches, the actual length is 7.25 times 4.33 = about 31.42 feet. The key is dividing to get the per-inch rate FIRST, because the drawing part of the scale is not 1.",
+      "engine_stems": [
+        3
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7GM1-S2"
+      },
+      "i_do_script": "Put the scale on a double number line: 1.5 inches sits directly above 6.5 feet. So 1 inch must sit above something SMALLER than 6.5 -- and that per-inch number is what we have to find first. When the scale is not a clean '1 inch to something,' I first find the unit rate -- how many real units ONE inch stands for -- then multiply. Watch a scale of 1.5 inches : 6.5 feet. One inch stands for 6.5 divided by 1.5 = about 4.33 feet. If the drawing is 7.25 inches, the actual length is 7.25 times 4.33 = about 31.42 feet. The key is dividing to get the per-inch rate FIRST, because the drawing part of the scale is not 1.",
       "canonical_error": {
         "pattern": "Multiplies the drawing length by the actual number in the scale without first dividing by the drawing number",
         "example": "For 1.5 inches : 6.5 feet with a 7.25-inch drawing, computes 7.25 x 6.5 = 47.125 feet instead of 7.25 x (6.5 / 1.5) = about 31.42 feet",
@@ -451,33 +991,103 @@
       },
       "item_template": "A scale with decimal or fractional terms plus a drawing length; student finds the actual length, often rounded. Numeric response.",
       "sample_items": [
-        { "stem": "A drawing of a boat uses the scale 1.5 inches : 6.5 feet. The picture is 7.25 inches long. How long is the actual boat? (round to the nearest hundredth)", "answer": "31.42 feet", "distractor_logic": "Unit rate 6.5/1.5 ~ 4.33 ft per inch; 7.25 x 4.33 ~ 31.42. Skipping the divide gives 7.25 x 6.5 = 47.125." },
-        { "stem": "A scale is 2 inches : 5 feet. A drawing is 3.5 inches long. Find the actual length.", "answer": "8.75 feet", "distractor_logic": "Rate 5/2 = 2.5 ft per inch; 3.5 x 2.5 = 8.75." },
-        { "stem": "A scale is 1 inch : 2.5 feet. A drawing is 6.4 inches long. Find the actual length.", "answer": "16 feet", "distractor_logic": "6.4 x 2.5 = 16." },
-        { "stem": "A scale is 0.5 inch : 3 feet. A drawing is 4 inches long. Find the actual length.", "answer": "24 feet", "distractor_logic": "Rate 3/0.5 = 6 ft per inch; 4 x 6 = 24." }
+        {
+          "stem": "A drawing of a boat uses the scale 1.5 inches : 6.5 feet. The picture is 7.25 inches long. How long is the actual boat? (round to the nearest hundredth)",
+          "answer": "31.42 feet",
+          "distractor_logic": "Unit rate 6.5/1.5 ~ 4.33 ft per inch; 7.25 x 4.33 ~ 31.42. Skipping the divide gives 7.25 x 6.5 = 47.125."
+        },
+        {
+          "stem": "A scale is 2 inches : 5 feet. A drawing is 3.5 inches long. Find the actual length.",
+          "answer": "8.75 feet",
+          "distractor_logic": "Rate 5/2 = 2.5 ft per inch; 3.5 x 2.5 = 8.75."
+        },
+        {
+          "stem": "A scale is 1 inch : 2.5 feet. A drawing is 6.4 inches long. Find the actual length.",
+          "answer": "16 feet",
+          "distractor_logic": "6.4 x 2.5 = 16."
+        },
+        {
+          "stem": "A scale is 0.5 inch : 3 feet. A drawing is 4 inches long. Find the actual length.",
+          "answer": "24 feet",
+          "distractor_logic": "Rate 3/0.5 = 6 ft per inch; 4 x 6 = 24."
+        }
       ],
       "redirect_script": {
         "stop": "Is the drawing side of the scale really 1?",
-        "prompt": "First find the per-inch rate: divide the real amount by the drawing amount (6.5 / 1.5 ~ 4.33). THEN multiply by the drawing length.",
+        "prompt": "Find 1 inch on the double number line first: what number of feet sits directly under it? First find the per-inch rate: divide the real amount by the drawing amount (6.5 / 1.5 ~ 4.33). THEN multiply by the drawing length.",
         "praise": "You found the unit rate before multiplying -- that handles a scale that does not start with 1 inch."
       },
       "vocabulary": [
-        { "term": "Unit rate", "definition": "How many real units one drawing inch represents, found by dividing the scale's real amount by its drawing amount." },
-        { "term": "Scale factor", "definition": "The constant multiplier between the drawing and the real object; here it is the per-inch rate." }
+        {
+          "term": "Unit rate",
+          "definition": "How many real units one drawing inch represents, found by dividing the scale's real amount by its drawing amount."
+        },
+        {
+          "term": "Scale factor",
+          "definition": "The constant multiplier between the drawing and the real object; here it is the per-inch rate."
+        }
       ],
-      "next_steps": { "if_pass": "7GM1-S4", "if_fail": "7GM1-S2" },
+      "next_steps": {
+        "if_pass": "7GM1-S4",
+        "if_fail": "7GM1-S2"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'Scale 1.5 in : 6.5 ft. Drawing 7.25 in. Actual length?'" },
-        { "kind": "ask", "text": "Is the drawing side 1 inch? If not, what do we find first?" },
-        { "kind": "say", "text": "Find the rate first: 6.5 / 1.5 = about 4.33 feet per inch. Then 7.25 x 4.33 = about 31.42 feet." },
-        { "kind": "watch", "text": "If the student writes 47.125 (from 7.25 x 6.5), ask 'did you account for the scale showing 1.5 inches, not 1?'" },
-        { "kind": "ask", "text": "Your turn: scale 2 in : 5 ft, drawing 3.5 in -- find the actual length." }
+        {
+          "kind": "show",
+          "text": "Draw a double number line: inches on top, feet underneath. Mark 1.5 in directly above 6.5 ft -- that lined-up pair is the only thing the scale tells us."
+        },
+        {
+          "kind": "ask",
+          "text": "Where does 1 inch land on the top line? It is to the LEFT of 1.5, so is the number under it 6.5 feet, or less than 6.5 feet?"
+        },
+        {
+          "kind": "say",
+          "text": "1 inch sits above 6.5 / 1.5 = about 4.33 feet -- that is what each inch really carries. So 7.25 inches is 7.25 x 4.33 = about 31.42 feet. Multiplying 7.25 by 6.5 pretends the 1.5 on the line was a 1."
+        },
+        {
+          "kind": "show",
+          "text": "Write 'Scale 1.5 in : 6.5 ft. Drawing 7.25 in. Actual length?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Is the drawing side 1 inch? If not, what do we find first?"
+        },
+        {
+          "kind": "say",
+          "text": "Find the rate first: 6.5 / 1.5 = about 4.33 feet per inch. Then 7.25 x 4.33 = about 31.42 feet."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 47.125 (from 7.25 x 6.5), ask 'did you account for the scale showing 1.5 inches, not 1?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: scale 2 in : 5 ft, drawing 3.5 in -- find the actual length."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "A scale is 2 inches : 6 feet. How many feet does 1 inch represent?", "answer": "3 feet (6/2)" },
-        { "difficulty": "warm_up", "stem": "A scale is 1 inch : 2.5 feet. How many feet is a 4-inch drawing?", "answer": "10 feet (4 x 2.5)" },
-        { "difficulty": "core", "stem": "Scale 1.5 in : 6.5 ft, drawing 7.25 in. Actual length (nearest hundredth)?", "answer": "31.42 feet", "notes": "Divide 6.5/1.5 first, then multiply." },
-        { "difficulty": "core", "stem": "Scale 2 in : 5 ft, drawing 3.5 in. Actual length?", "answer": "8.75 feet (3.5 x 2.5)", "notes": "Find the rate 2.5 first." },
+        {
+          "difficulty": "warm_up",
+          "stem": "A scale is 2 inches : 6 feet. How many feet does 1 inch represent?",
+          "answer": "3 feet (6/2)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A scale is 1 inch : 2.5 feet. How many feet is a 4-inch drawing?",
+          "answer": "10 feet (4 x 2.5)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Scale 1.5 in : 6.5 ft, drawing 7.25 in. Actual length (nearest hundredth)?",
+          "answer": "31.42 feet",
+          "notes": "Divide 6.5/1.5 first, then multiply."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Scale 2 in : 5 ft, drawing 3.5 in. Actual length?",
+          "answer": "8.75 feet (3.5 x 2.5)",
+          "notes": "Find the rate 2.5 first."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -489,9 +1099,24 @@
           "answer": "Nora used the scale as if 1 inch = 7 feet. One inch is 7 / 2 = 3.5 feet, so 5 x 3.5 = 17.5 feet.",
           "notes": "Canonical error: skipping the unit-rate division."
         },
-        { "difficulty": "core", "stem": "Scale 0.5 in : 3 ft, drawing 4 in. Actual length?", "answer": "24 feet (rate 6 ft per inch)", "notes": "Fractional drawing term forces the rate step." },
-        { "difficulty": "stretch", "stem": "A scale is 1 inch : 2.5 feet. A wall's actual length is 40 feet. How long is it in the drawing? Explain your direction.", "answer": "16 inches -- from real to drawing, divide by the rate: 40 / 2.5 = 16 inches.", "notes": "Reverse direction with a decimal rate." },
-        { "difficulty": "stretch", "stem": "Two scales, 1.5 in : 6 ft and 1 in : 4 ft, describe the same drawing. Are they the same scale? Justify with the unit rate.", "answer": "Yes -- 6/1.5 = 4 ft per inch and 4/1 = 4 ft per inch, the same unit rate, so they are equivalent scales.", "notes": "Compare scales via the unit rate." }
+        {
+          "difficulty": "core",
+          "stem": "Scale 0.5 in : 3 ft, drawing 4 in. Actual length?",
+          "answer": "24 feet (rate 6 ft per inch)",
+          "notes": "Fractional drawing term forces the rate step."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A scale is 1 inch : 2.5 feet. A wall's actual length is 40 feet. How long is it in the drawing? Explain your direction.",
+          "answer": "16 inches -- from real to drawing, divide by the rate: 40 / 2.5 = 16 inches.",
+          "notes": "Reverse direction with a decimal rate."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two scales, 1.5 in : 6 ft and 1 in : 4 ft, describe the same drawing. Are they the same scale? Justify with the unit rate.",
+          "answer": "Yes -- 6/1.5 = 4 ft per inch and 4/1 = 4 ft per inch, the same unit rate, so they are equivalent scales.",
+          "notes": "Compare scales via the unit rate."
+        }
       ],
       "activities": [
         {
@@ -499,7 +1124,10 @@
           "title": "Rate First, Then Multiply",
           "time_minutes": 12,
           "grouping": "pairs",
-          "materials": ["Scale cards with non-1 drawing terms", "Recording sheet: 'drawing amount', 'real amount', 'rate per inch', 'answer'"],
+          "materials": [
+            "Scale cards with non-1 drawing terms",
+            "Recording sheet: 'drawing amount', 'real amount', 'rate per inch', 'answer'"
+          ],
           "instructions": "1. Draw a scale card (for example, 1.5 in : 6.5 ft).\n2. Fill the 'rate per inch' box first: divide the real amount by the drawing amount.\n3. Multiply the drawing length by that rate to get the actual length.\n4. Debrief: what goes wrong if you multiply by the real amount before finding the rate?"
         },
         {
@@ -507,7 +1135,9 @@
           "title": "The Scale Was Not 1",
           "time_minutes": 8,
           "grouping": "small_group",
-          "materials": ["Slip with Nora's skipped-rate work"],
+          "materials": [
+            "Slip with Nora's skipped-rate work"
+          ],
           "instructions": "1. Read Nora's method: 5 x 7 = 35 feet for a 2 inches : 7 feet scale.\n2. Circle the drawing side of the scale -- is it 1 inch?\n3. Find the true per-inch rate, then redo the problem.\n4. Write the rule for scales that do not start with 1 inch.",
           "content": {
             "worked_problem": "Scale 2 in : 7 ft, drawing 5 in. Nora wrote 5 x 7 = 35 feet.",
@@ -517,9 +1147,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-007", "why": "Representing the unit rate on a double number line makes the 'per one inch' amount concrete before the multiplication step." },
-        { "strategy_id": "strat-math-003", "why": "The skipped-rate error (using the raw scale number) is precise and baitable for find-and-fix." },
-        { "strategy_id": "strat-math-005", "why": "Thinking aloud 'find the per-inch rate first' models the step students omit with decimal scales." }
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Representing the unit rate on a double number line makes the 'per one inch' amount concrete before the multiplication step."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The skipped-rate error (using the raw scale number) is precise and baitable for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'find the per-inch rate first' models the step students omit with decimal scales."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -561,20 +1200,48 @@
         "stem": "A scale is 2 inches : 5 feet. A drawing is 3.5 inches long. What is the actual length?",
         "answer": "8.75 feet",
         "steps": [
-          { "math": "the drawing side is 2 inches, not 1", "annotation": "So find the per-inch rate first." },
-          { "math": "rate = 5 / 2 = 2.5 feet per inch", "annotation": "Divide the real amount by the drawing amount." },
-          { "math": "3.5 x 2.5", "annotation": "Multiply the drawing length by the rate." },
-          { "math": "= 8.75 feet", "annotation": "The actual length." }
+          {
+            "math": "the drawing side is 2 inches, not 1",
+            "annotation": "So find the per-inch rate first."
+          },
+          {
+            "math": "rate = 5 / 2 = 2.5 feet per inch",
+            "annotation": "Divide the real amount by the drawing amount."
+          },
+          {
+            "math": "3.5 x 2.5",
+            "annotation": "Multiply the drawing length by the rate."
+          },
+          {
+            "math": "= 8.75 feet",
+            "annotation": "The actual length."
+          }
         ]
       },
       "faded_example": {
         "stem": "A scale is 1.5 inches : 6 feet. A drawing is 5 inches long. What is the actual length?",
         "answer": "20 feet",
         "steps": [
-          { "math": "the drawing side is 1.5 inches, not 1", "annotation": "Find the per-inch rate first.", "given": true },
-          { "math": "rate = 6 / 1.5 = 4 feet per inch", "annotation": "Divide the real amount by the drawing amount.", "given": true },
-          { "math": null, "annotation": "Multiply the drawing length by the rate.", "given": false },
-          { "math": null, "annotation": "State the actual length.", "given": false }
+          {
+            "math": "the drawing side is 1.5 inches, not 1",
+            "annotation": "Find the per-inch rate first.",
+            "given": true
+          },
+          {
+            "math": "rate = 6 / 1.5 = 4 feet per inch",
+            "annotation": "Divide the real amount by the drawing amount.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the drawing length by the rate.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the actual length.",
+            "given": false
+          }
         ]
       }
     },
@@ -583,8 +1250,13 @@
       "name": "Compute an actual area from a scale drawing using the square of the scale factor",
       "column": "on_grade",
       "parent_standard": "7.GM.1",
-      "engine_stems": [5],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7GM1-S2" },
+      "engine_stems": [
+        5
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7GM1-S2"
+      },
       "i_do_script": "Area is different: when a drawing is scaled up, the area grows by the scale factor TWICE -- once for length and once for width -- so I multiply the drawing area by the scale factor SQUARED. Watch a room drawn 2 inches by 4 inches at a scale of 1 inch = 7 feet. I can find the real sides first: 2 x 7 = 14 feet and 4 x 7 = 28 feet, so the area is 14 x 28 = 392 square feet. Or shortcut it: the drawing area is 2 x 4 = 8 square inches, times 7 squared (49) = 392 square feet. Both give 392 because area carries the factor twice.",
       "canonical_error": {
         "pattern": "Scales the area by the scale factor only ONCE (linearly) instead of by the scale factor squared",
@@ -593,10 +1265,26 @@
       },
       "item_template": "A rectangular scale drawing's dimensions in words plus a scale; student finds the actual area in square units. Numeric response.",
       "sample_items": [
-        { "stem": "A scale drawing of a room is a rectangle 2 inches by 4 inches. The scale is 1 inch = 7 feet. What is the actual area of the room?", "answer": "392 square feet", "distractor_logic": "Actual sides 14 ft and 28 ft, area 392; or 8 sq in x 7^2 = 392. Scaling area once gives 8 x 7 = 56." },
-        { "stem": "A patio is drawn 3 inches by 5 inches at a scale of 1 inch = 4 feet. What is its actual area?", "answer": "240 square feet", "distractor_logic": "12 ft x 20 ft = 240, or 15 x 16 = 240. Linear scaling gives 15 x 4 = 60." },
-        { "stem": "A garden is drawn 4 cm by 6 cm at a scale of 1 cm = 5 m. What is its actual area?", "answer": "600 square meters", "distractor_logic": "20 m x 30 m = 600, or 24 x 25 = 600. Scaling once gives 24 x 5 = 120." },
-        { "stem": "A rectangular park is drawn 2 inches by 3 inches at a scale of 1 inch = 10 feet. What is its actual area?", "answer": "600 square feet", "distractor_logic": "20 x 30 = 600, or 6 sq in x 100 = 600. Linear gives 6 x 10 = 60." }
+        {
+          "stem": "A scale drawing of a room is a rectangle 2 inches by 4 inches. The scale is 1 inch = 7 feet. What is the actual area of the room?",
+          "answer": "392 square feet",
+          "distractor_logic": "Actual sides 14 ft and 28 ft, area 392; or 8 sq in x 7^2 = 392. Scaling area once gives 8 x 7 = 56."
+        },
+        {
+          "stem": "A patio is drawn 3 inches by 5 inches at a scale of 1 inch = 4 feet. What is its actual area?",
+          "answer": "240 square feet",
+          "distractor_logic": "12 ft x 20 ft = 240, or 15 x 16 = 240. Linear scaling gives 15 x 4 = 60."
+        },
+        {
+          "stem": "A garden is drawn 4 cm by 6 cm at a scale of 1 cm = 5 m. What is its actual area?",
+          "answer": "600 square meters",
+          "distractor_logic": "20 m x 30 m = 600, or 24 x 25 = 600. Scaling once gives 24 x 5 = 120."
+        },
+        {
+          "stem": "A rectangular park is drawn 2 inches by 3 inches at a scale of 1 inch = 10 feet. What is its actual area?",
+          "answer": "600 square feet",
+          "distractor_logic": "20 x 30 = 600, or 6 sq in x 100 = 600. Linear gives 6 x 10 = 60."
+        }
       ],
       "redirect_script": {
         "stop": "How many dimensions got bigger -- one, or both?",
@@ -604,22 +1292,64 @@
         "praise": "You squared the scale factor for area -- that is what makes both dimensions grow."
       },
       "vocabulary": [
-        { "term": "Scale factor squared", "definition": "The scale factor multiplied by itself; the number that scales AREA between a drawing and the real object." },
-        { "term": "Actual area", "definition": "The real-world area, in square units, found by scaling the drawing's area by the square of the scale factor." }
+        {
+          "term": "Scale factor squared",
+          "definition": "The scale factor multiplied by itself; the number that scales AREA between a drawing and the real object."
+        },
+        {
+          "term": "Actual area",
+          "definition": "The real-world area, in square units, found by scaling the drawing's area by the square of the scale factor."
+        }
       ],
-      "next_steps": { "if_pass": "7GM1-S5", "if_fail": "7GM1-F2" },
+      "next_steps": {
+        "if_pass": "7GM1-S5",
+        "if_fail": "7GM1-F2"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'Room drawn 2 in by 4 in. Scale 1 inch = 7 feet. Actual area?'" },
-        { "kind": "ask", "text": "When we scale up, does only one side get bigger, or both?" },
-        { "kind": "say", "text": "Both. Find the real sides: 2 x 7 = 14 and 4 x 7 = 28, then 14 x 28 = 392 square feet. Shortcut: drawing area 8 times 7 squared (49) = 392." },
-        { "kind": "watch", "text": "If the student writes 56 (from 8 x 7), ask 'did you grow the length AND the width, or just once?'" },
-        { "kind": "ask", "text": "Your turn: a patio drawn 3 in by 5 in at 1 inch = 4 feet -- find the actual area." }
+        {
+          "kind": "show",
+          "text": "Write 'Room drawn 2 in by 4 in. Scale 1 inch = 7 feet. Actual area?'"
+        },
+        {
+          "kind": "ask",
+          "text": "When we scale up, does only one side get bigger, or both?"
+        },
+        {
+          "kind": "say",
+          "text": "Both. Find the real sides: 2 x 7 = 14 and 4 x 7 = 28, then 14 x 28 = 392 square feet. Shortcut: drawing area 8 times 7 squared (49) = 392."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 56 (from 8 x 7), ask 'did you grow the length AND the width, or just once?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a patio drawn 3 in by 5 in at 1 inch = 4 feet -- find the actual area."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "A room's real sides are 14 feet and 28 feet. What is the area?", "answer": "392 square feet (14 x 28)" },
-        { "difficulty": "warm_up", "stem": "If a scale factor is 5, what number scales the AREA?", "answer": "25 (5 squared)" },
-        { "difficulty": "core", "stem": "A room is drawn 2 in by 4 in at 1 inch = 7 feet. Actual area?", "answer": "392 square feet (14 x 28, or 8 x 49)", "notes": "Baits 8 x 7 = 56." },
-        { "difficulty": "core", "stem": "A patio drawn 3 in by 5 in at 1 inch = 4 feet. Actual area?", "answer": "240 square feet (12 x 20)", "notes": "Find the real sides, then multiply." },
+        {
+          "difficulty": "warm_up",
+          "stem": "A room's real sides are 14 feet and 28 feet. What is the area?",
+          "answer": "392 square feet (14 x 28)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "If a scale factor is 5, what number scales the AREA?",
+          "answer": "25 (5 squared)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A room is drawn 2 in by 4 in at 1 inch = 7 feet. Actual area?",
+          "answer": "392 square feet (14 x 28, or 8 x 49)",
+          "notes": "Baits 8 x 7 = 56."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A patio drawn 3 in by 5 in at 1 inch = 4 feet. Actual area?",
+          "answer": "240 square feet (12 x 20)",
+          "notes": "Find the real sides, then multiply."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -631,9 +1361,24 @@
           "answer": "Priya scaled the area only once. Area uses the factor squared: 12 x 6^2 = 12 x 36 = 432 square feet (check: 18 ft x 24 ft = 432).",
           "notes": "Canonical error: linear area scaling."
         },
-        { "difficulty": "core", "stem": "A garden drawn 4 cm by 6 cm at 1 cm = 5 m. Actual area?", "answer": "600 square meters (20 x 30)", "notes": "Metric context; factor squared is 25." },
-        { "difficulty": "stretch", "stem": "A drawing is scaled up by a factor of 3, and the drawing's area is 10 square inches. What is the actual area, and why is it not 30?", "answer": "90 square inches -- area scales by 3 squared = 9, so 10 x 9 = 90. It is not 30 because BOTH length and width tripled.", "notes": "Explain-why for the square." },
-        { "difficulty": "stretch", "stem": "Room A drawn 2 in by 6 in and Room B drawn 3 in by 4 in are both at 1 inch = 5 feet. Do they have the same actual area? Justify.", "answer": "Yes -- both drawings are 12 square inches, and 12 x 25 = 300 square feet each.", "notes": "Same drawing area gives the same actual area at one scale." }
+        {
+          "difficulty": "core",
+          "stem": "A garden drawn 4 cm by 6 cm at 1 cm = 5 m. Actual area?",
+          "answer": "600 square meters (20 x 30)",
+          "notes": "Metric context; factor squared is 25."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A drawing is scaled up by a factor of 3, and the drawing's area is 10 square inches. What is the actual area, and why is it not 30?",
+          "answer": "90 square inches -- area scales by 3 squared = 9, so 10 x 9 = 90. It is not 30 because BOTH length and width tripled.",
+          "notes": "Explain-why for the square."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Room A drawn 2 in by 6 in and Room B drawn 3 in by 4 in are both at 1 inch = 5 feet. Do they have the same actual area? Justify.",
+          "answer": "Yes -- both drawings are 12 square inches, and 12 x 25 = 300 square feet each.",
+          "notes": "Same drawing area gives the same actual area at one scale."
+        }
       ],
       "activities": [
         {
@@ -641,7 +1386,10 @@
           "title": "Tiles Show the Square",
           "time_minutes": 12,
           "grouping": "small_group",
-          "materials": ["Square tiles or grid paper", "Scale cards"],
+          "materials": [
+            "Square tiles or grid paper",
+            "Scale cards"
+          ],
           "instructions": "1. Build a small rectangle (say 2 by 3) out of tiles and count its area.\n2. Now scale every side by 2 and rebuild it -- count the new area.\n3. Notice the area did NOT double; it quadrupled (times 2 squared).\n4. Debrief: for a scale factor of 3, how many times as many tiles do you need, and why?"
         },
         {
@@ -649,7 +1397,9 @@
           "title": "Once Is Not Enough",
           "time_minutes": 8,
           "grouping": "individual",
-          "materials": ["Slip with Priya's linear-scaling work"],
+          "materials": [
+            "Slip with Priya's linear-scaling work"
+          ],
           "instructions": "1. Read Priya's answer of 72 square feet for a room drawn 3 in by 4 in at 1 inch = 6 feet.\n2. Find the real length and the real width separately.\n3. Multiply them for the true area, then compare to Priya's answer.\n4. Write the rule connecting AREA to the scale factor squared.",
           "content": {
             "worked_problem": "Room drawn 3 in by 4 in, scale 1 inch = 6 feet. Priya wrote 12 x 6 = 72 square feet.",
@@ -659,9 +1409,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-007", "why": "Concrete tiles that quadruple when sides double make the scale-factor-squared idea visible before it is a formula." },
-        { "strategy_id": "strat-math-003", "why": "Scaling area linearly is the standard's signature error; find-and-fix that contrasts 56 with 392 makes the square stick." },
-        { "strategy_id": "strat-math-004", "why": "A journal note explaining why area uses the factor twice consolidates the conceptual leap." }
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Concrete tiles that quadruple when sides double make the scale-factor-squared idea visible before it is a formula."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Scaling area linearly is the standard's signature error; find-and-fix that contrasts 56 with 392 makes the square stick."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "A journal note explaining why area uses the factor twice consolidates the conceptual leap."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -703,20 +1462,48 @@
         "stem": "A scale drawing of a patio is a rectangle 3 inches by 5 inches. The scale is 1 inch = 4 feet. What is the actual area?",
         "answer": "240 square feet",
         "steps": [
-          { "math": "actual length = 3 x 4 = 12 feet", "annotation": "Scale the length by the scale factor." },
-          { "math": "actual width = 5 x 4 = 20 feet", "annotation": "Scale the width by the SAME factor." },
-          { "math": "area = 12 x 20", "annotation": "Multiply the two real sides." },
-          { "math": "= 240 square feet (also 15 x 4^2 = 15 x 16)", "annotation": "Both dimensions scaled, so the factor is used twice." }
+          {
+            "math": "actual length = 3 x 4 = 12 feet",
+            "annotation": "Scale the length by the scale factor."
+          },
+          {
+            "math": "actual width = 5 x 4 = 20 feet",
+            "annotation": "Scale the width by the SAME factor."
+          },
+          {
+            "math": "area = 12 x 20",
+            "annotation": "Multiply the two real sides."
+          },
+          {
+            "math": "= 240 square feet (also 15 x 4^2 = 15 x 16)",
+            "annotation": "Both dimensions scaled, so the factor is used twice."
+          }
         ]
       },
       "faded_example": {
         "stem": "A scale drawing of a garden is a rectangle 2 inches by 6 inches. The scale is 1 inch = 3 feet. What is the actual area?",
         "answer": "108 square feet",
         "steps": [
-          { "math": "actual length = 2 x 3 = 6 feet", "annotation": "Scale the length.", "given": true },
-          { "math": "actual width = 6 x 3 = 18 feet", "annotation": "Scale the width by the same factor.", "given": true },
-          { "math": null, "annotation": "Multiply the two real sides for the area.", "given": false },
-          { "math": null, "annotation": "Check: drawing area 12 times 3 squared should match.", "given": false }
+          {
+            "math": "actual length = 2 x 3 = 6 feet",
+            "annotation": "Scale the length.",
+            "given": true
+          },
+          {
+            "math": "actual width = 6 x 3 = 18 feet",
+            "annotation": "Scale the width by the same factor.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the two real sides for the area.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check: drawing area 12 times 3 squared should match.",
+            "given": false
+          }
         ]
       }
     },
@@ -725,9 +1512,14 @@
       "name": "Complete a scale table by finding missing drawing and actual measurements",
       "column": "on_grade",
       "parent_standard": "7.GM.1",
-      "engine_stems": [6],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7GM1-S2" },
-      "i_do_script": "A scale runs both ways. To go from a drawing measurement UP to the actual, I multiply by the scale factor; to go from an actual measurement DOWN to the drawing, I divide. Watch a scale of 1 inch = 12 inches actual. A couch is 2.5 inches in the drawing, so its actual length is 2.5 x 12 = 30 inches. A chair is 18 inches in real life, so its drawing length is 18 / 12 = 1.5 inches. Same scale factor, opposite operations -- I check which column I am filling before I pick multiply or divide.",
+      "engine_stems": [
+        6
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7GM1-S2"
+      },
+      "i_do_script": "Set up two columns -- a tiny DRAWING column and a big ACTUAL column -- and every row must keep the drawing number 12 times smaller. Which column you are filling tells you whether your answer should shrink or grow. A scale runs both ways. To go from a drawing measurement UP to the actual, I multiply by the scale factor; to go from an actual measurement DOWN to the drawing, I divide. Watch a scale of 1 inch = 12 inches actual. A couch is 2.5 inches in the drawing, so its actual length is 2.5 x 12 = 30 inches. A chair is 18 inches in real life, so its drawing length is 18 / 12 = 1.5 inches. Same scale factor, opposite operations -- I check which column I am filling before I pick multiply or divide.",
       "canonical_error": {
         "pattern": "Uses the same operation (multiplying) for both directions, so an actual-to-drawing entry is multiplied instead of divided",
         "example": "With 1 inch = 12 inches, finds a chair's DRAWING length from its 18-inch actual by 18 x 12 = 216 instead of 18 / 12 = 1.5",
@@ -735,33 +1527,103 @@
       },
       "item_template": "A scale plus a table of furniture with some drawing and some actual measurements missing; student finds each missing value. Numeric response.",
       "sample_items": [
-        { "stem": "A scale drawing uses 1 inch = 12 inches (actual). In the drawing a couch is 2.5 inches long. What is the couch's actual length?", "answer": "30 inches", "distractor_logic": "2.5 x 12 = 30 (drawing up to actual: multiply)." },
-        { "stem": "With the scale 1 inch = 12 inches, a chair is 18 inches in real life. What is its length in the drawing?", "answer": "1.5 inches", "distractor_logic": "18 / 12 = 1.5 (actual down to drawing: divide). Multiplying gives 216." },
-        { "stem": "A scale drawing uses 1 inch = 15 inches. A desk is drawn 1.4 inches wide. What is the actual width?", "answer": "21 inches", "distractor_logic": "1.4 x 15 = 21." },
-        { "stem": "With a scale of 1 inch = 24 inches, a bed is 84 inches long in real life. What is its drawing length?", "answer": "3.5 inches", "distractor_logic": "84 / 24 = 3.5. Multiplying gives 2016." }
+        {
+          "stem": "A scale drawing uses 1 inch = 12 inches (actual). In the drawing a couch is 2.5 inches long. What is the couch's actual length?",
+          "answer": "30 inches",
+          "distractor_logic": "2.5 x 12 = 30 (drawing up to actual: multiply)."
+        },
+        {
+          "stem": "With the scale 1 inch = 12 inches, a chair is 18 inches in real life. What is its length in the drawing?",
+          "answer": "1.5 inches",
+          "distractor_logic": "18 / 12 = 1.5 (actual down to drawing: divide). Multiplying gives 216."
+        },
+        {
+          "stem": "A scale drawing uses 1 inch = 15 inches. A desk is drawn 1.4 inches wide. What is the actual width?",
+          "answer": "21 inches",
+          "distractor_logic": "1.4 x 15 = 21."
+        },
+        {
+          "stem": "With a scale of 1 inch = 24 inches, a bed is 84 inches long in real life. What is its drawing length?",
+          "answer": "3.5 inches",
+          "distractor_logic": "84 / 24 = 3.5. Multiplying gives 2016."
+        }
       ],
       "redirect_script": {
         "stop": "Are you going to the real object, or back to the drawing?",
-        "prompt": "Drawing UP to actual: multiply by the scale. Actual DOWN to drawing: divide by the scale. A real 18-inch chair on a 1 inch = 12 inch scale is 18 / 12 = 1.5 inches in the drawing.",
+        "prompt": "Check the table first: is the cell you are filling in the tiny drawing column or the big actual column? Drawing UP to actual: multiply by the scale. Actual DOWN to drawing: divide by the scale. A real 18-inch chair on a 1 inch = 12 inch scale is 18 / 12 = 1.5 inches in the drawing.",
         "praise": "You matched the operation to the direction -- multiply up, divide down."
       },
       "vocabulary": [
-        { "term": "Scale drawing measurement", "definition": "A length as it appears in the drawing, usually smaller than the real object." },
-        { "term": "Actual measurement", "definition": "The real-world length of the object." }
+        {
+          "term": "Scale drawing measurement",
+          "definition": "A length as it appears in the drawing, usually smaller than the real object."
+        },
+        {
+          "term": "Actual measurement",
+          "definition": "The real-world length of the object."
+        }
       ],
-      "next_steps": { "if_pass": "7GM1-S6", "if_fail": "7GM1-S2" },
+      "next_steps": {
+        "if_pass": "7GM1-S6",
+        "if_fail": "7GM1-S2"
+      },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'Scale 1 inch = 12 inches. Couch drawn 2.5 in; chair 18 in actual. Fill both.'" },
-        { "kind": "ask", "text": "For the couch we have the DRAWING length -- do we go up or down? For the chair we have the ACTUAL -- which way?" },
-        { "kind": "say", "text": "Couch (drawing to actual): 2.5 x 12 = 30 inches. Chair (actual to drawing): 18 / 12 = 1.5 inches." },
-        { "kind": "watch", "text": "If the student multiplies the chair (18 x 12 = 216), ask 'a chair 216 inches wide in a tiny drawing? Which way shrinks it?'" },
-        { "kind": "ask", "text": "Your turn: scale 1 inch = 15 inches, a desk drawn 1.4 in -- find the actual width." }
+        {
+          "kind": "show",
+          "text": "Make the two columns and write the row the scale gives you: drawing 1 inch next to actual 12 inches. Every row must look like that one -- small number on the drawing side, a number 12 times bigger on the actual side."
+        },
+        {
+          "kind": "ask",
+          "text": "The chair's 18 inches is a real-life measurement, so it goes in the ACTUAL column. Should its partner in the tiny drawing column be bigger than 18, or smaller?"
+        },
+        {
+          "kind": "say",
+          "text": "The drawing entry has to shrink, and shrinking by the scale factor is dividing: 18 / 12 = 1.5 inches. Multiplying would write 216 in the tiny column -- a drawing of a chair 18 feet tall on the page."
+        },
+        {
+          "kind": "show",
+          "text": "Write 'Scale 1 inch = 12 inches. Couch drawn 2.5 in; chair 18 in actual. Fill both.'"
+        },
+        {
+          "kind": "ask",
+          "text": "For the couch we have the DRAWING length -- do we go up or down? For the chair we have the ACTUAL -- which way?"
+        },
+        {
+          "kind": "say",
+          "text": "Couch (drawing to actual): 2.5 x 12 = 30 inches. Chair (actual to drawing): 18 / 12 = 1.5 inches."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student multiplies the chair (18 x 12 = 216), ask 'a chair 216 inches wide in a tiny drawing? Which way shrinks it?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: scale 1 inch = 15 inches, a desk drawn 1.4 in -- find the actual width."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "Scale 1 inch = 10 inches. A drawing length is 3 inches. Actual length?", "answer": "30 inches (3 x 10)" },
-        { "difficulty": "warm_up", "stem": "Scale 1 inch = 10 inches. An actual length is 40 inches. Drawing length?", "answer": "4 inches (40/10)" },
-        { "difficulty": "core", "stem": "Scale 1 inch = 12 inches. A couch is 2.5 inches in the drawing. Actual length?", "answer": "30 inches (2.5 x 12)", "notes": "Drawing to actual: multiply." },
-        { "difficulty": "core", "stem": "Scale 1 inch = 12 inches. A chair is 18 inches actual. Drawing length?", "answer": "1.5 inches (18/12)", "notes": "Actual to drawing: divide." },
+        {
+          "difficulty": "warm_up",
+          "stem": "Scale 1 inch = 10 inches. A drawing length is 3 inches. Actual length?",
+          "answer": "30 inches (3 x 10)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Scale 1 inch = 10 inches. An actual length is 40 inches. Drawing length?",
+          "answer": "4 inches (40/10)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Scale 1 inch = 12 inches. A couch is 2.5 inches in the drawing. Actual length?",
+          "answer": "30 inches (2.5 x 12)",
+          "notes": "Drawing to actual: multiply."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Scale 1 inch = 12 inches. A chair is 18 inches actual. Drawing length?",
+          "answer": "1.5 inches (18/12)",
+          "notes": "Actual to drawing: divide."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -773,9 +1635,24 @@
           "answer": "Theo multiplied when going from the real object to the drawing. Divide instead: 45 / 15 = 3 inches.",
           "notes": "Canonical error: multiplying in both directions."
         },
-        { "difficulty": "core", "stem": "Scale 1 inch = 15 inches. A desk is drawn 1.4 inches wide. Actual width?", "answer": "21 inches (1.4 x 15)", "notes": "Decimal drawing measurement." },
-        { "difficulty": "stretch", "stem": "A table row shows a lamp is 1.2 inches in the drawing and 30 inches actual. What scale factor does the table use? Then find the drawing length of a 45-inch actual door.", "answer": "Scale factor 25 (30 / 1.2). Door drawing = 45 / 25 = 1.8 inches.", "notes": "Recover the scale from a filled row, then reverse it." },
-        { "difficulty": "stretch", "stem": "Two rows use the same scale: a sofa is 3 inches drawn and 36 inches actual, and an ottoman is 20 inches actual. Find the ottoman's drawing length and explain how you found the scale.", "answer": "Scale factor = 36 / 3 = 12. Ottoman drawing = 20 / 12 ~ 1.67 inches.", "notes": "The anchor row sets the factor; divide for the missing drawing length." }
+        {
+          "difficulty": "core",
+          "stem": "Scale 1 inch = 15 inches. A desk is drawn 1.4 inches wide. Actual width?",
+          "answer": "21 inches (1.4 x 15)",
+          "notes": "Decimal drawing measurement."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A table row shows a lamp is 1.2 inches in the drawing and 30 inches actual. What scale factor does the table use? Then find the drawing length of a 45-inch actual door.",
+          "answer": "Scale factor 25 (30 / 1.2). Door drawing = 45 / 25 = 1.8 inches.",
+          "notes": "Recover the scale from a filled row, then reverse it."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two rows use the same scale: a sofa is 3 inches drawn and 36 inches actual, and an ottoman is 20 inches actual. Find the ottoman's drawing length and explain how you found the scale.",
+          "answer": "Scale factor = 36 / 3 = 12. Ottoman drawing = 20 / 12 ~ 1.67 inches.",
+          "notes": "The anchor row sets the factor; divide for the missing drawing length."
+        }
       ],
       "activities": [
         {
@@ -783,19 +1660,48 @@
           "title": "Multiply Up, Divide Down",
           "time_minutes": 10,
           "grouping": "small_group",
-          "materials": ["Card set of 10 table entries, each labeled with what is given (drawing or actual)"],
+          "materials": [
+            "Card set of 10 table entries, each labeled with what is given (drawing or actual)"
+          ],
           "instructions": "1. For each card, decide if you are going from the DRAWING to the actual or from the ACTUAL to the drawing.\n2. Sort into 'Multiply (drawing to actual)' or 'Divide (actual to drawing).'\n3. Compute each missing value using the scale on the card.\n4. Debrief: which direction always makes the number smaller?",
           "content": {
-            "categories": ["Multiply (drawing to actual)", "Divide (actual to drawing)"],
+            "categories": [
+              "Multiply (drawing to actual)",
+              "Divide (actual to drawing)"
+            ],
             "cards": [
-              { "text": "1 in = 12 in; couch drawn 2.5 in, find actual", "category": "Multiply (drawing to actual)" },
-              { "text": "1 in = 12 in; chair 18 in actual, find drawing", "category": "Divide (actual to drawing)" },
-              { "text": "1 in = 15 in; desk drawn 1.4 in, find actual", "category": "Multiply (drawing to actual)" },
-              { "text": "1 in = 24 in; bed 84 in actual, find drawing", "category": "Divide (actual to drawing)" },
-              { "text": "1 in = 10 in; shelf drawn 3 in, find actual", "category": "Multiply (drawing to actual)" },
-              { "text": "1 in = 10 in; table 40 in actual, find drawing", "category": "Divide (actual to drawing)" },
-              { "text": "1 in = 15 in; bookshelf 45 in actual, find drawing", "category": "Divide (actual to drawing)" },
-              { "text": "1 in = 12 in; stool drawn 1.5 in, find actual", "category": "Multiply (drawing to actual)" }
+              {
+                "text": "1 in = 12 in; couch drawn 2.5 in, find actual",
+                "category": "Multiply (drawing to actual)"
+              },
+              {
+                "text": "1 in = 12 in; chair 18 in actual, find drawing",
+                "category": "Divide (actual to drawing)"
+              },
+              {
+                "text": "1 in = 15 in; desk drawn 1.4 in, find actual",
+                "category": "Multiply (drawing to actual)"
+              },
+              {
+                "text": "1 in = 24 in; bed 84 in actual, find drawing",
+                "category": "Divide (actual to drawing)"
+              },
+              {
+                "text": "1 in = 10 in; shelf drawn 3 in, find actual",
+                "category": "Multiply (drawing to actual)"
+              },
+              {
+                "text": "1 in = 10 in; table 40 in actual, find drawing",
+                "category": "Divide (actual to drawing)"
+              },
+              {
+                "text": "1 in = 15 in; bookshelf 45 in actual, find drawing",
+                "category": "Divide (actual to drawing)"
+              },
+              {
+                "text": "1 in = 12 in; stool drawn 1.5 in, find actual",
+                "category": "Multiply (drawing to actual)"
+              }
             ]
           }
         },
@@ -804,7 +1710,9 @@
           "title": "Wrong Way in the Table",
           "time_minutes": 8,
           "grouping": "pairs",
-          "materials": ["Slip with Theo's multiplied entry"],
+          "materials": [
+            "Slip with Theo's multiplied entry"
+          ],
           "instructions": "1. Read Theo's drawing height of 675 inches for a 45-inch bookshelf.\n2. Ask: is a drawing bigger or smaller than the real object?\n3. Redo the cell by dividing the actual by the scale factor.\n4. Write the rule for which cells you multiply and which you divide.",
           "content": {
             "worked_problem": "Scale 1 in = 15 in. Bookshelf 45 in actual. Theo wrote 45 x 15 = 675 in for the drawing.",
@@ -814,9 +1722,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-003", "why": "The 'multiply both ways' error is a single, baitable mistake -- find-and-fix with a size check corrects it." },
-        { "strategy_id": "strat-math-006", "why": "Gradual release from one-direction problems to a two-direction table scaffolds the reverse operation." },
-        { "strategy_id": "strat-math-008", "why": "A whiteboard pass around a shared table gives fast, low-stakes reps at choosing multiply versus divide." }
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The 'multiply both ways' error is a single, baitable mistake -- find-and-fix with a size check corrects it."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release from one-direction problems to a two-direction table scaffolds the reverse operation."
+        },
+        {
+          "strategy_id": "strat-math-008",
+          "why": "A whiteboard pass around a shared table gives fast, low-stakes reps at choosing multiply versus divide."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -858,20 +1775,48 @@
         "stem": "A scale drawing uses 1 inch = 16 inches. A table is 3 inches long in the drawing, and a stool is 48 inches tall in real life. Find the table's actual length and the stool's drawing height.",
         "answer": "Table actual 48 inches; stool drawing 3 inches",
         "steps": [
-          { "math": "table: drawing 3 in, going UP to actual", "annotation": "We have the drawing length, so multiply." },
-          { "math": "3 x 16 = 48 inches", "annotation": "Drawing to actual multiplies by the scale." },
-          { "math": "stool: actual 48 in, going DOWN to drawing", "annotation": "We have the real height, so divide." },
-          { "math": "48 / 16 = 3 inches", "annotation": "Actual to drawing divides by the scale." }
+          {
+            "math": "table: drawing 3 in, going UP to actual",
+            "annotation": "We have the drawing length, so multiply."
+          },
+          {
+            "math": "3 x 16 = 48 inches",
+            "annotation": "Drawing to actual multiplies by the scale."
+          },
+          {
+            "math": "stool: actual 48 in, going DOWN to drawing",
+            "annotation": "We have the real height, so divide."
+          },
+          {
+            "math": "48 / 16 = 3 inches",
+            "annotation": "Actual to drawing divides by the scale."
+          }
         ]
       },
       "faded_example": {
         "stem": "A scale drawing uses 1 inch = 10 inches. A rug is 4.5 inches in the drawing, and a bench is 70 inches long in real life. Find the rug's actual length and the bench's drawing length.",
         "answer": "Rug actual 45 inches; bench drawing 7 inches",
         "steps": [
-          { "math": "rug: drawing 4.5 in, going up to actual", "annotation": "We have the drawing length, so multiply.", "given": true },
-          { "math": "4.5 x 10 = 45 inches", "annotation": "Drawing to actual multiplies.", "given": true },
-          { "math": null, "annotation": "Bench: we have the actual, so choose an operation and compute the drawing length.", "given": false },
-          { "math": null, "annotation": "Check each answer is the right size for its column.", "given": false }
+          {
+            "math": "rug: drawing 4.5 in, going up to actual",
+            "annotation": "We have the drawing length, so multiply.",
+            "given": true
+          },
+          {
+            "math": "4.5 x 10 = 45 inches",
+            "annotation": "Drawing to actual multiplies.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Bench: we have the actual, so choose an operation and compute the drawing length.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check each answer is the right size for its column.",
+            "given": false
+          }
         ]
       }
     },
@@ -880,9 +1825,15 @@
       "name": "Reproduce a scale drawing at a different scale and choose an appropriate scale",
       "column": "looking_forward",
       "parent_standard": "7.GM.1",
-      "engine_stems": [7, 8],
-      "prerequisite_skill": { "type": "skill", "skill_id": "7GM1-S2" },
-      "i_do_script": "To redraw something at a NEW scale, I route through the real object. First turn the old drawing length into the actual size, then turn that actual size into the new drawing length. Watch a blueprint at 2 inches = 15 feet with a width of 4 inches. Actual width = 4 x (15 / 2) = 30 feet. The new scale is 1 inch = 2.5 feet, so the new drawing width = 30 / 2.5 = 12 inches. To CHOOSE a scale that fits paper, pick the smallest 'feet per inch' number that still makes the whole object fit -- a smaller number per inch makes a bigger drawing.",
+      "engine_stems": [
+        7,
+        8
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7GM1-S2"
+      },
+      "i_do_script": "Two drawings at different scales are both pictures of the SAME real building -- so the real size is the bridge between them, a middle stop you cannot skip. To redraw something at a NEW scale, I route through the real object. First turn the old drawing length into the actual size, then turn that actual size into the new drawing length. Watch a blueprint at 2 inches = 15 feet with a width of 4 inches. Actual width = 4 x (15 / 2) = 30 feet. The new scale is 1 inch = 2.5 feet, so the new drawing width = 30 / 2.5 = 12 inches. To CHOOSE a scale that fits paper, pick the smallest 'feet per inch' number that still makes the whole object fit -- a smaller number per inch makes a bigger drawing.",
       "canonical_error": {
         "pattern": "Converts one drawing length straight to another scale without going through the actual size, or applies only one of the two scales",
         "example": "For a 4-inch width at 2 in = 15 ft redrawn at 1 in = 2.5 ft, answers 30 feet (stops at the actual) or does 4 x 2.5 = 10 inches instead of finding actual 30 ft then 30 / 2.5 = 12 inches",
@@ -890,10 +1841,26 @@
       },
       "item_template": "A blueprint with an old scale and a length plus a new scale (find the new drawing length), or an object and paper size (choose the best scale). Numeric or multiple-choice response.",
       "sample_items": [
-        { "stem": "A blueprint uses 2 inches = 15 feet and shows a width of 4 inches. First find the actual width, then find the width on a new blueprint drawn at 1 inch = 2.5 feet.", "answer": "Actual 30 feet; new drawing width 12 inches", "distractor_logic": "Actual = 4 x 15/2 = 30 ft; new = 30 / 2.5 = 12 in. Stopping at 30 or doing 4 x 2.5 are the traps." },
-        { "stem": "A drawing at 1 inch = 10 feet shows a 3-inch length. Redraw it at 1 inch = 5 feet. What is the new drawing length?", "answer": "6 inches", "distractor_logic": "Actual = 3 x 10 = 30 ft; new = 30 / 5 = 6 in." },
-        { "stem": "A house is 84 feet by 36 feet and must fit on paper 15 inches by 9 inches, as large as possible. Which scale is best: 1 inch = 4 feet, 6 feet, or 10 feet?", "answer": "1 inch = 6 feet", "distractor_logic": "At 1 in = 6 ft the drawing is 14 in by 6 in (fits). 1 in = 4 ft gives 21 in (too long); 1 in = 10 ft fits but is smaller than needed." },
-        { "stem": "Using the scale 1 inch = 6 feet, what are the drawing dimensions of an 84-foot by 36-foot house?", "answer": "14 inches by 6 inches", "distractor_logic": "84/6 = 14 and 36/6 = 6." }
+        {
+          "stem": "A blueprint uses 2 inches = 15 feet and shows a width of 4 inches. First find the actual width, then find the width on a new blueprint drawn at 1 inch = 2.5 feet.",
+          "answer": "Actual 30 feet; new drawing width 12 inches",
+          "distractor_logic": "Actual = 4 x 15/2 = 30 ft; new = 30 / 2.5 = 12 in. Stopping at 30 or doing 4 x 2.5 are the traps."
+        },
+        {
+          "stem": "A drawing at 1 inch = 10 feet shows a 3-inch length. Redraw it at 1 inch = 5 feet. What is the new drawing length?",
+          "answer": "6 inches",
+          "distractor_logic": "Actual = 3 x 10 = 30 ft; new = 30 / 5 = 6 in."
+        },
+        {
+          "stem": "A house is 84 feet by 36 feet and must fit on paper 15 inches by 9 inches, as large as possible. Which scale is best: 1 inch = 4 feet, 6 feet, or 10 feet?",
+          "answer": "1 inch = 6 feet",
+          "distractor_logic": "At 1 in = 6 ft the drawing is 14 in by 6 in (fits). 1 in = 4 ft gives 21 in (too long); 1 in = 10 ft fits but is smaller than needed."
+        },
+        {
+          "stem": "Using the scale 1 inch = 6 feet, what are the drawing dimensions of an 84-foot by 36-foot house?",
+          "answer": "14 inches by 6 inches",
+          "distractor_logic": "84/6 = 14 and 36/6 = 6."
+        }
       ],
       "redirect_script": {
         "stop": "Did you go through the real size first?",
@@ -901,25 +1868,76 @@
         "praise": "You routed through the actual size -- that is how one scale drawing becomes another."
       },
       "vocabulary": [
-        { "term": "Reproduce at a different scale", "definition": "Redraw an object under a new scale by first finding its actual size." },
-        { "term": "Appropriate scale", "definition": "A scale chosen so the whole object fits the available space as large as possible." }
+        {
+          "term": "Reproduce at a different scale",
+          "definition": "Redraw an object under a new scale by first finding its actual size."
+        },
+        {
+          "term": "Appropriate scale",
+          "definition": "A scale chosen so the whole object fits the available space as large as possible."
+        }
       ],
       "next_steps": {
         "if_pass": "Ready for high-school similarity and dilations and for multi-step proportional reasoning.",
         "if_fail": "7GM1-S2"
       },
       "worked_example_script": [
-        { "kind": "show", "text": "Write 'Blueprint 2 in = 15 ft, width 4 in. New scale 1 in = 2.5 ft. New width?'" },
-        { "kind": "ask", "text": "Can we go straight from 4 inches to the new drawing, or do we need the real width first?" },
-        { "kind": "say", "text": "Find the actual first: 4 x (15 / 2) = 30 feet. Then divide by the new scale: 30 / 2.5 = 12 inches." },
-        { "kind": "watch", "text": "If the student writes 10 (from 4 x 2.5), ask 'did you use the real 30 feet, or the drawing inches?'" },
-        { "kind": "ask", "text": "Your turn: a drawing at 1 in = 10 ft shows 3 in -- redraw at 1 in = 5 ft." }
+        {
+          "kind": "show",
+          "text": "Sketch three stations in a row: OLD DRAWING (4 in) --> REAL BUILDING (?) --> NEW DRAWING (?). Both drawings are pictures of the same real wall, so every path between them passes through the middle station."
+        },
+        {
+          "kind": "ask",
+          "text": "The real wall never changes, so fill the middle first: the old scale says 2 inches stands for 15 feet -- so what does 4 inches stand for?"
+        },
+        {
+          "kind": "say",
+          "text": "The real wall is 4 x (15 / 2) = 30 feet. Now redraw that same 30 feet at 1 in = 2.5 ft: 30 / 2.5 = 12 inches. Jumping straight from drawing to drawing (4 x 2.5 = 10) never asked how big the wall actually is."
+        },
+        {
+          "kind": "show",
+          "text": "Write 'Blueprint 2 in = 15 ft, width 4 in. New scale 1 in = 2.5 ft. New width?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Can we go straight from 4 inches to the new drawing, or do we need the real width first?"
+        },
+        {
+          "kind": "say",
+          "text": "Find the actual first: 4 x (15 / 2) = 30 feet. Then divide by the new scale: 30 / 2.5 = 12 inches."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 10 (from 4 x 2.5), ask 'did you use the real 30 feet, or the drawing inches?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a drawing at 1 in = 10 ft shows 3 in -- redraw at 1 in = 5 ft."
+        }
       ],
       "practice_problems": [
-        { "difficulty": "warm_up", "stem": "A drawing at 1 inch = 10 feet is 3 inches long. What is the actual length?", "answer": "30 feet (3 x 10)" },
-        { "difficulty": "warm_up", "stem": "An object is 30 feet long. At 1 inch = 5 feet, how long is the drawing?", "answer": "6 inches (30/5)" },
-        { "difficulty": "core", "stem": "Blueprint 2 in = 15 ft, width 4 in. Find the actual width, then the width at a new scale of 1 in = 2.5 ft.", "answer": "Actual 30 ft; new drawing 12 in", "notes": "Two-stage: to actual, then to the new drawing." },
-        { "difficulty": "core", "stem": "A drawing at 1 in = 10 ft shows 3 in. Redraw at 1 in = 5 ft. New length?", "answer": "6 in (30 ft, then 30/5)", "notes": "A smaller scale makes a bigger drawing." },
+        {
+          "difficulty": "warm_up",
+          "stem": "A drawing at 1 inch = 10 feet is 3 inches long. What is the actual length?",
+          "answer": "30 feet (3 x 10)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "An object is 30 feet long. At 1 inch = 5 feet, how long is the drawing?",
+          "answer": "6 inches (30/5)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Blueprint 2 in = 15 ft, width 4 in. Find the actual width, then the width at a new scale of 1 in = 2.5 ft.",
+          "answer": "Actual 30 ft; new drawing 12 in",
+          "notes": "Two-stage: to actual, then to the new drawing."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A drawing at 1 in = 10 ft shows 3 in. Redraw at 1 in = 5 ft. New length?",
+          "answer": "6 in (30 ft, then 30/5)",
+          "notes": "A smaller scale makes a bigger drawing."
+        },
         {
           "difficulty": "core",
           "type": "error_analysis",
@@ -930,9 +1948,24 @@
           "answer": "Mia skipped the actual size. First find the actual: 4 x (15 / 2) = 30 feet. Then divide by the new scale: 30 / 2.5 = 12 inches.",
           "notes": "Canonical error: converting drawing-to-drawing directly."
         },
-        { "difficulty": "core", "stem": "A house is 84 ft by 36 ft on paper 15 in by 9 in, as large as possible. Choose the best scale: 1 in = 4 ft, 6 ft, or 10 ft.", "answer": "1 inch = 6 feet (drawing 14 in by 6 in fits)", "notes": "Smallest feet-per-inch that still fits." },
-        { "difficulty": "stretch", "stem": "A warehouse is 120 ft by 60 ft and must fit on paper 12 in by 8 in, as large as possible. Choose the best scale from 1 in = 8 ft, 10 ft, 15 ft, and give the drawing size.", "answer": "1 inch = 10 feet -- drawing 12 in by 6 in fits exactly; 1 in = 8 ft would need 15 in (too long).", "notes": "Constraint reasoning with an exact fit." },
-        { "difficulty": "stretch", "stem": "Explain why a scale of 1 inch = 4 feet makes a LARGER drawing of the same house than 1 inch = 8 feet.", "answer": "Fewer feet per inch means each inch shows less of the object, so more inches are needed -- the drawing is bigger. An 84-ft house is 21 inches at 1 in = 4 ft but only 10.5 inches at 1 in = 8 ft.", "notes": "Reason about the inverse relationship between scale and drawing size." }
+        {
+          "difficulty": "core",
+          "stem": "A house is 84 ft by 36 ft on paper 15 in by 9 in, as large as possible. Choose the best scale: 1 in = 4 ft, 6 ft, or 10 ft.",
+          "answer": "1 inch = 6 feet (drawing 14 in by 6 in fits)",
+          "notes": "Smallest feet-per-inch that still fits."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A warehouse is 120 ft by 60 ft and must fit on paper 12 in by 8 in, as large as possible. Choose the best scale from 1 in = 8 ft, 10 ft, 15 ft, and give the drawing size.",
+          "answer": "1 inch = 10 feet -- drawing 12 in by 6 in fits exactly; 1 in = 8 ft would need 15 in (too long).",
+          "notes": "Constraint reasoning with an exact fit."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why a scale of 1 inch = 4 feet makes a LARGER drawing of the same house than 1 inch = 8 feet.",
+          "answer": "Fewer feet per inch means each inch shows less of the object, so more inches are needed -- the drawing is bigger. An 84-ft house is 21 inches at 1 in = 4 ft but only 10.5 inches at 1 in = 8 ft.",
+          "notes": "Reason about the inverse relationship between scale and drawing size."
+        }
       ],
       "activities": [
         {
@@ -940,17 +1973,40 @@
           "title": "One Scale or Two Stages?",
           "time_minutes": 10,
           "grouping": "small_group",
-          "materials": ["Card set of 8 problems (mix of one-scale conversions and redraw-at-a-new-scale problems)"],
+          "materials": [
+            "Card set of 8 problems (mix of one-scale conversions and redraw-at-a-new-scale problems)"
+          ],
           "instructions": "1. Sort each card into 'One step (drawing to actual)' or 'Two stages (drawing to actual to new drawing).'\n2. For each two-stage card, write the actual size in the middle before the final answer.\n3. Solve four cards, two from each pile.\n4. Debrief: why can't you skip the actual size on a redraw problem?",
           "content": {
-            "categories": ["One step (drawing to actual)", "Two stages (drawing to actual to new drawing)"],
+            "categories": [
+              "One step (drawing to actual)",
+              "Two stages (drawing to actual to new drawing)"
+            ],
             "cards": [
-              { "text": "1 in = 6 ft, drawing 5 in, find actual", "category": "One step (drawing to actual)" },
-              { "text": "2 in = 15 ft, 4 in; redraw at 1 in = 2.5 ft", "category": "Two stages (drawing to actual to new drawing)" },
-              { "text": "1 in = 8 ft, drawing 3 in, find actual", "category": "One step (drawing to actual)" },
-              { "text": "1 in = 10 ft, 3 in; redraw at 1 in = 5 ft", "category": "Two stages (drawing to actual to new drawing)" },
-              { "text": "1 in = 12 ft, drawing 4 in, find actual", "category": "One step (drawing to actual)" },
-              { "text": "1 in = 4 ft, 6 in; redraw at 1 in = 3 ft", "category": "Two stages (drawing to actual to new drawing)" }
+              {
+                "text": "1 in = 6 ft, drawing 5 in, find actual",
+                "category": "One step (drawing to actual)"
+              },
+              {
+                "text": "2 in = 15 ft, 4 in; redraw at 1 in = 2.5 ft",
+                "category": "Two stages (drawing to actual to new drawing)"
+              },
+              {
+                "text": "1 in = 8 ft, drawing 3 in, find actual",
+                "category": "One step (drawing to actual)"
+              },
+              {
+                "text": "1 in = 10 ft, 3 in; redraw at 1 in = 5 ft",
+                "category": "Two stages (drawing to actual to new drawing)"
+              },
+              {
+                "text": "1 in = 12 ft, drawing 4 in, find actual",
+                "category": "One step (drawing to actual)"
+              },
+              {
+                "text": "1 in = 4 ft, 6 in; redraw at 1 in = 3 ft",
+                "category": "Two stages (drawing to actual to new drawing)"
+              }
             ]
           }
         },
@@ -959,7 +2015,9 @@
           "title": "Skipping the Middle",
           "time_minutes": 8,
           "grouping": "pairs",
-          "materials": ["Slip with Mia's one-stage work"],
+          "materials": [
+            "Slip with Mia's one-stage work"
+          ],
           "instructions": "1. Read Mia's new width of 10 inches for redrawing a 4-inch blueprint.\n2. Point to where Mia jumped from one drawing straight to another.\n3. Insert the missing step: find the actual size first, then convert to the new scale.\n4. Write the two-stage rule for redrawing at a different scale.",
           "content": {
             "worked_problem": "Blueprint 2 in = 15 ft, width 4 in, redraw at 1 in = 2.5 ft. Mia wrote 4 x 2.5 = 10 inches.",
@@ -969,9 +2027,18 @@
         }
       ],
       "strategy_links": [
-        { "strategy_id": "strat-math-006", "why": "Gradual release from a single scale conversion to a two-stage redraw scaffolds the multi-step routing through the actual size." },
-        { "strategy_id": "strat-math-003", "why": "Skipping the actual size (drawing-to-drawing) is a clean, baitable error for find-and-fix." },
-        { "strategy_id": "strat-math-009", "why": "Pairing a fully worked two-stage example with a flawed one highlights the missing middle step." }
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release from a single scale conversion to a two-stage redraw scaffolds the multi-step routing through the actual size."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Skipping the actual size (drawing-to-drawing) is a clean, baitable error for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Pairing a fully worked two-stage example with a flawed one highlights the missing middle step."
+        }
       ],
       "teacher_moves": {
         "questioning_prompts": [
@@ -1013,20 +2080,48 @@
         "stem": "A drawing at 1 inch = 10 feet shows a length of 4 inches. Reproduce it at a new scale of 1 inch = 5 feet. What is the new drawing length?",
         "answer": "8 inches",
         "steps": [
-          { "math": "actual length = 4 x 10 = 40 feet", "annotation": "First convert the old drawing length to the real size." },
-          { "math": "new scale: 1 inch = 5 feet", "annotation": "Now use the new scale to redraw." },
-          { "math": "new drawing = 40 / 5", "annotation": "Actual to new drawing divides by the new scale." },
-          { "math": "= 8 inches", "annotation": "Bigger than the old 4 inches, because the new scale shows fewer feet per inch." }
+          {
+            "math": "actual length = 4 x 10 = 40 feet",
+            "annotation": "First convert the old drawing length to the real size."
+          },
+          {
+            "math": "new scale: 1 inch = 5 feet",
+            "annotation": "Now use the new scale to redraw."
+          },
+          {
+            "math": "new drawing = 40 / 5",
+            "annotation": "Actual to new drawing divides by the new scale."
+          },
+          {
+            "math": "= 8 inches",
+            "annotation": "Bigger than the old 4 inches, because the new scale shows fewer feet per inch."
+          }
         ]
       },
       "faded_example": {
         "stem": "A drawing at 1 inch = 12 feet shows a length of 3 inches. Reproduce it at a new scale of 1 inch = 4 feet. What is the new drawing length?",
         "answer": "9 inches",
         "steps": [
-          { "math": "actual length = 3 x 12 = 36 feet", "annotation": "Convert the old drawing length to the real size.", "given": true },
-          { "math": "new scale: 1 inch = 4 feet", "annotation": "Use the new scale to redraw.", "given": true },
-          { "math": null, "annotation": "Divide the actual length by the new scale.", "given": false },
-          { "math": null, "annotation": "Check: is the new drawing bigger, since the new scale shows fewer feet per inch?", "given": false }
+          {
+            "math": "actual length = 3 x 12 = 36 feet",
+            "annotation": "Convert the old drawing length to the real size.",
+            "given": true
+          },
+          {
+            "math": "new scale: 1 inch = 4 feet",
+            "annotation": "Use the new scale to redraw.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Divide the actual length by the new scale.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check: is the new drawing bigger, since the new scale shows fewer feet per inch?",
+            "given": false
+          }
         ]
       }
     }
@@ -1035,40 +2130,83 @@
     "foundation": {
       "label": "Foundation (Tier III)",
       "description": "Pre-grade-level prerequisites -- fix these first.",
-      "skills": ["7GM1-F1", "7GM1-F2"]
+      "skills": [
+        "7GM1-F1",
+        "7GM1-F2"
+      ]
     },
     "looking_back": {
       "label": "Looking Back",
       "description": "Skills the student should have but may need re-teaching.",
-      "skills": ["7GM1-S1"]
+      "skills": [
+        "7GM1-S1"
+      ]
     },
     "on_grade": {
       "label": "On Grade",
       "description": "The standard's actual grade-level expectations.",
-      "skills": ["7GM1-S2", "7GM1-S3", "7GM1-S4", "7GM1-S5"]
+      "skills": [
+        "7GM1-S2",
+        "7GM1-S3",
+        "7GM1-S4",
+        "7GM1-S5"
+      ]
     },
     "looking_forward": {
       "label": "Looking Forward",
       "description": "Bridge to the next standard.",
-      "skills": ["7GM1-S6"]
+      "skills": [
+        "7GM1-S6"
+      ]
     }
   },
-  "skill_sequence": ["7GM1-F1", "7GM1-F2", "7GM1-S1", "7GM1-S2", "7GM1-S3", "7GM1-S4", "7GM1-S5", "7GM1-S6"],
+  "skill_sequence": [
+    "7GM1-F1",
+    "7GM1-F2",
+    "7GM1-S1",
+    "7GM1-S2",
+    "7GM1-S3",
+    "7GM1-S4",
+    "7GM1-S5",
+    "7GM1-S6"
+  ],
   "skill_tree": {
     "7GM1-F1": [],
     "7GM1-F2": [],
-    "7GM1-S1": ["7GM1-F1"],
-    "7GM1-S2": ["7GM1-S1"],
-    "7GM1-S3": ["7GM1-S2"],
-    "7GM1-S4": ["7GM1-S2", "7GM1-F2"],
-    "7GM1-S5": ["7GM1-S2"],
-    "7GM1-S6": ["7GM1-S2", "7GM1-S3"]
+    "7GM1-S1": [
+      "7GM1-F1"
+    ],
+    "7GM1-S2": [
+      "7GM1-S1"
+    ],
+    "7GM1-S3": [
+      "7GM1-S2"
+    ],
+    "7GM1-S4": [
+      "7GM1-S2",
+      "7GM1-F2"
+    ],
+    "7GM1-S5": [
+      "7GM1-S2"
+    ],
+    "7GM1-S6": [
+      "7GM1-S2",
+      "7GM1-S3"
+    ]
   },
   "diagnostic_flow": {
     "description": "Start with S4 (compute an actual area from a scale drawing) -- the At-proficiency core that carries the standard's signature move and its signature error, scaling area only once. If they pass, push to S5 (complete a scale table in both directions) and S6 (reproduce a drawing at a new scale). If they fail, drop to S2 to confirm they can even scale a single length, then to S1 for the scale factor itself. S3 (fraction and decimal lengths) branches off as an independent difficulty context.",
     "entry_skill": "7GM1-S4",
-    "if_pass": ["7GM1-S5", "7GM1-S6"],
-    "if_fail": ["7GM1-S2", "7GM1-S1"],
-    "branch_skills": ["7GM1-S3"]
+    "if_pass": [
+      "7GM1-S5",
+      "7GM1-S6"
+    ],
+    "if_fail": [
+      "7GM1-S2",
+      "7GM1-S1"
+    ],
+    "branch_skills": [
+      "7GM1-S3"
+    ]
   }
 }

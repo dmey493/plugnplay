@@ -49,7 +49,7 @@
         "description": "Move fluently among fractions, decimals, and percents, and find a percent of a number.",
         "check_question": "What is 25% of 80? Write 3/8 as a decimal."
       },
-      "i_do_script": "This standard combines fractions, decimals, and percents in the same problem, so before I solve anything I have to move between them without slowing down. A percent means 'out of 100,' so 25% is 0.25 and 37.5% is 0.375 -- slide the decimal two places left. To take a percent OF a number I multiply: 37.5% of 128 is 0.375 x 128 = 48. A fraction is a division: 3/8 = 3 divided by 8 = 0.375, which is also 37.5%. The calculator does the button-pushing, but I decide what to convert and what to multiply -- the machine will not choose for me.",
+      "i_do_script": "Percent means 'out of 100' -- 20% is just 20 pennies out of every dollar, a small slice of the whole. So 20% OF a number must come out smaller than the number; if it comes out bigger, the percent never got converted. This standard combines fractions, decimals, and percents in the same problem, so before I solve anything I have to move between them without slowing down. A percent means 'out of 100,' so 25% is 0.25 and 37.5% is 0.375 -- slide the decimal two places left. To take a percent OF a number I multiply: 37.5% of 128 is 0.375 x 128 = 48. A fraction is a division: 3/8 = 3 divided by 8 = 0.375, which is also 37.5%. The calculator does the button-pushing, but I decide what to convert and what to multiply -- the machine will not choose for me.",
       "canonical_error": {
         "pattern": "Uses the percent's digits directly instead of converting to a decimal before multiplying",
         "example": "For 37.5% of 128, computes 37.5 x 128 = 4800 (or 3.75 x 128), instead of 0.375 x 128 = 48",
@@ -92,7 +92,7 @@
       ],
       "redirect_script": {
         "stop": "Wait -- did you turn the percent into a decimal first?",
-        "prompt": "A percent is 'out of 100,' so move the decimal two places left before you multiply: 37.5% becomes 0.375. Then multiply by the number to take that percent OF it.",
+        "prompt": "Look at the grid first: 20% is a small shaded slice of the whole, so the answer must be smaller than the number you started with. A percent is 'out of 100,' so move the decimal two places left before you multiply: 37.5% becomes 0.375. Then multiply by the number to take that percent OF it.",
         "praise": "You converted the percent to a decimal before multiplying -- that's the whole move."
       },
       "vocabulary": [
@@ -118,6 +118,15 @@
         "if_fail": "Review fraction, decimal, and percent conversions (7.NS / 6.NS)."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Shade 20 squares of a hundredths grid -- that slice is 20% of the whole. So is 20% of 45 more than 45, or less? Can 20 x 45 = 900 possibly be right?",
+          "visual": {
+            "type": "hundredths_grid",
+            "shaded": 20,
+            "label": "20% = 20 out of 100 = 0.20"
+          }
+        },
         {
           "kind": "show",
           "text": "Write '20% of 45' and 'write 5/8 as a decimal' side by side."
@@ -560,7 +569,7 @@
         "type": "skill",
         "skill_id": "8NS4-F1"
       },
-      "i_do_script": "Once an expression has more than one operation, the ORDER matters, and a calculator will happily compute the wrong order if I type it wrong. The rule: parentheses first, then exponents, then multiply and divide, then add and subtract. Watch: 3 + 4 x 5. Left to right would give (3 + 4) x 5 = 35 -- but that is wrong. Multiplication comes first: 4 x 5 = 20, then 3 + 20 = 23. Exponents outrank multiplication too: 2 x 3 squared is 2 x 9 = 18, not (2 x 3) squared = 36. I scan the whole line and rank the operations before I press a single key.",
+      "i_do_script": "The ranking matches meaning: in 10 - 2 x 3^2 + 1, the '2 x 3^2' is one bundled quantity -- two 9s, 18 -- so the expression says 'take 18 from 10, then add 1.' The exponent binds before the 2 because 3^2 names a single number (a 3-by-3 square of 9), and the product binds before the subtraction because two 9s are one amount. Once an expression has more than one operation, the ORDER matters, and a calculator will happily compute the wrong order if I type it wrong. The rule: parentheses first, then exponents, then multiply and divide, then add and subtract. Watch: 3 + 4 x 5. Left to right would give (3 + 4) x 5 = 35 -- but that is wrong. Multiplication comes first: 4 x 5 = 20, then 3 + 20 = 23. Exponents outrank multiplication too: 2 x 3 squared is 2 x 9 = 18, not (2 x 3) squared = 36. I scan the whole line and rank the operations before I press a single key.",
       "canonical_error": {
         "pattern": "Evaluates left to right, doing addition or subtraction before a multiplication, division, or exponent",
         "example": "Computes 3 + 4 x 5 as (3 + 4) x 5 = 35 instead of 3 + (4 x 5) = 23, or 2 x 3^2 as (2 x 3)^2 = 36",
@@ -622,6 +631,10 @@
         "if_fail": "8NS4-F1"
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Point at '2 x 3^2' inside the expression. What single number is 3^2? So what single amount is 2 x 3^2 -- and why must that whole bundle be settled before any subtracting?"
+        },
         {
           "kind": "show",
           "text": "Write '10 - 2 x 3^2 + 1.'"
@@ -875,7 +888,7 @@
         "type": "skill",
         "skill_id": "8NS4-S1"
       },
-      "i_do_script": "When a problem needs two steps, I decide both operations, do them in the right order, and label the answer. Watch an earnings problem: Maria earns $12 per hour, works 6 hours, and gets a $20 bonus. Step 1 is the hourly pay -- 'per hour' with a count of hours means multiply: 12 x 6 = 72. Step 2 adds the bonus: 72 + 20 = 92, so she earns $92. The trap is doing only one step -- stopping at $72, or adding everything as 12 + 6 + 20. I ask what each step finds, and I do the multiply before the add.",
+      "i_do_script": "Picture the receipt as a bar: eight $3 boxes lined up make the cost before the coupon, and the coupon chops a $6 piece off the end. A row of equal boxes and then a cut -- two different actions, so two steps. When a problem needs two steps, I decide both operations, do them in the right order, and label the answer. Watch an earnings problem: Maria earns $12 per hour, works 6 hours, and gets a $20 bonus. Step 1 is the hourly pay -- 'per hour' with a count of hours means multiply: 12 x 6 = 72. Step 2 adds the bonus: 72 + 20 = 92, so she earns $92. The trap is doing only one step -- stopping at $72, or adding everything as 12 + 6 + 20. I ask what each step finds, and I do the multiply before the add.",
       "canonical_error": {
         "pattern": "Does only one of the two steps, or adds all the numbers instead of multiplying then adding",
         "example": "For '$12/hour, 6 hours, plus a $20 bonus,' computes 12 + 6 + 20 = 38, or stops at 12 x 6 = 72 and forgets the bonus",
@@ -906,7 +919,7 @@
       ],
       "redirect_script": {
         "stop": "Wait -- is this problem finished in one step, or does it take two?",
-        "prompt": "Name what each step finds: the first step usually multiplies (a rate times a count), and the second step adds a bonus or subtracts a coupon. Do the multiply first, then the add or subtract -- and don't stop early.",
+        "prompt": "Draw the bar first: how many equal boxes, how much in each box, and what piece gets chopped off the end? Name what each step finds: the first step usually multiplies (a rate times a count), and the second step adds a bonus or subtracts a coupon. Do the multiply first, then the add or subtract -- and don't stop early.",
         "praise": "You did both steps in the right order and labeled the answer -- that's a complete solution."
       },
       "vocabulary": [
@@ -928,6 +941,68 @@
         "if_fail": "8NS4-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a bar of eight $3 boxes for the 8 markers -- the whole bar is the cost before the coupon.",
+          "visual": {
+            "type": "percent_bar",
+            "label": "Cost of 8 markers at $3 each",
+            "segments": [
+              {
+                "span": 3,
+                "label": "$3",
+                "shaded": true
+              },
+              {
+                "span": 3,
+                "label": "$3",
+                "shaded": true
+              },
+              {
+                "span": 3,
+                "label": "$3",
+                "shaded": true
+              },
+              {
+                "span": 3,
+                "label": "$3",
+                "shaded": true
+              },
+              {
+                "span": 3,
+                "label": "$3",
+                "shaded": true
+              },
+              {
+                "span": 3,
+                "label": "$3",
+                "shaded": true
+              },
+              {
+                "span": 3,
+                "label": "$3",
+                "shaded": true
+              },
+              {
+                "span": 3,
+                "label": "$3",
+                "shaded": true
+              }
+            ],
+            "end_labels": [
+              "$0",
+              "$24"
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "How long is the whole bar -- do you get that by adding 8 + 3, or by counting eight boxes of 3? Now chop a $6 piece off the end: what is left?"
+        },
+        {
+          "kind": "say",
+          "text": "Eight boxes of $3 is 8 x 3 = 24, and cutting off the $6 coupon leaves 24 - 6 = 18. The bar shows why 8 + 3 - 6 = 5 cannot be the price of eight markers -- $5 wouldn't even buy two of them."
+        },
         {
           "kind": "show",
           "text": "Write 'You buy 8 markers at $3 each and use a $6 coupon. Find the cost.'"
@@ -1141,7 +1216,7 @@
         "type": "skill",
         "skill_id": "8NS4-S3"
       },
-      "i_do_script": "These problems have the same two-step shape as before, but now the numbers are decimals and one step may be a percent OF an amount, like sales tax. Watch: buy 3 items at $6.50 each with 8% sales tax. Step 1 is the subtotal -- 3 x 6.50 = 19.50. Step 2 is the tax, which is a percent of that subtotal: 8% is 0.08, so 19.50 x 0.08 = 1.56, and the total is 19.50 + 1.56 = 21.06. The trap is adding the tax RATE as if it were dollars -- 19.50 + 8. Tax is a percent of the subtotal, so I convert 8% to 0.08 and multiply first.",
+      "i_do_script": "Sales tax is pennies-per-dollar, not a flat fee: 6% means 6 cents rides on top of EVERY dollar you spend. Spend $29 and the tax is 29 little 6-cent pieces -- $1.74 -- nowhere near a whole extra $6. These problems have the same two-step shape as before, but now the numbers are decimals and one step may be a percent OF an amount, like sales tax. Watch: buy 3 items at $6.50 each with 8% sales tax. Step 1 is the subtotal -- 3 x 6.50 = 19.50. Step 2 is the tax, which is a percent of that subtotal: 8% is 0.08, so 19.50 x 0.08 = 1.56, and the total is 19.50 + 1.56 = 21.06. The trap is adding the tax RATE as if it were dollars -- 19.50 + 8. Tax is a percent of the subtotal, so I convert 8% to 0.08 and multiply first.",
       "canonical_error": {
         "pattern": "Adds the percent (or a rate) as a flat dollar amount instead of taking that percent OF the subtotal",
         "example": "For 3 items at $6.50 with 8% tax, computes 19.50 + 8 = 27.50 instead of 19.50 + (0.08 x 19.50) = 21.06",
@@ -1172,7 +1247,7 @@
       ],
       "redirect_script": {
         "stop": "Is that 8% dollars, or a percent of the subtotal?",
-        "prompt": "A tax or tip is a percent OF an amount. Convert the percent to a decimal (8% = 0.08), multiply it by the subtotal to get the tax in dollars, and THEN add. Do the multiply step before the add.",
+        "prompt": "Say the tax as cents-per-dollar first: how many dollars are in the subtotal, and how many cents ride on each one? A tax or tip is a percent OF an amount. Convert the percent to a decimal (8% = 0.08), multiply it by the subtotal to get the tax in dollars, and THEN add. Do the multiply step before the add.",
         "praise": "You turned the percent into a decimal, multiplied, then added -- that's the right tax step."
       },
       "vocabulary": [
@@ -1198,6 +1273,14 @@
         "if_fail": "8NS4-S3"
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "6% tax means 6 cents per dollar. On a $1 shirt, how much tax? On $29 of shirts, is the tax closer to $1.74 or to $6?"
+        },
+        {
+          "kind": "say",
+          "text": "It is 6 cents for each of the 29 dollars: 29 x 0.06 = 1.74. Adding a flat $6 would be charging 6 cents on each of 100 dollars -- tax on a $100 bill, not on $29."
+        },
         {
           "kind": "show",
           "text": "Write 'Buy 4 shirts at $7.25 each with 6% sales tax. Find the total.'"

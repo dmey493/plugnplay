@@ -1880,7 +1880,7 @@
         "type": "skill",
         "skill_id": "6GM4-S1"
       },
-      "i_do_script": "Same formula as before, but now two or even all three edges are fractions or mixed numbers. Model with 2 1/2 in. x 4 in. x 1 1/2 in.: write V = 2 1/2 x 4 x 1 1/2, do 2 1/2 x 4 = 10 first, then 10 x 1 1/2 = 15 cubic inches. Model checking off each dimension as it's used -- with three messy numbers, the most common slip is quietly using only two of them.",
+      "i_do_script": "Volume is stacked floors: the bottom of the box is one flat layer, and the height counts how many of those layers pile up -- so a two-factor answer only ever buys you the floor. Same formula as before, but now two or even all three edges are fractions or mixed numbers. Model with 2 1/2 in. x 4 in. x 1 1/2 in.: write V = 2 1/2 x 4 x 1 1/2, do 2 1/2 x 4 = 10 first, then 10 x 1 1/2 = 15 cubic inches. Model checking off each dimension as it's used -- with three messy numbers, the most common slip is quietly using only two of them.",
       "canonical_error": {
         "pattern": "Multiplies only two of the three dimensions and stops",
         "example": "For a prism 2 1/2 in. x 4 in. x 1 1/2 in., student computes 2 1/2 x 4 = 10 and answers 10 instead of 15 cubic inches",
@@ -1888,7 +1888,7 @@
       },
       "redirect_script": {
         "stop": "Check -- did all three dimensions make it into your multiplication?",
-        "prompt": "Put a check mark on each labeled edge as you use it. You should have exactly three checks before you write the answer. Which edge is still missing a check?",
+        "prompt": "Look back at the sketch: your two factors only shaded the floor -- how many layers does the height stack on top of it? Put a check mark on each labeled edge as you use it. You should have exactly three checks before you write the answer. Which edge is still missing a check?",
         "praise": "Three edges, three checks, three factors -- you found the volume, not just a face."
       },
       "item_template": "A labeled prism figure (or short word problem) where two or three edges are fractions or mixed numbers. Student applies V = l x w x h. NR (numeric response). Answers may be fractions or mixed numbers.",
@@ -2307,6 +2307,18 @@
       "worked_example_script": [
         {
           "kind": "show",
+          "text": "Sketch the box and shade ONLY its floor: a 2 1/2 in. by 4 in. rectangle. Tiled with 1-inch squares, that floor covers 10 square inches."
+        },
+        {
+          "kind": "ask",
+          "text": "Is a shaded floor a full box? That 10 is flat. What does the 1 1/2 in. height do to the floor before the box holds anything?"
+        },
+        {
+          "kind": "say",
+          "text": "It stacks layers: one full 1-inch layer holds 10 cubic inches, and the half layer on top holds 5 more -- 15 cubic inches of space. An answer that stops at 10 measured a floor, not a box."
+        },
+        {
+          "kind": "show",
           "text": "Display a prism figure labeled l = 2 1/2 in., w = 4 in., h = 1 1/2 in."
         },
         {
@@ -2488,17 +2500,6 @@
           }
         },
         {
-          "type": "game",
-          "title": "Three-Factor Checkoff",
-          "time_minutes": 12,
-          "grouping": "small_group",
-          "materials": [
-            "Dimension cards (mix of whole numbers, fractions, mixed numbers)",
-            "Whiteboards"
-          ],
-          "instructions": "1. Deal three dimension cards face up -- that's the prism.\n2. Everyone writes V = l x w x h, copies the three cards in, and puts a check on each card as it's used.\n3. First correct answer with all three checks visible earns a point; a fast answer missing a factor loses one.\n4. Rotate who deals. Debrief: which card is easiest to forget, and why? (Usually the fraction.)"
-        },
-        {
           "type": "hands_on",
           "title": "Face or Space?",
           "time_minutes": 10,
@@ -2509,6 +2510,17 @@
             "Sticky notes"
           ],
           "instructions": "1. Pairs measure a real box to the nearest half inch and label l, w, h on sticky notes stuck to the edges.\n2. Compute the area of the front face (two factors) and write it ON that face.\n3. Compute the volume (three factors) and write it on a note INSIDE the box.\n4. Debrief: the two-factor answer lives on a flat face; the three-factor answer fills the inside. Which one is volume?"
+        },
+        {
+          "type": "game",
+          "title": "Three-Factor Checkoff",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Dimension cards (mix of whole numbers, fractions, mixed numbers)",
+            "Whiteboards"
+          ],
+          "instructions": "1. Deal three dimension cards face up -- that's the prism.\n2. Everyone writes V = l x w x h, copies the three cards in, and puts a check on each card as it's used.\n3. First correct answer with all three checks visible earns a point; a fast answer missing a factor loses one.\n4. Rotate who deals. Debrief: which card is easiest to forget, and why? (Usually the fraction.)"
         }
       ],
       "strategy_links": [
@@ -4350,17 +4362,6 @@
       ],
       "activities": [
         {
-          "type": "game",
-          "title": "Mystery Edge",
-          "time_minutes": 12,
-          "grouping": "pairs",
-          "materials": [
-            "Dimension cards (halves and quarters allowed)",
-            "Whiteboards"
-          ],
-          "instructions": "1. Player A secretly picks three dimension cards, computes the volume, and reveals the volume plus TWO of the cards.\n2. Player B finds the hidden edge and must say the division they used out loud.\n3. Player A confirms by showing the hidden card; both check forward with l x w x h.\n4. Swap roles. Score a point per correct recovery WITH a spoken forward check."
-        },
-        {
           "type": "error_analysis",
           "title": "Is 72 Feet Reasonable?",
           "time_minutes": 8,
@@ -4385,6 +4386,17 @@
             "A 'client order' card: 96 cube boxes, each with 1/4-ft edges"
           ],
           "instructions": "1. The client needs a crate that EXACTLY fits 96 cube boxes with 1/4-ft edges, no gaps.\n2. Groups first find the crate's volume (96 x 1/64 = 1 1/2 cubic ft).\n3. Each group designs TWO different crates (three dimensions each, every dimension a multiple of 1/4 ft) and verifies each design multiplies to 1 1/2.\n4. Groups trade designs and check each other's with a forward multiplication.\n5. Debrief: how many correct designs exist? Why more than one? (Volume fixes the product, not the shape.)"
+        },
+        {
+          "type": "game",
+          "title": "Mystery Edge",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Dimension cards (halves and quarters allowed)",
+            "Whiteboards"
+          ],
+          "instructions": "1. Player A secretly picks three dimension cards, computes the volume, and reveals the volume plus TWO of the cards.\n2. Player B finds the hidden edge and must say the division they used out loud.\n3. Player A confirms by showing the hidden card; both check forward with l x w x h.\n4. Swap roles. Score a point per correct recovery WITH a spoken forward check."
         }
       ],
       "strategy_links": [

@@ -49,7 +49,7 @@
         "description": "Compute the area of a rectangle (length times width) and of a circle (pi times radius squared), using the radius, not the diameter.",
         "check_question": "A circle has a diameter of 10. What is its radius, and what is pi times the radius squared? (Use 3.14 for pi.)"
       },
-      "i_do_script": "Every volume in this standard stands on a base area, so I make the two base areas automatic first. A rectangle's area is just length times width: an 8 by 5 rectangle is 8 times 5 = 40 square units. A circle's area is pi times the radius squared: with radius 3 that is 3.14 times 3 times 3 = 3.14 times 9 = 28.26 square units. The trap is the diameter: if I'm told the diameter is 10, the RADIUS is half of that, 5, and I square the 5, not the 10.",
+      "i_do_script": "Before any circle number goes into a formula, picture the circle with its center dot: the radius is only the trip from that dot out to the edge -- half the across-distance -- and the radius is what the formula squares. Every volume in this standard stands on a base area, so I make the two base areas automatic first. A rectangle's area is just length times width: an 8 by 5 rectangle is 8 times 5 = 40 square units. A circle's area is pi times the radius squared: with radius 3 that is 3.14 times 3 times 3 = 3.14 times 9 = 28.26 square units. The trap is the diameter: if I'm told the diameter is 10, the RADIUS is half of that, 5, and I square the 5, not the 10.",
       "canonical_error": {
         "pattern": "Uses the diameter in place of the radius, or multiplies pi by the radius without squaring it",
         "example": "For a circle with diameter 10, computes 3.14 times 10 times 10 = 314, or 3.14 times 5 = 15.7, instead of 3.14 times 5 squared = 78.5",
@@ -76,7 +76,7 @@
       ],
       "redirect_script": {
         "stop": "Wait -- is that number the radius or the diameter?",
-        "prompt": "If you were given the diameter, cut it in half to get the radius first. Then square the radius (radius times radius) before you multiply by 3.14.",
+        "prompt": "Find the center dot first: how far is it from the center to the edge -- the whole 8, or half of it? If you were given the diameter, cut it in half to get the radius first. Then square the radius (radius times radius) before you multiply by 3.14.",
         "praise": "You halved the diameter and squared the radius -- that's a correct circle area."
       },
       "vocabulary": [
@@ -98,6 +98,20 @@
         "if_fail": "Review area of rectangles and circles (6.GM.4 / 7.GM.2)."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw the circle's across-line as a segment from 0 to 8 with the center dot at 4. The full 8 is the diameter; the radius is the half-trip from the center, 4 -- so 4 is the number that gets squared, not 8.",
+          "visual": {
+            "type": "number_line_point",
+            "ticks": [
+              0,
+              4,
+              8
+            ],
+            "point_value": 4,
+            "point_label": "center"
+          }
+        },
         {
           "kind": "show",
           "text": "Write 'A circle has a diameter of 8. Find its area (use 3.14).'"
@@ -131,7 +145,7 @@
         "description": "Multiply three numbers together and evaluate a number squared, including simple decimals.",
         "check_question": "Evaluate 4 times 3 times 5. Then evaluate 5 squared (5 times 5)."
       },
-      "i_do_script": "Both volume formulas end in the same arithmetic: multiply a small pile of numbers, and one of them is squared. To multiply three dimensions I just go two at a time: 4 times 3 times 5 is 4 times 3 = 12, then 12 times 5 = 60. Squaring means a number times itself: 5 squared is 5 times 5 = 25, not 5 times 2. When I plug into pi r squared h, I square the radius first, then multiply by the height and by 3.14: for r = 5 and h = 6, that's 25 times 6 = 150, then 3.14 times 150 = 471.",
+      "i_do_script": "The square in these formulas is a literal square: 4 squared is a 4-by-4 sheet of unit squares, 16 of them -- the formula starts from that 16-square sheet, and pi stretches it to cover the circular layer (about 3.14 of those sheets). Multiplying by the height just stacks that layer. Both volume formulas end in the same arithmetic: multiply a small pile of numbers, and one of them is squared. To multiply three dimensions I just go two at a time: 4 times 3 times 5 is 4 times 3 = 12, then 12 times 5 = 60. Squaring means a number times itself: 5 squared is 5 times 5 = 25, not 5 times 2. When I plug into pi r squared h, I square the radius first, then multiply by the height and by 3.14: for r = 5 and h = 6, that's 25 times 6 = 150, then 3.14 times 150 = 471.",
       "canonical_error": {
         "pattern": "Reads 'squared' as 'times 2,' or multiplies only two of the three dimensions",
         "example": "Evaluates 5 squared as 5 times 2 = 10 instead of 5 times 5 = 25, or computes only 3.14 times 25 and forgets to multiply by the height",
@@ -214,7 +228,7 @@
         "type": "skill",
         "skill_id": "7GM3-F1"
       },
-      "i_do_script": "A cylinder is a circle stacked into a tower, so its volume is the circle's area times the height: V = pi r squared h. Watch a cylinder with radius 4 and height 10. First the base: 4 squared is 16. Then times pi: 3.14 times 16 = 50.24. Then times the height: 50.24 times 10 = 502.4 cubic units. Two things keep me honest: the r is the RADIUS, so if I'm handed a diameter I cut it in half first, and I always SQUARE the radius before anything else.",
+      "i_do_script": "A cylinder is a circle stacked into a tower, and the formula counts that stack: the base area pi r squared says how many unit cubes fit in ONE layer, and the height says how many layers tall the stack goes. V = pi r squared h is 'cubes per layer, times layers.' Watch a cylinder with radius 4 and height 10. One layer: 4 squared is 16, times pi is about 50.24 cubes. Ten layers: 50.24 times 10 = 502.4 cubic units. Two things keep me honest: the r is the RADIUS (halve a diameter first), and the square happens before anything else -- the layer must be counted before you can stack it.",
       "canonical_error": {
         "pattern": "Uses the diameter as the radius, or forgets to square the radius (multiplies by r instead of r squared)",
         "example": "For radius 5 and height 6, computes 3.14 times 5 times 6 = 94.2 (never squared) instead of 3.14 times 25 times 6 = 471; or, given diameter 10, uses 10 as the radius to get 3.14 times 100 times 6 = 1884",
@@ -245,7 +259,7 @@
       ],
       "redirect_script": {
         "stop": "Did you square the radius -- and is that number the radius?",
-        "prompt": "In pi r squared h, the r is the radius (half the diameter), and it gets SQUARED first. Find r squared, multiply by 3.14, then multiply by the height.",
+        "prompt": "Count the layer first: what is the area of ONE circular layer? Then stack it: how many layers tall? In pi r squared h, the r is the radius (half the diameter), and it gets SQUARED first. Find r squared, multiply by 3.14, then multiply by the height.",
         "praise": "You squared the radius before multiplying -- that keeps the base area right."
       },
       "vocabulary": [
@@ -267,6 +281,18 @@
         "if_fail": "7GM3-F1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Stack five identical coins or checkers. One coin is a layer -- its face is the circle's area. The stack's height counts the layers."
+        },
+        {
+          "kind": "ask",
+          "text": "If one layer of unit cubes holds about 50 cubes, how many cubes are in a stack 10 layers tall? What is the height DOING in the formula?"
+        },
+        {
+          "kind": "say",
+          "text": "V = pi r squared times h is exactly that: cubes in one layer, times the number of layers. The base area counts; the height stacks."
+        },
         {
           "kind": "show",
           "text": "Write 'A cylinder has radius 2 and height 5. Volume in terms of pi?'"
@@ -342,7 +368,7 @@
           "time_minutes": 10,
           "grouping": "small_group",
           "materials": [
-            "Card set of 10 cylinders, some labeled with a radius and some with a diameter"
+            "Card set of 8 cylinders, some labeled with a radius and some with a diameter"
           ],
           "instructions": "1. Sort every card into 'radius given' or 'diameter given.'\n2. On each diameter card, write the radius (half the diameter) before doing anything else.\n3. For four cards (two of each kind) compute the volume using 3.14 for pi.\n4. Debrief: what is the very first thing you do when a cylinder gives you a diameter?",
           "content": {
@@ -776,7 +802,7 @@
         "type": "skill",
         "skill_id": "7GM3-S1"
       },
-      "i_do_script": "Sometimes I'm handed the volume and have to find a missing measurement, so I run the formula backwards by dividing. Watch a cylinder with volume 471 and radius 5 (using 3.14). V = pi r squared h, so 471 = 3.14 times 25 times h, which is 471 = 78.5 h. Divide: h = 471 divided by 78.5 = 6. If instead the RADIUS is missing, I divide the same way to get r squared, then take the square root -- because the formula squared it. For a composite, I subtract the prism I know, then divide to find the missing side.",
+      "i_do_script": "A cylinder is just a stack of identical pancake layers, one layer per unit of height -- so its volume is base area times the number of layers, and any missing measurement is hiding somewhere in that stack picture. Sometimes I'm handed the volume and have to find a missing measurement, so I run the formula backwards by dividing. Watch a cylinder with volume 471 and radius 5 (using 3.14). V = pi r squared h, so 471 = 3.14 times 25 times h, which is 471 = 78.5 h. Divide: h = 471 divided by 78.5 = 6. If instead the RADIUS is missing, I divide the same way to get r squared, then take the square root -- because the formula squared it. For a composite, I subtract the prism I know, then divide to find the missing side.",
       "canonical_error": {
         "pattern": "When the radius is unknown, reports r squared as the radius (skips the square root), or divides out only the height and forgets pi",
         "example": "For volume 1413 and height 18 (using 3.14), computes r squared = 1413 / (3.14 x 18) = 25 but answers 25 instead of the square root, 5",
@@ -807,7 +833,7 @@
       ],
       "redirect_script": {
         "stop": "You found r squared -- is that the radius yet?",
-        "prompt": "To find the missing measurement, divide the volume by everything else. For a radius, the formula squared it, so finish by taking the square root of your answer.",
+        "prompt": "Go back to the picture: dividing everything else out leaves the radius-SQUARE, an r by r patch of tiles -- what is the side of that patch? To find the missing measurement, divide the volume by everything else. For a radius, the formula squared it, so finish by taking the square root of your answer.",
         "praise": "You divided out the rest and took the square root -- that's the real radius."
       },
       "vocabulary": [
@@ -829,6 +855,18 @@
         "if_fail": "7GM3-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Picture the cylinder as a stack of pancake layers, each 1 unit tall. Every layer holds exactly the base area: 3.14 x 5 x 5 = 78.5 cubic units."
+        },
+        {
+          "kind": "ask",
+          "text": "The whole cylinder holds 471. How many 78.5-unit layers does it take to fill up to 471?"
+        },
+        {
+          "kind": "say",
+          "text": "471 / 78.5 = 6 layers -- the height IS the layer count. And when the RADIUS is the missing one, the same dividing leaves the base's radius-square, r x r -- a square patch of tiles -- so the last move is asking what side length, times itself, makes that patch."
+        },
         {
           "kind": "show",
           "text": "Write 'Cylinder volume 471, radius 5 (use 3.14). Find the height.'"
@@ -940,7 +978,7 @@
                 "category": "Missing height or side (divide)"
               },
               {
-                "text": "V = 78.5, h = 10, find radius",
+                "text": "V = 628, h = 8, find radius",
                 "category": "Missing radius (divide, then square root)"
               }
             ]
@@ -1073,7 +1111,7 @@
         "type": "skill",
         "skill_id": "7GM3-S1"
       },
-      "i_do_script": "In a real-world problem the volume is only step one; the question asks for something else, so I finish with one more operation. Watch a cylindrical dog-food container, radius 5 and height 18, where the dog eats 18.84 cubic inches a day. First the volume: 3.14 times 25 times 18 = 1413 cubic inches. But the question is how many DAYS, so I divide: 1413 divided by 18.84 = 75 days. The trap is stopping at 1413 -- that's the volume, not the answer the story wanted.",
+      "i_do_script": "Read the last line of the story before touching a formula: it asks for DAYS, not cubic inches. The volume is just the size of the food pile -- the answer is how many daily scoops fit in that pile. In a real-world problem the volume is only step one; the question asks for something else, so I finish with one more operation. Watch a cylindrical dog-food container, radius 5 and height 18, where the dog eats 18.84 cubic inches a day. First the volume: 3.14 times 25 times 18 = 1413 cubic inches. But the question is how many DAYS, so I divide: 1413 divided by 18.84 = 75 days. The trap is stopping at 1413 -- that's the volume, not the answer the story wanted.",
       "canonical_error": {
         "pattern": "Computes the cylinder's volume correctly but stops there, or does the wrong final operation, never answering the real-world question",
         "example": "For a 1413-cubic-inch container and a dog eating 18.84 per day, answers 1413 (the volume) or multiplies 1413 x 18.84, instead of dividing 1413 / 18.84 = 75 days",
@@ -1104,7 +1142,7 @@
       ],
       "redirect_script": {
         "stop": "Is that the volume, or the actual thing the question asked for?",
-        "prompt": "The volume is step one. Reread the question -- it wants days, gallons, or cans. Take the volume and do one more operation (usually divide) to answer it.",
+        "prompt": "Look at your units: is that cubic inches of food pile, or days? Each day one 18.84 scoop comes out -- count the scoops. The volume is step one. Reread the question -- it wants days, gallons, or cans. Take the volume and do one more operation (usually divide) to answer it.",
         "praise": "You used the volume to answer the real question -- that second step is the point."
       },
       "vocabulary": [
@@ -1127,6 +1165,18 @@
       },
       "worked_example_script": [
         {
+          "kind": "ask",
+          "text": "Before any math: what kind of number does this question hand back at the end -- cubic inches of food, or a number of DAYS the food lasts?"
+        },
+        {
+          "kind": "show",
+          "text": "Sketch the container as a big pile of food, and next to it a daily scoop labeled 18.84 cubic inches. Each day, one scoop leaves the pile."
+        },
+        {
+          "kind": "say",
+          "text": "So the plan has two steps: first find how big the pile is -- the volume, 3.14 x 25 x 18 = 1413 cubic inches -- then count how many 18.84 scoops fit inside it. That second step, the division, is what actually answers the question."
+        },
+        {
           "kind": "show",
           "text": "Write 'Container radius 5, height 18. Dog eats 18.84 per day. Days? (use 3.14)'"
         },
@@ -1144,7 +1194,7 @@
         },
         {
           "kind": "ask",
-          "text": "Your turn: a tank radius 10, height 21; one gallon is 231 cubic in. How many gallons? (use 3.14)"
+          "text": "Your turn: a tank radius 7, height 15; one gallon is 231 cubic in. How many gallons? (use 3.14 -- the volume is 2307.9, just about 10 gallons)"
         }
       ],
       "practice_problems": [
@@ -1336,7 +1386,7 @@
         "type": "skill",
         "skill_id": "7GM3-S1"
       },
-      "i_do_script": "Some problems put a cylinder inside a box, so I work with both shapes at once. Watch a cylindrical candle, radius 3.5 and height 8, packed in the smallest rectangular box. The box's base must be as wide as the candle all the way across -- that's the DIAMETER, 2 times 3.5 = 7. So the box is 7 by 7 by 8, and its volume is 7 times 7 times 8 = 392 cubic inches. If the question wants the EMPTY space, I subtract the candle's volume from the box. The trap is using the radius 3.5 for the box side -- the box has to fit the full width, not the halfway distance.",
+      "i_do_script": "Look straight down at the candle from above: the box's base is a square drawn AROUND that circle, so its side has to reach from one edge of the circle all the way to the other -- the full across, not the center-to-edge trip. Some problems put a cylinder inside a box, so I work with both shapes at once. Watch a cylindrical candle, radius 3.5 and height 8, packed in the smallest rectangular box. The box's base must be as wide as the candle all the way across -- that's the DIAMETER, 2 times 3.5 = 7. So the box is 7 by 7 by 8, and its volume is 7 times 7 times 8 = 392 cubic inches. If the question wants the EMPTY space, I subtract the candle's volume from the box. The trap is using the radius 3.5 for the box side -- the box has to fit the full width, not the halfway distance.",
       "canonical_error": {
         "pattern": "Uses the radius (instead of the diameter) as the box's side length, making the box too small",
         "example": "For a candle of radius 3.5, makes the box 3.5 by 3.5 by 8 = 98 instead of 7 by 7 by 8 = 392, because the box side must span the diameter 2 x 3.5 = 7",
@@ -1389,6 +1439,18 @@
         "if_fail": "7GM3-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw the candle's circular base as seen from above, and draw the smallest square that fits around it. The square's side has to touch the circle on both sides -- one edge all the way across to the other."
+        },
+        {
+          "kind": "ask",
+          "text": "Is that edge-to-edge reach the radius, 3.5, or the full width? Try sliding a 3.5-wide square over the circle: it only covers from the center to one edge -- half the candle pokes out."
+        },
+        {
+          "kind": "say",
+          "text": "The square's side must be the DIAMETER, 2 x 3.5 = 7. So the smallest box is 7 by 7 on the base and 8 tall, and only then does the candle actually fit inside."
+        },
         {
           "kind": "show",
           "text": "Write 'Candle radius 3.5, height 8. Smallest box volume?'"
@@ -1625,7 +1687,7 @@
         "type": "skill",
         "skill_id": "7GM3-S2"
       },
-      "i_do_script": "The hardest problems take material AWAY: a solid brick with cylindrical holes drilled through it. Watch a brick 4 by 6 by 8 with three holes of radius 1 drilled through the 8-inch length. Solid brick: 4 times 6 times 8 = 192. Each hole is a cylinder with radius 1 and height 8 (the length it goes through): 3.14 times 1 times 8 = 25.12. Three holes remove 3 times 25.12 = 75.36. Material left: 192 minus 75.36 = 116.64 cubic inches. The idea flips from adding pieces to SUBTRACTING every hollow -- once for each hole.",
+      "i_do_script": "Look at the brick end-on: the three circles on that face are three tunnels of MISSING material running the whole 8-inch length. Emptiness never adds to a solid -- and every tunnel counts. The hardest problems take material AWAY: a solid brick with cylindrical holes drilled through it. Watch a brick 4 by 6 by 8 with three holes of radius 1 drilled through the 8-inch length. Solid brick: 4 times 6 times 8 = 192. Each hole is a cylinder with radius 1 and height 8 (the length it goes through): 3.14 times 1 times 8 = 25.12. Three holes remove 3 times 25.12 = 75.36. Material left: 192 minus 75.36 = 116.64 cubic inches. The idea flips from adding pieces to SUBTRACTING every hollow -- once for each hole.",
       "canonical_error": {
         "pattern": "Adds the cylinder volume instead of subtracting it, or removes only one hole when several were drilled",
         "example": "For a 192-cubic-inch brick with three radius-1 holes through the 8-in length, computes 192 + 75.36, or subtracts only one hole (192 - 25.12 = 166.88), instead of 192 - 3 x 25.12 = 116.64",
@@ -1656,7 +1718,7 @@
       ],
       "redirect_script": {
         "stop": "Are those holes adding material or taking it away?",
-        "prompt": "A drilled hole removes a cylinder of material, so SUBTRACT it -- and subtract once for every hole. Find the solid volume, then take away all the cylinders.",
+        "prompt": "Count the circles on the end face out loud: how many tunnels of empty space run through this brick, and does empty space add or remove? A drilled hole removes a cylinder of material, so SUBTRACT it -- and subtract once for every hole. Find the solid volume, then take away all the cylinders.",
         "praise": "You subtracted every hole from the solid -- that's the leftover material."
       },
       "vocabulary": [
@@ -1678,6 +1740,46 @@
         "if_fail": "7GM3-S2"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Sketch the brick's end face -- 6 wide and 4 tall -- and mark the centers of the THREE drilled circles in a row across it, at 1, 3, and 5 (each hole has radius 1, so the circles just clear each other). Each circle is the mouth of a tunnel of empty space running the full 8-inch length.",
+          "visual": {
+            "type": "coordinate_grid",
+            "x_range": [
+              0,
+              6
+            ],
+            "y_range": [
+              0,
+              4
+            ],
+            "points": [
+              {
+                "x": 1,
+                "y": 2,
+                "label": "hole 1"
+              },
+              {
+                "x": 3,
+                "y": 2,
+                "label": "hole 2"
+              },
+              {
+                "x": 5,
+                "y": 2,
+                "label": "hole 3"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Does drilling put material INTO the brick or take it OUT? And how many tunnels of emptiness do you see on that face -- one, or three?"
+        },
+        {
+          "kind": "say",
+          "text": "Each tunnel removes one whole cylinder of material, 3.14 x 1 x 1 x 8 = 25.12, and there are three tunnels -- so 3 x 25.12 = 75.36 comes OUT of the brick before we can say what is left."
+        },
         {
           "kind": "show",
           "text": "Write 'Brick 4 by 6 by 8, three holes radius 1 through the 8-in length. Material left? (use 3.14)'"

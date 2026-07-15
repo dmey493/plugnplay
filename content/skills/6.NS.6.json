@@ -49,7 +49,7 @@
         "description": "Fluent recall of multiplication and division facts through 12 x 12",
         "check_question": "What is 6 x 7? What number times 8 gives 56?"
       },
-      "i_do_script": "Every skill in this standard leans on fast facts. Watch me find a missing factor: 6 x __ = 42. I ask 'six times WHAT is 42?' and skip-count if I need to: 6, 12, 18, 24, 30, 36, 42 -- that's seven sixes, so the missing factor is 7. Don't lecture; just fire quick facts at the student and let them build speed.",
+      "i_do_script": "The 6s facts live on a ladder -- 6, 12, 18, 24, 30, 36, 42, 48 -- and every product is its own rung: 42 is the seventh rung up, 48 is the eighth. A missing-factor question is just asking which rung a number sits on. Every skill in this standard leans on fast facts. Watch me find a missing factor: 6 x __ = 42. I ask 'six times WHAT is 42?' and skip-count if I need to: 6, 12, 18, 24, 30, 36, 42 -- that's seven sixes, so the missing factor is 7. Don't lecture; just fire quick facts at the student and let them build speed.",
       "canonical_error": {
         "pattern": "Recalls a nearby fact instead of the right one, or can't run a fact backward (missing factor)",
         "example": "For 6 x __ = 42, the student answers 8 because they remember '48' living near the 6s row",
@@ -166,6 +166,10 @@
         "if_fail": "Review multiplication facts with skip-counting and a facts chart before returning."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the 6s ladder up the board: 6, 12, 18, 24, 30, 36, 42, 48. Tap each rung and raise a finger per tap -- 42 takes seven taps, 48 takes eight. They're neighboring rungs, which is exactly why they're easy to mix up; the ladder settles which is which."
+        },
         {
           "kind": "show",
           "text": "Write on the board: 6 x __ = 42."
@@ -1160,15 +1164,14 @@
       ],
       "activities": [
         {
-          "type": "game",
-          "title": "Skip-Count Showdown",
-          "time_minutes": 10,
+          "type": "error_analysis",
+          "title": "Fix Marcus's List",
+          "time_minutes": 8,
           "grouping": "pairs",
           "materials": [
-            "Mini whiteboards",
-            "One pair card per round (like 4 & 6, 3 & 5, 6 & 9, 8 & 10)"
+            "Printed slip of Marcus's work: correct multiples lists for 6 and 8, answer '2 because 2 goes into both'"
           ],
-          "instructions": "1. Flip a pair card. Partner A skip-counts the first number out loud while writing the row; Partner B does the second number at the same time.\n2. The FIRST partner to spot a number sitting in both rows circles it and calls 'LCM!'\n3. Verify together: is it really in both rows? Is there an earlier shared number?\n4. Debrief: why is the LCM never smaller than the bigger number on the card?"
+          "instructions": "1. Pairs read Marcus's work. Both multiples lists are correct: 6, 12, 18, 24, 30, ... and 8, 16, 24, 32, ...\n2. Marcus answered 2 'because 2 goes into both.' Pairs name the exact wrong move: he hunted for a number that fits INSIDE both numbers (a factor) instead of the first number BOTH lists reach (a multiple).\n3. Pairs circle the first number that appears on both lists (24) and write the fix in one sentence, using the size test: the LCM can never be smaller than the bigger number, because multiples GROW.\n4. Debrief: how could Marcus have known 2 was impossible before reading a single list entry?"
         },
         {
           "type": "matching",
@@ -1211,6 +1214,17 @@
               "45"
             ]
           }
+        },
+        {
+          "type": "game",
+          "title": "Skip-Count Showdown",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Mini whiteboards",
+            "One pair card per round (like 4 & 6, 3 & 5, 6 & 9, 8 & 10)"
+          ],
+          "instructions": "1. Flip a pair card. Partner A skip-counts the first number out loud while writing the row; Partner B does the second number at the same time.\n2. The FIRST partner to spot a number sitting in both rows circles it and calls 'LCM!'\n3. Verify together: is it really in both rows? Is there an earlier shared number?\n4. Debrief: why is the LCM never smaller than the bigger number on the card?"
         }
       ],
       "strategy_links": [
@@ -1314,7 +1328,7 @@
         "type": "skill",
         "skill_id": "6NS6-S1"
       },
-      "i_do_script": "No lists this time -- we build them. Find the GCF of 15 and 20 with me. Factors of 15: I hunt in pairs -- 1 x 15, 3 x 5 -- so 1, 3, 5, 15. Factors of 20: 1 x 20, 2 x 10, 4 x 5 -- so 1, 2, 4, 5, 10, 20. Common factors: 1 and 5. The GCF is 5. Say the question back before you start: greatest common FACTOR means factor lists, which STOP -- if you catch yourself skip-counting upward, you've wandered into LCM territory.",
+      "i_do_script": "A factor is a tile that fills a strip exactly. Draw a strip 20 long: a 5-tile fits four times with no gap, so 5 is a factor of 20 -- and no tile bigger than the strip could ever fit inside it. The greatest common factor of 15 and 20 is just the biggest tile that fills BOTH strips. No lists this time -- we build them. Find the GCF of 15 and 20 with me. Factors of 15: I hunt in pairs -- 1 x 15, 3 x 5 -- so 1, 3, 5, 15. Factors of 20: 1 x 20, 2 x 10, 4 x 5 -- so 1, 2, 4, 5, 10, 20. Common factors: 1 and 5. The GCF is 5. Say the question back before you start: greatest common FACTOR means factor lists, which STOP -- if you catch yourself skip-counting upward, you've wandered into LCM territory.",
       "canonical_error": {
         "pattern": "Swaps GCF and LCM -- lists multiples instead of factors and reports the first shared multiple as the 'GCF'",
         "example": "Asked for the GCF of 6 and 8, the student writes 6, 12, 18, 24 and 8, 16, 24, then answers 24",
@@ -1377,6 +1391,48 @@
         "if_fail": "6NS6-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a strip 20 units long and test a 5-tile against it: 5, 10, 15, 20 -- four tiles, no gap, no overhang. So 5 is a factor of 20: it fits INSIDE.",
+          "visual": {
+            "type": "tape_diagram",
+            "label": "20 filled by 5-tiles",
+            "segments": [
+              {
+                "span": 5,
+                "label": "5",
+                "shaded": true
+              },
+              {
+                "span": 5,
+                "label": "5",
+                "shaded": true
+              },
+              {
+                "span": 5,
+                "label": "5",
+                "shaded": true
+              },
+              {
+                "span": 5,
+                "label": "5",
+                "shaded": true
+              }
+            ],
+            "end_labels": [
+              "0",
+              "20"
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "Try the same 5-tile on a strip 15 long: does it fill exactly? (5, 10, 15 -- three tiles, no gap.) Now try to lay a 20-tile inside the 15-strip. Can a tile BIGGER than the strip ever fit inside it?"
+        },
+        {
+          "kind": "say",
+          "text": "That's what 'factor' means: a tile that fits inside, so a factor can never be bigger than the number itself. The GCF of 15 and 20 is the biggest tile that fills both strips -- the factor lists we build next are just an organized hunt for that tile."
+        },
         {
           "kind": "show",
           "text": "Write: 'What is the greatest common factor of 15 and 20?' Underline the word 'factor.'"
@@ -1772,7 +1828,7 @@
             "A number line to 60 on the board or on register tape",
             "Two colors of sticky dots or markers"
           ],
-          "instructions": "1. Assign the pair 6 and 8. One student marks every multiple of 6 in one color; another marks every multiple of 8 in the second color.\n2. The group calls out the first number wearing BOTH colors. That's the LCM.\n3. Ask: where do the colors land together next (48)? What do you notice about 24, 48, ...?\n4. Debrief: why did the colors meet before 6 x 8 = 48... wait, they DID meet at 24. What does that say about the multiply shortcut?"
+          "instructions": "1. Assign the pair 6 and 8. One student marks every multiple of 6 in one color; another marks every multiple of 8 in the second color.\n2. The group calls out the first number wearing BOTH colors. That's the LCM.\n3. Ask: where do the colors land together next (48)? What do you notice about 24, 48, ...?\n4. Debrief: the multiply shortcut predicts 6 x 8 = 48, but the colors first met at 24 -- BEFORE 48. When does multiplying the two numbers overshoot the real LCM, and why?"
         },
         {
           "type": "card_sort",
@@ -1843,7 +1899,7 @@
         },
         {
           "strategy_id": "strat-math-003",
-          "why": "Leo's 72 is a one-line error students love to catch -- and catching it teaches when multiplying is and isn't legal."
+          "why": "The 'Shortcut Legal or Illegal?' sort turns the multiply shortcut into a case-by-case verdict -- students catch exactly when multiplying the two numbers overshoots the real LCM."
         },
         {
           "strategy_id": "strat-math-007",

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { PROJECTION_THEMES, THEME_ORDER, type ThemeId, type ThemeConfig } from "@/lib/projection-themes";
 import { InlineDiagram, MathText, type RenderData } from "./InlineMath";
 import DrawingOverlay from "./DrawingOverlay";
+import GroupsButton from "@/components/groups/GroupsButton";
 
 interface ProjItem {
   stem: string;
@@ -67,7 +68,9 @@ interface ArtifactDef {
  *  stage itself. */
 export interface TeacherGuide {
   i_do_script?: string;
-  worked_example_script?: Array<{ kind: string; text: string }>;
+  // `visual` puts the step's model (hundredths grid, bar model, number
+  // line…) on screen instead of leaving it as words the teacher reads.
+  worked_example_script?: Array<{ kind: string; text: string; visual?: RenderData }>;
   canonical_error?: { pattern: string; example: string; why?: string };
   redirect_script?: { stop: string; prompt: string; praise: string };
   sentence_starters?: string[];
@@ -410,6 +413,11 @@ export default function SkillProjectionRunner({
           </button>
         )}
 
+        <GroupsButton
+          isDark={theme.isDark}
+          className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-xs font-semibold backdrop-blur-sm transition-colors hover:opacity-80 ${theme.isDark ? "border-white/15 bg-black/30 text-white" : "border-pnp-gray-200 bg-white/85 text-pnp-navy"}`}
+        />
+
         <button
           onClick={() => router.back()}
           className={`rounded-full border ${theme.isDark ? "border-white/15 bg-black/30" : "border-pnp-gray-200 bg-white/85"} px-4 py-1.5 text-xs font-semibold backdrop-blur-sm transition-colors hover:opacity-80 ${theme.isDark ? "text-white" : "text-pnp-navy"}`}
@@ -437,6 +445,9 @@ export default function SkillProjectionRunner({
         {mode === "problems" && slide?.kind === "worked" && workedSolution && (
           <WorkedStage
             ws={workedSolution}
+            modelVisual={
+              teacherGuide?.worked_example_script?.find((s) => s.visual)?.visual ?? null
+            }
             reveal={reveal}
             onReveal={advanceReveal}
             revealLabel={revealLabel}
@@ -683,7 +694,14 @@ function PresenterPanel({
                     >
                       {s.kind}
                     </span>
-                    <span className="text-white/90">{s.text}</span>
+                    <span className="min-w-0 text-white/90">
+                      {s.text}
+                      {s.visual && (
+                        <span className="mt-1.5 block rounded-lg bg-white/10 p-2 [&_svg]:h-auto [&_svg]:max-w-full">
+                          <InlineDiagram data={s.visual} />
+                        </span>
+                      )}
+                    </span>
                   </li>
                 ))}
               </ol>
@@ -1113,12 +1131,18 @@ function FluencyStage({
 
 function WorkedStage({
   ws,
+  modelVisual,
   reveal,
   onReveal,
   revealLabel,
   theme,
 }: {
   ws: WorkedSolution;
+  /** Ground model from the worked_example_script (first step with a
+   *  `visual`). Projected when the worked solution has no visual of its
+   *  own, so the representation the script talks through is actually on
+   *  screen for students. */
+  modelVisual?: RenderData | null;
   reveal: number;
   onReveal: () => void;
   revealLabel: string;
@@ -1127,6 +1151,7 @@ function WorkedStage({
   const steps = ws.steps ?? [];
   const shownSteps = Math.min(reveal, steps.length);
   const showAnswer = reveal > steps.length;
+  const stageVisual = ws.render_data ?? modelVisual;
 
   return (
     <div className="flex h-full w-full max-w-6xl flex-col items-center justify-center">
@@ -1136,9 +1161,9 @@ function WorkedStage({
         <p className="text-center text-[clamp(1.5rem,3vw,2.6rem)] font-bold leading-tight">
           <MathText text={ws.stem} />
         </p>
-        {ws.render_data && (
+        {stageVisual && (
           <div className="mt-6 flex justify-center [&_svg]:h-auto [&_svg]:max-h-[36vh] [&_svg]:w-[clamp(320px,52%,560px)]">
-            <InlineDiagram data={ws.render_data} />
+            <InlineDiagram data={stageVisual} />
           </div>
         )}
         <div className="mx-auto mt-8 max-w-3xl space-y-4">

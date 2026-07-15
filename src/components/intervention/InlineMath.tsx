@@ -18,6 +18,30 @@ export interface RenderData {
   ticks?: number[];
   point_value?: number | null;
   point_label?: string;
+  // hundredths_grid: a 10×10 grid with `shaded` cells filled row-major.
+  shaded?: number;
+  label?: string;
+  // bar_model (percent bar / tape diagram): segments laid left-to-right,
+  // each with a relative span; shaded segments fill. `end_labels` prints
+  // under the bar's two ends (e.g. ["0%", "100%"]).
+  segments?: Array<{ span: number; label?: string; shaded?: boolean }>;
+  end_labels?: [string, string];
+  // fraction_bars: stacked bars, each split into `parts` with `shaded`
+  // filled from the left.
+  bars?: Array<{ parts: number; shaded?: number; label?: string }>;
+  // double_number_line: two parallel lines whose ticks align vertically —
+  // tick values are labels (numbers or strings like "?", "25%"), evenly
+  // spaced, NOT positioned by value. Mirrors the engine's drawer.
+  top_ticks?: Array<number | string>;
+  bottom_ticks?: Array<number | string>;
+  top_label?: string;
+  bottom_label?: string;
+  // data_table: headers + string rows; orientation "horizontal" renders
+  // headers as row labels down the first column.
+  headers?: string[];
+  rows?: string[][];
+  title?: string;
+  orientation?: "vertical" | "horizontal";
 }
 
 // Tokenizer regexes. We split the stem into "math runs" — contiguous
@@ -459,6 +483,301 @@ export function SvgFigure({ html, maxWidth = 360 }: { html: string; maxWidth?: n
 }
 
 /**
+ * A 10×10 hundredths grid with `shaded` cells filled row-major (full rows
+ * first). The workhorse model for percent/decimal/fraction equivalence —
+ * "30 shaded squares IS 30/100 IS 0.30 IS 30%". `shaded: 0` (or omitted)
+ * renders a blank grid for students to shade.
+ */
+export function HundredthsGrid({
+  data,
+  size = 240,
+  strokeColor = "currentColor",
+}: {
+  data: RenderData;
+  size?: number;
+  strokeColor?: string;
+}) {
+  const shaded = Math.max(0, Math.min(100, data.shaded ?? 0));
+  const pad = 4;
+  const cell = (size - 2 * pad) / 10;
+  const cells = Array.from({ length: 100 }, (_, i) => i);
+  return (
+    <div className="inline-flex flex-col items-center gap-1">
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="block" role="img">
+        {cells.map((i) => {
+          const col = i % 10;
+          const row = Math.floor(i / 10);
+          return (
+            <rect
+              key={i}
+              x={pad + col * cell}
+              y={pad + row * cell}
+              width={cell}
+              height={cell}
+              stroke={strokeColor}
+              strokeOpacity={0.45}
+              strokeWidth={0.75}
+              fill={i < shaded ? strokeColor : "none"}
+              fillOpacity={i < shaded ? 0.55 : 0}
+            />
+          );
+        })}
+        <rect x={pad} y={pad} width={cell * 10} height={cell * 10}
+              stroke={strokeColor} strokeWidth={1.75} fill="none" />
+      </svg>
+      {data.label && <span className="text-sm font-semibold opacity-80">{data.label}</span>}
+    </div>
+  );
+}
+
+/**
+ * A percent bar / tape diagram: one horizontal bar split into segments,
+ * each with a relative `span`, optional label inside, and optional shading.
+ * `end_labels` prints under the two ends (e.g. ["0%", "100%"] or
+ * ["$0", "$150"]). This is the model for reverse-percent, tax/tip bases,
+ * and ratio tape diagrams.
+ */
+export function BarModel({
+  data,
+  width = 380,
+  strokeColor = "currentColor",
+}: {
+  data: RenderData;
+  width?: number;
+  strokeColor?: string;
+}) {
+  const segments = data.segments ?? [];
+  if (segments.length === 0) return null;
+  const totalSpan = segments.reduce((a, s) => a + (s.span || 1), 0);
+  const pad = 6;
+  const barH = 40;
+  const height = barH + (data.end_labels ? 24 : 10) + 2 * pad;
+  const innerW = width - 2 * pad;
+  let x = pad;
+  const rects = segments.map((s, i) => {
+    const w = ((s.span || 1) / totalSpan) * innerW;
+    const r = { x, w, label: s.label, shaded: !!s.shaded, key: i };
+    x += w;
+    return r;
+  });
+  return (
+    <div className="inline-flex flex-col items-center gap-1">
+      <svg width="100%" height={height} viewBox={`0 0 ${width} ${height}`}
+           preserveAspectRatio="xMidYMid meet" className="block max-w-[440px]" role="img">
+        {rects.map((r) => (
+          <g key={r.key}>
+            <rect x={r.x} y={pad} width={r.w} height={barH}
+                  stroke={strokeColor} strokeWidth={1.25}
+                  fill={r.shaded ? strokeColor : "none"}
+                  fillOpacity={r.shaded ? 0.35 : 0} />
+            {r.label && (
+              <text x={r.x + r.w / 2} y={pad + barH / 2 + 4}
+                    textAnchor="middle" fontSize={13} fontWeight={600}
+                    fill={strokeColor}>
+                {r.label}
+              </text>
+            )}
+          </g>
+        ))}
+        {data.end_labels && (
+          <>
+            <text x={pad} y={pad + barH + 16} textAnchor="start" fontSize={12} fill={strokeColor}>
+              {data.end_labels[0]}
+            </text>
+            <text x={width - pad} y={pad + barH + 16} textAnchor="end" fontSize={12} fill={strokeColor}>
+              {data.end_labels[1]}
+            </text>
+          </>
+        )}
+      </svg>
+      {data.label && <span className="text-sm font-semibold opacity-80">{data.label}</span>}
+    </div>
+  );
+}
+
+/**
+ * Stacked fraction bars: each bar splits into `parts` equal pieces with
+ * `shaded` filled from the left. Two bars with the same shaded width and
+ * different parts make equivalence visible; a 3-vs-3/4 pair grounds
+ * "how many 3/4s fit in 3?" measurement division.
+ */
+export function FractionBars({
+  data,
+  width = 380,
+  strokeColor = "currentColor",
+}: {
+  data: RenderData;
+  width?: number;
+  strokeColor?: string;
+}) {
+  const bars = data.bars ?? [];
+  if (bars.length === 0) return null;
+  const pad = 6;
+  const barH = 30;
+  const gap = 12;
+  const labelW = 44;
+  const height = bars.length * (barH + gap) - gap + 2 * pad;
+  const innerW = width - 2 * pad - labelW;
+  return (
+    <div className="inline-flex flex-col items-center gap-1">
+      <svg width="100%" height={height} viewBox={`0 0 ${width} ${height}`}
+           preserveAspectRatio="xMidYMid meet" className="block max-w-[440px]" role="img">
+        {bars.map((b, bi) => {
+          const y = pad + bi * (barH + gap);
+          const parts = Math.max(1, b.parts);
+          const cw = innerW / parts;
+          return (
+            <g key={bi}>
+              {b.label && (
+                <text x={pad + labelW - 8} y={y + barH / 2 + 4}
+                      textAnchor="end" fontSize={13} fontWeight={600} fill={strokeColor}>
+                  {b.label}
+                </text>
+              )}
+              {Array.from({ length: parts }).map((_, i) => (
+                <rect key={i}
+                      x={pad + labelW + i * cw} y={y} width={cw} height={barH}
+                      stroke={strokeColor} strokeOpacity={0.6} strokeWidth={0.9}
+                      fill={i < (b.shaded ?? 0) ? strokeColor : "none"}
+                      fillOpacity={i < (b.shaded ?? 0) ? 0.45 : 0} />
+              ))}
+              <rect x={pad + labelW} y={y} width={innerW} height={barH}
+                    stroke={strokeColor} strokeWidth={1.5} fill="none" />
+            </g>
+          );
+        })}
+      </svg>
+      {data.label && <span className="text-sm font-semibold opacity-80">{data.label}</span>}
+    </div>
+  );
+}
+
+/**
+ * Two parallel number lines whose ticks align vertically — THE ratio/unit-
+ * rate model. Ticks are evenly spaced labels (numbers, "?", "25%"…), so a
+ * missing value renders as its own tick for students to reason about.
+ */
+export function DoubleNumberLine({
+  data,
+  width = 400,
+  strokeColor = "currentColor",
+}: {
+  data: RenderData;
+  width?: number;
+  strokeColor?: string;
+}) {
+  const top = data.top_ticks ?? [];
+  const bottom = data.bottom_ticks ?? [];
+  const n = Math.max(top.length, bottom.length);
+  if (n < 2) return null;
+  const labelW = Math.max((data.top_label ?? "").length, (data.bottom_label ?? "").length) > 0 ? 78 : 8;
+  const pad = 14;
+  const height = 84;
+  const topY = 26;
+  const botY = 64;
+  const x1 = labelW + pad;
+  const x2 = width - pad;
+  const step = (x2 - x1) / (n - 1);
+  const fmt = (v: number | string) =>
+    typeof v === "number" ? (Number.isInteger(v) ? String(v) : String(Math.round(v * 100) / 100)) : String(v);
+
+  const line = (y: number, ticks: Array<number | string>, label: string | undefined, labelAbove: boolean) => (
+    <g>
+      {label && (
+        <text x={labelW - 4} y={y + 4} textAnchor="end" fontSize={12} fontWeight={600} fill={strokeColor}>
+          {label}
+        </text>
+      )}
+      <line x1={x1 - 6} y1={y} x2={x2 + 6} y2={y} stroke={strokeColor} strokeWidth={1.5} />
+      <polyline points={`${x2 + 1},${y - 4} ${x2 + 7},${y} ${x2 + 1},${y + 4}`}
+                fill="none" stroke={strokeColor} strokeWidth={1.5} />
+      {ticks.map((t, i) => (
+        <g key={i}>
+          <line x1={x1 + i * step} y1={y - 4} x2={x1 + i * step} y2={y + 4}
+                stroke={strokeColor} strokeWidth={1.25} />
+          <text x={x1 + i * step} y={labelAbove ? y - 9 : y + 17}
+                textAnchor="middle" fontSize={12} fontWeight={fmt(t) === "?" ? 700 : 400}
+                fill={strokeColor}>
+            {fmt(t)}
+          </text>
+        </g>
+      ))}
+    </g>
+  );
+
+  return (
+    <svg width="100%" height={height} viewBox={`0 0 ${width} ${height}`}
+         preserveAspectRatio="xMidYMid meet" className="block max-w-[480px]" role="img">
+      {/* faint alignment guides tie the paired ticks together */}
+      {Array.from({ length: n }).map((_, i) => (
+        <line key={`g-${i}`} x1={x1 + i * step} y1={topY + 4} x2={x1 + i * step} y2={botY - 4}
+              stroke={strokeColor} strokeOpacity={0.18} strokeWidth={0.8} strokeDasharray="2 3" />
+      ))}
+      {line(topY, top, data.top_label, true)}
+      {line(botY, bottom, data.bottom_label, false)}
+    </svg>
+  );
+}
+
+/**
+ * Simple data table (frequency tables, ratio tables, coordinate tables).
+ * Inherits the slide's text color; borders ride on currentColor so it works
+ * on every projection theme.
+ */
+export function DataTable({ data }: { data: RenderData }) {
+  const headers = data.headers ?? [];
+  const rows = data.rows ?? [];
+  if (headers.length === 0 && rows.length === 0) return null;
+  const horizontal = data.orientation === "horizontal";
+  return (
+    <div className="inline-flex flex-col items-center gap-1">
+      {data.title && <span className="text-sm font-semibold opacity-80">{data.title}</span>}
+      <table className="border-collapse text-current" style={{ fontVariantNumeric: "tabular-nums" }}>
+        {horizontal ? (
+          <tbody>
+            {headers.map((h, r) => (
+              <tr key={r}>
+                <th className="border border-current/40 bg-current/10 px-3 py-1.5 text-left text-sm font-bold">
+                  {h}
+                </th>
+                {rows.map((row, c) => (
+                  <td key={c} className="border border-current/40 px-3 py-1.5 text-center text-sm">
+                    {row[r]}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        ) : (
+          <>
+            <thead>
+              <tr>
+                {headers.map((h, i) => (
+                  <th key={i} className="border border-current/40 bg-current/10 px-3 py-1.5 text-sm font-bold">
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, r) => (
+                <tr key={r}>
+                  {row.map((cell, c) => (
+                    <td key={c} className="border border-current/40 px-3 py-1.5 text-center text-sm">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </>
+        )}
+      </table>
+    </div>
+  );
+}
+
+/**
  * Top-level dispatch: given a render_data block, returns the right
  * component. Used by ProblemsStage so it doesn't have to switch on type.
  */
@@ -479,6 +798,21 @@ export function InlineDiagram({
   }
   if (type === "coordinate_grid") {
     return <CoordinateGrid data={data} strokeColor={strokeColor} />;
+  }
+  if (type === "hundredths_grid") {
+    return <HundredthsGrid data={data} strokeColor={strokeColor} />;
+  }
+  if (type === "bar_model" || type === "percent_bar" || type === "tape_diagram") {
+    return <BarModel data={data} strokeColor={strokeColor} />;
+  }
+  if (type === "fraction_bars") {
+    return <FractionBars data={data} strokeColor={strokeColor} />;
+  }
+  if (type === "double_number_line") {
+    return <DoubleNumberLine data={data} strokeColor={strokeColor} />;
+  }
+  if (type === "data_table") {
+    return <DataTable data={data} />;
   }
   if (type === "svg_html" || data.svg_html) {
     return <SvgFigure html={data.svg_html ?? ""} />;

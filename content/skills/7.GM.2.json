@@ -49,7 +49,7 @@
         "description": "Know that the diameter of a circle is twice the radius and the radius is half the diameter.",
         "check_question": "A circle has a diameter of 10 cm. What is its radius?"
       },
-      "i_do_script": "The radius reaches from the center of a circle to its edge; the diameter goes all the way across through the center. The diameter is always TWICE the radius, and the radius is always HALF the diameter. Watch: if the diameter is 10, the radius is 10 divided by 2 = 5. If the radius is 7, the diameter is 2 times 7 = 14. Every circle formula is built on the radius, so the first thing I do with any circle is figure out the radius.",
+      "i_do_script": "Fold a circle in half and the crease is the diameter -- and from the center dot, that crease is exactly two radius-trips laid end to end, one out to each edge. The radius reaches from the center of a circle to its edge; the diameter goes all the way across through the center. The diameter is always TWICE the radius, and the radius is always HALF the diameter. Watch: if the diameter is 10, the radius is 10 divided by 2 = 5. If the radius is 7, the diameter is 2 times 7 = 14. Every circle formula is built on the radius, so the first thing I do with any circle is figure out the radius.",
       "canonical_error": {
         "pattern": "Treats the radius and diameter as the same number, or halves and doubles in the wrong direction",
         "example": "Given a diameter of 10, says the radius is 10 (or given a radius of 5, says the diameter is 5)",
@@ -84,7 +84,7 @@
       ],
       "redirect_script": {
         "stop": "Wait — which is bigger, the radius or the diameter?",
-        "prompt": "The diameter goes all the way across, so it is DOUBLE the radius. To get the radius, cut the diameter in half; to get the diameter, double the radius.",
+        "prompt": "Mark the center on the across-line first: it splits the diameter into two equal radius pieces -- which measure is the doubled one? The diameter goes all the way across, so it is DOUBLE the radius. To get the radius, cut the diameter in half; to get the diameter, double the radius.",
         "praise": "You halved the diameter to get the radius — that's the r and d relationship."
       },
       "vocabulary": [
@@ -102,6 +102,20 @@
         "if_fail": "Review radius and diameter (6.GM.3)."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw the circle's across-line as a segment from 0 to 16 with the center dot at 8. The center cuts the 16 cm diameter into two equal radius pieces: 0 to 8, and 8 to 16 -- each radius is 8.",
+          "visual": {
+            "type": "number_line_point",
+            "ticks": [
+              0,
+              8,
+              16
+            ],
+            "point_value": 8,
+            "point_label": "center"
+          }
+        },
         {
           "kind": "show",
           "text": "Write 'A circle has a diameter of 16 cm. Find the radius.'"
@@ -135,7 +149,7 @@
         "description": "Evaluate a number squared (n²) as n times n, not n times 2.",
         "check_question": "What is 5 squared (5²)?"
       },
-      "i_do_script": "Squaring a number means multiplying it by ITSELF, not by 2. Watch: 5 squared, written 5², means 5 times 5 = 25 — not 5 times 2 = 10. The little 2 is an exponent; it tells me how many times to use the number as a factor. In the area formula A = πr², the r² means radius times radius, so if the radius is 6, r² = 6 times 6 = 36.",
+      "i_do_script": "r squared literally builds a SQUARE -- a patch of tiles r wide and r tall. An 8 by 8 patch holds 64 tiles, while doubling 8 only gives you two thin rows of it. Squaring a number means multiplying it by ITSELF, not by 2. Watch: 5 squared, written 5², means 5 times 5 = 25 — not 5 times 2 = 10. The little 2 is an exponent; it tells me how many times to use the number as a factor. In the area formula A = πr², the r² means radius times radius, so if the radius is 6, r² = 6 times 6 = 36.",
       "canonical_error": {
         "pattern": "Doubles the base instead of multiplying it by itself",
         "example": "Computes 6² as 12 (6 times 2) instead of 36 (6 times 6)",
@@ -170,7 +184,7 @@
       ],
       "redirect_script": {
         "stop": "Wait — does the little 2 mean 'times 2'?",
-        "prompt": "The exponent 2 means multiply the number by ITSELF: 6² is 6 times 6, not 6 times 2. Write it out as 6 x 6 before you multiply.",
+        "prompt": "Look at the tile square: is 16 the whole 8 by 8 square, or just two rows of it? The exponent 2 means multiply the number by ITSELF: 6² is 6 times 6, not 6 times 2. Write it out as 6 x 6 before you multiply.",
         "praise": "You multiplied the number by itself — that's squaring."
       },
       "vocabulary": [
@@ -188,6 +202,56 @@
         "if_fail": "Review exponents (6.AF.1)."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Sketch a square of tiles 8 across and 8 up. Two rows alone hold 16 tiles -- that is all doubling gets you. Count the whole square: 8 rows of 8 = 64 tiles.",
+          "visual": {
+            "type": "fraction_bars",
+            "label": "8 rows of 8 tiles = 64 tiles",
+            "bars": [
+              {
+                "parts": 8,
+                "shaded": 8,
+                "label": "row 1"
+              },
+              {
+                "parts": 8,
+                "shaded": 8,
+                "label": "row 2"
+              },
+              {
+                "parts": 8,
+                "shaded": 8,
+                "label": "row 3"
+              },
+              {
+                "parts": 8,
+                "shaded": 8,
+                "label": "row 4"
+              },
+              {
+                "parts": 8,
+                "shaded": 8,
+                "label": "row 5"
+              },
+              {
+                "parts": 8,
+                "shaded": 8,
+                "label": "row 6"
+              },
+              {
+                "parts": 8,
+                "shaded": 8,
+                "label": "row 7"
+              },
+              {
+                "parts": 8,
+                "shaded": 8,
+                "label": "row 8"
+              }
+            ]
+          }
+        },
         {
           "kind": "show",
           "text": "Write 'r = 8. Find r².'"
@@ -222,7 +286,7 @@
         "type": "skill",
         "skill_id": "7GM2-F1"
       },
-      "i_do_script": "Circumference is the distance around a circle. There are two forms of the same formula: C = 2πr if I have the radius, or C = πd if I have the diameter. Watch, radius 5: C = 2π(5) = 10π, about 31.42. If instead I'm given the diameter 10, I use C = πd = π(10) = 10π — the same answer, because that circle's radius is 5. The trap: if I'm handed a DIAMETER of 10 and drop it into 2πr as if it were the radius, I get 20π — double the real circumference.",
+      "i_do_script": "Pi is a measured fact before it's a formula: wrap a string around any circular lid, then lay that string along the lid's diameter -- it fits a little more than 3 times, every lid, every size. That 'a little more than 3' is pi, about 3.14, and it's WHY the circumference formula is C = pi d: the distance around is always pi diameters. If I'm given the radius instead, the diameter is twice it, so the same formula wears a second form: C = 2 pi r. Watch, radius 5: C = 2 pi (5) = 10 pi, about 31.42. Given the diameter 10 instead: C = pi (10) = 10 pi -- same circle, same answer. The trap: a DIAMETER of 10 dropped into 2 pi r as if it were the radius doubles the answer. Sanity check every result against the meaning: the distance around is just over 3 diameters.",
       "canonical_error": {
         "pattern": "Uses the diameter in place of the radius in C = 2πr, doubling the circumference",
         "example": "Given a diameter of 10, computes 2π(10) = 20π instead of πd = 10π (or 2π(5) = 10π)",
@@ -253,7 +317,7 @@
       ],
       "redirect_script": {
         "stop": "Is that number the radius or the diameter?",
-        "prompt": "Check what you were given. If it's the radius, use C = 2πr. If it's the diameter, use C = πd (don't double it). When in doubt, find the radius first.",
+        "prompt": "Check against the meaning first: the distance around is a bit more than 3 diameters -- does your answer fit that? Check what you were given. If it's the radius, use C = 2πr. If it's the diameter, use C = πd (don't double it). When in doubt, find the radius first.",
         "praise": "You matched the formula to what you were given — radius with 2πr, diameter with πd."
       },
       "vocabulary": [
@@ -271,6 +335,18 @@
         "if_fail": "7GM2-F1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Hold up a circular lid. Wrap a string once around its rim, then lay the string straight along the diameter, marking off how many diameters fit."
+        },
+        {
+          "kind": "ask",
+          "text": "How many diameters did the string cover -- a little more than how many? Would a bigger lid change that count?"
+        },
+        {
+          "kind": "say",
+          "text": "Every circle's rim is a little more than 3 diameters -- exactly pi of them. That IS the formula: C = pi d, and since d = 2r, also C = 2 pi r."
+        },
         {
           "kind": "show",
           "text": "Write 'A circle has a radius of 6 m. Find the circumference in terms of π.'"
@@ -346,6 +422,19 @@
         }
       ],
       "activities": [
+        {
+          "type": "hands_on",
+          "title": "The Lid Lab: Measure Pi",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "3-4 circular lids or cans of different sizes",
+            "String",
+            "Rulers",
+            "Recording table (C, d, C/d)"
+          ],
+          "instructions": "1. Each group measures two lids: string around the rim for C, ruler across the middle for d. Record both in cm.\n2. Compute C divided by d for every lid and add each result to a class table on the board.\n3. Look down the column: big lids, small lids -- what number does C/d keep landing near?\n4. Debrief: that constant IS pi. Write C/d = pi, so C = pi d. Where does C = 2 pi r come from?\n5. Keep the class table posted -- when a circumference answer looks off, check it against 'a bit more than 3 diameters.'"
+        },
         {
           "type": "card_sort",
           "title": "Which Circumference Form?",
@@ -520,7 +609,7 @@
         "type": "skill",
         "skill_id": "7GM2-F2"
       },
-      "i_do_script": "Area is the space inside a circle, and the formula is A = πr². Two things to watch: I must use the RADIUS, and I must SQUARE it. Watch, radius 4: A = π(4²) = π(16) = 16π, about 50.27 square units. If I'm given a diameter of 8 instead, I first halve it to the radius 4, then square. The two classic mistakes: using the diameter as the radius (π·8² = 64π, four times too big), or forgetting to square (π·4 = 4π).",
+      "i_do_script": "The area formula A = pi r squared has a picture: draw a circle on grid paper, then draw the square that sits on its radius -- an r-by-r square. Count how many of those radius squares it takes to cover the circle: more than 3, less than 4 ... about 3.14 of them. A circle's area IS pi radius-squares -- that's all the formula says. Watch, radius 4: r squared = 16 (one radius square), so A = pi (16) = 16 pi, about 50.27 square units. Two things to watch: use the RADIUS (a diameter of 8 halves to 4 first), and SQUARE it. The classic mistakes: using the diameter as the radius (pi times 8 squared = 64 pi -- four times too big, since the picture would use squares four times too large), or forgetting to square at all.",
       "canonical_error": {
         "pattern": "Uses the diameter as the radius in A = πr² (making the area four times too big), or forgets to square the radius",
         "example": "Given a diameter of 10, computes π(10²) = 100π instead of π(5²) = 25π; or computes π(5) = 5π by not squaring",
@@ -561,7 +650,7 @@
       ],
       "redirect_script": {
         "stop": "Did you use the radius, and did you square it?",
-        "prompt": "Area is A = πr². First make sure you have the RADIUS (halve the diameter if needed), then SQUARE it before multiplying by π.",
+        "prompt": "Picture the radius square: the area is about 3 of them. Does your answer fit that count? Area is A = πr². First make sure you have the RADIUS (halve the diameter if needed), then SQUARE it before multiplying by π.",
         "praise": "You used the radius and squared it — that's A = πr² done right."
       },
       "vocabulary": [
@@ -579,6 +668,18 @@
         "if_fail": "7GM2-F2"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a circle of radius 4 on grid paper, then shade the 4-by-4 square sitting on its radius -- one 'radius square' of 16 grid cells."
+        },
+        {
+          "kind": "ask",
+          "text": "About how many of those radius squares would it take to cover the whole circle? More than 3? As many as 4?"
+        },
+        {
+          "kind": "say",
+          "text": "It takes about 3.14 radius squares -- pi of them. A = pi r squared is that count written down: pi copies of the r-by-r square."
+        },
         {
           "kind": "show",
           "text": "Write 'A circle has a radius of 4 cm. Find the area in terms of π.'"
@@ -654,6 +755,17 @@
         }
       ],
       "activities": [
+        {
+          "type": "hands_on",
+          "title": "Radius Squares",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper (or the grid-paper printable)",
+            "Compasses or circle templates"
+          ],
+          "instructions": "1. Pairs draw a circle of radius 5 on grid paper and the 5-by-5 radius square beside it (25 cells).\n2. Count the full and partial grid cells inside the circle (halves count as halves). Record the circle's cell count.\n3. Divide the circle's count by 25. What multiple of the radius square did you get? Compare across pairs.\n4. Debrief: everyone lands near 3.14 -- the circle holds pi radius squares, so A = pi r squared.\n5. Flash check: why would using the DIAMETER square (10 by 10) wreck the count? (Each square is 4 times too big.)"
+        },
         {
           "type": "card_sort",
           "title": "Radius or Diameter First?",
@@ -788,7 +900,7 @@
           },
           {
             "math": "check: 16π ≈ 50.27",
-            "annotation": "Bigger than the radius, in square units — reasonable."
+            "annotation": "About 3 radius squares: 3 x 16 = 48, and 16π ≈ 50.27 lands just past it — reasonable."
           }
         ]
       },
@@ -831,7 +943,7 @@
         "type": "skill",
         "skill_id": "7GM2-S1"
       },
-      "i_do_script": "Here I'm given the circumference and I work backwards to a radius or diameter. I start from C = 2πr. Watch, circumference 14π: 14π = 2πr. The π cancels, and I divide by 2: r = 14/2 = 7. If they want the diameter, it's double: d = 14. Shortcut: since C = πd, the diameter is just the coefficient of π — for 14π, d = 14, and the radius is half. The trap is dividing by π only and calling that the radius — that gives the DIAMETER, not the radius.",
+      "i_do_script": "Unroll a circle's rim into a straight ribbon and the ribbon is always pi DIAMETERS long -- so when a circumference is written with a pi in it, the number next to the pi is the whole across-distance, not the radius. Here I'm given the circumference and I work backwards to a radius or diameter. I start from C = 2πr. Watch, circumference 14π: 14π = 2πr. The π cancels, and I divide by 2: r = 14/2 = 7. If they want the diameter, it's double: d = 14. Shortcut: since C = πd, the diameter is just the coefficient of π — for 14π, d = 14, and the radius is half. The trap is dividing by π only and calling that the radius — that gives the DIAMETER, not the radius.",
       "canonical_error": {
         "pattern": "Divides the circumference by π and reports that as the radius (it is the diameter), forgetting to also divide by 2",
         "example": "For a circumference of 14π, computes 14π/π = 14 and calls 14 the radius, instead of r = 14/2 = 7",
@@ -862,7 +974,7 @@
       ],
       "redirect_script": {
         "stop": "Is that number the radius or the diameter?",
-        "prompt": "Circumference is 2πr, so dividing by π gives 2r — the DIAMETER. To get the radius, divide by 2 as well. Read the question: does it want the radius or the diameter?",
+        "prompt": "Unroll it first: the number in front of pi is the full across-distance -- point to where the radius stops on that line. Circumference is 2πr, so dividing by π gives 2r — the DIAMETER. To get the radius, divide by 2 as well. Read the question: does it want the radius or the diameter?",
         "praise": "You divided all the way to the radius — dividing by π alone stops at the diameter."
       },
       "vocabulary": [
@@ -880,6 +992,28 @@
         "if_fail": "7GM2-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Unroll the rim of the circle into a ribbon. The ribbon is pi diameters long, so a rim of 18 pi cm means the diameter is 18 -- that 18 is the full trip ACROSS the circle."
+        },
+        {
+          "kind": "ask",
+          "text": "Put that across-trip on a line from 0 to 18 with the center at 9. Is the radius the whole line, or only the piece from the center to the edge?",
+          "visual": {
+            "type": "number_line_point",
+            "ticks": [
+              0,
+              9,
+              18
+            ],
+            "point_value": 9,
+            "point_label": "center"
+          }
+        },
+        {
+          "kind": "say",
+          "text": "Dividing by pi only unrolls you back to the diameter, 18. The radius is the half-trip from the center: 18 / 2 = 9 cm."
+        },
         {
           "kind": "show",
           "text": "Write 'A circle has a circumference of 18π cm. Find the radius.'"
@@ -1121,7 +1255,7 @@
         "type": "skill",
         "skill_id": "7GM2-S2"
       },
-      "i_do_script": "Given the area, I work backwards to the radius — and this one needs a square ROOT. I start from A = πr². Watch, area 49π: 49π = πr². The π cancels, leaving r² = 49, so r = the square root of 49 = 7. For the diameter, double it: d = 14. The step students skip is the square root — once you reach r² = 49, you are NOT done; the radius is 7, not 49.",
+      "i_do_script": "Think of r squared as an actual square drawn on the radius -- one corner at the center, r along each side. An area of 36 pi says that radius-square holds 36 tiles, and the radius is the SIDE of the square, not the tile count. Given the area, I work backwards to the radius — and this one needs a square ROOT. I start from A = πr². Watch, area 49π: 49π = πr². The π cancels, leaving r² = 49, so r = the square root of 49 = 7. For the diameter, double it: d = 14. The step students skip is the square root — once you reach r² = 49, you are NOT done; the radius is 7, not 49.",
       "canonical_error": {
         "pattern": "Divides the area by π but forgets the square root, reporting r² as the radius",
         "example": "For an area of 49π, gets r² = 49 and reports the radius as 49 instead of √49 = 7",
@@ -1162,7 +1296,7 @@
       ],
       "redirect_script": {
         "stop": "You found r² — is that the radius?",
-        "prompt": "Area is πr², so dividing by π gives r², not r. Take the square root to get the radius. Ask yourself: what number times itself gives that result?",
+        "prompt": "Look at the radius-square: your number is how many tiles FILL it -- what is the length of one side? Area is πr², so dividing by π gives r², not r. Take the square root to get the radius. Ask yourself: what number times itself gives that result?",
         "praise": "You took the square root — that's what undoes the squaring in the area formula."
       },
       "vocabulary": [
@@ -1180,6 +1314,18 @@
         "if_fail": "7GM2-S2"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw the square that sits on the circle's radius: one corner at the center, r along each side. A = pi r squared says the circle holds pi of those squares -- so an area of 36 pi means each radius-square holds 36 unit tiles."
+        },
+        {
+          "kind": "ask",
+          "text": "If a square holds 36 tiles, how long is one side? Could the side be 36 -- wouldn't a 36 by 36 square hold way more than 36 tiles?"
+        },
+        {
+          "kind": "say",
+          "text": "36 is the whole square's tile count -- that is r squared. The radius is the SIDE of that square: 6 cm, because 6 x 6 = 36."
+        },
         {
           "kind": "show",
           "text": "Write 'A circle has an area of 36π sq cm. Find the radius.'"

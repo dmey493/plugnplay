@@ -49,7 +49,7 @@
         "description": "Multiply and divide single-digit numbers from memory",
         "check_question": "What is 6 x 4? What is 24 / 4?"
       },
-      "i_do_script": "Every ratio problem in this unit comes down to one multiplication or division fact -- like 32 divided by 4 is 8, then 7 times 8 is 56. If the facts are slow, the ratio thinking falls apart, so we practice them until they're automatic. If you don't know a fact, use one you DO know: 6 x 7 is 6 x 5 plus 6 x 2, so 30 + 12 = 42.",
+      "i_do_script": "A fact has a picture: 32 / 4 asks how many rows of 4 fill 32 dots -- 8 rows. And a stuck fact can be rebuilt from a known one: 7 x 8 is 7 x 7 plus one more 7. Every ratio problem in this unit comes down to one multiplication or division fact -- like 32 divided by 4 is 8, then 7 times 8 is 56. If the facts are slow, the ratio thinking falls apart, so we practice them until they're automatic. If you don't know a fact, use one you DO know: 6 x 7 is 6 x 5 plus 6 x 2, so 30 + 12 = 42.",
       "canonical_error": {
         "pattern": "Cannot recall multiplication or division facts, so every ratio scaling step produces a wrong multiplier or wrong product",
         "example": "To scale 7:4 up to 32, the student needs 32 / 4 = 8 but says 6, then gets 7 x 6 = 42 instead of 56",
@@ -168,6 +168,52 @@
       "worked_example_script": [
         {
           "kind": "show",
+          "text": "Show 32 as a bar of equal groups of 4 -- count the groups.",
+          "visual": {
+            "type": "bar_model",
+            "label": "32 split into groups of 4",
+            "segments": [
+              {
+                "span": 1,
+                "label": "4"
+              },
+              {
+                "span": 1,
+                "label": "4"
+              },
+              {
+                "span": 1,
+                "label": "4"
+              },
+              {
+                "span": 1,
+                "label": "4"
+              },
+              {
+                "span": 1,
+                "label": "4"
+              },
+              {
+                "span": 1,
+                "label": "4"
+              },
+              {
+                "span": 1,
+                "label": "4"
+              },
+              {
+                "span": 1,
+                "label": "4"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "How many groups of 4 make 32? So what multiplication fact is hiding inside 32 / 4?"
+        },
+        {
+          "kind": "show",
           "text": "Write on the board: 32 / 4 = ?"
         },
         {
@@ -223,7 +269,7 @@
         "description": "Compare two quantities using 'for every' language",
         "check_question": "A bowl has 3 apples and 5 bananas. Finish the sentence: 'For every 3 apples there are ___ bananas.'"
       },
-      "i_do_script": "A ratio compares two amounts IN ORDER. If a fruit bowl has 3 apples and 5 bananas, the ratio of apples to bananas is 3:5 -- apples were named first, so 3 comes first. The same bowl gives a different ratio, 5:3, if someone asks for bananas to apples. Order is the whole game.",
+      "i_do_script": "The question's phrase does the setup work: it builds two labeled boxes in its own order, and the story just supplies the numbers that fill them -- each number into the box wearing its name. A ratio compares two amounts IN ORDER. If a fruit bowl has 3 apples and 5 bananas, the ratio of apples to bananas is 3:5 -- apples were named first, so 3 comes first. The same bowl gives a different ratio, 5:3, if someone asks for bananas to apples. Order is the whole game.",
       "canonical_error": {
         "pattern": "Writes the two numbers in the order they appear in the story instead of the order the question names them",
         "example": "'A class has 12 boys and 14 girls. Write the ratio of girls to boys.' Student writes 12:14 because 12 appeared first in the sentence, instead of 14:12",
@@ -316,6 +362,10 @@
         "if_fail": "Act ratios out with two colors of counters. Say the ratio sentence while pointing: '3 apples' (touch 3 red) 'for every 5 bananas' (touch 5 yellow). Repeat with the question order flipped."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the question's phrase 'girls to boys' big, and draw an empty box under each word. The boxes were built by the QUESTION, in the question's order -- before we even glance at the story's 12 and 14, each box already says which number it will accept."
+        },
         {
           "kind": "show",
           "text": "Write on the board: 'A class has 12 boys and 14 girls. Write the ratio of girls to boys.'"
@@ -1046,17 +1096,6 @@
           }
         },
         {
-          "type": "game",
-          "title": "Rate Table Race",
-          "time_minutes": 10,
-          "grouping": "small_group",
-          "materials": [
-            "Mini whiteboards",
-            "Timer"
-          ],
-          "instructions": "1. Write a rate on the board, e.g. '$7 per ticket.'\n2. Call out a number of units ('9 tickets!'). Every student writes the total on their whiteboard and holds it up.\n3. After three rounds, switch to a TOTAL clue ('$36 for 4 tickets -- now 6 tickets!') so students must divide first.\n4. A team scores a point only if EVERY member's board is correct -- teammates check each other.\n5. Debrief: what extra step showed up when the clue was a total instead of a rate?"
-        },
-        {
           "type": "error_analysis",
           "title": "The $455 Babysitter",
           "time_minutes": 8,
@@ -1070,6 +1109,17 @@
             "error_step": "The student used $65 -- the pay for FIVE hours -- as if it were the pay for ONE hour.",
             "why": "An amount is only a unit rate if it covers exactly one unit. When it covers several, divide first: 65 / 5 = $13 per hour, then 13 x 7 = $91."
           }
+        },
+        {
+          "type": "game",
+          "title": "Rate Table Race",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Mini whiteboards",
+            "Timer"
+          ],
+          "instructions": "1. Write a rate on the board, e.g. '$7 per ticket.'\n2. Call out a number of units ('9 tickets!'). Every student writes the total on their whiteboard and holds it up.\n3. After three rounds, switch to a TOTAL clue ('$36 for 4 tickets -- now 6 tickets!') so students must divide first.\n4. A team scores a point only if EVERY member's board is correct -- teammates check each other.\n5. Debrief: what extra step showed up when the clue was a total instead of a rate?"
         }
       ],
       "strategy_links": [
@@ -1683,7 +1733,7 @@
         "type": "skill",
         "skill_id": "6RP4-S3"
       },
-      "i_do_script": "When the numbers get big, the table gets long -- so we compress the strategy into one expression. Popcorn buckets sell in a ratio of large to small of 3:2, and 324 SMALL buckets were sold. The given amount is small buckets, so divide by SMALL's ratio part: 324 / 2 = 162. Then multiply by large's part: 162 x 3 = 486. The whole strategy is one line: (324 / 2) x 3. Divide by the part that matches the given, multiply by the part you want.",
+      "i_do_script": "Under every ratio expression there's a picture of equal boxes: 3 boxes for large, 2 boxes for small, every box holding the same amount. The 324 fills the SMALL row, so it spreads across small's 2 boxes -- and that picture is exactly what the expression compresses. When the numbers get big, the table gets long -- so we compress the strategy into one expression. Popcorn buckets sell in a ratio of large to small of 3:2, and 324 SMALL buckets were sold. The given amount is small buckets, so divide by SMALL's ratio part: 324 / 2 = 162. Then multiply by large's part: 162 x 3 = 486. The whole strategy is one line: (324 / 2) x 3. Divide by the part that matches the given, multiply by the part you want.",
       "canonical_error": {
         "pattern": "Divides the given amount by the wrong ratio part -- sets up (given / other part) x matching part, a reversed setup",
         "example": "Large to small is 3:2 and 324 small buckets were sold. Student writes (324 / 3) x 2 = 216 instead of (324 / 2) x 3 = 486",
@@ -1691,7 +1741,7 @@
       },
       "redirect_script": {
         "stop": "Pause -- which ratio number belongs to the amount you were GIVEN?",
-        "prompt": "Label each ratio number with its unit: 3 = large, 2 = small. You were given SMALL buckets, so divide by small's number. Rewrite your expression with the labels attached.",
+        "prompt": "Sketch the boxes first: how many boxes does SMALL own, and which row does the 324 fill? Label each ratio number with its unit: 3 = large, 2 = small. You were given SMALL buckets, so divide by small's number. Rewrite your expression with the labels attached.",
         "praise": "You matched the given amount to its own ratio part before dividing -- that's the whole setup."
       },
       "item_template": "A two-part item (spec's At-proficiency MP shape): a ratio a:b with a large given amount of the second quantity (triple-digit allowed). Part A: write the expression (given / its part) x other part. Part B: evaluate it. Also MC items on choosing the correct expression.",
@@ -1745,6 +1795,38 @@
         "if_fail": "Go back to S3 and solve the same problems WITH the table visible; then write the expression next to the table so the student sees the two are the same moves."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw the small-bucket row: 2 equal boxes that together hold all 324 small buckets. (Above it, sketch the large row: 3 boxes of the exact same size, contents unknown.)",
+          "visual": {
+            "type": "tape_diagram",
+            "label": "small buckets = 324",
+            "segments": [
+              {
+                "span": 1,
+                "label": "?",
+                "shaded": true
+              },
+              {
+                "span": 1,
+                "label": "?",
+                "shaded": true
+              }
+            ],
+            "end_labels": [
+              "0",
+              "324"
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "The 324 fills the 2 small boxes equally -- how much sits in each box? And could dividing 324 by 3 ever tell you what's in a SMALL box, when small only owns 2 boxes?"
+        },
+        {
+          "kind": "say",
+          "text": "Each box holds 324 / 2 = 162, and large owns 3 boxes of that same size: 162 x 3 = 486 large buckets. The expression (324 / 2) x 3 is just this box picture written in one line."
+        },
         {
           "kind": "show",
           "text": "Write: 'Large to small popcorn buckets are sold in a ratio of 3:2. The theater sold 324 small buckets. How many large buckets?'"
@@ -2536,17 +2618,6 @@
           }
         },
         {
-          "type": "game",
-          "title": "Which Deal Wins?",
-          "time_minutes": 10,
-          "grouping": "pairs",
-          "materials": [
-            "Mini whiteboards",
-            "Comparison cards"
-          ],
-          "instructions": "1. Post a comparison card, e.g. 'Team A scores 3 goals every 2 games; Team B scores 4 goals every 3 games. Both play 12 games.'\n2. Partner 1 scales Team A, Partner 2 scales Team B -- each on their own board (A: 18 goals, B: 16 goals).\n3. Boards together: write the comparison sentence ('A scores 2 more').\n4. Swap roles each round. A pair scores only if BOTH boards and the sentence are right.\n5. Last round: a card where the tempting direct comparison picks the WRONG winner -- discuss."
-        },
-        {
           "type": "card_sort",
           "title": "Fair or Unfair Comparison?",
           "time_minutes": 8,
@@ -2588,6 +2659,17 @@
               }
             ]
           }
+        },
+        {
+          "type": "game",
+          "title": "Which Deal Wins?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Mini whiteboards",
+            "Comparison cards"
+          ],
+          "instructions": "1. Post a comparison card, e.g. 'Team A scores 3 goals every 2 games; Team B scores 4 goals every 3 games. Both play 12 games.'\n2. Partner 1 scales Team A, Partner 2 scales Team B -- each on their own board (A: 18 goals, B: 16 goals).\n3. Boards together: write the comparison sentence ('A scores 2 more').\n4. Swap roles each round. A pair scores only if BOTH boards and the sentence are right.\n5. Last round: a card where the tempting direct comparison picks the WRONG winner -- discuss."
         }
       ],
       "strategy_links": [

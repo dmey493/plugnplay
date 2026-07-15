@@ -49,7 +49,7 @@
         "description": "Multiply single-digit numbers from memory",
         "check_question": "What is 6 x 6?"
       },
-      "i_do_script": "Powers are built out of plain multiplication facts, so the facts have to come fast. Watch me do one chain out loud: 3 x 3 is 9, and 9 x 3 is 27 -- I never tried to hold the whole thing in my head, I just did one small fact at a time. If a fact isn't automatic yet, use a fact you DO know to get there: 6 x 6 is 36 because 6 x 5 is 30 and one more 6 makes 36.",
+      "i_do_script": "A chain like 4 x 4 x 4 never asks for more than one small fact at a time -- cover the tail with your hand and only 4 x 4 is looking at you. Write its answer down, slide your hand, and repeat. Powers are built out of plain multiplication facts, so the facts have to come fast. Watch me do one chain out loud: 3 x 3 is 9, and 9 x 3 is 27 -- I never tried to hold the whole thing in my head, I just did one small fact at a time. If a fact isn't automatic yet, use a fact you DO know to get there: 6 x 6 is 36 because 6 x 5 is 30 and one more 6 makes 36.",
       "canonical_error": {
         "pattern": "Cannot recall multiplication facts or loses track mid-chain, so every exponent evaluation collapses into counting errors",
         "example": "For 4 x 4 x 4, student gets 4 x 4 = 16 correctly but then computes 16 x 4 as 54 or gives up",
@@ -164,6 +164,10 @@
       "worked_example_script": [
         {
           "kind": "show",
+          "text": "Write 4 x 4 x 4 and cover the last 4 with your hand: the problem shrinks to plain 4 x 4. Write 16 on the paper, slide your hand off, and the whole chain has become 16 x 4 -- one small fact at a time, with the running answer living on the paper instead of in your head."
+        },
+        {
+          "kind": "show",
           "text": "Write on the board: 4 x 4 x 4."
         },
         {
@@ -224,7 +228,7 @@
         "description": "Multiply two fractions (numerator x numerator over denominator x denominator)",
         "check_question": "What is 1/2 x 1/2?"
       },
-      "i_do_script": "Before we can raise a fraction to a power, we have to be able to multiply two fractions. Watch: 2/3 x 2/3. I multiply the tops -- 2 x 2 = 4 -- and I multiply the bottoms -- 3 x 3 = 9 -- so the answer is 4/9. Both jobs happen every time: the top AND the bottom. Notice the answer, 4/9, is SMALLER than 2/3 -- taking two-thirds of two-thirds leaves you with less.",
+      "i_do_script": "Start with the picture: 2/3 x 2/3 means two-thirds OF two-thirds -- a piece of a piece -- so the answer must come out SMALLER than 2/3. An answer bigger than one whole bar, like 4/3, fails the picture before any arithmetic happens. Before we can raise a fraction to a power, we have to be able to multiply two fractions. Watch: 2/3 x 2/3. I multiply the tops -- 2 x 2 = 4 -- and I multiply the bottoms -- 3 x 3 = 9 -- so the answer is 4/9. Both jobs happen every time: the top AND the bottom. Notice the answer, 4/9, is SMALLER than 2/3 -- taking two-thirds of two-thirds leaves you with less.",
       "canonical_error": {
         "pattern": "Multiplies the numerators but leaves the denominator alone (or adds the denominators)",
         "example": "Computes 2/3 x 2/3 = 4/3 instead of 4/9",
@@ -232,7 +236,7 @@
       },
       "redirect_script": {
         "stop": "Wait -- the bottom number has a job too.",
-        "prompt": "A fraction is TWO numbers, and multiplying fractions is TWO multiplications. Draw an arrow across the tops and multiply them. Now draw an arrow across the bottoms and multiply those. Both arrows, every time.",
+        "prompt": "Check the size first: you took a piece OF a piece -- can the answer be bigger than a whole bar? A fraction is TWO numbers, and multiplying fractions is TWO multiplications. Draw an arrow across the tops and multiply them. Now draw an arrow across the bottoms and multiply those. Both arrows, every time.",
         "praise": "You multiplied the tops AND the bottoms -- that's the complete move."
       },
       "item_template": "Multiply two simple fractions (same or different), denominators through 6, no simplifying required. NR, no choices, short stems for fluency use.",
@@ -313,6 +317,26 @@
         "if_fail": "Review grade-5 fraction multiplication with an area model (fold a paper in half, then take half of that) before raising fractions to powers."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Shade 2 of 3 parts of a bar -- that's 2/3. Now take two-thirds of just the shaded part: slice every third into 3 slivers, making 9 slivers in the whole bar, and you keep 4 of them. You end with LESS than you started with -- so an answer like 4/3, more than the whole bar, can't be right.",
+          "visual": {
+            "type": "fraction_bars",
+            "label": "2/3 of 2/3",
+            "bars": [
+              {
+                "parts": 3,
+                "shaded": 2,
+                "label": "2/3"
+              },
+              {
+                "parts": 9,
+                "shaded": 4,
+                "label": "2/3 of 2/3 = 4/9"
+              }
+            ]
+          }
+        },
         {
           "kind": "show",
           "text": "Write on the board: 2/3 x 2/3."
@@ -921,17 +945,6 @@
       ],
       "activities": [
         {
-          "type": "game",
-          "title": "Power Tower Race",
-          "time_minutes": 10,
-          "grouping": "pairs",
-          "materials": [
-            "One die per pair",
-            "Scratch paper"
-          ],
-          "instructions": "1. Player A rolls the die twice: first roll is the base, second roll is the exponent (re-roll exponents of 1).\n2. BOTH players write the expanded form, then race to evaluate one step at a time, writing every running product.\n3. Answers must match; if they don't, the players compare running products line by line to find where the chains split.\n4. A player who writes base x exponent anywhere loses the round instantly -- name it out loud: 'the exponent is a counter.'\n5. Debrief: which chains were longest, and how did writing the running product save you?"
-        },
-        {
           "type": "error_analysis",
           "title": "Keisha's Shortcut That Wasn't",
           "time_minutes": 8,
@@ -956,6 +969,17 @@
             "Paper folded into 6 squares labeled 2^1 through 2^6"
           ],
           "instructions": "1. Groups place 2 beans on the 2^1 square, then DOUBLE into each next square: 4, 8, 16, 32, 64.\n2. Before each doubling, groups predict: will adding 2 more beans match? (That's what base-times-exponent thinking predicts: 2 x 2 = 4, 2 x 3 = 6, 2 x 4 = 8...)\n3. Compare the bean counts to the base-times-exponent predictions written beside each square: 4 vs 4, 8 vs 6, 16 vs 8, 32 vs 10, 64 vs 12.\n4. Debrief: where do the two patterns split apart, and why does the power grow so much faster?"
+        },
+        {
+          "type": "game",
+          "title": "Power Tower Race",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "One die per pair",
+            "Scratch paper"
+          ],
+          "instructions": "1. Player A rolls the die twice: first roll is the base, second roll is the exponent (re-roll exponents of 1).\n2. BOTH players write the expanded form, then race to evaluate one step at a time, writing every running product.\n3. Answers must match; if they don't, the players compare running products line by line to find where the chains split.\n4. A player who writes base x exponent anywhere loses the round instantly -- name it out loud: 'the exponent is a counter.'\n5. Debrief: which chains were longest, and how did writing the running product save you?"
         }
       ],
       "strategy_links": [
@@ -1069,7 +1093,7 @@
         "type": "skill",
         "skill_id": "6NS8-S1"
       },
-      "i_do_script": "The base of a power doesn't have to be a whole number -- it can be a decimal, like 2.3^6. The notation works exactly the same way: the exponent counts copies of the WHOLE base. So 2.3^6 means 2.3 x 2.3 x 2.3 x 2.3 x 2.3 x 2.3 -- six copies of 2.3. Today we're not computing that monster; we're learning to recognize and write the correct expanded form, because choosing between 2.3 x 2.3 x ... and the trap answer 2.3 x 6 is the whole game.",
+      "i_do_script": "Referee the exponent's meaning with a tiny case first: 2.3^2 means 2.3 x 2.3 = 5.29, while 2.3 x 2 is only 4.6 -- different numbers, so an exponent cannot mean 'times.' It COUNTS copies of the base being multiplied, and the count is all that grows. The base of a power doesn't have to be a whole number -- it can be a decimal, like 2.3^6. The notation works exactly the same way: the exponent counts copies of the WHOLE base. So 2.3^6 means 2.3 x 2.3 x 2.3 x 2.3 x 2.3 x 2.3 -- six copies of 2.3. Today we're not computing that monster; we're learning to recognize and write the correct expanded form, because choosing between 2.3 x 2.3 x ... and the trap answer 2.3 x 6 is the whole game.",
       "canonical_error": {
         "pattern": "Selects base times exponent (or repeated addition of the base) as the expansion of a decimal-base power",
         "example": "Chooses 2.3 x 6 as equivalent to 2.3^6 instead of 2.3 x 2.3 x 2.3 x 2.3 x 2.3 x 2.3",
@@ -1077,7 +1101,7 @@
       },
       "redirect_script": {
         "stop": "Careful -- count the copies in that choice.",
-        "prompt": "Underline the base -- the whole thing, 2.3. Now count: how many copies of 2.3 does the exponent demand? Count the copies of 2.3 in each answer choice and cross out every choice where the count is wrong or where the copies are ADDED instead of multiplied.",
+        "prompt": "Referee with the tiny case first: is 2.3^2 the same number as 2.3 x 2? Underline the base -- the whole thing, 2.3. Now count: how many copies of 2.3 does the exponent demand? Count the copies of 2.3 in each answer choice and cross out every choice where the count is wrong or where the copies are ADDED instead of multiplied.",
         "praise": "You counted the copies and checked the operation -- that's exactly how to beat the tidy-looking wrong answer."
       },
       "item_template": "A power with a decimal base (one decimal place, e.g. 0.7, 1.5, 2.3) and whole-number exponent (2-6). Student selects or writes the equivalent expanded multiplication. MC with 4 choices, matching the spec's Approaching item (2.3^6).",
@@ -1150,6 +1174,18 @@
         "if_fail": "6NS8-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Before the big 2.3^6, referee with a case small enough to compute: does 2.3^2 equal 2.3 x 2? Work both out: 2.3 x 2.3 = 5.29, but 2.3 x 2 = 4.6."
+        },
+        {
+          "kind": "say",
+          "text": "They're different numbers, so the exponent can't mean 'times.' The 2 in 2.3^2 counts two copies of 2.3 being MULTIPLIED -- and the 6 in 2.3^6 counts six copies the exact same way."
+        },
+        {
+          "kind": "ask",
+          "text": "So without computing anything: what must the expanded form of 2.3^6 look like -- how many copies of 2.3, joined by which operation?"
+        },
         {
           "kind": "show",
           "text": "Write on the board: 2.3^6, with four answer choices below it: 2.3 x 6, six copies of 2.3 multiplied, six copies of 2.3 added, and three copies of 2.3 multiplied."
@@ -1277,16 +1313,6 @@
           }
         },
         {
-          "type": "game",
-          "title": "Copy-Count Showdown",
-          "time_minutes": 8,
-          "grouping": "whole_class",
-          "materials": [
-            "Mini whiteboards"
-          ],
-          "instructions": "1. Say a decimal power ('one point five to the fourth'); students write the expanded form and hold boards up on three.\n2. Any board showing 1.5 x 4 or an addition chain triggers a class debate: count the copies, name the operation, and evaluate the small cases to referee.\n3. Reverse round: show an expanded form, students write the power.\n4. Keep a running list of 'tidy traps' the class has beaten (2.3 x 6, repeated addition)."
-        },
-        {
           "type": "card_sort",
           "title": "Equivalent or Impostor?",
           "time_minutes": 10,
@@ -1331,6 +1357,16 @@
               }
             ]
           }
+        },
+        {
+          "type": "game",
+          "title": "Copy-Count Showdown",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Say a decimal power ('one point five to the fourth'); students write the expanded form and hold boards up on three.\n2. Any board showing 1.5 x 4 or an addition chain triggers a class debate: count the copies, name the operation, and evaluate the small cases to referee.\n3. Reverse round: show an expanded form, students write the power.\n4. Keep a running list of 'tidy traps' the class has beaten (2.3 x 6, repeated addition)."
         }
       ],
       "strategy_links": [
@@ -1787,7 +1823,7 @@
         "type": "skill",
         "skill_id": "6NS8-S3"
       },
-      "i_do_script": "Now we evaluate decimal powers -- the spec calls these the hardest tier, and the reason is place value. Watch me do 0.3^2. Expand: 0.3 x 0.3. I multiply as if there were no decimals -- 3 x 3 = 9 -- then I count decimal places: 0.3 has one place, and I used it twice, so the answer needs TWO places: 0.09. Not 0.9. Every factor brings its decimal places with it, and they add up.",
+      "i_do_script": "Now we evaluate decimal powers -- the spec calls these the hardest tier, and the grid explains why. 0.3^2 means 0.3 of 0.3: take three tenths of a strip that is itself three tenths of the grid, and you land on hundredths -- tenths of tenths ARE hundredths, so 0.3 x 0.3 must live two places out: 0.09, not 0.9. The digit work rides on top of that: multiply as if there were no decimals (3 x 3 = 9), then count decimal places -- 0.3 has one place and I used it twice, so the answer needs two. Every factor brings its places with it because every factor is another 'of' on the grid.",
       "canonical_error": {
         "pattern": "Multiplies the digits correctly but keeps only one decimal place instead of adding the places from every factor",
         "example": "Evaluates 0.3^2 as 0.9 instead of 0.09",
@@ -1795,7 +1831,7 @@
       },
       "redirect_script": {
         "stop": "Freeze -- count your decimal places before you place that point.",
-        "prompt": "Multiply the digits as if there were no decimal point. Now count the decimal places in EVERY factor of your expansion and add them up -- that total is how many places your answer needs. 0.3 x 0.3: one place plus one place means two places, so 9 becomes 0.09.",
+        "prompt": "Tenths of tenths are hundredths -- shade it on the grid if you doubt it. So how many places out must the answer live? Multiply the digits as if there were no decimal point. Now count the decimal places in EVERY factor of your expansion and add them up -- that total is how many places your answer needs. 0.3 x 0.3: one place plus one place means two places, so 9 becomes 0.09.",
         "praise": "You added the decimal places from every factor -- that's exactly how the point finds its home."
       },
       "item_template": "Evaluate a power with a one-decimal-place base (0.1-2.5) and exponent 2-3, keeping digit work within basic facts. NR (numeric response). The spec's Difficult tier.",
@@ -1979,6 +2015,17 @@
       ],
       "activities": [
         {
+          "type": "hands_on",
+          "title": "Hundred-Grid Shrinking Squares",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Printed 10 x 10 hundred grids",
+            "Colored pencils"
+          ],
+          "instructions": "1. On a hundred grid (the whole grid = 1), students shade a 3-wide column strip: that's 0.3.\n2. Now take 0.3 OF the shaded strip: mark off the bottom 3 rows of the strip. The double-shaded region is 3 x 3 = 9 little squares out of 100.\n3. Name it: 0.3 x 0.3 = 9/100 = 0.09. The grid shows WHY two decimal places appear: tenths of tenths are hundredths.\n4. Repeat with 0.4^2 = 0.16. Debrief: why can 0.9 never be the answer to 0.3^2?"
+        },
+        {
           "type": "error_analysis",
           "title": "Where Does the Point Land?",
           "time_minutes": 8,
@@ -2002,17 +2049,6 @@
             "Mini whiteboards"
           ],
           "instructions": "1. Show a decimal power (0.4^2). Students write ONLY the digit product first (16), holding the point.\n2. On the signal, everyone counts places aloud together ('one place, plus one place, two places!') and hops the point in: 0.16.\n3. Boards up. Any 1.6 boards trigger the money check: 0.4 of 40 cents is 16 cents.\n4. Increase difficulty: cubes like 0.2^3 need a three-place hop (0.008). Keep score by places counted correctly, not speed."
-        },
-        {
-          "type": "hands_on",
-          "title": "Hundred-Grid Shrinking Squares",
-          "time_minutes": 12,
-          "grouping": "small_group",
-          "materials": [
-            "Printed 10 x 10 hundred grids",
-            "Colored pencils"
-          ],
-          "instructions": "1. On a hundred grid (the whole grid = 1), students shade a 3-wide column strip: that's 0.3.\n2. Now take 0.3 OF the shaded strip: mark off the bottom 3 rows of the strip. The double-shaded region is 3 x 3 = 9 little squares out of 100.\n3. Name it: 0.3 x 0.3 = 9/100 = 0.09. The grid shows WHY two decimal places appear: tenths of tenths are hundredths.\n4. Repeat with 0.4^2 = 0.16. Debrief: why can 0.9 never be the answer to 0.3^2?"
         }
       ],
       "strategy_links": [
@@ -2301,16 +2337,6 @@
           }
         },
         {
-          "type": "game",
-          "title": "Error Detective Showdown",
-          "time_minutes": 10,
-          "grouping": "whole_class",
-          "materials": [
-            "Mini whiteboards"
-          ],
-          "instructions": "1. Show a claim ('a student got 10/7 for (5/7)^2'). Teams have 60 seconds to write the diagnosis: the exact operation that produces the wrong answer.\n2. Teams earn 1 point for catching that it's wrong, 2 points for naming the move (5/7 x 2 = 10/7 -- base times exponent), 3 points for also giving the correct value (25/49).\n3. Sprinkle in one CORRECT claim per round -- teams lose a point for 'fixing' a right answer.\n4. Debrief: what's the fastest tell that an answer came from base times exponent?"
-        },
-        {
           "type": "matching",
           "title": "Match the Mistake to Its Fingerprint",
           "time_minutes": 10,
@@ -2347,6 +2373,16 @@
               "Squared the denominator only"
             ]
           }
+        },
+        {
+          "type": "game",
+          "title": "Error Detective Showdown",
+          "time_minutes": 10,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Show a claim ('a student got 10/7 for (5/7)^2'). Teams have 60 seconds to write the diagnosis: the exact operation that produces the wrong answer.\n2. Teams earn 1 point for catching that it's wrong, 2 points for naming the move (5/7 x 2 = 10/7 -- base times exponent), 3 points for also giving the correct value (25/49).\n3. Sprinkle in one CORRECT claim per round -- teams lose a point for 'fixing' a right answer.\n4. Debrief: what's the fastest tell that an answer came from base times exponent?"
         }
       ],
       "strategy_links": [

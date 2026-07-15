@@ -115,6 +115,16 @@ function SkillCard({
             )}
 
             <div className="mt-3 flex flex-wrap items-center justify-end gap-2">
+              {v2 && (skill.activities?.length ?? 0) > 0 && (
+                <Button
+                  href={`/math/intervention/${skill.skill_id}?tab=Activities`}
+                  tier="tertiary"
+                  size="small"
+                  title="Jump straight to this skill's activities, with printable materials"
+                >
+                  {`Activities · ${skill.activities?.length}`}
+                </Button>
+              )}
               {v2 && (
                 <Button
                   href={`/math/intervention/${skill.skill_id}`}

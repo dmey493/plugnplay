@@ -49,7 +49,7 @@
         "description": "Add, subtract, and multiply positive and negative integers and simple rational numbers without a calculator.",
         "check_question": "Compute -4 times 3, and -7 + (-5)."
       },
-      "i_do_script": "Before we touch any variables, we have to be fast and correct with signed numbers, because there is NO calculator on this standard. Watch: -4 times 3. A negative times a positive is negative, so that is -12. And -7 + (-5): both are negative, so I add and keep the sign, giving -12. The two rules that trip students: a negative times a negative is POSITIVE (-6 times -2 is +12), and subtracting a negative is the same as adding (-3 - (-7) becomes -3 + 7 = 4).",
+      "i_do_script": "Before we touch any variables, we have to be fast and correct with signed numbers, because there is NO calculator on this standard -- but fast comes AFTER the rules make sense. Watch the pattern: 3 x (-3) = -9, 2 x (-3) = -6, 1 x (-3) = -3, 0 x (-3) = 0. Each step climbs by 3, so past zero the pattern forces (-1) x (-3) = +3 ... all the way to (-5) x (-3) = +15. A negative times a negative is POSITIVE because the pattern demands it. Subtracting a negative works the same way: 5 - 2 = 3, 5 - 1 = 4, 5 - 0 = 5 -- so 5 - (-1) must be 6. Subtracting a negative adds. Now the rules I run at speed: a negative times a positive is negative (-4 x 3 = -12); both negative when adding means add and keep the sign (-7 + (-5) = -12); negative times negative is positive; subtracting a negative flips to adding (-3 - (-7) becomes -3 + 7 = 4).",
       "canonical_error": {
         "pattern": "Mishandles a sign -- makes a negative times a negative come out negative, or treats subtracting a negative as subtracting a positive",
         "example": "Computes -6 times -2 as -12 instead of +12, or -3 - (-7) as -10 instead of +4",
@@ -84,7 +84,7 @@
       ],
       "redirect_script": {
         "stop": "Wait -- what are the two signs doing here?",
-        "prompt": "Name the two signs first, then apply the rule out loud: negative times negative is positive; subtracting a negative flips to adding. Write the sign of the answer BEFORE the digits.",
+        "prompt": "Run the pattern past zero: 3 x (-3), 2 x (-3), 1 x (-3), 0 x (-3) -- what does the climb force next? Name the two signs first, then apply the rule out loud: negative times negative is positive; subtracting a negative flips to adding. Write the sign of the answer BEFORE the digits.",
         "praise": "You applied the sign rule before computing -- that's the fluency this standard needs."
       },
       "vocabulary": [
@@ -102,6 +102,22 @@
         "if_fail": "Review signed-number operations (7.C.4 / 6.NS.7)."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the pattern column: 3 x (-3) = -9, 2 x (-3) = -6, 1 x (-3) = -3, 0 x (-3) = 0."
+        },
+        {
+          "kind": "ask",
+          "text": "Each answer climbs by 3. Keep the pattern going: (-1) x (-3) = ? ... all the way down to (-5) x (-3) = ?"
+        },
+        {
+          "kind": "say",
+          "text": "The pattern forces (-5) x (-3) = +15 -- negative times negative is positive because the climb doesn't stop at zero."
+        },
+        {
+          "kind": "ask",
+          "text": "Same move for subtraction: 5 - 2 = 3, 5 - 1 = 4, 5 - 0 = 5 ... so what must 5 - (-1) be? What is subtracting a negative really doing?"
+        },
         {
           "kind": "show",
           "text": "Write '-5 times -3' and '-8 - (-2).'"
@@ -135,7 +151,7 @@
         "description": "Name the parts of an algebraic term -- coefficient, variable, and constant -- and tell which terms are alike.",
         "check_question": "In 5x + 3, what is the coefficient of x, and is 3 a like term with 5x?"
       },
-      "i_do_script": "Every expression is built from terms -- the pieces separated by + or - signs. In 5x + 3 there are two terms: 5x and 3. The 5 is the coefficient (the number multiplying x) and 3 is a constant (a plain number). Like terms have the exact same variable part, so 4x and 2x are like terms, but 4x and 7 are NOT -- a term with an x and a plain number can never be combined. Naming these parts is what lets us decide, later, which pieces are allowed to merge.",
+      "i_do_script": "Picture x as a sealed bag holding a number nobody knows, so 7x is 7 bags and a plain number like 4 is loose counters -- bags and loose counters are different kinds of things, and only pieces of the same kind can ever pile together. Every expression is built from terms -- the pieces separated by + or - signs. In 5x + 3 there are two terms: 5x and 3. The 5 is the coefficient (the number multiplying x) and 3 is a constant (a plain number). Like terms have the exact same variable part, so 4x and 2x are like terms, but 4x and 7 are NOT -- a term with an x and a plain number can never be combined. Naming these parts is what lets us decide, later, which pieces are allowed to merge.",
       "canonical_error": {
         "pattern": "Treats a constant as a like term with a variable term, or reads the sign in front of a term as belonging to the wrong term",
         "example": "Calls 4x and 7 like terms in 4x + 7 - 2x, or reads the -2x as +2x because it ignores the minus in front",
@@ -166,7 +182,7 @@
       ],
       "redirect_script": {
         "stop": "Do those two terms have the SAME variable part?",
-        "prompt": "Underline the variable part of each term. Only terms with the identical variable part are alike; a plain number is never like an x-term. And read the sign directly in front of each term as part of it.",
+        "prompt": "Ask the table question first: is that piece a bag (an x) or a loose counter (a plain number)? Underline the variable part of each term. Only terms with the identical variable part are alike; a plain number is never like an x-term. And read the sign directly in front of each term as part of it.",
         "praise": "You grouped by the variable part and kept each sign with its term -- that's how terms work."
       },
       "vocabulary": [
@@ -188,6 +204,10 @@
         "if_fail": "Review parts of an expression (6.AF.2)."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Before we name anything, picture 7x - 4 + 2x as stuff on a table: 7 bags of x, then 4 counters taken away, then 2 more bags of x. Which pieces are the same kind of thing, and which piece has no bag at all?"
+        },
         {
           "kind": "show",
           "text": "Write '7x - 4 + 2x.'"
@@ -222,7 +242,7 @@
         "type": "skill",
         "skill_id": "7AF1-F2"
       },
-      "i_do_script": "To create an equivalent expression by adding or subtracting, I combine like terms: x-terms with x-terms, numbers with numbers, and I keep every sign. Watch: (-y + 5) + (7y - 9). The y-terms are -1y and 7y; -1 + 7 = 6, so 6y. The numbers are 5 and -9; 5 - 9 = -4. So the equivalent expression is 6y - 4. The number stuck to the first y is -1, not 1 -- dropping that negative is the classic mistake.",
+      "i_do_script": "Think of -y as one bag of y you OWE, not one you own -- an owed bag cancels one of your real bags. Put the piles on the table first and the count comes out on its own. To create an equivalent expression by adding or subtracting, I combine like terms: x-terms with x-terms, numbers with numbers, and I keep every sign. Watch: (-y + 5) + (7y - 9). The y-terms are -1y and 7y; -1 + 7 = 6, so 6y. The numbers are 5 and -9; 5 - 9 = -4. So the equivalent expression is 6y - 4. The number stuck to the first y is -1, not 1 -- dropping that negative is the classic mistake.",
       "canonical_error": {
         "pattern": "Drops the negative on a variable term (or combines a variable term with a constant) when collecting like terms",
         "example": "For (-y + 5) + (7y - 9) the student treats -y as +y, computing 1 + 7 = 8 and reporting 8y instead of 6y",
@@ -253,7 +273,7 @@
       ],
       "redirect_script": {
         "stop": "Wait -- what sign is in front of that term?",
-        "prompt": "Write the sign directly on the coefficient: -y means -1y. Then add the x-terms in one pile and the numbers in another, carrying every sign.",
+        "prompt": "Look back at the piles: is that first bag one you own or one you OWE? Write the sign directly on the coefficient: -y means -1y. Then add the variable terms in one pile and the numbers in another, carrying every sign.",
         "praise": "You carried the negative with the term -- that's how like terms really combine."
       },
       "vocabulary": [
@@ -275,6 +295,18 @@
         "if_fail": "7AF1-F2"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Sketch (-y + 5) + (7y - 9) as piles: 1 bag of y OWED and 5 counters, next to 7 bags of y and 9 counters OWED."
+        },
+        {
+          "kind": "ask",
+          "text": "Push all the bags together: you hold 7 bags but owe 1 -- how many bags are really yours? Now the counters: you hold 5 but owe 9 -- where does that leave you?"
+        },
+        {
+          "kind": "say",
+          "text": "The owed bag cancels one of the 7, leaving 6 bags; 5 counters against 9 owed leaves 4 owed. That is 6y - 4. Counting 8 bags means you counted the OWED bag as one you own -- the pile picture catches it instantly."
+        },
         {
           "kind": "show",
           "text": "Write '(-y + 5) + (7y - 9).'"
@@ -881,7 +913,7 @@
         "type": "skill",
         "skill_id": "7AF1-F1"
       },
-      "i_do_script": "Distributing means the number outside the parentheses multiplies EVERY term inside, and the signs come along. Watch a tricky one: -4(3x - 7). The -4 hits 3x: -4 times 3 is -12, so -12x. The -4 hits -7: negative times negative is POSITIVE, so +28. The result is -12x + 28. After distributing I combine any like terms -- for 5x + (1/2)(4x - 8), I distribute to get 2x - 4, then 5x + 2x = 7x, giving 7x - 4.",
+      "i_do_script": "Before any rule, let a pattern set the signs: multiplying 3x - 7 by 2, then 1, then 0 steps the answer down by 3x and UP by 7 each time -- and nothing stops that ladder at zero. Distributing means the number outside the parentheses multiplies EVERY term inside, and the signs come along. Watch a tricky one: -4(3x - 7). The -4 hits 3x: -4 times 3 is -12, so -12x. The -4 hits -7: negative times negative is POSITIVE, so +28. The result is -12x + 28. After distributing I combine any like terms -- for 5x + (1/2)(4x - 8), I distribute to get 2x - 4, then 5x + 2x = 7x, giving 7x - 4.",
       "canonical_error": {
         "pattern": "Distributes to the first term only, or keeps the wrong sign on the second product (misses that negative times negative is positive)",
         "example": "For -4(3x - 7) the student writes -12x - 28, keeping the minus instead of computing -4 times -7 = +28",
@@ -918,7 +950,7 @@
       ],
       "redirect_script": {
         "stop": "Did the outside number reach the SECOND term too?",
-        "prompt": "Draw an arrow from the outside number to each term inside and say the product out loud with its sign: 'negative four times negative seven is positive twenty-eight.' Then combine like terms.",
+        "prompt": "Check the ladder first: as the outside number steps below zero, which way is the constant moving? Draw an arrow from the outside number to each term inside and say the product out loud with its sign: 'negative four times negative seven is positive twenty-eight.' Then combine like terms.",
         "praise": "You multiplied both terms and kept the signs straight -- clean distribution."
       },
       "vocabulary": [
@@ -940,6 +972,18 @@
         "if_fail": "7AF1-F1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the ladder: 2(3x - 7) = 6x - 14, 1(3x - 7) = 3x - 7, 0(3x - 7) = 0."
+        },
+        {
+          "kind": "ask",
+          "text": "Each step down, the x-part drops by 3x and the number CLIMBS by 7. Keep stepping below zero: -1(3x - 7) = ? Then -2, -3, all the way to -4(3x - 7) = ?"
+        },
+        {
+          "kind": "say",
+          "text": "The ladder forces -3x + 7, then -6x + 14, -9x + 21, and -12x + 28. The constant keeps climbing into the positives, so -4(3x - 7) MUST end in +28 -- writing -28 breaks a pattern you can see."
+        },
         {
           "kind": "show",
           "text": "Write '-4(3x - 7).'"
@@ -1185,7 +1229,7 @@
         "type": "skill",
         "skill_id": "7AF1-S3"
       },
-      "i_do_script": "Factoring is distribution in reverse: I pull the greatest common factor out front and put what is left in parentheses. Watch: 36x + 9. The biggest number that divides both 36 and 9 is 9. I divide each term by 9: 36x divided by 9 is 4x, and 9 divided by 9 is 1. So 36x + 9 = 9(4x + 1). The standard's own example is 2x - 10 = 2(x - 5). I always check by distributing back: 9 times 4x is 36x, 9 times 1 is 9 -- it matches.",
+      "i_do_script": "Picture 36x + 9 as one rectangle with height 9, split into two rooms -- one room holds the area 36x, the other holds the area 9, and each room's width is what 9 must multiply to fill it. Factoring is distribution in reverse: I pull the greatest common factor out front and put what is left in parentheses. Watch: 36x + 9. The biggest number that divides both 36 and 9 is 9. I divide each term by 9: 36x divided by 9 is 4x, and 9 divided by 9 is 1. So 36x + 9 = 9(4x + 1). The standard's own example is 2x - 10 = 2(x - 5). I always check by distributing back: 9 times 4x is 36x, 9 times 1 is 9 -- it matches.",
       "canonical_error": {
         "pattern": "Pulls out a common factor but forgets to divide EVERY term by it (leaves a term unchanged), or uses a factor that isn't the greatest",
         "example": "For 36x + 9 the student writes 9(4x + 9), forgetting that 9 divided by 9 = 1, so the second term should be 1, not 9",
@@ -1222,7 +1266,7 @@
       ],
       "redirect_script": {
         "stop": "Divide the constant by the factor too.",
-        "prompt": "After you pull out the factor, divide EACH term by it -- including the constant. Then distribute back to check: it must return the exact original expression.",
+        "prompt": "Go back to the rectangle: if the height is 9 and that room's area is only 9, how wide can the room be? After you pull out the factor, divide EACH term by it -- including the constant. Then distribute back to check: it must return the exact original expression.",
         "praise": "You divided every term by the factor and checked by distributing -- that's a valid factoring."
       },
       "vocabulary": [
@@ -1244,6 +1288,18 @@
         "if_fail": "7AF1-S3"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw one rectangle cut into two rooms. The left room has area 36x, the right room has area 9. Label the shared height 9 along the side."
+        },
+        {
+          "kind": "ask",
+          "text": "With height 9, how wide is the left room -- 9 times what gives 36x? And the right room: 9 times WHAT gives an area of just 9?"
+        },
+        {
+          "kind": "say",
+          "text": "The left width is 4x and the right width is 1, because 9 x 1 = 9. Total width 4x + 1, so the whole rectangle is 9(4x + 1). A width of 9 would make that little room's area 81 -- the picture will not allow it."
+        },
         {
           "kind": "show",
           "text": "Write '36x + 9.'"
@@ -1497,7 +1553,7 @@
         "type": "skill",
         "skill_id": "7AF1-S3"
       },
-      "i_do_script": "At this level I simplify multi-part expressions using several moves at once and justify each one, which also lets me spot where someone else went wrong. Watch: (2.1x + 4.3) - (-3x - 7). Subtracting a group flips every sign inside: -(-3x - 7) becomes +3x + 7. Now I combine: 2.1x + 3x = 5.1x and 4.3 + 7 = 11.3, so 5.1x + 11.3. The most common slip is in the arithmetic sign -- like doing 2.64 - 4.44 and writing 7.08 (adding) instead of -1.8 (subtracting).",
+      "i_do_script": "Subtracting a group means removing the WHOLE package -- and when the package is a debt, removing it makes you richer. Watch the debt slip get torn up before any rule is spoken. At this level I simplify multi-part expressions using several moves at once and justify each one, which also lets me spot where someone else went wrong. Watch: (2.1x + 4.3) - (-3x - 7). Subtracting a group flips every sign inside: -(-3x - 7) becomes +3x + 7. Now I combine: 2.1x + 3x = 5.1x and 4.3 + 7 = 11.3, so 5.1x + 11.3. The most common slip is in the arithmetic sign -- like doing 2.64 - 4.44 and writing 7.08 (adding) instead of -1.8 (subtracting).",
       "canonical_error": {
         "pattern": "Adds two constants instead of subtracting when one is negative (a sign slip in the final combine), or forgets that subtracting a group flips every sign inside",
         "example": "Simplifying 1.2(2.2 + 3y - 3.7), the student combines the constants 2.64 and -4.44 as 7.08 (adding) instead of -1.8 (subtracting), reporting 7.08 + 3.6y",
@@ -1534,7 +1590,7 @@
       ],
       "redirect_script": {
         "stop": "Check the sign on that constant before you combine.",
-        "prompt": "Rewrite each constant with its sign in front, then combine: 2.64 and -4.44 give 2.64 - 4.44 = -1.8. If a whole group is subtracted, flip every sign inside first.",
+        "prompt": "See the group as one package first: what happens to each piece inside when the whole package is taken away? Rewrite each constant with its sign in front, then combine: 2.64 and -4.44 give 2.64 - 4.44 = -1.8. If a whole group is subtracted, flip every sign inside first.",
         "praise": "You tracked the sign through the combine -- that's why your justification holds."
       },
       "vocabulary": [
@@ -1556,6 +1612,18 @@
         "if_fail": "7AF1-S3"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Picture (2.1x + 4.3) as your pile, and (-3x - 7) as a debt slip: 3 bags of x owed and 7 counters owed. Subtracting that group means someone tears up the debt slip."
+        },
+        {
+          "kind": "ask",
+          "text": "When a debt of 3 bags and 7 counters disappears, is your pile bigger or smaller? By how many bags, and by how many counters?"
+        },
+        {
+          "kind": "say",
+          "text": "Tearing up the debt makes you 3 bags and 7 counters RICHER: subtracting -3x - 7 adds +3x and +7. That is why every sign inside a subtracted group flips -- and why each constant must be combined with the sign it truly carries."
+        },
         {
           "kind": "show",
           "text": "Write '(2.1x + 4.3) - (-3x - 7).'"

@@ -131,7 +131,7 @@
         "description": "Set up part/whole = part/whole and solve for the missing value using a proportion.",
         "check_question": "If 1 out of 4 sampled students walks to school, how many out of 800 students would you expect?"
       },
-      "i_do_script": "A sample only helps if I can scale it up to the whole population. I find the fraction of the sample with a trait, then apply that SAME fraction to the population. Watch: in a random sample of 40 students, 10 walk to school. That is 10/40 = 0.25, or one fourth. If the school has 800 students, I expect the same one fourth: 0.25 x 800 = 200 students. Same fraction, bigger group.",
+      "i_do_script": "Picture all 800 students standing in one long line, and your 40 sampled students as one short slice of it -- whatever shading shows up in the slice should repeat all the way down the line. A sample only helps if I can scale it up to the whole population. I find the fraction of the sample with a trait, then apply that SAME fraction to the population. Watch: in a random sample of 40 students, 10 walk to school. That is 10/40 = 0.25, or one fourth. If the school has 800 students, I expect the same one fourth: 0.25 x 800 = 200 students. Same fraction, bigger group.",
       "canonical_error": {
         "pattern": "Reports the raw sample count as the population estimate, skipping the scale-up.",
         "example": "For '10 of 40 sampled students walk; estimate for 800 students,' answers 10 instead of scaling 10/40 up to 200.",
@@ -166,7 +166,7 @@
       ],
       "redirect_script": {
         "stop": "Is 10 the whole school, or just your sample?",
-        "prompt": "Turn the sample into a fraction first: part over whole. Then multiply that fraction by the population size to scale it up. 10 out of 40 is one fourth, so take one fourth of 800.",
+        "prompt": "Look back at your sample bar -- the shaded part is a share OF the little bar, and the population is a much longer bar with the same share shaded. Turn the sample into a fraction first: part over whole. Then multiply that fraction by the population size to scale it up. 10 out of 40 is one fourth, so take one fourth of 800.",
         "praise": "You kept the same fraction and scaled it to the population -- that is a real estimate."
       },
       "vocabulary": [
@@ -188,6 +188,30 @@
         "if_fail": "Review proportions (6.RP.1)."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw the sample as one bar of 25 shoppers and shade the 15 who preferred store brand. Before any math: for 500 shoppers, are we looking for 15 -- a piece of this little bar -- or a bar 20 times longer with the SAME share shaded?",
+          "visual": {
+            "type": "percent_bar",
+            "label": "The 25 sampled shoppers",
+            "segments": [
+              {
+                "span": 15,
+                "label": "store brand (15)",
+                "shaded": true
+              },
+              {
+                "span": 10,
+                "label": "other (10)",
+                "shaded": false
+              }
+            ],
+            "end_labels": [
+              "0",
+              "25"
+            ]
+          }
+        },
         {
           "kind": "show",
           "text": "Write 'In a random sample of 25 shoppers, 15 preferred store brand. Estimate for 500 shoppers.'"

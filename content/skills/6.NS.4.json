@@ -725,7 +725,7 @@
         "type": "skill",
         "skill_id": "6NS4-F1"
       },
-      "i_do_script": "Watch me subtract 62.4 - 18.75. The one rule that never changes: line up the decimal points, not the last digits. I write 62.40 under-and-over 18.75 with the points stacked, then subtract like whole numbers and drop the point straight down: 43.65. For multiplying, I ignore the points, multiply the whole numbers, then count decimal places at the end. Two different jobs, two different rules -- and knowing which is which is the skill.",
+      "i_do_script": "Think of 62.4 - 18.75 as money: $62.40 take away $18.75. Dollars have to sit over dollars and cents over cents, and the decimal point is the wall between them -- and since about $62 minus about $19 should leave something in the 40s, a weird answer will announce itself. Watch me subtract 62.4 - 18.75. The one rule that never changes: line up the decimal points, not the last digits. I write 62.40 under-and-over 18.75 with the points stacked, then subtract like whole numbers and drop the point straight down: 43.65. For multiplying, I ignore the points, multiply the whole numbers, then count decimal places at the end. Two different jobs, two different rules -- and knowing which is which is the skill.",
       "canonical_error": {
         "pattern": "Lines up the rightmost digits instead of the decimal points when adding or subtracting",
         "example": "For 6.4 + 2.35 the student stacks the 4 over the 5, computes 64 + 235 = 299, and writes 2.99 instead of 8.75",
@@ -733,7 +733,7 @@
       },
       "redirect_script": {
         "stop": "Stop -- check your decimal points before you compute.",
-        "prompt": "Stack the two numbers so the decimal POINTS sit in one straight line, and fill empty spots with zeros. Now every digit lines up with its own place. Then compute.",
+        "prompt": "Think money first: which digits are dollars and which are cents? Dollars stack over dollars. Stack the two numbers so the decimal POINTS sit in one straight line, and fill empty spots with zeros. Now every digit lines up with its own place. Then compute.",
         "praise": "You anchored the decimal points first -- that's what keeps tenths with tenths."
       },
       "item_template": "A bare computation with positive decimals (up to thousandths): one operation, or two operations in one line (e.g., divide then add). NR, no choices. Calculator not allowed.",
@@ -786,6 +786,18 @@
         "if_fail": "Drop back to 6NS4-F1 for tenths/hundredths adding on a place-value chart, then return here."
       },
       "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "Before any stacking: this is money. $62.40 take away $18.75 -- about how much should be left in your pocket? Roughly $62 minus roughly $19... so the answer lives somewhere in the 40s. Keep that in your head as the referee."
+        },
+        {
+          "kind": "show",
+          "text": "Write both amounts the way a price tag would: $62.40 and $18.75. Money always shows two cents digits, and the decimal point is the wall between dollars and cents -- dollars stack over dollars, cents over cents, automatically."
+        },
+        {
+          "kind": "say",
+          "text": "That money habit IS the decimal rule in disguise: lining up the points is lining up dollars with dollars and cents with cents. If the 4 dimes end up in the pennies column, the answer will land nowhere near the 40s -- and the estimate will catch it."
+        },
         {
           "kind": "show",
           "text": "Write the problem: 62.4 - 18.75. Ask the student to stack the two numbers to subtract."
@@ -1585,6 +1597,14 @@
         },
         {
           "kind": "ask",
+          "text": "Before computing: what is this division ASKING? (How many 3/4-yard pieces fit in 3 3/4 yards.) How many pieces fit in ONE yard?"
+        },
+        {
+          "kind": "say",
+          "text": "Each yard holds 4/3 pieces -- that's the reciprocal's job. So 15/4 yards hold 15/4 x 4/3 = 5 pieces. Multiplying by the flip counts how many of that piece fit."
+        },
+        {
+          "kind": "ask",
           "text": "Dividing by 3/4 is the same as multiplying by what? Do it. What do you get?"
         },
         {
@@ -2000,16 +2020,6 @@
       ],
       "activities": [
         {
-          "type": "game",
-          "title": "Estimate Beats the Point",
-          "time_minutes": 10,
-          "grouping": "whole_class",
-          "materials": [
-            "Mini whiteboards"
-          ],
-          "instructions": "1. Read a money problem aloud ('Each ticket is $3.25; 4 tickets. Total?').\n2. Round 1: students hold up ONLY an estimate ('about $13').\n3. Round 2: students compute exactly and hold up $13.00.\n4. A point to any student whose estimate and exact answer agree -- and a class discussion any time they don't."
-        },
-        {
           "type": "error_analysis",
           "title": "The Wandering Decimal Point",
           "time_minutes": 8,
@@ -2063,6 +2073,16 @@
               }
             ]
           }
+        },
+        {
+          "type": "game",
+          "title": "Estimate Beats the Point",
+          "time_minutes": 10,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Read a money problem aloud ('Each ticket is $3.25; 4 tickets. Total?').\n2. Round 1: students hold up ONLY an estimate ('about $13').\n3. Round 2: students compute exactly and hold up $13.00.\n4. A point to any student whose estimate and exact answer agree -- and a class discussion any time they don't."
         }
       ],
       "strategy_links": [
@@ -2697,16 +2717,6 @@
           }
         },
         {
-          "type": "game",
-          "title": "Judge's Bench",
-          "time_minutes": 12,
-          "grouping": "whole_class",
-          "materials": [
-            "A stack of argument cards -- some fully correct, some with setup errors, some with arithmetic errors, some with conclusion errors"
-          ],
-          "instructions": "1. A student 'lawyer' reads an argument card aloud.\n2. Every 'judge' rules on a whiteboard: CORRECT, SETUP error, ARITHMETIC error, or CONCLUSION error.\n3. One judge from each verdict defends their ruling with the specific line as evidence.\n4. Reveal and score. Track the class's weak spot -- most misses are conclusion errors ruled 'correct.'"
-        },
-        {
           "type": "card_sort",
           "title": "Where's the Flaw?",
           "time_minutes": 8,
@@ -2750,6 +2760,16 @@
               }
             ]
           }
+        },
+        {
+          "type": "game",
+          "title": "Judge's Bench",
+          "time_minutes": 12,
+          "grouping": "whole_class",
+          "materials": [
+            "A stack of argument cards -- some fully correct, some with setup errors, some with arithmetic errors, some with conclusion errors"
+          ],
+          "instructions": "1. A student 'lawyer' reads an argument card aloud.\n2. Every 'judge' rules on a whiteboard: CORRECT, SETUP error, ARITHMETIC error, or CONCLUSION error.\n3. One judge from each verdict defends their ruling with the specific line as evidence.\n4. Reveal and score. Track the class's weak spot -- most misses are conclusion errors ruled 'correct.'"
         }
       ],
       "strategy_links": [

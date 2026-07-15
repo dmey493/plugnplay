@@ -44,7 +44,7 @@
         "description": "Given the favorable outcomes and the total outcomes, write the probability as a fraction.",
         "check_question": "A bag has 3 red and 5 blue marbles. What is the probability of drawing a red marble?"
       },
-      "i_do_script": "The probability of a simple event is the number of favorable outcomes over the total number of outcomes. Watch a bag with 3 red and 5 blue marbles: there are 3 red (favorable) out of 8 marbles total, so P(red) = 3/8. The favorable count goes on TOP, the total on the bottom. On a number cube, P(rolling a 4) = 1/6 because one face is a 4 out of six faces.",
+      "i_do_script": "Picture the bag as a strip of 8 boxes, one box per marble, with the 3 red ones shaded -- the probability is just the shaded part of the whole strip, and you could never shade 8 boxes on a strip that only has 3. The probability of a simple event is the number of favorable outcomes over the total number of outcomes. Watch a bag with 3 red and 5 blue marbles: there are 3 red (favorable) out of 8 marbles total, so P(red) = 3/8. The favorable count goes on TOP, the total on the bottom. On a number cube, P(rolling a 4) = 1/6 because one face is a 4 out of six faces.",
       "canonical_error": {
         "pattern": "Writes total over favorable, or uses the number of OTHER outcomes as the top",
         "example": "For 3 red out of 8 marbles, writes 8/3, or writes 5/8 (the blue count) instead of 3/8",
@@ -75,7 +75,7 @@
       ],
       "redirect_script": {
         "stop": "Which count goes on top -- favorable or total?",
-        "prompt": "Put the outcome you are asking about on TOP (favorable) and the total number of outcomes on the bottom. If your fraction is bigger than 1, you flipped it -- a probability is never more than 1.",
+        "prompt": "Draw the strip of boxes first: shade the marbles you are asking about, and read the probability as shaded out of the whole strip. Put the outcome you are asking about on TOP (favorable) and the total number of outcomes on the bottom. If your fraction is bigger than 1, you flipped it -- a probability is never more than 1.",
         "praise": "You put the favorable outcomes over the total -- that's a probability, right-side up."
       },
       "vocabulary": [
@@ -93,6 +93,21 @@
         "if_fail": "Review simple event probability (7.DSP.5)."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw the bag as a strip of 8 boxes, one box per marble, and shade the 2 green ones. The probability of green is the shaded part of the whole strip.",
+          "visual": {
+            "type": "fraction_bars",
+            "label": "The bag as a strip",
+            "bars": [
+              {
+                "parts": 8,
+                "shaded": 2,
+                "label": "2 green out of 8 marbles"
+              }
+            ]
+          }
+        },
         {
           "kind": "show",
           "text": "Write 'A bag has 2 green and 6 yellow marbles. Find P(green).'"
@@ -126,7 +141,7 @@
         "description": "Multiply two fractions by multiplying numerators and denominators, then simplify.",
         "check_question": "What is 1/2 x 1/6?"
       },
-      "i_do_script": "To multiply two fractions I multiply the tops together and the bottoms together, then simplify. Watch 1/2 x 1/6: top is 1 x 1 = 1, bottom is 2 x 6 = 12, so the answer is 1/12. Another: 1/2 x 3/6 = 3/12, and 3/12 simplifies to 1/4. I do NOT add across -- multiplying fractions means top times top over bottom times bottom.",
+      "i_do_script": "'Times' with fractions means OF, and a bar shows it: 1/3 x 2/5 is one third OF two fifths. Shade 2/5 of a bar, then take a third of just that shaded piece -- you land on 2 of the bar's 15 equal slivers, 2/15. Tops times tops and bottoms times bottoms is that picture as arithmetic: the bottoms multiply because slicing fifths into thirds makes fifteenths; the tops multiply because you keep 1 of the 3 slices of each of the 2 shaded fifths. To multiply two fractions I multiply the tops together and the bottoms together, then simplify. Watch 1/2 x 1/6: top is 1 x 1 = 1, bottom is 2 x 6 = 12, so the answer is 1/12. Another: 1/2 x 3/6 = 3/12, and 3/12 simplifies to 1/4. I do NOT add across -- multiplying fractions means top times top over bottom times bottom.",
       "canonical_error": {
         "pattern": "Adds the fractions (or cross-adds) instead of multiplying numerators and denominators",
         "example": "For 1/2 x 1/6 writes 1/2 + 1/6 = 4/6 = 2/3, or adds tops and bottoms to get 2/8",
@@ -175,6 +190,30 @@
         "if_fail": "Review multiplying fractions (6.NS.4/5)."
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Shade 2/5 of a bar. Now slice the bar into thirds the other way and keep one third of the shaded part.",
+          "visual": {
+            "type": "fraction_bars",
+            "label": "1/3 of 2/5 lands on 2 of 15 slivers",
+            "bars": [
+              {
+                "parts": 5,
+                "shaded": 2,
+                "label": "2/5"
+              },
+              {
+                "parts": 15,
+                "shaded": 2,
+                "label": "1/3 of it"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "ask",
+          "text": "How many equal slivers does the whole bar have after both cuts? How many stay shaded? So what is 1/3 of 2/5 -- before any rule?"
+        },
         {
           "kind": "show",
           "text": "Write '1/3 x 2/5 = ?'"
@@ -497,7 +536,7 @@
         "type": "skill",
         "skill_id": "8DSP3-S1"
       },
-      "i_do_script": "To find a missing outcome, I list the full sample space in a system and compare it to the one I was given. Watch two-letter codes from A, B, C, using each letter once: I fix the first letter and list every second letter -- AB, AC, then BA, BC, then CA, CB -- six ordered outcomes. If the given list has AB, AC, BA, BC, CA, the missing one is CB. Order matters here, so BC and CB are different outcomes.",
+      "i_do_script": "Set the codes up as a grid: rows for the FIRST letter, columns for the SECOND. Every code owns its own cell -- BC lives in row B, column C, while CB lives in row C, column B -- so a missing outcome shows up as an empty cell. To find a missing outcome, I list the full sample space in a system and compare it to the one I was given. Watch two-letter codes from A, B, C, using each letter once: I fix the first letter and list every second letter -- AB, AC, then BA, BC, then CA, CB -- six ordered outcomes. If the given list has AB, AC, BA, BC, CA, the missing one is CB. Order matters here, so BC and CB are different outcomes.",
       "canonical_error": {
         "pattern": "Treats an outcome and its reverse as the same, so misses the reversed outcome",
         "example": "For two-letter codes from A, B, C, thinks CB is already covered by BC, so does not notice CB is missing",
@@ -528,7 +567,7 @@
       ],
       "redirect_script": {
         "stop": "Does order matter here -- is AB different from BA?",
-        "prompt": "List every ordered pair in a system: fix the first letter, list every second letter, then move to the next first letter. Compare to the given list -- the missing one is the pair you skipped.",
+        "prompt": "Put each given outcome into its grid cell first -- the missing outcome is the cell left empty. List every ordered pair in a system: fix the first letter, list every second letter, then move to the next first letter. Compare to the given list -- the missing one is the pair you skipped.",
         "praise": "You listed every ordered pair in a system -- that's how you catch the missing outcome."
       },
       "vocabulary": [
@@ -546,6 +585,18 @@
         "if_fail": "8DSP3-S1"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a 3-by-3 grid: rows are the FIRST letter (A, B, C), columns are the SECOND letter (A, B, C). Cross out the diagonal cells AA, BB, CC since a letter can't repeat -- six cells remain, one cell per code."
+        },
+        {
+          "kind": "ask",
+          "text": "Write the given codes AB, AC, BA, CA, CB each into its own cell. Which cell is still empty? Is the BC cell the same cell as the CB cell?"
+        },
+        {
+          "kind": "say",
+          "text": "BC sits in row B, column C; CB sits in row C, column B -- two different cells, so they are two different codes. The one empty cell is BC, so BC is the missing outcome."
+        },
         {
           "kind": "show",
           "text": "Write the given list: two-letter codes from A, B, C -- AB, AC, BA, CA, CB. What is missing?"
@@ -781,7 +832,7 @@
         "type": "skill",
         "skill_id": "8DSP3-S1"
       },
-      "i_do_script": "For a compound INDEPENDENT event, one part does not affect the other -- a coin and a die, or a draw WITH replacement. I write each stage as favorable over total, then MULTIPLY for 'and.' Watch a coin and a number cube, P(heads AND a 3): P(heads) = 1/2 and P(3) = 1/6, so I multiply 1/2 x 1/6 = 1/12. I do not add them -- 'and' with independent events means multiply the stage probabilities.",
+      "i_do_script": "The multiply rule isn't a keyword trick -- it counts cells in the sample space you already built. A coin and a number cube make the 12-cell table: two rows (H, T) by six columns (1-6). P(heads AND a 3) is asking for ONE cell of those twelve -- H3 -- so the probability is 1/12. Now watch the multiplication count the same thing: P(heads) = 1/2 keeps half the rows, and P(3) = 1/6 keeps a sixth of the columns, so together they keep 1/2 x 1/6 = 1/12 of the table. For independent events, multiplying the stage probabilities IS counting the favorable cells. Adding (1/2 + 1/6 = 2/3) would claim MORE likely than heads alone -- but requiring both things must be HARDER, not easier. The answer to an 'and' should always be smaller than each piece.",
       "canonical_error": {
         "pattern": "Adds the stage probabilities instead of multiplying them for an 'and' event",
         "example": "For P(heads and a 3) writes 1/2 + 1/6 = 4/6 = 2/3 instead of 1/2 x 1/6 = 1/12",
@@ -822,7 +873,7 @@
       ],
       "redirect_script": {
         "stop": "For 'and' with independent events -- add or multiply?",
-        "prompt": "Write each stage as favorable over total, then MULTIPLY: P(A) x P(B). Adding is the wrong rule for 'and.' If your answer is bigger than either single probability, you added by mistake.",
+        "prompt": "Build the table: rows for one event, columns for the other. Shade the cells that match BOTH. Is your answer that shaded share of the table? And check size: an 'and' answer must be smaller than either piece alone.",
         "praise": "You multiplied the stage probabilities for the 'and' event -- that's the rule for independent events."
       },
       "vocabulary": [
@@ -842,6 +893,18 @@
       "worked_example_script": [
         {
           "kind": "show",
+          "text": "Draw the sample space as a 2-by-6 table: rows H and T, columns 1 through 6 -- twelve cells: H1, H2 ... T6."
+        },
+        {
+          "kind": "ask",
+          "text": "How many cells are in the whole table? How many of them are 'tails AND a 5'? So what must the probability be, straight from the table?"
+        },
+        {
+          "kind": "say",
+          "text": "One cell of twelve: 1/12. Multiplying 1/2 x 1/6 counts the same cell -- half the rows times a sixth of the columns. The rule is the table, compressed."
+        },
+        {
+          "kind": "show",
           "text": "Write 'A coin and a number cube: find P(tails and a 5).'"
         },
         {
@@ -858,7 +921,7 @@
         },
         {
           "kind": "ask",
-          "text": "Your turn: two spinners (1-4 and 1-2) -- find P(a 3 and heads... I mean a 3 and a 2)."
+          "text": "Your turn: two spinners (1-4 and 1-2) -- find P(a 3 and a 2)."
         }
       ],
       "practice_problems": [
@@ -913,6 +976,16 @@
         }
       ],
       "activities": [
+        {
+          "type": "hands_on",
+          "title": "Shade the Cell",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Blank 2x6 and 6x6 grids (or the grid-paper printable)"
+          ],
+          "instructions": "1. Pairs draw the coin-and-cube table (2 rows by 6 columns) and label all 12 cells H1 ... T6.\n2. Shade the cells for P(heads and an even number). Count: 3 of 12 = 1/4.\n3. Now compute 1/2 x 3/6 and compare -- why does the multiplication land on the same count? (Half the rows, half the columns.)\n4. Repeat on the 6x6 grid for two dice: P(both show a 6) -- shade first, multiply second.\n5. Debrief: what would ADDING the two probabilities claim about the shaded region? Why is that impossible for an 'and'?"
+        },
         {
           "type": "card_sort",
           "title": "Add or Multiply?",
@@ -1082,7 +1155,7 @@
         "type": "skill",
         "skill_id": "8DSP3-S3"
       },
-      "i_do_script": "For a DEPENDENT event -- drawing WITHOUT replacement -- the first draw changes what is left for the second. Watch a bag with 4 red and 6 blue marbles (10 total), drawing two without replacement, P(both red): the first red is 4/10. Now one red is gone and only 9 marbles remain, so the second red is 3/9. Multiply: 4/10 x 3/9 = 12/90 = 2/15. The key is to shrink BOTH the favorable count and the total by one after the first draw.",
+      "i_do_script": "Draw the bag as 10 circles and physically cross one out after the first draw -- the picture shrinks, and the second draw can only use the circles still on the page. For a DEPENDENT event -- drawing WITHOUT replacement -- the first draw changes what is left for the second. Watch a bag with 4 red and 6 blue marbles (10 total), drawing two without replacement, P(both red): the first red is 4/10. Now one red is gone and only 9 marbles remain, so the second red is 3/9. Multiply: 4/10 x 3/9 = 12/90 = 2/15. The key is to shrink BOTH the favorable count and the total by one after the first draw.",
       "canonical_error": {
         "pattern": "Treats the second draw as if the first were replaced -- keeps the same counts (independent)",
         "example": "For P(both red) from 4 red of 10, writes 4/10 x 4/10 = 4/25 instead of 4/10 x 3/9 = 2/15",
@@ -1109,7 +1182,7 @@
       ],
       "redirect_script": {
         "stop": "After the first draw, how many are left?",
-        "prompt": "Without replacement, the first marble is gone. Subtract 1 from the favorable count AND 1 from the total for the second draw, then multiply. If both fractions have the same denominator, you forgot to shrink it.",
+        "prompt": "Look back at your crossed-out drawing: count only the circles still in the bag before you write the second fraction. Without replacement, the first marble is gone. Subtract 1 from the favorable count AND 1 from the total for the second draw, then multiply. If both fractions have the same denominator, you forgot to shrink it.",
         "praise": "You shrank the counts after the first draw -- that's what 'without replacement' means."
       },
       "vocabulary": [
@@ -1127,6 +1200,18 @@
         "if_fail": "8DSP3-S3"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw the bag: 10 circles, 5 marked R and 5 marked B. For the first draw, pick one R and cross it OUT -- it does not go back in the bag."
+        },
+        {
+          "kind": "ask",
+          "text": "Now count what is actually left on the page for the second draw: how many R's remain, out of how many circles total? Could the second draw still be 5 out of 10?"
+        },
+        {
+          "kind": "say",
+          "text": "The page shows it: only 4 R's remain out of 9 circles. So the first draw is 5/10 and the second is 4/9 -- the crossed-out circle forces both numbers to shrink."
+        },
         {
           "kind": "show",
           "text": "Write 'A bag has 5 red and 5 blue (10). Draw two without replacement: P(both red)?'"
@@ -1338,7 +1423,7 @@
         "type": "skill",
         "skill_id": "8DSP3-S4"
       },
-      "i_do_script": "Some compound events mix an INDEPENDENT part with a DEPENDENT part. I handle each part with its own rule, then multiply everything for 'and.' Watch: roll a number cube, then draw two tiles without replacement from 2 red, 6 yellow, 4 blue, 3 green (15 total). P(roll a 3, then blue, then green): the die is independent, P(3) = 1/6. The first tile blue is 4/15. Now 14 tiles remain, so green is 3/14. Multiply all three: 1/6 x 4/15 x 3/14 = 12/1260 = 1/105.",
+      "i_do_script": "Sketch each stage of the game as its own picture: the coin picture looks exactly the same every time, but the bag picture loses a circle after each draw -- the pictures tell you which counts change and which never do. Some compound events mix an INDEPENDENT part with a DEPENDENT part. I handle each part with its own rule, then multiply everything for 'and.' Watch: roll a number cube, then draw two tiles without replacement from 2 red, 6 yellow, 4 blue, 3 green (15 total). P(roll a 3, then blue, then green): the die is independent, P(3) = 1/6. The first tile blue is 4/15. Now 14 tiles remain, so green is 3/14. Multiply all three: 1/6 x 4/15 x 3/14 = 12/1260 = 1/105.",
       "canonical_error": {
         "pattern": "Forgets to shrink the count on the dependent (without-replacement) draw while combining with the independent event",
         "example": "For roll a 3 then draw blue then green, writes 1/6 x 4/15 x 3/15 instead of 1/6 x 4/15 x 3/14",
@@ -1365,7 +1450,7 @@
       ],
       "redirect_script": {
         "stop": "Which parts are independent, and which are without replacement?",
-        "prompt": "Do the die or coin with its own probability, then the first draw, then the second draw with the total reduced by 1. Multiply all of them. If the two draws share a denominator, you forgot to shrink it.",
+        "prompt": "Redraw the bag after the first marble leaves -- the new picture gives you the second draw's counts, while the coin picture stays the same. Do the die or coin with its own probability, then the first draw, then the second draw with the total reduced by 1. Multiply all of them. If the two draws share a denominator, you forgot to shrink it.",
         "praise": "You kept the independent part separate and shrank the dependent draw -- then multiplied everything."
       },
       "vocabulary": [
@@ -1383,6 +1468,18 @@
         "if_fail": "8DSP3-S4"
       },
       "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw the three stages side by side: a coin, then a bag of 5 circles (3 R, 2 B), then the SAME bag with one R crossed out. The coin picture never changes -- the bag picture does."
+        },
+        {
+          "kind": "ask",
+          "text": "For the second marble draw, count the circles still in the last bag picture: how many R's, out of how many circles? Does flipping the coin remove anything from the bag?"
+        },
+        {
+          "kind": "say",
+          "text": "The coin keeps its own 1/2 -- nothing ever removes a coin face. But the bag shrinks: 3/5 for the first red, then 2 R's of 4 circles left, so 2/4. Multiply the three pictures: 1/2 x 3/5 x 2/4 = 3/20."
+        },
         {
           "kind": "show",
           "text": "Write 'Flip a coin, then draw two marbles without replacement from 3 red, 2 blue (5). P(heads, red, red)?'"

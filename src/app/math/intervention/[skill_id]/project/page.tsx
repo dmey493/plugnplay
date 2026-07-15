@@ -22,7 +22,13 @@ interface SkillJSON {
     // Teacher-facing lesson content forwarded to the projection's
     // presenter panel (never rendered on the student-facing stage).
     i_do_script?: string;
-    worked_example_script?: Array<{ kind: string; text: string }>;
+    worked_example_script?: Array<{
+      kind: string;
+      text: string;
+      // Optional model rendered on screen for the step (hundredths grid,
+      // bar model, number line…) — see InlineMath's RenderData.
+      visual?: import("@/components/intervention/InlineMath").RenderData;
+    }>;
     canonical_error?: { pattern: string; example: string; why?: string };
     redirect_script?: { stop: string; prompt: string; praise: string };
     sentence_starters?: string[];
