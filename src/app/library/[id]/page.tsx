@@ -194,6 +194,15 @@ function formatPurpose(value: string): string {
   return found?.label ?? value.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 }
 
+/** Split the summary prose into scannable bullet points on sentence
+ *  boundaries (keeps the terminal punctuation with each point). */
+function toSummaryPoints(summary: string): string[] {
+  return summary
+    .split(/(?<=[.!?])\s+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
 export default async function StrategyDetailPage({
   params,
 }: {
@@ -232,10 +241,28 @@ export default async function StrategyDetailPage({
             ))}
           </div>
 
-          {/* Summary as a lead-in — orients, doesn't compete with the steps */}
-          <p className="mb-10 max-w-3xl border-l-4 border-pnp-accent pl-4 font-heading text-lg font-medium leading-relaxed text-pnp-navy md:text-xl">
-            {body.summary}
-          </p>
+          {/* Summary as a scannable lead-in — quick bullets, not a wall of text */}
+          {body.summary && (
+            <div className="mb-10 max-w-3xl">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-pnp-gray-500">
+                Summary
+              </p>
+              <ul className="space-y-1.5">
+                {toSummaryPoints(body.summary).map((point, i) => (
+                  <li
+                    key={i}
+                    className="flex gap-2.5 text-[15px] leading-relaxed text-pnp-gray-700"
+                  >
+                    <span
+                      className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-pnp-accent"
+                      aria-hidden="true"
+                    />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
             {/* Main column */}
