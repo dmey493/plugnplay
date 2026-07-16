@@ -6,9 +6,16 @@ const nextConfig: NextConfig = {
   // starts pull and boot the image, so size is latency.
   output: "standalone",
   outputFileTracingIncludes: {
-    // sharp powers /_next/image in production; its native binaries can be
-    // missed by static tracing (see next.config output docs).
-    "/*": ["node_modules/sharp/**/*"],
+    // sharp powers /_next/image in production; its native binaries live in
+    // node_modules/@img/* (sharp 0.34+) and static tracing grabs only the
+    // .node stub without the libvips libraries beside it — verified by a
+    // standalone smoke test serving unoptimized PNGs. Include both trees.
+    "/*": ["node_modules/sharp/**/*", "node_modules/@img/**/*"],
+  },
+  outputFileTracingExcludes: {
+    // Only scripts/remove-bg.mjs (a local one-off) imports @imgly, but the
+    // whole-project trace drags its 50MB ONNX runtime into standalone.
+    "/*": ["node_modules/@imgly/**"],
   },
 };
 
