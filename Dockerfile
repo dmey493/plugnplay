@@ -43,6 +43,11 @@ RUN pip3 install --no-cache-dir --break-system-packages -r requirements.txt
 # Traced server + minimal node_modules, then the assets server.js expects
 # beside it (see the `output` doc: standalone omits public/ and .next/static).
 COPY --from=builder /app/.next/standalone ./
+# Only scripts/remove-bg.mjs (a local one-off) imports @imgly, but Turbopack's
+# whole-project trace drags its ~50MB ONNX runtime into standalone anyway —
+# outputFileTracingExcludes doesn't catch it. Strip it; nothing at runtime
+# imports it.
+RUN rm -rf ./node_modules/@imgly
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
 

@@ -12,11 +12,6 @@ const nextConfig: NextConfig = {
     // standalone smoke test serving unoptimized PNGs. Include both trees.
     "/*": ["node_modules/sharp/**/*", "node_modules/@img/**/*"],
   },
-  outputFileTracingExcludes: {
-    // Only scripts/remove-bg.mjs (a local one-off) imports @imgly, but the
-    // whole-project trace drags its 50MB ONNX runtime into standalone.
-    "/*": ["node_modules/@imgly/**"],
-  },
 };
 
 export default nextConfig;
