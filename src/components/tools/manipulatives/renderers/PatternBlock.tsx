@@ -14,8 +14,9 @@ const FILL: Record<PatternBlockShape, string> = {
 const S = GRID; // common side length so every block tiles with the others
 const H = (Math.sqrt(3) / 2) * S;
 
-/** Vertex list per shape, centred on the shape's bounding-box centre. */
-function points(shape: PatternBlockShape): [number, number][] {
+/** Vertex list per shape, centred on the shape's bounding-box centre.
+ *  Exported so snap logic can lock blocks together vertex-to-vertex. */
+export function patternBlockPoints(shape: PatternBlockShape): [number, number][] {
   switch (shape) {
     case "hexagon":
       return [
@@ -74,7 +75,7 @@ function points(shape: PatternBlockShape): [number, number][] {
 /** Pattern block — one of the six classic shapes, all with GRID-length
  *  sides so combinations tile exactly. */
 export default function PatternBlock({ item }: { item: PatternBlockItem }) {
-  const pts = points(item.shape)
+  const pts = patternBlockPoints(item.shape)
     .map(([x, y]) => `${x},${y}`)
     .join(" ");
   return (

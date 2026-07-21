@@ -188,11 +188,6 @@ export const APPROACH_ICONS: Record<string, React.FC<IconProps>> = {
       <path d="m2 17 10 5 10-5M2 12l10 5 10-5" />
     </Svg>
   ),
-  rollout: (p) => (
-    <Svg {...p}>
-      <path d="M3 12h4l3-9 4 18 3-9h4" />
-    </Svg>
-  ),
 };
 
 export function ApproachIcon({

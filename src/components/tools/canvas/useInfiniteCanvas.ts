@@ -186,11 +186,9 @@ export function useInfiniteCanvas(active = true): InfiniteCanvas {
     };
   }, [active]);
 
-  // Wheel: zoom toward the cursor. Spinning the wheel (or trackpad
-  // pinch, which browsers report as ctrl+wheel) zooms in/out rather than
-  // scrolling the canvas — panning is right-click / space / two-finger
-  // drag. Raw listener with {passive:false} so we can preventDefault the
-  // page.
+  // Wheel: trackpad pinch (reported by browsers as ctrl+wheel) zooms
+  // toward the cursor; plain scroll pans the board. Raw listener with
+  // {passive:false} so we can preventDefault the page.
   useEffect(() => {
     if (!active) return;
     const svg = svgRef.current;
@@ -200,11 +198,31 @@ export function useInfiniteCanvas(active = true): InfiniteCanvas {
       const rect = svg.getBoundingClientRect();
       const sx = e.clientX - rect.left;
       const sy = e.clientY - rect.top;
-      zoomAt(sx, sy, Math.exp(-e.deltaY * 0.0015));
+      if (e.ctrlKey) {
+        // Trackpad pinch. Devices report wildly different (often tiny)
+        // deltas, so scaling alone can't make pinch feel fast everywhere —
+        // instead guarantee a chunky minimum zoom step on EVERY pinch
+        // event. Pinch events stream at gesture rate, so a short pinch
+        // sweeps a big slice of the zoom range.
+        // Standard direction: fingers spread apart = zoom IN, pinch
+        // together = zoom OUT (matches phones and every other app).
+        const step = Math.max(0.08, Math.abs(e.deltaY) * 0.05);
+        zoomAt(sx, sy, Math.exp(-Math.sign(e.deltaY) * step));
+      } else {
+        // Plain scroll (two fingers on a trackpad, or a mouse wheel) PANS
+        // the board — moving around is the everyday gesture; zooming is
+        // pinch / Ctrl+scroll. Both axes pan so diagonal two-finger
+        // movement glides diagonally. Line-mode deltas (Firefox mouse
+        // wheel) are converted to px.
+        const k = e.deltaMode === 1 ? 16 : 1;
+        const c = cameraRef.current;
+        cameraRef.current = { ...c, tx: c.tx - e.deltaX * k, ty: c.ty - e.deltaY * k };
+        bump();
+      }
     };
     svg.addEventListener("wheel", onWheel, { passive: false });
     return () => svg.removeEventListener("wheel", onWheel);
-  }, [active, zoomAt]);
+  }, [active, zoomAt, bump]);
 
   return {
     svgRef,

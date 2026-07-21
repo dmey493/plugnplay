@@ -4,7 +4,7 @@ import path from "path";
 /**
  * "Our teaching approach" — the pedagogical framework hub under /math/approach.
  *
- * Every detail page (a tool, a strand, a practice, the rollout plan) is stored
+ * Every detail page (a tool, a strand, a practice) is stored
  * as a JSON file of typed content blocks under content/approach/pages, and
  * rendered by a shared block renderer (components/approach). The hub landing
  * page and its cross-links are driven by the manifests at the bottom of this
@@ -44,14 +44,14 @@ export type Block =
 
 export type ApproachSection = {
   /** Big divider label — tools carry two ("What it is" / "Lesson design
-   *  connection"); strands, practices and the rollout omit it. */
+   *  connection"); strands and practices omit it. */
   label?: string;
   /** Source attribution shown at the foot of the section. */
   sources?: string;
   blocks: Block[];
 };
 
-export type ApproachKind = "tool" | "strand" | "practice" | "rollout";
+export type ApproachKind = "tool" | "strand" | "practice";
 
 export type ApproachPage = {
   slug: string;
@@ -106,13 +106,13 @@ export const TOOL_GROUPS: {
   {
     id: "opener",
     title: "Opener routines",
-    note: "Choose by purpose. The discourse-rich way to use your opener — not a silent worksheet.",
+    note: "Choose by purpose. The discourse-rich way to use your opener, not a silent worksheet.",
     accent: "#0d9488", // teal-600
   },
   {
     id: "core",
     title: "Core instruction",
-    note: "“Task before tell” — students reason through a task before we formalize it.",
+    note: "“Task before tell”: students reason through a task before we formalize it.",
     accent: "#3f42d9", // blue
   },
   {
@@ -124,7 +124,7 @@ export const TOOL_GROUPS: {
   {
     id: "embedded",
     title: "Embedded moves",
-    note: "The how, not the what — you don’t choose between these; you layer them onto whatever activity you run.",
+    note: "The how, not the what. You don’t choose between these; you layer them onto whatever activity you run.",
     accent: "#f97316", // orange
   },
 ];
@@ -144,7 +144,7 @@ export const TOOLS: ToolCard[] = [
     slug: "number-talks",
     title: "Number Talks & Number Strings",
     blurb:
-      "A short, daily mental-math discussion where students share and defend strategies — one rich problem, or a sequenced string that nudges toward a target strategy. The anchor routine for fluency from understanding.",
+      "A short, daily mental-math discussion where students share and defend strategies: one rich problem, or a sequenced string that nudges toward a target strategy. The anchor routine for fluency from understanding.",
     group: "opener",
     icon: "talk",
   },
@@ -152,7 +152,7 @@ export const TOOLS: ToolCard[] = [
     slug: "number-strings",
     title: "Number Strings",
     blurb:
-      "A tightly sequenced set of related problems, posed one at a time, where each helper gives a foothold for the next — driving students toward one target strategy.",
+      "A tightly sequenced set of related problems, posed one at a time, where each helper gives a foothold for the next and drives students toward one target strategy.",
     group: "opener",
     icon: "string",
   },
@@ -192,7 +192,7 @@ export const TOOLS: ToolCard[] = [
     slug: "error-analysis",
     title: "Error Analysis",
     blurb:
-      "Students analyze a wrong (or partly right) solution to find and fix the reasoning — turning misconceptions into the object of study.",
+      "Students analyze a wrong (or partly right) solution to find and fix the reasoning, turning misconceptions into the object of study.",
     group: "opener",
     icon: "search",
   },
@@ -217,7 +217,7 @@ export const TOOLS: ToolCard[] = [
     slug: "responsive-di",
     title: "Responsive Direct Instruction & Teacher Clarity",
     blurb:
-      "Brief, well-timed explicit teaching embedded in core — modeling, naming, and formalizing. The consolidation is the key “tell,” landing when students are primed.",
+      "Brief, well-timed explicit teaching embedded in core: modeling, naming, and formalizing. The consolidation is the key “tell,” landing when students are primed.",
     group: "core",
     icon: "teach",
   },
@@ -226,7 +226,7 @@ export const TOOLS: ToolCard[] = [
     slug: "fluency-practice",
     title: "Fluency Practice (with monitoring)",
     blurb:
-      "Volume reps that build fluency — every student shows work on paper while the teacher circulates, sees where reasoning breaks, and responds in the moment.",
+      "Volume reps that build fluency. Every student shows work on paper while the teacher circulates, sees where reasoning breaks, and responds in the moment.",
     group: "practice",
     icon: "pencil",
   },
@@ -249,7 +249,7 @@ export const TOOLS: ToolCard[] = [
   },
   {
     slug: "when-to-tell",
-    title: "When to Tell — Decision Guide",
+    title: "When to Tell: Decision Guide",
     blurb:
       "The teacher’s judgment for inquiry vs. explicit teaching: don’t tell what students can figure out; do tell conventions and notation, or formalize once they’ve struggled enough.",
     group: "embedded",
@@ -267,7 +267,7 @@ export const TOOLS: ToolCard[] = [
     slug: "vnps",
     title: "Vertical Surfaces & Random Groups",
     blurb:
-      "Students think at whiteboards in visibly random groups — more starts, more mobility of ideas, less hiding. The structure that powers task work.",
+      "Students think at whiteboards in visibly random groups: more starts, more mobility of ideas, less hiding. The structure that powers task work.",
     group: "embedded",
     icon: "board",
   },
@@ -275,7 +275,7 @@ export const TOOLS: ToolCard[] = [
     slug: "five-practices",
     title: "The 5 Practices",
     blurb:
-      "Anticipate, monitor, select, sequence, connect — how the teacher orchestrates any task discussion so student thinking adds up to the mathematics.",
+      "Anticipate, monitor, select, sequence, connect: how the teacher orchestrates any task discussion so student thinking adds up to the mathematics.",
     group: "embedded",
     icon: "target",
   },
@@ -283,7 +283,7 @@ export const TOOLS: ToolCard[] = [
     slug: "connecting-representations",
     title: "Connecting Representations",
     blurb:
-      "Linking tables, graphs, equations, and diagrams so students see one idea in many forms — the habit that makes any consolidation deep.",
+      "Linking tables, graphs, equations, and diagrams so students see one idea in many forms. The habit that makes any consolidation deep.",
     group: "embedded",
     icon: "chart",
   },

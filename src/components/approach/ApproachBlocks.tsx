@@ -89,31 +89,14 @@ function Inline({ text }: { text: string }) {
 }
 
 // ─── Callout theming (brand tokens only) ────────────────────────────────
+// House-style emphasis cards: navy border + hard offset shadow, a tinted
+// fill per variant. No colored edge bars.
 
-const CALLOUT: Record<
-  string,
-  { wrap: string; bar: string; label: string }
-> = {
-  vision: {
-    wrap: "bg-pnp-blue/5 border-pnp-blue/30",
-    bar: "bg-pnp-blue",
-    label: "text-pnp-blue",
-  },
-  equity: {
-    wrap: "bg-pnp-accent-soft/50 border-pnp-accent/30",
-    bar: "bg-pnp-accent",
-    label: "text-pnp-accent",
-  },
-  tip: {
-    wrap: "bg-pnp-yellow/10 border-pnp-yellow-dark/40",
-    bar: "bg-pnp-yellow-dark",
-    label: "text-pnp-gray-800",
-  },
-  watch: {
-    wrap: "bg-pnp-red/5 border-pnp-red/30",
-    bar: "bg-pnp-red",
-    label: "text-pnp-red",
-  },
+const CALLOUT: Record<string, { wrap: string }> = {
+  vision: { wrap: "bg-white" },
+  equity: { wrap: "bg-pnp-accent-soft/40" },
+  tip: { wrap: "bg-pnp-yellow/15" },
+  watch: { wrap: "bg-pnp-red/5" },
 };
 
 // ─── Single block ───────────────────────────────────────────────────────
@@ -192,15 +175,9 @@ function BlockView({ block }: { block: Block }) {
       const c = CALLOUT[block.variant] ?? CALLOUT.vision;
       return (
         <div
-          className={`relative overflow-hidden rounded-xl border-2 ${c.wrap} p-5 pl-6`}
+          className={`rounded-xl border-2 border-pnp-navy ${c.wrap} p-5 shadow-[3px_3px_0_var(--pnp-navy)]`}
         >
-          <span
-            className={`absolute inset-y-0 left-0 w-1.5 ${c.bar}`}
-            aria-hidden="true"
-          />
-          <p
-            className={`mb-2 text-xs font-bold uppercase tracking-wide ${c.label}`}
-          >
+          <p className="mb-2 font-heading text-base font-extrabold text-pnp-navy">
             {block.title}
           </p>
           <div className="space-y-3 text-pnp-gray-700">

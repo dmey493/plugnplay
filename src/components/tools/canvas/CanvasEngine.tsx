@@ -13,7 +13,8 @@ import SelectionOverlay, { type BBox } from "../manipulatives/SelectionOverlay";
 import ContextMenu from "../manipulatives/ContextMenu";
 import { makeItem, type Sample } from "../manipulatives/registry";
 import { GRID, itemSize, rotatedHalfExtent } from "../manipulatives/constants";
-import { snapToGrid, snapRotation, snapToNeighbors, intersectsRect } from "../manipulatives/snap";
+import { snapToGrid, snapRotation, rotationStep, snapToNeighbors, snapToVertices, intersectsRect } from "../manipulatives/snap";
+import { exportRects, printBoardToPdf } from "./exportPdf";
 import { useInfiniteCanvas } from "./useInfiniteCanvas";
 import {
   StrokeShape,
@@ -225,7 +226,17 @@ export default function CanvasEngine({
   // Live-drag / rotate / ink refs — mutated during a gesture, read on render
   // (we bump the camera tick to re-render) and committed on pointer-up.
   const modeRef = useRef<Mode>("idle");
-  const dragRef = useRef<{ startSx: number; startSy: number; dx: number; dy: number } | null>(null);
+  // snapDx/snapDy: live vertex-lock adjustment (pattern blocks clicking
+  // together mid-drag) — rendered on top of dx/dy and kept on release.
+  const dragRef = useRef<{
+    startSx: number;
+    startSy: number;
+    dx: number;
+    dy: number;
+    snapDx: number;
+    snapDy: number;
+    snapped: boolean;
+  } | null>(null);
   const rotateRef = useRef<{ center: { x: number; y: number }; startAngle: number; delta: number } | null>(null);
   const marqueeStartRef = useRef<{ x: number; y: number; shift: boolean } | null>(null);
   // Right-button drag pans; a right-click that never moved opens the
@@ -337,6 +348,25 @@ export default function CanvasEngine({
   }, [items, strokes, pages, background, gridSnap, tick, loaded, docKey, cameraRef]);
 
   const maxZ = useCallback(() => itemsRef.current.reduce((m, i) => Math.max(m, i.z), 0), []);
+
+  // ── Save as PDF (print pipeline) ─────────────────────────────────────
+  // The world scene <g>; cloned into hidden print pages on export.
+  const sceneRef = useRef<SVGGElement | null>(null);
+  const savePdf = useCallback(() => {
+    // Deselect first so no selection chrome (outlines, resize dots) is
+    // cloned into the printout, then wait two frames for the re-render.
+    setSelection(new Set());
+    setSelectedTextId(null);
+    setMenu(null);
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        const scene = sceneRef.current;
+        if (!scene) return;
+        const rects = exportRects(itemsRef.current, strokesRef.current, pagesRef.current);
+        printBoardToPdf(scene, rects);
+      })
+    );
+  }, []);
 
   // ── Add from tray: drop at viewport centre, offset-stacked ───────────
   const addFromTray = useCallback(
@@ -870,7 +900,7 @@ export default function CanvasEngine({
           }
           return prev.has(id) ? prev : new Set([id]);
         });
-        dragRef.current = { startSx: sx, startSy: sy, dx: 0, dy: 0 };
+        dragRef.current = { startSx: sx, startSy: sy, dx: 0, dy: 0, snapDx: 0, snapDy: 0, snapped: false };
         modeRef.current = "drag";
         return;
       }
@@ -919,8 +949,31 @@ export default function CanvasEngine({
         return;
       }
       if (mode === "drag" && dragRef.current) {
-        dragRef.current.dx = toWorldScale(sx - dragRef.current.startSx);
-        dragRef.current.dy = toWorldScale(sy - dragRef.current.startSy);
+        const d = dragRef.current;
+        d.dx = toWorldScale(sx - d.startSx);
+        d.dy = toWorldScale(sy - d.startSy);
+        // Live vertex lock: pattern blocks magnetically click onto a
+        // neighbour's vertex while dragging. Recomputed from the raw
+        // pointer delta each move, so dragging past the threshold
+        // releases the lock naturally.
+        d.snapDx = 0;
+        d.snapDy = 0;
+        d.snapped = false;
+        const sel = selectionRef.current;
+        const primary = itemsRef.current.find((i) => sel.has(i.id) && i.kind === "patternblock");
+        if (primary) {
+          const others = itemsRef.current.filter((i) => !sel.has(i.id));
+          const snap = snapToVertices(
+            { ...primary, x: primary.x + d.dx, y: primary.y + d.dy },
+            others,
+            toWorldScale(16)
+          );
+          if (snap.snapped) {
+            d.snapDx = snap.dx;
+            d.snapDy = snap.dy;
+            d.snapped = true;
+          }
+        }
         bump();
         return;
       }
@@ -1035,20 +1088,26 @@ export default function CanvasEngine({
           );
         }
       } else if (mode === "drag" && dragRef.current) {
-        const { dx, dy } = dragRef.current;
+        // Fold the live vertex lock into the committed delta so pieces stay
+        // exactly where they visually clicked together.
+        const { snapDx, snapDy, snapped } = dragRef.current;
+        const dx = dragRef.current.dx + snapDx;
+        const dy = dragRef.current.dy + snapDy;
         dragRef.current = null;
         modeRef.current = "idle";
         if (dx !== 0 || dy !== 0) {
           const sel = selectionRef.current;
           const moved = itemsRef.current.map((i) => (sel.has(i.id) ? { ...i, x: i.x + dx, y: i.y + dy } : i));
           // Snap the group by the first selected item, preserving offsets.
-          // Neighbour edges win over the grid on each axis independently —
-          // so a 1/4 tile sits flush against a 1/2 tile even though their
-          // edge positions don't share a grid line (centre-snapping alone
-          // can never make 2×(1/4) meet a 1/2).
+          // A vertex lock between shapes is exact and beats everything —
+          // never let the grid pull a locked piece off its neighbour.
+          // Otherwise neighbour edges win over the grid on each axis
+          // independently — so a 1/4 tile sits flush against a 1/2 tile
+          // even though their edge positions don't share a grid line
+          // (centre-snapping alone can never make 2×(1/4) meet a 1/2).
           const primary = moved.find((i) => sel.has(i.id));
           let adjX = 0, adjY = 0;
-          if (primary) {
+          if (primary && !snapped) {
             const others = moved.filter((i) => !sel.has(i.id));
             const near = snapToNeighbors(primary, others, toWorldScale(12));
             adjX = near.snappedX ? near.x - primary.x : gridSnap ? snapToGrid(primary.x) - primary.x : 0;
@@ -1063,7 +1122,7 @@ export default function CanvasEngine({
         modeRef.current = "idle";
         const sel = selectionRef.current;
         pushHistory();
-        setItems((prev) => prev.map((i) => (sel.has(i.id) ? { ...i, rot: snapRotation(i.rot + delta, e.shiftKey) } : i)));
+        setItems((prev) => prev.map((i) => (sel.has(i.id) ? { ...i, rot: snapRotation(i.rot + delta, rotationStep(i, e.shiftKey)) } : i)));
       } else if (mode === "marquee" && marqueeStartRef.current) {
         const m = marquee;
         const start = marqueeStartRef.current;
@@ -1198,7 +1257,7 @@ export default function CanvasEngine({
 
         <div className="flex items-center gap-2 text-sm">
           <span className="hidden text-pnp-navy/70 2xl:inline">
-            Right-click a piece for options &middot; right-click+drag pans &middot; scroll zooms
+            Right-click a piece for options &middot; scroll or right-click+drag moves the board &middot; pinch or Ctrl+scroll zooms
           </span>
 
           {importError && (
@@ -1293,6 +1352,16 @@ export default function CanvasEngine({
           <Button
             tier="secondary"
             size="small"
+            onClick={savePdf}
+            disabled={items.length === 0 && strokes.length === 0 && pages.length === 0}
+            title="Save the board as a PDF (choose “Save as PDF” in the print dialog)"
+          >
+            Save PDF
+          </Button>
+
+          <Button
+            tier="secondary"
+            size="small"
             onClick={() => setGridSnap((g) => !g)}
             aria-pressed={gridSnap}
             title="Toggle snap-to-grid"
@@ -1355,7 +1424,7 @@ export default function CanvasEngine({
               </g>
             )}
 
-            <g transform={`translate(${cam.tx} ${cam.ty}) scale(${cam.zoom})`}>
+            <g ref={sceneRef} transform={`translate(${cam.tx} ${cam.ty}) scale(${cam.zoom})`}>
               {/* Imported PDF pages / images sit behind everything in world
                   space, so they pan and zoom locked to the board. */}
               {pages.map((img) => (
@@ -1374,8 +1443,8 @@ export default function CanvasEngine({
                 .sort((a, b) => a.z - b.z)
                 .map((it) => {
                   const isSel = selection.has(it.id);
-                  const dx = isSel && dragging ? dragRef.current!.dx : 0;
-                  const dy = isSel && dragging ? dragRef.current!.dy : 0;
+                  const dx = isSel && dragging ? dragRef.current!.dx + dragRef.current!.snapDx : 0;
+                  const dy = isSel && dragging ? dragRef.current!.dy + dragRef.current!.snapDy : 0;
                   const rotItem = isSel && rotating ? { ...it, rot: it.rot + rotateRef.current!.delta } : it;
                   return (
                     <ItemView
