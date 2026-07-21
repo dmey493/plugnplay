@@ -59,7 +59,9 @@ def _fmt_eq(m: Fraction, b: Fraction) -> str:
     elif m.denominator == 1:
         parts.append(f"{int(m)}x")
     else:
-        parts.append(f"({m.numerator}/{m.denominator})x")
+        # Bare fraction hugging the variable — the renderer stacks "a/b"
+        # and handles a leading minus; no parentheses ("y = 5/3x + 5").
+        parts.append(f"{m.numerator}/{m.denominator}x")
     if b > 0:
         parts.append(f" + {_fmt(b)}")
     elif b < 0:
@@ -92,21 +94,28 @@ class Stem8AF6:
 
         correct = _fmt(m)
 
-        # Distractors
-        distractors = []
+        # Distractors — de-duplicated against the correct answer AND each other
+        candidates = []
         if m != 0:
-            distractors.append(_fmt(Fraction(1) / m if m.numerator != 0 else Fraction(1)))
-        distractors.append(_fmt(abs(m)))
-        distractors.append(_fmt(-m))
-        distractors.append(_fmt(b))
-        # De-dup
-        distractors = [d for d in distractors if d != correct]
+            candidates.append(_fmt(Fraction(1) / m if m.numerator != 0 else Fraction(1)))
+        candidates.append(_fmt(abs(m)))
+        candidates.append(_fmt(-m))
+        candidates.append(_fmt(b))
+        candidates.append(_fmt(m + 1))
+        seen = {correct}
+        distractors = []
+        for d in candidates:
+            if len(distractors) >= 3:
+                break
+            if d not in seen:
+                seen.add(d)
+                distractors.append(d)
         while len(distractors) < 3:
             v = Fraction(rng.randint(1, 10)) * rng.choice([1, -1])
             s = _fmt(v)
-            if s != correct and s not in distractors:
+            if s not in seen:
+                seen.add(s)
                 distractors.append(s)
-        distractors = distractors[:3]
 
         # Build coordinate grid showing the line
         x_vals_int = [int(x) for x, y in rows]
@@ -179,14 +188,22 @@ class Stem8AF6:
         eq_str = _fmt_eq(m, b)
         correct = _fmt(m)
 
-        distractors = [_fmt(b), _fmt(abs(m)), _fmt(Fraction(den, num))]
-        distractors = [d for d in distractors if d != correct]
+        # Distractors — de-duplicated against the correct answer AND each other
+        candidates = [_fmt(b), _fmt(abs(m)), _fmt(Fraction(den, num)), _fmt(-m)]
+        seen = {correct}
+        distractors = []
+        for d in candidates:
+            if len(distractors) >= 3:
+                break
+            if d not in seen:
+                seen.add(d)
+                distractors.append(d)
         while len(distractors) < 3:
             v = Fraction(rng.randint(1, 8)) * rng.choice([1, -1])
             s = _fmt(v)
-            if s != correct and s not in distractors:
+            if s not in seen:
+                seen.add(s)
                 distractors.append(s)
-        distractors = distractors[:3]
 
         stem_text = f"What is the rate of change of the function {eq_str}?"
 
@@ -226,15 +243,24 @@ class Stem8AF6:
         desc = ctx["desc"].format(name=name, m=int(m), b=int(b))
         correct_eq = _fmt_eq(m, b)
 
-        # Distractors: swap m/b, wrong signs, wrong values
-        distractors = [
+        # Distractors: swap m/b, wrong signs, wrong values —
+        # de-duplicated against the correct answer AND each other
+        candidates = [
             _fmt_eq(b, m),                    # swapped
             _fmt_eq(m, -b),                   # wrong sign on b
             _fmt_eq(m + Fraction(rng.randint(1, 3)), b),  # wrong m
         ]
-        distractors = [d for d in distractors if d != correct_eq][:3]
+        seen = {correct_eq}
+        distractors = []
+        for d in candidates:
+            if d not in seen:
+                seen.add(d)
+                distractors.append(d)
         while len(distractors) < 3:
-            distractors.append(_fmt_eq(Fraction(rng.randint(1, 10)), Fraction(rng.randint(1, 20))))
+            eq = _fmt_eq(Fraction(rng.randint(1, 10)), Fraction(rng.randint(1, 20)))
+            if eq not in seen:
+                seen.add(eq)
+                distractors.append(eq)
         distractors = distractors[:3]
 
         stem_text = f"{desc}\n\nWhich equation represents this relationship?"

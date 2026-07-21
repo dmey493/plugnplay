@@ -4,6 +4,7 @@ import { useEffect, useState, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   generateProblems,
+  difficultyHint,
   TOPIC_LABELS,
   TOPIC_CATEGORIES,
   type FluencyOptions,
@@ -23,6 +24,7 @@ const DEFAULT_OPTS: FluencyOptions = {
   count: 20,
   distributeIncludeFractions: false,
   distributeIncludeDecimals: false,
+  rationalIncludeFracDec: false,
 };
 
 // Distribute topics surface two extra toggles ("Add fractions" / "Add
@@ -101,19 +103,23 @@ export default function FluencyGenerator() {
   // Hide the "Allow negatives" toggle for any topic where negatives are
   // structurally baked in (all integers, all rationals).
   const isInherentlySigned = INHERENTLY_SIGNED_TOPICS.has(opts.topic);
-  // Every fluency topic paginates at 10 problems per page. The user can
-  // still generate any total they want — the worksheet view splits into
-  // additional pages and each page lays out evenly so 10 problems fill
-  // the page cleanly.
-  const PROBLEMS_PER_PAGE = 10;
+  // Problems per page adapts to how tall each problem renders, so every
+  // page still prints on one sheet: coordinate grids are ~3 inches tall
+  // (4 per page), number-line problems need graphing room (8 per page),
+  // and plain text/table problems fit 10.
+  const PROBLEMS_PER_PAGE = useMemo(() => {
+    if (problems.some((p) => p.shape?.kind === "grid" || p.answerShape?.kind === "grid")) {
+      return 4;
+    }
+    if (problems.some((p) => p.shape?.kind === "numberline")) return 8;
+    return 10;
+  }, [problems]);
 
   // ALL hooks must be called every render (rules of hooks). The picker
   // branch is rendered AFTER the hooks below, not before, so we never
   // skip a useMemo / useState between renders.
   //
-  // For fraction topics we paginate at 10 per page. Each page chunk gets
-  // split into its own 2-column left/right pair. Decimals render as a
-  // single page (no chunking).
+  // Each page chunk gets split into its own 2-column left/right pair.
   const pages = useMemo(() => {
     if (problems.length === 0) return [];
     const out: { left: Problem[]; right: Problem[] }[] = [];
@@ -123,7 +129,7 @@ export default function FluencyGenerator() {
       out.push({ left: chunk.slice(0, half), right: chunk.slice(half) });
     }
     return out;
-  }, [problems]);
+  }, [problems, PROBLEMS_PER_PAGE]);
 
   // If every problem carries the same non-empty `instruction`, hoist it
   // to a single line at the top of the worksheet instead of repeating it
@@ -205,22 +211,11 @@ export default function FluencyGenerator() {
                 { value: "hard", label: "Hard" },
               ]}
             />
+            {/* Topic-specific description of what this difficulty level
+                actually changes — sourced from the generator itself, so
+                it can't drift out of sync with the problems. */}
             <p className="mt-1 text-xs text-pnp-gray-500">
-              {isFractionTopic ? (
-                opts.difficulty === "easy" ? (
-                  "Same denominator (no LCD)."
-                ) : opts.difficulty === "medium" ? (
-                  "One denom divides the other."
-                ) : (
-                  "Coprime denominators (full LCD)."
-                )
-              ) : opts.difficulty === "easy" ? (
-                "1 decimal place."
-              ) : opts.difficulty === "medium" ? (
-                "2 decimal places."
-              ) : (
-                "1–3 decimal places, mixed."
-              )}
+              {difficultyHint(opts.topic, opts.difficulty)}
             </p>
           </Field>
 
@@ -313,6 +308,20 @@ export default function FluencyGenerator() {
                 checked={opts.requireSimplification}
                 onChange={(b) =>
                   setOpts((o) => ({ ...o, requireSimplification: b }))
+                }
+              />
+            </Field>
+          )}
+
+          {/* Rational topics only — mix in problems pairing a fraction
+              with a decimal (3/4 + 0.5) using the topic's operation. */}
+          {RATIONAL_TOPICS.has(opts.topic) && (
+            <Field label="Mix number forms">
+              <CheckBox
+                label="Fraction-with-decimal problems"
+                checked={!!opts.rationalIncludeFracDec}
+                onChange={(b) =>
+                  setOpts((o) => ({ ...o, rationalIncludeFracDec: b }))
                 }
               />
             </Field>
@@ -574,10 +583,14 @@ function ProblemRow({ p }: { p: Problem }) {
   // number + shape with no per-problem text.
   const lines = p.display.split("\n").filter((l) => l.length > 0);
   const hasText = lines.length > 0;
-  // Coordinate-grid problems read top-down (prompt above the grid), unlike
-  // labeled-geometry shapes which sit inline next to short labels.
-  const stackVertical = p.shape?.kind === "grid";
-  if (p.shape && stackVertical) {
+  // Coordinate-grid, number-line, and table problems read top-down
+  // (prompt above the figure), unlike labeled-geometry shapes which sit
+  // inline next to short labels.
+  const stackVertical =
+    p.table != null ||
+    p.shape?.kind === "grid" ||
+    p.shape?.kind === "numberline";
+  if (stackVertical && (p.table || p.shape)) {
     return (
       <div className="flex items-start gap-3">
         <span className="w-6 shrink-0 pt-1 text-right font-bold">{p.num})</span>
@@ -591,9 +604,12 @@ function ProblemRow({ p }: { p: Problem }) {
               ))}
             </span>
           )}
-          <div>
-            <ShapeRenderer spec={p.shape} />
-          </div>
+          {p.table && <XYTable table={p.table} />}
+          {p.shape && (
+            <div>
+              <ShapeRenderer spec={p.shape} />
+            </div>
+          )}
         </div>
       </div>
     );
@@ -629,6 +645,50 @@ function ProblemRow({ p }: { p: Problem }) {
   );
 }
 
+/** Proper bordered x/y table — replaces the old text-art tables. */
+function XYTable({
+  table,
+  size = "normal",
+}: {
+  table: NonNullable<Problem["table"]>;
+  size?: "normal" | "small";
+}) {
+  const pad = size === "small" ? "px-3 py-0.5" : "px-5 py-1";
+  return (
+    <table
+      className="w-auto border-collapse text-center"
+      style={{
+        ...WORKSHEET_NUM_STYLE,
+        fontSize: size === "small" ? "0.85rem" : "1rem",
+      }}
+    >
+      <thead>
+        <tr>
+          {table.headers.map((h, i) => (
+            <th
+              key={i}
+              className={`border-2 border-black ${pad} font-bold italic`}
+            >
+              {h}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {table.rows.map((r, i) => (
+          <tr key={i}>
+            {r.map((c, j) => (
+              <td key={j} className={`border border-black ${pad}`}>
+                {c}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
 function AnswerKey({
   title,
   problems,
@@ -660,26 +720,35 @@ function AnswerKey({
 }
 
 function AnswerRow({ p }: { p: Problem }) {
-  const displayLines = p.display.split("\n");
+  const displayLines = p.display.split("\n").filter((l) => l.length > 0);
   // Use the answer-key shape variant (e.g., grid with the line drawn) when
   // the generator provides one. Otherwise fall back to the worksheet shape.
   const shape = p.answerShape ?? p.shape;
-  const stackVertical = shape?.kind === "grid";
-  if (shape && stackVertical) {
+  const stackVertical =
+    shape?.kind === "grid" || shape?.kind === "numberline" || p.table != null;
+  if (stackVertical && (shape || p.table)) {
     return (
       <div className="flex items-start gap-3">
         <span className="w-6 shrink-0 pt-1 text-right font-bold">{p.num})</span>
-        <div className="flex flex-1 flex-col gap-2">
-          <span className="text-pnp-gray-600">
-            {displayLines.map((line, i) => (
-              <span key={i} className="block">
-                <MathExpr text={line} />
-              </span>
-            ))}
+        <div className="flex flex-1 flex-col gap-1.5">
+          {displayLines.length > 0 && (
+            <span className="text-pnp-gray-600">
+              {displayLines.map((line, i) => (
+                <span key={i} className="block">
+                  <MathExpr text={line} />
+                </span>
+              ))}
+            </span>
+          )}
+          {/* Answer text FIRST so the key reads answer-then-graph. */}
+          <span className="font-bold">
+            <MathExpr text={p.answer} />
           </span>
-          <div>
-            <ShapeRenderer spec={shape} size="small" />
-          </div>
+          {shape && (
+            <div>
+              <ShapeRenderer spec={shape} size="small" />
+            </div>
+          )}
         </div>
       </div>
     );
@@ -722,7 +791,9 @@ type ExprToken =
   | { kind: "op"; text: string }
   | { kind: "overline"; text: string }
   | { kind: "sup"; text: string }
-  | { kind: "frac"; num: number; den: number; sign: 1 | -1; paren: boolean }
+  // num/den are strings so variable fractions ("x/5", "12/x") can stack
+  // vertically just like digit fractions.
+  | { kind: "frac"; num: string; den: string; sign: 1 | -1; paren: boolean }
   | { kind: "mixed"; whole: number; num: number; den: number; sign: 1 | -1; paren: boolean };
 
 function tokenizeMath(s: string): ExprToken[] {
@@ -785,21 +856,34 @@ function tokenizeMath(s: string): ExprToken[] {
       i += m[0].length;
       continue;
     }
-    // Simple fraction.
-    m = /^(\()?([-−])?(\d+)\/(\d+)(\))?/.exec(rest);
+    // Simple fraction — digits OR the variable "x" on either side, so
+    // "3/4", "x/5", "12/x", and "x/(−4)" all render stacked. The
+    // boundary guards keep unit strings like "ft/sec" or "km/hr" from
+    // being misread as fractions: an "x" operand only counts when it
+    // isn't glued to other letters/digits.
+    m = /^(\()?([-−])?(\d+|x)\/(\d+|x|\([−-]?\d+\))(\))?/.exec(rest);
     if (m) {
-      const openParen = Boolean(m[1]);
-      const closeParen = Boolean(m[5]);
-      const paren = openParen && closeParen;
-      out.push({
-        kind: "frac",
-        sign: m[2] ? -1 : 1,
-        num: parseInt(m[3], 10),
-        den: parseInt(m[4], 10),
-        paren,
-      });
-      i += m[0].length;
-      continue;
+      const prev = i > 0 ? s[i - 1] : "";
+      const next = s[i + m[0].length] ?? "";
+      const numIsVar = m[3] === "x";
+      const denIsVar = m[4] === "x";
+      const boundaryOk =
+        (!numIsVar || !/[A-Za-z0-9]/.test(prev)) &&
+        (!denIsVar || !/[A-Za-z0-9]/.test(next));
+      if (boundaryOk) {
+        const openParen = Boolean(m[1]);
+        const closeParen = Boolean(m[5]);
+        const paren = openParen && closeParen;
+        out.push({
+          kind: "frac",
+          sign: m[2] ? -1 : 1,
+          num: m[3],
+          den: m[4],
+          paren,
+        });
+        i += m[0].length;
+        continue;
+      }
     }
     pushText(s[i]);
     i++;
@@ -868,8 +952,8 @@ function Frac({
   sign,
   paren,
 }: {
-  num: number;
-  den: number;
+  num: number | string;
+  den: number | string;
   sign: 1 | -1;
   paren: boolean;
 }) {

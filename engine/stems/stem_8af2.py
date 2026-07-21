@@ -11,7 +11,8 @@ Content Limits:
 
 5 Stems:
   Stem 1 (Below-MC):        Given simplified equation, classify (DOK 1, Easy)
-  Stem 2 (Approaching-MS):  Select all equations with one solution (DOK 1, Easy)
+  Stem 2 (Approaching-MS):  Select all equations with a target solution type;
+                            target rotates one/none/infinite by variant (DOK 1, Easy)
   Stem 3 (At-MC):           Find value so equation has infinite solutions (DOK 2, Medium)
   Stem 4 (At-MS):           Select equations with no solution (needs distribution) (DOK 2, Medium)
   Stem 5 (Above-MP):        Analyze claim about solutions, agree/disagree + justify (DOK 3, Difficult)
@@ -180,20 +181,37 @@ class Stem8AF2:
 
     # ================================================================
     # STEM 2: Approaching - MS (DOK 1, Easy)
-    # Select all equations with one solution (no simplification needed).
+    # Select all equations with a target solution type (no simplification
+    # needed). The target rotates across variants: exactly one solution,
+    # no solution, infinitely many solutions.
     # ================================================================
 
     def stem2_approaching_ms(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(2, variant_idx)
 
-        # Generate 5 equations: mix of one/infinite/none
+        # Rotate the target classification across variants so the bank
+        # mixes "exactly one solution", "no solution", and
+        # "infinitely many solutions" prompts.
+        target = ["one", "none", "infinite"][variant_idx % 3]
+        others = [t for t in ["one", "none", "infinite"] if t != target]
+
+        # Generate 5 equations: at least 2 match the target, and both
+        # non-target types appear so wrong picks are plausible.
         equations = []
-        types_needed = ["one", "one", "infinite", "none", rng.choice(["one", "none"])]
+        types_needed = [target, target, others[0], others[1],
+                        rng.choice([target, others[0], others[1]])]
         rng.shuffle(types_needed)
 
+        used_strs = set()
         for sol_type in types_needed:
-            lc, lk, rc, rk = gen.equation_solution_type(sol_type)
-            eq_str = _make_equation_str(lc, lk, rc, rk)
+            eq_str = None
+            lc = lk = rc = rk = None
+            for _ in range(10):  # avoid duplicate equation strings
+                lc, lk, rc, rk = gen.equation_solution_type(sol_type)
+                eq_str = _make_equation_str(lc, lk, rc, rk)
+                if eq_str not in used_strs:
+                    break
+            used_strs.add(eq_str)
             actual = _classify(lc, lk, rc, rk)
             equations.append((eq_str, actual))
 
@@ -203,7 +221,7 @@ class Stem8AF2:
         keys = "abcde"
         correct_keys = []
         for i, (eq_str, actual) in enumerate(equations):
-            is_correct = (actual == "one")
+            is_correct = (actual == target)
             choices.append(QuestionChoice(
                 key=keys[i], text=eq_str, text_latex=eq_str,
                 is_correct=is_correct,
@@ -213,13 +231,29 @@ class Stem8AF2:
 
         correct_str = ", ".join(correct_keys)
 
-        stem_text = "Select all equations that have exactly one solution."
+        target_phrase = {
+            "one": "exactly one solution",
+            "none": "no solution",
+            "infinite": "infinitely many solutions",
+        }[target]
 
-        worked_parts = []
+        stem_text = f"Select all equations that have {target_phrase}."
+
+        rule = {
+            "one": ("An equation has exactly one solution when the x-terms "
+                    "on the two sides have different coefficients."),
+            "none": ("An equation has no solution when both sides have the "
+                     "same x-coefficient but different constants."),
+            "infinite": ("An equation has infinitely many solutions when both "
+                         "sides simplify to the same expression."),
+        }[target]
+
+        worked_parts = [rule]
         for eq_str, actual in equations:
             label = {"one": "one solution", "infinite": "infinitely many solutions",
                      "none": "no solution"}[actual]
             worked_parts.append(f"{eq_str} -> {label}")
+        worked_parts.append(f"Equations with {target_phrase}: {correct_str}")
         worked = "\n".join(worked_parts)
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING, ItemType.MS,
@@ -319,27 +353,32 @@ class Stem8AF2:
 
         equations = []
         for sol_type in target_types:
-            # Build equation with distribution: p(qx + r) = sx + t
-            p = Fraction(rng.randint(2, 6))
-            q = Fraction(rng.randint(1, 4))
-            r = Fraction(rng.randint(-6, 6))
-            while r == 0:
+            # Build equation with distribution: p(qx + r) = sx + t.
+            # Retry until the rendered string is unique among the options —
+            # two "none"-type draws could otherwise produce the same equation.
+            for _attempt in range(50):
+                p = Fraction(rng.randint(2, 6))
+                q = Fraction(rng.randint(1, 4))
                 r = Fraction(rng.randint(-6, 6))
+                while r == 0:
+                    r = Fraction(rng.randint(-6, 6))
 
-            if sol_type == "infinite":
-                s = p * q
-                t = p * r
-            elif sol_type == "none":
-                s = p * q
-                t = p * r + rng.choice([-3, -2, -1, 1, 2, 3])
-            else:
-                s = p * q + rng.choice([-2, -1, 1, 2])
-                t = Fraction(rng.randint(-10, 10))
+                if sol_type == "infinite":
+                    s = p * q
+                    t = p * r
+                elif sol_type == "none":
+                    s = p * q
+                    t = p * r + rng.choice([-3, -2, -1, 1, 2, 3])
+                else:
+                    s = p * q + rng.choice([-2, -1, 1, 2])
+                    t = Fraction(rng.randint(-10, 10))
 
-            # Format: p(qx + r) = sx + t
-            inner = f"{_fmt(q)}x" + (f" + {_fmt(r)}" if r > 0 else f" - {_fmt(abs(r))}")
-            rhs = _fmt_linear(s, t)
-            eq_str = f"{_fmt(p)}({inner}) = {rhs}"
+                # Format: p(qx + r) = sx + t
+                inner = f"{_fmt(q)}x" + (f" + {_fmt(r)}" if r > 0 else f" - {_fmt(abs(r))}")
+                rhs = _fmt_linear(s, t)
+                eq_str = f"{_fmt(p)}({inner}) = {rhs}"
+                if eq_str not in [e for e, _ in equations]:
+                    break
 
             # Verify classification
             lc = p * q

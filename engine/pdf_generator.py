@@ -261,6 +261,41 @@ class MathPDF(FPDF):
             segments.append(('text', text[last_end:]))
         return segments
 
+    @staticmethod
+    def _absorb_prefrac_spaces(segments):
+        """Drop one literal trailing space from text that precedes a stacked
+        fraction. The writer already inserts its own pre-fraction gap, so the
+        space character would otherwise double the visual distance between a
+        word and the fraction that follows it."""
+        for i, seg in enumerate(segments):
+            if (seg[0] == 'text' and seg[1].endswith(' ')
+                    and i + 1 < len(segments)
+                    and segments[i + 1][0] in ('fraction', 'mixed')):
+                segments[i] = ('text', seg[1][:-1])
+        return segments
+
+    @staticmethod
+    def _post_frac_gap(segments, si):
+        """Gap to advance after drawing a stacked fraction at segments[si].
+
+        Absorbs one literal leading space from the following text segment
+        (mutating `segments`) so the gap constant fully controls the
+        fraction-to-word distance. A fraction coefficient still hugs a
+        variable that was tightened onto it ("9/2y"). Shared by the writer
+        and the measurer so wrapping stays in sync.
+        """
+        if si + 1 >= len(segments) or segments[si + 1][0] != 'text':
+            return 0.6
+        nt = segments[si + 1][1]
+        if nt[:1].isalpha():
+            return 0.15  # coefficient hugs its variable (e.g. 9/2y)
+        if nt.startswith(' '):
+            nt = nt[1:]
+            segments[si + 1] = ('text', nt)
+        if nt.lstrip().startswith((')', ']')):
+            return 1.0  # breathing room before a closing paren/bracket
+        return 0.6
+
     # ============================================================
     # FRACTION RENDERING
     # ============================================================
@@ -374,7 +409,7 @@ class MathPDF(FPDF):
                     processed.append(('neg',))
                     continue
             processed.append(seg)
-        segments = processed
+        segments = self._absorb_prefrac_spaces(processed)
 
         x = 0.0
         prev_seg = None
@@ -397,19 +432,19 @@ class MathPDF(FPDF):
                         x += 0.8
                     elif trailing:
                         x += 1
-                x += self._measure_stacked_fraction(seg[1], seg[2], fs) + 0.6
-                if si + 1 < len(segments):
-                    nxt = segments[si + 1]
-                    if nxt[0] == 'text' and nxt[1].lstrip().startswith((')', ']')):
-                        x += 0.4
+                x += self._measure_stacked_fraction(seg[1], seg[2], fs)
+                x += self._post_frac_gap(segments, si)
             elif seg[0] == 'mixed':
+                if prev_seg and prev_seg[0] == 'text':
+                    trailing = prev_seg[1].rstrip()
+                    if trailing.endswith(('(', '[')):
+                        x += 0.8
+                    elif trailing:
+                        x += 1
                 self.set_font(self.ff, font_style, fs)
                 x += self.get_string_width(seg[1]) + 1.0
-                x += self._measure_stacked_fraction(seg[2], seg[3], fs) + 0.6
-                if si + 1 < len(segments):
-                    nxt = segments[si + 1]
-                    if nxt[0] == 'text' and nxt[1].lstrip().startswith((')', ']')):
-                        x += 0.4
+                x += self._measure_stacked_fraction(seg[2], seg[3], fs)
+                x += self._post_frac_gap(segments, si)
             prev_seg = seg
         self.set_font(self.ff, font_style, fs)
         return x
@@ -465,7 +500,7 @@ class MathPDF(FPDF):
                     processed.append(('neg',))
                     continue
             processed.append(seg)
-        segments = processed
+        segments = self._absorb_prefrac_spaces(processed)
 
         has_frac = any(s[0] not in ('text', 'neg') for s in segments)
         has_exp = '^' in text
@@ -478,7 +513,14 @@ class MathPDF(FPDF):
             return
 
         y = self.get_y()
-        x = x_start
+        # fpdf's cell() shifts left-aligned text right by c_margin (~1 mm),
+        # which silently widened every text-to-fraction gap. Zero it for the
+        # duration so ink lands exactly where the segment bookkeeping says;
+        # keep the same 1 mm lead-in so math lines align with plain
+        # multi_cell text on neighboring lines.
+        saved_cm = self.c_margin
+        self.c_margin = 0
+        x = x_start + saved_cm
         lh = FRAC_LINE_HEIGHT if has_frac else LINE_HEIGHT
         y_center = y + lh * 0.42  # fraction bar position
 
@@ -516,16 +558,19 @@ class MathPDF(FPDF):
                     elif trailing:
                         x += 1    # general gap from preceding text
                 w = self._draw_stacked_fraction(x, y_center, seg[1], seg[2], fs)
-                nxt = segments[si + 1] if si + 1 < len(segments) else None
-                # A fraction coefficient hugs its variable (e.g. 9/2y); otherwise
-                # leave a normal gap, plus extra before a closing paren/bracket.
-                if nxt and nxt[0] == 'text' and nxt[1].lstrip()[:1].isalpha():
-                    x += w + 0.15
-                else:
-                    x += w + 0.6
-                    if nxt and nxt[0] == 'text' and nxt[1].lstrip().startswith((')', ']')):
-                        x += 0.4
+                # A fraction coefficient hugs its variable (e.g. 9/2y);
+                # ordinary text gets a tight fixed gap (any literal space in
+                # the following segment is absorbed by the helper).
+                x += w + self._post_frac_gap(segments, si)
             elif seg[0] == 'mixed':
+                # Gap before the whole number (mirrors the fraction branch —
+                # the literal space was absorbed by _absorb_prefrac_spaces)
+                if prev_seg and prev_seg[0] == 'text':
+                    trailing = prev_seg[1].rstrip()
+                    if trailing.endswith(('(', '[')):
+                        x += 0.8
+                    elif trailing:
+                        x += 1
                 # Whole number part
                 self.set_font(self.ff, font_style, fs)
                 ws = seg[1]
@@ -535,15 +580,10 @@ class MathPDF(FPDF):
                 x += ww + 1.0  # gap between whole number and fraction
                 # Fraction part
                 w = self._draw_stacked_fraction(x, y_center, seg[2], seg[3], fs)
-                nxt = segments[si + 1] if si + 1 < len(segments) else None
-                if nxt and nxt[0] == 'text' and nxt[1].lstrip()[:1].isalpha():
-                    x += w + 0.15  # mixed-number coefficient hugs its variable
-                else:
-                    x += w + 0.6
-                    if nxt and nxt[0] == 'text' and nxt[1].lstrip().startswith((')', ']')):
-                        x += 0.4
+                x += w + self._post_frac_gap(segments, si)
             prev_seg = seg
 
+        self.c_margin = saved_cm
         self.set_font(self.ff, font_style, fs)
         self.set_y(y + lh)
 
@@ -993,13 +1033,31 @@ class MathPDF(FPDF):
         def to_pdf_y(cy):
             return y + grid_size - (cy - y_min) / y_span * grid_size
 
-        # Grid lines (light gray)
+        # Label steps. Each axis gets its own step sized to its own span so
+        # a tall y-range (e.g. 0-60) never labels every integer — that
+        # stacked the numbers on top of each other and made them unreadable.
+        def _nice_step(span):
+            raw = max(1, (span + 1) // 10)
+            for cand in (1, 2, 5, 10, 20, 25, 50, 100, 200, 500):
+                if cand >= raw:
+                    return cand
+            return raw
+
+        x_label_step = label_step if label_step else _nice_step(x_span)
+        y_label_step = max(label_step or 1, _nice_step(y_span))
+
+        # Grid lines (light gray) — follow the label steps so dense ranges
+        # don't render as a solid gray field.
         self.set_draw_color(220, 220, 220)
         self.set_line_width(0.15)
         for gx in range(x_min, x_max + 1):
+            if gx % x_label_step != 0:
+                continue
             px = to_pdf_x(gx)
             self.line(px, y, px, y + grid_size)
         for gy in range(y_min, y_max + 1):
+            if gy % y_label_step != 0:
+                continue
             py = to_pdf_y(gy)
             self.line(x, py, x + grid_size, py)
 
@@ -1022,11 +1080,8 @@ class MathPDF(FPDF):
         # Tick labels (skip when hide_labels is set for blank grids)
         if not hide_labels:
             self.set_font(self.ff, "", 8)  # readable axis numbers when printed
-            # Auto-compute label_step if not provided: show at most ~10 labels
-            if label_step is None:
-                label_step = max(1, (x_span + 1) // 10)
             for gx in range(x_min, x_max + 1):
-                if gx % label_step != 0:
+                if gx % x_label_step != 0:
                     continue
                 px = to_pdf_x(gx)
                 label = str(gx)
@@ -1038,7 +1093,6 @@ class MathPDF(FPDF):
                 self.set_xy(px - lw / 2, label_y)
                 self.cell(lw + 0.5, 3, label, align="C")
 
-            y_label_step = label_step
             for gy in range(y_min, y_max + 1):
                 if gy % y_label_step != 0:
                     continue
@@ -1054,28 +1108,55 @@ class MathPDF(FPDF):
                 self.set_xy(label_x, py - 1.5)
                 self.cell(lw + 0.5, 3, label, align="R")
 
-        # Line segments (blue) — clip to grid rect preserving slope
-        self.set_draw_color(0, 80, 180)
+        # Line segments — clip to grid rect preserving slope. When several
+        # lines share a grid they alternate colors (blue, red, green) and a
+        # line's "label" (e.g. "A"/"B") is drawn at its right end in the
+        # same color, so students can tell the functions apart.
+        _line_palette = [(0, 80, 180), (200, 30, 30), (20, 130, 60)]
         self.set_line_width(0.8)
-        for ln in lines:
+        for li, ln in enumerate(lines):
+            color = ln.get("color") or (
+                _line_palette[li % len(_line_palette)] if len(lines) > 1
+                else _line_palette[0])
+            self.set_draw_color(*color)
             clipped = _clip_line_to_rect(
                 ln["x1"], ln["y1"], ln["x2"], ln["y2"],
                 x_min, x_max, y_min, y_max,
             )
             if clipped:
                 cx1, cy1, cx2, cy2 = clipped
-                self.line(to_pdf_x(cx1), to_pdf_y(cy1),
-                          to_pdf_x(cx2), to_pdf_y(cy2))
+                px1, py1 = to_pdf_x(cx1), to_pdf_y(cy1)
+                px2, py2 = to_pdf_x(cx2), to_pdf_y(cy2)
+                self.line(px1, py1, px2, py2)
+                if ln.get("label"):
+                    # Label just past the higher-x end of the segment,
+                    # nudged up so it doesn't sit on the stroke.
+                    ex, ey = (px2, py2) if px2 >= px1 else (px1, py1)
+                    self.set_font(self.ff, "B", 8)
+                    self.set_text_color(*color)
+                    lbl = str(ln["label"])
+                    lw = self.get_string_width(lbl)
+                    lx = min(ex + 0.8, x + grid_size - lw - 0.5)
+                    ly_lbl = max(ey - 3.6, y + 0.2)
+                    self.set_xy(lx, ly_lbl)
+                    self.cell(lw + 1, 3.2, lbl)
+                    self.set_text_color(0, 0, 0)
 
-        # Points (filled circles). Labels are placed to avoid sitting on the
-        # graphed line: below-right for an up-right (non-negative slope) line,
-        # above-right otherwise, and flipped to the left of the point if the
-        # label would run past the right edge of the grid.
-        line_slope = None
-        if lines:
-            _l = lines[0]
-            _dx = _l["x2"] - _l["x1"]
-            line_slope = (_l["y2"] - _l["y1"]) / _dx if _dx != 0 else float("inf")
+        # Points (filled circles). A point label tries the four corners
+        # around the point and keeps the first spot whose rectangle stays
+        # clear of every graphed line — the intersection label of a system
+        # of equations used to be drawn straight through both lines.
+        def _label_pos_clear(lx_, ly_, lw_, lh_=3.2, pad=0.8):
+            rx1, rx2 = lx_ - pad, lx_ + lw_ + 1 + pad
+            ry1, ry2 = ly_ - pad, ly_ + lh_ + pad
+            for ln_ in lines:
+                p1x, p1y = to_pdf_x(ln_["x1"]), to_pdf_y(ln_["y1"])
+                p2x, p2y = to_pdf_x(ln_["x2"]), to_pdf_y(ln_["y2"])
+                if _clip_line_to_rect(p1x, p1y, p2x, p2y,
+                                      rx1, rx2, min(ry1, ry2), max(ry1, ry2)):
+                    return False
+            return True
+
         self.set_fill_color(0, 80, 180)
         self.set_draw_color(0, 80, 180)
         self.set_line_width(0.3)
@@ -1088,14 +1169,26 @@ class MathPDF(FPDF):
                 self.set_font(self.ff, "", 8)  # readable point labels
                 self.set_text_color(0, 0, 0)
                 lw = self.get_string_width(pt["label"])
-                # Vertical: put the label on the side away from the line.
-                ly = py + 1.6 if (line_slope is not None and line_slope >= 0) else py - 4.0
-                # Horizontal: right of the point; flip left near the right edge
-                # or for points just left of the y-axis (so the label doesn't
-                # run across the axis and its numbers).
-                near_yaxis = (x_min <= 0 <= x_max) and (-2 <= pt["x"] <= 0)
-                flip_left = (px + 2 + lw > x + grid_size) or (near_yaxis and px - lw - 2 >= x)
-                lx = px - lw - 2 if flip_left else px + 2
+                candidates = [
+                    (px + 2, py + 1.6),      # below-right
+                    (px + 2, py - 4.0),      # above-right
+                    (px - lw - 3, py + 1.6),  # below-left
+                    (px - lw - 3, py - 4.0),  # above-left
+                    (px - lw / 2, py + 3.2),  # straight below
+                    (px - lw / 2, py - 6.0),  # straight above
+                ]
+                # Keep candidates inside the grid, then prefer one clear of
+                # all lines; fall back to the first in-bounds candidate.
+                in_bounds = [
+                    (cx_, cy_) for cx_, cy_ in candidates
+                    if cx_ >= x - 1 and cx_ + lw + 1 <= x + grid_size + 6
+                    and cy_ >= y - 1 and cy_ + 3.2 <= y + grid_size + 5
+                ] or candidates
+                lx, ly = in_bounds[0]
+                for cx_, cy_ in in_bounds:
+                    if _label_pos_clear(cx_, cy_, lw):
+                        lx, ly = cx_, cy_
+                        break
                 self.set_xy(lx, ly)
                 self.cell(lw + 1, 3.2, pt["label"])
 
@@ -1674,6 +1767,48 @@ class MathPDF(FPDF):
             else:
                 self._write_choices(question.choices, x_body)
 
+        # Multi-part prompts stored in question.parts (Part A / Part B).
+        # Stems that embed "Part A:" lines inside stem_text had them rendered
+        # in the line loop above; only expand the parts array here when the
+        # stem text does NOT carry them, so prompts never appear twice —
+        # and questions whose prompts live only in `parts` are never dropped.
+        stem_has_inline_parts = any(
+            ln.strip().startswith(("Part A", "Part B", "Part C"))
+            for ln in lines)
+        if question.parts and not stem_has_inline_parts:
+            self.ln(1 if compact else 2)
+            for part in question.parts:
+                if self.get_y() > self.h - 45:
+                    self.add_page()
+                self.set_x(x_body)
+                self.set_font(ff, "B", FONT_SIZE_BODY)
+                part_label = f"{part.label}:" if part.label else ""
+                if part_label:
+                    self.cell(self.get_string_width(part_label) + 2, LINE_HEIGHT,
+                              part_label, new_x="RIGHT", new_y="TOP")
+                self.set_font(ff, "", FONT_SIZE_BODY)
+                prompt = self._clean_text(part.prompt or "")
+                if self._has_math(prompt):
+                    self._write_line_with_math(
+                        prompt, self.get_x(),
+                        max_width=self.w - self.get_x() - PAGE_MARGIN)
+                else:
+                    self.multi_cell(self.w - self.get_x() - PAGE_MARGIN,
+                                    LINE_HEIGHT, prompt,
+                                    new_x="LMARGIN", new_y="NEXT")
+                self.set_x(x_body)
+                # Answer area mirrors the inline Part A/B flow: explanation
+                # prompts get writing lines, everything else one answer line.
+                if any(w in prompt.lower()
+                       for w in ("explain", "describe", "justify", "why")):
+                    self._draw_explain_lines(x_body + 5, num_lines=3)
+                else:
+                    self.ln(2)
+                    self.set_x(x_body + 5)
+                    self._draw_answer_line()
+                self.ln(1 if compact else 2)
+                self.set_x(x_body)
+
         # NR/EQ answer line (non-multi-part only)
         if question.item_type in (ItemType.NR, ItemType.EQ) and not question.parts:
             self.ln(_sp)
@@ -1726,8 +1861,12 @@ class MathPDF(FPDF):
                                     new_x="LMARGIN", new_y="NEXT")
             self.ln(1)
         else:
-            # 2-column layout with stacked-fraction / exponent support
+            # 2-column layout with stacked-fraction / exponent support.
+            # Track the row's top y explicitly: _write_line_with_math
+            # advances y on its own, and letting that advancement stack with
+            # the per-row advance below doubled the gap under fraction rows.
             row_lh = LINE_HEIGHT
+            row_y = self.get_y()
             for i, choice in enumerate(choices):
                 col_x = x_body + 5 if i % 2 == 0 else x_body + 5 + col_width
                 text = f"{choice.key}. {self._clean_text(choice.text)}"
@@ -1735,7 +1874,7 @@ class MathPDF(FPDF):
                 if i % 2 == 0:
                     # Start of a new row
                     if i > 0:
-                        self.set_y(self.get_y() + row_lh)
+                        row_y += row_lh
                     # Determine row height: use taller height if either
                     # column in this row contains math
                     row_has_math = self._has_math(text)
@@ -1745,18 +1884,15 @@ class MathPDF(FPDF):
                     row_lh = FRAC_LINE_HEIGHT if row_has_math else LINE_HEIGHT
 
                 if self._has_math(text):
-                    y_before = self.get_y()
+                    self.set_y(row_y)
                     self._write_line_with_math(text, col_x, font_style=expr_style)
-                    # Reset y so right column starts at same row
-                    if i % 2 == 0 and i + 1 < len(choices):
-                        self.set_y(y_before)
                 else:
                     self.set_font(self.ff, expr_style, FONT_SIZE_BODY)
-                    self.set_xy(col_x, self.get_y())
+                    self.set_xy(col_x, row_y)
                     self.cell(col_width - 5, row_lh, text,
                              new_x="RIGHT", new_y="TOP")
 
-            self.set_y(self.get_y() + row_lh)
+            self.set_y(row_y + row_lh)
             self.set_font(self.ff, "", FONT_SIZE_BODY)
 
     def _write_number_line_choices(self, choices, x_body):
@@ -2615,7 +2751,9 @@ def _render_svg_inline(pdf, x, y, svg_html, max_width, max_height):
     for t in parsed_texts:
         px = x + (t['x'] - vb_min_x) * scale
         py = y + (t['y'] - vb_min_y) * scale
-        fs = max(5, min(t['font_size'] * scale, 24))
+        # Floor of 7pt (was 5pt): axis numbers, axis titles, and dimension
+        # labels on downscaled figures were unreadable in print.
+        fs = max(7, min(t['font_size'] * scale, 24))
         pdf.set_font("Helvetica", "B" if t['bold'] else "", fs)
         tw = pdf.get_string_width(t['text'])
         if t['anchor'] == 'middle':
@@ -2652,12 +2790,17 @@ def _write_math_line(pdf, text, x, y, font_size, line_h, max_w, ff="Helvetica",
     if not has_frac and not has_exp:
         return None  # Caller should use regular multi_cell
 
-    segments = MathPDF._parse_fractions(text)
+    segments = MathPDF._absorb_prefrac_spaces(MathPDF._parse_fractions(text))
     frac_lh = line_h * 1.8 if has_frac else line_h
     y_center = y + frac_lh * 0.42
+    # Zero fpdf's cell margin so text ink lands exactly at cur_x (see
+    # MathPDF._write_line_with_math); keep a matching 1 mm lead-in.
+    saved_cm = pdf.c_margin
+    pdf.c_margin = 0
+    x = x + saved_cm
     cur_x = x
 
-    for seg in segments:
+    for si, seg in enumerate(segments):
         if seg[0] == 'text':
             piece = seg[1]
             if '^' in piece:
@@ -2718,7 +2861,7 @@ def _write_math_line(pdf, text, x, y, font_size, line_h, max_w, ff="Helvetica",
             # Denominator
             pdf.set_xy(cur_x, y_center + 0.3 + 0.2)
             pdf.cell(frac_w, cell_h, den_str, align="C")
-            cur_x += frac_w + 0.8
+            cur_x += frac_w + MathPDF._post_frac_gap(segments, si)
 
         elif seg[0] == 'mixed':
             # Add spacing before mixed number when next to parentheses
@@ -2750,8 +2893,9 @@ def _write_math_line(pdf, text, x, y, font_size, line_h, max_w, ff="Helvetica",
             pdf.cell(frac_w, cell_h, num_str, align="C")
             pdf.set_xy(cur_x, y_center + 0.3 + 0.2)
             pdf.cell(frac_w, cell_h, den_str, align="C")
-            cur_x += frac_w + 0.8
+            cur_x += frac_w + MathPDF._post_frac_gap(segments, si)
 
+    pdf.c_margin = saved_cm
     pdf.set_font(ff, font_style, font_size)
     return (cur_x, y + frac_lh)
 
@@ -3151,6 +3295,12 @@ def _write_column_question(pdf, question, num, col_x, col_w, start_y,
         line = line.strip()
         if not line:
             cur_y += 2
+            continue
+
+        # Stems that carry both inline "Part A:" lines AND a parts array
+        # would render the prompts twice here (the parts section below adds
+        # them with answer lines) — skip the inline copies.
+        if question.parts and line.startswith(("Part A", "Part B", "Part C")):
             continue
 
         # Try rendering with stacked fractions/exponents

@@ -55,6 +55,8 @@ export default function ShapeRenderer({ spec, size = "normal" }: Props) {
       return <PyramidSVG labels={spec.labels} fs={fs} />;
     case "grid":
       return <CoordinateGridSVG spec={spec} fs={fs} />;
+    case "numberline":
+      return <NumberLineSVG spec={spec} size={size} />;
   }
 }
 
@@ -357,8 +359,10 @@ function ConeSVG({ labels, fs }: { labels: LabelMap; fs: string }) {
       {/* Radius line on base */}
       <line x1="70" y1="110" x2="110" y2="110" stroke={STROKE} strokeWidth="1.5" />
       <circle cx="70" cy="110" r="2" fill={STROKE} />
-      {/* Labels */}
-      <text x="90"  y="125" textAnchor="middle" fontSize={fs} fill={STROKE}>{labels.radius ?? ""}</text>
+      {/* Labels — the radius label sits well BELOW the base ellipse
+          (bottom edge ≈ y=120) so the text never overlaps the dashed
+          back curve. */}
+      <text x="90"  y="136" textAnchor="middle" fontSize={fs} fill={STROKE}>{labels.radius ?? ""}</text>
       <text x="7"   y="66"  textAnchor="end"    fontSize={fs} fill={STROKE}>{labels.height ?? ""}</text>
     </svg>
   );
@@ -453,6 +457,101 @@ function CircleSVG({ labels, fs }: { labels: LabelMap; fs: string }) {
           </text>
         </>
       )}
+    </svg>
+  );
+}
+
+/**
+ * Number-line SVG for inequality worksheets. The worksheet variant is a
+ * blank line with ticks (students graph on it); the answer-key variant
+ * draws boundary circles (open/closed) and shaded rays/segments.
+ */
+function NumberLineSVG({ spec, size }: { spec: ShapeSpec; size: "normal" | "small" }) {
+  const nl = spec.numberline ?? { min: -5, max: 5 };
+  const { min, max } = nl;
+  const step = nl.step ?? 1;
+  const span = max - min;
+  const unit = size === "small" ? 16 : 22; // px per tick
+  const pad = 16;                          // room for the arrowheads
+  const width = span * unit + pad * 2;
+  const axisY = 22;
+  const height = 44;
+  const px = (v: number) => pad + (v - min) * unit;
+
+  const ticks: number[] = [];
+  for (let v = min; v <= max; v++) ticks.push(v);
+
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
+      style={{ overflow: "visible" }}
+      role="img"
+      aria-label="Number line"
+    >
+      <defs>
+        <marker
+          id="nl-arrow"
+          viewBox="0 0 10 10"
+          refX="8"
+          refY="5"
+          markerWidth="6"
+          markerHeight="6"
+          orient="auto-start-reverse"
+        >
+          <path d="M0,0 L10,5 L0,10 z" fill={STROKE} />
+        </marker>
+      </defs>
+
+      {/* Shaded segments/rays UNDER the axis line so circles stay crisp */}
+      {(nl.segments ?? []).map((s, i) => {
+        const x1 = s.from === "-inf" ? 2 : px(s.from as number);
+        const x2 = s.to === "+inf" ? width - 2 : px(s.to as number);
+        return (
+          <line
+            key={`seg-${i}`}
+            x1={x1} y1={axisY} x2={x2} y2={axisY}
+            stroke={STROKE} strokeWidth="4.5" strokeLinecap="butt"
+          />
+        );
+      })}
+
+      {/* Axis with arrowheads on both ends */}
+      <line
+        x1={2} y1={axisY} x2={width - 2} y2={axisY}
+        stroke={STROKE} strokeWidth="1.5"
+        markerEnd="url(#nl-arrow)" markerStart="url(#nl-arrow)"
+      />
+
+      {/* Ticks + labels */}
+      {ticks.map((v) => (
+        <g key={`t-${v}`}>
+          <line
+            x1={px(v)} y1={axisY - 5} x2={px(v)} y2={axisY + 5}
+            stroke={STROKE} strokeWidth={v === 0 ? 1.75 : 1}
+          />
+          {((v - min) % step === 0 || v === 0) && (
+            <text
+              x={px(v)} y={axisY + 17} textAnchor="middle"
+              fontSize="0.6rem" fill={STROKE}
+            >
+              {v}
+            </text>
+          )}
+        </g>
+      ))}
+
+      {/* Boundary circles — open (unfilled) or closed (filled). Drawn
+          last so they cover the ray underneath. */}
+      {(nl.points ?? []).map((p, i) => (
+        <circle
+          key={`p-${i}`}
+          cx={px(p.x)} cy={axisY} r="5"
+          fill={p.open ? "white" : STROKE}
+          stroke={STROKE} strokeWidth="1.75"
+        />
+      ))}
     </svg>
   );
 }

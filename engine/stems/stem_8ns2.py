@@ -121,6 +121,15 @@ class Stem8NS2:
         distractors.discard(correct_str)
         dist_list = sorted(distractors)[:3]
 
+        # Small radicands (e.g. sqrt(2)) can collapse the pool below 3
+        # distractors; pad with further-out integers to guarantee 4 choices.
+        pad = nearest + 3
+        while len(dist_list) < 3:
+            s = str(pad)
+            if s != correct_str and s not in dist_list:
+                dist_list.append(s)
+            pad += 1
+
         all_options = [(correct_str, True)] + [(d, False) for d in dist_list]
         rng.shuffle(all_options)
 
@@ -140,13 +149,14 @@ class Stem8NS2:
             f"Rounded to the nearest whole number: {nearest}."
         )
 
-        # Blank number line for students to plot the value
+        # Numerically labeled number line: consecutive integer ticks
+        # bracketing sqrt(n) so the root falls inside the shown range.
+        # (e.g. sqrt(5) ~ 2.24 -> ticks [0, 1, 2, 3])
+        tick_lo = max(0, lower - 1)
+        tick_hi = upper + 1
         nl_render = {
-            "type": "number_line",
-            "value": round(actual, 2),
-            "circle_type": "closed",
-            "direction": "none",
-            "blank": True,
+            "type": "number_line_point",
+            "ticks": list(range(tick_lo, tick_hi + 1)),
         }
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW, ItemType.MC,
@@ -215,13 +225,13 @@ class Stem8NS2:
             f"\u221A{n} is between {lower} and {upper}."
         )
 
-        # Blank number line for students to plot the value
+        # Numerically labeled number line: consecutive integer ticks
+        # bracketing sqrt(n) so the root falls inside the shown range.
+        tick_lo = max(0, lower - 1)
+        tick_hi = upper + 1
         nl_render = {
-            "type": "number_line",
-            "value": round(math.sqrt(n), 2),
-            "circle_type": "closed",
-            "direction": "none",
-            "blank": True,
+            "type": "number_line_point",
+            "ticks": list(range(tick_lo, tick_hi + 1)),
         }
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING, ItemType.MC,
@@ -282,21 +292,45 @@ class Stem8NS2:
 
         rng.shuffle(options)
 
-        # Make sure we have at least 1 correct and 1 incorrect
-        correct_count = sum(1 for _, _, c in options if c)
-        if correct_count == 0 or correct_count == len(options):
-            # Fallback: manually adjust one
-            if correct_count == 0:
-                mid = (low_bound + high_bound) / 2
-                for attempt in range(50):
-                    n = rng.randint(2, 99)
-                    if n not in PERFECT_SQUARES:
-                        v = math.sqrt(n)
-                        if low_bound < v < high_bound:
-                            options[0] = (f"\u221A{n}", v, True)
-                            break
+        # A multiple-select item carries 2-4 correct answers. Top up
+        # whichever side is short by replacing entries from the other side
+        # (a single-correct MS reads as a broken multiple-choice item).
+        def _display_used(disp):
+            return disp in [o[0] for o in options]
+
+        def _make_in_range_entry():
+            for _ in range(100):
+                n = rng.randint(2, 99)
+                if n in PERFECT_SQUARES:
+                    continue
+                v = math.sqrt(n)
+                if low_bound < v < high_bound and not _display_used(f"\u221A{n}"):
+                    return (f"\u221A{n}", v, True)
+            mid = (low_bound + high_bound) / 2
+            disp = f"{mid:g}"
+            return None if _display_used(disp) else (disp, mid, True)
+
+        def _make_out_range_entry():
+            for _ in range(100):
+                v = high_bound + rng.randint(1, 6) + rng.choice([0, 0.5])
+                disp = str(v) if v != int(v) else str(int(v))
+                if not _display_used(disp):
+                    return (disp, v, False)
+            return None
+
+        for _ in range(4):
+            n_correct = sum(1 for _, _, c in options if c)
+            if n_correct < 2:
+                entry = _make_in_range_entry()
+                idxs = [i for i, o in enumerate(options) if not o[2]]
+            elif len(options) - n_correct < 2:
+                entry = _make_out_range_entry()
+                idxs = [i for i, o in enumerate(options) if o[2]]
             else:
-                options[0] = (str(int(high_bound + 2)), high_bound + 2, False)
+                break
+            if entry is None or not idxs:
+                break
+            options[rng.choice(idxs)] = entry
 
         choices = []
         for i, (display, val, in_range) in enumerate(options[:6]):
@@ -353,9 +387,12 @@ class Stem8NS2:
         gen, rng = self._make_gen(4, variant_idx)
 
         comparisons = []
+        used_statements = set()
 
-        # Generate 4 comparison statements
-        for _ in range(4):
+        # Generate 4 unique comparison statements
+        attempts = 0
+        while len(comparisons) < 4 and attempts < 200:
+            attempts += 1
             n = rng.choice(MEDIUM_SQRT[:12])
             sqrt_val = math.sqrt(n)
             lower, upper = _sqrt_bounds(n)
@@ -383,6 +420,9 @@ class Stem8NS2:
                 statement = f"\u221A{n} < {rational}"
                 is_true = False
 
+            if statement in used_statements:
+                continue
+            used_statements.add(statement)
             comparisons.append((statement, is_true, n, sqrt_val, rational))
 
         stem_text = (
@@ -414,15 +454,13 @@ class Stem8NS2:
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.AT, ItemType.TM,
                                Difficulty.MEDIUM, 4, variant_idx)
 
-        # Build number line showing labeled points A, B, C, D at integer positions
-        # covering the range of sqrt values being compared
+        # Plain numerically-labeled number line spanning the whole numbers
+        # referenced in the comparisons. No labeled points -- the question
+        # never references them, so we show only the labeled ticks.
         all_rationals = [rational for _, _, _, _, rational in comparisons]
-        nl_min = min(all_rationals) - 1
-        nl_max = max(all_rationals) + 2
+        nl_min = max(0, min(all_rationals) - 1)
+        nl_max = max(all_rationals) + 1
         ticks = list(range(nl_min, nl_max + 1))
-        point_labels = ["A", "B", "C", "D"]
-        nl_points = [{"value": r, "label": point_labels[i]}
-                     for i, (_, _, _, _, r) in enumerate(comparisons)]
 
         return GeneratedQuestion(
             question_id=qid, standard_code=STANDARD_CODE,
@@ -437,7 +475,6 @@ class Stem8NS2:
             render_data={
                 "type": "number_line_point",
                 "ticks": ticks,
-                "points": nl_points,
             }
         )
 
@@ -462,13 +499,17 @@ class Stem8NS2:
         # Generate 5 expressions mixing sqrts, pi, and rationals
         expressions = []
 
-        # Expression type 1: rational + sqrt
+        # Expression type 1: rational + sqrt (retry on display collision so
+        # the two entries are never identical)
         for _ in range(2):
-            rational_part = rng.choice([0.5, 1.0, 1.5, 2.0, 2.5, 0.25, 0.75])
-            n = rng.choice([2, 3, 5, 7, 10, 11, 13])
-            val = rational_part + math.sqrt(n)
-            r_display = str(rational_part) if rational_part != int(rational_part) else str(int(rational_part))
-            display = f"{r_display} + \u221A{n}"
+            for _attempt in range(20):
+                rational_part = rng.choice([0.5, 1.0, 1.5, 2.0, 2.5, 0.25, 0.75])
+                n = rng.choice([2, 3, 5, 7, 10, 11, 13])
+                val = rational_part + math.sqrt(n)
+                r_display = str(rational_part) if rational_part != int(rational_part) else str(int(rational_part))
+                display = f"{r_display} + \u221A{n}"
+                if display not in [d for d, _, _ in expressions]:
+                    break
             is_greater = val > target_val
             expressions.append((display, val, is_greater))
 
@@ -500,6 +541,32 @@ class Stem8NS2:
         expressions.append((display, val, is_greater))
 
         rng.shuffle(expressions)
+
+        # Guard MS integrity: a multiple-select item needs at least 2 correct
+        # AND at least 2 incorrect options (a single-correct MS reads as a
+        # broken multiple-choice item on the worksheet).
+        for _ in range(3):
+            n_greater = sum(1 for _, _, g in expressions if g)
+            existing = {d for d, _, _ in expressions}
+            if n_greater < 2:
+                wn = target_whole + 2   # guaranteed > target
+                while str(wn) in existing:
+                    wn += 1
+                replacement = (str(wn), float(wn), True)
+                idxs = [i for i, e in enumerate(expressions) if not e[2]]
+            elif len(expressions) - n_greater < 2:
+                wn = max(1, target_whole - 2)   # guaranteed < target
+                while str(wn) in existing and wn > 1:
+                    wn -= 1
+                if str(wn) in existing:
+                    break
+                replacement = (str(wn), float(wn), False)
+                idxs = [i for i, e in enumerate(expressions) if e[2]]
+            else:
+                break
+            if not idxs:
+                break
+            expressions[rng.choice(idxs)] = replacement
 
         choices = []
         for i, (display, val, is_greater) in enumerate(expressions):

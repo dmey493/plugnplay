@@ -177,8 +177,12 @@ class Stem8DSP1:
 
         svg = scatter_plot_svg(points, ctx["x_label"], ctx["y_label"])
 
+        # Worded so it's clear there is ONE correct answer choice that names
+        # two characteristics — "Which TWO characteristics..." misread as a
+        # select-two-answers item.
         stem = (f"The scatter plot shows {ctx['desc']}. [FIGURE] "
-                f"Which TWO characteristics best describe this scatter plot?")
+                f"Which of the following statements best describes the "
+                f"characteristics of the scatter plot?")
 
         assoc_word = ctx["assoc"]
         correct = f"The data shows a {assoc_word}, linear association with an outlier."

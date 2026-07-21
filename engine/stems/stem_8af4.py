@@ -402,10 +402,21 @@ class Stem8AF4:
             if len(wrong_orders) >= 3:
                 break
 
-        # Pad if needed
-        while len(wrong_orders) < 3:
-            wrong_orders.append(
-                f"The {scenario['y_label'].lower()} is constant throughout.")
+        # Pad if needed — with DISTINCT fallbacks. When segment types repeat
+        # (e.g. rises/stays/rises) the shuffle pool collapses below 3 unique
+        # orders, and appending the same string produced duplicate choices.
+        y_lab = scenario['y_label'].lower()
+        fallbacks = [
+            f"The {y_lab} is constant throughout.",
+            f"The {y_lab} rises steadily the whole time.",
+            f"The {y_lab} falls steadily the whole time.",
+            f"The {y_lab} " + ", then ".join(reversed(seg_types)) + ".",
+        ]
+        for fb in fallbacks:
+            if len(wrong_orders) >= 3:
+                break
+            if fb != correct and fb not in wrong_orders:
+                wrong_orders.append(fb)
 
         distractors = wrong_orders[:3]
 

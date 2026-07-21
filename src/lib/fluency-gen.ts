@@ -269,6 +269,10 @@ export interface FluencyOptions {
    *  (0.1, 0.2, 0.25, 0.5) in alongside integers. Inside terms are
    *  picked so answers come out to one decimal place at most. */
   distributeIncludeDecimals?: boolean;
+  /** Rational-number topics only — mix in problems that pair a fraction
+   *  with a decimal (e.g. 3/4 + 0.5, 1/2 × 0.6) using the topic's
+   *  operation. Roughly a third of the worksheet when on. */
+  rationalIncludeFracDec?: boolean;
 }
 
 /** Inline labeled-shape diagram for geometry problems. The worksheet
@@ -291,7 +295,21 @@ export interface ShapeSpec {
     | "cone"
     | "sphere"
     | "pyramid"
-    | "grid";
+    | "grid"
+    | "numberline";
+  /** For kind === "numberline" — a horizontal number line. Inequality
+   *  worksheets show a blank line for the student to graph on; the
+   *  answer key fills in the boundary point(s) and shaded ray(s). */
+  numberline?: {
+    min: number;
+    max: number;
+    /** Label every `step` ticks (default 1; use 2 on wide ranges). */
+    step?: number;
+    /** Boundary circles: open (< / >) or closed (≤ / ≥). */
+    points?: { x: number; open: boolean }[];
+    /** Shaded pieces; "-inf" / "+inf" extend to the arrow ends. */
+    segments?: { from: number | "-inf"; to: number | "+inf" }[];
+  };
   /** For kind === "grid", carries the data needed to draw a coordinate
    *  grid with points, lines, or a curve. */
   grid?: {
@@ -322,6 +340,9 @@ export interface Problem {
   num: number;       // 1-based problem number
   display: string;   // e.g., "3/4 + 1/2" — what shows on the worksheet
   answer: string;    // e.g., "5/4" or "1 1/4" — what shows on the answer key
+  /** Optional data table (x/y table). Rendered by the UI as a real
+   *  bordered table instead of the old monospaced text approximation. */
+  table?: { headers: string[]; rows: (string | number)[][] };
   /** Optional labeled-shape diagram drawn beside the problem text. */
   shape?: ShapeSpec;
   /** Optional shape variant for the answer key. Used when the worksheet
@@ -679,7 +700,7 @@ function makeFractionToDec(opts: FluencyOptions, idx: number, repeating: boolean
   const den = repeating
     ? pickRepeatingDenom(opts.difficulty)
     : pickTerminatingDenom(opts.difficulty);
-  let num = rnd(1, den - 1);
+  const num = rnd(1, den - 1);
   // Hard mode occasionally throws in mixed/improper.
   let whole = 0;
   if (opts.difficulty === "hard" && randomBool()) {
@@ -877,6 +898,29 @@ function fmtSolution(num: number, den: number): string {
   return `x = ${sn}/${sd}`;
 }
 
+/** Difficulty-aware sign rule for equation/inequality/graphing topics:
+ *  Easy stays positive, Medium and Hard mix negatives in — and the
+ *  teacher's "Allow negatives" toggle can force them on at any level. */
+function negsFor(opts: FluencyOptions): boolean {
+  return opts.allowNegatives || opts.difficulty !== "easy";
+}
+
+/** Simplified signed fraction for display: "5/4", "−3/2"; integers plain. */
+function fmtSimpleFrac(n: number, d: number): string {
+  const [sn, sd] = simplify(n, d);
+  if (sd === 1) return sn < 0 ? `−${Math.abs(sn)}` : `${sn}`;
+  return sn < 0 ? `−${Math.abs(sn)}/${sd}` : `${sn}/${sd}`;
+}
+
+/** Format a tenths-int as a decimal string ("−4.8", "12", "0.5"). Doing
+ *  decimal arithmetic in integer tenths keeps every hard-tier decimal
+ *  problem exact — no floating-point fuzz on a worksheet. */
+function fmtTenths(t: number): string {
+  const v = Math.abs(t) / 10;
+  const s = Number.isInteger(v) ? `${v}` : v.toFixed(1);
+  return t < 0 ? `−${s}` : s;
+}
+
 /** Pick a non-zero coefficient appropriate to difficulty. */
 function rndCoef(opts: FluencyOptions, allowNegative: boolean): number {
   const max = opts.difficulty === "easy" ? 6 : opts.difficulty === "medium" ? 9 : 12;
@@ -904,30 +948,108 @@ function rndSolution(opts: FluencyOptions, allowNegative: boolean): number {
 // ----- Tier 1: One-Step -----
 
 function makeOneStepAdd(opts: FluencyOptions, idx: number): Problem {
+  // Hard: half the problems use one-place decimals or same-denominator
+  // fractions (exact arithmetic in tenths / numerators).
+  if (opts.difficulty === "hard" && randomBool()) {
+    if (randomBool()) {
+      const a10 = rnd(11, 99);
+      const x10 = rnd(11, 99) * (randomBool() ? 1 : -1);
+      return {
+        num: idx,
+        display: `x + ${fmtTenths(a10)} = ${fmtTenths(x10 + a10)}`,
+        answer: `x = ${fmtTenths(x10)}`,
+      };
+    }
+    const d = rnd(2, 6);
+    const an = rnd(1, d - 1);
+    const xn = rnd(1, 2 * d) * (randomBool() ? 1 : -1);
+    return {
+      num: idx,
+      display: `x + ${an}/${d} = ${fmtSimpleFrac(xn + an, d)}`,
+      answer: `x = ${fmtSimpleFrac(xn, d)}`,
+    };
+  }
   const a = rndCoef(opts, false);
-  const x = rndSolution(opts, opts.allowNegatives);
+  const x = rndSolution(opts, negsFor(opts));
   const b = x + a;
   return { num: idx, display: `x + ${a} = ${b}`, answer: `x = ${x}` };
 }
 
 function makeOneStepSub(opts: FluencyOptions, idx: number): Problem {
+  if (opts.difficulty === "hard" && randomBool()) {
+    if (randomBool()) {
+      const a10 = rnd(11, 99);
+      const x10 = rnd(11, 99) * (randomBool() ? 1 : -1);
+      return {
+        num: idx,
+        display: `x − ${fmtTenths(a10)} = ${fmtTenths(x10 - a10)}`,
+        answer: `x = ${fmtTenths(x10)}`,
+      };
+    }
+    const d = rnd(2, 6);
+    const an = rnd(1, d - 1);
+    const xn = rnd(1, 2 * d) * (randomBool() ? 1 : -1);
+    return {
+      num: idx,
+      display: `x − ${an}/${d} = ${fmtSimpleFrac(xn - an, d)}`,
+      answer: `x = ${fmtSimpleFrac(xn, d)}`,
+    };
+  }
   const a = rndCoef(opts, false);
-  const x = rndSolution(opts, opts.allowNegatives);
+  const x = rndSolution(opts, negsFor(opts));
   const b = x - a;
   return { num: idx, display: `x − ${a} = ${b}`, answer: `x = ${x}` };
 }
 
 function makeOneStepMul(opts: FluencyOptions, idx: number): Problem {
-  const a = rndCoef(opts, opts.allowNegatives);
-  const x = rndSolution(opts, opts.allowNegatives);
+  // Hard: half the problems get a decimal or fraction coefficient.
+  if (opts.difficulty === "hard" && randomBool()) {
+    if (randomBool()) {
+      const a10 = [5, 15, 25, 4, 6, 12][rnd(0, 5)] * (randomBool() ? 1 : -1);
+      const x = rnd(1, 9) * (randomBool() ? 1 : -1);
+      return {
+        num: idx,
+        display: `${fmtTenths(a10)}x = ${fmtTenths(a10 * x)}`,
+        answer: `x = ${x}`,
+      };
+    }
+    const d = rnd(2, 6);
+    let n = rnd(1, d - 1);
+    while (gcd(n, d) !== 1) n += 1;
+    if (randomBool()) n = -n;
+    const m = rnd(1, 6) * (randomBool() ? 1 : -1);
+    const x = m * d;
+    const coefStr = n < 0 ? `−${Math.abs(n)}/${d}` : `${n}/${d}`;
+    return {
+      num: idx,
+      display: `${coefStr}x = ${n * m}`,
+      answer: `x = ${x}`,
+    };
+  }
+  const a = rndCoef(opts, negsFor(opts));
+  const x = rndSolution(opts, negsFor(opts));
   const b = a * x;
   return { num: idx, display: `${fmtCoefTerm(a)} = ${b}`, answer: `x = ${x}` };
 }
 
 function makeOneStepDiv(opts: FluencyOptions, idx: number): Problem {
-  const a = rndCoef(opts, opts.allowNegatives);
+  // Hard: half the problems put a fraction on the right (x/a = n/d).
+  if (opts.difficulty === "hard" && randomBool()) {
+    const d = rnd(2, 4);
+    const m = rnd(2, 5);
+    const a = d * m;
+    let n = rnd(1, 2 * d - 1);
+    while (gcd(n, d) !== 1) n += 1;
+    if (randomBool()) n = -n;
+    return {
+      num: idx,
+      display: `x/${a} = ${fmtSimpleFrac(n, d)}`,
+      answer: `x = ${m * n}`,
+    };
+  }
+  const a = rndCoef(opts, negsFor(opts));
   // Solution can be anything; we still display as x/a = b. Solution = a*b.
-  const b = rndConst(opts, opts.allowNegatives);
+  const b = rndConst(opts, negsFor(opts));
   const x = a * b;
   return { num: idx, display: `x/${a < 0 ? `(${a})` : a} = ${b}`, answer: `x = ${x}` };
 }
@@ -943,6 +1065,18 @@ function makeOneStepMixed(opts: FluencyOptions, idx: number): Problem {
 // ----- Tier 2: Two-Step -----
 
 function makeTwoStepPos(opts: FluencyOptions, idx: number): Problem {
+  // Everything stays positive at every level (this topic's contract) —
+  // hard raises the numbers and mixes in one-place decimal coefficients.
+  if (opts.difficulty === "hard" && randomBool()) {
+    const a10 = [5, 15, 25, 12, 24][rnd(0, 4)];
+    const x = rnd(1, 9);
+    const b = rnd(1, 15);
+    return {
+      num: idx,
+      display: `${fmtTenths(a10)}x ${fmtAddConst(b)} = ${fmtTenths(a10 * x + b * 10)}`,
+      answer: `x = ${x}`,
+    };
+  }
   const a = Math.abs(rndCoef(opts, false));
   const b = Math.abs(rndConst(opts, false));
   const x = Math.abs(rndSolution(opts, false));
@@ -951,7 +1085,18 @@ function makeTwoStepPos(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeTwoStepNeg(opts: FluencyOptions, idx: number): Problem {
-  // Same shape but with allowNegatives forced on so negatives appear.
+  // Same shape but with negatives forced on. Hard mixes in decimal
+  // coefficients (still exact — tenths arithmetic).
+  if (opts.difficulty === "hard" && randomBool()) {
+    const a10 = [5, 15, 25, 12][rnd(0, 3)] * (randomBool() ? 1 : -1);
+    const x = rnd(1, 9) * (randomBool() ? 1 : -1);
+    const b = rnd(1, 15) * (randomBool() ? 1 : -1);
+    return {
+      num: idx,
+      display: `${fmtTenths(a10)}x ${fmtAddConst(b)} = ${fmtTenths(a10 * x + b * 10)}`,
+      answer: `x = ${x}`,
+    };
+  }
   const a = rndCoef(opts, true);
   const b = rndConst(opts, true);
   const x = rndSolution(opts, true);
@@ -960,23 +1105,67 @@ function makeTwoStepNeg(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeTwoStepRational(opts: FluencyOptions, idx: number): Problem {
-  // Coefficient is a unit fraction 1/d; constant + result remain integers.
-  const d = [2, 3, 4, 5, 6][rnd(0, 4)];
-  const b = rndConst(opts, opts.allowNegatives);
-  const x = rndSolution(opts, opts.allowNegatives) * d; // ensure (1/d)x is whole
-  const c = x / d + b;
+  // Easy: unit-fraction coefficient, everything positive.
+  // Medium: any proper-fraction coefficient, signs mixed.
+  // Hard: adds one-place decimal coefficients to the rotation.
+  // (No "·" between fraction and variable — multiplication is implied.)
+  if (opts.difficulty === "easy") {
+    const d = [2, 3, 4, 5, 6][rnd(0, 4)];
+    const b = rnd(1, 9);
+    const x = rnd(1, 8) * d; // ensure (1/d)x is whole
+    const c = x / d + b;
+    return {
+      num: idx,
+      display: `1/${d}x ${fmtAddConst(b)} = ${c}`,
+      answer: `x = ${x}`,
+    };
+  }
+  if (opts.difficulty === "medium" || randomBool()) {
+    const d = rnd(2, 6);
+    let n = rnd(1, d - 1);
+    while (gcd(n, d) !== 1) n += 1;
+    if (randomBool()) n = -n;
+    const b = rnd(1, 12) * (randomBool() ? 1 : -1);
+    const m = rnd(1, 6) * (randomBool() ? 1 : -1);
+    const x = m * d;
+    const c = n * m + b;
+    const coefStr = n < 0 ? `−${Math.abs(n)}/${d}` : `${n}/${d}`;
+    return {
+      num: idx,
+      display: `${coefStr}x ${fmtAddConst(b)} = ${c}`,
+      answer: `x = ${x}`,
+    };
+  }
+  const a10 = [5, 15, 25, 4, 6, 8, 12][rnd(0, 6)] * (randomBool() ? 1 : -1);
+  const x = rnd(1, 9) * (randomBool() ? 1 : -1);
+  const b = rnd(1, 12) * (randomBool() ? 1 : -1);
   return {
     num: idx,
-    display: `1/${d} · x ${fmtAddConst(b)} = ${c}`,
+    display: `${fmtTenths(a10)}x ${fmtAddConst(b)} = ${fmtTenths(a10 * x + b * 10)}`,
     answer: `x = ${x}`,
   };
 }
 
 function makeTwoStepDist(opts: FluencyOptions, idx: number): Problem {
+  // Hard: half the problems distribute a unit fraction — 1/d(x + q) = r.
+  if (opts.difficulty === "hard" && randomBool()) {
+    const d = [2, 3, 4][rnd(0, 2)];
+    const sign = randomBool() ? 1 : -1;
+    const x = rnd(1, 9) * (randomBool() ? 1 : -1);
+    let q = rnd(1, 8) * (randomBool() ? 1 : -1);
+    q += (d - ((((x + q) % d) + d) % d)) % d; // make x + q divisible by d
+    const r = (sign * (x + q)) / d;
+    const qStr = q < 0 ? `− ${Math.abs(q)}` : `+ ${q}`;
+    return {
+      num: idx,
+      display: `${sign === -1 ? "−" : ""}1/${d}(x ${qStr}) = ${r}`,
+      answer: `x = ${x}`,
+    };
+  }
   // p(x + q) = r — pick x, p, q; compute r.
-  const p = rndCoef(opts, opts.allowNegatives);
-  const q = rndConst(opts, opts.allowNegatives);
-  const x = rndSolution(opts, opts.allowNegatives);
+  const p = rndCoef(opts, negsFor(opts));
+  const q = rndConst(opts, negsFor(opts));
+  const x = rndSolution(opts, negsFor(opts));
   const r = p * (x + q);
   const qStr = q < 0 ? `− ${Math.abs(q)}` : `+ ${q}`;
   return {
@@ -989,13 +1178,29 @@ function makeTwoStepDist(opts: FluencyOptions, idx: number): Problem {
 // ----- Tier 3: Multi-Step -----
 
 function makeMultiCombine(opts: FluencyOptions, idx: number): Problem {
+  // Hard: ~40% of problems combine DECIMAL like terms whose sum is a
+  // whole coefficient (0.7x + 2.3x − 4 = 8) — exact tenths arithmetic.
+  if (opts.difficulty === "hard" && Math.random() < 0.4) {
+    let a10 = rnd(1, 29);
+    if (a10 % 10 === 0) a10 += 1;
+    const sum10 = (Math.ceil(a10 / 10) + rnd(1, 2)) * 10;
+    const b10 = sum10 - a10;
+    const c = rnd(1, 12) * (randomBool() ? 1 : -1);
+    const x = rnd(1, 9) * (randomBool() ? 1 : -1);
+    const d = (sum10 / 10) * x + c;
+    return {
+      num: idx,
+      display: `${fmtTenths(a10)}x + ${fmtTenths(b10)}x ${fmtAddConst(c)} = ${d}`,
+      answer: `x = ${x}`,
+    };
+  }
   // ax + bx + c = d → (a+b)x + c = d → x = (d−c)/(a+b)
-  const a = rndCoef(opts, opts.allowNegatives);
-  let b = rndCoef(opts, opts.allowNegatives);
+  const a = rndCoef(opts, negsFor(opts));
+  let b = rndCoef(opts, negsFor(opts));
   // Avoid a + b = 0 (would erase the variable).
   if (a + b === 0) b += 1;
-  const c = rndConst(opts, opts.allowNegatives);
-  const x = rndSolution(opts, opts.allowNegatives);
+  const c = rndConst(opts, negsFor(opts));
+  const x = rndSolution(opts, negsFor(opts));
   const d = (a + b) * x + c;
   return {
     num: idx,
@@ -1005,11 +1210,27 @@ function makeMultiCombine(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeMultiDist(opts: FluencyOptions, idx: number): Problem {
+  // Hard: ~40% of problems distribute a unit fraction —
+  // 1/d(x + q) + r = s with (x + q) divisible by d.
+  if (opts.difficulty === "hard" && Math.random() < 0.4) {
+    const den = [2, 3, 4][rnd(0, 2)];
+    const x = rnd(1, 9) * (randomBool() ? 1 : -1);
+    let q = rnd(1, 8) * (randomBool() ? 1 : -1);
+    q += (den - ((((x + q) % den) + den) % den)) % den;
+    const r = rnd(1, 9) * (randomBool() ? 1 : -1);
+    const s = (x + q) / den + r;
+    const qStr = q < 0 ? `− ${Math.abs(q)}` : `+ ${q}`;
+    return {
+      num: idx,
+      display: `1/${den}(x ${qStr}) ${fmtAddConst(r)} = ${s}`,
+      answer: `x = ${x}`,
+    };
+  }
   // p(x + q) + r = s
-  const p = rndCoef(opts, opts.allowNegatives);
-  const q = rndConst(opts, opts.allowNegatives);
-  const r = rndConst(opts, opts.allowNegatives);
-  const x = rndSolution(opts, opts.allowNegatives);
+  const p = rndCoef(opts, negsFor(opts));
+  const q = rndConst(opts, negsFor(opts));
+  const r = rndConst(opts, negsFor(opts));
+  const x = rndSolution(opts, negsFor(opts));
   const s = p * (x + q) + r;
   const qStr = q < 0 ? `− ${Math.abs(q)}` : `+ ${q}`;
   return {
@@ -1020,12 +1241,27 @@ function makeMultiDist(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeMultiBoth(opts: FluencyOptions, idx: number): Problem {
+  // Hard: ~40% of problems use decimal coefficients on both sides whose
+  // difference is a whole number (1.5x + 4 = 0.5x − 2).
+  if (opts.difficulty === "hard" && Math.random() < 0.4) {
+    let c10 = rnd(1, 19);
+    if (c10 % 10 === 0) c10 += 1;
+    const a10 = c10 + 10 * rnd(1, 2);
+    const x = rnd(1, 9) * (randomBool() ? 1 : -1);
+    const b = rnd(1, 12) * (randomBool() ? 1 : -1);
+    const d = ((a10 - c10) / 10) * x + b;
+    return {
+      num: idx,
+      display: `${fmtTenths(a10)}x ${fmtAddConst(b)} = ${fmtTenths(c10)}x ${fmtAddConst(d)}`,
+      answer: `x = ${x}`,
+    };
+  }
   // ax + b = cx + d → (a−c)x = d − b
-  const a = rndCoef(opts, opts.allowNegatives);
-  let c = rndCoef(opts, opts.allowNegatives);
+  const a = rndCoef(opts, negsFor(opts));
+  let c = rndCoef(opts, negsFor(opts));
   if (a === c) c += 1; // ensure (a-c) != 0
-  const x = rndSolution(opts, opts.allowNegatives);
-  const b = rndConst(opts, opts.allowNegatives);
+  const x = rndSolution(opts, negsFor(opts));
+  const b = rndConst(opts, negsFor(opts));
   const d = (a - c) * x + b;
   return {
     num: idx,
@@ -1036,12 +1272,12 @@ function makeMultiBoth(opts: FluencyOptions, idx: number): Problem {
 
 function makeMultiFull(opts: FluencyOptions, idx: number): Problem {
   // p(x + q) + r = sx + t
-  const p = rndCoef(opts, opts.allowNegatives);
-  const q = rndConst(opts, opts.allowNegatives);
-  const r = rndConst(opts, opts.allowNegatives);
-  let s = rndCoef(opts, opts.allowNegatives);
+  const p = rndCoef(opts, negsFor(opts));
+  const q = rndConst(opts, negsFor(opts));
+  const r = rndConst(opts, negsFor(opts));
+  let s = rndCoef(opts, negsFor(opts));
   if (p === s) s += 1;
-  const x = rndSolution(opts, opts.allowNegatives);
+  const x = rndSolution(opts, negsFor(opts));
   const t = p * (x + q) + r - s * x;
   const qStr = q < 0 ? `− ${Math.abs(q)}` : `+ ${q}`;
   return {
@@ -1052,61 +1288,152 @@ function makeMultiFull(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeMultiSpecial(opts: FluencyOptions, idx: number): Problem {
-  // Two flavors: no solution OR infinite solutions.
-  const noSol = randomBool();
-  const a = rndCoef(opts, opts.allowNegatives);
-  const b = rndConst(opts, opts.allowNegatives);
-  if (noSol) {
-    // ax + b = ax + (b + k), k != 0 → no solution
-    const k = rndCoef(opts, opts.allowNegatives) || 1;
-    return {
-      num: idx,
-      display: `${fmtCoefTerm(a)} ${fmtAddConst(b)} = ${fmtCoefTerm(a)} ${fmtAddConst(b + k)}`,
-      answer: "no solution",
-    };
+  // A third each: no solution, infinitely many, exactly ONE solution —
+  // and every equation must be simplified (combine like terms and/or
+  // distribute) before the outcome is visible. The old version wrote
+  // identical sides verbatim, so students could answer at a glance
+  // without doing any algebra.
+  const outcome = rnd(0, 2); // 0 = no solution, 1 = infinite, 2 = one solution
+  const sgn = () => (randomBool() ? 1 : -1);
+
+  if (opts.difficulty === "easy") {
+    // ax + bx + c = sx + e — combine the left side first.
+    const a = rnd(2, 6);
+    let b = rnd(1, 5) * sgn();
+    if (a + b === 0 || a + b === 1) b += 1;
+    const c = rnd(1, 12);
+    const s = a + b;
+    const lhs = `${fmtCoefTerm(a)} ${fmtAddCoef(b)} ${fmtAddConst(c)}`;
+    if (outcome === 1) {
+      return { num: idx, display: `${lhs} = ${fmtCoefTerm(s)} ${fmtAddConst(c)}`, answer: "all real numbers" };
+    }
+    if (outcome === 0) {
+      const e = c + rnd(1, 6) * sgn();
+      return { num: idx, display: `${lhs} = ${fmtCoefTerm(s)} ${fmtAddConst(e)}`, answer: "no solution" };
+    }
+    let d = rnd(1, 6) * sgn();
+    if (d === s) d += 1;
+    const x = rnd(1, 9) * sgn();
+    const e = (s - d) * x + c;
+    return { num: idx, display: `${lhs} = ${fmtCoefTerm(d)} ${fmtAddConst(e)}`, answer: `x = ${x}` };
   }
-  // Infinite: ax + b = ax + b (or distributed equivalent)
-  return {
-    num: idx,
-    display: `${fmtCoefTerm(a)} ${fmtAddConst(b)} = ${fmtCoefTerm(a)} ${fmtAddConst(b)}`,
-    answer: "all real numbers",
-  };
+
+  if (opts.difficulty === "medium") {
+    // p(x + q) + r = ax + c — distribute the left side first.
+    const p = rnd(2, 6) * sgn();
+    const q = rnd(1, 6) * sgn();
+    const r = rnd(1, 9) * sgn();
+    const qStr = q < 0 ? `− ${Math.abs(q)}` : `+ ${q}`;
+    const lhs = `${p < 0 ? `−${Math.abs(p)}` : p}(x ${qStr}) ${fmtAddConst(r)}`;
+    const flatConst = p * q + r;
+    if (outcome === 1) {
+      return { num: idx, display: `${lhs} = ${fmtCoefTerm(p)} ${fmtAddConst(flatConst)}`, answer: "all real numbers" };
+    }
+    if (outcome === 0) {
+      const c = flatConst + rnd(1, 6) * sgn();
+      return { num: idx, display: `${lhs} = ${fmtCoefTerm(p)} ${fmtAddConst(c)}`, answer: "no solution" };
+    }
+    let a = rnd(1, 6) * sgn();
+    if (a === p) a += 1;
+    const x = rnd(1, 9) * sgn();
+    const c = (p - a) * x + flatConst;
+    return { num: idx, display: `${lhs} = ${fmtCoefTerm(a)} ${fmtAddConst(c)}`, answer: `x = ${x}` };
+  }
+
+  // Hard: p(x + q) + r = s(x + t) + u — distribute BOTH sides.
+  const p = rnd(2, 7) * sgn();
+  const q = rnd(1, 6) * sgn();
+  const r = rnd(1, 9) * sgn();
+  const t = rnd(1, 6) * sgn();
+  const qStr = q < 0 ? `− ${Math.abs(q)}` : `+ ${q}`;
+  const tStr = t < 0 ? `− ${Math.abs(t)}` : `+ ${t}`;
+  const lhs = `${p < 0 ? `−${Math.abs(p)}` : p}(x ${qStr}) ${fmtAddConst(r)}`;
+  const rhsOf = (s: number, u: number) =>
+    `${s < 0 ? `−${Math.abs(s)}` : s}(x ${tStr}) ${fmtAddConst(u)}`;
+  const lhsConst = p * q + r;
+  if (outcome === 1) {
+    const u = lhsConst - p * t;
+    return { num: idx, display: `${lhs} = ${rhsOf(p, u)}`, answer: "all real numbers" };
+  }
+  if (outcome === 0) {
+    const u = lhsConst - p * t + rnd(1, 6) * sgn();
+    return { num: idx, display: `${lhs} = ${rhsOf(p, u)}`, answer: "no solution" };
+  }
+  let s = rnd(2, 7) * sgn();
+  if (s === p) s += 1;
+  const x = rnd(1, 9) * sgn();
+  const u = (p - s) * x + lhsConst - s * t;
+  return { num: idx, display: `${lhs} = ${rhsOf(s, u)}`, answer: `x = ${x}` };
 }
 
 // ----- Tier 4: Literal -----
 
-const LITERAL_FORMULAS: { display: string; answer: string }[] = [
+// Formula pools by how many undo-steps the rearrangement takes:
+//   easy   — one inverse operation (divide or subtract once)
+//   medium — two steps (subtract then divide)
+//   hard   — multi-step, fractions, or factoring involved
+const LITERAL_EASY: { display: string; answer: string }[] = [
   { display: "Solve for w:  A = lw", answer: "w = A/l" },
-  { display: "Solve for h:  A = (1/2)bh", answer: "h = 2A/b" },
-  { display: "Solve for r:  C = 2πr", answer: "r = C/(2π)" },
   { display: "Solve for t:  d = rt", answer: "t = d/r" },
   { display: "Solve for r:  d = rt", answer: "r = d/t" },
+  { display: "Solve for h:  V = lwh", answer: "h = V/(lw)" },
+  { display: "Solve for a:  P = a + b + c", answer: "a = P − b − c" },
+  { display: "Solve for r:  C = 2πr", answer: "r = C/(2π)" },
+];
+const LITERAL_MEDIUM: { display: string; answer: string }[] = [
   { display: "Solve for x:  y = mx + b", answer: "x = (y − b)/m" },
   { display: "Solve for m:  y = mx + b", answer: "m = (y − b)/x" },
+  { display: "Solve for b:  y = mx + b", answer: "b = y − mx" },
   { display: "Solve for l:  P = 2l + 2w", answer: "l = (P − 2w)/2" },
-  { display: "Solve for h:  V = lwh", answer: "h = V/(lw)" },
+  { display: "Solve for h:  A = (1/2)bh", answer: "h = 2A/b" },
+  { display: "Solve for t:  I = Prt", answer: "t = I/(Pr)" },
+];
+const LITERAL_HARD: { display: string; answer: string }[] = [
   { display: "Solve for C:  F = (9/5)C + 32", answer: "C = (5/9)(F − 32)" },
   { display: "Solve for b:  A = (1/2)h(b + c)", answer: "b = (2A/h) − c" },
-  { display: "Solve for a:  P = a + b + c", answer: "a = P − b − c" },
+  { display: "Solve for y:  ax + by = c", answer: "y = (c − ax)/b" },
+  { display: "Solve for h:  S = 2πr² + 2πrh", answer: "h = (S − 2πr²)/(2πr)" },
+  { display: "Solve for r:  A = P(1 + rt)", answer: "r = (A − P)/(Pt)" },
 ];
 
-function makeLiteral(_opts: FluencyOptions, idx: number): Problem {
-  const pick = LITERAL_FORMULAS[rnd(0, LITERAL_FORMULAS.length - 1)];
+function makeLiteral(opts: FluencyOptions, idx: number): Problem {
+  const pool =
+    opts.difficulty === "easy" ? LITERAL_EASY
+    : opts.difficulty === "medium" ? LITERAL_MEDIUM
+    : LITERAL_HARD;
+  const pick = pool[rnd(0, pool.length - 1)];
   return { num: idx, display: pick.display, answer: pick.answer };
 }
 
 // ----- Tier 5: Proportions -----
 
 function makeProportion(opts: FluencyOptions, idx: number): Problem {
-  // Build a true proportion a/b = c/d (i.e., a·d = b·c), then hide one of
-  // the four terms behind x. Coefficients scale with difficulty.
-  const max = opts.difficulty === "easy" ? 8 : opts.difficulty === "medium" ? 12 : 18;
+  // Build a true proportion a/b = c/d (i.e., a·d = b·c), then hide one
+  // of the four terms behind x.
+  //   easy   — x in a numerator, whole-number scale factor
+  //   medium — x in any of the four positions
+  //   hard   — also mixes proportions whose answer is NOT a whole
+  //            number (cross-multiply and divide; fraction answers)
+  const max = opts.difficulty === "easy" ? 8 : opts.difficulty === "medium" ? 12 : 15;
+  if (opts.difficulty === "hard" && randomBool()) {
+    const a = rnd(2, max);
+    let b = rnd(2, max);
+    while (b === a) b = rnd(2, max); // avoid the trivial a/a = 1 ratio
+    const c = rnd(2, max);
+    if (randomBool()) {
+      // a/b = c/x → x = b·c/a
+      return { num: idx, display: `${a}/${b} = ${c}/x`, answer: fmtSolution(b * c, a) };
+    }
+    // a/b = x/c → x = a·c/b
+    return { num: idx, display: `${a}/${b} = x/${c}`, answer: fmtSolution(a * c, b) };
+  }
   const a = rnd(2, max);
-  const b = rnd(2, max);
+  let b = rnd(2, max);
+  while (b === a) b = rnd(2, max); // avoid the trivial a/a = 1 ratio
   const k = rnd(2, 6);
   const c = a * k;
   const d = b * k;
-  const pos = rnd(0, 3);
+  const pos = opts.difficulty === "easy" ? [0, 2][rnd(0, 1)] : rnd(0, 3);
   let display: string;
   let answer: string;
   if (pos === 0) {        display = `x/${b} = ${c}/${d}`; answer = `x = ${a}`; }
@@ -1116,38 +1443,61 @@ function makeProportion(opts: FluencyOptions, idx: number): Problem {
   return { num: idx, display, answer };
 }
 
-const PROPORTION_WORDS: ((opts: FluencyOptions) => { display: string; answer: string })[] = [
-  (opts) => {
+// Difficulty ladder: easy uses small whole numbers, medium uses larger
+// scale factors, hard mixes decimal money / measurement values.
+const PROPORTION_WORDS: ((d: Difficulty) => { display: string; answer: string })[] = [
+  (dif) => {
     const a = rnd(2, 5);
-    const b = rnd(2, 6);
-    const k = rnd(2, 6);
+    const k = rnd(2, dif === "easy" ? 4 : 8);
+    if (dif === "hard") {
+      const price = rnd(5, 19) / 2; // $2.50 … $9.50
+      return {
+        display: `If ${a} apples cost $${price.toFixed(2)}, how much do ${a * k} apples cost?`,
+        answer: `$${(price * k).toFixed(2)}`,
+      };
+    }
+    const b = rnd(2, dif === "easy" ? 6 : 9);
     return {
       display: `If ${a} apples cost $${b}, how much do ${a * k} apples cost?`,
       answer: `$${b * k}`,
     };
   },
-  (opts) => {
+  (dif) => {
     const cm = rnd(2, 5);
-    const km = rnd(3, 8);
-    const k = rnd(2, 6);
+    const k = rnd(2, dif === "easy" ? 4 : 8);
+    if (dif === "hard") {
+      const km = rnd(5, 15) / 2; // 2.5 … 7.5 km per cm-group
+      return {
+        display: `On a map, ${cm} cm represents ${km % 1 === 0 ? km : km.toFixed(1)} km. How many km does ${cm * k} cm represent?`,
+        answer: `${Number.isInteger(km * k) ? km * k : (km * k).toFixed(1)} km`,
+      };
+    }
+    const km = rnd(3, dif === "easy" ? 8 : 12);
     return {
       display: `On a map, ${cm} cm represents ${km} km. How many km does ${cm * k} cm represent?`,
       answer: `${km * k} km`,
     };
   },
-  (opts) => {
-    const a = rnd(3, 7);
+  (dif) => {
     const b = rnd(2, 5);
-    const k = rnd(2, 5);
+    const k = rnd(2, dif === "easy" ? 4 : 7);
+    if (dif === "hard") {
+      const cups = rnd(3, 9) / 2; // 1.5 … 4.5 cups
+      return {
+        display: `A recipe uses ${cups % 1 === 0 ? cups : cups.toFixed(1)} cups of flour per ${b} cups of sugar. How many cups of flour for ${b * k} cups of sugar?`,
+        answer: `${Number.isInteger(cups * k) ? cups * k : (cups * k).toFixed(1)} cups`,
+      };
+    }
+    const a = rnd(3, dif === "easy" ? 7 : 9);
     return {
       display: `A recipe uses ${a} cups of flour per ${b} cups of sugar. How many cups of flour for ${b * k} cups of sugar?`,
       answer: `${a * k} cups`,
     };
   },
-  (opts) => {
+  (dif) => {
     const a = rnd(2, 4);
-    const b = rnd(5, 9);
-    const k = rnd(2, 4);
+    const b = rnd(5, dif === "easy" ? 9 : 14);
+    const k = rnd(2, dif === "easy" ? 4 : 6);
     return {
       display: `A car travels ${a * k * b} miles in ${a * k} hours. At the same rate, how many miles in ${a} hours?`,
       answer: `${a * b} miles`,
@@ -1157,15 +1507,15 @@ const PROPORTION_WORDS: ((opts: FluencyOptions) => { display: string; answer: st
 
 function makePropWord(opts: FluencyOptions, idx: number): Problem {
   const pick = PROPORTION_WORDS[rnd(0, PROPORTION_WORDS.length - 1)];
-  const r = pick(opts);
+  const r = pick(opts.difficulty);
   return { num: idx, display: r.display, answer: r.answer };
 }
 
 // ----- Tier 6: Absolute Value -----
 
 function makeAbsSimple(opts: FluencyOptions, idx: number): Problem {
-  const a = rndCoef(opts, opts.allowNegatives);
-  const b = rnd(1, opts.difficulty === "easy" ? 9 : 15);
+  const a = rndCoef(opts, negsFor(opts));
+  const b = rnd(1, opts.difficulty === "easy" ? 9 : opts.difficulty === "medium" ? 15 : 24);
   const x1 = b - a;
   const x2 = -b - a;
   return {
@@ -1177,8 +1527,8 @@ function makeAbsSimple(opts: FluencyOptions, idx: number): Problem {
 
 function makeAbsCoef(opts: FluencyOptions, idx: number): Problem {
   const a = Math.abs(rndCoef(opts, false)) || 2;
-  const b = rndCoef(opts, opts.allowNegatives);
-  const c = rnd(1, opts.difficulty === "easy" ? 9 : 15);
+  const b = rndCoef(opts, negsFor(opts));
+  const c = rnd(1, opts.difficulty === "easy" ? 9 : opts.difficulty === "medium" ? 15 : 24);
   // |ax + b| = c → ax + b = ±c → x = (±c − b)/a
   const x1Num = c - b;
   const x2Num = -c - b;
@@ -1191,10 +1541,10 @@ function makeAbsCoef(opts: FluencyOptions, idx: number): Problem {
 
 function makeAbsIsolate(opts: FluencyOptions, idx: number): Problem {
   const a = Math.abs(rndCoef(opts, false)) || 2;
-  const b = rndCoef(opts, opts.allowNegatives);
+  const b = rndCoef(opts, negsFor(opts));
   const c = rnd(2, 5); // multiplier outside
-  const d = rndConst(opts, opts.allowNegatives);
-  const k = rnd(1, opts.difficulty === "easy" ? 4 : 8); // |…| equals k
+  const d = rndConst(opts, negsFor(opts));
+  const k = rnd(1, opts.difficulty === "easy" ? 4 : opts.difficulty === "medium" ? 8 : 12); // |…| equals k
   const e = c * k + d;
   // After isolating: |ax + b| = k → ax + b = ±k
   const x1Num = k - b;
@@ -1210,14 +1560,14 @@ function makeAbsIsolate(opts: FluencyOptions, idx: number): Problem {
 
 function makeSysSub(opts: FluencyOptions, idx: number): Problem {
   // Build a 2×2 with integer solution (x, y). Display two lines via \n.
-  const x = rndSolution(opts, opts.allowNegatives);
-  const y = rndSolution(opts, opts.allowNegatives);
-  const a1 = rndCoef(opts, opts.allowNegatives);
-  const b1 = rndCoef(opts, opts.allowNegatives);
+  const x = rndSolution(opts, negsFor(opts));
+  const y = rndSolution(opts, negsFor(opts));
+  const a1 = rndCoef(opts, negsFor(opts));
+  const b1 = rndCoef(opts, negsFor(opts));
   const c1 = a1 * x + b1 * y;
   // Second equation: keep it different. Often "y = …" form so substitution
   // is the natural route.
-  const m = rndCoef(opts, opts.allowNegatives);
+  const m = rndCoef(opts, negsFor(opts));
   const k = y - m * x;
   const eq2 = `y = ${fmtCoefTerm(m)} ${fmtAddConst(k)}`;
   return {
@@ -1228,14 +1578,33 @@ function makeSysSub(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeSysElim(opts: FluencyOptions, idx: number): Problem {
-  const x = rndSolution(opts, opts.allowNegatives);
-  const y = rndSolution(opts, opts.allowNegatives);
-  const a1 = rndCoef(opts, opts.allowNegatives);
-  const b1 = rndCoef(opts, opts.allowNegatives);
-  const c1 = a1 * x + b1 * y;
-  const a2 = rndCoef(opts, opts.allowNegatives);
-  let b2 = rndCoef(opts, opts.allowNegatives);
+  // Elimination-effort ladder:
+  //   easy   — the y-coefficients are already opposites (just add)
+  //   medium — one equation must be multiplied first
+  //   hard   — both equations usually need multiplying
+  const x = rndSolution(opts, negsFor(opts));
+  const y = rndSolution(opts, negsFor(opts));
+  const a1 = rndCoef(opts, negsFor(opts));
+  const b1 = rndCoef(opts, negsFor(opts));
+  let a2: number;
+  let b2: number;
+  if (opts.difficulty === "easy") {
+    a2 = rndCoef(opts, false);
+    b2 = -b1; // add the equations and y drops out
+    if (a1 === -a2) a2 += 1; // keep x from also cancelling
+  } else if (opts.difficulty === "medium") {
+    // b2 is a small multiple of b1 (opposite sign) → scale one equation.
+    b2 = -b1 * rnd(2, 3);
+    a2 = rndCoef(opts, true);
+  } else {
+    a2 = rndCoef(opts, true);
+    b2 = rndCoef(opts, true);
+    // Avoid accidentally-easy setups where the coefficients already
+    // match, and degenerate (parallel) systems.
+    if (Math.abs(b2) === Math.abs(b1)) b2 += b2 > 0 ? 1 : -1;
+  }
   if (a1 * b2 - a2 * b1 === 0) b2 += 1; // avoid parallel lines
+  const c1 = a1 * x + b1 * y;
   const c2 = a2 * x + b2 * y;
   return {
     num: idx,
@@ -1245,45 +1614,67 @@ function makeSysElim(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeSysSpecial(opts: FluencyOptions, idx: number): Problem {
-  const noSol = randomBool();
-  const a = rndCoef(opts, opts.allowNegatives);
-  const b = rndCoef(opts, opts.allowNegatives);
-  const c = rndConst(opts, opts.allowNegatives);
-  if (noSol) {
-    // Same LHS, different RHS → parallel lines, no solution
+  // A third each: no solution, infinitely many, and exactly one
+  // solution. The second equation is always a scaled multiple so the
+  // relationship isn't visible until the student compares the ratios —
+  // the old version reused the identical left side, which gave the
+  // answer away at a glance.
+  const outcome = rnd(0, 2); // 0 = none, 1 = infinite, 2 = one
+  const a = rndCoef(opts, negsFor(opts));
+  const b = rndCoef(opts, negsFor(opts));
+  const c = rndConst(opts, negsFor(opts));
+  const k = rnd(2, opts.difficulty === "easy" ? 2 : 3) * (opts.difficulty === "hard" && randomBool() ? -1 : 1);
+  if (outcome === 0) {
+    // Scaled LHS, mismatched RHS → parallel lines.
     return {
       num: idx,
-      display: `${fmtCoefTerm(a)} ${fmtAddCoef(b, "y")} = ${c}\n${fmtCoefTerm(a)} ${fmtAddCoef(b, "y")} = ${c + 1 + rnd(1, 3)}`,
+      display: `${fmtCoefTerm(a)} ${fmtAddCoef(b, "y")} = ${c}\n${fmtCoefTerm(a * k)} ${fmtAddCoef(b * k, "y")} = ${c * k + rnd(1, 4) * (randomBool() ? 1 : -1)}`,
       answer: "no solution",
     };
   }
-  // Same line written two ways → infinite solutions
-  const k = rnd(2, 4);
+  if (outcome === 1) {
+    // Fully scaled → the same line written two ways.
+    return {
+      num: idx,
+      display: `${fmtCoefTerm(a)} ${fmtAddCoef(b, "y")} = ${c}\n${fmtCoefTerm(a * k)} ${fmtAddCoef(b * k, "y")} = ${c * k}`,
+      answer: "infinitely many solutions",
+    };
+  }
+  // One solution: build a second equation with a different slope and an
+  // integer intersection point.
+  const x = rndSolution(opts, negsFor(opts));
+  const y = rndSolution(opts, negsFor(opts));
+  const c1 = a * x + b * y;
+  const a2 = rndCoef(opts, negsFor(opts));
+  let b2 = rndCoef(opts, negsFor(opts));
+  if (a * b2 - a2 * b === 0) b2 += 1; // ensure the lines actually cross
+  const c2 = a2 * x + b2 * y;
   return {
     num: idx,
-    display: `${fmtCoefTerm(a)} ${fmtAddCoef(b, "y")} = ${c}\n${fmtCoefTerm(a * k)} ${fmtAddCoef(b * k, "y")} = ${c * k}`,
-    answer: "infinitely many solutions",
+    display: `${fmtCoefTerm(a)} ${fmtAddCoef(b, "y")} = ${c1}\n${fmtCoefTerm(a2)} ${fmtAddCoef(b2, "y")} = ${c2}`,
+    answer: `(${x}, ${y})`,
   };
 }
 
-const SYSTEM_WORDS: ((opts: FluencyOptions) => { display: string; answer: string })[] = [
-  () => {
-    const cost1 = rnd(2, 4);
-    const cost2 = rnd(5, 8);
-    const n1 = rnd(2, 6);
-    const n2 = rnd(2, 6);
+const SYSTEM_WORDS: ((d: Difficulty) => { display: string; answer: string })[] = [
+  (dif) => {
+    const cost1 = rnd(2, dif === "easy" ? 4 : 6);
+    const cost2 = cost1 + rnd(2, dif === "easy" ? 4 : 6);
+    const nMax = dif === "easy" ? 6 : dif === "medium" ? 12 : 20;
+    const n1 = rnd(2, nMax);
+    const n2 = rnd(2, nMax);
     return {
       display: `Tickets cost $${cost1} for students and $${cost2} for adults. ${n1 + n2} tickets sold for a total of $${cost1 * n1 + cost2 * n2}. How many of each were sold?`,
       answer: `${n1} student, ${n2} adult`,
     };
   },
-  () => {
-    const a = rnd(2, 5);
-    const b = rnd(3, 7);
-    const k = rnd(2, 5);
+  (dif) => {
+    const a = rnd(2, dif === "easy" ? 5 : 8);
+    const b = a + rnd(1, dif === "easy" ? 3 : 6);
+    const k = rnd(2, dif === "easy" ? 5 : dif === "medium" ? 8 : 12);
     const total = (a + b) * k;
     return {
-      display: `The sum of two numbers is ${total} and one number is ${b - a < 0 ? Math.abs(b - a) : (b - a)} ${b > a ? "more" : "less"} than the other. Find the numbers.`,
+      display: `The sum of two numbers is ${total} and one number is ${(b - a) * k} more than the other. Find the numbers.`,
       answer: `${a * k} and ${b * k}`,
     };
   },
@@ -1291,7 +1682,7 @@ const SYSTEM_WORDS: ((opts: FluencyOptions) => { display: string; answer: string
 
 function makeSysWord(opts: FluencyOptions, idx: number): Problem {
   const pick = SYSTEM_WORDS[rnd(0, SYSTEM_WORDS.length - 1)];
-  const r = pick(opts);
+  const r = pick(opts.difficulty);
   return { num: idx, display: r.display, answer: r.answer };
 }
 
@@ -1300,16 +1691,22 @@ function makeSysWord(opts: FluencyOptions, idx: number): Problem {
 // or serif font without needing a sup tag.
 
 function makeQuadSqrt(opts: FluencyOptions, idx: number): Problem {
-  // x² = c → x = ±√c
-  const r = rnd(2, opts.difficulty === "easy" ? 9 : 12);
+  // x² = c → x = ±√c. Hard: half the problems are NOT perfect squares,
+  // so the answer is a simplified radical (x² = 18 → x = ±3√2).
+  if (opts.difficulty === "hard" && randomBool()) {
+    const r = rnd(2, 6);
+    const s = [2, 3, 5][rnd(0, 2)];
+    return { num: idx, display: `x² = ${r * r * s}`, answer: `x = ±${r}√${s}` };
+  }
+  const r = rnd(2, opts.difficulty === "easy" ? 9 : opts.difficulty === "medium" ? 13 : 16);
   const c = r * r;
   return { num: idx, display: `x² = ${c}`, answer: `x = ±${r}` };
 }
 
 function makeQuadTrans(opts: FluencyOptions, idx: number): Problem {
   // (x − h)² = k where k is a perfect square
-  const h = rndConst(opts, opts.allowNegatives);
-  const r = rnd(1, opts.difficulty === "easy" ? 8 : 12);
+  const h = rndConst(opts, negsFor(opts));
+  const r = rnd(1, opts.difficulty === "easy" ? 8 : opts.difficulty === "medium" ? 10 : 13);
   const k = r * r;
   const hStr = h < 0 ? `+ ${Math.abs(h)}` : `− ${h}`;
   return {
@@ -1321,8 +1718,8 @@ function makeQuadTrans(opts: FluencyOptions, idx: number): Problem {
 
 function makeQuadFacA1(opts: FluencyOptions, idx: number): Problem {
   // x² + bx + c = 0 with integer roots r1, r2
-  const r1 = rndSolution(opts, opts.allowNegatives);
-  let r2 = rndSolution(opts, opts.allowNegatives);
+  const r1 = rndSolution(opts, negsFor(opts));
+  let r2 = rndSolution(opts, negsFor(opts));
   if (r2 === r1) r2 += 1;
   const b = -(r1 + r2);
   const c = r1 * r2;
@@ -1337,8 +1734,8 @@ function makeQuadFacAn(opts: FluencyOptions, idx: number): Problem {
   // (ax − p)(x − q) = 0  → ax² − (aq + p)x + pq = 0
   // Roots: x = p/a (rational) and x = q (integer)
   const a = rnd(2, 3);
-  const p = rndSolution(opts, opts.allowNegatives);
-  const q = rndSolution(opts, opts.allowNegatives);
+  const p = rndSolution(opts, negsFor(opts));
+  const q = rndSolution(opts, negsFor(opts));
   const bCoef = -(a * q + p);
   const cConst = p * q;
   return {
@@ -1350,8 +1747,8 @@ function makeQuadFacAn(opts: FluencyOptions, idx: number): Problem {
 
 function makeQuadDiff(opts: FluencyOptions, idx: number): Problem {
   // a²x² − b² = 0 → x = ±b/a
-  const a = rnd(2, opts.difficulty === "easy" ? 4 : 8);
-  const b = rnd(2, opts.difficulty === "easy" ? 6 : 12);
+  const a = rnd(2, opts.difficulty === "easy" ? 4 : opts.difficulty === "medium" ? 6 : 8);
+  const b = rnd(2, opts.difficulty === "easy" ? 6 : opts.difficulty === "medium" ? 9 : 12);
   return {
     num: idx,
     display: `${a * a}x² − ${b * b} = 0`,
@@ -1363,8 +1760,8 @@ function makeQuadFormula(opts: FluencyOptions, idx: number): Problem {
   // Generate ax² + bx + c with non-perfect-square discriminant so the
   // formula must be used. Answer rendered as x = (−b ± √D) / (2a).
   const a = rnd(1, opts.difficulty === "easy" ? 2 : 3);
-  const b = rndCoef(opts, opts.allowNegatives);
-  const c = rndConst(opts, opts.allowNegatives);
+  const b = rndCoef(opts, negsFor(opts));
+  const c = rndConst(opts, negsFor(opts));
   const D = b * b - 4 * a * c;
   // Ensure D > 0 and not a perfect square.
   if (D <= 0 || Math.sqrt(D) === Math.floor(Math.sqrt(D))) {
@@ -1384,11 +1781,11 @@ function makeQuadFormula(opts: FluencyOptions, idx: number): Problem {
 
 function makeQuadComplete(opts: FluencyOptions, idx: number): Problem {
   // x² + bx + c = 0 with even b so (b/2)² is integer.
-  let bHalf = rndCoef(opts, opts.allowNegatives);
+  let bHalf = rndCoef(opts, negsFor(opts));
   if (bHalf === 0) bHalf = 1;
   const b = 2 * bHalf;
   // Pick a target k such that (x + bHalf)² = k has integer answers.
-  const r = rnd(1, opts.difficulty === "easy" ? 6 : 10);
+  const r = rnd(1, opts.difficulty === "easy" ? 6 : opts.difficulty === "medium" ? 8 : 11);
   const k = r * r;
   // x² + bx + c = 0 → x² + bx = −c → x² + bx + (b/2)² = (b/2)² − c
   // (x + b/2)² = (b/2)² − c = k → c = (b/2)² − k = bHalf² − r²
@@ -1405,8 +1802,8 @@ function makeQuadComplete(opts: FluencyOptions, idx: number): Problem {
 function makeRadSingle(opts: FluencyOptions, idx: number): Problem {
   // √(ax + b) = c → ax + b = c² → x = (c² − b)/a
   const a = Math.abs(rndCoef(opts, false)) || 1;
-  const c = rnd(2, opts.difficulty === "easy" ? 7 : 12);
-  const x = rndSolution(opts, opts.allowNegatives);
+  const c = rnd(2, opts.difficulty === "easy" ? 7 : opts.difficulty === "medium" ? 10 : 13);
+  const x = rndSolution(opts, negsFor(opts));
   const b = c * c - a * x;
   return {
     num: idx,
@@ -1417,11 +1814,11 @@ function makeRadSingle(opts: FluencyOptions, idx: number): Problem {
 
 function makeRadDouble(opts: FluencyOptions, idx: number): Problem {
   // √(ax + b) = √(cx + d) → ax + b = cx + d → x = (d − b)/(a − c)
-  const a = rndCoef(opts, opts.allowNegatives);
-  let c = rndCoef(opts, opts.allowNegatives);
+  const a = rndCoef(opts, negsFor(opts));
+  let c = rndCoef(opts, negsFor(opts));
   if (c === a) c += 1;
-  const x = rndSolution(opts, opts.allowNegatives);
-  const b = rndConst(opts, opts.allowNegatives);
+  const x = rndSolution(opts, negsFor(opts));
+  const b = rndConst(opts, negsFor(opts));
   const d = (a - c) * x + b;
   return {
     num: idx,
@@ -1451,7 +1848,7 @@ function makeRadLinear(opts: FluencyOptions, idx: number): Problem {
 function makeRatSimple(opts: FluencyOptions, idx: number): Problem {
   // a/x = b → x = a/b
   const b = Math.abs(rndCoef(opts, false)) || 1;
-  const x = rndSolution(opts, opts.allowNegatives);
+  const x = rndSolution(opts, negsFor(opts));
   const a = b * x;
   return { num: idx, display: `${a}/x = ${b}`, answer: `x = ${x}` };
 }
@@ -1460,8 +1857,8 @@ function makeRatLinear(opts: FluencyOptions, idx: number): Problem {
   // (ax + b)/c = d → ax + b = cd → x = (cd − b)/a
   const a = Math.abs(rndCoef(opts, false)) || 1;
   const c = Math.abs(rndCoef(opts, false)) || 1;
-  const x = rndSolution(opts, opts.allowNegatives);
-  const b = rndConst(opts, opts.allowNegatives);
+  const x = rndSolution(opts, negsFor(opts));
+  const b = rndConst(opts, negsFor(opts));
   const d = (a * x + b) / c;
   // We need d to be integer for a clean problem — back off and force.
   const dInt = Math.round(d);
@@ -1483,8 +1880,9 @@ function makeRatLinear(opts: FluencyOptions, idx: number): Problem {
 function makeRatLCD(opts: FluencyOptions, idx: number): Problem {
   // 1/x + 1/p = 1/q form. Solve: 1/x = 1/q − 1/p = (p − q)/(pq)
   // → x = pq/(p − q). Pick p, q so this is integer.
-  const p = rnd(2, 10);
-  let q = rnd(2, 10);
+  const cap = opts.difficulty === "easy" ? 6 : opts.difficulty === "medium" ? 10 : 12;
+  const p = rnd(2, cap);
+  let q = rnd(2, cap);
   if (p === q) q += 1;
   const diff = p - q;
   if (diff === 0) return { num: idx, display: `1/x + 1/3 = 1/2`, answer: `x = 6` };
@@ -1525,18 +1923,22 @@ function flipOp(op: IneqOp): IneqOp {
   return op === "<" ? ">" : op === ">" ? "<" : op === "≤" ? "≥" : "≤";
 }
 
-/** Format an inequality solution: "x (op) value". Uses `fmtSolution`'s
- *  fraction-aware formatter under the hood. */
-function fmtIneqAnswer(num: number, den: number, op: IneqOp): string {
-  return fmtSolution(num, den).replace(" = ", ` ${op} `);
-}
-
 // ----- Tier 1: One-Step Inequalities -----
 
 function makeIneqOneAdd(opts: FluencyOptions, idx: number): Problem {
-  const a = rndCoef(opts, false);
   const op = pickIneqOp();
-  const x = rndSolution(opts, opts.allowNegatives);
+  // Hard: half the problems use one-place decimals (exact tenths math).
+  if (opts.difficulty === "hard" && randomBool()) {
+    const a10 = rnd(11, 99);
+    const x10 = rnd(11, 99) * (randomBool() ? 1 : -1);
+    return {
+      num: idx,
+      display: `x + ${fmtTenths(a10)} ${op} ${fmtTenths(x10 + a10)}`,
+      answer: `x ${op} ${fmtTenths(x10)}`,
+    };
+  }
+  const a = rndCoef(opts, false);
+  const x = rndSolution(opts, negsFor(opts));
   const b = x + a;
   return {
     num: idx,
@@ -1546,9 +1948,18 @@ function makeIneqOneAdd(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeIneqOneSub(opts: FluencyOptions, idx: number): Problem {
-  const a = rndCoef(opts, false);
   const op = pickIneqOp();
-  const x = rndSolution(opts, opts.allowNegatives);
+  if (opts.difficulty === "hard" && randomBool()) {
+    const a10 = rnd(11, 99);
+    const x10 = rnd(11, 99) * (randomBool() ? 1 : -1);
+    return {
+      num: idx,
+      display: `x − ${fmtTenths(a10)} ${op} ${fmtTenths(x10 - a10)}`,
+      answer: `x ${op} ${fmtTenths(x10)}`,
+    };
+  }
+  const a = rndCoef(opts, false);
+  const x = rndSolution(opts, negsFor(opts));
   const b = x - a;
   return {
     num: idx,
@@ -1558,10 +1969,35 @@ function makeIneqOneSub(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeIneqOneMul(opts: FluencyOptions, idx: number): Problem {
-  // ax (op) b → x (op) b/a if a>0; x (flipped) b/a if a<0
-  const a = rndCoef(opts, opts.allowNegatives);
+  // ax (op) b → x (op) b/a if a>0; x (flipped) b/a if a<0.
+  // Easy keeps a positive (no flip yet); medium mixes negative a in;
+  // hard adds decimal / fraction coefficients.
   const op = pickIneqOp();
-  const x = rndSolution(opts, opts.allowNegatives);
+  if (opts.difficulty === "hard" && randomBool()) {
+    if (randomBool()) {
+      const a10 = [5, 15, 25][rnd(0, 2)] * (randomBool() ? 1 : -1);
+      const x = rnd(1, 9) * (randomBool() ? 1 : -1);
+      const outOp = a10 < 0 ? flipOp(op) : op;
+      return {
+        num: idx,
+        display: `${fmtTenths(a10)}x ${op} ${fmtTenths(a10 * x)}`,
+        answer: `x ${outOp} ${x}`,
+      };
+    }
+    const d = rnd(2, 5);
+    const sign = randomBool() ? 1 : -1;
+    const m = rnd(1, 6) * (randomBool() ? 1 : -1);
+    const x = m * d;
+    const b = sign * m;
+    const outOp = sign < 0 ? flipOp(op) : op;
+    return {
+      num: idx,
+      display: `${sign < 0 ? "−" : ""}1/${d}x ${op} ${b}`,
+      answer: `x ${outOp} ${x}`,
+    };
+  }
+  const a = rndCoef(opts, negsFor(opts));
+  const x = rndSolution(opts, negsFor(opts));
   const b = a * x;
   const outOp = a < 0 ? flipOp(op) : op;
   return {
@@ -1572,10 +2008,24 @@ function makeIneqOneMul(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeIneqOneDiv(opts: FluencyOptions, idx: number): Problem {
-  // x/a (op) b → x (op) ab if a>0; x (flipped) ab if a<0
-  const a = rndCoef(opts, opts.allowNegatives);
+  // x/a (op) b → x (op) ab if a>0; x (flipped) ab if a<0.
   const op = pickIneqOp();
-  const b = rndConst(opts, opts.allowNegatives);
+  // Hard: half the problems put a fraction on the right side.
+  if (opts.difficulty === "hard" && randomBool()) {
+    const d = rnd(2, 4);
+    const m = rnd(2, 5);
+    const a = d * m;
+    let n = rnd(1, 2 * d - 1);
+    while (gcd(n, d) !== 1) n += 1;
+    if (randomBool()) n = -n;
+    return {
+      num: idx,
+      display: `x/${a} ${op} ${fmtSimpleFrac(n, d)}`,
+      answer: `x ${op} ${m * n}`,
+    };
+  }
+  const a = rndCoef(opts, negsFor(opts));
+  const b = rndConst(opts, negsFor(opts));
   const x = a * b;
   const outOp = a < 0 ? flipOp(op) : op;
   return {
@@ -1596,9 +2046,20 @@ function makeIneqOneMixed(opts: FluencyOptions, idx: number): Problem {
 // ----- Tier 2: Two-Step Inequalities -----
 
 function makeIneqTwoPos(opts: FluencyOptions, idx: number): Problem {
+  const op = pickIneqOp();
+  // Hard: mixes in one-place decimal coefficients (still all positive).
+  if (opts.difficulty === "hard" && randomBool()) {
+    const a10 = [5, 15, 25, 12][rnd(0, 3)];
+    const x = rnd(1, 9);
+    const b = rnd(1, 15);
+    return {
+      num: idx,
+      display: `${fmtTenths(a10)}x ${fmtAddConst(b)} ${op} ${fmtTenths(a10 * x + b * 10)}`,
+      answer: `x ${op} ${x}`,
+    };
+  }
   const a = Math.abs(rndCoef(opts, false)) || 1;
   const b = Math.abs(rndConst(opts, false));
-  const op = pickIneqOp();
   const x = Math.abs(rndSolution(opts, false));
   const c = a * x + b;
   return {
@@ -1610,10 +2071,21 @@ function makeIneqTwoPos(opts: FluencyOptions, idx: number): Problem {
 
 function makeIneqTwoNeg(opts: FluencyOptions, idx: number): Problem {
   // Force the coefficient to be negative so the sign flip happens.
+  const op = pickIneqOp();
+  // Hard: mixes in negative decimal coefficients.
+  if (opts.difficulty === "hard" && randomBool()) {
+    const a10 = -[5, 15, 25, 12][rnd(0, 3)];
+    const x = rnd(1, 9) * (randomBool() ? 1 : -1);
+    const b = rnd(1, 15) * (randomBool() ? 1 : -1);
+    return {
+      num: idx,
+      display: `${fmtTenths(a10)}x ${fmtAddConst(b)} ${op} ${fmtTenths(a10 * x + b * 10)}`,
+      answer: `x ${flipOp(op)} ${x}`,
+    };
+  }
   let a = rndCoef(opts, true);
   if (a > 0) a = -a;
   const b = rndConst(opts, true);
-  const op = pickIneqOp();
   const x = rndSolution(opts, true);
   const c = a * x + b;
   const outOp = flipOp(op);
@@ -1625,25 +2097,73 @@ function makeIneqTwoNeg(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeIneqTwoRational(opts: FluencyOptions, idx: number): Problem {
-  // (1/d)x + b (op) c. Pick x so (1/d)x is integer.
-  const d = [2, 3, 4, 5, 6][rnd(0, 4)];
-  const b = rndConst(opts, opts.allowNegatives);
+  // Same ladder as the two-step rational equations, with flips:
+  //   easy   — unit-fraction coefficient, all positive
+  //   medium — proper-fraction coefficient, signs mixed (flips appear)
+  //   hard   — adds decimal coefficients to the rotation
+  // (Implied multiplication — no "·" between fraction and variable.)
   const op = pickIneqOp();
-  const x = rndSolution(opts, opts.allowNegatives) * d;
-  const c = x / d + b;
+  if (opts.difficulty === "easy") {
+    const d = [2, 3, 4, 5, 6][rnd(0, 4)];
+    const b = rnd(1, 9);
+    const x = rnd(1, 8) * d;
+    const c = x / d + b;
+    return {
+      num: idx,
+      display: `1/${d}x ${fmtAddConst(b)} ${op} ${c}`,
+      answer: `x ${op} ${x}`,
+    };
+  }
+  if (opts.difficulty === "medium" || randomBool()) {
+    const d = rnd(2, 6);
+    let n = rnd(1, d - 1);
+    while (gcd(n, d) !== 1) n += 1;
+    if (randomBool()) n = -n;
+    const b = rnd(1, 12) * (randomBool() ? 1 : -1);
+    const m = rnd(1, 6) * (randomBool() ? 1 : -1);
+    const x = m * d;
+    const c = n * m + b;
+    const coefStr = n < 0 ? `−${Math.abs(n)}/${d}` : `${n}/${d}`;
+    const outOp = n < 0 ? flipOp(op) : op;
+    return {
+      num: idx,
+      display: `${coefStr}x ${fmtAddConst(b)} ${op} ${c}`,
+      answer: `x ${outOp} ${x}`,
+    };
+  }
+  const a10 = [5, 15, 25, 12][rnd(0, 3)] * (randomBool() ? 1 : -1);
+  const x = rnd(1, 9) * (randomBool() ? 1 : -1);
+  const b = rnd(1, 12) * (randomBool() ? 1 : -1);
+  const outOp = a10 < 0 ? flipOp(op) : op;
   return {
     num: idx,
-    display: `1/${d} · x ${fmtAddConst(b)} ${op} ${c}`,
-    answer: `x ${op} ${x}`,
+    display: `${fmtTenths(a10)}x ${fmtAddConst(b)} ${op} ${fmtTenths(a10 * x + b * 10)}`,
+    answer: `x ${outOp} ${x}`,
   };
 }
 
 function makeIneqTwoDist(opts: FluencyOptions, idx: number): Problem {
-  // p(x + q) (op) r
-  const p = rndCoef(opts, opts.allowNegatives);
-  const q = rndConst(opts, opts.allowNegatives);
   const op = pickIneqOp();
-  const x = rndSolution(opts, opts.allowNegatives);
+  // Hard: half the problems distribute a unit fraction.
+  if (opts.difficulty === "hard" && randomBool()) {
+    const d = [2, 3, 4][rnd(0, 2)];
+    const sign = randomBool() ? 1 : -1;
+    const x = rnd(1, 9) * (randomBool() ? 1 : -1);
+    let q = rnd(1, 8) * (randomBool() ? 1 : -1);
+    q += (d - ((((x + q) % d) + d) % d)) % d;
+    const r = (sign * (x + q)) / d;
+    const outOp = sign < 0 ? flipOp(op) : op;
+    const qStr = q < 0 ? `− ${Math.abs(q)}` : `+ ${q}`;
+    return {
+      num: idx,
+      display: `${sign === -1 ? "−" : ""}1/${d}(x ${qStr}) ${op} ${r}`,
+      answer: `x ${outOp} ${x}`,
+    };
+  }
+  // p(x + q) (op) r
+  const p = rndCoef(opts, negsFor(opts));
+  const q = rndConst(opts, negsFor(opts));
+  const x = rndSolution(opts, negsFor(opts));
   const r = p * (x + q);
   const outOp = p < 0 ? flipOp(op) : op;
   const qStr = q < 0 ? `− ${Math.abs(q)}` : `+ ${q}`;
@@ -1658,12 +2178,12 @@ function makeIneqTwoDist(opts: FluencyOptions, idx: number): Problem {
 
 function makeIneqMultiCombine(opts: FluencyOptions, idx: number): Problem {
   // ax + bx + c (op) d
-  const a = rndCoef(opts, opts.allowNegatives);
-  let b = rndCoef(opts, opts.allowNegatives);
+  const a = rndCoef(opts, negsFor(opts));
+  let b = rndCoef(opts, negsFor(opts));
   if (a + b === 0) b += 1;
-  const c = rndConst(opts, opts.allowNegatives);
+  const c = rndConst(opts, negsFor(opts));
   const op = pickIneqOp();
-  const x = rndSolution(opts, opts.allowNegatives);
+  const x = rndSolution(opts, negsFor(opts));
   const d = (a + b) * x + c;
   const outOp = a + b < 0 ? flipOp(op) : op;
   return {
@@ -1675,11 +2195,11 @@ function makeIneqMultiCombine(opts: FluencyOptions, idx: number): Problem {
 
 function makeIneqMultiDist(opts: FluencyOptions, idx: number): Problem {
   // p(x + q) + r (op) s
-  const p = rndCoef(opts, opts.allowNegatives);
-  const q = rndConst(opts, opts.allowNegatives);
-  const r = rndConst(opts, opts.allowNegatives);
+  const p = rndCoef(opts, negsFor(opts));
+  const q = rndConst(opts, negsFor(opts));
+  const r = rndConst(opts, negsFor(opts));
   const op = pickIneqOp();
-  const x = rndSolution(opts, opts.allowNegatives);
+  const x = rndSolution(opts, negsFor(opts));
   const s = p * (x + q) + r;
   const outOp = p < 0 ? flipOp(op) : op;
   const qStr = q < 0 ? `− ${Math.abs(q)}` : `+ ${q}`;
@@ -1692,11 +2212,11 @@ function makeIneqMultiDist(opts: FluencyOptions, idx: number): Problem {
 
 function makeIneqMultiBoth(opts: FluencyOptions, idx: number): Problem {
   // ax + b (op) cx + d → (a−c)x (op) d − b
-  const a = rndCoef(opts, opts.allowNegatives);
-  let c = rndCoef(opts, opts.allowNegatives);
+  const a = rndCoef(opts, negsFor(opts));
+  let c = rndCoef(opts, negsFor(opts));
   if (a === c) c += 1;
-  const x = rndSolution(opts, opts.allowNegatives);
-  const b = rndConst(opts, opts.allowNegatives);
+  const x = rndSolution(opts, negsFor(opts));
+  const b = rndConst(opts, negsFor(opts));
   const d = (a - c) * x + b;
   const op = pickIneqOp();
   const outOp = a - c < 0 ? flipOp(op) : op;
@@ -1709,12 +2229,12 @@ function makeIneqMultiBoth(opts: FluencyOptions, idx: number): Problem {
 
 function makeIneqMultiFull(opts: FluencyOptions, idx: number): Problem {
   // p(x + q) + r (op) sx + t
-  const p = rndCoef(opts, opts.allowNegatives);
-  const q = rndConst(opts, opts.allowNegatives);
-  const r = rndConst(opts, opts.allowNegatives);
-  let s = rndCoef(opts, opts.allowNegatives);
+  const p = rndCoef(opts, negsFor(opts));
+  const q = rndConst(opts, negsFor(opts));
+  const r = rndConst(opts, negsFor(opts));
+  let s = rndCoef(opts, negsFor(opts));
   if (p === s) s += 1;
-  const x = rndSolution(opts, opts.allowNegatives);
+  const x = rndSolution(opts, negsFor(opts));
   const t = p * (x + q) + r - s * x;
   const op = pickIneqOp();
   const outOp = p - s < 0 ? flipOp(op) : op;
@@ -1727,23 +2247,60 @@ function makeIneqMultiFull(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeIneqMultiSpecial(opts: FluencyOptions, idx: number): Problem {
-  const noSol = randomBool();
-  const a = rndCoef(opts, opts.allowNegatives);
-  const b = rndConst(opts, opts.allowNegatives);
+  // A third each: no solution, all real numbers, and a regular one-
+  // boundary solution — always with like terms to combine or a group
+  // to distribute so the outcome isn't visible until after simplifying.
+  const outcome = rnd(0, 2); // 0 = no solution, 1 = all real, 2 = solve
+  const sgn = () => (randomBool() ? 1 : -1);
   const op = pickIneqOp();
-  if (noSol) {
-    // ax + b (op) ax + b + k where k makes it impossible
-    // E.g., 2x + 3 < 2x + 1 → no solution
+
+  // Left side: easy combines like terms; medium/hard distribute.
+  let lhsSlope: number;
+  let lhsConst: number;
+  let lhs: string;
+  if (opts.difficulty === "easy") {
+    const a = rnd(2, 6);
+    let b = rnd(1, 5) * sgn();
+    if (a + b === 0) b += 1;
+    const c = rnd(1, 12);
+    lhsSlope = a + b;
+    lhsConst = c;
+    lhs = `${fmtCoefTerm(a)} ${fmtAddCoef(b)} ${fmtAddConst(c)}`;
+  } else {
+    const p = rnd(2, opts.difficulty === "hard" ? 7 : 6) * (opts.difficulty === "hard" ? sgn() : 1);
+    const q = rnd(1, 6) * sgn();
+    const r = rnd(1, 9) * sgn();
+    const qStr = q < 0 ? `− ${Math.abs(q)}` : `+ ${q}`;
+    lhsSlope = p;
+    lhsConst = p * q + r;
+    lhs = `${p < 0 ? `−${Math.abs(p)}` : p}(x ${qStr}) ${fmtAddConst(r)}`;
+  }
+
+  if (outcome === 2) {
+    // Regular solve: RHS slope differs, so a boundary exists.
+    let s = rnd(1, 6) * sgn();
+    if (s === lhsSlope) s += 1;
+    const x = rnd(1, 9) * sgn();
+    const e = (lhsSlope - s) * x + lhsConst;
+    const outOp = lhsSlope - s < 0 ? flipOp(op) : op;
     return {
       num: idx,
-      display: `${fmtCoefTerm(a)} ${fmtAddConst(b)} ${op === "<" || op === "≤" ? op : op} ${fmtCoefTerm(a)} ${fmtAddConst(b - 2)}`,
-      answer: op === "<" || op === "≤" ? "no solution" : "all real numbers",
+      display: `${lhs} ${op} ${fmtCoefTerm(s)} ${fmtAddConst(e)}`,
+      answer: `x ${outOp} ${x}`,
     };
   }
+
+  // Special outcomes: same slope on both sides; the constants decide.
+  // After subtracting the x-terms: lhsConst (op) rhsConst.
+  const wantTrue = outcome === 1; // true statement → all real numbers
+  const lessOp = op === "<" || op === "≤";
+  const delta = rnd(1, 6);
+  // Pick rhsConst so the constant comparison is true/false as needed.
+  const rhsConst = wantTrue === lessOp ? lhsConst + delta : lhsConst - delta;
   return {
     num: idx,
-    display: `${fmtCoefTerm(a)} ${fmtAddConst(b)} ${op === ">" || op === "≥" ? op : op} ${fmtCoefTerm(a)} ${fmtAddConst(b - 2)}`,
-    answer: op === ">" || op === "≥" ? "all real numbers" : "no solution",
+    display: `${lhs} ${op} ${fmtCoefTerm(lhsSlope)} ${fmtAddConst(rhsConst)}`,
+    answer: wantTrue ? "all real numbers" : "no solution",
   };
 }
 
@@ -1751,9 +2308,9 @@ function makeIneqMultiSpecial(opts: FluencyOptions, idx: number): Problem {
 
 function makeIneqCompoundAnd(opts: FluencyOptions, idx: number): Problem {
   // Build: a < x + k < b  →  a − k < x < b − k
-  const k = rndCoef(opts, opts.allowNegatives);
-  const lo = rndConst(opts, opts.allowNegatives);
-  const range = opts.difficulty === "easy" ? 8 : 14;
+  const k = rndCoef(opts, negsFor(opts));
+  const lo = rndConst(opts, negsFor(opts));
+  const range = opts.difficulty === "easy" ? 8 : opts.difficulty === "medium" ? 11 : 14;
   const hi = lo + rnd(2, range);
   const kStr = k >= 0 ? `+ ${k}` : `− ${Math.abs(k)}`;
   return {
@@ -1765,9 +2322,9 @@ function makeIneqCompoundAnd(opts: FluencyOptions, idx: number): Problem {
 
 function makeIneqCompoundOr(opts: FluencyOptions, idx: number): Problem {
   // x + k < a  OR  x + k > b
-  const k = rndCoef(opts, opts.allowNegatives);
-  const a = rndConst(opts, opts.allowNegatives);
-  const b = a + rnd(3, 10);
+  const k = rndCoef(opts, negsFor(opts));
+  const a = rndConst(opts, negsFor(opts));
+  const b = a + rnd(3, opts.difficulty === "easy" ? 6 : opts.difficulty === "medium" ? 10 : 14);
   const kStr = k >= 0 ? `+ ${k}` : `− ${Math.abs(k)}`;
   return {
     num: idx,
@@ -1828,8 +2385,8 @@ function makeIneqCompoundTranslate(opts: FluencyOptions, idx: number): Problem {
 function makeIneqAbsLess(opts: FluencyOptions, idx: number): Problem {
   // |x + a| < b  →  −b < x + a < b  →  −b − a < x < b − a
   // Also support ≤.
-  const a = rndCoef(opts, opts.allowNegatives);
-  const b = rnd(1, opts.difficulty === "easy" ? 8 : 14);
+  const a = rndCoef(opts, negsFor(opts));
+  const b = rnd(1, opts.difficulty === "easy" ? 8 : opts.difficulty === "medium" ? 11 : 14);
   const op: IneqOp = randomBool() ? "<" : "≤";
   return {
     num: idx,
@@ -1840,8 +2397,8 @@ function makeIneqAbsLess(opts: FluencyOptions, idx: number): Problem {
 
 function makeIneqAbsGreater(opts: FluencyOptions, idx: number): Problem {
   // |x + a| > b  →  x + a < −b  OR  x + a > b
-  const a = rndCoef(opts, opts.allowNegatives);
-  const b = rnd(1, opts.difficulty === "easy" ? 8 : 14);
+  const a = rndCoef(opts, negsFor(opts));
+  const b = rnd(1, opts.difficulty === "easy" ? 8 : opts.difficulty === "medium" ? 11 : 14);
   const op: IneqOp = randomBool() ? ">" : "≥";
   return {
     num: idx,
@@ -1911,7 +2468,7 @@ function makeRectPerim(opts: FluencyOptions, idx: number): Problem {
 
 function makeSquare(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 12 : 20;
+  const max = opts.difficulty === "easy" ? 12 : opts.difficulty === "medium" ? 20 : 30;
   const s = rnd(2, max);
   const askPerim = randomBool();
   return {
@@ -1924,10 +2481,10 @@ function makeSquare(opts: FluencyOptions, idx: number): Problem {
 
 function makeTriArea(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 12 : 24;
+  const max = opts.difficulty === "easy" ? 12 : opts.difficulty === "medium" ? 20 : 28;
   // Pick base/height with base × height even so area is an integer.
   let b = rnd(2, max);
-  let h = rnd(2, max);
+  const h = rnd(2, max);
   if ((b * h) % 2 !== 0) b += 1;
   return {
     num: idx,
@@ -1940,7 +2497,7 @@ function makeTriArea(opts: FluencyOptions, idx: number): Problem {
 
 function makeParallelogramArea(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 12 : 24;
+  const max = opts.difficulty === "easy" ? 12 : opts.difficulty === "medium" ? 20 : 28;
   const b = rnd(2, max);
   const h = rnd(2, max);
   return {
@@ -1954,7 +2511,7 @@ function makeParallelogramArea(opts: FluencyOptions, idx: number): Problem {
 
 function makeTrapArea(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 12 : 20;
+  const max = opts.difficulty === "easy" ? 12 : opts.difficulty === "medium" ? 18 : 26;
   let b1 = rnd(4, max);
   let b2 = rnd(2, max);
   if (b1 === b2) b2 = b2 + 1; // distinguish so it doesn't read as a parallelogram
@@ -1976,20 +2533,28 @@ function makeTrapArea(opts: FluencyOptions, idx: number): Problem {
 
 function makeCircleArea(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 8 : 14;
+  const max = opts.difficulty === "easy" ? 8 : opts.difficulty === "medium" ? 12 : 15;
   const r = rnd(2, max);
+  // Hard: half the circles give the DIAMETER, so students must halve
+  // it before squaring.
+  const giveDiameter = opts.difficulty === "hard" && randomBool();
   return {
     num: idx,
     display: "",
     instruction: "Find the area in terms of π.",
     answer: formatPi(r * r, unit, true),
-    shape: { kind: "circle", labels: { radius: `r = ${r} ${unit}` } },
+    shape: {
+      kind: "circle",
+      labels: giveDiameter
+        ? { diameter: `d = ${2 * r} ${unit}` }
+        : { radius: `r = ${r} ${unit}` },
+    },
   };
 }
 
 function makeCircleCircumference(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 8 : 14;
+  const max = opts.difficulty === "easy" ? 8 : opts.difficulty === "medium" ? 11 : 14;
   const r = rnd(2, max);
   const useDiameter = randomBool();
   return {
@@ -2008,7 +2573,7 @@ function makeCircleCircumference(opts: FluencyOptions, idx: number): Problem {
 
 function makeRectFindFromArea(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 12 : 20;
+  const max = opts.difficulty === "easy" ? 12 : opts.difficulty === "medium" ? 18 : 26;
   const w = rnd(2, max);
   const x = rnd(2, max);
   const area = w * x;
@@ -2025,7 +2590,7 @@ function makeRectFindFromArea(opts: FluencyOptions, idx: number): Problem {
 
 function makeRectFindFromPerim(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 12 : 20;
+  const max = opts.difficulty === "easy" ? 12 : opts.difficulty === "medium" ? 18 : 26;
   const w = rnd(2, max);
   const x = rnd(2, max);
   const perim = 2 * (w + x);
@@ -2039,7 +2604,7 @@ function makeRectFindFromPerim(opts: FluencyOptions, idx: number): Problem {
 
 function makeSquareFind(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 10 : 16;
+  const max = opts.difficulty === "easy" ? 10 : opts.difficulty === "medium" ? 14 : 18;
   const s = rnd(2, max);
   const givePerim = randomBool();
   return {
@@ -2054,9 +2619,9 @@ function makeSquareFind(opts: FluencyOptions, idx: number): Problem {
 
 function makeTriFindBase(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 12 : 22;
+  const max = opts.difficulty === "easy" ? 12 : opts.difficulty === "medium" ? 18 : 24;
   let b = rnd(2, max);
-  let h = rnd(2, max);
+  const h = rnd(2, max);
   if ((b * h) % 2 !== 0) b += 1;
   const area = (b * h) / 2;
   return {
@@ -2069,8 +2634,8 @@ function makeTriFindBase(opts: FluencyOptions, idx: number): Problem {
 
 function makeTriFindHeight(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 12 : 22;
-  let b = rnd(2, max);
+  const max = opts.difficulty === "easy" ? 12 : opts.difficulty === "medium" ? 18 : 24;
+  const b = rnd(2, max);
   let h = rnd(2, max);
   if ((b * h) % 2 !== 0) h += 1;
   const area = (b * h) / 2;
@@ -2084,7 +2649,7 @@ function makeTriFindHeight(opts: FluencyOptions, idx: number): Problem {
 
 function makeCircleFindRFromArea(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 8 : 12;
+  const max = opts.difficulty === "easy" ? 8 : opts.difficulty === "medium" ? 10 : 13;
   const r = rnd(2, max);
   return {
     num: idx,
@@ -2096,7 +2661,7 @@ function makeCircleFindRFromArea(opts: FluencyOptions, idx: number): Problem {
 
 function makeCircleFindRFromCirc(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 8 : 12;
+  const max = opts.difficulty === "easy" ? 8 : opts.difficulty === "medium" ? 10 : 13;
   const r = rnd(2, max);
   return {
     num: idx,
@@ -2110,7 +2675,7 @@ function makeCircleFindRFromCirc(opts: FluencyOptions, idx: number): Problem {
 
 function makeRectPrismV(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 10 : 16;
+  const max = opts.difficulty === "easy" ? 10 : opts.difficulty === "medium" ? 14 : 18;
   const l = rnd(2, max);
   const w = rnd(2, max);
   const h = rnd(2, max);
@@ -2128,7 +2693,7 @@ function makeRectPrismV(opts: FluencyOptions, idx: number): Problem {
 
 function makeRectPrismSA(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 10 : 16;
+  const max = opts.difficulty === "easy" ? 10 : opts.difficulty === "medium" ? 14 : 18;
   const l = rnd(2, max);
   const w = rnd(2, max);
   const h = rnd(2, max);
@@ -2147,7 +2712,7 @@ function makeRectPrismSA(opts: FluencyOptions, idx: number): Problem {
 
 function makeCube(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 10 : 14;
+  const max = opts.difficulty === "easy" ? 10 : opts.difficulty === "medium" ? 12 : 16;
   const s = rnd(2, max);
   const askSA = randomBool();
   return {
@@ -2161,9 +2726,9 @@ function makeCube(opts: FluencyOptions, idx: number): Problem {
 function makeTriPrismV(opts: FluencyOptions, idx: number): Problem {
   // V = (1/2 · base · height) · length
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 10 : 16;
+  const max = opts.difficulty === "easy" ? 10 : opts.difficulty === "medium" ? 14 : 18;
   let b = rnd(2, max);
-  let h = rnd(2, max);
+  const h = rnd(2, max);
   if ((b * h) % 2 !== 0) b += 1;
   const length = rnd(2, max);
   const v = ((b * h) / 2) * length;
@@ -2189,7 +2754,7 @@ function makeTriPrismSA(opts: FluencyOptions, idx: number): Problem {
     [3, 4, 5], [6, 8, 10], [5, 12, 13], [8, 15, 17], [9, 12, 15],
   ];
   const [b, h, hyp] = triples[rnd(0, triples.length - 1)];
-  const length = rnd(2, opts.difficulty === "easy" ? 10 : 16);
+  const length = rnd(2, opts.difficulty === "easy" ? 10 : opts.difficulty === "medium" ? 14 : 18);
   const triArea = (b * h) / 2;
   const sa = 2 * triArea + (b + h + hyp) * length;
   return {
@@ -2207,7 +2772,7 @@ function makeTriPrismSA(opts: FluencyOptions, idx: number): Problem {
 function makeCylinderV(opts: FluencyOptions, idx: number): Problem {
   // V = π·r²·h. Leave answer in terms of π for clean fluency form.
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 8 : 12;
+  const max = opts.difficulty === "easy" ? 8 : opts.difficulty === "medium" ? 10 : 13;
   const r = rnd(2, max);
   const h = rnd(2, max);
   return {
@@ -2225,7 +2790,7 @@ function makeCylinderV(opts: FluencyOptions, idx: number): Problem {
 function makeCylinderSA(opts: FluencyOptions, idx: number): Problem {
   // SA = 2π·r² + 2π·r·h = 2π·r·(r + h). Keep in terms of π.
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 8 : 12;
+  const max = opts.difficulty === "easy" ? 8 : opts.difficulty === "medium" ? 10 : 13;
   const r = rnd(2, max);
   const h = rnd(2, max);
   const coef = 2 * r * (r + h);
@@ -2244,8 +2809,8 @@ function makeCylinderSA(opts: FluencyOptions, idx: number): Problem {
 function makeConeV(opts: FluencyOptions, idx: number): Problem {
   // V = (1/3)π·r²·h. Need r²·h divisible by 3 for a clean integer · π answer.
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 6 : 10;
-  let r = rnd(2, max);
+  const max = opts.difficulty === "easy" ? 6 : opts.difficulty === "medium" ? 8 : 11;
+  const r = rnd(2, max);
   let h = rnd(3, max);
   // Force h to be a multiple of 3 if r²·h isn't already.
   if ((r * r * h) % 3 !== 0) h = h - (h % 3) + 3;
@@ -2266,7 +2831,7 @@ function makeSphereV(opts: FluencyOptions, idx: number): Problem {
   // V = (4/3)π·r³. Pick r so 4r³/3 is integer.
   const unit = pickUnit();
   // r being a multiple of 3 makes 4r³/3 integer cleanly.
-  const r = [3, 6, 9, 12][rnd(0, opts.difficulty === "easy" ? 1 : 3)];
+  const r = [3, 6, 9, 12][rnd(0, opts.difficulty === "easy" ? 1 : opts.difficulty === "medium" ? 2 : 3)];
   const coef = (4 * r * r * r) / 3;
   return {
     num: idx,
@@ -2280,8 +2845,8 @@ function makeSphereV(opts: FluencyOptions, idx: number): Problem {
 function makePyramidV(opts: FluencyOptions, idx: number): Problem {
   // V = (1/3)·b²·h for a square-base pyramid (b is the side of the base).
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 8 : 12;
-  let b = rnd(2, max);
+  const max = opts.difficulty === "easy" ? 8 : opts.difficulty === "medium" ? 10 : 13;
+  const b = rnd(2, max);
   let h = rnd(3, max);
   if ((b * b * h) % 3 !== 0) h = h - (h % 3) + 3;
   const v = (b * b * h) / 3;
@@ -2301,7 +2866,7 @@ function makePyramidV(opts: FluencyOptions, idx: number): Problem {
 
 function makeRectPrismFindH(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 10 : 16;
+  const max = opts.difficulty === "easy" ? 10 : opts.difficulty === "medium" ? 14 : 18;
   const l = rnd(2, max);
   const w = rnd(2, max);
   const h = rnd(2, max);
@@ -2319,7 +2884,7 @@ function makeRectPrismFindH(opts: FluencyOptions, idx: number): Problem {
 
 function makeCubeFindS(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 8 : 12;
+  const max = opts.difficulty === "easy" ? 8 : opts.difficulty === "medium" ? 10 : 13;
   const s = rnd(2, max);
   const giveSA = randomBool();
   return {
@@ -2334,7 +2899,7 @@ function makeCubeFindS(opts: FluencyOptions, idx: number): Problem {
 
 function makeCylinderFindH(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 7 : 10;
+  const max = opts.difficulty === "easy" ? 7 : opts.difficulty === "medium" ? 9 : 11;
   const r = rnd(2, max);
   const h = rnd(2, max);
   const coef = r * r * h;
@@ -2351,7 +2916,7 @@ function makeCylinderFindH(opts: FluencyOptions, idx: number): Problem {
 
 function makeCylinderFindR(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 6 : 9;
+  const max = opts.difficulty === "easy" ? 6 : opts.difficulty === "medium" ? 7 : 9;
   const r = rnd(2, max);
   const h = rnd(2, max);
   const coef = r * r * h;
@@ -2368,7 +2933,7 @@ function makeCylinderFindR(opts: FluencyOptions, idx: number): Problem {
 
 function makeConeFindH(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const max = opts.difficulty === "easy" ? 5 : 8;
+  const max = opts.difficulty === "easy" ? 5 : opts.difficulty === "medium" ? 6 : 8;
   const r = rnd(2, max);
   let h = rnd(3, max);
   if ((r * r * h) % 3 !== 0) h = h - (h % 3) + 3;
@@ -2386,7 +2951,7 @@ function makeConeFindH(opts: FluencyOptions, idx: number): Problem {
 
 function makeSphereFindR(opts: FluencyOptions, idx: number): Problem {
   const unit = pickUnit();
-  const r = [3, 6, 9, 12][rnd(0, opts.difficulty === "easy" ? 1 : 3)];
+  const r = [3, 6, 9, 12][rnd(0, opts.difficulty === "easy" ? 1 : opts.difficulty === "medium" ? 2 : 3)];
   const coef = (4 * r * r * r) / 3;
   return {
     num: idx,
@@ -2474,40 +3039,79 @@ function makePythCheck(opts: FluencyOptions, idx: number): Problem {
   };
 }
 
-const PYTH_WORD_TEMPLATES: ((opts: FluencyOptions) => { display: string; answer: string })[] = [
-  () => {
-    const [a, b, c] = pickPythTriple("medium");
-    return {
-      display: `A ladder ${c} ft long leans against a wall. The bottom is ${a} ft from the wall. How high up the wall does the ladder reach?`,
-      answer: `${b} ft`,
-    };
-  },
-  () => {
-    const [a, b, c] = pickPythTriple("medium");
+// Two template pools: "hyp" problems give both legs and ask for the
+// hypotenuse; "leg" problems give the hypotenuse and one leg, so the
+// student must work backwards (c² − a² instead of a² + b²). The
+// generator alternates between the pools so every worksheet is a real
+// mix. Templates use the worksheet's difficulty for the triple.
+const PYTH_WORD_HYP: ((d: Difficulty) => { display: string; answer: string })[] = [
+  (d) => {
+    const [a, b, c] = pickPythTriple(d);
     return {
       display: `A rectangular swimming pool is ${a} m by ${b} m. How long is the diagonal?`,
       answer: `${c} m`,
     };
   },
-  () => {
-    const [a, b, c] = pickPythTriple("easy");
+  (d) => {
+    const [a, b, c] = pickPythTriple(d);
     return {
       display: `A TV screen is ${a} in tall and ${b} in wide. What is the diagonal length?`,
       answer: `${c} in`,
     };
   },
-  () => {
-    const [a, b, c] = pickPythTriple("medium");
+  (d) => {
+    const [a, b, c] = pickPythTriple(d);
     return {
       display: `Two cars start from the same point. One drives ${a} mi north and the other drives ${b} mi east. How far apart are they?`,
       answer: `${c} mi`,
     };
   },
+  (d) => {
+    const [a, b, c] = pickPythTriple(d);
+    return {
+      display: `A soccer field is ${a} yd wide and ${b} yd long. How far is it from corner to corner?`,
+      answer: `${c} yd`,
+    };
+  },
+];
+
+const PYTH_WORD_LEG: ((d: Difficulty) => { display: string; answer: string })[] = [
+  (d) => {
+    const [a, b, c] = pickPythTriple(d);
+    return {
+      display: `A ladder ${c} ft long leans against a wall. The bottom is ${a} ft from the wall. How high up the wall does the ladder reach?`,
+      answer: `${b} ft`,
+    };
+  },
+  (d) => {
+    const [a, b, c] = pickPythTriple(d);
+    return {
+      display: `A ${c}-ft guy wire runs from the top of a pole to a stake ${a} ft from its base. How tall is the pole?`,
+      answer: `${b} ft`,
+    };
+  },
+  (d) => {
+    const [a, b, c] = pickPythTriple(d);
+    return {
+      display: `A kite is flying on ${c} ft of string, directly above a spot ${a} ft from where the string is held. How high is the kite?`,
+      answer: `${b} ft`,
+    };
+  },
+  (d) => {
+    const [a, b, c] = pickPythTriple(d);
+    return {
+      display: `A ${c}-m ramp covers ${b} m of horizontal ground. How high does the ramp rise?`,
+      answer: `${a} m`,
+    };
+  },
 ];
 
 function makePythWord(opts: FluencyOptions, idx: number): Problem {
-  const pick = PYTH_WORD_TEMPLATES[rnd(0, PYTH_WORD_TEMPLATES.length - 1)];
-  const r = pick(opts);
+  // Alternate: odd problems find the hypotenuse, even problems work
+  // backwards to a missing leg. Guarantees a 50/50 mix per worksheet.
+  const pool = idx % 2 === 1 ? PYTH_WORD_HYP : PYTH_WORD_LEG;
+  const pick = pool[rnd(0, pool.length - 1)];
+  const r = pick(opts.difficulty);
   return { num: idx, display: r.display, answer: r.answer };
 }
 
@@ -2581,7 +3185,9 @@ function fmtMxB(m: number, b: number, mDen: number = 1): string {
     else if (mn === -1) mTerm = "−x";
     else mTerm = `${mn < 0 ? "−" : ""}${Math.abs(mn)}x`;
   } else {
-    mTerm = `${mn < 0 ? "−" : ""}${Math.abs(mn)}/${md} x`;
+    // No space before the variable — the UI stacks "3/4" vertically and
+    // the x reads as an implied coefficient right beside it.
+    mTerm = `${mn < 0 ? "−" : ""}${Math.abs(mn)}/${md}x`;
   }
   // Intercept
   let bTerm: string;
@@ -2596,91 +3202,178 @@ function fmtPoint(x: number, y: number): string {
   return `(${x}, ${y})`;
 }
 
-/** Tiny text-table helper for "x | y" style displays. */
-function fmtTable(headers: string[], rows: (string | number)[][]): string {
-  const lines = [headers.join("   "), "─".repeat(20)];
-  for (const r of rows) lines.push(r.map((v) => String(v)).join("   "));
-  return lines.join("\n");
-}
+// Data tables are carried on `Problem.table` and rendered by the UI as
+// real bordered x/y tables. (The old text-art table helper produced the
+// "doesn't look like an xy-table" worksheets and is gone.)
 
 // ----- Tier 1 — Rates & Unit Rates -----
 
-const UNIT_RATE_CONTEXTS: ((opts: FluencyOptions) => { display: string; answer: string })[] = [
-  () => {
-    const r = rnd(2, 12);
-    const t = rnd(2, 8);
+// Rate sizes step up with difficulty; hard mixes in decimal money rates
+// ($2.50-style unit prices) so the division isn't always whole.
+const UNIT_RATE_CONTEXTS: ((d: Difficulty) => { display: string; answer: string })[] = [
+  (dif) => {
+    const r = rnd(2, dif === "easy" ? 9 : dif === "medium" ? 15 : 25);
+    const t = rnd(2, dif === "easy" ? 5 : 8);
     return { display: `${r * t} miles in ${t} hours. Find the unit rate.`, answer: `${r} miles per hour` };
   },
-  () => {
-    const r = rnd(2, 15);
-    const t = rnd(2, 8);
+  (dif) => {
+    const r = rnd(2, dif === "easy" ? 12 : dif === "medium" ? 20 : 35);
+    const t = rnd(2, dif === "easy" ? 5 : 8);
     return { display: `${r * t} words typed in ${t} minutes. Find the unit rate.`, answer: `${r} words per minute` };
   },
-  () => {
-    const r = rnd(2, 12);
+  (dif) => {
+    if (dif === "hard") {
+      const cents = rnd(5, 19) * 25; // $1.25 … $4.75 per pound
+      const t = rnd(2, 6);
+      const total = (cents * t) / 100;
+      return {
+        display: `$${total.toFixed(2)} for ${t} pounds. Find the unit price.`,
+        answer: `$${(cents / 100).toFixed(2)} per pound`,
+      };
+    }
+    const r = rnd(2, dif === "easy" ? 9 : 12);
     const t = rnd(2, 6);
     return { display: `$${r * t} for ${t} pounds. Find the unit price.`, answer: `$${r} per pound` };
   },
-  () => {
-    const r = rnd(2, 15);
-    const t = rnd(2, 8);
+  (dif) => {
+    const r = rnd(2, dif === "easy" ? 12 : dif === "medium" ? 20 : 30);
+    const t = rnd(2, dif === "easy" ? 5 : 8);
     return { display: `${r * t} pages read in ${t} days. Find the unit rate.`, answer: `${r} pages per day` };
   },
 ];
 
 function makeUnitRate(opts: FluencyOptions, idx: number): Problem {
   const pick = UNIT_RATE_CONTEXTS[rnd(0, UNIT_RATE_CONTEXTS.length - 1)];
-  const r = pick(opts);
+  const r = pick(opts.difficulty);
   return { num: idx, display: r.display, answer: r.answer };
 }
 
 function makeRateTable(opts: FluencyOptions, idx: number): Problem {
   // Build a table with a missing entry. Rate = y/x.
-  const rate = rnd(2, opts.difficulty === "easy" ? 6 : 10);
+  const rate = rnd(2, opts.difficulty === "easy" ? 6 : opts.difficulty === "medium" ? 8 : 11);
   const xs = [1, rnd(2, 4), rnd(5, 7), rnd(8, 12)];
   // Hide one of the y-values.
   const hide = rnd(1, xs.length - 1);
-  const rows = xs.map((x, i) => [x, i === hide ? "?" : x * rate]);
+  const rows: (string | number)[][] = xs.map((x, i) => [x, i === hide ? "?" : x * rate]);
   return {
     num: idx,
-    display: `Complete the rate table.\n${fmtTable(["x", "y"], rows)}`,
+    display: "",
+    instruction: "Complete each table so the rate stays constant.",
+    table: { headers: ["x", "y"], rows },
     answer: `? = ${xs[hide] * rate}`,
   };
 }
 
 function makeRateConvert(opts: FluencyOptions, idx: number): Problem {
-  const which = rnd(0, 2);
-  if (which === 0) {
+  // Conversion pools by difficulty:
+  //   easy   — single friendly factor (per-minute → per-hour, oz → lb)
+  //   medium — metric time/mass conversions with clean factors
+  //   hard   — cross-system conversions with messy factors (mph → ft/s)
+  if (opts.difficulty === "easy") {
+    if (randomBool()) {
+      const perMin = rnd(2, 12);
+      return {
+        num: idx,
+        display: `A pump moves ${perMin} gallons per minute. How many gallons per hour?`,
+        answer: `${perMin * 60} gallons per hour`,
+      };
+    }
+    const perOz = rnd(2, 9); // whole cents per ounce
+    return {
+      num: idx,
+      display: `If a snack costs ${perOz}¢ per ounce, what is the price per pound (16 oz)?`,
+      answer: `$${((perOz * 16) / 100).toFixed(2)} per pound`,
+    };
+  }
+  if (opts.difficulty === "medium") {
+    if (randomBool()) {
+      const mPerSec = rnd(2, 20);
+      const kmPerHr = (mPerSec * 3600) / 1000;
+      return { num: idx, display: `Convert ${mPerSec} m/sec to km/hr.`, answer: `${kmPerHr} km/hr` };
+    }
+    const perOz = rnd(2, 12);
+    return {
+      num: idx,
+      display: `If a snack costs $0.${String(perOz).padStart(2, "0")} per ounce, what is the price per pound?`,
+      answer: `$${((perOz * 16) / 100).toFixed(2)} per pound`,
+    };
+  }
+  if (randomBool()) {
     const mph = rnd(20, 80);
-    const fps = Math.round((mph * 5280) / 3600 * 100) / 100;
+    const fps = Math.round(((mph * 5280) / 3600) * 100) / 100;
     return { num: idx, display: `Convert ${mph} mph to ft/sec.`, answer: `${fps} ft/sec` };
   }
-  if (which === 1) {
-    const perOz = rnd(2, 12); // cents/oz
-    const perLb = perOz * 16;
-    return { num: idx, display: `If a snack costs $0.${String(perOz).padStart(2, "0")} per ounce, what is the price per pound?`, answer: `$${(perLb / 100).toFixed(2)} per pound` };
-  }
-  const mPerSec = rnd(2, 20);
-  const kmPerHr = (mPerSec * 3600) / 1000;
-  return { num: idx, display: `Convert ${mPerSec} m/sec to km/hr.`, answer: `${kmPerHr} km/hr` };
+  const ftPerSec = rnd(10, 60);
+  const mph = Math.round(((ftPerSec * 3600) / 5280) * 100) / 100;
+  return { num: idx, display: `Convert ${ftPerSec} ft/sec to mph.`, answer: `${mph} mph` };
 }
 
 // ----- Tier 2 — Proportional Relationships -----
 
 function makePropKTable(opts: FluencyOptions, idx: number): Problem {
-  const k = rnd(2, opts.difficulty === "easy" ? 6 : 10);
-  const xs = [1, rnd(2, 4), rnd(5, 7), rnd(8, 11)];
-  const rows = xs.map((x) => [x, x * k]);
+  // Hard: half the tables have a FRACTIONAL k (x-values are multiples
+  // of the denominator so every y stays whole).
+  if (opts.difficulty === "hard" && randomBool()) {
+    const d = rnd(2, 4);
+    let n = rnd(1, 2 * d - 1);
+    while (gcd(n, d) !== 1) n += 1;
+    const xs = [d, 2 * d, 3 * d, 4 * d];
+    const rows: (string | number)[][] = xs.map((x) => [x, (x / d) * n]);
+    return {
+      num: idx,
+      display: "",
+      instruction: "Find the constant of proportionality k for each table.",
+      table: { headers: ["x", "y"], rows },
+      answer: `k = ${n}/${d}`,
+    };
+  }
+  const k = rnd(2, opts.difficulty === "easy" ? 6 : opts.difficulty === "medium" ? 8 : 11);
+  // Skip x = 1 on medium/hard so k has to be computed as y/x rather
+  // than read straight off the first row.
+  const xs = opts.difficulty === "easy"
+    ? [1, rnd(2, 4), rnd(5, 7), rnd(8, 11)]
+    : [rnd(2, 3), rnd(4, 5), rnd(6, 8), rnd(9, 12)];
+  const rows: (string | number)[][] = xs.map((x) => [x, x * k]);
   return {
     num: idx,
-    display: `Find the constant of proportionality k.\n${fmtTable(["x", "y"], rows)}`,
+    display: "",
+    instruction: "Find the constant of proportionality k for each table.",
+    table: { headers: ["x", "y"], rows },
     answer: `k = ${k}`,
   };
 }
 
 function makePropKGraph(opts: FluencyOptions, idx: number): Problem {
-  // Pick a clean slope; the line passes through origin.
-  const k = rnd(2, opts.difficulty === "easy" ? 4 : 6);
+  // The labeled point is deliberately NOT (1, k) — k has to be computed
+  // by dividing the point's y-value by its x-value. Hard mixes in
+  // fractional k (e.g. the line through (6, 9) → k = 3/2).
+  if (opts.difficulty === "hard" && randomBool()) {
+    const d = rnd(2, 4);
+    let n = rnd(1, 2 * d - 1);
+    while (gcd(n, d) !== 1) n += 1;
+    const mMax = Math.max(1, Math.floor(9 / Math.max(d, n)));
+    const m = rnd(1, mMax);
+    const px = d * m;
+    const py = n * m;
+    return {
+      num: idx,
+      display: `Find the constant of proportionality k from the graph.`,
+      answer: `k = ${n}/${d}`,
+      shape: {
+        kind: "grid",
+        labels: {},
+        grid: {
+          range: 10,
+          lines: [{ x1: 0, y1: 0, x2: px, y2: py }],
+          points: [{ x: px, y: py, label: `(${px}, ${py})` }],
+        },
+      },
+    };
+  }
+  // Integer k, labeled point at x ≥ 2 (kept inside the grid).
+  const k = rnd(2, 4);
+  const x0 = rnd(2, Math.max(2, Math.floor(9 / k)));
+  const y0 = k * x0;
   return {
     num: idx,
     display: `Find the constant of proportionality k from the graph.`,
@@ -2690,20 +3383,39 @@ function makePropKGraph(opts: FluencyOptions, idx: number): Problem {
       labels: {},
       grid: {
         range: 10,
-        lines: [{ x1: 0, y1: 0, x2: 5, y2: 5 * k }],
-        points: [{ x: 1, y: k, label: `(1, ${k})` }],
+        lines: [{ x1: 0, y1: 0, x2: x0, y2: y0 }],
+        points: [{ x: x0, y: y0, label: `(${x0}, ${y0})` }],
       },
     },
   };
 }
 
 function makePropEquation(opts: FluencyOptions, idx: number): Problem {
-  const k = rnd(2, opts.difficulty === "easy" ? 6 : 9);
-  const xs = [1, rnd(2, 4), rnd(5, 7), rnd(8, 11)];
-  const rows = xs.map((x) => [x, x * k]);
+  // Hard: half the tables produce a fractional k (y = 3/2x style).
+  if (opts.difficulty === "hard" && randomBool()) {
+    const d = rnd(2, 4);
+    let n = rnd(1, 2 * d - 1);
+    while (gcd(n, d) !== 1) n += 1;
+    const xs = [d, 2 * d, 3 * d, 4 * d];
+    const rows: (string | number)[][] = xs.map((x) => [x, (x / d) * n]);
+    return {
+      num: idx,
+      display: "",
+      instruction: "Write each table's equation in the form y = kx.",
+      table: { headers: ["x", "y"], rows },
+      answer: `y = ${n}/${d}x`,
+    };
+  }
+  const k = rnd(2, opts.difficulty === "easy" ? 6 : opts.difficulty === "medium" ? 7 : 9);
+  const xs = opts.difficulty === "easy"
+    ? [1, rnd(2, 4), rnd(5, 7), rnd(8, 11)]
+    : [rnd(2, 3), rnd(4, 5), rnd(6, 8), rnd(9, 12)];
+  const rows: (string | number)[][] = xs.map((x) => [x, x * k]);
   return {
     num: idx,
-    display: `Write the equation in the form y = kx.\n${fmtTable(["x", "y"], rows)}`,
+    display: "",
+    instruction: "Write each table's equation in the form y = kx.",
+    table: { headers: ["x", "y"], rows },
     answer: `y = ${k}x`,
   };
 }
@@ -2711,25 +3423,42 @@ function makePropEquation(opts: FluencyOptions, idx: number): Problem {
 function makePropTableYN(opts: FluencyOptions, idx: number): Problem {
   const yes = randomBool();
   const k = rnd(2, 6);
-  const xs = [1, 2, 3, 4];
-  const rows = yes
-    ? xs.map((x) => [x, x * k])
-    : xs.map((x, i) => [x, x * k + (i === 0 ? 0 : rnd(1, 3))]);
+  const xs = opts.difficulty === "easy" ? [1, 2, 3, 4] : [2, 3, 5, 8];
+  let rows: (string | number)[][];
+  if (yes) {
+    rows = xs.map((x) => [x, x * k]);
+  } else if (opts.difficulty === "hard") {
+    // Near-miss: proportional in every row EXCEPT one — spotting the
+    // single broken ratio takes checking all of them.
+    const brokenIdx = rnd(1, xs.length - 1);
+    rows = xs.map((x, i) => [x, x * k + (i === brokenIdx ? rnd(1, 2) : 0)]);
+  } else {
+    rows = xs.map((x, i) => [x, x * k + (i === 0 ? 0 : rnd(1, 3))]);
+  }
   return {
     num: idx,
-    display: `Is the table proportional? (Yes or No)\n${fmtTable(["x", "y"], rows)}`,
+    display: "",
+    instruction: "Is each table proportional? Write Yes or No, and justify.",
+    table: { headers: ["x", "y"], rows },
     answer: yes ? `Yes — k = ${k}` : `No — y/x ratios are not equal`,
   };
 }
 
 function makePropGraphYN(opts: FluencyOptions, idx: number): Problem {
-  const yes = randomBool();
+  // Three flavours:
+  //   YES — straight line through the origin
+  //   NO  — straight line that misses the origin
+  //   NO  — CURVE through the origin (constant-rate check: passing
+  //         through (0, 0) alone is not enough!)
+  // Easy sticks to the two straight-line flavours; medium/hard mix the
+  // curve in.
+  const flavour = opts.difficulty === "easy" ? rnd(0, 1) : rnd(0, 2);
   const k = rnd(1, 4);
-  if (yes) {
+  if (flavour === 0) {
     return {
       num: idx,
       display: `Is the graph proportional? (Yes or No)`,
-      answer: `Yes — line passes through (0, 0)`,
+      answer: `Yes — straight line through (0, 0)`,
       shape: {
         kind: "grid",
         labels: {},
@@ -2737,17 +3466,53 @@ function makePropGraphYN(opts: FluencyOptions, idx: number): Problem {
       },
     };
   }
-  // Non-prop: line with non-zero y-intercept
-  const b = rnd(1, 4);
+  if (flavour === 1) {
+    // Non-prop: line with non-zero y-intercept
+    const b = rnd(1, 4);
+    return {
+      num: idx,
+      display: `Is the graph proportional? (Yes or No)`,
+      answer: `No — does not pass through the origin`,
+      shape: {
+        kind: "grid",
+        labels: {},
+        grid: { range: 10, lines: [{ x1: -3, y1: -3 * k + b, x2: 5, y2: 5 * k + b }] },
+      },
+    };
+  }
+  // Non-prop: a curve THROUGH the origin — rate of change isn't
+  // constant, so it's not proportional even though it hits (0, 0).
+  const curveKind = rnd(0, 2);
+  const pts: [number, number][] = [];
+  if (curveKind === 0) {
+    // y = x²/c through the origin
+    const c = rnd(1, 3);
+    for (let x = 0; x <= 9; x += 0.5) {
+      const y = (x * x) / (c + 1);
+      if (y > 9.5) break;
+      pts.push([x, y]);
+    }
+  } else if (curveKind === 1) {
+    // y = a·√x — fast start that flattens out
+    const a = rnd(2, 3);
+    for (let x = 0; x <= 9; x += 0.25) {
+      const y = a * Math.sqrt(x);
+      if (y > 9.5) break;
+      pts.push([x, y]);
+    }
+  } else {
+    // Gentle cubic through the origin
+    for (let x = 0; x <= 9; x += 0.25) {
+      const y = (x * x * x) / 60;
+      if (y > 9.5) break;
+      pts.push([x, y]);
+    }
+  }
   return {
     num: idx,
     display: `Is the graph proportional? (Yes or No)`,
-    answer: `No — does not pass through the origin`,
-    shape: {
-      kind: "grid",
-      labels: {},
-      grid: { range: 10, lines: [{ x1: -3, y1: -3 * k + b, x2: 5, y2: 5 * k + b }] },
-    },
+    answer: `No — curved, so the rate of change is not constant`,
+    shape: { kind: "grid", labels: {}, grid: { range: 10, curve: pts } },
   };
 }
 
@@ -2769,13 +3534,29 @@ function makeSlopePoints(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeSlopeGraph(opts: FluencyOptions, idx: number): Problem {
-  const num = rnd(1, opts.difficulty === "easy" ? 3 : 5) * (randomBool() ? 1 : -1);
-  const den = opts.difficulty === "hard" ? rnd(1, 3) : 1;
-  // Pick a starting point that keeps the line on-screen.
-  const x1 = rnd(-4, 0);
-  const y1 = rnd(-4, 4);
-  const x2 = x1 + 4 * den;
-  const y2 = y1 + 4 * num;
+  // Pick the slope FIRST (rise/run in lowest terms), then place both
+  // marked points so they are guaranteed to sit inside the grid. The
+  // old version computed the second point as first + 4·(run, rise),
+  // which routinely pushed it off the edge of the plot.
+  const range = 8;
+  const den = opts.difficulty === "hard" ? rnd(2, 3) : opts.difficulty === "medium" ? rnd(1, 2) : 1;
+  let num = rnd(1, opts.difficulty === "easy" ? 3 : 4);
+  // Keep rise/run in lowest terms so the marked points show the slope
+  // exactly as the answer states it.
+  while (gcd(num, den) !== 1) num += 1;
+  if (randomBool()) num = -num;
+  // Number of slope-steps between the two marked points — as many as
+  // fit with a 1-unit margin on every side.
+  const kMax = Math.max(1, Math.floor((2 * (range - 1)) / Math.max(den, Math.abs(num))));
+  const k = Math.min(rnd(2, 3), kMax);
+  const dx = den * k;
+  const dy = num * k;
+  const x1 = rnd(-(range - 1), range - 1 - dx);
+  const y1 = dy > 0
+    ? rnd(-(range - 1), range - 1 - dy)
+    : rnd(-(range - 1) - dy, range - 1);
+  const x2 = x1 + dx;
+  const y2 = y1 + dy;
   return {
     num: idx,
     display: `Find the slope from the graph.`,
@@ -2784,7 +3565,7 @@ function makeSlopeGraph(opts: FluencyOptions, idx: number): Problem {
       kind: "grid",
       labels: {},
       grid: {
-        range: 10,
+        range,
         lines: [{ x1, y1, x2, y2 }],
         points: [{ x: x1, y: y1 }, { x: x2, y: y2 }],
       },
@@ -2793,22 +3574,28 @@ function makeSlopeGraph(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeSlopeTable(opts: FluencyOptions, idx: number): Problem {
+  // Easy/medium: consecutive x-values, integer slope. Hard: x-values
+  // step by 2 or 3 so the slope must be computed as Δy/Δx (and can be
+  // a fraction).
+  const step = opts.difficulty === "hard" ? rnd(2, 3) : 1;
   const num = rnd(1, opts.difficulty === "easy" ? 4 : 7) * (randomBool() ? 1 : -1);
   const x0 = rnd(0, 3);
   const y0 = rnd(-5, 5);
-  const xs = [x0, x0 + 1, x0 + 2, x0 + 3];
-  const rows = xs.map((x) => [x, y0 + num * (x - x0)]);
+  const xs = [x0, x0 + step, x0 + 2 * step, x0 + 3 * step];
+  const rows: (string | number)[][] = xs.map((x) => [x, y0 + num * (x - x0)]);
   return {
     num: idx,
-    display: `Find the slope from the table.\n${fmtTable(["x", "y"], rows)}`,
+    display: "",
+    instruction: "Find the slope of the line represented by each table.",
+    table: { headers: ["x", "y"], rows },
     answer: `m = ${num}`,
   };
 }
 
 function makeSlopeVerbal(opts: FluencyOptions, idx: number): Problem {
   const which = rnd(0, 2);
-  const rise = rnd(2, 12);
-  const run = rnd(2, 6);
+  const rise = rnd(2, opts.difficulty === "easy" ? 6 : opts.difficulty === "medium" ? 12 : 20);
+  const run = rnd(2, opts.difficulty === "easy" ? 3 : 6);
   if (which === 0) {
     return {
       num: idx,
@@ -2831,42 +3618,73 @@ function makeSlopeVerbal(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeSlopeClassify(opts: FluencyOptions, idx: number): Problem {
+  // Students classify from a GRAPH, not from a pair of coordinates —
+  // reading the direction of a drawn line is the actual grade-8 skill.
   const which = rnd(0, 3);
-  const x1 = rnd(-5, 5);
-  const y1 = rnd(-5, 5);
-  if (which === 0) {
+  const range = 6;
+  const instruction =
+    "Classify each line's slope as positive, negative, zero, or undefined.";
+  const grid = (line: { x1: number; y1: number; x2: number; y2: number }): ShapeSpec => ({
+    kind: "grid",
+    labels: {},
+    grid: { range, lines: [line] },
+  });
+  if (which === 0 || which === 1) {
+    // Positive / negative — vary the steepness so the lines don't all
+    // look alike (rise 1–3 over run 1–2).
+    const rise = rnd(1, 3);
+    const run = rnd(1, 2);
+    const b = rnd(-2, 2);
     return {
       num: idx,
-      display: `Classify the slope through ${fmtPoint(x1, y1)} and ${fmtPoint(x1 + 3, y1 + 4)}.`,
-      answer: `positive`,
-    };
-  }
-  if (which === 1) {
-    return {
-      num: idx,
-      display: `Classify the slope through ${fmtPoint(x1, y1)} and ${fmtPoint(x1 + 3, y1 - 4)}.`,
-      answer: `negative`,
+      display: "",
+      instruction,
+      answer: which === 0 ? "positive" : "negative",
+      shape: grid({ x1: 0, y1: b, x2: run, y2: b + (which === 0 ? rise : -rise) }),
     };
   }
   if (which === 2) {
+    // Horizontal line y = b (kept off the x-axis so it reads clearly).
+    let b = rnd(-4, 4);
+    if (b === 0) b = 2;
     return {
       num: idx,
-      display: `Classify the slope through ${fmtPoint(x1, y1)} and ${fmtPoint(x1 + 3, y1)}.`,
-      answer: `zero (horizontal)`,
+      display: "",
+      instruction,
+      answer: "zero (horizontal)",
+      shape: grid({ x1: -1, y1: b, x2: 1, y2: b }),
     };
   }
+  // Vertical line x = a (kept off the y-axis).
+  let a = rnd(-4, 4);
+  if (a === 0) a = -2;
   return {
     num: idx,
-    display: `Classify the slope through ${fmtPoint(x1, y1)} and ${fmtPoint(x1, y1 + 3)}.`,
-    answer: `undefined (vertical)`,
+    display: "",
+    instruction,
+    answer: "undefined (vertical)",
+    shape: grid({ x1: a, y1: -1, x2: a, y2: 1 }),
   };
 }
 
 // ----- Tier 4 — Slope-Intercept Form -----
 
 function makeSIIdentify(opts: FluencyOptions, idx: number): Problem {
-  const m = rndCoef(opts, opts.allowNegatives);
-  const b = rndConst(opts, opts.allowNegatives);
+  // Hard: half the equations carry a fractional slope.
+  if (opts.difficulty === "hard" && randomBool()) {
+    const md = rnd(2, 5);
+    let mn = rnd(1, md * 2 - 1);
+    while (gcd(mn, md) !== 1) mn += 1;
+    if (randomBool()) mn = -mn;
+    const b = rndConst(opts, true);
+    return {
+      num: idx,
+      display: `Identify m and b in: ${fmtMxB(mn, b, md)}`,
+      answer: `m = ${fmtSimpleFrac(mn, md)}, b = ${b}`,
+    };
+  }
+  const m = rndCoef(opts, negsFor(opts));
+  const b = rndConst(opts, negsFor(opts));
   return {
     num: idx,
     display: `Identify m and b in: ${fmtMxB(m, b)}`,
@@ -2875,17 +3693,62 @@ function makeSIIdentify(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeSIFromMB(opts: FluencyOptions, idx: number): Problem {
-  const m = rndCoef(opts, opts.allowNegatives);
-  const b = rndConst(opts, opts.allowNegatives);
+  // Clean three-line layout: givens on their own lines (y-intercept as
+  // the ordered pair (0, b)), then a blank for the student's equation.
+  // The old single-line prose version repeated the full instruction on
+  // every problem and gave no obvious place to write the answer.
+  //
+  // Slope by difficulty: easy = small positive integer; medium = signed
+  // integer; hard = mostly signed simple fractions.
+  let mn: number;
+  let md = 1;
+  if (opts.difficulty === "easy") {
+    mn = rnd(1, 6);
+  } else if (opts.difficulty === "medium") {
+    mn = rnd(1, 9) * (randomBool() ? 1 : -1);
+  } else if (Math.random() < 0.3) {
+    // Hard keeps ~30% integer slopes so the fractions stand out.
+    mn = rnd(2, 9) * (randomBool() ? 1 : -1);
+  } else {
+    md = rnd(2, 5);
+    mn = rnd(1, md * 2 - 1);
+    while (gcd(mn, md) !== 1) mn += 1;
+    if (randomBool()) mn = -mn;
+  }
+  const b = opts.difficulty === "easy"
+    ? rnd(1, 9)
+    : rnd(1, 12) * (randomBool() ? 1 : -1);
+  const slopeStr = md === 1
+    ? (mn < 0 ? `−${Math.abs(mn)}` : `${mn}`)
+    : `${mn < 0 ? "−" : ""}${Math.abs(mn)}/${md}`;
+  const bStr = b < 0 ? `−${Math.abs(b)}` : `${b}`;
   return {
     num: idx,
-    display: `Write the equation in y = mx + b form. Slope: ${m}, y-intercept: ${b}.`,
-    answer: fmtMxB(m, b),
+    display: `m = ${slopeStr}\ny-intercept: (0, ${bStr})\ny = ______________`,
+    instruction:
+      "Use the given slope and y-intercept to write each line's equation in y = mx + b form.",
+    answer: fmtMxB(mn, b, md),
   };
 }
 
 function makeSIFromMP(opts: FluencyOptions, idx: number): Problem {
-  const m = rndCoef(opts, opts.allowNegatives);
+  // Hard: half the problems use a fractional slope with a point whose
+  // x-value is a multiple of the denominator (so b stays an integer).
+  if (opts.difficulty === "hard" && randomBool()) {
+    const md = rnd(2, 4);
+    let mn = rnd(1, md * 2 - 1);
+    while (gcd(mn, md) !== 1) mn += 1;
+    if (randomBool()) mn = -mn;
+    const x1 = md * rnd(-2, 2);
+    const y1 = rnd(-5, 5);
+    const b = y1 - (mn * x1) / md;
+    return {
+      num: idx,
+      display: `Write the equation of the line with slope ${fmtSimpleFrac(mn, md)} through ${fmtPoint(x1, y1)}.`,
+      answer: fmtMxB(mn, b, md),
+    };
+  }
+  const m = rndCoef(opts, negsFor(opts));
   const x1 = rnd(-5, 5);
   const y1 = rnd(-5, 5);
   const b = y1 - m * x1;
@@ -2897,7 +3760,25 @@ function makeSIFromMP(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeSIFromPP(opts: FluencyOptions, idx: number): Problem {
-  const m = rndCoef(opts, opts.allowNegatives);
+  // Hard: half the problems yield a fractional slope — the points sit
+  // a denominator apart so the rise/run division is the real work.
+  if (opts.difficulty === "hard" && randomBool()) {
+    const md = rnd(2, 4);
+    let mn = rnd(1, md * 2 - 1);
+    while (gcd(mn, md) !== 1) mn += 1;
+    if (randomBool()) mn = -mn;
+    const x1 = md * rnd(-1, 1);
+    const y1 = rnd(-5, 5);
+    const x2 = x1 + md;
+    const y2 = y1 + mn;
+    const b = y1 - (mn * x1) / md;
+    return {
+      num: idx,
+      display: `Write the equation of the line through ${fmtPoint(x1, y1)} and ${fmtPoint(x2, y2)}.`,
+      answer: fmtMxB(mn, b, md),
+    };
+  }
+  const m = rndCoef(opts, negsFor(opts));
   const x1 = rnd(-5, 5);
   const y1 = rnd(-5, 5);
   const x2 = x1 + 1;
@@ -2911,6 +3792,25 @@ function makeSIFromPP(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeSIFromGraph(opts: FluencyOptions, idx: number): Problem {
+  // Hard: half the lines have slope ±1/2 (read the rise over TWO runs).
+  if (opts.difficulty === "hard" && randomBool()) {
+    const sign = randomBool() ? 1 : -1;
+    const b = rnd(-4, 4);
+    const x1 = -6;
+    const y1 = (sign * x1) / 2 + b;
+    const x2 = 6;
+    const y2 = (sign * x2) / 2 + b;
+    return {
+      num: idx,
+      display: `Write the equation of the line shown.`,
+      answer: fmtMxB(sign, b, 2),
+      shape: {
+        kind: "grid",
+        labels: {},
+        grid: { range: 8, lines: [{ x1, y1, x2, y2 }], points: [{ x: 0, y: b }] },
+      },
+    };
+  }
   const m = rnd(1, opts.difficulty === "easy" ? 3 : 4) * (randomBool() ? 1 : -1);
   const b = rnd(-5, 5);
   // Pick two points on the line to plot.
@@ -2938,9 +3838,9 @@ function makeSIFromGraph(opts: FluencyOptions, idx: number): Problem {
 
 function makeStdToSI(opts: FluencyOptions, idx: number): Problem {
   // Ax + By = C → y = -A/B x + C/B
-  const a = rndCoef(opts, opts.allowNegatives);
+  const a = rndCoef(opts, negsFor(opts));
   const b = Math.abs(rndCoef(opts, false)) || 2;
-  const c = rndConst(opts, opts.allowNegatives);
+  const c = rndConst(opts, negsFor(opts));
   return {
     num: idx,
     display: `Convert to slope-intercept form: ${fmtCoefTerm(a)} ${fmtAddCoef(b, "y")} = ${c}`,
@@ -2949,8 +3849,8 @@ function makeStdToSI(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeSIToStd(opts: FluencyOptions, idx: number): Problem {
-  const m = rndCoef(opts, opts.allowNegatives);
-  const b = rndConst(opts, opts.allowNegatives);
+  const m = rndCoef(opts, negsFor(opts));
+  const b = rndConst(opts, negsFor(opts));
   // y = mx + b → -mx + y = b → preferred: mx - y = -b OR negate if m < 0
   // For "standard" form with positive leading coefficient:
   let A = -m;
@@ -2965,7 +3865,7 @@ function makeSIToStd(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makePointSlopeWrite(opts: FluencyOptions, idx: number): Problem {
-  const m = rndCoef(opts, opts.allowNegatives);
+  const m = rndCoef(opts, negsFor(opts));
   const x1 = rnd(-6, 6);
   const y1 = rnd(-6, 6);
   const x1Str = x1 < 0 ? `(x + ${Math.abs(x1)})` : `(x − ${x1})`;
@@ -2979,7 +3879,7 @@ function makePointSlopeWrite(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makePointSlopeToSI(opts: FluencyOptions, idx: number): Problem {
-  const m = rndCoef(opts, opts.allowNegatives);
+  const m = rndCoef(opts, negsFor(opts));
   const x1 = rnd(-5, 5);
   const y1 = rnd(-5, 5);
   const b = y1 - m * x1;
@@ -2996,6 +3896,26 @@ function makePointSlopeToSI(opts: FluencyOptions, idx: number): Problem {
 // ----- Tier 6 — Graphing Lines (problem shows equation; answer shows the line) -----
 
 function makeGraphSI(opts: FluencyOptions, idx: number): Problem {
+  // Hard: half the equations carry slope ±1/2 so students graph a
+  // fractional rise/run.
+  if (opts.difficulty === "hard" && randomBool()) {
+    const sign = randomBool() ? 1 : -1;
+    const b = rnd(-4, 4);
+    const x1 = -6, x2 = 6;
+    const y1 = (sign * x1) / 2 + b;
+    const y2 = (sign * x2) / 2 + b;
+    return {
+      num: idx,
+      display: `Graph the line: ${fmtMxB(sign, b, 2)}`,
+      answer: `(line plotted)`,
+      shape: { kind: "grid", labels: {}, grid: { range: 10 } },
+      answerShape: {
+        kind: "grid",
+        labels: {},
+        grid: { range: 10, lines: [{ x1, y1, x2, y2 }] },
+      },
+    };
+  }
   const m = rnd(1, opts.difficulty === "easy" ? 3 : 4) * (randomBool() ? 1 : -1);
   const b = rnd(-4, 4);
   const x1 = -4, x2 = 4;
@@ -3018,12 +3938,14 @@ function makeGraphTable(opts: FluencyOptions, idx: number): Problem {
   const m = rnd(1, 4) * (randomBool() ? 1 : -1);
   const b = rnd(-4, 4);
   const xs = [-2, -1, 0, 1, 2];
-  const rows = xs.map((x) => [x, m * x + b]);
+  const rows: (string | number)[][] = xs.map((x) => [x, m * x + b]);
   const y1 = m * -4 + b;
   const y2 = m * 4 + b;
   return {
     num: idx,
-    display: `Graph the line from the table.\n${fmtTable(["x", "y"], rows)}`,
+    display: "",
+    instruction: "Graph the line represented by each table.",
+    table: { headers: ["x", "y"], rows },
     answer: `(line plotted)`,
     shape: { kind: "grid", labels: {}, grid: { range: 10 } },
     answerShape: {
@@ -3035,10 +3957,12 @@ function makeGraphTable(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeGraphStd(opts: FluencyOptions, idx: number): Problem {
-  const A = rnd(1, 4);
-  const B = rnd(1, 4);
-  const xInt = rnd(-4, 4) || 2;
-  const yInt = rnd(-4, 4) || 3;
+  const A = rnd(1, opts.difficulty === "easy" ? 3 : 5);
+  const B = rnd(1, opts.difficulty === "easy" ? 3 : 5);
+  // Easy keeps both intercepts positive; medium/hard mix negatives in.
+  const span = opts.difficulty === "hard" ? 6 : 4;
+  const xInt = (opts.difficulty === "easy" ? rnd(1, 4) : rnd(-span, span)) || 2;
+  const yInt = (opts.difficulty === "easy" ? rnd(1, 4) : rnd(-span, span)) || 3;
   const C = A * xInt + B * yInt;
   return {
     num: idx,
@@ -3058,10 +3982,11 @@ function makeGraphStd(opts: FluencyOptions, idx: number): Problem {
 }
 
 function makeGraphPoints(opts: FluencyOptions, idx: number): Problem {
-  const x1 = rnd(-5, -1);
-  const y1 = rnd(-5, 5);
-  const x2 = rnd(1, 5);
-  const y2 = rnd(-5, 5);
+  const reach = opts.difficulty === "easy" ? 4 : opts.difficulty === "medium" ? 6 : 8;
+  const x1 = rnd(-reach, -1);
+  const y1 = rnd(-reach, reach);
+  const x2 = rnd(1, reach);
+  const y2 = rnd(-reach, reach);
   return {
     num: idx,
     display: `Graph the line through ${fmtPoint(x1, y1)} and ${fmtPoint(x2, y2)}.`,
@@ -3089,32 +4014,100 @@ function makeGraphPoints(opts: FluencyOptions, idx: number): Problem {
 // ----- Tier 9 — Functions on the Coordinate Plane -----
 
 function makeFnVLTGraph(opts: FluencyOptions, idx: number): Problem {
+  // A wide mix of graph families so the worksheet isn't just lines and
+  // hyperbolas. PASSES the test: line, parabola, absolute value,
+  // exponential, cubic, square root. FAILS: sideways parabola, circle,
+  // ellipse, sideways absolute value.
   const yes = randomBool();
-  // Yes: any linear function. No: a sideways parabola / circle-like curve.
+  const range = 6;
+  const instruction = "Apply the vertical line test: is each graph a function?";
+  const curve: [number, number][] = [];
+  const sample = (f: (t: number) => [number, number], t0: number, t1: number, dt: number) => {
+    for (let t = t0; t <= t1 + 1e-9; t += dt) curve.push(f(t));
+  };
+
   if (yes) {
-    const m = rnd(1, 3) * (randomBool() ? 1 : -1);
-    const b = rnd(-3, 3);
+    // Family pool grows with difficulty: easy = line/parabola,
+    // medium adds absolute value, hard adds exponential/cubic/root.
+    const kindMax = opts.difficulty === "easy" ? 1 : opts.difficulty === "medium" ? 2 : 5;
+    const kind = rnd(0, kindMax);
+    if (kind === 0) {
+      // Straight line
+      const m = rnd(1, 3) * (randomBool() ? 1 : -1);
+      const b = rnd(-3, 3);
+      return {
+        num: idx,
+        display: "",
+        instruction,
+        answer: `Yes`,
+        shape: {
+          kind: "grid",
+          labels: {},
+          grid: { range, lines: [{ x1: -4, y1: m * -4 + b, x2: 4, y2: m * 4 + b }] },
+        },
+      };
+    }
+    if (kind === 1) {
+      // Vertical parabola
+      const a = (randomBool() ? 1 : -1) * (rnd(3, 6) / 10);
+      const h = rnd(-2, 2);
+      const k = randomBool() ? rnd(-3, 0) : rnd(0, 3);
+      sample((x) => [x, a * (x - h) * (x - h) + k], h - 5, h + 5, 0.25);
+    } else if (kind === 2) {
+      // Absolute value V
+      const a = randomBool() ? 1 : -1;
+      const h = rnd(-2, 2);
+      const k = a === 1 ? rnd(-4, 0) : rnd(0, 4);
+      sample((x) => [x, a * Math.abs(x - h) + k], -6, 6, 0.25);
+    } else if (kind === 3) {
+      // Exponential growth/decay
+      const flip = randomBool() ? 1 : -1; // reflect for decay-style
+      sample((x) => [flip * x, 2 ** (x / 2) - 3], -6, 5.5, 0.25);
+    } else if (kind === 4) {
+      // Gentle cubic
+      sample((x) => [x, (x * x * x) / 16], -5.5, 5.5, 0.25);
+    } else {
+      // Square root (half parabola on its side — still a function)
+      const a = randomBool() ? 1.6 : -1.6;
+      sample((x) => [x, a * Math.sqrt(x + 6) - (a > 0 ? 3 : -3)], -6, 6, 0.25);
+    }
     return {
       num: idx,
-      display: `Is this a function? (Apply the vertical line test.)`,
+      display: "",
+      instruction,
       answer: `Yes`,
-      shape: {
-        kind: "grid",
-        labels: {},
-        grid: { range: 10, lines: [{ x1: -4, y1: m * -4 + b, x2: 4, y2: m * 4 + b }] },
-      },
+      shape: { kind: "grid", labels: {}, grid: { range, curve } },
     };
   }
-  // Sideways parabola: x = y² shape
-  const pts: [number, number][] = [];
-  for (let y = -3; y <= 3; y += 0.5) {
-    pts.push([y * y - 2, y]);
+
+  const kind = rnd(0, opts.difficulty === "easy" ? 1 : opts.difficulty === "medium" ? 2 : 3);
+  if (kind === 0) {
+    // Sideways parabola x = y²/c + h
+    const c = rnd(1, 2);
+    const h = rnd(-4, -1);
+    sample((y) => [(y * y) / (c + 1) + h, y], -4, 4, 0.25);
+  } else if (kind === 1) {
+    // Circle
+    const r = rnd(2, 4);
+    const cx = rnd(-1, 1);
+    const cy = rnd(-1, 1);
+    sample((t) => [cx + r * Math.cos(t), cy + r * Math.sin(t)], 0, Math.PI * 2 + 0.1, Math.PI / 24);
+  } else if (kind === 2) {
+    // Ellipse
+    const rx = rnd(3, 5);
+    const ry = rnd(2, 3);
+    sample((t) => [rx * Math.cos(t), ry * Math.sin(t)], 0, Math.PI * 2 + 0.1, Math.PI / 24);
+  } else {
+    // Sideways absolute value x = |y| + h
+    const h = rnd(-4, -1);
+    sample((y) => [Math.abs(y) + h, y], -4.5, 4.5, 0.25);
   }
   return {
     num: idx,
-    display: `Is this a function? (Apply the vertical line test.)`,
+    display: "",
+    instruction,
     answer: `No — fails the vertical line test`,
-    shape: { kind: "grid", labels: {}, grid: { range: 10, curve: pts } },
+    shape: { kind: "grid", labels: {}, grid: { range, curve } },
   };
 }
 
@@ -3122,25 +4115,41 @@ function makeFnTable(opts: FluencyOptions, idx: number): Problem {
   const yes = randomBool();
   if (yes) {
     const m = rnd(1, 5);
+    const b = rnd(-3, 3);
     const xs = [1, 2, 3, 4];
     return {
       num: idx,
-      display: `Is this table a function? (Yes or No)\n${fmtTable(["x", "y"], xs.map((x) => [x, m * x]))}`,
+      display: "",
+      instruction: "Does each table represent a function? Write Yes or No.",
+      table: { headers: ["x", "y"], rows: xs.map((x) => [x, m * x + b]) },
       answer: `Yes — each x has exactly one y`,
     };
   }
-  // Repeat an x with different y
+  // Repeat an x with two different y-values. Randomize which x repeats
+  // so the "No" tables don't all look identical.
+  const repeatX = rnd(1, 3);
+  const ys = [rnd(1, 5), rnd(6, 9), rnd(10, 14)];
+  const rows: (string | number)[][] = [];
+  let yi = 0;
+  for (let x = 1; x <= 3; x++) {
+    rows.push([x, ys[yi++]]);
+    if (x === repeatX) rows.push([x, ys[yi - 1] + rnd(2, 5)]);
+  }
+  const dupY1 = rows.find((r) => r[0] === repeatX)![1];
+  const dupY2 = (rows.filter((r) => r[0] === repeatX)[1] ?? rows[0])[1];
   return {
     num: idx,
-    display: `Is this table a function? (Yes or No)\n${fmtTable(["x", "y"], [[1, 4], [2, 6], [2, 9], [3, 11]])}`,
-    answer: `No — x = 2 maps to both 6 and 9`,
+    display: "",
+    instruction: "Does each table represent a function? Write Yes or No.",
+    table: { headers: ["x", "y"], rows },
+    answer: `No — x = ${repeatX} maps to both ${dupY1} and ${dupY2}`,
   };
 }
 
 function makeFnEval(opts: FluencyOptions, idx: number): Problem {
-  const m = rndCoef(opts, opts.allowNegatives);
-  const b = rndConst(opts, opts.allowNegatives);
-  const c = rndSolution(opts, opts.allowNegatives);
+  const m = rndCoef(opts, negsFor(opts));
+  const b = rndConst(opts, negsFor(opts));
+  const c = rndSolution(opts, negsFor(opts));
   return {
     num: idx,
     display: `Given f(x) = ${fmtMxB(m, b).replace("y = ", "")}, find f(${c}).`,
@@ -3150,8 +4159,8 @@ function makeFnEval(opts: FluencyOptions, idx: number): Problem {
 
 function makeFnReverse(opts: FluencyOptions, idx: number): Problem {
   const m = Math.abs(rndCoef(opts, false)) || 2;
-  const b = rndConst(opts, opts.allowNegatives);
-  const x = rndSolution(opts, opts.allowNegatives);
+  const b = rndConst(opts, negsFor(opts));
+  const x = rndSolution(opts, negsFor(opts));
   const fx = m * x + b;
   return {
     num: idx,
@@ -3186,45 +4195,74 @@ function makeNonlinearClassify(opts: FluencyOptions, idx: number): Problem {
   const linear = randomBool();
   if (linear) {
     const m = rnd(2, 5);
-    const rows = [1, 2, 3, 4].map((x) => [x, m * x]);
+    const b = rnd(-3, 3);
+    const rows: (string | number)[][] = [1, 2, 3, 4].map((x) => [x, m * x + b]);
     return {
       num: idx,
-      display: `Classify this table as Linear or Nonlinear.\n${fmtTable(["x", "y"], rows)}`,
+      display: "",
+      instruction: "Classify each table as Linear or Nonlinear.",
+      table: { headers: ["x", "y"], rows },
       answer: `Linear (constant rate of change ${m})`,
     };
   }
-  // Quadratic-ish
-  const rows = [1, 2, 3, 4].map((x) => [x, x * x]);
+  // Nonlinear: rotate through quadratic, exponential, and cubic shapes
+  // so the "Nonlinear" answer isn't always x². Easy sticks to the
+  // quadratic; medium/hard mix all three in.
+  const kind = opts.difficulty === "easy" ? 0 : rnd(0, 2);
+  const fn = kind === 0
+    ? (x: number) => x * x
+    : kind === 1
+      ? (x: number) => 2 ** x
+      : (x: number) => x * x * x - 2;
+  const rows: (string | number)[][] = [1, 2, 3, 4].map((x) => [x, fn(x)]);
   return {
     num: idx,
-    display: `Classify this table as Linear or Nonlinear.\n${fmtTable(["x", "y"], rows)}`,
+    display: "",
+    instruction: "Classify each table as Linear or Nonlinear.",
+    table: { headers: ["x", "y"], rows },
     answer: `Nonlinear (differences are not constant)`,
   };
 }
 
 function makeRateCompare(opts: FluencyOptions, idx: number): Problem {
+  // Easy: clearly different whole-dollar rates. Medium: closer whole
+  // rates. Hard: half-dollar rates that differ by 50¢ — the comparison
+  // takes real division.
+  if (opts.difficulty === "hard") {
+    const r1x2 = rnd(10, 29); // rate in half-dollars: $5.00 … $14.50
+    let r2x2 = r1x2 + (randomBool() ? 1 : -1) * rnd(1, 2);
+    if (r2x2 === r1x2) r2x2 += 1;
+    const t1 = rnd(2, 6);
+    const t2 = rnd(2, 6);
+    const pay1 = (r1x2 * t1) / 2;
+    const pay2 = (r2x2 * t2) / 2;
+    const winner = r1x2 > r2x2 ? "Job A" : "Job B";
+    const fmt = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(2));
+    return {
+      num: idx,
+      display: `Job A pays $${fmt(pay1)} for ${t1} hours. Job B pays $${fmt(pay2)} for ${t2} hours. Which pays more per hour?`,
+      answer: `${winner} ($${fmt(r1x2 / 2)}/hr vs $${fmt(r2x2 / 2)}/hr)`,
+    };
+  }
+  const spread = opts.difficulty === "easy" ? 2 : 1;
   const r1 = rnd(2, 9);
+  let r2 = rnd(2, 9);
+  while (Math.abs(r1 - r2) < spread) r2 = rnd(2, 10);
   const t1 = rnd(2, 5);
-  const r2 = rnd(2, 9);
   const t2 = rnd(2, 5);
-  const u1 = (r1 * t1) / (t1 * 1); // r1 (per unit)
-  const u2 = (r2 * t2) / (t2 * 1);
-  // Just compare per-unit rates directly:
-  const rate1 = r1;
-  const rate2 = r2;
-  const winner = rate1 > rate2 ? "Job A" : rate1 < rate2 ? "Job B" : "Equal";
+  const winner = r1 > r2 ? "Job A" : "Job B";
   return {
     num: idx,
     display: `Job A pays $${r1 * t1} for ${t1} hours. Job B pays $${r2 * t2} for ${t2} hours. Which pays more per hour?`,
-    answer: `${winner} ($${rate1}/hr vs $${rate2}/hr)`,
+    answer: `${winner} ($${r1}/hr vs $${r2}/hr)`,
   };
 }
 
 function makeLinearCompare(opts: FluencyOptions, idx: number): Problem {
-  const m1 = rndCoef(opts, opts.allowNegatives);
-  const b1 = rndConst(opts, opts.allowNegatives);
-  const m2 = rndCoef(opts, opts.allowNegatives);
-  const b2 = rndConst(opts, opts.allowNegatives);
+  const m1 = rndCoef(opts, negsFor(opts));
+  const b1 = rndConst(opts, negsFor(opts));
+  const m2 = rndCoef(opts, negsFor(opts));
+  const b2 = rndConst(opts, negsFor(opts));
   const ask = randomBool();
   if (ask) {
     const winner = Math.abs(m1) > Math.abs(m2) ? "Line 1" : Math.abs(m1) < Math.abs(m2) ? "Line 2" : "Same";
@@ -3264,9 +4302,9 @@ function makeCoordSlope(opts: FluencyOptions, idx: number): Problem {
 function makeIneqAbsIsolate(opts: FluencyOptions, idx: number): Problem {
   // c|x + a| + d (op) e — isolate first to get |x + a| (op) (e − d)/c, then split.
   const c = rnd(2, 5);
-  const a = rndCoef(opts, opts.allowNegatives);
-  const d = rndConst(opts, opts.allowNegatives);
-  const k = rnd(1, opts.difficulty === "easy" ? 5 : 8);
+  const a = rndCoef(opts, negsFor(opts));
+  const d = rndConst(opts, negsFor(opts));
+  const k = rnd(1, opts.difficulty === "easy" ? 5 : opts.difficulty === "medium" ? 6 : 8);
   const e = c * k + d;
   const op: IneqOp = randomBool() ? "<" : ">";
   if (op === "<") {
@@ -3739,12 +4777,19 @@ function makeSimpleInterest(opts: FluencyOptions, num: number): Problem {
 
 /** Format a coefficient + variable term. Handles ±1, 0, and the
  *  invisible-coefficient cases so the rendered expression reads
- *  naturally ("x" not "1x", "−x" not "−1x"). */
+ *  naturally ("x" not "1x", "−x" not "−1x"). Constant terms (empty
+ *  `variable`) keep their digit: ±1 renders as "1"/"−1", never as an
+ *  orphaned sign or an empty string — an empty string here used to
+ *  produce worksheets like "5x + 4x −" and answers that silently
+ *  included a constant the problem never displayed. */
 function fmtTerm(coef: number, variable: string): string {
   if (coef === 0) return "";
+  if (!variable) return coef < 0 ? `−${Math.abs(coef)}` : `${coef}`;
   if (coef === 1) return variable;
   if (coef === -1) return `−${variable}`;
-  return `${coef}${variable}`;
+  // Typographic minus on leading negatives so "−22x" matches the rest
+  // of the worksheet instead of rendering an ASCII hyphen.
+  return coef < 0 ? `−${Math.abs(coef)}${variable}` : `${coef}${variable}`;
 }
 
 /** Insert a sign and a term into a running display, handling the
@@ -3766,7 +4811,87 @@ function appendTerm(running: string, coef: number, variable: string): string {
  *    medium : 4-5 terms, |coef| ≤ 10, x or y (one variable per problem)
  *    hard   : 5-7 terms, |coef| ≤ 12, two variables mixed (x AND y)
  */
+/** Hard-tier Combine Like Terms with rational coefficients — half the
+ *  hard worksheet uses fraction coefficients (same denominator across
+ *  the expression so combining stays natural, e.g. 3/4x + 1/4x − 1/2)
+ *  and the other half one-decimal coefficients (0.5x + 1.2x − 0.7).
+ *  Sums are computed in exact integer space (numerators / tenths). */
+function makeCombineLikeTermsRational(opts: FluencyOptions, num: number): Problem {
+  const useDec = randomBool();
+  // Local sign-aware append for pre-formatted term bodies.
+  const appendStr = (running: string, negative: boolean, body: string): string => {
+    if (!running) return negative ? `−${body}` : body;
+    return negative ? `${running} − ${body}` : `${running} + ${body}`;
+  };
+
+  // Term plan: at least two x-terms so there is always something to
+  // combine, plus 1–2 constants.
+  const kinds: ("x" | "k")[] = ["x", "x"];
+  if (randomBool()) kinds.push("x");
+  kinds.push("k");
+  if (randomBool()) kinds.push("k");
+  // Shuffle so the like terms aren't always adjacent.
+  kinds.sort(() => Math.random() - 0.5);
+
+  if (useDec) {
+    // Coefficients are tenths (never a whole multiple of 10) so every
+    // term shows one decimal place.
+    let sumX = 0;
+    let sumK = 0;
+    let display = "";
+    for (const kind of kinds) {
+      let tenths = rnd(1, 30);
+      if (tenths % 10 === 0) tenths += 1;
+      const neg = randomBool();
+      const signed = neg ? -tenths : tenths;
+      const body = `${(tenths / 10).toFixed(1)}${kind === "x" ? "x" : ""}`;
+      display = appendStr(display, neg, body);
+      if (kind === "x") sumX += signed;
+      else sumK += signed;
+    }
+    let answer = "";
+    answer = appendDecTerm(answer, sumX / 10, "x");
+    answer = appendDecTerm(answer, sumK / 10, "");
+    if (!answer) answer = "0";
+    return { num, display, answer };
+  }
+
+  // Fraction flavour: one shared denominator, numerators small.
+  const den = [2, 3, 4][rnd(0, 2)];
+  let sumXNum = 0;
+  let sumKNum = 0;
+  let display = "";
+  for (const kind of kinds) {
+    let n = rnd(1, 2 * den + 1);
+    if (n % den === 0) n += 1; // keep every printed term a real fraction
+    const neg = randomBool();
+    const body = `${n}/${den}${kind === "x" ? "x" : ""}`;
+    display = appendStr(display, neg, body);
+    if (kind === "x") sumXNum += neg ? -n : n;
+    else sumKNum += neg ? -n : n;
+  }
+  // Assemble the simplified answer, one part at a time.
+  const partFor = (numer: number, v: string): { neg: boolean; body: string } | null => {
+    if (numer === 0) return null;
+    const [sn, sd] = simplify(Math.abs(numer), den);
+    const body = sd === 1 ? `${sn === 1 && v ? "" : sn}${v}` : `${sn}/${sd}${v}`;
+    return { neg: numer < 0, body: body || "1" };
+  };
+  let answer = "";
+  const xPart = partFor(sumXNum, "x");
+  if (xPart) answer = appendStr(answer, xPart.neg, xPart.body);
+  const kPart = partFor(sumKNum, "");
+  if (kPart) answer = appendStr(answer, kPart.neg, kPart.body);
+  if (!answer) answer = "0";
+  return { num, display, answer };
+}
+
 function makeCombineLikeTerms(opts: FluencyOptions, num: number): Problem {
+  // Hard: half the worksheet switches to rational (fraction or decimal)
+  // coefficients; the other half stays integer with more terms.
+  if (opts.difficulty === "hard" && randomBool()) {
+    return makeCombineLikeTermsRational(opts, num);
+  }
   const { termCount, coefCap, useTwoVars } = (() => {
     switch (opts.difficulty) {
       case "easy":   return { termCount: rnd(3, 4), coefCap: 5, useTwoVars: false };
@@ -3896,7 +5021,9 @@ function fmtDecAnswerCoef(coef: number, variable: string): string {
   const rounded = Math.round(coef * 10000) / 10000;
   if (rounded === 1 && variable) return variable;
   if (rounded === -1 && variable) return `−${variable}`;
-  const s = rounded.toString();
+  // Typographic minus for negatives so leading terms match the rest of
+  // the worksheet ("−0.5x", not "-0.5x").
+  const s = rounded < 0 ? `−${Math.abs(rounded)}` : rounded.toString();
   return `${s}${variable}`;
 }
 
@@ -3941,9 +5068,11 @@ function makeDistributeExpand(opts: FluencyOptions, num: number): Problem {
   // Pick the outside-coefficient kind. With the Fractions/Decimals
   // toggles on, the rotation mixes ⅓ of each enabled kind alongside
   // integers — so a worksheet of 20 with both toggles ends up roughly
-  // 7 integer / 7 fraction / 6 decimal.
-  const wantFrac = !!opts.distributeIncludeFractions;
-  const wantDec = !!opts.distributeIncludeDecimals;
+  // 7 integer / 7 fraction / 6 decimal. HARD always mixes rational
+  // outside coefficients in, toggles or not — that's what makes the
+  // hard tier hard.
+  const wantFrac = !!opts.distributeIncludeFractions || opts.difficulty === "hard";
+  const wantDec = !!opts.distributeIncludeDecimals || opts.difficulty === "hard";
   const kindRoll = Math.random();
   let outside: DistOutside;
   let effDen = 1; // multiplier that inside terms must be divisible by
@@ -4040,7 +5169,7 @@ function makeDistributeExpand(opts: FluencyOptions, num: number): Problem {
 
   // Two-term inside: bx + c (or c + bx ~40% of the time on medium+).
   let b = pickInsideCoef();
-  let c = pickInsideCoef();
+  const c = pickInsideCoef();
   // Ensure b is positive on easy so the inside reads as "x + c" or "bx + c"
   if (opts.difficulty === "easy") b = Math.abs(b);
   const constantFirst = opts.difficulty !== "easy" && Math.random() < 0.4;
@@ -4142,9 +5271,10 @@ function makeDistributeCombine(opts: FluencyOptions, num: number): Problem {
 
   // Decide whether THIS problem uses a rational/decimal outside on
   // one of its groups. With both toggles on, ~⅔ of problems get a
-  // rational group; with one toggle on, ~½ do.
-  const wantFrac = !!opts.distributeIncludeFractions;
-  const wantDec = !!opts.distributeIncludeDecimals;
+  // rational group; with one toggle on, ~½ do. HARD always mixes
+  // rational coefficients in, toggles or not.
+  const wantFrac = !!opts.distributeIncludeFractions || opts.difficulty === "hard";
+  const wantDec = !!opts.distributeIncludeDecimals || opts.difficulty === "hard";
   const useRationalThisProblem =
     (wantFrac || wantDec) && Math.random() < (wantFrac && wantDec ? 0.66 : 0.5);
   const useDecKind =
@@ -4282,6 +5412,162 @@ function makeIntegerMixed(opts: FluencyOptions, num: number): Problem {
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────
+// Fraction-with-decimal problems (rational topics, opt-in toggle)
+// ─────────────────────────────────────────────────────────────────────
+
+/** One operand is a fraction, the other a decimal; the operation matches
+ *  the topic. Fractions stick to terminating-friendly denominators so
+ *  the answer key can show BOTH forms ("5/4 = 1.25") whenever the result
+ *  terminates. Signs are baked in like the rest of the rational drill. */
+function makeFracDecProblem(opts: FluencyOptions, idx: number, baseT: FluencyTopic): Problem {
+  const op =
+    baseT === "add-fractions" ? "+"
+    : baseT === "subtract-fractions" ? "−"
+    : baseT === "multiply-fractions" ? "×"
+    : "÷";
+
+  // Multiplying/dividing compounds the denominators, so those ops stick
+  // to 1-place decimals and the friendliest fraction denominators —
+  // otherwise answers land on 800ths. Adding/subtracting can afford a
+  // wider range.
+  const isMulDiv = op === "×" || op === "÷";
+  const dens = opts.difficulty === "easy" || isMulDiv
+    ? [2, 4, 5, 10]
+    : [2, 4, 5, 8, 10, 20];
+  const fd = dens[rnd(0, dens.length - 1)];
+  let fn = rnd(1, fd - 1);
+  // Hard mixes improper / mixed-number fractions into the rotation.
+  if (opts.difficulty === "hard" && randomBool()) fn += fd * rnd(1, 2);
+  if (randomBool()) fn = -fn;
+
+  const places = opts.difficulty === "easy" || isMulDiv ? 1 : rnd(1, 2);
+  const dd = 10 ** places;
+  let dn = rnd(1, opts.difficulty === "easy" || isMulDiv ? 2 * dd - 1 : 4 * dd - 1);
+  if (dn % 10 === 0) dn += 1; // keep the printed decimal at full places
+  if (opts.difficulty !== "easy" && randomBool()) dn = -dn;
+
+  // Randomize operand order, then compute A (op) B in fraction space.
+  const fracFirst = randomBool();
+  const A = fracFirst ? { n: fn, d: fd } : { n: dn, d: dd };
+  const B = fracFirst ? { n: dn, d: dd } : { n: fn, d: fd };
+  let rn: number;
+  let rd: number;
+  if (op === "+") { rn = A.n * B.d + B.n * A.d; rd = A.d * B.d; }
+  else if (op === "−") { rn = A.n * B.d - B.n * A.d; rd = A.d * B.d; }
+  else if (op === "×") { rn = A.n * B.n; rd = A.d * B.d; }
+  else { rn = A.n * B.d; rd = A.d * B.n; }
+  [rn, rd] = simplify(rn, rd);
+
+  const fStr = fmtFraction(fn, fd, opts.formats.mixed);
+  const dAbs = (Math.abs(dn) / dd).toFixed(places);
+  const fDisp = fn < 0 ? wrapNegative(fStr) : fStr;
+  const dDisp = dn < 0 ? `(−${dAbs})` : dAbs;
+  const display = fracFirst
+    ? `${fDisp} ${op} ${dDisp}`
+    : `${dDisp} ${op} ${fDisp}`;
+
+  // Answer: simplified fraction, plus the decimal form when it
+  // terminates (denominator has only 2s and 5s).
+  let answer = fmtFraction(rn, rd, opts.formats.mixed);
+  let strip = rd;
+  while (strip % 2 === 0) strip /= 2;
+  while (strip % 5 === 0) strip /= 5;
+  if (strip === 1 && rd !== 1) {
+    answer = `${answer} = ${trimDecimal(rn / rd, 6)}`;
+  }
+  return { num: idx, display, answer };
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// Number lines for inequality worksheets
+// ─────────────────────────────────────────────────────────────────────
+
+/** Build the worksheet (blank) and answer-key (graphed) number-line
+ *  shapes for an inequality problem by parsing its answer string.
+ *  Handles the four answer shapes the generators emit:
+ *    "x < 5"                       simple ray
+ *    "−3 < x < 5"                  AND compound (also ≤)
+ *    "x < −3  or  x > 5"           OR compound
+ *    "no solution" / "all real numbers"
+ *  Returns undefined for anything else so the problem just renders
+ *  without a number line rather than with a wrong one. */
+function numberLinesFor(answer: string): { shape: ShapeSpec; answerShape: ShapeSpec } | undefined {
+  // Normalize the typographic minus to ASCII so one regex handles both.
+  const a = answer.replace(/−/g, "-").replace(/\s+/g, " ").trim();
+
+  type Ray = { boundary: number; open: boolean; dir: "left" | "right" };
+  let rays: Ray[] = [];
+  let between: { lo: number; hi: number; loOpen: boolean; hiOpen: boolean } | null = null;
+  let allReal = false;
+  let noSolution = false;
+
+  const rayFor = (op: string, v: number): Ray => ({
+    boundary: v,
+    open: op === "<" || op === ">",
+    dir: op === "<" || op === "≤" ? "left" : "right",
+  });
+
+  let m: RegExpExecArray | null;
+  const NUM = "(-?\\d+(?:\\.\\d+)?)"; // integer or decimal boundary
+  const orRe = new RegExp(`^x ?([<>≤≥]) ?${NUM} or x ?([<>≤≥]) ?${NUM}$`);
+  const andRe = new RegExp(`^${NUM} ?([<≤]) ?x ?([<≤]) ?${NUM}$`);
+  const simpleRe = new RegExp(`^x ?([<>≤≥]) ?${NUM}$`);
+  if (a === "no solution") {
+    noSolution = true;
+  } else if (a === "all real numbers") {
+    allReal = true;
+  } else if ((m = orRe.exec(a))) {
+    rays = [rayFor(m[1], parseFloat(m[2])), rayFor(m[3], parseFloat(m[4]))];
+  } else if ((m = andRe.exec(a))) {
+    between = {
+      lo: parseFloat(m[1]),
+      hi: parseFloat(m[4]),
+      loOpen: m[2] === "<",
+      hiOpen: m[3] === "<",
+    };
+  } else if ((m = simpleRe.exec(a))) {
+    rays = [rayFor(m[1], parseFloat(m[2]))];
+  } else {
+    return undefined;
+  }
+
+  // Window: pad 3 ticks past every boundary; center a small default
+  // window on 0 for the no-boundary answers.
+  const bounds = between
+    ? [between.lo, between.hi]
+    : rays.map((r) => r.boundary);
+  const lo = bounds.length ? Math.floor(Math.min(...bounds)) : -5;
+  const hi = bounds.length ? Math.ceil(Math.max(...bounds)) : 5;
+  let min = lo - 3;
+  let max = hi + 3;
+  // Keep at least 8 ticks of room so short windows don't look cramped.
+  while (max - min < 8) { min -= 1; max += 1; }
+  const step = max - min > 14 ? 2 : 1;
+
+  const blank: ShapeSpec = { kind: "numberline", labels: {}, numberline: { min, max, step } };
+  const graphed: ShapeSpec = { kind: "numberline", labels: {}, numberline: { min, max, step, points: [], segments: [] } };
+  const nl = graphed.numberline!;
+
+  if (allReal) {
+    nl.segments!.push({ from: "-inf", to: "+inf" });
+  } else if (between) {
+    nl.points!.push({ x: between.lo, open: between.loOpen }, { x: between.hi, open: between.hiOpen });
+    nl.segments!.push({ from: between.lo, to: between.hi });
+  } else if (!noSolution) {
+    for (const r of rays) {
+      nl.points!.push({ x: r.boundary, open: r.open });
+      nl.segments!.push(
+        r.dir === "left" ? { from: "-inf", to: r.boundary } : { from: r.boundary, to: "+inf" }
+      );
+    }
+  }
+  // noSolution: the graphed line stays empty — the key's answer text
+  // ("no solution") is the point.
+
+  return { shape: blank, answerShape: graphed };
+}
+
 export function generateProblems(opts: FluencyOptions): Problem[] {
   const out: Problem[] = [];
   for (let i = 0; i < opts.count; i++) {
@@ -4391,6 +5677,11 @@ export function generateProblems(opts: FluencyOptions): Problem[] {
         case "ineq-abs-isolate":      p = makeIneqAbsIsolate(opts, i + 1); break;
         default: p = { num: i + 1, display: "?", answer: "?" };
       }
+      // Every inequality worksheet asks students to graph the solution,
+      // so give each problem a blank number line to graph on and put
+      // the graphed solution on the answer key.
+      const nl = numberLinesFor(p.answer);
+      if (nl) p = { ...p, shape: nl.shape, answerShape: nl.answerShape };
     } else if (EQUATION_TOPICS.has(t)) {
       switch (t) {
         case "eq-one-add":       p = makeOneStepAdd(opts, i + 1); break;
@@ -4494,7 +5785,11 @@ export function generateProblems(opts: FluencyOptions): Problem[] {
         topic: baseT,
         allowNegatives: true,
       };
-      if (baseT === "multiply-fractions" || baseT === "divide-fractions") {
+      if (opts.rationalIncludeFracDec && i % 3 === 1) {
+        // Toggle on → every third problem pairs a fraction with a
+        // decimal using this topic's operation.
+        p = makeFracDecProblem(shimmed, i + 1, baseT);
+      } else if (baseT === "multiply-fractions" || baseT === "divide-fractions") {
         p = generateFractionMulDivProblem(shimmed, i + 1);
       } else {
         p = generateFractionAddSubProblem(shimmed, i + 1);
@@ -4597,15 +5892,17 @@ export const TOPIC_LABELS: Record<FluencyTopic, string> = {
   "eq-rat-linear": "Rational: (ax + b)/c = d",
   "eq-rat-lcd": "Rational: Multiply by LCD",
   "eq-exp-bases": "Exponential: Matching Bases",
-  "ineq-one-add": "One-Step: x + a (op) b",
-  "ineq-one-sub": "One-Step: x − a (op) b",
-  "ineq-one-mul": "One-Step: ax (op) b",
-  "ineq-one-div": "One-Step: x/a (op) b",
+  // A representative "<" stands in for the mix of inequality symbols —
+  // the old "(op)" placeholder printed literally on worksheet titles.
+  "ineq-one-add": "One-Step: x + a < b",
+  "ineq-one-sub": "One-Step: x − a < b",
+  "ineq-one-mul": "One-Step: ax < b",
+  "ineq-one-div": "One-Step: x/a < b",
   "ineq-one-mixed": "One-Step: Mixed",
-  "ineq-two-pos": "Two-Step: ax + b (op) c",
+  "ineq-two-pos": "Two-Step: ax + b < c",
   "ineq-two-neg": "Two-Step with Negatives (Flip)",
   "ineq-two-rational": "Two-Step with Rationals",
-  "ineq-two-dist": "Two-Step: p(x + q) (op) r",
+  "ineq-two-dist": "Two-Step: p(x + q) < r",
   "ineq-multi-combine": "Multi-Step: Combine Like Terms",
   "ineq-multi-dist": "Multi-Step: Distributive",
   "ineq-multi-both": "Variables on Both Sides",
@@ -4690,6 +5987,676 @@ export const TOPIC_LABELS: Record<FluencyTopic, string> = {
   "gr-rate-compare": "Compare Two Rates",
   "gr-linear-compare": "Compare Two Linear Models",
 };
+
+// ─────────────────────────────────────────────────────────────────────
+// Per-topic difficulty descriptions
+// ─────────────────────────────────────────────────────────────────────
+//
+// [easy, medium, hard] — shown under the difficulty slider so teachers
+// can see EXACTLY what each level changes for the selected topic. The
+// Record covers every topic (compiler-enforced), so no topic can fall
+// back to a wrong generic description again.
+
+type DifficultyHints = [string, string, string];
+
+// Shared descriptions for families whose levels behave identically.
+const H_INT_OPS: DifficultyHints = [
+  "Single-digit values (−9 to 9).",
+  "Values to ±20.",
+  "Values to ±50; tougher division.",
+];
+const H_FRAC_ADDSUB: DifficultyHints = [
+  "Same denominators (no LCD needed).",
+  "One denominator divides the other.",
+  "Unrelated denominators — find the LCD.",
+];
+const H_FRAC_MULDIV: DifficultyHints = [
+  "Denominators up to 6.",
+  "Denominators up to 10.",
+  "Denominators up to your max setting.",
+];
+const H_DEC_ADDSUB: DifficultyHints = [
+  "1 decimal place, values under 10.",
+  "2 decimal places, values under 100.",
+  "Mixed 1–3 decimal places.",
+];
+const H_CONV_TERM: DifficultyHints = [
+  "Halves, fourths, fifths, tenths.",
+  "Adds eighths, twentieths, twenty-fifths.",
+  "Adds sixteenths, fiftieths, hundredths.",
+];
+const H_CONV_REP: DifficultyHints = [
+  "Denominators 3 and 9.",
+  "Adds 6 and 11.",
+  "Adds 7, 12, 13 (longer repeating blocks).",
+];
+const H_EQ_ONE: DifficultyHints = [
+  "All positive; numbers to 12.",
+  "Negatives mixed in; larger numbers.",
+  "Adds decimal and fraction values.",
+];
+const H_MIXED_FORMS: DifficultyHints = [
+  "Whole parts to 5, denominators to 12.",
+  "Whole parts to 9.",
+  "Whole parts to 15.",
+];
+const H_EQ_MULTI: DifficultyHints = [
+  "Small positive numbers.",
+  "Negatives mixed in; larger numbers.",
+  "Largest signed numbers.",
+];
+
+export const DIFFICULTY_HINTS: Record<FluencyTopic, DifficultyHints> = {
+  // ----- Integers -----
+  "add-integers": H_INT_OPS,
+  "subtract-integers": H_INT_OPS,
+  "multiply-integers": H_INT_OPS,
+  "divide-integers": H_INT_OPS,
+  "integer-mixed": H_INT_OPS,
+  // ----- Rationals (signed fractions) -----
+  "add-rationals": H_FRAC_ADDSUB,
+  "subtract-rationals": H_FRAC_ADDSUB,
+  "multiply-rationals": H_FRAC_MULDIV,
+  "divide-rationals": H_FRAC_MULDIV,
+  "rational-mixed": [
+    "Same denominators; small values.",
+    "Related denominators.",
+    "Unrelated denominators (full LCD).",
+  ],
+  // ----- Number theory -----
+  "prime-factorization": [
+    "2–3 prime factors from 2, 3, 5, 7 (numbers to ~200).",
+    "3–4 factors; adds 11 (numbers to ~600).",
+    "4–5 factors; adds 13 (numbers to ~2500).",
+  ],
+  "perfect-square-roots": [
+    "Squares of 2–9 (4 to 81).",
+    "Squares of 2–14 (up to 196).",
+    "Squares of 2–25 (up to 625).",
+  ],
+  // ----- Percent -----
+  "percent-of-change": [
+    "Starting values 20–100; friendly percents.",
+    "Starting values 50–200.",
+    "Starting values 100–400; includes 12.5%.",
+  ],
+  "percent-application": [
+    "Prices to $100; 10/20/25/50%.",
+    "Prices to $150; more percents.",
+    "Prices to $500; includes 4%, 8%, 12%.",
+  ],
+  "simple-interest": [
+    "Principal to $2,000; short terms.",
+    "Principal to $5,000; terms to 5 years.",
+    "Principal to $20,000; terms to 10 years.",
+  ],
+  // ----- Algebraic expressions -----
+  "combine-like-terms": [
+    "3–4 terms, one variable, coefficients to ±5.",
+    "4–5 terms, coefficients to ±10.",
+    "5–7 terms with two variables — plus fraction/decimal coefficients.",
+  ],
+  "distribute-expand": [
+    "Positive multiplier 2–6, one variable.",
+    "Negative multipliers appear; bigger numbers.",
+    "Fraction/decimal multipliers and 3-term insides.",
+  ],
+  "distribute-combine": [
+    "One group plus a loose term.",
+    "Two groups; negatives mixed in.",
+    "Fraction/decimal multipliers and −(…) groups.",
+  ],
+  // ----- Fractions / decimals -----
+  "add-fractions": H_FRAC_ADDSUB,
+  "subtract-fractions": H_FRAC_ADDSUB,
+  "multiply-fractions": H_FRAC_MULDIV,
+  "divide-fractions": H_FRAC_MULDIV,
+  "add-decimals": H_DEC_ADDSUB,
+  "subtract-decimals": H_DEC_ADDSUB,
+  "multiply-decimals": [
+    "1-place factors, values under 10.",
+    "2-place factors, values under 100.",
+    "Mixed 1–3 place factors.",
+  ],
+  "divide-decimals": [
+    "Whole divisors; 1-place quotients.",
+    "Divisors to 2 places.",
+    "Mixed 1–3 place quotients and divisors.",
+  ],
+  // ----- Converting -----
+  "frac-to-dec-term": H_CONV_TERM,
+  "frac-to-dec-rep": H_CONV_REP,
+  "dec-to-frac-term": H_CONV_TERM,
+  "dec-to-frac-rep": H_CONV_REP,
+  "frac-to-percent": H_CONV_TERM,
+  "percent-to-frac": H_CONV_TERM,
+  "dec-to-percent": H_CONV_TERM,
+  "percent-to-dec": H_CONV_TERM,
+  "mixed-to-improper": H_MIXED_FORMS,
+  "improper-to-mixed": H_MIXED_FORMS,
+  "compare-rationals": [
+    "Values from friendly denominators.",
+    "More denominators in the mix.",
+    "Hardest values (16ths, 50ths, 100ths).",
+  ],
+  "order-rationals": [
+    "Order 3 friendly values.",
+    "Order 4 values.",
+    "Order 4 values from the hardest set.",
+  ],
+  "equivalent-forms": H_CONV_TERM,
+  // ----- Equations -----
+  "eq-one-add": H_EQ_ONE,
+  "eq-one-sub": H_EQ_ONE,
+  "eq-one-mul": [
+    "Positive whole coefficients.",
+    "Negatives mixed in.",
+    "Adds decimal and fraction coefficients.",
+  ],
+  "eq-one-div": [
+    "Positive whole numbers.",
+    "Negatives mixed in.",
+    "Adds fraction answers (x/a = n/d).",
+  ],
+  "eq-one-mixed": H_EQ_ONE,
+  "eq-two-pos": [
+    "Small positive numbers.",
+    "Larger positive numbers.",
+    "Adds decimal coefficients (still all positive).",
+  ],
+  "eq-two-neg": [
+    "Signed numbers, small.",
+    "Signed numbers, larger.",
+    "Adds decimal coefficients.",
+  ],
+  "eq-two-rational": [
+    "Unit fractions (1/2x + 3 = 7), all positive.",
+    "Any fraction coefficient; signs mixed.",
+    "Fractions AND decimals; signs mixed.",
+  ],
+  "eq-two-dist": [
+    "Positive p(x + q) = r.",
+    "Negatives mixed in.",
+    "Adds fraction multipliers like 1/2(x + 4).",
+  ],
+  "eq-multi-combine": [
+    "Small positives; two like terms.",
+    "Negatives mixed in.",
+    "Adds decimal like terms (0.7x + 2.3x).",
+  ],
+  "eq-multi-dist": [
+    "Small positive numbers.",
+    "Negatives mixed in.",
+    "Adds fraction distribution (1/3(x + 6)).",
+  ],
+  "eq-multi-both": [
+    "Small positive numbers.",
+    "Negatives mixed in.",
+    "Adds decimal coefficients on both sides.",
+  ],
+  "eq-multi-full": H_EQ_MULTI,
+  "eq-multi-special": [
+    "Combine like terms first.",
+    "Distribute one side first.",
+    "Distribute BOTH sides first.",
+  ],
+  "eq-literal": [
+    "One-step formulas (A = lw).",
+    "Two-step formulas (y = mx + b).",
+    "Multi-step formulas (F = 9/5C + 32).",
+  ],
+  "eq-prop": [
+    "x in a numerator; whole answers.",
+    "x anywhere; whole answers.",
+    "Answers can be fractions.",
+  ],
+  "eq-prop-word": [
+    "Small whole numbers.",
+    "Bigger scale factors.",
+    "Decimal money and measurements.",
+  ],
+  "eq-abs-simple": [
+    "Small positive values.",
+    "Negatives inside; values to 15.",
+    "Values to 24.",
+  ],
+  "eq-abs-coef": [
+    "Small values.",
+    "Values to 15; fraction answers appear.",
+    "Values to 24; fraction answers common.",
+  ],
+  "eq-abs-isolate": [
+    "Small values after isolating.",
+    "Larger values.",
+    "Largest values.",
+  ],
+  "eq-sys-sub": [
+    "Small numbers; y already isolated.",
+    "Larger signed numbers.",
+    "Largest signed numbers.",
+  ],
+  "eq-sys-elim": [
+    "y-terms already cancel — just add.",
+    "Multiply ONE equation first.",
+    "Usually multiply BOTH equations.",
+  ],
+  "eq-sys-special": [
+    "Second equation is a ×2 disguise.",
+    "×2–3 disguises with signed numbers.",
+    "Negative multipliers in the disguise.",
+  ],
+  "eq-sys-word": [
+    "Small counts and prices.",
+    "Larger counts.",
+    "Largest numbers.",
+  ],
+  "eq-quad-sqrt": [
+    "Perfect squares to 81.",
+    "Perfect squares to 169.",
+    "Adds non-perfect squares (x = ±3√2).",
+  ],
+  "eq-quad-trans": [
+    "Small shifts; squares to 64.",
+    "Larger shifts and squares.",
+    "Largest values.",
+  ],
+  "eq-quad-fac-a1": [
+    "Positive roots to 9.",
+    "Signed roots to 12.",
+    "Signed roots to 18.",
+  ],
+  "eq-quad-fac-an": [
+    "a = 2–3; small positive roots.",
+    "a = 2–3; signed roots.",
+    "a = 2–3; larger signed roots.",
+  ],
+  "eq-quad-diff": [
+    "Small perfect squares.",
+    "Mid-size squares.",
+    "Largest squares; fraction answers.",
+  ],
+  "eq-quad-formula": [
+    "a to 2; small b and c.",
+    "a to 3; larger b and c.",
+    "Largest coefficients.",
+  ],
+  "eq-quad-complete": [
+    "Small even b; squares to 36.",
+    "Squares to 64.",
+    "Squares to 121.",
+  ],
+  "eq-rad-single": [
+    "Small radicands and results.",
+    "Larger values; negatives mixed in.",
+    "Largest values.",
+  ],
+  "eq-rad-double": H_EQ_MULTI,
+  "eq-rad-linear": [
+    "Small solutions — check for extraneous roots.",
+    "Larger solutions.",
+    "Largest solutions.",
+  ],
+  "eq-rat-simple": [
+    "Small positive values.",
+    "Negatives mixed in.",
+    "Largest values.",
+  ],
+  "eq-rat-linear": H_EQ_MULTI,
+  "eq-rat-lcd": [
+    "Denominators to 6.",
+    "Denominators to 10.",
+    "Denominators to 12.",
+  ],
+  "eq-exp-bases": [
+    "Exponents to 5.",
+    "Exponents to 7.",
+    "Exponents to 9.",
+  ],
+  // ----- Inequalities -----
+  "ineq-one-add": [
+    "All positive; small numbers.",
+    "Negatives mixed in.",
+    "Adds decimal values.",
+  ],
+  "ineq-one-sub": [
+    "All positive; small numbers.",
+    "Negatives mixed in.",
+    "Adds decimal values.",
+  ],
+  "ineq-one-mul": [
+    "Positive coefficients — no flip yet.",
+    "Negative coefficients — flips appear.",
+    "Decimal/fraction coefficients with flips.",
+  ],
+  "ineq-one-div": [
+    "Positive divisors — no flip yet.",
+    "Negative divisors — flips appear.",
+    "Adds fraction boundaries.",
+  ],
+  "ineq-one-mixed": [
+    "All positive; no flips.",
+    "Negatives and flips appear.",
+    "Decimals, fractions, and flips.",
+  ],
+  "ineq-two-pos": [
+    "Small positives (no flip).",
+    "Larger positives.",
+    "Adds decimal coefficients.",
+  ],
+  "ineq-two-neg": [
+    "Flip required; small numbers.",
+    "Flip; larger numbers.",
+    "Flip; decimal coefficients.",
+  ],
+  "ineq-two-rational": [
+    "Unit fractions, all positive.",
+    "Any fraction coefficient; flips appear.",
+    "Fractions AND decimals; flips.",
+  ],
+  "ineq-two-dist": [
+    "Positive multipliers.",
+    "Negative multipliers — flips.",
+    "Fraction multipliers like 1/2(x + 4).",
+  ],
+  "ineq-multi-combine": H_EQ_MULTI,
+  "ineq-multi-dist": H_EQ_MULTI,
+  "ineq-multi-both": H_EQ_MULTI,
+  "ineq-multi-full": H_EQ_MULTI,
+  "ineq-multi-special": [
+    "Combine like terms first.",
+    "Distribute first.",
+    "Distribute with negative multipliers.",
+  ],
+  "ineq-compound-and": [
+    "Narrow windows, small numbers.",
+    "Wider windows; negatives mixed in.",
+    "Widest windows.",
+  ],
+  "ineq-compound-or": [
+    "Close boundaries, small numbers.",
+    "Wider gaps; negatives mixed in.",
+    "Widest gaps.",
+  ],
+  "ineq-compound-translate": [
+    "Positive boundaries.",
+    "Negatives mixed in.",
+    "Negatives mixed in.",
+  ],
+  "ineq-abs-less": [
+    "Small boundaries.",
+    "Boundaries to 14; negatives inside.",
+    "Boundaries to 20.",
+  ],
+  "ineq-abs-greater": [
+    "Small boundaries.",
+    "Boundaries to 14; negatives inside.",
+    "Boundaries to 20.",
+  ],
+  "ineq-abs-isolate": [
+    "Small values after isolating.",
+    "Larger values.",
+    "Largest values.",
+  ],
+  // ----- Geometry: 2-D -----
+  "geo-rect-area": ["Sides to 12.", "Sides to 20.", "Sides to 30."],
+  "geo-rect-perim": ["Sides to 12.", "Sides to 20.", "Sides to 30."],
+  "geo-square": ["Sides to 12.", "Sides to 20.", "Sides to 30."],
+  "geo-tri-area": ["Dimensions to 12.", "Dimensions to 20.", "Dimensions to 28."],
+  "geo-parallelogram-area": ["Dimensions to 12.", "Dimensions to 20.", "Dimensions to 28."],
+  "geo-trap-area": ["Dimensions to 12.", "Dimensions to 18.", "Dimensions to 26."],
+  "geo-circle-area": [
+    "Radius to 8.",
+    "Radius to 12.",
+    "Radius to 15 — sometimes only the diameter is given.",
+  ],
+  "geo-circle-circumference": [
+    "Radius/diameter to 8.",
+    "To 11.",
+    "To 14.",
+  ],
+  "geo-rect-find-area": ["Sides to 12.", "Sides to 18.", "Sides to 26."],
+  "geo-rect-find-perim": ["Sides to 12.", "Sides to 18.", "Sides to 26."],
+  "geo-square-find": ["Sides to 10.", "Sides to 14.", "Sides to 18."],
+  "geo-tri-find-base": ["Dimensions to 12.", "To 18.", "To 24."],
+  "geo-tri-find-height": ["Dimensions to 12.", "To 18.", "To 24."],
+  "geo-circle-find-r-area": ["Radius to 8.", "To 10.", "To 13."],
+  "geo-circle-find-r-circ": ["Radius to 8.", "To 10.", "To 13."],
+  // ----- Geometry: 3-D -----
+  "geo-rect-prism-v": ["Dimensions to 10.", "To 14.", "To 18."],
+  "geo-rect-prism-sa": ["Dimensions to 10.", "To 14.", "To 18."],
+  "geo-cube": ["Sides to 10.", "To 12.", "To 16."],
+  "geo-tri-prism-v": ["Dimensions to 10.", "To 14.", "To 18."],
+  "geo-tri-prism-sa": [
+    "3-4-5-style bases; lengths to 10.",
+    "Lengths to 14.",
+    "Lengths to 18.",
+  ],
+  "geo-cylinder-v": ["r and h to 8.", "To 10.", "To 13."],
+  "geo-cylinder-sa": ["r and h to 8.", "To 10.", "To 13."],
+  "geo-cone-v": ["r and h to 6.", "To 8.", "To 11."],
+  "geo-sphere-v": ["Radius 3 or 6.", "Adds 9.", "Adds 12."],
+  "geo-pyramid-v": ["Dimensions to 8.", "To 10.", "To 13."],
+  "geo-rect-prism-find-h": ["Dimensions to 10.", "To 14.", "To 18."],
+  "geo-cube-find-s": ["Sides to 8.", "To 10.", "To 13."],
+  "geo-cylinder-find-h": ["Values to 7.", "To 9.", "To 11."],
+  "geo-cylinder-find-r": ["Values to 6.", "To 7.", "To 9."],
+  "geo-cone-find-h": ["Values to 5.", "To 6.", "To 8."],
+  "geo-sphere-find-r": ["Radius 3 or 6.", "Adds 9.", "Adds 12."],
+  // ----- Geometry: Pythagorean + coordinate -----
+  "geo-pyth-hyp": [
+    "3-4-5 family triples.",
+    "Adds the 5-12-13 family.",
+    "All triples (8-15-17, 7-24-25, 20-21-29).",
+  ],
+  "geo-pyth-leg": [
+    "3-4-5 family triples.",
+    "Adds the 5-12-13 family.",
+    "All triples.",
+  ],
+  "geo-pyth-check": [
+    "3-4-5 family triples.",
+    "Adds the 5-12-13 family.",
+    "All triples.",
+  ],
+  "geo-pyth-word": [
+    "3-4-5 family; hypotenuse AND missing-leg problems.",
+    "Adds 5-12-13; both problem types.",
+    "All triples; both problem types.",
+  ],
+  "geo-coord-distance": [
+    "Small triples near the origin.",
+    "Adds 5-12-13 distances.",
+    "All triples; points spread farther out.",
+  ],
+  "geo-coord-midpoint": [
+    "Coordinates to ±6.",
+    "To ±10.",
+    "To ±14.",
+  ],
+  "geo-coord-slope": [
+    "Whole-number slopes.",
+    "Simple fraction slopes.",
+    "Any fraction slope.",
+  ],
+  // ----- Graphing & Rates -----
+  "gr-unit-rate": [
+    "Whole rates to 12.",
+    "Whole rates to 20.",
+    "Adds decimal money rates ($2.75/lb).",
+  ],
+  "gr-rate-table": [
+    "Rates to 6.",
+    "Rates to 8.",
+    "Rates to 11.",
+  ],
+  "gr-rate-convert": [
+    "One friendly factor (per-minute → per-hour).",
+    "Metric conversions (m/s → km/h).",
+    "Cross-system (mph ↔ ft/sec).",
+  ],
+  "gr-prop-k-table": [
+    "x = 1 row shows k directly.",
+    "No x = 1 row — divide y by x.",
+    "Adds fractional k (k = 3/2).",
+  ],
+  "gr-prop-k-graph": [
+    "Whole k; labeled point to divide.",
+    "Whole k; labeled point to divide.",
+    "Adds fractional k from points like (6, 9).",
+  ],
+  "gr-prop-equation": [
+    "x = 1 row shows k directly.",
+    "No x = 1 row — divide y by x.",
+    "Adds fractional k (y = 3/2x).",
+  ],
+  "gr-prop-table-yn": [
+    "Obvious breaks in the ratio.",
+    "Bigger x-values to check.",
+    "Near-misses — only ONE row breaks the ratio.",
+  ],
+  "gr-prop-graph-yn": [
+    "Straight lines only.",
+    "Adds curves through the origin.",
+    "Adds curves through the origin.",
+  ],
+  "gr-slope-points": [
+    "Whole-number slopes.",
+    "Simple fraction slopes.",
+    "Any fraction slope.",
+  ],
+  "gr-slope-graph": [
+    "Whole-number slopes.",
+    "Runs of 1–2.",
+    "Fraction slopes (rise over 2–3).",
+  ],
+  "gr-slope-table": [
+    "x steps by 1; slopes to ±4.",
+    "x steps by 1; slopes to ±7.",
+    "x steps by 2–3 — compute Δy/Δx.",
+  ],
+  "gr-slope-verbal": [
+    "Small rises and runs.",
+    "Larger values.",
+    "Largest values.",
+  ],
+  "gr-slope-classify": [
+    "Classify drawn lines (all four types).",
+    "Classify drawn lines (all four types).",
+    "Classify drawn lines (all four types).",
+  ],
+  "gr-si-identify": [
+    "Whole m and b, positive.",
+    "Negatives mixed in.",
+    "Adds fractional slopes.",
+  ],
+  "gr-si-mb": [
+    "Positive whole slopes.",
+    "Signed whole slopes.",
+    "Mostly fractional slopes.",
+  ],
+  "gr-si-mp": [
+    "Whole slopes, small points.",
+    "Negatives mixed in.",
+    "Adds fractional slopes.",
+  ],
+  "gr-si-pp": [
+    "Whole slopes (points 1 apart).",
+    "Negatives mixed in.",
+    "Adds fractional slopes (points farther apart).",
+  ],
+  "gr-si-graph": [
+    "Whole slopes to ±3.",
+    "Whole slopes to ±4.",
+    "Adds slope ±1/2 lines.",
+  ],
+  "gr-std-to-si": [
+    "Small positive coefficients.",
+    "Negatives mixed in.",
+    "Largest coefficients; fraction slopes.",
+  ],
+  "gr-si-to-std": [
+    "Small positive m and b.",
+    "Negatives mixed in.",
+    "Largest values.",
+  ],
+  "gr-ps-write": [
+    "Small positive slopes and points.",
+    "Negatives mixed in.",
+    "Largest values.",
+  ],
+  "gr-ps-to-si": [
+    "Small positive values.",
+    "Negatives mixed in.",
+    "Largest values.",
+  ],
+  "gr-graph-si": [
+    "Whole slopes to ±3.",
+    "Whole slopes to ±4.",
+    "Adds slope ±1/2 lines.",
+  ],
+  "gr-graph-table": [
+    "Whole slopes and intercepts.",
+    "Whole slopes and intercepts.",
+    "Whole slopes and intercepts.",
+  ],
+  "gr-graph-std": [
+    "Positive intercepts.",
+    "Signed intercepts.",
+    "Larger coefficients and intercepts.",
+  ],
+  "gr-graph-points": [
+    "Points within ±4.",
+    "Points within ±6.",
+    "Points within ±8.",
+  ],
+  "gr-fn-vlt-graph": [
+    "Lines, parabolas, circles.",
+    "Adds absolute value and ellipses.",
+    "Adds exponentials, cubics, and square roots.",
+  ],
+  "gr-fn-table": [
+    "Small whole values.",
+    "Small whole values.",
+    "Small whole values.",
+  ],
+  "gr-fn-eval": [
+    "Positive m, b, and inputs.",
+    "Negatives mixed in.",
+    "Largest values.",
+  ],
+  "gr-fn-reverse": [
+    "Positive values.",
+    "Negatives mixed in.",
+    "Largest values.",
+  ],
+  "gr-fn-domain-range": [
+    "Whole-number endpoints.",
+    "Whole-number endpoints.",
+    "Whole-number endpoints.",
+  ],
+  "gr-nonlinear-classify": [
+    "Linear vs. quadratic tables.",
+    "Adds exponential and cubic tables.",
+    "Adds exponential and cubic tables.",
+  ],
+  "gr-rate-compare": [
+    "Rates clearly apart.",
+    "Rates close together.",
+    "Half-dollar rates 50¢ apart.",
+  ],
+  "gr-linear-compare": [
+    "Small positive slopes/intercepts.",
+    "Negatives mixed in.",
+    "Largest values.",
+  ],
+};
+
+/** The slider hint for a topic at a difficulty — always accurate to the
+ *  generator because DIFFICULTY_HINTS covers every topic explicitly. */
+export function difficultyHint(topic: FluencyTopic, d: Difficulty): string {
+  const h = DIFFICULTY_HINTS[topic];
+  return d === "easy" ? h[0] : d === "medium" ? h[1] : h[2];
+}
 
 /** A sub-group of topics shown under its own small heading inside a
  *  category. Used to break long lists (Equations, Converting) into clear

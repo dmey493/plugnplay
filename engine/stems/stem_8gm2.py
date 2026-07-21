@@ -541,7 +541,10 @@ class Stem8GM2:
                 f"Part B: V_cube = {s}³ = {v_cube}\n"
                 f"Number = {v_cube} / {_fmt_rounded(v_pyramid)} = {int(n_pyramids)}"
             )
-            render = {"svg_html": svg, "type": "svg_html"}
+            # Wide side-by-side figure: render larger in the PDF so the
+            # dimension labels stay above the minimum font floor.
+            render = {"svg_html": svg, "type": "svg_html",
+                      "fig_max_w": 120, "fig_max_h": 80}
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE, ItemType.MP,
                                Difficulty.DIFFICULT, 4, variant_idx)

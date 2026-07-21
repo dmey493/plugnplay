@@ -116,11 +116,27 @@ class Stem8DSP5:
                 f"possible combinations?")
 
         correct = f"{expression} = {total}"
-        wrong = [
-            f"{' + '.join(str(s) for s in sizes)} = {sum(sizes)}",
+        # Deduped distractors: "s0 x s0" equals the correct expression when
+        # both stages have the same size (e.g. 2 x 2), and the additive
+        # distractor is skipped when the sum coincidentally equals the total
+        # (2 + 2 = 4 would be a defensible answer).
+        seen = {correct}
+        wrong = []
+        candidates = []
+        if sum(sizes) != total:
+            candidates.append(f"{' + '.join(str(s) for s in sizes)} = {sum(sizes)}")
+        candidates += [
             f"{expression} = {total + sizes[0]}",
-            f"{sizes[0]} x {sizes[0]} = {sizes[0]**2}",
+            f"{sizes[0]} x {sizes[0]} = {sizes[0] ** 2}",
+            f"{expression} = {total - 1}",
+            f"{expression} = {total + 1}",
         ]
+        for w in candidates:
+            if len(wrong) >= 3:
+                break
+            if w not in seen:
+                seen.add(w)
+                wrong.append(w)
 
         all_choices = [(correct, True)] + [(w, False) for w in wrong]
         rng.shuffle(all_choices)

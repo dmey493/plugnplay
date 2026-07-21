@@ -114,40 +114,50 @@ TRANSFORMATIONS = {
 }
 
 
-def _gen_triangle(rng, quadrant=1, max_coord=5):
-    """Generate a triangle in a given quadrant with integer coords."""
-    if quadrant == 1:
-        x_base = rng.randint(1, 3)
-        y_base = rng.randint(1, 3)
-    elif quadrant == 2:
+def _gen_triangle(rng, quadrant=1, max_coord=7):
+    """Generate a triangle in a given quadrant with integer coords.
+
+    All coordinates stay within [1, max_coord] (quadrant 1) so callers can
+    bound the image of a dilation. The triangle is guaranteed NOT to be
+    symmetric about a vertical axis, so a y-axis reflection can never be
+    mistaken for a translation of the unlabeled figure.
+    """
+    if quadrant == 2:
         x_base = rng.randint(-5, -2)
-        y_base = rng.randint(1, 3)
     else:
-        x_base = rng.randint(1, 3)
-        y_base = rng.randint(1, 3)
+        x_base = rng.randint(1, max(1, min(3, max_coord - 2)))
+    y_base = rng.randint(1, max(1, min(3, max_coord - 2)))
 
     # Simple right triangle or scalene
+    w = rng.randint(2, max(2, min(4, max_coord - x_base)))
+    x3_off = rng.randint(0, min(2, max(0, max_coord - x_base)))
+    h = rng.randint(2, max(2, min(4, max_coord - y_base)))
+
+    # Avoid a triangle symmetric about a vertical axis (its y-axis
+    # reflection would coincide with a translation of the unlabeled shape).
+    if 2 * x3_off == w:
+        if x_base + x3_off + 1 <= max_coord:
+            x3_off += 1
+        else:
+            x3_off -= 1
+
     v1 = (x_base, y_base)
-    v2 = (x_base + rng.randint(2, 4), y_base)
-    v3 = (x_base + rng.randint(0, 2), y_base + rng.randint(2, 4))
+    v2 = (x_base + w, y_base)
+    v3 = (x_base + x3_off, y_base + h)
 
     return [v1, v2, v3]
 
 
-def _gen_quadrilateral(rng, quadrant=1):
-    """Generate a rectangle or parallelogram with integer coords."""
-    if quadrant == 1:
-        x_base = rng.randint(1, 3)
-        y_base = rng.randint(1, 3)
-    elif quadrant == 2:
+def _gen_quadrilateral(rng, quadrant=1, max_coord=7):
+    """Generate a rectangle with integer coords bounded by max_coord."""
+    if quadrant == 2:
         x_base = rng.randint(-5, -2)
-        y_base = rng.randint(1, 3)
     else:
-        x_base = rng.randint(1, 3)
-        y_base = rng.randint(1, 3)
+        x_base = rng.randint(1, max(1, min(3, max_coord - 2)))
+    y_base = rng.randint(1, max(1, min(3, max_coord - 2)))
 
-    w = rng.randint(2, 4)
-    h = rng.randint(2, 4)
+    w = rng.randint(2, max(2, min(4, max_coord - x_base)))
+    h = rng.randint(2, max(2, min(4, max_coord - y_base)))
     # Rectangle ABCD going clockwise
     v1 = (x_base, y_base)
     v2 = (x_base + w, y_base)
@@ -156,14 +166,14 @@ def _gen_quadrilateral(rng, quadrant=1):
     return [v1, v2, v3, v4]
 
 
-def _gen_figure(rng, quadrant=1):
+def _gen_figure(rng, quadrant=1, max_coord=7, triangle_only=False):
     """Generate either a triangle or quadrilateral randomly."""
-    if rng.random() < 0.5:
-        verts = _gen_triangle(rng, quadrant)
+    if triangle_only or rng.random() < 0.5:
+        verts = _gen_triangle(rng, quadrant, max_coord)
         n = 3
         name = "triangle"
     else:
-        verts = _gen_quadrilateral(rng, quadrant)
+        verts = _gen_quadrilateral(rng, quadrant, max_coord)
         n = 4
         name = "quadrilateral"
     labels = VERTEX_LABELS[:n]
@@ -208,31 +218,24 @@ def _apply_transform(vertices, transform_key, rng):
 
 
 def _grid_range(all_vertices):
-    """Compute grid range that fits all vertices with padding."""
-    all_x = [v[0] for v in all_vertices]
-    all_y = [v[1] for v in all_vertices]
-    x_min = min(all_x) - 2
-    x_max = max(all_x) + 2
-    y_min = min(all_y) - 2
-    y_max = max(all_y) + 2
+    """Compute a symmetric four-quadrant grid range that fits all vertices.
 
-    # Ensure origin is visible and range is symmetric-ish
-    x_min = min(x_min, -1)
-    x_max = max(x_max, 1)
-    y_min = min(y_min, -1)
-    y_max = max(y_max, 1)
+    Always returns ([-m, m], [-m, m]) so every graph shows all four
+    quadrants with the origin centered. An asymmetric window (e.g. only
+    quadrant I visible) telegraphs the answer and hides misconceptions
+    about where a reflected/rotated image should land.
+    """
+    m = 0
+    for x, y in all_vertices:
+        m = max(m, abs(x), abs(y))
 
-    # Ensure at least 8 units range
-    if x_max - x_min < 8:
-        mid = (x_max + x_min) / 2
-        x_min = int(mid - 4)
-        x_max = int(mid + 4)
-    if y_max - y_min < 8:
-        mid = (y_max + y_min) / 2
-        y_min = int(mid - 4)
-        y_max = int(mid + 4)
+    m = max(m + 1, 8)  # one unit of padding, minimum [-8, 8] window
+    # Keep the max even when axis labels step by 2 (span > 12) so the
+    # labeled ticks land on even numbers.
+    if m > 6 and m % 2 == 1:
+        m += 1
 
-    return (x_min, x_max), (y_min, y_max)
+    return (-m, m), (-m, m)
 
 
 def _fmt_vertex(label, x, y):
@@ -263,16 +266,42 @@ class Stem8GM1:
     # Identify which transformation maps ABC to A'B'C'
     # ================================================================
 
+    # Transformation pool for the Below stem, cycled deterministically so
+    # rotations and reflections are guaranteed to appear across variants
+    # (teacher request: not just translations/dilations).
+    STEM1_TRANSFORM_POOL = [
+        "translation", "reflect_x", "rotate_90_cw", "dilation_2",
+        "reflect_y", "rotate_180", "translation", "dilation_3",
+        "reflect_x", "rotate_270_cw",
+    ]
+
     def stem1_below_mc(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(1, variant_idx)
 
-        # Use both triangles and quadrilaterals
-        verts, fig_name, labels = _gen_figure(rng)
+        # Cycle transformations across variants: translations, reflections
+        # (x/y axis), rotations about the origin (90/180/270), dilations.
+        pool = self.STEM1_TRANSFORM_POOL
+        transform_key = pool[variant_idx % len(pool)]
+
+        # Bound the preimage so a dilated image still fits a reasonable
+        # symmetric grid (k * max_coord <= 12).
+        if transform_key == "dilation_3":
+            max_c = 4
+        elif transform_key == "dilation_2":
+            max_c = 6
+        else:
+            max_c = 7
+
+        # Reflections and 180-degree rotations use triangles only: a labeled
+        # rectangle's reflected/point-rotated image is congruent to a
+        # translation of the unlabeled shape, which would make the MC
+        # answer ambiguous for students who ignore vertex labels.
+        triangle_only = transform_key in ("reflect_x", "reflect_y", "rotate_180")
+        verts, fig_name, labels = _gen_figure(rng, max_coord=max_c,
+                                              triangle_only=triangle_only)
         label_str = "".join(labels)
         label_prime_str = "".join(l + "'" for l in labels)
 
-        # Easy tier: limited to translations and dilations only
-        transform_key = rng.choice(["translation", "dilation_2", "dilation_3"])
         image, correct_desc, params = _apply_transform(verts, transform_key, rng)
 
         all_verts = verts + image
@@ -283,7 +312,14 @@ class Stem8GM1:
                                       img_label="'")
 
         # Distractors: the 4 transformation types
-        correct_type = "translation" if transform_key == "translation" else "dilation"
+        if transform_key == "translation":
+            correct_type = "translation"
+        elif transform_key.startswith("dilation"):
+            correct_type = "dilation"
+        elif transform_key.startswith("reflect"):
+            correct_type = "reflection"
+        else:
+            correct_type = "rotation"
         type_options = ["translation", "reflection", "rotation", "dilation"]
         wrong_types = [t for t in type_options if t != correct_type]
 
@@ -338,11 +374,18 @@ class Stem8GM1:
     def stem2_approaching_mc(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(2, variant_idx)
 
-        preimage = _gen_triangle(rng)
-
-        # Use rotations or dilations
+        # Use rotations or dilations (pick first so dilation preimages can
+        # be bounded to keep the symmetric grid a reasonable size)
         transform_key = rng.choice(["rotate_90_cw", "rotate_180", "rotate_270_cw",
                                      "dilation_2", "dilation_3"])
+        if transform_key == "dilation_3":
+            max_c = 4
+        elif transform_key == "dilation_2":
+            max_c = 6
+        else:
+            max_c = 7
+        preimage = _gen_triangle(rng, max_coord=max_c)
+
         image, correct_desc, params = _apply_transform(preimage, transform_key, rng)
 
         # Ask: what are the coordinates of a specific vertex after transformation?

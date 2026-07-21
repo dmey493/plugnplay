@@ -268,22 +268,51 @@ class Stem8DSP4:
             p2_correct = Fraction(counts[target2], total - 1)
         correct_answer = p1 * p2_correct
 
-        # Common error: using replacement probability
-        p2_wrong = Fraction(counts[target2], total)
+        # The student's erroneous second factor (shown UNREDUCED in the work
+        # so the displayed arithmetic is internally consistent):
+        #   same_denominator - reused the full total despite no replacement
+        #   wrong_count      - right denominator, but forgot the first draw
+        #                      removed one of the target marbles (both-same case)
+        if target1 == target2 and rng.random() < 0.5:
+            error_type = "wrong_count"
+            n2, d2 = counts[target2], total - 1
+        else:
+            error_type = "same_denominator"
+            n2, d2 = counts[target2], total
+        p2_wrong = Fraction(n2, d2)
         wrong_answer = p1 * p2_wrong
+
+        # Displayed work: raw (unreduced) factors and product, plus the
+        # simplified result if it reduces. c1/total x n2/d2 = raw = wrong_answer.
+        c1 = counts[target1]
+        raw_num, raw_den = c1 * n2, total * d2
+        raw_str = f"{raw_num}/{raw_den}"
+        work = (f"P({target1}, then {target2}) = {c1}/{total} x {n2}/{d2} "
+                f"= {raw_str}")
+        if _frac_str(wrong_answer) != raw_str:
+            work += f" = {_frac_str(wrong_answer)}"
 
         items_desc = ", ".join(f"{counts[c]} {c}" for c in colors)
         scenario = (f"A bag contains {items_desc} marbles ({total} total). "
                     f"Two marbles are drawn without replacement.")
 
+        art1 = "an" if target1[0] in "aeiou" else "a"
+        art2 = "an" if target2[0] in "aeiou" else "a"
         stem = (f"{scenario} A student calculates the probability of drawing "
-                f"a {target1} then a {target2} marble as {_frac_str(wrong_answer)}. "
-                f"Answer the following questions about the student's work.")
+                f"{art1} {target1} then {art2} {target2} marble as shown.\n\n"
+                f"Student's work: {work}")
 
-        partA_prompt = "Identify the error the student made."
-        partA_answer = (f"The student used {_frac_str(p2_wrong)} for the second draw "
-                        f"instead of {_frac_str(p2_correct)}. Without replacement, "
-                        f"the total changes from {total} to {total - 1}.")
+        partA_prompt = "Identify the error in the student's work."
+        if error_type == "wrong_count":
+            partA_answer = (f"The student used {n2}/{d2} for the second draw, but "
+                            f"after one {target1} marble is drawn, only {n2 - 1} "
+                            f"{target2} marbles remain. The second factor should "
+                            f"be {_frac_str(p2_correct)}.")
+        else:
+            partA_answer = (f"The student kept the total at {total} for the second "
+                            f"draw ({n2}/{d2}). Without replacement, only "
+                            f"{total - 1} marbles remain, so the second factor "
+                            f"should be {_frac_str(p2_correct)}.")
 
         partB_prompt = "Calculate the correct probability."
         partB_answer = _frac_str(correct_answer)
@@ -308,7 +337,11 @@ class Stem8DSP4:
             stem_text=stem, stem_latex=stem,
             answer_text=f"A: {partA_answer} B: {partB_answer}",
             answer_latex=f"A: {partA_answer} B: {partB_answer}",
-            worked_solution=f"Error: used replacement. Correct: P = {_frac_str(p1)} x {_frac_str(p2_correct)} = {_frac_str(correct_answer)}",
+            worked_solution=(
+                ("Error: forgot the first draw removed a target marble. "
+                 if error_type == "wrong_count"
+                 else "Error: reused the full total (as if with replacement). ")
+                + f"Correct: P = {_frac_str(p1)} x {_frac_str(p2_correct)} = {_frac_str(correct_answer)}"),
             parts=parts,
             seed=gen.seed, stem_index=4, variant_index=variant_idx,
         )

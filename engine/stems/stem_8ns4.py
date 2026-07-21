@@ -9,7 +9,9 @@ Content Limits:
   - May include: unit conversions, percentages (increase/decrease),
     exponents, use of exponent rules, variables
   - If unit conversion needed, conversion is embedded in item stem
-  - Percent increase/decrease only at Above Proficiency level
+  - Percent increase/decrease at Above Proficiency; per teacher request
+    (state item spec), At Proficiency also rotates in percent-increase
+    problems built on rational unit-conversion factors
   - Calculator: ALLOWED
 
 Difficulty Tiers:
@@ -22,6 +24,8 @@ Difficulty Tiers:
   Stem 2 (Approaching-NR, DOK 2, Easy): Solve 2-step real-world problem (whole numbers)
   Stem 3 (Approaching-NR, DOK 2, Medium): Solve 2-step problem with decimals
   Stem 4 (At-NR, DOK 2, Medium): Solve 3-4 step problem with unit conversion
+      (rotates: percent increase w/ conversion factor, total after
+      conversion, recipe scaling, multi-item purchase)
   Stem 5 (Above-NR, DOK 3, Difficult): Solve complex multi-step with percent/fractions
 """
 
@@ -358,7 +362,16 @@ class Stem8NS4:
     # ================================================================
     # STEM 4: At Proficiency - NR (DOK 2, Medium)
     # Solve 3-4 step problem, may include unit conversion
-    # e.g., "gallons already in stock + liters delivered (convert)"
+    # Rotation (variant_idx % 4):
+    #   0: percent increase with a rational unit-conversion factor
+    #      (state item spec: 48 gallons in stock, 17 liters delivered,
+    #       1 liter ~ 0.26 gallons -> percent increase to nearest whole);
+    #      the conversion pair itself cycles across liters/gallons (0.26),
+    #      kilometers/miles (0.62), kilograms/pounds (2.2), and
+    #      inches/centimeters (2.54)
+    #   1: total after unit conversion ("gallons in stock + liters delivered")
+    #   2: recipe scaling
+    #   3: multi-item purchase with coupon
     # ================================================================
 
     def stem4_at_nr(self, variant_idx: int) -> GeneratedQuestion:
@@ -366,9 +379,103 @@ class Stem8NS4:
 
         name = pick_name(rng)
 
-        scenario = rng.choice(["unit_convert", "recipe_scale", "multi_purchase"])
+        scenarios = ["pct_convert", "unit_convert", "recipe_scale",
+                     "multi_purchase"]
+        scenario = scenarios[variant_idx % 4]
 
-        if scenario == "unit_convert":
+        if scenario == "pct_convert":
+            # Percent increase after an addition stated in a different unit.
+            # Cycle deterministically through the four conversion pairs.
+            conv_idx = (variant_idx // 4) % 4
+            if conv_idx == 0:
+                stock = rng.randint(30, 80)        # gallons in stock
+                added_src = rng.randint(10, 40)    # liters delivered
+                factor = Fraction(26, 100)
+                factor_str = "0.26"
+                bullet = "1 liter ≈ 0.26 gallons"
+                intro = f"A store had {stock} gallons of milk in stock."
+                event = f"A delivery of {added_src} liters of milk arrived."
+                question = (
+                    "What is the percent increase, to the nearest whole "
+                    "number, in the amount of milk after the delivery?"
+                )
+                src_units, dst_units = "liters", "gallons"
+            elif conv_idx == 1:
+                stock = rng.randint(25, 60)        # miles run so far
+                added_src = rng.randint(8, 25)     # kilometers added
+                factor = Fraction(62, 100)
+                factor_str = "0.62"
+                bullet = "1 kilometer ≈ 0.62 miles"
+                intro = (f"{name} has run {stock} miles in training "
+                         f"this season.")
+                event = (f"This week {name} adds a {added_src}-kilometer "
+                         f"run.")
+                question = (
+                    f"What is the percent increase, to the nearest whole "
+                    f"number, in {name}'s total training distance after "
+                    f"the run?"
+                )
+                src_units, dst_units = "kilometers", "miles"
+            elif conv_idx == 2:
+                stock = rng.randint(150, 400)      # pounds in stock
+                added_src = rng.randint(10, 40)    # kilograms delivered
+                factor = Fraction(22, 10)
+                factor_str = "2.2"
+                bullet = "1 kilogram ≈ 2.2 pounds"
+                intro = f"A warehouse had {stock} pounds of rice in stock."
+                event = (f"A shipment of {added_src} kilograms of rice "
+                         f"arrived.")
+                question = (
+                    "What is the percent increase, to the nearest whole "
+                    "number, in the amount of rice after the shipment?"
+                )
+                src_units, dst_units = "kilograms", "pounds"
+            else:
+                stock = rng.randint(150, 400)      # centimeters of ribbon
+                added_src = rng.randint(10, 40)    # inches purchased
+                factor = Fraction(254, 100)
+                factor_str = "2.54"
+                bullet = "1 inch ≈ 2.54 centimeters"
+                intro = f"{name} had {stock} centimeters of ribbon."
+                event = f"{name} buys {added_src} more inches of ribbon."
+                question = (
+                    "What is the percent increase, to the nearest whole "
+                    "number, in the total length of ribbon after the "
+                    "purchase?"
+                )
+                src_units, dst_units = "inches", "centimeters"
+
+            # Compute the answer exactly, then round half-up to the
+            # nearest whole percent.
+            added = added_src * factor                 # in stock units
+            pct = added / Fraction(stock) * 100
+            pct_rounded = int(pct + Fraction(1, 2))    # round half up
+            # Machine-check: the rounded percent is within 0.5 of exact
+            assert abs(pct - pct_rounded) <= Fraction(1, 2), (
+                f"8.NS.4 pct_convert rounding check failed: "
+                f"{pct} -> {pct_rounded}"
+            )
+            assert pct_rounded >= 1, (
+                f"8.NS.4 pct_convert produced a degenerate percent: {pct}"
+            )
+
+            stem_text = (
+                f"{intro}\n\n"
+                f"- {event}\n"
+                f"- {bullet}\n\n"
+                f"{question}"
+            )
+            answer_val = pct_rounded
+            worked = (
+                f"Convert to {dst_units}: {added_src} {src_units} × "
+                f"{factor_str} = {_fmt_num(added)} {dst_units}\n"
+                f"Percent increase = (amount added ÷ original amount) "
+                f"× 100\n"
+                f"= {_fmt_num(added)} ÷ {stock} × 100 = "
+                f"{float(pct):.2f}%\n"
+                f"Rounded to the nearest whole number: {pct_rounded}%"
+            )
+        elif scenario == "unit_convert":
             # Milk problem: gallons + liters, find total in gallons
             gallons = rng.randint(20, 80)
             liters = rng.randint(10, 40)
@@ -406,11 +513,13 @@ class Stem8NS4:
 
             flour_str = _fmt_num(cups_flour)
             sugar_str = _fmt_num(cups_sugar)
+            flour_unit = "cup" if cups_flour == 1 else "cups"
+            sugar_unit = "cup" if cups_sugar == 1 else "cups"
 
             stem_text = (
                 f"A recipe serves {base_serves} people and uses:\n"
-                f"- {flour_str} cups of flour\n"
-                f"- {sugar_str} cups of sugar\n\n"
+                f"- {flour_str} {flour_unit} of flour\n"
+                f"- {sugar_str} {sugar_unit} of sugar\n\n"
                 f"{name} needs to serve {target_serves} people.\n\n"
                 f"How many total cups of flour and sugar does {name} need?"
             )

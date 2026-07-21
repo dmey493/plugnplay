@@ -374,26 +374,80 @@ class Stem8AF1:
             total = combined * x_val + constant
             const_sign = "+"
 
-        # Real-world contexts that naturally produce two variable terms
+        # Real-world contexts that naturally produce two like terms in x
+        # plus (add case) or minus (subtract case) a one-time constant.
+        # Every context keeps the same roles:
+        #   coeff1*x + coeff2*x +/- constant = total
         contexts = [
+            # 1. Gym membership
             (f"{name} joins a gym that charges a one-time enrollment fee "
              f"and a monthly membership fee.\n"
              f"The enrollment fee is {coeff2} times the monthly fee.\n"
              f"{'New members receive a $' + str(constant) + ' discount on enrollment.' if is_subtract else 'There is a $' + str(constant) + ' registration fee.'}\n\n"
              f"{name} pays the enrollment fee plus {coeff1} months of membership "
              f"for a total of ${total}."),
+            # 2. Two part-time jobs
             (f"{name} works two part-time jobs that pay the same hourly rate.\n"
              f"Last week, {name} worked {coeff1} hours at the first job "
              f"and {coeff2} hours at the second job.\n"
              f"{'After deducting $' + str(constant) + ' for transportation, ' + name + ' earned' if is_subtract else name + ' also received a $' + str(constant) + ' bonus, earning'} "
              f"${total} total."),
+            # 3. School supply order
             (f"A school is ordering supplies. They order {coeff1} boxes of notebooks "
              f"and {coeff2} boxes of folders.\n"
              f"Each box of notebooks costs the same as each box of folders.\n"
              f"{'Shipping is $' + str(constant) + ' and' + ' the' if not is_subtract else 'A $' + str(constant) + ' coupon is applied and the'} "
              f"total {'cost is' if not is_subtract else 'amount paid is'} ${total}."),
+            # 4. Streaming subscriptions
+            (f"{name}'s family pays for a video streaming service for {coeff1} months "
+             f"and a music streaming service for {coeff2} months.\n"
+             f"Both services cost the same amount per month.\n"
+             f"{'A promo code takes $' + str(constant) + ' off the bill.' if is_subtract else 'A one-time signup fee of $' + str(constant) + ' is added to the bill.'}\n\n"
+             f"The family pays ${total} in all."),
+            # 5. Car wash fundraiser
+            (f"The student council holds a car wash fundraiser.\n"
+             f"They wash {coeff1} cars in the morning and {coeff2} cars in the "
+             f"afternoon, charging the same price for each car.\n"
+             f"{'After paying $' + str(constant) + ' for soap and supplies, they have' if is_subtract else 'A local business donates an extra $' + str(constant) + ', bringing the total to'} "
+             f"${total}."),
+            # 6. Ticket sales
+            (f"The drama club sells tickets to its spring play. "
+             f"All tickets are the same price.\n"
+             f"The club sells {coeff1} tickets on Friday and {coeff2} tickets "
+             f"on Saturday.\n"
+             f"{'After paying $' + str(constant) + ' to print programs, the club has' if is_subtract else 'The club also receives a $' + str(constant) + ' donation, collecting'} "
+             f"${total} in all."),
+            # 7. Lawn mowing earnings
+            (f"{name} mows lawns and charges the same amount for each lawn.\n"
+             f"{name} mowed {coeff1} lawns last week and {coeff2} lawns this week.\n"
+             f"{'After spending $' + str(constant) + ' on gas, ' + name + ' has' if is_subtract else 'One customer also gave a $' + str(constant) + ' tip, so ' + name + ' earned'} "
+             f"${total}."),
+            # 8. T-shirt order
+            (f"A coach orders {coeff1} T-shirts for the soccer team and "
+             f"{coeff2} T-shirts for the track team.\n"
+             f"Every shirt costs the same.\n"
+             f"{'The coach uses a $' + str(constant) + ' coupon, paying' if is_subtract else 'The shop adds a one-time $' + str(constant) + ' printing fee, making the total'} "
+             f"${total}."),
+            # 9. Book fair
+            (f"At the book fair, {name} buys {coeff1} mystery books and "
+             f"{coeff2} graphic novels.\n"
+             f"Every book costs the same.\n"
+             f"{name} {'uses a $' + str(constant) + ' gift card and pays' if is_subtract else 'also buys a poster for $' + str(constant) + ', spending'} "
+             f"${total} in all."),
+            # 10. Field trip admission
+            (f"A museum charges the same admission price for each student.\n"
+             f"A field trip includes {coeff1} students from one class and "
+             f"{coeff2} students from another class.\n"
+             f"{'The museum takes $' + str(constant) + ' off the bill as a school discount, so the school pays' if is_subtract else 'The school also pays a $' + str(constant) + ' parking fee, for a total of'} "
+             f"${total}."),
         ]
-        ctx = rng.choice(contexts)
+        # Spread scenarios evenly across the variant bank: each consecutive
+        # block of len(contexts) variants covers every context exactly once,
+        # in a seed-dependent shuffled order.
+        n_ctx = len(contexts)
+        block, pos = divmod(variant_idx, n_ctx)
+        order = random.Random(f"{self.base_seed}-4-{block}").sample(range(n_ctx), n_ctx)
+        ctx = contexts[order[pos]]
 
         stem_text = (
             f"{ctx}\n\n"
@@ -461,39 +515,127 @@ class Stem8AF1:
 
         name = pick_name(rng)
 
-        # Scenario: "{name} buys {n} items at ${price} each. There's a ${discount}
-        # off the total. Tax of ${tax_rate} is added. The final cost is ${final}."
-        # Equation: n * price - discount + tax_rate * (n * price - discount) = final
-        # Simpler: a(x + b) + cx = total, where a is a multiplier
-
-        # Use: enrollment_fee = factor * monthly_fee
-        # Equation: factor*x - discount + months*x = total
-        # i.e. (factor + months)*x - discount = total
+        # Every scenario keeps the same equation form:
+        #   factor*x - discount + months*x = total
+        # i.e. an upfront fee worth `factor` units of x, minus a one-time
+        # discount on that fee, plus `months` more units of x.
         factor = Fraction(rng.randint(2, 5))
         months = Fraction(rng.randint(3, 8))
-        discount = Fraction(rng.randint(5, 25))
-        x_val = Fraction(rng.randint(10, 50))  # monthly fee
+        x_val = Fraction(rng.randint(10, 50))  # the per-unit price/rate
+        # Keep the discount smaller than the upfront fee so the story is sensible.
+        discount = Fraction(rng.randint(5, min(25, int(factor * x_val) - 5)))
         total = (factor + months) * x_val - discount
 
+        f_i, m_i, d_i = int(factor), int(months), int(discount)
+        t_i, x_i = int(total), int(x_val)
+
+        # Varied real-world scenarios; each maps the same roles onto the
+        # equation (upfront fee = factor*x, discount, months more units).
+        contexts = [
+            {
+                "intro": (f"{name} joins a fitness center.\n"
+                          f"The enrollment fee is {f_i} times the monthly fee.\n"
+                          f"New members receive a ${d_i} discount on their enrollment fee.\n"
+                          f"{name} pays the discounted enrollment fee plus {m_i} months "
+                          f"of membership for a total of ${t_i}."),
+                "x_desc": "the monthly fee",
+                "part_b": "How much is the monthly fee?",
+                "meaning": f"The monthly membership fee is ${x_i} per month.",
+            },
+            {
+                "intro": (f"{name} signs up for a new cell phone plan.\n"
+                          f"The activation fee is {f_i} times the monthly plan price.\n"
+                          f"New customers get a ${d_i} credit toward the activation fee.\n"
+                          f"{name} pays the discounted activation fee plus {m_i} months "
+                          f"of service for a total of ${t_i}."),
+                "x_desc": "the monthly plan price",
+                "part_b": "How much does the phone plan cost per month?",
+                "meaning": f"The phone plan costs ${x_i} per month.",
+            },
+            {
+                "intro": (f"{name} enrolls at a karate studio.\n"
+                          f"The registration fee is {f_i} times the monthly tuition.\n"
+                          f"New students receive a ${d_i} discount on registration.\n"
+                          f"{name} pays the discounted registration fee plus {m_i} months "
+                          f"of classes for a total of ${t_i}."),
+                "x_desc": "the monthly tuition",
+                "part_b": "How much is the monthly tuition?",
+                "meaning": f"The karate tuition is ${x_i} per month.",
+            },
+            {
+                "intro": (f"{name} signs up for guitar lessons.\n"
+                          f"The sign-up fee is {f_i} times the price of one lesson.\n"
+                          f"{name} has a coupon for ${d_i} off the sign-up fee.\n"
+                          f"{name} pays the discounted sign-up fee plus {m_i} lessons "
+                          f"for a total of ${t_i}."),
+                "x_desc": "the price of one lesson",
+                "part_b": "How much does one lesson cost?",
+                "meaning": f"Each guitar lesson costs ${x_i}.",
+            },
+            {
+                "intro": (f"A club orders custom T-shirts from a print shop.\n"
+                          f"The one-time design fee is {f_i} times the price of one shirt.\n"
+                          f"The shop takes ${d_i} off the design fee for school clubs.\n"
+                          f"The club pays the discounted design fee plus {m_i} shirts "
+                          f"for a total of ${t_i}."),
+                "x_desc": "the price of one shirt",
+                "part_b": "How much does one shirt cost?",
+                "meaning": f"Each T-shirt costs ${x_i}.",
+            },
+            {
+                "intro": (f"{name} rents a kayak at a lake.\n"
+                          f"The equipment deposit is {f_i} times the hourly rental rate.\n"
+                          f"{name} uses a ${d_i} coupon on the deposit.\n"
+                          f"{name} pays the discounted deposit plus {m_i} hours of "
+                          f"rental time for a total of ${t_i}."),
+                "x_desc": "the hourly rental rate",
+                "part_b": "How much does the kayak rental cost per hour?",
+                "meaning": f"The kayak rental costs ${x_i} per hour.",
+            },
+            {
+                "intro": (f"{name} signs up for a summer coding camp.\n"
+                          f"The registration fee is {f_i} times the weekly fee.\n"
+                          f"Campers who sign up early get ${d_i} off registration.\n"
+                          f"{name} pays the discounted registration fee plus {m_i} weeks "
+                          f"of camp for a total of ${t_i}."),
+                "x_desc": "the weekly fee",
+                "part_b": "How much does the camp cost per week?",
+                "meaning": f"The camp costs ${x_i} per week.",
+            },
+            {
+                "intro": (f"{name}'s family joins a community pool.\n"
+                          f"The joining fee is {f_i} times the price of a monthly pass.\n"
+                          f"Families with students get ${d_i} off the joining fee.\n"
+                          f"The family pays the discounted joining fee plus {m_i} months "
+                          f"of passes for a total of ${t_i}."),
+                "x_desc": "the price of a monthly pass",
+                "part_b": "How much does a monthly pool pass cost?",
+                "meaning": f"A monthly pool pass costs ${x_i}.",
+            },
+        ]
+        # Spread scenarios evenly across the variant bank: each consecutive
+        # block of len(contexts) variants covers every context exactly once,
+        # in a seed-dependent shuffled order.
+        n_ctx = len(contexts)
+        block, pos = divmod(variant_idx, n_ctx)
+        order = random.Random(f"{self.base_seed}-5-{block}").sample(range(n_ctx), n_ctx)
+        ctx = contexts[order[pos]]
+
         stem_text = (
-            f"{name} joins a fitness center.\n"
-            f"The enrollment fee is {int(factor)} times the monthly fee.\n"
-            f"New members receive a ${int(discount)} discount on their enrollment fee.\n"
-            f"{name} pays the discounted enrollment fee plus {int(months)} months "
-            f"of membership for a total of ${int(total)}.\n\n"
+            f"{ctx['intro']}\n\n"
             f"Part A: Write an equation to represent the situation. "
-            f"Use x to represent the monthly fee.\n\n"
-            f"Part B: How much is the monthly fee?\n\n"
+            f"Use x to represent {ctx['x_desc']}.\n\n"
+            f"Part B: {ctx['part_b']}\n\n"
             f"Part C: Explain what your answer means in the context of the problem."
         )
 
-        equation = f"{int(factor)}x - {int(discount)} + {int(months)}x = {int(total)}"
+        equation = f"{f_i}x - {d_i} + {m_i}x = {t_i}"
         combined = factor + months
 
         part_a = QuestionPart(
             label="Part A",
-            prompt="Write an equation to represent the situation.",
-            prompt_latex="Write an equation to represent the situation.",
+            prompt=f"Write an equation to represent the situation. Use x to represent {ctx['x_desc']}.",
+            prompt_latex=f"Write an equation to represent the situation. Use x to represent {ctx['x_desc']}.",
             answer=equation,
             answer_latex=equation,
             item_type=ItemType.EQ,
@@ -501,10 +643,10 @@ class Stem8AF1:
 
         part_b = QuestionPart(
             label="Part B",
-            prompt="How much is the monthly fee?",
-            prompt_latex="How much is the monthly fee?",
-            answer=f"${int(x_val)}",
-            answer_latex=f"${int(x_val)}",
+            prompt=ctx["part_b"],
+            prompt_latex=ctx["part_b"],
+            answer=f"${x_i}",
+            answer_latex=f"${x_i}",
             item_type=ItemType.NR,
         )
 
@@ -512,18 +654,18 @@ class Stem8AF1:
             label="Part C",
             prompt="Explain what your answer means.",
             prompt_latex="Explain what your answer means.",
-            answer=f"The monthly membership fee is ${int(x_val)} per month.",
-            answer_latex=f"The monthly membership fee is ${int(x_val)} per month.",
+            answer=ctx["meaning"],
+            answer_latex=ctx["meaning"],
             item_type=ItemType.ER,
         )
 
         worked = (
             f"Part A: {equation}\n"
             f"Part B:\n"
-            f"Combine like terms: {_fmt(combined)}x - {int(discount)} = {int(total)}\n"
+            f"Combine like terms: {_fmt(combined)}x - {d_i} = {t_i}\n"
             f"{_fmt(combined)}x = {int(total + discount)}\n"
             f"x = {_fmt(x_val)}\n"
-            f"Part C: The monthly fee is ${int(x_val)}."
+            f"Part C: {ctx['meaning']}"
         )
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE, ItemType.MP,
@@ -534,8 +676,8 @@ class Stem8AF1:
             proficiency_level=ProficiencyLevel.ABOVE,
             difficulty=Difficulty.MEDIUM, dok=3, item_type=ItemType.MP,
             stem_text=stem_text, stem_latex=stem_text,
-            answer_text=f"Part A: {equation}; Part B: ${int(x_val)}; Part C: Monthly fee is ${int(x_val)}",
-            answer_latex=f"Part A: {equation}; Part B: ${int(x_val)}; Part C: Monthly fee is ${int(x_val)}",
+            answer_text=f"Part A: {equation}; Part B: ${x_i}; Part C: {ctx['meaning']}",
+            answer_latex=f"Part A: {equation}; Part B: ${x_i}; Part C: {ctx['meaning']}",
             worked_solution=worked, parts=[part_a, part_b, part_c],
             seed=self.base_seed * 1000 + 500 + variant_idx,
             stem_index=5, variant_index=variant_idx

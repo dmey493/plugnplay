@@ -115,10 +115,11 @@ def _make_system_graph(m1, b1, m2, b2, x_range=None, y_range=None,
         points.append({"x": float(intersection[0]), "y": float(intersection[1]),
                         "label": f"({_fmt(intersection[0])}, {_fmt(intersection[1])})"})
 
-    # Auto-compute label_step so axes aren't too crowded
+    # Auto-compute label_step from the x-span only — the grid renderer
+    # picks its own (nice) y step, and sizing this from the y-span starved
+    # the x-axis down to two labels on tall graphs.
     x_span = x_hi - x_lo
-    y_span = y_hi - y_lo
-    label_step = max(1, max(x_span, y_span) // 10)
+    label_step = max(1, x_span // 10)
 
     rd = {
         "type": "coordinate_grid",
@@ -234,18 +235,23 @@ class Stem8AF8:
 
         correct = f"({_fmt(ix)}, {_fmt(iy)})"
 
-        # Distractors: swap x/y, nearby points, wrong sign
-        distractors = [
-            f"({_fmt(iy)}, {_fmt(ix)})",
-            f"({_fmt(ix + 1)}, {_fmt(iy - 1)})",
-            f"({_fmt(-ix)}, {_fmt(iy)})",
-        ]
-        distractors = [d for d in distractors if d != correct][:3]
+        # Distractors: swap x/y, nearby points, wrong sign — deduped against
+        # the correct answer AND each other (swap/sign collide when ix == iy
+        # or ix == 0, which produced repeated choices).
+        seen = {correct}
+        distractors = []
+        for d in (f"({_fmt(iy)}, {_fmt(ix)})",
+                  f"({_fmt(ix + 1)}, {_fmt(iy - 1)})",
+                  f"({_fmt(-ix)}, {_fmt(iy)})"):
+            if d not in seen:
+                seen.add(d)
+                distractors.append(d)
         while len(distractors) < 3:
             dx = Fraction(rng.randint(-2, 2))
             dy = Fraction(rng.randint(-2, 2))
             d = f"({_fmt(ix + dx)}, {_fmt(iy + dy)})"
-            if d != correct and d not in distractors:
+            if d not in seen:
+                seen.add(d)
                 distractors.append(d)
         distractors = distractors[:3]
 

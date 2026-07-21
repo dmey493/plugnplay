@@ -204,12 +204,14 @@ class Stem8AF7:
             distractors.append("The functions are identical.")
         distractors = distractors[:3]
 
-        # Build coordinate grid showing both lines
+        # Build coordinate grid showing both lines. The y-range is anchored
+        # at 0 so the axis corner is the true origin (both intercepts are
+        # positive, and a bottom edge that isn't 0 misreads as one).
         x_lo, x_hi = -2, 8
         grid_render_data = {
             "type": "coordinate_grid",
             "x_range": [x_lo, x_hi],
-            "y_range": [min(int(b1), int(b2)) - 2, max(int(m1 * x_hi + b1), int(m2 * x_hi + b2)) + 2],
+            "y_range": [0, max(int(m1 * x_hi + b1), int(m2 * x_hi + b2)) + 2],
             "points": [],
             "lines": [
                 {"x1": x_lo, "y1": float(m1 * x_lo + b1), "x2": x_hi, "y2": float(m1 * x_hi + b1), "label": "A"},

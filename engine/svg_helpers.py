@@ -287,9 +287,10 @@ def cylinder_3d_svg(radius_val, height_val, label_r="", label_h="",
                        stroke_dasharray='5,3'))
     d.append(draw.Circle(cx, top_cy, 2, fill='#dc2626'))
 
-    # Radius label
+    # Radius label — above the top ellipse outline so the text is never
+    # crossed by the ellipse stroke.
     r_lbl = label_r if label_r else f"r = {radius_val}"
-    d.append(draw.Text(r_lbl, 30, cx + r_px / 2, top_cy - 16,
+    d.append(draw.Text(r_lbl, 34, cx + r_px / 2, top_cy - ey - 12,
                        text_anchor='middle', fill='#dc2626', font_weight='bold'))
 
     # Height line (right side, outside)
@@ -303,7 +304,7 @@ def cylinder_3d_svg(radius_val, height_val, label_r="", label_h="",
                         close=False, fill='none', stroke='#dc2626', stroke_width=1.5))
 
     h_lbl = label_h if label_h else f"h = {height_val}"
-    d.append(draw.Text(h_lbl, 30, hx + 10, (top_cy + bot_cy) / 2,
+    d.append(draw.Text(h_lbl, 34, hx + 8, (top_cy + bot_cy) / 2,
                        text_anchor='start', fill='#dc2626', font_weight='bold',
                        dominant_baseline='middle'))
 
@@ -364,18 +365,22 @@ def cone_3d_svg(radius_val, height_val, slant_val=None,
     d.append(draw.Circle(cx, base_cy, 2, fill='#dc2626'))
 
     # Labels
+    # Radius label — fully below the base ellipse so the front arc stroke
+    # never crosses the text.
     r_lbl = label_r if label_r else f"r = {radius_val}"
-    d.append(draw.Text(r_lbl, 30, cx + r_px / 2, base_cy + 28,
+    d.append(draw.Text(r_lbl, 34, cx + r_px / 2, base_cy + ey + 26,
                        text_anchor='middle', fill='#dc2626', font_weight='bold'))
 
+    # Height label — placed at ~65% down the height line where the cone is
+    # wide enough that the text clears the slanted side stroke.
     h_lbl = label_h if label_h else f"h = {height_val}"
-    d.append(draw.Text(h_lbl, 30, cx + 12, (apex_y + base_cy) / 2,
+    d.append(draw.Text(h_lbl, 34, cx + 10, apex_y + 0.65 * (base_cy - apex_y),
                        text_anchor='start', fill='#dc2626', font_weight='bold'))
 
     # Optional slant height label
     if slant_val is not None:
         s_lbl = label_s if label_s else f"l = {slant_val}"
-        d.append(draw.Text(s_lbl, 30, cx - r_px / 2 - 20, (apex_y + base_cy) / 2,
+        d.append(draw.Text(s_lbl, 34, cx - r_px / 2 - 20, (apex_y + base_cy) / 2,
                            text_anchor='middle', fill='#1e40af', font_weight='bold'))
 
     return d.as_svg()
@@ -406,8 +411,10 @@ def sphere_svg(radius_val, label_text="", width=240, height=240):
                        stroke_dasharray='5,3'))
     d.append(draw.Circle(cx, cy, 2.5, fill='#dc2626'))
 
+    # Label above the dashed equator band so neither the equator nor the
+    # radius line crosses the text.
     lbl = label_text if label_text else f"r = {radius_val}"
-    d.append(draw.Text(lbl, 30, cx + r_px / 2, cy - 14,
+    d.append(draw.Text(lbl, 30, cx + r_px / 2, cy - r_px * 0.3 - 12,
                        text_anchor='middle', fill='#dc2626', font_weight='bold'))
 
     return d.as_svg()
@@ -483,12 +490,15 @@ def pyramid_3d_svg(base_side, height_val, label_base="", label_h="",
 
     # Labels
     b_lbl = label_base if label_base else f"s = {base_side}"
-    d.append(draw.Text(b_lbl, 30, (bl[0] + br[0]) / 2, base_y + 28,
+    d.append(draw.Text(b_lbl, 34, (bl[0] + br[0]) / 2, base_y + 30,
                        text_anchor='middle', fill='#1e40af', font_weight='bold'))
 
+    # Height label — left of the dashed height line at ~75% down, where the
+    # front face is wide enough that the text clears the lateral edges.
     h_lbl = label_h if label_h else f"h = {height_val}"
-    d.append(draw.Text(h_lbl, 30, base_center[0] + 14, (apex[1] + base_center[1]) / 2,
-                       text_anchor='start', fill='#dc2626', font_weight='bold'))
+    d.append(draw.Text(h_lbl, 34, base_center[0] - 10,
+                       apex[1] + 0.75 * (base_center[1] - apex[1]),
+                       text_anchor='end', fill='#dc2626', font_weight='bold'))
 
     return d.as_svg()
 
@@ -1010,6 +1020,16 @@ def scatter_plot_svg(points, x_label="x", y_label="y", line_eq=None,
     if y_data_min >= 0:
         y_lo = 0
 
+    # When a trend line is drawn, make room for its y-intercept: the dashed
+    # line runs all the way to the y-axis so students can read b off the
+    # graph (teachers use it to teach y-intercept from a line of best fit).
+    if line_eq is not None:
+        _b = line_eq[1]
+        if _b > y_hi:
+            y_hi = _b + y_span * 0.05
+        elif _b < y_lo:
+            y_lo = _b - y_span * 0.05
+
     def to_px(x, y):
         px = margin_l + (x - x_lo) / (x_hi - x_lo) * gw
         py = margin_top + (y_hi - y) / (y_hi - y_lo) * gh
@@ -1093,8 +1113,10 @@ def scatter_plot_svg(points, x_label="x", y_label="y", line_eq=None,
         def y_at(xv):
             return m * xv + b
 
-        # Start with the data domain.
-        lx1 = max(x_lo, x_data_min)
+        # Run the line from the y-axis (x_lo, usually 0) so the y-intercept
+        # is visible, out to the end of the data. The y-range was widened
+        # above to include b, and clip_endpoint still guards the bounds.
+        lx1 = x_lo
         lx2 = min(x_hi, x_data_max)
 
         ly1 = y_at(lx1)
@@ -1886,12 +1908,14 @@ def qualitative_graph_svg(segments, x_label="Time", y_label="Value",
         all_y.extend([seg['y_start'], seg['y_end']])
     x_lo, x_hi = min(all_x), max(all_x)
     y_lo, y_hi = min(all_y), max(all_y)
-    # Add padding
+    # Add padding — but never pad past zero on the low side: the axis corner
+    # is the origin, and a "0" tick drawn anywhere except the corner reads
+    # as a wrong graph. Non-negative data anchors its axis exactly at 0.
     x_pad = max(0.5, (x_hi - x_lo) * 0.08)
     y_pad = max(0.5, (y_hi - y_lo) * 0.08)
-    x_lo -= x_pad
+    x_lo = 0 if x_lo >= 0 else x_lo - x_pad
     x_hi += x_pad
-    y_lo -= y_pad
+    y_lo = 0 if y_lo >= 0 else y_lo - y_pad
     y_hi += y_pad
 
     def to_px(x, y):
@@ -1947,6 +1971,8 @@ def qualitative_graph_svg(segments, x_label="Time", y_label="Value",
         y_int_lo = math.ceil(y_lo)
         y_int_hi = math.floor(y_hi)
         for yv in range(y_int_lo, y_int_hi + 1):
+            if yv == 0 and x_lo <= 0 <= x_hi:
+                continue  # origin already labeled once on the x-axis
             _, py = to_px(x_lo, yv)
             d.append(draw.Line(origin_px - 3, py, origin_px + 3, py,
                                stroke='#374151', stroke_width=1))
@@ -2002,16 +2028,18 @@ def qualitative_graph_svg(segments, x_label="Time", y_label="Value",
 
 def cone_in_cylinder_svg(radius_val, height_val,
                          label_r="", label_h="",
-                         width=280, height=320):
+                         width=320, height=320):
     """Draw a cone inscribed inside a cylinder (same radius and height).
 
     Shows the cylinder in pseudo-3D with the cone visible inside it.
+    The solid is shifted left of center so the height label fits inside
+    the canvas to the right.
     """
     d = draw.Drawing(width, height)
-    cx = width / 2
+    cx = width / 2 - 42
     margin_top = 50
     margin_bot = 50
-    r_px = min(width / 2 - 40, 90)  # pixel radius
+    r_px = min(cx - 40, 78)  # pixel radius
     h_px = height - margin_top - margin_bot - 40  # pixel height
     ey = r_px * 0.3  # ellipse y-radius
 
@@ -2067,12 +2095,14 @@ def cone_in_cylinder_svg(radius_val, height_val,
                        stroke_dasharray='5,3'))
     d.append(draw.Circle(cx, bot_cy, 2, fill='#dc2626'))
 
+    # Radius label — fully below the bottom-ellipse outline (the previous
+    # position sat directly on the cylinder's bottom-ellipse stroke).
     r_lbl = label_r if label_r else f"r = {radius_val}"
-    d.append(draw.Text(r_lbl, 28, cx + r_px / 2, bot_cy + 28,
+    d.append(draw.Text(r_lbl, 32, cx + r_px / 2, bot_cy + ey + 26,
                        text_anchor='middle', fill='#dc2626', font_weight='bold'))
 
     # Height line (right side, outside cylinder)
-    hx = cx + r_px + 20
+    hx = cx + r_px + 18
     d.append(draw.Line(hx, top_cy, hx, bot_cy,
                        stroke='#dc2626', stroke_width=1.5))
     # Arrow heads
@@ -2082,15 +2112,15 @@ def cone_in_cylinder_svg(radius_val, height_val,
                         close=False, fill='none', stroke='#dc2626', stroke_width=1.5))
 
     h_lbl = label_h if label_h else f"h = {height_val}"
-    d.append(draw.Text(h_lbl, 28, hx + 10, (top_cy + bot_cy) / 2,
+    d.append(draw.Text(h_lbl, 32, hx + 8, (top_cy + bot_cy) / 2,
                        text_anchor='start', fill='#dc2626', font_weight='bold',
                        dominant_baseline='middle'))
 
-    # Legend labels
-    d.append(draw.Text("Cylinder", 24, 10, height - 14,
+    # Legend labels — across the top, clear of the radius label at the bottom
+    d.append(draw.Text("Cylinder", 24, 12, 26,
                        fill='#2563eb', font_weight='bold'))
-    d.append(draw.Text("Cone", 24, width - 60, height - 14,
-                       fill='#d97706', font_weight='bold'))
+    d.append(draw.Text("Cone", 24, width - 12, 26,
+                       text_anchor='end', fill='#d97706', font_weight='bold'))
 
     return d.as_svg()
 
@@ -2145,7 +2175,7 @@ def cube_3d_svg(side_val, label_side="", width=240, height=260):
 
     # Side length label (front bottom edge)
     s_lbl = label_side if label_side else f"s = {side_val}"
-    d.append(draw.Text(s_lbl, 28, (fl[0] + fr[0]) / 2, fl[1] + 26,
+    d.append(draw.Text(s_lbl, 32, (fl[0] + fr[0]) / 2, fl[1] + 28,
                        text_anchor='middle', fill='#dc2626', font_weight='bold'))
 
     return d.as_svg()
@@ -2161,27 +2191,37 @@ def pyramid_and_cube_svg(side_val, height_val,
     """Draw a pyramid and cube side by side in a single canvas.
 
     Draws both shapes natively (no SVG nesting) for fpdf2 compatibility.
+
+    Both solids share a single pixel-per-unit scale and the same oblique
+    projection (depth = 0.35 * drawn size, back offset 0.7 * depth), so
+    equal stated dimensions LOOK equal: when height_val == side_val the
+    pyramid's apex sits at the same drawn height as the cube's top face.
     """
     d = draw.Drawing(width, height)
     half = width / 2
     margin = 30
     bot_y = height - margin - 10
 
+    # Common scale: 1 unit of length -> k pixels for BOTH solids.
+    k = min(140 / max(side_val, 1), 140 / max(height_val, 1))
+
     # --- LEFT: Pyramid ---
     lcx = half / 2  # left half center
-    pyr_base = min(half - 2 * margin, 120)
+    pyr_base = k * side_val
     pyr_half = pyr_base / 2
-    pyr_depth = pyr_half * 0.4
+    pyr_depth = pyr_base * 0.35  # same depth convention as the cube
 
-    pyr_apex_y = margin + 10
     pyr_base_y = bot_y
 
     # Base corners (parallelogram)
     pbl = (lcx - pyr_half, pyr_base_y)
     pbr = (lcx + pyr_half, pyr_base_y)
-    ptr = (lcx + pyr_half + pyr_depth * 0.6, pyr_base_y - pyr_depth)
-    ptl = (lcx - pyr_half + pyr_depth * 0.6, pyr_base_y - pyr_depth)
-    apex = (lcx + pyr_depth * 0.3, pyr_apex_y)
+    ptr = (lcx + pyr_half + pyr_depth * 0.7, pyr_base_y - pyr_depth)
+    ptl = (lcx - pyr_half + pyr_depth * 0.7, pyr_base_y - pyr_depth)
+    # Apex: k * height_val above the base-plane CENTER (matches how the
+    # cube's top-face center sits k * side_val above its base center).
+    base_center = ((pbl[0] + ptr[0]) / 2, (pbl[1] + ptr[1]) / 2)
+    apex = (base_center[0], base_center[1] - k * height_val)
 
     # Back edges (dashed)
     d.append(draw.Line(ptl[0], ptl[1], ptr[0], ptr[1],
@@ -2199,19 +2239,21 @@ def pyramid_and_cube_svg(side_val, height_val,
                         close=True, fill='#dbeafe', stroke='#2563eb', stroke_width=2))
 
     # Dashed height line
-    base_center = ((pbl[0] + ptr[0]) / 2, (pbl[1] + ptr[1]) / 2)
     d.append(draw.Line(apex[0], apex[1], base_center[0], base_center[1],
                        stroke='#dc2626', stroke_width=1.5, stroke_dasharray='5,3'))
 
     # Labels
     b_lbl = label_base if label_base else f"s = {side_val}"
-    d.append(draw.Text(b_lbl, 24, (pbl[0] + pbr[0]) / 2, pyr_base_y + 24,
+    d.append(draw.Text(b_lbl, 30, (pbl[0] + pbr[0]) / 2, pyr_base_y + 26,
                        text_anchor='middle', fill='#1e40af', font_weight='bold'))
+    # Height label — left of the dashed height line at ~65% down, clear of
+    # the slanted front-left edge.
     h_lbl = label_h if label_h else f"h = {height_val}"
-    d.append(draw.Text(h_lbl, 24, base_center[0] + 12, (apex[1] + base_center[1]) / 2,
-                       text_anchor='start', fill='#dc2626', font_weight='bold'))
+    d.append(draw.Text(h_lbl, 30, base_center[0] - 8,
+                       apex[1] + 0.65 * (base_center[1] - apex[1]),
+                       text_anchor='end', fill='#dc2626', font_weight='bold'))
 
-    d.append(draw.Text("Pyramid", 22, lcx, height - 6,
+    d.append(draw.Text("Pyramid", 22, lcx, 24,
                        text_anchor='middle', fill='#1e40af', font_weight='bold'))
 
     # --- Divider ---
@@ -2220,7 +2262,7 @@ def pyramid_and_cube_svg(side_val, height_val,
 
     # --- RIGHT: Cube ---
     rcx = half + half / 2  # right half center
-    s_px = min(half - 2 * margin - 30, 110)
+    s_px = k * side_val
     cdepth = s_px * 0.35
 
     cfl = (rcx - s_px / 2, bot_y)
@@ -2253,10 +2295,86 @@ def pyramid_and_cube_svg(side_val, height_val,
 
     # Cube label
     c_lbl = label_cube if label_cube else f"s = {side_val}"
-    d.append(draw.Text(c_lbl, 24, (cfl[0] + cfr[0]) / 2, bot_y + 24,
+    d.append(draw.Text(c_lbl, 30, (cfl[0] + cfr[0]) / 2, bot_y + 26,
                        text_anchor='middle', fill='#dc2626', font_weight='bold'))
 
-    d.append(draw.Text("Cube", 22, rcx, height - 6,
+    d.append(draw.Text("Cube", 22, rcx, 24,
                        text_anchor='middle', fill='#1e40af', font_weight='bold'))
+
+    return d.as_svg()
+
+
+# ============================================================
+# MAPPING DIAGRAM (relation: inputs -> outputs)
+# ============================================================
+
+def mapping_diagram_svg(inputs, outputs, arrows, width=300, height=220):
+    """Draw a mapping diagram for a relation: two rounded capsule
+    containers labeled "Input" and "Output", values listed vertically
+    inside each, and an arrow from each input to its mapped output.
+
+    inputs:  list of display values for the left container (top to bottom)
+    outputs: list of display values for the right container (top to bottom)
+    arrows:  list of (input_index, output_index) tuples
+    """
+    d = draw.Drawing(width, height)
+
+    box_w = 92
+    box_top = 40
+    box_h = height - box_top - 14
+    left_x = 20
+    right_x = width - box_w - 20
+
+    # Headers
+    d.append(draw.Text("Input", 18, left_x + box_w / 2, box_top - 12,
+                       text_anchor='middle', fill='#1e40af', font_weight='bold'))
+    d.append(draw.Text("Output", 18, right_x + box_w / 2, box_top - 12,
+                       text_anchor='middle', fill='#1e40af', font_weight='bold'))
+
+    # Rounded capsule containers
+    rx = min(box_w / 2, 42)
+    d.append(draw.Rectangle(left_x, box_top, box_w, box_h, rx=rx, ry=rx,
+                            fill='#eff6ff', stroke='#2563eb', stroke_width=2))
+    d.append(draw.Rectangle(right_x, box_top, box_w, box_h, rx=rx, ry=rx,
+                            fill='#eff6ff', stroke='#2563eb', stroke_width=2))
+
+    def _row_ys(n):
+        """Evenly spaced row centers, padded away from the curved caps."""
+        if n <= 1:
+            return [box_top + box_h / 2]
+        pad = 30
+        step = (box_h - 2 * pad) / (n - 1)
+        return [box_top + pad + i * step for i in range(n)]
+
+    in_ys = _row_ys(len(inputs))
+    out_ys = _row_ys(len(outputs))
+
+    # Values (baseline nudged down so text centers on its row)
+    for val, y in zip(inputs, in_ys):
+        d.append(draw.Text(str(val), 17, left_x + box_w / 2, y + 6,
+                           text_anchor='middle', fill='#111827'))
+    for val, y in zip(outputs, out_ys):
+        d.append(draw.Text(str(val), 17, right_x + box_w / 2, y + 6,
+                           text_anchor='middle', fill='#111827'))
+
+    # Arrows: line + small filled arrowhead from input row to output row
+    start_x = left_x + box_w - 14
+    end_x = right_x + 14
+    for i_idx, o_idx in arrows:
+        x1, y1 = start_x, in_ys[i_idx]
+        x2, y2 = end_x, out_ys[o_idx]
+        ang = math.atan2(y2 - y1, x2 - x1)
+        head = 9
+        # Stop the line just short of the tip so it doesn't poke through
+        lx2 = x2 - (head * 0.6) * math.cos(ang)
+        ly2 = y2 - (head * 0.6) * math.sin(ang)
+        d.append(draw.Line(x1, y1, lx2, ly2, stroke='#334155', stroke_width=1.8))
+        bx = x2 - head * math.cos(ang)
+        by = y2 - head * math.sin(ang)
+        half_w = 4.5
+        px = half_w * math.cos(ang + math.pi / 2)
+        py = half_w * math.sin(ang + math.pi / 2)
+        d.append(draw.Lines(x2, y2, bx + px, by + py, bx - px, by - py,
+                            close=True, fill='#334155'))
 
     return d.as_svg()

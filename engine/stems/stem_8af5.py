@@ -60,7 +60,9 @@ def _fmt_eq(m: Fraction, b: Fraction) -> str:
     elif m.denominator == 1:
         parts.append(f"{int(m)}x")
     else:
-        parts.append(f"({m.numerator}/{m.denominator})x")
+        # Bare fraction hugging the variable — the renderer stacks "a/b"
+        # and handles a leading minus; no parentheses ("y = 5/3x + 5").
+        parts.append(f"{m.numerator}/{m.denominator}x")
     if b > 0:
         parts.append(f" + {_fmt(b)}")
     elif b < 0:
@@ -158,14 +160,35 @@ class Stem8AF5:
             question = f"What is the y-intercept of the equation {eq_str}?"
             distractors = [_fmt(m), _fmt(abs(b)), _fmt(-b)]
 
-        # De-duplicate distractors
-        distractors = [d for d in distractors if d != correct]
-        while len(distractors) < 3:
+        # De-duplicate distractors against the correct answer AND each other.
+        # (e.g. y = 3x - 3: slope distractors [b, |m|, -m] = [-3, 3, -3]
+        #  collapse; y = -5x - 9: [b, |m|, -m] = [-9, 5, 5] collapse.)
+        seen = {correct}
+        unique = []
+        for d in distractors:
+            if d not in seen:
+                seen.add(d)
+                unique.append(d)
+        # Substitute structured alternates for any removed collisions
+        if ask_slope:
+            alternates = [_fmt(Fraction(m.denominator, m.numerator)),  # reciprocal
+                          _fmt(-b), _fmt(m + 1)]
+        else:
+            alternates = [_fmt(Fraction(b.denominator, b.numerator)),  # reciprocal
+                          _fmt(-m), _fmt(b + 1)]
+        for a in alternates:
+            if len(unique) >= 3:
+                break
+            if a not in seen:
+                seen.add(a)
+                unique.append(a)
+        while len(unique) < 3:
             v = Fraction(rng.randint(1, 12)) * rng.choice([1, -1])
             s = _fmt(v)
-            if s != correct and s not in distractors:
-                distractors.append(s)
-        distractors = distractors[:3]
+            if s not in seen:
+                seen.add(s)
+                unique.append(s)
+        distractors = unique[:3]
 
         stem_text = question
 
@@ -200,14 +223,18 @@ class Stem8AF5:
     def stem2_approaching_mc(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(2, variant_idx)
 
-        # Generate 1 nonlinear and 3 linear equations
+        # Generate 1 nonlinear and 3 UNIQUE linear equations
         nonlinear_eq = _make_nonlinear_eq(rng)
 
         linear_eqs = []
-        for _ in range(3):
+        seen = {nonlinear_eq}
+        while len(linear_eqs) < 3:
             m = Fraction(rng.randint(1, 6)) * rng.choice([1, -1])
             b = Fraction(rng.randint(1, 10)) * rng.choice([1, -1])
-            linear_eqs.append(_fmt_eq(m, b))
+            eq = _fmt_eq(m, b)
+            if eq not in seen:
+                seen.add(eq)
+                linear_eqs.append(eq)
 
         stem_text = "Which function is nonlinear?"
 
@@ -300,18 +327,25 @@ class Stem8AF5:
     def stem4_at_ms(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(4, variant_idx)
 
-        # Generate 5 functions: mix of linear and nonlinear
+        # Generate 5 UNIQUE functions: mix of linear and nonlinear
         functions = []
+        seen = set()
         # 2-3 linear
         n_linear = rng.randint(2, 3)
-        for _ in range(n_linear):
+        while len(functions) < n_linear:
             m = Fraction(rng.randint(1, 6)) * rng.choice([1, -1])
             b = Fraction(rng.randint(1, 10)) * rng.choice([1, -1])
-            functions.append((_fmt_eq(m, b), True))
+            eq = _fmt_eq(m, b)
+            if eq not in seen:
+                seen.add(eq)
+                functions.append((eq, True))
 
         # Rest nonlinear
-        for _ in range(5 - n_linear):
-            functions.append((_make_nonlinear_eq(rng), False))
+        while len(functions) < 5:
+            eq = _make_nonlinear_eq(rng)
+            if eq not in seen:
+                seen.add(eq)
+                functions.append((eq, False))
 
         rng.shuffle(functions)
 

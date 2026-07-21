@@ -44,6 +44,20 @@ def _frac_str(f):
     return f"{f.numerator}/{f.denominator}"
 
 
+# Compound events over a coin flip + number cube sample space,
+# shared by the list and table representations of Stem 1.
+_COIN_CUBE_EVENTS = [
+    ("flipping heads and rolling an even number",
+     lambda c, n: c == "H" and n % 2 == 0),
+    ("flipping tails and rolling a number greater than 4",
+     lambda c, n: c == "T" and n > 4),
+    ("flipping heads and rolling a 3",
+     lambda c, n: c == "H" and n == 3),
+    ("flipping tails and rolling a number less than 3",
+     lambda c, n: c == "T" and n < 3),
+]
+
+
 class Stem8DSP3:
     """Generates 20 variants for each of 4 stems from the 8.DSP.3 item spec."""
 
@@ -55,11 +69,51 @@ class Stem8DSP3:
         return NumberGenerator(seed), random.Random(seed)
 
     # ----------------------------------------------------------------
-    # Stem 1: Below – Identify correct sample space (MC, DOK 2)
+    # Stem 1: Below – Sample spaces (MC, DOK 2)
+    # Representation rotates across variants per the standard
+    # ("organized lists, tables, and tree diagrams"):
+    #   variant % 3 == 0 -> tree diagram
+    #   variant % 3 == 1 -> organized list in the stem text
+    #   variant % 3 == 2 -> table (data_table render)
     # ----------------------------------------------------------------
+    @staticmethod
+    def _build_mc(correct, candidates, rng, fallback):
+        """Build 4 unique MC choices (1 correct + 3 unique distractors)."""
+        seen = {correct}
+        wrong = []
+        for c in candidates:
+            if len(wrong) == 3:
+                break
+            if c not in seen:
+                seen.add(c)
+                wrong.append(c)
+        while len(wrong) < 3:
+            c = fallback()
+            if c not in seen:
+                seen.add(c)
+                wrong.append(c)
+        all_choices = [(correct, True)] + [(w, False) for w in wrong]
+        rng.shuffle(all_choices)
+        keys = "abcd"
+        choices = []
+        answer_key = ""
+        for i, (text, is_c) in enumerate(all_choices):
+            choices.append(QuestionChoice(key=keys[i], text=text, text_latex=text, is_correct=is_c))
+            if is_c:
+                answer_key = keys[i]
+        return choices, answer_key
+
     def _stem1(self, variant_idx):
         gen, rng = self._make_gen(1, variant_idx)
+        rep = variant_idx % 3
+        if rep == 1:
+            return self._stem1_list(gen, rng, variant_idx)
+        if rep == 2:
+            return self._stem1_table(gen, rng, variant_idx)
+        return self._stem1_tree(gen, rng, variant_idx)
 
+    def _stem1_tree(self, gen, rng, variant_idx):
+        """Tree-diagram representation: count outcomes in the sample space."""
         scenario_type = rng.choice(["coin_die", "spinner_coin", "two_dice"])
 
         if scenario_type == "coin_die":
@@ -81,24 +135,18 @@ class Stem8DSP3:
 
         svg = tree_diagram_svg([stage1, stage2])
 
-        stem = (f"{desc}. [FIGURE] How many outcomes are in the sample space?")
+        stem = (f"{desc}. The tree diagram shows the sample space. [FIGURE] "
+                f"How many outcomes are in the sample space?")
 
         correct = str(total)
-        wrong = [
+        candidates = [
             str(len(stage1) + len(stage2)),
             str(total + len(stage1)),
             str(total - 1),
         ]
-
-        all_choices = [(correct, True)] + [(w, False) for w in wrong]
-        rng.shuffle(all_choices)
-        keys = "abcd"
-        choices = []
-        answer_key = ""
-        for i, (text, is_c) in enumerate(all_choices):
-            choices.append(QuestionChoice(key=keys[i], text=text, text_latex=text, is_correct=is_c))
-            if is_c:
-                answer_key = keys[i]
+        choices, answer_key = self._build_mc(
+            correct, candidates, rng,
+            lambda: str(rng.randint(2, total + 8)))
 
         return GeneratedQuestion(
             question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
@@ -111,6 +159,152 @@ class Stem8DSP3:
             worked_solution=f"Sample space = {len(stage1)} x {len(stage2)} = {total} outcomes.",
             choices=choices,
             render_data={"svg_html": svg, "type": "svg_html"},
+            seed=gen.seed, stem_index=1, variant_index=variant_idx,
+        )
+
+    def _stem1_list(self, gen, rng, variant_idx):
+        """Organized-list representation: sample space enumerated in the stem."""
+        scenario = rng.choice(["coin_cube", "spinner_coin"])
+
+        if scenario == "coin_cube":
+            outcomes = [(c, n) for c in ("H", "T") for n in range(1, 7)]
+            labels = [f"{c}{n}" for c, n in outcomes]
+            desc = ("A coin is flipped and a number cube (1-6) is rolled. "
+                    "The organized list shows the sample space")
+            events = _COIN_CUBE_EVENTS
+            n1, n2 = 2, 6
+        else:
+            colors = rng.sample(["Red", "Blue", "Green", "Yellow"], 3)
+            outcomes = [(col, f) for col in colors for f in ("H", "T")]
+            labels = [f"{col}-{f}" for col, f in outcomes]
+            target = rng.choice(colors)
+            desc = (f"A spinner with equal sections {', '.join(colors)} is spun "
+                    f"and a coin is flipped. The organized list shows the sample space")
+            events = [
+                (f"the spinner landing on {target} and the coin showing heads",
+                 lambda col, f, t=target: col == t and f == "H"),
+                (f"the spinner landing on {target} and the coin showing tails",
+                 lambda col, f, t=target: col == t and f == "T"),
+            ]
+            n1, n2 = len(colors), 2
+
+        total = len(outcomes)
+        list_str = ", ".join(labels)
+        q_type = rng.choice(["count", "prob"])
+
+        if q_type == "count":
+            question = "How many outcomes are in the sample space?"
+            correct = str(total)
+            candidates = [str(n1 + n2), str(total - 1), str(total + 2)]
+            fallback = lambda: str(rng.randint(2, total + 8))
+            worked = f"Count the outcomes in the list: {n1} x {n2} = {total} outcomes."
+        else:
+            event_desc, pred = rng.choice(events)
+            fav = sum(1 for o in outcomes if pred(*o))
+            prob = Fraction(fav, total)
+            correct = _frac_str(prob)
+            question = f"What is the probability of {event_desc}?"
+            wrong_fracs = [Fraction(fav + 1, total), Fraction(1, total),
+                           Fraction(fav, n1 + n2)]
+            candidates = [_frac_str(f) for f in wrong_fracs if f != prob]
+            fallback = lambda: _frac_str(Fraction(rng.randint(1, total - 1), total))
+            worked = (f"{fav} of the {total} equally likely outcomes in the list "
+                      f"match the event, so P = {fav}/{total}"
+                      + (f" = {correct}." if correct != f"{fav}/{total}" else "."))
+
+        choices, answer_key = self._build_mc(correct, candidates, rng, fallback)
+
+        stem = f"{desc}: {list_str}. {question}"
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.MC, Difficulty.EASY, 1, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.BELOW,
+            difficulty=Difficulty.EASY, dok=2, item_type=ItemType.MC,
+            stem_text=stem, stem_latex=stem,
+            answer_text=answer_key, answer_latex=answer_key,
+            worked_solution=worked,
+            choices=choices,
+            seed=gen.seed, stem_index=1, variant_index=variant_idx,
+        )
+
+    def _stem1_table(self, gen, rng, variant_idx):
+        """Table representation: outcome grid or sum table as a data_table."""
+        scenario = rng.choice(["sum_table", "coin_cube_grid"])
+
+        if scenario == "sum_table":
+            headers = ["+", "1", "2", "3", "4", "5", "6"]
+            rows = [[str(r)] + [str(r + c) for c in range(1, 7)] for r in range(1, 7)]
+            desc = ("Two number cubes are rolled. The table shows the sum of the "
+                    "two cubes for every outcome in the sample space.")
+            q_type = rng.choice(["count", "count_event", "prob"])
+            s = rng.randint(3, 11)
+            fav = 6 - abs(7 - s)
+            if q_type == "count":
+                question = "How many outcomes are in the sample space?"
+                correct = "36"
+                candidates = ["12", "11", "21"]
+                fallback = lambda: str(rng.randint(6, 48))
+                worked = "The table has 6 rows x 6 columns = 36 outcomes."
+            elif q_type == "count_event":
+                question = f"How many outcomes have a sum of {s}?"
+                correct = str(fav)
+                candidates = [str(fav + 1), str(fav - 1), str(s)]
+                fallback = lambda: str(rng.randint(1, 12))
+                worked = f"Count the cells in the table equal to {s}: there are {fav}."
+            else:
+                prob = Fraction(fav, 36)
+                correct = _frac_str(prob)
+                question = f"What is the probability that the sum is {s}?"
+                wrong_fracs = [Fraction(fav + 1, 36), Fraction(s, 36),
+                               Fraction(fav, 12)]
+                candidates = [_frac_str(f) for f in wrong_fracs if f != prob]
+                fallback = lambda: _frac_str(Fraction(rng.randint(1, 35), 36))
+                worked = (f"{fav} of the 36 cells in the table show a sum of {s}, "
+                          f"so P(sum = {s}) = {fav}/36 = {correct}.")
+        else:
+            headers = ["", "1", "2", "3", "4", "5", "6"]
+            rows = [["H"] + [f"H{n}" for n in range(1, 7)],
+                    ["T"] + [f"T{n}" for n in range(1, 7)]]
+            desc = ("A coin is flipped and a number cube (1-6) is rolled. "
+                    "The table shows every outcome in the sample space.")
+            outcomes = [(c, n) for c in ("H", "T") for n in range(1, 7)]
+            q_type = rng.choice(["count", "prob"])
+            if q_type == "count":
+                question = "How many outcomes are in the sample space?"
+                correct = "12"
+                candidates = ["8", "6", "11"]
+                fallback = lambda: str(rng.randint(2, 18))
+                worked = "The table has 2 rows x 6 columns = 12 outcomes."
+            else:
+                event_desc, pred = rng.choice(_COIN_CUBE_EVENTS)
+                fav = sum(1 for o in outcomes if pred(*o))
+                prob = Fraction(fav, 12)
+                correct = _frac_str(prob)
+                question = f"What is the probability of {event_desc}?"
+                wrong_fracs = [Fraction(fav + 1, 12), Fraction(1, 12),
+                               Fraction(fav, 8)]
+                candidates = [_frac_str(f) for f in wrong_fracs if f != prob]
+                fallback = lambda: _frac_str(Fraction(rng.randint(1, 11), 12))
+                worked = (f"{fav} of the 12 outcomes in the table match the event, "
+                          f"so P = {fav}/12 = {correct}.")
+
+        choices, answer_key = self._build_mc(correct, candidates, rng, fallback)
+
+        stem = f"{desc} [FIGURE] {question}"
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.MC, Difficulty.EASY, 1, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.BELOW,
+            difficulty=Difficulty.EASY, dok=2, item_type=ItemType.MC,
+            stem_text=stem, stem_latex=stem,
+            answer_text=answer_key, answer_latex=answer_key,
+            worked_solution=worked,
+            choices=choices,
+            render_data={"type": "data_table", "headers": headers, "rows": rows},
             seed=gen.seed, stem_index=1, variant_index=variant_idx,
         )
 
