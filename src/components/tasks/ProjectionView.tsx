@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useCallback, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { parsePrompt, parseBulletedList } from "@/lib/split-prompt";
 import MarkdownText from "./MarkdownText";
@@ -49,8 +49,6 @@ interface Props {
   title: string;
   studentPrompt: string;
   primaryStandard?: string;
-  durationLabel?: string;
-  taskTypeLabel?: string;
   extensions?: string;
   image?: TaskImage;
 }
@@ -71,8 +69,6 @@ export default function ProjectionView({
   title,
   studentPrompt,
   primaryStandard,
-  durationLabel,
-  taskTypeLabel,
   extensions,
   image,
 }: Props) {
@@ -467,6 +463,14 @@ export default function ProjectionView({
   //      Lightning Distance which pairs a multi-sentence intro with a 4-row
   //      table). Tables consume far more vertical space per character than
   //      prose, so each table row is weighted heavily.
+  // Measured fit-to-height. The density heuristic below is a first guess;
+  // this correction measures the ACTUAL rendered column and shrinks (or
+  // restores) the scale so content never clips at 100% zoom, no matter how
+  // heavy the intro/table/question stack is.
+  const colRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [fitScale, setFitScale] = useState(1);
+
   const revealedN = revealed.length;
   const introWeight = useMemo(() => {
     const intro = parts.intro ?? "";
@@ -512,9 +516,11 @@ export default function ProjectionView({
   // Three separate density values: the question stays at baseDensity, the
   // intro shrinks with intro weight, the title takes a mild share of the
   // intro penalty (so it doesn't dominate when the intro is long).
-  const questionDensity = baseDensity;
-  const introDensity = Math.max(0.5, baseDensity * introPenalty);
-  const titleDensity = baseDensity * Math.max(0.85, introPenalty);
+  // fitScale (measured below) folds into every density so the whole column
+  // shrinks to fit when the heuristic underestimates the real height.
+  const questionDensity = baseDensity * fitScale;
+  const introDensity = Math.max(0.5, baseDensity * introPenalty) * fitScale;
+  const titleDensity = baseDensity * Math.max(0.85, introPenalty) * fitScale;
   // Anchor the column to the top ONLY when several question cards are
   // stacked. Heavy-intro tasks (mini-golf blueprint, hotel night) stay
   // centered at revealedN ≤ 2 so the layout feels consistent with the
@@ -533,6 +539,34 @@ export default function ProjectionView({
   const introFs = scaleAt(introDensity)(1.25, 2.4, 2);
   const questionFs = scaleAt(questionDensity)(1.5, 2.6, 2.25);
   const labelFs = "0.7em";
+
+  // Measure the rendered content column against its available height and nudge
+  // fitScale so the whole task always fits without clipping — the guarantee the
+  // character-count heuristic alone can't make. Runs after layout (pre-paint)
+  // and re-measures on viewport/theme resize; converges in a couple passes via
+  // the 0.02 tolerance. SSR-safe: fitScale defaults to 1 (current behaviour).
+  useLayoutEffect(() => {
+    const col = colRef.current;
+    const content = contentRef.current;
+    if (!col || !content) return;
+    const measure = () => {
+      const avail = col.clientHeight;
+      const natural = content.getBoundingClientRect().height;
+      if (avail <= 0 || natural <= 0) return;
+      const ratio = avail / natural;
+      setFitScale((prev) => {
+        let next = prev;
+        if (ratio < 1) next = prev * ratio * 0.98; // overflowing → shrink to fit
+        else if (ratio > 1.06 && prev < 1) next = prev * ratio * 0.98; // room freed → grow back
+        next = Math.max(0.35, Math.min(1, next));
+        return Math.abs(next - prev) > 0.02 ? next : prev;
+      });
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(col);
+    return () => ro.disconnect();
+  }, [revealedN, parts.intro, title, baseDensity, introPenalty, image, fitScale]);
 
   return (
     <div
@@ -580,17 +614,6 @@ export default function ProjectionView({
             </svg>
           </button>
 
-          <span className="font-mono">
-            {Math.min(revealedCount, total)} / {total}
-          </span>
-
-          <div className={`hidden md:flex items-center gap-2 ${isDark ? "text-white/60" : "text-pnp-gray-500"}`}>
-            {primaryStandard && <span>{primaryStandard}</span>}
-            {primaryStandard && taskTypeLabel && <span>•</span>}
-            {taskTypeLabel && <span>{taskTypeLabel}</span>}
-            {durationLabel && <span>•</span>}
-            {durationLabel && <span>{durationLabel}</span>}
-          </div>
         </div>
 
         <div className="flex items-center gap-2">
@@ -710,10 +733,12 @@ export default function ProjectionView({
               several questions are revealed (otherwise the flex centering
               would push the title above the chrome bar). */}
           <div
+            ref={colRef}
             className={`flex min-h-0 flex-col overflow-hidden ${
               anchorTop ? "justify-start pt-1" : "justify-center"
             } ${image ? "lg:w-[64%]" : "w-full"}`}
           >
+            <div ref={contentRef}>
             <h1
               className="font-heading font-extrabold leading-tight"
               style={{ fontSize: titleFs }}
@@ -833,6 +858,7 @@ export default function ProjectionView({
                 );
               })}
             </div>
+            </div>
           </div>
 
           {/* RIGHT: image (SVG, URL, or interactive 3D) */}
@@ -876,6 +902,20 @@ export default function ProjectionView({
           pointer over Back/Next even when drawing is on. */}
       {total > 0 && (
         <div className="absolute inset-x-0 bottom-0 z-[220] flex items-center justify-center gap-4 pb-5">
+          {/* Slide number + standard live down here, off the busy top bar
+              (the word "Investigation" and the time estimate were dropped
+              entirely — they were teacher-facing noise for students). */}
+          <div
+            className={`pointer-events-none absolute left-6 bottom-5 hidden items-center gap-2 text-sm font-semibold sm:flex ${
+              isDark ? "text-white/60" : "text-pnp-gray-500"
+            }`}
+          >
+            {primaryStandard && <span>{primaryStandard}</span>}
+            {primaryStandard && <span className="opacity-40">•</span>}
+            <span className="font-mono">
+              {Math.min(revealedCount, total)} / {total}
+            </span>
+          </div>
           <button
             onClick={retreat}
             disabled={!canRetreat}

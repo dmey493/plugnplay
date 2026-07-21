@@ -43,6 +43,15 @@ export default function TaskImageView({
     detail: "max-h-56",
     project: "max-h-[40vh]",
   }[size];
+  // The inline SVG needs a DEFINITE max-height (in px/vh), not `max-h-full`:
+  // this figure's container only has a MAX height with an auto real height, so
+  // a percentage cap resolves against nothing and the SVG balloons. A concrete
+  // cap + h-auto scales the shape by its aspect ratio and never overflows.
+  const svgMaxHClass = {
+    card: "[&>svg]:max-h-32",
+    detail: "[&>svg]:max-h-56",
+    project: "[&>svg]:max-h-[40vh]",
+  }[size];
 
   return (
     <figure className={`flex flex-col items-center ${className}`}>
@@ -61,7 +70,7 @@ export default function TaskImageView({
           <div
             data-task-image-svg
             data-theme={theme}
-            className="task-image-svg flex h-full w-full items-center justify-center [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto [&>svg]:max-w-full"
+            className={`task-image-svg flex w-full items-center justify-center [&>svg]:h-auto [&>svg]:w-auto [&>svg]:max-w-full ${svgMaxHClass}`}
             // Inline SVG is authored by us in the task JSONs. We treat it as trusted.
             dangerouslySetInnerHTML={{ __html: image.svg }}
           />
