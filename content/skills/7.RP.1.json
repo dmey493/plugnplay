@@ -3,7 +3,7 @@
   "standard_text": "Identify the unit rate or constant of proportionality in tables, graphs, equations, and verbal descriptions of proportional relationships.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard is a reading skill, not a building skill: the item spec is explicit that students only ever interpret proportional relationships, never create them. So the arc starts by settling the one gate question — is this relationship even proportional? A relationship is proportional when every pair hides the same 'per 1' value (y = kx, straight through the origin), and that constant is the whole point of the standard. Once a student can tell proportional from not, the work becomes: pull that one number — the unit rate, also called the constant of proportionality, k — out of whatever costume it is wearing. Sometimes it is handed over as the pair (1, r) in a table or the point (1, r) on a graph and only has to be recognized. Sometimes it must be computed as y divided by x, and the answer is not a whole number. Sometimes the quantities themselves are fractions. Sometimes it is sitting in plain sight as the coefficient in y = kx.\n\nThe order matters. Recognition (is it proportional? which pair is the unit rate?) comes before computation (divide to find k), which comes before the harder number cases (non-whole and fractional k), which come before the payoff: reading k off an equation or graph and then using it to make a prediction. Underneath all of it is one durable idea we keep returning to — the constant of proportionality is 'how much y for exactly 1 x,' and every representation is just a different place that number can hide.",
+    "narrative": "This standard asks students to pull one number, the unit rate or constant of proportionality k, out of tables, graphs, equations, and verbal descriptions of proportional relationships. The on-grade work moves from deciding whether a relationship is proportional at all, to recognizing k when the pair (1, r) is handed over, to computing k as y divided by x, including the cases where k or the quantities are fractions. Students who stall here are usually missing arithmetic from well below grade seven, most often the meaning of division as equal sharing and the fact that a fraction is itself a division. Intervention should rebuild those foundations first, then the grade six skills of dividing to find a per one amount and dividing with fractions, and only then return to proportional relationships.",
     "steps": [
       {
         "skill_id": "7RP1-S1",
@@ -40,22 +40,210 @@
   "skills": [
     {
       "skill_id": "7RP1-F1",
-      "name": "Divide a total by an amount to find how much per 1",
+      "name": "Divide a total into equal groups",
       "column": "foundation",
       "parent_standard": "7.RP.1",
       "prerequisite_skill": {
         "type": "gap",
+        "grade": 3,
+        "description": "Interpret division as sharing a total equally and find the size of one group, facts within 100.",
+        "check_question": "12 cookies are shared equally among 3 friends. How many cookies does each friend get?"
+      },
+      "i_do_script": "Division answers the question: if I share this total equally, how big is one group? Watch: 12 cookies shared among 3 friends. I draw 3 circles, one per friend, and deal the cookies out one at a time, around and around, until the 12 are gone. Each circle ends up with 4 cookies, so 12 divided by 3 is 4. The total gets split, the number of groups does the splitting, and the answer is the size of ONE group. That one-group amount is the whole point of dividing.",
+      "canonical_error": {
+        "pattern": "Multiplies the two numbers instead of dividing, or answers with the number of groups",
+        "example": "For '12 cookies shared among 3 friends' the student writes 12 x 3 = 36, or answers 3",
+        "why": "The student sees two numbers and reaches for the operation that makes a bigger number, or reports the group count instead of the group size. Sharing never makes more cookies; dealing them into circles shows each friend gets fewer than the total."
+      },
+      "item_template": "A total shared into equal groups (facts within 100, no remainders). Student finds the size of one group. Short numeric response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "12 cookies are shared equally among 3 friends. How many cookies does each friend get?",
+          "answer": "4"
+        },
+        {
+          "stem": "20 stickers are shared equally among 4 kids. How many stickers each?",
+          "answer": "5"
+        },
+        {
+          "stem": "15 divided by 3",
+          "answer": "5"
+        },
+        {
+          "stem": "24 crayons are put into 6 equal boxes. How many crayons in each box?",
+          "answer": "4"
+        },
+        {
+          "stem": "30 divided by 5",
+          "answer": "6"
+        },
+        {
+          "stem": "16 markers are split equally into 2 cups. How many markers in each cup?",
+          "answer": "8"
+        },
+        {
+          "stem": "27 divided by 3",
+          "answer": "9"
+        },
+        {
+          "stem": "40 apples are packed equally into 8 bags. How many apples in each bag?",
+          "answer": "5"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did sharing make more cookies or fewer for each person?",
+        "prompt": "Draw one circle for each friend and deal the total out one at a time until it is gone. Count what lands in ONE circle. That count is the answer, and it has to be smaller than the total.",
+        "praise": "You dealt the total into equal groups and counted one group, that is exactly what division means."
+      },
+      "vocabulary": [
+        {
+          "term": "Divide",
+          "definition": "Split a total into equal groups."
+        },
+        {
+          "term": "Equal groups",
+          "definition": "Groups that all hold the same amount."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7RP1-B1",
+        "if_fail": "Review grade 3 division as equal sharing with counters (deal a total into circles and count one group)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw 3 circles labeled friend 1, friend 2, friend 3. Deal 12 counters into them one at a time, around and around."
+        },
+        {
+          "kind": "ask",
+          "text": "How many counters ended up in each circle? Did every circle get the same amount?"
+        },
+        {
+          "kind": "say",
+          "text": "Each circle holds 4, so 12 divided by 3 is 4. The 12 is the total, the 3 is how many groups, and the 4 is the size of one group."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 36 or 3, hand them the counters: deal them out and count one circle. Sharing cannot make more than you started with."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: deal 20 counters into 4 circles. How many in each?"
+        }
+      ]
+    },
+    {
+      "skill_id": "7RP1-F2",
+      "name": "Interpret a fraction as division",
+      "column": "foundation",
+      "parent_standard": "7.RP.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Understand that the fraction a/b means a divided by b, and use it to share a whole-number amount.",
+        "check_question": "3 sandwiches are shared equally by 4 people. How much sandwich does each person get?"
+      },
+      "i_do_script": "A fraction IS a division problem: a/b means a divided by b. Watch: 3 sandwiches shared equally by 4 people. I cut each sandwich into 4 equal pieces, so every sandwich gives each person one piece, one fourth. Three sandwiches give each person three fourths. So 3 divided by 4 equals 3/4, no leftover mystery. The top number is the total being shared and the bottom number is how many ways it is split. This works even when the total is smaller than the number of sharers.",
+      "canonical_error": {
+        "pattern": "Flips the division because the divisor is bigger, writing b/a instead of a/b",
+        "example": "For 3 divided by 4 the student writes 4/3, saying you cannot divide 3 by 4",
+        "why": "The student believes the bigger number must be divided by the smaller. But sharing 3 sandwiches among 4 people is possible, each person just gets less than one whole. The sandwich picture shows each share is 3/4, not 4/3."
+      },
+      "item_template": "A whole-number division written as a fraction, or a sharing story with a total smaller than or near the number of sharers. Student writes the fraction or the share. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "Write 3 divided by 4 as a fraction.",
+          "answer": "3/4"
+        },
+        {
+          "stem": "3 sandwiches are shared equally by 4 people. How much does each person get?",
+          "answer": "3/4 of a sandwich"
+        },
+        {
+          "stem": "Write the fraction 1/2 as a division problem.",
+          "answer": "1 divided by 2"
+        },
+        {
+          "stem": "Write 5 divided by 8 as a fraction.",
+          "answer": "5/8"
+        },
+        {
+          "stem": "2 brownies are shared equally by 5 kids. How much brownie does each kid get?",
+          "answer": "2/5 of a brownie"
+        },
+        {
+          "stem": "Write the fraction 7/10 as a division problem.",
+          "answer": "7 divided by 10"
+        },
+        {
+          "stem": "Write 4 divided by 5 as a fraction.",
+          "answer": "4/5"
+        },
+        {
+          "stem": "Write 9 divided by 2 as a mixed number.",
+          "answer": "4 1/2"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which number is being shared, and how many ways is it split?",
+        "prompt": "The total being shared goes on top and the number of sharers goes on the bottom. Cut each whole into that many pieces and give one piece from each whole to each person. Count one person's pieces.",
+        "praise": "You kept the total on top, so your fraction matches the share in the picture."
+      },
+      "vocabulary": [
+        {
+          "term": "Fraction",
+          "definition": "A way to write a division: a/b means a divided by b."
+        },
+        {
+          "term": "Share",
+          "definition": "The amount one person gets when a total is split equally."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7RP1-B2",
+        "if_fail": "Review grade 5 fractions as division with a sharing model (cut each whole into equal pieces and collect one person's share)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw 3 rectangles for 3 sandwiches. Cut each one into 4 equal pieces. Shade one piece of each sandwich for person 1."
+        },
+        {
+          "kind": "ask",
+          "text": "How many pieces does person 1 get, and what size is each piece?"
+        },
+        {
+          "kind": "say",
+          "text": "Person 1 gets 3 pieces and each piece is one fourth of a sandwich, so their share is 3/4. That shows 3 divided by 4 equals 3/4."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 4/3, ask if one person can get MORE than a whole sandwich when 4 people split only 3 sandwiches."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 2 brownies shared by 5 kids. Draw it and write the share as a fraction."
+        }
+      ]
+    },
+    {
+      "skill_id": "7RP1-B1",
+      "name": "Divide to find a unit rate (how much per 1)",
+      "column": "looking_back",
+      "parent_standard": "7.RP.1",
+      "prerequisite_skill": {
+        "type": "gap",
         "grade": 6,
-        "description": "Whole-number and simple decimal division to find a per-unit amount.",
+        "description": "Find a unit rate from a whole-number rate by dividing the total by the number of units.",
         "check_question": "12 dollars buys 4 pounds. How many dollars per 1 pound?"
       },
-      "i_do_script": "Picture the 15 dollars laid out as one long bar, then cut it into 3 equal chunks -- one chunk for each pound. Each chunk holds 15 / 3 = 5 dollars, and that one-pound chunk IS the unit rate: the money is what gets cut, the pounds are how many pieces. A unit rate is always the answer to 'how much for exactly 1?' To get it I divide the total by the number of units. Watch: 12 dollars for 4 pounds. I divide the dollars by the pounds — 12 divided by 4 — and get 3 dollars per 1 pound. The trick is which number goes on top: whatever the 'per' word points AT (dollars per pound) is the total I divide, and the thing after 'per' is what I divide BY.",
+      "i_do_script": "A unit rate answers the question: how much for exactly 1? Watch: 15 dollars buys 3 pounds. I draw a double number line, pounds on top marked 0, 1, 2, 3 and dollars beneath marked 0, blank, blank, 15. To find what lines up with 1 pound, I divide the 15 dollars by the 3 pounds and get 5 dollars per 1 pound. The thing after the word per is what I divide BY, because that is the side being squeezed down to 1. The answer does not have to be a whole number: 14 dollars for 4 pounds gives 14 divided by 4, which is 3.50 per pound.",
       "canonical_error": {
-        "pattern": "Divides in the wrong order — amount by total instead of total by amount",
-        "example": "For '12 dollars for 4 pounds, dollars per pound?' the student computes 4 / 12 = 0.33 instead of 12 / 4 = 3",
-        "why": "The student grabs the two numbers and divides the smaller into the larger, or divides left-to-right in reading order, without tracking which quantity the 'per' word makes the divisor. The unit they are solving FOR must end up on top."
+        "pattern": "Divides in the wrong order, units by total instead of total by units",
+        "example": "For '21 dollars for 6 tickets, dollars per ticket?' the student computes 6 / 21 instead of 21 / 6 = 3.50",
+        "why": "The student divides in reading order or divides the smaller number into the larger without tracking units. The quantity being asked FOR goes on top, and the quantity after per is the divisor. A ticket that costs 29 cents should fail the sense check."
       },
-      "item_template": "A two-number rate ('A units of X for B units of Y') and a 'X per 1 Y?' question. Student divides the correct quantity by the other. Short numeric response; whole-number and simple decimal quotients for fluency.",
+      "item_template": "A two-number whole-number rate ('A of X for B of Y') and an 'X per 1 Y' question. Whole-number or clean decimal quotients. Numeric response with occasional MC.",
       "sample_items": [
         {
           "stem": "20 dollars for 5 shirts. How many dollars per 1 shirt?",
@@ -71,21 +259,36 @@
         },
         {
           "stem": "14 dollars for 4 pounds. How many dollars per 1 pound?",
-          "answer": "3.5"
+          "answer": "3.50"
         },
         {
-          "stem": "21 dollars for 6 tickets. How many dollars per 1 ticket?",
-          "answer": "3.5"
+          "stem": "6 tickets cost 21 dollars. What is the price per 1 ticket?",
+          "answer": "$3.50",
+          "choices": [
+            "$3.50",
+            "$15.00",
+            "$126.00",
+            "$0.29"
+          ],
+          "distractor_logic": "15 subtracts the numbers, 126 multiplies them, 0.29 divides tickets by dollars. Only 21 / 6 = 3.50 puts dollars over tickets."
         },
         {
-          "stem": "48 students on 3 buses. How many students per 1 bus?",
+          "stem": "48 students ride on 3 buses. How many students per 1 bus?",
           "answer": "16"
+        },
+        {
+          "stem": "9 cups of flour makes 6 batches. How many cups per 1 batch?",
+          "answer": "1.5"
+        },
+        {
+          "stem": "60 pages print in 8 minutes. How many pages per 1 minute?",
+          "answer": "7.5"
         }
       ],
       "redirect_script": {
-        "stop": "Wait — which number are you solving for?",
-        "prompt": "Look at the bar first: the dollars are the amount that gets cut up, and the pounds are how many pieces you cut it into. Underline the words after 'per' — that is what you divide BY. The other quantity goes on top. Say it out loud: 'dollars per 1 pound means dollars on top, pounds on the bottom.'",
-        "praise": "You put the right quantity on top before dividing — that is what keeps a unit rate right-side up."
+        "stop": "Which quantity are you solving for, and which one comes after the word per?",
+        "prompt": "Sketch the double number line first. The unit after per is the side you squeeze to 1, so it is what you divide BY. Say it out loud: dollars per ticket means dollars on top, tickets on the bottom. Then check the size: does your answer make sense for one?",
+        "praise": "You put the right quantity on top before dividing, that keeps the unit rate right side up."
       },
       "vocabulary": [
         {
@@ -94,180 +297,513 @@
         },
         {
           "term": "Per",
-          "definition": "A word meaning 'for each 1'; the quantity right after 'per' is what you divide by."
+          "definition": "A word meaning for each 1; the quantity right after per is what you divide by."
         }
       ],
       "next_steps": {
         "if_pass": "7RP1-S1",
-        "if_fail": "Review division to find a per-unit amount (6.RP.2)."
+        "if_fail": "7RP1-F1"
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw a bar worth 15 dollars and cut it into 3 equal pieces, one piece per pound. Each piece holds 5 dollars -- the cost of exactly 1 pound.",
-          "visual": {
-            "type": "percent_bar",
-            "label": "$15 cut into 3 pounds",
-            "segments": [
-              {
-                "span": 5,
-                "label": "$5",
-                "shaded": true
-              },
-              {
-                "span": 5,
-                "label": "$5",
-                "shaded": true
-              },
-              {
-                "span": 5,
-                "label": "$5",
-                "shaded": true
-              }
-            ],
-            "end_labels": [
-              "$0",
-              "$15"
-            ]
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write '15 dollars for 3 pounds. Dollars per 1 pound?'"
+          "text": "Draw a double number line: pounds on top marked 0, 1, 2, 3 and dollars beneath marked 0, blank, blank, 15."
         },
         {
           "kind": "ask",
-          "text": "The question says 'dollars per 1 pound.' Which quantity are we solving FOR — dollars or pounds?"
+          "text": "The 15 dollars lines up with 3 pounds. What operation finds the dollars that line up with 1 pound?"
         },
         {
           "kind": "say",
-          "text": "Dollars. So dollars go on top. Pounds is the 'per' word, so pounds is what we divide BY: 15 divided by 3."
+          "text": "Divide by 3. 15 divided by 3 is 5, so 5 dollars lines up with 1 pound. Dividing the total by the number of units always manufactures the 1."
         },
         {
           "kind": "watch",
-          "text": "If the student writes 3 / 15, don't correct the arithmetic — ask 'is your answer bigger or smaller than 1 dollar? Does 20 cents a pound make sense?'"
+          "text": "If a student writes 3 / 15 = 0.2, ask whether 20 cents a pound is a sensible price when 3 pounds cost 15 dollars."
         },
         {
           "kind": "ask",
-          "text": "Your turn: 24 dollars for 6 hours. Dollars per 1 hour? What goes on top?"
+          "text": "Your turn: 24 dollars for 6 hours of work. Dollars per 1 hour? Set up the division first, then compute."
         }
-      ]
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "10 dollars for 2 books. Dollars per 1 book?",
+          "answer": "5"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "18 miles in 3 hours. Miles per 1 hour?",
+          "answer": "6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "27 dollars for 6 pizzas. Dollars per 1 pizza?",
+          "answer": "4.50"
+        },
+        {
+          "difficulty": "core",
+          "stem": "5 pounds of apples cost 12 dollars. Dollars per 1 pound?",
+          "answer": "2.40"
+        },
+        {
+          "difficulty": "core",
+          "stem": "52 dollars for 8 hours of work. Dollars per 1 hour?",
+          "answer": "6.50"
+        },
+        {
+          "difficulty": "core",
+          "stem": "9 cups of juice fills 12 glasses. Cups per 1 glass?",
+          "answer": "0.75 (3/4)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Which is the better buy: 3 pounds of grapes for 8.40 dollars or 5 pounds for 13.50 dollars?",
+          "answer": "5 pounds for 13.50: it costs 2.70 per pound, while 8.40 / 3 = 2.80 per pound."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Kim was asked for the unit rate for '24 miles in 5 hours, miles per hour.' Find her mistake and fix it.",
+          "shown_work": [
+            "24 miles in 5 hours",
+            "5 / 24 = about 0.2",
+            "unit rate is 0.2 miles per hour"
+          ],
+          "answer": "She divided hours by miles. Miles per hour puts miles on top: 24 / 5 = 4.8 miles per hour. Her 0.2 is hours per mile."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Squeeze It to One",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Blank double number lines",
+            "Linking cubes",
+            "Rate story cards"
+          ],
+          "instructions": "1. Draw a rate card like '15 dollars for 3 pounds.'\n2. Build the top line in cubes: 3 pound marks. Build the bottom line: 15 cubes spread evenly under them.\n3. Slide down to the 1 pound mark and count the cubes that line up under it (5).\n4. Write the matching division 15 / 3 = 5 next to the line.\n5. Repeat with '14 dollars for 4 pounds' and say each time: the per unit is the side we squeeze to 1."
+        },
+        {
+          "type": "matching",
+          "title": "Per One Match-Up",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per rate story, one card per unit rate"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each rate story to its unit rate card.\n3. To claim a match, say the division out loud with units: 21 dollars divided by 6 tickets is 3.50 dollars per ticket.\n4. Two decoy cards show inverted divisions; set them aside and explain which unit ended up on top by mistake.",
+          "content": {
+            "pairs": [
+              {
+                "left": "20 dollars for 5 shirts",
+                "right": "4 dollars per shirt"
+              },
+              {
+                "left": "36 miles on 4 gallons",
+                "right": "9 miles per gallon"
+              },
+              {
+                "left": "21 dollars for 6 tickets",
+                "right": "3.50 dollars per ticket"
+              },
+              {
+                "left": "18 miles in 3 hours",
+                "right": "6 miles per hour"
+              },
+              {
+                "left": "9 cups for 6 batches",
+                "right": "1.5 cups per batch"
+              },
+              {
+                "left": "48 students on 3 buses",
+                "right": "16 students per bus"
+              }
+            ],
+            "decoys": [
+              "0.29 dollars per ticket (6 / 21)",
+              "0.25 shirts per dollar (5 / 20)"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The double number line makes 'squeeze the per side to 1' visible before the divide-the-total rule is named."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'dollars per ticket, so dollars on top' models the unit tracking that prevents the inverted division."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Quick estimation talk (about how much for one?) builds the size sense that flags a 29 cent ticket as a flip."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which quantity comes after the word per? What does that tell you to divide by?",
+          "On your double number line, which side gets squeezed to 1?",
+          "Is your answer a sensible size for ONE of that thing?",
+          "Does the unit rate have to be a whole number? Why is 3.50 fine?",
+          "If 3 pounds cost 15 dollars, what would 2 pounds cost? Does your unit rate agree?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student divides the number of units by the total, inverting the rate.",
+            "say": "Read the per phrase out loud: dollars per ticket means dollars on top. Write the fraction with units before you divide, then ask if the size makes sense.",
+            "praise": "You set up the fraction from the per phrase first, so the division came out right side up."
+          },
+          {
+            "if_you_see": "Student multiplies the two numbers or subtracts them.",
+            "say": "Go back to the double number line: we are sharing 21 dollars across 6 tickets, not making more dollars. Which operation shares a total equally?",
+            "praise": "You recognized this as sharing, and sharing is division."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "35 dollars for 5 pizzas. Dollars per pizza?",
+            "look_for": "7, from 35 / 5, not 0.14 from 5 / 35."
+          },
+          {
+            "prompt": "14 dollars for 4 pounds. Dollars per pound?",
+            "look_for": "3.50, showing comfort with a non whole number unit rate."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "6 tickets cost 21 dollars. What is the price per 1 ticket?",
+        "answer": "$3.50",
+        "steps": [
+          {
+            "math": "per ticket, so tickets is the divisor",
+            "annotation": "The quantity after per is the side we squeeze to 1."
+          },
+          {
+            "math": "21 / 6",
+            "annotation": "Dollars on top, tickets on the bottom."
+          },
+          {
+            "math": "21 / 6 = 3.5",
+            "annotation": "Six 3s make 18, and the leftover 3 dollars split 6 ways is 0.50 each."
+          },
+          {
+            "math": "3.50 dollars per 1 ticket",
+            "annotation": "Sense check: 6 tickets at 3.50 is 21 dollars. It works."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "8 pounds of oranges cost 30 dollars. What is the price per 1 pound?",
+        "answer": "$3.75",
+        "steps": [
+          {
+            "math": "per pound, so pounds is the divisor",
+            "annotation": "Pounds is the side squeezed to 1.",
+            "given": true
+          },
+          {
+            "math": "set up 30 / 8",
+            "annotation": "Dollars on top, pounds on the bottom.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Compute the division.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the unit rate and check it by multiplying back by 8.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The word per points at ___, so I divide by ___.",
+        "I divided ___ by ___ and got ___ for exactly 1 ___."
+      ],
+      "fluency_source": "7RP1-F1"
     },
     {
-      "skill_id": "7RP1-F2",
-      "name": "Explain what unit rate and constant of proportionality mean",
-      "column": "foundation",
+      "skill_id": "7RP1-B2",
+      "name": "Divide with fractions to find one share",
+      "column": "looking_back",
       "parent_standard": "7.RP.1",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 6,
-        "description": "Vocabulary: the words unit rate, per, and each name the amount for exactly one unit.",
-        "check_question": "'A store sells apples for $2 per pound.' What is the unit rate, and what does the 1 refer to?"
+        "description": "Divide a fraction by a whole number or by a fraction and interpret the quotient.",
+        "check_question": "What is 1/2 divided by 7?"
       },
-      "i_do_script": "Stack the car's trip hour by hour: hour 1 adds 50 miles, hour 2 adds another 50, hour 3 another 50. The number worth naming is the size of ONE hour's chunk -- and that per-1 chunk is exactly what both fancy names point at. This standard has two names for the same number. 'Unit rate' and 'constant of proportionality' both mean: how much y you get for exactly 1 x. We write it as the letter k. If a car goes 50 miles every 1 hour, then k is 50 — miles per 1 hour. The word 'constant' is a promise: it never changes across the whole relationship. Two hours is 100 miles, three hours is 150, but the per-1 number stays 50.",
+      "i_do_script": "Dividing a fraction works exactly like dividing a whole number: split it into equal shares and take one. Watch: 3/4 divided by 3. I draw a bar, shade 3/4, and see it is already 3 equal pieces of one fourth each. Splitting those 3 pieces into 3 shares gives 1 piece per share, so 3/4 divided by 3 is 1/4. When the pieces do not split evenly, I cut smaller: 1/2 divided by 7 means cutting the half into 7 slivers, and 7 slivers per half means 14 per whole, so each sliver is 1/14. The shortcut, multiply by the reciprocal, is just this cutting written fast: 1/2 x 1/7 = 1/14.",
       "canonical_error": {
-        "pattern": "Treats any pair of numbers in the problem as 'the rate' without checking that one of them is 1",
-        "example": "Told '100 miles in 2 hours,' the student says the unit rate is 100 (or '100 to 2') instead of 50",
-        "why": "The student hears 'rate' and reports whatever numbers appear, missing that a UNIT rate is pinned to exactly 1 of the second quantity. Until the second number is 1, you are not done."
+        "pattern": "Multiplies by the divisor instead of its reciprocal, or flips the wrong number",
+        "example": "Writes 1/2 divided by 7 = 7/2 instead of 1/14",
+        "why": "The student half remembers keep change flip and flips the first fraction, or skips the flip entirely and multiplies by 7. Sharing half a mile across 7 minutes cannot give MORE than the half; the bar shows each share is a tiny sliver, 1/14."
       },
-      "item_template": "A verbal rate statement. Student states the unit rate / constant of proportionality and names what the '1' refers to. Short response and MC.",
+      "item_template": "A fraction divided by a whole number, a whole number divided by a fraction, or a fraction divided by a fraction (denominators up to 12, answers clean). Numeric response.",
       "sample_items": [
         {
-          "stem": "'A printer prints 8 pages every 1 minute.' What is the constant of proportionality, and what does the 1 refer to?",
-          "answer": "8; the 1 refers to 1 minute (8 pages per 1 minute)"
+          "stem": "1/2 divided by 7",
+          "answer": "1/14"
         },
         {
-          "stem": "True or false: the constant of proportionality can change from one row of a table to another.",
-          "answer": "False — 'constant' means it stays the same across the whole relationship."
+          "stem": "3/4 divided by 3",
+          "answer": "1/4"
         },
         {
-          "stem": "'Ribbon costs $3 per foot.' Another name for the $3 is the ____ of proportionality.",
-          "answer": "constant"
+          "stem": "2/3 divided by 4",
+          "answer": "2/12 (or 1/6)"
         },
         {
-          "stem": "'A recipe uses 2 cups of flour for every 1 egg.' What is the unit rate of cups per egg?",
-          "answer": "2"
+          "stem": "4 divided by 1/2",
+          "answer": "8"
+        },
+        {
+          "stem": "5/6 divided by 5",
+          "answer": "1/6"
+        },
+        {
+          "stem": "1/3 divided by 2",
+          "answer": "1/6"
+        },
+        {
+          "stem": "3 divided by 3/4",
+          "answer": "4"
+        },
+        {
+          "stem": "7/8 divided by 7",
+          "answer": "1/8"
         }
       ],
       "redirect_script": {
-        "stop": "Hold on — is one of your numbers a 1?",
-        "prompt": "Point at the bar: which chunk covers exactly ONE hour, and how many miles does that one chunk hold? A unit rate has to pair with exactly 1. Point to the '1' in your rate. If you don't see one, you still have to divide down to it.",
-        "praise": "You pinned the rate to exactly 1 — that is what makes it a UNIT rate."
+        "stop": "Should your answer be bigger or smaller than what you started with?",
+        "prompt": "Draw the bar first. Splitting a fraction into shares makes each share SMALLER, so dividing by a number bigger than 1 must shrink it. Flip the DIVISOR, not the first fraction, then multiply: 1/2 divided by 7 is 1/2 x 1/7.",
+        "praise": "You flipped the divisor and your answer shrank, exactly what sharing should do."
       },
       "vocabulary": [
         {
-          "term": "Constant of proportionality",
-          "definition": "The fixed 'per 1' number (k) that connects the two quantities; another name for the unit rate."
+          "term": "Reciprocal",
+          "definition": "The flip of a number: the reciprocal of 7 is 1/7, and of 3/4 is 4/3."
         },
         {
-          "term": "Constant",
-          "definition": "A value that does not change across the whole relationship."
-        },
-        {
-          "term": "k",
-          "definition": "The letter used for the constant of proportionality in y = kx."
+          "term": "Quotient",
+          "definition": "The answer to a division; here, the size of one share."
         }
       ],
       "next_steps": {
-        "if_pass": "7RP1-S2",
-        "if_fail": "Review unit-rate vocabulary (6.RP.2)."
+        "if_pass": "7RP1-S1",
+        "if_fail": "7RP1-F2"
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw the trip as a bar of one-hour chunks: 50 miles, then 50 more, then 50 more. Three hours total 150 miles, but every single-hour chunk is the same size -- 50.",
-          "visual": {
-            "type": "percent_bar",
-            "label": "50 miles each hour",
-            "segments": [
-              {
-                "span": 50,
-                "label": "hour 1: 50",
-                "shaded": true
-              },
-              {
-                "span": 50,
-                "label": "hour 2: 50",
-                "shaded": true
-              },
-              {
-                "span": 50,
-                "label": "hour 3: 50",
-                "shaded": true
-              }
-            ],
-            "end_labels": [
-              "0",
-              "150 miles"
-            ]
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write 'A car travels 50 miles every 1 hour.'"
-        },
-        {
-          "kind": "say",
-          "text": "This is a unit rate because it already pairs with exactly 1 hour. The 50 is the constant of proportionality — we call it k."
+          "text": "Draw a bar for one whole. Shade 3/4 of it, showing the 3 shaded fourths as separate pieces."
         },
         {
           "kind": "ask",
-          "text": "If the car keeps this speed, what does k tell us about 3 hours? Does k itself change?"
+          "text": "We need to split the shaded part into 3 equal shares. How much is one share?"
         },
         {
           "kind": "say",
-          "text": "k stays 50. That is the 'constant' promise. We just multiply: 50 times 3 is 150 miles."
+          "text": "The shaded 3/4 is already 3 pieces of 1/4, so each share is one piece: 3/4 divided by 3 = 1/4. The shortcut agrees: 3/4 x 1/3 = 3/12 = 1/4."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 9/4 or 7/2 on a problem like this, point at the bar: can one share be bigger than everything we started with?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: 'A faucet drips 6 milliliters every 1 second.' Name k and what the 1 refers to."
+          "text": "Your turn: draw 1/2 of a bar and cut it into 7 equal slivers. What fraction of the whole bar is one sliver?"
         }
-      ]
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "1/2 divided by 2",
+          "answer": "1/4"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "1/4 divided by 3",
+          "answer": "1/12"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2/5 divided by 2",
+          "answer": "1/5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "3/4 divided by 6",
+          "answer": "3/24 (or 1/8)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "5 divided by 1/3",
+          "answer": "15"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2/3 divided by 1/6",
+          "answer": "4"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A pitcher holds 2/3 cup of syrup. How many 1/4 cup servings can it fill, counting a part serving?",
+          "answer": "2/3 divided by 1/4 = 8/3, so 2 2/3 servings."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo computed 1/2 divided by 7. Find his mistake and fix it.",
+          "shown_work": [
+            "1/2 divided by 7",
+            "flip the 1/2 to get 2/1",
+            "2/1 x 7 = 14, so the answer is 14"
+          ],
+          "answer": "He flipped the first fraction instead of the divisor. Flip the 7: 1/2 x 1/7 = 1/14. Sharing half across 7 must give less than half, not 14."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Share the Strip",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper strips",
+            "Scissors",
+            "Pencils"
+          ],
+          "instructions": "1. Fold a strip in half and shade one half.\n2. Cut the shaded half into 7 equal slivers.\n3. Ask: how many slivers this size would fill the WHOLE strip? (14) So one sliver is 1/14.\n4. Write the equation 1/2 divided by 7 = 1/14 next to the strip, then check it with the shortcut 1/2 x 1/7.\n5. Repeat with 3/4 divided by 3 and say each time: sharing makes each piece smaller."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Flip the Right One",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Worked problem slips, half correct and half with the wrong number flipped"
+          ],
+          "instructions": "1. Deal the slips face down.\n2. Flip one at a time: decide whether the divisor was flipped or the first fraction was flipped.\n3. Use the size test first: should the answer be bigger or smaller than the starting fraction?\n4. Fix each wrong slip and sort into Right Flip and Wrong Flip piles; the group must agree before sorting.",
+          "content": {
+            "worked_problem": "1/2 divided by 7, shown as 2/1 x 7 = 14",
+            "error_step": "The 1/2 was flipped instead of the 7",
+            "why": "Only the divisor gets flipped. Dividing by 7 shares the half into 7 slivers, so the true answer 1/14 is much smaller than 1/2."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Cutting a real strip into slivers shows why dividing by 7 shrinks the fraction before keep change flip is ever named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The flip the wrong number error is stable and predictable; sorting right flip from wrong flip work confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Asking bigger or smaller before computing builds the estimate that catches an answer of 14 for a sharing problem."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Before you compute: should the answer be bigger or smaller than the fraction you started with? Why?",
+          "Which number is the divisor, and which number gets flipped?",
+          "In the strip picture, how many slivers of this size fill the whole strip?",
+          "Why does dividing BY a fraction like 1/3 make the answer bigger?",
+          "How does 3/4 divided by 3 look different from 3 divided by 3/4?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student flips the first fraction or multiplies by the divisor without flipping.",
+            "say": "Say the story out loud: we are SHARING 1/2 across 7. Can a share be bigger than the half? Flip only the divisor: 1/2 x 1/7.",
+            "praise": "You flipped the divisor only, and your size check confirmed the answer."
+          },
+          {
+            "if_you_see": "Student divides numerator and denominator by the whole number separately or gets lost simplifying.",
+            "say": "Go back to the bar: 3/4 is 3 pieces of 1/4. Splitting 3 pieces into 3 shares is 1 piece. Let the picture do the work, then match it with the shortcut.",
+            "praise": "You used the pieces in the bar to check what the shortcut said."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "1/3 divided by 2",
+            "look_for": "1/6, not 2/3 or 6. The answer must be smaller than 1/3."
+          },
+          {
+            "prompt": "4 divided by 1/2",
+            "look_for": "8, with the reasoning that there are 8 halves in 4 wholes."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Compute 1/2 divided by 7.",
+        "answer": "1/14",
+        "steps": [
+          {
+            "math": "size check: answer < 1/2",
+            "annotation": "Sharing the half across 7 must shrink it."
+          },
+          {
+            "math": "1/2 divided by 7 = 1/2 x 1/7",
+            "annotation": "Flip the divisor 7 into its reciprocal 1/7."
+          },
+          {
+            "math": "1/2 x 1/7 = 1/14",
+            "annotation": "Multiply tops and bottoms."
+          },
+          {
+            "math": "picture check: 7 slivers per half means 14 per whole",
+            "annotation": "Each sliver is 1/14 of the whole, matching the shortcut."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Compute 5/6 divided by 5.",
+        "answer": "1/6",
+        "steps": [
+          {
+            "math": "size check: answer < 5/6",
+            "annotation": "Splitting 5/6 into 5 shares shrinks it.",
+            "given": true
+          },
+          {
+            "math": "5/6 divided by 5 = 5/6 x 1/5",
+            "annotation": "Flip the divisor 5 into 1/5.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply tops and bottoms and simplify.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check with the bar: 5/6 is 5 pieces of 1/6, so one share is one piece.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "My answer should be ___ than ___ because I am sharing it into ___ parts.",
+        "I flipped the divisor ___ into ___ and multiplied."
+      ],
+      "fluency_source": "7RP1-F2"
     },
     {
       "skill_id": "7RP1-S1",
       "name": "Determine whether a relationship is proportional",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.RP.1",
       "engine_stems": [
         1
@@ -583,7 +1119,7 @@
           }
         ]
       },
-      "fluency_source": "7RP1-F1",
+      "fluency_source": "7RP1-B1",
       "sentence_starters": [
         "At zero this relationship gives ___, so it ___ proportional.",
         "The ratio y over x is ___ for every row, so it is ___."
@@ -952,7 +1488,7 @@
           }
         ]
       },
-      "fluency_source": "7RP1-F1",
+      "fluency_source": "7RP1-B1",
       "sentence_starters": [
         "The quantity we measure per is ___, and it equals 1 in the choice ___.",
         "At x = 1 the y-value is ___, so k = ___."
@@ -1294,7 +1830,7 @@
           }
         ]
       },
-      "fluency_source": "7RP1-F1",
+      "fluency_source": "7RP1-B1",
       "sentence_starters": [
         "The phrase '___ per ___' puts ___ on top, so I divide ___ by ___.",
         "y divided by x is ___ / ___ = ___, the constant of proportionality."
@@ -1611,7 +2147,7 @@
           }
         ]
       },
-      "fluency_source": "7RP1-F1",
+      "fluency_source": "7RP1-B2",
       "sentence_starters": [
         "The fraction ___ goes on top, divided by ___, so I multiply by the reciprocal ___.",
         "Because the distance is small over many units, the unit rate should be ___ than 1."
@@ -1993,7 +2529,7 @@
           }
         ]
       },
-      "fluency_source": "7RP1-F1",
+      "fluency_source": "7RP1-B1",
       "sentence_starters": [
         "In y = kx the number multiplying x is ___, so k = ___.",
         "The point above x = 1 is ___, so the constant is ___."
@@ -2295,7 +2831,7 @@
           }
         ]
       },
-      "fluency_source": "7RP1-F1",
+      "fluency_source": "7RP1-B1",
       "sentence_starters": [
         "The constant k = ___ means ___ per 1 ___.",
         "To predict, I multiply k by the new input: ___ x ___ = ___."
@@ -2352,8 +2888,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites — fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7RP1-F1",
         "7RP1-F2"
@@ -2361,15 +2897,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7RP1-S1"
+        "7RP1-B1",
+        "7RP1-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7RP1-S1",
         "7RP1-S2",
         "7RP1-S3",
         "7RP1-S4",
@@ -2378,7 +2916,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7RP1-S6"
       ]
@@ -2387,6 +2925,8 @@
   "skill_sequence": [
     "7RP1-F1",
     "7RP1-F2",
+    "7RP1-B1",
+    "7RP1-B2",
     "7RP1-S1",
     "7RP1-S2",
     "7RP1-S3",
@@ -2397,19 +2937,25 @@
   "skill_tree": {
     "7RP1-F1": [],
     "7RP1-F2": [],
-    "7RP1-S1": [
+    "7RP1-B1": [
+      "7RP1-F1"
+    ],
+    "7RP1-B2": [
       "7RP1-F2"
     ],
+    "7RP1-S1": [
+      "7RP1-B1"
+    ],
     "7RP1-S2": [
-      "7RP1-S1",
-      "7RP1-F2"
+      "7RP1-S1"
     ],
     "7RP1-S3": [
       "7RP1-S2",
-      "7RP1-F1"
+      "7RP1-B1"
     ],
     "7RP1-S4": [
-      "7RP1-S3"
+      "7RP1-S3",
+      "7RP1-B2"
     ],
     "7RP1-S5": [
       "7RP1-S3"
@@ -2420,17 +2966,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S3 (compute k = y/x from a table or description) -- the At-Proficiency core of the standard. If they pass, push forward to S5 (read k from equations/graphs) and S6 (interpret and predict). If they fail, split the diagnosis: S1 checks whether they can even tell proportional from non-proportional, and S2 checks whether they recognize k when the (1, r) pair is handed to them. S4 (fractional quantities) branches off S3.",
+    "description": "Start with S3, computing k as y divided by x, the At-proficiency core of the standard. If they pass, push forward to S5 (read k from equations and graphs) and S6 (interpret and predict). If they fail, drop below grade level: B1 checks whether they can divide a total by a number of units to make a per 1 amount, and B2 checks fraction division, the two grade 6 skills this standard's arithmetic leans on. If those wobble, the foundations F1 (division as equal sharing) and F2 (a fraction as a division) locate the gap in grades 3 to 5. S1, S2, and S4 remain available to probe the standard's own proportionality gate, (1, r) recognition, and fractional-quantity work.",
     "entry_skill": "7RP1-S3",
     "if_pass": [
       "7RP1-S5",
       "7RP1-S6"
     ],
     "if_fail": [
-      "7RP1-S1",
-      "7RP1-S2"
+      "7RP1-B1",
+      "7RP1-B2"
     ],
     "branch_skills": [
+      "7RP1-F1",
+      "7RP1-F2",
+      "7RP1-S1",
+      "7RP1-S2",
       "7RP1-S4"
     ]
   }

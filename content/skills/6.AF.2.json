@@ -4,173 +4,818 @@
   "skills": [
     {
       "skill_id": "6AF2-F1",
-      "name": "Substitute a value for a variable and check whether the statement is true",
+      "name": "Decide whether a number sentence is true or false",
       "column": "foundation",
       "parent_standard": "6.AF.2",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 5,
-        "description": "Read =, <, and > as a question (Are the two sides equal? Is the left smaller? Is the left bigger?) and replace a letter in a number sentence with a given value.",
-        "check_question": "If x = 3, what number do you write in place of x in the sentence x + 4 = 7? Is the sentence true?"
+        "grade": 3,
+        "description": "Read the equal sign as a question about two sides and decide whether an addition, subtraction, multiplication, or division sentence is true or false.",
+        "check_question": "True or false: 4 + 5 = 9?"
       },
-      "i_do_script": "Today we're testing whether a given number makes a number sentence true. Don't tell the student the rule first — ask what the equal sign is asking, and let them discover that both sides have to match. Listen for students who only compute one side and forget to compare back.",
+      "i_do_script": "A number sentence is a claim, and my job is to check it. Watch: 7 + 6 = 12 claims that both sides balance. I compute the left side: 7 + 6 is 13. The right side says 12. On a balance scale, 13 cubes on one pan and 12 on the other tips over, so the sentence is false. The equal sign never means write an answer here; it asks, do the two sides hold the same amount?",
       "canonical_error": {
-        "pattern": "Student computes the side with the variable but never checks it against the other side, or treats the equal sign as 'and then write the answer' rather than as a true/false question.",
-        "example": "Given x + 4 = 7 and asked whether x = 5 makes it true, the student writes 5 + 4 = 9 and circles 'yes' because they got an answer, not noticing 9 does not equal 7.",
-        "why": "The student is still using = the way they did in early arithmetic — as a 'compute now' signal — instead of as a relation that the two sides must satisfy. They never compare back to the right side."
+        "pattern": "Treats the equal sign as 'the answer comes next' and calls any completed sentence true",
+        "example": "Says 7 + 6 = 12 is true because an answer was written after the equal sign",
+        "why": "The student computes but never compares. The equal sign is a claim that both sides hold the same amount, so a sentence is only true when the two sides actually match."
       },
+      "item_template": "One arithmetic sentence using addition, subtraction, multiplication, or division facts with whole numbers. Student computes both sides and answers true or false. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "True or false: 4 + 5 = 9",
+          "answer": "True"
+        },
+        {
+          "stem": "True or false: 7 + 6 = 12",
+          "answer": "False"
+        },
+        {
+          "stem": "True or false: 3 x 4 = 12",
+          "answer": "True"
+        },
+        {
+          "stem": "True or false: 6 x 5 = 35",
+          "answer": "False"
+        },
+        {
+          "stem": "True or false: 14 - 8 = 6",
+          "answer": "True"
+        },
+        {
+          "stem": "True or false: 15 - 9 = 5",
+          "answer": "False"
+        },
+        {
+          "stem": "True or false: 18 / 3 = 6",
+          "answer": "True"
+        },
+        {
+          "stem": "True or false: 9 = 5 + 4",
+          "answer": "True"
+        },
+        {
+          "stem": "True or false: 16 = 8 + 9",
+          "answer": "False"
+        },
+        {
+          "stem": "True or false: 24 / 4 = 8",
+          "answer": "False"
+        }
+      ],
       "redirect_script": {
-        "stop": "Hold on — let's check both sides.",
-        "prompt": "Cover the letter, write the value in its place, then circle the sign in the middle and ask out loud, 'Is the left side really equal to (or less than, or greater than) the right side?'",
-        "praise": "Nice — you tested both sides before deciding."
+        "stop": "What amount is on each side?",
+        "prompt": "Compute the left side, compute the right side, then ask out loud: do the two sides hold the same amount? Only answer true after both sides are checked.",
+        "praise": "You checked both sides before deciding, that is what the equal sign asks for."
       },
       "vocabulary": [
         {
-          "term": "Equation",
-          "definition": "A number sentence that says two things are equal, using the = sign."
+          "term": "Number sentence",
+          "definition": "A math statement with two sides and a sign in the middle, like 4 + 5 = 9."
         },
         {
-          "term": "Inequality",
-          "definition": "A number sentence that uses <, >, less-than-or-equal, or greater-than-or-equal to compare two things."
-        },
-        {
-          "term": "Value",
-          "definition": "The specific number you put in place of the variable."
+          "term": "Equal",
+          "definition": "Both sides hold the same amount; the scale balances."
         },
         {
           "term": "True",
-          "definition": "The sentence is correct after you substitute — both sides match the comparison."
+          "definition": "The claim checks out: after computing, the two sides really do match."
         }
       ],
       "next_steps": {
-        "if_pass": "6AF2-S1",
-        "if_fail": "Re-teach what =, <, and > are asking before moving on."
+        "if_pass": "6AF2-B1",
+        "if_fail": "Review grade 3 addition and multiplication facts with counters and a balance scale before testing sentences."
       },
-      "sample_items": [
-        {
-          "stem": "x = 4. Is x + 3 = 7 true?",
-          "answer": "Yes",
-          "choices": null,
-          "distractor_logic": "4 + 3 = 7 matches the right side; a 'no' means the student never compared back."
-        },
-        {
-          "stem": "n = 5. Is n + 2 = 8 true?",
-          "answer": "No",
-          "choices": null,
-          "distractor_logic": "5 + 2 = 7, not 8; a 'yes' means the student computed but never compared."
-        },
-        {
-          "stem": "y = 6. Is y - 2 = 4 true?",
-          "answer": "Yes",
-          "choices": null,
-          "distractor_logic": "6 - 2 = 4; checks subtraction substitution."
-        },
-        {
-          "stem": "x = 9. Is x - 3 = 5 true?",
-          "answer": "No",
-          "choices": null,
-          "distractor_logic": "9 - 3 = 6, not 5; catches students who say yes to any completed computation."
-        },
-        {
-          "stem": "n = 3. Is 2n = 6 true?",
-          "answer": "Yes",
-          "choices": null,
-          "distractor_logic": "2n means 2 x 3 = 6; a 'no' may signal reading 2n as the digits 23."
-        },
-        {
-          "stem": "y = 4. Is 3y = 14 true?",
-          "answer": "No",
-          "choices": null,
-          "distractor_logic": "3 x 4 = 12, not 14; a 'yes' may signal concatenating 3 and 4 into 34 or skipping the compare."
-        },
-        {
-          "stem": "x = 8. Is x / 2 = 4 true?",
-          "answer": "Yes",
-          "choices": null,
-          "distractor_logic": "8 / 2 = 4; checks division substitution."
-        },
-        {
-          "stem": "n = 10. Is n / 5 = 3 true?",
-          "answer": "No",
-          "choices": null,
-          "distractor_logic": "10 / 5 = 2, not 3; a 'yes' means no comparison happened."
-        },
-        {
-          "stem": "x = 7. Is x + 5 = 12 true?",
-          "answer": "Yes",
-          "choices": null,
-          "distractor_logic": "7 + 5 = 12; straightforward check of the loop."
-        },
-        {
-          "stem": "y = 2. Is 5y = 10 true?",
-          "answer": "Yes",
-          "choices": null,
-          "distractor_logic": "5 x 2 = 10; a 'no' may signal reading 5y as 52."
-        },
-        {
-          "stem": "n = 6. Is n < 9 true?",
-          "answer": "Yes",
-          "choices": null,
-          "distractor_logic": "6 is less than 9; checks that < is read as a question about the two sides."
-        },
-        {
-          "stem": "x = 5. Is x > 7 true?",
-          "answer": "No",
-          "choices": null,
-          "distractor_logic": "5 is not greater than 7; a 'yes' signals the symbol is being read backwards."
-        },
-        {
-          "stem": "y = 3. Is y <= 3 true?",
-          "answer": "Yes",
-          "choices": null,
-          "distractor_logic": "<= allows equal, so 3 <= 3 is true; a 'no' signals strict-vs-inclusive confusion."
-        },
-        {
-          "stem": "n = 8. Is n < 8 true?",
-          "answer": "No",
-          "choices": null,
-          "distractor_logic": "Strict < does not allow equal, so 8 < 8 is false; a 'yes' signals boundary confusion."
-        }
-      ],
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write on the board: 'x + 4 = 7. Does x = 3 make this true?'"
+          "text": "Draw a balance scale. Write 7 + 6 on the left pan and 12 on the right pan."
         },
         {
           "kind": "ask",
-          "text": "Read this with me. What do you think the letter x is doing in this sentence?"
+          "text": "Before we compute, what is this sentence claiming about the two pans?"
         },
         {
-          "kind": "ask",
-          "text": "The problem tells us x = 3. If x is just standing in for the number 3, what would we write in place of x in the sentence?"
+          "kind": "say",
+          "text": "Count it out: 7 cubes and 6 cubes make 13 cubes on the left. The right pan holds 12. The scale tips, so 7 + 6 = 12 is false. The equal sign asked a question and the answer is no."
         },
         {
           "kind": "watch",
-          "text": "Watch for the student to write 3 + 4 = 7. If they freeze on the letter, prompt: 'Cover the x with your finger and write 3 there instead.'"
+          "text": "If a student says true because 7 + 6 has an answer written, point at the pans: does 13 balance 12?"
         },
         {
           "kind": "ask",
-          "text": "Look at the equal sign in the middle. What is the equal sign asking us — is it telling us to compute, or is it asking a question about the two sides?"
-        },
-        {
-          "kind": "ask",
-          "text": "Now compute the left side. What does 3 + 4 give you? And what is on the right side?"
-        },
-        {
-          "kind": "ask",
-          "text": "So is the left side really equal to the right side? Yes or no — and how do you know?"
-        },
-        {
-          "kind": "ask",
-          "text": "Try this one: same sentence x + 4 = 7, but now someone says x = 5. Walk me through it the same way — substitute, compute, then compare. Is it true or false?"
+          "text": "Your turn: true or false, 9 = 5 + 4? Check both pans."
         }
       ]
     },
     {
+      "skill_id": "6AF2-F2",
+      "name": "Compare whole numbers and decimals using <, >, and =",
+      "column": "foundation",
+      "parent_standard": "6.AF.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 4,
+        "description": "Use place value to compare two whole numbers or two decimals to the hundredths and record the comparison with <, >, or =.",
+        "check_question": "Which symbol makes this true: 0.4 __ 0.25?"
+      },
+      "i_do_script": "The symbols < and > report which side is bigger, and place value decides it. Watch: to compare 0.4 and 0.25, I check the tenths first. 0.4 has 4 tenths and 0.25 has only 2 tenths, so 0.4 is greater and I write 0.4 > 0.25, with the open side facing the bigger number. On a hundredths grid, 0.4 shades 40 squares and 0.25 shades 25. More digits never means a bigger number; the largest place decides.",
+      "canonical_error": {
+        "pattern": "Compares digit strings instead of place values, or reads the symbol backwards",
+        "example": "Says 0.25 > 0.4 because 25 > 4, or writes 46 > 64",
+        "why": "The student ignores what place each digit sits in and treats the numbers as whole digit strings. Tenths outrank hundredths, so the comparison starts at the largest place, and the open side of the symbol always faces the greater number."
+      },
+      "item_template": "Two whole numbers or two decimals to the hundredths. Student writes <, >, or = between them, or judges a given comparison true or false. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "Write <, >, or =: 5286 __ 5614",
+          "answer": "<"
+        },
+        {
+          "stem": "Write <, >, or =: 703 __ 730",
+          "answer": "<"
+        },
+        {
+          "stem": "Write <, >, or =: 0.4 __ 0.25",
+          "answer": ">"
+        },
+        {
+          "stem": "Write <, >, or =: 0.60 __ 0.6",
+          "answer": "="
+        },
+        {
+          "stem": "Write <, >, or =: 0.09 __ 0.1",
+          "answer": "<"
+        },
+        {
+          "stem": "True or false: 46 > 64",
+          "answer": "False"
+        },
+        {
+          "stem": "True or false: 0.5 < 0.75",
+          "answer": "True"
+        },
+        {
+          "stem": "Write <, >, or =: 2.3 __ 2.30",
+          "answer": "="
+        },
+        {
+          "stem": "Which is greater: 0.8 or 0.79?",
+          "answer": "0.8"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which place are you comparing first?",
+        "prompt": "Line the numbers up by place value and compare the largest place first. Then point the open side of the symbol at the bigger number and read the sentence out loud to check it.",
+        "praise": "You let the largest place decide and aimed the symbol at the bigger number."
+      },
+      "vocabulary": [
+        {
+          "term": "Greater than",
+          "definition": "The symbol > says the left side is bigger; the open side faces the bigger number."
+        },
+        {
+          "term": "Less than",
+          "definition": "The symbol < says the left side is smaller."
+        },
+        {
+          "term": "Place value",
+          "definition": "The size a digit's position gives it: hundreds, tens, ones, tenths, hundredths."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6AF2-B2",
+        "if_fail": "Review grade 4 place value with a hundredths grid, shading tenths and hundredths and naming which shaded amount is larger."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Shade 0.4 on one hundredths grid and 0.25 on another grid."
+        },
+        {
+          "kind": "ask",
+          "text": "Which grid shows more shading? So which number is greater?"
+        },
+        {
+          "kind": "say",
+          "text": "0.4 shades 40 squares and 0.25 shades 25, so 0.4 is greater. I write 0.4 > 0.25 with the open side facing 0.4. The tenths place decided it: 4 tenths beats 2 tenths."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 0.25 is greater because 25 beats 4, send them back to the grids: which one covers more squares?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: write the symbol that makes 0.09 __ 0.1 true, then read it out loud."
+        }
+      ]
+    },
+    {
+      "skill_id": "6AF2-B1",
+      "name": "Evaluate numerical expressions using the order of operations",
+      "column": "looking_back",
+      "parent_standard": "6.AF.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Evaluate a whole number expression with parentheses, using multiplication and division before addition and subtraction.",
+        "check_question": "What is the value of 2 x (3 + 4)?"
+      },
+      "i_do_script": "An expression is built from groups, and I find the groups before I do anything else. Watch: 3 + 2 x 4 means 3 and then 2 groups of 4. I build the multiplication first: 2 x 4 = 8. Then I add the 3: 3 + 8 = 11. If the problem wants me to add first, it says so with parentheses: (3 + 2) x 4 is 5 groups of 4, which is 20. Same numbers, different groups, different value.",
+      "canonical_error": {
+        "pattern": "Computes strictly left to right, ignoring the order of operations",
+        "example": "Writes 5 + 3 x 2 = 16 by adding 5 + 3 first",
+        "why": "The student reads the expression like a sentence instead of finding the groups. 3 x 2 is a glued together package of 3 twos, so it must be built before anything is added to it."
+      },
+      "item_template": "A whole number expression with one or two operations and possibly parentheses. Student evaluates it exactly. Short response with occasional multiple choice.",
+      "sample_items": [
+        {
+          "stem": "Evaluate: 2 x (3 + 4)",
+          "answer": "14"
+        },
+        {
+          "stem": "Evaluate: (10 - 4) / 2",
+          "answer": "3"
+        },
+        {
+          "stem": "Evaluate: 5 + 3 x 2",
+          "answer": "11",
+          "choices": [
+            "11",
+            "16",
+            "10",
+            "30"
+          ],
+          "distractor_logic": "16 adds 5 + 3 first and then multiplies; 10 adds all three numbers; 30 multiplies all three numbers"
+        },
+        {
+          "stem": "Evaluate: 20 - 2 x 4",
+          "answer": "12",
+          "choices": [
+            "12",
+            "72",
+            "14",
+            "28"
+          ],
+          "distractor_logic": "72 subtracts first and multiplies the result by 4; 14 subtracts both numbers from 20; 28 adds the product instead of subtracting"
+        },
+        {
+          "stem": "Evaluate: 18 / (2 + 4)",
+          "answer": "3"
+        },
+        {
+          "stem": "Evaluate: 4 x 6 - 5",
+          "answer": "19"
+        },
+        {
+          "stem": "Evaluate: (7 + 5) x 3",
+          "answer": "36"
+        },
+        {
+          "stem": "Evaluate: 30 / 5 + 1",
+          "answer": "7"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Where are the groups in this expression?",
+        "prompt": "Circle the parentheses first, then circle any multiplication or division. Build those circled pieces before you add or subtract anything.",
+        "praise": "You built the groups first, so every number landed in the right spot."
+      },
+      "vocabulary": [
+        {
+          "term": "Expression",
+          "definition": "A math phrase made of numbers and operations, with no equal sign, like 3 + 2 x 4."
+        },
+        {
+          "term": "Parentheses",
+          "definition": "Grouping marks that say do this part first."
+        },
+        {
+          "term": "Order of operations",
+          "definition": "The agreement to compute inside parentheses first, then multiply and divide, then add and subtract."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6AF2-S0",
+        "if_fail": "6AF2-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Build 3 + 2 x 4 with counters: 3 loose counters, then 2 rows of 4 counters in an array."
+        },
+        {
+          "kind": "ask",
+          "text": "Which part of the expression is the array showing? Why does 2 x 4 stay together as one package?"
+        },
+        {
+          "kind": "say",
+          "text": "The array is 2 x 4 = 8 counters, one glued package. Add the 3 loose counters: 3 + 8 = 11. If we wanted 5 rows of 4 we would need parentheses: (3 + 2) x 4 = 20."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student gets 20 without parentheses, ask them to show 5 rows of 4 in the picture. The picture only has 2 rows and 3 loose counters."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: build and evaluate 16 - 3 x 4."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate: 3 + 2 x 4",
+          "answer": "11"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate: (5 + 1) x 2",
+          "answer": "12"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: 24 / (4 + 2)",
+          "answer": "4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: 16 - 3 x 4",
+          "answer": "4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: 2 x (9 - 5)",
+          "answer": "8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: 5 x 4 + 3 x 2",
+          "answer": "26"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Evaluate: 36 / (3 x 2) - 1",
+          "answer": "5"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo wrote 8 + 4 x 2 = 24. Find his mistake and fix it.",
+          "shown_work": [
+            "8 + 4 x 2",
+            "= 12 x 2",
+            "= 24"
+          ],
+          "answer": "He added first, left to right. The multiplication is a package: 4 x 2 = 8, then 8 + 8 = 16."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Packages and Loose Counters",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Counters or tiles",
+            "Small paper cups for packages",
+            "Whiteboards"
+          ],
+          "instructions": "1. Each pair gets an expression like 3 + 2 x 4.\n2. Build the multiplication as packages: 2 cups with 4 counters each. Leave the 3 as loose counters.\n3. Count the total and write the two steps: 2 x 4 = 8, then 3 + 8 = 11.\n4. Now build (3 + 2) x 4: parentheses mean pour the 3 and 2 together first, so make 5 cups of 4.\n5. Repeat with 16 - 3 x 4 and 20 - 2 x (1 + 4). Say each time: packages get built before anything joins them."
+        },
+        {
+          "type": "matching",
+          "title": "Same Numbers, Different Groups",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: expression cards and value cards"
+          ],
+          "instructions": "1. Spread the expression cards on the left and the value cards on the right.\n2. Take turns claiming a match, but a claim only counts if you say which operation you did first and why.\n3. Several expressions use the same numbers with different grouping; the values are different, and that is the point.\n4. Two value cards match nothing. If you end up holding one, a group got built in the wrong order; find it together.",
+          "content": {
+            "pairs": [
+              {
+                "left": "2 x (3 + 4)",
+                "right": "14"
+              },
+              {
+                "left": "2 x 3 + 4",
+                "right": "10"
+              },
+              {
+                "left": "12 - 6 / 2",
+                "right": "9"
+              },
+              {
+                "left": "(12 - 6) / 2",
+                "right": "3"
+              },
+              {
+                "left": "4 x (6 - 2)",
+                "right": "16"
+              },
+              {
+                "left": "4 x 6 - 2",
+                "right": "22"
+              }
+            ],
+            "decoys": [
+              "20",
+              "8"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Cups and arrays make 'multiplication is a glued package' visible before the order of operations is named as a rule."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The left to right error is stable and predictable; finding and fixing it in shown work confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud about which operation gets built first makes the invisible choice audible and checkable."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which operation do you build first here, and how do you know?",
+          "Where are the packages in this expression? Point to them.",
+          "What changes about the value if I put parentheses around 3 + 2?",
+          "Read 16 - 3 x 4 in words: sixteen minus what?",
+          "Before you compute, should 20 - 2 x 4 be bigger or smaller than 20?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student computes strictly left to right and adds before multiplying.",
+            "say": "Build it with counters: 3 loose counters and 2 cups of 4. Can you pour the 3 into a cup before the cups exist? Build the packages first.",
+            "praise": "You built the multiplication first, so the addition had something real to join."
+          },
+          {
+            "if_you_see": "Student ignores the parentheses and multiplies first anyway.",
+            "say": "Parentheses are a fence: everything inside gets finished before anything outside touches it. What is inside the fence, and what does it total?",
+            "praise": "You finished the fence first, exactly what parentheses demand."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Evaluate: 6 + 2 x 3",
+            "look_for": "12, with the multiplication done first; 24 means left to right computing."
+          },
+          {
+            "prompt": "Evaluate: (6 + 2) x 3",
+            "look_for": "24, with the parentheses finished first; comparing the pair shows the student sees the grouping."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Evaluate 16 - 3 x 4.",
+        "answer": "4",
+        "steps": [
+          {
+            "math": "find the package: 3 x 4",
+            "annotation": "Multiplication is a glued group, so it gets built before subtracting."
+          },
+          {
+            "math": "3 x 4 = 12",
+            "annotation": "Three rows of four counters make 12."
+          },
+          {
+            "math": "16 - 12 = 4",
+            "annotation": "Now take the whole package away from 16."
+          },
+          {
+            "math": "value: 4",
+            "annotation": "Left to right would give 52, which is not what the expression says."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Evaluate 20 - 2 x (1 + 4).",
+        "answer": "10",
+        "steps": [
+          {
+            "math": "parentheses first: 1 + 4 = 5",
+            "annotation": "Finish inside the fence before anything else.",
+            "given": true
+          },
+          {
+            "math": "package: 2 x 5 = 10",
+            "annotation": "Build the multiplication next.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Subtract the package from 20.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the value of the expression.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I computed ___ first because ___.",
+        "The parentheses tell me to ___ before I ___.",
+        "The expression means ___ groups of ___, and then ___."
+      ],
+      "fluency_source": "6AF2-F1"
+    },
+    {
+      "skill_id": "6AF2-B2",
+      "name": "Add, subtract, and multiply decimals to the hundredths",
+      "column": "looking_back",
+      "parent_standard": "6.AF.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Compute with decimals to the hundredths using place value: line up places to add or subtract, and place the decimal point in a product by reasoning about the factors.",
+        "check_question": "What is 2.5 x 4?"
+      },
+      "i_do_script": "Decimal computation is place value work from start to finish. Watch: for 1.2 + 0.35, I line up the decimal points so tenths sit over tenths, write 1.2 as 1.20, and add: 1.20 + 0.35 = 1.55. For 2.4 x 3, I think in tenths: 24 tenths times 3 is 72 tenths, which is 7.2. Money tells the same story: 2 dollars 40 cents taken 3 times is 7 dollars 20 cents. The digits do the arithmetic, but place value tells the answer its size.",
+      "canonical_error": {
+        "pattern": "Computes with the digits and ignores place value when lining up or placing the decimal point",
+        "example": "Writes 1.2 + 0.35 = 0.47 by right aligning the digits, or 0.6 x 0.5 = 3.0 by guessing where the point goes",
+        "why": "The student handles digit strings instead of quantities. Tenths can only add to tenths, and half of 0.6 must be smaller than 0.6, so 3.0 cannot be right. Estimation catches both mistakes before the digits do."
+      },
+      "item_template": "Add, subtract, or multiply two decimals to the hundredths, or divide a decimal by a one digit whole number. Clean numbers, no calculator. Numeric response with occasional multiple choice.",
+      "sample_items": [
+        {
+          "stem": "1.2 + 0.35",
+          "answer": "1.55"
+        },
+        {
+          "stem": "4.5 - 1.25",
+          "answer": "3.25"
+        },
+        {
+          "stem": "0.6 x 3",
+          "answer": "1.8"
+        },
+        {
+          "stem": "2.5 x 4",
+          "answer": "10"
+        },
+        {
+          "stem": "0.4 x 0.2",
+          "answer": "0.08"
+        },
+        {
+          "stem": "1.5 x 1.2",
+          "answer": "1.8",
+          "choices": [
+            "1.8",
+            "18",
+            "0.18",
+            "2.7"
+          ],
+          "distractor_logic": "18 multiplies 15 x 12 and drops the decimal point; 0.18 places the point too far left; 2.7 adds the factors instead of multiplying"
+        },
+        {
+          "stem": "6.4 / 2",
+          "answer": "3.2"
+        },
+        {
+          "stem": "3 - 0.75",
+          "answer": "2.25"
+        }
+      ],
+      "redirect_script": {
+        "stop": "What size should this answer be, about?",
+        "prompt": "Estimate first with whole numbers. Then line up the decimal points to add or subtract, or multiply the digits and let your estimate place the point.",
+        "praise": "Your estimate caught the size, so the decimal point had nowhere to hide."
+      },
+      "vocabulary": [
+        {
+          "term": "Tenths",
+          "definition": "The first place right of the decimal point; ten of them make one whole."
+        },
+        {
+          "term": "Hundredths",
+          "definition": "The second place right of the decimal point; ten of them make one tenth."
+        },
+        {
+          "term": "Product",
+          "definition": "The result of multiplying two numbers."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6AF2-S1",
+        "if_fail": "6AF2-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Build 2.4 x 3 in money: 2 dollars and 4 dimes, laid out three times."
+        },
+        {
+          "kind": "ask",
+          "text": "Before we count, about how big should the answer be? More than 6? More than 9?"
+        },
+        {
+          "kind": "say",
+          "text": "Count the dollars: 6. Count the dimes: 12 dimes, which trades for 1 dollar and 2 dimes. Total: 7 dollars 20 cents, so 2.4 x 3 = 7.2. In tenths: 24 tenths times 3 is 72 tenths."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 72, ask them to point at 72 dollars on the desk. The estimate said the answer lives near 7."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: build 1.2 + 0.35 in money and write the sum."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "0.5 + 0.25",
+          "answer": "0.75"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "0.3 x 2",
+          "answer": "0.6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2.4 x 3",
+          "answer": "7.2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "5.5 - 2.75",
+          "answer": "2.75"
+        },
+        {
+          "difficulty": "core",
+          "stem": "1.2 x 0.5",
+          "answer": "0.6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "8.4 / 4",
+          "answer": "2.1"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "2.45 x 6",
+          "answer": "14.7"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia wrote 0.6 x 0.5 = 3.0. Find her mistake and fix it.",
+          "shown_work": [
+            "0.6 x 0.5",
+            "6 x 5 = 30",
+            "= 3.0"
+          ],
+          "answer": "She multiplied the digits correctly but placed the point by guessing. Half of 0.6 must be smaller than 0.6, so the product is 0.30, which is 0.3."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Trade Up the Dimes",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Play money or drawn dollars, dimes, and pennies",
+            "Whiteboards"
+          ],
+          "instructions": "1. Build 1.2 + 0.35 in money: 1 dollar 2 dimes, then 3 dimes 5 pennies.\n2. Combine: pennies with pennies, dimes with dimes, trading ten dimes for a dollar whenever a pile fills.\n3. Write the stacked problem next to the money and match every trade to a regroup.\n4. Then build 2.4 x 3 as three copies of 2 dollars 4 dimes and total it the same way.\n5. Say each time: dimes only add to dimes, pennies only add to pennies."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Point Patrol",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Answer slips, half with the decimal point placed wrong"
+          ],
+          "instructions": "1. Deal the slips face down. Each shows a finished problem like 0.6 x 0.5 = 3.0 or 2.4 x 3 = 7.2.\n2. Flip one at a time. Estimate with whole numbers first, then vote: reasonable or impossible?\n3. For each impossible slip, say what size the answer should be and slide the point to fix it.\n4. Sort the slips into Sensible and Point Slipped piles; the group must agree before sorting.",
+          "content": {
+            "worked_problem": "0.6 x 0.5 = 3.0",
+            "error_step": "6 x 5 = 30, then the point was placed by guess",
+            "why": "Multiplying by 0.5 takes half, and half of 0.6 cannot be 3.0. The product is 0.30, which estimation catches instantly."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Money and hundredths grids make place alignment and point placement concrete before any rule is recited."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Short number talks on products like 0.5 x 8 build the estimation reflex that polices the decimal point."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Fixing a misplaced point in shown work turns the most common decimal error into the lesson itself."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "About how big should this answer be? How do you know before computing?",
+          "What place is this digit in, and what place is the digit under it?",
+          "Why can you write 1.2 as 1.20 without changing it?",
+          "Where did the extra whole come from when the tenths added past ten?",
+          "Should multiplying by 0.5 make the answer bigger or smaller? Why?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student right aligns the digits and adds unlike places.",
+            "say": "Build both numbers in money. Can pennies add to dimes? Line up the decimal points so each coin adds to its own kind.",
+            "praise": "You matched place to place, so the sum came out true."
+          },
+          {
+            "if_you_see": "Student multiplies the digits correctly but drops or misplaces the decimal point.",
+            "say": "Estimate first: 2.4 x 3 is about 2 x 3, so the answer lives near 6, not near 60. Multiply the digits, then let the estimate place the point.",
+            "praise": "Your estimate placed the point, and the digits filled it in."
+          },
+          {
+            "if_you_see": "Student says the answer to 0.4 x 0.2 cannot be 0.08 because it got smaller.",
+            "say": "Shade 0.4 of a grid, then take 0.2 of just that shading. You took a small part of a small part, so the answer should shrink.",
+            "praise": "You saw why a part of a part is smaller, that is exactly what happened."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "0.4 + 0.35",
+            "look_for": "0.75, with tenths added to tenths; 0.39 means the digits were right aligned."
+          },
+          {
+            "prompt": "0.5 x 0.5",
+            "look_for": "0.25, said with confidence; 2.5 means the point was placed by guess."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Multiply 2.4 x 3.",
+        "answer": "7.2",
+        "steps": [
+          {
+            "math": "estimate: 2 x 3 = 6",
+            "annotation": "The answer should land a little above 6."
+          },
+          {
+            "math": "think in tenths: 2.4 = 24 tenths",
+            "annotation": "Renaming as tenths turns the problem into whole number work."
+          },
+          {
+            "math": "24 tenths x 3 = 72 tenths",
+            "annotation": "Multiply the digits: 24 x 3 = 72."
+          },
+          {
+            "math": "72 tenths = 7.2",
+            "annotation": "Ten tenths make a whole, so 72 tenths is 7 wholes and 2 tenths. That matches the estimate."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Multiply 1.5 x 1.2.",
+        "answer": "1.8",
+        "steps": [
+          {
+            "math": "estimate: a bit more than 1.5",
+            "annotation": "Multiplying by 1.2 is the whole thing plus a little more.",
+            "given": true
+          },
+          {
+            "math": "digits: 15 x 12 = 180",
+            "annotation": "Do the whole number multiplication first.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Use the estimate to place the decimal point in 180.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the product.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I estimated ___ first, so the answer has to land near ___.",
+        "I lined up the decimal points so that ___ adds to ___.",
+        "I multiplied the digits and got ___, then the estimate told me the point goes ___."
+      ],
+      "fluency_source": "6AF2-F2"
+    },
+    {
       "skill_id": "6AF2-S0",
       "name": "Pick which whole-number value from a list makes a one-step equation true",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.AF.2",
       "prerequisite_skill": {
         "type": "skill",
@@ -668,7 +1313,7 @@
           }
         ]
       },
-      "fluency_source": "6AF2-F1",
+      "fluency_source": "6AF2-B1",
       "sentence_starters": [
         "I tested ___ by writing it in place of the letter, and the left side became ___.",
         "The solution is ___ because both sides came out to ___."
@@ -720,7 +1365,7 @@
     {
       "skill_id": "6AF2-S1",
       "name": "Determine which value from a list makes a one-step equation true",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.AF.2",
       "prerequisite_skill": {
         "type": "gap",
@@ -964,7 +1609,7 @@
           }
         ]
       },
-      "fluency_source": "6AF2-F1",
+      "fluency_source": "6AF2-B2",
       "sentence_starters": [
         "I computed exactly and got ___, which does / does not equal ___.",
         "I crossed off ___ because the left side came out to ___, not ___."
@@ -1016,7 +1661,7 @@
     {
       "skill_id": "6AF2-S2",
       "name": "Select all equations from a list that have a given solution",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.AF.2",
       "prerequisite_skill": {
         "type": "gap",
@@ -1283,7 +1928,7 @@
           }
         ]
       },
-      "fluency_source": "6AF2-F1",
+      "fluency_source": "6AF2-B1",
       "sentence_starters": [
         "I substituted ___ into every equation, and ___ of them came out true.",
         "Equation ___ is false because the left side is ___, not ___."
@@ -1579,7 +2224,7 @@
           }
         ]
       },
-      "fluency_source": "6AF2-F1",
+      "fluency_source": "6AF2-B2",
       "sentence_starters": [
         "The symbol ___ does / does not allow equal, so the boundary value gets a ___.",
         "___ makes the inequality ___ because it is ___ than ___."
@@ -1889,7 +2534,7 @@
           }
         ]
       },
-      "fluency_source": "6AF2-F1",
+      "fluency_source": "6AF2-B2",
       "sentence_starters": [
         "When I put ___ in for x, the statement says ___, which is ___.",
         "I rejected ___ because ___ is not ___ than ___."
@@ -2164,7 +2809,7 @@
           }
         ]
       },
-      "fluency_source": "6AF2-F1",
+      "fluency_source": "6AF2-B2",
       "sentence_starters": [
         "I tossed set ___ because ___ fails the inequality.",
         "Every number in set ___ passes: ___, ___, and ___ are all ___ than ___."
@@ -2451,7 +3096,7 @@
           }
         ]
       },
-      "fluency_source": "6AF2-F1",
+      "fluency_source": "6AF2-B1",
       "sentence_starters": [
         "I substituted a = ___ and g = ___, and the total came out to ___.",
         "The combination is / is not allowed because ___ <= ___ is ___."
@@ -2503,25 +3148,28 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites — fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-4) prerequisite skills. Start intervention here.",
       "skills": [
-        "6AF2-F1"
+        "6AF2-F1",
+        "6AF2-F2"
       ]
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching. Per the 6.AF.2 item spec, this concept is not specifically addressed in the Indiana Academic Standards prior to grade 6, so this column is intentionally empty.",
+      "description": "One grade below (grade 5) skills that feed this standard directly.",
       "skills": [
-        "6AF2-S0",
-        "6AF2-S1",
-        "6AF2-S2"
+        "6AF2-B1",
+        "6AF2-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations — one sub-skill per engine stem covering Below, Approaching, At, and Above proficiency bands.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "6AF2-S0",
+        "6AF2-S1",
+        "6AF2-S2",
         "6AF2-S3",
         "6AF2-S4",
         "6AF2-S5"
@@ -2529,7 +3177,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard. Per the 6.AF.2 item spec, this concept is not specifically addressed in the Indiana Academic Standards in subsequent grade levels, so this column is intentionally empty.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "6AF2-S6"
       ]
@@ -2537,6 +3185,9 @@
   },
   "skill_sequence": [
     "6AF2-F1",
+    "6AF2-F2",
+    "6AF2-B1",
+    "6AF2-B2",
     "6AF2-S0",
     "6AF2-S1",
     "6AF2-S2",
@@ -2547,7 +3198,7 @@
   ],
   "schema_version": 3,
   "progression": {
-    "narrative": "6.AF.2 asks students to do one thing extremely well: treat substitution as a TEST. An equation or inequality with a variable in it isn't a command to solve -- it's a true/false question waiting for a number, and the student's job is to put each candidate value in, compute exactly, and let the comparison decide. The arc starts where the test feels safest: one whole-number equation and a short list of candidates (S0), so the substitute-compute-compare loop becomes automatic before anything else changes. Then the numbers get less friendly -- decimals where 'looks close' fails and only exact computation settles it (S1) -- and the frame flips: one fixed value tested against many equations, which introduces select-all discipline (S2). From there the standard moves to its real center of gravity, inequalities: judging each value in a table on its own, with the strict-versus-inclusive symbol doing the deciding at the boundary (S3), then one number tested against many inequalities where the direction of the symbol, not number proximity, determines truth (S4). The 'specified set' language of the standard lands in S5 -- a set counts only if EVERY member passes, an all-or-nothing quantifier students must own. Finally S6 stretches the same loop to a real-world inequality with two variables, where students substitute a combination, compute a total, compare it to a limit, and justify the verdict in writing -- the full demand of the standard.",
+    "narrative": "This standard asks students to substitute values from a specified set into an equation or inequality and demonstrate which values, if any, make it true. The on-grade work climbs from testing candidate values in one step equations, through select all formats and yes or no inequality grids, to naming the set that contains only solutions. Because items run through decimals and fractions with no calculator, students who struggle here usually cannot compute the substituted side accurately, or they still read the equal sign as a signal to write an answer instead of a question about two sides. Intervention should first ground true and false number sentences and comparison symbols from grades three and four, then rebuild the grade five skills of evaluating expressions and computing with decimals, and only then return to substitution with the full check loop.",
     "steps": [
       {
         "skill_id": "6AF2-S0",
@@ -2584,6 +3235,50 @@
         "verb": "justify",
         "rationale": "The above-proficiency demand: a real-world inequality with two variables. Students substitute a whole combination, compute the total, compare it to the limit, and write the justification -- demonstrating, not just finding, which values make the statement true."
       }
+    ]
+  },
+  "skill_tree": {
+    "6AF2-F1": [],
+    "6AF2-F2": [],
+    "6AF2-B1": [
+      "6AF2-F1"
+    ],
+    "6AF2-B2": [
+      "6AF2-F2"
+    ],
+    "6AF2-S0": [
+      "6AF2-B1",
+      "6AF2-B2"
+    ],
+    "6AF2-S1": [
+      "6AF2-S0"
+    ],
+    "6AF2-S2": [
+      "6AF2-S1"
+    ],
+    "6AF2-S3": [],
+    "6AF2-S4": [],
+    "6AF2-S5": [],
+    "6AF2-S6": []
+  },
+  "diagnostic_flow": {
+    "description": "Start with S5, identifying which set contains only solutions to an inequality, the At proficiency core. If the student passes, move up to S6, the real world inequality with justification. If they fail, drop below grade level: B1 checks whether the student can evaluate an expression in the right order, and B2 checks whether they can compute with decimals, the two grade five skills every substitution check runs on. If those wobble, the foundations F1 (true and false number sentences) and F2 (comparison symbols) locate the gap in grades three and four. S0 through S4 remain available to probe the standard's own ladder of equation and inequality formats.",
+    "entry_skill": "6AF2-S5",
+    "if_pass": [
+      "6AF2-S6"
+    ],
+    "if_fail": [
+      "6AF2-B1",
+      "6AF2-B2"
+    ],
+    "branch_skills": [
+      "6AF2-F1",
+      "6AF2-F2",
+      "6AF2-S0",
+      "6AF2-S1",
+      "6AF2-S2",
+      "6AF2-S3",
+      "6AF2-S4"
     ]
   }
 }

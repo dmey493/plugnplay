@@ -3,7 +3,7 @@
   "standard_text": "Evaluate positive rational numbers with whole number exponents.",
   "schema_version": 3,
   "progression": {
-    "narrative": "6.NS.8 asks students to do one thing -- EVALUATE a power -- but the base can be any positive rational number: a whole number, a fraction, or a decimal. The logic of the standard runs from notation to computation to number sense. First a student must read the notation correctly: in 4^3, the little 3 counts how many copies of 4 get multiplied, so 4^3 means 4 x 4 x 4, never 4 x 3 (S1). Once the notation unpacks reliably, evaluation with whole-number bases is just careful repeated multiplication (S2). The base then changes character twice: decimal bases, where students first learn to SELECT the correct expanded form before computing (S3), and fraction bases, where the exponent must reach BOTH the numerator and the denominator -- (2/3)^3 = 2^3/3^3 = 8/27, never 8/3 (S4). Evaluating decimal powers adds the place-value demand that decimal places accumulate with every factor (S5). Finally the standard's Above-Proficiency ceiling reverses the job: given someone else's evaluation, decide whether it is right, name the exact wrong move, and explain the counterintuitive truth that raising a number between 0 and 1 to a power makes it SMALLER (S6).",
+    "narrative": "6.NS.8 asks students to evaluate a power whose base can be a whole number, a fraction, or a decimal, reading the exponent as a counter that says how many copies of the base to multiply. The on-grade skills build in order: read the notation so 4^3 means 4 x 4 x 4 and not 4 x 3 (S1), multiply the whole-number chain to a value (S2), expand and evaluate decimal and fraction bases where the exponent must reach the whole base (S3, S4, S5), and finally judge someone else's evaluation and explain why a fraction below 1 shrinks when raised to a power (S6). The gaps that block this work usually sit two or three grades back in plain multiplication, because a student who cannot recall facts or carry a multi-digit product loses the chain before it ends. The grade 5 skills of multiplying two fractions and multiplying decimals are the closest supports, since raising a fraction or a decimal is just repeated multiplication of that kind. Intervention should secure whole-number multiplication first, then grade 5 fraction and decimal multiplication, and only then return to exponent notation and evaluation.",
     "steps": [
       {
         "skill_id": "6NS8-S1",
@@ -40,117 +40,73 @@
   "skills": [
     {
       "skill_id": "6NS8-F1",
-      "name": "Recall multiplication facts and small repeated products fluently",
+      "name": "Multiply single-digit numbers fluently",
       "column": "foundation",
       "parent_standard": "6.NS.8",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 3,
-        "description": "Multiply single-digit numbers from memory",
+        "description": "Recall single-digit multiplication products from memory.",
         "check_question": "What is 6 x 6?"
       },
-      "i_do_script": "A chain like 4 x 4 x 4 never asks for more than one small fact at a time -- cover the tail with your hand and only 4 x 4 is looking at you. Write its answer down, slide your hand, and repeat. Powers are built out of plain multiplication facts, so the facts have to come fast. Watch me do one chain out loud: 3 x 3 is 9, and 9 x 3 is 27 -- I never tried to hold the whole thing in my head, I just did one small fact at a time. If a fact isn't automatic yet, use a fact you DO know to get there: 6 x 6 is 36 because 6 x 5 is 30 and one more 6 makes 36.",
+      "i_do_script": "A multiplication fact is a picture of equal groups. Watch: 6 x 6 is six rows of six dots, an array. I skip count the rows by six, 6, 12, 18, 24, 30, 36, so 6 x 6 = 36. These facts have to come without counting, because every power is built out of them: 4^3 is really 4 x 4 x 4, one fact at a time. When a fact is not yet automatic, I lean on a fact I know: 6 x 6 is 6 x 5 plus one more six, 30 plus 6, which is 36.",
       "canonical_error": {
-        "pattern": "Cannot recall multiplication facts or loses track mid-chain, so every exponent evaluation collapses into counting errors",
-        "example": "For 4 x 4 x 4, student gets 4 x 4 = 16 correctly but then computes 16 x 4 as 54 or gives up",
-        "why": "Multiplication facts weren't automatized in grades 3-4. The student understands the repeated multiplication but can't execute it, so working memory runs out before the chain ends."
+        "pattern": "Adds the two factors instead of multiplying, or cannot recall the fact and gives a near miss",
+        "example": "Says 6 x 6 = 12 (added the factors) or 6 x 6 = 30 (confused with 6 x 5)",
+        "why": "The fact was never made automatic in grade 3, so the student falls back on addition or a neighboring fact. Every exponent chain needs these facts to come without counting, or working memory runs out mid-chain."
       },
-      "redirect_script": {
-        "stop": "Pause -- let's do one fact at a time.",
-        "prompt": "Cover everything except the first two numbers. Multiply just those two and write the answer down. Now multiply THAT answer by the next number. You never need more than one small fact at a time.",
-        "praise": "You chained the facts one at a time and never lost your place. That's exactly how powers get evaluated."
-      },
-      "item_template": "A single multiplication fact or a short repeated product (two or three factors of the same small number). NR (numeric response), no choices, no context. Built to feed the timed Fluency Sprint.",
+      "item_template": "A single multiplication fact (factors 2 through 9, or a friendly product like 12 x 12). NR, no choices, short stems for a timed fluency sprint. No calculator.",
       "sample_items": [
         {
-          "stem": "What is 3 x 3?",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "Common errors: 6 (adds instead of multiplying), 33 (writes the digits side by side)"
-        },
-        {
-          "stem": "What is 4 x 4?",
-          "answer": "16",
-          "choices": null,
-          "distractor_logic": "Common errors: 8 (adds), 12 (confuses with 3 x 4)"
-        },
-        {
-          "stem": "What is 5 x 5?",
-          "answer": "25",
-          "choices": null,
-          "distractor_logic": "Common errors: 10 (adds), 20 (confuses with 4 x 5)"
-        },
-        {
           "stem": "What is 6 x 6?",
-          "answer": "36",
-          "choices": null,
-          "distractor_logic": "Common errors: 12 (adds), 30 (confuses with 5 x 6)"
+          "answer": "36"
         },
         {
-          "stem": "What is 7 x 7?",
-          "answer": "49",
-          "choices": null,
-          "distractor_logic": "Common errors: 42 (confuses with 6 x 7), 56 (confuses with 7 x 8)"
+          "stem": "What is 7 x 8?",
+          "answer": "56"
         },
         {
           "stem": "What is 8 x 8?",
-          "answer": "64",
-          "choices": null,
-          "distractor_logic": "Common errors: 56 (confuses with 7 x 8), 72 (confuses with 8 x 9)"
+          "answer": "64"
+        },
+        {
+          "stem": "What is 4 x 9?",
+          "answer": "36"
+        },
+        {
+          "stem": "What is 3 x 7?",
+          "answer": "21"
+        },
+        {
+          "stem": "What is 9 x 6?",
+          "answer": "54"
+        },
+        {
+          "stem": "What is 5 x 8?",
+          "answer": "40"
+        },
+        {
+          "stem": "What is 7 x 7?",
+          "answer": "49"
         },
         {
           "stem": "What is 9 x 9?",
-          "answer": "81",
-          "choices": null,
-          "distractor_logic": "Common errors: 72 (confuses with 8 x 9), 18 (adds)"
+          "answer": "81"
         },
         {
-          "stem": "What is 12 x 12?",
-          "answer": "144",
-          "choices": null,
-          "distractor_logic": "Common errors: 124 (place-value slip), 132 (confuses with 11 x 12)"
-        },
-        {
-          "stem": "What is 2 x 2 x 2?",
-          "answer": "8",
-          "choices": null,
-          "distractor_logic": "Common errors: 6 (adds the three 2s), 4 (stops after the first fact)"
-        },
-        {
-          "stem": "What is 3 x 3 x 3?",
-          "answer": "27",
-          "choices": null,
-          "distractor_logic": "Common errors: 9 (stops after 3 x 3), 18 (multiplies 9 by 2 instead of 3)"
-        },
-        {
-          "stem": "What is 4 x 4 x 4?",
-          "answer": "64",
-          "choices": null,
-          "distractor_logic": "Common errors: 16 (stops after 4 x 4), 48 (computes 16 x 3)"
-        },
-        {
-          "stem": "What is 5 x 5 x 5?",
-          "answer": "125",
-          "choices": null,
-          "distractor_logic": "Common errors: 25 (stops after 5 x 5), 75 (computes 25 x 3)"
-        },
-        {
-          "stem": "What is 2 x 2 x 2 x 2?",
-          "answer": "16",
-          "choices": null,
-          "distractor_logic": "Common errors: 8 (uses only three 2s), 6 (adds three 2s)"
-        },
-        {
-          "stem": "What is 10 x 10 x 10?",
-          "answer": "1000",
-          "choices": null,
-          "distractor_logic": "Common errors: 100 (stops after 10 x 10), 30 (adds the three 10s)"
+          "stem": "What is 4 x 6?",
+          "answer": "24"
         }
       ],
+      "redirect_script": {
+        "stop": "Pause, is this adding or multiplying?",
+        "prompt": "6 x 6 means six groups of six, not six plus six. Build the array: six rows of six, then skip count by six. If the fact is not automatic, use one you know: 6 x 5 = 30, then one more six makes 36.",
+        "praise": "You counted six groups of six, that is what multiplying does."
+      },
       "vocabulary": [
         {
           "term": "Factor",
-          "definition": "A number being multiplied -- in 4 x 4 x 4, each 4 is a factor."
+          "definition": "A number being multiplied. In 6 x 6, each 6 is a factor."
         },
         {
           "term": "Product",
@@ -158,223 +114,695 @@
         }
       ],
       "next_steps": {
-        "if_pass": "6NS8-S1",
-        "if_fail": "Review grade-3 multiplication facts with skip counting and known-fact bridges (6 x 6 = 6 x 5 + 6) before working with exponents."
+        "if_pass": "6NS8-B1",
+        "if_fail": "Review grade 3 multiplication facts with arrays and skip counting (6 x 6 as six rows of six) until the facts come without counting."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write 4 x 4 x 4 and cover the last 4 with your hand: the problem shrinks to plain 4 x 4. Write 16 on the paper, slide your hand off, and the whole chain has become 16 x 4 -- one small fact at a time, with the running answer living on the paper instead of in your head."
-        },
-        {
-          "kind": "show",
-          "text": "Write on the board: 4 x 4 x 4."
+          "text": "Draw 6 rows of 6 dots. That array IS 6 x 6: six equal groups of six."
         },
         {
           "kind": "ask",
-          "text": "Before we compute anything -- how many multiplications will we actually do here, one at a time?"
-        },
-        {
-          "kind": "ask",
-          "text": "Start with just the first two numbers. What is 4 x 4?"
-        },
-        {
-          "kind": "show",
-          "text": "Write 16 under the first pair, so the problem now reads 16 x 4."
-        },
-        {
-          "kind": "ask",
-          "text": "Now the chain is just one fact: what is 16 x 4? If that's not automatic, what is 16 x 2, and what is that doubled?"
-        },
-        {
-          "kind": "watch",
-          "text": "If the student tries to compute all three 4s in their head at once, stop them and have them write the running product after every single fact. Losing the running product is the whole failure mode."
+          "text": "Skip count the rows by six: 6, 12, 18, 24, 30, 36. How many dots in all?"
         },
         {
           "kind": "say",
-          "text": "So 4 x 4 x 4 = 64. One small fact at a time, writing the running answer down -- that's the entire trick, no matter how long the chain gets."
-        },
-        {
-          "kind": "ask",
-          "text": "Your turn: what is 3 x 3 x 3, one fact at a time?"
-        }
-      ],
-      "printable_artifact": {
-        "title": "Squares and Cubes Quick-Reference Card",
-        "kind": "reference_card",
-        "instructions": "Keep this nearby during exponent work. Say each fact out loud until it comes without counting.",
-        "items": [
-          "2 x 2 = 4        2 x 2 x 2 = 8",
-          "3 x 3 = 9        3 x 3 x 3 = 27",
-          "4 x 4 = 16       4 x 4 x 4 = 64",
-          "5 x 5 = 25       5 x 5 x 5 = 125",
-          "6 x 6 = 36",
-          "7 x 7 = 49",
-          "8 x 8 = 64",
-          "9 x 9 = 81",
-          "10 x 10 = 100    10 x 10 x 10 = 1000",
-          "12 x 12 = 144"
-        ]
-      }
-    },
-    {
-      "skill_id": "6NS8-F2",
-      "name": "Multiply two fractions by multiplying tops and bottoms",
-      "column": "foundation",
-      "parent_standard": "6.NS.8",
-      "prerequisite_skill": {
-        "type": "gap",
-        "grade": 5,
-        "description": "Multiply two fractions (numerator x numerator over denominator x denominator)",
-        "check_question": "What is 1/2 x 1/2?"
-      },
-      "i_do_script": "Start with the picture: 2/3 x 2/3 means two-thirds OF two-thirds -- a piece of a piece -- so the answer must come out SMALLER than 2/3. An answer bigger than one whole bar, like 4/3, fails the picture before any arithmetic happens. Before we can raise a fraction to a power, we have to be able to multiply two fractions. Watch: 2/3 x 2/3. I multiply the tops -- 2 x 2 = 4 -- and I multiply the bottoms -- 3 x 3 = 9 -- so the answer is 4/9. Both jobs happen every time: the top AND the bottom. Notice the answer, 4/9, is SMALLER than 2/3 -- taking two-thirds of two-thirds leaves you with less.",
-      "canonical_error": {
-        "pattern": "Multiplies the numerators but leaves the denominator alone (or adds the denominators)",
-        "example": "Computes 2/3 x 2/3 = 4/3 instead of 4/9",
-        "why": "The student treats the denominator as a fixed label ('thirds') rather than a number that participates in the multiplication, so only the tops get multiplied."
-      },
-      "redirect_script": {
-        "stop": "Wait -- the bottom number has a job too.",
-        "prompt": "Check the size first: you took a piece OF a piece -- can the answer be bigger than a whole bar? A fraction is TWO numbers, and multiplying fractions is TWO multiplications. Draw an arrow across the tops and multiply them. Now draw an arrow across the bottoms and multiply those. Both arrows, every time.",
-        "praise": "You multiplied the tops AND the bottoms -- that's the complete move."
-      },
-      "item_template": "Multiply two simple fractions (same or different), denominators through 6, no simplifying required. NR, no choices, short stems for fluency use.",
-      "sample_items": [
-        {
-          "stem": "What is 1/2 x 1/2?",
-          "answer": "1/4",
-          "choices": null,
-          "distractor_logic": "Common errors: 1/2 (thinks nothing changes), 2/4 (adds tops), 1 (adds the halves)"
-        },
-        {
-          "stem": "What is 1/3 x 1/3?",
-          "answer": "1/9",
-          "choices": null,
-          "distractor_logic": "Common errors: 1/3 (no change), 2/3 (adds), 1/6 (adds denominators)"
-        },
-        {
-          "stem": "What is 2/3 x 2/3?",
-          "answer": "4/9",
-          "choices": null,
-          "distractor_logic": "Common errors: 4/3 (multiplies tops only), 4/6 (adds denominators)"
-        },
-        {
-          "stem": "What is 3/4 x 3/4?",
-          "answer": "9/16",
-          "choices": null,
-          "distractor_logic": "Common errors: 9/4 (tops only), 6/8 (doubles both instead of multiplying)"
-        },
-        {
-          "stem": "What is 1/5 x 1/5?",
-          "answer": "1/25",
-          "choices": null,
-          "distractor_logic": "Common errors: 1/5 (no change), 1/10 (adds denominators), 2/5 (adds)"
-        },
-        {
-          "stem": "What is 2/5 x 2/5?",
-          "answer": "4/25",
-          "choices": null,
-          "distractor_logic": "Common errors: 4/5 (tops only), 4/10 (adds denominators)"
-        },
-        {
-          "stem": "What is 1/2 x 1/4?",
-          "answer": "1/8",
-          "choices": null,
-          "distractor_logic": "Common errors: 1/6 (adds denominators), 2/6 (adds both), 1/4 (ignores the 1/2)"
-        },
-        {
-          "stem": "What is 3/5 x 3/5?",
-          "answer": "9/25",
-          "choices": null,
-          "distractor_logic": "Common errors: 9/5 (tops only), 6/10 (doubles both numbers)"
-        },
-        {
-          "stem": "What is 1/4 x 1/4?",
-          "answer": "1/16",
-          "choices": null,
-          "distractor_logic": "Common errors: 1/8 (adds denominators), 1/4 (no change), 2/8 (adds both)"
-        },
-        {
-          "stem": "What is 5/6 x 5/6?",
-          "answer": "25/36",
-          "choices": null,
-          "distractor_logic": "Common errors: 25/6 (tops only), 10/12 (doubles both numbers)"
-        }
-      ],
-      "vocabulary": [
-        {
-          "term": "Numerator",
-          "definition": "The top number of a fraction -- it counts the parts you have."
-        },
-        {
-          "term": "Denominator",
-          "definition": "The bottom number of a fraction -- it names the size of each part."
-        }
-      ],
-      "next_steps": {
-        "if_pass": "6NS8-S1",
-        "if_fail": "Review grade-5 fraction multiplication with an area model (fold a paper in half, then take half of that) before raising fractions to powers."
-      },
-      "worked_example_script": [
-        {
-          "kind": "show",
-          "text": "Shade 2 of 3 parts of a bar -- that's 2/3. Now take two-thirds of just the shaded part: slice every third into 3 slivers, making 9 slivers in the whole bar, and you keep 4 of them. You end with LESS than you started with -- so an answer like 4/3, more than the whole bar, can't be right.",
-          "visual": {
-            "type": "fraction_bars",
-            "label": "2/3 of 2/3",
-            "bars": [
-              {
-                "parts": 3,
-                "shaded": 2,
-                "label": "2/3"
-              },
-              {
-                "parts": 9,
-                "shaded": 4,
-                "label": "2/3 of 2/3 = 4/9"
-              }
-            ]
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write on the board: 2/3 x 2/3."
-        },
-        {
-          "kind": "ask",
-          "text": "A fraction is made of two numbers. When we multiply two fractions, how many little multiplications do you think we'll do?"
-        },
-        {
-          "kind": "show",
-          "text": "Draw one arrow connecting the two tops, and a second arrow connecting the two bottoms."
-        },
-        {
-          "kind": "ask",
-          "text": "Follow the top arrow first: what is 2 x 2?"
-        },
-        {
-          "kind": "ask",
-          "text": "Now the bottom arrow: what is 3 x 3? So what fraction do we have?"
+          "text": "6 x 6 = 36. If a fact is not automatic, lean on one you know: 6 x 5 = 30, then one more row of six makes 36."
         },
         {
           "kind": "watch",
-          "text": "If the student writes 4/3, they multiplied the tops and copied the bottom. Point at the bottom arrow and ask: 'Did this arrow get used?' Don't move on until both arrows get used every time."
+          "text": "If a student says 12, they added 6 + 6 instead of counting six groups of six. Point at the array: how many rows, and how big is each row?"
         },
         {
           "kind": "ask",
-          "text": "Look at 4/9 next to 2/3 (which is 6/9). Did multiplying make the fraction bigger or smaller? Why does taking two-thirds OF two-thirds leave you with less?"
-        },
-        {
-          "kind": "say",
-          "text": "Tops times tops, bottoms times bottoms -- two multiplications every time. And when both fractions are less than 1, the answer comes out smaller. Hold onto that; it comes back when we raise fractions to powers."
+          "text": "Your turn: build 7 x 8 as 7 rows of 8 and find the total."
         }
       ]
     },
     {
+      "skill_id": "6NS8-F2",
+      "name": "Multiply a two- or three-digit number by a one-digit number",
+      "column": "foundation",
+      "parent_standard": "6.NS.8",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 4,
+        "description": "Multiply a two- or three-digit number by a one-digit number using place value.",
+        "check_question": "What is 16 x 4?"
+      },
+      "i_do_script": "When a number is too big for a single fact, I break it by place value and multiply the parts. Watch: 16 x 4. I split 16 into 10 and 6, draw them as two rectangles four units tall, and multiply each: 4 x 10 is 40, and 4 x 6 is 24. Then I add the parts: 40 plus 24 is 64, so 16 x 4 = 64. This is the step that breaks a power chain in the middle, because 4 x 4 x 4 becomes 16 x 4 right after the first fact, so multiply every part and then add.",
+      "canonical_error": {
+        "pattern": "Multiplies only one place of the larger number, or forgets to add the partial products",
+        "example": "Computes 16 x 4 as 24 (only 6 x 4) or as 40 (only 10 x 4)",
+        "why": "The student stops after one partial product instead of multiplying every place and adding them. Evaluating a power stalls here because chains like 4 x 4 x 4 hit 16 x 4 in the middle, and a missed partial product collapses the answer."
+      },
+      "item_template": "A two- or three-digit number multiplied by a one-digit number, using products the exponent chains actually hit (like 16 x 4 or 27 x 3). NR, no choices, short stems for a fluency sprint. No calculator.",
+      "sample_items": [
+        {
+          "stem": "What is 16 x 4?",
+          "answer": "64"
+        },
+        {
+          "stem": "What is 32 x 2?",
+          "answer": "64"
+        },
+        {
+          "stem": "What is 27 x 3?",
+          "answer": "81"
+        },
+        {
+          "stem": "What is 25 x 5?",
+          "answer": "125"
+        },
+        {
+          "stem": "What is 49 x 7?",
+          "answer": "343"
+        },
+        {
+          "stem": "What is 64 x 4?",
+          "answer": "256"
+        },
+        {
+          "stem": "What is 81 x 3?",
+          "answer": "243"
+        },
+        {
+          "stem": "What is 36 x 6?",
+          "answer": "216"
+        },
+        {
+          "stem": "What is 125 x 5?",
+          "answer": "625"
+        },
+        {
+          "stem": "What is 64 x 2?",
+          "answer": "128"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait, did every part of the number get multiplied?",
+        "prompt": "Break the big number by place value. For 16 x 4, split 16 into 10 and 6, multiply each by 4, then add: 40 + 24 = 64. Every part gets its own multiplication.",
+        "praise": "You multiplied both parts and added them, that is the whole product."
+      },
+      "vocabulary": [
+        {
+          "term": "Partial product",
+          "definition": "The result of multiplying one place of a number, like 4 x 10 = 40 inside 16 x 4."
+        },
+        {
+          "term": "Place value",
+          "definition": "The value a digit's position gives it: ones, tens, hundreds."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS8-B2",
+        "if_fail": "Review grade 4 multiplication with an area model (split 16 into 10 and 6, multiply each part, then add the partial products)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a rectangle 4 units tall and 16 units wide. Split the width into 10 and 6, making two smaller rectangles."
+        },
+        {
+          "kind": "ask",
+          "text": "What is the area of the 4 by 10 piece? What is the area of the 4 by 6 piece?"
+        },
+        {
+          "kind": "say",
+          "text": "4 x 10 = 40 and 4 x 6 = 24. Add the pieces: 40 + 24 = 64, so 16 x 4 = 64. Break the big number by place value, multiply each part, then add."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student multiplies 4 x 6 and forgets the 4 x 10, point at the missing rectangle: that whole piece still counts toward the area."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 27 x 3. Split 27 into 20 and 7, multiply each by 3, then add."
+        }
+      ]
+    },
+    {
+      "skill_id": "6NS8-B1",
+      "name": "Multiply two fractions",
+      "column": "looking_back",
+      "parent_standard": "6.NS.8",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Multiply two fractions by multiplying the numerators and multiplying the denominators.",
+        "check_question": "What is 2/3 x 2/3?"
+      },
+      "i_do_script": "Multiplying two fractions is taking a part OF a part, so the answer comes out smaller. Watch: 2/3 x 2/3 means two-thirds of two-thirds. I fold a paper into thirds and shade 2/3, then fold the other way into thirds and keep two-thirds of the shaded strip, landing on 4 small pieces out of 9. In numbers, I multiply the tops, 2 x 2 = 4, and the bottoms, 3 x 3 = 9, so 2/3 x 2/3 = 4/9. Both jobs happen every time, the top AND the bottom, and 4/9 is smaller than 2/3 because a part of a part is less than what you started with.",
+      "canonical_error": {
+        "pattern": "Multiplies the numerators but leaves the denominator unchanged, or adds the denominators",
+        "example": "Computes 2/3 x 2/3 = 4/3 instead of 4/9",
+        "why": "The student treats the denominator as a fixed label rather than a number that multiplies too. Only the tops get multiplied, so the answer comes out too big, bigger than a whole even though a part of a part must be smaller."
+      },
+      "item_template": "Two fractions with small denominators (through 6), multiplied. Numeric response entered as a fraction, no calculator. Answers may be left unsimplified or in lowest terms.",
+      "sample_items": [
+        {
+          "stem": "2/3 x 2/3",
+          "answer": "4/9"
+        },
+        {
+          "stem": "1/2 x 1/2",
+          "answer": "1/4"
+        },
+        {
+          "stem": "3/4 x 3/4",
+          "answer": "9/16"
+        },
+        {
+          "stem": "2/5 x 3/5",
+          "answer": "6/25"
+        },
+        {
+          "stem": "1/3 x 2/3",
+          "answer": "2/9"
+        },
+        {
+          "stem": "3/5 x 3/5",
+          "answer": "9/25"
+        },
+        {
+          "stem": "1/4 x 3/4",
+          "answer": "3/16"
+        },
+        {
+          "stem": "2/3 x 1/2",
+          "answer": "2/6 (or 1/3)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait, the bottom number has a job too.",
+        "prompt": "A fraction is two numbers, so multiplying is two multiplications. Draw an arrow across the tops and multiply them, then an arrow across the bottoms and multiply those. If the denominator did not change, the second arrow never got used.",
+        "praise": "You multiplied the tops AND the bottoms, that is the complete move."
+      },
+      "vocabulary": [
+        {
+          "term": "Numerator",
+          "definition": "The top number of a fraction. It counts how many parts you have."
+        },
+        {
+          "term": "Denominator",
+          "definition": "The bottom number of a fraction. It names the size of each part."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS8-S1",
+        "if_fail": "6NS8-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Fold a paper into thirds and shade 2 of the 3 strips: that is 2/3."
+        },
+        {
+          "kind": "ask",
+          "text": "Now take two-thirds of just the shaded part. Fold the other way into thirds and keep 2 of those 3. How many small pieces do you keep, out of how many in the whole sheet?"
+        },
+        {
+          "kind": "say",
+          "text": "You keep 4 pieces out of 9, so 2/3 x 2/3 = 4/9. In numbers: tops 2 x 2 = 4, bottoms 3 x 3 = 9. Both the top and the bottom get multiplied."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 4/3, the bottom never got multiplied. Point at the folded paper: are there 3 pieces on the bottom or 9? An answer bigger than one whole cannot be right for a part of a part."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: multiply 3/4 x 3/4. Tops first, then bottoms."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "1/2 x 1/3",
+          "answer": "1/6"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "1/2 x 1/2",
+          "answer": "1/4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2/3 x 2/3",
+          "answer": "4/9"
+        },
+        {
+          "difficulty": "core",
+          "stem": "3/4 x 1/2",
+          "answer": "3/8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2/5 x 2/5",
+          "answer": "4/25"
+        },
+        {
+          "difficulty": "core",
+          "stem": "3/5 x 2/3",
+          "answer": "6/15 (or 2/5)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "2/3 x 3/4",
+          "answer": "6/12 (or 1/2)"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo wrote 2/3 x 2/3 = 4/3. Find his mistake and fix it.",
+          "shown_work": [
+            "2/3 x 2/3",
+            "tops: 2 x 2 = 4",
+            "= 4/3"
+          ],
+          "answer": "Leo multiplied the tops but copied the bottom. The bottoms multiply too: 3 x 3 = 9, so 2/3 x 2/3 = 4/9. A part of a part must be smaller than 2/3, and 4/3 is bigger than a whole."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Fold to Find a Part of a Part",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "One sheet of paper per pair",
+            "Two colored pencils"
+          ],
+          "instructions": "1. Fold the sheet into thirds one way and shade 2/3 in the first color.\n2. Fold the other way into thirds and shade two-thirds of the shaded strip in the second color.\n3. Count the double-shaded pieces (4) and the total pieces in the sheet (9): 2/3 x 2/3 = 4/9.\n4. Write the number sentence and circle where the 4 came from (tops) and where the 9 came from (bottoms).\n5. Repeat with 1/2 x 1/2 and 3/4 x 1/2. Say each time: a part of a part is smaller."
+        },
+        {
+          "type": "matching",
+          "title": "Tops-and-Bottoms Match-Up",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per product, one card per answer"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each product like 2/3 x 2/3 to its answer 4/9.\n3. To claim a match, say the tops product and the bottoms product out loud.\n4. Two decoy answers multiply only the tops (4/3 for 2/3 x 2/3, 9/4 for 3/4 x 3/4); set them aside and explain what step was skipped.",
+          "content": {
+            "pairs": [
+              {
+                "left": "2/3 x 2/3",
+                "right": "4/9"
+              },
+              {
+                "left": "3/4 x 3/4",
+                "right": "9/16"
+              },
+              {
+                "left": "1/2 x 1/2",
+                "right": "1/4"
+              },
+              {
+                "left": "2/5 x 3/5",
+                "right": "6/25"
+              },
+              {
+                "left": "1/3 x 2/3",
+                "right": "2/9"
+              }
+            ],
+            "decoys": [
+              "4/3 (tops only)",
+              "9/4 (tops only)"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Folding paper (concrete) to an area grid (representational) to tops-times-tops (abstract) makes 'a part of a part is smaller' physical before the rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The tops-only error (4/3) is stable and predictable, so finding and fixing it in worked examples confronts it head on."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "A fraction is two numbers. When you multiply two fractions, how many little multiplications happen?",
+          "What do the tops multiply to? What do the bottoms multiply to?",
+          "Why does the denominator change when you multiply two fractions?",
+          "Before computing: will 2/3 x 2/3 be bigger or smaller than 2/3? How do you know?",
+          "You wrote 4/3 for 2/3 x 2/3. Which multiplication did you skip?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student multiplies the numerators but leaves the denominator unchanged (2/3 x 2/3 = 4/3).",
+            "say": "A fraction is two numbers, so multiplying is two jobs. Draw an arrow across the tops and multiply, then an arrow across the bottoms and multiply. If the bottom did not change, the second arrow never got used.",
+            "praise": "You multiplied the tops and the bottoms, that is the full move."
+          },
+          {
+            "if_you_see": "Student adds the denominators instead of multiplying them (1/3 x 1/3 = 2/6).",
+            "say": "Multiplying is not adding. Fold to take one third of one third: the piece gets smaller, so the bottom number grows by multiplying, 3 x 3 = 9, not by adding.",
+            "praise": "You multiplied the bottoms instead of adding them, so the piece size came out right."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "2/3 x 2/3",
+            "look_for": "4/9, with tops 2 x 2 = 4 and bottoms 3 x 3 = 9. An answer of 4/3 means only the tops were multiplied."
+          },
+          {
+            "prompt": "Is 3/4 x 3/4 bigger or smaller than 3/4?",
+            "look_for": "Smaller, because three-fourths of three-fourths leaves less. 9/16 is less than 3/4."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Multiply 2/3 x 2/3.",
+        "answer": "4/9",
+        "steps": [
+          {
+            "math": "2/3 x 2/3",
+            "annotation": "A fraction is two numbers, so this is two multiplications: tops and bottoms."
+          },
+          {
+            "math": "tops: 2 x 2 = 4",
+            "annotation": "Multiply the numerators across."
+          },
+          {
+            "math": "bottoms: 3 x 3 = 9",
+            "annotation": "Multiply the denominators across. Skipping this is what makes the wrong answer 4/3."
+          },
+          {
+            "math": "2/3 x 2/3 = 4/9",
+            "annotation": "Sense check: two-thirds of two-thirds is less than 2/3, and 4/9 is."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Multiply 3/4 x 3/4.",
+        "answer": "9/16",
+        "steps": [
+          {
+            "math": "3/4 x 3/4",
+            "annotation": "Two multiplications: tops and bottoms.",
+            "given": true
+          },
+          {
+            "math": "tops: 3 x 3 = 9",
+            "annotation": "Numerators multiplied across.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Now the bottoms: what is 4 x 4?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the fraction and check that it is smaller than 3/4.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I multiply the tops to get ___ and the bottoms to get ___.",
+        "My answer should be smaller than ___ because a part of a part is less."
+      ],
+      "fluency_source": "6NS8-F1"
+    },
+    {
+      "skill_id": "6NS8-B2",
+      "name": "Multiply decimals to hundredths",
+      "column": "looking_back",
+      "parent_standard": "6.NS.8",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Multiply two decimals by multiplying the digits and placing the decimal point by counting places.",
+        "check_question": "What is 0.3 x 0.3?"
+      },
+      "i_do_script": "Multiplying decimals is repeated place value: tenths of tenths are hundredths, so the point moves. Watch: 0.3 x 0.3. On a hundred grid, 0.3 of a 0.3 strip lands on 9 of the 100 tiny squares, which is 0.09, not 0.9. The digit work is easy, 3 x 3 = 9, and then I count decimal places: 0.3 has one place and I used it twice, so the answer needs two places. Every factor brings its own decimal places, and the places add.",
+      "canonical_error": {
+        "pattern": "Multiplies the digits correctly but keeps one decimal place instead of adding the places from both factors",
+        "example": "Computes 0.3 x 0.3 = 0.9 instead of 0.09",
+        "why": "The student reattaches the point where the base had it instead of counting places. Two factors with one place each need two places in the product, so 0.9 is ten times too big."
+      },
+      "item_template": "Two decimals to the tenths or hundredths, multiplied, with products that stay calculator-free. Numeric response. One or two decimal places in each factor.",
+      "sample_items": [
+        {
+          "stem": "0.3 x 0.3",
+          "answer": "0.09"
+        },
+        {
+          "stem": "0.5 x 0.5",
+          "answer": "0.25"
+        },
+        {
+          "stem": "0.2 x 0.4",
+          "answer": "0.08"
+        },
+        {
+          "stem": "0.6 x 0.5",
+          "answer": "0.30 (or 0.3)"
+        },
+        {
+          "stem": "1.2 x 0.3",
+          "answer": "0.36"
+        },
+        {
+          "stem": "0.7 x 0.7",
+          "answer": "0.49"
+        },
+        {
+          "stem": "0.4 x 0.4",
+          "answer": "0.16"
+        },
+        {
+          "stem": "1.5 x 0.2",
+          "answer": "0.30 (or 0.3)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Freeze, count your decimal places before you place that point.",
+        "prompt": "Multiply the digits as if the points were gone. Now count the decimal places in EVERY factor and add them: that total is how many places the answer needs. 0.3 x 0.3 is one place plus one place, so two places, and 9 becomes 0.09.",
+        "praise": "You added the decimal places from both factors, that is how the point finds its home."
+      },
+      "vocabulary": [
+        {
+          "term": "Decimal place",
+          "definition": "A position to the right of the decimal point. 0.3 has one decimal place, 0.09 has two."
+        },
+        {
+          "term": "Product",
+          "definition": "The answer to a multiplication."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS8-S1",
+        "if_fail": "6NS8-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "On a hundred grid where the whole grid is 1, shade a 3-wide column strip: that is 0.3."
+        },
+        {
+          "kind": "ask",
+          "text": "Now take 0.3 of that strip: mark off 3 rows of it. How many tiny squares are double-shaded, out of 100?"
+        },
+        {
+          "kind": "say",
+          "text": "The double-shaded region is 3 x 3 = 9 squares out of 100, so 0.3 x 0.3 = 9/100 = 0.09. Tenths of tenths are hundredths, so the answer needs two decimal places."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 0.9, they multiplied the digits and put the point back where 0.3 had it. Ask: how many decimal places did each factor bring? Add them. Does 0.9 have two places?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 0.4 x 0.4. Digits first, then count and add the places from both factors."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "0.2 x 0.3",
+          "answer": "0.06"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "0.5 x 0.4",
+          "answer": "0.20 (or 0.2)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "0.3 x 0.3",
+          "answer": "0.09"
+        },
+        {
+          "difficulty": "core",
+          "stem": "0.6 x 0.6",
+          "answer": "0.36"
+        },
+        {
+          "difficulty": "core",
+          "stem": "0.4 x 0.5",
+          "answer": "0.20 (or 0.2)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "1.2 x 0.4",
+          "answer": "0.48"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "1.5 x 1.5",
+          "answer": "2.25"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Nadia wrote 0.6 x 0.6 = 3.6. Find her mistake and fix it.",
+          "shown_work": [
+            "0.6 x 0.6",
+            "6 x 6 = 36",
+            "= 3.6"
+          ],
+          "answer": "Her digit work was right, but each factor 0.6 has one decimal place, so the product needs 1 + 1 = 2 places: 0.36, not 3.6. Sense check: 0.6 x 0.6 must be less than 0.6, so 3.6 is impossible."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Hundred-Grid Tenths of Tenths",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Printed 10 by 10 hundred grids",
+            "Two colored pencils"
+          ],
+          "instructions": "1. On a hundred grid (the whole grid = 1), shade a 3-wide column strip in the first color: that is 0.3.\n2. Take 0.3 of the strip: shade the bottom 3 rows of it in the second color.\n3. Count the double-shaded squares: 3 x 3 = 9 out of 100, so 0.3 x 0.3 = 0.09.\n4. Write the number sentence and mark where the two decimal places come from: tenths of tenths are hundredths.\n5. Repeat with 0.4 x 0.4 = 0.16. Ask each time: why can 0.9 never be the answer to 0.3 x 0.3?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Where Does the Point Go?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Worked-problem slips, half with the point placed right and half with it one place off"
+          ],
+          "instructions": "1. Deal the slips face down.\n2. Flip one at a time: decide if the decimal point landed in the right place or one place too far left or right.\n3. For each wrong slip, count the places in both factors, add them, and move the point to fix it.\n4. Sort slips into Right Place and Wrong Place piles; the pair must agree and show the place count before sorting.",
+          "content": {
+            "worked_problem": "0.6 x 0.6 with digits 6 x 6 = 36",
+            "error_step": "The point was placed one spot in, giving 3.6 instead of counting both places",
+            "why": "Each factor 0.6 carries one decimal place, and places add in a product: 1 + 1 = 2 places, so 36 becomes 0.36."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The hundred grid makes 'tenths of tenths are hundredths' concrete before the add-the-places rule is stated abstractly."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Nadia's 3.6 next to the correct 0.36 isolates the single decision, where the point lands, that defines this skill."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "A number talk on 0.5 x 0.5 and 0.9 x 0.9 builds the intuition that a product of numbers below 1 shrinks, which catches misplaced points."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Multiply the digits first as if the points were gone. What do you get?",
+          "How many decimal places does each factor have? Add them. That is how many the answer needs.",
+          "0.3 is less than 1. Should 0.3 x 0.3 be more or less than 0.3?",
+          "Where does 0.9 put the point, and where does 0.09 put it? Which matches the grid?",
+          "Why does 0.2 x 0.2 need two decimal places, but 0.2 x 2 needs only one?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student multiplies the digits correctly but keeps one decimal place (0.3 x 0.3 = 0.9).",
+            "say": "Count the decimal places in EVERY factor and add them. 0.3 has one place, used twice, so the answer needs two places. The digits are 9, so the answer is 0.09.",
+            "praise": "You added the places from both factors, that is how the point finds its spot."
+          },
+          {
+            "if_you_see": "Student drops the decimal point entirely (0.3 x 0.3 = 9).",
+            "say": "Nine whole units cannot be right when both factors are less than 1. Shade 0.3 of 0.3 on the grid: you land on 9 out of 100 squares, which is 0.09.",
+            "praise": "You kept the point and the grid agreed, 9 hundredths."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "0.4 x 0.4",
+            "look_for": "0.16 with '1 + 1 = 2 places' shown. 1.6 keeps one place; 16 drops the point."
+          },
+          {
+            "prompt": "Is 0.5 x 0.5 more or less than 0.5?",
+            "look_for": "Less, 0.25, which is half of a half."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Multiply 0.3 x 0.3.",
+        "answer": "0.09",
+        "steps": [
+          {
+            "math": "digits: 3 x 3 = 9",
+            "annotation": "Multiply as if the decimal points were not there."
+          },
+          {
+            "math": "places: 1 + 1 = 2",
+            "annotation": "Each factor 0.3 has one decimal place, and the places add."
+          },
+          {
+            "math": "9 -> 0.09",
+            "annotation": "Two places means the 9 sits in the hundredths, which is why 0.9 is wrong."
+          },
+          {
+            "math": "0.3 x 0.3 = 0.09",
+            "annotation": "Sense check: 0.3 of 0.3 must be less than 0.3, and 0.09 is."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Multiply 0.4 x 0.4.",
+        "answer": "0.16",
+        "steps": [
+          {
+            "math": "digits: 4 x 4 = 16",
+            "annotation": "Multiply the digits, points on hold.",
+            "given": true
+          },
+          {
+            "math": "places: 1 + 1 = 2",
+            "annotation": "One decimal place in each factor, and the places add.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Place the point two spots from the right. What number results?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the product and check that it is smaller than 0.4.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "Each factor has ___ decimal place, so my answer needs ___ places.",
+        "I multiply the digits to get ___, then move the point ___ places."
+      ],
+      "fluency_source": "6NS8-F2"
+    },
+    {
       "skill_id": "6NS8-S1",
       "name": "Identify the base and exponent and write the expanded form",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.NS.8",
       "engine_stems": [
         1
@@ -766,7 +1194,7 @@
     {
       "skill_id": "6NS8-S2",
       "name": "Evaluate powers with whole number bases",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.NS.8",
       "engine_stems": [
         2
@@ -1027,7 +1455,7 @@
           }
         ]
       },
-      "fluency_source": "6NS8-F1",
+      "fluency_source": "6NS8-F2",
       "sentence_starters": [
         "First I expanded ___ into ___ factors, then I multiplied one step at a time.",
         "The answer can't be ___ because that's just base times exponent."
@@ -1760,7 +2188,7 @@
           }
         ]
       },
-      "fluency_source": "6NS8-F1",
+      "fluency_source": "6NS8-B1",
       "sentence_starters": [
         "The exponent reaches the top AND the bottom, so ___.",
         "My answer should be smaller than the base because ___."
@@ -2096,7 +2524,7 @@
           }
         ]
       },
-      "fluency_source": "6NS8-F1",
+      "fluency_source": "6NS8-B2",
       "sentence_starters": [
         "Each factor brings ___ decimal place(s), so my answer needs ___.",
         "My answer must be smaller than the base because ___."
@@ -2482,8 +2910,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-4) prerequisite skills. Start intervention here.",
       "skills": [
         "6NS8-F1",
         "6NS8-F2"
@@ -2491,16 +2919,18 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 5) skills that feed this standard directly.",
       "skills": [
-        "6NS8-S1",
-        "6NS8-S2"
+        "6NS8-B1",
+        "6NS8-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "6NS8-S1",
+        "6NS8-S2",
         "6NS8-S3",
         "6NS8-S4",
         "6NS8-S5"
@@ -2508,7 +2938,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "6NS8-S6"
       ]
@@ -2517,6 +2947,8 @@
   "skill_sequence": [
     "6NS8-F1",
     "6NS8-F2",
+    "6NS8-B1",
+    "6NS8-B2",
     "6NS8-S1",
     "6NS8-S2",
     "6NS8-S3",
@@ -2528,6 +2960,12 @@
     "6NS8-F1": [],
     "6NS8-F2": [
       "6NS8-F1"
+    ],
+    "6NS8-B1": [
+      "6NS8-F1"
+    ],
+    "6NS8-B2": [
+      "6NS8-F2"
     ],
     "6NS8-S1": [
       "6NS8-F1"
@@ -2541,11 +2979,11 @@
     ],
     "6NS8-S4": [
       "6NS8-S2",
-      "6NS8-F2"
+      "6NS8-B1"
     ],
     "6NS8-S5": [
-      "6NS8-S2",
-      "6NS8-S3"
+      "6NS8-S3",
+      "6NS8-B2"
     ],
     "6NS8-S6": [
       "6NS8-S4",
@@ -2553,17 +2991,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (evaluate a fraction-base power) -- the spec's At-Proficiency item. If they pass, move to S5/S6. If they fail, check whether the gap is notation (S1: does 4^3 mean 4 x 4 x 4 or 4 x 3?) or computation (S2). This avoids testing all six skills when the student may only need one or two.",
+    "description": "Start with S4, evaluating a fraction-base power, the At-proficiency core the spec names ((2/3)^3 = 8/27). If they pass, move up to S5 (decimal powers) and S6 (analyze someone else's evaluation). If they fail, drop below grade level: B1 checks multiplying two fractions and B2 checks multiplying decimals, the grade 5 skills that fraction and decimal powers rest on directly. If those wobble, the foundations F1 (multiplication facts) and F2 (multi-digit multiplication by a one-digit number) locate the gap in grades 3 and 4. S1, S2, and S3 stay available to probe the standard's own notation, whole-number evaluation, and decimal expansion.",
     "entry_skill": "6NS8-S4",
     "if_pass": [
       "6NS8-S5",
       "6NS8-S6"
     ],
     "if_fail": [
-      "6NS8-S1",
-      "6NS8-S2"
+      "6NS8-B1",
+      "6NS8-B2"
     ],
     "branch_skills": [
+      "6NS8-F1",
+      "6NS8-F2",
+      "6NS8-S1",
+      "6NS8-S2",
       "6NS8-S3"
     ]
   }

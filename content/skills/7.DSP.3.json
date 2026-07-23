@@ -3,7 +3,7 @@
   "standard_text": "Informally assess the degree of visual overlap of two numerical data distributions with similar variabilities, measuring the difference between centers as a multiple of a measure of variability.",
   "schema_version": 3,
   "progression": {
-    "narrative": "Assessing overlap looks like an eyeball judgment, but the standard turns it into a measurement. To decide whether two distributions really differ or just happen to sit in slightly different places, a student needs three things in order: a CENTER for each set (mean or median), a measure of how SPREAD OUT each set is (range, IQR, or mean absolute deviation), and then a way to compare the gap between the centers to that spread. The punchline of the standard is a single number: take the difference between the two centers and express it as a MULTIPLE of the variability -- (difference in means) divided by a MAD. If the centers are three MADs apart, the sets barely overlap and the difference is real; if they are less than one MAD apart, the sets overlap heavily and 'they're basically the same' is a fair call.\n\nSo the arc starts qualitatively -- classify two distributions as fully, partially, or not overlapping just by looking at where their values fall. Then it becomes quantitative: compute each set's center and its variability, because the multiple-of-variability idea is meaningless until you can produce those numbers. Next comes the signature move of the standard -- divide the gap between centers by the variability to say HOW MANY spreads apart the centers are, and read that number as 'lots of overlap' or 'clear separation.' Two supporting ideas ride alongside, both bounded by the Indiana item spec: reading centers and spreads off box plots and line plots to compare two groups, and understanding why an OUTLIER yanks the mean but barely moves the median -- because a shaky center makes every overlap judgment shaky. The standard tops out where students stop computing and start arguing: making, justifying, and critiquing a comparative claim about two populations, using overlap as the evidence and 'always/every' as the trap.",
+    "narrative": "This standard asks students to compare two numerical data distributions shown as line plots or box plots, judge how much they overlap, and describe how an added value or outlier shifts the mean and median. The on-grade work runs from classifying overlap as full, partial, or none, to computing centers and spreads, to expressing the gap between centers as a multiple of the MAD and judging comparative claims. Students who struggle here usually cannot yet produce a trustworthy center or read the displays the items use. Intervention should rebuild the grade 6 skills of finding the mean and median and reading box plots for their landmarks. Those skills in turn rest on grade 3 to 5 fair share division and basic line plot reading, which is where the deepest gaps hide.",
     "steps": [
       {
         "skill_id": "7DSP3-S1",
@@ -40,8 +40,196 @@
   "skills": [
     {
       "skill_id": "7DSP3-F1",
-      "name": "Calculate the mean and median of a data set",
+      "name": "Divide to make equal shares",
       "column": "foundation",
+      "parent_standard": "7.DSP.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 3,
+        "description": "Divide a small whole number into equal groups and name the size of each share.",
+        "check_question": "Share 12 counters equally into 3 groups. How many counters are in each group?"
+      },
+      "i_do_script": "Division splits a total into equal shares, and the answer names the size of ONE share. Watch: share 12 stickers equally among 3 friends. I deal them out one at a time, one to each friend, around and around, until the pile is gone. Each friend ends with 4 stickers, so 12 / 3 = 4. The 3 tells how many groups I make; the 4 tells how big each equal share is. Later, the mean of a data set is exactly this move: add everything into one pile, then share it out equally.",
+      "canonical_error": {
+        "pattern": "Answers with the number of groups instead of the size of each share",
+        "example": "For 'share 12 stickers among 3 friends' answers 3, or writes 12 / 3 = 3",
+        "why": "The student confuses the two numbers in the story: how many groups there are versus how many end up IN each group. The answer to a fair share question is the size of one share, found by dealing the total out evenly."
+      },
+      "item_template": "A small whole-number total shared equally into groups (facts within 100, divisors to 9). Student names the size of each equal share. Short response fluency bank, no calculator.",
+      "sample_items": [
+        {
+          "stem": "Share 12 stickers equally among 3 friends. How many does each friend get?",
+          "answer": "4"
+        },
+        {
+          "stem": "15 / 3",
+          "answer": "5"
+        },
+        {
+          "stem": "Share 20 crackers equally onto 5 plates. How many on each plate?",
+          "answer": "4"
+        },
+        {
+          "stem": "18 / 6",
+          "answer": "3"
+        },
+        {
+          "stem": "Share 24 pencils equally among 4 boxes. How many in each box?",
+          "answer": "6"
+        },
+        {
+          "stem": "30 / 5",
+          "answer": "6"
+        },
+        {
+          "stem": "Share 16 grapes equally between 2 bowls. How many in each bowl?",
+          "answer": "8"
+        },
+        {
+          "stem": "27 / 9",
+          "answer": "3"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is your answer the number of groups, or how many are in each group?",
+        "prompt": "Deal the total out one at a time, one to each group, until nothing is left. Then count how many landed in ONE group; that count is the answer.",
+        "praise": "You dealt them out evenly and counted one share, that is exactly what division means."
+      },
+      "vocabulary": [
+        {
+          "term": "Equal shares",
+          "definition": "Groups that each get exactly the same amount."
+        },
+        {
+          "term": "Divide",
+          "definition": "Split a total into equal groups; the answer tells the size of each group."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP3-B1",
+        "if_fail": "Review grade 3 division with counters, dealing a small total into equal groups one at a time."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Put out 12 counters and draw 3 circles for the 3 friends."
+        },
+        {
+          "kind": "ask",
+          "text": "How can we make sure every friend gets a fair, equal share?"
+        },
+        {
+          "kind": "say",
+          "text": "Deal one counter to each circle, around and around: 3 gone, 6 gone, 9 gone, 12 gone. Each circle holds 4, so 12 / 3 = 4."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 3, point at one circle: is 3 how many friends there are, or how many stickers one friend got?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: share 20 counters equally into 5 circles. How many in each?"
+        }
+      ]
+    },
+    {
+      "skill_id": "7DSP3-F2",
+      "name": "Read and interpret a line plot",
+      "column": "foundation",
+      "parent_standard": "7.DSP.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Read a line plot: count the data values, find how often a value occurs, and find the difference between the greatest and least values.",
+        "check_question": "A line plot has 3 dots above 4 and 2 dots above 6. How many data values are there in all?"
+      },
+      "i_do_script": "A line plot stacks one dot for each data value above a number line, so the NUMBER under a stack is the value and the COUNT of dots in the stack tells how many times that value appears. Watch a plot with 2 dots above 4, 3 dots above 5, and 1 dot above 7. The data set has 2 + 3 + 1 = 6 values in all. The value 5 appears most often because its stack is tallest. The greatest value is 7 and the least is 4, so the values stretch across 7 - 4 = 3. Read down for the value, count up for how many.",
+      "canonical_error": {
+        "pattern": "Confuses the height of a stack with the data value underneath it",
+        "example": "Sees 3 dots above 5 and says a data value is 3, or says the greatest value is the tallest stack instead of the farthest-right dot",
+        "why": "The student swaps the two directions of the plot. The number line underneath gives the VALUES; the dots stacked above give the COUNT of each value. Tallest stack means most common, not largest."
+      },
+      "item_template": "A line plot described by its dot stacks in text (whole-number values). Student counts the data values, finds the most common value, or finds the difference between the greatest and least values. Short response.",
+      "sample_items": [
+        {
+          "stem": "A line plot has 2 dots above 4, 3 dots above 5, and 1 dot above 7. How many data values are there in all?",
+          "answer": "6"
+        },
+        {
+          "stem": "For that same plot, which value occurs most often?",
+          "answer": "5 (its stack has 3 dots)"
+        },
+        {
+          "stem": "For that same plot, what is the greatest value?",
+          "answer": "7"
+        },
+        {
+          "stem": "For that same plot, what is the difference between the greatest and least values?",
+          "answer": "3 (7 - 4)"
+        },
+        {
+          "stem": "A line plot shows dots at 1, 1, 2, 3, 3, 3, 5. How many data values equal 3?",
+          "answer": "3"
+        },
+        {
+          "stem": "For that same plot, how many data values are greater than 2?",
+          "answer": "4 (the three 3s and the 5)"
+        },
+        {
+          "stem": "On a line plot, 5 dots are stacked above the number 10. What does that show?",
+          "answer": "The value 10 appears 5 times in the data."
+        },
+        {
+          "stem": "A line plot shows dots at 6, 6, 7, 9. How many data values are there?",
+          "answer": "4"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Are you reading a value or counting dots?",
+        "prompt": "Read DOWN to the number line for the value; count UP the stack for how many times it appears. The tallest stack is the most common value, and the farthest-right dot is the greatest value.",
+        "praise": "You read down for the value and counted up for how many, that is how a line plot works."
+      },
+      "vocabulary": [
+        {
+          "term": "Line plot (dot plot)",
+          "definition": "A graph that stacks a dot for each data value above a number line."
+        },
+        {
+          "term": "Data value",
+          "definition": "One number in the data set; each dot on the plot stands for one value."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP3-B2",
+        "if_fail": "Review grade 5 line plots by building a plot from a short data list, placing one dot per value."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a number line from 3 to 8. Place 2 dots above 4, 3 dots above 5, and 1 dot above 7."
+        },
+        {
+          "kind": "ask",
+          "text": "How many pieces of data does this plot show? How can you tell?"
+        },
+        {
+          "kind": "say",
+          "text": "Count every dot: 2 + 3 + 1 = 6 data values. The value 5 appears most because its stack is tallest. The greatest value is 7, the least is 4, and their difference is 3."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says the greatest value is 5 because its stack is tallest, ask which dot sits farthest right on the number line."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a plot has 1 dot above 2, 4 dots above 3, and 2 dots above 6. How many values in all, and which value is most common?"
+        }
+      ]
+    },
+    {
+      "skill_id": "7DSP3-B1",
+      "name": "Find the mean and median of a data set",
+      "column": "looking_back",
       "parent_standard": "7.DSP.3",
       "prerequisite_skill": {
         "type": "gap",
@@ -49,13 +237,13 @@
         "description": "Find the mean (add and divide by the count) and the median (middle of the ordered list) of a small data set.",
         "check_question": "What is the median of 3, 7, 9, 12?"
       },
-      "i_do_script": "Numbers live on a number line in size order, no matter how scrambled the list looks on paper -- and the 'middle' of a data set means the middle of that line. A center is one number that stands in for a whole set. The mean is the fair-share average: add every value and divide by how many there are. Watch: 4, 6, 8 add to 18, and 18 divided by 3 is a mean of 6. The median is the middle value once the numbers are IN ORDER. For 3, 7, 9, 12 there are four numbers, so I average the two in the middle: (7 + 9) / 2 = 8. The two big rules: divide by the count for the mean, and ALWAYS sort before you find the median.",
+      "i_do_script": "A center is one number that stands in for a whole data set, and grade 6 gives us two of them. The mean is the fair share average: pile every value together, then share the pile equally. Watch: 4, 6, 8 add to 18, and 18 shared among 3 values is a mean of 6. The median is the middle value once the numbers are IN ORDER. For 3, 7, 9, 12 there are four numbers, so I average the two middle ones: (7 + 9) / 2 = 8. Two rules to live by: divide by how many values there are for the mean, and always sort before you find the median.",
       "canonical_error": {
-        "pattern": "Finds the median without ordering the data first, or divides the mean by the wrong count",
-        "example": "For 5, 2, 9, 4, 7 picks 9 as the median (the middle of the unsorted list) instead of sorting to 2,4,5,7,9 and choosing 5",
-        "why": "The student treats 'median' as 'the number in the middle position as written' instead of 'the middle of the ordered data.' The median is defined by order, not by where a value happens to sit in the list."
+        "pattern": "Finds the median without ordering the data first",
+        "example": "For 5, 2, 9, 4, 7 picks 9 as the median because it sits in the middle of the list as written, instead of sorting to 2, 4, 5, 7, 9 and choosing 5",
+        "why": "The student treats median as the number in the middle POSITION as written instead of the middle of the ORDERED data. The median is defined by size order, not by where a value happens to sit in the list."
       },
-      "item_template": "A small data set (odd or even count). Student computes the mean or the median. Short-response fluency bank.",
+      "item_template": "A small data set of whole numbers (3 to 6 values, odd or even count). Student computes the mean or the median. Numeric response, clean numbers.",
       "sample_items": [
         {
           "stem": "What is the mean of 4, 6, 8?",
@@ -71,7 +259,7 @@
         },
         {
           "stem": "What is the median of 5, 2, 9, 4, 7?",
-          "answer": "5 (sorted: 2,4,5,7,9)"
+          "answer": "5 (sorted: 2, 4, 5, 7, 9)"
         },
         {
           "stem": "What is the mean of 2, 3, 10?",
@@ -79,13 +267,21 @@
         },
         {
           "stem": "What is the median of 6, 1, 8, 3?",
-          "answer": "4.5 (sorted: 1,3,6,8)"
+          "answer": "4.5 (sorted: 1, 3, 6, 8; average 3 and 6)"
+        },
+        {
+          "stem": "What is the mean of 7, 9, 14?",
+          "answer": "10"
+        },
+        {
+          "stem": "What is the median of 2, 4, 6, 8, 10?",
+          "answer": "6"
         }
       ],
       "redirect_script": {
-        "stop": "Wait -- did you put the numbers in order first?",
-        "prompt": "Picture the numbers on the number line first -- which value sits between the others by size? For the median, ALWAYS sort the list smallest to largest, then find the middle. For the mean, add them all and divide by how many numbers there are.",
-        "praise": "You sorted before finding the middle -- that's the median done right."
+        "stop": "Did you put the numbers in order first?",
+        "prompt": "For the median, always sort the list smallest to largest, then find the middle. For the mean, add every value and divide by how many values there are.",
+        "praise": "You sorted before finding the middle, that is the median done right."
       },
       "vocabulary": [
         {
@@ -94,75 +290,233 @@
         },
         {
           "term": "Median",
-          "definition": "The middle value when the data is put in order."
+          "definition": "The middle value when the data is put in size order."
         },
         {
-          "term": "Measures of central tendency",
-          "definition": "Single numbers, like the mean and median, that describe the center of a data set."
+          "term": "Measure of center",
+          "definition": "A single number, like the mean or median, that describes the middle of a data set."
         }
       ],
       "next_steps": {
         "if_pass": "7DSP3-S2",
-        "if_fail": "Review mean and median (6.DS.1)."
+        "if_fail": "7DSP3-F1"
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Look at 8, 3, and 5 on a number line: one of them sits between the other two BY SIZE. Which one is it -- and is that the number written in the middle of the list?",
-          "visual": {
-            "type": "number_line_point",
-            "ticks": [
-              3,
-              4,
-              5,
-              6,
-              7,
-              8
-            ],
-            "point_value": 5,
-            "point_label": "5 -- between 3 and 8"
-          }
-        },
-        {
           "kind": "show",
-          "text": "Write 'Find the mean and median of 8, 3, 5.'"
+          "text": "Build 4, 6, 8 as three cube towers of heights 4, 6, and 8."
         },
         {
           "kind": "ask",
-          "text": "To find the median, what do we do to the numbers first?"
+          "text": "If we moved cubes around until all three towers were the same height, how tall would each be?"
         },
         {
           "kind": "say",
-          "text": "Sort them: 3, 5, 8. The middle is 5, so the median is 5. The mean is (3 + 5 + 8) / 3 = 16/3, about 5.3."
+          "text": "Move 1 cube from the 8 tower to the 4 tower: now the towers are 5, 6, 7. Keep leveling: 6, 6, 6. The mean is 6, and it matches (4 + 6 + 8) / 3 = 18 / 3 = 6."
         },
         {
           "kind": "watch",
-          "text": "If a student says the median is 3 (the first number as written), ask 'is the list in order? Which number is really in the middle?'"
+          "text": "If a student divides by the wrong number, ask how many towers we shared the cubes among."
         },
         {
           "kind": "ask",
-          "text": "Your turn: find the mean and median of 10, 2, 6, 2."
+          "text": "Your turn: find the mean of 3, 5, 10, and then the median of 9, 2, 6."
         }
-      ]
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What is the mean of 3, 5, 7?",
+          "answer": "5"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What must you do to a data list before finding the median?",
+          "answer": "Put the values in order from least to greatest."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the mean and median of 8, 3, 5, 4.",
+          "answer": "mean 5 (20 / 4); median 4.5 (sorted 3, 4, 5, 8; average 4 and 5)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the mean and median of 6, 7, 8, 9, 10.",
+          "answer": "mean 8 (40 / 5); median 8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the median of 12, 5, 9.",
+          "answer": "9 (sorted: 5, 9, 12)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the mean and median of 2, 9, 4, 7, 3.",
+          "answer": "mean 5 (25 / 5); median 4 (sorted 2, 3, 4, 7, 9)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Create a data set of 4 values with a mean of 6. Show that it works.",
+          "answer": "Example: 4, 5, 7, 8. Sum is 24 and 24 / 4 = 6."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo found the median of 5, 2, 9, 4, 7. Find his mistake and fix it.",
+          "shown_work": [
+            "Leo wrote: 'The middle number of the list is 9.'",
+            "'So the median is 9.'"
+          ],
+          "answer": "Leo never sorted the list. Ordered it is 2, 4, 5, 7, 9, and the middle value is 5. The median is 5, not 9."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Level the Towers",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Linking cubes",
+            "Value cards with small data sets",
+            "Whiteboards"
+          ],
+          "instructions": "1. Draw a data set card, such as 4, 6, 8, and build one cube tower per value.\n2. Move cubes between towers until every tower is the same height; that shared height is the mean.\n3. Check with the formula: add the values and divide by the number of towers.\n4. Then line the original towers up shortest to tallest and point to the middle tower; its height is the median.\n5. Repeat with a 4-value set and average the two middle towers for the median."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Sort First",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slips with unsorted lists and a wrong middle-of-the-list median"
+          ],
+          "instructions": "1. Read the slip: someone picked the middle number of an unsorted list as the median.\n2. Rewrite the list in order from least to greatest.\n3. Circle the true middle value and compare it to the wrong answer.\n4. Write the rule: the median is the middle of the ORDERED list.",
+          "content": {
+            "worked_problem": "Median of 5, 2, 9, 4, 7. A student answered 9, the middle number as written.",
+            "error_step": "The list was never put in order.",
+            "why": "Sorted the list is 2, 4, 5, 7, 9, so the middle value is 5. Position in the written list does not matter; size order does."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Leveling cube towers makes the mean a physical fair share before it becomes an add-and-divide formula."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The unsorted-median error is stable and baitable; find-and-fix with a re-sorted list confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'sort first, then find the middle' models the exact step students skip."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many values are there, and what do you divide by for the mean?",
+          "Is your list in order yet? How do you know?",
+          "The count is even, so which two values do you average for the median?",
+          "If every tower were the same height, how tall would each be?",
+          "Do the mean and median have to be values that appear in the data?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student picks the middle of the unsorted list as the median.",
+            "say": "The median is the middle of the ORDERED data. Sort the list smallest to largest first, then point to the middle.",
+            "praise": "You sorted before choosing the middle, so your median is honest."
+          },
+          {
+            "if_you_see": "Student divides the sum by the wrong count for the mean.",
+            "say": "You share the total among every value in the set. Count the values again; that count is what you divide by.",
+            "praise": "You divided by the number of values, so the mean is a true fair share."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Find the mean of 2, 3, 10.",
+            "look_for": "5, from 15 / 3. Dividing by anything other than 3 shows a count error."
+          },
+          {
+            "prompt": "Find the median of 6, 1, 8, 3.",
+            "look_for": "4.5, from sorting to 1, 3, 6, 8 and averaging 3 and 6. An answer of 1 or 8 means no sorting happened."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Find the mean and median of 4, 7, 7, 10, 12.",
+        "answer": "mean 8, median 7",
+        "steps": [
+          {
+            "math": "sum = 4 + 7 + 7 + 10 + 12 = 40",
+            "annotation": "Pile every value into one total."
+          },
+          {
+            "math": "mean = 40 / 5 = 8",
+            "annotation": "Share the total equally among the 5 values."
+          },
+          {
+            "math": "ordered list: 4, 7, 7, 10, 12",
+            "annotation": "The list is already in size order; check before trusting it."
+          },
+          {
+            "math": "median = 7",
+            "annotation": "Five values, so the third one is the middle."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Find the mean and median of 2, 9, 4, 7, 3.",
+        "answer": "mean 5, median 4",
+        "steps": [
+          {
+            "math": "sum = 2 + 9 + 4 + 7 + 3 = 25",
+            "annotation": "Add every value.",
+            "given": true
+          },
+          {
+            "math": "mean = 25 / 5 = 5",
+            "annotation": "Divide by the count of values.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Sort the list from least to greatest.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Point to the middle value; that is the median.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The sum is ___ and there are ___ values, so the mean is ___.",
+        "In order the list is ___, so the middle value, the median, is ___."
+      ],
+      "fluency_source": "7DSP3-F1"
     },
     {
-      "skill_id": "7DSP3-F2",
-      "name": "Read values and the five-number summary from a line plot or box plot",
-      "column": "foundation",
+      "skill_id": "7DSP3-B2",
+      "name": "Read the five-number summary, range, and IQR from a box plot",
+      "column": "looking_back",
       "parent_standard": "7.DSP.3",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 6,
-        "description": "Read data values off a line (dot) plot and read the minimum, quartiles, median, and maximum off a box plot.",
-        "check_question": "On a box plot with min 4, Q1 6, median 8, Q3 11, max 15, what is the median?"
+        "description": "Read the minimum, quartiles, median, and maximum off a box plot and use them to find the range and IQR.",
+        "check_question": "A box plot has min 4, Q1 6, median 8, Q3 11, max 15. What is the median?"
       },
-      "i_do_script": "A box plot is just a number line with the data's territory drawn on top: the strip runs from the very smallest value to the very largest, and the box marks only the crowded middle half. A line plot stacks a dot for each data value above a number line, so I read a value by looking at the number under its dot and count dots to see how many there are. A box plot shows five landmarks: the two whisker ends are the minimum and maximum, the box edges are the first and third quartiles, and the line inside the box is the MEDIAN -- not the mean. Watch a box plot with min 4, Q1 6, median 8, Q3 11, max 15: the median is the line at 8, the range is 15 - 4 = 11, and the IQR (the box width) is 11 - 6 = 5.",
+      "i_do_script": "A box plot is a number line with the data's territory drawn on top. The whisker tips mark the very smallest and largest values, the box edges mark the first and third quartiles, and the line inside the box is the MEDIAN, not the mean. Watch a box plot with min 4, Q1 6, median 8, Q3 11, max 15. The median is the middle line at 8. The range runs tip to tip: 15 - 4 = 11. The IQR is the box width, the middle half of the data: 11 - 6 = 5. Five landmarks, three reads: middle line, tip to tip, edge to edge.",
       "canonical_error": {
-        "pattern": "Reads the box plot's landmarks by the wrong feature -- treats the median line as the mean, or reads the box edges as the min and max",
-        "example": "On a box plot with min 4, Q1 6, median 8, Q3 11, max 15, calls 8 the mean, or says the range is 11 - 6 = 5 (using the box) instead of 15 - 4 = 11 (using the whiskers)",
-        "why": "The student maps box-plot features to the wrong statistic. The middle line is the median (a position measure), the box edges are the quartiles (Q1 and Q3), and only the whisker tips are the true min and max."
+        "pattern": "Maps box plot features to the wrong statistic, reading the box edges as the min and max or the middle line as the mean",
+        "example": "On a box plot with min 4, Q1 6, median 8, Q3 11, max 15, says the range is 11 - 6 = 5 using the box edges, instead of 15 - 4 = 11 using the whisker tips",
+        "why": "The student confuses the box with the whole data set. The box holds only the middle half, so its edges are the quartiles. Only the whisker tips are the true minimum and maximum, and the middle line is the median, a position measure."
       },
-      "item_template": "A line plot described by its dots, or a box plot described by its five-number summary, presented in text. Student reads a value, the median, the range, or the IQR. Short response.",
+      "item_template": "A box plot described by its five-number summary in text. Student reads the median, finds the range from the whisker tips, or finds the IQR from the box edges. Short response.",
       "sample_items": [
         {
           "stem": "A box plot has min 4, Q1 6, median 8, Q3 11, max 15. What is the median?",
@@ -177,28 +531,32 @@
           "answer": "5 (11 - 6)"
         },
         {
-          "stem": "A line plot shows dots at 3, 3, 4, 5, 5, 5. How many data values are there?",
-          "answer": "6"
-        },
-        {
           "stem": "A box plot has min 10, Q1 14, median 16, Q3 18, max 22. What is the range?",
           "answer": "12 (22 - 10)"
         },
         {
           "stem": "For that same box plot, what is the IQR?",
           "answer": "4 (18 - 14)"
+        },
+        {
+          "stem": "On a box plot, which feature shows the median: the middle line, a box edge, or a whisker tip?",
+          "answer": "The middle line inside the box."
+        },
+        {
+          "stem": "A box plot has min 1, Q1 3, median 6, Q3 8, max 11. What is the IQR?",
+          "answer": "5 (8 - 3)"
+        },
+        {
+          "stem": "For that same box plot, what is the range?",
+          "answer": "10 (11 - 1)"
         }
       ],
       "redirect_script": {
-        "stop": "Which line is the median -- the middle line or an edge?",
-        "prompt": "Trace the strip with your finger from tip to tip -- that full length is the whole spread, and the box is only the middle chunk of it. On a box plot the middle line is the MEDIAN. The box edges are the quartiles. The whisker tips are the min and max, so the range spans tip to tip.",
-        "praise": "You read the middle line as the median and the tips as the min and max -- exactly right."
+        "stop": "Are you reading the box edges or the whisker tips?",
+        "prompt": "The middle line is the median. The box edges are the quartiles, Q1 and Q3, and the box width is the IQR. Only the whisker tips are the min and max, so the range runs tip to tip.",
+        "praise": "You used the tips for the range and the box for the IQR, two different spreads read from the right places."
       },
       "vocabulary": [
-        {
-          "term": "Line plot (dot plot)",
-          "definition": "A graph that stacks a dot for each data value above a number line."
-        },
         {
           "term": "Box plot",
           "definition": "A graph showing the minimum, first quartile, median, third quartile, and maximum of a data set."
@@ -208,70 +566,243 @@
           "definition": "The minimum, Q1, median, Q3, and maximum of a data set."
         },
         {
+          "term": "Range",
+          "definition": "The largest value minus the smallest value, read whisker tip to whisker tip."
+        },
+        {
           "term": "Interquartile range (IQR)",
           "definition": "The width of the box: the third quartile minus the first quartile."
         }
       ],
       "next_steps": {
         "if_pass": "7DSP3-S1",
-        "if_fail": "Review reading data displays (6.DS.1)."
+        "if_fail": "7DSP3-F2"
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw the plot as one strip along a number line from 2 to 12: whisker from 2 to 5, box from 5 to 9, whisker from 9 to 12. The strip's FULL length, tip to tip, is the data's whole spread -- the shaded box is only its middle chunk.",
-          "visual": {
-            "type": "percent_bar",
-            "label": "Box plot territory, tip to tip",
-            "segments": [
-              {
-                "span": 3,
-                "label": "whisker 2 to 5",
-                "shaded": false
-              },
-              {
-                "span": 4,
-                "label": "box 5 to 9",
-                "shaded": true
-              },
-              {
-                "span": 3,
-                "label": "whisker 9 to 12",
-                "shaded": false
-              }
-            ],
-            "end_labels": [
-              "min 2",
-              "max 12"
-            ]
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write 'Box plot: min 2, Q1 5, median 7, Q3 9, max 12. Find the median, range, and IQR.'"
+          "text": "Draw a number line from 0 to 14. Above it, draw whiskers from 2 to 5 and from 9 to 12, with a box from 5 to 9 and a line inside at 7. Trace the whole strip tip to tip with a finger."
         },
         {
           "kind": "ask",
-          "text": "Which of the five numbers is the median? Which two give the range?"
+          "text": "Which part shows the whole spread of the data, and which part shows only the middle half?"
         },
         {
           "kind": "say",
-          "text": "The median is the middle landmark, 7. The range uses the tips: 12 - 2 = 10. The IQR is the box: 9 - 5 = 4."
+          "text": "Tip to tip is the whole spread: range = 12 - 2 = 10. The box is the middle half: IQR = 9 - 5 = 4. The line inside the box marks the median, 7."
         },
         {
           "kind": "watch",
-          "text": "If a student says the range is 9 - 5 = 4, ask 'is that the whole spread or just the middle box? Which numbers are the very smallest and largest?'"
+          "text": "If a student says the range is 9 - 5 = 4, ask whether that measures the whole strip or just the box."
         },
         {
           "kind": "ask",
-          "text": "Your turn: box plot min 1, Q1 3, median 6, Q3 8, max 11 -- find the median, range, and IQR."
+          "text": "Your turn: a box plot has min 1, Q1 3, median 6, Q3 8, max 11. Find the median, range, and IQR."
         }
-      ]
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A box plot has Q1 8 and Q3 12. What is the IQR?",
+          "answer": "4 (12 - 8)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Which part of a box plot shows the median?",
+          "answer": "The line inside the box."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A box plot has min 2, Q1 5, median 7, Q3 9, max 12. Find the median, range, and IQR.",
+          "answer": "median 7; range 10 (12 - 2); IQR 4 (9 - 5)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A box plot has min 10, Q1 14, median 16, Q3 18, max 22. Find the range and the IQR.",
+          "answer": "range 12 (22 - 10); IQR 4 (18 - 14)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "On a box plot, the box runs from 6 to 11 with a line inside at 8, and the whiskers reach 4 and 15. Write the five-number summary.",
+          "answer": "min 4, Q1 6, median 8, Q3 11, max 15"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A box plot has min 3, Q1 6, median 9, Q3 13, max 20. Is the median closer to Q1 or Q3, and what is the IQR?",
+          "answer": "Exactly 3 from Q1 and 4 from Q3, so closer to Q1; IQR 7 (13 - 6)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Box plot A has its box from 10 to 14. Box plot B has its box from 8 to 18. Which shows the larger IQR, and what does that say about the data?",
+          "answer": "B: IQR 10 versus A's 4, so the middle half of B's data is much more spread out."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia found the range of a box plot with min 4, Q1 6, median 8, Q3 11, max 15. Find her mistake and fix it.",
+          "shown_work": [
+            "Mia wrote: 'The box goes from 6 to 11.'",
+            "'Range = 11 - 6 = 5.'"
+          ],
+          "answer": "Mia used the box edges, which are the quartiles. The range uses the whisker tips: 15 - 4 = 11. The 5 she found is actually the IQR."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build the Box",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Painter's tape number line on the desk or floor",
+            "Five labeled sticky notes: min, Q1, median, Q3, max",
+            "Summary cards"
+          ],
+          "instructions": "1. Draw a five-number summary card, such as min 2, Q1 5, median 7, Q3 9, max 12.\n2. Place the five sticky notes at their spots on the tape number line.\n3. Frame the box with tape from Q1 to Q3 and draw whiskers out to the min and max.\n4. Walk the range tip to tip and say it aloud, then walk the box edge to edge for the IQR.\n5. Repeat with a new card, and each time touch the median line and say 'this is the median, not the mean.'"
+        },
+        {
+          "type": "matching",
+          "title": "Landmark Match",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: feature cards (middle line, box edges, whisker tips, box width, tip-to-tip length) and statistic cards (median, Q1 and Q3, min and max, IQR, range)"
+          ],
+          "instructions": "1. Spread all cards face up.\n2. Match each box plot feature to the statistic it shows.\n3. To claim a match, say the read aloud, for example 'tip to tip gives the range.'\n4. Two decoy cards make false claims; set them aside and explain the error.",
+          "content": {
+            "pairs": [
+              {
+                "left": "the line inside the box",
+                "right": "median"
+              },
+              {
+                "left": "the box edges",
+                "right": "Q1 and Q3"
+              },
+              {
+                "left": "the whisker tips",
+                "right": "minimum and maximum"
+              },
+              {
+                "left": "the width of the box",
+                "right": "IQR"
+              },
+              {
+                "left": "tip-to-tip length",
+                "right": "range"
+              }
+            ],
+            "decoys": [
+              "the line inside the box shows the mean",
+              "the box edges show the min and max"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building the box plot physically on a tape number line grounds each landmark before students read abstract summaries."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The box-edges-as-min-and-max error is precise and baitable; find-and-fix with the whisker tips corrects it."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Saying the reads aloud, 'middle line, tip to tip, edge to edge,' makes the three lookups explicit and checkable."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which feature marks the median, and is it the mean?",
+          "Where do you look for the range: the box or the whisker tips?",
+          "What fraction of the data lives inside the box?",
+          "What is the IQR here, and what does a wider box mean?",
+          "Can two box plots have the same range but different IQRs?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reads the range from the box edges instead of the whisker tips.",
+            "say": "The box holds only the middle half of the data. Trace the strip tip to tip; the range is max minus min from the whisker ends.",
+            "praise": "You went tip to tip for the range, that is the whole spread."
+          },
+          {
+            "if_you_see": "Student calls the middle line the mean.",
+            "say": "Box plots never show the mean. The middle line is the median, the middle of the ordered data.",
+            "praise": "You named the middle line as the median, exactly what a box plot shows."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Box plot: min 2, Q1 5, median 7, Q3 9, max 12. What is the range?",
+            "look_for": "10 (12 - 2). An answer of 4 means the student used the box edges."
+          },
+          {
+            "prompt": "For that same plot, what is the IQR?",
+            "look_for": "4 (9 - 5). An answer of 10 means range and IQR are swapped."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A box plot has min 2, Q1 5, median 7, Q3 9, max 12. Find the median, range, and IQR.",
+        "answer": "median 7, range 10, IQR 4",
+        "steps": [
+          {
+            "math": "median = 7",
+            "annotation": "The line inside the box is the median."
+          },
+          {
+            "math": "range = 12 - 2 = 10",
+            "annotation": "Whisker tip to whisker tip: max minus min."
+          },
+          {
+            "math": "IQR = 9 - 5 = 4",
+            "annotation": "Box edge to box edge: Q3 minus Q1."
+          },
+          {
+            "math": "check: IQR (4) < range (10)",
+            "annotation": "The middle half can never spread wider than the whole set."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A box plot has min 1, Q1 3, median 6, Q3 8, max 11. Find the median, range, and IQR.",
+        "answer": "median 6, range 10, IQR 5",
+        "steps": [
+          {
+            "math": "median = 6",
+            "annotation": "Read the line inside the box.",
+            "given": true
+          },
+          {
+            "math": "the whisker tips are 1 and 11",
+            "annotation": "Locate the true smallest and largest values.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Subtract tip from tip to get the range.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Subtract Q1 from Q3 to get the IQR.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The middle line sits at ___, so the median is ___.",
+        "The range is ___ minus ___ from the whisker tips, and the IQR is ___ minus ___ from the box edges."
+      ],
+      "fluency_source": "7DSP3-F2"
     },
     {
       "skill_id": "7DSP3-S1",
       "name": "Classify the visual overlap of two distributions as full, partial, or none",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.DSP.3",
       "engine_stems": [
         1
@@ -520,7 +1051,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP3-F1",
+      "fluency_source": "7DSP3-B2",
       "sentence_starters": [
         "Set A runs from ___ to ___ and Set B runs from ___ to ___, so they ___ overlap.",
         "The overlap is ___ because the sets ___ share the values from ___ to ___."
@@ -785,7 +1316,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP3-F1",
+      "fluency_source": "7DSP3-B1",
       "sentence_starters": [
         "The mean is ___, so the distances from the mean are ___, and their average (the MAD) is ___.",
         "The spread here is best shown by ___ because ___."
@@ -1072,7 +1603,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP3-F1",
+      "fluency_source": "7DSP3-B1",
       "sentence_starters": [
         "The centers differ by ___, and the MAD is ___, so the centers are ___ / ___ = ___ MADs apart.",
         "Because the centers are about ___ MADs apart, the sets have ___ overlap."
@@ -1366,7 +1897,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP3-F1",
+      "fluency_source": "7DSP3-B2",
       "sentence_starters": [
         "Group A's median is ___ and Group B's is ___, and their IQRs are ___ and ___.",
         "The whisker ranges share ___ to ___, so the distributions overlap ___."
@@ -1630,7 +2161,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP3-F1",
+      "fluency_source": "7DSP3-B1",
       "sentence_starters": [
         "After adding the outlier, the mean changed from ___ to ___, but the median changed from ___ to ___.",
         "The ___ moved more because it depends on ___, while the ___ depends on ___."
@@ -1924,7 +2455,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP3-F1",
+      "fluency_source": "7DSP3-B1",
       "sentence_starters": [
         "The claim is ___ because the ranges ___ overlap from ___ to ___.",
         "A better statement is 'Group ___ tends to be higher,' since the centers are ___ MADs apart."
@@ -1981,8 +2512,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites — fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7DSP3-F1",
         "7DSP3-F2"
@@ -1990,15 +2521,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7DSP3-S1"
+        "7DSP3-B1",
+        "7DSP3-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7DSP3-S1",
         "7DSP3-S2",
         "7DSP3-S3",
         "7DSP3-S4",
@@ -2007,7 +2540,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7DSP3-S6"
       ]
@@ -2016,6 +2549,8 @@
   "skill_sequence": [
     "7DSP3-F1",
     "7DSP3-F2",
+    "7DSP3-B1",
+    "7DSP3-B2",
     "7DSP3-S1",
     "7DSP3-S2",
     "7DSP3-S3",
@@ -2026,13 +2561,18 @@
   "skill_tree": {
     "7DSP3-F1": [],
     "7DSP3-F2": [],
-    "7DSP3-S1": [
-      "7DSP3-F1",
+    "7DSP3-B1": [
+      "7DSP3-F1"
+    ],
+    "7DSP3-B2": [
       "7DSP3-F2"
     ],
+    "7DSP3-S1": [
+      "7DSP3-B2"
+    ],
     "7DSP3-S2": [
-      "7DSP3-F1",
-      "7DSP3-F2"
+      "7DSP3-B1",
+      "7DSP3-B2"
     ],
     "7DSP3-S3": [
       "7DSP3-S2"
@@ -2041,7 +2581,7 @@
       "7DSP3-S2"
     ],
     "7DSP3-S5": [
-      "7DSP3-F1"
+      "7DSP3-B1"
     ],
     "7DSP3-S6": [
       "7DSP3-S3",
@@ -2049,17 +2589,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (compare centers and spreads from box plots to describe overlap) -- the workhorse on-grade skill matched to the assessed line/box-plot displays. If they pass, push to S5 (outlier effects on mean/median) and S6 (justify and critique comparative inferences). If they fail, drop to S1 (classify overlap qualitatively) and S2 (compute center and variability) to find where the number sense breaks. S3 (express the difference between centers as a multiple of the MAD) is the standard's core measurement and branches off S2.",
+    "description": "Start with S4, comparing centers and spreads from box plots to describe overlap, the workhorse on-grade skill matched to the assessed displays. If they pass, push up to S5 (outlier effects on mean and median) and S6 (justify and critique comparative inferences). If they fail, drop one grade to the grade 6 skills the comparison leans on: B1 checks mean and median, and B2 checks reading the five-number summary, range, and IQR off a box plot. If those wobble, the foundations locate the gap in grades 3 to 5: F1 checks fair share division under the mean, and F2 checks basic line plot reading. S1 (classify overlap), S2 (compute center and variability), and S3 (express the gap in MADs) remain available to probe the standard's own ladder.",
     "entry_skill": "7DSP3-S4",
     "if_pass": [
       "7DSP3-S5",
       "7DSP3-S6"
     ],
     "if_fail": [
-      "7DSP3-S1",
-      "7DSP3-S2"
+      "7DSP3-B1",
+      "7DSP3-B2"
     ],
     "branch_skills": [
+      "7DSP3-F1",
+      "7DSP3-F2",
+      "7DSP3-S1",
+      "7DSP3-S2",
       "7DSP3-S3"
     ]
   }

@@ -3,7 +3,7 @@
   "standard_text": "Solve linear equations in one variable that generate one solution, infinitely many solutions, or no solution; give examples and justify which case results.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard is where students stop treating 'solve' as a hunt for a single number and start reasoning about the STRUCTURE of an equation. The engine underneath every task is the same: simplify each side as far as it will go -- distribute, then collect like terms -- and look at what is left. Three outcomes are possible. If the variable survives with a leftover of the form x = a number, there is exactly one solution. If the variable cancels and leaves a TRUE numeric statement (like 12 = 12 or 0 = 0), every value of x works, so there are infinitely many solutions. If the variable cancels and leaves a FALSE statement (like 3 = 7), no value works, so there is no solution. The whole standard is learning to read that final line and justify the verdict.\n\nSo the progression starts by anchoring the meaning of the final line: given an already-simplified equation, classify it (the Below task) -- this is where a true statement like 12 = 12 gets mistaken for 'no solution' because 'there's no x.' From there students classify equations that need no simplification by comparing the two sides' coefficients and constants directly, then equations that DO require distributing and combining first (the At-proficiency core, where a single sign slip flips the classification). Next the standard turns generative: complete or build an equation to force a chosen number of solutions, and write your own examples for each case with a justification -- the standard literally says 'give examples and justify.' Finally, at the top band, students judge someone else's claim about a multi-step equation and prove it by simplifying both sides completely. The order is deliberate: read the final line, compare simple sides, simplify then compare, generate, then analyze and justify. Underneath all of it runs one habit -- simplify honestly, then let the leftover statement decide. Per the item spec, equations may show a variable on both sides, but students only SIMPLIFY those sides (they are not yet solving variables-on-both-sides), and a calculator is allowed throughout.",
+    "narrative": "This standard asks students to decide whether a linear equation has one solution, no solution, or infinitely many, and to justify the call by simplifying each side and reading the line that remains. The on-grade skills build in order: read an already simplified final line, compare coefficients and constants on tidy equations, simplify with distribution and like terms before classifying, then generate and defend examples of each case. Students who stall here usually cannot simplify reliably or do not treat an equation as a statement that can be true or false. The grade 7 skills of simplifying linear expressions and solving px + q = r equations rebuild that machinery one grade down. Beneath those sit the real foundations: the distributive property in whole number multiplication and the equals sign as a true or false balance.",
     "steps": [
       {
         "skill_id": "8AF2-S1",
@@ -40,188 +40,804 @@
   "skills": [
     {
       "skill_id": "8AF2-F1",
-      "name": "Simplify one side of a linear equation by distributing and combining like terms",
+      "name": "Multiply by breaking a factor apart (distributive property with whole numbers)",
       "column": "foundation",
       "parent_standard": "8.AF.2",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 7,
-        "description": "Distribute a factor over a parenthesis and combine like terms on one side of an expression.",
-        "check_question": "Simplify 3(x + 2) + 4x."
+        "grade": 4,
+        "description": "Multiply a one digit number by a two digit number by breaking the two digit number into tens and ones and multiplying each part.",
+        "check_question": "Use breaking apart to find 6 x 14."
       },
-      "i_do_script": "Both cleanup moves have pictures: distributing is an area box -- 2(3x + 4) is a box 2 tall with width 3x + 4, and the 2 multiplies EVERY piece of the width because both pieces have the same height. Combining like terms is adding like units -- x-boxes with x-boxes, loose numbers with loose numbers. Before I can decide how many solutions an equation has, I have to clean up each side. Cleaning up means two moves: distribute, then combine like terms. Watch: 4((1/2)x + 3). The 4 multiplies BOTH terms inside -- 4 times (1/2)x is 2x, and 4 times 3 is 12 -- so it becomes 2x + 12. Then I combine like terms: the x-terms live together and the plain numbers live together, but they never mix. On 3x + 12 - x, the x-terms 3x and -x make 2x, and 12 stands alone, so it is 2x + 12. Every term inside a parenthesis gets multiplied, and only same-type terms combine.",
+      "i_do_script": "When one factor is big, I break it into tens and ones and multiply each part. Watch: 6 x 14. I break 14 into 10 + 4. Then 6 x 14 is (6 x 10) + (6 x 4), which is 60 + 24, which is 84. On an area picture, a rectangle 6 tall and 14 wide splits into a 6 by 10 piece and a 6 by 4 piece, and the whole area is both pieces together. The 6 has to multiply BOTH parts, because both parts are inside the 14.",
       "canonical_error": {
-        "pattern": "Distributes to the first term only, or combines a variable term with a plain number",
-        "example": "Writes 4((1/2)x + 3) as 2x + 3 (never multiplied the 3), or simplifies 3x + 12 - x to 14x by adding everything in sight",
-        "why": "The student treats the outside number as attached to just the leading term, or adds every number regardless of whether it has a variable. Both terms inside must be multiplied, and 2x and 12 are unlike terms that stay separate."
+        "pattern": "Multiplies only the tens and carries the ones along unchanged",
+        "example": "Writes 6 x 14 = 60 + 4 = 64 instead of 60 + 24 = 84",
+        "why": "The student multiplies 6 x 10 but forgets that the 4 is also part of the 14, so it must be multiplied by 6 too. The area picture shows two pieces, and both have height 6."
       },
-      "item_template": "A single expression needing one distribution and/or combining 2-3 like terms. Student returns the simplified form (coefficient-x + constant). Short numeric response; good short fluency bank.",
+      "item_template": "A one digit by two digit product. Student breaks the two digit factor into tens and ones, multiplies each part, and adds, or fills a missing part in a break apart equation. Short response fluency bank, no calculator.",
       "sample_items": [
         {
-          "stem": "Simplify 4((1/2)x + 3).",
-          "answer": "2x + 12"
+          "stem": "Fill in: 3 x 14 = (3 x 10) + (3 x __)",
+          "answer": "4"
         },
         {
-          "stem": "Simplify 3x + 12 - x.",
-          "answer": "2x + 12"
+          "stem": "Use breaking apart: 6 x 14",
+          "answer": "84 (60 + 24)"
         },
         {
-          "stem": "Simplify 2(x + 5).",
-          "answer": "2x + 10"
+          "stem": "Use breaking apart: 4 x 23",
+          "answer": "92 (80 + 12)"
         },
         {
-          "stem": "Simplify 7(2 + 5x).",
-          "answer": "35x + 14"
+          "stem": "Use breaking apart: 5 x 16",
+          "answer": "80 (50 + 30)"
         },
         {
-          "stem": "Simplify -3(x - 4).",
-          "answer": "-3x + 12"
+          "stem": "Fill in: 7 x 12 = (7 x 10) + (7 x 2) = 70 + __",
+          "answer": "14"
         },
         {
-          "stem": "Simplify 5x + 3x - 2.",
-          "answer": "8x - 2"
+          "stem": "Use breaking apart: 3 x 24",
+          "answer": "72 (60 + 12)"
+        },
+        {
+          "stem": "Which equals 8 x 15: (8 x 10) + (8 x 5), or (8 x 10) + 5?",
+          "answer": "(8 x 10) + (8 x 5), because the 8 must multiply both parts of 15"
+        },
+        {
+          "stem": "Use breaking apart: 6 x 22",
+          "answer": "132 (120 + 12)"
+        },
+        {
+          "stem": "Use breaking apart: 2 x 36",
+          "answer": "72 (60 + 12)"
         }
       ],
       "redirect_script": {
-        "stop": "Wait -- did the outside number reach every term?",
-        "prompt": "Draw an arrow from the outside number to each term inside, then say each product out loud. After distributing, circle the x-terms in one color and the plain numbers in another, and only combine same-color terms.",
-        "praise": "You multiplied every term and kept the x-terms and numbers in separate piles -- that's a clean simplification."
+        "stop": "Did the outside number multiply BOTH parts?",
+        "prompt": "Break the big factor into tens and ones, then draw an arrow from the outside number to each part. Two parts means two products, and you add them at the end.",
+        "praise": "You multiplied both parts and added, that is exactly how breaking apart works."
       },
       "vocabulary": [
         {
-          "term": "Distributive property",
-          "definition": "The rule that the number outside parentheses multiplies each term inside: a(b + c) = ab + ac."
+          "term": "Factor",
+          "definition": "A number being multiplied; in 6 x 14, both 6 and 14 are factors."
         },
         {
-          "term": "Like terms",
-          "definition": "Terms with the exact same variable part, so their number parts can be added."
-        },
-        {
-          "term": "Simplify",
-          "definition": "Rewrite a side as one x-term and one number by distributing and combining."
+          "term": "Break apart (distribute)",
+          "definition": "Split one factor into easy pieces, multiply each piece, then add the products."
         }
       ],
       "next_steps": {
-        "if_pass": "8AF2-S1",
-        "if_fail": "Review distributing and combining like terms (7.AF.1)."
+        "if_pass": "8AF2-B1",
+        "if_fail": "Review grade 4 multiplication with area models (split a rectangle into a tens piece and a ones piece)."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Before touching 2(3x + 4) - x: picture 2(3x + 4) as a box 2 tall with width 3x + 4. What must the 2 multiply, and why can't it skip the 4?"
-        },
-        {
           "kind": "show",
-          "text": "Write '2(3x + 4) - x.'"
+          "text": "Draw a rectangle 6 tall and 14 wide. Cut the width into 10 and 4 so there are two smaller rectangles."
         },
         {
           "kind": "ask",
-          "text": "How many terms are inside the parentheses? So how many products?"
+          "text": "What is the area of the 6 by 10 piece? The 6 by 4 piece?"
         },
         {
           "kind": "say",
-          "text": "Two products: 2 times 3x is 6x, 2 times 4 is 8, giving 6x + 8 - x. Then combine the x-terms 6x - x to get 5x + 8."
+          "text": "60 and 24. The whole rectangle is both pieces together, so 6 x 14 = 60 + 24 = 84. The 6 multiplied both parts because both parts are inside the 14."
         },
         {
           "kind": "watch",
-          "text": "If the student writes 6x + 4 (forgot to multiply the 4), ask 'did the 2 reach the second term?'"
+          "text": "If a student writes 60 + 4 = 64, point at the 6 by 4 piece: is its area really just 4?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: 5(x - 2) + 3x. Distribute, then combine."
+          "text": "Your turn: break apart and find 4 x 23."
         }
       ]
     },
     {
       "skill_id": "8AF2-F2",
-      "name": "Interpret a numeric statement as always true or never true",
+      "name": "Tell true from false number sentences and test values in an equation",
       "column": "foundation",
       "parent_standard": "8.AF.2",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 6,
-        "description": "Understand that an equation says two amounts are equal, and tell a true number sentence from a false one.",
-        "check_question": "Is 5 = 5 true? Is 4 = 9 true?"
+        "description": "Read an equation as a statement that two amounts are equal, judge whether a number sentence is true or false, and test whether a given value makes an equation true.",
+        "check_question": "Does x = 4 make x + 6 = 10 true?"
       },
-      "i_do_script": "When both sides of an equation end up with NO variable left, I just read the number sentence that remains. 5 = 5 is always true, which means every value of x made it work -- infinitely many solutions. 3 = 7 is never true, so no value of x works -- no solution. The variable disappearing is not a dead end; it is the clue to look at whether the leftover statement is true or false. A true leftover means all values; a false leftover means none.",
+      "i_do_script": "An equals sign is not a signal to write an answer; it is a claim that the two sides balance. So every number sentence is either true or false. Watch: 5 + 3 = 8 is true because both sides are 8. 5 + 3 = 9 is false because 8 does not balance 9. And 9 = 9 is true even though there is nothing to compute, both pans hold 9. When an equation has a letter, I test a value: does x = 4 make x + 6 = 10 true? Substitute: 4 + 6 is 10, and 10 = 10 is true, so yes, 4 makes it true. A value that makes the sentence true is called a solution.",
       "canonical_error": {
-        "pattern": "Reads a variable-free TRUE statement as 'no solution,' or reads 0 = 0 as x = 0",
-        "example": "Sees a final line of 12 = 12 and says 'there's no x, so there's no solution,' or turns 0 = 0 into the single solution x = 0",
-        "why": "The student expects every answer to look like x = a number, so a true statement with no variable feels like nothing worked, when in fact everything worked. A true leftover means infinitely many solutions, not zero and not one."
+        "pattern": "Reads the equals sign as 'the answer comes next' instead of as a balance",
+        "example": "Says 7 = 3 + 4 is 'backwards' or 'not allowed,' or says 9 = 9 'is not really an equation because there is nothing to do'",
+        "why": "The student thinks an equation must look like problem = answer. The equals sign only claims the two sides are the same amount, so 7 = 3 + 4 and 9 = 9 are both perfectly good true statements."
       },
-      "item_template": "A bare numeric statement (a = a, a = b, or 0 = 0) that a student labels always true or never true, and the number of solutions it signals. Short response; fluency bank for reading final lines.",
+      "item_template": "A numeric sentence to judge true or false, or an equation with a candidate value to test by substitution. Whole number arithmetic only. Short response fluency bank, no calculator.",
       "sample_items": [
         {
-          "stem": "Is 5 = 5 always true or never true?",
-          "answer": "Always true (so infinitely many solutions)."
+          "stem": "Is 9 = 9 true or false?",
+          "answer": "True"
         },
         {
-          "stem": "Is 3 = 7 always true or never true?",
-          "answer": "Never true (so no solution)."
+          "stem": "Is 5 + 3 = 9 true or false?",
+          "answer": "False (5 + 3 is 8)"
         },
         {
-          "stem": "The variables cancel and you are left with 0 = 0. True or false, and how many solutions?",
-          "answer": "True -- infinitely many solutions."
+          "stem": "Is 7 = 3 + 4 true or false?",
+          "answer": "True (both sides are 7)"
         },
         {
-          "stem": "The variables cancel and you are left with 8 = 2. True or false, and how many solutions?",
-          "answer": "False -- no solution."
+          "stem": "Does x = 4 make x + 6 = 10 true?",
+          "answer": "Yes (4 + 6 = 10)"
         },
         {
-          "stem": "Is 12 = 12 true or false?",
-          "answer": "True (an always-true statement)."
+          "stem": "Does x = 2 make 3x = 9 true?",
+          "answer": "No (3 x 2 is 6, not 9)"
+        },
+        {
+          "stem": "Which value makes x - 5 = 2 true: 3 or 7?",
+          "answer": "7 (7 - 5 = 2)"
+        },
+        {
+          "stem": "Does x = 5 make 2x + 1 = 11 true?",
+          "answer": "Yes (10 + 1 = 11)"
+        },
+        {
+          "stem": "Is 4 x 6 = 24 true or false?",
+          "answer": "True"
+        },
+        {
+          "stem": "Does x = 10 make x/2 = 4 true?",
+          "answer": "No (10/2 is 5, not 4)"
         }
       ],
       "redirect_script": {
-        "stop": "Hold on -- is that leftover statement true or false?",
-        "prompt": "Cover the x's for a second. Just ask: is the number sentence that's left actually true? A true one (like 12 = 12) means EVERY value works -- infinitely many. A false one (like 3 = 7) means none.",
-        "praise": "You read the leftover statement and let it decide -- true means all values, false means none."
+        "stop": "What amount is on each side?",
+        "prompt": "Work out each side separately, then compare. If the two amounts match, the sentence is true; if not, it is false. The equals sign is a balance, not an arrow to the answer.",
+        "praise": "You compared the two sides instead of hunting for an answer, that is what the equals sign means."
       },
       "vocabulary": [
         {
-          "term": "Always true (identity)",
-          "definition": "A statement like 5 = 5 that is true no matter what x is, signaling infinitely many solutions."
-        },
-        {
-          "term": "Never true",
-          "definition": "A statement like 3 = 7 that can never hold, signaling no solution."
+          "term": "Equation",
+          "definition": "A statement that two amounts are equal, like 4 + 6 = 10."
         },
         {
           "term": "Solution",
-          "definition": "A value of the variable that makes the equation a true statement."
+          "definition": "A value of the variable that makes an equation a true statement."
         }
       ],
       "next_steps": {
-        "if_pass": "8AF2-S1",
-        "if_fail": "Review the meaning of the equals sign and true/false number sentences (6.AF.2)."
+        "if_pass": "8AF2-B2",
+        "if_fail": "Review the equals sign as a balance with true and false number sentences (pan balance pictures, grade 4 to 6 equality work)."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write two final lines: '6 = 6' and '6 = 10.'"
+          "text": "Draw a pan balance. Put 5 + 3 on the left pan and 9 on the right pan."
         },
         {
           "kind": "ask",
-          "text": "Which of these is always true? Which can never be true?"
+          "text": "How much is in each pan? Do the pans balance?"
         },
         {
           "kind": "say",
-          "text": "6 = 6 is always true, so every x works -- infinitely many solutions. 6 = 10 is never true, so no x works -- no solution."
+          "text": "The left pan holds 8 and the right holds 9, so it tips. 5 + 3 = 9 is a false statement. Rewrite the right pan as 8 and it balances: 5 + 3 = 8 is true."
         },
         {
           "kind": "watch",
-          "text": "If a student says 6 = 6 has 'no solution because there's no x,' ask 'if it's always true, how many values of x make it work?'"
+          "text": "If a student says 9 = 9 'is not an equation,' ask what each pan holds. Same amount on both sides is exactly what true means."
         },
         {
           "kind": "ask",
-          "text": "Your turn: a problem ends in 0 = 0. Always true or never true? How many solutions?"
+          "text": "Your turn: does x = 4 make x + 6 = 10 true? Put 4 in for x and check the balance."
         }
       ]
     },
     {
+      "skill_id": "8AF2-B1",
+      "name": "Simplify linear expressions by distributing and combining like terms",
+      "column": "looking_back",
+      "parent_standard": "8.AF.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Distribute a factor over a parenthesis, including a negative factor, and combine like terms to write an expression as one x term and one constant.",
+        "check_question": "Simplify 4(3x + 2) - 5x."
+      },
+      "i_do_script": "Simplifying has two moves: distribute, then combine like terms. Watch: 4(3x + 2) - 5x. The 4 is an area box 4 tall with width 3x + 2, so it multiplies BOTH parts: 4 x 3x is 12x and 4 x 2 is 8, giving 12x + 8 - 5x. Then I combine like terms: 12x and -5x are both x terms, so they make 7x, and the 8 stands alone. The result is 7x + 8. Signs ride along with their terms: -2(x + 6) is -2x - 12, and a leading minus flips every sign inside, so -(4 - 3x) is -4 + 3x, which is 3x - 4.",
+      "canonical_error": {
+        "pattern": "Distributes to the first term only, or drops a sign when the factor is negative",
+        "example": "Writes 4(3x + 2) as 12x + 2, or writes -(4 - 3x) as -4 - 3x",
+        "why": "The student treats the outside factor as attached to just the leading term, or forgets that a negative factor changes the sign of every term inside. Every term in the parenthesis gets multiplied, sign included."
+      },
+      "item_template": "A linear expression needing one distribution (factor may be negative) and/or combining two or three like terms. Student writes the simplified form as one x term and one constant. Short response or MC.",
+      "sample_items": [
+        {
+          "stem": "Simplify 2(x + 5).",
+          "answer": "2x + 10"
+        },
+        {
+          "stem": "Simplify 3(2x - 4).",
+          "answer": "6x - 12"
+        },
+        {
+          "stem": "Simplify 5x + 2 + 3x.",
+          "answer": "8x + 2"
+        },
+        {
+          "stem": "Simplify -2(x + 6).",
+          "answer": "-2x - 12"
+        },
+        {
+          "stem": "Simplify 4(3x + 2) - 5x.",
+          "answer": "7x + 8"
+        },
+        {
+          "stem": "Simplify -(4 - 3x).",
+          "answer": "3x - 4 (the minus flips both signs)"
+        },
+        {
+          "stem": "Which expression is equivalent to 6x + 3 - 2x + 5?",
+          "answer": "4x + 8",
+          "choices": [
+            "4x + 8",
+            "8x + 8",
+            "4x - 2",
+            "12x"
+          ],
+          "distractor_logic": "4x + 8 combines 6x - 2x and 3 + 5. 8x + 8 adds the x terms instead of subtracting; 4x - 2 subtracts the constants; 12x mashes every number into one term."
+        },
+        {
+          "stem": "Which expression is equivalent to 2(3x + 4)?",
+          "answer": "6x + 8",
+          "choices": [
+            "6x + 8",
+            "6x + 4",
+            "5x + 4",
+            "6x + 6"
+          ],
+          "distractor_logic": "6x + 8 multiplies both terms by 2. 6x + 4 forgets to multiply the 4; 5x + 4 adds the 2 to the 3 instead of multiplying; 6x + 6 doubles the wrong constant."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did the outside factor reach every term, with its sign?",
+        "prompt": "Draw an arrow from the outside factor to each term inside and say each product out loud, sign first. Then circle the x terms in one color and the plain numbers in another, and only combine same color terms.",
+        "praise": "You multiplied every term with its sign and kept the piles separate, that is a clean simplification."
+      },
+      "vocabulary": [
+        {
+          "term": "Distributive property",
+          "definition": "The factor outside a parenthesis multiplies each term inside: a(b + c) = ab + ac."
+        },
+        {
+          "term": "Like terms",
+          "definition": "Terms with the exact same variable part, so their coefficients can be added, like 12x and -5x."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF2-S1",
+        "if_fail": "8AF2-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw an area box 4 tall with width split into 3x and 2. Label the two pieces 12x and 8. Write 4(3x + 2) - 5x underneath."
+        },
+        {
+          "kind": "ask",
+          "text": "How many terms are inside the parenthesis? So how many products does the 4 make?"
+        },
+        {
+          "kind": "say",
+          "text": "Two products: 12x and 8, so the expression is 12x + 8 - 5x. Now combine the x terms: 12x - 5x is 7x, and the 8 stands alone. The simplified form is 7x + 8."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 12x + 2, point at the box: the 4 by 2 piece has area 8, not 2."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: simplify -2(x + 6) + 3x."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Simplify 3(x + 2).",
+          "answer": "3x + 6"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Combine: 4x + 3x.",
+          "answer": "7x"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Simplify 2(4x - 1).",
+          "answer": "8x - 2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Simplify 7x + 5 - 2x + 3.",
+          "answer": "5x + 8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Simplify -3(x - 5).",
+          "answer": "-3x + 15"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Simplify 2(x + 3) + 4x.",
+          "answer": "6x + 6"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Simplify -(5 - 2x) + 3x.",
+          "answer": "5x - 5 (the minus flips to -5 + 2x, then 2x + 3x = 5x)"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Kim simplified 4(x + 3) and got 4x + 3. Find her mistake and fix it.",
+          "shown_work": [
+            "4(x + 3)",
+            "= 4x + 3"
+          ],
+          "answer": "She multiplied only the x. The 4 must multiply both terms: 4(x + 3) = 4x + 12. The area box shows a 4 by 3 piece with area 12, not 3."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build the Box",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper or algebra tiles",
+            "Expression cards like 3(2x + 4) and -2(x + 5)"
+          ],
+          "instructions": "1. Draw an expression card like 3(2x + 4).\n2. Build it as an area box: the outside factor is the height, the inside terms split the width.\n3. Label the area of each piece, then write the expanded expression and combine any like terms.\n4. For negative factors, shade the pieces to show every sign flipped.\n5. Say each time: the outside factor multiplies every piece of the width."
+        },
+        {
+          "type": "matching",
+          "title": "Expression Twins",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per unsimplified expression, one card per simplified twin"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each expression like 4(3x + 2) - 5x to its simplified twin like 7x + 8.\n3. To claim a match, say each distributed product out loud with its sign.\n4. Two decoy cards show classic slips; set them aside and name the slip.",
+          "content": {
+            "pairs": [
+              {
+                "left": "2(x + 5)",
+                "right": "2x + 10"
+              },
+              {
+                "left": "3(2x - 4)",
+                "right": "6x - 12"
+              },
+              {
+                "left": "4(3x + 2) - 5x",
+                "right": "7x + 8"
+              },
+              {
+                "left": "-2(x + 6)",
+                "right": "-2x - 12"
+              },
+              {
+                "left": "-(4 - 3x)",
+                "right": "3x - 4"
+              },
+              {
+                "left": "6x + 3 - 2x + 5",
+                "right": "4x + 8"
+              }
+            ],
+            "decoys": [
+              "4(x + 3) = 4x + 3",
+              "-(4 - 3x) = -4 - 3x"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The area box makes 'the factor multiplies every term' visible before the distribute rule is named, and it exposes the forgotten second product."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The first-term-only and dropped-sign slips are stable and baitable; finding and fixing them in worked examples confronts them directly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Saying each product out loud with its sign makes the invisible sign work audible and checkable."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many terms are inside the parenthesis, so how many products should you have?",
+          "What is the sign of that distributed term? How do you know?",
+          "Which terms are like terms here, and which must stay separate?",
+          "What does a leading minus do to every term inside?",
+          "How could you check your simplified form with a number, say x = 2?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student multiplies only the first term inside the parenthesis.",
+            "say": "Draw the area box: the outside factor is the height of BOTH pieces. What is the area of the second piece?",
+            "praise": "You made two products from two terms, that is complete distribution."
+          },
+          {
+            "if_you_see": "Student keeps the inside signs when the factor is negative, writing -(4 - 3x) as -4 - 3x.",
+            "say": "A negative factor flips every sign inside. Multiply term by term: -1 x 4 is -4, and -1 x -3x is +3x.",
+            "praise": "You flipped both signs, so the expression kept its value."
+          },
+          {
+            "if_you_see": "Student combines an x term with a plain number, like 7x + 8 becoming 15x.",
+            "say": "7x means 7 copies of x and 8 is just 8. Can you add 7 apples and 8 with no unit? Only like terms combine.",
+            "praise": "You kept the x pile and the number pile separate, that is what like terms means."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Simplify 5(x - 2).",
+            "look_for": "5x - 10, with the 5 reaching the -2. 5x - 2 diagnoses first-term-only distribution."
+          },
+          {
+            "prompt": "Simplify 9x + 4 - 3x.",
+            "look_for": "6x + 4, not 10x or 6x + 1. The 4 has no x, so it stands alone."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Simplify 3(2x + 4) - 5x.",
+        "answer": "x + 12",
+        "steps": [
+          {
+            "math": "3 x 2x = 6x and 3 x 4 = 12",
+            "annotation": "The 3 multiplies both terms inside, two terms give two products."
+          },
+          {
+            "math": "rewrite: 6x + 12 - 5x",
+            "annotation": "Replace the parenthesis with the expanded products."
+          },
+          {
+            "math": "combine like terms: 6x - 5x = 1x",
+            "annotation": "Only the x terms combine; the 12 has no x."
+          },
+          {
+            "math": "result: x + 12",
+            "annotation": "One x term and one constant, fully simplified."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Simplify 2(3x + 5) - 4x.",
+        "answer": "2x + 10",
+        "steps": [
+          {
+            "math": "2 x 3x = 6x and 2 x 5 = 10",
+            "annotation": "Distribute the 2 to both terms.",
+            "given": true
+          },
+          {
+            "math": "rewrite: 6x + 10 - 4x",
+            "annotation": "Replace the parenthesis with the products.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Combine the like x terms.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the simplified form: one x term and one constant.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The outside factor multiplies ___ and ___, giving ___ and ___.",
+        "The like terms are ___ and ___, and they combine to ___.",
+        "The simplified form is ___ because only same type terms combine."
+      ],
+      "fluency_source": "8AF2-F1"
+    },
+    {
+      "skill_id": "8AF2-B2",
+      "name": "Solve two-step equations of the form px + q = r and check the solution",
+      "column": "looking_back",
+      "parent_standard": "8.AF.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Solve equations of the form px + q = r and p(x + q) = r using inverse operations on both sides, and check the solution by substitution.",
+        "check_question": "Solve 2x + 3 = 11."
+      },
+      "i_do_script": "An equation is a balance, and solving means undoing what happened to x while keeping the balance level. Watch: 2x + 3 = 11. The x was multiplied by 2, then 3 was added. I undo in reverse order: subtract 3 from BOTH sides to get 2x = 8, then divide BOTH sides by 2 to get x = 4. Every move happens to both sides, or the balance tips. Last, I check by substitution: 2 x 4 + 3 is 11, and 11 = 11 is true, so x = 4 is the one value that makes this equation true. That is what 'one solution' means.",
+      "canonical_error": {
+        "pattern": "Applies an operation to only part of one side, or to one side only",
+        "example": "Divides 2x + 6 = 14 by 2 and writes x + 6 = 7, dividing the 2x and the 14 but skipping the 6",
+        "why": "The student treats the operation as a move on chosen terms instead of on entire sides. Dividing a side means dividing every term on it, which is why subtracting the constant first is the cleaner path."
+      },
+      "item_template": "A two-step equation px + q = r or p(x + q) = r with integer coefficients and integer solution (a negative value may appear). Student solves and checks by substitution. Short response or MC, no calculator needed.",
+      "sample_items": [
+        {
+          "stem": "Solve 2x + 3 = 11.",
+          "answer": "x = 4"
+        },
+        {
+          "stem": "Solve 3x - 5 = 10.",
+          "answer": "x = 5"
+        },
+        {
+          "stem": "Solve x/4 + 1 = 6.",
+          "answer": "x = 20"
+        },
+        {
+          "stem": "Solve 5x + 2 = -8.",
+          "answer": "x = -2"
+        },
+        {
+          "stem": "Solve 4(x + 3) = 20.",
+          "answer": "x = 2"
+        },
+        {
+          "stem": "Solve -2x + 7 = 1.",
+          "answer": "x = 3"
+        },
+        {
+          "stem": "What value of x makes 2x + 6 = 16 true?",
+          "answer": "x = 5",
+          "choices": [
+            "x = 5",
+            "x = 8",
+            "x = 10",
+            "x = 11"
+          ],
+          "distractor_logic": "x = 5 comes from 2x = 10. x = 8 divides 16 by 2 and ignores the 6; x = 10 subtracts 6 but never divides; x = 11 adds 6 instead of subtracting, then divides."
+        },
+        {
+          "stem": "What value of x makes 2(x - 3) = 10 true?",
+          "answer": "x = 8",
+          "choices": [
+            "x = 8",
+            "x = 5",
+            "x = 2",
+            "x = 26"
+          ],
+          "distractor_logic": "x = 8 comes from x - 3 = 5. x = 5 stops after dividing and forgets to add 3; x = 2 subtracts 3 from the 5 instead of adding; x = 26 adds 3 to 10 and then multiplies by 2."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did that move happen to BOTH whole sides?",
+        "prompt": "Undo in reverse order: deal with the added or subtracted number first, then the multiplier, and do each move to both entire sides. Finish by substituting your answer back in to see a true statement.",
+        "praise": "You kept the balance level and checked with substitution, that is a complete solve."
+      },
+      "vocabulary": [
+        {
+          "term": "Inverse operations",
+          "definition": "Opposite moves that undo each other, like subtracting 3 to undo adding 3, or dividing by 2 to undo multiplying by 2."
+        },
+        {
+          "term": "Solution",
+          "definition": "The value of the variable that makes the equation a true statement; substituting it in gives a balance."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF2-S1",
+        "if_fail": "8AF2-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a balance: two cups of x and 3 loose counters on the left pan, 11 counters on the right pan. Write 2x + 3 = 11 underneath."
+        },
+        {
+          "kind": "ask",
+          "text": "What can we remove from BOTH pans and keep the balance level?"
+        },
+        {
+          "kind": "say",
+          "text": "Take 3 counters off each pan: 2x = 8. Two identical cups hold 8 counters, so each cup holds 4: x = 4."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student removes 3 from only one pan, tip your hands like a scale: does it still balance?"
+        },
+        {
+          "kind": "ask",
+          "text": "Check: put 4 in each cup. Does the left pan hold 11? Then your turn: solve 3x - 5 = 10."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Solve x + 7 = 12.",
+          "answer": "x = 5"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Solve 3x = 18.",
+          "answer": "x = 6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve 2x + 5 = 17.",
+          "answer": "x = 6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve 4x - 3 = 13.",
+          "answer": "x = 4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve x/3 + 2 = 7.",
+          "answer": "x = 15"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve 2(x + 4) = 18.",
+          "answer": "x = 5"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Solve -3x + 4 = 19.",
+          "answer": "x = -5 (subtract 4 to get -3x = 15, divide by -3)"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Deon solved 2x + 6 = 14 and got x = 1. Find his mistake and fix it.",
+          "shown_work": [
+            "2x + 6 = 14",
+            "x + 6 = 7",
+            "x = 1"
+          ],
+          "answer": "He divided the 2x and the 14 by 2 but skipped the 6. Dividing a side means dividing every term, so the cleaner path is to subtract 6 first: 2x = 8, x = 4. Check: 2 x 4 + 6 = 14."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Cups and Counters",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper cups",
+            "Counters or beans",
+            "Balance mat drawn on paper"
+          ],
+          "instructions": "1. Build 2x + 3 = 11: two cups and 3 counters on the left of the mat, 11 counters on the right.\n2. Remove the same number of loose counters from both sides until only cups remain on the left.\n3. Deal the right side counters equally into the cups; each cup's share is x.\n4. Check by rebuilding with the cups filled and counting both sides.\n5. Repeat with 3x - 5 = 10 and 4(x + 3) = 20. Say each time: every move happens to both sides."
+        },
+        {
+          "type": "game",
+          "title": "Solve and Prove",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Deck of two-step equation cards",
+            "Whiteboards"
+          ],
+          "instructions": "1. Flip an equation card like 2x + 5 = 17.\n2. Everyone solves on a whiteboard, then one player is chosen to prove the answer by substituting it back in and reading the true statement out loud.\n3. A point is earned only when the check is shown, not just the answer.\n4. A wrong answer costs nothing if the player's own check catches it; say what the check revealed."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Cups and counters make 'do the same thing to both sides' physical before the inverse operation rule is named."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Narrating each undo move out loud, subtract from both sides, divide both sides, makes the order and the both-sides habit checkable."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The divide-part-of-a-side slip is precise and predictable; finding and fixing it in shown work targets it directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What happened to x in this equation, and in what order?",
+          "Which operation should you undo first, and why?",
+          "Did that move happen to both entire sides?",
+          "How do you know your answer is right without asking me?",
+          "What true statement did your check produce?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student applies an operation to only one side or only part of a side.",
+            "say": "Point at the balance: if you take counters from one pan only, it tips. Every move hits both whole sides, every term included.",
+            "praise": "You moved both sides together, so the equation stayed true the whole way."
+          },
+          {
+            "if_you_see": "Student undoes the multiplication before the addition and gets tangled in fractions.",
+            "say": "Undo in reverse order of operations: the added or subtracted number peels off first, then the multiplier. Try subtracting first and compare.",
+            "praise": "You peeled the constant off first, so the divide step came out clean."
+          },
+          {
+            "if_you_see": "Student writes an answer but never checks it.",
+            "say": "Substitute your value back in. If both sides come out equal, you have a true statement and a real solution.",
+            "praise": "Your check produced a true statement, that is proof, not hope."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Solve 3x + 2 = 14.",
+            "look_for": "x = 4, with the 2 subtracted from both sides first. x = 16/3 or x = 12 diagnoses order or one-side errors."
+          },
+          {
+            "prompt": "Is x = 3 the solution of 5x - 4 = 11? Prove it.",
+            "look_for": "Substitutes: 15 - 4 = 11 is true, so yes. Look for the check, not just the yes."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Solve 3x + 4 = 19.",
+        "answer": "x = 5",
+        "steps": [
+          {
+            "math": "subtract 4 from both sides: 3x = 15",
+            "annotation": "Undo the addition first, on both entire sides."
+          },
+          {
+            "math": "divide both sides by 3: x = 5",
+            "annotation": "Undo the multiplication; three equal groups of 5 make 15."
+          },
+          {
+            "math": "check: 3 x 5 + 4 = 19",
+            "annotation": "Substitute the answer back in."
+          },
+          {
+            "math": "19 = 19 is true",
+            "annotation": "A true statement proves x = 5 is the one solution."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Solve 2x + 7 = 15.",
+        "answer": "x = 4",
+        "steps": [
+          {
+            "math": "subtract 7 from both sides: 2x = 8",
+            "annotation": "Undo the addition first, both sides.",
+            "given": true
+          },
+          {
+            "math": "divide both sides by 2: x = 4",
+            "annotation": "Undo the multiplication.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Check by substituting x = 4 into 2x + 7.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the true statement your check produced.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "First I undo ___ by ___ on both sides.",
+        "My check: substituting ___ gives ___, which is a true statement."
+      ],
+      "fluency_source": "8AF2-F2"
+    },
+    {
       "skill_id": "8AF2-S1",
       "name": "Classify an already-simplified equation by its number of solutions",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "8.AF.2",
       "engine_stems": [
         1
@@ -498,7 +1114,7 @@
           }
         ]
       },
-      "fluency_source": "8AF2-F1",
+      "fluency_source": "8AF2-B2",
       "sentence_starters": [
         "The final line is ___, and the variable ___ (canceled / is still there).",
         "That statement is ___, so the equation has ___ solutions."
@@ -842,7 +1458,7 @@
           }
         ]
       },
-      "fluency_source": "8AF2-F1",
+      "fluency_source": "8AF2-B1",
       "sentence_starters": [
         "The coefficients are ___ (same / different), so ___.",
         "Since the constants are ___, the equation has ___ solutions."
@@ -1120,7 +1736,7 @@
           }
         ]
       },
-      "fluency_source": "8AF2-F1",
+      "fluency_source": "8AF2-B1",
       "sentence_starters": [
         "The left simplifies to ___ and the right simplifies to ___.",
         "Because the coefficients are ___ and the constants are ___, there are ___ solutions."
@@ -1381,7 +1997,7 @@
           }
         ]
       },
-      "fluency_source": "8AF2-F1",
+      "fluency_source": "8AF2-B1",
       "sentence_starters": [
         "The fixed side simplifies to ___, so for infinitely many I need ___.",
         "To force ___ solutions, I keep ___ the same and change ___."
@@ -1648,7 +2264,7 @@
           }
         ]
       },
-      "fluency_source": "8AF2-F1",
+      "fluency_source": "8AF2-B1",
       "sentence_starters": [
         "To get ___ solutions I made the coefficients ___ and the constants ___.",
         "My equation has ___ solutions because it simplifies to ___."
@@ -1913,7 +2529,7 @@
           }
         ]
       },
-      "fluency_source": "8AF2-F1",
+      "fluency_source": "8AF2-B1",
       "sentence_starters": [
         "After simplifying both sides I get ___ and ___.",
         "I ___ (agree / disagree) because the leftover statement is ___, which means ___ solutions."
@@ -1970,8 +2586,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 4-6) prerequisite skills. Start intervention here.",
       "skills": [
         "8AF2-F1",
         "8AF2-F2"
@@ -1979,15 +2595,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 7) skills that feed this standard directly.",
       "skills": [
-        "8AF2-S1"
+        "8AF2-B1",
+        "8AF2-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "8AF2-S1",
         "8AF2-S2",
         "8AF2-S3",
         "8AF2-S4",
@@ -1996,7 +2614,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "8AF2-S6"
       ]
@@ -2005,6 +2623,8 @@
   "skill_sequence": [
     "8AF2-F1",
     "8AF2-F2",
+    "8AF2-B1",
+    "8AF2-B2",
     "8AF2-S1",
     "8AF2-S2",
     "8AF2-S3",
@@ -2015,15 +2635,22 @@
   "skill_tree": {
     "8AF2-F1": [],
     "8AF2-F2": [],
-    "8AF2-S1": [
+    "8AF2-B1": [
+      "8AF2-F1"
+    ],
+    "8AF2-B2": [
       "8AF2-F2"
+    ],
+    "8AF2-S1": [
+      "8AF2-B1",
+      "8AF2-B2"
     ],
     "8AF2-S2": [
       "8AF2-S1"
     ],
     "8AF2-S3": [
       "8AF2-S2",
-      "8AF2-F1"
+      "8AF2-B1"
     ],
     "8AF2-S4": [
       "8AF2-S3"
@@ -2037,17 +2664,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S3 (simplify both sides, then classify) -- the At-proficiency core where the standard's real difficulty lives. If they pass, push to S4 (generate an equation to a target case) and S6 (analyze and justify a claim about a multi-step equation). If they fail, split the diagnosis: S1 checks whether they can read a simplified final line (true statement vs false vs x = a), and S2 checks whether they compare coefficients and constants correctly without any simplification. S5 (write your own examples and justify) branches off the generative side.",
+    "description": "Start with S3, simplify both sides and then classify, the At-proficiency core where the standard's real difficulty lives. If they pass, push up to S4 (complete an equation to force a chosen case) and S6 (judge and justify a claim about a multi-step equation). If they fail, drop one grade: B1 checks whether they can distribute and combine like terms in a linear expression, and B2 checks whether they can solve px + q = r and prove the solution by substitution, the two grade 7 skills classification leans on. If those wobble, the foundations locate the gap further down: F1 is the distributive property in whole number multiplication (grade 4) and F2 is the equals sign as a true or false balance (grade 6). S1 and S2 remain available to probe the standard's own final-line reading and coefficient-versus-constant logic, and S5 branches off the generative side.",
     "entry_skill": "8AF2-S3",
     "if_pass": [
       "8AF2-S4",
       "8AF2-S6"
     ],
     "if_fail": [
-      "8AF2-S1",
-      "8AF2-S2"
+      "8AF2-B1",
+      "8AF2-B2"
     ],
     "branch_skills": [
+      "8AF2-F1",
+      "8AF2-F2",
+      "8AF2-S1",
+      "8AF2-S2",
       "8AF2-S5"
     ]
   }

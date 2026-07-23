@@ -3,7 +3,7 @@
   "standard_text": "Show on a number line that a number and its opposite have a sum of 0 (are additive inverses). Find and interpret sums of rational numbers in real-world contexts.",
   "schema_version": 3,
   "progression": {
-    "narrative": "Adding signed numbers rests on one picture: a number line where a positive move goes right, a negative move goes left, and the sum is where you land. The standard opens with the cleanest case of that picture — a number and its opposite. Move 5 right, then 5 left, and you are back at 0: the two are additive inverses. That fact, a + (-a) = 0, is the anchor the whole standard leans on, because every opposite-sign sum is really a partial cancellation of a number with part of its opposite.\n\nFrom there the arc builds the addition mechanic and its meaning. Students first read the number line for distance — recognizing that the gap between two points is modeled with absolute value, and finding that gap when the points straddle zero. Then comes the computational heart: adding two rationals with opposite signs, where the moves partly cancel, so you subtract the distances and keep the sign of whichever reached farther. Fractions and decimals raise the number difficulty without changing the logic. Then students interpret those sums in context — a temperature that falls then rises, a diver who descends then ascends, a balance that is charged then paid — mapping 'down/withdraw/below' to negative and 'up/deposit/above' to positive. The capstone reasons abstractly: given a and b on a number line, what must be true of their sum c? The through-line we keep naming: adding a negative moves you left, adding a positive moves you right, and opposites cancel to zero.",
+    "narrative": "This standard asks students to add rational numbers, show on a number line that a number and its opposite sum to zero, and interpret those sums in real contexts like temperature and money. The on-grade work builds from zero pairs and number-line distance to the computational core: adding numbers with opposite signs by subtracting their distances and keeping the sign of the number farther from zero. Students who struggle here usually carry gaps from well below grade seven, most often shaky decimal place value and weak fraction addition. Intervention should start with those foundations, rebuild the grade six skills of adding unlike-denominator fractions and decimal arithmetic, and only then return to signed numbers.",
     "steps": [
       {
         "skill_id": "7NS1-S1",
@@ -40,193 +40,753 @@
   "skills": [
     {
       "skill_id": "7NS1-F1",
-      "name": "State a number's opposite and read its distance from zero",
+      "name": "Read, write, and compare decimals using place value",
       "column": "foundation",
       "parent_standard": "7.NS.1",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Give the opposite of a rational number and read how far it is from zero.",
-        "check_question": "What is the opposite of -3.5, and how far is -3.5 from zero?"
+        "grade": 4,
+        "description": "Name the value of a digit in a decimal to the hundredths and compare two decimals.",
+        "check_question": "Which is greater, 0.5 or 0.35? How do you know?"
       },
-      "i_do_script": "The opposite of a number is the same distance from zero but on the other side. Watch: the opposite of 4 is -4; the opposite of -3.5 is +3.5. Both a number and its opposite sit the same distance from zero — 4 and -4 are each 4 units away. To flip a number to its opposite, I just change its sign.",
+      "i_do_script": "Every digit in a decimal has a place, and the place tells its size. Watch: in 3.47, the 4 sits in the tenths place, so it is worth 4 tenths, and the 7 sits in the hundredths place, worth 7 hundredths. To compare 0.5 and 0.35, I compare the tenths first: 5 tenths beats 3 tenths, so 0.5 is greater even though 35 looks bigger than 5. On a hundredths grid, 0.5 shades 50 squares and 0.35 shades only 35.",
       "canonical_error": {
-        "pattern": "Thinks the opposite of a negative is still negative, or changes the size instead of just the sign",
-        "example": "Says the opposite of -3.5 is -3.5 (or 0.35) instead of +3.5",
-        "why": "The student treats 'opposite' as 'make negative' or confuses it with a reciprocal, rather than reflecting across zero. The opposite keeps the same distance and only flips the sign."
+        "pattern": "Compares decimals like whole numbers, ignoring place value",
+        "example": "Says 0.35 > 0.5 because 35 > 5",
+        "why": "The student reads the digits as a whole number instead of tenths and hundredths. More digits does not mean a bigger number; the grid shows 0.5 covers more."
       },
-      "item_template": "A rational number. Student states its opposite and/or its distance from zero. Short response fluency bank.",
+      "item_template": "A decimal to the hundredths. Student names a digit's place or value, compares two decimals, or writes a decimal from words or expanded form. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "What is the opposite of 4?",
-          "answer": "-4"
+          "stem": "What digit is in the tenths place of 3.47?",
+          "answer": "4"
         },
         {
-          "stem": "What is the opposite of -3.5?",
-          "answer": "3.5"
+          "stem": "Which is greater: 0.5 or 0.35?",
+          "answer": "0.5"
         },
         {
-          "stem": "How far is -6 from zero?",
-          "answer": "6 units"
+          "stem": "What is the value of the 7 in 0.72?",
+          "answer": "7 tenths (0.7)"
         },
         {
-          "stem": "What is the opposite of -2/3?",
-          "answer": "2/3"
+          "stem": "Write 2 + 0.3 + 0.04 as one decimal.",
+          "answer": "2.34"
         },
         {
-          "stem": "How far is 7.2 from zero?",
-          "answer": "7.2 units"
+          "stem": "Which is greater: 0.8 or 0.79?",
+          "answer": "0.8"
         },
         {
-          "stem": "What is the opposite of 0?",
-          "answer": "0"
+          "stem": "What digit is in the hundredths place of 6.09?",
+          "answer": "9"
+        },
+        {
+          "stem": "Order from least to greatest: 0.4, 0.04, 0.44",
+          "answer": "0.04, 0.4, 0.44"
+        },
+        {
+          "stem": "Write three tenths as a decimal.",
+          "answer": "0.3"
         }
       ],
       "redirect_script": {
-        "stop": "Which side of zero is the opposite on?",
-        "prompt": "The opposite is the SAME distance from zero, on the OTHER side. Just flip the sign — a negative becomes positive, a positive becomes negative. The size never changes.",
-        "praise": "You flipped the sign and kept the size — that's the opposite."
+        "stop": "Which place are you comparing first?",
+        "prompt": "Line up the decimal points and compare place by place, starting with the largest place. Tenths beat hundredths no matter how many digits follow.",
+        "praise": "You compared the tenths first, that is exactly how place value works."
       },
       "vocabulary": [
         {
-          "term": "Opposite",
-          "definition": "A number the same distance from zero but on the other side; it has the flipped sign."
+          "term": "Tenths",
+          "definition": "The first place to the right of the decimal point; one tenth is 1/10 or 0.1."
         },
         {
-          "term": "Number line",
-          "definition": "A line where numbers increase to the right and decrease to the left, with zero in the middle."
+          "term": "Hundredths",
+          "definition": "The second place to the right of the decimal point; one hundredth is 1/100 or 0.01."
         }
       ],
       "next_steps": {
-        "if_pass": "7NS1-S1",
-        "if_fail": "Review opposites and the number line (6.NS.1)."
+        "if_pass": "7NS1-B2",
+        "if_fail": "Review grade 4 decimal notation with a hundredths grid (tenths and hundredths as shaded squares)."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw a number line and mark 5."
+          "text": "Shade 0.5 on one hundredths grid and 0.35 on another."
         },
         {
           "kind": "ask",
-          "text": "Where is the opposite of 5 — same distance, other side?"
+          "text": "Which grid has more shading? So which number is greater?"
         },
         {
           "kind": "say",
-          "text": "At -5. Both are 5 units from zero, just on different sides. The opposite flips the sign."
+          "text": "0.5 shades 50 of the 100 squares; 0.35 shades 35. So 0.5 is greater. The tenths digit decides it: 5 tenths beats 3 tenths."
         },
         {
           "kind": "watch",
-          "text": "If a student says the opposite of -5 is -5, ask 'is that the same side or the other side of zero?'"
+          "text": "If a student says 0.35 is greater because 35 > 5, send them back to the grids: which covers more?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: what is the opposite of -8?"
+          "text": "Your turn: which is greater, 0.6 or 0.58?"
         }
       ]
     },
     {
       "skill_id": "7NS1-F2",
-      "name": "Add two numbers with the same sign",
+      "name": "Add and subtract fractions with like denominators",
       "column": "foundation",
       "parent_standard": "7.NS.1",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Add two numbers that are both positive or both negative by combining their sizes and keeping the shared sign.",
-        "check_question": "What is -4 + (-3)?"
+        "grade": 4,
+        "description": "Add and subtract fractions that already have the same denominator.",
+        "check_question": "What is 3/8 + 2/8?"
       },
-      "i_do_script": "Owing money twice only digs the hole deeper -- if you owe $4 and then owe $3 more, you owe $7 total, never less. On the number line that's two walks in the same direction, and they can only pile up. When two numbers have the SAME sign, I add their sizes and keep that sign — both moves go the same direction on the number line. Watch: -4 + (-3). Both are negative, so I go left 4 then left 3 -- total left 7: the answer is -7. Two positives work the same way: 4 + 3 = 7. Same sign means combine and keep the sign.",
+      "i_do_script": "When the denominators match, the pieces are the same size, so I just count pieces. Watch: 3/8 + 2/8 means 3 eighths plus 2 more eighths. That is 5 eighths, 5/8. The denominator names the size of the piece, so it stays 8; only the count on top changes. On a fraction bar cut into 8 pieces, I shade 3, then 2 more, and count 5 shaded.",
       "canonical_error": {
-        "pattern": "Adds two negatives and gives a positive result, or subtracts instead of adding",
-        "example": "For -4 + (-3) writes -1 (subtracting) or 7 (dropping the sign) instead of -7",
-        "why": "The student sees a minus and either cancels or drops signs, missing that two same-direction moves combine. Same signs add in size and keep the sign."
+        "pattern": "Adds the denominators as well as the numerators",
+        "example": "Writes 3/8 + 2/8 = 5/16",
+        "why": "The student treats top and bottom as separate addition problems. The denominator is a piece size, not a count; adding eighths to eighths still gives eighths."
       },
-      "item_template": "A sum of two same-sign integers or simple rationals. Short response fluency bank.",
+      "item_template": "Two fractions with the same denominator, sum less than or equal to 1 or a simple subtraction. Student adds or subtracts. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "-4 + (-3)",
-          "answer": "-7"
+          "stem": "3/8 + 2/8",
+          "answer": "5/8"
         },
         {
-          "stem": "6 + 9",
-          "answer": "15"
+          "stem": "7/10 - 4/10",
+          "answer": "3/10"
         },
         {
-          "stem": "-8 + (-2)",
-          "answer": "-10"
+          "stem": "2/5 + 2/5",
+          "answer": "4/5"
         },
         {
-          "stem": "-1.5 + (-2.5)",
-          "answer": "-4"
+          "stem": "5/6 - 1/6",
+          "answer": "4/6 (or 2/3)"
         },
         {
-          "stem": "-5 + (-5)",
-          "answer": "-10"
+          "stem": "1/4 + 1/4",
+          "answer": "2/4 (or 1/2)"
+        },
+        {
+          "stem": "4/9 + 4/9",
+          "answer": "8/9"
+        },
+        {
+          "stem": "9/12 - 5/12",
+          "answer": "4/12 (or 1/3)"
+        },
+        {
+          "stem": "3/7 + 3/7",
+          "answer": "6/7"
         }
       ],
       "redirect_script": {
-        "stop": "Are these two numbers the same sign or different?",
-        "prompt": "Picture the two walks first: do both moves go the same direction, and does that leave you farther from 0 or closer? Same signs both push the same way. Add their sizes, then keep the shared sign. Two negatives make a bigger negative.",
-        "praise": "You combined the sizes and kept the sign — same-sign addition done right."
+        "stop": "What size are the pieces in both fractions?",
+        "prompt": "The denominator names the piece size, and it does not change when you add. Count the pieces on top: 3 eighths plus 2 eighths is 5 eighths.",
+        "praise": "You kept the piece size and counted the pieces, that is it."
       },
       "vocabulary": [
         {
-          "term": "Sum",
-          "definition": "The result of adding numbers together."
+          "term": "Numerator",
+          "definition": "The top number; it counts how many pieces you have."
         },
         {
-          "term": "Rational number",
-          "definition": "Any number that can be written as a fraction, including integers and decimals."
+          "term": "Denominator",
+          "definition": "The bottom number; it names the size of each piece."
         }
       ],
       "next_steps": {
-        "if_pass": "7NS1-S4",
-        "if_fail": "Review adding integers (6.NS)."
+        "if_pass": "7NS1-B1",
+        "if_fail": "Review grade 4 fraction meaning with fraction bars (a fraction as a count of same-size pieces)."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Start at 0 on the number line and take two walks: left 6 steps, then left 4 more steps. Where do you land? Could two left walks ever land you to the RIGHT of where you started?",
-          "visual": {
-            "type": "number_line_point",
-            "ticks": [
-              -10,
-              -8,
-              -6,
-              -4,
-              -2,
-              0
-            ],
-            "point_value": -10,
-            "point_label": "-6 + (-4)"
-          }
-        },
-        {
           "kind": "show",
-          "text": "Write '-6 + (-4).'"
+          "text": "Draw one bar cut into 8 equal pieces. Shade 3 pieces, then shade 2 more in a second color."
         },
         {
           "kind": "ask",
-          "text": "Do both moves go the same direction on the number line?"
+          "text": "How many pieces are shaded in all? What size is each piece?"
         },
         {
           "kind": "say",
-          "text": "Both are negative — both go left. Left 6 then left 4 is left 10, so -10."
+          "text": "5 pieces are shaded and each is one eighth, so 3/8 + 2/8 = 5/8. The bottom number stays 8 because the pieces never changed size."
         },
         {
           "kind": "watch",
-          "text": "If a student writes -2 or 2, ask 'if you owe $6 and then owe $4 more, do you owe more or less?'"
+          "text": "If a student writes 5/16, point at the bar: did the pieces get smaller when we shaded more?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: -9 + (-3)."
+          "text": "Your turn: what is 7/10 - 4/10?"
         }
       ]
     },
     {
+      "skill_id": "7NS1-B1",
+      "name": "Add and subtract positive fractions with unlike denominators",
+      "column": "looking_back",
+      "parent_standard": "7.NS.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Rename fractions with a common denominator, then add or subtract.",
+        "check_question": "What is 1/2 + 1/3?"
+      },
+      "i_do_script": "I cannot add 1/2 and 1/3 as they stand because the pieces are different sizes. Watch: I cut both bars into sixths. 1/2 is the same as 3/6, and 1/3 is the same as 2/6. Now the pieces match, so I count: 3 sixths plus 2 sixths is 5 sixths. Rename first so the pieces match, then add the counts.",
+      "canonical_error": {
+        "pattern": "Adds numerators and denominators straight across",
+        "example": "Writes 1/2 + 1/3 = 2/5",
+        "why": "The student adds tops and bottoms separately instead of renaming to a common denominator. Different denominators mean different piece sizes, and you cannot count pieces of different sizes together."
+      },
+      "item_template": "Two positive fractions with different denominators (denominators up to 12, common denominator up to 24). Student adds or subtracts. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "1/2 + 1/3",
+          "answer": "5/6"
+        },
+        {
+          "stem": "3/4 - 1/2",
+          "answer": "1/4"
+        },
+        {
+          "stem": "2/5 + 1/2",
+          "answer": "9/10"
+        },
+        {
+          "stem": "5/6 - 1/3",
+          "answer": "3/6 (or 1/2)"
+        },
+        {
+          "stem": "1/4 + 2/3",
+          "answer": "11/12"
+        },
+        {
+          "stem": "7/8 - 3/4",
+          "answer": "1/8"
+        },
+        {
+          "stem": "1/2 + 1/6",
+          "answer": "4/6 (or 2/3)"
+        },
+        {
+          "stem": "3/5 + 1/4",
+          "answer": "17/20"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Are the pieces the same size yet?",
+        "prompt": "Rename both fractions so the denominators match, then count the pieces. Find a number both denominators go into, and rewrite each fraction in those pieces.",
+        "praise": "You matched the piece sizes first, and then the count was easy."
+      },
+      "vocabulary": [
+        {
+          "term": "Common denominator",
+          "definition": "A shared piece size for two fractions; a number both denominators divide into."
+        },
+        {
+          "term": "Equivalent fraction",
+          "definition": "A fraction that names the same amount with different sized pieces, like 1/2 and 3/6."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7NS1-S1",
+        "if_fail": "7NS1-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw two same-length bars. Cut one in half and shade 1/2. Cut the other in thirds and shade 1/3."
+        },
+        {
+          "kind": "ask",
+          "text": "Can we count these shaded pieces together as they are? Why not?"
+        },
+        {
+          "kind": "say",
+          "text": "The pieces are different sizes. Cut both bars into sixths: the half becomes 3/6 and the third becomes 2/6. Now count: 5 sixths."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 2/5, ask them to point at a fifth anywhere in the picture. There is none, so the answer cannot be fifths."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: rename and add 1/4 + 1/3."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "1/2 + 1/4",
+          "answer": "3/4"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "2/3 - 1/3",
+          "answer": "1/3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "1/3 + 1/2",
+          "answer": "5/6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "3/4 - 2/3",
+          "answer": "1/12"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2/5 + 3/10",
+          "answer": "7/10"
+        },
+        {
+          "difficulty": "core",
+          "stem": "5/8 - 1/4",
+          "answer": "3/8"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "1/2 + 1/3 + 1/6",
+          "answer": "1"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Ava wrote 2/3 + 1/4 = 3/7. Find her mistake and fix it.",
+          "shown_work": [
+            "2/3 + 1/4",
+            "= (2+1)/(3+4)",
+            "= 3/7"
+          ],
+          "answer": "She added tops and bottoms straight across. Rename: 8/12 + 3/12 = 11/12."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Cut Until They Match",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper fraction strips (halves, thirds, fourths, sixths, twelfths)",
+            "Pencils"
+          ],
+          "instructions": "1. Each pair gets a target sum like 1/2 + 1/3.\n2. Lay the 1/2 strip and 1/3 strip end to end.\n3. Find the strip size that measures both exactly (sixths) and lay it underneath.\n4. Count the small pieces and write the renamed equation 3/6 + 2/6 = 5/6.\n5. Repeat with 3/4 - 1/2 and 1/4 + 1/3. Say each time: we cut until the pieces match."
+        },
+        {
+          "type": "matching",
+          "title": "Rename Match-Up",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per unrenamed sum, one card per renamed form"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each sum like 1/2 + 1/6 to its renamed twin like 3/6 + 1/6.\n3. To claim a match, say the common denominator out loud and give the final answer.\n4. Two decoy cards rename incorrectly; set them aside and explain what went wrong.",
+          "content": {
+            "pairs": [
+              {
+                "left": "1/2 + 1/3",
+                "right": "3/6 + 2/6"
+              },
+              {
+                "left": "1/2 + 1/6",
+                "right": "3/6 + 1/6"
+              },
+              {
+                "left": "3/4 - 1/2",
+                "right": "3/4 - 2/4"
+              },
+              {
+                "left": "2/5 + 1/2",
+                "right": "4/10 + 5/10"
+              },
+              {
+                "left": "1/4 + 2/3",
+                "right": "3/12 + 8/12"
+              },
+              {
+                "left": "5/6 - 1/3",
+                "right": "5/6 - 2/6"
+              }
+            ],
+            "decoys": [
+              "1/2 + 1/3 = 2/5",
+              "3/4 - 1/2 = 2/2"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Fraction strips make 'the pieces must match before you count' visible before the renaming procedure is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The straight-across error is stable and predictable; finding and fixing it in worked examples confronts it directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Are these pieces the same size? How can you tell?",
+          "What number do both denominators go into?",
+          "What does 1/2 become when the bar is cut into sixths?",
+          "Why does the denominator stay the same once the pieces match?",
+          "Could you have used a bigger common denominator? Would the answer change?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds numerators and denominators straight across.",
+            "say": "Point at the strips: can you count a half and a third together as they are? Cut both into sixths first, then count.",
+            "praise": "You renamed before you counted, that is the whole skill."
+          },
+          {
+            "if_you_see": "Student finds the common denominator but forgets to rename the numerators.",
+            "say": "You changed the piece size, so the count has to change too. If 1/2 becomes sixths, how many sixths is it?",
+            "praise": "You changed the top and bottom together, so the fraction kept its value."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "1/2 + 1/6",
+            "look_for": "Renames 1/2 as 3/6 and answers 4/6 or 2/3, not 2/8."
+          },
+          {
+            "prompt": "What is the common denominator for 1/4 and 1/6?",
+            "look_for": "12 (or any common multiple, with 12 recognized as the smallest)."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Add 1/2 + 1/3.",
+        "answer": "5/6",
+        "steps": [
+          {
+            "math": "common denominator: 6",
+            "annotation": "Both 2 and 3 go into 6, so cut both bars into sixths."
+          },
+          {
+            "math": "1/2 = 3/6",
+            "annotation": "A half is three sixths."
+          },
+          {
+            "math": "1/3 = 2/6",
+            "annotation": "A third is two sixths."
+          },
+          {
+            "math": "3/6 + 2/6 = 5/6",
+            "annotation": "Now the pieces match, so count them."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Add 1/4 + 1/3.",
+        "answer": "7/12",
+        "steps": [
+          {
+            "math": "common denominator: 12",
+            "annotation": "Both 4 and 3 go into 12.",
+            "given": true
+          },
+          {
+            "math": "1/4 = 3/12 and 1/3 = 4/12",
+            "annotation": "Rename both fractions as twelfths.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Add the twelfths.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the sum.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The pieces do not match, so I rename ___ and ___ as ___.",
+        "The common denominator is ___ because both ___ and ___ go into it."
+      ],
+      "fluency_source": "7NS1-F2"
+    },
+    {
+      "skill_id": "7NS1-B2",
+      "name": "Add and subtract decimals to the hundredths",
+      "column": "looking_back",
+      "parent_standard": "7.NS.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Add and subtract decimals fluently by lining up place values.",
+        "check_question": "What is 3.6 + 1.75?"
+      },
+      "i_do_script": "Decimals add place by place, so the decimal points must line up. Watch: for 3.6 + 1.75, I write 3.6 as 3.60 so both numbers show hundredths. Now tenths sit over tenths and hundredths over hundredths: 3.60 + 1.75 = 5.35. On a hundredths grid, 0.60 and 0.75 together fill one whole grid and 35 more squares. Lining up the points is really lining up the place values.",
+      "canonical_error": {
+        "pattern": "Right-aligns the digits instead of lining up the decimal points",
+        "example": "Computes 4.2 + 0.35 by stacking 42 over 35 and gets 0.77 or 7.7",
+        "why": "The student lines up the last digits like whole-number addition, which puts tenths under hundredths. Place values can only be added to matching place values."
+      },
+      "item_template": "Add or subtract two decimals to the hundredths (sums under 20, may need one renaming or an appended zero). Numeric response, no calculator.",
+      "sample_items": [
+        {
+          "stem": "2.4 + 3.5",
+          "answer": "5.9"
+        },
+        {
+          "stem": "6.75 - 2.5",
+          "answer": "4.25"
+        },
+        {
+          "stem": "0.8 + 0.35",
+          "answer": "1.15"
+        },
+        {
+          "stem": "5 - 1.25",
+          "answer": "3.75"
+        },
+        {
+          "stem": "12.6 + 0.75",
+          "answer": "13.35"
+        },
+        {
+          "stem": "4.03 - 1.9",
+          "answer": "2.13"
+        },
+        {
+          "stem": "0.9 + 0.1",
+          "answer": "1"
+        },
+        {
+          "stem": "7.25 + 2.8",
+          "answer": "10.05"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Are the decimal points lined up?",
+        "prompt": "Stack the numbers so the decimal points sit in one column, adding a zero if a place is empty. Then add each place like whole numbers.",
+        "praise": "You lined up the places, so every digit landed where it belongs."
+      },
+      "vocabulary": [
+        {
+          "term": "Place value",
+          "definition": "The size a digit's position gives it: ones, tenths, hundredths."
+        },
+        {
+          "term": "Regroup",
+          "definition": "Trade ten of one place for one of the next larger place, like ten tenths for one whole."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7NS1-S1",
+        "if_fail": "7NS1-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 3.6 + 1.75 stacked, with the decimal points in one column and a zero appended: 3.60 over 1.75."
+        },
+        {
+          "kind": "ask",
+          "text": "Why can I write 3.6 as 3.60 without changing it?"
+        },
+        {
+          "kind": "say",
+          "text": "Sixty hundredths is the same as six tenths. Now add each place: 0 + 5 hundredths, 6 + 7 tenths regroups to 1 whole and 3 tenths, 3 + 1 + 1 = 5 wholes. The sum is 5.35."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student stacks the 6 over the 5, ask what place each digit lives in. Tenths cannot add to hundredths."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: line up and solve 5.4 - 2.65."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "0.3 + 0.4",
+          "answer": "0.7"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "1.5 + 2.4",
+          "answer": "3.9"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2.7 + 1.85",
+          "answer": "4.55"
+        },
+        {
+          "difficulty": "core",
+          "stem": "6.3 - 2.45",
+          "answer": "3.85"
+        },
+        {
+          "difficulty": "core",
+          "stem": "0.6 + 0.75",
+          "answer": "1.35"
+        },
+        {
+          "difficulty": "core",
+          "stem": "9 - 3.6",
+          "answer": "5.4"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "12.05 - 9.8",
+          "answer": "2.25"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Jon wrote 4.2 + 0.35 = 0.77. Find his mistake and fix it.",
+          "shown_work": [
+            "4.2 + 0.35",
+            "stacked 42 over 35 by the last digit",
+            "= 0.77"
+          ],
+          "answer": "He lined up the last digits instead of the decimal points. 4.20 + 0.35 = 4.55."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build It in Money",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Play money or drawn dollars, dimes, and pennies",
+            "Whiteboards"
+          ],
+          "instructions": "1. Build 3.6 + 1.75 in money: 3 dollars 6 dimes, then 1 dollar 7 dimes 5 pennies.\n2. Combine: count pennies, then dimes, trading ten dimes for a dollar.\n3. Write the stacked problem next to the money and match each trade to a regroup.\n4. Repeat with 5.4 - 2.65, trading a dollar for ten dimes to subtract.\n5. Say each time: dimes add to dimes, pennies add to pennies."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Spot the Slide",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Worked-problem slips, half correct and half misaligned"
+          ],
+          "instructions": "1. Deal the slips face down.\n2. Flip one at a time: decide if the decimal points were lined up or if a digit slid into the wrong place.\n3. For each wrong slip, name the place that got mixed (tenths added to hundredths) and fix it.\n4. Sort slips into Lined Up and Slid piles; the group must agree before sorting.",
+          "content": {
+            "worked_problem": "4.2 + 0.35 stacked by last digits gives 0.77",
+            "error_step": "42 stacked over 35, points ignored",
+            "why": "Right-aligning puts the 2 tenths under the 5 hundredths, so unlike places were added."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Money and hundredths grids make place alignment concrete before the line-up-the-points rule is named."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud while stacking makes the invisible choice, which digit goes under which, audible and checkable."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What place is this digit in? What place is the digit under it?",
+          "Why can you write 3.6 as 3.60?",
+          "Where did the extra whole come from when the tenths added past ten?",
+          "How is trading ten dimes for a dollar the same as regrouping?",
+          "Estimate first: should 5.4 - 2.65 be more or less than 3?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student right-aligns the digits and ignores the decimal points.",
+            "say": "Build both numbers in money. Can pennies add to dimes? Line up the points so each coin adds to its own kind.",
+            "praise": "You matched place to place, so the sum came out true."
+          },
+          {
+            "if_you_see": "Student subtracts the smaller digit from the larger regardless of order.",
+            "say": "In 5.4 - 2.65, you cannot take 5 hundredths from 0 without trading. Trade a tenth for ten hundredths first.",
+            "praise": "You regrouped instead of flipping the digits, that keeps the value honest."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "0.8 + 0.35",
+            "look_for": "1.15, with the 8 tenths added to 3 tenths, not to 5 hundredths."
+          },
+          {
+            "prompt": "5 - 1.25",
+            "look_for": "3.75, writing 5 as 5.00 before subtracting."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Add 3.6 + 1.75.",
+        "answer": "5.35",
+        "steps": [
+          {
+            "math": "3.6 = 3.60",
+            "annotation": "Append a zero so both numbers show hundredths."
+          },
+          {
+            "math": "line up: 3.60 over 1.75",
+            "annotation": "Decimal points in one column puts each place over its match."
+          },
+          {
+            "math": "hundredths: 0 + 5 = 5; tenths: 6 + 7 = 13, regroup",
+            "annotation": "Thirteen tenths is 1 whole and 3 tenths."
+          },
+          {
+            "math": "wholes: 3 + 1 + 1 = 5, so 5.35",
+            "annotation": "Add the regrouped whole with the ones."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Subtract 5.4 - 2.65.",
+        "answer": "2.75",
+        "steps": [
+          {
+            "math": "5.4 = 5.40",
+            "annotation": "Append a zero so both numbers show hundredths.",
+            "given": true
+          },
+          {
+            "math": "line up: 5.40 over 2.65",
+            "annotation": "Points in one column, place over place.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Subtract the hundredths; you will need to trade a tenth.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Finish the tenths and wholes and state the answer.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I lined up the decimal points so that ___ adds to ___.",
+        "I traded ten ___ for one ___ when the place filled up."
+      ],
+      "fluency_source": "7NS1-F1"
+    },
+    {
       "skill_id": "7NS1-S1",
       "name": "Show that a number and its opposite sum to zero",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.NS.1",
       "engine_stems": [
         1
@@ -429,7 +989,7 @@
           }
         ]
       },
-      "fluency_source": "7NS1-F2",
+      "fluency_source": "7NS1-B1",
       "sentence_starters": [
         "___ and ___ are opposites, so they cancel to ___.",
         "Moving right ___ then left ___ lands me back at ___."
@@ -486,7 +1046,7 @@
     {
       "skill_id": "7NS1-S2",
       "name": "Write an expression for the distance between two points",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.NS.1",
       "engine_stems": [
         2
@@ -745,7 +1305,7 @@
           }
         ]
       },
-      "fluency_source": "7NS1-F2",
+      "fluency_source": "7NS1-B2",
       "sentence_starters": [
         "Distance can't be negative, so I use absolute value: ___.",
         "The gap between ___ and ___ is ___ units."
@@ -1006,7 +1566,7 @@
           }
         ]
       },
-      "fluency_source": "7NS1-F2",
+      "fluency_source": "7NS1-B2",
       "sentence_starters": [
         "___ is ___ from zero and ___ is ___ from zero, on opposite sides, so I add.",
         "The distance across zero is ___ + ___ = ___."
@@ -1310,7 +1870,7 @@
           }
         ]
       },
-      "fluency_source": "7NS1-F2",
+      "fluency_source": "7NS1-B1",
       "sentence_starters": [
         "The signs are opposite, so I subtract ___ - ___ = ___.",
         "___ is farther from zero, so the answer is ___."
@@ -1594,7 +2154,7 @@
           }
         ]
       },
-      "fluency_source": "7NS1-F2",
+      "fluency_source": "7NS1-B2",
       "sentence_starters": [
         "'___' means a ___ sign, so I write ___.",
         "The sum is ___, which means ___ in the story."
@@ -1908,7 +2468,7 @@
           }
         ]
       },
-      "fluency_source": "7NS1-F2",
+      "fluency_source": "7NS1-B2",
       "sentence_starters": [
         "Since a + b = 0, b must be ___ of a, so b = ___.",
         "___ is farther from zero, so c is ___ and |c| ___ |a|."
@@ -1965,8 +2525,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites — fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7NS1-F1",
         "7NS1-F2"
@@ -1974,16 +2534,18 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7NS1-S1",
-        "7NS1-S2"
+        "7NS1-B1",
+        "7NS1-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7NS1-S1",
+        "7NS1-S2",
         "7NS1-S3",
         "7NS1-S4",
         "7NS1-S5"
@@ -1991,7 +2553,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7NS1-S6"
       ]
@@ -2000,6 +2562,8 @@
   "skill_sequence": [
     "7NS1-F1",
     "7NS1-F2",
+    "7NS1-B1",
+    "7NS1-B2",
     "7NS1-S1",
     "7NS1-S2",
     "7NS1-S3",
@@ -2010,17 +2574,23 @@
   "skill_tree": {
     "7NS1-F1": [],
     "7NS1-F2": [],
-    "7NS1-S1": [
+    "7NS1-B1": [
+      "7NS1-F2"
+    ],
+    "7NS1-B2": [
       "7NS1-F1"
     ],
+    "7NS1-S1": [
+      "7NS1-B1",
+      "7NS1-B2"
+    ],
     "7NS1-S2": [
-      "7NS1-F1"
+      "7NS1-S1"
     ],
     "7NS1-S3": [
       "7NS1-S2"
     ],
     "7NS1-S4": [
-      "7NS1-F2",
       "7NS1-S1"
     ],
     "7NS1-S5": [
@@ -2032,18 +2602,22 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (add rationals with opposite signs) -- the At-proficiency computational core. If they pass, move to S5 (interpret sums in context) and S6 (reason abstractly). If they fail, split: S1 checks whether additive inverses (opposites summing to zero) are understood, and S3 checks number-line distance reasoning. S2 (write a distance expression) branches off as a support check.",
+    "description": "Start with S4, adding rationals with opposite signs, the At-proficiency computational core. If they pass, move up to S5 (interpret sums in context) and S6 (reason abstractly). If they fail, drop below grade level: B1 checks unlike-denominator fraction addition and B2 checks decimal arithmetic, the two grade 6 skills signed-number work leans on. If those wobble, the foundations F1 (decimal place value) and F2 (like-denominator fractions) locate the gap in grades 3-5. S1, S2, and S3 remain available to probe the standard's own zero-pair and distance groundwork.",
     "entry_skill": "7NS1-S4",
     "if_pass": [
       "7NS1-S5",
       "7NS1-S6"
     ],
     "if_fail": [
-      "7NS1-S1",
-      "7NS1-S3"
+      "7NS1-B1",
+      "7NS1-B2"
     ],
     "branch_skills": [
-      "7NS1-S2"
+      "7NS1-F1",
+      "7NS1-F2",
+      "7NS1-S1",
+      "7NS1-S2",
+      "7NS1-S3"
     ]
   }
 }

@@ -3,7 +3,7 @@
   "standard_text": "Give examples of rational and irrational numbers and explain the difference; understand that every number has a decimal expansion -- rational numbers have expansions that terminate or eventually repeat, and convert a repeating decimal expansion to a fraction.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard braids two ideas: SORT numbers into rational and irrational, and understand the DECIMAL EXPANSION that decides which pile a number lands in. Everything rests on one definition -- a rational number can be written as a fraction of two integers, and its decimal either terminates or eventually repeats; an irrational number cannot, so its decimal runs on forever with no repeating block. The progression opens where recognition lives: picking the irrational numbers out of an easy set (√2, √3, π) and, crucially, learning that a repeating decimal like 0.333... is rational even though it never ends. It then widens to classifying square roots, where the trap flips -- √25 is rational because 25 is a perfect square, while √7 is irrational.\n\nThe second strand makes the decimal expansion concrete and reversible. Students convert a fraction to its decimal and decide whether it terminates or repeats (a denominator of only 2s and 5s terminates; any other factor repeats), then run the machine backward -- converting a repeating decimal into a fraction by setting it equal to x, shifting, and subtracting so the endless tail cancels (0.4545... = 45/99 = 5/11). The two strands meet in an At-proficiency task that asks students to find the single genuine irrational among tricky look-alikes, and the capstone reasons about the number system itself: judging and justifying claims such as 'every repeating decimal is irrational' (false) with a definition or a counterexample. The through-line we keep naming: rational means it can be a fraction, so its decimal terminates or repeats; irrational means it cannot, so its decimal never terminates and never repeats. No calculator is allowed, so every square root, fraction, and decimal is one students can reason about by hand.",
+    "narrative": "This standard asks students to sort numbers into rational and irrational, understand that a rational number's decimal expansion terminates or eventually repeats, and convert a repeating decimal back into a fraction. The on-grade work runs from recognizing irrationals in a set, through classifying square roots by testing for perfect squares, to converting fractions to decimals and running the machine backward with the set-equal-to-x-and-subtract method. Students who stall here usually cannot carry out the long division that produces a decimal expansion, or they have no bank of square facts to test a radicand against. Intervention should rebuild grade 7 fluency with fraction-to-decimal division and square roots of perfect squares before returning to the rational versus irrational sort. Deeper gaps trace to grade 4 work with tenths and hundredths notation and with multiplication facts and factor pairs.",
     "steps": [
       {
         "skill_id": "8NS1-S1",
@@ -40,199 +40,755 @@
   "skills": [
     {
       "skill_id": "8NS1-F1",
-      "name": "Convert a fraction to a decimal by dividing the numerator by the denominator",
+      "name": "Write tenths and hundredths as fractions and decimals",
       "column": "foundation",
       "parent_standard": "8.NS.1",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Divide the numerator by the denominator to write a fraction as a decimal.",
-        "check_question": "What is 3/4 written as a decimal?"
+        "grade": 4,
+        "description": "Write a fraction with denominator 10 or 100 as a decimal, and read a decimal back as tenths or hundredths.",
+        "check_question": "Write 7/10 as a decimal."
       },
-      "i_do_script": "Think of 3/4 as 3 candy bars shared fairly among 4 people -- each person gets less than one whole bar, so the answer has to come out smaller than 1. That sharing picture is the whole meaning of the bar. A fraction is a division problem: the bar means 'divide the top by the bottom.' Watch: 3/4 means 3 divided by 4 = 0.75, and 1/8 means 1 divided by 8 = 0.125. I keep the common ones in my head -- 1/2 = 0.5, 1/4 = 0.25, 1/5 = 0.2, 1/8 = 0.125. Being able to divide a fraction into a decimal is what later lets me see whether that decimal terminates or repeats.",
+      "i_do_script": "Tenths and hundredths are two names for the same shaded squares. Watch: 7/10 means 7 out of 10 equal parts, and the decimal name for that is 0.7, seven tenths. On a hundredths grid, 43/100 shades 43 of the 100 small squares, and its decimal name is 0.43. Going backward works too: 0.09 means 9 hundredths, so it is 9/100. The first place after the point counts tenths and the second place counts hundredths, so the fraction and the decimal are the same number in two costumes.",
       "canonical_error": {
-        "pattern": "Divides the denominator by the numerator, or reads the fraction bar backward",
-        "example": "Writes 1/4 as 4.0 (dividing 4 by 1) or 0.4 instead of 0.25",
-        "why": "The student divides the larger number by the smaller, or forgets the bar means top-divided-by-bottom. a/b always means a divided by b, not b divided by a."
+        "pattern": "Puts the digits in the wrong decimal place, treating hundredths like tenths",
+        "example": "Writes 9/100 as 0.9 instead of 0.09",
+        "why": "The student drops the digit into the first open spot after the point. The denominator names the place: tenths land in the first place and hundredths need two places, so 9/100 must be 0.09."
       },
-      "item_template": "A simple fraction to convert to a decimal. Short response fluency bank.",
+      "item_template": "A fraction with denominator 10 or 100, or a decimal to the hundredths. Student converts between the fraction name and the decimal name. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "What is 1/2 as a decimal?",
-          "answer": "0.5"
+          "stem": "Write 7/10 as a decimal.",
+          "answer": "0.7"
         },
         {
-          "stem": "Write 3/4 as a decimal.",
-          "answer": "0.75"
+          "stem": "Write 43/100 as a decimal.",
+          "answer": "0.43"
         },
         {
-          "stem": "What is 1/8 as a decimal?",
-          "answer": "0.125"
+          "stem": "Write 0.09 as a fraction.",
+          "answer": "9/100"
         },
         {
-          "stem": "Write 2/5 as a decimal.",
-          "answer": "0.4"
+          "stem": "Write 3/100 as a decimal.",
+          "answer": "0.03"
         },
         {
-          "stem": "What is 1/4 as a decimal?",
-          "answer": "0.25"
+          "stem": "Write 0.5 as a fraction with denominator 10.",
+          "answer": "5/10"
         },
         {
-          "stem": "Write 1/10 as a decimal.",
-          "answer": "0.1"
+          "stem": "Write 0.61 as a fraction.",
+          "answer": "61/100"
+        },
+        {
+          "stem": "Which is the decimal for 30/100?",
+          "answer": "0.30 (or 0.3)"
+        },
+        {
+          "stem": "Write nine tenths as a decimal.",
+          "answer": "0.9"
         }
       ],
       "redirect_script": {
-        "stop": "The bar means top divided by bottom.",
-        "prompt": "Picture the sharing first: 3 bars among 4 people means each share is less than a whole bar, so the decimal must be less than 1. Rewrite the fraction as a division: 3/4 is 3 divided by 4. Put a decimal point and zeros on the top, then divide.",
-        "praise": "You divided the numerator by the denominator -- that's the decimal."
+        "stop": "Does the denominator say tenths or hundredths?",
+        "prompt": "A denominator of 10 fills one place after the point and a denominator of 100 fills two. Count the places: 9/100 needs two places, so write 0.09.",
+        "praise": "You matched the denominator to the place, that is exactly what the decimal point does."
       },
       "vocabulary": [
         {
-          "term": "Numerator",
-          "definition": "The top number of a fraction; it tells how many parts you have."
+          "term": "Tenths",
+          "definition": "The first place to the right of the decimal point; one tenth is 1/10 or 0.1."
         },
         {
-          "term": "Denominator",
-          "definition": "The bottom number of a fraction; it tells how many equal parts make one whole."
+          "term": "Hundredths",
+          "definition": "The second place to the right of the decimal point; one hundredth is 1/100 or 0.01."
         }
       ],
       "next_steps": {
-        "if_pass": "8NS1-S3",
-        "if_fail": "Review long division (6.NS.2)."
+        "if_pass": "8NS1-B1",
+        "if_fail": "Review grade 4 decimal notation with a hundredths grid (tenths and hundredths as shaded squares)."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "3 bars shared among 8 people: does each person get more than one whole bar, or less? So when we divide, should 3/8 come out bigger than 1 or smaller than 1?",
-          "visual": {
-            "type": "fraction_bars",
-            "label": "One person's share: 3/8 of a bar",
-            "bars": [
-              {
-                "parts": 8,
-                "shaded": 3,
-                "label": "3/8"
-              }
-            ]
-          }
-        },
-        {
           "kind": "show",
-          "text": "Write 3/8 and read it as '3 divided by 8.'"
+          "text": "Shade 43 small squares on a hundredths grid."
         },
         {
           "kind": "ask",
-          "text": "Put a decimal point and zeros after the 3. What is 3.000 divided by 8?"
+          "text": "How many squares out of 100 are shaded? What fraction is that?"
         },
         {
           "kind": "say",
-          "text": "3 divided by 8 = 0.375. The fraction bar just means divide the top by the bottom."
+          "text": "43 out of 100 squares is 43/100, and its decimal name is 0.43: 4 tenths and 3 more hundredths. The fraction and the decimal name the same shading."
         },
         {
           "kind": "watch",
-          "text": "If a student writes 2.67 (8 divided by 3), ask 'which number goes inside the division box, the top or the bottom?'"
+          "text": "If a student writes 9/100 as 0.9, shade both on grids: 0.9 covers 90 squares, not 9."
         },
         {
           "kind": "ask",
-          "text": "Your turn: write 1/4 as a decimal."
+          "text": "Your turn: write 7/100 as a decimal."
         }
       ]
     },
     {
       "skill_id": "8NS1-F2",
-      "name": "Identify whether a whole number is a perfect square and name its square root",
+      "name": "Recall multiplication facts and find factor pairs of whole numbers",
       "column": "foundation",
       "parent_standard": "8.NS.1",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 7,
-        "description": "Recognize a perfect square and state its whole-number square root.",
-        "check_question": "Is 25 a perfect square, and what is its square root?"
+        "grade": 4,
+        "description": "Recall products of one-digit numbers and list the factor pairs of a whole number up to 100.",
+        "check_question": "What number times itself equals 36?"
       },
-      "i_do_script": "Picture building a square floor out of tiles: 49 tiles snap into a perfect 7-by-7 square with none left over, but 50 tiles always leave one tile sticking out -- no whole-number square uses exactly 50. A perfect square is a whole number that equals some whole number times itself, so its square root is a whole number. Watch: 25 = 5 x 5, so √25 = 5, a whole number. But 20 is not a perfect square -- 4 x 4 = 16 and 5 x 5 = 25, and nothing whole squares to 20, so √20 is not a whole number. Knowing which numbers are perfect squares is what lets me decide whether a square root is a tidy rational number or not.",
+      "i_do_script": "A factor pair is two whole numbers that multiply to make a target. Watch: for 24 I walk up in order so I miss nothing: 1 x 24, 2 x 12, 3 x 8, 4 x 6. Those are all the pairs, because 5 does not divide 24 and after that the pairs repeat backward. Some numbers have a special pair where both factors match: 36 = 6 x 6, and I can arrange 36 tiles into a 6 by 6 square. Knowing the facts cold, especially the doubles like 7 x 7 = 49 and 8 x 8 = 64, is what makes every later step fast.",
       "canonical_error": {
-        "pattern": "Assumes every square root is a whole number, or that any number under a root is a perfect square",
-        "example": "Says √20 = 10 (half of 20) or treats √20 as a whole number, instead of recognizing 20 is not a perfect square",
-        "why": "The student expects a radical to always simplify to a whole number. Only the square root of a perfect square (like 25) is a whole number; the root of a non-perfect-square (like 20) is not."
+        "pattern": "Skips factors while listing pairs, or confuses a factor with a multiple",
+        "example": "Lists the factor pairs of 24 as 1 x 24 and 2 x 12 only, missing 3 x 8 and 4 x 6",
+        "why": "The student stops after the easy pairs instead of testing each number in order. Walking up 1, 2, 3, 4, 5 and testing each one catches every pair."
       },
-      "item_template": "A whole number; student states whether it is a perfect square and its root. Short response fluency bank.",
+      "item_template": "A one-digit multiplication fact, or a whole number up to 100 to break into factor pairs. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Is 16 a perfect square? What is its square root?",
-          "answer": "Yes; √16 = 4"
+          "stem": "7 x 7",
+          "answer": "49"
         },
         {
-          "stem": "Is 20 a perfect square?",
-          "answer": "No"
+          "stem": "What number times itself equals 36?",
+          "answer": "6"
         },
         {
-          "stem": "What is √49?",
-          "answer": "7"
+          "stem": "List all the factor pairs of 24.",
+          "answer": "1 x 24, 2 x 12, 3 x 8, 4 x 6"
         },
         {
-          "stem": "Is 36 a perfect square? What is its square root?",
-          "answer": "Yes; √36 = 6"
+          "stem": "9 x 9",
+          "answer": "81"
         },
         {
-          "stem": "What is √100?",
-          "answer": "10"
+          "stem": "Is 5 a factor of 35?",
+          "answer": "Yes, 5 x 7 = 35"
         },
         {
-          "stem": "Is 8 a perfect square?",
-          "answer": "No"
+          "stem": "What number times itself equals 64?",
+          "answer": "8"
+        },
+        {
+          "stem": "List all the factor pairs of 16.",
+          "answer": "1 x 16, 2 x 8, 4 x 4"
+        },
+        {
+          "stem": "12 x 12",
+          "answer": "144"
         }
       ],
       "redirect_script": {
-        "stop": "Is there a whole number that squares to it?",
-        "prompt": "Test the number against your square facts (4, 9, 16, 25, 36...). If no whole number times itself lands exactly on it, its square root is not a whole number.",
-        "praise": "You checked for an exact whole-number root -- that's a perfect square."
+        "stop": "Did you test every number in order?",
+        "prompt": "Walk up from 1 and test each number: does it divide the target evenly? Write the pair when it does, and stop when the pairs start repeating backward.",
+        "praise": "You tested the numbers in order, so no pair slipped past you."
       },
       "vocabulary": [
         {
-          "term": "Perfect square",
-          "definition": "A whole number equal to some whole number times itself, like 36 = 6 x 6."
+          "term": "Factor",
+          "definition": "A whole number that divides another number evenly; 6 is a factor of 24."
         },
         {
-          "term": "Square root",
-          "definition": "The number that, multiplied by itself, gives the value; √25 = 5."
+          "term": "Factor pair",
+          "definition": "Two whole numbers that multiply to make a target, like 4 x 6 = 24."
         }
       ],
       "next_steps": {
-        "if_pass": "8NS1-S1",
-        "if_fail": "Review square roots of perfect squares (7.NS.6)."
+        "if_pass": "8NS1-B2",
+        "if_fail": "Review grade 4 multiplication with arrays (a product as rows and columns of tiles)."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Try to arrange 49 tiles into a square: how many rows of how many? Now try 50 tiles -- 7 rows of 7 is only 49, and 8 rows of 8 is 64, so where does the extra tile go?"
-        },
-        {
           "kind": "show",
-          "text": "Write 49 and 50 side by side."
+          "text": "Give a pile of 24 tiles. Build every rectangle you can: 1 by 24, 2 by 12, 3 by 8, 4 by 6."
         },
         {
           "kind": "ask",
-          "text": "Is there a whole number that times itself gives 49? What about 50?"
+          "text": "Can you build a 5 by something rectangle with all 24 tiles? Why not?"
         },
         {
           "kind": "say",
-          "text": "7 x 7 = 49, so 49 is a perfect square and √49 = 7. Nothing whole squares to 50, so √50 is not a whole number."
+          "text": "5 does not divide 24 evenly, so there is no pair with 5. The rectangles you built are the factor pairs: 1 x 24, 2 x 12, 3 x 8, 4 x 6."
         },
         {
           "kind": "watch",
-          "text": "If a student says √50 = 25, ask 'does 25 times 25 equal 50, or did you just halve it?'"
+          "text": "If a student misses 3 x 8, have them test each number in order out loud: does 3 go into 24?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: is 64 a perfect square, and what is its root?"
+          "text": "Your turn: build the rectangles for 16. Which one is a square?"
         }
       ]
     },
     {
+      "skill_id": "8NS1-B1",
+      "name": "Convert a fraction to a decimal using long division",
+      "column": "looking_back",
+      "parent_standard": "8.NS.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Divide the numerator by the denominator with long division and notice whether the decimal stops or a remainder starts repeating.",
+        "check_question": "Use division to write 3/8 as a decimal."
+      },
+      "i_do_script": "The fraction bar is a division sign: 3/8 means 3 divided by 8. Watch: I write 3 as 3.000 and divide. 8 goes into 30 three times with remainder 6, into 60 seven times with remainder 4, into 40 five times with remainder 0. The remainder hit zero, so the decimal stops: 3/8 = 0.375. Now 5/6: 6 into 50 is 8 remainder 2, 6 into 20 is 3 remainder 2, and the remainder 2 keeps coming back, so the digit 3 repeats forever: 5/6 = 0.8333... A remainder of zero means the decimal ends, and a remainder you have seen before means the digits repeat.",
+      "canonical_error": {
+        "pattern": "Divides the denominator by the numerator, reading the fraction bar backward",
+        "example": "Computes 3/8 as 8 divided by 3 and writes 2.67",
+        "why": "The student puts the bigger number inside the division box out of habit. The bar means top divided by bottom, so 3/8 is 3 divided by 8 and must come out less than 1 because 3 is less than 8."
+      },
+      "item_template": "A fraction with denominator up to 12. Student converts it to a decimal with long division, no calculator. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "Use division to write 3/8 as a decimal.",
+          "answer": "0.375"
+        },
+        {
+          "stem": "Use division to write 1/3 as a decimal.",
+          "answer": "0.333..."
+        },
+        {
+          "stem": "Write 4/5 as a decimal.",
+          "answer": "0.8"
+        },
+        {
+          "stem": "Write 5/6 as a decimal.",
+          "answer": "0.8333..."
+        },
+        {
+          "stem": "Which is the decimal for 5/8?",
+          "answer": "0.625",
+          "choices": [
+            "0.625",
+            "1.6",
+            "0.58",
+            "0.6"
+          ],
+          "distractor_logic": "1.6 divides 8 by 5 (bar read backward); 0.58 pastes the digits; 0.6 rounds 5/8 to a nearby tenth."
+        },
+        {
+          "stem": "Write 7/20 as a decimal.",
+          "answer": "0.35"
+        },
+        {
+          "stem": "Write 2/9 as a decimal.",
+          "answer": "0.222..."
+        },
+        {
+          "stem": "Which is the decimal for 1/6?",
+          "answer": "0.1666...",
+          "choices": [
+            "0.1666...",
+            "0.16",
+            "6.0",
+            "0.6"
+          ],
+          "distractor_logic": "0.16 stops the division too early; 6.0 divides bottom by top; 0.6 swaps 1/6 with 6 tenths."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which number goes inside the division box?",
+        "prompt": "The bar means top divided by bottom. Estimate first: 3 is less than 8, so 3/8 must be less than 1. Put the numerator inside, add a decimal point and zeros, and divide until the remainder is zero or starts repeating.",
+        "praise": "You divided top by bottom and watched the remainder, that is the whole conversion."
+      },
+      "vocabulary": [
+        {
+          "term": "Quotient",
+          "definition": "The answer to a division problem; the decimal you get when you divide the numerator by the denominator."
+        },
+        {
+          "term": "Remainder",
+          "definition": "What is left over at each step of long division; a remainder of zero ends the decimal, and a repeated remainder makes the digits repeat."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8NS1-S1",
+        "if_fail": "8NS1-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 3/8 and set up the long division: 3.000 inside the box, 8 outside."
+        },
+        {
+          "kind": "ask",
+          "text": "Before dividing: is 3/8 more than 1 or less than 1? How do you know?"
+        },
+        {
+          "kind": "say",
+          "text": "3 is less than 8, so the answer is less than 1. Divide: 8 into 30 is 3 remainder 6, into 60 is 7 remainder 4, into 40 is 5 remainder 0. The remainder hit zero, so 3/8 = 0.375 and the decimal stops."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 2.67, ask which number belongs inside the box, and whether an answer bigger than 1 fits a fraction smaller than 1."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: divide to write 1/8 as a decimal."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Write 1/2 as a decimal.",
+          "answer": "0.5"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Write 3/10 as a decimal.",
+          "answer": "0.3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Use division to write 3/8 as a decimal.",
+          "answer": "0.375"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Use division to write 1/3 as a decimal.",
+          "answer": "0.333..."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write 9/20 as a decimal.",
+          "answer": "0.45"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write 5/6 as a decimal. What happens to the remainder?",
+          "answer": "0.8333...; the remainder 2 keeps coming back, so the 3 repeats."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write 5/12 as a decimal.",
+          "answer": "0.41666..."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Maya converted 5/8 to a decimal and got 1.6. Find her mistake and fix it.",
+          "shown_work": [
+            "5/8",
+            "= 8 divided by 5",
+            "= 1.6"
+          ],
+          "answer": "She divided the bottom by the top. The bar means 5 divided by 8, and since 5 < 8 the answer must be less than 1: 5/8 = 0.625."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Share the Bars",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper strips (candy bars)",
+            "Scissors",
+            "Whiteboards"
+          ],
+          "instructions": "1. Give each pair 3 paper bars to share fairly among 8 people.\n2. Cut and deal until every share is equal; each person gets 3/8 of a bar.\n3. Now run the long division 3 divided by 8 next to the cutting and match each remainder to the leftover paper being cut smaller.\n4. Repeat with 5 bars among 6 people and watch the remainder 2 come back again and again.\n5. Say each time: the bar means top divided by bottom, and the remainder tells the decimal when to stop."
+        },
+        {
+          "type": "game",
+          "title": "Stop or Repeat Race",
+          "time_minutes": 8,
+          "grouping": "small_group",
+          "materials": [
+            "Fraction flash cards (denominators up to 12)"
+          ],
+          "instructions": "1. Flip a fraction card to start the round.\n2. Players race to divide it out on a whiteboard and call the decimal.\n3. A correct decimal earns the card; calling whether it stopped or repeated, with the remainder as evidence, earns a bonus point.\n4. Debrief: which remainders warned you the digits were about to repeat?"
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Cutting real bars into equal shares grounds 'the fraction bar means divide' before the long-division procedure is named."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud through each remainder makes the stop-or-repeat decision audible instead of a guess."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The backward-division bug produces answers bigger than 1, a precise error a find-and-fix confronts with estimation."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which number goes inside the division box, and why?",
+          "Before you divide, should the answer be bigger or smaller than 1?",
+          "What does a remainder of zero tell you about the decimal?",
+          "You have seen this remainder before. What will the digits do now?",
+          "What fraction of a bar does each person get, and what decimal is that?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student divides the denominator by the numerator and gets an answer bigger than 1.",
+            "say": "3 bars shared among 8 people: does anyone get more than a whole bar? The bar means top divided by bottom, so put the 3 inside the box.",
+            "praise": "You estimated first and put the numerator inside, so the size of your answer made sense."
+          },
+          {
+            "if_you_see": "Student stops the division after two digits and misses a repeat.",
+            "say": "Keep dividing until the remainder hits zero or comes back a second time. In 5/6 the remainder 2 returns every step, so the 3 repeats forever.",
+            "praise": "You tracked the remainder until it told you the pattern."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Write 3/4 as a decimal using division.",
+            "look_for": "0.75, with 3 inside the box; 1.33 means the bar was read backward."
+          },
+          {
+            "prompt": "Divide 1/3. Does the decimal stop?",
+            "look_for": "0.333..., no; the remainder 1 keeps returning, so the 3 repeats."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Use long division to write 3/8 as a decimal.",
+        "answer": "0.375",
+        "steps": [
+          {
+            "math": "3/8 = 3 divided by 8",
+            "annotation": "The fraction bar means top divided by bottom; expect an answer less than 1."
+          },
+          {
+            "math": "8 into 30 = 3, remainder 6",
+            "annotation": "Write 3 in the tenths place and carry the remainder."
+          },
+          {
+            "math": "8 into 60 = 7, remainder 4",
+            "annotation": "Write 7 in the hundredths place."
+          },
+          {
+            "math": "8 into 40 = 5, remainder 0, so 0.375",
+            "annotation": "The remainder hit zero, so the decimal terminates."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Use long division to write 5/6 as a decimal.",
+        "answer": "0.8333...",
+        "steps": [
+          {
+            "math": "5/6 = 5 divided by 6",
+            "annotation": "Top divided by bottom; expect an answer less than 1.",
+            "given": true
+          },
+          {
+            "math": "6 into 50 = 8, remainder 2",
+            "annotation": "Write 8 in the tenths place and carry the remainder.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Divide the next step. What is the remainder this time?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "You have seen that remainder before. Write the decimal and say what the digits do.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The bar in ___ means ___ divided by ___.",
+        "The remainder ___ came back, so the digit ___ repeats forever.",
+        "The remainder hit zero, so the decimal stops at ___."
+      ],
+      "fluency_source": "8NS1-F1"
+    },
+    {
+      "skill_id": "8NS1-B2",
+      "name": "Identify perfect squares and evaluate their square roots",
+      "column": "looking_back",
+      "parent_standard": "8.NS.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Recognize the perfect squares up to 225 and evaluate the square root of a perfect square.",
+        "check_question": "What is the square root of 81?"
+      },
+      "i_do_script": "A perfect square is a whole number of tiles that builds an exact square: 49 tiles make a 7 by 7 square with none left over, so 49 is a perfect square and the square root of 49 is 7. Watch: for the square root of 144 I ask what number times itself gives 144. I know 12 x 12 = 144, so the square root of 144 is 12. But 50 tiles never make a square: 7 x 7 = 49 is too small and 8 x 8 = 64 is too big, so 50 is not a perfect square. I keep the square list in my head, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, and test any number against it.",
+      "canonical_error": {
+        "pattern": "Halves the number instead of finding what times itself gives it",
+        "example": "Says the square root of 100 is 50, or that the square root of 36 is 18",
+        "why": "The student confuses 'square root' with 'half.' The root of 100 is the number that multiplied by itself makes 100, and 10 x 10 = 100 while 50 x 50 = 2500."
+      },
+      "item_template": "A whole number up to 225. Student says whether it is a perfect square and evaluates the root when it is. Short or multiple choice response, no calculator.",
+      "sample_items": [
+        {
+          "stem": "What is the square root of 81?",
+          "answer": "9"
+        },
+        {
+          "stem": "What is the square root of 144?",
+          "answer": "12"
+        },
+        {
+          "stem": "Is 121 a perfect square? If so, what is its square root?",
+          "answer": "Yes; 11"
+        },
+        {
+          "stem": "Is 50 a perfect square?",
+          "answer": "No; 7 x 7 = 49 and 8 x 8 = 64, so nothing whole squares to 50"
+        },
+        {
+          "stem": "What is the square root of 100?",
+          "answer": "10",
+          "choices": [
+            "10",
+            "50",
+            "25",
+            "1000"
+          ],
+          "distractor_logic": "50 halves 100; 25 divides by 4; 1000 multiplies by 10 instead of finding the root."
+        },
+        {
+          "stem": "What is the square root of 225?",
+          "answer": "15"
+        },
+        {
+          "stem": "What is the square root of 169?",
+          "answer": "13"
+        },
+        {
+          "stem": "Which number is a perfect square?",
+          "answer": "196",
+          "choices": [
+            "196",
+            "150",
+            "120",
+            "200"
+          ],
+          "distractor_logic": "196 = 14 x 14; the others sit between consecutive squares (144 and 169, 100 and 121, 196 and 225)."
+        }
+      ],
+      "redirect_script": {
+        "stop": "What number times itself gives it?",
+        "prompt": "Square root asks for the number that multiplied by itself makes the target, not half of it. Run your square list: does the target appear as something times itself?",
+        "praise": "You asked what times itself gives the number, that is exactly what a root is."
+      },
+      "vocabulary": [
+        {
+          "term": "Perfect square",
+          "definition": "A whole number equal to some whole number times itself, like 144 = 12 x 12."
+        },
+        {
+          "term": "Square root",
+          "definition": "The number that, multiplied by itself, gives the value; the square root of 81 is 9."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8NS1-S1",
+        "if_fail": "8NS1-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Pour out 49 tiles and build a square: 7 rows of 7, none left over."
+        },
+        {
+          "kind": "ask",
+          "text": "Now take 50 tiles. Can you build an exact square? Where does the extra tile go?"
+        },
+        {
+          "kind": "say",
+          "text": "7 x 7 = 49 is too small and 8 x 8 = 64 is too big, so 50 never makes a square. 49 is a perfect square with square root 7; 50 is not a perfect square."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says the square root of 100 is 50, ask what 50 x 50 equals. Halving is not rooting."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: is 64 a perfect square, and what is its square root?"
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What is 6 x 6?",
+          "answer": "36"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is the square root of 25?",
+          "answer": "5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is the square root of 144?",
+          "answer": "12"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is 121 a perfect square? Explain.",
+          "answer": "Yes; 11 x 11 = 121, so its square root is 11."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is 90 a perfect square? Explain.",
+          "answer": "No; 9 x 9 = 81 and 10 x 10 = 100, so nothing whole squares to 90."
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is the square root of 196?",
+          "answer": "14"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "List every perfect square between 100 and 225, including both ends.",
+          "answer": "100, 121, 144, 169, 196, 225"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo wrote that the square root of 64 is 32. Find his mistake and fix it.",
+          "shown_work": [
+            "square root of 64",
+            "= 64 divided by 2",
+            "= 32"
+          ],
+          "answer": "He halved instead of finding what times itself gives 64. 32 x 32 = 1024, not 64. Since 8 x 8 = 64, the square root of 64 is 8."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build the Squares",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Square tiles or grid paper",
+            "Whiteboards"
+          ],
+          "instructions": "1. Give each pair a count of tiles: 36, then 40, then 49.\n2. Try to build an exact square from each count; record which counts work and the side length of each square.\n3. Write the fact next to each square: 6 x 6 = 36, so the square root of 36 is 6.\n4. For counts that fail, name the squares they sit between (40 is between 36 and 49).\n5. Build the class square list from 1 to 225 on grid paper."
+        },
+        {
+          "type": "game",
+          "title": "Square Radar",
+          "time_minutes": 8,
+          "grouping": "small_group",
+          "materials": [
+            "Number flash cards, mixed perfect squares and near-misses up to 225"
+          ],
+          "instructions": "1. Flip a number card.\n2. Players call 'square' with the root (144: square, root 12) or 'not a square' with the two squares it sits between (150: between 144 and 169).\n3. A correct call keeps the card; a halving answer like 'root of 100 is 50' loses one.\n4. Debrief: which near-misses fooled the group, and why?"
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building squares from tiles makes 'a number times itself' concrete before the root symbol and the square list are named."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral rehearsal of the square facts through 15 x 15 builds the instant recall that classifying radicands later depends on."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The halving bug is stable and checkable; multiplying the claimed root by itself exposes it immediately."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What number times itself gives this target?",
+          "Can you build an exact square from this many tiles? How do you know?",
+          "Which two perfect squares does this number sit between?",
+          "What is the difference between half of 100 and the square root of 100?",
+          "How can you check a square root answer without a calculator?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student halves the number and calls it the square root.",
+            "say": "Check it: does 50 x 50 equal 100? Square root asks what times itself gives the number, so run your square facts: 10 x 10 = 100.",
+            "praise": "You checked by multiplying the root by itself, that check never lies."
+          },
+          {
+            "if_you_see": "Student assumes every number has a whole-number square root.",
+            "say": "Try to build 50 tiles into a square: 7 by 7 is 49 and 8 by 8 is 64. Only the numbers on the square list have whole-number roots.",
+            "praise": "You trapped it between two squares instead of forcing an answer."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "What is the square root of 121?",
+            "look_for": "11; an answer of 60.5 means halving instead of rooting."
+          },
+          {
+            "prompt": "Is 110 a perfect square?",
+            "look_for": "No, it sits between 100 and 121."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "What is the square root of 144?",
+        "answer": "12",
+        "steps": [
+          {
+            "math": "square root of 144 asks: what times itself = 144",
+            "annotation": "Root means a matched factor pair, not half."
+          },
+          {
+            "math": "10 x 10 = 100, too small",
+            "annotation": "Walk the square list toward the target."
+          },
+          {
+            "math": "12 x 12 = 144",
+            "annotation": "The target appears on the square list."
+          },
+          {
+            "math": "square root of 144 = 12",
+            "annotation": "Check: 12 x 12 = 144, so the root is 12."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "What is the square root of 225?",
+        "answer": "15",
+        "steps": [
+          {
+            "math": "square root of 225 asks: what times itself = 225",
+            "annotation": "Root means a matched factor pair, not half.",
+            "given": true
+          },
+          {
+            "math": "14 x 14 = 196, too small",
+            "annotation": "Walk the square list toward the target.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Test the next whole number times itself.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the root and check it by multiplying.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "___ is a perfect square because ___ x ___ = ___.",
+        "___ is not a perfect square because it sits between ___ and ___.",
+        "The square root of ___ is ___, and I checked by multiplying ___ x ___."
+      ],
+      "fluency_source": "8NS1-F2"
+    },
+    {
       "skill_id": "8NS1-S1",
       "name": "Identify which numbers in a set are irrational",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "8.NS.1",
       "engine_stems": [
         1
@@ -497,7 +1053,7 @@
           }
         ]
       },
-      "fluency_source": "8NS1-F2",
+      "fluency_source": "8NS1-B2",
       "sentence_starters": [
         "___ is irrational because it cannot be a fraction and its decimal never repeats.",
         "___ is rational because it equals the fraction ___."
@@ -554,7 +1110,7 @@
     {
       "skill_id": "8NS1-S2",
       "name": "Classify each number as rational or irrational, including square roots",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "8.NS.1",
       "engine_stems": [
         2
@@ -806,7 +1362,7 @@
           }
         ]
       },
-      "fluency_source": "8NS1-F2",
+      "fluency_source": "8NS1-B2",
       "sentence_starters": [
         "√___ is rational because ___ is a perfect square (√___ = ___).",
         "√___ is irrational because ___ is not a perfect square."
@@ -1144,7 +1700,7 @@
           }
         ]
       },
-      "fluency_source": "8NS1-F1",
+      "fluency_source": "8NS1-B1",
       "sentence_starters": [
         "___ terminates because its denominator has only ___.",
         "___ repeats because its denominator has a factor of ___."
@@ -1442,7 +1998,7 @@
           }
         ]
       },
-      "fluency_source": "8NS1-F1",
+      "fluency_source": "8NS1-B1",
       "sentence_starters": [
         "The block ___ has ___ digits, so it goes over ___.",
         "___ = ___/___ , which simplifies to ___."
@@ -1775,7 +2331,7 @@
           }
         ]
       },
-      "fluency_source": "8NS1-F2",
+      "fluency_source": "8NS1-B2",
       "sentence_starters": [
         "I tested ___: it is rational because ___.",
         "___ is the irrational one because ___ is not a perfect square."
@@ -2077,7 +2633,7 @@
           }
         ]
       },
-      "fluency_source": "8NS1-F1",
+      "fluency_source": "8NS1-B1",
       "sentence_starters": [
         "The claim is ___ because ___.",
         "A counterexample is ___, which shows ___."
@@ -2134,8 +2690,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 4-6) prerequisite skills. Start intervention here.",
       "skills": [
         "8NS1-F1",
         "8NS1-F2"
@@ -2143,16 +2699,18 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 7) skills that feed this standard directly.",
       "skills": [
-        "8NS1-S1",
-        "8NS1-S2"
+        "8NS1-B1",
+        "8NS1-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "8NS1-S1",
+        "8NS1-S2",
         "8NS1-S3",
         "8NS1-S4",
         "8NS1-S5"
@@ -2160,7 +2718,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "8NS1-S6"
       ]
@@ -2169,6 +2727,8 @@
   "skill_sequence": [
     "8NS1-F1",
     "8NS1-F2",
+    "8NS1-B1",
+    "8NS1-B2",
     "8NS1-S1",
     "8NS1-S2",
     "8NS1-S3",
@@ -2179,15 +2739,21 @@
   "skill_tree": {
     "8NS1-F1": [],
     "8NS1-F2": [],
-    "8NS1-S1": [
+    "8NS1-B1": [
+      "8NS1-F1"
+    ],
+    "8NS1-B2": [
       "8NS1-F2"
     ],
+    "8NS1-S1": [
+      "8NS1-B2"
+    ],
     "8NS1-S2": [
-      "8NS1-F2",
+      "8NS1-B2",
       "8NS1-S1"
     ],
     "8NS1-S3": [
-      "8NS1-F1"
+      "8NS1-B1"
     ],
     "8NS1-S4": [
       "8NS1-F1",
@@ -2203,16 +2769,20 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S2 (classify numbers as rational or irrational, including square roots) -- the At-proficiency core of the standard. If they pass, move up to S5 (find the irrational among tricky look-alikes) and S6 (analyze and justify a generalization). If they fail, drop to S1 (select the irrational numbers from an easy set) to see whether basic recognition is intact. The decimal-conversion strand -- S3 (convert a fraction to its decimal and classify it) and S4 (convert a repeating decimal to a fraction) -- branches off as a separate check, since a student can classify numbers yet still struggle to convert between fractions and decimals.",
+    "description": "Start with S2, classifying numbers as rational or irrational including square roots, the At-proficiency core of the standard. If they pass, move up to S5 (find the irrational among tricky look-alikes) and S6 (justify a generalization). If they fail, drop below grade level: B1 checks fraction-to-decimal long division and B2 checks square roots of perfect squares, the two grade 7 skills the classification work leans on. If those wobble, the foundations F1 (tenths and hundredths notation) and F2 (multiplication facts and factor pairs) locate the gap in grade 4. S1, S3, and S4 remain available to probe the standard's own recognition and conversion strands.",
     "entry_skill": "8NS1-S2",
     "if_pass": [
       "8NS1-S5",
       "8NS1-S6"
     ],
     "if_fail": [
-      "8NS1-S1"
+      "8NS1-B1",
+      "8NS1-B2"
     ],
     "branch_skills": [
+      "8NS1-F1",
+      "8NS1-F2",
+      "8NS1-S1",
       "8NS1-S3",
       "8NS1-S4"
     ]

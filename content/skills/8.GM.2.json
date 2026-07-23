@@ -3,7 +3,7 @@
   "standard_text": "Solve real-world and other mathematical problems involving volume of cones, spheres, and pyramids and surface area of spheres.",
   "schema_version": 3,
   "progression": {
-    "narrative": "Every solid in this standard is a formula with one dangerous ingredient, so the progression teaches the formulas by their traps. A cone is a cylinder poured down to a point: its volume is exactly one third of the cylinder that shares its base and height, V = (1/3) pi r squared h. A square pyramid is the same story with a flat base, V = (1/3) B h, where B is the side squared. That shared one-third factor is the single most fragile move in the whole standard -- students find the full cylinder or prism and forget to take a third, tripling their answer. A sphere hides two different traps: its volume CUBES the radius, V = (4/3) pi r cubed, while its surface area SQUARES it, SA = 4 pi r squared, and both are almost always handed a diameter that must be halved first. So the arc opens by making each of the three volume computations automatic one shape at a time -- cone, sphere, pyramid -- naming the exact ingredient that goes missing in each.\n\nFrom those atoms the standard fans outward. First it runs a formula backwards: given the volume and all but one measurement, recover the missing height or side, which for a cone or pyramid means multiplying by 3 to undo the one-third, and for a sphere's radius means undoing a square root from the surface area (never a cube root -- the spec forbids it). Then it drops the computation into real-world questions -- paper cups, glass pyramids, spherical balloons -- where the volume is only step one and the story asks a further question or the diameter is buried in the wording. Finally it reaches the hardest problems, where one shape's measurement must be found before another's volume can be computed: a sphere's surface area gives its radius which gives its volume, a cone's volume compares against the cylinder around it, or a pyramid is stacked against a cube. The through-line we keep naming: pick the formula, halve the diameter if you were given one, remember the one-third for cones and pyramids, and then decide whether the volume is the answer or only the first step.",
+    "narrative": "This standard asks students to find the volume of cones, spheres, and pyramids and the surface area of spheres, both as bare computations and inside real-world problems. The on-grade work builds from the three volume formulas, each with its own trap like the forgotten one-third or a diameter used as a radius, to running a formula backwards for a missing dimension and finally to multi-step contexts. Students who struggle here usually cannot yet find the volume of a prism or cylinder or the area of a circle, the grade seven skills every formula in this standard extends. Deeper down, the gaps are often area of a rectangle and volume of a box built from unit-cube layers. Intervention should rebuild those pictures first, then the grade seven prism, cylinder, and circle work, and only then return to cones, spheres, and pyramids.",
     "steps": [
       {
         "skill_id": "8GM2-S1",
@@ -40,180 +40,830 @@
   "skills": [
     {
       "skill_id": "8GM2-F1",
-      "name": "Evaluate pi times the radius squared and square a radius",
+      "name": "Find the area of a rectangle or square by counting rows",
       "column": "foundation",
       "parent_standard": "8.GM.2",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 7,
-        "description": "Square a number and evaluate pi times the radius squared, using the radius (half the diameter), not the diameter.",
-        "check_question": "A circle has a diameter of 10. What is the radius, and what is 3.14 times the radius squared?"
+        "grade": 4,
+        "description": "Find the area of a rectangle as rows of unit squares, length times width, and the area of a square as side times side.",
+        "check_question": "A rectangle is 7 units long and 4 units wide. What is its area?"
       },
-      "i_do_script": "Squaring is drawing a square: 6 squared is a 6-by-6 square of unit cells, 36 of them -- which is why 6 squared is 6 x 6, never 6 x 2 (that would be two rows, not a square). Every cone and every sphere in this standard leans on the same little computation: a radius squared, sometimes times pi. Squaring means the number times itself: 6 squared is 6 times 6 = 36, not 6 times 2. To find pi r squared with radius 6, I square first, then multiply by 3.14: 3.14 times 36 = 113.04. The trap is the diameter: if I am told the diameter is 10, the RADIUS is half of that, 5, and I square the 5, never the 10.",
+      "i_do_script": "Area is a count of unit squares, and a rectangle organizes that count into rows. Watch: a rectangle 7 long and 4 wide is 4 rows with 7 squares in each row. I do not count one square at a time, I multiply: 7 times 4 = 28 square units. A square is the special rectangle where the sides match, so a square with side 6 is 6 rows of 6, and 6 times 6 = 36 square units. The answer is in SQUARE units because I am counting squares, not lengths.",
       "canonical_error": {
-        "pattern": "Uses the diameter in place of the radius, or reads 'squared' as 'times 2' instead of the number times itself",
-        "example": "For a circle with diameter 10, computes 3.14 times 10 squared = 314, or evaluates 5 squared as 5 times 2 = 10 instead of 5 times 5 = 25",
-        "why": "The student grabs the number handed to them (the diameter) and skips halving it, or treats the exponent as a multiplier; squaring is a number times itself, and the radius is half the diameter."
+        "pattern": "Adds the side lengths instead of multiplying, or doubles one side for a square instead of multiplying side times side",
+        "example": "Says a 7 by 4 rectangle has area 11, or a square with side 6 has area 12",
+        "why": "The student treats area like a distance and combines the lengths. Area counts the squares inside: rows times squares per row, and a square is side times side, not side times 2."
       },
-      "item_template": "A radius or diameter, sometimes with 3.14 as a factor. Student squares the radius or evaluates pi r squared. Short response fluency bank.",
+      "item_template": "A rectangle given by length and width, or a square given by its side, whole numbers only. Student finds the area. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "A radius is 5. What is the radius squared (5 times 5)?",
-          "answer": "25"
+          "stem": "A rectangle is 7 units long and 4 units wide. What is its area?",
+          "answer": "28 square units"
         },
         {
-          "stem": "Evaluate 3.14 times 6 squared (this is pi r squared when r = 6). Use 3.14 for pi.",
-          "answer": "113.04"
+          "stem": "A square has a side of 6. What is its area?",
+          "answer": "36 square units"
         },
         {
-          "stem": "A circle has a diameter of 10. What is the radius, and what is 3.14 times the radius squared?",
-          "answer": "radius 5; 78.5"
+          "stem": "A rectangle is 9 long and 5 wide. What is its area?",
+          "answer": "45 square units"
         },
         {
-          "stem": "Evaluate 4 times 3.14 times 3 squared (this is 4 pi r squared when r = 3). Use 3.14 for pi.",
-          "answer": "113.04"
+          "stem": "A square has a side of 8. What is its area?",
+          "answer": "64 square units"
+        },
+        {
+          "stem": "A rectangle is 12 long and 3 wide. What is its area?",
+          "answer": "36 square units"
+        },
+        {
+          "stem": "A square has a side of 5. What is its area?",
+          "answer": "25 square units"
+        },
+        {
+          "stem": "A rectangle is 10 long and 10 wide. What is its area? What special rectangle is it?",
+          "answer": "100 square units; it is a square"
+        },
+        {
+          "stem": "A grid shows 3 rows with 8 squares in each row. How many squares in all?",
+          "answer": "24 squares"
         }
       ],
       "redirect_script": {
-        "stop": "Wait -- is that number the radius or the diameter?",
-        "prompt": "If you were given the diameter, cut it in half to get the radius first. Then square the radius (radius times radius) before you multiply by 3.14.",
-        "praise": "You halved the diameter and squared the radius -- that keeps pi r squared right."
+        "stop": "Are you counting squares or adding lengths?",
+        "prompt": "Area counts the unit squares inside. Count the rows, count the squares in one row, and multiply: rows times squares per row.",
+        "praise": "You multiplied the rows by the squares in each row, that is exactly what area counts."
       },
       "vocabulary": [
         {
-          "term": "Radius",
-          "definition": "The distance from the center of a circle or sphere to its edge; half the diameter."
+          "term": "Area",
+          "definition": "The number of unit squares that cover a flat shape, measured in square units."
         },
         {
-          "term": "Diameter",
-          "definition": "The distance across a circle or sphere through its center; twice the radius."
+          "term": "Square unit",
+          "definition": "A square that is 1 unit on each side; area counts how many of these fit inside."
         },
         {
-          "term": "Squared",
-          "definition": "A number multiplied by itself; 6 squared means 6 times 6 = 36."
+          "term": "Row",
+          "definition": "A line of squares across the shape; a rectangle's area is rows times squares per row."
         }
       ],
       "next_steps": {
-        "if_pass": "8GM2-S1",
-        "if_fail": "Review area of circles and exponents (7.GM.2 / 6.C)."
+        "if_pass": "8GM2-B2",
+        "if_fail": "Review grade 3 and 4 area with tiled grids (counting unit squares in rows and columns)."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Picture 4 squared as an actual square: how many rows, how many in each row, how many cells in all? Why can't 4 x 2 = 8 be a square?"
-        },
-        {
           "kind": "show",
-          "text": "Write 'A sphere has a diameter of 8. Find 3.14 times the radius squared.'"
+          "text": "Draw a 7 by 4 rectangle on grid paper so every unit square shows."
         },
         {
           "kind": "ask",
-          "text": "What is the radius when the diameter is 8? Then what do we do to the radius?"
+          "text": "How many rows are there? How many squares in one row?"
         },
         {
           "kind": "say",
-          "text": "The radius is half of 8, which is 4. Square it: 4 times 4 = 16. Then 3.14 times 16 = 50.24."
+          "text": "4 rows with 7 squares each. Instead of counting all of them, multiply: 7 times 4 = 28 square units."
         },
         {
           "kind": "watch",
-          "text": "If the student uses 8 as the radius, ask 'is that all the way across or halfway across? Which one is the radius?'"
+          "text": "If the student says 11, point at the grid: does 11 count all these squares? Adding the sides gives a distance, not a count of squares."
         },
         {
           "kind": "ask",
-          "text": "Your turn: square a radius of 7, and evaluate 3.14 times 5 squared."
+          "text": "Your turn: draw or picture a square with side 6. How many rows, how many in each row, what is the area?"
         }
       ]
     },
     {
       "skill_id": "8GM2-F2",
-      "name": "Cube a number and take one third or four thirds of a product",
+      "name": "Find the volume of a rectangular box by unit-cube layers",
       "column": "foundation",
       "parent_standard": "8.GM.2",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 7,
-        "description": "Evaluate a number cubed and multiply a product by the fraction 1/3 or 4/3.",
-        "check_question": "Evaluate 3 cubed (3 times 3 times 3). Then find one third of 27 (that is, 27 divided by 3)."
+        "grade": 5,
+        "description": "Find the volume of a rectangular prism by counting a layer of unit cubes and stacking layers: length times width times height.",
+        "check_question": "A box is 4 cubes long, 3 cubes wide, and 5 cubes tall. How many unit cubes fill it?"
       },
-      "i_do_script": "Cubing is building a cube: 3 cubed is a 3-by-3-by-3 block -- a 3-by-3 layer of 9, stacked 3 layers tall, 27 cells. That's why 3 cubed is 3 x 3 x 3, never 3 x 3 alone (that's one flat layer). And 'one third of' a product means splitting the block into 3 equal shares and keeping one. The cone, the pyramid, and the sphere all end in a fraction the student has to actually apply. Cubing means a number times itself three times: 3 cubed is 3 times 3 times 3 = 27, not 3 times 3. Taking one third means dividing by 3: one third of 900 is 900 divided by 3 = 300. For a sphere I take four thirds, which is times 4 then divided by 3: four thirds of 27 is 4 times 27 = 108, then 108 divided by 3 = 36. The trap is skipping the fraction entirely and leaving the full product.",
+      "i_do_script": "Volume is a count of unit cubes, and a box organizes that count into layers. Watch: a box 4 long and 3 wide has a bottom layer of 4 times 3 = 12 cubes. If the box is 5 cubes tall, I stack 5 of those layers: 12 times 5 = 60 cubes, so the volume is 60 cubic units. That is all the formula V = l x w x h says: one layer, times how many layers tall. The answer is in CUBIC units because I am counting cubes that fill space, not squares that cover a floor.",
       "canonical_error": {
-        "pattern": "Reads 'cubed' as 'times 3,' or drops the 1/3 or 4/3 factor and reports the whole product",
-        "example": "Evaluates 3 cubed as 3 times 3 = 9 instead of 27, or reports 900 as one third of 900 instead of 300",
-        "why": "The student treats the exponent 3 as a multiplier and forgets that the volume formulas scale the product by a fraction; cubing is a number times itself three times, and one third means dividing by 3."
+        "pattern": "Adds the three dimensions, or finds only the bottom layer and forgets to multiply by the height",
+        "example": "For a 4 by 3 by 5 box, answers 12 (adds 4 + 3 + 5) or 12 cubes (one layer only) instead of 60",
+        "why": "The student either treats volume like a distance or stops after the first layer. Volume is the layer count times the number of layers: fill the bottom, then stack it the full height."
       },
-      "item_template": "A number cubed, or a product multiplied by 1/3 or 4/3. Student evaluates it. Short response fluency bank.",
+      "item_template": "A rectangular box given by length, width, and height in whole numbers, sometimes shown as stacked unit cubes. Student finds the volume. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Evaluate 4 cubed (4 times 4 times 4).",
-          "answer": "64"
+          "stem": "A box is 4 cubes long, 3 cubes wide, and 5 cubes tall. How many unit cubes fill it?",
+          "answer": "60 cubes"
         },
         {
-          "stem": "A radius is 3. What is r cubed (3 times 3 times 3)?",
-          "answer": "27"
+          "stem": "One layer of a box holds 12 cubes. The box is 5 layers tall. What is the volume?",
+          "answer": "60 cubic units"
         },
         {
-          "stem": "Find one third of 900 (that is, 900 divided by 3).",
-          "answer": "300"
+          "stem": "A box is 2 by 3 by 4. What is its volume?",
+          "answer": "24 cubic units"
         },
         {
-          "stem": "Evaluate four thirds of 27 (multiply by 4, then divide by 3).",
-          "answer": "36"
+          "stem": "A box is 5 by 5 by 5. What is its volume?",
+          "answer": "125 cubic units"
+        },
+        {
+          "stem": "A box is 6 long and 2 wide. How many cubes are in one layer?",
+          "answer": "12 cubes"
+        },
+        {
+          "stem": "A box is 10 by 4 by 2. What is its volume?",
+          "answer": "80 cubic units"
+        },
+        {
+          "stem": "A box has a bottom layer of 20 cubes and is 3 layers tall. What is the volume?",
+          "answer": "60 cubic units"
+        },
+        {
+          "stem": "A box is 7 by 2 by 3. What is its volume?",
+          "answer": "42 cubic units"
         }
       ],
       "redirect_script": {
-        "stop": "Hold on -- what does 'cubed' actually tell you to do?",
-        "prompt": "Cubed means the number times itself three times: 3 cubed is 3 times 3 times 3. And one third means divide by 3 -- don't leave the whole product.",
-        "praise": "You cubed by multiplying three times and kept the fraction -- that's the real value."
+        "stop": "Did you fill just one layer, or the whole box?",
+        "prompt": "Find one layer first: length times width. Then stack: multiply by how many layers tall the box is.",
+        "praise": "You built a layer and stacked it the full height, that is what volume counts."
       },
       "vocabulary": [
         {
-          "term": "Cubed",
-          "definition": "A number multiplied by itself three times; 3 cubed means 3 times 3 times 3 = 27."
+          "term": "Volume",
+          "definition": "The number of unit cubes that fill a solid, measured in cubic units."
         },
         {
-          "term": "One third",
-          "definition": "Dividing an amount into three equal parts and taking one; one third of 90 is 30."
+          "term": "Unit cube",
+          "definition": "A cube that is 1 unit on each edge; volume counts how many of these fit inside."
         },
         {
-          "term": "Product",
-          "definition": "The result of multiplying numbers together."
+          "term": "Layer",
+          "definition": "One flat level of cubes in a box; the volume is one layer times the number of layers."
         }
       ],
       "next_steps": {
-        "if_pass": "8GM2-S1",
-        "if_fail": "Review exponents and multiplying by fractions (6.C / 7.C)."
+        "if_pass": "8GM2-B1",
+        "if_fail": "Review grade 5 volume with snap cubes (build one layer, then stack layers and count)."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Picture 4 cubed as a block: how many cells in one 4-by-4 layer? How many layers? So how many cells in the whole block?"
-        },
-        {
           "kind": "show",
-          "text": "Write 'Evaluate four thirds of 4 cubed.'"
+          "text": "Build or draw the bottom layer of a 4 by 3 box with unit cubes."
         },
         {
           "kind": "ask",
-          "text": "Which piece comes first -- what is 4 cubed?"
+          "text": "How many cubes are in this one layer?"
         },
         {
           "kind": "say",
-          "text": "4 cubed is 4 times 4 times 4 = 64. Four thirds of 64 is 4 times 64 = 256, then 256 divided by 3 is about 85.33."
+          "text": "4 times 3 = 12 cubes in a layer. The box is 5 layers tall, so 12 times 5 = 60 cubes. Volume is 60 cubic units."
         },
         {
           "kind": "watch",
-          "text": "If the student writes 4 cubed as 12, stop: 'cubed is times itself three times, not times three -- 4 times 4 times 4.'"
+          "text": "If the student answers 12, ask: is the box full yet, or is that just the floor? How many more layers stack on top?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: evaluate 5 cubed, and find one third of 300."
+          "text": "Your turn: a box is 2 by 3 by 4. How many cubes in one layer, and how many in the whole box?"
         }
       ]
     },
     {
+      "skill_id": "8GM2-B1",
+      "name": "Calculate the volume of prisms and cylinders using V = B h",
+      "column": "looking_back",
+      "parent_standard": "8.GM.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Find the volume of a right prism or cylinder as base area times height.",
+        "check_question": "A cylinder has a radius of 3 cm and a height of 5 cm. What is its volume? Use 3.14 for pi."
+      },
+      "i_do_script": "Every prism and cylinder is the grade 5 box idea in disguise: one layer, stacked the full height. The layer is the base area B, and the stack is the height h, so V = B h. Watch a rectangular prism 5 by 4 by 10: the base is 5 times 4 = 20, times the height 10 is 200 cubic units. A cylinder just has a circle for its layer: radius 3 gives a base of 3.14 times 9 = 28.26, and stacking it 5 tall gives 28.26 times 5 = 141.3 cubic cm. Two traps: the radius gets squared, radius times radius, and a diameter must be halved before anything else.",
+      "canonical_error": {
+        "pattern": "Uses the diameter as the radius for a cylinder, or multiplies the radius by 2 instead of squaring it",
+        "example": "For a cylinder with diameter 10 and height 3, computes 3.14 x 100 x 3 = 942 instead of halving to radius 5 for 3.14 x 25 x 3 = 235.5",
+        "why": "The student grabs the number given without asking if it is all the way across. The base area needs the radius squared, and the radius is half the diameter."
+      },
+      "item_template": "A right rectangular prism (three dimensions), a prism with a given base area, or a cylinder given by radius or diameter and height. Student finds the volume, using 3.14 for pi. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A rectangular prism is 5 by 4 by 10. What is its volume?",
+          "answer": "200 cubic units",
+          "distractor_logic": "5 x 4 = 20 base, times 10. Adding the dimensions gives 19."
+        },
+        {
+          "stem": "A prism has a base area of 20 square in and a height of 6 in. What is its volume?",
+          "answer": "120 cubic in",
+          "distractor_logic": "B x h = 20 x 6. Adding gives 26."
+        },
+        {
+          "stem": "A cylinder has a radius of 3 cm and a height of 5 cm. What is its volume? Use 3.14 for pi.",
+          "answer": "141.3 cubic cm",
+          "distractor_logic": "3.14 x 9 x 5 = 141.3. Using r x 2 instead of r squared gives 3.14 x 6 x 5 = 94.2."
+        },
+        {
+          "stem": "A cylinder has a radius of 2 in and a height of 10 in. What is its volume? Use 3.14 for pi.",
+          "answer": "125.6 cubic in",
+          "distractor_logic": "3.14 x 4 x 10 = 125.6. Squaring the height instead gives a wrong setup."
+        },
+        {
+          "stem": "A cylinder has a diameter of 10 ft and a height of 3 ft. What is its volume? Use 3.14 for pi.",
+          "answer": "235.5 cubic ft",
+          "distractor_logic": "Radius 5: 3.14 x 25 x 3 = 235.5. Using the diameter 10 as the radius gives 942."
+        },
+        {
+          "stem": "A triangular prism has a base area of 12 square cm and a height of 7 cm. What is its volume?",
+          "answer": "84 cubic cm",
+          "distractor_logic": "B x h = 12 x 7. No one-third here: prisms are full stacks."
+        },
+        {
+          "stem": "A rectangular prism is 6 by 6 by 6. What is its volume?",
+          "answer": "216 cubic units",
+          "distractor_logic": "6 x 6 x 6 = 216. Answering 36 stops at one layer."
+        },
+        {
+          "stem": "A cylinder has a radius of 4 m and a height of 5 m. What is its volume? Use 3.14 for pi.",
+          "answer": "251.2 cubic m",
+          "distractor_logic": "3.14 x 16 x 5 = 251.2. Using r x 2 gives 3.14 x 8 x 5 = 125.6."
+        }
+      ],
+      "redirect_script": {
+        "stop": "What is one layer of this solid, and how tall is the stack?",
+        "prompt": "Find the base area first: length times width for a prism, pi times the radius squared for a cylinder, halving a diameter if you were given one. Then multiply by the height.",
+        "praise": "You found the layer and stacked it the full height, that is B times h."
+      },
+      "vocabulary": [
+        {
+          "term": "Prism",
+          "definition": "A solid with two matching parallel bases and flat sides; its volume is base area times height."
+        },
+        {
+          "term": "Cylinder",
+          "definition": "A solid with two matching circular bases; its volume is pi times the radius squared times the height."
+        },
+        {
+          "term": "Base area (B)",
+          "definition": "The area of one flat layer of the solid; the volume stacks that layer the full height."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM2-S1",
+        "if_fail": "8GM2-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Stack several identical circles cut from paper (or a stack of coins) into a cylinder shape."
+        },
+        {
+          "kind": "ask",
+          "text": "What shape is one layer of this stack? How would you find its area?"
+        },
+        {
+          "kind": "say",
+          "text": "Each layer is a circle, area 3.14 times the radius squared. A cylinder with radius 3 has a layer of 3.14 x 9 = 28.26. Stack it 5 tall: 28.26 x 5 = 141.3 cubic cm. Volume is always one layer times the height."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 3.14 x 6, stop: is that 3 squared or 3 doubled? Squared means 3 times 3."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a cylinder with radius 2 and height 10, using 3.14 for pi."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A prism has a base area of 20 and a height of 6. What is its volume?",
+          "answer": "120 cubic units"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A box is 3 by 4 by 5. What is its volume?",
+          "answer": "60 cubic units"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A rectangular prism is 8 by 5 by 6. Find its volume.",
+          "answer": "240 cubic units (40 base, times 6)",
+          "notes": "Layer first, then stack."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cylinder has a radius of 3 cm and a height of 5 cm. Find its volume. Use 3.14 for pi.",
+          "answer": "141.3 cubic cm (3.14 x 9 x 5)",
+          "notes": "Square the radius before anything else."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cylinder has a diameter of 10 ft and a height of 3 ft. Find its volume. Use 3.14 for pi.",
+          "answer": "235.5 cubic ft (radius 5: 3.14 x 25 x 3)",
+          "notes": "Baits using the diameter as the radius."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A triangular prism has a base area of 12 square cm and a height of 7 cm. Find its volume.",
+          "answer": "84 cubic cm (12 x 7)",
+          "notes": "Base area is given; just stack it."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A cylinder has a radius of 4 m and a height of 5 m. Find its volume, and name the base area you used. Use 3.14 for pi.",
+          "answer": "Base area 3.14 x 16 = 50.24; volume 50.24 x 5 = 251.2 cubic m.",
+          "notes": "Makes the layer explicit."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leah found the volume of a cylinder with radius 2 and height 10. Find her mistake and fix it.",
+          "shown_work": [
+            "Leah wrote: V = 3.14 x 2 x 10",
+            "V = 62.8 cubic units"
+          ],
+          "answer": "Leah never squared the radius: she used 2 instead of 2 squared. The base is 3.14 x 4 = 12.56, then times the height 10 gives 125.6 cubic units."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Stack the Layers",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Snap cubes",
+            "A stack of identical coins or checkers",
+            "Whiteboards"
+          ],
+          "instructions": "1. Build a 4 by 3 layer of snap cubes and count it: 12.\n2. Stack the layer 5 tall and compute 12 x 5 = 60 without counting every cube.\n3. Now stack 6 identical coins: one coin is the base, the stack height is the count. Say: volume is one layer times the height.\n4. Write V = B h and label which part was the layer and which was the stack.\n5. Debrief: a cylinder is a stack of circles, so its layer is pi r squared."
+        },
+        {
+          "type": "card_sort",
+          "title": "Radius or Diameter?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Card set of 6 cylinders, some labeled with a radius and some with a diameter"
+          ],
+          "instructions": "1. Sort the cards into 'radius given' and 'diameter given.'\n2. On every diameter card, write the radius before doing anything else.\n3. Solve four cards using 3.14 for pi, saying the base area out loud before multiplying by the height.\n4. Debrief: what is the first question you ask when a cylinder hands you a number?",
+          "content": {
+            "categories": [
+              "Radius given",
+              "Diameter given (halve it first)"
+            ],
+            "cards": [
+              {
+                "text": "cylinder radius 3, height 5",
+                "category": "Radius given"
+              },
+              {
+                "text": "cylinder diameter 10, height 3",
+                "category": "Diameter given (halve it first)"
+              },
+              {
+                "text": "cylinder radius 2, height 10",
+                "category": "Radius given"
+              },
+              {
+                "text": "cylinder diameter 8, height 5",
+                "category": "Diameter given (halve it first)"
+              },
+              {
+                "text": "cylinder radius 4, height 5",
+                "category": "Radius given"
+              },
+              {
+                "text": "cylinder diameter 6, height 7",
+                "category": "Diameter given (halve it first)"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Snap-cube layers and coin stacks make base-times-height concrete before the formula is named."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'layer first, then stack' models the order students collapse when they multiply everything at once."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The diameter-as-radius slip is a stable, baitable error made for find-and-fix."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What shape is one layer of this solid?",
+          "What is the base area before you multiply by the height?",
+          "Were you given a radius or a diameter?",
+          "How is this the same as the unit-cube boxes from grade 5?",
+          "Should your answer be in square units or cubic units?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student uses the diameter as the radius for a cylinder.",
+            "say": "That number goes all the way across. Halve it to get the radius before you square anything.",
+            "praise": "You halved the diameter first, so the base came out the right size."
+          },
+          {
+            "if_you_see": "Student multiplies the radius by 2 instead of squaring it.",
+            "say": "Squared means the radius times itself: 3 squared is 3 times 3, which is 9, not 6.",
+            "praise": "You squared by multiplying the radius by itself, that is the real base area."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A cylinder has radius 3 and height 5. Volume, using 3.14?",
+            "look_for": "141.3. An answer of 94.2 means the radius was doubled instead of squared."
+          },
+          {
+            "prompt": "A prism has base area 20 and height 6. Volume?",
+            "look_for": "120. An answer of 26 means the numbers were added."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A cylinder has a radius of 3 cm and a height of 5 cm. What is its volume? Use 3.14 for pi.",
+        "answer": "141.3 cubic cm",
+        "steps": [
+          {
+            "math": "V = B h, with B = pi r squared",
+            "annotation": "A cylinder is a stack of circles: one layer times the height."
+          },
+          {
+            "math": "B = 3.14 x 3 squared = 3.14 x 9 = 28.26",
+            "annotation": "Square the radius, then multiply by 3.14."
+          },
+          {
+            "math": "V = 28.26 x 5",
+            "annotation": "Stack the layer 5 tall."
+          },
+          {
+            "math": "V = 141.3 cubic cm",
+            "annotation": "Volume is in cubic units because it fills space."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A cylinder has a diameter of 10 ft and a height of 3 ft. What is its volume? Use 3.14 for pi.",
+        "answer": "235.5 cubic ft",
+        "steps": [
+          {
+            "math": "radius = 10 / 2 = 5",
+            "annotation": "Halve the diameter to get the radius.",
+            "given": true
+          },
+          {
+            "math": "B = 3.14 x 5 squared = 3.14 x 25 = 78.5",
+            "annotation": "Square the radius for the base area.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the base area by the height.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the volume in cubic units.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "One layer of this solid is ___, so the base area is ___.",
+        "I was given the ___, so the radius is ___ before I square it."
+      ],
+      "fluency_source": "8GM2-F2"
+    },
+    {
+      "skill_id": "8GM2-B2",
+      "name": "Calculate the area of a circle using A = pi r squared",
+      "column": "looking_back",
+      "parent_standard": "8.GM.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Find the area of a circle from its radius or diameter using A = pi r squared.",
+        "check_question": "A circle has a diameter of 8 in. What is its area? Use 3.14 for pi."
+      },
+      "i_do_script": "A circle's area comes from squares, just like a rectangle's: picture the square built on the radius, r by r. The circle's area is a little more than 3 of those squares, exactly pi of them: A = pi r squared. Watch a circle with radius 5: the radius square is 5 times 5 = 25, and pi of them is 3.14 x 25 = 78.5 square units. Two traps live here. Squared means the radius times itself, 5 times 5, never 5 times 2. And if I am handed a diameter, the radius is HALF of it: diameter 8 means radius 4, and I square the 4, never the 8.",
+      "canonical_error": {
+        "pattern": "Uses the diameter in place of the radius, or reads squared as times 2",
+        "example": "For a circle with diameter 8, computes 3.14 x 64 = 200.96 instead of halving to radius 4 for 3.14 x 16 = 50.24",
+        "why": "The student feeds in the number given without halving, or treats the exponent as a multiplier. The formula squares the radius, and the radius is half the diameter."
+      },
+      "item_template": "A circle given by radius or diameter. Student finds the area, in terms of pi or using 3.14. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A circle has a radius of 5. What is its area? Use 3.14 for pi.",
+          "answer": "78.5 square units",
+          "distractor_logic": "3.14 x 25 = 78.5. Using 5 x 2 gives 31.4."
+        },
+        {
+          "stem": "A circle has a radius of 10. What is its area? Use 3.14 for pi.",
+          "answer": "314 square units",
+          "distractor_logic": "3.14 x 100 = 314. Doubling instead of squaring gives 62.8."
+        },
+        {
+          "stem": "A circle has a diameter of 8 in. What is its area? Use 3.14 for pi.",
+          "answer": "50.24 square in",
+          "distractor_logic": "Radius 4: 3.14 x 16 = 50.24. Using the diameter 8 gives 200.96."
+        },
+        {
+          "stem": "A circle has a radius of 6. What is its area in terms of pi?",
+          "answer": "36π square units",
+          "distractor_logic": "6 squared is 36. Answering 12π doubles instead of squaring."
+        },
+        {
+          "stem": "A circle has a radius of 3 cm. What is its area? Use 3.14 for pi.",
+          "answer": "28.26 square cm",
+          "distractor_logic": "3.14 x 9 = 28.26."
+        },
+        {
+          "stem": "A circle has a radius of 7. What is its area? Use 3.14 for pi.",
+          "answer": "153.86 square units",
+          "distractor_logic": "3.14 x 49 = 153.86."
+        },
+        {
+          "stem": "A circle has a diameter of 20 ft. What is its area? Use 3.14 for pi.",
+          "answer": "314 square ft",
+          "distractor_logic": "Radius 10: 3.14 x 100 = 314. Using 20 gives 1256."
+        },
+        {
+          "stem": "A circle has a diameter of 12. What radius do you square, and what is the area in terms of pi?",
+          "answer": "Radius 6; area 36π square units",
+          "distractor_logic": "Squaring the diameter gives 144π, four times too big."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is that number the radius or the diameter?",
+        "prompt": "If you were given the diameter, cut it in half first. Then square the radius, radius times radius, and multiply by pi.",
+        "praise": "You halved the diameter and squared the radius, that keeps pi r squared honest."
+      },
+      "vocabulary": [
+        {
+          "term": "Radius",
+          "definition": "The distance from the center of a circle to its edge; half the diameter."
+        },
+        {
+          "term": "Diameter",
+          "definition": "The distance all the way across a circle through its center; twice the radius."
+        },
+        {
+          "term": "Pi",
+          "definition": "The number of times a circle's diameter fits around it, about 3.14."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8GM2-S1",
+        "if_fail": "8GM2-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a circle with radius 4 on grid paper, and shade the 4 by 4 square built on its radius."
+        },
+        {
+          "kind": "ask",
+          "text": "About how many of those radius squares would fill the circle: 2, 3, or 4?"
+        },
+        {
+          "kind": "say",
+          "text": "A little more than 3, exactly pi of them. The radius square holds 16, so the area is 3.14 x 16 = 50.24 square units."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student squares a diameter, ask: is that distance halfway across or all the way across? Which one is the radius?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a circle with radius 5, then one with diameter 20, both using 3.14."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A radius is 5. What is the radius squared?",
+          "answer": "25"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A circle has a diameter of 8. What is its radius?",
+          "answer": "4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A circle has a radius of 5. Find its area. Use 3.14 for pi.",
+          "answer": "78.5 square units (3.14 x 25)",
+          "notes": "Square first, then multiply by 3.14."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A circle has a radius of 6. Find its area in terms of pi.",
+          "answer": "36π square units",
+          "notes": "Baits 12π from doubling."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A circle has a diameter of 8 in. Find its area. Use 3.14 for pi.",
+          "answer": "50.24 square in (radius 4: 3.14 x 16)",
+          "notes": "Baits squaring the diameter, 200.96."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A circle has a radius of 10. Find its area. Use 3.14 for pi.",
+          "answer": "314 square units (3.14 x 100)",
+          "notes": "Clean tens keep the focus on the setup."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Circle A has radius 4. Circle B has diameter 8. Compare their areas and explain what you notice.",
+          "answer": "They are the same circle size: both have radius 4, area 3.14 x 16 = 50.24. A diameter of 8 IS a radius of 4.",
+          "notes": "Forces the halving move into words."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Sam found the area of a circle with a diameter of 20 ft. Find his mistake and fix it.",
+          "shown_work": [
+            "Sam wrote: A = 3.14 x 20 squared",
+            "A = 3.14 x 400 = 1256 square ft"
+          ],
+          "answer": "Sam squared the diameter. The radius is half of 20, which is 10: A = 3.14 x 100 = 314 square ft. His answer was four times too big."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "How Many Radius Squares?",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper",
+            "Compasses or circle stencils",
+            "Scissors"
+          ],
+          "instructions": "1. Draw a circle with radius 4 on grid paper and cut out three separate 4 by 4 squares.\n2. Cut the squares into pieces and tile them inside the circle, one square at a time.\n3. Three squares almost fill it; a little sliver of circle is left. Write: the circle holds pi radius-squares, a bit more than 3.\n4. Compute the area: radius square 16, times 3.14 is 50.24.\n5. Debrief: why does the formula square the RADIUS and not the diameter?"
+        },
+        {
+          "type": "card_sort",
+          "title": "Halve It or Square It?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 6 circles, some labeled with a radius and some with a diameter"
+          ],
+          "instructions": "1. Sort the cards into 'radius given' and 'diameter given.'\n2. On each diameter card, write the radius before touching the formula.\n3. Solve four cards, saying 'radius times radius' out loud as you square.\n4. Debrief: what happens to the area if you accidentally square the diameter? (It comes out four times too big.)",
+          "content": {
+            "categories": [
+              "Radius given",
+              "Diameter given (halve it first)"
+            ],
+            "cards": [
+              {
+                "text": "circle radius 5",
+                "category": "Radius given"
+              },
+              {
+                "text": "circle diameter 8",
+                "category": "Diameter given (halve it first)"
+              },
+              {
+                "text": "circle radius 6",
+                "category": "Radius given"
+              },
+              {
+                "text": "circle diameter 20",
+                "category": "Diameter given (halve it first)"
+              },
+              {
+                "text": "circle radius 3",
+                "category": "Radius given"
+              },
+              {
+                "text": "circle diameter 12",
+                "category": "Diameter given (halve it first)"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Tiling radius squares into a circle grounds why the formula squares the radius before pi appears."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The squared-diameter answer is exactly four times too big, a precise error made for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral response on 'radius times radius, never times 2' builds the automaticity the cone and sphere formulas will lean on."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is the number you were given halfway across or all the way across?",
+          "What is the radius squared, radius times radius?",
+          "About how many radius squares fill a circle?",
+          "If you square the diameter by mistake, how far off will the area be?",
+          "Should a circle's area be in square units or plain units?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student squares the diameter instead of the radius.",
+            "say": "That distance goes all the way across. Halve it first: the formula squares the radius, and the radius is half the diameter.",
+            "praise": "You halved before squaring, so the area is the right size."
+          },
+          {
+            "if_you_see": "Student evaluates 5 squared as 5 times 2.",
+            "say": "Squared means the number times itself: 5 squared is 5 times 5, which is 25, a 5 by 5 square of unit cells.",
+            "praise": "You multiplied the radius by itself, that is what squared means."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A circle has radius 5. Area, using 3.14?",
+            "look_for": "78.5. An answer of 31.4 means the radius was doubled instead of squared."
+          },
+          {
+            "prompt": "A circle has a diameter of 12. What radius do you square?",
+            "look_for": "6 (half of 12). Using 12 signals the diameter/radius confusion."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A circle has a diameter of 8 in. What is its area? Use 3.14 for pi.",
+        "answer": "50.24 square in",
+        "steps": [
+          {
+            "math": "radius = 8 / 2 = 4",
+            "annotation": "The diameter goes all the way across; the radius is half of it."
+          },
+          {
+            "math": "A = pi r squared = 3.14 x 4 squared",
+            "annotation": "The formula squares the radius, not the diameter."
+          },
+          {
+            "math": "= 3.14 x 16",
+            "annotation": "4 squared is 4 times 4 = 16."
+          },
+          {
+            "math": "= 50.24 square in",
+            "annotation": "Area is in square units because it counts squares."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A circle has a diameter of 20 ft. What is its area? Use 3.14 for pi.",
+        "answer": "314 square ft",
+        "steps": [
+          {
+            "math": "radius = 20 / 2 = 10",
+            "annotation": "Halve the diameter to get the radius.",
+            "given": true
+          },
+          {
+            "math": "A = 3.14 x 10 squared",
+            "annotation": "Substitute the radius into pi r squared.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Square the radius: 10 times 10.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply by 3.14 and state the area in square units.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I was given the ___, so the radius is ___.",
+        "The radius squared is ___, and pi of those squares is ___."
+      ],
+      "fluency_source": "8GM2-F1"
+    },
+    {
       "skill_id": "8GM2-S1",
       "name": "Calculate the volume of a cone using V = (1/3) pi r squared h",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "8.GM.2",
       "engine_stems": [
         1
@@ -422,7 +1072,7 @@
           }
         ]
       },
-      "fluency_source": "8GM2-F2",
+      "fluency_source": "8GM2-B2",
       "sentence_starters": [
         "The cylinder would be ___, so the cone is one third of it: ___.",
         "I was given the ___, so the radius is ___ before I square it."
@@ -479,7 +1129,7 @@
     {
       "skill_id": "8GM2-S2",
       "name": "Calculate the volume and surface area of a sphere",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "8.GM.2",
       "prerequisite_skill": {
         "type": "skill",
@@ -740,7 +1390,7 @@
           }
         ]
       },
-      "fluency_source": "8GM2-F2",
+      "fluency_source": "8GM2-B2",
       "sentence_starters": [
         "This asks for ___, so I ___ the radius: r = ___.",
         "Volume cubes to ___, surface area squares to ___."
@@ -797,7 +1447,7 @@
     {
       "skill_id": "8GM2-S3",
       "name": "Calculate the volume of a square pyramid using V = (1/3) B h",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "8.GM.2",
       "prerequisite_skill": {
         "type": "skill",
@@ -1050,7 +1700,7 @@
           }
         ]
       },
-      "fluency_source": "8GM2-F2",
+      "fluency_source": "8GM2-B1",
       "sentence_starters": [
         "The base area is ___, times the height is ___, so the prism is ___.",
         "The pyramid is one third of ___, which is ___."
@@ -1355,7 +2005,7 @@
           }
         ]
       },
-      "fluency_source": "8GM2-F2",
+      "fluency_source": "8GM2-B1",
       "sentence_starters": [
         "The volume is ___, and everything times the unknown is ___, so the unknown is ___ / ___ = ___.",
         "I found r squared = ___, so the radius is the square root, ___."
@@ -1629,7 +2279,7 @@
           }
         ]
       },
-      "fluency_source": "8GM2-F2",
+      "fluency_source": "8GM2-B2",
       "sentence_starters": [
         "The shape is a ___, so I use the formula ___.",
         "The volume is ___, and the question asks for ___, so I ___."
@@ -1930,7 +2580,7 @@
           }
         ]
       },
-      "fluency_source": "8GM2-F2",
+      "fluency_source": "8GM2-B1",
       "sentence_starters": [
         "First I find ___ from the ___, which is ___.",
         "Then I use ___ in the ___ formula to get ___."
@@ -1987,8 +2637,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 4-6) prerequisite skills. Start intervention here.",
       "skills": [
         "8GM2-F1",
         "8GM2-F2"
@@ -1996,24 +2646,26 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 7) skills that feed this standard directly.",
       "skills": [
-        "8GM2-S1",
-        "8GM2-S2",
-        "8GM2-S3"
+        "8GM2-B1",
+        "8GM2-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "8GM2-S1",
+        "8GM2-S2",
+        "8GM2-S3",
         "8GM2-S4",
         "8GM2-S5"
       ]
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "8GM2-S6"
       ]
@@ -2022,6 +2674,8 @@
   "skill_sequence": [
     "8GM2-F1",
     "8GM2-F2",
+    "8GM2-B1",
+    "8GM2-B2",
     "8GM2-S1",
     "8GM2-S2",
     "8GM2-S3",
@@ -2032,16 +2686,21 @@
   "skill_tree": {
     "8GM2-F1": [],
     "8GM2-F2": [],
-    "8GM2-S1": [
-      "8GM2-F1",
+    "8GM2-B1": [
       "8GM2-F2"
+    ],
+    "8GM2-B2": [
+      "8GM2-F1"
+    ],
+    "8GM2-S1": [
+      "8GM2-B1",
+      "8GM2-B2"
     ],
     "8GM2-S2": [
-      "8GM2-F1",
-      "8GM2-F2"
+      "8GM2-B2"
     ],
     "8GM2-S3": [
-      "8GM2-F2"
+      "8GM2-B1"
     ],
     "8GM2-S4": [
       "8GM2-S1",
@@ -2060,19 +2719,22 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S1 (volume of a cone) -- the flagship one-third shape the whole standard rests on. If they pass, push to S5 (apply a formula in a real-world story) and S6 (chain two shapes end to end). If they fail, drop to F1 to check whether the base computation (radius vs diameter, squaring) is even solid; F2 checks the one-third and cubing. S2 (sphere volume and surface area), S3 (pyramid volume), and S4 (missing dimension) branch off the core as related shapes and the backwards move.",
+    "description": "Start with S1, the volume of a cone, the one-third move the whole standard rests on. If they pass, push up to S4 (recover a missing dimension) and S5 (apply a formula in a real-world story). If they fail, drop below grade level: B1 checks prism and cylinder volume (base times height) and B2 checks area of a circle, the two grade 7 skills every formula here extends. If those wobble, the foundations F1 (area of a rectangle) and F2 (volume of a box by unit-cube layers) locate the gap in grades 4 and 5. S2 (sphere), S3 (pyramid), and S6 (chained shapes) remain available to probe the rest of the standard.",
     "entry_skill": "8GM2-S1",
     "if_pass": [
-      "8GM2-S5",
-      "8GM2-S6"
+      "8GM2-S4",
+      "8GM2-S5"
     ],
     "if_fail": [
-      "8GM2-F1"
+      "8GM2-B1",
+      "8GM2-B2"
     ],
     "branch_skills": [
+      "8GM2-F1",
+      "8GM2-F2",
       "8GM2-S2",
       "8GM2-S3",
-      "8GM2-S4"
+      "8GM2-S6"
     ]
   }
 }

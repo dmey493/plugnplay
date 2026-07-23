@@ -3,7 +3,7 @@
   "standard_text": "Solve real-world and other mathematical problems by graphing points with rational number coordinates on a coordinate plane. Include the use of coordinates and absolute value to find distances between points with the same first coordinate or the same second coordinate.",
   "schema_version": 3,
   "progression": {
-    "narrative": "6.AF.5 makes two demands: GRAPH points with rational coordinates anywhere on the coordinate plane, and USE coordinates and absolute value to find distances between points that share a first or second coordinate. The logic runs from the plane itself outward. First a student must own the plotting convention where signs can't confuse them -- right-then-up in Quadrant I (S5) -- and then extend it to all four quadrants, where the SIGNS of an ordered pair, not its position on the page, name the quadrant (S1). Once points are solid, the standard's distance demand kicks in: two points that share a coordinate sit on one grid line, and the distance is the absolute value of the difference of the coordinates that DON'T match (S2). That single rule then powers the standard's 'real-world problems' language -- maps, routes, and scales where several straight-line distances get combined and the question decides how (S3). Finally the process reverses: given a distance instead of a second point, a student generates every point that far away along a grid line -- two per axis, four in all -- the bridge toward 7.AF.5 (S4).",
+    "narrative": "This standard asks students to graph points with rational coordinates in all four quadrants and to use coordinates and absolute value to find distances between points that share a first or second coordinate. The on-grade work runs from plotting and quadrant identification to the core distance rule: points that share a coordinate sit on one grid line, and the distance is the absolute value of the difference of the coordinates that do not match, applied in map and route problems. Students who struggle here usually carry gaps from well below grade six, most often weak number-line reading and no habit of following a rule to produce numbers in order. Intervention should start with those foundations, rebuild the grade five skills of plotting in the first quadrant and generating ordered pairs from two rules, and only then return to four-quadrant work with signed coordinates.",
     "steps": [
       {
         "skill_id": "6AF5-S5",
@@ -35,30 +35,272 @@
   "skills": [
     {
       "skill_id": "6AF5-F1",
-      "name": "Read x- and y-axes correctly using ordered-pair convention",
+      "name": "Locate numbers on a number line and count the distance between two marks",
       "column": "foundation",
       "parent_standard": "6.AF.5",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 5,
-        "description": "Recognize that an ordered pair (x, y) means 'go x along the horizontal axis first, then y along the vertical axis,' and that the axes meet at the origin (0, 0).",
-        "check_question": "Point your finger at the origin. Now show me where (3, 0) is. Now show me where (0, 3) is. Are those the same place?"
+        "grade": 3,
+        "description": "Place a whole number on a marked number line and find how far apart two numbers are by counting the jumps between them.",
+        "check_question": "On a number line, how far is it from 4 to 11?"
       },
-      "i_do_script": "Reaching a point is like reaching an apartment: you walk down the street first, THEN take the stairs -- across before up or down, every single time. An ordered pair has two numbers in parentheses, like (4, -2). The FIRST number always tells me how far to go left or right along the x-axis — that is the horizontal axis. The SECOND number tells me how far to go up or down along the y-axis — that is the vertical axis. Watch: for (4, -2), I start at the origin, count 4 to the right, then 2 down. The order matters — (4, -2) and (-2, 4) land in totally different spots.",
+      "i_do_script": "A number line is a ruler for numbers: each tick is one step, and the numbers grow as I move right. To place 7, I start at 0 and count 7 ticks to the right. To find how far apart 4 and 11 are, I put my finger on 4 and jump one tick at a time until I land on 11, counting each jump: 1, 2, 3, 4, 5, 6, 7. That is 7 jumps, so 4 and 11 are 7 apart. I count the jumps between the marks, not the marks themselves.",
       "canonical_error": {
-        "pattern": "Reverses the ordered pair — uses the first number for vertical and the second for horizontal.",
-        "example": "Asked to plot (3, -5), the student goes up 3 and then left 5, landing at (-5, 3) instead.",
-        "why": "The student has not internalized the x-then-y convention; they read the pair left-to-right but match the first number to the closest visual axis (often the y-axis if the grid is taller than wide) instead of always to the x-axis."
+        "pattern": "Counts the tick marks instead of the jumps between them, landing one too high",
+        "example": "Asked how far it is from 4 to 11, the student touches 4, 5, 6, 7, 8, 9, 10, 11 while counting and answers 8.",
+        "why": "The student counts positions instead of moves. Distance measures the spaces traveled, and the starting mark is not a jump."
       },
+      "item_template": "A number line from 0 to 20 with whole-number ticks. Student places a number, names a marked point, or counts the distance between two whole numbers. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "How far is it from 4 to 11 on a number line?",
+          "answer": "7"
+        },
+        {
+          "stem": "How far is it from 6 to 15?",
+          "answer": "9"
+        },
+        {
+          "stem": "How far is it from 0 to 8?",
+          "answer": "8"
+        },
+        {
+          "stem": "Start at 3 and jump 5 to the right. Where do you land?",
+          "answer": "8"
+        },
+        {
+          "stem": "Start at 12 and jump 4 to the left. Where do you land?",
+          "answer": "8"
+        },
+        {
+          "stem": "How far is it from 9 to 16?",
+          "answer": "7"
+        },
+        {
+          "stem": "Two marks are at 5 and 5. How far apart are they?",
+          "answer": "0"
+        },
+        {
+          "stem": "Which is farther from 10: the mark at 6 or the mark at 13?",
+          "answer": "The mark at 6 (4 away; 13 is only 3 away)"
+        },
+        {
+          "stem": "How far is it from 7 to 18?",
+          "answer": "11"
+        }
+      ],
       "redirect_script": {
-        "stop": "Hold on — which number goes which way?",
-        "prompt": "Feet before stairs: which number in the pair is the walk along the floor? Underline the FIRST number in the pair and say 'x — left or right.' Then underline the SECOND number and say 'y — up or down.'",
-        "praise": "Yes — x first, y second. You got it."
+        "stop": "Are you counting marks or jumps?",
+        "prompt": "Put your finger on the first number and count only the moves. Say a number each time your finger lands on a new tick, not when it starts.",
+        "praise": "You counted the jumps, and that is exactly what distance measures."
       },
       "vocabulary": [
         {
-          "term": "ordered pair",
-          "definition": "Two numbers in parentheses (x, y) that name one spot on the coordinate plane."
+          "term": "Number line",
+          "definition": "A line marked with equally spaced ticks, where each tick names a number and numbers grow to the right."
+        },
+        {
+          "term": "Distance",
+          "definition": "How many jumps it takes to get from one number to another. Distance is never negative."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6AF5-B1",
+        "if_fail": "Review grade 3 number line work: build a line with equal jumps from 0 and practice naming the tick your finger lands on."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a number line from 0 to 15. Circle 4 and circle 11."
+        },
+        {
+          "kind": "ask",
+          "text": "How could we find out how far apart the circles are without a ruler?"
+        },
+        {
+          "kind": "say",
+          "text": "Start at 4 and hop one tick at a time: 1, 2, 3, 4, 5, 6, 7 hops lands on 11. So 4 and 11 are 7 apart. We count hops, not ticks."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 8, they counted the starting mark. Have them hop with a pencil and say a number only when the pencil lands."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: how far is it from 6 to 15?"
+        }
+      ]
+    },
+    {
+      "skill_id": "6AF5-F2",
+      "name": "Extend a number pattern that follows a rule",
+      "column": "foundation",
+      "parent_standard": "6.AF.5",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 4,
+        "description": "Continue a whole-number pattern that follows an add or subtract rule, and name the rule from the terms.",
+        "check_question": "What are the next two numbers in 3, 7, 11, 15, ...?"
+      },
+      "i_do_script": "A pattern is a list of numbers built by one rule that repeats. To find the rule, I check what happens between neighbors. Watch: in 3, 7, 11, 15, each number is 4 more than the one before, because 7 - 3 = 4 and 11 - 7 = 4. So the rule is add 4. To extend, I keep applying it: 15 + 4 = 19, then 19 + 4 = 23. On a number line the pattern is equal jumps of 4, so the terms are equally spaced.",
+      "canonical_error": {
+        "pattern": "Checks only the first pair of terms, or adds the wrong constant, then extends with a broken rule",
+        "example": "For 3, 7, 11, 15, the student sees 3 and 7, decides the rule is add 3 because the list starts at 3, and writes 18 next.",
+        "why": "The student guesses the rule from one clue instead of testing it between every pair of neighbors. A rule only counts if it works for the whole list."
+      },
+      "item_template": "A four-term whole-number pattern with an add or subtract rule (step 2 to 9). Student names the rule or writes the next one or two terms. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "What is the rule for 3, 7, 11, 15?",
+          "answer": "Add 4"
+        },
+        {
+          "stem": "What are the next two numbers in 3, 7, 11, 15, ...?",
+          "answer": "19, 23"
+        },
+        {
+          "stem": "What is the next number in 5, 10, 15, 20, ...?",
+          "answer": "25"
+        },
+        {
+          "stem": "What is the rule for 40, 34, 28, 22?",
+          "answer": "Subtract 6"
+        },
+        {
+          "stem": "What is the next number in 40, 34, 28, 22, ...?",
+          "answer": "16"
+        },
+        {
+          "stem": "Start at 2 and use the rule add 3. Write the first four numbers.",
+          "answer": "2, 5, 8, 11"
+        },
+        {
+          "stem": "What are the next two numbers in 1, 8, 15, 22, ...?",
+          "answer": "29, 36"
+        },
+        {
+          "stem": "Start at 50 and use the rule subtract 9. Write the first three numbers.",
+          "answer": "50, 41, 32"
+        },
+        {
+          "stem": "What is the missing number in 6, 13, __, 27?",
+          "answer": "20"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Does your rule work between every pair of neighbors?",
+        "prompt": "Subtract each number from the next one, all the way down the list. The rule is the jump that shows up every single time.",
+        "praise": "You tested the rule on the whole list, so you know it is really the rule."
+      },
+      "vocabulary": [
+        {
+          "term": "Pattern",
+          "definition": "A list of numbers built by repeating one rule."
+        },
+        {
+          "term": "Rule",
+          "definition": "The instruction that gets you from one number in a pattern to the next, like add 4."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6AF5-B2",
+        "if_fail": "Review grade 4 skip counting on a number line: make equal jumps from a start number and record where you land."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 3, 7, 11, 15 on the board with an empty arc drawn between each pair of neighbors."
+        },
+        {
+          "kind": "ask",
+          "text": "What jump takes 3 to 7? Does the same jump take 7 to 11? And 11 to 15?"
+        },
+        {
+          "kind": "say",
+          "text": "Every arc is a jump of 4, so the rule is add 4. Keep jumping: 15 + 4 = 19 and 19 + 4 = 23. On a number line the terms sit 4 apart, in a straight march."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 18 next, ask them to test their rule on the arc from 7 to 11. Add 3 fails there, so it is not the rule."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: find the rule for 40, 34, 28, 22 and write the next number."
+        }
+      ]
+    },
+    {
+      "skill_id": "6AF5-B1",
+      "name": "Plot and name points in the first quadrant of the coordinate plane",
+      "column": "looking_back",
+      "parent_standard": "6.AF.5",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Plot a point with whole-number coordinates in the first quadrant, and read the coordinates of a plotted point, using the over-then-up convention.",
+        "check_question": "To plot (3, 5), how far do you go over, and how far up?"
+      },
+      "i_do_script": "An ordered pair is a set of directions from the origin, and the order never changes: over first, then up. Watch: to plot (3, 5), I start at (0, 0), move 3 to the right along the x-axis, then 5 up. I mark the point where those two moves meet. To read a plotted point, I run the trip backwards: drop straight down to the x-axis and read that number first, then look across to the y-axis for the second number. (3, 5) and (5, 3) are different points because the trips are different.",
+      "canonical_error": {
+        "pattern": "Reverses the ordered pair, going up first and over second",
+        "example": "Asked to plot (3, 5), the student goes up 3 and over 5, landing at (5, 3).",
+        "why": "The student treats the pair as two loose numbers instead of an ordered trip. The first number always belongs to the x-axis, the horizontal move, no matter which number is bigger."
+      },
+      "item_template": "A first-quadrant grid from 0 to 10 with whole-number coordinates. Student plots a named point, reads a plotted point, or names a point on an axis. Numeric or short response.",
+      "sample_items": [
+        {
+          "stem": "To plot (3, 5), which move comes first?",
+          "answer": "Over 3 to the right"
+        },
+        {
+          "stem": "Plot the point (4, 2). How far over and how far up do you go?",
+          "answer": "Over 4, up 2"
+        },
+        {
+          "stem": "A point sits 6 to the right of the origin and 1 up. What are its coordinates?",
+          "answer": "(6, 1)"
+        },
+        {
+          "stem": "A point is plotted at over 2, up 7. Which ordered pair names it?",
+          "answer": "(2, 7)",
+          "choices": [
+            "(2, 7)",
+            "(7, 2)",
+            "(2, 2)",
+            "(7, 7)"
+          ],
+          "distractor_logic": "(7, 2) is the reversed pair; (2, 2) and (7, 7) repeat one coordinate for students who lose track of one move."
+        },
+        {
+          "stem": "What are the coordinates of the origin?",
+          "answer": "(0, 0)"
+        },
+        {
+          "stem": "The point (5, 0) sits on which axis?",
+          "answer": "The x-axis"
+        },
+        {
+          "stem": "The point (0, 4) sits on which axis?",
+          "answer": "The y-axis"
+        },
+        {
+          "stem": "Is (2, 6) the same point as (6, 2)? Explain.",
+          "answer": "No. (2, 6) is over 2 and up 6; (6, 2) is over 6 and up 2. The trips end in different places."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which move comes first, over or up?",
+        "prompt": "Say the trip out loud before you move: over, then up. Underline the first number and label it x, then underline the second and label it y.",
+        "praise": "Over then up, every time. That is the convention."
+      },
+      "vocabulary": [
+        {
+          "term": "Ordered pair",
+          "definition": "Two numbers in parentheses (x, y) that give directions to one point: over x, then up y."
+        },
+        {
+          "term": "Origin",
+          "definition": "The point (0, 0) where the x-axis and y-axis cross. Every trip starts there."
         },
         {
           "term": "x-axis",
@@ -67,230 +309,508 @@
         {
           "term": "y-axis",
           "definition": "The vertical number line on the coordinate plane."
-        },
-        {
-          "term": "origin",
-          "definition": "The point (0, 0) where the x-axis and y-axis cross."
         }
       ],
       "next_steps": {
-        "if_pass": "6AF5-F2",
-        "if_fail": "Reteach left-right vs up-down on a single horizontal number line before reintroducing two axes."
+        "if_pass": "6AF5-S5",
+        "if_fail": "6AF5-F1"
       },
-      "sample_items": [
-        {
-          "stem": "In (5, 2), which number is the x-coordinate?",
-          "answer": "5",
-          "choices": null,
-          "distractor_logic": "A student who reads the pair as (y, x) answers 2."
-        },
-        {
-          "stem": "In (5, 2), which number is the y-coordinate?",
-          "answer": "2",
-          "choices": null,
-          "distractor_logic": "Reversing the convention gives 5."
-        },
-        {
-          "stem": "Which axis is horizontal, x or y?",
-          "answer": "x",
-          "choices": null,
-          "distractor_logic": "Students who picture y as 'the first one they see' say y."
-        },
-        {
-          "stem": "What are the coordinates of the origin?",
-          "answer": "(0, 0)",
-          "choices": null,
-          "distractor_logic": "Some students name it (1, 1) or leave one coordinate off."
-        },
-        {
-          "stem": "In (-3, 7), which number goes with the y-axis?",
-          "answer": "7",
-          "choices": null,
-          "distractor_logic": "Reversing the pair gives -3."
-        },
-        {
-          "stem": "To plot (4, -2), which move comes first?",
-          "answer": "Right 4",
-          "choices": null,
-          "distractor_logic": "A student who reads the second number first says down 2."
-        },
-        {
-          "stem": "Is (2, 6) the same point as (6, 2)?",
-          "answer": "No",
-          "choices": null,
-          "distractor_logic": "A student who treats the pair as an unordered set says yes."
-        },
-        {
-          "stem": "Which number in (a, b) do you use first?",
-          "answer": "a, the x-coordinate",
-          "choices": null,
-          "distractor_logic": "Matching the first number to the vertical axis gives b."
-        },
-        {
-          "stem": "The point (0, 5) sits on which axis?",
-          "answer": "The y-axis",
-          "choices": null,
-          "distractor_logic": "Seeing the 5 'go up' from a reversed pair leads to the x-axis."
-        },
-        {
-          "stem": "The point (5, 0) sits on which axis?",
-          "answer": "The x-axis",
-          "choices": null,
-          "distractor_logic": "Reversing the pair puts the point on the y-axis."
-        }
-      ],
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Act out (4, -2) starting at the origin: WALK first -- 4 to the right along the floor, the x-axis -- then take the stairs DOWN 2. Walk, then climb; the parentheses store the trip in exactly that order.",
-          "visual": {
-            "type": "coordinate_grid",
-            "x_range": [
-              -5,
-              5
-            ],
-            "y_range": [
-              -5,
-              5
-            ],
-            "points": [
-              {
-                "x": 4,
-                "y": -2,
-                "label": "(4, -2)"
-              }
-            ]
-          }
+          "text": "Draw a first-quadrant grid from 0 to 8. Write (3, 5) on the board without plotting it."
+        },
+        {
+          "kind": "ask",
+          "text": "The trip starts at the origin. Which number is the over move, and which is the up move?"
+        },
+        {
+          "kind": "say",
+          "text": "Over 3 along the x-axis, then up 5. Mark the point where the two moves meet. The first number always rides the horizontal axis."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student goes up 3 first, have them trace the trip with a finger while saying over 3, up 5 out loud, then compare where the two trips end."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: plot (5, 3) on the same grid. Is it the same point as (3, 5)?"
         }
-      ]
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "On a number line, start at 0 and move over 4. Now imagine moving up 2 from there. What ordered pair did you just walk?",
+          "answer": "(4, 2)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "In the ordered pair (6, 3), which number is the x-coordinate?",
+          "answer": "6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Plot the point (2, 7). Describe the trip from the origin.",
+          "answer": "Over 2 to the right, then up 7."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A point is plotted over 5 and up 5. What are its coordinates, and what is special about it?",
+          "answer": "(5, 5). Its coordinates are equal, so reversing them names the same point."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Point A sits on the x-axis, 8 units from the origin. What are its coordinates?",
+          "answer": "(8, 0)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Ella plotted a playground at (1, 6) and a fountain at (6, 1). Are they at the same spot? How do you know?",
+          "answer": "No. The playground is over 1 and up 6; the fountain is over 6 and up 1. The order of the numbers changes the trip."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Name a point that sits on the y-axis and is 3 units from the origin.",
+          "answer": "(0, 3)"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Marcus plotted (3, 5) by going up 3 and over 5. Find his mistake and fix it.",
+          "shown_work": [
+            "Plot (3, 5).",
+            "Went up 3 first.",
+            "Then went over 5.",
+            "Marked the point at over 5, up 3."
+          ],
+          "answer": "He reversed the order. The first number is the over move: go over 3, then up 5. He actually plotted (5, 3)."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Walk the Grid",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Tape grid on the floor, 0 to 6 on each axis",
+            "Ordered-pair cards",
+            "Two beanbags"
+          ],
+          "instructions": "1. A student draws a card, like (4, 2), and stands on the origin.\n2. They walk the trip while the group chants it: over 4, up 2. Drop a beanbag where they stop.\n3. The group checks by reading the point backwards: drop to the x-axis, read 4; look across, read 2.\n4. Repeat with a reversed card like (2, 4) and compare the two beanbag spots.\n5. Say each time: over first, then up."
+        },
+        {
+          "type": "game",
+          "title": "First-Quadrant Treasure Hunt",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Two first-quadrant grids per pair (0 to 8)",
+            "Folders as screens"
+          ],
+          "instructions": "1. Each partner hides three treasures at grid points and keeps the map hidden.\n2. Partners take turns calling ordered pairs; the opponent answers hit or miss.\n3. Every call must be spoken as a trip: over 3, up 6, before the guess counts.\n4. First to find all three treasures wins.\n5. Debrief question: why did calling (3, 6) never find a treasure hidden at (6, 3)?"
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Walking the trip on a floor grid makes the over-then-up convention physical before it becomes a rule."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The reversed-pair error is stable and predictable; fixing Marcus's plot confronts it head on."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Rapid over-then-up call and response builds the automatic first-number-is-x recall plotting runs on."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which number in the pair is the over move? How do you know?",
+          "Where does every plotting trip start?",
+          "How would you read the coordinates of a point someone else plotted?",
+          "Is (2, 6) the same point as (6, 2)? Prove it with two trips.",
+          "A point sits on the x-axis. What must its y-coordinate be?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student goes up first and lands at the reversed point.",
+            "say": "Trace both trips with your finger: over 3 up 5, then over 5 up 3. They end in different places, so the order matters. First number goes over.",
+            "praise": "You went over first, then up. The trip matches the pair now."
+          },
+          {
+            "if_you_see": "Student reads a plotted point by guessing which axis to check first.",
+            "say": "Drop straight down from the point to the x-axis and read that number first. Then look straight across to the y-axis.",
+            "praise": "Down for x, across for y. You read it in the right order."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Plot (1, 4).",
+            "look_for": "Over 1 then up 4. Landing at over 4, up 1 means the pair got reversed."
+          },
+          {
+            "prompt": "What are the coordinates of a point on the y-axis, 7 up from the origin?",
+            "look_for": "(0, 7), with the zero in the x spot."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Plot the point (3, 5) on a first-quadrant grid.",
+        "answer": "The point sits over 3 and up 5 from the origin.",
+        "steps": [
+          {
+            "math": "Start at the origin (0, 0)",
+            "annotation": "Every plotting trip starts where the axes cross."
+          },
+          {
+            "math": "First number 3: move 3 right along the x-axis",
+            "annotation": "The first number is always the horizontal move."
+          },
+          {
+            "math": "Second number 5: move 5 up",
+            "annotation": "The second number is always the vertical move."
+          },
+          {
+            "math": "Mark the point where the moves meet",
+            "annotation": "Check by reading it backwards: down to the x-axis gives 3, across gives 5."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Plot the point (6, 2) on a first-quadrant grid.",
+        "answer": "The point sits over 6 and up 2 from the origin.",
+        "steps": [
+          {
+            "math": "Start at the origin (0, 0)",
+            "annotation": "The trip always starts at the origin.",
+            "given": true
+          },
+          {
+            "math": "First number 6: move 6 right along the x-axis",
+            "annotation": "The over move comes first.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Make the up move. How far?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Mark the point and check it by reading it backwards.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "To plot (___, ___), I go over ___ and then up ___.",
+        "The first number is the x-coordinate, so it tells me to move ___."
+      ],
+      "fluency_source": "6AF5-F1"
     },
     {
-      "skill_id": "6AF5-F2",
-      "name": "Use signed numbers to count along a number line in either direction",
-      "column": "foundation",
+      "skill_id": "6AF5-B2",
+      "name": "Generate two number patterns from rules and graph the ordered pairs",
+      "column": "looking_back",
       "parent_standard": "6.AF.5",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Locate positive and negative integers on a number line and recognize that absolute value is the distance from zero.",
-        "check_question": "On a number line, how far apart are -3 and 4?"
+        "grade": 5,
+        "description": "Use two given rules to build two number patterns from the same starting number, pair the corresponding terms as ordered pairs, and plot them in the first quadrant.",
+        "check_question": "Pattern A starts at 0 and adds 1. Pattern B starts at 0 and adds 3. What are the first three ordered pairs (A, B)?"
       },
-      "i_do_script": "On a number line, negative numbers go to the left of zero and positive numbers go to the right. To find the distance between two numbers, I count the spaces between them — distance is always positive. Watch: from -3 to 4, I count 1, 2, 3 to get to zero, then 1, 2, 3, 4 to get to 4. That is 7 spaces, so the distance is 7. Another way: |4 - (-3)| = |7| = 7.",
+      "i_do_script": "Two rules can build two patterns side by side, and matching terms become ordered pairs. Watch: Pattern A starts at 0 and adds 1, so A is 0, 1, 2, 3. Pattern B starts at 0 and adds 3, so B is 0, 3, 6, 9. I pair the terms that were born together: (0, 0), (1, 3), (2, 6), (3, 9). Then I plot each pair, over A and up B. The points march in a straight line because every step goes over 1 and up 3, the same jump every time.",
       "canonical_error": {
-        "pattern": "Subtracts the smaller absolute value from the larger instead of accounting for the sign, missing the distance across zero.",
-        "example": "Asked the distance between -3 and 4, the student computes 4 - 3 = 1 instead of 4 - (-3) = 7.",
-        "why": "The student treats the negative sign as cosmetic and ignores it during subtraction; they have not connected 'distance' to 'count the spaces, including the ones to the left of zero.'"
+        "pattern": "Pairs terms from different positions, or plots the pair with the axes swapped",
+        "example": "For A: 0, 1, 2, 3 and B: 0, 3, 6, 9, the student pairs 1 with 6 because both are 'second-ish', or plots (1, 3) by going over 3 and up 1.",
+        "why": "The student loses track of which terms correspond. Each ordered pair must take its two numbers from the same position in the two lists, A first, B second."
       },
+      "item_template": "Two add-rule patterns from given starts (whole numbers, terms under 30). Student extends both patterns, writes the ordered pairs of corresponding terms, or plots them on a first-quadrant grid.",
+      "sample_items": [
+        {
+          "stem": "Pattern A: start at 0, add 2. Write the first four terms.",
+          "answer": "0, 2, 4, 6"
+        },
+        {
+          "stem": "Pattern B: start at 0, add 5. Write the first four terms.",
+          "answer": "0, 5, 10, 15"
+        },
+        {
+          "stem": "Using A: 0, 2, 4, 6 and B: 0, 5, 10, 15, write the four ordered pairs (A, B).",
+          "answer": "(0, 0), (2, 5), (4, 10), (6, 15)"
+        },
+        {
+          "stem": "Pattern A starts at 1 and adds 1. Pattern B starts at 2 and adds 2. What is the third ordered pair (A, B)?",
+          "answer": "(3, 6)"
+        },
+        {
+          "stem": "A: 0, 1, 2, 3 and B: 0, 4, 8, 12. Which ordered pair belongs to this table?",
+          "answer": "(2, 8)",
+          "choices": [
+            "(2, 8)",
+            "(8, 2)",
+            "(1, 8)",
+            "(2, 4)"
+          ],
+          "distractor_logic": "(8, 2) swaps the axes; (1, 8) and (2, 4) pair terms from different positions in the two lists."
+        },
+        {
+          "stem": "The pairs (0, 0), (1, 3), (2, 6) follow two add rules. What is the next pair?",
+          "answer": "(3, 9)"
+        },
+        {
+          "stem": "In the pair (2, 6) from patterns A and B, which pattern does the 6 come from?",
+          "answer": "Pattern B, the second number"
+        },
+        {
+          "stem": "A: start at 0, add 1. B: start at 0, add 1. Describe the points you would plot.",
+          "answer": "(0, 0), (1, 1), (2, 2), and so on. Each point goes over and up the same amount."
+        }
+      ],
       "redirect_script": {
-        "stop": "Wait — did you cross zero?",
-        "prompt": "Put your finger on the smaller number and walk it toward the bigger number. Count every step out loud, including each step on the negative side.",
-        "praise": "Nice — you counted across zero. That is the distance."
+        "stop": "Do both numbers in your pair come from the same position?",
+        "prompt": "Line the two patterns up in a table, A on top and B below. Each column is one ordered pair: A over, B up.",
+        "praise": "You paired the terms born together and plotted A over, B up. That is the whole skill."
       },
       "vocabulary": [
         {
-          "term": "absolute value",
-          "definition": "How far a number is from zero on the number line. Always positive or zero."
+          "term": "Corresponding terms",
+          "definition": "Terms that sit in the same position in two patterns, like the third term of each. They pair up to make one ordered pair."
         },
         {
-          "term": "signed number",
-          "definition": "A number with a positive or negative sign showing which side of zero it is on."
+          "term": "Rule",
+          "definition": "The instruction that builds a pattern from its start, like add 3."
         }
       ],
       "next_steps": {
-        "if_pass": "6AF5-S1",
-        "if_fail": "Practice counting distance on a single horizontal number line that crosses zero before returning to coordinate work."
+        "if_pass": "6AF5-S5",
+        "if_fail": "6AF5-F2"
       },
-      "sample_items": [
+      "worked_example_script": [
         {
-          "stem": "How far apart are -3 and 4?",
-          "answer": "7",
-          "choices": null,
-          "distractor_logic": "Ignoring the sign gives 4 - 3 = 1."
+          "kind": "show",
+          "text": "Make a two-row table. Row A: start at 0, add 1, so 0, 1, 2, 3. Row B: start at 0, add 3, so 0, 3, 6, 9."
         },
         {
-          "stem": "How far apart are -5 and 5?",
-          "answer": "10",
-          "choices": null,
-          "distractor_logic": "Treating the signs as cosmetic gives 0."
+          "kind": "ask",
+          "text": "Which term of B was born at the same step as the 2 in A?"
         },
         {
-          "stem": "How far apart are -2 and 9?",
-          "answer": "11",
-          "choices": null,
-          "distractor_logic": "Ignoring the sign gives 7."
+          "kind": "say",
+          "text": "Each column of the table is one ordered pair: (0, 0), (1, 3), (2, 6), (3, 9). Plot each one, over A and up B. The points line up because every step is over 1 and up 3."
         },
         {
-          "stem": "How far apart are -8 and -1?",
-          "answer": "7",
-          "choices": null,
-          "distractor_logic": "Adding the absolute values gives 9."
+          "kind": "watch",
+          "text": "If a student pairs 1 with 6, point at the table columns: the 1 and the 3 share a column, so they pair. Columns, not guesses."
         },
         {
-          "stem": "How far apart are 3 and 12?",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "Adding instead of subtracting gives 15."
-        },
-        {
-          "stem": "What is |-6|?",
-          "answer": "6",
-          "choices": null,
-          "distractor_logic": "Keeping the sign gives -6."
-        },
-        {
-          "stem": "What is |9|?",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "Flipping the sign of a positive gives -9."
-        },
-        {
-          "stem": "What is |4 - 10|?",
-          "answer": "6",
-          "choices": null,
-          "distractor_logic": "Stopping before the bars gives -6."
-        },
-        {
-          "stem": "What is |-7 - 3|?",
-          "answer": "10",
-          "choices": null,
-          "distractor_logic": "Computing -7 + 3 first gives 4."
-        },
-        {
-          "stem": "How far is -9 from 0?",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "Keeping the sign gives -9."
-        },
-        {
-          "stem": "How far apart are -4 and 6?",
-          "answer": "10",
-          "choices": null,
-          "distractor_logic": "Ignoring the sign gives 2."
-        },
-        {
-          "stem": "What is |5 - (-5)|?",
-          "answer": "10",
-          "choices": null,
-          "distractor_logic": "Reading the double negative as 5 - 5 gives 0."
-        },
-        {
-          "stem": "How far apart are -1 and -7?",
-          "answer": "6",
-          "choices": null,
-          "distractor_logic": "Adding the absolute values gives 8."
-        },
-        {
-          "stem": "How far is 0 from 12?",
-          "answer": "12",
-          "choices": null,
-          "distractor_logic": "A student unsure about zero may answer 0."
+          "kind": "ask",
+          "text": "Your turn: A starts at 0 and adds 2, B starts at 0 and adds 4. Write and plot the first three pairs."
         }
-      ]
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Pattern A: start at 0, add 1. Write the first four terms.",
+          "answer": "0, 1, 2, 3"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Pattern B: start at 0, add 4. Write the first four terms.",
+          "answer": "0, 4, 8, 12"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Using A: 0, 1, 2, 3 and B: 0, 4, 8, 12, write the four ordered pairs (A, B).",
+          "answer": "(0, 0), (1, 4), (2, 8), (3, 12)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Plot the pairs (0, 0), (1, 2), (2, 4), (3, 6) on a first-quadrant grid. What do you notice about the points?",
+          "answer": "They lie on a straight line; each point is over 1 and up 2 from the last."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Pattern A starts at 2 and adds 2. Pattern B starts at 3 and adds 3. What is the fourth ordered pair (A, B)?",
+          "answer": "(8, 12). A: 2, 4, 6, 8 and B: 3, 6, 9, 12."
+        },
+        {
+          "difficulty": "core",
+          "stem": "The pairs (0, 0), (2, 3), (4, 6), (6, 9) come from two add rules starting at 0. What are the rules?",
+          "answer": "A: add 2. B: add 3."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A adds 1 and B adds 5, both starting at 0. Without listing the patterns, what is the sixth ordered pair (A, B)?",
+          "answer": "(5, 25). After five steps, A is 5 and B is 25."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Nia built A: 0, 1, 2, 3 and B: 0, 3, 6, 9, then wrote the pairs (0, 0), (1, 6), (2, 9). Find her mistake and fix it.",
+          "shown_work": [
+            "A: 0, 1, 2, 3",
+            "B: 0, 3, 6, 9",
+            "Pairs: (0, 0), (1, 6), (2, 9)"
+          ],
+          "answer": "She paired terms from different positions. Corresponding terms share a position: (0, 0), (1, 3), (2, 6), (3, 9)."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Two Machines, One Table",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Two paper 'rule machines' (folded cards labeled with a rule)",
+            "Counters",
+            "First-quadrant grid paper"
+          ],
+          "instructions": "1. Machine A gets the rule add 1; Machine B gets add 3. Both start at 0.\n2. Partners take turns cranking a machine: say the rule, add counters, record the new term in a two-row table.\n3. After four cranks each, circle each column of the table and write it as an ordered pair.\n4. Plot every pair, over A and up B, and connect the dots with a straightedge.\n5. Debrief question: why did equal cranks make the points march in a straight line?"
+        },
+        {
+          "type": "matching",
+          "title": "Pair the Pairs",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Rule cards and ordered-pair strips (cut apart)"
+          ],
+          "instructions": "1. Spread the rule cards, like A: add 2 and B: add 6, start 0, next to ordered-pair strips.\n2. Match each pair of rules to the strip that lists its first four ordered pairs.\n3. To claim a match, say how you checked one pair in the middle of the strip, not just the first.\n4. Two decoy strips pair terms from different positions; set them aside and explain the mix-up.",
+          "content": {
+            "pairs": [
+              {
+                "left": "A: add 1, B: add 3, both start 0",
+                "right": "(0, 0), (1, 3), (2, 6), (3, 9)"
+              },
+              {
+                "left": "A: add 2, B: add 6, both start 0",
+                "right": "(0, 0), (2, 6), (4, 12), (6, 18)"
+              },
+              {
+                "left": "A: add 1, B: add 4, both start 0",
+                "right": "(0, 0), (1, 4), (2, 8), (3, 12)"
+              },
+              {
+                "left": "A: add 3, B: add 3, both start 0",
+                "right": "(0, 0), (3, 3), (6, 6), (9, 9)"
+              }
+            ],
+            "decoys": [
+              "(0, 0), (1, 6), (2, 9), (3, 12)",
+              "(0, 0), (3, 1), (6, 2), (9, 3)"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Cranking two rule machines and tabling the outputs makes corresponding terms concrete before pairs are plotted."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud while pairing, this column gives the A and the B, makes the invisible matching step audible."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Fixing Nia's mispaired table targets the exact position-tracking error this skill produces."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which two terms were born at the same step? How does the table show that?",
+          "In the pair (2, 6), which pattern does each number come from?",
+          "What move takes each plotted point to the next one?",
+          "Why do the points lie on a straight line?",
+          "If both rules doubled, what would happen to the picture?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student pairs terms from different positions in the two lists.",
+            "say": "Stack the patterns in a two-row table and draw a box around each column. A pair is one box: A on top, B underneath.",
+            "praise": "You took both numbers from one column, so the pair is true to the patterns."
+          },
+          {
+            "if_you_see": "Student plots (1, 3) by going over 3 and up 1.",
+            "say": "A is the first number, so A goes over. Say the trip before you move: over 1, up 3.",
+            "praise": "Over A, up B. The graph matches the table now."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A: 0, 2, 4 and B: 0, 7, 14. What is the second ordered pair?",
+            "look_for": "(2, 7). An answer of (2, 14) or (4, 7) means positions are slipping."
+          },
+          {
+            "prompt": "Plot (1, 3).",
+            "look_for": "Over 1, up 3, not over 3, up 1."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Pattern A starts at 0 and adds 1. Pattern B starts at 0 and adds 3. Write and plot the first four ordered pairs (A, B).",
+        "answer": "(0, 0), (1, 3), (2, 6), (3, 9), plotted over A and up B, lying on a straight line.",
+        "steps": [
+          {
+            "math": "A: 0, 1, 2, 3",
+            "annotation": "Apply add 1 three times from the start."
+          },
+          {
+            "math": "B: 0, 3, 6, 9",
+            "annotation": "Apply add 3 three times from the start."
+          },
+          {
+            "math": "Pairs: (0, 0), (1, 3), (2, 6), (3, 9)",
+            "annotation": "Pair corresponding terms: same position, A first."
+          },
+          {
+            "math": "Plot each pair: over A, up B",
+            "annotation": "Every step goes over 1 and up 3, so the points line up."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Pattern A starts at 0 and adds 2. Pattern B starts at 0 and adds 4. Write and plot the first four ordered pairs (A, B).",
+        "answer": "(0, 0), (2, 4), (4, 8), (6, 12)",
+        "steps": [
+          {
+            "math": "A: 0, 2, 4, 6",
+            "annotation": "Add 2 three times from the start.",
+            "given": true
+          },
+          {
+            "math": "B: 0, 4, 8, 12",
+            "annotation": "Add 4 three times from the start.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Pair the corresponding terms, A first.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Plot the pairs, over A and up B. What shape do they make?",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The terms ___ and ___ correspond because they are both in position ___.",
+        "I plotted (___, ___) by going over ___ and up ___."
+      ],
+      "fluency_source": "6AF5-F2"
     },
     {
       "skill_id": "6AF5-S1",
       "name": "Identify the quadrant of a point and read coordinates from a grid",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.AF.5",
       "prerequisite_skill": {
         "type": "gap",
@@ -694,7 +1214,7 @@
         "The x-coordinate is ___, so the point is to the ___ of the y-axis.",
         "I knew it was Quadrant ___ because the signs are ___ and ___."
       ],
-      "fluency_source": "6AF5-F2"
+      "fluency_source": "6AF5-B1"
     },
     {
       "skill_id": "6AF5-S2",
@@ -1065,7 +1585,7 @@
         "The ___-coordinates match, so I subtracted the ___-coordinates.",
         "The distance is ___ because |___ - ___| = ___."
       ],
-      "fluency_source": "6AF5-F2"
+      "fluency_source": "6AF5-F1"
     },
     {
       "skill_id": "6AF5-S3",
@@ -1339,7 +1859,7 @@
         "The question asks for ___, so after finding each distance I ___.",
         "Each grid unit stands for ___, so my final answer is ___."
       ],
-      "fluency_source": "6AF5-F2"
+      "fluency_source": "6AF5-F1"
     },
     {
       "skill_id": "6AF5-S4",
@@ -1721,11 +2241,11 @@
         "Distance goes both ways, so I wrote ___ + ___ AND ___ - ___.",
         "I expect ___ points in total because each grid direction gives ___."
       ],
-      "fluency_source": "6AF5-F2"
+      "fluency_source": "6AF5-F1"
     },
     {
       "skill_id": "6AF5-S5",
-      "column": "looking_back",
+      "column": "on_grade",
       "name": "Plot a point in the first quadrant from a whole-number ordered pair",
       "parent_standard": "6.AF.5",
       "prerequisite_skill": {
@@ -2203,12 +2723,14 @@
         "First I moved ___ units right because the x-coordinate is ___.",
         "I paused at (___, 0) before moving up because the second number counts from there."
       ],
-      "fluency_source": "6AF5-F2"
+      "fluency_source": "6AF5-B1"
     }
   ],
   "skill_sequence": [
     "6AF5-F1",
     "6AF5-F2",
+    "6AF5-B1",
+    "6AF5-B2",
     "6AF5-S1",
     "6AF5-S2",
     "6AF5-S3",
@@ -2217,8 +2739,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites — fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-4) prerequisite skills. Start intervention here.",
       "skills": [
         "6AF5-F1",
         "6AF5-F2"
@@ -2226,26 +2748,72 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 5) skills that feed this standard directly.",
       "skills": [
-        "6AF5-S1",
-        "6AF5-S5"
+        "6AF5-B1",
+        "6AF5-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "6AF5-S1",
         "6AF5-S2",
-        "6AF5-S3"
+        "6AF5-S3",
+        "6AF5-S5"
       ]
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "6AF5-S4"
       ]
     }
+  },
+  "skill_tree": {
+    "6AF5-F1": [],
+    "6AF5-F2": [],
+    "6AF5-B1": [
+      "6AF5-F1"
+    ],
+    "6AF5-B2": [
+      "6AF5-F2"
+    ],
+    "6AF5-S1": [
+      "6AF5-S5"
+    ],
+    "6AF5-S2": [
+      "6AF5-S1"
+    ],
+    "6AF5-S3": [
+      "6AF5-S2"
+    ],
+    "6AF5-S4": [
+      "6AF5-S3"
+    ],
+    "6AF5-S5": [
+      "6AF5-B1",
+      "6AF5-B2"
+    ]
+  },
+  "diagnostic_flow": {
+    "description": "Start with S3, solving a real-world map problem by combining absolute-value distances, the At-proficiency core. If they pass, move up to S4, generating every point a given distance away along a grid line. If they fail, drop one grade: B1 checks first-quadrant plotting and B2 checks generating ordered pairs from two rules, the grade 5 skills this standard's graphing leans on. If those wobble, the foundations F1 (number-line location and distance) and F2 (extending patterns by a rule) locate the gap in grades 3 and 4. S5, S1, and S2 remain available to probe the standard's own plotting, quadrant, and single-distance groundwork.",
+    "entry_skill": "6AF5-S3",
+    "if_pass": [
+      "6AF5-S4"
+    ],
+    "if_fail": [
+      "6AF5-B1",
+      "6AF5-B2"
+    ],
+    "branch_skills": [
+      "6AF5-F1",
+      "6AF5-F2",
+      "6AF5-S5",
+      "6AF5-S1",
+      "6AF5-S2"
+    ]
   }
 }

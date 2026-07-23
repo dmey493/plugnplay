@@ -3,7 +3,7 @@
   "standard_text": "Select, create, and interpret graphical representations of numerical data, including line plots, histograms, and box plots.",
   "schema_version": 3,
   "progression": {
-    "narrative": "6.DS.1 makes three demands, in its own words: SELECT, CREATE, and INTERPRET graphical representations of numerical data. The arc follows those verbs. First a student must know what each display is FOR -- dot plots show every value, histograms count values in equal intervals, box plots show a five-number summary -- so they can select the right one (S1). Selection only means something if the student can then read what a display says: the value on the axis versus the count in the stack or bar (S2). Creating comes next (S3), because building a plot -- an honest number line, one X per value, one interval per value -- is where the reading rules become physical. Interpretation then deepens in two steps: judging statements about a display using median, range, IQR, and quartile percentages (S4), and computing the five-number summary itself so a student can build or verify a box plot from raw data, with the Indiana convention that Q1 and Q3 exclude the median (S5). The standard tops out where ILEARN's Above-Proficiency items live: drawing a conclusion from one or two displays and defending it with values cited as evidence (S6). Underneath it all sit two foundations -- finding a median and range of a tiny ordered set (F1), and counting how often a value occurs (F2) -- because every display in this standard is just those two acts drawn as a picture.",
+    "narrative": "6.DS.1 asks students to select, create, and interpret line plots, histograms, and box plots for numerical data. The on-grade skills build in that order: knowing what each display is for so you can select it, reading a value or a frequency off a plot, creating a plot with an honest scale, and then interpreting displays with median, range, and quartiles and defending a claim with cited values. Students who struggle here usually carry gaps from well below grade six, most often trouble reading a scaled bar graph and building or reading a simple line plot. Intervention should start with those grade 3 and grade 4 foundations, rebuild the grade 5 skills of making a fractional line plot and organizing data into a frequency table and bar graph, and only then return to histograms and box plots.",
     "steps": [
       {
         "skill_id": "6DS1-S1",
@@ -40,312 +40,763 @@
   "skills": [
     {
       "skill_id": "6DS1-F1",
-      "name": "Find the median and range of a small ordered data set",
-      "column": "foundation",
-      "parent_standard": "6.DS.1",
-      "prerequisite_skill": {
-        "type": "gap",
-        "grade": 5,
-        "description": "Order whole numbers and find the middle value and the spread of a small data set.",
-        "check_question": "Put 9, 2, 6 in order from least to greatest. Which number is in the middle?"
-      },
-      "i_do_script": "Watch me find the median of 3, 9, 5. First I put the numbers in order: 3, 5, 9. The median is the middle number after ordering, so the median is 5 -- not 9, even though 9 was in the middle before I ordered. The range is a different question: biggest minus smallest, 9 - 3 = 6.",
-      "canonical_error": {
-        "pattern": "Finds the 'middle number' of the list as written, without ordering the data first.",
-        "example": "For the data 9, 2, 6, the student says the median is 2 because 2 sits in the middle of the list.",
-        "why": "The student treats 'median = middle' as a position on the page instead of a position in the ORDERED data. Ordering is the invisible first step, and skipping it makes every median wrong except by luck."
-      },
-      "redirect_script": {
-        "stop": "Hold on -- did we put the numbers in order first?",
-        "prompt": "Rewrite the data from least to greatest before you look for the middle. Cross off one number from each end, back and forth, until one number (or two) is left in the middle.",
-        "praise": "You ordered first -- that's exactly what makes the median trustworthy."
-      },
-      "item_template": "A list of 3-5 whole numbers (sometimes out of order). Student finds the median or the range. NR, no choices -- short stems suitable for fluency sprints.",
-      "sample_items": [
-        {
-          "stem": "Median of 2, 5, 9?",
-          "answer": "5",
-          "choices": null,
-          "distractor_logic": "9 (picks largest); 2 (picks first)"
-        },
-        {
-          "stem": "Median of 3, 4, 8, 10, 12?",
-          "answer": "8",
-          "choices": null,
-          "distractor_logic": "10 (miscounts to the middle); 12 (picks largest)"
-        },
-        {
-          "stem": "Median of 9, 2, 6?",
-          "answer": "6",
-          "choices": null,
-          "distractor_logic": "2 (middle of the unordered list -- the canonical error)"
-        },
-        {
-          "stem": "Median of 4, 4, 5, 9, 11?",
-          "answer": "5",
-          "choices": null,
-          "distractor_logic": "4 (picks the repeated value); 9 (miscounts)"
-        },
-        {
-          "stem": "Median of 2, 3, 7, 8?",
-          "answer": "5",
-          "choices": null,
-          "distractor_logic": "3 or 7 (picks one middle value instead of averaging the two)"
-        },
-        {
-          "stem": "Median of 10, 12, 18, 20?",
-          "answer": "15",
-          "choices": null,
-          "distractor_logic": "12 or 18 (doesn't average the two middle values)"
-        },
-        {
-          "stem": "Range of 3, 7, 12?",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "12 (gives the maximum instead of max minus min)"
-        },
-        {
-          "stem": "Range of 5, 9, 14, 21?",
-          "answer": "16",
-          "choices": null,
-          "distractor_logic": "21 (gives the maximum); 4 (subtracts adjacent values)"
-        },
-        {
-          "stem": "Range of 2, 2, 8, 10?",
-          "answer": "8",
-          "choices": null,
-          "distractor_logic": "10 (gives the maximum); 0 (subtracts the repeated 2s)"
-        },
-        {
-          "stem": "Range of 11, 15, 24?",
-          "answer": "13",
-          "choices": null,
-          "distractor_logic": "24 (gives the maximum); 4 (subtracts adjacent values)"
-        },
-        {
-          "stem": "Median of 6, 9, 15?",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "15 (picks largest); 6 (picks first)"
-        },
-        {
-          "stem": "Range of 1, 4, 9, 16?",
-          "answer": "15",
-          "choices": null,
-          "distractor_logic": "16 (gives the maximum); 3 (subtracts adjacent values)"
-        },
-        {
-          "stem": "Median of 5, 8, 8, 8, 13?",
-          "answer": "8",
-          "choices": null,
-          "distractor_logic": "13 (picks largest); 5 (picks first)"
-        },
-        {
-          "stem": "Range of 30, 42, 55?",
-          "answer": "25",
-          "choices": null,
-          "distractor_logic": "55 (gives the maximum); 13 (subtracts adjacent values)"
-        }
-      ],
-      "vocabulary": [
-        {
-          "term": "Median",
-          "definition": "The middle value after the data is put in order (or the average of the two middle values)."
-        },
-        {
-          "term": "Range",
-          "definition": "The biggest value minus the smallest value -- how far the data stretches."
-        },
-        {
-          "term": "Minimum",
-          "definition": "The smallest value in the data set."
-        },
-        {
-          "term": "Maximum",
-          "definition": "The largest value in the data set."
-        }
-      ],
-      "next_steps": {
-        "if_pass": "6DS1-S1",
-        "if_fail": "Review ordering whole numbers from least to greatest with number cards before retrying."
-      },
-      "worked_example_script": [
-        {
-          "kind": "show",
-          "text": "Write on the board: Find the median and range of 9, 2, 6."
-        },
-        {
-          "kind": "ask",
-          "text": "Before we hunt for the middle, is this list in order from least to greatest?"
-        },
-        {
-          "kind": "ask",
-          "text": "Rewrite it in order for me. What do you get?"
-        },
-        {
-          "kind": "watch",
-          "text": "If the student says the median is 2 (the middle of the UNORDERED list), stop and ask: 'Is 2 really in the middle of these values, or just in the middle of the page?' Have them order first: 2, 6, 9."
-        },
-        {
-          "kind": "ask",
-          "text": "Now cross off the smallest and the largest. What's left?"
-        },
-        {
-          "kind": "say",
-          "text": "That leftover number, 6, is the median. Median always means the middle of the ORDERED data."
-        },
-        {
-          "kind": "ask",
-          "text": "Range is a different job: biggest minus smallest. What is 9 - 2?"
-        },
-        {
-          "kind": "say",
-          "text": "So median 6, range 7. Two different questions, two different answers."
-        }
-      ]
-    },
-    {
-      "skill_id": "6DS1-F2",
-      "name": "Count how often each value appears in a data set",
+      "name": "Read a scaled bar graph",
       "column": "foundation",
       "parent_standard": "6.DS.1",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 3,
-        "description": "Count occurrences of a value in a list and identify the smallest and largest values.",
-        "check_question": "In the list 4, 6, 4, 7, 4 -- how many times does 4 appear?"
+        "description": "Read the value a bar reaches using the graph's scale, and compare two bars.",
+        "check_question": "A bar graph counts by 2s. A bar reaches the third line. How many does that bar show?"
       },
-      "i_do_script": "Watch me count how many 4s are in the data 4, 6, 4, 7, 4. I touch each number and make a tally every time I see a 4: tally, skip, tally, skip, tally. Three tallies, so 4 appears three times. Every dot plot, histogram, and box plot starts with counting like this, so we count every copy -- not just 'yes, a 4 is in there.'",
+      "i_do_script": "On a bar graph, the scale on the side tells me what each gridline is worth, so I read the scale before I read a bar. Watch: this scale goes 0, 2, 4, 6, 8, so each line is worth 2, not 1. The apple bar stops at the third line, and the third line is 6, so 6 students chose apples. I do not count how many lines the bar passed, I read the number the top of the bar lines up with.",
       "canonical_error": {
-        "pattern": "Counts whether a value appears instead of how many times it appears -- repeats get collapsed to one.",
-        "example": "For the data 4, 6, 4, 7, 4, the student says 4 appears '1 time' because '4 is one number.'",
-        "why": "The student is thinking about the value as a single object instead of counting occurrences. Frequency -- the height of every stack and bar they'll ever read -- is exactly this count, so collapsing repeats breaks every display downstream."
+        "pattern": "Counts the number of gridlines a bar passes instead of reading the scale value.",
+        "example": "On a scale that counts by 2s, a bar reaches the third line and the student says 3 instead of 6.",
+        "why": "The student treats every line as worth 1. The scale sets how much each line adds, so on a by-2 scale the third line is 6. Reading the scale first is the invisible step that makes every bar value right."
       },
-      "redirect_script": {
-        "stop": "Wait -- let's touch and count each one.",
-        "prompt": "Put your finger on each number in the list one at a time and make a tally mark every time you land on the value we're counting. How many tallies did you make?",
-        "praise": "You counted every copy -- that count is what data displays are built from."
-      },
-      "item_template": "A short list of 4-7 whole-number data values. Student counts occurrences of one value, counts the total number of values, finds min/max, or orders the list. NR, no choices.",
+      "item_template": "A scaled bar graph (scale counts by 2, 5, or 10). Student reads a bar's value, compares two bars, or finds how many more or fewer. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Data: 4, 6, 4, 7, 4. How many 4s?",
-          "answer": "3",
-          "choices": null,
-          "distractor_logic": "1 ('4 is one number' -- the canonical error); 5 (counts all values)"
+          "stem": "A bar graph counts by 2s. A bar reaches the third line. What value is that bar?",
+          "answer": "6"
         },
         {
-          "stem": "Data: 2, 5, 5, 8. How many 5s?",
-          "answer": "2",
-          "choices": null,
-          "distractor_logic": "1 (collapses the repeat); 4 (counts all values)"
+          "stem": "A bar graph counts by 5s. A bar ends at the line labeled 20. What value is that bar?",
+          "answer": "20"
         },
         {
-          "stem": "Data: 3, 3, 3, 9, 9. How many values in all?",
-          "answer": "5",
-          "choices": null,
-          "distractor_logic": "2 (counts kinds of values instead of values)"
+          "stem": "On a graph scaled by 2s, the cat bar shows 8 and the dog bar shows 14. How many more dogs than cats?",
+          "answer": "6"
         },
         {
-          "stem": "Data: 7, 2, 9, 4. Smallest value?",
-          "answer": "2",
-          "choices": null,
-          "distractor_logic": "7 (picks first); 4 (picks last)"
+          "stem": "A bar graph counts by 10s. A bar reaches the fourth line. What value is that bar?",
+          "answer": "40"
         },
         {
-          "stem": "Data: 6, 11, 3, 8. Largest value?",
-          "answer": "11",
-          "choices": null,
-          "distractor_logic": "8 (picks last); 6 (picks first)"
+          "stem": "On a graph scaled by 5s, a bar reaches halfway between 10 and 20. What value is that bar?",
+          "answer": "15"
         },
         {
-          "stem": "Data: 5, 1, 5, 5, 2, 5. How many 5s?",
-          "answer": "4",
-          "choices": null,
-          "distractor_logic": "1 (collapses repeats); 6 (counts all values)"
+          "stem": "A bar graph counts by 2s. The red bar shows 6 and the blue bar shows 10. How many in all?",
+          "answer": "16"
         },
         {
-          "stem": "Data: 10, 15, 10, 20. How many values in all?",
-          "answer": "4",
-          "choices": null,
-          "distractor_logic": "3 (counts kinds of values)"
+          "stem": "A bar graph counts by 5s. Bar A shows 25 and bar B shows 15. How many fewer does bar B show?",
+          "answer": "10"
         },
         {
-          "stem": "Data: 8, 3, 6, 3, 3. How many 3s?",
-          "answer": "3",
-          "choices": null,
-          "distractor_logic": "1 (collapses repeats); 5 (counts all values)"
-        },
-        {
-          "stem": "Order 9, 2, 6 least to greatest.",
-          "answer": "2, 6, 9",
-          "choices": null,
-          "distractor_logic": "9, 6, 2 (orders greatest to least)"
-        },
-        {
-          "stem": "Order 12, 5, 8, 5 least to greatest.",
-          "answer": "5, 5, 8, 12",
-          "choices": null,
-          "distractor_logic": "5, 8, 12 (drops the repeated 5 -- repeats must stay)"
+          "stem": "On a graph scaled by 2s, a bar reaches the fifth line. What value is that bar?",
+          "answer": "10"
         }
       ],
+      "redirect_script": {
+        "stop": "What is each gridline worth on this graph?",
+        "prompt": "Read the scale first: look at the numbers on the side and see how much each line adds. Then follow the bar up to its line and read that number, do not just count the lines.",
+        "praise": "You used the scale, so the bar's value is right."
+      },
       "vocabulary": [
         {
-          "term": "Data value",
-          "definition": "One number in the data set -- one measurement or one answer from one person."
+          "term": "Scale",
+          "definition": "The numbers along the side of a graph that tell how much each gridline is worth, such as counting by 2s or 5s."
         },
         {
-          "term": "Frequency",
-          "definition": "How many times a value (or group of values) appears in the data."
-        },
-        {
-          "term": "Tally",
-          "definition": "A quick mark you make each time you count one more."
+          "term": "Bar graph",
+          "definition": "A graph that uses bars of different heights to show how many are in each category."
         }
       ],
       "next_steps": {
-        "if_pass": "6DS1-S1",
-        "if_fail": "Practice touch-counting objects sorted into groups (cubes by color) before retrying."
+        "if_pass": "6DS1-B2",
+        "if_fail": "Review grade 2 to 3 picture graphs where each picture stands for 1, then for 2 or 5, before reading a scaled bar graph line by line."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write on the board: Data: 5, 1, 5, 5, 2, 5. How many 5s?"
+          "text": "Draw a bar graph of favorite fruits with a scale going 0, 2, 4, 6, 8, 10. Draw the apple bar up to the line at 6."
         },
         {
           "kind": "ask",
-          "text": "Before you answer -- are we asking whether 5 is in the list, or how many TIMES 5 is in the list?"
+          "text": "What is each gridline worth here? Read the scale out loud: 0, 2, 4."
         },
         {
           "kind": "say",
-          "text": "Those are different questions. Displays are built from 'how many times' -- that's called the frequency."
-        },
-        {
-          "kind": "ask",
-          "text": "Touch each number one at a time. Make a tally every time you land on a 5. Go."
+          "text": "Each line is worth 2. The apple bar stops at the third line, which is 6, so 6 students chose apples. I read the scale, not the number of lines."
         },
         {
           "kind": "watch",
-          "text": "If the student answers 1 ('there's a 5 in there'), have them physically touch-count with tallies. If they answer 6, they counted every value -- reread the question together."
+          "text": "If a student says 3 because the bar passed three lines, point at the scale numbers: the third line says 6."
         },
         {
           "kind": "ask",
-          "text": "How many tallies did you make?"
-        },
-        {
-          "kind": "say",
-          "text": "Four. On a dot plot, that would be a stack of 4 Xs above the number 5. Counting repeats IS making a data display."
-        },
-        {
-          "kind": "ask",
-          "text": "Quick check: in 8, 3, 6, 3, 3 -- how many 3s?"
+          "text": "Your turn: the banana bar reaches the line at 8. How many chose bananas?"
         }
       ]
     },
     {
+      "skill_id": "6DS1-F2",
+      "name": "Make and read a line plot",
+      "column": "foundation",
+      "parent_standard": "6.DS.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 4,
+        "description": "Place one X above the number line for each data value, then count the X's to answer how many.",
+        "check_question": "A line plot has 3 X's above 5. How many data points have the value 5?"
+      },
+      "i_do_script": "On a line plot, every data value gets its own X stacked above its number, so I place one X at a time. Watch the data 4, 6, 6, 7: 4 gets one X, then 6 gets an X, then 6 gets a second X stacked on top, then 7 gets one X. A taller stack means that value happened more often. To read the plot I count the X's in a stack, so the two X's above 6 tell me 6 appeared twice.",
+      "canonical_error": {
+        "pattern": "Writes one X for a whole group of repeated values instead of one X per value.",
+        "example": "For the data 6, 6, 6 the student draws a single X above 6 instead of stacking three.",
+        "why": "The student marks that a value appeared at all, not how many times. Each data value is its own X, so three 6s must be three stacked X's, or every count read from the plot will be wrong."
+      },
+      "item_template": "A small whole-number data set or a described line plot. Student places X's, counts how many at a value, finds the total, or names the most common value. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "Data: 2, 3, 3, 5. How many X's go above 3 on a line plot?",
+          "answer": "2"
+        },
+        {
+          "stem": "A line plot shows 4 X's above 6. How many data points have the value 6?",
+          "answer": "4"
+        },
+        {
+          "stem": "Data: 1, 1, 1, 4. How many X's go above 1?",
+          "answer": "3"
+        },
+        {
+          "stem": "A line plot has 2 X's above 5, 1 X above 6, and 3 X's above 7. How many data points in all?",
+          "answer": "6"
+        },
+        {
+          "stem": "Data: 8, 9, 9, 9, 10. Which value has the most X's?",
+          "answer": "9"
+        },
+        {
+          "stem": "A line plot shows 0 X's above 4. What does that tell you about the value 4?",
+          "answer": "4 did not appear in the data"
+        },
+        {
+          "stem": "Data: 3, 5, 5, 7, 7. How many X's go above 5?",
+          "answer": "2"
+        },
+        {
+          "stem": "A line plot has 2 X's above 10 and 2 X's above 12. How many data points in all?",
+          "answer": "4"
+        }
+      ],
+      "redirect_script": {
+        "stop": "How many times does that value appear in the data?",
+        "prompt": "Put one X for each data value, stacking them above the same number when a value repeats. Then to read the plot, count the X's in the stack.",
+        "praise": "One X per value, and your stack count matches the data."
+      },
+      "vocabulary": [
+        {
+          "term": "Line plot",
+          "definition": "A graph that stacks an X above a number line for each data value, so a taller stack means that value appears more often. Also called a dot plot."
+        },
+        {
+          "term": "Data value",
+          "definition": "One number in the data set; each one gets its own X on a line plot."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6DS1-B1",
+        "if_fail": "Review grade 3 line plots: mark one X per item above a whole-number line before stacking repeated values."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the data 4, 6, 6, 7. Draw a number line from 3 to 8 and label every whole number."
+        },
+        {
+          "kind": "ask",
+          "text": "How many times does 6 appear? So how many X's go above 6?"
+        },
+        {
+          "kind": "say",
+          "text": "6 appears twice, so I stack two X's above 6. 4 and 7 each appear once, so one X each. Every number on the line is labeled even when it has no X, so the spacing stays honest."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student puts one X above 6 for both 6s, remind them that each data value gets its own X."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: add another data value of 4. How many X's above 4 now?"
+        }
+      ]
+    },
+    {
+      "skill_id": "6DS1-B1",
+      "name": "Make and interpret a line plot with fractional units",
+      "column": "looking_back",
+      "parent_standard": "6.DS.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Build a line plot with a scale in halves and fourths, then read counts and totals from it.",
+        "check_question": "A line plot has X's above 1/4, 1/2, 1/2, and 3/4. How many measurements are shown?"
+      },
+      "i_do_script": "A line plot can use a fraction scale, so I mark equal steps like 0, 1/4, 1/2, 3/4, 1 and label every step. Watch the data 1/4, 1/2, 1/2, 3/4: I place one X above 1/4, two X's stacked above 1/2, and one X above 3/4. To read the plot I count the X's, and to total the measurements I add the fractions: 1/4 + 1/2 + 1/2 + 3/4 = 2. The empty marks stay on the line even with no X, so the equal steps do not lie.",
+      "canonical_error": {
+        "pattern": "Labels the number line with only the fractions that occur, leaving out empty marks.",
+        "example": "For data 1/4, 1/2, 1 the student writes the scale 1/4, 1/2, 1 with the 3/4 mark missing and the steps squeezed together.",
+        "why": "A line plot needs equal steps so distances are honest. Dropping 3/4 makes 1/2 and 1 look one step apart when they are two. Every fraction step must show even when no data lands there."
+      },
+      "item_template": "A line plot scaled in halves or fourths, positive fractions only. Student reads a count, names the most common value, finds the total, or adds a couple of measurements. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A line plot has X's above 1/4, 1/4, 1/2, 3/4. How many X's are above 1/4?",
+          "answer": "2"
+        },
+        {
+          "stem": "A line plot scaled in fourths has 3 X's at 1/2 and 1 X at 3/4. Which value has more X's?",
+          "answer": "1/2"
+        },
+        {
+          "stem": "A line plot shows 2 X's at 1/2 and 3 X's at 1. How many measurements in all?",
+          "answer": "5"
+        },
+        {
+          "stem": "On a line plot, the longest length is 3/4 inch and the shortest is 1/4 inch. What is the difference?",
+          "answer": "1/2 inch"
+        },
+        {
+          "stem": "A line plot has X's above 1/2, 1/2, 1/2, 3/4. What is the most common value?",
+          "answer": "1/2"
+        },
+        {
+          "stem": "A line plot scaled in halves shows 1 X at 1, 2 X's at 1 1/2, and 1 X at 2. How many measurements?",
+          "answer": "4"
+        },
+        {
+          "stem": "Two plants measure 1/4 ft and 1/2 ft on a line plot. What is their total length?",
+          "answer": "3/4 ft"
+        },
+        {
+          "stem": "A line plot has 4 X's above 3/4 and 2 X's above 1/4. How many more X's are at 3/4 than at 1/4?",
+          "answer": "2"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you label every fraction step, even the ones with no X?",
+        "prompt": "Draw the number line first with equal steps in fourths, then place the X's. Each X is one measurement, and the value comes from the number below the stack.",
+        "praise": "Equal steps and one X per measurement, so the plot reads true."
+      },
+      "vocabulary": [
+        {
+          "term": "Line plot",
+          "definition": "A graph that stacks an X above a number line for each measurement; the scale may be marked in fractions such as halves and fourths."
+        },
+        {
+          "term": "Scale step",
+          "definition": "The equal distance between marks on the number line; every step is shown, even one where no data lands."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6DS1-S1",
+        "if_fail": "6DS1-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a number line marked 0, 1/4, 1/2, 3/4, 1 with equal steps. Write the data 1/4, 1/2, 1/2, 3/4."
+        },
+        {
+          "kind": "ask",
+          "text": "Which marks get an X, and how many at each?"
+        },
+        {
+          "kind": "say",
+          "text": "1/4 gets one X, 1/2 gets two X's, 3/4 gets one X. The 1 stays labeled with no X so the steps stay equal. The total is 1/4 + 1/2 + 1/2 + 3/4 = 2."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student squeezes the scale to skip the 1, show that unequal steps make the plot lie."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: add another measurement of 1/2. How many X's above 1/2 now?"
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A line plot has X's above 1/2, 1/2, 3/4. How many X's are above 1/2?",
+          "answer": "2"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A line plot has 3 X's at 1/4 and 1 X at 1/2. How many measurements in all?",
+          "answer": "4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A line plot scaled in fourths has 2 X's at 1/4, 3 X's at 1/2, and 1 X at 3/4. What is the most common value?",
+          "answer": "1/2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "The tallest plant is 3/4 ft and the shortest is 1/4 ft on a line plot. What is the range?",
+          "answer": "1/2 ft"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A line plot shows 1 X at 1/2 and 2 X's at 3/4. What is the total of these three measurements?",
+          "answer": "2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A line plot has 3 X's at 1 and 2 X's at 1 1/2. How many measurements in all?",
+          "answer": "5"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A line plot shows lengths 1/4, 1/4, 1/2, 3/4, 3/4, 3/4. How many measurements are 1/2 inch or longer?",
+          "answer": "4"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia made a line plot for the data 1/4, 1/2, 1/2, 1. She drew the scale as 1/4, 1/2, 1 with no 3/4 mark and squeezed the marks together. Find her mistake and fix it.",
+          "shown_work": [
+            "scale drawn: 1/4, 1/2, 1",
+            "the 3/4 mark is missing",
+            "marks are unevenly spaced"
+          ],
+          "answer": "A line plot scale must show every equal step, including 3/4, even when no data lands there. Redraw the scale as 1/4, 1/2, 3/4, 1 with equal spacing, then place the X's."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Measure and Plot",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Rulers marked in fourths of an inch",
+            "Short paper strips or pencils to measure",
+            "Grid paper"
+          ],
+          "instructions": "1. Each pair measures 6 to 8 short strips to the nearest 1/4 inch.\n2. Draw a number line and label every fourth from 0 to the longest length, including marks with no data.\n3. Place one X above the matching fraction for each strip measured.\n4. Read the plot: how many at 1/2, which length is most common, how many strips in all.\n5. Say each time: one X per measurement, and every fraction step gets a label."
+        },
+        {
+          "type": "matching",
+          "title": "Match Data to Its Line Plot",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: fractional data sets on some cards, line plots on others"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each data set like 1/4, 1/2, 1/2, 3/4 to the line plot with the matching stacks.\n3. To claim a match, say how many X's sit above each mark.\n4. One decoy plot leaves out an empty fraction mark; set it aside and explain why the spacing is wrong.",
+          "content": {
+            "pairs": [
+              {
+                "left": "1/4, 1/2, 1/2, 3/4",
+                "right": "1 X at 1/4, 2 X at 1/2, 1 X at 3/4"
+              },
+              {
+                "left": "1/4, 1/4, 1/4, 1",
+                "right": "3 X at 1/4, 1 X at 1"
+              },
+              {
+                "left": "1/2, 3/4, 3/4",
+                "right": "1 X at 1/2, 2 X at 3/4"
+              }
+            ],
+            "decoys": [
+              "scale drawn 1/4, 1/2, 1 with 3/4 left out"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Measuring real strips and placing them on a fraction number line makes the equal-step scale concrete before the reading rules are named."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud while labeling every fraction step makes the choice to keep empty marks visible and checkable."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "The squeezed-scale error is stable and predictable; finding and fixing it in a worked plot confronts it head on."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What does one X on this line plot stand for?",
+          "What is each step on the scale worth, and did you label every step?",
+          "Which value has the tallest stack, and how many is that?",
+          "How could you find the total of all the measurements from the plot?",
+          "If a fraction never occurs, should its mark still appear on the line? Why?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student labels only the fractions that occur and squeezes the scale.",
+            "say": "Draw the number line first with equal steps, 1/4, 1/2, 3/4, 1, then place the X's. Do the empty marks still belong?",
+            "praise": "Equal steps make the plot honest."
+          },
+          {
+            "if_you_see": "Student reads the height of a stack as the fraction value.",
+            "say": "The stack height is how many measurements, not the size. What number on the line is the stack sitting above?",
+            "praise": "You separated how many from how big."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A line plot has 2 X's at 1/2 and 1 X at 3/4. How many measurements?",
+            "look_for": "3, counting each X once."
+          },
+          {
+            "prompt": "What is the total of 1/4, 1/4, and 1/2?",
+            "look_for": "1, since 1/4 + 1/4 + 1/2 = 1."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A line plot scaled in fourths has 2 X's at 1/4, 1 X at 1/2, and 1 X at 3/4. What is the total length?",
+        "answer": "1 3/4",
+        "steps": [
+          {
+            "math": "count X's: 1/4 twice, 1/2 once, 3/4 once",
+            "annotation": "Each X is one measurement to add."
+          },
+          {
+            "math": "1/4 + 1/4 = 2/4 = 1/2",
+            "annotation": "Combine the two quarter measurements."
+          },
+          {
+            "math": "1/2 + 1/2 = 1",
+            "annotation": "Add the single 1/2 measurement."
+          },
+          {
+            "math": "1 + 3/4 = 1 3/4",
+            "annotation": "Add the 3/4 measurement for the total."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A line plot has 3 X's at 1/4 and 1 X at 3/4. What is the total length?",
+        "answer": "1 1/2",
+        "steps": [
+          {
+            "math": "count X's: 1/4 three times, 3/4 once",
+            "annotation": "Each X is one measurement.",
+            "given": true
+          },
+          {
+            "math": "1/4 + 1/4 + 1/4 = 3/4",
+            "annotation": "Combine the three quarter measurements.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Add the 3/4 measurement.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the total length.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "Each X on the line plot stands for one ___, and I read its value from the ___.",
+        "The scale steps by ___, so I label every mark from ___ to ___ even if it has no X."
+      ],
+      "fluency_source": "6DS1-F2"
+    },
+    {
+      "skill_id": "6DS1-B2",
+      "name": "Build and interpret a frequency table and bar graph",
+      "column": "looking_back",
+      "parent_standard": "6.DS.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Organize raw data in a frequency table, then read counts and compare categories from a bar graph.",
+        "check_question": "In the data 4, 4, 5, 6, 6, 6, how many times does 6 appear?"
+      },
+      "i_do_script": "To turn raw data into a graph, I sort it into a frequency table first: I list each value once, then tally how many times it occurs. Watch the data 6, 8, 8, 8, 10: 6 gets one tally, 8 gets three, 10 gets one. That count next to a value is its frequency, and on a bar graph the frequency is the height of the bar. So the 8 bar rises to 3, because 8 occurred three times, not to 8.",
+      "canonical_error": {
+        "pattern": "Swaps a value with its frequency.",
+        "example": "For the data 4, 4, 4, 7, 9 the student says the frequency of 4 is 4, reading the value as its count.",
+        "why": "The value tells what was measured; the frequency tells how many times it happened. Reading the value as the count means 4 with three tallies gets called a frequency of 4, and every bar height and total comes out wrong."
+      },
+      "item_template": "A small numerical data set or a described frequency table or bar graph. Student counts a frequency, compares categories, finds a total, or makes a simple prediction. Numeric or short response.",
+      "sample_items": [
+        {
+          "stem": "Data: 3, 3, 5, 5, 5, 8. How many times does 5 appear?",
+          "answer": "3"
+        },
+        {
+          "stem": "A frequency table shows 4 students read 2 books, 3 read 3 books, and 1 read 5 books. How many students in all?",
+          "answer": "8"
+        },
+        {
+          "stem": "Data: 7, 7, 7, 9, 10, 10. Which value appears most often?",
+          "answer": "7"
+        },
+        {
+          "stem": "A bar graph scaled by 2s shows cats 6 and dogs 10. How many more chose dogs?",
+          "answer": "4"
+        },
+        {
+          "stem": "In a frequency table, value 4 has a frequency of 5. What does the 5 mean?",
+          "answer": "4 occurred 5 times in the data"
+        },
+        {
+          "stem": "Data: 2, 2, 4, 4, 4, 4. How many data values in all?",
+          "answer": "6"
+        },
+        {
+          "stem": "A bar graph shows Monday 8, Tuesday 8, Wednesday 4. What is the total for the three days?",
+          "answer": "20"
+        },
+        {
+          "stem": "A frequency table shows the most common score is 8. Predict a likely score for a new student.",
+          "answer": "8"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is that number a value in the data or how many times it happened?",
+        "prompt": "Sort the data into a table first: list each value, then tally how many times it occurs. The tally count is the frequency, which becomes the height of the bar.",
+        "praise": "You kept the value and its frequency straight."
+      },
+      "vocabulary": [
+        {
+          "term": "Frequency",
+          "definition": "How many times a value occurs in the data set; on a bar graph it is the height of the bar."
+        },
+        {
+          "term": "Frequency table",
+          "definition": "A table that lists each value beside a tally or count of how often it occurs."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6DS1-S1",
+        "if_fail": "6DS1-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the data 6, 8, 8, 8, 10. Make a table listing 6, 8, 10 with a tally next to each."
+        },
+        {
+          "kind": "ask",
+          "text": "How many tallies go next to 8?"
+        },
+        {
+          "kind": "say",
+          "text": "8 has three tallies, so its frequency is 3. 6 and 10 each have one. On a bar graph the 8 bar rises to 3, because the height is the count, not the value 8."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student draws the 8 bar up to 8, remind them the height is how many times 8 occurred, which is 3."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: what is the total number of data points?"
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Data: 5, 5, 5, 8. How many times does 5 appear?",
+          "answer": "3"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A frequency table shows frequencies 2, 3, and 4 for three values. How many data points in all?",
+          "answer": "9"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Data: 6, 6, 7, 7, 7, 9. Which value has the highest frequency?",
+          "answer": "7"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bar graph scaled by 5s shows blue 15 and red 25. How many more chose red?",
+          "answer": "10"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A frequency table shows value 3 with frequency 4, value 5 with frequency 2, and value 8 with frequency 4. How many data points in all?",
+          "answer": "10"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bar graph shows week 1: 12, week 2: 8, week 3: 10. What is the total?",
+          "answer": "30"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "In a survey, 10 of 20 students picked pizza. If the pattern holds, predict how many of the next 40 students would pick pizza.",
+          "answer": "20"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Sam has the data 4, 4, 4, 7, 9. He says the value with the highest frequency is 4 and its frequency is 4. Find and fix his mistake.",
+          "shown_work": [
+            "value 4 is the most common",
+            "reports the frequency of 4 as 4"
+          ],
+          "answer": "4 appears 3 times, not 4 times, so its frequency is 3. Sam read the value 4 as its count. The most common value is 4 with frequency 3."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Tally It Up",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Chart paper",
+            "Sticky notes or counters",
+            "Rulers for drawing bars"
+          ],
+          "instructions": "1. Collect a quick class data set, such as number of pockets each student has today.\n2. Build a frequency table together: list each value, then add one tally per student.\n3. Draw a scaled bar graph where each bar height equals the tally count for that value.\n4. Ask reading questions: which value is most common, how many students in all, how many more at one value than another.\n5. Say each time: the bar height is the frequency, not the value."
+        },
+        {
+          "type": "matching",
+          "title": "Table to Bar Graph Match",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Card deck: frequency tables on some cards, bar graphs on others"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each frequency table to the bar graph whose bar heights match its counts.\n3. To claim a match, read one value and its frequency out loud.\n4. One decoy graph draws a bar up to the value instead of the count; set it aside and explain the swap.",
+          "content": {
+            "pairs": [
+              {
+                "left": "3 -> 2, 5 -> 4, 6 -> 1",
+                "right": "bars of height 2, 4, 1"
+              },
+              {
+                "left": "2 -> 3, 4 -> 3, 7 -> 2",
+                "right": "bars of height 3, 3, 2"
+              },
+              {
+                "left": "6 -> 1, 8 -> 3, 10 -> 1",
+                "right": "bars of height 1, 3, 1"
+              }
+            ],
+            "decoys": [
+              "a graph where the value-8 bar is drawn up to height 8 instead of its count"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Moving from tallies and counters to a table to a bar graph walks the concrete to abstract path before the frequency rule is named."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Pairing to share a prediction from the most common value builds the reasoning the standard's interpret skills demand."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "The value-for-frequency swap is a stable error; catching it in a worked table confronts the misconception directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is that number a value in the data or how many times it happened?",
+          "How did you turn the raw data into the table?",
+          "Which bar is tallest, and what does its height tell you?",
+          "How do you find the total number of data points from the table?",
+          "Based on the most common value, what would you predict for the next data point?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student draws the bar up to the value instead of the count.",
+            "say": "Tally how many times that value occurs first. The bar rises to the tally count, not to the value.",
+            "praise": "You made the height a count."
+          },
+          {
+            "if_you_see": "Student reports how many different values there are instead of a frequency.",
+            "say": "I asked how many times one value occurs, not how many values there are. Point to that value's row and count its tallies.",
+            "praise": "You read the frequency, not the number of categories."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Data 3, 3, 3, 7: what is the frequency of 3?",
+            "look_for": "3, one tally per occurrence."
+          },
+          {
+            "prompt": "A table shows frequencies 2, 4, 1. What is the total number of data points?",
+            "look_for": "7, found by adding the frequencies."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A frequency table shows value 3 with frequency 2, value 5 with frequency 4, and value 6 with frequency 1. How many data points in all, and which value is most common?",
+        "answer": "7 data points; 5 is most common",
+        "steps": [
+          {
+            "math": "list the frequencies: 2, 4, 1",
+            "annotation": "Read each value's count from the table."
+          },
+          {
+            "math": "2 + 4 + 1 = 7",
+            "annotation": "Add the frequencies for the total number of data points."
+          },
+          {
+            "math": "compare frequencies: 4 is the largest",
+            "annotation": "The tallest bar has the highest frequency."
+          },
+          {
+            "math": "frequency 4 belongs to value 5",
+            "annotation": "So 5 is the most common value."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A frequency table shows value 2 with frequency 3, value 4 with frequency 3, and value 7 with frequency 2. How many data points in all?",
+        "answer": "8",
+        "steps": [
+          {
+            "math": "list the frequencies: 3, 3, 2",
+            "annotation": "Read each value's count from the table.",
+            "given": true
+          },
+          {
+            "math": "3 + 3 = 6",
+            "annotation": "Add the first two frequencies.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Add the last frequency.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the total number of data points.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The frequency of ___ is ___, which is how many times it appears.",
+        "To find the total, I add the frequencies: ___."
+      ],
+      "fluency_source": "6DS1-F1"
+    },
+    {
       "skill_id": "6DS1-S1",
       "name": "Select the appropriate display for a numerical data set",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.DS.1",
       "engine_stems": [
         1
@@ -1058,7 +1509,7 @@
         "The value is ___ and the count is ___, so ___ students had ___.",
         "The line inside the box tells me the median is ___."
       ],
-      "fluency_source": "6DS1-F1"
+      "fluency_source": "6DS1-F2"
     },
     {
       "skill_id": "6DS1-S3",
@@ -1466,7 +1917,7 @@
         "My number line runs from ___ to ___ because those are the minimum and maximum.",
         "I checked my plot by counting ___ Xs for ___ data values."
       ],
-      "fluency_source": "6DS1-F1"
+      "fluency_source": "6DS1-F2"
     },
     {
       "skill_id": "6DS1-S4",
@@ -2534,6 +2985,8 @@
   "skill_sequence": [
     "6DS1-F1",
     "6DS1-F2",
+    "6DS1-B1",
+    "6DS1-B2",
     "6DS1-S1",
     "6DS1-S2",
     "6DS1-S3",
@@ -2543,8 +2996,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation",
-      "description": "Tier III -- 2+ grade levels below. If a student can't access Looking Back, start here.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-4) prerequisite skills. Start intervention here.",
       "skills": [
         "6DS1-F1",
         "6DS1-F2"
@@ -2552,15 +3005,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Prerequisite skills -- fix these first if a student can't access grade-level work",
+      "description": "One grade below (grade 5) skills that feed this standard directly.",
       "skills": [
-        "6DS1-S1"
+        "6DS1-B1",
+        "6DS1-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "Core 6.DS.1 skills -- the standard itself",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "6DS1-S1",
         "6DS1-S2",
         "6DS1-S3",
         "6DS1-S4",
@@ -2569,7 +3024,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Extension skills -- for students ready to push ahead",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "6DS1-S6"
       ]
@@ -2578,24 +3033,30 @@
   "skill_tree": {
     "6DS1-F1": [],
     "6DS1-F2": [],
-    "6DS1-S1": [
+    "6DS1-B1": [
       "6DS1-F2"
+    ],
+    "6DS1-B2": [
+      "6DS1-F1"
+    ],
+    "6DS1-S1": [
+      "6DS1-B1",
+      "6DS1-B2"
     ],
     "6DS1-S2": [
       "6DS1-S1",
-      "6DS1-F2"
+      "6DS1-B1"
     ],
     "6DS1-S3": [
       "6DS1-S2",
-      "6DS1-F2"
+      "6DS1-B1"
     ],
     "6DS1-S4": [
       "6DS1-S2",
-      "6DS1-F1"
+      "6DS1-B2"
     ],
     "6DS1-S5": [
-      "6DS1-S4",
-      "6DS1-F1"
+      "6DS1-S4"
     ],
     "6DS1-S6": [
       "6DS1-S4",
@@ -2603,17 +3064,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (interpret a box plot/histogram statement) -- the At-Proficiency center of the standard. If they pass, move up to S5 (compute the five-number summary) and S6 (defend conclusions). If they fail, drop to S2 (can they even read one value off a plot?) and S1 (do they know what each display shows?). S3 (create a plot) branches off S2 for students whose reads are fine but whose constructions collapse the axis. Foundation F1/F2 catch students who can't find a median or count occurrences at all.",
+    "description": "Start with S4, judging a statement about a histogram or box plot, the At-Proficiency center of the standard. If they pass, move up to S5 (compute the five-number summary) and S6 (defend a conclusion). If they fail, drop below grade level: B1 checks making and reading a fractional line plot and B2 checks organizing data into a frequency table and bar graph, the two grade 5 skills these displays lean on. If those wobble, the foundations F1 (read a scaled bar graph) and F2 (make and read a line plot) locate the gap in grades 3 and 4. S1, S2, and S3 remain available to probe the standard's own select, read, and create groundwork.",
     "entry_skill": "6DS1-S4",
     "if_pass": [
       "6DS1-S5",
       "6DS1-S6"
     ],
     "if_fail": [
-      "6DS1-S1",
-      "6DS1-S2"
+      "6DS1-B1",
+      "6DS1-B2"
     ],
     "branch_skills": [
+      "6DS1-F1",
+      "6DS1-F2",
+      "6DS1-S1",
+      "6DS1-S2",
       "6DS1-S3"
     ]
   }

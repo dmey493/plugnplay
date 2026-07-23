@@ -3,7 +3,7 @@
   "standard_text": "Solve problems involving scale drawings of geometric figures, including computing actual lengths and areas from a scale drawing and reproducing a scale drawing at a different scale.",
   "schema_version": 3,
   "progression": {
-    "narrative": "A scale drawing is one honest idea repeated: every length in the drawing is the same number of times bigger or smaller than the real thing, and that single multiplier -- the scale factor -- is what every problem in this standard turns on. So the progression begins by making the scale itself readable. First a student must SEE the scale factor: given a figure and its scaled copy, find the number that multiplies one into the other by dividing a new side by the matching original side, never by subtracting. Once the factor is visible it becomes a tool: multiply a drawing length by the scale to get the actual length, and reverse it to fill in a missing side. That same move then has to survive unfriendly numbers -- a scale like 1.5 inches to 6.5 feet -- where the student must find the unit rate before multiplying rather than reading it off directly.\n\nFrom lengths the arc climbs to the standard's two hardest ideas. Area does NOT grow by the scale factor; it grows by the scale factor SQUARED, because both dimensions stretch at once -- scaling area only once is the single most common error in the whole standard. Then the scale has to run in both directions inside a table, multiplying drawing-to-actual and dividing actual-to-drawing. Finally the student reproduces a drawing at a NEW scale: route each length through its real-world size and re-draw it under a different scale, or choose the largest scale that still fits the paper. The through-line we keep naming: name the scale factor, decide whether you are going from drawing to real or real to drawing, and remember that area carries the factor twice.",
+    "narrative": "This standard asks students to use a scale drawing to compute actual lengths and areas and to reproduce the drawing at a different scale. The on-grade work starts with finding the scale factor by dividing corresponding sides, applies that factor to lengths, survives decimal and fractional scales by finding the unit rate first, then pivots to area, which grows by the scale factor squared, and ends with redrawing a figure at a new scale. Students who struggle here usually reason additively, subtracting sides or adding to both parts of a ratio, and carry gaps from well below grade seven. Intervention should start with the grade 4 foundations of times-as-many comparison and rectangle area, rebuild the grade 6 skills of equivalent ratios with unit rates and areas of triangles and composite figures, and only then return to scale drawings.",
     "steps": [
       {
         "skill_id": "7GM1-S1",
@@ -40,181 +40,159 @@
   "skills": [
     {
       "skill_id": "7GM1-F1",
-      "name": "Find equivalent ratios and the unit rate that links two quantities",
-      "column": "foundation",
-      "parent_standard": "7.GM.1",
-      "prerequisite_skill": {
-        "type": "gap",
-        "grade": 6,
-        "description": "Find equivalent ratios by multiplying or dividing both quantities by the same number.",
-        "check_question": "A recipe uses 1 cup of rice for every 3 cups of water. How much water for 4 cups of rice?"
-      },
-      "i_do_script": "Picture each inch of a drawing as a box that carries 6 feet of the real thing -- 4 inches means 4 boxes, so the feet get copied right along with the inches. A scale is just a ratio -- 'for every 1 of these, that many of those' -- and I keep it true by multiplying or dividing BOTH numbers by the same amount, never by adding. Watch: 1 inch stands for 6 feet. For 4 inches I multiply both by 4, so 4 inches stands for 24 feet. The number I multiply by is what turns the drawing into the real thing. If a ratio is 2 to 10, the unit rate is 10 divided by 2 = 5, so it is really 1 to 5.",
-      "canonical_error": {
-        "pattern": "Keeps a ratio equivalent by ADDING the same number to both quantities instead of multiplying",
-        "example": "For 1 in : 6 ft, finds 4 in by writing 1 + 3 = 4 and 6 + 3 = 9, saying 4 in : 9 ft instead of 4 in : 24 ft",
-        "why": "The student uses additive reasoning where scale requires multiplicative reasoning. Equivalent ratios come from multiplying (or dividing) both terms by the SAME factor, so the 'per 1' rate stays constant."
-      },
-      "item_template": "A ratio with one term missing, or a ratio to reduce to a unit rate. Short-response fluency bank.",
-      "sample_items": [
-        {
-          "stem": "A scale is 1 inch : 6 feet. How many feet does 4 inches stand for?",
-          "answer": "24 feet"
-        },
-        {
-          "stem": "Reduce the ratio 2 : 10 to a unit rate (1 : ?).",
-          "answer": "1 : 5"
-        },
-        {
-          "stem": "A scale is 1 cm : 4 m. How many meters for 3 cm?",
-          "answer": "12 m"
-        },
-        {
-          "stem": "Fill in the blank: 3 : 12 = 1 : ?",
-          "answer": "4"
-        },
-        {
-          "stem": "A scale is 1 in : 5 ft. How many inches represent 35 feet?",
-          "answer": "7 inches"
-        },
-        {
-          "stem": "Reduce 5 : 15 to a unit rate.",
-          "answer": "1 : 3"
-        }
-      ],
-      "redirect_script": {
-        "stop": "Wait -- did you add, or multiply?",
-        "prompt": "Point at the boxes: every inch is a whole box of 6 feet -- how many boxes do 4 inches make? Keep the ratio true by MULTIPLYING both numbers by the same amount, not adding. If 1 inch is 6 feet, then 4 inches is 4 times 6 = 24 feet.",
-        "praise": "You scaled both numbers by the same factor -- that keeps the rate the same."
-      },
-      "vocabulary": [
-        {
-          "term": "Ratio",
-          "definition": "A comparison of two quantities, like 1 inch to 6 feet."
-        },
-        {
-          "term": "Unit rate",
-          "definition": "A ratio written with 1 as the first quantity, like 1 inch to 6 feet."
-        },
-        {
-          "term": "Equivalent ratios",
-          "definition": "Ratios that show the same relationship, found by multiplying or dividing both terms by the same number."
-        }
-      ],
-      "next_steps": {
-        "if_pass": "7GM1-S1",
-        "if_fail": "Review equivalent ratios and unit rate (6.RP.2)."
-      },
-      "worked_example_script": [
-        {
-          "kind": "show",
-          "text": "Draw 4 boxes in a row, one box for each inch of the drawing, and write 6 ft inside every box. Count them up: 6, 12, 18, 24 -- so 4 inches stands for 24 feet. Adding 3 to the feet would only change ONE box, not all four.",
-          "visual": {
-            "type": "tape_diagram",
-            "label": "4 inches of drawing, each inch carries 6 ft",
-            "segments": [
-              {
-                "span": 6,
-                "label": "6 ft",
-                "shaded": true
-              },
-              {
-                "span": 6,
-                "label": "6 ft",
-                "shaded": true
-              },
-              {
-                "span": 6,
-                "label": "6 ft",
-                "shaded": true
-              },
-              {
-                "span": 6,
-                "label": "6 ft",
-                "shaded": true
-              }
-            ],
-            "end_labels": [
-              "0",
-              "24 ft"
-            ]
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write 'A scale is 1 inch : 6 feet. How many feet is 4 inches?'"
-        },
-        {
-          "kind": "ask",
-          "text": "To keep the ratio true, do we add the same number to both, or multiply both by the same number?"
-        },
-        {
-          "kind": "say",
-          "text": "Multiply both by 4: 1 inch becomes 4 inches, and 6 feet becomes 4 times 6 = 24 feet."
-        },
-        {
-          "kind": "watch",
-          "text": "If the student writes 9 feet (adding 3 to both), ask 'is 4 inches 4 TIMES 1 inch, or 3 more than 1 inch?'"
-        },
-        {
-          "kind": "ask",
-          "text": "Your turn: a scale is 1 cm : 4 m. How many meters is 3 cm?"
-        }
-      ]
-    },
-    {
-      "skill_id": "7GM1-F2",
-      "name": "Find the area of a rectangle by multiplying length times width",
+      "name": "Multiply to compare: times as many",
       "column": "foundation",
       "parent_standard": "7.GM.1",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 4,
-        "description": "Compute the area of a rectangle as length times width in square units.",
+        "description": "Interpret and solve times-as-many comparisons with whole numbers, using multiplication instead of addition.",
+        "check_question": "A tree is 4 times as tall as a 6 foot bush. How tall is the tree?"
+      },
+      "i_do_script": "Times as many means copies, not extra. Watch: a tree is 4 times as tall as a 6 foot bush. I draw one bar for the bush and stack 4 of those bars for the tree: 6, 12, 18, 24. The tree is 24 feet, because 4 times as tall means 4 copies of 6, so I multiply, 4 x 6 = 24. If I only added 4, I would get 10, but 10 feet is not 4 copies of 6 feet. The word times always tells me to multiply.",
+      "canonical_error": {
+        "pattern": "Adds instead of multiplying for a times-as-many comparison",
+        "example": "Says a tree 4 times as tall as a 6 foot bush is 10 feet (6 + 4) instead of 24 feet (6 x 4)",
+        "why": "The student reads times as many as more than. Times as many means that many equal copies, so the comparison is a multiplication, not an addition."
+      },
+      "item_template": "A whole-number times-as-many comparison. Student multiplies to find the larger amount, divides to find how many times as many, or completes a missing factor. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "A ribbon is 4 times as long as a 3 inch ribbon. How long is it?",
+          "answer": "12 inches"
+        },
+        {
+          "stem": "A tree is 24 feet tall and a bush is 6 feet tall. The tree is how many times as tall as the bush?",
+          "answer": "4 times"
+        },
+        {
+          "stem": "What is 8 times as many as 5?",
+          "answer": "40"
+        },
+        {
+          "stem": "A rope is 3 times as long as a 9 foot rope. How long is it?",
+          "answer": "27 feet"
+        },
+        {
+          "stem": "18 is how many times as many as 6?",
+          "answer": "3 times"
+        },
+        {
+          "stem": "Complete: 5 x ___ = 30",
+          "answer": "6"
+        },
+        {
+          "stem": "A photo is 2 inches wide. A poster is 7 times as wide. How wide is the poster?",
+          "answer": "14 inches"
+        },
+        {
+          "stem": "35 = 5 x 7. Complete: 35 is ___ times as many as 7.",
+          "answer": "5"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Does times as many mean copies, or extra?",
+        "prompt": "Draw one bar for the small amount, then stack that many copies for the big amount. 4 times as tall as 6 feet is 4 copies of 6, so multiply: 4 x 6 = 24.",
+        "praise": "You made copies and multiplied, that is what times as many means."
+      },
+      "vocabulary": [
+        {
+          "term": "Times as many",
+          "definition": "A comparison by copies: 4 times as many as 6 means 4 copies of 6, which is 24."
+        },
+        {
+          "term": "Factor",
+          "definition": "A number you multiply by; in 4 x 6 = 24, both 4 and 6 are factors."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7GM1-B1",
+        "if_fail": "Review grade 3 multiplication as equal groups with arrays and skip counting."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw one bar labeled 6 ft for the bush. Under it, draw a long bar made of 4 copies of that same 6 ft bar for the tree."
+        },
+        {
+          "kind": "ask",
+          "text": "How many copies of the bush bar make the tree bar? So what do we multiply?"
+        },
+        {
+          "kind": "say",
+          "text": "Four copies of 6 is 4 x 6 = 24, so the tree is 24 feet tall. Count along the copies to check: 6, 12, 18, 24."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 10 feet, point at the picture: is 10 feet four copies of 6 feet, or just 4 more feet?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a rope is 3 times as long as a 9 foot rope. How long is it?"
+        }
+      ]
+    },
+    {
+      "skill_id": "7GM1-F2",
+      "name": "Find the area of a rectangle with whole-number sides",
+      "column": "foundation",
+      "parent_standard": "7.GM.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 4,
+        "description": "Find the area of a rectangle by multiplying length times width and label it in square units.",
         "check_question": "What is the area of a rectangle 5 cm long and 3 cm wide?"
       },
-      "i_do_script": "Cover a 5 by 3 rectangle with unit squares and you get 3 rows of 5 squares -- counting those 15 squares IS the area, and 5 x 3 is just the fast way to count them. Area is the space inside a shape, and for a rectangle it is length times width -- and the answer is in SQUARE units. Watch: a rectangle 5 cm by 3 cm has area 5 times 3 = 15 square cm. Do not confuse it with perimeter, which is the distance AROUND (5 + 3 + 5 + 3 = 16 cm). Area multiplies; perimeter adds.",
+      "i_do_script": "Area is the number of unit squares that cover the inside of a shape. Watch: a rectangle 5 cm by 3 cm holds 3 rows of 5 squares. Counting them gives 5, 10, 15, so the area is 15 square cm, and 5 x 3 is just the fast way to count the squares. The answer is in square units because we counted squares. Adding the sides, 5 + 3 + 5 + 3 = 16, walks around the edge; that is perimeter, a different measure.",
       "canonical_error": {
-        "pattern": "Adds length and width (or finds perimeter) instead of multiplying to get area",
-        "example": "For a 5 cm by 3 cm rectangle answers 16 cm (the perimeter) or 8 (5 + 3) instead of 15 square cm",
-        "why": "The student conflates area with perimeter. Area covers the inside and is a PRODUCT of the two dimensions, reported in square units; perimeter is a SUM of the border lengths."
+        "pattern": "Adds the side lengths or finds the perimeter instead of multiplying for area",
+        "example": "For a 5 cm by 3 cm rectangle answers 16 cm or 8 cm instead of 15 square cm",
+        "why": "The student confuses area with perimeter. Area counts the squares inside, so it is length times width in square units; perimeter adds the border lengths."
       },
-      "item_template": "A rectangle's length and width in words; student finds the area in square units. Short-response fluency bank.",
+      "item_template": "A rectangle or square with whole-number sides. Student finds the area in square units, or finds a missing side from a given area. Short response fluency bank.",
       "sample_items": [
         {
           "stem": "A rectangle is 5 cm long and 3 cm wide. What is its area?",
           "answer": "15 square cm"
         },
         {
-          "stem": "A rectangle is 8 ft by 4 ft. What is its area?",
-          "answer": "32 square ft"
+          "stem": "A rectangle is 7 ft by 4 ft. What is its area?",
+          "answer": "28 square ft"
         },
         {
-          "stem": "A square is 6 in on each side. What is its area?",
-          "answer": "36 square in"
+          "stem": "A square has sides of 6 inches. What is its area?",
+          "answer": "36 square inches"
         },
         {
-          "stem": "A rectangle is 14 ft by 28 ft. What is its area?",
-          "answer": "392 square ft"
+          "stem": "A rectangle is 9 m by 8 m. What is its area?",
+          "answer": "72 square m"
         },
         {
-          "stem": "A rectangle is 12 m by 3 m. What is its area?",
-          "answer": "36 square m"
+          "stem": "A rectangle is 10 cm by 3 cm. What is its area?",
+          "answer": "30 square cm"
+        },
+        {
+          "stem": "A rectangle has an area of 24 square ft and a length of 6 ft. What is its width?",
+          "answer": "4 ft"
+        },
+        {
+          "stem": "A rectangle is 12 in by 5 in. What is its area?",
+          "answer": "60 square inches"
+        },
+        {
+          "stem": "A rectangle is 8 cm by 2 cm. What is its area?",
+          "answer": "16 square cm"
         }
       ],
       "redirect_script": {
-        "stop": "Area or perimeter -- which one multiplies?",
-        "prompt": "Look at the rows of squares inside the rectangle: does your number count those squares, or the walk around the edge? Area is the space INSIDE: multiply length times width and label it square units. Adding the sides gives perimeter, a different measure.",
-        "praise": "You multiplied length by width and used square units -- that is area."
+        "stop": "Are you counting the squares inside, or walking around the edge?",
+        "prompt": "Draw the rows of unit squares: 3 rows of 5 squares. Multiply length times width to count them fast, and label the answer in square units.",
+        "praise": "You multiplied length by width and used square units, that is area."
       },
       "vocabulary": [
         {
           "term": "Area",
-          "definition": "The amount of space inside a flat shape, measured in square units."
-        },
-        {
-          "term": "Square units",
-          "definition": "The unit for area, like square feet, because area covers a two-dimensional region."
+          "definition": "The number of unit squares that cover the inside of a flat shape, measured in square units."
         },
         {
           "term": "Perimeter",
@@ -222,61 +200,644 @@
         }
       ],
       "next_steps": {
-        "if_pass": "7GM1-S4",
-        "if_fail": "Review area of rectangles (4.M.2 / 5.M.2)."
+        "if_pass": "7GM1-B2",
+        "if_fail": "Review grade 3 area by tiling a rectangle with unit squares and counting them."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw the 5 cm by 3 cm rectangle and cut it into unit squares: 3 rows with 5 squares in each row. Count the squares: 5, 10, 15. Adding 5 + 3 = 8 counts nothing you can see, and 16 cm is a walk around the edge, not the squares inside.",
-          "visual": {
-            "type": "fraction_bars",
-            "label": "3 rows of 5 unit squares = 15 squares",
-            "bars": [
-              {
-                "parts": 5,
-                "shaded": 5,
-                "label": "row 1"
-              },
-              {
-                "parts": 5,
-                "shaded": 5,
-                "label": "row 2"
-              },
-              {
-                "parts": 5,
-                "shaded": 5,
-                "label": "row 3"
-              }
-            ]
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write 'Rectangle 5 cm by 3 cm. Find the area.'"
+          "text": "Draw a 5 cm by 3 cm rectangle and cut it into unit squares: 3 rows with 5 squares in each row."
         },
         {
           "kind": "ask",
-          "text": "For area, do we add the sides or multiply length by width?"
+          "text": "How many squares are inside? Is there a faster way to count 3 rows of 5?"
         },
         {
           "kind": "say",
-          "text": "Multiply: 5 times 3 = 15, and area is in SQUARE cm, so 15 square cm."
+          "text": "Count by rows: 5, 10, 15. Multiplying 5 x 3 = 15 counts the same squares, so the area is 15 square cm."
         },
         {
           "kind": "watch",
-          "text": "If the student writes 16 cm, ask 'is 16 the space inside, or the distance around the edge?'"
+          "text": "If a student answers 16, ask whether 16 counts the squares inside or the walk around the edge."
         },
         {
           "kind": "ask",
-          "text": "Your turn: a rectangle 8 ft by 4 ft -- find the area."
+          "text": "Your turn: a rectangle is 7 ft by 4 ft. Find the area."
         }
       ]
     },
     {
+      "skill_id": "7GM1-B1",
+      "name": "Use equivalent ratios and unit rates to solve problems",
+      "column": "looking_back",
+      "parent_standard": "7.GM.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Build equivalent ratios by multiplying both quantities by the same factor and reduce a ratio to a unit rate.",
+        "check_question": "A recipe uses 2 cups of flour for every 3 cups of milk. How much milk goes with 8 cups of flour?"
+      },
+      "i_do_script": "A ratio stays true only when both quantities are multiplied by the same number. Watch: the recipe uses 2 cups of flour for every 3 cups of milk, and I need 8 cups of flour. On a double number line, 2 sits above 3. To get from 2 to 8 I multiply by 4, so the milk multiplies by 4 too: 3 x 4 = 12 cups. When I want the amount for just one unit, I divide both parts: 2 to 3 becomes 1 to 1.5, the unit rate. Multiply both, or divide both, never add.",
+      "canonical_error": {
+        "pattern": "Keeps a ratio by adding the same number to both quantities instead of multiplying",
+        "example": "For 2 cups flour : 3 cups milk, finds 8 cups flour by adding 6 to both and says 9 cups of milk instead of 12",
+        "why": "The student uses additive reasoning where a ratio needs multiplicative reasoning. Adding the same number to both parts changes the relationship; only multiplying or dividing both parts by the same factor keeps it."
+      },
+      "item_template": "A ratio in context (recipe, price, distance). Student finds a missing quantity in an equivalent ratio, completes a ratio table, or finds the unit rate. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "Write the ratio 2 : 10 as a unit rate, 1 : ?",
+          "answer": "1 : 5"
+        },
+        {
+          "stem": "A car travels 120 miles on 4 gallons of gas. How many miles per gallon?",
+          "answer": "30 miles per gallon"
+        },
+        {
+          "stem": "3 pencils cost 45 cents. How much do 7 pencils cost?",
+          "answer": "105 cents (15 cents each)"
+        },
+        {
+          "stem": "A recipe uses 2 cups of flour for every 3 cups of milk. How much milk goes with 8 cups of flour?",
+          "answer": "12 cups"
+        },
+        {
+          "stem": "Fill in the blank: 4 : 6 = 2 : ?",
+          "answer": "3"
+        },
+        {
+          "stem": "5 tickets cost 40 dollars. How much do 8 tickets cost?",
+          "answer": "64 dollars (8 dollars each)"
+        },
+        {
+          "stem": "A ratio table shows 1 : 4 and 2 : 8. What number pairs with 3?",
+          "answer": "12"
+        },
+        {
+          "stem": "Write the ratio 6 : 9 as a unit rate, 1 : ?",
+          "answer": "1 : 1.5"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you multiply both parts, or add to them?",
+        "prompt": "Put the ratio on a double number line. Find the one number that multiplies 2 into 8, then multiply the 3 by that same number. The two lines must stretch together.",
+        "praise": "You multiplied both parts by the same factor, so the ratio stayed true."
+      },
+      "vocabulary": [
+        {
+          "term": "Ratio",
+          "definition": "A comparison of two quantities, like 2 cups of flour to 3 cups of milk."
+        },
+        {
+          "term": "Equivalent ratios",
+          "definition": "Ratios that show the same relationship, made by multiplying or dividing both parts by the same number."
+        },
+        {
+          "term": "Unit rate",
+          "definition": "The amount for exactly one unit, found by dividing both parts of the ratio by the first quantity."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7GM1-S1",
+        "if_fail": "7GM1-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a double number line: flour on top, milk underneath. Mark 2 directly above 3."
+        },
+        {
+          "kind": "ask",
+          "text": "What one number multiplies 2 into 8? What must happen to the 3?"
+        },
+        {
+          "kind": "say",
+          "text": "Multiply by 4 on both lines: 2 x 4 = 8 cups of flour and 3 x 4 = 12 cups of milk. The lines stretch together, so the recipe still tastes right."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student adds 6 to both and says 9 cups, ask whether 8 is 6 more than 2 or 4 times 2, and which one the recipe needs."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 3 pencils cost 45 cents. Use the same move to price 7 pencils."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Fill in the blank: 1 : 6 = 4 : ?",
+          "answer": "24"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Write 3 : 12 as a unit rate, 1 : ?",
+          "answer": "1 : 4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A recipe uses 2 cups of rice for every 5 cups of water. How much water for 6 cups of rice?",
+          "answer": "15 cups (multiply both by 3)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "4 markers cost 6 dollars. How much do 10 markers cost?",
+          "answer": "15 dollars (1.50 each)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A car travels 150 miles on 5 gallons. How far can it go on 8 gallons?",
+          "answer": "240 miles (30 miles per gallon)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Complete the ratio table for 3 : 7 with first values 3, 6, 9.",
+          "answer": "3 : 7, 6 : 14, 9 : 21"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Which is the better buy: 6 bottles for 9 dollars or 10 bottles for 14 dollars? Use unit rates.",
+          "answer": "10 for 14 dollars (1.40 each versus 1.50 each)"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia says 2 : 3 is equivalent to 8 : 9 because she added 6 to both numbers. Find her mistake and fix it.",
+          "shown_work": [
+            "2 : 3",
+            "2 + 6 = 8 and 3 + 6 = 9",
+            "so 2 : 3 = 8 : 9"
+          ],
+          "answer": "Adding changes the relationship. Multiply both parts by 4: 2 : 3 = 8 : 12, not 8 : 9."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Stretch Both Lines",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Blank double number lines",
+            "Counters in two colors",
+            "Ratio situation cards"
+          ],
+          "instructions": "1. Draw a ratio card like 2 cups flour : 3 cups milk.\n2. Build the ratio with counters: 2 of one color, 3 of the other.\n3. To scale up, add whole copies of the 2-and-3 group and record each new pair on the double number line: 4 : 6, 6 : 9, 8 : 12.\n4. Say each time: both lines stretch by the same factor.\n5. Trade cards and repeat, ending with the unit rate: split the group to find what pairs with 1."
+        },
+        {
+          "type": "matching",
+          "title": "Equivalent or Impostor?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck of ratio pairs, some equivalent and some additive impostors"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each ratio to its true equivalent, like 2 : 5 with 6 : 15.\n3. To claim a match, name the factor both parts were multiplied by.\n4. Impostor cards were made by adding the same number to both parts; set them aside and explain why they fail.",
+          "content": {
+            "pairs": [
+              {
+                "left": "2 : 5",
+                "right": "6 : 15"
+              },
+              {
+                "left": "3 : 4",
+                "right": "9 : 12"
+              },
+              {
+                "left": "1 : 6",
+                "right": "4 : 24"
+              },
+              {
+                "left": "4 : 10",
+                "right": "2 : 5"
+              },
+              {
+                "left": "5 : 8",
+                "right": "10 : 16"
+              },
+              {
+                "left": "6 : 9",
+                "right": "2 : 3"
+              }
+            ],
+            "decoys": [
+              "2 : 5 = 4 : 7 (added 2)",
+              "3 : 4 = 6 : 7 (added 3)"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Double number lines and counter groups make 'both parts stretch by the same factor' visible before the procedure is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The additive impostor error is stable and predictable; finding and fixing it in worked examples confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Number talks on how many times as many build the multiplicative comparison that ratio work runs on."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What one number multiplies the first quantity into its new value?",
+          "What has to happen to the second quantity? Why the same factor?",
+          "What is the unit rate, the amount for exactly one?",
+          "How can you tell 8 : 9 is not equivalent to 2 : 3 without a picture?",
+          "Where does the unit rate show up on your double number line?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds the same number to both parts of the ratio.",
+            "say": "Look at the double number line: adding stretches one part more than the other in proportion. Find the factor that multiplies 2 into 8, then multiply the 3 by it too.",
+            "praise": "You used one factor on both parts, that keeps the ratio honest."
+          },
+          {
+            "if_you_see": "Student finds the unit rate but multiplies it by the wrong quantity.",
+            "say": "The unit rate is per one of the FIRST quantity. If each pencil is 15 cents, multiply the rate by the number of pencils you want.",
+            "praise": "You matched the rate to its unit before multiplying."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "1 : 6 = 5 : ?",
+            "look_for": "30, from multiplying both parts by 5, not 10 from adding 4."
+          },
+          {
+            "prompt": "4 granola bars cost 10 dollars. What is the unit rate?",
+            "look_for": "2.50 dollars per bar, from 10 divided by 4."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A recipe uses 2 cups of flour for every 3 cups of milk. How much milk goes with 8 cups of flour?",
+        "answer": "12 cups",
+        "steps": [
+          {
+            "math": "ratio: 2 flour : 3 milk",
+            "annotation": "Put flour on the top line and milk on the bottom line."
+          },
+          {
+            "math": "8 / 2 = 4",
+            "annotation": "Find the factor that turns 2 cups of flour into 8."
+          },
+          {
+            "math": "3 x 4 = 12",
+            "annotation": "Multiply the milk by the same factor."
+          },
+          {
+            "math": "8 : 12 is equivalent to 2 : 3",
+            "annotation": "Check: divide both parts of 8 : 12 by 4 to get back to 2 : 3."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A paint mix uses 3 cups of blue for every 5 cups of white. How much white goes with 12 cups of blue?",
+        "answer": "20 cups",
+        "steps": [
+          {
+            "math": "ratio: 3 blue : 5 white",
+            "annotation": "Blue on top, white on the bottom.",
+            "given": true
+          },
+          {
+            "math": "12 / 3 = 4",
+            "annotation": "Find the factor that turns 3 into 12.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the white by that same factor.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the answer and check by dividing back.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "To get from ___ to ___ I multiply by ___, so the other quantity becomes ___.",
+        "The unit rate is ___ per 1 because ___ divided by ___ is ___."
+      ],
+      "fluency_source": "7GM1-F1"
+    },
+    {
+      "skill_id": "7GM1-B2",
+      "name": "Find areas of rectangles, triangles, and composite figures",
+      "column": "looking_back",
+      "parent_standard": "7.GM.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Find the area of triangles and composite figures, including decimal or fractional side lengths, by relating them to rectangles.",
+        "check_question": "What is the area of a triangle with a base of 6 inches and a height of 4 inches?"
+      },
+      "i_do_script": "Every triangle is half of a rectangle, and that is where its formula comes from. Watch: a triangle with base 6 and height 4 sits inside a 6 by 4 rectangle. The rectangle's area is 6 x 4 = 24, and the diagonal cuts it exactly in half, so the triangle is 24 / 2 = 12 square inches. Rectangles still multiply length times width, even with decimals: 2.5 x 4 = 10 square cm. For an L shaped figure, I cut it into rectangles, find each area, and add them.",
+      "canonical_error": {
+        "pattern": "Forgets to take half when finding the area of a triangle",
+        "example": "For a triangle with base 6 in and height 4 in, answers 24 square inches instead of 12",
+        "why": "The student multiplies base times height and stops, which is the area of the whole rectangle around the triangle. The triangle is only half of that rectangle, so the product must be divided by 2."
+      },
+      "item_template": "A rectangle, triangle, or two-rectangle composite figure with whole, decimal, or simple fractional sides. Student computes the area in square units. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A rectangle is 2.5 cm by 4 cm. What is its area?",
+          "answer": "10 square cm"
+        },
+        {
+          "stem": "A triangle has a base of 6 inches and a height of 4 inches. What is its area?",
+          "answer": "12 square inches"
+        },
+        {
+          "stem": "A rectangle is 1/2 ft by 8 ft. What is its area?",
+          "answer": "4 square ft"
+        },
+        {
+          "stem": "A triangle has a base of 10 m and a height of 7 m. What is its area?",
+          "answer": "35 square m"
+        },
+        {
+          "stem": "A figure is made of a 5 m by 4 m rectangle joined to a 2 m by 3 m rectangle. What is its total area?",
+          "answer": "26 square m"
+        },
+        {
+          "stem": "A rectangle is 3.5 in by 6 in. What is its area?",
+          "answer": "21 square inches"
+        },
+        {
+          "stem": "A triangle has a base of 9 cm and a height of 8 cm. What is its area?",
+          "answer": "36 square cm"
+        },
+        {
+          "stem": "A square has sides of 2.5 ft. What is its area?",
+          "answer": "6.25 square ft"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is your shape the whole rectangle, or half of it?",
+        "prompt": "Draw the rectangle around the triangle first. Base times height gives the whole rectangle; the triangle is the half the diagonal cuts off, so divide by 2.",
+        "praise": "You found the rectangle and took half, that is exactly where the triangle formula comes from."
+      },
+      "vocabulary": [
+        {
+          "term": "Base",
+          "definition": "The side of a triangle you measure from; any side can be the base."
+        },
+        {
+          "term": "Height",
+          "definition": "The straight-across distance from the base to the opposite vertex, meeting the base at a right angle."
+        },
+        {
+          "term": "Composite figure",
+          "definition": "A figure made of simpler shapes joined together; find each area and add."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7GM1-S1",
+        "if_fail": "7GM1-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a 6 by 4 rectangle. Draw a diagonal from one corner to the opposite corner and shade one of the two triangles."
+        },
+        {
+          "kind": "ask",
+          "text": "What is the area of the whole rectangle? What fraction of it is the shaded triangle?"
+        },
+        {
+          "kind": "say",
+          "text": "The rectangle is 6 x 4 = 24 square inches, and the diagonal cuts it into two equal triangles, so the triangle is 24 / 2 = 12 square inches."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 24, point at the unshaded half: did your number count that part too?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a triangle has a base of 10 m and a height of 7 m. Find its area."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A rectangle is 6 cm by 3 cm. What is its area?",
+          "answer": "18 square cm"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A triangle is half of a 6 cm by 3 cm rectangle. What is its area?",
+          "answer": "9 square cm"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A triangle has a base of 8 in and a height of 5 in. What is its area?",
+          "answer": "20 square inches (8 x 5 / 2)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A rectangle is 4.5 m by 6 m. What is its area?",
+          "answer": "27 square m"
+        },
+        {
+          "difficulty": "core",
+          "stem": "An L shaped room is a 6 ft by 4 ft rectangle joined to a 3 ft by 2 ft rectangle. What is its area?",
+          "answer": "30 square ft (24 + 6)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A triangle has a base of 12 cm and a height of 9 cm. What is its area?",
+          "answer": "54 square cm"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A triangle has an area of 30 square in and a base of 12 in. What is its height?",
+          "answer": "5 in (30 x 2 = 60, then 60 / 12)"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo found the area of a triangle with base 6 in and height 4 in. Find his mistake and fix it.",
+          "shown_work": [
+            "area = base x height",
+            "= 6 x 4",
+            "= 24 square inches"
+          ],
+          "answer": "He found the whole rectangle around the triangle. The triangle is half of it: 6 x 4 / 2 = 12 square inches."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Cut the Rectangle",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper rectangles",
+            "Scissors",
+            "Pencils"
+          ],
+          "instructions": "1. Draw a 6 by 4 rectangle on grid paper and count its 24 squares.\n2. Cut it along a diagonal into two triangles.\n3. Stack the two triangles to show they match, so each is 24 / 2 = 12 squares.\n4. Repeat with an 8 by 5 rectangle, predicting the triangle area before cutting.\n5. Say each time: a triangle is half its rectangle."
+        },
+        {
+          "type": "card_sort",
+          "title": "Whole or Half?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Cards showing rectangles, triangles, and composite figures with labeled sides"
+          ],
+          "instructions": "1. For each card, decide the plan before computing: multiply, multiply then halve, or split and add.\n2. Sort the cards into three piles by plan.\n3. Then compute each area and write it on the card.\n4. Debrief: how do you know from the shape alone whether a halving step is coming?",
+          "content": {
+            "categories": [
+              "Multiply (rectangle)",
+              "Multiply then halve (triangle)",
+              "Split and add (composite)"
+            ],
+            "cards": [
+              {
+                "text": "Rectangle 7 by 3",
+                "category": "Multiply (rectangle)"
+              },
+              {
+                "text": "Triangle base 7, height 3",
+                "category": "Multiply then halve (triangle)"
+              },
+              {
+                "text": "L shape: 5 by 4 joined to 2 by 3",
+                "category": "Split and add (composite)"
+              },
+              {
+                "text": "Rectangle 2.5 by 4",
+                "category": "Multiply (rectangle)"
+              },
+              {
+                "text": "Triangle base 10, height 6",
+                "category": "Multiply then halve (triangle)"
+              },
+              {
+                "text": "L shape: 6 by 4 joined to 3 by 2",
+                "category": "Split and add (composite)"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Cutting a grid rectangle in half makes the triangle formula a fact the student saw, not a rule to memorize."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The forgotten-half error is a clean single-step mistake, ideal for find-and-fix work."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud, whole rectangle first, then half, makes the invisible halving step audible."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What rectangle does this triangle live inside?",
+          "Is your answer the whole rectangle or half of it?",
+          "Which measurement is the height, and where does it meet the base?",
+          "How would you cut this composite figure into rectangles?",
+          "Do decimals change the plan, or just the arithmetic?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student multiplies base times height for a triangle and stops.",
+            "say": "Draw the rectangle around the triangle. Base times height counts the whole rectangle; the triangle is the half the diagonal leaves, so divide by 2.",
+            "praise": "You took half of the rectangle, that is the triangle's true area."
+          },
+          {
+            "if_you_see": "Student uses a slanted side as the height.",
+            "say": "The height must meet the base at a right angle, straight across. Trace from the top vertex straight down to the base line.",
+            "praise": "You used the straight-across height, so the rectangle around the triangle is the right one."
+          },
+          {
+            "if_you_see": "Student adds the side lengths of a composite figure instead of adding areas.",
+            "say": "Cut the figure into rectangles first. Find each rectangle's area, then add the areas, not the sides.",
+            "praise": "You split the shape and added the areas, that is how composite figures work."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Triangle with base 4 cm and height 6 cm. Area?",
+            "look_for": "12 square cm. An answer of 24 means the halving step was skipped."
+          },
+          {
+            "prompt": "Rectangle 3.5 by 2. Area?",
+            "look_for": "7 square units, with the decimal handled by multiplication, not rounding."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Find the area of a triangle with a base of 8 inches and a height of 5 inches.",
+        "answer": "20 square inches",
+        "steps": [
+          {
+            "math": "rectangle around the triangle: 8 by 5",
+            "annotation": "The triangle sits inside an 8 by 5 rectangle."
+          },
+          {
+            "math": "8 x 5 = 40",
+            "annotation": "Base times height gives the whole rectangle."
+          },
+          {
+            "math": "40 / 2 = 20",
+            "annotation": "The diagonal cuts the rectangle exactly in half."
+          },
+          {
+            "math": "area = 20 square inches",
+            "annotation": "Label the answer in square units because we counted squares."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Find the area of a triangle with a base of 12 cm and a height of 7 cm.",
+        "answer": "42 square cm",
+        "steps": [
+          {
+            "math": "rectangle around the triangle: 12 by 7",
+            "annotation": "Picture the rectangle the triangle is half of.",
+            "given": true
+          },
+          {
+            "math": "12 x 7 = 84",
+            "annotation": "Base times height counts the whole rectangle.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Take half of the rectangle's area.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the area with square units.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The triangle is half of a ___ by ___ rectangle, so its area is ___ / 2 = ___.",
+        "I cut the figure into ___ and ___, found each area, and added to get ___."
+      ],
+      "fluency_source": "7GM1-F2"
+    },
+    {
       "skill_id": "7GM1-S1",
       "name": "Determine the scale factor between a figure and its scaled image",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.GM.1",
       "engine_stems": [
         1
@@ -566,7 +1127,7 @@
           }
         ]
       },
-      "fluency_source": "7GM1-F1",
+      "fluency_source": "7GM1-B1",
       "sentence_starters": [
         "The image side is ___ and the original side is ___, so the scale factor is ___ / ___ = ___.",
         "Because the copy is ___ than the original, the scale factor is ___ than 1."
@@ -917,7 +1478,7 @@
           }
         ]
       },
-      "fluency_source": "7GM1-F1",
+      "fluency_source": "7GM1-B1",
       "sentence_starters": [
         "The scale is 1 inch = ___ feet, and the drawing is ___ inches, so ___ x ___ = ___ feet.",
         "The real object is ___ than the drawing, so I ___ by the scale."
@@ -1191,7 +1752,7 @@
           }
         ]
       },
-      "fluency_source": "7GM1-F1",
+      "fluency_source": "7GM1-B1",
       "sentence_starters": [
         "One inch stands for ___ / ___ = ___ feet, the unit rate.",
         "The drawing is ___ inches, so ___ x ___ = ___ feet."
@@ -1453,7 +2014,7 @@
           }
         ]
       },
-      "fluency_source": "7GM1-F1",
+      "fluency_source": "7GM1-B2",
       "sentence_starters": [
         "The real sides are ___ and ___, so the area is ___ x ___ = ___ square units.",
         "Area uses the scale factor twice: ___ squared = ___, so ___ x ___ = ___."
@@ -1766,7 +2327,7 @@
           }
         ]
       },
-      "fluency_source": "7GM1-F1",
+      "fluency_source": "7GM1-B1",
       "sentence_starters": [
         "I am starting from the ___ measurement, so I ___ by the scale factor.",
         "___ ___ ___ = ___, and this should be ___ than what I started with."
@@ -2071,7 +2632,7 @@
           }
         ]
       },
-      "fluency_source": "7GM1-F1",
+      "fluency_source": "7GM1-B1",
       "sentence_starters": [
         "First the actual size is ___ x ___ = ___, then the new drawing is ___ / ___ = ___.",
         "A smaller feet-per-inch makes the drawing ___, so the best scale that fits is ___."
@@ -2128,8 +2689,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7GM1-F1",
         "7GM1-F2"
@@ -2137,15 +2698,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7GM1-S1"
+        "7GM1-B1",
+        "7GM1-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7GM1-S1",
         "7GM1-S2",
         "7GM1-S3",
         "7GM1-S4",
@@ -2154,7 +2717,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7GM1-S6"
       ]
@@ -2163,6 +2726,8 @@
   "skill_sequence": [
     "7GM1-F1",
     "7GM1-F2",
+    "7GM1-B1",
+    "7GM1-B2",
     "7GM1-S1",
     "7GM1-S2",
     "7GM1-S3",
@@ -2173,8 +2738,14 @@
   "skill_tree": {
     "7GM1-F1": [],
     "7GM1-F2": [],
-    "7GM1-S1": [
+    "7GM1-B1": [
       "7GM1-F1"
+    ],
+    "7GM1-B2": [
+      "7GM1-F2"
+    ],
+    "7GM1-S1": [
+      "7GM1-B1"
     ],
     "7GM1-S2": [
       "7GM1-S1"
@@ -2184,7 +2755,7 @@
     ],
     "7GM1-S4": [
       "7GM1-S2",
-      "7GM1-F2"
+      "7GM1-B2"
     ],
     "7GM1-S5": [
       "7GM1-S2"
@@ -2195,17 +2766,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (compute an actual area from a scale drawing) -- the At-proficiency core that carries the standard's signature move and its signature error, scaling area only once. If they pass, push to S5 (complete a scale table in both directions) and S6 (reproduce a drawing at a new scale). If they fail, drop to S2 to confirm they can even scale a single length, then to S1 for the scale factor itself. S3 (fraction and decimal lengths) branches off as an independent difficulty context.",
+    "description": "Start with S4, computing an actual area from a scale drawing, the At-proficiency core that carries the standard's signature error of scaling area only once. If they pass, push up to S5 (complete a scale table in both directions) and S6 (reproduce a drawing at a new scale). If they fail, drop below grade level: B1 checks grade 6 equivalent-ratio and unit-rate reasoning, and B2 checks grade 6 area of triangles and composite figures, the two skills scale work leans on. If those wobble, the foundations F1 (times-as-many comparison) and F2 (rectangle area) locate the gap in grades 3-5. S1, S2, and S3 remain available to probe the standard's own scale-factor and length groundwork.",
     "entry_skill": "7GM1-S4",
     "if_pass": [
       "7GM1-S5",
       "7GM1-S6"
     ],
     "if_fail": [
-      "7GM1-S2",
-      "7GM1-S1"
+      "7GM1-B1",
+      "7GM1-B2"
     ],
     "branch_skills": [
+      "7GM1-F1",
+      "7GM1-F2",
+      "7GM1-S1",
+      "7GM1-S2",
       "7GM1-S3"
     ]
   }

@@ -3,7 +3,7 @@
   "standard_text": "Find, use, and interpret measures of central tendency (mean and median) and measures of spread (range, interquartile range, and mean absolute deviation) for numerical data from random samples to draw comparative inferences about two populations.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard is really one habit built in layers: to compare two groups fairly, a student first has to describe each group with a single 'typical' number (a measure of center -- mean or median) and a single 'how spread out' number (a measure of spread -- range, interquartile range, or mean absolute deviation). Everything after that is learning to read those two numbers together. So the progression starts by making the raw computations automatic -- find the mean, find the range -- then builds the median, IQR, and MAD on top, because you cannot compare what you cannot calculate.\n\nOnce both a center and a spread can be found for each data set, the arc turns from computing to comparing and then to inferring. First students compare the centers of two samples (which group is generally higher) and, separately, the spreads (which group is more consistent). Then they learn what a spread actually MEANS -- that a bigger range or MAD says the data is more scattered, not that the values are bigger. Then they put center and spread together to compare two populations in a real context. Finally they reach the point of the standard: drawing an informal comparative inference -- using the center to say which population is likely greater and the spread to temper how certain that claim can be -- and critiquing inferences that overreach, treat a sample as a guarantee, or mistake spread for size.",
+    "narrative": "This standard asks students to find and interpret centers (mean and median) and spreads (range, interquartile range, and mean absolute deviation) for two random samples and use them together to compare two populations. The on-grade skills climb from computing and comparing the basic measures through the harder spread measures, then to reading spread as consistency, and finally to drawing and critiquing comparative inferences. Students who stall here usually cannot yet handle one data set, let alone two: the grade 6 work of finding the mean, median, and range of a single set and reading dot plots and histograms is the real gap. Below that sit two foundations from grades 3 to 5, reading scaled bar graphs and line plots, and dividing a total into fair shares, which is the arithmetic heart of the mean. Rebuild those first, then the grade 6 skills, and the two-sample comparisons have something to stand on.",
     "steps": [
       {
         "skill_id": "7DSP2-S1",
@@ -40,192 +40,796 @@
   "skills": [
     {
       "skill_id": "7DSP2-F1",
-      "name": "Compute the mean of a data set",
+      "name": "Read scaled bar graphs and line plots",
       "column": "foundation",
       "parent_standard": "7.DSP.2",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Add a short list of whole numbers and divide to find a simple average.",
-        "check_question": "What is the average of 4 and 10?"
+        "grade": 3,
+        "description": "Read a value from a scaled bar graph or count the marks on a line plot to answer how many and how many more questions.",
+        "check_question": "On a bar graph where the scale counts by 5, a bar is 4 marks tall. How many does it show?"
       },
-      "i_do_script": "Picture three kids holding 6, 9, and 12 pretzels who pool them and deal them back out evenly -- each kid ends up holding 9, a number in the middle of the group, never the size of the whole pile. The mean is the 'fair share' -- what everybody would get if we split the total evenly. I add up all the values, then divide by how many there are. Watch: for 6, 9, and 12, I add to get 27, then divide by 3 values: 27 divided by 3 is 9. For 4, 8, 8, 12, 8, the total is 40 and there are 5 numbers, so 40 divided by 5 is 8. Always count the values so you divide by the right number.",
+      "i_do_script": "A graph is a picture of a count, and the scale tells me what each step of the picture is worth. Watch: on this bar graph the scale counts by 5, so every gridline is 5 votes, not 1. The soccer bar reaches 4 lines, so soccer has 4 groups of 5, which is 20 votes. On a line plot, every X is one piece of data sitting above its value. If there are 5 Xs above the 2, that means five people answered 2. To find how many more dogs than cats, I read each bar first, 12 and 8, then subtract: 4 more dogs.",
       "canonical_error": {
-        "pattern": "Adds the values but forgets to divide by how many there are, reporting the sum as the mean",
-        "example": "For 6, 9, 12 writes 27 instead of 27 / 3 = 9",
-        "why": "The student stops after adding. The mean is the total shared equally among all the values, so the sum must be divided by the count."
+        "pattern": "Ignores the scale and counts each gridline or bar height as 1",
+        "example": "On a scale that counts by 5, reads a bar 4 marks tall as 4 instead of 20",
+        "why": "The student counts lines instead of reading what each line is worth. The scale sets the value of every step, so 4 marks on a count-by-5 scale is 4 groups of 5."
       },
-      "item_template": "A short list of whole numbers. Student computes the mean (sum divided by count). Numeric response fluency bank.",
+      "item_template": "A described bar graph (with a stated scale) or line plot (Xs above values). Student reads a value, finds a total, or answers a how many more question. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Find the mean of 6, 9, 12.",
-          "answer": "9"
-        },
-        {
-          "stem": "Find the mean of 4, 8, 8, 12, 8.",
-          "answer": "8"
-        },
-        {
-          "stem": "Find the mean of 10, 15, 20, 25, 30.",
+          "stem": "On a bar graph, the scale counts by 5. The bar for soccer is 4 marks tall. How many votes is that?",
           "answer": "20"
         },
         {
-          "stem": "Find the mean of 7, 3, 5, 9, 6.",
-          "answer": "6"
+          "stem": "A bar graph shows pets: dogs 12, cats 8, birds 5. How many more dogs than cats?",
+          "answer": "4"
         },
         {
-          "stem": "Find the mean of 12, 14, 16, 18.",
-          "answer": "15"
+          "stem": "A bar graph shows pets: dogs 12, cats 8, birds 5. How many pets in all?",
+          "answer": "25"
         },
         {
-          "stem": "Find the mean of 2, 5, 5, 8.",
+          "stem": "A line plot shows 3 Xs above 1, 5 Xs above 2, and 2 Xs above 3. How many Xs are there in all?",
+          "answer": "10"
+        },
+        {
+          "stem": "A line plot shows 3 Xs above 1, 5 Xs above 2, and 2 Xs above 3. Which number has the most Xs?",
+          "answer": "2"
+        },
+        {
+          "stem": "On a bar graph, the scale counts by 10. The bar for May reaches 3 marks. How many does it show?",
+          "answer": "30"
+        },
+        {
+          "stem": "A bar graph shows red 15, blue 20, green 10. Which color has the most?",
+          "answer": "blue"
+        },
+        {
+          "stem": "A line plot shows 4 Xs above 6, 4 Xs above 7, and 1 X above 8. How many Xs show 7 or more?",
           "answer": "5"
         }
       ],
       "redirect_script": {
-        "stop": "Wait -- did you divide by how many?",
-        "prompt": "Look at the towers -- is any one tower that tall, or is that number ALL the blocks piled together? The mean shares the total equally: add every value, then divide by how many values there are. Count them -- 3 numbers means divide by 3.",
-        "praise": "You divided the total by the count -- that's the mean."
+        "stop": "What is each gridline worth on this graph?",
+        "prompt": "Check the scale first. If it counts by 5, each mark is 5, so a bar 4 marks tall shows 4 groups of 5. Read the value of each bar before you compare or add.",
+        "praise": "You read the scale before the bars, that is how a graph is read."
       },
       "vocabulary": [
         {
-          "term": "Mean",
-          "definition": "The average: add all the values and divide by how many there are."
+          "term": "Scale",
+          "definition": "The number each step on a graph's axis is worth, like counting by 5s."
         },
         {
-          "term": "Central tendency",
-          "definition": "A single 'typical' value that describes the middle of a data set."
+          "term": "Line plot",
+          "definition": "A graph that stacks an X above a number for each piece of data."
         }
       ],
       "next_steps": {
-        "if_pass": "7DSP2-S1",
-        "if_fail": "Review finding the mean (6.DS.3)."
+        "if_pass": "7DSP2-B2",
+        "if_fail": "Review grade 3 picture and bar graphs (each symbol or gridline stands for a set amount)."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Picture three block towers that are 5, 10, and 12 blocks tall. Move blocks from the tall towers to the short one until all three towers are the SAME height -- how tall does each tower end up? Could a single tower ever be 27 blocks tall?"
-        },
-        {
           "kind": "show",
-          "text": "Write 'Find the mean of 5, 10, 12.'"
+          "text": "Draw a bar graph of votes for soccer, art, and music with gridlines labeled 0, 5, 10, 15, 20. Make soccer reach 20, art reach 10, music reach 15."
         },
         {
           "kind": "ask",
-          "text": "What is the total, and how many numbers are there?"
+          "text": "What does one gridline stand for on this graph? So how many votes did art get?"
         },
         {
           "kind": "say",
-          "text": "The total is 27 and there are 3 numbers, so 27 divided by 3 is 9."
+          "text": "The scale counts by 5, so art's bar at 2 marks is 10 votes. Soccer reaches 4 marks, which is 20 votes. Soccer got 20 minus 10, so 10 more votes than art."
         },
         {
           "kind": "watch",
-          "text": "If a student answers 27, ask 'is 27 a typical value for these three numbers, or their total?'"
+          "text": "If a student says art got 2 votes, point at the axis labels: is that line marked 2, or marked 10?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: find the mean of 4, 6, 8, 10."
+          "text": "Your turn: how many more votes did soccer get than music?"
         }
       ]
     },
     {
       "skill_id": "7DSP2-F2",
-      "name": "Find the range of a data set",
+      "name": "Divide a whole-number total into equal shares",
       "column": "foundation",
       "parent_standard": "7.DSP.2",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Identify the largest and smallest values in a list and subtract them.",
-        "check_question": "In 3, 9, 5, what is the largest minus the smallest?"
+        "grade": 4,
+        "description": "Divide a whole number by a one-digit number to share a total equally.",
+        "check_question": "24 crackers are shared equally among 4 friends. How many does each friend get?"
       },
-      "i_do_script": "The range is a distance you can see: put the data on a number line -- dots at 8, 15, 3, 10 -- and the range is the span from the leftmost dot to the rightmost, 3 to 15, a stretch of 12. Biggest-minus-smallest just measures that stretch without drawing it. The range tells me how far the data spreads, from the smallest value to the largest. I find the biggest number and the smallest number, then subtract. Watch: for 8, 15, 3, 10, the biggest is 15 and the smallest is 3, so the range is 15 minus 3 = 12. It doesn't matter what order the numbers are written in -- I hunt for the true max and min, not the first and last value.",
+      "i_do_script": "Division is dealing a total out into equal groups. Watch: 24 crackers shared among 4 friends. I deal them out one at a time into 4 piles until the crackers are gone, and every pile holds 6, so 24 divided by 4 is 6. I can see the same thing in an array: 24 dots in 4 equal rows puts 6 dots in each row. The total gets split, the number of groups tells me how many piles, and the answer is the size of one fair share. Multiplication checks it: 4 times 6 is 24, so the share is right.",
       "canonical_error": {
-        "pattern": "Subtracts the first value from the last (or two arbitrary values) instead of the largest minus the smallest",
-        "example": "For 8, 15, 3, 10 computes 10 - 8 = 2 instead of 15 - 3 = 12",
-        "why": "The student uses position instead of size. Range is the biggest value minus the smallest, so the max and min must be found first, not read off the ends of the list."
+        "pattern": "Multiplies instead of divides when sharing a total",
+        "example": "For 24 crackers shared among 4 friends, writes 24 x 4 = 96",
+        "why": "The word each triggers multiplication for the student. Sharing splits a total into groups, so the answer must be smaller than the total, and 96 crackers from a box of 24 is impossible."
       },
-      "item_template": "A short unordered list of whole numbers. Student finds the range (max minus min). Numeric response fluency bank.",
+      "item_template": "A whole-number total shared equally among a one-digit number of groups (basic division facts, no remainders). Student finds the size of one share. Numeric response fluency bank.",
       "sample_items": [
         {
-          "stem": "Find the range of 4, 9, 2, 7, 5.",
+          "stem": "24 / 4",
+          "answer": "6"
+        },
+        {
+          "stem": "35 stickers shared equally among 5 kids. How many each?",
           "answer": "7"
         },
         {
-          "stem": "Find the range of 12, 18, 15, 20, 11.",
+          "stem": "42 / 6",
+          "answer": "7"
+        },
+        {
+          "stem": "63 / 7",
           "answer": "9"
         },
         {
-          "stem": "Find the range of 30, 22, 45, 38.",
-          "answer": "23"
+          "stem": "40 pencils packed equally into 8 boxes. How many per box?",
+          "answer": "5"
         },
         {
-          "stem": "Find the range of 6, 6, 6, 6.",
-          "answer": "0"
+          "stem": "54 / 9",
+          "answer": "6"
         },
         {
-          "stem": "Find the range of 8, 15, 3, 10.",
-          "answer": "12"
+          "stem": "72 / 8",
+          "answer": "9"
         },
         {
-          "stem": "Find the range of 50, 65, 55, 70, 60.",
-          "answer": "20"
+          "stem": "30 / 6",
+          "answer": "5"
         }
       ],
       "redirect_script": {
-        "stop": "Which is the biggest? Which is the smallest?",
-        "prompt": "Range is largest minus smallest. Circle the biggest number and the smallest number in the whole list, then subtract.",
-        "praise": "You found the max and the min and subtracted -- that's the range."
+        "stop": "Should each friend end up with more crackers than the whole box held?",
+        "prompt": "Sharing splits the total, so deal it out: 24 into 4 equal piles. The answer is the size of one pile, and it must be smaller than the total. Check with multiplication: piles times share should give the total back.",
+        "praise": "You split the total into equal groups and checked it, that is division."
       },
       "vocabulary": [
         {
-          "term": "Range",
-          "definition": "The largest value minus the smallest value; a measure of how spread out the data is."
+          "term": "Divide",
+          "definition": "Split a total into equal groups."
         },
         {
-          "term": "Spread",
-          "definition": "How scattered the values in a data set are."
+          "term": "Quotient",
+          "definition": "The answer to a division problem; the size of one equal share."
         }
       ],
       "next_steps": {
-        "if_pass": "7DSP2-S1",
-        "if_fail": "Review finding the range (6.DS.4)."
+        "if_pass": "7DSP2-B1",
+        "if_fail": "Review grade 3 equal groups and arrays (multiplication and division as fair sharing)."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "On the board, draw a number line 0 to 10 and plot the data 7, 2, 9, 4 as dots. Bracket the span from the leftmost dot to the rightmost."
+          "text": "Draw 24 dots dealt into 4 equal rows, one dot at a time, so each row grows evenly."
         },
         {
           "kind": "ask",
-          "text": "Which dot sits farthest left, which farthest right? How wide is the stretch between them -- and what does that width tell you about the data?"
-        },
-        {
-          "kind": "show",
-          "text": "Write 'Find the range of 7, 2, 9, 4.'"
-        },
-        {
-          "kind": "ask",
-          "text": "What is the biggest value, and what is the smallest?"
+          "text": "When all 24 dots are dealt, how many sit in each row?"
         },
         {
           "kind": "say",
-          "text": "The biggest is 9, the smallest is 2, so the range is 9 minus 2 = 7."
+          "text": "Each row holds 6, so 24 divided by 4 is 6. The array shows it both ways: 4 rows of 6 is 24, so 24 split into 4 rows is 6 each."
         },
         {
           "kind": "watch",
-          "text": "If a student subtracts 4 - 7 or uses the end values, ask 'are those the biggest and smallest, or just the first and last?'"
+          "text": "If a student answers 96, ask: we started with 24 crackers, can each friend get more than the whole box?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: find the range of 11, 20, 15, 18."
+          "text": "Your turn: 35 stickers shared among 5 kids. Deal them into rows and find each share."
         }
       ]
     },
     {
+      "skill_id": "7DSP2-B1",
+      "name": "Find the mean, median, and range of a single data set",
+      "column": "looking_back",
+      "parent_standard": "7.DSP.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Compute the mean, median, and range of one small data set of whole numbers.",
+        "check_question": "Find the mean and the median of 3, 7, 8, 10, 12."
+      },
+      "i_do_script": "One data set gets described with three numbers. The mean is the fair share: I add every value and divide by how many there are. The median is the middle value once the data is lined up smallest to largest. The range is the stretch from smallest to largest. Watch: for 8, 3, 10, 3, 6, the total is 30 and there are 5 values, so the mean is 6. Ordered, the data is 3, 3, 6, 8, 10, so the median is 6. The range is 10 minus 3, which is 7. When the count is even, there are two middle values, and the median is halfway between them.",
+      "canonical_error": {
+        "pattern": "For an even count, picks one of the two middle values as the median instead of averaging them",
+        "example": "For 6, 8, 10, 14 reports the median as 10 instead of (8 + 10) / 2 = 9",
+        "why": "With an even number of values there is no single middle position. The median sits halfway between the two middle values, so they must be averaged."
+      },
+      "item_template": "One data set of 3 to 6 whole numbers. Student finds the mean, the median, or the range. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "Find the mean of 3, 7, 8, 10, 12.",
+          "answer": "8"
+        },
+        {
+          "stem": "Find the median of 14, 9, 20, 11, 16.",
+          "answer": "14 (ordered: 9, 11, 14, 16, 20)"
+        },
+        {
+          "stem": "Find the range of 25, 12, 30, 19.",
+          "answer": "18"
+        },
+        {
+          "stem": "Find the median of 4, 8, 10, 12.",
+          "answer": "9 (halfway between 8 and 10)"
+        },
+        {
+          "stem": "Find the mean of 6, 10, 14.",
+          "answer": "10"
+        },
+        {
+          "stem": "Find the range of 7, 7, 7.",
+          "answer": "0"
+        },
+        {
+          "stem": "Find the median of 5, 12, 3, 9, 15, 8.",
+          "answer": "8.5 (ordered: 3, 5, 8, 9, 12, 15; halfway between 8 and 9)"
+        },
+        {
+          "stem": "Find the mean of 9, 12, 15, 12.",
+          "answer": "12"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is the data in order, and is the count odd or even?",
+        "prompt": "Order the values first. If the count is odd, the median is the single middle value. If the count is even, take the two middle values and find the number halfway between them.",
+        "praise": "You ordered the data and averaged the two middles, that is a correct median."
+      },
+      "vocabulary": [
+        {
+          "term": "Mean",
+          "definition": "The fair share: the sum of the values divided by how many there are."
+        },
+        {
+          "term": "Median",
+          "definition": "The middle value of the ordered data; for an even count, halfway between the two middle values."
+        },
+        {
+          "term": "Range",
+          "definition": "The largest value minus the smallest value."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP2-S1",
+        "if_fail": "7DSP2-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Build the data set 8, 3, 10, 3, 6 as cube towers of those heights, then line the towers up shortest to tallest."
+        },
+        {
+          "kind": "ask",
+          "text": "Which tower is in the middle of the line? Now level all five towers to the same height by moving cubes: how tall does each one become?"
+        },
+        {
+          "kind": "say",
+          "text": "The middle tower is 6, so the median is 6. Leveled, every tower is 6 cubes, and that is the mean: 30 cubes shared among 5 towers. The range is the tallest minus the shortest, 10 minus 3, which is 7."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student takes a middle value before ordering, or picks one middle value from an even count, send them back to the lined-up towers."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: find the mean, median, and range of 4, 8, 10, 12. Careful, the count is even."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Find the mean of 4, 6, 8.",
+          "answer": "6"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Find the range of 15, 9, 12, 21.",
+          "answer": "12"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the median of 18, 7, 12, 25, 10.",
+          "answer": "12 (ordered: 7, 10, 12, 18, 25)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the mean of 12, 15, 9, 16, 8.",
+          "answer": "12 (sum 60, divided by 5)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the median of 5, 9, 11, 15.",
+          "answer": "10 (halfway between 9 and 11)"
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Leah found the median of 6, 8, 10, 14. Find and fix her mistake.",
+          "shown_work": [
+            "Leah wrote: 'The data is in order. The middle values are 8 and 10.'",
+            "'So the median is 10.'"
+          ],
+          "answer": "Leah picked one of the two middle values. With an even count the median is halfway between them: (8 + 10) / 2 = 9."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write a data set of five whole numbers with a mean of 10 and a range of 6.",
+          "answer": "Many answers, e.g., 7, 8, 10, 12, 13 (sum 50, so mean 10; range 13 - 7 = 6)."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "The data set 4, 9, x has a mean of 8. Find x.",
+          "answer": "11 (the total must be 3 x 8 = 24, and 24 - 13 = 11)."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Level the Towers, Line the Cards",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Linking cubes",
+            "Index cards",
+            "Data-set cards (4 to 6 whole numbers each)"
+          ],
+          "instructions": "1. Draw a data-set card and build one cube tower per value.\n2. Line the towers up shortest to tallest and name the middle tower (or the two middles): that is the median.\n3. Move cubes until every tower is the same height: that height is the mean.\n4. Subtract the shortest tower from the tallest: that is the range.\n5. Record all three numbers, then check the mean by adding and dividing."
+        },
+        {
+          "type": "matching",
+          "title": "Three Numbers, One Set",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: data-set cards and statistic cards (mean, median, and range values)"
+          ],
+          "instructions": "1. Spread the data-set cards and the statistic cards face up.\n2. Match each data set to its mean card, median card, and range card.\n3. To claim a match, show the work out loud: the sum and count for the mean, the ordered list for the median.\n4. Two decoy cards hold unordered-median and sum-only values; set them aside and explain the error behind each.",
+          "content": {
+            "pairs": [
+              {
+                "left": "3, 7, 8, 10, 12",
+                "right": "mean 8, median 8, range 9"
+              },
+              {
+                "left": "6, 8, 10, 14",
+                "right": "mean 9.5, median 9, range 8"
+              },
+              {
+                "left": "9, 12, 15, 12",
+                "right": "mean 12, median 12, range 6"
+              },
+              {
+                "left": "4, 6, 8",
+                "right": "mean 6, median 6, range 4"
+              }
+            ],
+            "decoys": [
+              "median 10 (picked one middle of 6, 8, 10, 14)",
+              "mean 40 (the sum of 3, 7, 8, 10, 12, never divided)"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Cube towers make the mean a physical leveling and the median a physical middle before either becomes a procedure."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The one-middle-value median and the sum-not-divided mean are stable, baitable errors, ideal for find-and-fix."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Short number talks on the mean of three or four clean values build the fluency every 7.DSP.2 comparison rests on."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is the data in order before you look for the middle?",
+          "Is the count odd or even, and what does that change about the median?",
+          "What is the total, and how many values did you divide by?",
+          "Which value is largest and which is smallest for the range?",
+          "Could the mean and the median of one set be different numbers? Show me a set where they are."
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student picks one of the two middle values as the median of an even-count set.",
+            "say": "There are two middle values, so the median sits halfway between them. Add them and divide by 2.",
+            "praise": "You averaged the two middles, that is exactly what an even count needs."
+          },
+          {
+            "if_you_see": "Student adds the values for the mean but reports the sum without dividing.",
+            "say": "That is the total, not the fair share. Divide the sum by how many values there are.",
+            "praise": "You divided the total by the count, now it is a mean."
+          },
+          {
+            "if_you_see": "Student finds the median from the unordered list.",
+            "say": "The median is the middle by size, not by position on the page. Line the values up smallest to largest first.",
+            "praise": "You ordered before you looked for the middle, that keeps the median honest."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Find the median of 9, 3, 7, 1, 5.",
+            "look_for": "5 (ordered: 1, 3, 5, 7, 9). An answer of 7 means the student did not order first."
+          },
+          {
+            "prompt": "Find the mean of 6, 8, 10, 14.",
+            "look_for": "9.5 (sum 38, divided by 4). An answer of 38 means the sum was never divided."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Data set: 8, 3, 10, 3, 6. Find the mean, the median, and the range.",
+        "answer": "Mean 6, median 6, range 7",
+        "steps": [
+          {
+            "math": "Mean = (8+3+10+3+6) / 5 = 30 / 5 = 6",
+            "annotation": "Add all five values and divide by the count."
+          },
+          {
+            "math": "Ordered: 3, 3, 6, 8, 10",
+            "annotation": "The median needs the data lined up by size."
+          },
+          {
+            "math": "Median = 6",
+            "annotation": "The third of five values is the single middle."
+          },
+          {
+            "math": "Range = 10 - 3 = 7",
+            "annotation": "Largest minus smallest."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Data set: 12, 5, 9, 14, 10. Find the mean, the median, and the range.",
+        "answer": "Mean 10, median 10, range 9",
+        "steps": [
+          {
+            "math": "Ordered: 5, 9, 10, 12, 14",
+            "annotation": "Line the data up smallest to largest first.",
+            "given": true
+          },
+          {
+            "math": "Mean = (5+9+10+12+14) / 5 = 50 / 5 = 10",
+            "annotation": "Total 50 shared among 5 values.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Find the median, the middle of the five ordered values.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Find the range, largest minus smallest.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The total is ___ and there are ___ values, so the mean is ___.",
+        "In order the data is ___, so the median is ___.",
+        "The count is even, so the median is halfway between ___ and ___."
+      ],
+      "fluency_source": "7DSP2-F2"
+    },
+    {
+      "skill_id": "7DSP2-B2",
+      "name": "Read and interpret dot plots and histograms",
+      "column": "looking_back",
+      "parent_standard": "7.DSP.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Read counts, totals, peaks, and spread from a dot plot or a histogram of one data set.",
+        "check_question": "A dot plot shows 4 Xs above 0, 6 Xs above 1, 3 Xs above 2, and 1 X above 3. How many people were surveyed, and what was the most common answer?"
+      },
+      "i_do_script": "A dot plot stacks one X above a value for every piece of data, so it answers two different questions: what value, and how many. Watch: 4 Xs above 0, 6 Xs above 1, 3 Xs above 2, 1 X above 3. Counting every X gives 14 people surveyed. The tallest stack sits above 1, so the most common answer is 1, not 6; the 6 is how many people said it. The data runs from 0 to 3, so the range is 3. A histogram works the same way but each bar counts the values inside an interval, so I can total the bars, but I cannot recover any exact value from inside one.",
+      "canonical_error": {
+        "pattern": "Confuses the value on the axis with the count in the stack, reporting the frequency as the data value or vice versa",
+        "example": "For a dot plot whose tallest stack is 6 Xs above the value 1, says the most common answer is 6",
+        "why": "The axis holds the data values and the stack height holds how many times each value occurred. The tallest stack points down at the most common value; its height only says how common."
+      },
+      "item_template": "A described dot plot (Xs above values) or histogram (counts per interval). Student finds the total, the most common value, a count above or below a cutoff, the range, or says what the display cannot tell. Short response.",
+      "sample_items": [
+        {
+          "stem": "A dot plot of pets per student shows 4 Xs above 0, 6 Xs above 1, 3 Xs above 2, and 1 X above 3. How many students were surveyed?",
+          "answer": "14"
+        },
+        {
+          "stem": "On that pets dot plot, what is the most common number of pets?",
+          "answer": "1 (the tallest stack, 6 Xs, sits above 1)"
+        },
+        {
+          "stem": "On that pets dot plot, how many students have 2 or more pets?",
+          "answer": "4 (3 + 1)"
+        },
+        {
+          "stem": "On that pets dot plot, what is the range of the data?",
+          "answer": "3 (3 - 0)"
+        },
+        {
+          "stem": "A histogram shows 3 values in the interval 0-9, 7 values in 10-19, and 5 values in 20-29. How many data values are there in all?",
+          "answer": "15"
+        },
+        {
+          "stem": "On that histogram, which interval holds the most values?",
+          "answer": "10-19"
+        },
+        {
+          "stem": "From that histogram, can you find the exact largest value in the data?",
+          "answer": "No, only that it falls somewhere in the 20-29 interval."
+        },
+        {
+          "stem": "A dot plot shows 2 Xs above 5, 4 Xs above 6, 3 Xs above 7, and 1 X above 8. How many data values are greater than 6?",
+          "answer": "4 (3 + 1)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is that number a value on the axis, or a count of Xs?",
+        "prompt": "The axis tells you what was answered; the stack height tells you how many answered it. The tallest stack points down at the most common value. Read the value under the stack, not the height of it.",
+        "praise": "You separated the value from the count, that is reading the plot correctly."
+      },
+      "vocabulary": [
+        {
+          "term": "Dot plot",
+          "definition": "A graph that stacks a dot or X above a number for each piece of data; also called a line plot."
+        },
+        {
+          "term": "Histogram",
+          "definition": "A graph whose bars count how many data values fall inside each interval."
+        },
+        {
+          "term": "Frequency",
+          "definition": "How many times a value or interval occurs; the height of a stack or bar."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP2-S1",
+        "if_fail": "7DSP2-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a dot plot on the board: 2 Xs above 5, 4 Xs above 6, 3 Xs above 7, 1 X above 8. Label the axis 'goals scored'."
+        },
+        {
+          "kind": "ask",
+          "text": "Each X is one game. How many games does this plot show in all?"
+        },
+        {
+          "kind": "say",
+          "text": "Count every X: 2 + 4 + 3 + 1 = 10 games. The tallest stack sits above 6, so the most common score is 6 goals; the 4 is just how many games it happened. The data runs 5 to 8, so the range is 3."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says the most common score is 4, tap the axis: 4 is a height, not a value on this line."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: how many games had more than 6 goals?"
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A dot plot shows 1 X above 2, 3 Xs above 3, and 2 Xs above 4. How many data values are there?",
+          "answer": "6"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "On that dot plot, which value is most common?",
+          "answer": "3 (the tallest stack)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A dot plot of practice minutes shows 3 Xs above 10, 5 Xs above 15, 4 Xs above 20, and 2 Xs above 25. How many students practiced, and what was the most common time?",
+          "answer": "14 students; 15 minutes was most common."
+        },
+        {
+          "difficulty": "core",
+          "stem": "On that practice dot plot, how many students practiced 20 minutes or more?",
+          "answer": "6 (4 + 2)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A histogram shows 4 values in 0-4, 8 values in 5-9, and 6 values in 10-14. How many values in all, and which interval is fullest?",
+          "answer": "18 values; the 5-9 interval is fullest."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "A dot plot of quiz scores shows 2 Xs above 3, 7 Xs above 4, and 3 Xs above 5. Marcus reads it. Find and fix his mistake.",
+          "shown_work": [
+            "Marcus wrote: 'The tallest stack has 7 Xs.'",
+            "'So the most common score is 7.'"
+          ],
+          "answer": "Marcus reported the height of the stack instead of the value under it. The tallest stack sits above 4, so the most common score is 4; the 7 is how many students earned it."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A histogram shows 2 values in 60-69, 9 values in 70-79, 6 values in 80-89, and 3 values in 90-99. Which interval holds the median value? Explain.",
+          "answer": "70-79. There are 20 values, so the median sits between the 10th and 11th. The first interval holds values 1 and 2, and 70-79 holds values 3 through 11, so both middles land there."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "You can find the exact range of a data set from its dot plot but not from its histogram. Explain why.",
+          "answer": "A dot plot shows every individual value, so the exact largest and smallest can be read and subtracted. A histogram only shows which interval each value fell in, so the exact max and min are hidden inside their bars."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Sticky-Note Dot Plot",
+          "time_minutes": 12,
+          "grouping": "whole_group",
+          "materials": [
+            "Sticky notes",
+            "Board with a number line drawn (0 to 12)",
+            "Markers"
+          ],
+          "instructions": "1. Each student counts the letters in their first name and writes the number on a sticky note.\n2. One at a time, students stack their note above that number on the board's number line, building a live dot plot.\n3. Read the plot together: how many notes in all, which value has the tallest stack, what is the range?\n4. Ask the trap question on purpose: 'Is the most common name length the tallest stack's height, or the number under it?'\n5. Regroup the same notes into intervals (1-3, 4-6, 7-9, 10-12) to build a histogram, and name one fact the histogram hides."
+        },
+        {
+          "type": "card_sort",
+          "title": "Value or Count?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "One dot plot card (4 Xs above 0, 6 Xs above 1, 3 Xs above 2, 1 X above 3)",
+            "Statement cards"
+          ],
+          "instructions": "1. Keep the dot plot card face up in the middle.\n2. Sort each statement card into 'True' or 'False' against the plot.\n3. For every false card, say which mix-up caused it: a value read as a count, or a count read as a value.\n4. Debrief: what does the tallest stack tell you, and what does it not tell you?",
+          "content": {
+            "categories": [
+              "True",
+              "False"
+            ],
+            "cards": [
+              {
+                "text": "14 people were surveyed.",
+                "category": "True"
+              },
+              {
+                "text": "The most common answer is 1.",
+                "category": "True"
+              },
+              {
+                "text": "The most common answer is 6.",
+                "category": "False"
+              },
+              {
+                "text": "4 people answered 2 or more.",
+                "category": "True"
+              },
+              {
+                "text": "The range of the data is 3.",
+                "category": "True"
+              },
+              {
+                "text": "The range of the data is 6.",
+                "category": "False"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building a live dot plot from sticky notes grounds 'each X is one person' before any reading rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The value-versus-count confusion is a single clean error, perfect for a find-and-fix pass."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'what does the tallest stack tell you' surfaces the frequency-versus-value mix-up through talk."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What does one X on this plot stand for?",
+          "Is that number a value on the axis or a height of a stack?",
+          "How many data values does the whole display show?",
+          "What can this histogram tell you, and what has it hidden?",
+          "Where does the data cluster, and how far does it stretch?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reports the stack height as the most common value.",
+            "say": "The tallest stack points down at the most common value. Read the number under the stack; the height only says how many times it happened.",
+            "praise": "You read the value under the stack, not the height, that is the right move."
+          },
+          {
+            "if_you_see": "Student tries to name an exact maximum or an exact value from a histogram bar.",
+            "say": "A histogram only tells you the interval, not the values inside it. Say the interval, and say what you cannot know.",
+            "praise": "You named what the histogram hides, that is careful reading."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A dot plot shows 2 Xs above 5 and 6 Xs above 7. What is the most common value?",
+            "look_for": "7. An answer of 6 means the student read the count as the value."
+          },
+          {
+            "prompt": "A histogram shows 5 values in 10-19 and 8 values in 20-29. How many values in all?",
+            "look_for": "13, by adding the bar counts. Trying to list exact values means the display is misread."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A dot plot of goals per game shows 2 Xs above 5, 4 Xs above 6, 3 Xs above 7, and 1 X above 8. How many games are shown, what is the most common score, and what is the range?",
+        "answer": "10 games; most common score 6; range 3",
+        "steps": [
+          {
+            "math": "Total = 2 + 4 + 3 + 1 = 10",
+            "annotation": "Every X is one game, so count them all."
+          },
+          {
+            "math": "Tallest stack: 4 Xs, sitting above 6",
+            "annotation": "The height says how many; the value under it says what."
+          },
+          {
+            "math": "Most common score = 6",
+            "annotation": "Read the axis value under the tallest stack, not its height."
+          },
+          {
+            "math": "Range = 8 - 5 = 3",
+            "annotation": "Largest value minus smallest value on the axis."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A histogram of test scores shows 6 values in 0-4, 9 values in 5-9, and 5 values in 10-14. How many scores are there, which interval is fullest, and can the exact highest score be found?",
+        "answer": "20 scores; the 5-9 interval is fullest; no, only that the highest is between 10 and 14",
+        "steps": [
+          {
+            "math": "Each bar counts the values inside its interval",
+            "annotation": "A histogram groups data; individual values are hidden.",
+            "given": true
+          },
+          {
+            "math": "Total = 6 + 9 + 5 = 20",
+            "annotation": "Add the bar counts for the total.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the interval with the most values.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Say whether the exact highest score can be read, and why.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "Each X stands for one ___, so the plot shows ___ in all.",
+        "The tallest stack sits above ___, so the most common value is ___.",
+        "The histogram can tell me ___, but it cannot tell me ___."
+      ],
+      "fluency_source": "7DSP2-F1"
+    },
+    {
       "skill_id": "7DSP2-S1",
       "name": "Calculate and compare the mean, median, and range of two data sets",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.DSP.2",
       "engine_stems": [
         1
@@ -490,7 +1094,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP2-F1",
+      "fluency_source": "7DSP2-B1",
       "sentence_starters": [
         "The mean of ___ is ___ and the mean of ___ is ___, so ___ is higher by ___.",
         "In order the data is ___, so the median is ___."
@@ -747,7 +1351,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP2-F1",
+      "fluency_source": "7DSP2-B1",
       "sentence_starters": [
         "The mean is ___, so the distances are ___, and MAD = ___ / ___ = ___.",
         "Q1 is ___ and Q3 is ___, so the IQR is ___ - ___ = ___."
@@ -1027,7 +1631,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP2-F1",
+      "fluency_source": "7DSP2-B1",
       "sentence_starters": [
         "A smaller ___ means the data is more ___, not ___.",
         "Both groups have about the same center, so the spread tells me ___."
@@ -1314,7 +1918,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP2-F1",
+      "fluency_source": "7DSP2-B1",
       "sentence_starters": [
         "The center of ___ is ___ and of ___ is ___, so ___ is typically ___.",
         "Their spreads are ___ and ___, so ___ is more consistent."
@@ -1601,7 +2205,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP2-F1",
+      "fluency_source": "7DSP2-B1",
       "sentence_starters": [
         "Population ___ generally has higher values, because its ___ is ___ than ___.",
         "The centers are ___, so I can only say ___ -- not that one is always greater."
@@ -1886,7 +2490,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP2-F1",
+      "fluency_source": "7DSP2-B1",
       "sentence_starters": [
         "This inference is ___ because it ___ (too certain / spread as size / ignores overlap).",
         "A corrected version is: '___ generally has higher values because its ___ is ___.'"
@@ -1943,8 +2547,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7DSP2-F1",
         "7DSP2-F2"
@@ -1952,15 +2556,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7DSP2-S1"
+        "7DSP2-B1",
+        "7DSP2-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7DSP2-S1",
         "7DSP2-S2",
         "7DSP2-S3",
         "7DSP2-S4"
@@ -1968,7 +2574,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7DSP2-S5",
         "7DSP2-S6"
@@ -1978,6 +2584,8 @@
   "skill_sequence": [
     "7DSP2-F1",
     "7DSP2-F2",
+    "7DSP2-B1",
+    "7DSP2-B2",
     "7DSP2-S1",
     "7DSP2-S2",
     "7DSP2-S3",
@@ -1988,9 +2596,15 @@
   "skill_tree": {
     "7DSP2-F1": [],
     "7DSP2-F2": [],
-    "7DSP2-S1": [
-      "7DSP2-F1",
+    "7DSP2-B1": [
       "7DSP2-F2"
+    ],
+    "7DSP2-B2": [
+      "7DSP2-F1"
+    ],
+    "7DSP2-S1": [
+      "7DSP2-B1",
+      "7DSP2-B2"
     ],
     "7DSP2-S2": [
       "7DSP2-S1"
@@ -2010,16 +2624,20 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (compare two data sets using a center AND a spread) -- the At-proficiency workhorse. If they pass, push to S5 (draw and justify a comparative inference) and S6 (critique a flawed inference). If they fail, drop to S1 to check whether the student can even calculate and compare the mean, median, and range. S2 (IQR and MAD) and S3 (interpret spread as consistency) branch off the core as the spread-specific supports.",
+    "description": "Start with S4, comparing two data sets with both a center and a spread, the At-proficiency workhorse. If they pass, push to S5 (draw and justify a comparative inference) and S6 (critique a flawed one). If they fail, drop below grade level: B1 checks whether the student can find the mean, median, and range of even one data set, and B2 checks whether they can read a dot plot or histogram at all, the two grade 6 skills every two-sample comparison stands on. If those wobble, the foundations locate the gap in grades 3 to 5: F1 for reading scaled bar graphs and line plots, F2 for the fair-share division inside the mean. S1 through S3 remain available to probe the standard's own computation and interpretation rungs.",
     "entry_skill": "7DSP2-S4",
     "if_pass": [
       "7DSP2-S5",
       "7DSP2-S6"
     ],
     "if_fail": [
-      "7DSP2-S1"
+      "7DSP2-B1",
+      "7DSP2-B2"
     ],
     "branch_skills": [
+      "7DSP2-F1",
+      "7DSP2-F2",
+      "7DSP2-S1",
       "7DSP2-S2",
       "7DSP2-S3"
     ]

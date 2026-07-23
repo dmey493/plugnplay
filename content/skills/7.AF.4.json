@@ -3,7 +3,7 @@
   "standard_text": "Solve inequalities of the form px + q > r or px + q < r (and >= , <=), where p, q, and r are specific rational numbers. Represent real-world problems using inequalities of these forms and solve such problems. Graph the solution set of the inequality and interpret it in the context of the problem.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard turns the two-step equation students just mastered into a two-step INEQUALITY -- same machinery, one new idea, and a picture at the end. So the progression starts with what a solution to an inequality even IS: not a single number, but a whole SET of numbers, every value that makes the statement true. Testing a candidate by substitution (the Below-proficiency task) is the anchor -- if a student can't tell whether 5 makes 6x + 4 > 28 true, nothing downstream can be trusted. From there the picture arrives early, because the standard names it: the solution set lives on a number line, and reading or drawing that graph forces two decisions students confuse for years -- open circle vs. closed circle (does the boundary itself count?) and which direction to shade.\n\nWith 'what is a solution' and 'how do we picture it' in hand, the core solving step is next: isolate x in px + q compared to r exactly as if the sign were an equals sign, EXCEPT for the one rule that has no analog in equation solving -- when you multiply or divide both sides by a negative, the inequality flips direction. That single rule is the dominant error, so it earns its own step and a test-point habit to catch it. Only then does the standard turn outward: translate a real-world 'at most / at least' situation into px + q compared to r, solve it, graph the set, and say what the answer MEANS (the greatest whole number of miles, the fewest weeks of saving). At the top band students critique someone else's claim -- deciding whether a proposed value is reasonable and justifying it against the constraint. The order is deliberate: test, then graph, then find the set, then solve with the flip, then model, then justify. Underneath all of it runs one habit -- an inequality answers with a range, and you confirm the range by picking a point inside it and checking the original.",
+    "narrative": "This standard asks students to solve two step inequalities of the form px + q compared to r, represent real world limits with them, and graph and interpret the solution set on a number line. The on grade work runs from testing a candidate value by substitution, through reading and drawing the graph, to isolating x with equation moves plus the sign flip for a negative multiplier, and finally modeling at most and at least situations. Students who stall here usually cannot solve a one step equation or do not yet see an inequality as a whole set of numbers on a line, and both of those are grade six skills. Beneath that often sit older gaps: shaky multiplication and division fact families that make undoing operations impossible, and weak number comparison and number line sense. Intervention should rebuild fact families and comparing on the number line first, then the grade six skills of one step equations and simple x > c inequalities, and only then return to the two step work.",
     "steps": [
       {
         "skill_id": "7AF4-S1",
@@ -40,212 +40,804 @@
   "skills": [
     {
       "skill_id": "7AF4-F1",
-      "name": "Solve a two-step equation using inverse operations",
+      "name": "Find the unknown number in a multiplication or division fact family",
       "column": "foundation",
       "parent_standard": "7.AF.4",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Undo addition/subtraction and multiplication/division to isolate a variable in px + q = r.",
-        "check_question": "Solve 4x + 3 = 19."
+        "grade": 3,
+        "description": "Use fact families to find a missing number in a multiplication or division equation, like 4 x ? = 24.",
+        "check_question": "What number makes 4 x ? = 24 true?"
       },
-      "i_do_script": "Solving is rewinding a story: the equation tells you what happened to x in order, and rewinding always undoes the LAST event first. To get x by itself I undo whatever is happening to it, in reverse order -- clear the added or subtracted number first, then undo the multiplication. Watch: 4x + 3 = 19. The x is multiplied by 4, then 3 is added. I undo the adding first: subtract 3 from both sides, giving 4x = 16. Then I undo the multiplying: divide both sides by 4, giving x = 4. Whatever I do to one side I do to the other -- that keeps the scale balanced. This is the exact same routine we will use to solve inequalities.",
+      "i_do_script": "Multiplication and division undo each other, and a fact family shows all four related facts at once. Watch: 4 x ? = 24 asks how many groups of 4 make 24. I draw an array: rows of 4 dots until I reach 24. That takes 6 rows, so the missing number is 6. I can also flip the fact: 24 divided by 4 is 6, same answer, same family. The family for 4, 6, and 24 is 4 x 6 = 24, 6 x 4 = 24, 24 / 4 = 6, and 24 / 6 = 4. When one fact is hard, its partner fact hands you the answer.",
       "canonical_error": {
-        "pattern": "Undoes operations in the wrong order -- divides by the coefficient before clearing the constant",
-        "example": "For 4x + 3 = 19 the student divides by 4 first (getting x + 3 = 19/4) instead of subtracting 3 first",
-        "why": "The student attacks the coefficient before clearing the added term, reading left to right instead of reversing the order of operations. The added or subtracted number must be cleared before the multiplication is undone."
+        "pattern": "Uses the wrong operation on the two given numbers instead of the related fact",
+        "example": "For 4 x ? = 24, subtracts and says 20, or multiplies 4 x 24",
+        "why": "The student does not connect the missing factor question to its division partner. The array shows it: 24 dots in rows of 4 always makes 6 rows, which is 24 / 4."
       },
-      "item_template": "A two-step equation px + q = r with integer or simple rational values. Student isolates x. Short numeric response; a strong short fluency bank.",
+      "item_template": "A multiplication or division fact with one number missing (facts through 10 x 10), or a prompt to complete a fact family. Student names the missing number. Short response fluency bank, no calculator.",
       "sample_items": [
         {
-          "stem": "Solve 4x + 3 = 19.",
-          "answer": "x = 4"
+          "stem": "4 x ? = 24",
+          "answer": "6"
         },
         {
-          "stem": "Solve 2x - 5 = 11.",
-          "answer": "x = 8"
+          "stem": "? x 7 = 42",
+          "answer": "6"
         },
         {
-          "stem": "Solve 3x + 7 = 22.",
-          "answer": "x = 5"
+          "stem": "24 / ? = 8",
+          "answer": "3"
         },
         {
-          "stem": "Solve 6x - 4 = 20.",
-          "answer": "x = 4"
+          "stem": "9 x ? = 63",
+          "answer": "7"
         },
         {
-          "stem": "Solve 5x + 2 = 27.",
-          "answer": "x = 5"
+          "stem": "56 / 8",
+          "answer": "7"
         },
         {
-          "stem": "Solve (1/2)x + 3 = 8.",
-          "answer": "x = 10"
+          "stem": "Write the two division facts in the fact family of 6 x 8 = 48.",
+          "answer": "48 / 6 = 8 and 48 / 8 = 6"
+        },
+        {
+          "stem": "8 x ? = 56",
+          "answer": "7"
+        },
+        {
+          "stem": "54 / ? = 6",
+          "answer": "9"
+        },
+        {
+          "stem": "5 x ? = 45",
+          "answer": "9"
         }
       ],
       "redirect_script": {
-        "stop": "Wait -- what is being done to the x LAST?",
-        "prompt": "Undo in reverse order. Clear the added or subtracted number FIRST (do the opposite to both sides), and only then divide by the number multiplying x.",
-        "praise": "You cleared the constant before touching the coefficient -- that's the right order."
+        "stop": "What fact family do these two numbers live in?",
+        "prompt": "Say the partner fact. If 4 x ? = 24, then 24 / 4 tells you the missing number. Multiplication and division undo each other.",
+        "praise": "You used the partner fact instead of guessing, that is how fact families work."
       },
       "vocabulary": [
         {
-          "term": "Inverse operation",
-          "definition": "The operation that undoes another (subtraction undoes addition; division undoes multiplication)."
+          "term": "Fact family",
+          "definition": "A set of related multiplication and division facts that use the same three numbers, like 4, 6, and 24."
         },
         {
-          "term": "Isolate",
-          "definition": "Get the variable alone on one side of the equation."
-        },
-        {
-          "term": "Coefficient",
-          "definition": "The number multiplied by a variable, like the 4 in 4x."
+          "term": "Factor",
+          "definition": "A number being multiplied; in 4 x 6 = 24, the factors are 4 and 6."
         }
       ],
       "next_steps": {
-        "if_pass": "7AF4-S1",
-        "if_fail": "Review one- and two-step equations (6.AF.5 / 7.AF.3)."
+        "if_pass": "7AF4-B1",
+        "if_fail": "Review grade 3 multiplication with equal-group pictures and arrays (rows and columns of dots)."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Read 5x - 2 = 18 as a story that happened to x: first it was multiplied by 5, THEN 2 was taken away. To rewind back to x, which of those two events do you undo first -- the last one or the first one?"
-        },
-        {
           "kind": "show",
-          "text": "Write '5x - 2 = 18.'"
+          "text": "Write '4 x ? = 24' and start drawing an array: rows of 4 dots, one row at a time."
         },
         {
           "kind": "ask",
-          "text": "What is happening to x, and in what order?"
+          "text": "How many rows of 4 do we need to reach 24 dots?"
         },
         {
           "kind": "say",
-          "text": "x is multiplied by 5, then 2 is subtracted. I undo the subtraction first: add 2 to both sides, getting 5x = 20."
+          "text": "Count with me: 4, 8, 12, 16, 20, 24. That is 6 rows, so the missing number is 6. The partner fact says the same thing: 24 / 4 = 6."
         },
         {
           "kind": "watch",
-          "text": "If the student divides by 5 first, ask 'what number is stuck to the x by adding or subtracting? Clear that one first.'"
+          "text": "If a student says 20 by subtracting, point at the array: are we taking dots away, or counting rows of 4?"
         },
         {
           "kind": "ask",
-          "text": "Now undo the times 5. What do you do to both sides? Your turn: 3x + 4 = 19."
+          "text": "Your turn: what number makes ? x 7 = 42 true? Say the partner division fact first."
         }
       ]
     },
     {
       "skill_id": "7AF4-F2",
-      "name": "Read inequality symbols and plot on a number line",
+      "name": "Compare numbers with < and > and locate them on a number line",
       "column": "foundation",
       "parent_standard": "7.AF.4",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Interpret <, >, <=, >= and represent an inequality's solutions on a number line with open/closed circles (6.AF.4).",
-        "check_question": "Graph x > 3 on a number line: open or closed circle, and which way do you shade?"
+        "grade": 4,
+        "description": "Compare two whole numbers or decimals with the symbols < and >, and place numbers on a number line.",
+        "check_question": "Which symbol makes this true: 348 __ 384?"
       },
-      "i_do_script": "A graph of an inequality is just a record of which numbers pass its test -- so test a few numbers first, including the boundary itself, and the picture draws itself. The inequality symbol always opens toward the bigger side -- the wide end faces the larger amount, the point faces the smaller. And the circle tells you whether the boundary itself counts: an OPEN (hollow) circle means 'not equal to,' used for > and <; a CLOSED (filled) circle means 'equal to is allowed,' used for >= and <=. Watch: to graph x > 3 I put an OPEN circle on 3 (3 itself is not a solution) and shade to the RIGHT, toward the larger numbers. For x <= -2 I put a CLOSED circle on -2 and shade LEFT.",
+      "i_do_script": "On a number line, bigger numbers live to the right, and the comparison symbol always opens toward the bigger number. Watch: to compare 348 and 384, I compare place by place. Hundreds match, 3 and 3. Tens differ: 4 tens against 8 tens, so 384 is greater. I write 348 < 384, with the small pointed end aimed at the smaller number. On a number line, 348 sits to the left of 384. The picture and the symbol say the same thing: left means less.",
       "canonical_error": {
-        "pattern": "Confuses open vs. closed circles or shades toward the wrong side of the boundary",
-        "example": "Graphs x > 3 with a CLOSED circle at 3 (treating > like >=), or shades left toward smaller numbers instead of right",
-        "why": "The student memorizes the picture without linking it to meaning -- an open circle stands for 'boundary excluded' (strict >/<), and the shading follows the direction of the larger/smaller values the symbol points to."
+        "pattern": "Writes the comparison symbol backwards or compares digits without regard to place",
+        "example": "Writes 348 > 384, or says 0.25 is greater than 0.4 because 25 is bigger than 4",
+        "why": "The student memorizes the symbol without linking it to the number line, or reads digits as whole numbers instead of by place. Left on the line means less, and the open side of the symbol always faces the bigger number."
       },
-      "item_template": "A single inequality (x > a, x <= a) or a symbol-choice item. Student names open vs. closed circle, the shade direction, or whether the boundary is included. Short response.",
+      "item_template": "Two whole numbers (up to 4 digits) or decimals to the hundredths. Student writes < or >, orders a short list, or places a number on a number line. Short response fluency bank, no calculator.",
       "sample_items": [
         {
-          "stem": "Graph x > 3. Open or closed circle at 3, and which direction do you shade?",
-          "answer": "Open circle at 3, shade right."
+          "stem": "Which symbol makes this true: 348 __ 384?",
+          "answer": "<"
         },
         {
-          "stem": "Graph x <= -2. Open or closed circle, and which direction?",
-          "answer": "Closed circle at -2, shade left."
+          "stem": "Which symbol makes this true: 5208 __ 5280?",
+          "answer": "<"
         },
         {
-          "stem": "Does the graph of x >= 4 include the number 4? Why?",
-          "answer": "Yes -- >= means 'equal to' is allowed, so the circle at 4 is closed."
+          "stem": "Which number is farther right on a number line: 46 or 64?",
+          "answer": "64"
         },
         {
-          "stem": "Which symbol makes this true: 5 __ 8?",
-          "answer": "5 < 8"
+          "stem": "On a number line, is 7 to the left or the right of 3?",
+          "answer": "Right, because 7 is greater than 3."
         },
         {
-          "stem": "Plot 2.5 on a number line. Between which two whole numbers does the point sit?",
-          "answer": "Between 2 and 3, halfway."
+          "stem": "Which symbol makes this true: 0.25 __ 0.4?",
+          "answer": "<"
+        },
+        {
+          "stem": "Between which two whole numbers does 3.6 sit on a number line?",
+          "answer": "Between 3 and 4"
+        },
+        {
+          "stem": "Order from least to greatest: 89, 98, 91",
+          "answer": "89, 91, 98"
+        },
+        {
+          "stem": "True or false: 62 > 58",
+          "answer": "True"
         }
       ],
       "redirect_script": {
-        "stop": "Hold on -- does the boundary number count or not?",
-        "prompt": "If the symbol is > or <, the boundary is NOT a solution, so use an open (hollow) circle. If it is >= or <=, the boundary IS a solution, so fill the circle in. Then shade toward the numbers that make it true.",
-        "praise": "You matched the circle to the symbol and shaded the right way -- that's a correct solution-set picture."
+        "stop": "Which number sits farther right on the number line?",
+        "prompt": "Compare place by place starting with the largest place, then aim the open side of the symbol at the bigger number. The pointed end always touches the smaller one.",
+        "praise": "You compared by place and aimed the symbol at the bigger number, that is exactly right."
       },
       "vocabulary": [
         {
-          "term": "Inequality",
-          "definition": "A statement comparing two amounts with <, >, <=, or >=."
+          "term": "Greater than (>)",
+          "definition": "The symbol that says the first number is bigger; the open side faces the bigger number."
         },
         {
-          "term": "Open circle",
-          "definition": "A hollow circle on the number line meaning the boundary value is NOT included (used for > and <)."
-        },
-        {
-          "term": "Closed circle",
-          "definition": "A filled-in circle meaning the boundary value IS included (used for >= and <=)."
-        },
-        {
-          "term": "Boundary",
-          "definition": "The number where the solution set starts, like the 3 in x > 3."
+          "term": "Less than (<)",
+          "definition": "The symbol that says the first number is smaller; the pointed end touches the smaller number."
         }
       ],
       "next_steps": {
-        "if_pass": "7AF4-S2",
-        "if_fail": "Review graphing inequalities on a number line (6.AF.4)."
+        "if_pass": "7AF4-B2",
+        "if_fail": "Review grade 4 place value with a number line and base ten blocks (which place decides the comparison)."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Before drawing anything for x >= 1, be the bouncer at the door: does 3 get in? Does 0? Now the boundary itself -- does 1 get in? That yes or no about the boundary is exactly what the circle records.",
-          "visual": {
-            "type": "number_line_point",
-            "ticks": [
-              -3,
-              -2,
-              -1,
-              0,
-              1,
-              2,
-              3,
-              4,
-              5
-            ],
-            "point_value": 1,
-            "point_label": "boundary"
-          }
-        },
-        {
           "kind": "show",
-          "text": "Write 'Graph x >= 1.'"
+          "text": "Draw a number line from 40 to 70 with tick marks at every ten. Mark 46 and 64."
         },
         {
           "kind": "ask",
-          "text": "Is 1 itself a solution? What does the >= tell you?"
+          "text": "Which number is farther right? So which is greater?"
         },
         {
           "kind": "say",
-          "text": "Yes -- >= allows 'equal to,' so I use a CLOSED circle on 1. Then I shade to the right, toward all the numbers bigger than 1."
+          "text": "64 sits to the right of 46, so 64 is greater. I write 46 < 64. The open side of the symbol faces 64, the bigger number."
         },
         {
           "kind": "watch",
-          "text": "If the student shades left, ask 'are the solutions bigger than 1 or smaller than 1?'"
+          "text": "If a student writes 46 > 64, send them back to the line: does 46 sit to the right or the left of 64?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: graph x < 0. Open or closed circle, and which way?"
+          "text": "Your turn: mark 3.6 on a number line from 3 to 4. Which symbol makes this true: 3.6 __ 3.2?"
         }
       ]
     },
     {
+      "skill_id": "7AF4-B1",
+      "name": "Solve one-step equations of the form x + p = q and px = q",
+      "column": "looking_back",
+      "parent_standard": "7.AF.4",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Isolate x in a one-step equation by doing the inverse operation to both sides.",
+        "check_question": "Solve x + 7 = 15."
+      },
+      "i_do_script": "An equation is a balanced scale, and whatever I do to one side I must do to the other. Watch: x + 7 = 15. Something plus 7 makes 15, so I undo the plus 7 by subtracting 7 from both sides: x = 8. Check: 8 + 7 = 15, true. Now 6x = 42: x is multiplied by 6, so I undo it by dividing both sides by 6: x = 7. Check: 6 times 7 is 42. One operation happened to x, so one inverse operation frees it.",
+      "canonical_error": {
+        "pattern": "Applies the same operation instead of the inverse, or operates on only one side",
+        "example": "For x + 12 = 30, adds 12 and says x = 42, or divides 42 by 6 in 6x = 42 but leaves the left side as 6x",
+        "why": "The student does not connect solving to undoing. On the balance, the 12 must be removed from both pans to leave x alone; adding more only pushes x farther from being isolated."
+      },
+      "item_template": "A one-step equation x + p = q, x - p = q, or px = q with nonnegative whole numbers, decimals, or simple fractions. Student isolates x and checks. Numeric response, no calculator.",
+      "sample_items": [
+        {
+          "stem": "Solve x + 7 = 15.",
+          "answer": "x = 8"
+        },
+        {
+          "stem": "Solve 6x = 42.",
+          "answer": "x = 7"
+        },
+        {
+          "stem": "Solve x - 9 = 4.",
+          "answer": "x = 13"
+        },
+        {
+          "stem": "Solve 5x = 35.",
+          "answer": "x = 7"
+        },
+        {
+          "stem": "Solve x + 2.5 = 6.",
+          "answer": "x = 3.5"
+        },
+        {
+          "stem": "Solve x/4 = 3.",
+          "answer": "x = 12"
+        },
+        {
+          "stem": "Solve (1/2)x = 8.",
+          "answer": "x = 16"
+        },
+        {
+          "stem": "Solve x + 3/4 = 2.",
+          "answer": "x = 5/4 (or 1 1/4)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "What single operation happened to x, and what undoes it?",
+        "prompt": "Name the operation on x, then do the inverse to BOTH sides of the equation. Addition is undone by subtraction; multiplication is undone by division. Then check your answer in the original.",
+        "praise": "You undid the operation on both sides and checked, that is a complete solve."
+      },
+      "vocabulary": [
+        {
+          "term": "Inverse operation",
+          "definition": "The operation that undoes another: subtraction undoes addition, division undoes multiplication."
+        },
+        {
+          "term": "Isolate",
+          "definition": "Get the variable alone on one side of the equation."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7AF4-S1",
+        "if_fail": "7AF4-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a balance scale: on the left pan, a bag labeled x and 7 unit chips; on the right pan, 15 unit chips."
+        },
+        {
+          "kind": "ask",
+          "text": "What could we remove from BOTH pans so the bag ends up alone?"
+        },
+        {
+          "kind": "say",
+          "text": "Take 7 chips off each pan. The scale stays balanced, and the bag matches 8 chips. So x = 8, and 8 + 7 = 15 checks."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student adds chips or removes them from one pan only, ask what the scale would do: would it still balance?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: draw the scale for x + 4 = 11 and solve it."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Solve x + 4 = 11.",
+          "answer": "x = 7"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Solve 3x = 18.",
+          "answer": "x = 6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve x - 6 = 14.",
+          "answer": "x = 20"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve 8x = 56.",
+          "answer": "x = 7"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve x + 1.5 = 4.",
+          "answer": "x = 2.5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve x/5 = 4.",
+          "answer": "x = 20"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Solve (2/3)x = 10.",
+          "answer": "x = 15"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo solved x + 8 = 20 and got x = 28. Find his mistake and fix it.",
+          "shown_work": [
+            "x + 8 = 20",
+            "x = 20 + 8",
+            "x = 28"
+          ],
+          "answer": "Leo added 8 instead of undoing it. Subtract 8 from both sides: x = 12. Check: 12 + 8 = 20."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Keep It Balanced",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper bag or envelope labeled x",
+            "Counters or chips",
+            "A drawn balance scale mat"
+          ],
+          "instructions": "1. Set up x + 7 = 15 on the mat: the bag and 7 chips on the left, 15 chips on the right.\n2. Remove chips to get the bag alone, but every chip taken from one side must also come off the other.\n3. Count what the bag equals and check by putting the chips back.\n4. Repeat with x + 4 = 11 and x - 3 = 9 (for subtraction, add chips to both sides).\n5. Say each time: whatever happens to one side happens to the other."
+        },
+        {
+          "type": "matching",
+          "title": "Undo Match-Up",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per equation, one card per matching undo move"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each equation like x + 9 = 16 to its undo move like 'subtract 9 from both sides.'\n3. To claim a match, state the solution and check it out loud.\n4. Two decoy cards show the wrong move; set them aside and explain why they fail.",
+          "content": {
+            "pairs": [
+              {
+                "left": "x + 9 = 16",
+                "right": "Subtract 9 from both sides; x = 7"
+              },
+              {
+                "left": "4x = 28",
+                "right": "Divide both sides by 4; x = 7"
+              },
+              {
+                "left": "x - 5 = 12",
+                "right": "Add 5 to both sides; x = 17"
+              },
+              {
+                "left": "x + 2.5 = 6",
+                "right": "Subtract 2.5 from both sides; x = 3.5"
+              },
+              {
+                "left": "x/3 = 6",
+                "right": "Multiply both sides by 3; x = 18"
+              },
+              {
+                "left": "7x = 63",
+                "right": "Divide both sides by 7; x = 9"
+              }
+            ],
+            "decoys": [
+              "Add 9 to both sides of x + 9 = 16",
+              "Subtract 4 from both sides of 4x = 28"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The balance scale with a bag and chips makes 'do the same to both sides' visible before the inverse-operation rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The add-instead-of-subtract error is stable and predictable; finding and fixing it in worked examples confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud, naming the operation on x and its inverse before touching the equation, makes the invisible plan audible and checkable."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What single operation happened to x in this equation?",
+          "What operation undoes it?",
+          "Why do we do that to BOTH sides?",
+          "How can you check that your answer is right?",
+          "What would the balance scale do if you only changed one side?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds the constant instead of subtracting it.",
+            "say": "Look at the scale: the bag already has 8 chips next to it. Does adding more chips leave the bag alone? Remove 8 from both pans instead.",
+            "praise": "You undid the operation instead of repeating it, that is what isolating means."
+          },
+          {
+            "if_you_see": "Student changes only one side of the equation.",
+            "say": "The equals sign says both sides weigh the same. If you take 7 off the left only, the scale tips. Take 7 off both sides.",
+            "praise": "You kept the scale balanced, so your solution is trustworthy."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Solve x + 6 = 13.",
+            "look_for": "x = 7 by subtracting 6 from both sides, not x = 19."
+          },
+          {
+            "prompt": "Solve 9x = 54.",
+            "look_for": "x = 6 by dividing both sides by 9, with a check like 9 times 6 is 54."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Solve x + 7 = 15.",
+        "answer": "x = 8",
+        "steps": [
+          {
+            "math": "x + 7 = 15",
+            "annotation": "One operation happened to x: 7 was added."
+          },
+          {
+            "math": "subtract 7 from both sides",
+            "annotation": "Subtraction undoes addition, and both sides keep the balance."
+          },
+          {
+            "math": "x = 15 - 7 = 8",
+            "annotation": "The left side is just x now; the right side is 8."
+          },
+          {
+            "math": "check: 8 + 7 = 15",
+            "annotation": "Put 8 back into the original to confirm it is true."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Solve x + 12 = 30.",
+        "answer": "x = 18",
+        "steps": [
+          {
+            "math": "x + 12 = 30",
+            "annotation": "Name the operation that happened to x: 12 was added.",
+            "given": true
+          },
+          {
+            "math": "subtract 12 from both sides",
+            "annotation": "Choose the inverse operation and apply it to both sides.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Finish the subtraction to find x.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check your answer in the original equation.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The operation on x is ___, so I ___ both sides.",
+        "x = ___ because ___ checks in the original equation."
+      ],
+      "fluency_source": "7AF4-F1"
+    },
+    {
+      "skill_id": "7AF4-B2",
+      "name": "Write and graph an inequality of the form x > c or x < c",
+      "column": "looking_back",
+      "parent_standard": "7.AF.4",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Write an inequality like x > c to represent a real constraint and graph its infinitely many solutions on a number line.",
+        "check_question": "Riders must be taller than 40 inches. Write an inequality for the height h, and tell which way the graph shades."
+      },
+      "i_do_script": "An inequality describes a whole set of numbers, not one answer. Watch: riders must be taller than 40 inches. Taller than means greater than, so I write h > 40. Is 41 a solution? Yes. 45? Yes. 50.5? Yes. There are infinitely many, so I cannot list them; I graph them instead. I put an open circle at 40, because exactly 40 is not tall enough, and I shade to the right, where every number greater than 40 lives. The graph is a picture of every height that gets on the ride.",
+      "canonical_error": {
+        "pattern": "Shades the wrong direction, or treats the inequality as having a single answer",
+        "example": "Graphs x > 3 by shading left of 3, or says the solution of x > 3 is 4",
+        "why": "The student reads the inequality like an equation with one answer, instead of a test that infinitely many numbers pass. Testing a few values, like 5 and 1, shows which side of the boundary holds the solutions."
+      },
+      "item_template": "A short real-world constraint to translate into x > c or x < c, or an inequality to graph or read from a number line. Boundaries are integers, including negatives. Short response or MC.",
+      "sample_items": [
+        {
+          "stem": "Riders must be taller than 40 inches. Write an inequality for the height h.",
+          "answer": "h > 40"
+        },
+        {
+          "stem": "The temperature was below -2 degrees. Write an inequality for the temperature t.",
+          "answer": "t < -2"
+        },
+        {
+          "stem": "Graph x > 3. Where does the circle go, and which way do you shade?",
+          "answer": "Open circle at 3, shade right."
+        },
+        {
+          "stem": "Graph x < -1. Where does the circle go, and which way do you shade?",
+          "answer": "Open circle at -1, shade left."
+        },
+        {
+          "stem": "Name three solutions of x > 5.",
+          "answer": "Any three numbers greater than 5, like 6, 8, and 10.5."
+        },
+        {
+          "stem": "Is 4 a solution of x < 4? Explain.",
+          "answer": "No. 4 < 4 is false; solutions must be strictly less than 4."
+        },
+        {
+          "stem": "How many solutions does x > 2 have?",
+          "answer": "Infinitely many; every number greater than 2."
+        },
+        {
+          "stem": "A number line shows an open circle at 2 with shading to the left. Which inequality does it represent?",
+          "answer": "x < 2",
+          "choices": [
+            "x < 2",
+            "x > 2",
+            "x = 2",
+            "x < -2"
+          ],
+          "distractor_logic": "Shading left of 2 means every number less than 2, so x < 2. Choosing x > 2 reverses the direction; x = 2 ignores the shaded ray; x < -2 misreads the boundary as negative."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is the answer one number, or a whole set of numbers?",
+        "prompt": "Test a number from each side of the boundary in the inequality. Shade the side where the test comes out true. The circle sits on the boundary, open because the boundary itself does not pass a strict > or < test.",
+        "praise": "You tested a point and shaded the true side, that is exactly how to read a solution set."
+      },
+      "vocabulary": [
+        {
+          "term": "Inequality",
+          "definition": "A statement that compares with < or >, true for a whole set of numbers rather than just one."
+        },
+        {
+          "term": "Solution set",
+          "definition": "All the numbers that make the inequality true, shown as a shaded ray on a number line."
+        },
+        {
+          "term": "Boundary",
+          "definition": "The number where the solution set starts, like the 40 in h > 40."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7AF4-S2",
+        "if_fail": "7AF4-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 'Riders must be taller than 40 inches' and draw a number line from 35 to 45."
+        },
+        {
+          "kind": "ask",
+          "text": "Does a rider who is exactly 40 inches get on? What about 41? What about 40.5?"
+        },
+        {
+          "kind": "say",
+          "text": "Taller than 40 means greater than 40, so h > 40. Exactly 40 does not get on, so the circle at 40 stays open, and I shade right because 41, 40.5, and every taller height all work."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student shades left, have them test 38: is 38 > 40 true? The shading must cover only numbers that pass the test."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: the temperature stayed below -2 degrees. Write the inequality for t and graph it."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Graph x > 1. Where does the circle go, and which way do you shade?",
+          "answer": "Open circle at 1, shade right."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Name two solutions of x < 6.",
+          "answer": "Any two numbers less than 6, like 5 and 0."
+        },
+        {
+          "difficulty": "core",
+          "stem": "You must save more than 25 dollars. Write an inequality for the amount saved, d.",
+          "answer": "d > 25"
+        },
+        {
+          "difficulty": "core",
+          "stem": "The temperature stayed below -3 degrees. Write an inequality for t and describe its graph.",
+          "answer": "t < -3: open circle at -3, shade left."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A number line shows an open circle at 4 with shading to the right. Which inequality does it represent?",
+          "answer": "x > 4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is 9 a solution of x > 9? Explain.",
+          "answer": "No. 9 > 9 is false; solutions must be strictly greater than 9."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A graph shows an open circle at -2 with shading to the right. Write the inequality and name one negative and one positive solution.",
+          "answer": "x > -2; sample solutions: -1 and 3."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia graphed x > 3 with an open circle at 3 and shading to the LEFT. Find her mistake and fix it.",
+          "shown_work": [
+            "x > 3",
+            "open circle at 3",
+            "shaded to the left of 3"
+          ],
+          "answer": "The circle is right but the direction is wrong. Test 5: 5 > 3 is true, and 5 is to the RIGHT of 3. Test 1: 1 > 3 is false. Shade right."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Walk the Line",
+          "time_minutes": 12,
+          "grouping": "whole_group",
+          "materials": [
+            "Tape number line on the floor from -5 to 10",
+            "Number cards, one per student, including negatives and decimals like 2.5"
+          ],
+          "instructions": "1. Post an inequality like x > 3.\n2. Each student stands on their card's spot on the floor number line.\n3. On the signal, students whose number makes the inequality true raise a hand; check a few out loud (is 2.5 > 3 true?).\n4. Notice together that every hand is on the same side of 3, and 3 itself stays down.\n5. Lay a rope along the hands to shade the set, leaving a gap circle at 3. Repeat with x < 0."
+        },
+        {
+          "type": "matching",
+          "title": "Graph Match-Up",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: constraint sentences, inequalities, and number-line pictures"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each constraint sentence to its inequality and to its number-line picture, making trios.\n3. To claim a trio, name the boundary and the shade direction out loud.\n4. Two decoy pictures shade the wrong way; set them aside and name the error.",
+          "content": {
+            "pairs": [
+              {
+                "left": "Taller than 40 inches: h > 40",
+                "right": "open circle at 40, shade right"
+              },
+              {
+                "left": "Below -2 degrees: t < -2",
+                "right": "open circle at -2, shade left"
+              },
+              {
+                "left": "More than 25 dollars: d > 25",
+                "right": "open circle at 25, shade right"
+              },
+              {
+                "left": "Less than 6 items: n < 6",
+                "right": "open circle at 6, shade left"
+              },
+              {
+                "left": "Warmer than -5 degrees: t > -5",
+                "right": "open circle at -5, shade right"
+              },
+              {
+                "left": "Under 30 minutes: m < 30",
+                "right": "open circle at 30, shade left"
+              }
+            ],
+            "decoys": [
+              "open circle at 40, shade left",
+              "open circle at -2, shade right"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The floor number line and rope make 'a solution set is a whole side of the line' concrete before the graphing convention is named."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "A number talk on 'is exactly 40 tall enough?' surfaces the boundary idea through student reasoning before any rule."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The wrong-direction shading error is precise and baitable, ideal for a find-and-fix on the graph itself."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is the answer one number or a set of numbers? How do you know?",
+          "Which comparison word is in the sentence, and which symbol matches it?",
+          "Is the boundary number itself a solution? Test it.",
+          "Pick a number from your shaded side. Does it make the inequality true?",
+          "Could a decimal or a negative number be a solution here?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student shades toward the wrong side of the boundary.",
+            "say": "Test one number from each side in the inequality. For x > 3, try 5 and try 1. Shade only the side where the test came out true.",
+            "praise": "You let the test points choose the direction, so the graph has to be right."
+          },
+          {
+            "if_you_see": "Student gives a single number as 'the answer' to x > 3.",
+            "say": "4 is A solution, but not THE solution. Is 5 also true? 100? The answer is every number greater than 3, and the shaded ray shows them all.",
+            "praise": "You described the whole set instead of one number, that is what an inequality means."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Write an inequality: the ride is for kids older than 8 (a = age).",
+            "look_for": "a > 8, not a = 8 or a < 8."
+          },
+          {
+            "prompt": "Graph x < 2.",
+            "look_for": "Open circle at 2, shading left, and (if asked) the fact that 2 itself is not included."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Riders must be taller than 40 inches. Write an inequality for the height h and graph it.",
+        "answer": "h > 40: open circle at 40, shade right.",
+        "steps": [
+          {
+            "math": "taller than 40 -> h > 40",
+            "annotation": "The comparison word 'taller than' means greater than."
+          },
+          {
+            "math": "test 41: 41 > 40 true; test 39: 39 > 40 false",
+            "annotation": "Numbers above 40 pass; numbers below fail."
+          },
+          {
+            "math": "open circle at 40",
+            "annotation": "Exactly 40 is not taller than 40, so the boundary is not included."
+          },
+          {
+            "math": "shade right",
+            "annotation": "Every number greater than 40 is a solution, and they all sit to the right."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "The temperature stayed below -2 degrees. Write an inequality for the temperature t and graph it.",
+        "answer": "t < -2: open circle at -2, shade left.",
+        "steps": [
+          {
+            "math": "below -2 -> t < -2",
+            "annotation": "The comparison word 'below' means less than.",
+            "given": true
+          },
+          {
+            "math": "test -5: -5 < -2 true; test 0: 0 < -2 false",
+            "annotation": "Numbers to the left of -2 pass the test.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Decide the circle: is exactly -2 'below -2'? Open or closed?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Shade the direction where your test came out true.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The words ___ mean the symbol is ___, so I write ___.",
+        "I shaded to the ___ because when I tested ___, the inequality was true."
+      ],
+      "fluency_source": "7AF4-F2"
+    },
+    {
       "skill_id": "7AF4-S1",
       "name": "Determine whether a value is a solution to an inequality by substituting",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.AF.4",
       "engine_stems": [
         1
@@ -511,7 +1103,7 @@
           }
         ]
       },
-      "fluency_source": "7AF4-F1",
+      "fluency_source": "7AF4-B1",
       "sentence_starters": [
         "I replaced x with ___ and the left side became ___.",
         "The comparison ___ ___ ___ is ___, so ___ ___ a solution."
@@ -568,7 +1160,7 @@
     {
       "skill_id": "7AF4-S2",
       "name": "Graph and choose the number-line picture of a solution set",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.AF.4",
       "engine_stems": [
         2
@@ -811,7 +1403,7 @@
           }
         ]
       },
-      "fluency_source": "7AF4-F1",
+      "fluency_source": "7AF4-B2",
       "sentence_starters": [
         "After solving, x ___ ___, so the circle is ___ because the sign is ___.",
         "I shade to the ___ because the solutions are ___ than ___."
@@ -1103,7 +1695,7 @@
           }
         ]
       },
-      "fluency_source": "7AF4-F1",
+      "fluency_source": "7AF4-B1",
       "sentence_starters": [
         "After solving, x ___ ___, so the set is everything ___ the boundary.",
         "The boundary ___ ___ included because the sign is ___."
@@ -1414,7 +2006,7 @@
           }
         ]
       },
-      "fluency_source": "7AF4-F1",
+      "fluency_source": "7AF4-B1",
       "sentence_starters": [
         "I divided both sides by ___, which is ___, so the sign ___.",
         "My solution is x ___ ___, and testing x = ___ in the original confirms it."
@@ -1741,7 +2333,7 @@
           }
         ]
       },
-      "fluency_source": "7AF4-F1",
+      "fluency_source": "7AF4-B1",
       "sentence_starters": [
         "The limit phrase is '___', which means the symbol is ___.",
         "The inequality is ___, so ___ ___ ___, which means ___ in the story."
@@ -2003,7 +2595,7 @@
           }
         ]
       },
-      "fluency_source": "7AF4-F1",
+      "fluency_source": "7AF4-B1",
       "sentence_starters": [
         "The constraint is ___, so the boundary is ___.",
         "The claim of ___ ___ reasonable because the total is ___, which is ___ the limit."
@@ -2060,8 +2652,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7AF4-F1",
         "7AF4-F2"
@@ -2069,16 +2661,18 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7AF4-S1",
-        "7AF4-S2"
+        "7AF4-B1",
+        "7AF4-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7AF4-S1",
+        "7AF4-S2",
         "7AF4-S3",
         "7AF4-S4",
         "7AF4-S5"
@@ -2086,7 +2680,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7AF4-S6"
       ]
@@ -2095,6 +2689,8 @@
   "skill_sequence": [
     "7AF4-F1",
     "7AF4-F2",
+    "7AF4-B1",
+    "7AF4-B2",
     "7AF4-S1",
     "7AF4-S2",
     "7AF4-S3",
@@ -2105,18 +2701,24 @@
   "skill_tree": {
     "7AF4-F1": [],
     "7AF4-F2": [],
-    "7AF4-S1": [
+    "7AF4-B1": [
       "7AF4-F1"
     ],
+    "7AF4-B2": [
+      "7AF4-F2"
+    ],
+    "7AF4-S1": [
+      "7AF4-B1"
+    ],
     "7AF4-S2": [
-      "7AF4-F2",
-      "7AF4-F1"
+      "7AF4-B2",
+      "7AF4-B1"
     ],
     "7AF4-S3": [
       "7AF4-S1"
     ],
     "7AF4-S4": [
-      "7AF4-F1",
+      "7AF4-B1",
       "7AF4-S1"
     ],
     "7AF4-S5": [
@@ -2129,17 +2731,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (solve a two-step inequality, reversing the sign for a negative) -- the core mechanic of the standard. If they pass, push to S5 (model, solve, and interpret a real-world inequality) and S6 (critique and justify a claim). If they fail, split the diagnosis: S1 checks whether they understand what a solution to an inequality even is (substitution), and S2 checks whether they can read and build the number-line graph. S3 (which values belong to the solution set) branches off between testing and full solving.",
+    "description": "Start with S4, solving a two-step inequality with the sign flip, the standard's computational core. If they pass, move up to S5 (model and interpret a real-world inequality) and S6 (critique and justify a claim). If they fail, drop one grade: B1 checks one-step equation solving and B2 checks writing and graphing x > c inequalities, the two grade 6 skills this standard leans on. If those wobble, the foundations F1 (multiplication and division fact families) and F2 (comparing numbers on a number line) locate the gap in grades 3-5. S1, S2, and S3 remain available to probe substitution testing, graph reading, and solution-set selection on grade level.",
     "entry_skill": "7AF4-S4",
     "if_pass": [
       "7AF4-S5",
       "7AF4-S6"
     ],
     "if_fail": [
-      "7AF4-S1",
-      "7AF4-S2"
+      "7AF4-B1",
+      "7AF4-B2"
     ],
     "branch_skills": [
+      "7AF4-F1",
+      "7AF4-F2",
+      "7AF4-S1",
+      "7AF4-S2",
       "7AF4-S3"
     ]
   }

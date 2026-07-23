@@ -3,7 +3,7 @@
   "standard_text": "Define the probability of a compound event, just as with simple events, as the fraction of outcomes in the sample space for which the compound event occurs. Use appropriate terminology to describe independent, dependent, complementary, and mutually exclusive events.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard has two intertwined jobs: NAME what kind of events are in play, and COMPUTE the probability of a compound event as favorable outcomes over total outcomes -- exactly as with a simple event. The vocabulary is the spine. A student first learns to classify a described situation as independent, dependent, complementary, or mutually exclusive, because the label decides how the probability is built. Independent events (a coin and a die, or a draw WITH replacement) do not affect each other; dependent events (a draw WITHOUT replacement) do, because removing the first item changes the counts for the second. Complementary events split all outcomes into 'A' and 'not A' so their probabilities add to 1; mutually exclusive events cannot both happen at once.\n\nFrom the naming, the computation follows. For an 'and' compound event students write each stage as favorable/total and MULTIPLY -- first for independent events, where both stages keep their original totals, then for dependent events, where the second stage's counts shrink by one after the first draw is kept. Complementary and mutually exclusive events give the 'or' and 'not' side of the vocabulary: P(not A) = 1 - P(A), and for disjoint events P(A or B) = P(A) + P(B). At the top, students analyze a flawed calculation -- almost always the classic slip of using the with-replacement probability on a without-replacement draw -- and repair it. The through-line we keep naming: a probability is favorable over total, and the EVENT TYPE tells you whether to update the counts, multiply, add, or subtract from 1.",
+    "narrative": "This standard asks students to name how two events relate, independent, dependent, complementary, or mutually exclusive, and to compute a compound probability as favorable outcomes over total outcomes, multiplying the stages. The on-grade work runs from classifying the event type, through the with versus without replacement hinge, to writing and calculating P(A) x P(B) with updated counts when a draw is kept. Students who struggle here usually carry gaps from well below grade eight: they cannot find a fraction of a set or recognize equivalent fractions, so favorable over total never stabilizes. Intervention should rebuild those foundations, then the grade seven skills of writing a simple probability on the 0 to 1 scale and predicting outcomes over repeated trials, and only then return to compound events.",
     "steps": [
       {
         "skill_id": "8DSP4-S1",
@@ -40,211 +40,834 @@
   "skills": [
     {
       "skill_id": "8DSP4-F1",
-      "name": "Write a simple probability as favorable/total outcomes",
+      "name": "Find a fraction of a set",
       "column": "foundation",
       "parent_standard": "8.DSP.4",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 7,
-        "description": "Given the favorable outcomes and the total outcomes, write the probability as a fraction.",
-        "check_question": "A bag has 3 red and 5 blue marbles. What is the probability of drawing a red marble?"
+        "grade": 4,
+        "description": "Find a unit fraction or simple fraction of a whole-number set, like 3/4 of 12.",
+        "check_question": "What is 3/4 of 12?"
       },
-      "i_do_script": "Picture the bag as a strip of 8 boxes, one box per marble, with the 3 red ones shaded -- the probability is just the shaded part of the whole strip, and you could never shade 8 boxes on a strip that only has 3. The probability of a simple event is the number of favorable outcomes over the total number of outcomes. Watch a bag with 3 red and 5 blue marbles: there are 3 red (favorable) out of 8 marbles total, so P(red) = 3/8. The favorable count goes on TOP, the total on the bottom. On a number cube, P(rolling a 4) = 1/6 because one face is a 4 out of six faces. Every compound-event probability we build later is just these simple fractions multiplied together, so the fraction has to be right first.",
+      "i_do_script": "A fraction of a set means split the set into equal groups, then take some of the groups. Watch: 3/4 of 12. I draw 12 dots and split them into 4 equal groups, 3 dots in each group. One fourth of 12 is 3. I want three fourths, so I take 3 groups: 3, 6, 9. So 3/4 of 12 is 9. The bottom number tells how many equal groups to make, and the top number tells how many groups to take.",
       "canonical_error": {
-        "pattern": "Writes total over favorable, or uses the number of OTHER outcomes as the top",
-        "example": "For 3 red out of 8 marbles, writes 8/3, or writes 5/8 (the blue count) instead of 3/8",
-        "why": "The student loses track of what 'favorable' means: it is the outcome you are asking about, on top, over the total. Flipping it or using the leftover count gives the wrong probability."
+        "pattern": "Divides by the numerator or subtracts instead of splitting into denominator groups",
+        "example": "For 3/4 of 12 answers 4 (12 divided by 3) or 9 by luck but 2/3 of 12 as 6",
+        "why": "The student does not connect the denominator to the number of equal groups. The set must be split by the bottom number first, then the top number counts groups."
       },
-      "item_template": "A simple event with a stated favorable count and total. Student writes the probability as a fraction. Short-response fluency bank.",
+      "item_template": "A simple fraction of a whole-number set that divides evenly. Student finds the amount. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "A bag has 3 red and 5 blue marbles (8 total). What is P(red)?",
-          "answer": "3/8"
+          "stem": "What is 1/2 of 10?",
+          "answer": "5"
         },
         {
-          "stem": "A fair number cube (1-6) is rolled. What is P(rolling a 2)?",
-          "answer": "1/6"
+          "stem": "What is 1/4 of 12?",
+          "answer": "3"
         },
         {
-          "stem": "A fair number cube (1-6) is rolled. What is P(rolling an odd number)?",
-          "answer": "1/2"
+          "stem": "What is 3/4 of 12?",
+          "answer": "9"
         },
         {
-          "stem": "A standard deck has 52 cards, including 4 kings. What is P(drawing a king)?",
-          "answer": "1/13"
+          "stem": "What is 1/3 of 15?",
+          "answer": "5"
         },
         {
-          "stem": "A spinner has 5 equal sections. What is P(landing on one chosen section)?",
-          "answer": "1/5"
+          "stem": "What is 2/3 of 15?",
+          "answer": "10"
+        },
+        {
+          "stem": "What is 1/5 of 20?",
+          "answer": "4"
+        },
+        {
+          "stem": "What is 3/5 of 20?",
+          "answer": "12"
+        },
+        {
+          "stem": "What is 2/5 of 25?",
+          "answer": "10"
         }
       ],
       "redirect_script": {
-        "stop": "Which count goes on top -- favorable or total?",
-        "prompt": "Draw the strip of boxes first: shade the marbles you are asking about, and read the probability as shaded out of the whole strip. Put the outcome you are asking about on TOP (favorable) and the total number of outcomes on the bottom. If your fraction is bigger than 1, you flipped it -- a probability is never more than 1.",
-        "praise": "You put the favorable outcomes over the total -- that's a probability, right-side up."
+        "stop": "How many equal groups does the bottom number make?",
+        "prompt": "Split the set into as many equal groups as the denominator says. Find how many are in one group, then take as many groups as the numerator says.",
+        "praise": "You split by the bottom and counted by the top, that is exactly how a fraction of a set works."
       },
       "vocabulary": [
         {
-          "term": "Probability",
-          "definition": "How likely an event is, written as favorable outcomes over total outcomes."
+          "term": "Numerator",
+          "definition": "The top number of a fraction; it counts how many equal groups you take."
         },
         {
-          "term": "Favorable outcome",
-          "definition": "An outcome that counts as the event you are asking about."
+          "term": "Denominator",
+          "definition": "The bottom number of a fraction; it tells how many equal groups to make."
         }
       ],
       "next_steps": {
-        "if_pass": "8DSP4-S1",
-        "if_fail": "Review simple event probability (7.DSP.5)."
+        "if_pass": "8DSP4-B2",
+        "if_fail": "Review grade 4 fractions of a set with counters (equal groups, one group at a time)."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw the bag as a strip of 8 boxes, one box per marble, and shade the 2 green ones. The probability of green is the shaded part of the whole strip.",
-          "visual": {
-            "type": "fraction_bars",
-            "label": "The bag as a strip",
-            "bars": [
-              {
-                "parts": 8,
-                "shaded": 2,
-                "label": "2 green out of 8 marbles"
-              }
-            ]
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write 'A bag has 2 green and 6 yellow marbles. Find P(green).'"
+          "text": "Draw an array of 12 dots in 4 columns of 3. Circle each column as one group."
         },
         {
           "kind": "ask",
-          "text": "How many are favorable (green), and how many marbles are there in total?"
+          "text": "How many dots are in one group? So what is 1/4 of 12?"
         },
         {
           "kind": "say",
-          "text": "Favorable over total: 2 green out of 8 marbles, so P(green) = 2/8 = 1/4."
+          "text": "One group holds 3 dots, so 1/4 of 12 is 3. Three fourths means 3 groups: 3 + 3 + 3 = 9. So 3/4 of 12 is 9."
         },
         {
           "kind": "watch",
-          "text": "If a student writes 8/2, ask 'is a probability ever bigger than 1?'"
+          "text": "If a student answers 4, ask them to point at the 4 groups: did we want the number of groups, or the dots inside them?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: a number cube -- find P(rolling a number greater than 4)."
+          "text": "Your turn: draw 15 dots and find 2/3 of 15."
         }
       ]
     },
     {
       "skill_id": "8DSP4-F2",
-      "name": "Multiply two fractions and simplify",
+      "name": "Recognize equivalent fractions and compare fractions",
       "column": "foundation",
       "parent_standard": "8.DSP.4",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Multiply two fractions by multiplying numerators and denominators, then simplify.",
-        "check_question": "What is 1/2 x 1/6?"
+        "grade": 4,
+        "description": "Write an equivalent fraction by multiplying top and bottom by the same number, and compare two fractions using models or benchmarks.",
+        "check_question": "Fill in the blank: 1/2 = ?/8. Which is greater, 2/8 or 1/2?"
       },
-      "i_do_script": "'Times' with fractions means OF, and a bar shows it: 1/3 x 2/5 is one third OF two fifths. Shade 2/5 of a bar, then take a third of just that shaded piece -- you land on 2 of the bar's 15 equal slivers, 2/15. Tops times tops and bottoms times bottoms is that picture as arithmetic: the bottoms multiply because slicing fifths into thirds makes fifteenths; the tops multiply because you keep 1 of the 3 slices of each of the 2 shaded fifths. To multiply two fractions I multiply the tops together and the bottoms together, then simplify. Watch 1/2 x 1/6: top is 1 x 1 = 1, bottom is 2 x 6 = 12, so the answer is 1/12. Another: 4/12 x 1/11 = 4/132, and 4/132 simplifies to 1/33. I do NOT add across -- multiplying fractions means top times top over bottom times bottom. This is the engine of every compound 'and' probability, so it has to be automatic.",
+      "i_do_script": "Two fractions are equivalent when they cover the same amount of the bar with different sized pieces. Watch: shade 1/2 of a bar. Now cut every piece into 4 smaller pieces. The shading did not move, but now it covers 4 of the 8 pieces, so 1/2 = 4/8. Multiplying top and bottom by the same number is just cutting every piece the same way. To compare 2/8 and 1/2, rename 1/2 as 4/8: 2 eighths is less than 4 eighths, so 2/8 < 1/2.",
       "canonical_error": {
-        "pattern": "Adds the fractions (or cross-adds) instead of multiplying numerators and denominators",
-        "example": "For 1/2 x 1/6 writes 1/2 + 1/6 = 4/6 = 2/3, or adds tops and bottoms to get 2/8",
-        "why": "The student confuses the rule for multiplying with the rule for adding. Multiplying is straight across (top x top, bottom x bottom); adding needs a common denominator and gives a different value."
+        "pattern": "Adds the same number to top and bottom, or compares fractions by comparing numerators only",
+        "example": "Writes 1/2 = 3/4 by adding 2 to top and bottom, or says 2/8 > 1/2 because 2 > 1",
+        "why": "The student treats the fraction as two separate whole numbers. Equivalence comes from cutting pieces, which multiplies top and bottom together; comparing needs same sized pieces or a benchmark, not just bigger digits."
       },
-      "item_template": "Two fractions to multiply. Student multiplies straight across and simplifies. Short-response fluency bank.",
+      "item_template": "One fraction to rename with a given denominator, or two fractions to compare (denominators 2 to 12). Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Multiply: 1/2 x 1/6.",
-          "answer": "1/12"
+          "stem": "Fill in the blank: 1/2 = ?/8",
+          "answer": "4"
         },
         {
-          "stem": "Multiply and simplify: 3/8 x 5/8.",
-          "answer": "15/64"
+          "stem": "Fill in the blank: 2/3 = ?/12",
+          "answer": "8"
         },
         {
-          "stem": "Multiply and simplify: 4/12 x 1/11.",
-          "answer": "1/33"
+          "stem": "Fill in the blank: 3/4 = ?/8",
+          "answer": "6"
         },
         {
-          "stem": "Multiply and simplify: 4/52 x 3/51.",
-          "answer": "1/221"
+          "stem": "Is 2/6 equivalent to 1/3? Answer yes or no.",
+          "answer": "yes"
         },
         {
-          "stem": "Multiply and simplify: 2/5 x 1/4.",
-          "answer": "1/10"
+          "stem": "Which is greater: 2/8 or 1/2?",
+          "answer": "1/2"
+        },
+        {
+          "stem": "Which is greater: 3/4 or 2/4?",
+          "answer": "3/4"
+        },
+        {
+          "stem": "Which is greater: 5/6 or 5/8?",
+          "answer": "5/6"
+        },
+        {
+          "stem": "Write 4/12 in simplest form.",
+          "answer": "1/3"
         }
       ],
       "redirect_script": {
-        "stop": "Are you multiplying, or adding these fractions?",
-        "prompt": "Multiply straight across: top times top over bottom times bottom. No common denominator is needed. Then simplify. If you found a common denominator, you started adding by mistake.",
-        "praise": "You multiplied tops and bottoms straight across and simplified -- that's fraction multiplication."
+        "stop": "Did you multiply top and bottom by the same number, or add?",
+        "prompt": "Cutting every piece the same way multiplies the top and bottom by the same number. To compare, rename so the pieces are the same size, then compare the counts.",
+        "praise": "You kept the same amount with smaller pieces, that is what equivalent means."
       },
       "vocabulary": [
         {
-          "term": "Numerator",
-          "definition": "The top number of a fraction."
+          "term": "Equivalent fractions",
+          "definition": "Fractions that name the same amount with different sized pieces, like 1/2 and 4/8."
         },
         {
-          "term": "Simplify",
-          "definition": "Write a fraction in lowest terms by dividing top and bottom by a common factor."
+          "term": "Simplest form",
+          "definition": "A fraction whose top and bottom share no common factor except 1."
         }
       ],
       "next_steps": {
-        "if_pass": "8DSP4-S3",
-        "if_fail": "Review multiplying fractions (6.NS.4/5)."
+        "if_pass": "8DSP4-B1",
+        "if_fail": "Review grade 4 equivalent fractions with fraction bars (same shading, smaller pieces)."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Shade 2/5 of a bar. Now slice the bar into thirds the other way and keep one third of the shaded part.",
-          "visual": {
-            "type": "fraction_bars",
-            "label": "1/3 of 2/5 lands on 2 of 15 slivers",
-            "bars": [
-              {
-                "parts": 5,
-                "shaded": 2,
-                "label": "2/5"
-              },
-              {
-                "parts": 15,
-                "shaded": 2,
-                "label": "1/3 of it"
-              }
-            ]
-          }
+          "text": "Draw two same-length bars. Shade 1/2 of the first. On the second, make the same shading but cut every piece into 4, so the bar shows eighths."
         },
         {
           "kind": "ask",
-          "text": "How many equal slivers does the whole bar have after both cuts? How many stay shaded? So what is 1/3 of 2/5 -- before any rule?"
-        },
-        {
-          "kind": "show",
-          "text": "Write '1/3 x 2/5 = ?'"
-        },
-        {
-          "kind": "ask",
-          "text": "What is top times top, and bottom times bottom?"
+          "text": "Did the shaded amount change? How many eighths are shaded?"
         },
         {
           "kind": "say",
-          "text": "1 x 2 = 2 on top, 3 x 5 = 15 on the bottom, so 1/3 x 2/5 = 2/15."
+          "text": "The shading covers 4 of the 8 pieces, so 1/2 = 4/8. Multiplying top and bottom by 4 is the same as cutting each piece into 4."
         },
         {
           "kind": "watch",
-          "text": "If a student writes 3/8, ask 'did you add the bottoms instead of multiplying?'"
+          "text": "If a student writes 1/2 = 3/4 by adding 2 to each part, send them to the bars: does 3/4 shade the same amount as 1/2?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: multiply 1/2 x 4/9 and simplify."
+          "text": "Your turn: use a bar to show 2/3 = ?/6, then compare 2/3 and 1/2."
         }
       ]
     },
     {
+      "skill_id": "8DSP4-B1",
+      "name": "Write the probability of a simple event as favorable over total on the 0 to 1 scale",
+      "column": "looking_back",
+      "parent_standard": "8.DSP.4",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Write the probability of a simple event as favorable outcomes over total outcomes and place it on the 0 to 1 scale.",
+        "check_question": "A bag has 3 red and 5 blue marbles. What is P(red)?"
+      },
+      "i_do_script": "A probability is a fraction: favorable outcomes on top, total outcomes on the bottom. Watch a bag with 3 red and 5 blue marbles. I draw the bag as a strip of 8 boxes, one per marble, and shade the 3 red ones. P(red) is the shaded part of the strip: 3/8. Every probability lives between 0 and 1: 0 means impossible, 1 means certain, and 1/2 means as likely as not. 3/8 sits a little below 1/2, so drawing red is unlikely but possible. If a probability comes out bigger than 1, the fraction is upside down.",
+      "canonical_error": {
+        "pattern": "Writes total over favorable, or uses the count of the other outcomes on top",
+        "example": "For 3 red out of 8 marbles writes 8/3, or writes 5/8 instead of 3/8",
+        "why": "The student loses track of what favorable means. The outcome being asked about goes on top and the total number of outcomes goes on the bottom, and the result can never be more than 1."
+      },
+      "item_template": "A simple event with stated counts (bag, spinner, number cube, deck with totals given). Student writes the probability as a fraction or places it on the 0 to 1 scale. Mixed MC and short response.",
+      "sample_items": [
+        {
+          "stem": "A bag has 3 red and 5 blue marbles (8 total). What is P(red)?",
+          "answer": "3/8",
+          "choices": [
+            "3/8",
+            "5/8",
+            "8/3",
+            "3/5"
+          ],
+          "distractor_logic": "5/8 uses the blue count; 8/3 flips the fraction; 3/5 uses red over blue instead of red over total."
+        },
+        {
+          "stem": "A fair number cube (1-6) is rolled. What is P(rolling an odd number)?",
+          "answer": "3/6 (or 1/2)"
+        },
+        {
+          "stem": "A spinner has 4 equal sections numbered 1 to 4. What is P(landing on 2)?",
+          "answer": "1/4"
+        },
+        {
+          "stem": "A standard deck has 52 cards, including 4 aces. What is P(drawing an ace)?",
+          "answer": "4/52 (or 1/13)",
+          "choices": [
+            "4/52",
+            "48/52",
+            "52/4",
+            "4/48"
+          ],
+          "distractor_logic": "48/52 counts the non-aces; 52/4 flips the fraction; 4/48 uses aces over non-aces instead of the total."
+        },
+        {
+          "stem": "A fair number cube (1-6) is rolled. What is P(rolling a 7)?",
+          "answer": "0"
+        },
+        {
+          "stem": "A bag holds only green marbles. What is P(drawing a green marble)?",
+          "answer": "1"
+        },
+        {
+          "stem": "A bag has 2 green and 6 yellow marbles (8 total). What is P(green)?",
+          "answer": "2/8 (or 1/4)",
+          "choices": [
+            "2/8",
+            "6/8",
+            "8/2",
+            "2/6"
+          ],
+          "distractor_logic": "6/8 counts the yellows; 8/2 flips the fraction; 2/6 uses green over yellow instead of the total."
+        },
+        {
+          "stem": "There are 10 raffle tickets and you hold 7 of them. What is P(you win)? Is that more or less likely than not?",
+          "answer": "7/10, more likely than not because 7/10 > 1/2"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which count goes on top, favorable or total?",
+        "prompt": "Draw the strip of boxes first, one box per outcome, and shade the ones you are asking about. The probability is shaded over the whole strip. If your fraction is more than 1, you flipped it.",
+        "praise": "You put favorable over total and it landed between 0 and 1, that is a probability."
+      },
+      "vocabulary": [
+        {
+          "term": "Probability",
+          "definition": "How likely an event is, written as favorable outcomes over total outcomes, always between 0 and 1."
+        },
+        {
+          "term": "Favorable outcome",
+          "definition": "An outcome that counts as the event you are asking about."
+        },
+        {
+          "term": "Sample space",
+          "definition": "The list of all possible outcomes of a trial."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP4-S1",
+        "if_fail": "8DSP4-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a bag of 2 green and 6 yellow marbles as a strip of 8 boxes. Shade the 2 green boxes."
+        },
+        {
+          "kind": "ask",
+          "text": "How many boxes are shaded, and how many boxes are there in all?"
+        },
+        {
+          "kind": "say",
+          "text": "2 shaded out of 8, so P(green) = 2/8 = 1/4. On the 0 to 1 line, 1/4 sits below 1/2, so green is unlikely but possible."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 8/2, ask whether a probability can ever be bigger than 1."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a number cube is rolled. Write P(rolling a number greater than 4) and place it on the 0 to 1 line."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A probability of 0 means the event is ___. A probability of 1 means it is ___.",
+          "answer": "impossible; certain"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A spinner has 5 equal sections. What is P(landing on one chosen section)?",
+          "answer": "1/5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bag has 4 red and 6 blue marbles. What is P(blue)?",
+          "answer": "6/10 (or 3/5)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A fair number cube (1-6) is rolled. What is P(rolling a number less than 3)?",
+          "answer": "2/6 (or 1/3)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A deck has 52 cards, including 4 kings. What is P(drawing a king)?",
+          "answer": "4/52 (or 1/13)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bag has 3 red, 2 green, and 5 yellow marbles. What is P(green)? Is it likely or unlikely?",
+          "answer": "2/10 (or 1/5); unlikely, because 1/5 < 1/2"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A bag has 12 marbles and P(red) = 1/3. How many red marbles are in the bag?",
+          "answer": "4, because 1/3 of 12 is 4"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo found a probability. Find his mistake and fix it.",
+          "shown_work": [
+            "A bag has 3 red and 5 blue marbles.",
+            "Leo wrote: P(red) = 3/5"
+          ],
+          "answer": "Leo put red over blue instead of red over the total. There are 8 marbles in all, so P(red) = 3/8."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Bag to Strip",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper bag",
+            "10 counters in two colors",
+            "Whiteboards"
+          ],
+          "instructions": "1. Put 3 red and 7 blue counters in the bag.\n2. Empty the bag and line the counters up as a strip; draw the strip and shade the reds.\n3. Write P(red) as shaded over total and mark it on a 0 to 1 line.\n4. Change the bag (say 6 red and 4 blue) and repeat.\n5. Say each time: favorable on top, total on the bottom, always between 0 and 1."
+        },
+        {
+          "type": "card_sort",
+          "title": "Impossible to Certain",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Event cards",
+            "A 0 to 1 number line on the table"
+          ],
+          "instructions": "1. Read each event card (for example: roll a 7 on a number cube, draw red from a bag of 3 red and 5 blue).\n2. Write its probability as a fraction.\n3. Place the card on the 0 to 1 line where its fraction belongs.\n4. Debrief: which cards sit at 0, at 1, and near 1/2, and how do you know?",
+          "content": {
+            "categories": [
+              "0 (impossible)",
+              "near 1/2",
+              "1 (certain)"
+            ],
+            "cards": [
+              {
+                "text": "Roll a 7 on a number cube (1-6)",
+                "category": "0 (impossible)"
+              },
+              {
+                "text": "Flip heads on a fair coin",
+                "category": "near 1/2"
+              },
+              {
+                "text": "Draw a green marble from a bag of only green marbles",
+                "category": "1 (certain)"
+              },
+              {
+                "text": "Roll an odd number on a number cube",
+                "category": "near 1/2"
+              },
+              {
+                "text": "Draw red from a bag of 3 red and 5 blue",
+                "category": "near 1/2"
+              },
+              {
+                "text": "Roll a number from 1 to 6 on a number cube",
+                "category": "1 (certain)"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Turning the bag into a shaded strip makes favorable over total visible before the fraction rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The flipped fraction and the wrong-total errors are stable and precise; finding and fixing them confronts both directly."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral response on 'favorable on top, total on the bottom' builds fast automatic recall of the definition."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many outcomes are favorable, and how many are there in total?",
+          "Can a probability ever be more than 1? Why not?",
+          "Where does your fraction sit on the 0 to 1 line?",
+          "What would the bag have to look like for the probability to be 1?",
+          "Is this event more likely or less likely than a coin flip?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student writes the total over the favorable count.",
+            "say": "Draw the strip and shade the favorable boxes. The probability is shaded out of the whole strip, and it can never be more than 1.",
+            "praise": "You put favorable over total, right side up."
+          },
+          {
+            "if_you_see": "Student uses the count of the other color as the total, like 3/5 for 3 red and 5 blue.",
+            "say": "The bottom number is every marble in the bag, not just the other color. Count them all: 3 + 5 = 8, so P(red) = 3/8.",
+            "praise": "You counted the whole sample space for the bottom, that is the total."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A bag has 2 green and 6 yellow marbles. P(green)?",
+            "look_for": "2/8 or 1/4, not 2/6 and not 6/8."
+          },
+          {
+            "prompt": "P(rolling a 7) on a number cube?",
+            "look_for": "0, with the reason that no face shows a 7."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A bag has 3 red and 5 blue marbles. Find P(red) and tell whether red is more or less likely than not.",
+        "answer": "3/8, less likely than not",
+        "steps": [
+          {
+            "math": "total = 3 + 5 = 8",
+            "annotation": "Count every marble for the bottom of the fraction."
+          },
+          {
+            "math": "favorable = 3",
+            "annotation": "The red marbles are the outcomes being asked about."
+          },
+          {
+            "math": "P(red) = 3/8",
+            "annotation": "Favorable over total."
+          },
+          {
+            "math": "3/8 < 1/2",
+            "annotation": "Compare to 1/2 (which is 4/8), so red is less likely than not."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A bag has 4 red and 6 blue marbles. Find P(blue) and tell whether blue is more or less likely than not.",
+        "answer": "6/10 (or 3/5), more likely than not",
+        "steps": [
+          {
+            "math": "total = 4 + 6 = 10",
+            "annotation": "Count every marble for the bottom of the fraction.",
+            "given": true
+          },
+          {
+            "math": "favorable = 6",
+            "annotation": "The blue marbles are the outcomes being asked about.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write P(blue) as favorable over total.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Compare to 1/2 and state whether blue is more or less likely than not.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "There are ___ favorable outcomes out of ___ total, so P = ___.",
+        "My probability is between 0 and 1 because ___.",
+        "___ is more/less likely than not because it is greater/less than 1/2."
+      ],
+      "fluency_source": "8DSP4-F2"
+    },
+    {
+      "skill_id": "8DSP4-B2",
+      "name": "Predict the number of times an event will occur in N trials",
+      "column": "looking_back",
+      "parent_standard": "8.DSP.4",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Use a probability to predict about how many times an event will occur over a given number of trials.",
+        "check_question": "A spinner lands on red with probability 1/4. In 40 spins, about how many times should it land on red?"
+      },
+      "i_do_script": "A probability predicts the long run: the expected count is the probability of the event times the number of trials. Watch: a spinner lands on red with probability 1/4, and we spin 40 times. I picture the 40 spins as 4 equal groups of 10; red should claim about one group, so 1/4 of 40 is 10. About 10 reds. The word about matters: 40 real spins might give 9 or 12 reds, but 10 is the best prediction. The bigger the number of trials, the closer the results tend to come to the prediction.",
+      "canonical_error": {
+        "pattern": "Answers with the probability itself, or divides the trials by the numerator instead of taking the fraction of N",
+        "example": "For P = 1/4 and 40 spins answers 1/4, or answers 4; for P = 2/5 and 25 draws answers 5 instead of 10",
+        "why": "The student does not connect the probability to a fraction OF the trials. The prediction is P times N, which means splitting the trials by the denominator and taking numerator groups."
+      },
+      "item_template": "A stated probability (or counts to build one) and a number of trials that divides evenly. Student predicts the expected count. Mixed MC and short response.",
+      "sample_items": [
+        {
+          "stem": "A coin is flipped 30 times. About how many times should it land on heads?",
+          "answer": "15"
+        },
+        {
+          "stem": "A spinner lands on red with probability 1/4. In 40 spins, about how many reds should there be?",
+          "answer": "10",
+          "choices": [
+            "10",
+            "4",
+            "1/4",
+            "36"
+          ],
+          "distractor_logic": "4 divides 40 by the numerator's reading of the fraction upside down; 1/4 repeats the probability instead of predicting a count; 36 subtracts 4 from 40."
+        },
+        {
+          "stem": "A fair number cube (1-6) is rolled 60 times. About how many times should a 3 come up?",
+          "answer": "10"
+        },
+        {
+          "stem": "A bag has 3 red and 7 blue marbles. A marble is drawn and replaced 50 times. About how many draws should be red?",
+          "answer": "15"
+        },
+        {
+          "stem": "P(green) on a spinner is 2/5. In 25 spins, about how many greens should there be?",
+          "answer": "10",
+          "choices": [
+            "10",
+            "5",
+            "2",
+            "12"
+          ],
+          "distractor_logic": "5 takes only 1/5 of 25; 2 repeats the numerator; 12 is roughly half of 25, guessing instead of computing 2/5 of 25."
+        },
+        {
+          "stem": "A fair number cube (1-6) is rolled 30 times. About how many rolls should be even?",
+          "answer": "15"
+        },
+        {
+          "stem": "P(win) for a game is 1/3. If you play 18 games, about how many should you win?",
+          "answer": "6"
+        },
+        {
+          "stem": "A spinner landed on blue 12 times in 48 spins. Based on those results, what is the experimental probability of blue?",
+          "answer": "12/48 (or 1/4)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is the question asking for a probability, or a count of trials?",
+        "prompt": "The prediction is the probability times the number of trials. Split the trials into denominator equal groups, find one group, then take numerator groups.",
+        "praise": "You took the fraction of the trials, that is exactly what a prediction is."
+      },
+      "vocabulary": [
+        {
+          "term": "Trial",
+          "definition": "One run of the experiment, like one spin, one flip, or one draw."
+        },
+        {
+          "term": "Prediction",
+          "definition": "The expected count over many trials: the probability times the number of trials."
+        },
+        {
+          "term": "Experimental probability",
+          "definition": "The fraction of trials in which the event actually happened."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP4-S1",
+        "if_fail": "8DSP4-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw 40 tick marks in 4 rows of 10. Label the whole picture '40 spins' and circle one row."
+        },
+        {
+          "kind": "ask",
+          "text": "If red claims 1/4 of the spins, how many rows is that? How many spins?"
+        },
+        {
+          "kind": "say",
+          "text": "One row of the four, which is 10 spins. So with P(red) = 1/4, about 10 of 40 spins should be red. The prediction is 1/4 of 40."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 4, point at the picture: did we want the number of rows, or the spins inside one row?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: P(green) = 1/3 and you spin 18 times. Draw the groups and predict the greens."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A coin is flipped 20 times. About how many heads should there be?",
+          "answer": "10"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "P(red) = 1/5. In 20 spins, about how many reds?",
+          "answer": "4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A fair number cube (1-6) is rolled 42 times. About how many times should a 5 come up?",
+          "answer": "7"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bag has 2 red and 8 blue marbles. A marble is drawn and replaced 60 times. About how many draws should be red?",
+          "answer": "12"
+        },
+        {
+          "difficulty": "core",
+          "stem": "P(blue) on a spinner is 3/4. In 32 spins, about how many blues should there be?",
+          "answer": "24"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A fair number cube (1-6) is rolled 24 times. About how many rolls should be greater than 4?",
+          "answer": "8, because P(greater than 4) = 2/6 = 1/3 and 1/3 of 24 is 8"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "You predict 10 reds in 40 spins but get 12. Was the prediction wrong? Explain.",
+          "answer": "No. A prediction says about how many; real trials vary. 12 is close to 10, and more spins would tend to land nearer the prediction."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia made a prediction. Find her mistake and fix it.",
+          "shown_work": [
+            "P(green) = 2/5. The spinner is spun 25 times.",
+            "Mia wrote: 25 / 5 = 5, so about 5 greens."
+          ],
+          "answer": "Mia found 1/5 of 25 but stopped. P(green) is 2/5, so she needs 2 groups: 2/5 of 25 is 10. About 10 greens."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Spin and Check the Prediction",
+          "time_minutes": 15,
+          "grouping": "pairs",
+          "materials": [
+            "Spinner with 4 equal sections, 1 red and 3 white",
+            "Tally sheet"
+          ],
+          "instructions": "1. Before spinning, write P(red) = 1/4 and predict the reds in 20 spins (1/4 of 20 = 5).\n2. Spin 20 times and tally the reds.\n3. Compare the tally to the prediction: close, but probably not exact.\n4. Pool the whole group's spins and compare again.\n5. Debrief: why does the pooled result usually sit closer to 1/4 of the total?"
+        },
+        {
+          "type": "matching",
+          "title": "Probability to Prediction",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per probability-and-trials setup, one card per predicted count"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each setup like 'P = 1/4, 40 spins' to its predicted count like '10'.\n3. To claim a match, say the fraction-of-a-set sentence out loud: 1/4 of 40 is 10.\n4. Two decoy count cards match no setup; explain why each is wrong.",
+          "content": {
+            "pairs": [
+              {
+                "left": "P = 1/2, 30 flips",
+                "right": "15"
+              },
+              {
+                "left": "P = 1/4, 40 spins",
+                "right": "10"
+              },
+              {
+                "left": "P = 1/6, 60 rolls",
+                "right": "10 rolls of that face"
+              },
+              {
+                "left": "P = 2/5, 25 spins",
+                "right": "10 spins"
+              },
+              {
+                "left": "P = 1/3, 18 games",
+                "right": "6"
+              },
+              {
+                "left": "P = 3/10, 50 draws",
+                "right": "15"
+              }
+            ],
+            "decoys": [
+              "4 (from dividing 40 by 10)",
+              "5 (only 1/5 of 25)"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Grouping the trials into denominator rows makes P times N a picture of a fraction of a set before it is a formula."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'split by the bottom, take by the top, so 2/5 of 25 is 10' models the full prediction chain."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The stop-at-one-group slip (5 instead of 10) is precise and common; finding and fixing it targets it directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is the answer a probability or a number of trials?",
+          "How many equal groups do the trials split into, and how big is one group?",
+          "How many groups does the numerator take?",
+          "If we doubled the number of trials, what would happen to the prediction?",
+          "Your spins gave 12 reds instead of 10. Was the prediction wrong?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student answers with the probability itself, like 1/4, instead of a count.",
+            "say": "The question asks how many spins, so the answer is a whole number of spins. Take 1/4 OF the 40 spins: split 40 into 4 groups of 10 and take one.",
+            "praise": "You turned the probability into a count of trials, that is the prediction."
+          },
+          {
+            "if_you_see": "Student finds one denominator group and stops, like 5 for 2/5 of 25.",
+            "say": "One group is 1/5 of the spins. The probability is 2/5, so take two groups: 5 + 5 = 10.",
+            "praise": "You took numerator groups, not just one, so the fraction is complete."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "P(red) = 1/4, 40 spins. About how many reds?",
+            "look_for": "10, a count of spins, not the fraction 1/4 and not 4."
+          },
+          {
+            "prompt": "P(green) = 2/5, 25 spins. About how many greens?",
+            "look_for": "10, with 2 groups of 5, not 5."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A fair number cube (1-6) is rolled 60 times. About how many times should a 3 come up?",
+        "answer": "10",
+        "steps": [
+          {
+            "math": "P(a 3) = 1/6",
+            "annotation": "One favorable face out of six."
+          },
+          {
+            "math": "prediction = 1/6 of 60",
+            "annotation": "The expected count is the probability times the number of trials."
+          },
+          {
+            "math": "60 / 6 = 10",
+            "annotation": "Split the 60 rolls into 6 equal groups of 10; a 3 claims about one group."
+          },
+          {
+            "math": "about 10 rolls",
+            "annotation": "Real rolls vary, but 10 is the best prediction."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A fair number cube (1-6) is rolled 30 times. About how many rolls should be even?",
+        "answer": "15",
+        "steps": [
+          {
+            "math": "P(even) = 3/6 = 1/2",
+            "annotation": "Three favorable faces (2, 4, 6) out of six.",
+            "given": true
+          },
+          {
+            "math": "prediction = 1/2 of 30",
+            "annotation": "Probability times the number of trials.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Find 1/2 of 30.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the prediction with the word about.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The probability is ___, so in ___ trials I expect about ___.",
+        "I split the ___ trials into ___ equal groups of ___ and took ___ groups.",
+        "My result was not exactly the prediction because ___."
+      ],
+      "fluency_source": "8DSP4-F1"
+    },
+    {
       "skill_id": "8DSP4-S1",
       "name": "Identify the type of event: independent, dependent, complementary, or mutually exclusive",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "8.DSP.4",
       "engine_stems": [
         1
@@ -533,7 +1156,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP4-F1",
+      "fluency_source": "8DSP4-B1",
       "sentence_starters": [
         "These are separate trials / outcomes of one trial, so the events are ___.",
         "I know it's ___ because the first outcome ___ the second."
@@ -819,7 +1442,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP4-F1",
+      "fluency_source": "8DSP4-B1",
       "sentence_starters": [
         "After the first pick the total is ___, so the events are ___.",
         "The item was ___ (replaced/kept), which makes this ___."
@@ -1137,7 +1760,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP4-F2",
+      "fluency_source": "8DSP4-B1",
       "sentence_starters": [
         "P(first) = ___ and P(second) = ___, so P(both) = ___ x ___.",
         "It's an independent 'and' event, so I ___ the two fractions and keep the same total."
@@ -1395,7 +2018,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP4-F2",
+      "fluency_source": "8DSP4-B2",
       "sentence_starters": [
         "First draw: ___/___. After removing one, second draw: ___/___.",
         "It's without replacement, so I subtract 1 from the ___ and the ___ before multiplying."
@@ -1709,7 +2332,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP4-F1",
+      "fluency_source": "8DSP4-B1",
       "sentence_starters": [
         "These are complementary, so P(not A) = 1 - ___ = ___.",
         "These can't both happen, so P(A or B) = ___ + ___ = ___."
@@ -1997,7 +2620,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP4-F2",
+      "fluency_source": "8DSP4-B2",
       "sentence_starters": [
         "The error is in the ___ fraction: it should be ___ because ___.",
         "The correct calculation is ___ x ___ = ___."
@@ -2054,8 +2677,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 4-6) prerequisite skills. Start intervention here.",
       "skills": [
         "8DSP4-F1",
         "8DSP4-F2"
@@ -2063,15 +2686,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 7) skills that feed this standard directly.",
       "skills": [
-        "8DSP4-S1"
+        "8DSP4-B1",
+        "8DSP4-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "8DSP4-S1",
         "8DSP4-S2",
         "8DSP4-S3",
         "8DSP4-S4",
@@ -2080,7 +2705,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "8DSP4-S6"
       ]
@@ -2089,6 +2714,8 @@
   "skill_sequence": [
     "8DSP4-F1",
     "8DSP4-F2",
+    "8DSP4-B1",
+    "8DSP4-B2",
     "8DSP4-S1",
     "8DSP4-S2",
     "8DSP4-S3",
@@ -2099,41 +2726,52 @@
   "skill_tree": {
     "8DSP4-F1": [],
     "8DSP4-F2": [],
-    "8DSP4-S1": [
+    "8DSP4-B1": [
+      "8DSP4-F1",
+      "8DSP4-F2"
+    ],
+    "8DSP4-B2": [
       "8DSP4-F1"
+    ],
+    "8DSP4-S1": [
+      "8DSP4-B1",
+      "8DSP4-B2"
     ],
     "8DSP4-S2": [
       "8DSP4-S1"
     ],
     "8DSP4-S3": [
       "8DSP4-S1",
-      "8DSP4-F2"
+      "8DSP4-B1"
     ],
     "8DSP4-S4": [
       "8DSP4-S3"
     ],
     "8DSP4-S5": [
       "8DSP4-S1",
-      "8DSP4-F1"
+      "8DSP4-B1"
     ],
     "8DSP4-S6": [
       "8DSP4-S4"
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (calculate the probability of a compound event WITHOUT replacement) -- the core grade-level discriminator, where the classic with-replacement misconception lives. If they pass, move to S6 (analyze and correct an error) and S5 (complementary and mutually exclusive reasoning). If they fail, drop to S3 (write the independent expression) and then S1 (classify the event type), and to F1/F2 if the fraction mechanics are the gap. S2 (independent vs dependent) branches off as the with/without-replacement check, and S5 as the 'or'/'not' vocabulary check.",
+    "description": "Start with S4, calculating a without-replacement compound probability, the At-proficiency core where the classic replacement misconception lives. If they pass, move up to S6 (analyze and correct an error) and S5 (complementary and mutually exclusive reasoning). If they fail, drop below grade level: B1 checks writing a simple probability as favorable over total on the 0 to 1 scale, and B2 checks predicting outcomes over repeated trials, the two grade 7 skills compound probability leans on. If those wobble, the foundations F1 (fraction of a set) and F2 (equivalent and comparing fractions) locate the gap in grade 4. S1, S2, and S3 remain available to probe classification, the replacement hinge, and expression writing on grade level.",
     "entry_skill": "8DSP4-S4",
     "if_pass": [
       "8DSP4-S6",
       "8DSP4-S5"
     ],
     "if_fail": [
-      "8DSP4-S3",
-      "8DSP4-S1"
+      "8DSP4-B1",
+      "8DSP4-B2"
     ],
     "branch_skills": [
+      "8DSP4-F1",
+      "8DSP4-F2",
+      "8DSP4-S1",
       "8DSP4-S2",
-      "8DSP4-S5"
+      "8DSP4-S3"
     ]
   }
 }

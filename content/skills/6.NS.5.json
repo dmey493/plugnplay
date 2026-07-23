@@ -3,7 +3,7 @@
   "standard_text": "Apply the order of operations and properties of operations (i.e., identity, inverse, commutative properties of addition and multiplication, associative properties of addition and multiplication, and distributive property) to evaluate numerical expressions with nonnegative rational numbers, including those using grouping symbols, such as parentheses, and involving whole number exponents.",
   "schema_version": 3,
   "progression": {
-    "narrative": "6.NS.5 hands students a numerical expression and asks one thing: evaluate it the way every mathematician on Earth would -- same steps, same answer. Two tool kits make that possible. The order of operations says WHICH step runs first, and the standard builds that demand in layers: first a single set of parentheses with whole numbers (S1), then nested brackets and multiple operations where the same-rank left-to-right rule for multiplication and division earns its keep (S3), then whole-number exponents -- including zero -- mixed with fractions and decimals (S4). The properties of operations are the second kit: the legal moves that rewrite an expression without changing its value. Students first learn to NAME the move an equation shows (S2), then to USE the biggest one -- the distributive property -- to build equivalent expressions themselves (S5). The capstone runs the whole standard in reverse: given a target value, students place the grouping symbols or judge a lineup of candidate expressions, which only works if evaluating (S1-S4) and rewriting (S2, S5) have both become instinct (S6).",
+    "narrative": "6.NS.5 hands students a numerical expression and asks them to evaluate it the one way every mathematician would, using both the order of operations and the named properties of operations, now stretched to cover fractions, decimals, and whole number exponents. The on grade skills build in layers: evaluate with a single set of parentheses (S1), name the property an equation shows (S2), work nested grouping where multiplication and division share a rank (S3), fold in exponents and rational numbers (S4), and use the distributive property to rewrite an expression (S5), before the reversal of placing grouping symbols to hit a target value (S6). Students who stall here are rarely blocked by the rules themselves. The gaps that stop them sit well below grade six: shaky multiplication and division facts turn every step into a guess, and weak fraction and decimal arithmetic collapses the hardest items. Intervention should rebuild the grade five ground first, whole number order of operations and rational number computation, and only then return to the full grade six expression.",
     "steps": [
       {
         "skill_id": "6NS5-S1",
@@ -40,344 +40,733 @@
   "skills": [
     {
       "skill_id": "6NS5-F1",
-      "name": "Recall multiplication and division facts fluently",
+      "name": "Recall multiplication and division facts within 100",
       "column": "foundation",
       "parent_standard": "6.NS.5",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 3,
-        "description": "Multiply and divide single-digit numbers from memory",
+        "description": "Multiply and divide within 100 from memory.",
         "check_question": "What is 6 x 7?"
       },
-      "i_do_script": "Every order-of-operations problem is really a chain of small facts -- 42 divided by 7, 6 times 6 -- and each one has to come fast so your brain can focus on the ORDER, not the arithmetic. If a fact isn't automatic, we build it from one you do know: 6 x 7 is one more group of 6 than 6 x 6 = 36, so it's 42. Division facts are just multiplication facts read backward: 54 / 6 asks '6 times what is 54?'",
+      "i_do_script": "Every order of operations problem is a chain of small facts, and each one has to come fast so your attention can stay on the ORDER, not the arithmetic. Watch: if 6 x 7 is not automatic, I build it from a fact I trust. I know 6 x 6 = 36, and 6 x 7 is just one more group of 6, so 36 + 6 = 42. Division facts are the same facts read backward: 42 / 7 asks 7 times what makes 42, which is 6.",
       "canonical_error": {
-        "pattern": "Cannot recall multiplication or division facts, so errors cascade into every expression",
-        "example": "Inside 6 x (42 / 7) + 100, the student computes 42 / 7 = 7 instead of 6, and everything after is wrong",
-        "why": "Facts weren't automatized in grades 3-4. The student may know exactly which step comes first but can't execute it reliably, so order-of-operations practice keeps failing for arithmetic reasons."
+        "pattern": "Cannot recall a multiplication or division fact, so the error spreads into every later step",
+        "example": "Inside 6 x (42 / 7) + 100, the student says 42 / 7 = 7 instead of 6, and every step after that is wrong",
+        "why": "The facts were never made automatic in grade 3. The student may know exactly which step comes first but cannot carry it out, so order of operations practice keeps failing for a pure arithmetic reason."
       },
-      "redirect_script": {
-        "stop": "Hold on -- let's double-check that fact.",
-        "prompt": "Use a fact you trust to reach the one you need. For 42 / 7, ask '7 times what makes 42?' Count up by 7s if you need to: 7, 14, 21, 28, 35, 42 -- that's six 7s.",
-        "praise": "You rebuilt the fact from one you knew. That's exactly how fluency grows."
-      },
-      "item_template": "A single multiplication or division fact (facts through 12). NR (numeric response). No context, no grouping symbols -- just the fact.",
+      "item_template": "A single multiplication or division fact within 100 (factors through 12). Numeric response, no context, no grouping symbols, just the fact.",
       "sample_items": [
         {
-          "stem": "What is 7 x 8?",
-          "answer": "56",
-          "choices": null,
-          "distractor_logic": "Common errors: 54 (confuses with 6x9), 64 (confuses with 8x8)"
-        },
-        {
-          "stem": "What is 6 x 9?",
-          "answer": "54",
-          "choices": null,
-          "distractor_logic": "Common errors: 56 (confuses with 7x8), 63 (confuses with 7x9)"
-        },
-        {
-          "stem": "What is 8 x 8?",
-          "answer": "64",
-          "choices": null,
-          "distractor_logic": "Common errors: 56 (confuses with 7x8), 72 (confuses with 8x9)"
-        },
-        {
-          "stem": "What is 9 x 7?",
-          "answer": "63",
-          "choices": null,
-          "distractor_logic": "Common errors: 56 (confuses with 7x8), 72 (confuses with 9x8)"
-        },
-        {
           "stem": "What is 6 x 7?",
-          "answer": "42",
-          "choices": null,
-          "distractor_logic": "Common errors: 48 (confuses with 6x8), 36 (confuses with 6x6)"
+          "answer": "42"
         },
         {
-          "stem": "What is 12 x 4?",
-          "answer": "48",
-          "choices": null,
-          "distractor_logic": "Common errors: 44 (adds a group of 4 wrong), 52 (confuses with 13x4)"
-        },
-        {
-          "stem": "What is 54 / 6?",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "Common errors: 8 (confuses with 48/6), 6 (splits digits)"
-        },
-        {
-          "stem": "What is 72 / 8?",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "Common errors: 8 (confuses with 64/8), 7 (confuses with 56/8)"
-        },
-        {
-          "stem": "What is 63 / 9?",
-          "answer": "7",
-          "choices": null,
-          "distractor_logic": "Common errors: 8 (confuses with 72/9), 6 (confuses with 54/9)"
-        },
-        {
-          "stem": "What is 48 / 6?",
-          "answer": "8",
-          "choices": null,
-          "distractor_logic": "Common errors: 7 (confuses with 42/6), 9 (confuses with 54/6)"
+          "stem": "What is 7 x 8?",
+          "answer": "56"
         },
         {
           "stem": "What is 8 x 9?",
-          "answer": "72",
-          "choices": null,
-          "distractor_logic": "Common errors: 64 (confuses with 8x8), 81 (confuses with 9x9)"
+          "answer": "72"
         },
         {
-          "stem": "What is 7 x 7?",
-          "answer": "49",
-          "choices": null,
-          "distractor_logic": "Common errors: 42 (confuses with 6x7), 56 (confuses with 7x8)"
-        },
-        {
-          "stem": "What is 36 / 4?",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "Common errors: 8 (confuses with 32/4), 6 (confuses with 36/6)"
-        },
-        {
-          "stem": "What is 81 / 9?",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "Common errors: 8 (confuses with 72/9), 7 (skips a count of 9)"
-        },
-        {
-          "stem": "What is 6 x 8?",
-          "answer": "48",
-          "choices": null,
-          "distractor_logic": "Common errors: 42 (confuses with 6x7), 54 (confuses with 6x9)"
-        },
-        {
-          "stem": "What is 9 x 9?",
-          "answer": "81",
-          "choices": null,
-          "distractor_logic": "Common errors: 72 (confuses with 8x9), 99 (adds instead)"
-        },
-        {
-          "stem": "What is 56 / 7?",
-          "answer": "8",
-          "choices": null,
-          "distractor_logic": "Common errors: 7 (confuses with 49/7), 9 (confuses with 63/7)"
+          "stem": "What is 9 x 6?",
+          "answer": "54"
         },
         {
           "stem": "What is 42 / 7?",
-          "answer": "6",
-          "choices": null,
-          "distractor_logic": "Common errors: 7 (confuses with 49/7), 5 (confuses with 35/7)"
+          "answer": "6"
         },
         {
-          "stem": "What is 11 x 6?",
-          "answer": "66",
-          "choices": null,
-          "distractor_logic": "Common errors: 56 (drops the extra 6), 61 (writes digits without adding)"
+          "stem": "What is 56 / 8?",
+          "answer": "7"
         },
         {
-          "stem": "What is 96 / 8?",
-          "answer": "12",
-          "choices": null,
-          "distractor_logic": "Common errors: 11 (confuses with 88/8), 13 (overshoots by a group)"
+          "stem": "What is 63 / 9?",
+          "answer": "7"
+        },
+        {
+          "stem": "What is 48 / 8?",
+          "answer": "6"
+        },
+        {
+          "stem": "What is 7 x 9?",
+          "answer": "63"
+        },
+        {
+          "stem": "What is 36 / 6?",
+          "answer": "6"
         }
       ],
+      "redirect_script": {
+        "stop": "Hold on, let us rebuild that fact.",
+        "prompt": "Start from a fact you trust and step to the one you need. For 42 / 7, ask 7 times what makes 42. Count up by 7s if you have to: 7, 14, 21, 28, 35, 42, that is six 7s.",
+        "praise": "You rebuilt the fact from one you already owned. That is exactly how fluency grows."
+      },
       "vocabulary": [
         {
           "term": "Product",
-          "definition": "The answer you get when you multiply two numbers."
+          "definition": "The answer when you multiply. In 6 x 7 = 42, the product is 42."
         },
         {
           "term": "Quotient",
-          "definition": "The answer you get when you divide one number by another."
-        },
-        {
-          "term": "Factor",
-          "definition": "A number being multiplied. In 6 x 7 = 42, the factors are 6 and 7."
+          "definition": "The answer when you divide. In 42 / 7 = 6, the quotient is 6."
         }
       ],
       "next_steps": {
-        "if_pass": "Move to 6NS5-S1: evaluate expressions with one set of parentheses. The facts are ready -- now the order matters.",
-        "if_fail": "Run short daily fact sprints (2 minutes, facts through 9) before any expression work. Rebuild missing facts from anchor facts the student trusts."
+        "if_pass": "6NS5-B1",
+        "if_fail": "Run short daily fact sprints (two minutes, facts through 9) and rebuild missing facts from anchor facts using arrays of rows and columns."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Here's the fact: 6 x 7. Is that one you just know, or do you need a second to build it?"
+          "kind": "show",
+          "text": "Draw 6 rows of 7 dots. This array is a picture of 6 x 7."
         },
         {
           "kind": "ask",
-          "text": "If it's not automatic, name a 6-times fact you DO trust that's close to 6 x 7."
-        },
-        {
-          "kind": "ask",
-          "text": "Say you picked 6 x 6. What does 6 x 6 equal?"
-        },
-        {
-          "kind": "ask",
-          "text": "6 x 7 is how many more groups of 6 than 6 x 6?"
-        },
-        {
-          "kind": "ask",
-          "text": "One more group. So what do you do to 36 to get 6 x 7?"
-        },
-        {
-          "kind": "watch",
-          "text": "If they say 48, they jumped to 6 x 8. Ask: 'How many groups of 6 are in 6 x 7?' If they say 36, they forgot to add the extra group -- point at the 7 and ask, 'Did we add that last group of 6 yet?'"
+          "text": "Cover the last column. What is 6 x 6, the array you can still see?"
         },
         {
           "kind": "say",
-          "text": "36 + 6 = 42, so 6 x 7 = 42. And that means 42 / 7 = 6 and 42 / 6 = 7 -- one fact, three ways to use it."
+          "text": "6 x 6 = 36. Now uncover the last column: that is one more group of 6, so 36 + 6 = 42. The array shows 6 x 7 = 42."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 48, they jumped to 6 x 8. Point at the array: how many columns of 6 are there, 7 or 8?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: use the same move to build 8 x 9 from 8 x 8."
+          "text": "Your turn: use 8 x 8 = 64 to build 8 x 9 the same way."
         }
       ]
     },
     {
       "skill_id": "6NS5-F2",
-      "name": "Compute with simple fractions and decimals",
+      "name": "Add and subtract fractions with like denominators",
       "column": "foundation",
       "parent_standard": "6.NS.5",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 5,
-        "description": "Add, subtract, and multiply simple fractions and decimals",
-        "check_question": "What is 1/2 + 1/4?"
+        "grade": 4,
+        "description": "Add and subtract fractions that already share a denominator.",
+        "check_question": "What is 3/8 + 2/8?"
       },
-      "i_do_script": "The hardest 6.NS.5 problems mix fractions and decimals into the expressions, so the small computations have to be solid first. Watch me do one: 1/2 + 1/4. Halves and fourths aren't the same size piece, so I trade the 1/2 for 2/4 -- now 2/4 + 1/4 = 3/4. With decimals, I line up the decimal points: 2.5 + 1.7 is 25 tenths plus 17 tenths, which is 42 tenths -- 4.2.",
+      "i_do_script": "The hardest 6.NS.5 items hide fractions inside the expression, so adding and subtracting fractions has to be solid first. When the denominators match, the pieces are the same size, so I just count pieces. Watch: 3/8 + 2/8 means 3 eighths and 2 more eighths, which is 5 eighths, 5/8. The bottom number names the size of the piece, so it stays 8; only the count on top changes.",
       "canonical_error": {
-        "pattern": "Adds fraction pieces or decimal digits without matching sizes -- adds numerators AND denominators, or misaligns decimal points",
-        "example": "1/2 + 1/4 = 2/6, or 2.5 + 1.7 = 3.12",
-        "why": "The student treats the two parts of a fraction (or the digits of a decimal) as separate whole numbers instead of as one quantity, so they combine pieces that aren't the same size."
+        "pattern": "Adds the denominators along with the numerators",
+        "example": "Writes 3/8 + 2/8 = 5/16",
+        "why": "The student treats the top and bottom as two separate addition problems. The denominator is a piece size, not a count, so adding eighths to eighths still gives eighths."
       },
-      "redirect_script": {
-        "stop": "Wait -- are those pieces the same size?",
-        "prompt": "Before adding fractions, make the denominators match: trade 1/2 for 2/4 first. For decimals, stack the numbers so the decimal points line up, then add.",
-        "praise": "You matched the piece sizes first -- that's the whole trick."
-      },
-      "item_template": "A single operation on two simple fractions (denominators 2, 3, 4, 5) or one-place decimals. NR response. All values nonnegative.",
+      "item_template": "Two fractions that share a denominator, with a sum of at most 1 or a simple difference. Student adds or subtracts. Numeric response, no calculator.",
       "sample_items": [
         {
-          "stem": "What is 1/2 + 1/4?",
-          "answer": "3/4",
-          "choices": null,
-          "distractor_logic": "Common error: 2/6 from adding numerators and denominators"
+          "stem": "3/8 + 2/8",
+          "answer": "5/8"
         },
         {
-          "stem": "What is 3/4 - 1/2?",
-          "answer": "1/4",
-          "choices": null,
-          "distractor_logic": "Common error: 2/2 from subtracting numerators and denominators separately"
+          "stem": "7/10 - 4/10",
+          "answer": "3/10"
         },
         {
-          "stem": "What is 1/3 x 6?",
-          "answer": "2",
-          "choices": null,
-          "distractor_logic": "Common error: 6/3 left unsimplified is fine; 1/18 from multiplying the denominator"
+          "stem": "2/5 + 2/5",
+          "answer": "4/5"
         },
         {
-          "stem": "What is 0.5 x 8?",
-          "answer": "4",
-          "choices": null,
-          "distractor_logic": "Common error: 40 from ignoring the decimal point"
+          "stem": "5/6 - 1/6",
+          "answer": "4/6 (or 2/3)"
         },
         {
-          "stem": "What is 2.5 + 1.7?",
-          "answer": "4.2",
-          "choices": null,
-          "distractor_logic": "Common error: 3.12 from adding tenths as if they were separate whole numbers"
+          "stem": "1/4 + 1/4",
+          "answer": "2/4 (or 1/2)"
         },
         {
-          "stem": "What is 6 - 2.4?",
-          "answer": "3.6",
-          "choices": null,
-          "distractor_logic": "Common error: 4.4 from subtracting only the whole-number part"
+          "stem": "4/9 + 4/9",
+          "answer": "8/9"
         },
         {
-          "stem": "What is 0.3 x 4?",
-          "answer": "1.2",
-          "choices": null,
-          "distractor_logic": "Common error: 12 from dropping the decimal point"
+          "stem": "3/7 + 3/7",
+          "answer": "6/7"
         },
         {
-          "stem": "What is 3/5 + 1/5?",
-          "answer": "4/5",
-          "choices": null,
-          "distractor_logic": "Common error: 4/10 from adding the denominators too"
-        },
-        {
-          "stem": "What is 1/2 x 1/2?",
-          "answer": "1/4",
-          "choices": null,
-          "distractor_logic": "Common error: 1/2 (thinks multiplying by a half changes nothing) or 2/4 unsimplified is acceptable"
-        },
-        {
-          "stem": "What is 4.8 / 2?",
-          "answer": "2.4",
-          "choices": null,
-          "distractor_logic": "Common error: 24 from dropping the decimal point"
+          "stem": "9/12 - 5/12",
+          "answer": "4/12 (or 1/3)"
         }
       ],
+      "redirect_script": {
+        "stop": "Wait, what size are the pieces in both fractions?",
+        "prompt": "The denominator names the piece size, and it does not change when you add. Count the pieces on top: 3 eighths plus 2 eighths is 5 eighths.",
+        "praise": "You kept the piece size and counted the pieces. That is the whole move."
+      },
       "vocabulary": [
         {
           "term": "Numerator",
-          "definition": "The top number of a fraction -- how many pieces you have."
+          "definition": "The top number of a fraction; it counts how many pieces you have."
         },
         {
           "term": "Denominator",
-          "definition": "The bottom number of a fraction -- how big each piece is (how many make a whole)."
-        },
-        {
-          "term": "Tenth",
-          "definition": "One out of ten equal parts. The first digit after a decimal point counts tenths."
+          "definition": "The bottom number of a fraction; it names the size of each piece."
         }
       ],
       "next_steps": {
-        "if_pass": "The student can handle the rational-number arithmetic inside 6NS5-S4's harder expressions. Continue the main progression.",
-        "if_fail": "Practice matching denominators with fraction strips and lining up decimal points on grid paper before returning to expressions with fractions or decimals."
+        "if_pass": "6NS5-B2",
+        "if_fail": "Rebuild fraction meaning with fraction bars: a fraction is a count of same size pieces, and the denominator names that size."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write on the board: 1/2 + 1/4."
+          "text": "Draw one bar cut into 8 equal pieces. Shade 3 pieces, then shade 2 more in a second color."
         },
         {
           "kind": "ask",
-          "text": "If I hand you half a sandwich and a quarter of a sandwich, can you just count '1 piece plus 1 piece = 2 pieces'? Why not?"
-        },
-        {
-          "kind": "ask",
-          "text": "The pieces are different sizes. How could we cut the half so ALL the pieces are the same size?"
-        },
-        {
-          "kind": "ask",
-          "text": "Right -- a half is the same as two fourths. So what does the problem look like now, written all in fourths?"
-        },
-        {
-          "kind": "ask",
-          "text": "2/4 + 1/4 -- now the pieces match. How many fourths in all?"
-        },
-        {
-          "kind": "watch",
-          "text": "If the student says 3/8, they added the denominators. Ask: 'Did the SIZE of the pieces change when we combined them, or just the count?'"
+          "text": "How many pieces are shaded in all, and what size is each piece?"
         },
         {
           "kind": "say",
-          "text": "Three fourths. The denominator names the piece size, and it stays put -- only the count on top adds."
+          "text": "5 pieces are shaded and each one is an eighth, so 3/8 + 2/8 = 5/8. The bottom stays 8 because the pieces never changed size."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 5/16, point at the bar: did the pieces get smaller when we shaded more of them?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: 3/5 + 1/5. Same-size pieces already? Then how many fifths?"
+          "text": "Your turn: what is 7/10 - 4/10?"
         }
       ]
     },
     {
+      "skill_id": "6NS5-B1",
+      "name": "Evaluate whole number expressions using the order of operations",
+      "column": "looking_back",
+      "parent_standard": "6.NS.5",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Evaluate a whole number expression with parentheses or brackets using the order of operations.",
+        "check_question": "What is 2 x (3 + 4)?"
+      },
+      "i_do_script": "An expression can hold several operations, and the order of operations is the shared rulebook for which one runs first: grouping symbols first, then multiplication and division from left to right, then addition and subtraction from left to right. Watch: 2 x (3 + 4). The parentheses say settle 3 + 4 = 7 first, so the line becomes 2 x 7 = 14. Without the parentheses, 2 x 3 + 4 would multiply first and give 10, a different value. The grouping symbols are the author of the problem telling you which piece to finish before anything else.",
+      "canonical_error": {
+        "pattern": "Works strictly left to right, ignoring that grouping and then multiplication or division come first",
+        "example": "For 5 + 3 x 2, computes 5 + 3 = 8 first, then 8 x 2 = 16, instead of 3 x 2 = 6, then 5 + 6 = 11",
+        "why": "Reading habits transfer from text: we read left to right, so students compute left to right. They have not yet internalized that an expression is read by rule, grouping first, then multiplication and division, then addition and subtraction, not by position."
+      },
+      "item_template": "A whole number expression with one set of grouping symbols and two or three operations. Student evaluates. Numeric response, no calculator.",
+      "sample_items": [
+        {
+          "stem": "2 x (3 + 4)",
+          "answer": "14"
+        },
+        {
+          "stem": "5 + 3 x 2",
+          "answer": "11"
+        },
+        {
+          "stem": "(10 - 4) x 5",
+          "answer": "30"
+        },
+        {
+          "stem": "20 - (6 + 9)",
+          "answer": "5"
+        },
+        {
+          "stem": "4 x 6 - 5",
+          "answer": "19"
+        },
+        {
+          "stem": "18 / (1 + 2)",
+          "answer": "6"
+        },
+        {
+          "stem": "(12 + 8) / 4",
+          "answer": "5"
+        },
+        {
+          "stem": "3 x (10 - 7) + 2",
+          "answer": "11"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait, did you check what the rules let you do first?",
+        "prompt": "Circle the grouping symbols and do that piece first. Then underline any multiplication or division and do those before any addition or subtraction, no matter where they sit in the line.",
+        "praise": "You found the first step by rule, not by position. That is exactly how the order of operations works."
+      },
+      "vocabulary": [
+        {
+          "term": "Order of operations",
+          "definition": "The agreed rules for which step to compute first: grouping symbols, then multiplication and division left to right, then addition and subtraction left to right."
+        },
+        {
+          "term": "Grouping symbols",
+          "definition": "Parentheses ( ) or brackets [ ] that fence off the part of the expression to compute first."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS5-S1",
+        "if_fail": "6NS5-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Set out 2 bags. In each bag put 3 red counters and 4 blue counters. The bag is the parentheses: 3 + 4."
+        },
+        {
+          "kind": "ask",
+          "text": "How many counters are in one bag? So what does (3 + 4) equal before we do anything else?"
+        },
+        {
+          "kind": "say",
+          "text": "One bag holds 7 counters, so (3 + 4) = 7. Two bags is 2 x 7 = 14. The parentheses had to be settled before the doubling made any sense."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student reads left to right and doubles the 3 first, ask what 2 x 3 would count here, before a full bag even exists."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 3 x (10 - 7) + 2. Which piece do the rules make you finish first?"
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate: (5 + 3) x 2",
+          "answer": "16"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate: 20 - (6 + 4)",
+          "answer": "10"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: 6 + 2 x (8 - 3)",
+          "answer": "16"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: (24 - 4) / 5",
+          "answer": "4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: 30 - 4 x 6",
+          "answer": "6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: (7 + 5) x 2 - 3",
+          "answer": "21"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Evaluate: 100 - (4 x 5 + 30)",
+          "answer": "50"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Sam evaluated 8 + 4 x 5. Find his mistake and fix it.",
+          "shown_work": [
+            "8 + 4 x 5",
+            "= 12 x 5   (added first, moving left to right)",
+            "= 60"
+          ],
+          "answer": "28. Multiplication comes before addition: 4 x 5 = 20, then 8 + 20 = 28."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Bag the Parentheses",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Small paper bags or cups",
+            "Two colors of counters"
+          ],
+          "instructions": "1. Each pair gets an expression like 2 x (3 + 4).\n2. Build one bag with the parentheses inside it: 3 counters of one color, 4 of another.\n3. Count one bag first, then make as many identical bags as the multiplier says and count the total.\n4. Write the matching steps: (3 + 4) = 7, then 2 x 7 = 14.\n5. Repeat with 3 x (10 - 7) and (5 + 3) x 2, saying each time that the bag gets settled before anything else."
+        },
+        {
+          "type": "game",
+          "title": "First Step Showdown",
+          "time_minutes": 10,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Project an expression like 20 - (6 + 4) or 5 + 3 x 2.\n2. Students write ONLY the first step they would compute, not the answer.\n3. On the signal, everyone reveals at once. One student defends the majority choice and one defends any different choice.\n4. Then the class evaluates the whole expression together, one step per line. Score a point when the room agrees on the first step at once."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Bagged counters make grouping a physical object to settle first, before the parentheses first rule is ever named."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Pairing a correct solution with Sam's left to right version makes the rule versus position contrast the lesson itself."
+        },
+        {
+          "strategy_id": "strat-math-008",
+          "why": "First step only whiteboard rounds reveal instantly who is still computing by position."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Before you touch a number, what do the rules let you do first, and what rule says so?",
+          "You did one step. Rewrite the whole line with that step's answer in place. What does the line say now?",
+          "Where would the answer change if the parentheses disappeared? Try it both ways.",
+          "You have a multiplication and an addition. Which one goes first, and why?",
+          "Why did people agree on one shared order instead of letting everyone read left to right?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student computes left to right, adding 5 + 3 before the 3 x 2 in 5 + 3 x 2.",
+            "say": "Circle any grouping first, then underline the multiplication or division. Those run before adding or subtracting, wherever they sit. Which piece do you compute first?",
+            "praise": "You found the first step by rule, not by position. That is the whole skill."
+          },
+          {
+            "if_you_see": "Student does the parentheses but then combines two operations in one line and loses track.",
+            "say": "One step per line. Compute exactly one piece, rewrite everything else unchanged, and read the new line fresh.",
+            "praise": "Every line of your work is a true statement. That is what clean evaluation looks like."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Do not solve it, just name the first step in 7 + 2 x (10 - 6).",
+            "look_for": "10 - 6. Answering 7 + 2 means position is still beating rule; answering 2 x 10 means the parentheses are invisible."
+          },
+          {
+            "prompt": "True or false: in 30 - 12 / 4 you subtract first because it comes first.",
+            "look_for": "False. Division outranks subtraction, so 12 / 4 = 3 first and the answer is 27. A true here means the left to right error is live."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Evaluate 3 x (10 - 7) + 2.",
+        "answer": "11",
+        "steps": [
+          {
+            "math": "3 x (10 - 7) + 2",
+            "annotation": "Scan before computing: grouping symbols first."
+          },
+          {
+            "math": "= 3 x 3 + 2",
+            "annotation": "Inside the parentheses, 10 - 7 = 3. Rewrite the whole line."
+          },
+          {
+            "math": "= 9 + 2",
+            "annotation": "Multiplication beats addition, even with the + 2 sitting right there."
+          },
+          {
+            "math": "= 11",
+            "annotation": "The addition runs last."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Evaluate 6 + 2 x (8 - 3).",
+        "answer": "16",
+        "steps": [
+          {
+            "math": "6 + 2 x (8 - 3) = 6 + 2 x 5",
+            "annotation": "Grouping first: 8 - 3 = 5.",
+            "given": true
+          },
+          {
+            "math": "= 6 + 10",
+            "annotation": "Multiplication before addition: 2 x 5 = 10.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Do the last operation and rewrite the line.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the final value.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The first step is ___ because the rule says ___ comes before ___.",
+        "After that step, my new line reads ___."
+      ],
+      "fluency_source": "6NS5-F1"
+    },
+    {
+      "skill_id": "6NS5-B2",
+      "name": "Add, subtract, and multiply fractions and decimals",
+      "column": "looking_back",
+      "parent_standard": "6.NS.5",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Add and subtract fractions with unlike denominators and compute with decimals.",
+        "check_question": "What is 1/2 + 1/4?"
+      },
+      "i_do_script": "The most difficult 6.NS.5 items hide fractions and decimals inside the expression, so this computation has to be automatic before the order of operations can shine. To add 1/2 + 1/4 the pieces must match: 1/2 is the same as 2/4, so 2/4 + 1/4 = 3/4. To multiply a fraction by a whole number, 4/5 x 10 counts ten groups of four fifths, which is 40/5 = 8. Decimals add place by place, so I line up the decimal points: 2.5 + 1.7 = 4.2.",
+      "canonical_error": {
+        "pattern": "Combines pieces that are not the same size: adds numerators and denominators, or misaligns decimal points",
+        "example": "Writes 1/2 + 1/4 = 2/6, or 2.5 + 1.7 = 3.12",
+        "why": "The student treats the two parts of a fraction, or the digits of a decimal, as separate whole numbers instead of one quantity, so pieces of different sizes get combined."
+      },
+      "item_template": "A single operation on two fractions (denominators up to 12) or on decimals to the hundredths. All values nonnegative. Numeric response, no calculator.",
+      "sample_items": [
+        {
+          "stem": "1/2 + 1/4",
+          "answer": "3/4"
+        },
+        {
+          "stem": "2/3 - 1/6",
+          "answer": "3/6 (or 1/2)"
+        },
+        {
+          "stem": "4/5 x 10",
+          "answer": "8"
+        },
+        {
+          "stem": "1/3 + 1/6",
+          "answer": "3/6 (or 1/2)"
+        },
+        {
+          "stem": "0.5 x 8",
+          "answer": "4"
+        },
+        {
+          "stem": "2.5 + 1.7",
+          "answer": "4.2"
+        },
+        {
+          "stem": "6 - 2.4",
+          "answer": "3.6"
+        },
+        {
+          "stem": "3/4 x 8",
+          "answer": "6"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait, are those pieces the same size yet?",
+        "prompt": "Before adding fractions, rename so the denominators match: trade 1/2 for 2/4 first. For decimals, stack the numbers so the decimal points line up, then add each place.",
+        "praise": "You matched the piece sizes first. That is the whole trick."
+      },
+      "vocabulary": [
+        {
+          "term": "Common denominator",
+          "definition": "A shared piece size for two fractions; a number both denominators divide into."
+        },
+        {
+          "term": "Equivalent fraction",
+          "definition": "A fraction that names the same amount with different sized pieces, like 1/2 and 2/4."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS5-S4",
+        "if_fail": "6NS5-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw two same length bars. Cut one in half and shade 1/2. Cut the other into fourths and shade 1/4."
+        },
+        {
+          "kind": "ask",
+          "text": "Can we count these shaded pieces together as they are? Why not?"
+        },
+        {
+          "kind": "say",
+          "text": "The pieces are different sizes. Cut the half bar into fourths too: now 1/2 is 2/4. So 2/4 + 1/4 = 3/4, three matching pieces."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 2/6, ask them to point at a sixth anywhere in the picture. There is none, so the answer cannot be sixths."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: rename and add 1/3 + 1/6."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "1/4 + 1/4",
+          "answer": "2/4 (or 1/2)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "0.3 + 0.4",
+          "answer": "0.7"
+        },
+        {
+          "difficulty": "core",
+          "stem": "1/2 + 1/3",
+          "answer": "5/6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "3/4 - 1/4",
+          "answer": "2/4 (or 1/2)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2/5 x 10",
+          "answer": "4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2.5 x 4",
+          "answer": "10"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "1/2 + 1/3 + 1/6",
+          "answer": "1"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia wrote 1/2 + 1/3 = 2/5. Find her mistake and fix it.",
+          "shown_work": [
+            "1/2 + 1/3",
+            "= (1 + 1)/(2 + 3)",
+            "= 2/5"
+          ],
+          "answer": "She added tops and bottoms straight across. Rename to sixths: 3/6 + 2/6 = 5/6."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Cut Until They Match",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper fraction strips (halves, thirds, fourths, sixths)",
+            "Pencils"
+          ],
+          "instructions": "1. Each pair gets a target sum like 1/2 + 1/4.\n2. Lay the 1/2 strip and 1/4 strip side by side.\n3. Find the strip size that measures both exactly (fourths here) and lay it underneath.\n4. Count the small matching pieces and write the renamed equation 2/4 + 1/4 = 3/4.\n5. Repeat with 1/3 + 1/6 and 2/3 - 1/6, saying each time that you cut until the pieces match."
+        },
+        {
+          "type": "game",
+          "title": "Money Lineup Race",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Play money: dollars, dimes, pennies",
+            "Whiteboards"
+          ],
+          "instructions": "1. Draw a decimal sum like 2.5 + 1.7.\n2. Build each number in money: dollars, dimes for tenths, pennies for hundredths.\n3. Combine coins of the same kind, trading ten dimes for a dollar when a place fills up.\n4. Write the lined up problem next to the money and match each trade to a regroup.\n5. Race another pair to a correct total, but a total without the money check does not count."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Fraction strips and coins make matching piece sizes visible before the renaming and lining up rules are named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The add straight across error is stable and predictable; finding and fixing it in Mia's work confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Number talks surface the mental renaming and place lineup strategies as the students' own, not a memorized rule."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Are these pieces the same size? How can you tell?",
+          "What number do both denominators go into?",
+          "What does 1/2 become when the whole is cut into fourths?",
+          "For the decimals, which digits are you adding to which? Are the points lined up?",
+          "Estimate first: should 2.5 + 1.7 land closer to 4 or to 5?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds numerators and denominators straight across.",
+            "say": "Point at the strips: can you count a half and a fourth together as they are? Cut the half into fourths first, then count.",
+            "praise": "You renamed before you counted. That is the whole skill."
+          },
+          {
+            "if_you_see": "Student right aligns the digits of 2.5 and 1.7 instead of lining up the decimal points.",
+            "say": "Stack the numbers so the decimal points sit in one column. Tenths add to tenths, ones add to ones, never tenths to ones.",
+            "praise": "You matched place to place, so every digit landed where it belongs."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "1/2 + 1/6",
+            "look_for": "Renames 1/2 as 3/6 and answers 4/6 or 2/3, not 2/8."
+          },
+          {
+            "prompt": "6 - 2.4",
+            "look_for": "3.6, writing 6 as 6.0 before subtracting place by place."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Add 1/3 + 1/6.",
+        "answer": "1/2",
+        "steps": [
+          {
+            "math": "common denominator: 6",
+            "annotation": "Both 3 and 6 go into 6, so cut both bars into sixths."
+          },
+          {
+            "math": "1/3 = 2/6",
+            "annotation": "A third is two sixths."
+          },
+          {
+            "math": "2/6 + 1/6 = 3/6",
+            "annotation": "Now the pieces match, so count them."
+          },
+          {
+            "math": "3/6 = 1/2",
+            "annotation": "Three sixths is the same as one half."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Add 1/4 + 1/2.",
+        "answer": "3/4",
+        "steps": [
+          {
+            "math": "common denominator: 4",
+            "annotation": "Both 4 and 2 go into 4.",
+            "given": true
+          },
+          {
+            "math": "1/2 = 2/4",
+            "annotation": "Rename the half as fourths so the pieces match.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Add the fourths.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the sum.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The pieces do not match, so I rename ___ as ___.",
+        "I lined up the decimal points so that ___ adds to ___."
+      ],
+      "fluency_source": "6NS5-F2"
+    },
+    {
       "skill_id": "6NS5-S1",
       "name": "Evaluate expressions with one set of parentheses and whole numbers",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.NS.5",
       "engine_stems": [
         1
@@ -735,7 +1124,7 @@
     {
       "skill_id": "6NS5-S2",
       "name": "Identify the property of operations shown by an equation",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.NS.5",
       "engine_stems": [
         2
@@ -1663,7 +2052,7 @@
           }
         ]
       },
-      "fluency_source": "6NS5-F1",
+      "fluency_source": "6NS5-B2",
       "sentence_starters": [
         "The exponent counts ___ copies of ___, so I write ___ before computing.",
         "After grouping symbols, the next tier is ___, so I evaluate ___ first."
@@ -2436,6 +2825,8 @@
   "skill_sequence": [
     "6NS5-F1",
     "6NS5-F2",
+    "6NS5-B1",
+    "6NS5-B2",
     "6NS5-S1",
     "6NS5-S2",
     "6NS5-S3",
@@ -2445,8 +2836,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation",
-      "description": "Tier III — 2+ grade levels below. If a student can't access Looking Back, start here.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-4) prerequisite skills. Start intervention here.",
       "skills": [
         "6NS5-F1",
         "6NS5-F2"
@@ -2454,16 +2845,18 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Prerequisite skills — fix these first if a student can't access grade-level work",
+      "description": "One grade below (grade 5) skills that feed this standard directly.",
       "skills": [
-        "6NS5-S1",
-        "6NS5-S2"
+        "6NS5-B1",
+        "6NS5-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "Core 6.NS.5 skills — the standard itself",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "6NS5-S1",
+        "6NS5-S2",
         "6NS5-S3",
         "6NS5-S4",
         "6NS5-S5"
@@ -2471,7 +2864,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Extension skills — for students ready to push ahead",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "6NS5-S6"
       ]
@@ -2482,8 +2875,14 @@
     "6NS5-F2": [
       "6NS5-F1"
     ],
-    "6NS5-S1": [
+    "6NS5-B1": [
       "6NS5-F1"
+    ],
+    "6NS5-B2": [
+      "6NS5-F2"
+    ],
+    "6NS5-S1": [
+      "6NS5-B1"
     ],
     "6NS5-S2": [
       "6NS5-F1"
@@ -2493,7 +2892,7 @@
     ],
     "6NS5-S4": [
       "6NS5-S3",
-      "6NS5-F2"
+      "6NS5-B2"
     ],
     "6NS5-S5": [
       "6NS5-S2",
@@ -2505,18 +2904,22 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S3 (nested grouping, the approaching-proficiency band). If the student passes, probe S4 (exponents with rationals) and S6 (create/place). If they fail, split the diagnosis: S1 tells you whether basic order of operations is the gap; S2 tells you whether the properties vocabulary is the gap. S5 (distributive rewriting) is checked on the branch once S2 passes.",
-    "entry_skill": "6NS5-S3",
+    "description": "Start with S4, the at proficiency core: evaluate an expression that combines a whole number exponent with fractions or decimals and grouping. If the student passes, probe upward with S5 (rewrite an expression with the distributive property) and S6 (place grouping symbols to hit a target value). If they fail, drop below grade six to the grade five skills: B1 checks whole number order of operations with grouping symbols, and B2 checks fraction and decimal computation, the two pillars every grade six expression stands on. If those wobble, the foundations locate the gap further down, F1 for multiplication and division facts and F2 for fractions with like denominators. S1, S2, and S3 stay available to probe single parenthesis evaluation, property naming, and nested grouping.",
+    "entry_skill": "6NS5-S4",
     "if_pass": [
-      "6NS5-S4",
+      "6NS5-S5",
       "6NS5-S6"
     ],
     "if_fail": [
-      "6NS5-S1",
-      "6NS5-S2"
+      "6NS5-B1",
+      "6NS5-B2"
     ],
     "branch_skills": [
-      "6NS5-S5"
+      "6NS5-F1",
+      "6NS5-F2",
+      "6NS5-S1",
+      "6NS5-S2",
+      "6NS5-S3"
     ]
   }
 }

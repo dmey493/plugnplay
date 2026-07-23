@@ -3,7 +3,7 @@
   "standard_text": "Represent sample spaces and find probabilities of compound events (independent and dependent) using organized lists, tables, and tree diagrams.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard asks students to do two connected things: REPRESENT the sample space of a compound event, and then FIND the probability of that event -- for both independent and dependent situations. So the arc begins with representation: a compound event has more than one part (flip a coin AND roll a number cube), and its sample space is every pairing of the parts. Students build that sample space as an organized list, a table, or a tree diagram, and count the outcomes with the counting principle -- multiply the number of choices at each stage, do not add them. Once the full sample space is on the table, a natural check is to hand students a partial list and ask which outcome is missing, which forces systematic, order-aware listing.\n\nFrom there the work is probability. A probability is favorable outcomes over total outcomes, and for a compound 'and' event students multiply the stage probabilities. First they do this for INDEPENDENT events, where one outcome does not affect the next (a coin and a die, a draw WITH replacement). Then they move to DEPENDENT events drawn WITHOUT replacement, where the second stage's counts shrink -- after a red marble is removed there is one fewer red and one fewer marble in all -- so the second probability changes. Finally, at the top of the progression, they combine an independent event with a dependent one in a single compound probability. The through-line we keep naming: a probability is favorable over total, and for 'and' you MULTIPLY the stages -- updating the counts whenever an earlier outcome is not replaced.",
+    "narrative": "This standard asks students to represent the sample space of a compound event with organized lists, tables, and tree diagrams, and then find probabilities of independent and dependent events. The on-grade work runs from counting a sample space, to catching a missing outcome in a partial list, to multiplying stage probabilities for independent events, to shrinking the counts on draws without replacement. Students who stall here usually cannot yet write a simple probability as favorable over total, or they cannot list possibilities in a system without skipping or repeating. Intervention should rebuild the grade 4 skills of making organized lists and naming a fraction of a set, then the grade 7 skills of simple event probability and experimental versus theoretical probability, before returning to compound events.",
     "steps": [
       {
         "skill_id": "8DSP3-S1",
@@ -35,22 +35,210 @@
   "skills": [
     {
       "skill_id": "8DSP3-F1",
-      "name": "Write the probability of a simple event as favorable over total outcomes",
+      "name": "Make an organized list to count all possible combinations",
       "column": "foundation",
       "parent_standard": "8.DSP.3",
       "prerequisite_skill": {
         "type": "gap",
+        "grade": 4,
+        "description": "List every combination of two choices in a system, without skipping or repeating any.",
+        "check_question": "You have 3 shirts (red, blue, green) and 2 pairs of pants (jeans, khakis). List every outfit."
+      },
+      "i_do_script": "When I list combinations, I go in a system so I never skip one and never repeat one. Watch with 3 shirts (red, blue, green) and 2 pants (jeans, khakis): I fix the red shirt first and list it with every pants choice, red-jeans and red-khakis. Then blue-jeans, blue-khakis, then green-jeans, green-khakis. That is 6 outfits, and I can see them as a table: one row per shirt, one column per pants, one outfit in each cell. Fix the first choice, run through every second choice, then move on.",
+      "canonical_error": {
+        "pattern": "Lists combinations at random, so skips some and repeats others",
+        "example": "For 3 shirts and 2 pants, writes red-jeans, blue-khakis, green-jeans, red-jeans and says there are 4 outfits",
+        "why": "Without a system the student cannot tell which pairings are already used. Fixing the first choice and running through every second choice guarantees each combination appears exactly once."
+      },
+      "item_template": "A two-choice situation (shirts and pants, breads and fillings). Student lists all combinations in a system or counts them from an organized list. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "You have 3 shirts and 2 pairs of pants. How many different outfits can you make?",
+          "answer": "6"
+        },
+        {
+          "stem": "Shirts: red (R), blue (B). Pants: jeans (J), khakis (K). List every outfit.",
+          "answer": "RJ, RK, BJ, BK (4 outfits)"
+        },
+        {
+          "stem": "A deli has 2 breads and 3 fillings. How many different sandwiches can it make?",
+          "answer": "6"
+        },
+        {
+          "stem": "An ice cream shop has 4 flavors and 2 cones. How many different single-scoop cones are possible?",
+          "answer": "8"
+        },
+        {
+          "stem": "Make every two-letter code from A, B, C, using each letter only once in a code. List them all.",
+          "answer": "AB, AC, BA, BC, CA, CB (6 codes)"
+        },
+        {
+          "stem": "A snack is one fruit (apple, banana, orange) and one drink (milk, juice). How many different snacks are there?",
+          "answer": "6"
+        },
+        {
+          "stem": "Shirts R, B, G and pants J, K. A list shows RJ, RK, BJ, BK, GJ. Which outfit is missing?",
+          "answer": "GK"
+        },
+        {
+          "stem": "You have 5 shirts and 2 pairs of pants. How many different outfits can you make?",
+          "answer": "10"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which choice are you holding fixed while you list?",
+        "prompt": "Fix the first choice and pair it with every second choice before you move on. A table helps: one row per first choice, one column per second choice, one combination in each cell.",
+        "praise": "You fixed one choice and ran through all the others, so nothing got skipped or repeated."
+      },
+      "vocabulary": [
+        {
+          "term": "Combination",
+          "definition": "One way of pairing the choices, like the red shirt with the jeans."
+        },
+        {
+          "term": "Organized list",
+          "definition": "A list made in a fixed order so every possibility appears exactly once."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP3-B2",
+        "if_fail": "Review grade 4 problem solving with organized lists and tables (act out the choices with real objects first)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a table: rows labeled red, blue, green (shirts) and columns labeled jeans, khakis (pants). Each cell is one outfit."
+        },
+        {
+          "kind": "ask",
+          "text": "How many cells does the table have? Could any outfit be missing if every cell is filled?"
+        },
+        {
+          "kind": "say",
+          "text": "There are 3 rows and 2 columns, so 6 cells and 6 outfits: red-jeans, red-khakis, blue-jeans, blue-khakis, green-jeans, green-khakis. The table catches them all because every shirt meets every pants."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student lists outfits at random, ask them to point at each one's cell. A repeat lands in a used cell and a skip leaves a cell empty."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 2 breads and 3 fillings. Make the table and list every sandwich."
+        }
+      ]
+    },
+    {
+      "skill_id": "8DSP3-F2",
+      "name": "Name the fraction of a set that matches a description",
+      "column": "foundation",
+      "parent_standard": "8.DSP.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 4,
+        "description": "Write the part of a group as a fraction: the matching count over the whole count.",
+        "check_question": "3 of the 8 marbles in a bag are red. What fraction of the marbles is red?"
+      },
+      "i_do_script": "A fraction of a set is the part over the whole. Watch a bag with 3 red and 5 blue marbles: I draw all 8 marbles as circles and shade the 3 red ones. The red part is 3 out of the whole 8, so red is 3/8 of the marbles. The bottom number is the WHOLE group, all 8 marbles, not just the other color. If someone writes 3/5, they compared red to blue instead of red to the whole bag.",
+      "canonical_error": {
+        "pattern": "Writes the part over the other part instead of over the whole",
+        "example": "For 3 red and 5 blue marbles, writes 3/5 instead of 3/8",
+        "why": "The student compares the two parts to each other instead of the part to the whole set. A fraction of a set always uses the total count of the group on the bottom."
+      },
+      "item_template": "A set with a stated part (marbles, students, crayons). Student writes the fraction of the set that matches the description. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "3 of the 8 marbles in a bag are red. What fraction of the marbles is red?",
+          "answer": "3/8"
+        },
+        {
+          "stem": "5 of the 12 students in a group wear glasses. What fraction of the group wears glasses?",
+          "answer": "5/12"
+        },
+        {
+          "stem": "2 of the 6 apples in a bowl are green. What fraction of the apples is green?",
+          "answer": "2/6 (or 1/3)"
+        },
+        {
+          "stem": "A bag holds 4 red and 6 blue marbles. What fraction of the marbles is blue?",
+          "answer": "6/10 (or 3/5)"
+        },
+        {
+          "stem": "7 of the 10 crayons in a box are broken. What fraction of the crayons is broken?",
+          "answer": "7/10"
+        },
+        {
+          "stem": "A class has 9 boys and 11 girls. What fraction of the class is girls?",
+          "answer": "11/20"
+        },
+        {
+          "stem": "All 6 pencils in a cup are yellow. What fraction of the pencils is yellow?",
+          "answer": "6/6 (which is 1 whole)"
+        },
+        {
+          "stem": "None of the 5 marbles in a bag is green. What fraction of the marbles is green?",
+          "answer": "0/5 (which is 0)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "What is the whole group here, and how many are in it?",
+        "prompt": "Draw every item in the set as a circle and shade the ones that match. The fraction is shaded over ALL the circles, the whole group, not shaded over the leftovers.",
+        "praise": "You put the part over the whole group, that is what a fraction of a set means."
+      },
+      "vocabulary": [
+        {
+          "term": "Part",
+          "definition": "The items in the set that match the description, like the red marbles."
+        },
+        {
+          "term": "Whole",
+          "definition": "Every item in the set counted together, like all the marbles in the bag."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP3-B1",
+        "if_fail": "Review grade 3 and 4 fraction meaning with counters (a fraction as part of a group of objects)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw 8 circles for the marbles. Shade 3 of them red and leave 5 plain for blue."
+        },
+        {
+          "kind": "ask",
+          "text": "How many circles are shaded, and how many circles are there in all?"
+        },
+        {
+          "kind": "say",
+          "text": "3 shaded out of 8 circles in all, so red is 3/8 of the marbles. The bottom is 8 because the whole bag is the whole."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 3/5, point at the picture: are there 5 marbles in the bag, or 8? The bottom must count the whole bag."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 2 of the 9 buttons in a jar are square. What fraction of the buttons is square?"
+        }
+      ]
+    },
+    {
+      "skill_id": "8DSP3-B1",
+      "name": "Write the probability of a simple event as favorable over total",
+      "column": "looking_back",
+      "parent_standard": "8.DSP.3",
+      "prerequisite_skill": {
+        "type": "gap",
         "grade": 7,
-        "description": "Given the favorable outcomes and the total outcomes, write the probability as a fraction.",
+        "description": "Find the probability of a simple event as the number of favorable outcomes over the total number of outcomes.",
         "check_question": "A bag has 3 red and 5 blue marbles. What is the probability of drawing a red marble?"
       },
-      "i_do_script": "Picture the bag as a strip of 8 boxes, one box per marble, with the 3 red ones shaded -- the probability is just the shaded part of the whole strip, and you could never shade 8 boxes on a strip that only has 3. The probability of a simple event is the number of favorable outcomes over the total number of outcomes. Watch a bag with 3 red and 5 blue marbles: there are 3 red (favorable) out of 8 marbles total, so P(red) = 3/8. The favorable count goes on TOP, the total on the bottom. On a number cube, P(rolling a 4) = 1/6 because one face is a 4 out of six faces.",
+      "i_do_script": "The probability of a simple event is the number of favorable outcomes over the total number of outcomes. Watch a bag with 3 red and 5 blue marbles: I draw the bag as a strip of 8 boxes, one per marble, and shade the 3 red ones. Favorable is 3, total is 8, so P(red) = 3/8. The outcome I am asking about goes on TOP and the whole count goes on the bottom, so a probability is never bigger than 1. On a number cube, P(rolling a 4) = 1/6 because one face out of six is a 4, and P(even) = 3/6 = 1/2 because three faces are even.",
       "canonical_error": {
-        "pattern": "Writes total over favorable, or uses the number of OTHER outcomes as the top",
+        "pattern": "Writes total over favorable, or uses the count of the other outcomes on top",
         "example": "For 3 red out of 8 marbles, writes 8/3, or writes 5/8 (the blue count) instead of 3/8",
-        "why": "The student loses track of what 'favorable' means: it is the outcome you are asking about, on top, over the total. Flipping it or using the leftover count gives the wrong probability."
+        "why": "The student loses track of what favorable means. The event being asked about supplies the top number, and the whole sample space supplies the bottom. Flipping the fraction gives a value bigger than 1, which no probability can be."
       },
-      "item_template": "A simple event with a stated favorable count and total. Student writes the probability as a fraction. Short-response fluency bank.",
+      "item_template": "A simple event with a stated favorable count and total (marbles, number cube, spinner, deck). Student writes the probability as a fraction. MC or short response.",
       "sample_items": [
         {
           "stem": "A bag has 3 red and 5 blue marbles (8 total). What is P(red)?",
@@ -62,26 +250,45 @@
         },
         {
           "stem": "A fair number cube (1-6) is rolled. What is P(rolling an even number)?",
-          "answer": "1/2"
+          "answer": "3/6 = 1/2"
         },
         {
-          "stem": "A spinner has 4 equal sections. What is P(landing on one chosen section)?",
-          "answer": "1/4"
+          "stem": "A spinner has 5 equal sections numbered 1 to 5. What is P(landing on a number greater than 3)?",
+          "answer": "2/5"
         },
         {
           "stem": "A standard deck has 52 cards, including 4 aces. What is P(drawing an ace)?",
-          "answer": "1/13"
+          "answer": "4/52 = 1/13"
+        },
+        {
+          "stem": "A bag has 2 green and 6 yellow marbles (8 total). What is P(green)?",
+          "answer": "2/8 = 1/4"
+        },
+        {
+          "stem": "A bag has 4 red and 6 blue marbles (10 total). What is P(red)?",
+          "answer": "4/10 = 2/5",
+          "choices": [
+            "4/10 = 2/5",
+            "6/10",
+            "10/4",
+            "4/6"
+          ],
+          "distractor_logic": "6/10 uses the blue count on top; 10/4 flips the fraction; 4/6 compares red to blue instead of red to the whole bag."
+        },
+        {
+          "stem": "A fair number cube (1-6) is rolled. What is P(rolling a 7)?",
+          "answer": "0 (no face shows 7)"
         }
       ],
       "redirect_script": {
-        "stop": "Which count goes on top -- favorable or total?",
-        "prompt": "Draw the strip of boxes first: shade the marbles you are asking about, and read the probability as shaded out of the whole strip. Put the outcome you are asking about on TOP (favorable) and the total number of outcomes on the bottom. If your fraction is bigger than 1, you flipped it -- a probability is never more than 1.",
-        "praise": "You put the favorable outcomes over the total -- that's a probability, right-side up."
+        "stop": "Which count goes on top, favorable or total?",
+        "prompt": "Draw the strip of boxes first: shade the outcomes you are asking about and read the probability as shaded over the whole strip. If your fraction is bigger than 1, you flipped it.",
+        "praise": "You put the favorable outcomes over the total, that is a probability right side up."
       },
       "vocabulary": [
         {
           "term": "Probability",
-          "definition": "How likely an event is, written as favorable outcomes over total outcomes."
+          "definition": "How likely an event is, written as favorable outcomes over total outcomes, always between 0 and 1."
         },
         {
           "term": "Favorable outcome",
@@ -90,156 +297,541 @@
       ],
       "next_steps": {
         "if_pass": "8DSP3-S1",
-        "if_fail": "Review simple event probability (7.DSP.5)."
+        "if_fail": "8DSP3-F2"
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw the bag as a strip of 8 boxes, one box per marble, and shade the 2 green ones. The probability of green is the shaded part of the whole strip.",
-          "visual": {
-            "type": "fraction_bars",
-            "label": "The bag as a strip",
-            "bars": [
-              {
-                "parts": 8,
-                "shaded": 2,
-                "label": "2 green out of 8 marbles"
-              }
-            ]
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write 'A bag has 2 green and 6 yellow marbles. Find P(green).'"
+          "text": "Draw a bag with 4 red and 6 blue marbles as a strip of 10 boxes, and shade the 4 red ones."
         },
         {
           "kind": "ask",
-          "text": "How many are favorable (green), and how many marbles are there in total?"
+          "text": "How many boxes are shaded, and how many boxes are there in all? So what is P(red)?"
         },
         {
           "kind": "say",
-          "text": "Favorable over total: 2 green out of 8 marbles, so P(green) = 2/8 = 1/4."
+          "text": "4 favorable out of 10 total, so P(red) = 4/10 = 2/5. The shaded share of the strip IS the probability."
         },
         {
           "kind": "watch",
-          "text": "If a student writes 8/2, ask 'is a probability ever bigger than 1?'"
+          "text": "If a student writes 10/4 or 6/10, ask which marbles the question is about and whether a probability can be more than 1."
         },
         {
           "kind": "ask",
-          "text": "Your turn: a number cube -- find P(rolling a number greater than 4)."
+          "text": "Your turn: a spinner has 8 equal sections numbered 1 to 8. What is P(landing on a number greater than 6)?"
         }
-      ]
-    },
-    {
-      "skill_id": "8DSP3-F2",
-      "name": "Multiply two fractions and write the product in lowest terms",
-      "column": "foundation",
-      "parent_standard": "8.DSP.3",
-      "prerequisite_skill": {
-        "type": "gap",
-        "grade": 6,
-        "description": "Multiply two fractions by multiplying numerators and denominators, then simplify.",
-        "check_question": "What is 1/2 x 1/6?"
-      },
-      "i_do_script": "'Times' with fractions means OF, and a bar shows it: 1/3 x 2/5 is one third OF two fifths. Shade 2/5 of a bar, then take a third of just that shaded piece -- you land on 2 of the bar's 15 equal slivers, 2/15. Tops times tops and bottoms times bottoms is that picture as arithmetic: the bottoms multiply because slicing fifths into thirds makes fifteenths; the tops multiply because you keep 1 of the 3 slices of each of the 2 shaded fifths. To multiply two fractions I multiply the tops together and the bottoms together, then simplify. Watch 1/2 x 1/6: top is 1 x 1 = 1, bottom is 2 x 6 = 12, so the answer is 1/12. Another: 1/2 x 3/6 = 3/12, and 3/12 simplifies to 1/4. I do NOT add across -- multiplying fractions means top times top over bottom times bottom.",
-      "canonical_error": {
-        "pattern": "Adds the fractions (or cross-adds) instead of multiplying numerators and denominators",
-        "example": "For 1/2 x 1/6 writes 1/2 + 1/6 = 4/6 = 2/3, or adds tops and bottoms to get 2/8",
-        "why": "The student confuses the rule for multiplying with the rule for adding. Multiplying is straight across (top x top, bottom x bottom); adding needs a common denominator and gives a different value."
-      },
-      "item_template": "Two fractions to multiply. Student multiplies straight across and simplifies. Short-response fluency bank.",
-      "sample_items": [
+      ],
+      "engine_stems": [],
+      "practice_problems": [
         {
-          "stem": "Multiply: 1/2 x 1/6.",
-          "answer": "1/12"
+          "difficulty": "warm_up",
+          "stem": "A number cube (1-6) is rolled. How many outcomes are there in all? How many of them are even?",
+          "answer": "6 outcomes; 3 are even (2, 4, 6)"
         },
         {
-          "stem": "Multiply and simplify: 1/2 x 3/6.",
+          "difficulty": "warm_up",
+          "stem": "8 of the 20 marbles in a bag are red. What fraction of the marbles is red?",
+          "answer": "8/20 = 2/5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bag has 4 red and 6 blue marbles (10 total). What is P(blue)?",
+          "answer": "6/10 = 3/5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A fair number cube (1-6) is rolled. What is P(rolling a number less than 3)?",
+          "answer": "2/6 = 1/3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A spinner has 4 equal sections: red, blue, green, yellow. What is P(landing on green)?",
           "answer": "1/4"
         },
         {
-          "stem": "Multiply: 3/8 x 1/2.",
-          "answer": "3/16"
+          "difficulty": "core",
+          "stem": "A standard deck has 52 cards, including 13 hearts. What is P(drawing a heart)?",
+          "answer": "13/52 = 1/4"
         },
         {
-          "stem": "Multiply and simplify: 4/52 x 3/51.",
-          "answer": "1/221"
+          "difficulty": "stretch",
+          "stem": "A bag has 3 red, 4 blue, and 5 green marbles (12 total). What is P(NOT green)?",
+          "answer": "7/12 (3 red + 4 blue = 7 favorable of 12)"
         },
         {
-          "stem": "Multiply and simplify: 2/5 x 1/4.",
-          "answer": "1/10"
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Maya found a probability. Find and fix the mistake.",
+          "shown_work": [
+            "A bag has 3 red and 5 blue marbles (8 total).",
+            "Maya wrote: P(red) = 3/5."
+          ],
+          "answer": "Maya compared red to blue instead of red to the whole bag. The total is 8 marbles, so P(red) = 3/8."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Bag on a Strip",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Two-color counters",
+            "Paper bags",
+            "Blank strips of 10 boxes"
+          ],
+          "instructions": "1. Build a bag: for example 4 red and 6 yellow counters.\n2. Draw the bag as a strip, one box per counter, and shade the boxes for the event (P(red)).\n3. Write the probability as shaded over total boxes.\n4. Change the bag (3 red, 7 yellow) and repeat.\n5. Say each time: favorable on top, whole bag on the bottom."
+        },
+        {
+          "type": "matching",
+          "title": "Event Match-Up",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per event description, one card per probability"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each event, like P(even) on a number cube, to its probability, like 1/2.\n3. To claim a match, say the favorable count and the total count out loud.\n4. Two decoy cards show flipped or part-over-part fractions; set them aside and explain what went wrong.",
+          "content": {
+            "pairs": [
+              {
+                "left": "P(red) with 3 red, 5 blue",
+                "right": "3/8"
+              },
+              {
+                "left": "P(rolling a 4) on a number cube",
+                "right": "1/6"
+              },
+              {
+                "left": "P(even) on a number cube",
+                "right": "1/2"
+              },
+              {
+                "left": "P(ace) from a 52-card deck with 4 aces",
+                "right": "1/13"
+              },
+              {
+                "left": "P(green) with 2 green, 6 yellow",
+                "right": "1/4"
+              },
+              {
+                "left": "P(rolling a 7) on a number cube",
+                "right": "0"
+              }
+            ],
+            "decoys": [
+              "8/3",
+              "3/5"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Drawing the bag as a shaded strip makes favorable over total a picture before it is a rule."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The flipped fraction and the part-over-part fraction are stable errors that a find-and-fix names cleanly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'favorable is what I am asked about, total is the whole bag' keeps the two counts from swapping."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What event is the question asking about?",
+          "How many outcomes are favorable, and how many are there in all?",
+          "Can a probability ever be bigger than 1? Why not?",
+          "What would P = 0 mean here? What would P = 1 mean?",
+          "Is your bottom number the whole group, or just the leftovers?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student writes the total over the favorable count.",
+            "say": "Shade the strip: the probability is the shaded share of the whole strip. If your fraction is bigger than 1, flip it back.",
+            "praise": "You put favorable on top and total on the bottom, that is the definition."
+          },
+          {
+            "if_you_see": "Student uses the other color's count on top or on the bottom.",
+            "say": "The bottom counts the WHOLE bag, every marble. The top counts only the ones the question asks about.",
+            "praise": "You counted the whole bag for the bottom, so the fraction tells the truth."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A bag has 2 red and 3 blue marbles. What is P(red)?",
+            "look_for": "2/5. An answer of 2/3 means part over part; 5/2 means the fraction is flipped."
+          },
+          {
+            "prompt": "A number cube is rolled. What is P(rolling a 1 or a 2)?",
+            "look_for": "2/6 = 1/3, counting two favorable faces out of six."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A bag has 4 red and 6 blue marbles (10 total). What is P(red)?",
+        "answer": "2/5",
+        "steps": [
+          {
+            "math": "favorable: 4 red",
+            "annotation": "Count the outcomes the question asks about."
+          },
+          {
+            "math": "total: 4 + 6 = 10 marbles",
+            "annotation": "Count the whole bag, every marble."
+          },
+          {
+            "math": "P(red) = 4/10",
+            "annotation": "Favorable over total."
+          },
+          {
+            "math": "4/10 = 2/5",
+            "annotation": "Simplify by dividing top and bottom by 2."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A bag has 3 green and 9 yellow marbles (12 total). What is P(green)?",
+        "answer": "1/4",
+        "steps": [
+          {
+            "math": "favorable: 3 green",
+            "annotation": "Count the outcomes the question asks about.",
+            "given": true
+          },
+          {
+            "math": "total: 3 + 9 = 12 marbles",
+            "annotation": "Count the whole bag.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the probability as favorable over total.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Simplify the fraction.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The favorable outcomes are ___ and the total is ___, so P = ___/___.",
+        "The bottom is ___ because the whole group has ___ outcomes."
+      ],
+      "fluency_source": "8DSP3-F2"
+    },
+    {
+      "skill_id": "8DSP3-B2",
+      "name": "Find and compare experimental and theoretical probability",
+      "column": "looking_back",
+      "parent_standard": "8.DSP.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Compute an experimental probability from trial results, compute the theoretical probability from equally likely outcomes, and compare the two.",
+        "check_question": "A spinner with 4 equal sections is spun 40 times and lands on red 12 times. What is the experimental probability of red, and what is the theoretical probability?"
+      },
+      "i_do_script": "Theoretical probability comes from the object; experimental probability comes from what actually happened. Watch a spinner with 4 equal sections, one red: the theory says P(red) = 1/4 because 1 section of 4 is red. Now we spin it 40 times and it lands on red 12 times. The experimental probability is times it happened over times we tried: 12/40 = 3/10. The bottom of an experimental probability is the number of TRIALS, 40, not the number of sections. The two do not have to match exactly, 3/10 is close to 1/4, and with more spins the experimental result tends to get closer to the theoretical one.",
+      "canonical_error": {
+        "pattern": "Uses the number of equal sections as the denominator of an experimental probability",
+        "example": "For 12 red results in 40 spins of a 4-section spinner, writes 12/4 instead of 12/40",
+        "why": "The student mixes the two kinds of probability. Theoretical uses the object's equally likely outcomes; experimental uses the trial count. Successes over sections gives a number bigger than 1, which no probability can be."
+      },
+      "item_template": "Trial results for a spinner, coin, or number cube. Student computes the experimental probability, the theoretical probability, or compares the two. MC or short response.",
+      "sample_items": [
+        {
+          "stem": "A coin is flipped 50 times and lands on heads 28 times. What is the experimental probability of heads?",
+          "answer": "28/50 = 14/25"
+        },
+        {
+          "stem": "What is the theoretical probability that a fair coin lands on heads?",
+          "answer": "1/2"
+        },
+        {
+          "stem": "A spinner with 4 equal sections is spun 40 times and lands on red 12 times. What is the experimental probability of red?",
+          "answer": "12/40 = 3/10"
+        },
+        {
+          "stem": "That same spinner has 1 red section out of 4 equal sections. What is the theoretical probability of red?",
+          "answer": "1/4"
+        },
+        {
+          "stem": "A number cube (1-6) is rolled 60 times and shows a 6 nine times. What is the experimental probability of rolling a 6?",
+          "answer": "9/60 = 3/20"
+        },
+        {
+          "stem": "Which probability is based on the results of actual trials?",
+          "answer": "Experimental probability",
+          "choices": [
+            "Experimental probability",
+            "Theoretical probability",
+            "Both",
+            "Neither"
+          ],
+          "distractor_logic": "Theoretical comes from the object's equally likely outcomes with no trials; 'Both' and 'Neither' bait students who have not separated the two ideas."
+        },
+        {
+          "stem": "A number cube (1-6) is rolled 30 times. About how many times does theory predict a 4?",
+          "answer": "About 5 times (1/6 of 30)"
+        },
+        {
+          "stem": "As the number of trials gets larger, the experimental probability tends to get closer to what?",
+          "answer": "The theoretical probability"
         }
       ],
       "redirect_script": {
-        "stop": "Are you multiplying, or adding these fractions?",
-        "prompt": "Multiply straight across: top times top over bottom times bottom. No common denominator is needed. Then simplify. If you found a common denominator, you started adding by mistake.",
-        "praise": "You multiplied tops and bottoms straight across and simplified -- that's fraction multiplication."
+        "stop": "Is this probability from the object, or from the trials?",
+        "prompt": "For experimental probability, the bottom is the number of trials you ran. For theoretical, the bottom is the number of equally likely outcomes on the object. Say which one the question asks for before you write the fraction.",
+        "praise": "You matched the denominator to the right source, trials for experimental and outcomes for theoretical."
       },
       "vocabulary": [
         {
-          "term": "Numerator",
-          "definition": "The top number of a fraction."
+          "term": "Theoretical probability",
+          "definition": "The probability from the object itself: favorable outcomes over total equally likely outcomes."
         },
         {
-          "term": "Simplify",
-          "definition": "Write a fraction in lowest terms by dividing top and bottom by a common factor."
+          "term": "Experimental probability",
+          "definition": "The probability from the results: times the event happened over total trials."
         }
       ],
       "next_steps": {
-        "if_pass": "8DSP3-S3",
-        "if_fail": "Review multiplying fractions (6.NS.4/5)."
+        "if_pass": "8DSP3-S1",
+        "if_fail": "8DSP3-F1"
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Shade 2/5 of a bar. Now slice the bar into thirds the other way and keep one third of the shaded part.",
-          "visual": {
-            "type": "fraction_bars",
-            "label": "1/3 of 2/5 lands on 2 of 15 slivers",
-            "bars": [
-              {
-                "parts": 5,
-                "shaded": 2,
-                "label": "2/5"
-              },
-              {
-                "parts": 15,
-                "shaded": 2,
-                "label": "1/3 of it"
-              }
-            ]
-          }
+          "text": "Draw the spinner with 4 equal sections, 1 shaded red. Next to it, draw a tally chart: 40 spins, 12 tallies for red."
         },
         {
           "kind": "ask",
-          "text": "How many equal slivers does the whole bar have after both cuts? How many stay shaded? So what is 1/3 of 2/5 -- before any rule?"
-        },
-        {
-          "kind": "show",
-          "text": "Write '1/3 x 2/5 = ?'"
-        },
-        {
-          "kind": "ask",
-          "text": "What is top times top, and bottom times bottom?"
+          "text": "Which picture gives the theoretical probability, and which gives the experimental one?"
         },
         {
           "kind": "say",
-          "text": "1 x 2 = 2 on top, 3 x 5 = 15 on the bottom, so 1/3 x 2/5 = 2/15."
+          "text": "The spinner gives theory: 1 red section of 4, so 1/4. The tally chart gives the experiment: 12 reds in 40 spins, so 12/40 = 3/10. They are close but not equal, and that is normal."
         },
         {
           "kind": "watch",
-          "text": "If a student writes 3/8, ask 'did you add the bottoms instead of multiplying?'"
+          "text": "If a student writes 12/4, point at the tally chart: 40 spins happened, so the bottom must be 40. Can a probability be 3?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: multiply 1/2 x 4/9 and simplify."
+          "text": "Your turn: a coin is flipped 20 times and lands on tails 9 times. Find the experimental and the theoretical probability of tails."
         }
-      ]
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A spinner has 4 equal sections and 1 is blue. What is the theoretical probability of blue?",
+          "answer": "1/4"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "An event happened 7 times in 20 trials. What is the experimental probability?",
+          "answer": "7/20"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A coin is flipped 40 times and lands on heads 22 times. Find the experimental probability of heads and compare it to the theoretical probability.",
+          "answer": "Experimental 22/40 = 11/20; theoretical 1/2 = 20/40. The experiment came out slightly above theory."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A number cube (1-6) is rolled 60 times and shows a 3 twelve times. Find the experimental probability of a 3.",
+          "answer": "12/60 = 1/5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A spinner with 5 equal sections is spun 50 times and lands on green 8 times. Find both probabilities for green (1 section is green).",
+          "answer": "Experimental 8/50 = 4/25; theoretical 1/5 = 10/50"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Theory says P(heads) = 1/2. In 100 flips, about how many heads does theory predict?",
+          "answer": "About 50"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two students flip the same fair coin. Ana flips 10 times and gets 7 heads. Ben flips 200 times and gets 104 heads. Whose experimental probability should be closer to the theoretical 1/2, and why?",
+          "answer": "Ben's. 104/200 = 13/25 = 0.52 is closer to 0.5 than 7/10 = 0.7. More trials tend to bring the experimental probability closer to the theoretical one."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo found an experimental probability. Find and fix the mistake.",
+          "shown_work": [
+            "A spinner with 4 equal sections is spun 40 times and lands on red 12 times.",
+            "Leo wrote: experimental P(red) = 12/4 = 3."
+          ],
+          "answer": "Leo used the number of sections as the bottom. Experimental probability is successes over trials: 12/40 = 3/10. A probability can never be 3."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Spin and Tally",
+          "time_minutes": 14,
+          "grouping": "pairs",
+          "materials": [
+            "Spinner with 4 equal sections (1 red)",
+            "Tally sheets",
+            "Pencils"
+          ],
+          "instructions": "1. Before spinning, write the theoretical probability of red (1/4) from the spinner itself.\n2. Spin 20 times and tally each result.\n3. Write the experimental probability: red tallies over 20.\n4. Combine results with another pair to make 40 trials and recompute.\n5. Debrief: which number changed as trials grew, and which never changed? Why?"
+        },
+        {
+          "type": "card_sort",
+          "title": "Theory or Experiment?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Cards describing probability statements"
+          ],
+          "instructions": "1. Read each card aloud.\n2. Sort it into Theoretical (from the object) or Experimental (from trial results).\n3. For each experimental card, name the trial count that belongs on the bottom.\n4. Debrief: what word in each card gave it away?",
+          "content": {
+            "categories": [
+              "Theoretical (from the object)",
+              "Experimental (from trials)"
+            ],
+            "cards": [
+              {
+                "text": "A fair coin has 2 sides, so P(heads) = 1/2.",
+                "category": "Theoretical (from the object)"
+              },
+              {
+                "text": "The coin landed on heads 28 times in 50 flips, so P(heads) = 28/50.",
+                "category": "Experimental (from trials)"
+              },
+              {
+                "text": "One of the 6 faces is a 4, so P(4) = 1/6.",
+                "category": "Theoretical (from the object)"
+              },
+              {
+                "text": "The cube showed a 4 nine times in 60 rolls, so P(4) = 9/60.",
+                "category": "Experimental (from trials)"
+              },
+              {
+                "text": "One of the spinner's 5 equal sections is green, so P(green) = 1/5.",
+                "category": "Theoretical (from the object)"
+              },
+              {
+                "text": "The spinner landed on green 8 times in 50 spins, so P(green) = 8/50.",
+                "category": "Experimental (from trials)"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Running a real tally experiment next to the drawn spinner makes the two sources of a probability concrete before the vocabulary is named."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "A number talk on 'should 12 reds in 40 spins worry us if theory says 1/4?' builds the sense that experiment and theory are close, not equal."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The successes-over-sections error is precise and produces an impossible probability, which a find-and-fix exposes quickly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Does this probability come from the object or from the results?",
+          "What number goes on the bottom of an experimental probability?",
+          "Are the experimental and theoretical probabilities close? Should they match exactly?",
+          "What would happen to the experimental probability if we ran many more trials?",
+          "Can a probability ever be bigger than 1? What does that tell you about 12/4?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student puts the number of sections or faces under an experimental result.",
+            "say": "Point at the tally sheet: how many trials happened? That count is the bottom. The sections only matter for the theoretical probability.",
+            "praise": "You used trials on the bottom for the experiment, that is the right source."
+          },
+          {
+            "if_you_see": "Student says the experiment is wrong because it does not equal the theoretical value.",
+            "say": "Theory predicts, it does not command. Results wobble around the theoretical value, and more trials bring them closer.",
+            "praise": "You compared the two instead of forcing them to match, that is how probability behaves."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A cube is rolled 30 times and shows a 2 six times. What is the experimental probability of a 2?",
+            "look_for": "6/30 = 1/5. An answer of 6/6 or 2/6 means the sources are mixed up."
+          },
+          {
+            "prompt": "What is the theoretical probability of a 2 on that cube, and are the two close?",
+            "look_for": "1/6, and yes, 1/5 is close to 1/6. Expecting an exact match signals the misconception."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A spinner with 4 equal sections (1 red) is spun 40 times and lands on red 12 times. Find the experimental and theoretical probabilities of red and compare them.",
+        "answer": "Experimental 3/10; theoretical 1/4; they are close but not equal",
+        "steps": [
+          {
+            "math": "experimental: 12/40",
+            "annotation": "Times it happened over times we tried."
+          },
+          {
+            "math": "12/40 = 3/10",
+            "annotation": "Simplify by dividing top and bottom by 4."
+          },
+          {
+            "math": "theoretical: 1/4",
+            "annotation": "One red section of four equal sections."
+          },
+          {
+            "math": "3/10 = 0.30 and 1/4 = 0.25",
+            "annotation": "Close but not equal, which is normal for 40 trials."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A number cube (1-6) is rolled 60 times and shows a 6 nine times. Find the experimental and theoretical probabilities of rolling a 6 and compare them.",
+        "answer": "Experimental 3/20; theoretical 1/6; they are close",
+        "steps": [
+          {
+            "math": "experimental: 9/60",
+            "annotation": "Nine successes over sixty trials.",
+            "given": true
+          },
+          {
+            "math": "9/60 = 3/20",
+            "annotation": "Simplify by dividing top and bottom by 3.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the theoretical probability from the cube's faces.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Compare the two values as decimals or with a common denominator.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The experimental probability is ___/___ because it happened ___ times in ___ trials.",
+        "The theoretical probability is ___/___ because the object has ___ equally likely outcomes.",
+        "The two are close but not equal because ___."
+      ],
+      "fluency_source": "8DSP3-F2"
     },
     {
       "skill_id": "8DSP3-S1",
       "name": "Represent and count the sample space of a compound event",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "8.DSP.3",
       "engine_stems": [
         1
@@ -1089,7 +1681,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP3-F2",
+      "fluency_source": "8DSP3-B1",
       "sentence_starters": [
         "P(first) = ___ and P(second) = ___, so P(both) = ___ x ___ = ___.",
         "It's an 'and' event with independent stages, so I ___ the probabilities."
@@ -1357,7 +1949,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP3-F2",
+      "fluency_source": "8DSP3-B1",
       "sentence_starters": [
         "First draw: ___/___. After removing one, second draw: ___/___.",
         "It's without replacement, so I subtract 1 from the ___ and the ___ before multiplying."
@@ -1626,7 +2218,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP3-F2",
+      "fluency_source": "8DSP3-B1",
       "sentence_starters": [
         "The ___ stage is independent, so P = ___; the two draws are dependent, so the second is ___/___.",
         "Every stage is joined by 'and,' so I multiply ___ x ___ x ___ = ___."
@@ -1683,8 +2275,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 4-6) prerequisite skills. Start intervention here.",
       "skills": [
         "8DSP3-F1",
         "8DSP3-F2"
@@ -1692,15 +2284,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 7) skills that feed this standard directly.",
       "skills": [
-        "8DSP3-S1"
+        "8DSP3-B1",
+        "8DSP3-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "8DSP3-S1",
         "8DSP3-S2",
         "8DSP3-S3",
         "8DSP3-S4"
@@ -1708,7 +2302,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "8DSP3-S5"
       ]
@@ -1717,6 +2311,8 @@
   "skill_sequence": [
     "8DSP3-F1",
     "8DSP3-F2",
+    "8DSP3-B1",
+    "8DSP3-B2",
     "8DSP3-S1",
     "8DSP3-S2",
     "8DSP3-S3",
@@ -1726,15 +2322,23 @@
   "skill_tree": {
     "8DSP3-F1": [],
     "8DSP3-F2": [],
+    "8DSP3-B1": [
+      "8DSP3-F2"
+    ],
+    "8DSP3-B2": [
+      "8DSP3-F1",
+      "8DSP3-F2"
+    ],
     "8DSP3-S1": [
-      "8DSP3-F1"
+      "8DSP3-B1",
+      "8DSP3-B2"
     ],
     "8DSP3-S2": [
       "8DSP3-S1"
     ],
     "8DSP3-S3": [
       "8DSP3-S1",
-      "8DSP3-F2"
+      "8DSP3-B1"
     ],
     "8DSP3-S4": [
       "8DSP3-S3"
@@ -1744,18 +2348,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S3 (find the probability of a compound INDEPENDENT event) -- the core grade-level discriminator, and where the 'add instead of multiply' misconception lives. If they pass, move to S4 (dependent, without replacement) and S5 (mixed independent and dependent). If they fail, drop to S1 to check whether they can even represent and count the sample space, then to F1/F2. S2 (identify a missing outcome) branches off as a listing check, and S5 (mixed events) as the synthesis check.",
+    "description": "Start with S3, finding the probability of a compound independent event, the core grade-level discriminator where the add-instead-of-multiply misconception lives. If they pass, move up to S4 (dependent, without replacement) and S5 (mixed independent and dependent). If they fail, drop below grade level: B1 checks simple event probability as favorable over total and B2 checks experimental versus theoretical probability, the grade 7 skills compound probability leans on. If those wobble, the foundations F1 (organized lists) and F2 (fraction of a set) locate the gap in grade 4. S1 and S2 remain available to probe the standard's own sample-space representation work.",
     "entry_skill": "8DSP3-S3",
     "if_pass": [
       "8DSP3-S4",
       "8DSP3-S5"
     ],
     "if_fail": [
-      "8DSP3-S1"
+      "8DSP3-B1",
+      "8DSP3-B2"
     ],
     "branch_skills": [
-      "8DSP3-S2",
-      "8DSP3-S5"
+      "8DSP3-F1",
+      "8DSP3-F2",
+      "8DSP3-S1",
+      "8DSP3-S2"
     ]
   }
 }

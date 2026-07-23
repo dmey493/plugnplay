@@ -3,7 +3,7 @@
   "standard_text": "Solve linear equations and inequalities with rational number coefficients fluently, including those whose solutions require expanding expressions using the distributive property and collecting like terms. Represent real-world problems using linear equations and inequalities in one variable and solve such problems.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard is the fluency capstone of middle-school algebra: solve any one-variable linear equation or inequality, even when it first has to be untangled by distributing and combining like terms, and then use that machinery to model real situations. The word 'fluently' is doing a lot of work — students are expected to run a reliable procedure, not rediscover it each time. So the progression starts by nailing down what a solution even IS: a value that makes the statement true. Checking a candidate by substitution (the Below-proficiency task) is the anchor every solving move is judged against — if you can't tell whether 6 works, you can't trust your answer of x = 6.\n\nFrom there the two mechanical engines the standard names get their own steps: distributing a coefficient (now including negatives and fractions — the real jump from 7th grade, where the thing inside the parentheses always had a coefficient of 1) and combining like terms on one side. With those in hand, the core fluency step is solving multi-step equations that require both. Inequalities come next, because they add one genuinely new rule that trips students for years: flip the direction when you multiply or divide by a negative. Finally the standard turns outward — translate a real-world story into a one-variable equation or inequality, solve it, and (at the top band) justify the answer. The order is deliberate: check, then distribute and combine, then solve equations, then solve inequalities, then model. Underneath all of it runs one habit we keep returning to — every legal move keeps both sides balanced, and the answer is only finished when substitution proves it true.",
+    "narrative": "This standard asks eighth graders to solve any one variable linear equation or inequality fluently, including ones that must first be untangled by distributing a rational coefficient and combining like terms, and then to model real situations with them. The on grade skills build from checking a candidate solution by substitution to distributing, solving multi step equations, solving inequalities with the sign flip rule, and finally writing equations and inequalities from word problems. Students who stall here usually cannot yet run the grade 7 machinery of two step equations and two step inequalities, so those skills live in the looking back column. Below that, gaps in grade 5 order of operations and grade 6 one step equations quietly break both substitution checks and inverse operations. Intervention starts at the deepest broken layer and climbs: evaluate correctly, undo one step, undo two steps, then clean up and solve.",
     "steps": [
       {
         "skill_id": "8AF1-S1",
@@ -40,188 +40,798 @@
   "skills": [
     {
       "skill_id": "8AF1-F1",
-      "name": "Isolate a variable using inverse operations",
+      "name": "Evaluate expressions with parentheses using the order of operations",
       "column": "foundation",
       "parent_standard": "8.AF.1",
       "prerequisite_skill": {
         "type": "gap",
+        "grade": 5,
+        "description": "Evaluate whole number expressions with parentheses, doing the parentheses first and multiplication or division before addition or subtraction.",
+        "check_question": "What is 3 * (4 + 2)?"
+      },
+      "i_do_script": "An expression is a set of instructions, and the parentheses tell me which instruction is grouped together. Watch: 3 * (4 + 2). The parentheses group the 4 + 2, so that happens first: 4 + 2 = 6. Then I multiply: 3 * 6 = 18. Without parentheses the rule is multiply or divide before add or subtract, so 20 - 2 * 5 means 20 minus 10, which is 10, not 18 * 5. On a grid I can draw 3 rows of a strip that is 4 squares plus 2 squares long: every row holds 6 squares, and 3 rows of 6 is 18.",
+      "canonical_error": {
+        "pattern": "Evaluates strictly left to right, ignoring parentheses and the multiply-first rule",
+        "example": "Computes 20 - 2 * 5 as 18 * 5 = 90 instead of 20 - 10 = 10",
+        "why": "The student reads the expression like a sentence and does each operation in reading order. The parentheses and the multiply-first rule set the real order, and a picture of groups shows why 2 * 5 must be built before it can be subtracted."
+      },
+      "item_template": "A whole number expression with one set of parentheses or one multiply-first decision. Student evaluates. Short response fluency bank, no calculator.",
+      "sample_items": [
+        {
+          "stem": "Evaluate 3 * (4 + 2).",
+          "answer": "18"
+        },
+        {
+          "stem": "Evaluate 20 - 2 * 5.",
+          "answer": "10"
+        },
+        {
+          "stem": "Evaluate (9 - 3) * 4.",
+          "answer": "24"
+        },
+        {
+          "stem": "Evaluate 5 * (10 - 6) + 2.",
+          "answer": "22"
+        },
+        {
+          "stem": "Evaluate 36 / (5 + 4).",
+          "answer": "4"
+        },
+        {
+          "stem": "Evaluate 2 * (3 + 7) - 8.",
+          "answer": "12"
+        },
+        {
+          "stem": "Evaluate 15 - (6 + 4).",
+          "answer": "5"
+        },
+        {
+          "stem": "Evaluate 8 + 4 * 3.",
+          "answer": "20"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which part of this expression is grouped first?",
+        "prompt": "Circle the parentheses and do that part first. If there are no parentheses, do the multiplying or dividing before the adding or subtracting. Then work what is left.",
+        "praise": "You did the grouped part first, that is exactly what the order of operations means."
+      },
+      "vocabulary": [
+        {
+          "term": "Parentheses",
+          "definition": "Grouping symbols that show which part of an expression to evaluate first."
+        },
+        {
+          "term": "Expression",
+          "definition": "A math phrase made of numbers and operations, with no equals sign."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF1-B2",
+        "if_fail": "Review grade 5 order of operations with grouping pictures (rows of grouped squares before any rule words)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 3 * (4 + 2). Draw 3 rows of a strip made of 4 squares plus 2 more squares."
+        },
+        {
+          "kind": "ask",
+          "text": "How long is one strip? So how many squares are in 3 rows?"
+        },
+        {
+          "kind": "say",
+          "text": "One strip is 4 + 2 = 6 squares, and 3 rows of 6 is 18. The parentheses built the strip first, then the 3 copied it. That is why 3 * (4 + 2) = 18, not 3 * 4 + 2 = 14."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 14, ask them to point at the picture: did the 3 copy the whole strip or only part of it?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: evaluate 2 * (5 + 3) with a quick sketch."
+        }
+      ]
+    },
+    {
+      "skill_id": "8AF1-F2",
+      "name": "Solve one-step equations using inverse operations",
+      "column": "foundation",
+      "parent_standard": "8.AF.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Solve equations of the form x + p = q and px = q with nonnegative numbers by undoing the one operation.",
+        "check_question": "Solve x + 7 = 15."
+      },
+      "i_do_script": "An equation is a balanced scale, and I find x by undoing the one thing done to it. Watch: x + 7 = 15. Something plus 7 lands on 15, so I take 7 off both sides of the scale: x = 8. For 4x = 28, the x was copied 4 times, so I split 28 into 4 equal groups: x = 7. Adding is undone by subtracting, and multiplying is undone by dividing. On a bar model, 15 is a bar split into a piece labeled x and a piece labeled 7, so the x piece must be 15 - 7.",
+      "canonical_error": {
+        "pattern": "Applies the same operation instead of the inverse, or subtracts the coefficient",
+        "example": "For x + 7 = 15 writes x = 22, or for 4x = 28 writes x = 24",
+        "why": "The student moves the number without reversing the operation, adding 7 again or subtracting the 4 that is actually multiplying. The bar model shows x is what is left when the 7 piece is removed, and 4x means four copies, which split by dividing."
+      },
+      "item_template": "A one-step equation x + p = q, x - p = q, px = q, or x/p = q with nonnegative whole numbers, simple fractions, or decimals. Student solves. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "Solve x + 7 = 15.",
+          "answer": "x = 8"
+        },
+        {
+          "stem": "Solve 4x = 28.",
+          "answer": "x = 7"
+        },
+        {
+          "stem": "Solve x - 6 = 9.",
+          "answer": "x = 15"
+        },
+        {
+          "stem": "Solve x/5 = 4.",
+          "answer": "x = 20"
+        },
+        {
+          "stem": "Solve x + 2.5 = 6.",
+          "answer": "x = 3.5"
+        },
+        {
+          "stem": "Solve 9x = 45.",
+          "answer": "x = 5"
+        },
+        {
+          "stem": "Solve x + 3/4 = 2.",
+          "answer": "x = 5/4 (or 1 1/4)"
+        },
+        {
+          "stem": "Solve x - 1.5 = 4.",
+          "answer": "x = 5.5"
+        }
+      ],
+      "redirect_script": {
+        "stop": "What one thing is being done to x?",
+        "prompt": "Name the operation, then do its opposite to both sides. Plus 7 comes off with minus 7, and times 4 comes apart with divide by 4. Check by putting your answer back in.",
+        "praise": "You undid the operation with its opposite and kept both sides balanced."
+      },
+      "vocabulary": [
+        {
+          "term": "Inverse operation",
+          "definition": "The operation that undoes another: subtraction undoes addition, division undoes multiplication."
+        },
+        {
+          "term": "Solution",
+          "definition": "The value of the variable that makes the equation true."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF1-B1",
+        "if_fail": "Review grade 6 one-step equations with a bar model (the whole bar split into the x piece and the known piece)."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a bar labeled 15. Split it into a piece labeled x and a piece labeled 7. Write x + 7 = 15 underneath."
+        },
+        {
+          "kind": "ask",
+          "text": "If the whole bar is 15 and one piece is 7, how do we find the x piece?"
+        },
+        {
+          "kind": "say",
+          "text": "Take the 7 away from the whole: x = 15 - 7 = 8. Subtracting undoes the adding. Check: 8 + 7 = 15, true."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes x = 22, point at the bar: can the x piece be bigger than the whole bar?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: draw the bar for 4x = 28 as four equal x pieces and solve."
+        }
+      ]
+    },
+    {
+      "skill_id": "8AF1-B1",
+      "name": "Solve two-step equations of the form px + q = r",
+      "column": "looking_back",
+      "parent_standard": "8.AF.1",
+      "prerequisite_skill": {
+        "type": "gap",
         "grade": 7,
-        "description": "Solve two-step equations (px + q = r) by undoing operations in reverse order.",
+        "description": "Solve two-step equations px + q = r with rational numbers by clearing the constant first, then dividing by the coefficient.",
         "check_question": "Solve 3x + 5 = 20."
       },
-      "i_do_script": "3x + 5 = 20 was BUILT forwards: some number x was tripled, then 5 was added, and it landed on 20. Undoing walks the same road backwards -- last thing on, first thing off -- which is why the +5 comes off before the tripling. 'Shoes before socks' is just that walk named. To get a variable by itself I undo whatever is happening to it, in reverse order — like taking off shoes before socks. Watch: 3x + 5 = 20. The x is multiplied by 3, then 5 is added. I undo the adding first: subtract 5 from both sides, giving 3x = 15. Then I undo the multiplying: divide both sides by 3, giving x = 5. Whatever I do to one side, I do to the other — that keeps the scale balanced.",
+      "i_do_script": "A two-step equation was built in two moves, so I undo it in two moves, last move first. Watch: 3x + 5 = 20. The x was multiplied by 3, then 5 was added. I undo the adding first: subtract 5 from both sides, so 3x = 15. Then I undo the multiplying: divide both sides by 3, so x = 5. On a bar model, 20 is three equal x pieces plus a 5 piece, so removing the 5 leaves 15 shared by three pieces. I finish by checking: 3(5) + 5 = 20, true.",
       "canonical_error": {
-        "pattern": "Undoes operations in the wrong order, or divides before subtracting",
-        "example": "For 3x + 5 = 20 the student divides by 3 first (getting x + 5 = 20/3) instead of subtracting 5 first",
-        "why": "The student attacks the coefficient before clearing the constant, mirroring left-to-right reading instead of reverse order of operations. The added/subtracted term must be cleared before the multiplication is undone."
+        "pattern": "Undoes the operations in the wrong order or moves a number without reversing it",
+        "example": "For 2x + 5 = 17 writes 2x = 22 (adds the 5 instead of subtracting) or divides by 2 before clearing the 5",
+        "why": "The student moves the constant across the equals sign without doing the inverse, or attacks the coefficient first. The bar model shows the 5 piece must come off the whole before the remaining amount can be split into equal x pieces."
       },
-      "item_template": "A two-step equation px + q = r with integer or simple rational values. Student isolates x. Short numeric response; good short fluency bank.",
+      "item_template": "A two-step equation px + q = r with integer, simple fraction, or decimal values, including negatives. May include one p(x + q) = r form. Student solves and can check by substitution. Numeric response.",
       "sample_items": [
         {
           "stem": "Solve 3x + 5 = 20.",
           "answer": "x = 5"
         },
         {
-          "stem": "Solve 2x - 7 = 9.",
-          "answer": "x = 8"
+          "stem": "Solve 2x - 7 = 11.",
+          "answer": "x = 9"
         },
         {
-          "stem": "Solve 5x + 4 = 24.",
-          "answer": "x = 4"
+          "stem": "Solve -4x + 3 = 19.",
+          "answer": "x = -4"
         },
         {
-          "stem": "Solve (1/2)x - 3 = 4.",
+          "stem": "Solve (1/2)x + 3 = 10.",
           "answer": "x = 14"
         },
         {
-          "stem": "Solve -4x + 10 = 2.",
-          "answer": "x = 2"
+          "stem": "Solve 5x + 2 = -13.",
+          "answer": "x = -3"
         },
         {
-          "stem": "Solve 7x - 6 = 15.",
+          "stem": "Solve 0.4x + 1 = 3.",
+          "answer": "x = 5"
+        },
+        {
+          "stem": "Solve 4(x + 2) = 20.",
           "answer": "x = 3"
+        },
+        {
+          "stem": "Solve -2x - 6 = 4.",
+          "answer": "x = -5"
         }
       ],
       "redirect_script": {
-        "stop": "Wait — what is being done to the x LAST?",
-        "prompt": "Say how the equation was BUILT from x, step by step -- then take the steps off in reverse, last on, first off. Undo in reverse order. Clear the added or subtracted number FIRST (do the opposite to both sides), and only then divide by the number multiplying x.",
-        "praise": "You cleared the constant before touching the coefficient — that's the right order."
+        "stop": "What was done to x last?",
+        "prompt": "Say how the equation was built from x, then take the steps off in reverse. Clear the added or subtracted number first by doing its opposite to both sides, and only then divide by the coefficient. Check your answer in the original.",
+        "praise": "You cleared the constant before touching the coefficient, that is the right order."
       },
       "vocabulary": [
         {
-          "term": "Inverse operation",
-          "definition": "The operation that undoes another (subtraction undoes addition; division undoes multiplication)."
+          "term": "Coefficient",
+          "definition": "The number multiplying the variable, like the 3 in 3x."
         },
         {
-          "term": "Isolate",
-          "definition": "Get the variable alone on one side of the equation."
+          "term": "Constant",
+          "definition": "The plain number term with no variable, like the 5 in 3x + 5."
         }
       ],
       "next_steps": {
         "if_pass": "8AF1-S1",
-        "if_fail": "Review two-step equations (7.AF.3)."
+        "if_fail": "8AF1-F2"
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "How was 4x - 3 = 17 built from x, step by step? (Times 4 first, then minus 3.) To walk backwards to x, which step must come off first, and why?"
-        },
-        {
           "kind": "show",
-          "text": "Write '4x - 3 = 17.'"
+          "text": "Draw a bar labeled 20 split into three equal pieces labeled x and one piece labeled 5. Write 3x + 5 = 20 underneath."
         },
         {
           "kind": "ask",
-          "text": "What is happening to x? In what order?"
+          "text": "Which piece can we remove right away? What is left after we remove it?"
         },
         {
           "kind": "say",
-          "text": "x is multiplied by 4, then 3 is subtracted. I undo the subtraction first: add 3 to both sides, getting 4x = 20."
+          "text": "Take off the 5 piece: three x pieces make 15. Split 15 into three equal pieces: each x is 5. In symbols, subtract 5 from both sides to get 3x = 15, then divide by 3 to get x = 5."
         },
         {
           "kind": "watch",
-          "text": "If the student divides by 4 first, ask 'what number is stuck to the x by adding or subtracting? Clear that one first.'"
+          "text": "If a student divides by 3 first, ask which number is stuck on by adding. That one comes off first."
         },
         {
           "kind": "ask",
-          "text": "Now undo the times 4. What do you do to both sides? Your turn: 6x + 2 = 20."
+          "text": "Your turn: draw or solve 2x + 3 = 11 and check your answer."
         }
-      ]
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Solve x + 4 = 11.",
+          "answer": "x = 7"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Solve 3x = 18.",
+          "answer": "x = 6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve 2x + 5 = 17.",
+          "answer": "x = 6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve 4x - 9 = 7.",
+          "answer": "x = 4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve -3x + 1 = 10.",
+          "answer": "x = -3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve 3(x - 2) = 15.",
+          "answer": "x = 7"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Solve (2/3)x + 4 = 10.",
+          "answer": "x = 9"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Maya solved 2x + 5 = 17 and got x = 11. Find her mistake and fix it.",
+          "shown_work": [
+            "2x + 5 = 17",
+            "2x = 17 + 5",
+            "2x = 22",
+            "x = 11"
+          ],
+          "answer": "She added 5 instead of subtracting it. Subtract 5 from both sides: 2x = 12, so x = 6. Check: 2(6) + 5 = 17."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Bars Before Symbols",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Whiteboards",
+            "Equation cards like 3x + 5 = 20 and 2x - 4 = 10"
+          ],
+          "instructions": "1. Draw the bar model for the card: the total bar, the equal x pieces, and the constant piece.\n2. Remove the constant piece from the drawing and write the matching symbol step underneath.\n3. Split the remaining amount into the equal x pieces and write the division step.\n4. Check the answer in the original card.\n5. Say each time: the extra piece comes off first, then the split."
+        },
+        {
+          "type": "matching",
+          "title": "First Move Match",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per equation, one card per correct first move"
+          ],
+          "instructions": "1. Spread the equation cards and the first-move cards face up.\n2. Match each equation like 4x - 9 = 7 to its correct first move like add 9 to both sides.\n3. To claim a match, say what was done to x last and why that comes off first.\n4. Two decoy cards show a wrong first move; set them aside and explain the error.",
+          "content": {
+            "pairs": [
+              {
+                "left": "3x + 5 = 20",
+                "right": "Subtract 5 from both sides"
+              },
+              {
+                "left": "4x - 9 = 7",
+                "right": "Add 9 to both sides"
+              },
+              {
+                "left": "2x + 3 = 11",
+                "right": "Subtract 3 from both sides"
+              },
+              {
+                "left": "5x - 2 = 13",
+                "right": "Add 2 to both sides"
+              },
+              {
+                "left": "4(x + 2) = 20",
+                "right": "Divide both sides by 4"
+              },
+              {
+                "left": "(1/2)x + 3 = 10",
+                "right": "Subtract 3 from both sides"
+              }
+            ],
+            "decoys": [
+              "Divide 3x + 5 = 20 by 3 first",
+              "Subtract 9 from both sides of 4x - 9 = 7"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The bar model makes 'clear the constant first, then split' visible before the inverse operations rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The add-instead-of-subtract slip is stable and baitable; finding and fixing it in shown work confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'built by times 3 then plus 5, so undo plus 5 first' makes the invisible order decision audible."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How was this equation built from x, step by step?",
+          "Which number is attached by adding or subtracting? Why does it come off first?",
+          "What is the opposite of the last thing done to x?",
+          "Does your answer check when you put it back in the original?",
+          "What changes when the coefficient is negative, like -3x + 1 = 10?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student moves the constant across without changing the operation, like 2x = 17 + 5.",
+            "say": "Point at the bar: the 5 piece is part of the 17, so it comes off by subtracting. Do the opposite operation to both sides.",
+            "praise": "You reversed the operation instead of just moving the number, that keeps the scale balanced."
+          },
+          {
+            "if_you_see": "Student divides by the coefficient before clearing the constant.",
+            "say": "What was done to x last? The plus or minus went on last, so it comes off first. Then divide.",
+            "praise": "You took the steps off in reverse order, last on, first off."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Solve 2x + 3 = 11.",
+            "look_for": "x = 4, with the 3 subtracted before dividing by 2."
+          },
+          {
+            "prompt": "Solve -2x + 1 = 9.",
+            "look_for": "x = -4, with the sign tracked through the division."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Solve 2x + 5 = 17.",
+        "answer": "x = 6",
+        "steps": [
+          {
+            "math": "2x + 5 = 17",
+            "annotation": "Built from x by times 2, then plus 5. Undo in reverse."
+          },
+          {
+            "math": "subtract 5: 2x = 12",
+            "annotation": "The plus 5 went on last, so it comes off first."
+          },
+          {
+            "math": "divide by 2: x = 6",
+            "annotation": "Split the 12 into the two equal x pieces."
+          },
+          {
+            "math": "check: 2(6) + 5 = 17",
+            "annotation": "The answer makes the original true, so it is a solution."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Solve 3x - 4 = 11.",
+        "answer": "x = 5",
+        "steps": [
+          {
+            "math": "3x - 4 = 11",
+            "annotation": "Built by times 3, then minus 4. Undo in reverse.",
+            "given": true
+          },
+          {
+            "math": "add 4: 3x = 15",
+            "annotation": "The minus 4 comes off with plus 4 on both sides.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Undo the times 3.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check your answer in the original equation.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The equation was built by ___ and then ___, so I undo ___ first.",
+        "After I clear the constant, the equation is ___, so x = ___."
+      ],
+      "fluency_source": "8AF1-F2"
     },
     {
-      "skill_id": "8AF1-F2",
-      "name": "Identify and combine like terms on one side",
-      "column": "foundation",
+      "skill_id": "8AF1-B2",
+      "name": "Solve two-step inequalities of the form px + q < r",
+      "column": "looking_back",
       "parent_standard": "8.AF.1",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 7,
-        "description": "Combine terms with the same variable, keeping constants separate.",
-        "check_question": "Simplify 3x + 5 + 2x - 1."
+        "description": "Solve inequalities of the form px + q < r or px + q >= r with positive coefficients and describe the solution set on a number line.",
+        "check_question": "Solve 2x + 3 < 11."
       },
-      "i_do_script": "Like terms are like units: 3x + 2x is 3 boxes plus 2 boxes -- 5 boxes -- while the plain 5 is loose marbles. Boxes add with boxes and marbles with marbles, but 5x + 5 can't collapse to 10-of-anything because a box and a marble aren't the same unit. Like terms are terms with the exact same variable part — the x-terms live together and the plain numbers live together, but they never mix. Watch: 3x + 5 + 2x − 1. I gather the x-terms: 3x and 2x make 5x. Then the numbers: 5 and −1 make 4. So the whole thing is 5x + 4. I can't add 5x and 4 — a variable and a number aren't like terms.",
+      "i_do_script": "An inequality has a whole set of solutions, not just one, and I find the set with the same two undo moves as an equation. Watch: 2x + 3 < 11. Subtract 3 from both sides: 2x < 8. Divide both sides by 2: x < 4. That means every number less than 4 works, so on a number line I draw an open circle at 4 and shade to the left. I test one number from my set: x = 0 gives 3 < 11, true, so the shading points the right way. The circle is open for < or >, and filled in for <= or >=, because those include the boundary number.",
       "canonical_error": {
-        "pattern": "Combines a variable term with a constant, or adds coefficients of unlike terms",
-        "example": "Simplifies 3x + 5 to 8x, treating the 5 as if it were 5x",
-        "why": "The student adds every number in sight, ignoring that only terms with the identical variable part can be combined. 3x and 5 are unlike terms and must stay separate."
+        "pattern": "Treats the inequality like an equation with one answer, or shades the wrong side of the boundary",
+        "example": "For 2x + 3 < 11 writes x = 4 as the answer, or writes x < 4 but shades to the right of 4",
+        "why": "The student stops at the boundary number instead of naming the whole set, or shades without testing. One quick substitution of an easy number like 0 shows which side of the boundary makes the statement true."
       },
-      "item_template": "An expression with 2-3 like variable terms and 1-2 constants on one side. Student simplifies. Short response fluency bank.",
+      "item_template": "A two-step inequality px + q < r, > r, <= r, or >= r with positive rational p. Student solves, states the solution set, and can graph it with the correct open or closed circle. May include a short px + q context. Inequality response.",
       "sample_items": [
         {
-          "stem": "Simplify 3x + 5 + 2x - 1.",
-          "answer": "5x + 4"
+          "stem": "Solve 2x + 3 < 11.",
+          "answer": "x < 4"
         },
         {
-          "stem": "Simplify 7x - 2x + 8.",
-          "answer": "5x + 8"
+          "stem": "Solve 3x - 5 >= 7.",
+          "answer": "x >= 4"
         },
         {
-          "stem": "Simplify 4x + 6 - x - 10.",
-          "answer": "3x - 4"
+          "stem": "Solve 4x + 1 > 9.",
+          "answer": "x > 2"
         },
         {
-          "stem": "Simplify -2x + 9 + 5x.",
-          "answer": "3x + 9"
+          "stem": "Solve (1/2)x + 3 <= 5.",
+          "answer": "x <= 4"
         },
         {
-          "stem": "Simplify 6 + 2x - 3x + 1.",
-          "answer": "-x + 7"
+          "stem": "Solve 5x - 2 < 13.",
+          "answer": "x < 3"
+        },
+        {
+          "stem": "Solve 0.5x + 2 > 5.",
+          "answer": "x > 6"
+        },
+        {
+          "stem": "Tickets cost $6 each plus a $4 fee. Mia can spend at most $28. Write and solve an inequality for the number of tickets t.",
+          "answer": "6t + 4 <= 28, so t <= 4"
+        },
+        {
+          "stem": "Which values from the set {2, 5, 8} make 3x + 1 > 10 true?",
+          "answer": "5 and 8",
+          "choices": [
+            "2 only",
+            "5 and 8",
+            "2 and 5",
+            "all three"
+          ],
+          "distractor_logic": "3(2) + 1 = 7, not greater than 10; 3(5) + 1 = 16 and 3(8) + 1 = 25 both work. Choosing all three skips the substitution test."
         }
       ],
       "redirect_script": {
-        "stop": "Hold on — are those two terms really alike?",
-        "prompt": "Circle every term with an x in one color and every plain number in another. Add only same-color terms. A variable and a bare number never combine.",
-        "praise": "You kept the x-terms and the numbers in separate piles — that's what 'like terms' means."
+        "stop": "Is your answer one number or a set of numbers?",
+        "prompt": "Solve with the same two undo moves as an equation, then write the set with the inequality sign, like x < 4. Test one easy number from your set in the original to prove the shading points the right way.",
+        "praise": "You named the whole set and tested a number to check the direction, that is a complete solution."
       },
       "vocabulary": [
         {
-          "term": "Like terms",
-          "definition": "Terms with the exact same variable part, so their number parts can be added."
+          "term": "Solution set",
+          "definition": "All the values of the variable that make the inequality true."
         },
         {
-          "term": "Coefficient",
-          "definition": "The number multiplied by a variable, like the 3 in 3x."
-        },
-        {
-          "term": "Constant",
-          "definition": "A plain number with no variable."
+          "term": "Boundary",
+          "definition": "The number where the solution set starts or stops, shown with an open or closed circle on the number line."
         }
       ],
       "next_steps": {
-        "if_pass": "8AF1-S2",
-        "if_fail": "Review combining like terms (7.AF.1)."
+        "if_pass": "8AF1-S1",
+        "if_fail": "8AF1-F1"
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "In 5x + 3 - 2x + 7, which terms are 'boxes' (x-units) and which are 'loose marbles' (plain numbers)? Why can the boxes only combine with boxes?"
-        },
-        {
           "kind": "show",
-          "text": "Write '5x + 3 - 2x + 7.'"
+          "text": "Write 2x + 3 < 11 and draw a blank number line from 0 to 8."
         },
         {
           "kind": "ask",
-          "text": "Which terms have an x? Which are just numbers?"
+          "text": "How is this like solving 2x + 3 = 11? What will be different about the answer?"
         },
         {
           "kind": "say",
-          "text": "x-terms: 5x and -2x combine to 3x. Numbers: 3 and 7 combine to 10. Result: 3x + 10."
+          "text": "Same moves: subtract 3 to get 2x < 8, divide by 2 to get x < 4. The answer is a set: open circle at 4, shade left. Test x = 0: 2(0) + 3 = 3, and 3 < 11 is true, so the left side is correct."
         },
         {
           "kind": "watch",
-          "text": "If the student writes 13x, ask 'is 7 a number of x's, or just a number?'"
+          "text": "If a student shades to the right, have them test a shaded number like 6: 2(6) + 3 = 15, and 15 < 11 is false, so that side cannot be the solution set."
         },
         {
           "kind": "ask",
-          "text": "Your turn: 8x - 4 - 3x + 9. Two piles — combine each."
+          "text": "Your turn: solve and graph 3x + 2 <= 11, and say whether the circle is open or closed."
         }
-      ]
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Is x = 3 a solution to 2x + 1 < 10?",
+          "answer": "Yes, 2(3) + 1 = 7 and 7 < 10 is true."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Solve x + 5 > 9.",
+          "answer": "x > 4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve 3x + 2 <= 14.",
+          "answer": "x <= 4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve 4x - 3 > 13.",
+          "answer": "x > 4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve 6x + 5 < 23.",
+          "answer": "x < 3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A gym charges a $10 fee plus $5 per visit. Jon can spend at most $40. Write and solve an inequality for the number of visits v.",
+          "answer": "5v + 10 <= 40, so v <= 6"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Solve 2x + 7 >= 8.",
+          "answer": "x >= 1/2"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo solved 2x + 3 < 11 and got x < 7. Find his mistake and fix it.",
+          "shown_work": [
+            "2x + 3 < 11",
+            "2x < 11 + 3",
+            "2x < 14",
+            "x < 7"
+          ],
+          "answer": "He added 3 instead of subtracting it. Subtract 3 from both sides: 2x < 8, so x < 4. Test x = 5: 13 < 11 is false, so x < 7 was too big a set."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Shade and Test",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Laminated number lines",
+            "Dry erase markers",
+            "Inequality cards"
+          ],
+          "instructions": "1. Draw a card like 3x + 2 <= 14 and solve it on a whiteboard with the two undo moves.\n2. Mark the boundary on the number line and choose open or closed circle out loud.\n3. Before shading, each partner tests one number from a different side in the original inequality.\n4. Shade the side whose test came out true.\n5. Say each time: solve, mark the boundary, test, then shade."
+        },
+        {
+          "type": "card_sort",
+          "title": "One Answer or a Set",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set: solved inequalities matched to number line graphs, plus two mismatched decoys"
+          ],
+          "instructions": "1. Spread the inequality cards and the graph cards face up.\n2. Match each solution set like x > 2 to its graph, naming the circle type and shading direction.\n3. Two decoy graphs shade the wrong side or use the wrong circle; set them aside and explain the error.\n4. For each match, one member tests a shaded number in the original inequality to confirm.",
+          "content": {
+            "categories": [
+              "Correct graph",
+              "Decoy graph"
+            ],
+            "cards": [
+              {
+                "text": "x < 4: open circle at 4, shaded left",
+                "category": "Correct graph"
+              },
+              {
+                "text": "x >= 4: closed circle at 4, shaded right",
+                "category": "Correct graph"
+              },
+              {
+                "text": "x > 2: open circle at 2, shaded right",
+                "category": "Correct graph"
+              },
+              {
+                "text": "x <= 4: closed circle at 4, shaded left",
+                "category": "Correct graph"
+              },
+              {
+                "text": "x < 4 shown with shading to the right of 4",
+                "category": "Decoy graph"
+              },
+              {
+                "text": "x >= 4 shown with an open circle at 4",
+                "category": "Decoy graph"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The number line makes 'a set of solutions' concrete before the symbol x < 4 has to carry the idea alone."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Wrong-side shading and equation-style single answers are predictable errors worth hunting in shown work."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Saying 'solve, mark, test, shade' aloud turns the direction check into a routine instead of a guess."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is the answer one number or a set of numbers? How do you know?",
+          "Which two undo moves solve this, and in what order?",
+          "Is the boundary number itself a solution? So is the circle open or closed?",
+          "What easy number can you test to check the shading direction?",
+          "In the ticket problem, why does 'at most' become the <= sign?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student writes a single number like x = 4 as the final answer.",
+            "say": "Test 3 and 2 in the original: both make it true. The answer has to name every number that works, so write x < 4.",
+            "praise": "You wrote the whole set, that is what an inequality asks for."
+          },
+          {
+            "if_you_see": "Student shades the wrong side of the boundary.",
+            "say": "Test one shaded number in the original inequality. If it comes out false, the shading is on the wrong side.",
+            "praise": "You tested a number before shading, so your graph proves itself."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Solve 2x + 1 < 9.",
+            "look_for": "x < 4 as a set, not x = 4, with the 1 subtracted before dividing."
+          },
+          {
+            "prompt": "Graph x >= 3.",
+            "look_for": "Closed circle at 3 with shading to the right."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Solve 3x + 4 <= 19 and graph the solution set.",
+        "answer": "x <= 5, closed circle at 5 shaded left",
+        "steps": [
+          {
+            "math": "subtract 4: 3x <= 15",
+            "annotation": "Clear the constant first, same as an equation."
+          },
+          {
+            "math": "divide by 3: x <= 5",
+            "annotation": "Dividing by a positive keeps the sign direction."
+          },
+          {
+            "math": "closed circle at 5, shade left",
+            "annotation": "The <= includes the boundary, so the circle is filled in."
+          },
+          {
+            "math": "test x = 0: 3(0) + 4 = 4, and 4 <= 19 is true",
+            "annotation": "A number from the shaded side makes the original true, so the direction is right."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Solve 5x - 2 >= 13 and graph the solution set.",
+        "answer": "x >= 3, closed circle at 3 shaded right",
+        "steps": [
+          {
+            "math": "add 2: 5x >= 15",
+            "annotation": "Clear the minus 2 with plus 2 on both sides.",
+            "given": true
+          },
+          {
+            "math": "divide by 5: x >= 3",
+            "annotation": "Dividing by a positive keeps the sign direction.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Draw the boundary circle: open or closed?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Test a number to pick the shading direction and finish the graph.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The solution set is x ___ ___ because every number ___ the boundary makes it true.",
+        "I tested x = ___ and got ___, so the shading points ___."
+      ],
+      "fluency_source": "8AF1-F1"
     },
     {
       "skill_id": "8AF1-S1",
       "name": "Determine whether a value is a solution by substituting",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "8.AF.1",
       "engine_stems": [
         1
@@ -1081,7 +1691,7 @@
           }
         ]
       },
-      "fluency_source": "8AF1-F1",
+      "fluency_source": "8AF1-B1",
       "sentence_starters": [
         "First I distribute to get ___, then I combine like terms to get ___.",
         "Now the equation is ___x + ___ = ___, so I undo by ___."
@@ -1398,7 +2008,7 @@
           }
         ]
       },
-      "fluency_source": "8AF1-F1",
+      "fluency_source": "8AF1-B2",
       "sentence_starters": [
         "I divided both sides by ___, which is ___, so the sign ___.",
         "My solution set is x ___ ___, meaning all values that are ___."
@@ -1695,7 +2305,7 @@
           }
         ]
       },
-      "fluency_source": "8AF1-F1",
+      "fluency_source": "8AF1-B1",
       "sentence_starters": [
         "Let x be the ___. The fixed part is ___ and the per-unit part is ___ times x.",
         "The equation/inequality is ___, so x = ___, which means ___ in the story."
@@ -1961,7 +2571,7 @@
           }
         ]
       },
-      "fluency_source": "8AF1-F1",
+      "fluency_source": "8AF1-B2",
       "sentence_starters": [
         "Let ___ be ___; then the other quantity is ___ because the problem says ___.",
         "My answer is correct because ___ and ___ add back to ___."
@@ -2018,8 +2628,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites — fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 4-6) prerequisite skills. Start intervention here.",
       "skills": [
         "8AF1-F1",
         "8AF1-F2"
@@ -2027,15 +2637,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 7) skills that feed this standard directly.",
       "skills": [
-        "8AF1-S1"
+        "8AF1-B1",
+        "8AF1-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "8AF1-S1",
         "8AF1-S2",
         "8AF1-S3",
         "8AF1-S4",
@@ -2044,7 +2656,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "8AF1-S6"
       ]
@@ -2053,6 +2665,8 @@
   "skill_sequence": [
     "8AF1-F1",
     "8AF1-F2",
+    "8AF1-B1",
+    "8AF1-B2",
     "8AF1-S1",
     "8AF1-S2",
     "8AF1-S3",
@@ -2063,19 +2677,27 @@
   "skill_tree": {
     "8AF1-F1": [],
     "8AF1-F2": [],
+    "8AF1-B1": [
+      "8AF1-F2"
+    ],
+    "8AF1-B2": [
+      "8AF1-F1",
+      "8AF1-B1"
+    ],
     "8AF1-S1": [
-      "8AF1-F1"
+      "8AF1-B1",
+      "8AF1-B2"
     ],
     "8AF1-S2": [
       "8AF1-F2"
     ],
     "8AF1-S3": [
       "8AF1-S2",
-      "8AF1-F1",
-      "8AF1-F2"
+      "8AF1-B1"
     ],
     "8AF1-S4": [
-      "8AF1-S3"
+      "8AF1-S3",
+      "8AF1-B2"
     ],
     "8AF1-S5": [
       "8AF1-S3"
@@ -2086,17 +2708,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S3 (solve a multi-step equation that needs distributing and combining) -- the fluency core of the standard. If they pass, push to S4 (inequalities, with the negative-flip rule) and S5 (model real-world problems). If they fail, split the diagnosis: S1 checks whether they understand what a solution even is (substitution), and S2 checks whether the distribution mechanic is intact. S6 (complex modeling with justification) branches off the application side.",
+    "description": "Start with S3, solving a multi-step equation that needs distributing and combining, the fluency core of the standard. If they pass, push forward to S4 (inequalities with the sign flip rule) and S5 (modeling real-world problems). If they fail, drop one grade: B1 checks grade 7 two-step equations and B2 checks grade 7 two-step inequalities, the machinery every 8th grade solve runs on. If those wobble, the foundations F1 (grade 5 order of operations) and F2 (grade 6 one-step equations) locate the gap in grades 4-6. S1 (substitution checks) and S2 (distribution) remain available to probe the standard's own entry mechanics, and S6 carries the above-band modeling work.",
     "entry_skill": "8AF1-S3",
     "if_pass": [
       "8AF1-S4",
       "8AF1-S5"
     ],
     "if_fail": [
-      "8AF1-S1",
-      "8AF1-S2"
+      "8AF1-B1",
+      "8AF1-B2"
     ],
     "branch_skills": [
+      "8AF1-F1",
+      "8AF1-F2",
+      "8AF1-S1",
+      "8AF1-S2",
       "8AF1-S6"
     ]
   }

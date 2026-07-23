@@ -3,7 +3,7 @@
   "standard_text": "Develop probability models that include the sample space and probabilities of outcomes to represent simple events with equally likely outcomes. Predict the approximate relative frequency of the event based on the model. Compare probabilities from the model to observed frequencies, evaluate the level of agreement, and explain possible sources of discrepancy.",
   "schema_version": 3,
   "progression": {
-    "narrative": "Probability at grade 7 is one idea used five ways, and it all rests on a single atom: the probability of a simple event is the number of favorable outcomes over the total number of outcomes. So the progression starts by making that atom automatic and by making the prediction move -- a probability times a number of trials -- automatic too. From there the arc opens up. First students build a model: when outcomes are equally likely, every one gets the same probability, 1 over the number of outcomes, and the whole model adds to 1. Then they READ a model to find the probability of an event by adding the outcomes that count (an 'or' event adds, it does not multiply).\n\nNext the model comes from data rather than a picture: given a bag of counts, the probability of an event is favorable over the total in the whole bag, and that model is used to PREDICT -- multiply the probability by the number of trials to expect a count. Then students measure what actually happened: experimental probability is the observed count over the number of trials, which is why it can differ from the theoretical model. The standard lands on the hardest move: put the theoretical probability and the experimental frequency side by side, judge how close they are, and explain the difference -- random variation in a finite number of trials, not a broken cube. The through-line we keep naming: decide the total, take favorable over it, and know whether you are predicting from the model or reporting what the data showed.",
+    "narrative": "This standard asks students to build a probability model with its sample space, use the model to predict how often an event should happen, and then compare the model's probabilities to what an experiment actually produced. The on-grade skills climb from assigning 1/n in a uniform model, to reading a model, to favorable over total from a sample space, to predicting counts over N trials, to computing experimental probability from real data. The summit is holding the theoretical probability and the observed frequency side by side and explaining the gap as random variation in a finite number of trials. Students who stall here usually cannot write a part-to-whole fraction from a described group or move between fractions and decimals, gaps that reach back to grades 3 and 4. Intervention should rebuild part-of-a-set fractions and decimal notation first, then the grade 6 skills of part-to-whole ratios with scaling and fraction-decimal comparison, and only then return to probability language.",
     "steps": [
       {
         "skill_id": "7DSP5-S1",
@@ -40,229 +40,812 @@
   "skills": [
     {
       "skill_id": "7DSP5-F1",
-      "name": "Write the probability of a simple event as favorable over total",
+      "name": "Name the fraction of a set that has a given feature",
       "column": "foundation",
       "parent_standard": "7.DSP.5",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Write a part-to-whole comparison as a fraction.",
-        "check_question": "A bag has 3 red and 7 blue marbles. What fraction of the marbles are red?"
+        "grade": 3,
+        "description": "Write the fraction of a group of objects that has a certain feature, with the whole group as the denominator.",
+        "check_question": "A group has 3 squares and 7 circles. What fraction of the shapes are squares?"
       },
-      "i_do_script": "Picture the draw: your hand reaches into the bag blind and could close on ANY marble in there -- so a color's chances get measured against the whole bag, not against the other colors. The probability of a simple event is a fraction: the number of ways the event CAN happen over the total number of equally likely outcomes. Watch a bag with 4 red and 6 blue marbles, 10 in all. The probability of drawing red is 4 out of 10, written 4/10, which reduces to 2/5. The top is only the reds I want; the bottom is EVERY marble, not just the blue ones.",
+      "i_do_script": "A fraction of a set counts part of a group over the WHOLE group. Watch: a tray holds 3 squares and 7 circles, so there are 10 shapes in all. The fraction of the shapes that are squares is 3 out of 10, written 3/10. The bottom is every shape on the tray, not just the circles. I lay the shapes in one row, count the whole row for the bottom, and count the squares for the top.",
       "canonical_error": {
-        "pattern": "Puts the favorable count over the count of the OTHER outcomes (part-to-part) instead of over the total",
-        "example": "For 4 red and 6 blue, writes P(red) = 4/6 instead of 4/10",
-        "why": "The student compares the wanted outcomes to the leftover outcomes rather than to the whole sample space. Probability is favorable outcomes over ALL outcomes, so the denominator must be the total count."
+        "pattern": "Writes the part over the OTHER part instead of over the whole group",
+        "example": "For 3 squares and 7 circles, writes 3/7 instead of 3/10",
+        "why": "The student compares squares to circles instead of squares to the whole set. The denominator of a fraction of a set is the count of everything in the group."
       },
-      "item_template": "A collection with counts (marbles, spinner sections, cube faces). Student writes P(event) as favorable/total. Short-response fluency bank.",
+      "item_template": "A small group of objects described by counts. Student writes the fraction of the group with a named feature, part over whole. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "A bag has 4 red and 6 blue marbles (10 total). What is the probability of drawing a red marble?",
-          "answer": "4/10 (= 2/5)"
+          "stem": "5 of the 8 counters in a row are red. What fraction of the counters are red?",
+          "answer": "5/8"
         },
         {
-          "stem": "A spinner has 8 equal sections; 3 are yellow. What is the probability of landing on yellow?",
-          "answer": "3/8"
+          "stem": "A group has 3 squares and 7 circles. What fraction of the shapes are squares?",
+          "answer": "3/10"
         },
         {
-          "stem": "A fair number cube is numbered 1-6. What is the probability of rolling a 4?",
-          "answer": "1/6"
+          "stem": "4 of the 9 apples in a basket are green. What fraction of the apples are green?",
+          "answer": "4/9"
         },
         {
-          "stem": "A bag has 5 green and 5 orange tiles (10 total). What is the probability of drawing a green tile?",
-          "answer": "5/10 (= 1/2)"
+          "stem": "A box holds 10 crayons and 3 of them are blue. What fraction of the crayons are blue?",
+          "answer": "3/10"
         },
         {
-          "stem": "A deck of 12 cards has 3 star cards. What is the probability of drawing a star?",
-          "answer": "3/12 (= 1/4)"
+          "stem": "2 of the 6 balloons are yellow. What fraction of the balloons are yellow?",
+          "answer": "2/6 (or 1/3)"
+        },
+        {
+          "stem": "A team has 5 girls and 4 boys. What fraction of the team are girls?",
+          "answer": "5/9"
+        },
+        {
+          "stem": "7 of the 12 eggs in a carton are brown. What fraction of the eggs are brown?",
+          "answer": "7/12"
+        },
+        {
+          "stem": "All 6 buttons in a jar are round. What fraction of the buttons are round?",
+          "answer": "6/6 (which is 1 whole)"
         }
       ],
       "redirect_script": {
-        "stop": "What goes on the bottom -- the blue ones or ALL of them?",
-        "prompt": "Point at the row -- how many squares in total could the draw land on? Probability is favorable over TOTAL. Count every outcome for the bottom, not just the other color. 4 red out of 10 total is 4/10.",
-        "praise": "You put the total on the bottom -- that keeps the probability an honest part of the whole."
+        "stop": "Did you count the WHOLE group for the bottom?",
+        "prompt": "Lay the whole group in one row and count every object: that number goes on the bottom. Then count just the ones you want for the top. 3 squares out of 10 shapes is 3/10, not 3/7.",
+        "praise": "You counted the whole group for the bottom, that is what makes it a fraction of the set."
       },
       "vocabulary": [
         {
-          "term": "Probability",
-          "definition": "A number from 0 to 1 that tells how likely an event is, found as favorable outcomes over total outcomes."
+          "term": "Fraction of a set",
+          "definition": "A part of a group of objects written over the count of the whole group."
         },
         {
-          "term": "Simple event",
-          "definition": "A single outcome or a single described result, like drawing one red marble."
-        },
-        {
-          "term": "Outcome",
-          "definition": "One possible result of an experiment, like landing on green."
+          "term": "Whole group",
+          "definition": "Every object in the collection; its count goes on the bottom of the fraction."
         }
       ],
       "next_steps": {
-        "if_pass": "7DSP5-S1",
-        "if_fail": "Review writing part-to-whole fractions (6.RP.1)."
+        "if_pass": "7DSP5-B1",
+        "if_fail": "Review grade 3 fractions of one whole with fraction circles (equal parts of a single shape) before returning to fractions of a set."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Here is the whole bag as one row of 8 squares, with the 3 red marbles shaded. When you draw, could your hand land on any of the 8 squares, or only on the 5 blue ones?",
-          "visual": {
-            "type": "fraction_bars",
-            "label": "The whole bag in one row",
-            "bars": [
-              {
-                "parts": 8,
-                "shaded": 3,
-                "label": "3 red of 8"
-              }
-            ]
-          }
-        },
-        {
           "kind": "show",
-          "text": "Write 'A bag has 3 red and 5 blue marbles. P(red)?'"
+          "text": "Lay 3 square tiles and 7 circle tiles in one row of 10."
         },
         {
           "kind": "ask",
-          "text": "How many marbles are there in all, and how many are red?"
+          "text": "How many tiles are in the whole row? How many are squares?"
         },
         {
           "kind": "say",
-          "text": "8 in all, 3 red. Probability is favorable over total: 3/8. The bottom is every marble, not just the blue ones."
+          "text": "10 tiles in all and 3 are squares, so the fraction of the tiles that are squares is 3/10. The bottom counts the whole row, squares included."
         },
         {
           "kind": "watch",
-          "text": "If a student writes 3/5, ask 'is that red over blue, or red over ALL the marbles?'"
+          "text": "If a student writes 3/7, point at the row: did you count every tile for the bottom, or only the circles?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: a bag has 4 green and 6 yellow tiles -- what is P(green)?"
+          "text": "Your turn: a row has 2 yellow and 4 green cubes. What fraction of the cubes are yellow?"
         }
       ]
     },
     {
       "skill_id": "7DSP5-F2",
-      "name": "Multiply a probability by a number of trials to predict a count",
+      "name": "Write tenths and hundredths as decimals",
       "column": "foundation",
       "parent_standard": "7.DSP.5",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Multiply a fraction by a whole number.",
-        "check_question": "What is 1/5 of 30?"
+        "grade": 4,
+        "description": "Write a fraction with denominator 10 or 100 as a decimal, and read a decimal back as tenths or hundredths.",
+        "check_question": "Write 7/100 as a decimal."
       },
-      "i_do_script": "A probability like 1/4 is a claim on your trials: it says the event owns one of every four tries -- so chop the tries into equal chunks and hand the event its share. To predict how many times something should happen, I multiply its probability by the number of tries. Watch: if the probability of an event is 1/5 and I run 30 trials, I expect 1/5 of 30 = 6 times. 'Of' means multiply: 30 divided by 5 is 6. A probability of 3/10 over 30 trials is 3/10 x 30 = 9. The answer is a count, so it should be a whole number that is never bigger than the number of trials.",
+      "i_do_script": "A decimal is another name for tenths and hundredths. Watch: 3/10 means 3 tenths, and the tenths place is the first spot after the point, so 3/10 = 0.3. Now 27/100 means 27 hundredths: 2 tenths and 7 hundredths, so 27/100 = 0.27. Be careful with 7/100: that is only 7 hundredths, so a zero holds the tenths place and it is 0.07, not 0.7. On a hundredths grid, 0.7 shades 70 squares but 0.07 shades only 7.",
       "canonical_error": {
-        "pattern": "Multiplies by the wrong number or divides instead, e.g. multiplies the trials by the denominator or reports the trials unchanged",
-        "example": "For 1/5 over 30 trials, computes 5 x 30 = 150 or reports 30 instead of 1/5 x 30 = 6",
-        "why": "The student loses track that a probability times trials is 'a fraction OF the trials.' The numerator scales the result and the denominator divides it: (numerator x trials) / denominator."
+        "pattern": "Drops the numerator right after the decimal point no matter what the denominator is",
+        "example": "Writes 7/100 as 0.7 instead of 0.07",
+        "why": "The student ignores whether the fraction names tenths or hundredths. Hundredths need two places after the point, so 7 hundredths is 0.07 and a zero must hold the empty tenths place."
       },
-      "item_template": "A probability (unit or non-unit fraction) and a number of trials. Student finds the expected count. Short-response fluency bank.",
+      "item_template": "A fraction with denominator 10 or 100, or a decimal to the hundredths. Student converts between the two forms or compares two values. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "The probability of an event is 1/5. In 30 trials, how many times would you expect it?",
-          "answer": "6"
+          "stem": "Write 3/10 as a decimal.",
+          "answer": "0.3"
         },
         {
-          "stem": "The probability of an event is 1/4. In 40 trials, how many times would you expect it?",
-          "answer": "10"
+          "stem": "Write 27/100 as a decimal.",
+          "answer": "0.27"
         },
         {
-          "stem": "The probability of an event is 3/10. In 30 trials, how many times would you expect it?",
-          "answer": "9"
+          "stem": "Write 7/100 as a decimal.",
+          "answer": "0.07"
         },
         {
-          "stem": "The probability of rolling a 2 is 1/6. In 60 rolls, how many 2s would you expect?",
-          "answer": "10"
+          "stem": "Write 0.9 as a fraction.",
+          "answer": "9/10"
         },
         {
-          "stem": "The probability of an event is 2/5. In 20 trials, how many times would you expect it?",
-          "answer": "8"
+          "stem": "Write 6/10 as a decimal.",
+          "answer": "0.6"
+        },
+        {
+          "stem": "Write 0.03 as a fraction.",
+          "answer": "3/100"
+        },
+        {
+          "stem": "Which is greater: 0.3 or 0.07?",
+          "answer": "0.3"
+        },
+        {
+          "stem": "Write 40/100 as a decimal.",
+          "answer": "0.40 (which equals 0.4)"
         }
       ],
       "redirect_script": {
-        "stop": "Is that a fraction OF the trials, or something bigger?",
-        "prompt": "Look at the chopped-up bar -- the prediction is ONE chunk of the trials, so it has to be smaller than the whole bar. Multiply the probability BY the trials: take the numerator times the trials, then divide by the denominator. 1/5 of 30 is 30 divided by 5 = 6.",
-        "praise": "You took a fraction of the trials -- the predicted count sits below the number of tries, just like it should."
+        "stop": "Is that fraction tenths or hundredths?",
+        "prompt": "Tenths use one place after the point and hundredths use two. 7/100 is 7 hundredths, so write a zero in the tenths place: 0.07. Check it on the grid: 7 squares, not 70.",
+        "praise": "You matched the denominator to the right place, that is exactly how decimals work."
       },
       "vocabulary": [
         {
-          "term": "Trial",
-          "definition": "One repetition of an experiment, like one spin or one roll."
+          "term": "Tenths",
+          "definition": "The first place after the decimal point; one tenth is 1/10 or 0.1."
         },
         {
-          "term": "Expected frequency",
-          "definition": "About how many times an event should happen, found by multiplying its probability by the number of trials."
-        },
-        {
-          "term": "Prediction",
-          "definition": "A reasoned estimate of a result based on a model."
+          "term": "Hundredths",
+          "definition": "The second place after the decimal point; one hundredth is 1/100 or 0.01."
         }
       ],
       "next_steps": {
-        "if_pass": "7DSP5-S4",
-        "if_fail": "Review multiplying a fraction by a whole number (5.NF / 6.NS)."
+        "if_pass": "7DSP5-B2",
+        "if_fail": "Review grade 4 tenths and hundredths with a hundredths grid (shade the fraction, then read the shading as a decimal)."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Chop the 40 trials into 4 equal chunks -- a probability of 1/4 means the event claims exactly one chunk. How many trials sit inside that one chunk?",
-          "visual": {
-            "type": "percent_bar",
-            "label": "40 trials cut into 4 equal chunks",
-            "segments": [
-              {
-                "span": 10,
-                "label": "event's chunk (10)",
-                "shaded": true
-              },
-              {
-                "span": 10,
-                "label": "10",
-                "shaded": false
-              },
-              {
-                "span": 10,
-                "label": "10",
-                "shaded": false
-              },
-              {
-                "span": 10,
-                "label": "10",
-                "shaded": false
-              }
-            ],
-            "end_labels": [
-              "0",
-              "40"
-            ]
-          }
-        },
-        {
           "kind": "show",
-          "text": "Write 'P(event) = 1/4. In 40 trials, how many expected?'"
+          "text": "Shade 27 squares of a hundredths grid. Write 27/100 beside it."
         },
         {
           "kind": "ask",
-          "text": "What does 'of' tell you to do with 1/4 and 40?"
+          "text": "How many full columns of ten are shaded? How many extra squares?"
         },
         {
           "kind": "say",
-          "text": "Multiply: 1/4 of 40 = 40 divided by 4 = 10. I expect about 10."
+          "text": "2 full columns is 2 tenths and 7 extra squares is 7 hundredths, so 27/100 = 0.27. The first place counts columns of ten, the second place counts single squares."
         },
         {
           "kind": "watch",
-          "text": "If a student writes 160 or 4, ask 'is the answer a part of 40, or bigger than 40?'"
+          "text": "If a student writes 7/100 as 0.7, send them to the grid: does 7/100 shade 7 squares or 70?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: P = 3/10 in 30 trials -- how many expected?"
+          "text": "Your turn: write 9/100 as a decimal."
         }
       ]
     },
     {
+      "skill_id": "7DSP5-B1",
+      "name": "Write part-to-whole ratios and scale them with equivalent ratios",
+      "column": "looking_back",
+      "parent_standard": "7.DSP.5",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Write the ratio of a part to the whole group and use equivalent ratios to find the part at a new total.",
+        "check_question": "A bag has 3 red and 7 blue marbles. What is the ratio of red marbles to ALL the marbles?"
+      },
+      "i_do_script": "A part-to-whole ratio compares one kind of thing to the whole collection. Watch: a bag has 3 red and 7 blue marbles, 10 in all, so the ratio of red to all marbles is 3 out of 10, written 3/10. That ratio is a rate I can scale: 3 out of every 10 means 6 out of every 20 and 9 out of every 30, because I multiply the part and the whole by the same number. The whole always rides on the bottom, and both numbers grow together.",
+      "canonical_error": {
+        "pattern": "Writes the part over the other part instead of over the whole, or scales only one number of the ratio",
+        "example": "For 3 red and 7 blue, writes red to all as 3/7; or scales 3 out of 10 to 9 out of 10 for 30 marbles",
+        "why": "The student either compares part to part when the question asks part to whole, or stretches the part without stretching the whole. A ratio keeps its value only when both numbers are multiplied by the same factor."
+      },
+      "item_template": "A group described by counts, or a rate like 3 out of every 10. Student writes the part-to-whole ratio or scales it to a new total. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A class has 4 left-handed and 16 right-handed students. What is the ratio of left-handed students to ALL students?",
+          "answer": "4/20 (= 1/5)",
+          "distractor_logic": "4/20 = 1/5. Writing 4/16 compares part to part instead of part to whole."
+        },
+        {
+          "stem": "A bag has 3 red and 7 blue marbles. Write the ratio of red marbles to all the marbles.",
+          "answer": "3/10",
+          "distractor_logic": "3/10. Writing 3/7 uses the blue marbles as the whole."
+        },
+        {
+          "stem": "2 out of every 5 raffle tickets win a prize. At that rate, how many winners are in 20 tickets?",
+          "answer": "8",
+          "distractor_logic": "Scale by 4: 2 x 4 = 8 winners out of 5 x 4 = 20. Answering 2 ignores the scaling."
+        },
+        {
+          "stem": "3 out of 10 spins land on green. At the same rate, how many greens would there be in 50 spins?",
+          "answer": "15",
+          "distractor_logic": "Scale by 5: 3 x 5 = 15. Answering 3 or 43 misses the equivalent ratio."
+        },
+        {
+          "stem": "A recipe box holds 5 dinner cards and 3 dessert cards. What fraction of the cards are dessert cards?",
+          "answer": "3/8",
+          "distractor_logic": "3/8. Writing 3/5 compares dessert to dinner."
+        },
+        {
+          "stem": "1 out of every 4 students walks to school. At that rate, how many walkers are in a school of 28 students?",
+          "answer": "7",
+          "distractor_logic": "Scale by 7: 1 x 7 = 7 out of 4 x 7 = 28."
+        },
+        {
+          "stem": "A tray has 6 bran muffins and 6 corn muffins. Write the ratio of bran muffins to all the muffins.",
+          "answer": "6/12 (= 1/2)",
+          "distractor_logic": "6/12 = 1/2. Writing 6/6 compares the two parts."
+        },
+        {
+          "stem": "4 out of 6 seeds sprout. Write an equivalent ratio with a whole of 30 seeds.",
+          "answer": "20 out of 30",
+          "distractor_logic": "Multiply both numbers by 5. Writing 4 out of 30 scales the whole but not the part."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is the bottom the whole group, and did BOTH numbers scale?",
+        "prompt": "Add the parts to find the whole first, then write part over whole. When you scale, multiply the part and the whole by the same number: 3 out of 10 becomes 9 out of 30, not 9 out of 10.",
+        "praise": "You kept the whole on the bottom and stretched both numbers together, that is ratio reasoning."
+      },
+      "vocabulary": [
+        {
+          "term": "Part-to-whole ratio",
+          "definition": "A comparison of one part of a group to the entire group, like 3 red out of 10 marbles."
+        },
+        {
+          "term": "Equivalent ratios",
+          "definition": "Ratios that name the same rate, made by multiplying or dividing both numbers by the same factor."
+        },
+        {
+          "term": "Rate",
+          "definition": "A ratio read as 'out of every,' like 3 out of every 10 spins."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP5-S1",
+        "if_fail": "7DSP5-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Lay a row of 10 cubes: 3 red and 7 blue. Under it, lay three copies of the same row to make 30 cubes."
+        },
+        {
+          "kind": "ask",
+          "text": "In one row, what is the ratio of red to ALL the cubes? What happens to the reds when we lay 3 rows?"
+        },
+        {
+          "kind": "say",
+          "text": "One row is 3 red out of 10. Three rows is 9 red out of 30, the same rate, because every row carries its own 3 reds. Part and whole grew by the same factor."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 3 out of 7, ask whether the red cubes belong to the row. The whole row, reds included, goes on the bottom."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 2 out of every 5 tickets win. At that rate, how many winners in 20 tickets?"
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A bag has 2 red and 3 blue marbles. How many marbles are in the whole bag?",
+          "answer": "5"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "For that bag, write the ratio of red marbles to ALL the marbles.",
+          "answer": "2/5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A class has 4 left-handed and 16 right-handed students. What fraction of the class is left-handed?",
+          "answer": "4/20 = 1/5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "3 out of every 10 spins land on green. At that rate, how many greens in 40 spins?",
+          "answer": "12 (multiply both numbers by 4)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A box has 5 pencils and 7 pens. Write the ratio of pens to all the items.",
+          "answer": "7/12"
+        },
+        {
+          "difficulty": "core",
+          "stem": "1 out of every 6 rolls shows a four. At that rate, how many fours in 42 rolls?",
+          "answer": "7 (multiply both numbers by 7)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "4 out of 6 seeds sprout. Write equivalent ratios with wholes of 30 seeds and 60 seeds.",
+          "answer": "20 out of 30 and 40 out of 60"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo wrote the ratio of red marbles to all the marbles for a bag with 3 red and 7 blue. Find his mistake and fix it.",
+          "shown_work": [
+            "3 red and 7 blue",
+            "red to all = 3/7"
+          ],
+          "answer": "Leo compared red to blue. The whole bag has 3 + 7 = 10 marbles, so red to all is 3/10."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Rows That Repeat the Rate",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Two-color counters or cubes",
+            "Whiteboards"
+          ],
+          "instructions": "1. Build one row that shows a rate, like 2 red out of 5 cubes.\n2. Write the part-to-whole ratio for the row: 2/5.\n3. Build more identical rows until the whole reaches 20 cubes, then count the reds.\n4. Write the equivalent ratio: 8 out of 20, and say what factor both numbers grew by.\n5. Repeat with 3 red out of 10 scaled to 30. Say each time: the whole goes on the bottom, and both numbers grow together."
+        },
+        {
+          "type": "matching",
+          "title": "Same Rate Match-Up",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per starting ratio, one card per scaled ratio"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each starting ratio like 3 out of 10 to its scaled twin like 15 out of 50.\n3. To claim a match, say the factor both numbers were multiplied by.\n4. Two decoy cards scale only one number; set them aside and explain what went wrong.",
+          "content": {
+            "pairs": [
+              {
+                "left": "3 out of 10",
+                "right": "15 out of 50"
+              },
+              {
+                "left": "2 out of 5",
+                "right": "8 out of 20"
+              },
+              {
+                "left": "1 out of 4",
+                "right": "7 out of 28"
+              },
+              {
+                "left": "4 out of 6",
+                "right": "20 out of 30"
+              },
+              {
+                "left": "5 out of 8",
+                "right": "10 out of 16"
+              }
+            ],
+            "decoys": [
+              "3 out of 10 = 9 out of 10",
+              "2 out of 5 = 2 out of 20"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Repeating a physical row of counters makes 'both numbers grow by the same factor' visible before the equivalent-ratio rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The part-to-part denominator and the scale-one-number bug are stable, baitable errors ideal for find-and-fix work."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'which number is the whole?' surfaces the part-to-whole decision before students commit an answer."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the whole group here, and how do you find its count?",
+          "Is this question part to part or part to whole?",
+          "What factor takes the whole from 10 to 40? What does that do to the part?",
+          "Why must both numbers of the ratio be multiplied by the same factor?",
+          "Could the part ever be bigger than the whole? What would that mean?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student writes the part over the other part, like 3/7 for 3 red and 7 blue.",
+            "say": "Add the parts first: 3 + 7 = 10 is the whole bag. Red to ALL is 3/10. Point at the row: do the red cubes belong to the group too?",
+            "praise": "You put the whole group on the bottom, that keeps the ratio part to whole."
+          },
+          {
+            "if_you_see": "Student scales the whole but leaves the part alone, like 3 out of 30 from 3 out of 10.",
+            "say": "Every row of 10 carries its own 3 reds. Three rows means 3 x 3 = 9 reds out of 30. Multiply both numbers by the same factor.",
+            "praise": "You stretched the part and the whole together, so the rate stayed the same."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A jar has 2 red and 8 green beads. Ratio of red to all beads?",
+            "look_for": "2/10 = 1/5. An answer of 2/8 compares part to part."
+          },
+          {
+            "prompt": "3 out of every 10 spins land green. How many greens in 30 spins?",
+            "look_for": "9, from multiplying both numbers by 3. An answer of 3 means no scaling happened."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A bag has 3 red and 9 blue marbles. Write the ratio of red marbles to all the marbles, then find how many reds you would expect at the same rate in a bag of 40 marbles.",
+        "answer": "3/12 = 1/4, so 10 reds in 40 marbles",
+        "steps": [
+          {
+            "math": "whole = 3 + 9 = 12",
+            "annotation": "Add the parts to find the whole bag."
+          },
+          {
+            "math": "red to all = 3/12 = 1/4",
+            "annotation": "Part over whole, then reduce: 1 red out of every 4 marbles."
+          },
+          {
+            "math": "40 = 4 x 10",
+            "annotation": "The new whole is 10 times the reduced whole of 4."
+          },
+          {
+            "math": "reds = 1 x 10 = 10",
+            "annotation": "Scale the part by the same factor of 10."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A bag has 2 red and 8 blue marbles. Write the ratio of red to all the marbles, then find how many reds you would expect at the same rate in a bag of 35 marbles.",
+        "answer": "2/10 = 1/5, so 7 reds in 35 marbles",
+        "steps": [
+          {
+            "math": "whole = 2 + 8 = 10",
+            "annotation": "Add the parts to find the whole.",
+            "given": true
+          },
+          {
+            "math": "red to all = 2/10 = 1/5",
+            "annotation": "Part over whole, reduced: 1 out of every 5.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Find the factor that takes the whole from 5 to 35.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Scale the part by that same factor to get the reds.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The whole group has ___ items, so the ratio of ___ to all is ___/___.",
+        "Both numbers were multiplied by ___, so ___ out of ___ equals ___ out of ___."
+      ],
+      "fluency_source": "7DSP5-F1"
+    },
+    {
+      "skill_id": "7DSP5-B2",
+      "name": "Write fractions as decimals and compare the two forms",
+      "column": "looking_back",
+      "parent_standard": "7.DSP.5",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Convert a fraction to a decimal by dividing or renaming, and compare values given in mixed forms.",
+        "check_question": "Which is greater: 0.3 or 1/4?"
+      },
+      "i_do_script": "A fraction and a decimal can name the same number, and dividing gets me from one to the other. Watch: 1/4 means 1 divided by 4, which is 0.25; I can also rename 1/4 as 25/100. To compare 0.3 with 1/4, I put both in decimal form: 0.30 against 0.25, and 30 hundredths beats 25 hundredths, so 0.3 is greater. Some fractions do not stop, like 1/6 = 0.1666..., so I round to the nearest hundredth and write about 0.17.",
+      "canonical_error": {
+        "pattern": "Builds the decimal from the fraction's digits instead of dividing or renaming",
+        "example": "Writes 1/5 as 0.15 or as 0.5 instead of dividing to get 0.2",
+        "why": "The student copies the numerator and denominator into decimal places instead of finding the value. A fraction is a division: 1/5 means 1 divided by 5, which is 0.2, and only that value lines up on the number line."
+      },
+      "item_template": "A fraction with a small denominator, or a fraction and a decimal to compare. Student converts by dividing or renaming, rounding to the hundredth when needed. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "Write 1/4 as a decimal.",
+          "answer": "0.25",
+          "distractor_logic": "1 divided by 4 = 0.25. Writing 0.14 copies the digits instead of dividing."
+        },
+        {
+          "stem": "Write 3/5 as a decimal.",
+          "answer": "0.6",
+          "distractor_logic": "3/5 = 6/10 = 0.6. Writing 0.35 copies the digits."
+        },
+        {
+          "stem": "Which is greater: 0.3 or 1/4?",
+          "answer": "0.3",
+          "distractor_logic": "0.30 vs 0.25, so 0.3 wins. Choosing 1/4 often comes from comparing the 4 to the 3."
+        },
+        {
+          "stem": "Write 7/10 as a decimal.",
+          "answer": "0.7",
+          "distractor_logic": "7 tenths is 0.7."
+        },
+        {
+          "stem": "Write 1/6 as a decimal rounded to the nearest hundredth.",
+          "answer": "0.17",
+          "distractor_logic": "1 divided by 6 = 0.1666..., which rounds to 0.17. Writing 0.16 truncates instead of rounding."
+        },
+        {
+          "stem": "Which is greater: 2/5 or 0.35?",
+          "answer": "2/5",
+          "distractor_logic": "2/5 = 0.40, which beats 0.35."
+        },
+        {
+          "stem": "Write 9/20 as a decimal.",
+          "answer": "0.45",
+          "distractor_logic": "9/20 = 45/100 = 0.45. Writing 0.92 copies the digits."
+        },
+        {
+          "stem": "Order from least to greatest: 0.5, 2/5, 0.45.",
+          "answer": "2/5, 0.45, 0.5",
+          "distractor_logic": "2/5 = 0.40, so the order is 0.40, 0.45, 0.50."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you divide, or just copy the digits?",
+        "prompt": "A fraction is a division: top divided by bottom. 1/5 is 1 divided by 5, which is 0.2. Then compare decimals place by place, adding zeros so both show hundredths.",
+        "praise": "You found the value by dividing, so both numbers landed on the same ruler."
+      },
+      "vocabulary": [
+        {
+          "term": "Equivalent forms",
+          "definition": "A fraction and a decimal that name the same number, like 1/4 and 0.25."
+        },
+        {
+          "term": "Repeating decimal",
+          "definition": "A decimal whose digits repeat forever, like 1/6 = 0.1666..., often rounded for use."
+        },
+        {
+          "term": "Round",
+          "definition": "Replace a number with the nearest value at a given place, like 0.1666... to 0.17."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7DSP5-S1",
+        "if_fail": "7DSP5-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Shade 1/4 of a hundredths grid by splitting the grid into 4 equal blocks and shading one block."
+        },
+        {
+          "kind": "ask",
+          "text": "How many small squares did that one block shade? So what decimal names 1/4?"
+        },
+        {
+          "kind": "say",
+          "text": "One block of the four is 25 squares, so 1/4 = 25/100 = 0.25. Dividing 1 by 4 gives the same 0.25. Now 0.3 shades 30 squares, so 0.3 is greater than 1/4."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 1/4 = 0.14, send them to the grid: does 1/4 shade 14 squares? Divide instead of copying digits."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: which is greater, 0.45 or 2/5?"
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Write 1/2 as a decimal.",
+          "answer": "0.5"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Write 3/10 as a decimal.",
+          "answer": "0.3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write 3/4 as a decimal.",
+          "answer": "0.75"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which is greater: 0.6 or 1/2?",
+          "answer": "0.6 (1/2 = 0.50)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write 2/3 as a decimal rounded to the nearest hundredth.",
+          "answer": "0.67 (2 divided by 3 = 0.666...)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which is greater: 3/5 or 0.55?",
+          "answer": "3/5 (it equals 0.60)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Order from least to greatest: 1/4, 0.3, 1/5.",
+          "answer": "1/5 (0.20), 1/4 (0.25), 0.3 (0.30)"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mara converted 1/5 to a decimal. Find her mistake and fix it.",
+          "shown_work": [
+            "1/5",
+            "put the 1 and the 5 after the point",
+            "= 0.15"
+          ],
+          "answer": "She copied the digits instead of dividing. 1 divided by 5 = 0.2 (or 1/5 = 2/10 = 0.2), so 1/5 = 0.2, not 0.15."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Grid the Fraction",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Hundredths grids",
+            "Colored pencils",
+            "Calculator"
+          ],
+          "instructions": "1. Take a fraction card like 1/4, 2/5, or 3/4.\n2. Split a hundredths grid into that many equal blocks and shade the fraction.\n3. Count the shaded squares and write the decimal, like 25 squares for 0.25.\n4. Check by dividing top by bottom on the calculator; the decimal should match the count.\n5. Say each time: the fraction and the decimal shade the exact same squares."
+        },
+        {
+          "type": "card_sort",
+          "title": "Same Number, Two Names",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck of fractions and decimals"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Pair each fraction with the decimal that names the same number.\n3. To claim a pair, show the division or the renaming out loud.\n4. Two decoy decimals were made by copying digits; set them aside and explain the trap.\n5. Finish by ordering all the pairs from least to greatest on one line.",
+          "content": {
+            "categories": [
+              "Matched pairs",
+              "Decoys"
+            ],
+            "cards": [
+              {
+                "text": "1/4 and 0.25",
+                "category": "Matched pairs"
+              },
+              {
+                "text": "2/5 and 0.4",
+                "category": "Matched pairs"
+              },
+              {
+                "text": "3/4 and 0.75",
+                "category": "Matched pairs"
+              },
+              {
+                "text": "1/5 and 0.2",
+                "category": "Matched pairs"
+              },
+              {
+                "text": "9/20 and 0.45",
+                "category": "Matched pairs"
+              },
+              {
+                "text": "0.15 (copied from 1/5)",
+                "category": "Decoys"
+              },
+              {
+                "text": "0.34 (copied from 3/4)",
+                "category": "Decoys"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Shading the fraction on a hundredths grid and reading the same squares as a decimal makes the equivalence concrete before division is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The copied-digits decimal is a precise, baitable error that find-and-fix confronts directly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'the fraction bar means divide' models the decision students skip when they copy digits."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What division does the fraction bar tell you to do?",
+          "How many hundredths does this fraction shade on the grid?",
+          "Before you compare, are both numbers in the same form?",
+          "Why do we add a zero to 0.3 before comparing it to 0.25?",
+          "When the division never stops, what do you do with the decimal?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student writes the fraction's digits straight into decimal places, like 1/5 = 0.15.",
+            "say": "The fraction bar means divide: 1 divided by 5 is 0.2. Check the grid: 1/5 shades 20 squares, not 15.",
+            "praise": "You divided to find the value instead of copying digits."
+          },
+          {
+            "if_you_see": "Student compares a fraction and a decimal without converting, judging by the size of the digits.",
+            "say": "Put both numbers in decimal form first, then compare place by place. 1/4 is 0.25, and 0.30 beats 0.25.",
+            "praise": "You moved both numbers to the same form before comparing, that makes the comparison fair."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Write 2/5 as a decimal.",
+            "look_for": "0.4. An answer of 0.25 or 0.52 means digits were copied instead of divided."
+          },
+          {
+            "prompt": "Which is greater: 0.35 or 2/5?",
+            "look_for": "2/5, because it equals 0.40. Choosing 0.35 means no conversion happened."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Which is greater: 3/8 or 0.4?",
+        "answer": "0.4",
+        "steps": [
+          {
+            "math": "3/8 = 3 divided by 8 = 0.375",
+            "annotation": "The fraction bar means divide the top by the bottom."
+          },
+          {
+            "math": "0.4 = 0.400",
+            "annotation": "Add zeros so both numbers show the same places."
+          },
+          {
+            "math": "compare: 0.400 vs 0.375",
+            "annotation": "Tenths first: 4 tenths beats 3 tenths."
+          },
+          {
+            "math": "0.4 > 3/8",
+            "annotation": "So 0.4 is the greater number."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Which is greater: 5/8 or 0.6?",
+        "answer": "5/8",
+        "steps": [
+          {
+            "math": "5/8 = 5 divided by 8 = 0.625",
+            "annotation": "Divide the top by the bottom.",
+            "given": true
+          },
+          {
+            "math": "0.6 = 0.600",
+            "annotation": "Add zeros so both show thousandths.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Compare the two decimals place by place.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State which original number is greater.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The fraction ___/___ means ___ divided by ___, which is ___.",
+        "In decimal form the numbers are ___ and ___, so ___ is greater."
+      ],
+      "fluency_source": "7DSP5-F2"
+    },
+    {
       "skill_id": "7DSP5-S1",
       "name": "Build a uniform probability model for equally likely outcomes",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.DSP.5",
       "prerequisite_skill": {
         "type": "skill",
@@ -507,7 +1090,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP5-F1",
+      "fluency_source": "7DSP5-B1",
       "sentence_starters": [
         "There are ___ equally likely outcomes, so each one is 1/___.",
         "My probabilities add to ___, which should equal 1."
@@ -564,7 +1147,7 @@
     {
       "skill_id": "7DSP5-S2",
       "name": "Find the probability of an event from a given probability model",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.DSP.5",
       "engine_stems": [
         1
@@ -800,7 +1383,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP5-F1",
+      "fluency_source": "7DSP5-B1",
       "sentence_starters": [
         "The event is ___ or ___, so I ADD: ___ + ___ = ___.",
         "This is an 'or' event, so the probability should be ___ than one outcome alone."
@@ -1112,7 +1695,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP5-F1",
+      "fluency_source": "7DSP5-B1",
       "sentence_starters": [
         "The favorable outcomes are ___, and the total is ___, so P = ___/___.",
         "The whole bag has ___ items, so that number goes on the bottom."
@@ -1378,7 +1961,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP5-F2",
+      "fluency_source": "7DSP5-B1",
       "sentence_starters": [
         "P(event) = ___/___, and there are ___ trials, so ___ x ___ = ___.",
         "I predict about ___ because that is the probability times the number of trials."
@@ -1676,7 +2259,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP5-F1",
+      "fluency_source": "7DSP5-B2",
       "sentence_starters": [
         "The event happened ___ times in ___ trials, so the experimental probability is ___/___.",
         "This is what actually happened, so I divide by the ___ trials."
@@ -1985,7 +2568,7 @@
           }
         ]
       },
-      "fluency_source": "7DSP5-F1",
+      "fluency_source": "7DSP5-B2",
       "sentence_starters": [
         "The theoretical probability is ___ and the experimental frequency is ___, so they are ___.",
         "The gap is ___ because ___ (random variation / small sample)."
@@ -2042,8 +2625,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7DSP5-F1",
         "7DSP5-F2"
@@ -2051,16 +2634,18 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7DSP5-S1",
-        "7DSP5-S2"
+        "7DSP5-B1",
+        "7DSP5-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7DSP5-S1",
+        "7DSP5-S2",
         "7DSP5-S3",
         "7DSP5-S4",
         "7DSP5-S5"
@@ -2068,7 +2653,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7DSP5-S6"
       ]
@@ -2077,6 +2662,8 @@
   "skill_sequence": [
     "7DSP5-F1",
     "7DSP5-F2",
+    "7DSP5-B1",
+    "7DSP5-B2",
     "7DSP5-S1",
     "7DSP5-S2",
     "7DSP5-S3",
@@ -2087,38 +2674,51 @@
   "skill_tree": {
     "7DSP5-F1": [],
     "7DSP5-F2": [],
-    "7DSP5-S1": [
+    "7DSP5-B1": [
       "7DSP5-F1"
+    ],
+    "7DSP5-B2": [
+      "7DSP5-F2"
+    ],
+    "7DSP5-S1": [
+      "7DSP5-B1"
     ],
     "7DSP5-S2": [
       "7DSP5-S1"
     ],
     "7DSP5-S3": [
-      "7DSP5-S1"
+      "7DSP5-S1",
+      "7DSP5-B1"
     ],
     "7DSP5-S4": [
       "7DSP5-S3",
-      "7DSP5-F2"
+      "7DSP5-B1"
     ],
     "7DSP5-S5": [
-      "7DSP5-S3"
+      "7DSP5-S3",
+      "7DSP5-B2"
     ],
     "7DSP5-S6": [
       "7DSP5-S4",
-      "7DSP5-S5"
+      "7DSP5-S5",
+      "7DSP5-B2"
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S3 (find P(event) as favorable over total from a sample space) -- the theoretical-probability workhorse the rest of the standard predicts and compares against. If they pass, push to S4 (create a model and predict a count) and S6 (compare theoretical to experimental and explain). If they fail, drop to S1 to check whether building a simple model and the favorable-over-total atom are solid. S2 (read a given model) and S5 (experimental probability) branch off the core as the read-a-model and observe-the-data threads.",
+    "description": "Start with S3, writing the probability of an event as favorable over total from a sample space, the At-proficiency workhorse the rest of the standard predicts and compares against. If they pass, push up to S4 (build a model and predict a count) and S6 (compare theoretical to experimental and explain the gap). If they fail, drop one grade to the new Looking Back pair: B1 checks part-to-whole ratios with scaling, the grade 6 engine under every favorable-over-total and prediction move, and B2 checks fraction-decimal conversion, which the comparison work leans on. If those wobble, the foundations locate the gap further down: F1 (fraction of a set, grade 3) and F2 (tenths and hundredths as decimals, grade 4). S1, S2, and S5 remain available to probe the standard's own model-building, model-reading, and experimental threads.",
     "entry_skill": "7DSP5-S3",
     "if_pass": [
       "7DSP5-S4",
       "7DSP5-S6"
     ],
     "if_fail": [
-      "7DSP5-S1"
+      "7DSP5-B1",
+      "7DSP5-B2"
     ],
     "branch_skills": [
+      "7DSP5-F1",
+      "7DSP5-F2",
+      "7DSP5-S1",
       "7DSP5-S2",
       "7DSP5-S5"
     ]

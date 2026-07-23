@@ -3,7 +3,7 @@
   "standard_text": "Use variables to represent two quantities in a proportional relationship in a real-world problem; write an equation to express one quantity, the dependent variable, in terms of the other quantity, the independent variable. Analyze the relationship between the dependent and independent variables using graphs and tables, and relate these to the equation.",
   "schema_version": 3,
   "progression": {
-    "narrative": "6.RP.5 asks students to run a proportional relationship through all three of its representations — table, equation, graph — and to know which quantity drives which. The logic starts with roles: before any math, a student must name the independent variable (the input they control) and the dependent variable (the output that responds) in a real-world situation (S1). Tables come next, because a table is the rate made visible: every y is the same multiplier times its x, and completing a table (S2) forces the multiply-across habit that additive shortcuts fake. Once the constant multiplier is felt in the rows, it gets a name and a home: the equation y = px, first read out of a completed table (S3), then written straight from the words of a situation and used to answer far-away questions the table can't reach (S4). The graph is the third face of the same relationship — ordered pairs from the table, plotted independent-first, landing on a straight line through the origin (S5). Finally the standard's (E) essential demand matures into judgment: given competing equations for a situation, test them against real values and explain which one is truly proportional and why the other fails (S6).",
+    "narrative": "This standard asks students to name the independent and dependent variables in a real-world proportional situation, write the equation y = px, and connect that equation to tables and graphs. The on-grade work moves from completing a proportional table, to compressing the table into an equation, to writing the equation straight from words, graphing it, and finally judging competing equations. Students who stall here usually carry gaps from well below grade six: shaky multiplication facts and a weak grasp of what a per amount means. Intervention should rebuild those foundations, then restore the grade five skills of generating a pattern from a rule as a table of ordered pairs and plotting points in the first quadrant. Only then does the y = px work stand on solid ground.",
     "steps": [
       {
         "skill_id": "6RP5-S1",
@@ -40,320 +40,746 @@
   "skills": [
     {
       "skill_id": "6RP5-F1",
-      "name": "Recall multiplication and division facts fluently",
+      "name": "Recall multiplication and division facts within 100",
       "column": "foundation",
       "parent_standard": "6.RP.5",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 3,
-        "description": "Multiply and divide within 144 from memory",
+        "description": "Multiply and divide within 100 from memory using fact families.",
         "check_question": "What is 6 x 7? What is 42 / 6?"
       },
-      "i_do_script": "A stuck fact can be rebuilt instead of guessed from a nearby friendly fact: 7 x 6 is 7 x 5 plus one more 7, so 35 + 7 = 42 -- and the ratio tables in this standard are exactly that picture, one more group each row. Every proportional relationship in this standard runs on one multiplication fact repeated over and over — $6 per cup means 6, 12, 18, 24. If the facts aren't automatic, the tables and equations fall apart. Watch me with 6 x 7: I know 6 x 7 = 42 because 6 x 6 = 36 and one more 6 makes 42. Use a fact you trust to reach the one you don't.",
+      "i_do_script": "Every proportional table runs on one multiplication fact repeated over and over, so the facts have to be automatic. Watch: for 6 x 7, I picture an array with 6 rows of 7 dots. I know 6 x 5 = 30, and two more rows of 6 add 12, so 6 x 7 = 42. The same array gives me the division for free: 42 dots in rows of 6 makes 7 columns, so 42 / 6 = 7. A stuck fact gets rebuilt from a fact I trust, not guessed.",
       "canonical_error": {
-        "pattern": "Cannot recall multiplication or division facts, so every table row and every equation check becomes a fresh struggle",
-        "example": "Filling a table for y = 7x, the student writes 7, 14, 21, 27 -- they added 6 instead of 7 because 7 x 4 wasn't automatic",
-        "why": "Facts weren't automatized in grades 3-4. The student understands the proportional pattern but can't execute it reliably, so errors look like reasoning mistakes when they're really recall mistakes."
+        "pattern": "Cannot recall a fact, so guesses a nearby product or counts one by one",
+        "example": "Says 6 x 7 = 48 or counts on fingers to 42 and loses the count",
+        "why": "Facts were never automatized in grade 3, so every table row becomes a fresh struggle. The array shows a stuck fact can be built from a known one: 6 x 5 plus 2 more sixes."
       },
-      "redirect_script": {
-        "stop": "Hold on — let's check that fact.",
-        "prompt": "Start from a fact you're sure of. You know 7 x 3 = 21, so 7 x 4 is just one more group of 7. Count up: 21, 28. Write the fact you used next to your answer.",
-        "praise": "You used a fact you trusted to build the one you needed. That's real fluency."
-      },
-      "item_template": "A single multiplication or division fact within 12 x 12. Numeric response, no context, no choices — speed and accuracy only.",
+      "item_template": "A single multiplication or division fact within 100. Numeric response, no context, no calculator. Fluency bank for timed sprints.",
       "sample_items": [
         {
-          "stem": "What is 6 x 7?",
-          "answer": "42",
-          "choices": null,
-          "distractor_logic": "Common slips: 48 (6x8) or 36 (6x6)"
+          "stem": "6 x 7",
+          "answer": "42"
         },
         {
-          "stem": "What is 8 x 4?",
-          "answer": "32",
-          "choices": null,
-          "distractor_logic": "Common slips: 24 (8x3) or 36 (confusing with 9x4)"
+          "stem": "8 x 4",
+          "answer": "32"
         },
         {
-          "stem": "What is 9 x 6?",
-          "answer": "54",
-          "choices": null,
-          "distractor_logic": "Common slips: 56 (7x8) or 45 (9x5)"
+          "stem": "9 x 6",
+          "answer": "54"
         },
         {
-          "stem": "What is 7 x 8?",
-          "answer": "56",
-          "choices": null,
-          "distractor_logic": "Common slips: 54 (9x6) or 63 (7x9)"
+          "stem": "7 x 8",
+          "answer": "56"
         },
         {
-          "stem": "What is 12 x 5?",
-          "answer": "60",
-          "choices": null,
-          "distractor_logic": "Common slips: 50 (10x5) or 65 (13x5)"
+          "stem": "56 / 8",
+          "answer": "7"
         },
         {
-          "stem": "What is 4 x 9?",
-          "answer": "36",
-          "choices": null,
-          "distractor_logic": "Common slips: 32 (4x8) or 45 (5x9)"
+          "stem": "45 / 9",
+          "answer": "5"
         },
         {
-          "stem": "What is 3 x 12?",
-          "answer": "36",
-          "choices": null,
-          "distractor_logic": "Common slips: 24 (2x12) or 33 (digits pasted)"
+          "stem": "36 / 4",
+          "answer": "9"
         },
         {
-          "stem": "What is 56 / 8?",
-          "answer": "7",
-          "choices": null,
-          "distractor_logic": "Common slips: 6 (48/8) or 8 (64/8)"
+          "stem": "4 x 9",
+          "answer": "36"
         },
         {
-          "stem": "What is 45 / 9?",
-          "answer": "5",
-          "choices": null,
-          "distractor_logic": "Common slips: 4 (36/9) or 6 (54/9)"
+          "stem": "63 / 7",
+          "answer": "9"
         },
         {
-          "stem": "What is 36 / 4?",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "Common slips: 8 (32/4) or 6 (24/4)"
-        },
-        {
-          "stem": "What is 72 / 6?",
-          "answer": "12",
-          "choices": null,
-          "distractor_logic": "Common slips: 11 (66/6) or 9 (confusing with 72/8)"
-        },
-        {
-          "stem": "What is 5 x 11?",
-          "answer": "55",
-          "choices": null,
-          "distractor_logic": "Common slips: 50 (5x10) or 60 (5x12)"
-        },
-        {
-          "stem": "What is 63 / 7?",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "Common slips: 8 (56/7) or 7 (49/7)"
-        },
-        {
-          "stem": "What is 8 x 6?",
-          "answer": "48",
-          "choices": null,
-          "distractor_logic": "Common slips: 42 (6x7) or 54 (6x9)"
-        },
-        {
-          "stem": "What is 96 / 12?",
-          "answer": "8",
-          "choices": null,
-          "distractor_logic": "Common slips: 9 (108/12) or 7 (84/12)"
-        },
-        {
-          "stem": "What is 7 x 12?",
-          "answer": "84",
-          "choices": null,
-          "distractor_logic": "Common slips: 72 (6x12) or 96 (8x12)"
+          "stem": "8 x 6",
+          "answer": "48"
         }
       ],
+      "redirect_script": {
+        "stop": "Hold on, let us check that fact.",
+        "prompt": "Start from a fact you are sure of. You know 6 x 5 = 30, so 6 x 7 is that plus two more sixes: 30, 36, 42. Write the fact you used next to your answer.",
+        "praise": "You built the fact you needed from one you trusted, that is real fluency."
+      },
       "vocabulary": [
         {
           "term": "Product",
           "definition": "The answer you get when you multiply two numbers."
         },
         {
-          "term": "Quotient",
-          "definition": "The answer you get when you divide one number by another."
+          "term": "Fact family",
+          "definition": "A multiplication fact and its related division facts, like 6 x 7 = 42, 42 / 6 = 7, and 42 / 7 = 6."
         }
       ],
       "next_steps": {
-        "if_pass": "6RP5-F2",
-        "if_fail": "Drill fact families daily with flash cards or a fact app; retest with a 1-minute sprint before moving on."
+        "if_pass": "6RP5-B1",
+        "if_fail": "Drill grade 3 fact families daily with arrays and flash cards; retest with a one minute sprint before moving on."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Before answering 7 x 6 cold: what friendly fact is nearby? Most students know 7 x 5 = 35 -- so 7 x 6 is that plus one more 7. Rebuild it, don't guess it."
-        },
-        {
           "kind": "show",
-          "text": "Write on the board: 7 x 6 = ___"
+          "text": "Draw an array: 6 rows with 7 dots in each row."
         },
         {
           "kind": "ask",
-          "text": "What is 7 x 6? Say it as fast as you can."
-        },
-        {
-          "kind": "watch",
-          "text": "If the answer comes in under 3 seconds, move on. If the student counts on fingers or stalls, don't give the answer — ask the next question."
-        },
-        {
-          "kind": "ask",
-          "text": "What's a 7 fact you DO know for sure? Most students know 7 x 5 = 35."
-        },
-        {
-          "kind": "ask",
-          "text": "If 7 x 5 = 35, how do you get to 7 x 6 from there?"
+          "text": "How many dots in all? Can you find a shortcut instead of counting every dot?"
         },
         {
           "kind": "say",
-          "text": "One more group of 7: 35 + 7 = 42. Building from a known fact beats guessing every time."
+          "text": "Six rows of 5 make 30, and the last 2 dots in each row add 12 more, so 6 x 7 = 42. The array holds the division too: 42 dots split into rows of 6 gives 7 in each row."
         },
         {
-          "kind": "show",
-          "text": "Now write: 42 / 7 = ___. Same family, opposite direction."
+          "kind": "watch",
+          "text": "If a student counts dots one at a time, cover part of the array and ask them to build from 6 x 5. Guessing and one by one counting are the flags."
         },
         {
           "kind": "ask",
-          "text": "How does knowing 7 x 6 = 42 make 42 / 7 free? What about 42 / 6?"
+          "text": "Your turn: use a fact you know to find 8 x 6, then say the two division facts that come with it."
         }
       ]
     },
     {
       "skill_id": "6RP5-F2",
-      "name": "Understand a 'per' rate as a repeated equal amount",
+      "name": "Solve equal groups problems: a per amount repeats for every unit",
       "column": "foundation",
       "parent_standard": "6.RP.5",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 4,
-        "description": "Interpret multiplication as equal groups ('3 boxes with 5 in each box')",
+        "description": "Interpret a statement like 3 dollars per cup as equal groups and multiply to find a total.",
         "check_question": "Stickers come 4 to a pack. How many stickers are in 3 packs?"
       },
-      "i_do_script": "The word 'per' is the engine of this whole standard. '$3 per cup' means EVERY cup adds another $3 — one cup costs 3, two cups cost 6, three cups cost 9. Watch me: 4 cups at $3 per cup is 4 groups of 3, so 4 x 3 = $12. If a student hears '$3 per cup' and thinks the whole order costs $3, everything after this breaks.",
+      "i_do_script": "The word per means for each one, and for each one means equal groups. Watch: tickets cost 3 dollars each, and I buy 4 tickets. I draw 4 boxes and write 3 in every box, because every ticket costs 3 dollars again. Counting the boxes is 3, 6, 9, 12, which is the multiplication 4 x 3 = 12. If a student reads 3 dollars each as the price of the whole order, everything built on rates breaks.",
       "canonical_error": {
-        "pattern": "Treats the 'per' amount as a one-time total instead of an amount that repeats for every unit",
-        "example": "For 'granola bars cost $2 each — what do 5 bars cost?' the student answers $2, or adds 2 + 5 = 7 instead of multiplying 2 x 5 = 10",
-        "why": "The student reads '$2' as the price of the whole purchase, not the price of ONE unit. They haven't internalized that 'per' and 'each' mean the amount happens again for every single unit, which is multiplication."
+        "pattern": "Treats the per amount as a one time total, or adds the rate and the count",
+        "example": "For bars cost 2 dollars each, what do 5 bars cost, answers 2 or writes 2 + 5 = 7",
+        "why": "The student reads the 2 dollars as the price of the purchase, not of one bar. Per and each mean the amount happens again for every unit, and repeated equal amounts are multiplication."
       },
-      "redirect_script": {
-        "stop": "Wait — what does 'each' tell us?",
-        "prompt": "Draw one circle for every bar and write $2 inside each circle. Now count the money circle by circle: 2, 4, 6... What operation did your counting just do?",
-        "praise": "You saw that the $2 happens for every single bar. That's exactly what 'per' means."
-      },
-      "item_template": "A one-sentence rate statement ('costs $4 each', 'eats 6 ounces per day') plus a small whole-number count. Student finds the total. Numeric response, no choices.",
+      "item_template": "A one sentence rate statement (costs 4 dollars each, eats 6 ounces per day) with a small whole number count. Student finds the total. Numeric response fluency bank.",
       "sample_items": [
         {
           "stem": "Pencils cost $2 each. What do 6 pencils cost?",
-          "answer": "12",
-          "choices": null,
-          "distractor_logic": "8 (adds 2 + 6) or 2 (treats $2 as the total) signal the 'per' gap"
+          "answer": "$12"
         },
         {
-          "stem": "A dog eats 3 cups of food per day. How much in 5 days?",
-          "answer": "15",
-          "choices": null,
-          "distractor_logic": "8 (adds 3 + 5) or 3 (one-time reading of the rate)"
+          "stem": "A dog eats 3 cups of food per day. How many cups in 5 days?",
+          "answer": "15"
         },
         {
           "stem": "Tickets cost $8 each. What do 4 tickets cost?",
-          "answer": "32",
-          "choices": null,
-          "distractor_logic": "12 (adds 8 + 4) signals additive misreading of 'each'"
+          "answer": "$32"
         },
         {
-          "stem": "A car goes 9 miles per gallon. How far on 6 gallons?",
-          "answer": "54",
-          "choices": null,
-          "distractor_logic": "15 (adds) or 9 (rate read as the total distance)"
+          "stem": "Erasers come 5 to a pack. How many erasers in 7 packs?",
+          "answer": "35"
         },
         {
-          "stem": "Erasers come 5 to a pack. How many in 7 packs?",
-          "answer": "35",
-          "choices": null,
-          "distractor_logic": "12 (adds 5 + 7) signals equal-groups gap"
-        },
-        {
-          "stem": "A plant grows 2 inches per week. How much in 8 weeks?",
-          "answer": "16",
-          "choices": null,
-          "distractor_logic": "10 (adds 2 + 8) or 2 (one-time reading)"
-        },
-        {
-          "stem": "Juice boxes cost $1 each. What do 9 boxes cost?",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "10 (adds 1 + 9); the rate of 1 exposes students who add instead of multiply"
+          "stem": "A plant grows 2 inches per week. How many inches in 8 weeks?",
+          "answer": "16"
         },
         {
           "stem": "A baker uses 4 eggs per cake. How many eggs for 6 cakes?",
-          "answer": "24",
-          "choices": null,
-          "distractor_logic": "10 (adds 4 + 6) or 4 (rate read as total)"
+          "answer": "24"
         },
         {
           "stem": "A bus travels 30 miles per hour. How far in 3 hours?",
-          "answer": "90",
-          "choices": null,
-          "distractor_logic": "33 (adds 30 + 3) or 30 (rate read as total)"
+          "answer": "90 miles"
         },
         {
           "stem": "Socks cost $6 per pair. What do 5 pairs cost?",
-          "answer": "30",
-          "choices": null,
-          "distractor_logic": "11 (adds 6 + 5) or 6 (one-time reading of the rate)"
+          "answer": "$30"
         }
       ],
+      "redirect_script": {
+        "stop": "Wait, what does each tell us?",
+        "prompt": "Draw one box for every unit and write the per amount inside every box. Count the boxes out loud: 2, 4, 6. What operation did your counting just do?",
+        "praise": "You saw the amount repeat for every single unit, that is exactly what per means."
+      },
       "vocabulary": [
         {
-          "term": "Rate",
-          "definition": "An amount that happens for every one unit, like $3 per cup or 6 ounces per day."
-        },
-        {
           "term": "Per",
-          "definition": "A word that means 'for each one' — the amount repeats for every single unit."
+          "definition": "A word that means for each one; the amount repeats for every single unit."
         },
         {
           "term": "Equal groups",
-          "definition": "Groups that all have the same amount in them; multiplying counts them all at once."
+          "definition": "Groups that all hold the same amount; multiplying counts them all at once."
         }
       ],
       "next_steps": {
-        "if_pass": "6RP5-S1",
-        "if_fail": "Model rates with counters — one pile per unit, the rate amount in each pile — until the student multiplies without prompting."
+        "if_pass": "6RP5-B1",
+        "if_fail": "Model grade 4 equal groups with counters, one pile per unit with the rate amount in each pile, until the student multiplies without prompting."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write on the board: 'Granola bars cost $2 each. What do 5 bars cost?'"
+          "text": "Write: Granola bars cost $2 each. What do 5 bars cost? Draw 5 boxes in a row."
         },
         {
           "kind": "ask",
-          "text": "Before any math — what does 'each' mean in this sentence? Who pays $2: the whole order, or every single bar?"
-        },
-        {
-          "kind": "watch",
-          "text": "If the student says 'the order costs $2' or wants to add 2 + 5, they're reading the rate as a one-time amount. Don't correct yet — build it out."
-        },
-        {
-          "kind": "show",
-          "text": "Draw 5 boxes in a row. Write $2 inside the first box."
-        },
-        {
-          "kind": "ask",
-          "text": "Does the second bar also cost $2? The third? Fill in every box."
-        },
-        {
-          "kind": "ask",
-          "text": "Count the money box by box out loud. What are you counting by? 2, 4, 6, 8, 10."
-        },
-        {
-          "kind": "ask",
-          "text": "Counting by 2s five times — what operation is that? Write it as one multiplication."
+          "text": "Does the first bar cost $2? The second? Write $2 in every box."
         },
         {
           "kind": "say",
-          "text": "Exactly — 5 x 2 = $10. 'Per' and 'each' always mean the amount repeats for every unit, and repeating equal amounts is multiplication. That idea powers everything we do next."
+          "text": "Count the money box by box: 2, 4, 6, 8, 10. Counting by 2s five times is the multiplication 5 x 2 = 10 dollars."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers $2 or $7, they read the rate as a one time amount or added it to the count. Send them back to the boxes: does each bar cost money?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: juice boxes cost $3 each. Draw the boxes and find the cost of 6 boxes."
         }
       ]
     },
     {
+      "skill_id": "6RP5-B1",
+      "name": "Generate a pattern from a rule and record it as a table of ordered pairs",
+      "column": "looking_back",
+      "parent_standard": "6.RP.5",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Use a one step rule like multiply by 4 to build a table of number pairs.",
+        "check_question": "The rule is multiply by 4. If the input is 3, what is the output?"
+      },
+      "i_do_script": "A rule is a machine: a number goes in, the rule acts on it, and a number comes out. Watch with the rule multiply by 4. Input 1 gives 4, input 2 gives 8, input 3 gives 12. I record each input with its output side by side in a table, and each row makes an ordered pair: (1, 4), (2, 8), (3, 12). The rule acts on the input in my row, so for input 6 I do not count up the output column, I multiply 4 x 6 = 24.",
+      "canonical_error": {
+        "pattern": "Extends the output column by adding instead of applying the rule to the input",
+        "example": "With the rule multiply by 4 and inputs 1, 2, 3, 6, writes 16 for input 6 by adding 4 to 12",
+        "why": "When inputs go up by 1, adding the same amount down the column happens to work, so the student learns add each row instead of apply the rule. The moment an input skips, the shortcut silently fails."
+      },
+      "item_template": "A one step multiplication rule with a short input output table, one output missing, sometimes with skipped inputs. Student applies the rule. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "The rule is multiply by 4. What is the output for the input 3?",
+          "answer": "12"
+        },
+        {
+          "stem": "The rule is multiply by 6. Complete the pair: input 5, output ___.",
+          "answer": "30"
+        },
+        {
+          "stem": "The rule is multiply by 3. The table shows inputs 1, 2, 3, 7 with outputs 3, 6, 9, ___. Find the missing output.",
+          "answer": "21"
+        },
+        {
+          "stem": "A table shows inputs 1, 2, 3 with outputs 5, 10, 15. What is the rule?",
+          "answer": "Multiply by 5"
+        },
+        {
+          "stem": "The rule is multiply by 8. Write the ordered pair for the input 4.",
+          "answer": "(4, 32)"
+        },
+        {
+          "stem": "The rule is multiply by 2. List the outputs for the inputs 1, 2, 3, 4.",
+          "answer": "2, 4, 6, 8"
+        },
+        {
+          "stem": "The rule is multiply by 5. The table shows inputs 1, 2, 3, 6. Which output goes with the input 6?",
+          "answer": "30",
+          "choices": [
+            "20",
+            "30",
+            "16",
+            "11"
+          ],
+          "distractor_logic": "20 adds 5 to the input 3 row (add down error); 16 adds one more input step; 11 adds the rule number to 6 instead of multiplying."
+        },
+        {
+          "stem": "A table shows inputs 2, 4, 6 with outputs 14, 28, 42. What is the rule, and what is the output for the input 9?",
+          "answer": "Multiply by 7; the output is 63."
+        }
+      ],
+      "redirect_script": {
+        "stop": "What is the input in the row you are filling?",
+        "prompt": "Put your finger on the input in your row and apply the rule to that number. Does your answer come from your row, or from the row above it?",
+        "praise": "You applied the rule to your own input instead of adding down the column, that works even when the inputs skip."
+      },
+      "vocabulary": [
+        {
+          "term": "Rule",
+          "definition": "The one step that turns every input into its output, like multiply by 4."
+        },
+        {
+          "term": "Ordered pair",
+          "definition": "An input and its output written together in order, like (3, 12)."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6RP5-S1",
+        "if_fail": "6RP5-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a function machine labeled multiply by 4, with a two column table beside it: inputs 1, 2, 3, 6 and outputs 4, 8, blank, blank."
+        },
+        {
+          "kind": "ask",
+          "text": "Feed the input 3 into the machine. What comes out? How do you know?"
+        },
+        {
+          "kind": "say",
+          "text": "The machine multiplies whatever goes in by 4, so 3 goes in and 12 comes out. For the input 6, I do not add 4 to 12. The machine acts on 6, so 4 x 6 = 24."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 16 for the input 6, they added down the column. Point at the skipped inputs 4 and 5: the machine never saw them."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: the rule is multiply by 3 and the inputs are 1, 2, 5. Build the table and write each row as an ordered pair."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "The rule is multiply by 2. What is the output for the input 7?",
+          "answer": "14"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "The rule is multiply by 10. Write the ordered pair for the input 3.",
+          "answer": "(3, 30)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "The rule is multiply by 6. The table shows inputs 1, 2, 3, 5 with outputs 6, 12, 18, ___. Find the missing output.",
+          "answer": "30"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A table shows inputs 1, 2, 3 with outputs 9, 18, 27. What is the rule? What is the output for the input 8?",
+          "answer": "Multiply by 9; the output is 72."
+        },
+        {
+          "difficulty": "core",
+          "stem": "The rule is multiply by 4. Write the ordered pairs for the inputs 2, 5, and 10.",
+          "answer": "(2, 8), (5, 20), (10, 40)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A table pairs inputs 3, 6, 9 with outputs 12, 24, 36. What one number multiplies every input to give its output?",
+          "answer": "4"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "The rule is multiply by 7. Could (6, 40) be a row of this table? Explain.",
+          "answer": "No. The rule gives 7 x 6 = 42, not 40, so (6, 40) does not follow the rule."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "The rule is multiply by 5 and the inputs are 1, 2, 3, 8. Tia filled the last output. Find her mistake and fix it.",
+          "shown_work": [
+            "Outputs: 5, 10, 15",
+            "Tia wrote: 15 + 5 = 20",
+            "Tia's answer: 20"
+          ],
+          "answer": "Tia added 5 down the column, but the inputs jump from 3 to 8. Apply the rule to the input: 5 x 8 = 40."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "The Rule Machine",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "A shoe box or folder labeled as the machine",
+            "Input cards 1 to 10",
+            "Blank two column table"
+          ],
+          "instructions": "1. One partner is the machine and secretly holds a rule card like multiply by 4.\n2. The other partner feeds input cards through; the machine says each output.\n3. The feeder records every input and output as a table row and as an ordered pair.\n4. After four pairs, the feeder names the rule and predicts the output for the input 9 before testing it.\n5. Swap roles with a new rule. Debrief: how did you predict an output the machine had not shown you?"
+        },
+        {
+          "type": "game",
+          "title": "Guess My Rule",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Whiteboards",
+            "Rule cards: multiply by 2 through multiply by 9"
+          ],
+          "instructions": "1. The leader draws a rule card and writes two complete ordered pairs on the board.\n2. Players write the rule and the output for a skipped input like 8 on their whiteboards.\n3. Boards up together: a point for the rule and a point for the skipped output.\n4. Anyone who adds down instead of multiplying explains what went wrong before the next round."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The physical machine makes the rule acts on the input concrete before the table abstracts it."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The add down error is invisible until a skipped input exposes it; find and fix work makes the trap explicit."
+        },
+        {
+          "strategy_id": "strat-math-008",
+          "why": "Whiteboards up on Guess My Rule lets the teacher spot column crawlers across the whole group at once."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the input in the row you are filling?",
+          "What one step turns every input into its output?",
+          "The inputs skip from 3 to 8. Does your method still work? How do you know?",
+          "Could you find the output for the input 100 without filling 99 rows? Show me.",
+          "How does each row of the table become an ordered pair?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student fills a missing output by adding to the row above, even when the inputs skip.",
+            "say": "Point at the input in your row. The rule acts on that number, not on the answer above it. Multiply your input by the rule.",
+            "praise": "You applied the rule to your own row, that works no matter how the inputs jump."
+          },
+          {
+            "if_you_see": "Student finds the rule from one row but uses a different multiplier on the next row.",
+            "say": "A rule never changes. Check it on every complete row: does the same multiplier work for all of them?",
+            "praise": "You tested the rule on every row before trusting it."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "The rule is multiply by 6. Inputs 1, 2, 5. Give all three outputs.",
+            "look_for": "6, 12, 30. An answer of 18 for the input 5 means add down thinking."
+          },
+          {
+            "prompt": "A table shows (2, 16) and (5, 40). What is the rule?",
+            "look_for": "Multiply by 8, found by asking what one number times each input gives its output."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "The rule is multiply by 4. The table shows inputs 1, 2, 3, 6 with outputs 4, 8, 12, ___. Find the missing output.",
+        "answer": "24",
+        "steps": [
+          {
+            "math": "Check the rule: 4 x 1 = 4, 4 x 2 = 8, 4 x 3 = 12",
+            "annotation": "The rule works on every complete row, so it is trustworthy."
+          },
+          {
+            "math": "The blank row has input 6, not input 4",
+            "annotation": "Look at the input column first. The table skips, so adding 4 to 12 would be wrong."
+          },
+          {
+            "math": "4 x 6 = 24",
+            "annotation": "Apply the rule to the input in this row. The ordered pair is (6, 24)."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "The rule is multiply by 3. The table shows inputs 1, 2, 3, 7 with outputs 3, 6, 9, ___. Find the missing output.",
+        "answer": "21",
+        "steps": [
+          {
+            "math": "Rule check: 3 x 1 = 3, 3 x 2 = 6, 3 x 3 = 9",
+            "annotation": "Confirm the rule on every complete row.",
+            "given": true
+          },
+          {
+            "math": "The blank row has input 7",
+            "annotation": "The inputs skip from 3 to 7, so do not add down the column.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Apply the rule to the input 7.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the row as an ordered pair.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The rule turns every input into ___ times the input.",
+        "My row has the input ___, so I multiply instead of adding down."
+      ],
+      "fluency_source": "6RP5-F1"
+    },
+    {
+      "skill_id": "6RP5-B2",
+      "name": "Plot and name ordered pairs in the first quadrant of the coordinate plane",
+      "column": "looking_back",
+      "parent_standard": "6.RP.5",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Plot a point from an ordered pair by moving right along the x axis, then up, and name the coordinates of a plotted point.",
+        "check_question": "To plot the point (3, 5), how far do you move right, and how far up?"
+      },
+      "i_do_script": "An ordered pair is a set of directions from the origin, and the order matters. Watch me plot (3, 5). I start at (0, 0) where the axes cross. The first number is the x coordinate, so I walk 3 units right along the x axis. The second number is the y coordinate, so I climb 5 units up. Right first, then up, every time. The point (5, 3) uses the same numbers but lands in a different place, so I always check which number came first.",
+      "canonical_error": {
+        "pattern": "Swaps the coordinates, moving up first or reading the pair in reverse",
+        "example": "Asked to plot (3, 5), places the point at 5 right and 3 up, which is (5, 3)",
+        "why": "The student treats the pair as two loose numbers instead of ordered directions. First is always the x move right, second is always the y move up; swapping them lands on a different point."
+      },
+      "item_template": "A first quadrant grid, 0 to 10 on each axis, whole number coordinates. Student plots a given ordered pair or names the coordinates of a marked point. Short response or MC.",
+      "sample_items": [
+        {
+          "stem": "To plot the point (3, 5), how many units do you move right, and how many up?",
+          "answer": "3 right, 5 up"
+        },
+        {
+          "stem": "A point sits 6 units right of the origin and 2 units up. Write its ordered pair.",
+          "answer": "(6, 2)"
+        },
+        {
+          "stem": "In the ordered pair (4, 9), which number is the x coordinate?",
+          "answer": "4"
+        },
+        {
+          "stem": "What ordered pair names the origin?",
+          "answer": "(0, 0)"
+        },
+        {
+          "stem": "A point is at (0, 7). Is it on the x axis or the y axis?",
+          "answer": "The y axis"
+        },
+        {
+          "stem": "Which describes how to plot (2, 8)?",
+          "answer": "Move 2 right, then 8 up",
+          "choices": [
+            "Move 2 right, then 8 up",
+            "Move 8 right, then 2 up",
+            "Move 2 up, then 8 right",
+            "Move 8 up, then 2 right"
+          ],
+          "distractor_logic": "The three wrong choices all swap the coordinates or the order of moves; picking any of them signals the swap error."
+        },
+        {
+          "stem": "Are (5, 1) and (1, 5) the same point? Explain.",
+          "answer": "No. (5, 1) is 5 right and 1 up; (1, 5) is 1 right and 5 up. The order of the numbers changes the location."
+        },
+        {
+          "stem": "A point sits on the x axis, 4 units right of the origin. Write its ordered pair.",
+          "answer": "(4, 0)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which number comes first in the pair?",
+        "prompt": "First number, walk right along the x axis. Second number, climb up. Say it as you plot: right ___, up ___.",
+        "praise": "You went right first and up second, that is exactly what the order in an ordered pair means."
+      },
+      "vocabulary": [
+        {
+          "term": "Origin",
+          "definition": "The point (0, 0) where the x axis and y axis cross; every plot starts there."
+        },
+        {
+          "term": "X coordinate",
+          "definition": "The first number in an ordered pair; how far to move right from the origin."
+        },
+        {
+          "term": "Y coordinate",
+          "definition": "The second number in an ordered pair; how far to move up from the origin."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6RP5-S1",
+        "if_fail": "6RP5-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a first quadrant grid from 0 to 10 on both axes. Mark the origin and label the x axis and y axis."
+        },
+        {
+          "kind": "ask",
+          "text": "We want to plot (3, 5). Which number is the walk right, and which is the climb up?"
+        },
+        {
+          "kind": "say",
+          "text": "First number, walk 3 right along the x axis. Second number, climb 5 up. Mark the point. Right first, then up, every time."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student lands at (5, 3), have them plot both points and compare: same numbers, different places. The order is the whole point."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: plot (5, 3) in a second color, then plot (0, 4) and tell me why it sits on the y axis."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "To plot (1, 6), how far right and how far up do you move?",
+          "answer": "1 right, 6 up"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A point is 4 right and 4 up from the origin. Write its ordered pair.",
+          "answer": "(4, 4)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Plot the points (2, 3), (5, 1), and (0, 6) on a first quadrant grid. Which one sits on the y axis?",
+          "answer": "(0, 6), because its x coordinate is 0."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Name the ordered pair for a point that is 7 units right of the origin and 2 units up.",
+          "answer": "(7, 2)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Plot (3, 6) and (6, 3) on the same grid. Are they the same point?",
+          "answer": "No. The order of the coordinates changes the location, so they are two different points."
+        },
+        {
+          "difficulty": "core",
+          "stem": "The pairs (1, 4), (2, 8), and (3, 12) come from the rule multiply by 4. Plot all three. What do you notice about the points?",
+          "answer": "They line up in a straight path that would pass through the origin."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A point sits on the x axis, 9 units from the origin. Write its ordered pair and explain how you know the y coordinate.",
+          "answer": "(9, 0). Points on the x axis have not climbed up at all, so the y coordinate is 0."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Marco plotted the point (2, 7). Find his mistake and fix it.",
+          "shown_work": [
+            "Marco started at the origin.",
+            "He moved 7 units right, then 2 units up.",
+            "He marked the point there."
+          ],
+          "answer": "He swapped the coordinates and plotted (7, 2). The first number is the right move, so (2, 7) is 2 right and 7 up."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Walk the Grid",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Floor grid made with tape, 0 to 6 on each axis",
+            "Ordered pair cards"
+          ],
+          "instructions": "1. One student stands on the origin and draws a card like (3, 5) scaled to the floor grid.\n2. They walk it out loud: right 3, up 5, and stand on the point.\n3. The group checks by reading the walker's position back as an ordered pair.\n4. Trap round: hand two walkers (2, 4) and (4, 2) and let the group see the two different landing spots.\n5. Debrief: why does the first number always mean right?"
+        },
+        {
+          "type": "game",
+          "title": "Coordinate Capture",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Printed first quadrant grids",
+            "Two colors of pencil",
+            "Ordered pair card deck"
+          ],
+          "instructions": "1. Partners take turns drawing a card and plotting the point in their color, saying right ___, up ___ as they plot.\n2. The other partner checks; a swapped point is erased and the card goes back in the deck.\n3. First player to plot four points in a straight line wins.\n4. Debrief: which plotted lines would pass through the origin, and what pairs made them?"
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Walking the floor grid makes right first then up a whole body experience before the pencil work."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "The chant right ___, up ___ is a frame worth repeating chorally until the order is automatic."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Plotting (2, 4) and (4, 2) side by side confronts the swap error directly instead of letting it hide."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which number in the pair tells you how far right? How do you know?",
+          "Where does every plot start?",
+          "Are (3, 6) and (6, 3) the same point? Prove it on the grid.",
+          "What is true about every point on the x axis? On the y axis?",
+          "You plotted (1, 4), (2, 8), (3, 12). What do you notice about where the points sit?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student swaps the coordinates and plots (5, 3) for (3, 5).",
+            "say": "Plot both points and compare. Same numbers, different places. First number walks right, second number climbs up, every time.",
+            "praise": "You kept the order: right first, up second. That is what ordered means."
+          },
+          {
+            "if_you_see": "Student starts counting from 1 instead of the origin, landing one unit off.",
+            "say": "Put your pencil on (0, 0) before you move. The first step right lands on 1, not on 2.",
+            "praise": "You started at the origin, so every count landed true."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Plot (2, 6) and say your moves out loud.",
+            "look_for": "Starts at the origin, says right 2, up 6. Moving 6 right first is the swap error."
+          },
+          {
+            "prompt": "Name the ordered pair for a point 5 right and 0 up.",
+            "look_for": "(5, 0), placed on the x axis. Answering (0, 5) means the order is not anchored."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Plot the point (3, 5) on a first quadrant grid.",
+        "answer": "A point 3 units right of the origin and 5 units up.",
+        "steps": [
+          {
+            "math": "Start at the origin (0, 0)",
+            "annotation": "Every plot starts where the axes cross."
+          },
+          {
+            "math": "x coordinate 3: move 3 units right",
+            "annotation": "The first number is the walk along the x axis."
+          },
+          {
+            "math": "y coordinate 5: move 5 units up",
+            "annotation": "The second number is the climb parallel to the y axis. Mark the point there."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Plot the point (6, 2) on a first quadrant grid.",
+        "answer": "A point 6 units right of the origin and 2 units up.",
+        "steps": [
+          {
+            "math": "Start at the origin (0, 0)",
+            "annotation": "Every plot starts where the axes cross.",
+            "given": true
+          },
+          {
+            "math": "x coordinate 6: move 6 units right",
+            "annotation": "The first number is the walk right.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Use the second number to climb up.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Mark the point and read it back as an ordered pair to check.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I start at the origin, go right ___, then up ___.",
+        "The first number is the x coordinate, so it tells me ___."
+      ],
+      "fluency_source": "6RP5-F1"
+    },
+    {
       "skill_id": "6RP5-S1",
       "name": "Identify the independent and dependent variables in a real-world situation",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.RP.5",
       "engine_stems": [
         1
@@ -698,7 +1124,7 @@
         "___ depends on ___, so ___ is the dependent variable.",
         "I control ___, so it is the independent variable."
       ],
-      "fluency_source": "6RP5-F1"
+      "fluency_source": "6RP5-F2"
     },
     {
       "skill_id": "6RP5-S2",
@@ -1197,7 +1623,7 @@
         "Every y in this table is ___ times its x, so the rate is ___.",
         "My row has x = ___, so I multiply ___ x ___ instead of adding down."
       ],
-      "fluency_source": "6RP5-F1"
+      "fluency_source": "6RP5-B1"
     },
     {
       "skill_id": "6RP5-S3",
@@ -1655,7 +2081,7 @@
         "The rate is ___ because y divided by x is ___ in every row.",
         "My equation survives the row test: when x = ___, it gives ___, which matches the table."
       ],
-      "fluency_source": "6RP5-F1"
+      "fluency_source": "6RP5-B1"
     },
     {
       "skill_id": "6RP5-S4",
@@ -2004,7 +2430,7 @@
         "The ___ depends on the ___, so my equation starts '___ ='.",
         "The rate ___ happens for every ___, so it multiplies ___."
       ],
-      "fluency_source": "6RP5-F1"
+      "fluency_source": "6RP5-F2"
     },
     {
       "skill_id": "6RP5-S5",
@@ -2858,7 +3284,7 @@
         "My ordered pair is (___, ___) — independent variable first, across then up.",
         "The line passes through the origin because zero ___ means zero ___."
       ],
-      "fluency_source": "6RP5-F1"
+      "fluency_source": "6RP5-B2"
     },
     {
       "skill_id": "6RP5-S6",
@@ -3194,12 +3620,14 @@
         "I tested x = ___: the equation gives ___, but the story says ___.",
         "The equation ___ is not proportional because ___."
       ],
-      "fluency_source": "6RP5-F1"
+      "fluency_source": "6RP5-B1"
     }
   ],
   "skill_sequence": [
     "6RP5-F1",
     "6RP5-F2",
+    "6RP5-B1",
+    "6RP5-B2",
     "6RP5-S1",
     "6RP5-S2",
     "6RP5-S3",
@@ -3209,8 +3637,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation",
-      "description": "Tier III — 2+ grade levels below. If a student can't access Looking Back, start here.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-4) prerequisite skills. Start intervention here.",
       "skills": [
         "6RP5-F1",
         "6RP5-F2"
@@ -3218,15 +3646,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Prerequisite skills — fix these first if a student can't access grade-level work",
+      "description": "One grade below (grade 5) skills that feed this standard directly.",
       "skills": [
-        "6RP5-S1"
+        "6RP5-B1",
+        "6RP5-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "Core 6.RP.5 skills — the standard itself",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "6RP5-S1",
         "6RP5-S2",
         "6RP5-S3",
         "6RP5-S4",
@@ -3235,7 +3665,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Extension skills — for students ready to push ahead",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "6RP5-S6"
       ]
@@ -3246,12 +3676,19 @@
     "6RP5-F2": [
       "6RP5-F1"
     ],
-    "6RP5-S1": [
-      "6RP5-F2"
-    ],
-    "6RP5-S2": [
+    "6RP5-B1": [
       "6RP5-F1",
       "6RP5-F2"
+    ],
+    "6RP5-B2": [
+      "6RP5-F1"
+    ],
+    "6RP5-S1": [
+      "6RP5-B1"
+    ],
+    "6RP5-S2": [
+      "6RP5-B1",
+      "6RP5-S1"
     ],
     "6RP5-S3": [
       "6RP5-S1",
@@ -3262,25 +3699,30 @@
     ],
     "6RP5-S5": [
       "6RP5-S2",
-      "6RP5-S4"
+      "6RP5-S4",
+      "6RP5-B2"
     ],
     "6RP5-S6": [
       "6RP5-S4"
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (write y = px from a situation and use it) — the standard's center of gravity. If they pass, branch up to S5 (graphing) and S6 (critique). If they fail, check whether the gap is S1 (variable roles) or S3 (finding the rate from a table); S2 sits between as the table-mechanics branch. This avoids testing all 6 skills when the student may only need 1-2.",
+    "description": "Start with S4, writing y = px from a real-world situation and using it, the standard's center of gravity. If they pass, branch up to S5 (graphing) and S6 (critiquing equations). If they fail, drop below grade level: B1 checks whether the student can run a rule through a table of ordered pairs, and B2 checks first quadrant plotting, the two grade 5 skills this standard leans on. If those wobble, the foundations F1 (multiplication facts) and F2 (per as equal groups) locate the gap in grades 3 and 4. S1, S2, and S3 remain available to probe variable roles, table completion, and equation writing on grade level.",
     "entry_skill": "6RP5-S4",
     "if_pass": [
       "6RP5-S5",
       "6RP5-S6"
     ],
     "if_fail": [
-      "6RP5-S1",
-      "6RP5-S3"
+      "6RP5-B1",
+      "6RP5-B2"
     ],
     "branch_skills": [
-      "6RP5-S2"
+      "6RP5-F1",
+      "6RP5-F2",
+      "6RP5-S1",
+      "6RP5-S2",
+      "6RP5-S3"
     ]
   }
 }

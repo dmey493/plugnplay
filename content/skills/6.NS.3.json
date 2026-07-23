@@ -3,7 +3,7 @@
   "standard_text": "Compare and order rational numbers and plot them on a number line. Write, interpret, and explain statements of order for rational numbers in real-world contexts.",
   "schema_version": 3,
   "progression": {
-    "narrative": "6.NS.3 asks students to do three connected things with rational numbers: PLOT them on a number line, COMPARE and ORDER them, and WRITE, INTERPRET, and EXPLAIN statements of order in real-world contexts like temperature, elevation, and money. The number line is the engine of the whole standard -- every comparison question is secretly a position question. So the progression starts with position: a student must first place integers, including negatives, on a number line and read a point's value (S1). Once position is solid, comparing two numbers becomes 'which one is farther right?' (S2) -- and this is where the single biggest bug lives: students compare the digits and decide -8 > -3 because 8 > 3. From there the standard scales up in two ways: judging whole statements of order as true or false when several numbers are in play (S3), and ordering full lists that mix fractions, decimals, and negatives (S4). Then the standard's real-world demand takes over: students write their own inequality statements from situations and positional language like 'to the left of' (S5). Finally, students step up from answering to justifying -- defending which of two very close numbers is greater using distance from zero (S6), the DOK 3 ceiling of the standard.",
+    "narrative": "This standard asks students to plot rational numbers on a number line, compare and order them, and write and explain statements of order in real contexts like temperature, elevation, and money. The on-grade work runs from plotting and two-number comparison up through ordering mixed lists and writing inequalities from situations, with the central bug being digit comparison on negatives, such as calling -8 greater than -3. Students who struggle here usually carry gaps from well below grade six: shaky whole-number place value and no picture of a fraction as a position on a line. Intervention should rebuild those foundations, then the grade five skills of comparing decimals by place value and ordering positive fractions and decimals together, and only then reintroduce the negative side of the line.",
     "steps": [
       {
         "skill_id": "6NS3-S1",
@@ -40,371 +40,847 @@
   "skills": [
     {
       "skill_id": "6NS3-F1",
-      "name": "Compare two positive numbers using the < and > symbols",
+      "name": "Compare multi-digit whole numbers using place value",
       "column": "foundation",
       "parent_standard": "6.NS.3",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 2,
-        "description": "Tell which of two whole numbers is larger",
-        "check_question": "Which is more: 45 or 54?"
+        "grade": 4,
+        "description": "Compare two whole numbers up to four digits using place value and record the result with < or >.",
+        "check_question": "Which is greater, 350 or 530? How do you know?"
       },
-      "i_do_script": "The symbols < and > aren't decorations between numbers -- each one is a whole sentence you can read out loud, left to right. So the work starts with the true SPOKEN sentence, and the symbol's only job is to write that sentence down. Today we're making sure the two comparison symbols, < and >, always come out pointing the right way. Here's the anchor: the symbol OPENS toward the bigger number and its point pokes the smaller one. Watch me compare 34 and 29: 34 is bigger, so the open mouth faces the 34 -- I write 34 > 29. Read it left to right: '34 is greater than 29.'",
+      "i_do_script": "To compare whole numbers, I compare places, starting from the biggest place. Watch: for 350 and 530, both have three digits, so I compare the hundreds first. 3 hundreds against 5 hundreds: 5 hundreds is more, so 530 is greater, and I write 350 < 530. If the biggest places tie, I move one place to the right and compare again. The symbol always opens toward the greater number, and I read it left to right as a sentence: 350 is less than 530.",
       "canonical_error": {
-        "pattern": "Points the symbol the wrong way -- writes 34 < 29 while correctly saying '34 is bigger'",
-        "example": "Student knows 34 is more than 29 but writes 34 < 29 because they can't remember which way the symbol faces",
-        "why": "The student learned the symbol as decoration (or a half-remembered 'alligator' story) instead of as a statement that reads left to right. They compare correctly in their head but the symbol isn't connected to the words 'is greater than' / 'is less than.'"
+        "pattern": "Compares stray digits instead of matching places, or points the symbol the wrong way",
+        "example": "Writes 105 < 89 because 8 and 9 look bigger than 1 and 0",
+        "why": "The student scans for big digits instead of lining up places. A digit in the hundreds place outweighs any digit in the tens place, so 105 has more just by having a hundred."
       },
-      "redirect_script": {
-        "stop": "Hold on -- read your statement out loud.",
-        "prompt": "Read the symbol left to right: < says 'is less than' and > says 'is greater than.' Say your sentence out loud -- '34 is less than 29' -- does that sentence tell the truth? If not, flip the symbol and read it again.",
-        "praise": "You read the symbol as a sentence and it told the truth. That's exactly the habit."
-      },
-      "item_template": "Two positive numbers (whole numbers or simple decimals) with a blank between them. Student writes < or >. NR, no choices -- short stems for fluency work.",
+      "item_template": "Two whole numbers up to four digits with a blank between them. Student writes < or >, or picks the greater number. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Write < or >: 34 __ 29",
-          "answer": ">",
-          "choices": null,
-          "distractor_logic": "Symbol-direction confusion: student knows 34 is bigger but writes <"
-        },
-        {
-          "stem": "Write < or >: 61 __ 78",
-          "answer": "<",
-          "choices": null,
-          "distractor_logic": "Symbol-direction confusion: writes > because 61 comes first"
+          "stem": "Write < or >: 350 __ 530",
+          "answer": "<"
         },
         {
           "stem": "Write < or >: 105 __ 89",
-          "answer": ">",
-          "choices": null,
-          "distractor_logic": "Student may compare only leading digits (1 vs 8) and write <"
-        },
-        {
-          "stem": "Write < or >: 350 __ 530",
-          "answer": "<",
-          "choices": null,
-          "distractor_logic": "Same digits rearranged -- tests place value, not digit spotting"
-        },
-        {
-          "stem": "Write < or >: 9 __ 12",
-          "answer": "<",
-          "choices": null,
-          "distractor_logic": "Student may think 9 > 12 because 9 is a bigger digit than 1"
-        },
-        {
-          "stem": "Write < or >: 47 __ 44",
-          "answer": ">",
-          "choices": null,
-          "distractor_logic": "Close numbers force comparing the ones place"
-        },
-        {
-          "stem": "Write < or >: 0.5 __ 0.7",
-          "answer": "<",
-          "choices": null,
-          "distractor_logic": "Simple decimal comparison -- warm-up for F2"
-        },
-        {
-          "stem": "Write < or >: 2.4 __ 2.1",
-          "answer": ">",
-          "choices": null,
-          "distractor_logic": "Same whole-number part; student must compare tenths"
-        },
-        {
-          "stem": "Write < or >: 0.25 __ 0.4",
-          "answer": "<",
-          "choices": null,
-          "distractor_logic": "Digit-count bait: 25 > 4 tempts the student to write >"
-        },
-        {
-          "stem": "Write < or >: 1.8 __ 1.09",
-          "answer": ">",
-          "choices": null,
-          "distractor_logic": "Digit-count bait: 109 looks bigger than 18"
-        },
-        {
-          "stem": "Write < or >: 300 __ 299",
-          "answer": ">",
-          "choices": null,
-          "distractor_logic": "299 has bigger-looking digits; place value decides"
-        },
-        {
-          "stem": "Write < or >: 5.6 __ 6.5",
-          "answer": "<",
-          "choices": null,
-          "distractor_logic": "Same digits swapped across the decimal point"
+          "answer": ">"
         },
         {
           "stem": "Write < or >: 72 __ 27",
-          "answer": ">",
-          "choices": null,
-          "distractor_logic": "Same digits reversed -- tests place value"
+          "answer": ">"
         },
         {
-          "stem": "Write < or >: 0.9 __ 1.1",
-          "answer": "<",
-          "choices": null,
-          "distractor_logic": "Student may think 9 > 1 and write >; the whole-number part decides"
+          "stem": "Write < or >: 468 __ 486",
+          "answer": "<"
+        },
+        {
+          "stem": "Which is greater: 2301 or 2031?",
+          "answer": "2301"
+        },
+        {
+          "stem": "Write < or >: 999 __ 1000",
+          "answer": "<"
+        },
+        {
+          "stem": "Write < or >: 5407 __ 5470",
+          "answer": "<"
+        },
+        {
+          "stem": "Order from least to greatest: 340, 304, 430",
+          "answer": "304, 340, 430"
+        },
+        {
+          "stem": "Write < or >: 68 __ 71",
+          "answer": "<"
         }
       ],
+      "redirect_script": {
+        "stop": "Which place did you compare first?",
+        "prompt": "Line the numbers up by place value and compare the biggest place first. If it ties, slide one place to the right. Then read your symbol out loud as a sentence and check that the sentence is true.",
+        "praise": "You compared the biggest place first and the symbol told the truth."
+      },
       "vocabulary": [
         {
+          "term": "Place value",
+          "definition": "The amount a digit is worth because of its position: ones, tens, hundreds, thousands."
+        },
+        {
           "term": "Greater than (>)",
-          "definition": "The symbol that says the first number is bigger. Read left to right: 7 > 3 means '7 is greater than 3.'"
+          "definition": "The symbol that says the first number is bigger. 530 > 350 reads 530 is greater than 350."
         },
         {
           "term": "Less than (<)",
-          "definition": "The symbol that says the first number is smaller. Read left to right: 3 < 7 means '3 is less than 7.'"
-        },
-        {
-          "term": "Compare",
-          "definition": "Decide which of two numbers is bigger, smaller, or whether they are equal."
+          "definition": "The symbol that says the first number is smaller. 350 < 530 reads 350 is less than 530."
         }
       ],
       "next_steps": {
-        "if_pass": "Move to 6NS3-F2 (locate fractions and decimals on a number line), then into S1 with negatives.",
-        "if_fail": "Practice reading every symbol as a spoken sentence -- 'is less than,' 'is greater than' -- with whole numbers under 100 until the direction is automatic."
+        "if_pass": "6NS3-B1",
+        "if_fail": "Review grade 4 place value with base ten blocks: build both numbers, then compare hundreds to hundreds and tens to tens."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Before any symbol touches the board: say a true sentence out loud comparing 34 and 29. ('34 is greater than 29.') Whatever symbol we pick has to say exactly that sentence -- if reading the symbol out loud produces a lie, the symbol is facing the wrong way."
-        },
-        {
           "kind": "show",
-          "text": "Write on the board: 34 __ 29, with a blank between the numbers."
+          "text": "Write 350 and 530 in a place value chart, hundreds tens ones, one number above the other."
         },
         {
           "kind": "ask",
-          "text": "Before any symbols -- which of these two numbers is bigger? How do you know?"
+          "text": "Which place do we compare first, and why not the ones?"
         },
         {
           "kind": "say",
-          "text": "Right, 34 is bigger. Now we pick the symbol. Here's the only rule you need: the symbol OPENS toward the bigger number, and it reads left to right like a sentence."
-        },
-        {
-          "kind": "show",
-          "text": "Write both candidates: 34 > 29 and 34 < 29."
-        },
-        {
-          "kind": "ask",
-          "text": "Read each one out loud. '34 is greater than 29.' '34 is less than 29.' Which sentence tells the truth?"
+          "text": "The hundreds place carries the most value. 3 hundreds against 5 hundreds: 530 wins before we even look at the tens. So 350 < 530."
         },
         {
           "kind": "watch",
-          "text": "If the student picks < while saying '34 is bigger,' they're treating the symbol as decoration. Have them trace the open side with a finger and say which number it faces."
+          "text": "If a student picks 350 because the 5 in the tens catches their eye, point at the chart: a 5 in the tens is 50, a 5 in the hundreds is 500."
         },
         {
           "kind": "ask",
-          "text": "Now you write one: put < or > between 61 and 78, then read your statement out loud to check it."
-        },
-        {
-          "kind": "say",
-          "text": "That's the whole skill: compare first, then make the symbol say the true sentence."
+          "text": "Your turn: use the chart to compare 468 and 486, then write the symbol and read the sentence out loud."
         }
       ]
     },
     {
       "skill_id": "6NS3-F2",
-      "name": "Locate fractions and decimals between whole numbers on a number line",
+      "name": "Represent fractions as positions on a number line",
       "column": "foundation",
       "parent_standard": "6.NS.3",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 3,
-        "description": "Place unit fractions like 1/2 and 1/4 on a number line from 0 to 1",
-        "check_question": "On a number line from 0 to 1, where does 1/2 go?"
+        "description": "Place fractions like 1/2, 1/4, and 3/4 on a number line from 0 to 1 by cutting the line into equal parts.",
+        "check_question": "On a number line from 0 to 1, where does 3/4 go?"
       },
-      "i_do_script": "We're reading number lines where the tick marks land BETWEEN the whole numbers. Watch me find 0.75 on a line from 0 to 1 with ticks every quarter: I count the spaces, not the marks -- each space is 0.25, so three spaces past 0 is 0.75. The big trap today: 0.25 is NOT bigger than 0.5 just because 25 looks bigger than 5. On the line, 0.25 sits to the left of 0.5 -- and left means less.",
+      "i_do_script": "A fraction is a spot on the number line, not just a piece of pizza. Watch me place 3/4 on a line from 0 to 1: the denominator says cut the space from 0 to 1 into 4 equal parts, and the numerator says hop 3 of those parts from 0. I count the hops out loud: 1/4, 2/4, 3/4. My mark lands three hops past 0, most of the way to 1. Count spaces, not tick marks, and always start the hops at 0.",
       "canonical_error": {
-        "pattern": "Treats decimal digits like whole numbers -- decides 0.25 > 0.5 because 25 > 5",
-        "example": "Asked to place 0.25 and 0.5 on a number line, student puts 0.25 to the right of 0.5 'because 25 is more than 5'",
-        "why": "Whole-number thinking: more digits or bigger-looking digits meant bigger for every number the student met in grades K-3. They haven't anchored decimals to positions -- 0.25 is a quarter of the way to 1, 0.5 is halfway."
+        "pattern": "Counts tick marks instead of spaces, or thinks a bigger denominator means a bigger fraction",
+        "example": "Places 1/4 to the right of 1/2 because 4 is more than 2",
+        "why": "The student reads the denominator as a size instead of a number of cuts. More cuts make smaller pieces, so 1/4 is a shorter hop from 0 than 1/2. The line settles it: 1/4 lands left of 1/2."
       },
-      "redirect_script": {
-        "stop": "Wait -- let's put both numbers on the line before deciding.",
-        "prompt": "Say each number as an amount of one whole: 0.5 is half of the way to 1, and 0.25 is only a quarter of the way. Mark both on the line. Which mark is farther right?",
-        "praise": "You used the position, not the digits. The line never lies."
-      },
-      "item_template": "A number line with rational tick marks (quarters, halves, tenths) and a labeled point; student names the point's value, or places a given fraction/decimal. Positive values only.",
+      "item_template": "A number line from 0 to 1 (or 0 to 2) cut into halves, thirds, fourths, sixths, or eighths. Student names a marked point or places a given fraction. Positive fractions only.",
       "sample_items": [
         {
-          "stem": "A number line from 0 to 1 is marked every 0.25. Point A is shown. What number is Point A located at?",
-          "answer": "0.75",
-          "choices": null,
-          "distractor_logic": "Counting tick marks instead of spaces gives 0.5 or 1",
-          "render_data": {
-            "type": "number_line_point",
-            "ticks": [
-              0,
-              0.25,
-              0.5,
-              0.75,
-              1
-            ],
-            "point_value": 0.75,
-            "point_label": "A"
-          }
+          "stem": "A number line from 0 to 1 is cut into 4 equal parts. What fraction is 1 hop from 0?",
+          "answer": "1/4"
         },
         {
-          "stem": "Point B is marked on the number line below. What number is Point B located at?",
-          "answer": "1.5",
-          "choices": null,
-          "distractor_logic": "Student may answer 1 or 2 by snapping to the nearest whole number",
-          "render_data": {
-            "type": "number_line_point",
-            "ticks": [
-              0,
-              0.5,
-              1,
-              1.5,
-              2
-            ],
-            "point_value": 1.5,
-            "point_label": "B"
-          }
+          "stem": "On a number line from 0 to 1, where does 1/2 go?",
+          "answer": "Exactly halfway between 0 and 1"
         },
         {
-          "stem": "Point C is marked on the number line below. What number is Point C located at?",
-          "answer": "3.25",
-          "choices": null,
-          "distractor_logic": "Counting marks instead of spaces gives 3.5",
-          "render_data": {
-            "type": "number_line_point",
-            "ticks": [
-              3,
-              3.25,
-              3.5,
-              3.75,
-              4
-            ],
-            "point_value": 3.25,
-            "point_label": "C"
-          }
-        },
-        {
-          "stem": "Point D is marked on the number line below. What number is Point D located at?",
-          "answer": "0.6",
-          "choices": null,
-          "distractor_logic": "Ticks every 0.2 -- counting ticks as tenths gives 0.3",
-          "render_data": {
-            "type": "number_line_point",
-            "ticks": [
-              0,
-              0.2,
-              0.4,
-              0.6,
-              0.8,
-              1
-            ],
-            "point_value": 0.6,
-            "point_label": "D"
-          }
-        },
-        {
-          "stem": "Which number is halfway between 2 and 3?",
-          "answer": "2.5",
-          "choices": [
-            "2.5",
-            "2.3",
-            "3.5",
-            "2 1/4"
-          ],
-          "distractor_logic": "3.5 places 'halfway' past 3; 2 1/4 and 2.3 test that halfway means 1/2, not any in-between number"
-        },
-        {
-          "stem": "Which is greater: 0.5 or 0.25?",
-          "answer": "0.5",
-          "choices": null,
-          "distractor_logic": "Digit-count bait: 25 > 5 tempts the answer 0.25"
-        },
-        {
-          "stem": "Which is greater: 1/2 or 1/4?",
-          "answer": "1/2",
-          "choices": null,
-          "distractor_logic": "Bigger denominator bait: 4 > 2 tempts the answer 1/4"
+          "stem": "A number line from 0 to 1 is cut into 4 equal parts. What fraction is 3 hops from 0?",
+          "answer": "3/4"
         },
         {
           "stem": "On a number line from 0 to 1, is 3/4 closer to 0 or closer to 1?",
-          "answer": "Closer to 1",
-          "choices": null,
-          "distractor_logic": "Student who can't picture 3/4 as three of four equal spaces may guess 0"
+          "answer": "Closer to 1"
         },
         {
-          "stem": "Mark 1 3/4 on the number line below.",
-          "answer": "The point at 1.75 (three spaces past 1)",
-          "choices": null,
-          "distractor_logic": "Students may mark 1.34 (reading '3/4' as digits) or count ticks from 1 incorrectly",
-          "render_data": {
-            "type": "number_line_point",
-            "ticks": [
-              1,
-              1.25,
-              1.5,
-              1.75,
-              2
-            ],
-            "point_value": null
-          }
+          "stem": "Which is farther right on the number line: 1/2 or 1/4?",
+          "answer": "1/2"
+        },
+        {
+          "stem": "A number line from 0 to 1 is cut into 3 equal parts. What fraction is 2 hops from 0?",
+          "answer": "2/3"
+        },
+        {
+          "stem": "On a number line from 0 to 2, where does 3/2 go?",
+          "answer": "Halfway between 1 and 2"
+        },
+        {
+          "stem": "A number line from 0 to 1 is cut into 8 equal parts. What fraction is 4 hops from 0? What simpler fraction lands at the same spot?",
+          "answer": "4/8, the same spot as 1/2"
         }
       ],
+      "redirect_script": {
+        "stop": "How many equal parts is the line cut into, and where do your hops start?",
+        "prompt": "The bottom number tells how many equal parts to cut the space from 0 to 1 into. The top number tells how many hops from 0. Count the spaces, not the marks, and hop out loud from 0.",
+        "praise": "You cut the line into equal parts and counted hops from 0, that is exactly what a fraction means."
+      },
       "vocabulary": [
         {
-          "term": "Tick mark",
-          "definition": "A small line on the number line showing where a number lives. The distance between ticks is always the same on one line."
+          "term": "Denominator",
+          "definition": "The bottom number of a fraction. It tells how many equal parts the space from 0 to 1 is cut into."
+        },
+        {
+          "term": "Numerator",
+          "definition": "The top number of a fraction. It counts how many parts, or hops from 0, you take."
         },
         {
           "term": "Interval",
           "definition": "The space between two tick marks. Count spaces, not marks, to find a value."
-        },
-        {
-          "term": "Halfway",
-          "definition": "Exactly in the middle of two numbers -- halfway between 2 and 3 is 2.5."
         }
       ],
       "next_steps": {
-        "if_pass": "Move to 6NS3-S1 -- the same number-line reading, now extended left of zero to negatives.",
-        "if_fail": "Fold paper strips into halves and quarters, label the folds, and match them to number-line ticks before returning to these items."
+        "if_pass": "6NS3-B2",
+        "if_fail": "Fold a paper strip into halves and fourths, label each fold, and lay the strip along a drawn number line before returning to these items."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw a number line from 0 to 1 with tick marks at 0, 0.25, 0.5, 0.75, and 1. Circle the tick at 0.75 and label it A."
+          "text": "Draw a number line from 0 to 1. Cut the space into 4 equal parts with tick marks."
         },
         {
           "kind": "ask",
-          "text": "How many equal spaces did the ticks cut this line into? Count the SPACES with me, not the marks."
-        },
-        {
-          "kind": "ask",
-          "text": "The whole line is 1. If it's cut into 4 equal spaces, how much is each space worth?"
-        },
-        {
-          "kind": "ask",
-          "text": "Point A is how many spaces past 0? So what number is it at?"
-        },
-        {
-          "kind": "watch",
-          "text": "If the student counts tick marks instead of spaces (getting 4 ticks and calling A '0.5' or '1'), have them hop a finger space by space, saying '0.25, 0.5, 0.75' out loud."
-        },
-        {
-          "kind": "ask",
-          "text": "Here's the trap question: which is bigger, 0.75 or 0.8? Some students say 75 beats 8. What do the POSITIONS say?"
+          "text": "How many equal spaces did we make? Count the spaces with me, not the marks."
         },
         {
           "kind": "say",
-          "text": "0.8 sits just to the right of 0.75, so 0.8 is bigger. Position beats digits every time."
+          "text": "Four equal spaces, so each hop is worth 1/4. To place 3/4, I start at 0 and hop three times: 1/4, 2/4, 3/4. The mark lands three quarters of the way to 1."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student counts tick marks and lands wrong, have them hop a finger space by space, saying each fraction out loud from 0."
         },
         {
           "kind": "ask",
-          "text": "Your turn: on this same line, where would 0.5 go, and is it left or right of Point A?"
+          "text": "Your turn: on this same line, place 1/2. Is it left or right of 3/4?"
         }
       ]
     },
     {
+      "skill_id": "6NS3-B1",
+      "name": "Compare positive decimals to the thousandths using place value",
+      "column": "looking_back",
+      "parent_standard": "6.NS.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Compare two positive decimals to the thousandths by comparing place values, and record the result with < or >.",
+        "check_question": "Which is greater, 0.5 or 0.35?"
+      },
+      "i_do_script": "Decimals compare place by place, just like whole numbers, starting from the biggest place. Watch me compare 0.5 and 0.35: I compare the tenths first. 5 tenths against 3 tenths: 5 tenths is more, so 0.5 is greater, even though 35 looks bigger than 5. On a hundredths grid, 0.5 shades 50 squares and 0.35 shades only 35. If the tenths tie, I slide right to the hundredths, then the thousandths. More digits never means a bigger decimal.",
+      "canonical_error": {
+        "pattern": "Compares decimals like whole numbers, deciding the one with more digits or bigger looking digits is greater",
+        "example": "Writes 0.35 > 0.5 because 35 > 5",
+        "why": "Whole number habits: for every number the student met early on, more digits meant more. Decimals break that rule because places to the right are smaller. Tenths outweigh hundredths no matter how many digits follow."
+      },
+      "item_template": "Two positive decimals to the thousandths, often with the digit-count trap (0.4 vs 0.35) or tied leading places (2.5 vs 2.48). Student writes < or > or picks the greater decimal. NR or MC.",
+      "sample_items": [
+        {
+          "stem": "Write < or >: 0.5 __ 0.35",
+          "answer": ">"
+        },
+        {
+          "stem": "Write < or >: 0.8 __ 0.79",
+          "answer": ">"
+        },
+        {
+          "stem": "Write < or >: 2.5 __ 2.48",
+          "answer": ">"
+        },
+        {
+          "stem": "Write < or >: 0.607 __ 0.61",
+          "answer": "<"
+        },
+        {
+          "stem": "Which decimal is greatest?",
+          "answer": "0.5",
+          "choices": [
+            "0.5",
+            "0.35",
+            "0.099",
+            "0.445"
+          ],
+          "distractor_logic": "0.099 baits the most-digits rule; 0.445 baits students who read 445 as bigger than 5; 0.35 baits 35 > 5"
+        },
+        {
+          "stem": "Write < or >: 1.06 __ 1.6",
+          "answer": "<"
+        },
+        {
+          "stem": "Order from least to greatest: 0.4, 0.04, 0.44",
+          "answer": "0.04, 0.4, 0.44"
+        },
+        {
+          "stem": "Which comparison is TRUE?",
+          "answer": "0.72 > 0.702",
+          "choices": [
+            "0.72 > 0.702",
+            "0.702 > 0.72",
+            "0.072 > 0.72",
+            "0.72 = 0.702"
+          ],
+          "distractor_logic": "0.702 > 0.72 baits the more-digits rule; 0.072 > 0.72 tests whether a leading zero place is understood; = baits students who see the same digits"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which place are you comparing first?",
+        "prompt": "Line up the decimal points and compare place by place from the left: tenths first, then hundredths, then thousandths. Append zeros if you need them, 0.5 is the same as 0.50. Then decide.",
+        "praise": "You compared tenths to tenths instead of counting digits, that is the whole skill."
+      },
+      "vocabulary": [
+        {
+          "term": "Tenths",
+          "definition": "The first place to the right of the decimal point. One tenth is 1/10 or 0.1."
+        },
+        {
+          "term": "Hundredths",
+          "definition": "The second place to the right of the decimal point. One hundredth is 1/100 or 0.01."
+        },
+        {
+          "term": "Thousandths",
+          "definition": "The third place to the right of the decimal point. One thousandth is 1/1000 or 0.001."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS3-S1",
+        "if_fail": "6NS3-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Shade 0.5 on one hundredths grid and 0.35 on another, side by side."
+        },
+        {
+          "kind": "ask",
+          "text": "Which grid has more shading? So which number is greater?"
+        },
+        {
+          "kind": "say",
+          "text": "0.5 shades 50 of the 100 squares and 0.35 shades 35. The tenths digit decides it: 5 tenths beats 3 tenths, so 0.5 > 0.35."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 0.35 is greater because 35 > 5, send them back to the grids: which one covers more?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: which is greater, 0.6 or 0.58? Prove it with places, then with a grid if you need it."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Write < or >: 0.7 __ 0.4",
+          "answer": ">"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Write < or >: 3.2 __ 3.9",
+          "answer": "<"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write < or >: 0.4 __ 0.35",
+          "answer": ">"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write < or >: 1.8 __ 1.09",
+          "answer": ">"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write < or >: 0.502 __ 0.52",
+          "answer": "<"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Order from least to greatest: 2.3, 2.03, 2.33",
+          "answer": "2.03, 2.3, 2.33"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write a decimal between 0.6 and 0.61.",
+          "answer": "Any decimal between them, such as 0.605"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia wrote 0.35 > 0.5. Find her mistake and fix it.",
+          "shown_work": [
+            "Compare 0.35 and 0.5.",
+            "Mia wrote: 0.35 > 0.5",
+            "Mia said: 35 is bigger than 5, so 0.35 is bigger."
+          ],
+          "answer": "Mia compared the digits like whole numbers. Compare the tenths place first: 3 tenths against 5 tenths, so 0.35 < 0.5. On a hundredths grid, 0.5 covers 50 squares and 0.35 covers only 35."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Grid Duel",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Blank hundredths grids",
+            "Colored pencils",
+            "Decimal cards to the hundredths"
+          ],
+          "instructions": "1. Each partner draws a decimal card, like 0.5 or 0.35.\n2. Both shade their decimal on a hundredths grid.\n3. Lay the grids side by side: the grid with more shading holds the greater decimal.\n4. Write the true comparison, like 0.35 < 0.5, and read it out loud.\n5. After five rounds, try a round with no grids, places only, then check one with a grid."
+        },
+        {
+          "type": "card_sort",
+          "title": "Trap or True",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "12 comparison cards, half true and half written by the more-digits rule",
+            "TRUE and FALSE header cards"
+          ],
+          "instructions": "1. Spread the TRUE and FALSE headers.\n2. Take turns drawing a card like 0.099 > 0.1, reading it as a sentence, and sorting it.\n3. A challenge means both students compare place by place before the card lands.\n4. Debrief: every FALSE card was written by the same wrong rule. Name the rule and say why it fails for decimals.",
+          "content": {
+            "categories": [
+              "TRUE",
+              "FALSE"
+            ],
+            "cards": [
+              {
+                "text": "0.5 > 0.35",
+                "category": "TRUE"
+              },
+              {
+                "text": "0.099 > 0.1",
+                "category": "FALSE"
+              },
+              {
+                "text": "0.8 > 0.79",
+                "category": "TRUE"
+              },
+              {
+                "text": "0.702 > 0.72",
+                "category": "FALSE"
+              },
+              {
+                "text": "1.06 < 1.6",
+                "category": "TRUE"
+              },
+              {
+                "text": "2.48 > 2.5",
+                "category": "FALSE"
+              },
+              {
+                "text": "0.61 > 0.607",
+                "category": "TRUE"
+              },
+              {
+                "text": "0.45 > 0.5",
+                "category": "FALSE"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Hundredths grids make 'tenths outweigh hundredths' visible before the compare-by-place rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The more-digits-means-bigger error is stable and predictable; finding and fixing it head-on breaks the whole number habit."
+        },
+        {
+          "strategy_id": "strat-math-008",
+          "why": "Quick whiteboard rounds of two-decimal comparisons show instantly who is still counting digits."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which place are you comparing first, and why that one?",
+          "Why can you write 0.5 as 0.50 without changing its value?",
+          "Which covers more of the grid, 0.5 or 0.35? What does that tell you?",
+          "The tenths tied. Where do you look next?",
+          "Can a decimal with three digits be smaller than a decimal with one digit? Show me an example."
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student says the decimal with more digits is greater, like 0.35 > 0.5.",
+            "say": "Shade both on hundredths grids. Which covers more squares? Now compare the tenths place: 5 tenths beats 3 tenths.",
+            "praise": "You let the places decide instead of the digit count."
+          },
+          {
+            "if_you_see": "Student compares correctly but points the symbol the wrong way.",
+            "say": "Read your statement out loud, left to right. Does the sentence tell the truth? Flip the symbol until it does.",
+            "praise": "You made the symbol say exactly what you meant."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Write < or >: 0.4 __ 0.35",
+            "look_for": "0.4 > 0.35 by comparing tenths. The answer < means the more-digits rule is still running."
+          },
+          {
+            "prompt": "Which is greater, 0.61 or 0.607?",
+            "look_for": "0.61, found by comparing hundredths after the tenths tie, not by comparing 61 to 607."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Which is greater, 0.5 or 0.35? Write the true comparison.",
+        "answer": "0.5 > 0.35",
+        "steps": [
+          {
+            "math": "Line up: 0.50 and 0.35",
+            "annotation": "Append a zero so both decimals show hundredths. 0.5 and 0.50 are the same value."
+          },
+          {
+            "math": "Compare tenths: 5 tenths vs 3 tenths",
+            "annotation": "Start at the biggest place. 5 tenths is more, so the comparison is already decided."
+          },
+          {
+            "math": "0.5 > 0.35",
+            "annotation": "On a hundredths grid, 0.5 shades 50 squares and 0.35 shades 35."
+          },
+          {
+            "math": "Read it: 0.5 is greater than 0.35",
+            "annotation": "The sentence tells the truth, so the symbol faces the right way."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Which is greater, 0.6 or 0.58? Write the true comparison.",
+        "answer": "0.6 > 0.58",
+        "steps": [
+          {
+            "math": "Line up: 0.60 and 0.58",
+            "annotation": "Append a zero so both decimals show hundredths.",
+            "given": true
+          },
+          {
+            "math": "Compare tenths: 6 tenths vs 5 tenths",
+            "annotation": "Start at the biggest place.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Which is greater? Write the comparison with the symbol.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Read your statement out loud to check it.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I compared the ___ place first, and ___ tenths is more than ___ tenths.",
+        "More digits does not mean greater, because ___."
+      ],
+      "fluency_source": "6NS3-F1"
+    },
+    {
+      "skill_id": "6NS3-B2",
+      "name": "Order positive fractions and decimals on a number line",
+      "column": "looking_back",
+      "parent_standard": "6.NS.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Place positive fractions and decimals on the same number line and order them, using renaming and the benchmarks 0, 1/2, and 1.",
+        "check_question": "Which is greater, 3/4 or 0.7?"
+      },
+      "i_do_script": "To order fractions and decimals together, I put them in one costume first. Watch me order 3/4, 0.5, and 0.7: I rename 3/4 as 0.75, because 3/4 of 100 is 75. Now all three are decimals: 0.5, 0.7, 0.75. On a number line from 0 to 1, 0.5 sits halfway, 0.7 is two hops past it, and 0.75 is just past 0.7. Least to greatest: 0.5, 0.7, 3/4. Rename first, place second, and let the positions do the ordering.",
+      "canonical_error": {
+        "pattern": "Orders fractions by their digits, or refuses to put fractions and decimals on the same line",
+        "example": "Says 0.7 > 3/4 because 7 is bigger than 3, or orders 1/2 before 1/4 because 2 is less than 4",
+        "why": "The student treats fractions and decimals as different kinds of objects with no shared home. Both are positions on the same line: 3/4 = 0.75 sits to the right of 0.7, so 3/4 is greater. Renaming into one form makes every comparison a position check."
+      },
+      "item_template": "Three or four positive numbers mixing fractions and decimals (halves, fourths, fifths, tenths, decimals to hundredths). Student orders them, places them on a marked number line, or picks the correct ordered list. MC or NR.",
+      "sample_items": [
+        {
+          "stem": "Which is greater: 3/4 or 0.7?",
+          "answer": "3/4"
+        },
+        {
+          "stem": "Write 1/2 as a decimal.",
+          "answer": "0.5"
+        },
+        {
+          "stem": "Order from least to greatest: 0.5, 1/4, 0.8",
+          "answer": "1/4, 0.5, 0.8"
+        },
+        {
+          "stem": "Which list shows the numbers in order from least to greatest?",
+          "answer": "0.3, 1/2, 0.6, 3/4",
+          "choices": [
+            "0.3, 1/2, 0.6, 3/4",
+            "1/2, 0.3, 3/4, 0.6",
+            "0.3, 0.6, 1/2, 3/4",
+            "3/4, 0.6, 1/2, 0.3"
+          ],
+          "distractor_logic": "The second list orders fractions before decimals as separate kinds; the third baits students who place 1/2 by its digits after 0.6; the fourth is greatest to least"
+        },
+        {
+          "stem": "Is 2/5 more or less than 1/2?",
+          "answer": "Less. 2/5 = 0.4 and 1/2 = 0.5"
+        },
+        {
+          "stem": "On a number line from 0 to 1, which is farther right: 0.65 or 3/5?",
+          "answer": "0.65, because 3/5 = 0.6"
+        },
+        {
+          "stem": "Order from greatest to least: 0.9, 4/5, 0.85",
+          "answer": "0.9, 0.85, 4/5"
+        },
+        {
+          "stem": "Which number is between 1/2 and 3/4 on the number line?",
+          "answer": "0.6",
+          "choices": [
+            "0.6",
+            "0.4",
+            "0.8",
+            "1/4"
+          ],
+          "distractor_logic": "0.4 and 1/4 sit left of 1/2; 0.8 sits right of 3/4; each catches a student who cannot place the benchmarks"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Are all your numbers in the same form yet?",
+        "prompt": "Rename every fraction as a decimal, or every decimal as a fraction, so they all wear one costume. Then place them on the line from 0 to 1 and read the order left to right.",
+        "praise": "You renamed first and let the positions do the ordering, that is the whole move."
+      },
+      "vocabulary": [
+        {
+          "term": "Equivalent",
+          "definition": "Naming the same value in a different form. 3/4, 0.75, and 75/100 all sit at the same point on the line."
+        },
+        {
+          "term": "Benchmark",
+          "definition": "A friendly anchor value like 0, 1/2, or 1 that you compare other numbers against."
+        },
+        {
+          "term": "Order",
+          "definition": "Arrange numbers from least to greatest or greatest to least. On a horizontal line, least to greatest reads left to right."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS3-S1",
+        "if_fail": "6NS3-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a number line from 0 to 1 with ticks every tenth. Write the list to order: 3/4, 0.5, 0.7."
+        },
+        {
+          "kind": "ask",
+          "text": "Can we place 3/4 on this tenths line as it is? What could we rename it as?"
+        },
+        {
+          "kind": "say",
+          "text": "3/4 is 75 out of 100, so 3/4 = 0.75. Now place all three: 0.5 at the halfway tick, 0.7 two ticks past it, and 0.75 halfway between 0.7 and 0.8. Reading left to right: 0.5, 0.7, 3/4."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 0.7 beats 3/4 because 7 beats 3, point at the line: which mark is farther right?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: rename 2/5 as a decimal and place it. Is it left or right of 0.5?"
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Write 3/4 as a decimal.",
+          "answer": "0.75"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Which is greater: 1/2 or 0.4?",
+          "answer": "1/2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Order from least to greatest: 0.7, 3/4, 0.6",
+          "answer": "0.6, 0.7, 3/4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Order from least to greatest: 1/4, 0.3, 1/5",
+          "answer": "1/5, 1/4, 0.3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "On a number line from 0 to 1, place 0.45 and 1/2. Which is farther right?",
+          "answer": "1/2, because 1/2 = 0.5 and 0.5 is right of 0.45"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Order from greatest to least: 4/5, 0.75, 0.9",
+          "answer": "0.9, 4/5, 0.75"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write a number between 3/5 and 0.7.",
+          "answer": "Any number between 0.6 and 0.7, such as 0.65"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo ordered 0.7, 3/4, 0.5 from least to greatest and wrote: 3/4, 0.5, 0.7. Find his mistake and fix it.",
+          "shown_work": [
+            "Order 0.7, 3/4, 0.5 from least to greatest.",
+            "Leo wrote: 3/4, 0.5, 0.7",
+            "Leo said: 3 is the smallest number I see, so 3/4 goes first."
+          ],
+          "answer": "Leo compared the digit 3 instead of the value of 3/4. Rename: 3/4 = 0.75, which is the greatest of the three. Correct order: 0.5, 0.7, 3/4."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "One Line, Two Costumes",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Clothesline or taped line labeled 0, 1/2, and 1",
+            "Cards with fractions and decimals (1/4, 2/5, 0.3, 0.6, 3/4, 0.85)"
+          ],
+          "instructions": "1. Hang the 0, 1/2, and 1 anchors on the line.\n2. Partners take turns drawing a card and pinning it where it belongs, saying the renaming out loud, like 3/4 is 0.75, so it goes past 0.7.\n3. The partner may challenge; a challenge means both rename and check against the benchmarks.\n4. When all cards hang, read the whole line left to right as a least to greatest list.\n5. Debrief: which card was hardest to place, and what renaming settled it?"
+        },
+        {
+          "type": "matching",
+          "title": "Costume Match",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: fraction cards and decimal cards, plus two decoys"
+          ],
+          "instructions": "1. Spread all cards face up.\n2. Match each fraction to the decimal that sits at the same point on the line, saying how you know, like 1/4 is 25 out of 100.\n3. Two decoy decimals match nothing; set them aside and name the fraction they would match.\n4. Debrief: pick any matched pair and show both names landing on one point of a number line.",
+          "content": {
+            "pairs": [
+              {
+                "left": "1/2",
+                "right": "0.5"
+              },
+              {
+                "left": "1/4",
+                "right": "0.25"
+              },
+              {
+                "left": "3/4",
+                "right": "0.75"
+              },
+              {
+                "left": "1/5",
+                "right": "0.2"
+              },
+              {
+                "left": "2/5",
+                "right": "0.4"
+              },
+              {
+                "left": "3/10",
+                "right": "0.3"
+              }
+            ],
+            "decoys": [
+              "0.34",
+              "0.15"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "A physical clothesline, then a drawn line, then bare renaming: CRA builds the idea that fractions and decimals share one home."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Short number talks like 'which is greater, 3/4 or 0.7, and how do you SEE it' surface digit-based reasoning where it can be fixed."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Leo's digit-comparison error is exactly the bug that resurfaces with negatives in grade six, so fixing it here pays twice."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What costume will you put all these numbers in, fractions or decimals?",
+          "Is this number more or less than 1/2? How do you know?",
+          "What is 3/4 as a decimal, and how does 75 out of 100 show it?",
+          "Which mark is farther right on the line? So which number is greater?",
+          "Could you have compared these without renaming, using a benchmark instead?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student compares a fraction and a decimal by their digits, like 0.7 > 3/4 because 7 > 3.",
+            "say": "Rename 3/4 as a decimal first: 75 out of 100 is 0.75. Now place both on the line. Which is farther right?",
+            "praise": "You renamed before you compared, so the positions could tell the truth."
+          },
+          {
+            "if_you_see": "Student orders fractions by denominator size, putting 1/4 after 1/2 because 4 > 2.",
+            "say": "More cuts make smaller pieces. Fold a strip in half, then in fourths: which fold is closer to 0? Place both on the line and check.",
+            "praise": "You used the positions, not the denominators, to set the order."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Which is greater: 3/4 or 0.7?",
+            "look_for": "3/4, with the renaming 3/4 = 0.75 stated. The answer 0.7 means digits are still driving."
+          },
+          {
+            "prompt": "Order least to greatest: 1/2, 0.45, 0.6",
+            "look_for": "0.45, 1/2, 0.6, with 1/2 renamed as 0.5 and placed between the decimals."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Order 3/4, 0.5, and 0.7 from least to greatest.",
+        "answer": "0.5, 0.7, 3/4",
+        "steps": [
+          {
+            "math": "3/4 = 0.75",
+            "annotation": "Rename the fraction so every number wears the decimal costume. 3/4 of 100 is 75."
+          },
+          {
+            "math": "Place on the line: 0.5, then 0.7, then 0.75",
+            "annotation": "0.5 is halfway to 1, 0.7 is two tenths past it, 0.75 is just past 0.7."
+          },
+          {
+            "math": "Read left to right: 0.5, 0.7, 0.75",
+            "annotation": "On a horizontal line, least to greatest always reads left to right."
+          },
+          {
+            "math": "Answer: 0.5, 0.7, 3/4",
+            "annotation": "Give the answer in the original names. Renaming was for placing, not for the final list."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Order 2/5, 0.35, and 0.5 from least to greatest.",
+        "answer": "0.35, 2/5, 0.5",
+        "steps": [
+          {
+            "math": "2/5 = 0.4",
+            "annotation": "Rename the fraction as a decimal: 2/5 of 100 is 40.",
+            "given": true
+          },
+          {
+            "math": "Place on the line: 0.35, then 0.4, then 0.5",
+            "annotation": "All three now sit on one tenths line.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Read the order left to right.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the final list using the original names.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I renamed ___ as ___ so all the numbers wore one costume.",
+        "___ is greater because it sits farther right on the number line.",
+        "Compared to the benchmark 1/2, this number is ___."
+      ],
+      "fluency_source": "6NS3-F2"
+    },
+    {
       "skill_id": "6NS3-S1",
       "name": "Plot and identify rational numbers on a number line",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.NS.3",
       "engine_stems": [
         1,
@@ -948,7 +1424,7 @@
         "I started at 0 and walked ___ steps to the ___.",
         "___ is farther left because it is farther from 0 on the negative side."
       ],
-      "fluency_source": "6NS3-F1"
+      "fluency_source": "6NS3-B2"
     },
     {
       "skill_id": "6NS3-S2",
@@ -1332,7 +1808,7 @@
         "___ is greater because it is farther to the RIGHT on the number line.",
         "The digits say ___, but the negative sign flips the order, so ___."
       ],
-      "fluency_source": "6NS3-F1"
+      "fluency_source": "6NS3-B1"
     },
     {
       "skill_id": "6NS3-S3",
@@ -1846,7 +2322,7 @@
         "The statement is ___ because ___ is farther to the ___ on the number line.",
         "I checked the claim by comparing ___ and ___ myself first."
       ],
-      "fluency_source": "6NS3-F1"
+      "fluency_source": "6NS3-B1"
     },
     {
       "skill_id": "6NS3-S4",
@@ -2159,7 +2635,7 @@
         "I converted ___ to ___ so every number wore the same costume.",
         "___ is least because it is farthest below zero."
       ],
-      "fluency_source": "6NS3-F1"
+      "fluency_source": "6NS3-B2"
     },
     {
       "skill_id": "6NS3-S5",
@@ -2680,7 +3156,7 @@
         "___ means less in this story, so I wrote ___ on the small side of the symbol.",
         "Left (or lower, or colder) means ___, so the inequality is ___."
       ],
-      "fluency_source": "6NS3-F1"
+      "fluency_source": "6NS3-B1"
     },
     {
       "skill_id": "6NS3-S6",
@@ -2978,12 +3454,14 @@
         "___ is correct because ___ is closer to zero, and closer to zero means greater for negatives.",
         "In real life, this is like owing $___ versus owing $___ -- the one who owes less has more."
       ],
-      "fluency_source": "6NS3-F1"
+      "fluency_source": "6NS3-B1"
     }
   ],
   "skill_sequence": [
     "6NS3-F1",
     "6NS3-F2",
+    "6NS3-B1",
+    "6NS3-B2",
     "6NS3-S1",
     "6NS3-S2",
     "6NS3-S3",
@@ -2993,8 +3471,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation",
-      "description": "Tier III -- 2+ grade levels below. If a student can't access Looking Back, start here.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-4) prerequisite skills. Start intervention here.",
       "skills": [
         "6NS3-F1",
         "6NS3-F2"
@@ -3002,15 +3480,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Prerequisite skills -- fix these first if a student can't access grade-level work",
+      "description": "One grade below (grade 5) skills that feed this standard directly.",
       "skills": [
-        "6NS3-S1"
+        "6NS3-B1",
+        "6NS3-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "Core 6.NS.3 skills -- the standard itself",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "6NS3-S1",
         "6NS3-S2",
         "6NS3-S3",
         "6NS3-S4",
@@ -3019,7 +3499,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Extension skills -- for students ready to push ahead",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "6NS3-S6"
       ]
@@ -3030,9 +3510,15 @@
     "6NS3-F2": [
       "6NS3-F1"
     ],
-    "6NS3-S1": [
-      "6NS3-F1",
+    "6NS3-B1": [
+      "6NS3-F1"
+    ],
+    "6NS3-B2": [
       "6NS3-F2"
+    ],
+    "6NS3-S1": [
+      "6NS3-B1",
+      "6NS3-B2"
     ],
     "6NS3-S2": [
       "6NS3-S1"
@@ -3042,7 +3528,7 @@
     ],
     "6NS3-S4": [
       "6NS3-S3",
-      "6NS3-F2"
+      "6NS3-B2"
     ],
     "6NS3-S5": [
       "6NS3-S2",
@@ -3053,17 +3539,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (order a mixed list of rational numbers) -- it exercises position, comparison, and fraction/decimal conversion at once. If they pass, move to S5/S6 (write and justify statements in context). If they fail, drop back to S1 (plotting) and S2 (two-number comparison) to find whether the gap is position or the negative flip. This avoids testing all six skills when the student may only need one or two.",
+    "description": "Start with S4, ordering a mixed list of rational numbers, the At-proficiency core that exercises position, comparison, and conversion at once. If they pass, move up to S5 (write inequalities from real contexts) and S6 (justify comparisons of close numbers). If they fail, drop below grade level: B1 checks decimal comparison by place value and B2 checks ordering positive fractions and decimals on one line, the two grade five skills this standard leans on. If those wobble, the foundations F1 (whole number place value comparison) and F2 (fractions as positions on a number line) locate the gap in grades 3 and 4. S1, S2, and S3 remain available to probe the standard's own plotting and negative-side comparison work.",
     "entry_skill": "6NS3-S4",
     "if_pass": [
       "6NS3-S5",
       "6NS3-S6"
     ],
     "if_fail": [
-      "6NS3-S1",
-      "6NS3-S2"
+      "6NS3-B1",
+      "6NS3-B2"
     ],
     "branch_skills": [
+      "6NS3-F1",
+      "6NS3-F2",
+      "6NS3-S1",
+      "6NS3-S2",
       "6NS3-S3"
     ]
   }

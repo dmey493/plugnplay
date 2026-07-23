@@ -4,375 +4,788 @@
   "skills": [
     {
       "skill_id": "6RP1-F1",
-      "name": "Identify fractions on tenths and hundredths grids",
+      "name": "Recognize and generate equivalent fractions",
       "column": "foundation",
       "parent_standard": "6.RP.1",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 5,
-        "description": "Write decimals as fractions with denominators 10 or 100.",
-        "check_question": "Show 0.3 on a tenths grid."
+        "grade": 4,
+        "description": "Tell whether two fractions are equivalent and rename a fraction with a new denominator, especially 10 or 100.",
+        "check_question": "Is 1/2 equivalent to 5/10? How do you know?"
       },
-      "i_do_script": "A tenths grid has 10 equal parts. Each column is one-tenth. A hundredths grid has 100 equal squares. Count the shaded sections to find the numerator, and the total sections to find the denominator.",
+      "i_do_script": "Two fractions are equivalent when they cover the same amount of the whole, even if the pieces are cut differently. Watch: I shade 1/2 of a bar, then cut the same bar into 10 equal pieces. The shading now covers 5 of the 10 pieces, so 1/2 = 5/10. Cutting every piece into 5 smaller pieces multiplied the top and bottom by 5, but the shaded amount never changed. That is why multiplying numerator and denominator by the same number keeps the fraction's value.",
       "canonical_error": {
-        "pattern": "Counts grid lines instead of shaded columns or squares.",
-        "example": "Counts 3 shading boundaries and thinks it is 2 tenths.",
-        "why": "Confuses grid line boundaries with the actual area columns."
+        "pattern": "Adds the same number to the top and bottom instead of multiplying",
+        "example": "Says 1/2 = 2/3 because 1 + 1 = 2 and 2 + 1 = 3",
+        "why": "Adding changes the share of the whole; only cutting every piece into the same number of smaller pieces, which is multiplying top and bottom by the same number, keeps the amount the same. The bar shows 2/3 covers more than 1/2."
       },
+      "item_template": "Two fractions to compare for equivalence, or one fraction to rename with a target denominator of 4, 8, 10, or 100. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "Fill in the blank: 1/2 = ?/10",
+          "answer": "5/10"
+        },
+        {
+          "stem": "Fill in the blank: 2/5 = ?/10",
+          "answer": "4/10"
+        },
+        {
+          "stem": "Is 3/4 equivalent to 6/8? Answer yes or no.",
+          "answer": "yes"
+        },
+        {
+          "stem": "Fill in the blank: 3/4 = ?/100",
+          "answer": "75/100"
+        },
+        {
+          "stem": "Fill in the blank: 1/4 = ?/8",
+          "answer": "2/8"
+        },
+        {
+          "stem": "Which fraction is equivalent to 2/3: 4/6 or 3/4?",
+          "answer": "4/6"
+        },
+        {
+          "stem": "Fill in the blank: 4/10 = ?/100",
+          "answer": "40/100"
+        },
+        {
+          "stem": "Write a fraction with denominator 10 that is equivalent to 3/5.",
+          "answer": "6/10"
+        }
+      ],
       "redirect_script": {
-        "stop": "Stop and count the actual columns.",
-        "prompt": "Point to each shaded column and count it out loud.",
-        "praise": "Perfect, counting the columns gives the correct fraction."
+        "stop": "Did you multiply the top and bottom by the same number?",
+        "prompt": "To rename a fraction, cut every piece into the same number of smaller pieces. Ask: what do I multiply the denominator by to get the new one? Then multiply the numerator by that same number.",
+        "praise": "You multiplied top and bottom together, so the amount stayed the same."
       },
       "vocabulary": [
         {
-          "term": "tenths grid",
-          "definition": "A grid divided into 10 equal parts."
+          "term": "Equivalent fractions",
+          "definition": "Fractions that name the same amount of the whole with different sized pieces, like 1/2 and 5/10."
         },
         {
-          "term": "hundredths grid",
-          "definition": "A grid divided into 100 equal parts."
+          "term": "Denominator",
+          "definition": "The bottom number; it names how many equal pieces the whole is cut into."
         }
       ],
       "next_steps": {
-        "if_pass": "6RP1-F2",
-        "if_fail": "Practice counting area segments on a bar model."
+        "if_pass": "6RP1-B1",
+        "if_fail": "Review grade 3 fraction meaning with fraction bars (a fraction as a count of equal-size pieces of one whole)."
       },
-      "sample_items": [
-        {
-          "stem": "The bar is divided into 10 equal parts. What fraction of the bar is shaded?",
-          "answer": "3/10",
-          "choices": [
-            "3/10",
-            "7/10",
-            "3/7",
-            "1/3"
-          ],
-          "distractor_logic": "7/10 counts the unshaded parts; 3/7 compares shaded to unshaded; 1/3 treats the shaded chunk as one of three regions.",
-          "render_data": {
-            "type": "svg_html",
-            "svg_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"288\" height=\"48\" viewBox=\"0 0 288 48\"><rect x=\"4\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"144\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"172\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"200\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"228\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"256\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/></svg>"
-          }
-        },
-        {
-          "stem": "The grid has 100 equal squares. What fraction of the grid is shaded?",
-          "answer": "45/100",
-          "choices": [
-            "45/100",
-            "45/10",
-            "55/100",
-            "4/5"
-          ],
-          "distractor_logic": "45/10 uses the wrong denominator; 55/100 counts the unshaded squares; 4/5 misreads 45 shaded as 4 of 5 rows.",
-          "render_data": {
-            "type": "svg_html",
-            "svg_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"148\" height=\"148\" viewBox=\"0 0 148 148\"><rect x=\"4\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/></svg>"
-          }
-        },
-        {
-          "stem": "The bar is divided into 10 equal parts. What fraction of the bar is shaded?",
-          "answer": "7/10",
-          "choices": [
-            "7/10",
-            "3/10",
-            "7/100",
-            "10/7"
-          ],
-          "distractor_logic": "3/10 counts the unshaded parts; 7/100 uses the hundredths denominator on a tenths bar; 10/7 flips the fraction.",
-          "render_data": {
-            "type": "svg_html",
-            "svg_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"288\" height=\"48\" viewBox=\"0 0 288 48\"><rect x=\"4\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"144\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"172\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"200\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"228\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"256\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/></svg>"
-          }
-        },
-        {
-          "stem": "The grid has 100 equal squares. What fraction of the grid is shaded?",
-          "answer": "9/100",
-          "choices": [
-            "9/100",
-            "9/10",
-            "91/100",
-            "1/9"
-          ],
-          "distractor_logic": "9/10 uses the tenths denominator; 91/100 counts the unshaded squares; 1/9 flips shaded into a unit fraction.",
-          "render_data": {
-            "type": "svg_html",
-            "svg_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"148\" height=\"148\" viewBox=\"0 0 148 148\"><rect x=\"4\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"4\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"18\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"18\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"18\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"18\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"18\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"18\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"18\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"18\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"18\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"18\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"32\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"32\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"32\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"32\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"32\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"32\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"32\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"32\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"32\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"32\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/></svg>"
-          }
-        },
-        {
-          "stem": "The grid has 100 equal squares. What fraction of the grid is shaded?",
-          "answer": "60/100",
-          "choices": [
-            "60/100",
-            "60/10",
-            "40/100",
-            "6/100"
-          ],
-          "distractor_logic": "60/10 uses the wrong denominator; 40/100 counts the unshaded squares; 6/100 counts shaded rows instead of squares.",
-          "render_data": {
-            "type": "svg_html",
-            "svg_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"148\" height=\"148\" viewBox=\"0 0 148 148\"><rect x=\"4\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/></svg>"
-          }
-        },
-        {
-          "stem": "The bar is divided into 10 equal parts. What fraction of the bar is shaded?",
-          "answer": "5/10",
-          "choices": [
-            "5/10",
-            "5/100",
-            "10/5",
-            "5/5"
-          ],
-          "distractor_logic": "5/100 uses the hundredths denominator; 10/5 flips the fraction; 5/5 counts only the shaded region as the whole.",
-          "render_data": {
-            "type": "svg_html",
-            "svg_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"288\" height=\"48\" viewBox=\"0 0 288 48\"><rect x=\"4\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"4\" width=\"28\" height=\"40\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"144\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"172\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"200\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"228\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"256\" y=\"4\" width=\"28\" height=\"40\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/></svg>"
-          }
-        },
-        {
-          "stem": "The grid has 100 equal squares. What fraction of the grid is shaded?",
-          "answer": "72/100",
-          "choices": [
-            "72/100",
-            "28/100",
-            "72/10",
-            "7/2"
-          ],
-          "distractor_logic": "28/100 counts the unshaded squares; 72/10 uses the wrong denominator; 7/2 reads the digits as a fraction.",
-          "render_data": {
-            "type": "svg_html",
-            "svg_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"148\" height=\"148\" viewBox=\"0 0 148 148\"><rect x=\"4\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"46\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"60\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"74\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"88\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"88\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"88\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"88\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"88\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"88\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"88\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"88\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"88\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"88\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"102\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"102\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/></svg>"
-          }
-        },
-        {
-          "stem": "The grid has 100 equal squares. What fraction of the grid is shaded?",
-          "answer": "30/100",
-          "choices": [
-            "30/100",
-            "3/100",
-            "70/100",
-            "30/10"
-          ],
-          "distractor_logic": "3/100 counts shaded rows instead of squares; 70/100 counts the unshaded squares; 30/10 uses the wrong denominator.",
-          "render_data": {
-            "type": "svg_html",
-            "svg_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"148\" height=\"148\" viewBox=\"0 0 148 148\"><rect x=\"4\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"4\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"18\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"32\" width=\"14\" height=\"14\" fill=\"#9dc3e6\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"46\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"60\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"74\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"88\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"102\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"116\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"4\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"18\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"32\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"46\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"60\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"74\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"88\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"102\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"116\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/><rect x=\"130\" y=\"130\" width=\"14\" height=\"14\" fill=\"#ffffff\" stroke=\"#555555\" stroke-width=\"1\"/></svg>"
-          }
-        }
-      ],
-      "engine_stems": [],
-      "item_template": "A tenths bar or hundredths grid with some parts shaded. Student names the fraction the model shows. MC with 4 choices; distractors count the unshaded part or flip numerator and denominator.",
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw (or project) a bar split into 10 equal parts with 3 parts shaded."
+          "text": "Draw a bar, shade 1/2 of it, then draw the same bar cut into 10 equal pieces with the same half shaded."
         },
         {
           "kind": "ask",
-          "text": "How many equal parts does the whole bar have? Count them out loud with me."
-        },
-        {
-          "kind": "ask",
-          "text": "How many of those parts are shaded? Touch each shaded part as you count."
+          "text": "How many tenths are shaded? Did the shaded amount change when we made more cuts?"
         },
         {
           "kind": "say",
-          "text": "The total number of equal parts is the bottom number -- the denominator. The shaded count is the top number -- the numerator. So this bar shows 3/10."
+          "text": "5 of the 10 pieces are shaded, so 1/2 = 5/10. We cut each half into 5 pieces, which multiplied the top and bottom by 5, and the amount never moved."
         },
         {
           "kind": "watch",
-          "text": "If the student says 7/10, they counted the UNSHADED parts. Have them shade-count again with a finger on each shaded piece."
-        },
-        {
-          "kind": "show",
-          "text": "Now show a hundredths grid with 45 squares shaded.",
-          "visual": {
-            "type": "hundredths_grid",
-            "shaded": 45
-          }
+          "text": "If a student adds the same number to top and bottom, shade 1/2 and 2/3 on matching bars: do they cover the same amount?"
         },
         {
           "kind": "ask",
-          "text": "This grid has 100 squares. Do we have to count every shaded square one at a time, or is there a faster way? (Count full rows of 10 first, then leftovers.)"
-        },
-        {
-          "kind": "ask",
-          "text": "Four full rows is 40, plus 5 more squares. So what fraction of the grid is shaded? What is the denominator, and why is it 100 this time?"
+          "text": "Your turn: fill in the blank, 3/5 = ?/10."
         }
       ]
     },
     {
       "skill_id": "6RP1-F2",
-      "name": "Write fractions with denominators of 10 or 100 as decimals",
+      "name": "Write fractions with denominators of 10 and 100 as decimals",
       "column": "foundation",
       "parent_standard": "6.RP.1",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 5,
-        "description": "Write decimals in tenths and hundredths.",
-        "check_question": "What is 45/100 as a decimal?"
+        "grade": 4,
+        "description": "Use decimal notation for fractions with denominators of 10 or 100, in both directions.",
+        "check_question": "Write 43/100 as a decimal."
       },
-      "i_do_script": "Picture a 10-by-10 grid of 100 little squares: 7/10 fills seven whole columns -- 70 little squares -- while 7/100 is just 7 tiny squares. Same digit 7, wildly different amounts, and the decimal we write has to show that difference. When we write a fraction like 7/10 as a decimal, we write it in the tenths place, which is the first spot to the right of the decimal point: 0.7. For 7/100, we need it in the hundredths place: 0.07.",
+      "i_do_script": "Tenths and hundredths have their own decimal places, so a fraction over 10 or 100 can be written as a decimal directly. Watch: 7/10 is 7 tenths, and the tenths place is the first spot after the decimal point, so 7/10 = 0.7. For 43/100 I have 4 tenths and 3 hundredths, so 43/100 = 0.43. Careful with 9/100: that is 0 tenths and 9 hundredths, so it is 0.09, not 0.9. On a hundredths grid, 0.09 shades only 9 little squares while 0.9 shades 90.",
       "canonical_error": {
-        "pattern": "Places the numerator in the wrong decimal place value.",
-        "example": "Writes 7/100 as 0.7 instead of 0.07.",
-        "why": "Forgets that the hundredths place is two spots to the right of the decimal."
+        "pattern": "Puts the numerator right after the decimal point regardless of the denominator",
+        "example": "Writes 9/100 as 0.9",
+        "why": "The student ignores which place the denominator names. Hundredths must end in the hundredths place, so 9/100 needs a zero in the tenths place: 0.09. The grid shows 9 squares, not 90."
       },
-      "redirect_script": {
-        "stop": "Check the place value.",
-        "prompt": "Picture the grid first: is 7/100 seven full columns, or seven tiny squares? If the denominator is 100, the last digit must be in the hundredths place. Where does the digit go?",
-        "praise": "Yes, 0.07 is correct."
-      },
-      "vocabulary": [
-        {
-          "term": "tenths place",
-          "definition": "The first place value to the right of the decimal point."
-        },
-        {
-          "term": "hundredths place",
-          "definition": "The second place value to the right of the decimal point."
-        }
-      ],
-      "next_steps": {
-        "if_pass": "6RP1-S1",
-        "if_fail": "Review place value charts with decimals."
-      },
+      "item_template": "A fraction with denominator 10 or 100 to write as a decimal, or a decimal to the hundredths to write as a fraction. Short response fluency bank.",
       "sample_items": [
         {
           "stem": "Write 7/10 as a decimal.",
-          "answer": "0.7",
-          "choices": null,
-          "distractor_logic": "Watch for 0.07 -- numerator dropped into the hundredths place."
+          "answer": "0.7"
         },
         {
-          "stem": "Write 3/10 as a decimal.",
-          "answer": "0.3",
-          "choices": null,
-          "distractor_logic": "Watch for 0.03 or 3.10."
+          "stem": "Write 43/100 as a decimal.",
+          "answer": "0.43"
         },
         {
-          "stem": "Write 9/10 as a decimal.",
-          "answer": "0.9",
-          "choices": null,
-          "distractor_logic": "Watch for 0.09."
+          "stem": "Write 9/100 as a decimal.",
+          "answer": "0.09"
         },
         {
-          "stem": "Write 45/100 as a decimal.",
-          "answer": "0.45",
-          "choices": null,
-          "distractor_logic": "Watch for 0.045 or 4.5."
+          "stem": "Write 0.3 as a fraction.",
+          "answer": "3/10"
         },
         {
-          "stem": "Write 6/100 as a decimal.",
-          "answer": "0.06",
-          "choices": null,
-          "distractor_logic": "Watch for 0.6 -- the classic place-value slip."
+          "stem": "Write 0.27 as a fraction.",
+          "answer": "27/100"
         },
         {
-          "stem": "Write 80/100 as a decimal.",
-          "answer": "0.80",
-          "choices": null,
-          "distractor_logic": "Accept 0.8; watch for 0.080."
+          "stem": "Write 60/100 as a decimal.",
+          "answer": "0.60 (or 0.6)"
         },
         {
-          "stem": "Write 12/100 as a decimal.",
-          "answer": "0.12",
-          "choices": null,
-          "distractor_logic": "Watch for 1.2."
+          "stem": "Write 1 4/10 as a decimal.",
+          "answer": "1.4"
         },
         {
-          "stem": "Write 5/10 as a decimal.",
-          "answer": "0.5",
-          "choices": null,
-          "distractor_logic": "Watch for 0.05."
-        },
-        {
-          "stem": "Write 99/100 as a decimal.",
-          "answer": "0.99",
-          "choices": null,
-          "distractor_logic": "Watch for 9.9."
-        },
-        {
-          "stem": "Write 4/100 as a decimal.",
-          "answer": "0.04",
-          "choices": null,
-          "distractor_logic": "Watch for 0.4 -- the tenths/hundredths mix-up."
-        },
-        {
-          "stem": "Write 1/10 as a decimal.",
-          "answer": "0.1",
-          "choices": null,
-          "distractor_logic": "Watch for 0.01 or 1.10."
-        },
-        {
-          "stem": "Write 25/100 as a decimal.",
-          "answer": "0.25",
-          "choices": null,
-          "distractor_logic": "Watch for 2.5."
-        },
-        {
-          "stem": "Write 70/100 as a decimal.",
-          "answer": "0.70",
-          "choices": null,
-          "distractor_logic": "Accept 0.7; watch for 0.070."
-        },
-        {
-          "stem": "Write 8/10 as a decimal.",
-          "answer": "0.8",
-          "choices": null,
-          "distractor_logic": "Watch for 0.08."
+          "stem": "Write 0.05 as a fraction.",
+          "answer": "5/100"
         }
       ],
-      "engine_stems": [],
-      "item_template": "A fraction with denominator 10 or 100. Student writes the decimal. Short answer, no choices -- built for timed fluency sprints.",
+      "redirect_script": {
+        "stop": "Which place does the denominator name, tenths or hundredths?",
+        "prompt": "The denominator tells where the number must end. Tenths end one place after the point, hundredths end two places after. If you run out of digits, fill the empty place with a zero.",
+        "praise": "You landed the digits in the place the denominator named."
+      },
+      "vocabulary": [
+        {
+          "term": "Tenths",
+          "definition": "The first place after the decimal point; one tenth is 1/10 or 0.1."
+        },
+        {
+          "term": "Hundredths",
+          "definition": "The second place after the decimal point; one hundredth is 1/100 or 0.01."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6RP1-B2",
+        "if_fail": "Review grade 3 place value and fractions of a whole with base-ten blocks and a tenths bar."
+      },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Show a 10-by-10 grid with seven full columns shaded -- that's 7/10, which is 70 of the 100 little squares. Point out how much bigger that is than shading just 7 little squares (7/100). The two fractions are ten times apart, so their decimals cannot look the same.",
-          "visual": {
-            "type": "hundredths_grid",
-            "shaded": 70,
-            "label": "7/10 = 70 of 100 squares"
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write 7/10 on the board, and next to it a place-value chart: ones . tenths hundredths."
+          "text": "Shade 43 squares on a hundredths grid. Write 43/100 beside it."
         },
         {
           "kind": "ask",
-          "text": "Say this fraction out loud. What do we call it? (Seven tenths.)"
+          "text": "How many full columns of ten are shaded? How many extra squares?"
         },
         {
           "kind": "say",
-          "text": "The name tells us where the digit lives. 'Tenths' is the FIRST spot after the decimal point. So seven tenths is 0.7."
-        },
-        {
-          "kind": "show",
-          "text": "Now write 7/100 right below it."
-        },
-        {
-          "kind": "ask",
-          "text": "Say this one out loud. (Seven hundredths.) Is that the same spot as tenths, or a different spot?"
+          "text": "4 full columns is 4 tenths and 3 extra squares is 3 hundredths, so 43/100 = 0.43. The digits land in the places their sizes name."
         },
         {
           "kind": "watch",
-          "text": "If the student writes 0.7 for 7/100, stop -- that is the canonical error. Point at the chart: hundredths is TWO spots to the right, so we need a 0 to hold the tenths place: 0.07."
+          "text": "If a student writes 9/100 as 0.9, have them shade it: 9 squares is far less than 9 columns, so it must be 0.09."
         },
         {
           "kind": "ask",
-          "text": "What about 45/100? Which two places do the 4 and the 5 fill? (0.45 -- the last digit lands in the hundredths place.)"
-        },
-        {
-          "kind": "say",
-          "text": "The rule: the place-value NAME of the denominator tells you where the last digit of the numerator must land."
+          "text": "Your turn: write 6/100 as a decimal."
         }
       ]
     },
     {
+      "skill_id": "6RP1-B1",
+      "name": "Interpret a fraction as division and write it as a decimal",
+      "column": "looking_back",
+      "parent_standard": "6.RP.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "See a fraction as numerator divided by denominator and write common fractions as decimals.",
+        "check_question": "What is 3/4 written as a decimal?"
+      },
+      "i_do_script": "A fraction bar is a division sign in disguise: 3/4 means 3 divided by 4. Watch: to write 3/4 as a decimal I can rename it over 100 first. Multiply top and bottom by 25: 3/4 = 75/100, and 75 hundredths is 0.75. I can check by dividing: 3 divided by 4 is 0.75. Either road works because both just ask how much of one whole three fourths is. On a hundredths grid, 3/4 shades exactly 75 squares.",
+      "canonical_error": {
+        "pattern": "Writes the numerator and denominator as the digits of the decimal",
+        "example": "Writes 3/4 as 3.4",
+        "why": "The student copies the two numbers around a decimal point instead of dividing. But 3/4 is less than 1, and 3.4 is more than 3, so the size is wrong. Dividing 3 by 4, or renaming as 75/100, gives 0.75."
+      },
+      "item_template": "A fraction with denominator 2, 4, 5, 10, 20, or 100, possibly greater than 1. Student writes the equivalent decimal, or picks it from choices. No calculator, no repeating decimals.",
+      "sample_items": [
+        {
+          "stem": "Write 1/2 as a decimal.",
+          "answer": "0.5"
+        },
+        {
+          "stem": "Write 3/4 as a decimal.",
+          "answer": "0.75"
+        },
+        {
+          "stem": "Write 2/5 as a decimal.",
+          "answer": "0.4"
+        },
+        {
+          "stem": "Write 1/4 as a decimal.",
+          "answer": "0.25"
+        },
+        {
+          "stem": "Which decimal is equivalent to 3/5?",
+          "options": [
+            "3.5",
+            "0.35",
+            "0.6",
+            "0.53"
+          ],
+          "answer": "0.6",
+          "distractor_logic": "3.5 copies the digits around a point; 0.35 reads the fraction as 35 hundredths; 0.53 reverses the digits of 3/5."
+        },
+        {
+          "stem": "Write 5/4 as a decimal.",
+          "answer": "1.25"
+        },
+        {
+          "stem": "Which decimal is equivalent to 7/20?",
+          "options": [
+            "7.20",
+            "0.35",
+            "0.72",
+            "3.5"
+          ],
+          "answer": "0.35",
+          "distractor_logic": "7.20 copies the digits; 0.72 treats 7/20 as 72 hundredths; 3.5 divides 70 by 20 instead of 7 by 20."
+        },
+        {
+          "stem": "Write 9/10 as a decimal.",
+          "answer": "0.9"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is your decimal bigger or smaller than 1? Should it be?",
+        "prompt": "The fraction bar means divide. Either divide the top by the bottom, or rename the fraction over 100 and read off the hundredths. Check the size: a fraction less than 1 must give a decimal less than 1.",
+        "praise": "You divided instead of copying digits, and your size check confirms it."
+      },
+      "vocabulary": [
+        {
+          "term": "Quotient",
+          "definition": "The answer to a division problem; 3/4 names the quotient 3 divided by 4."
+        },
+        {
+          "term": "Equivalent",
+          "definition": "Naming the same value in a different form, like 3/4, 75/100, and 0.75."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6RP1-S1",
+        "if_fail": "6RP1-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a hundredths grid. Write 3/4 = ?/100 above it."
+        },
+        {
+          "kind": "ask",
+          "text": "What do we multiply 4 by to get 100? So what happens to the 3?"
+        },
+        {
+          "kind": "say",
+          "text": "Multiply top and bottom by 25: 3/4 = 75/100. Shade 75 squares, and 75 hundredths is 0.75. Dividing 3 by 4 gives the same 0.75."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 3.4, ask: is 3/4 more than one whole grid? Then the decimal cannot be more than 1."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: rename 2/5 over 100 and write it as a decimal."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Write 1/2 as a decimal.",
+          "answer": "0.5"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Write 3/10 as a decimal.",
+          "answer": "0.3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write 3/4 as a decimal.",
+          "answer": "0.75"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write 2/5 as a decimal.",
+          "answer": "0.4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write 3/20 as a decimal.",
+          "answer": "0.15"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write 7/4 as a decimal.",
+          "answer": "1.75"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write 1/8 as a decimal.",
+          "answer": "0.125"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo wrote 3/4 = 3.4. Find his mistake and fix it.",
+          "shown_work": [
+            "3/4",
+            "top digit, point, bottom digit",
+            "= 3.4"
+          ],
+          "answer": "He copied the digits around a decimal point instead of dividing. 3/4 = 75/100 = 0.75, and 3 divided by 4 is 0.75."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Grid the Fraction",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Blank hundredths grids",
+            "Colored pencils"
+          ],
+          "instructions": "1. Each pair draws a fraction card: 1/2, 1/4, 3/4, 2/5, 3/5, or 7/10.\n2. Rename the fraction over 100 by multiplying top and bottom, and write the equation.\n3. Shade that many squares on a hundredths grid.\n4. Read the decimal off the grid: full columns are tenths, extra squares are hundredths.\n5. Check by dividing the numerator by the denominator. Say each time: the bar means divide."
+        },
+        {
+          "type": "matching",
+          "title": "Three Names, One Number",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: fraction cards, over-100 cards, and decimal cards"
+          ],
+          "instructions": "1. Spread all cards face up.\n2. Build trios that name the same value, like 3/4, 75/100, and 0.75.\n3. To claim a trio, say the renaming out loud: what the denominator was multiplied by and why the decimal follows.\n4. Two decoy decimal cards copy digits instead of dividing; set them aside and explain the size problem.",
+          "content": {
+            "pairs": [
+              {
+                "left": "1/2 and 50/100",
+                "right": "0.5"
+              },
+              {
+                "left": "1/4 and 25/100",
+                "right": "0.25"
+              },
+              {
+                "left": "3/4 and 75/100",
+                "right": "0.75"
+              },
+              {
+                "left": "2/5 and 40/100",
+                "right": "0.4"
+              },
+              {
+                "left": "3/5 and 60/100",
+                "right": "0.6"
+              },
+              {
+                "left": "7/10 and 70/100",
+                "right": "0.7"
+              }
+            ],
+            "decoys": [
+              "3/4 = 3.4",
+              "2/5 = 2.5"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The hundredths grid makes a fraction, its over-100 name, and its decimal visibly the same amount before any dividing rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The digit-copying error (3/4 as 3.4) is stable and predictable; finding and fixing it in worked examples confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Saying the size check aloud, this fraction is less than 1 so the decimal must be too, makes the hidden reasonableness test audible."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What operation does the fraction bar stand for?",
+          "What can you multiply the denominator by to reach 100?",
+          "Is this fraction more or less than 1? What does that tell you about the decimal?",
+          "How many grid squares would this fraction shade?",
+          "Could you check your decimal by dividing? What do you get?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student writes the numerator, a point, then the denominator, like 3/4 = 3.4.",
+            "say": "Point at one whole grid: is 3/4 more than a whole? Then its decimal cannot be more than 1. Divide 3 by 4 or rename over 100.",
+            "praise": "You checked the size first, so the wrong form could not sneak by."
+          },
+          {
+            "if_you_see": "Student renames the denominator to 100 but forgets to multiply the numerator.",
+            "say": "You cut every piece into 25 smaller pieces, so the count on top must grow by 25 times too. What is 3 times 25?",
+            "praise": "You changed top and bottom together, so the value held."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Write 2/5 as a decimal.",
+            "look_for": "0.4, renamed as 40/100 or divided, not 2.5."
+          },
+          {
+            "prompt": "Write 5/4 as a decimal.",
+            "look_for": "1.25, recognizing the fraction is greater than 1."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Write 3/4 as a decimal.",
+        "answer": "0.75",
+        "steps": [
+          {
+            "math": "3/4 means 3 divided by 4",
+            "annotation": "The fraction bar is a division sign."
+          },
+          {
+            "math": "3/4 = 75/100",
+            "annotation": "Multiply top and bottom by 25 to reach hundredths."
+          },
+          {
+            "math": "75/100 = 0.75",
+            "annotation": "75 hundredths lands the 7 in tenths and the 5 in hundredths."
+          },
+          {
+            "math": "check: 0.75 < 1 and 3/4 < 1",
+            "annotation": "The sizes agree, so the conversion is reasonable."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Write 2/5 as a decimal.",
+        "answer": "0.4",
+        "steps": [
+          {
+            "math": "2/5 means 2 divided by 5",
+            "annotation": "The fraction bar is a division sign.",
+            "given": true
+          },
+          {
+            "math": "multiply top and bottom by 20",
+            "annotation": "5 times 20 is 100, so rename over hundredths.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the renamed fraction over 100.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the decimal and check its size against 1.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The fraction bar means ___ divided by ___.",
+        "I renamed ___ as ___/100, so the decimal is ___.",
+        "My fraction is less than 1, so my decimal must be ___."
+      ],
+      "fluency_source": "6RP1-F1"
+    },
+    {
+      "skill_id": "6RP1-B2",
+      "name": "Multiply and divide decimals by 10 and 100 using place value",
+      "column": "looking_back",
+      "parent_standard": "6.RP.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Explain and use the pattern in the decimal point's position when a number is multiplied or divided by 10 or 100.",
+        "check_question": "What is 0.35 x 100?"
+      },
+      "i_do_script": "Multiplying by 10 makes every digit worth ten times more, so each digit slides one place to the left. Watch: 0.35 x 10 moves the 3 from tenths to ones and the 5 from hundredths to tenths, giving 3.5. Multiplying by 100 slides every digit two places: 0.35 x 100 = 35. Dividing does the opposite: 67 divided by 100 slides two places right, giving 0.67. The digits never change and no zeros get glued on; only the places change.",
+      "canonical_error": {
+        "pattern": "Appends zeros instead of shifting the digits",
+        "example": "Writes 0.35 x 100 = 0.3500",
+        "why": "The student uses the whole-number habit of adding zeros, but 0.3500 equals 0.35, so nothing got 100 times bigger. On a place value chart, every digit must slide two places left, landing at 35."
+      },
+      "item_template": "A decimal or whole number multiplied or divided by 10 or 100. Numeric response, no calculator, results stay in tenths and hundredths.",
+      "sample_items": [
+        {
+          "stem": "0.35 x 100",
+          "answer": "35"
+        },
+        {
+          "stem": "4.2 x 10",
+          "answer": "42"
+        },
+        {
+          "stem": "67 / 100",
+          "answer": "0.67"
+        },
+        {
+          "stem": "5 / 10",
+          "answer": "0.5"
+        },
+        {
+          "stem": "Which is equal to 0.08 x 100?",
+          "options": [
+            "0.0800",
+            "0.8",
+            "8",
+            "800"
+          ],
+          "answer": "8",
+          "distractor_logic": "0.0800 appends zeros without shifting; 0.8 shifts only one place; 800 shifts the wrong direction from 8."
+        },
+        {
+          "stem": "3.6 / 10",
+          "answer": "0.36"
+        },
+        {
+          "stem": "Which is equal to 24 / 100?",
+          "options": [
+            "2400",
+            "2.4",
+            "0.24",
+            "0.024"
+          ],
+          "answer": "0.24",
+          "distractor_logic": "2400 multiplies instead of divides; 2.4 shifts only one place; 0.024 shifts three places."
+        },
+        {
+          "stem": "0.5 x 100",
+          "answer": "50"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which way should the digits slide, and how many places?",
+        "prompt": "Use the place value chart. Times 10 slides every digit one place left; times 100 slides two. Dividing slides right. The digits stay the same; only their places change.",
+        "praise": "You slid the digits instead of gluing on zeros, that is the real pattern."
+      },
+      "vocabulary": [
+        {
+          "term": "Place value",
+          "definition": "The size a digit's position gives it: ones, tenths, hundredths."
+        },
+        {
+          "term": "Power of ten",
+          "definition": "A number like 10 or 100 made by multiplying tens; multiplying or dividing by one shifts every digit."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6RP1-S1",
+        "if_fail": "6RP1-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a place value chart with ones, tenths, and hundredths. Write 0.35 in it: 3 in tenths, 5 in hundredths."
+        },
+        {
+          "kind": "ask",
+          "text": "If every digit becomes 100 times bigger, where does the 3 land? Where does the 5 land?"
+        },
+        {
+          "kind": "say",
+          "text": "The 3 slides two places left to the tens and the 5 slides to the ones, so 0.35 x 100 = 35. The digits kept their order and only changed places."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 0.3500, ask: is 0.3500 any bigger than 0.35? Then it cannot be 100 times bigger."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: slide the digits to find 67 divided by 100."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "0.3 x 10",
+          "answer": "3"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "7 / 10",
+          "answer": "0.7"
+        },
+        {
+          "difficulty": "core",
+          "stem": "0.45 x 100",
+          "answer": "45"
+        },
+        {
+          "difficulty": "core",
+          "stem": "6.2 x 10",
+          "answer": "62"
+        },
+        {
+          "difficulty": "core",
+          "stem": "89 / 100",
+          "answer": "0.89"
+        },
+        {
+          "difficulty": "core",
+          "stem": "0.04 x 100",
+          "answer": "4"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "3.05 x 100",
+          "answer": "305"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Kim wrote 0.6 x 100 = 0.600. Find her mistake and fix it.",
+          "shown_work": [
+            "0.6 x 100",
+            "added two zeros to the end",
+            "= 0.600"
+          ],
+          "answer": "She appended zeros instead of sliding the digits, and 0.600 equals 0.6. Sliding the 6 two places left gives 60."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Slide the Digits",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Large place value chart (tens to hundredths)",
+            "Digit cards 0-9"
+          ],
+          "instructions": "1. Build 0.35 on the chart with digit cards: 3 in tenths, 5 in hundredths.\n2. One partner calls a move: times 10, times 100, divided by 10, or divided by 100.\n3. The other partner physically slides both cards the right number of places and reads the new number.\n4. Record each move as an equation, like 0.35 x 100 = 35.\n5. Say each time: the digits slide, the point stays put in the chart."
+        },
+        {
+          "type": "game",
+          "title": "Shift Race",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Deck of start-number cards",
+            "Spinner or die labeled x10, x100, /10, /100"
+          ],
+          "instructions": "1. Flip a start card, like 4.2 or 67.\n2. Spin for the operation and race to write the result on whiteboards.\n3. First correct answer explains which way the digits slid and how far; gluing zeros on scores nothing.\n4. Play to five points, then swap the card flipper."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Physically sliding digit cards on a place value chart shows the shift pattern before the move-the-point shortcut is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The appended-zeros error is stable and predictable; sorting correct from incorrect shifts confronts it directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which way do the digits slide when you multiply, and which way when you divide?",
+          "How many places does times 100 move a digit? Why two?",
+          "Is your answer bigger or smaller than what you started with? Should it be?",
+          "Why does adding a zero to 0.35 not change its value?",
+          "What happens to the 5 in 0.35 when you multiply by 10?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student appends zeros, writing 0.35 x 100 = 0.3500.",
+            "say": "Read both numbers on the chart: 0.3500 and 0.35 fill the same places. Slide each digit two places left instead.",
+            "praise": "You moved the digits to new places, so the value really grew 100 times."
+          },
+          {
+            "if_you_see": "Student slides the digits the wrong direction, writing 67 / 100 = 6700.",
+            "say": "Dividing makes the number smaller. Should 67 divided by 100 be bigger than 67? Slide right when you divide.",
+            "praise": "You checked whether the answer should grow or shrink before you slid."
+          },
+          {
+            "if_you_see": "Student shifts one place for times 100.",
+            "say": "Times 100 is times 10, twice. Slide one place for each ten: two slides in all.",
+            "praise": "You counted a slide for every factor of ten."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "0.08 x 100",
+            "look_for": "8, with both digits slid two places, not 0.0800 or 0.8."
+          },
+          {
+            "prompt": "24 / 100",
+            "look_for": "0.24, slid two places right, not 2.4."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Find 0.35 x 100.",
+        "answer": "35",
+        "steps": [
+          {
+            "math": "0.35: 3 in tenths, 5 in hundredths",
+            "annotation": "Place the digits on a place value chart."
+          },
+          {
+            "math": "x 100 means two slides left",
+            "annotation": "Each factor of ten slides every digit one place left."
+          },
+          {
+            "math": "3 lands in tens, 5 lands in ones",
+            "annotation": "The digits keep their order: 35."
+          },
+          {
+            "math": "check: 35 is 100 times 0.35",
+            "annotation": "The answer grew, which multiplying by 100 should do."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Find 74 / 100.",
+        "answer": "0.74",
+        "steps": [
+          {
+            "math": "74: 7 in tens, 4 in ones",
+            "annotation": "Place the digits on a place value chart.",
+            "given": true
+          },
+          {
+            "math": "/ 100 means two slides right",
+            "annotation": "Dividing makes each digit 100 times smaller.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the places where the 7 and the 4 land.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the result and check that it is smaller than 74.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "Multiplying by ___ slides the digits ___ places to the ___.",
+        "My answer should be ___ than the start because I ___.",
+        "Adding a zero did not work because ___."
+      ],
+      "fluency_source": "6RP1-F2"
+    },
+    {
       "skill_id": "6RP1-S1",
       "name": "Given a model of a percent, choose the equivalent decimal",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.RP.1",
       "prerequisite_skill": {
         "type": "gap",
@@ -773,7 +1186,7 @@
         "___% means ___ out of 100, so the decimal is ___.",
         "I moved the decimal point two places ___ because percent means per ___."
       ],
-      "fluency_source": "6RP1-F2",
+      "fluency_source": "6RP1-B2",
       "worked_example_script": [
         {
           "kind": "show",
@@ -817,7 +1230,7 @@
     {
       "skill_id": "6RP1-S2",
       "name": "Given a decimal with model, choose the equivalent fraction",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.RP.1",
       "prerequisite_skill": {
         "type": "gap",
@@ -1212,7 +1625,7 @@
         "I read 0.___ as ___ (place-value name), so the fraction is ___/___.",
         "I simplified ___/100 by dividing both parts by ___."
       ],
-      "fluency_source": "6RP1-F2",
+      "fluency_source": "6RP1-B1",
       "worked_example_script": [
         {
           "kind": "show",
@@ -1572,7 +1985,7 @@
         "___% is ___ out of 100, which simplifies to ___.",
         "I divided both the top and the bottom by ___ because ___."
       ],
-      "fluency_source": "6RP1-F2",
+      "fluency_source": "6RP1-B1",
       "worked_example_script": [
         {
           "kind": "show",
@@ -1898,7 +2311,7 @@
         "I multiplied by 100 and moved the decimal point two places ___, so 0.___ = ___%.",
         "The percent should look ___ than the decimal because percent counts hundredths."
       ],
-      "fluency_source": "6RP1-F2",
+      "fluency_source": "6RP1-B2",
       "worked_example_script": [
         {
           "kind": "show",
@@ -2315,7 +2728,7 @@
         "The decimal for ___% is ___, and the fraction is ___, because both mean ___ out of 100.",
         "I ruled out ___ because it is (bigger/smaller) than one whole and ___% is not."
       ],
-      "fluency_source": "6RP1-F2",
+      "fluency_source": "6RP1-B2",
       "worked_example_script": [
         {
           "kind": "show",
@@ -2655,7 +3068,7 @@
         "The remainder repeated, so the digit ___ will repeat forever, and the decimal is ___.",
         "Student ___ is correct because the fraction bar means ___, and the size check shows ___."
       ],
-      "fluency_source": "6RP1-F2",
+      "fluency_source": "6RP1-B1",
       "worked_example_script": [
         {
           "kind": "show",
@@ -2695,6 +3108,8 @@
   "skill_sequence": [
     "6RP1-F1",
     "6RP1-F2",
+    "6RP1-B1",
+    "6RP1-B2",
     "6RP1-S1",
     "6RP1-S2",
     "6RP1-S3",
@@ -2704,8 +3119,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites — fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-4) prerequisite skills. Start intervention here.",
       "skills": [
         "6RP1-F1",
         "6RP1-F2"
@@ -2713,16 +3128,18 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 5) skills that feed this standard directly.",
       "skills": [
-        "6RP1-S1",
-        "6RP1-S2"
+        "6RP1-B1",
+        "6RP1-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "6RP1-S1",
+        "6RP1-S2",
         "6RP1-S3",
         "6RP1-S4",
         "6RP1-S5"
@@ -2730,7 +3147,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "6RP1-S6"
       ]
@@ -2738,7 +3155,7 @@
   },
   "schema_version": 3,
   "progression": {
-    "narrative": "6.RP.1 asks students to move freely between the three costumes a positive rational number can wear -- fraction, decimal, and percent -- without a calculator. Everything rests on one idea: percent means 'per 100,' and the hundredths grid makes all three names visible at once (30 shaded squares IS 30/100 IS 0.30 IS 30%). The progression starts there: read a shaded model and name it as a decimal (S1) or a fraction (S2), so the conversions are anchored to a picture before they become a rule. Then the model comes away and students convert symbolically: percent to simplified fraction (S3) and decimal to percent (S4), the two moves where the 'out of 100' idea does all the work. At proficiency the standard demands coordination -- naming the SAME value in more than one way at once (S5), selecting both the decimal and the fraction equivalent to a given percent. Finally the numbers stop cooperating: fractions like 5/6 and 8/11 divide into decimals that never end (S6), and students must recognize, write, and defend repeating decimals -- the bridge to 7th-grade proportional reasoning.",
+    "narrative": "This standard asks students to convert any positive rational number among its fraction, decimal, and percent forms without a calculator, including repeating decimals. The on-grade work moves from reading equivalences off tenths and hundredths models to the symbolic conversions: renaming fractions over 100, sliding the decimal point two places for percents, and naming one value several ways at once. Students who stall here usually carry gaps from well below grade six, most often shaky equivalent-fraction thinking and weak decimal notation for tenths and hundredths. Intervention should start with those grade 3 and 4 foundations, rebuild the grade five skills of dividing to turn a fraction into a decimal and shifting digits when multiplying or dividing by 10 and 100, and only then return to full three-way conversions.",
     "steps": [
       {
         "skill_id": "6RP1-S1",
@@ -2777,9 +3194,15 @@
     "6RP1-F2": [
       "6RP1-F1"
     ],
-    "6RP1-S1": [
-      "6RP1-F1",
+    "6RP1-B1": [
+      "6RP1-F1"
+    ],
+    "6RP1-B2": [
       "6RP1-F2"
+    ],
+    "6RP1-S1": [
+      "6RP1-B1",
+      "6RP1-B2"
     ],
     "6RP1-S2": [
       "6RP1-S1"
@@ -2799,16 +3222,20 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S5 (name a percent two ways at once) -- if they pass, jump to S6 (repeating decimals). If they fail, check whether the gap is reading models (S1/S2) before testing the symbolic conversions (S3/S4). This avoids walking all six skills when the student may only need one or two.",
+    "description": "Start with S5, naming a percent two equivalent ways at once, the At-proficiency core. If they pass, move up to S6, converting repeating decimals to fractions. If they fail, drop below grade level: B1 checks whether the student can turn a fraction into a decimal by division or renaming over 100, and B2 checks whether they can shift digits when multiplying or dividing by 10 and 100, the two grade 5 skills every conversion leans on. If those wobble, the foundations F1 (equivalent fractions) and F2 (decimal notation for tenths and hundredths) locate the gap in grades 3 and 4. S1 through S4 remain available to probe the standard's own model-reading and single-conversion groundwork.",
     "entry_skill": "6RP1-S5",
     "if_pass": [
       "6RP1-S6"
     ],
     "if_fail": [
-      "6RP1-S1",
-      "6RP1-S2"
+      "6RP1-B1",
+      "6RP1-B2"
     ],
     "branch_skills": [
+      "6RP1-F1",
+      "6RP1-F2",
+      "6RP1-S1",
+      "6RP1-S2",
       "6RP1-S3",
       "6RP1-S4"
     ]

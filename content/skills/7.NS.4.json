@@ -3,7 +3,7 @@
   "standard_text": "Find quotients of rational numbers; understand that if p and q are integers, then -(p/q) = (-p)/q = p/(-q) for all nonzero integers.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard has two braided demands: a rule about where a negative sign can live in a fraction, and the actual work of dividing rational numbers. The spine is the sign story. A quotient of two signed numbers follows the same rules as a product: same signs give a positive result, different signs give a negative one. That single idea -- division inherits multiplication's sign behavior -- is what the whole standard rests on, so the arc opens by settling it and by settling the identity -(p/q) = (-p)/q = p/(-q): one negative sign can sit in front of the fraction, on top, or on the bottom, and the value is the same. The trap is a second negative sign, because two negatives cancel back to positive.\n\nFrom the sign rule the standard builds computation. Students first find the quotient of two signed integers -- divide the sizes, then attach the sign. Next they calculate a quotient as a decimal by actually dividing numerator by denominator, since a fraction bar means division. Then they divide fractions by multiplying by the reciprocal (keep-change-flip), carrying the sign rule through. With the calculator not allowed, every number stays clean and every quotient is checkable by hand. Students then apply signed division to real situations -- a rate of descent, an average daily change -- where the sign of the quotient carries meaning. The capstone reverses the opening move: generate several equivalent forms of a negative fraction, showing fluent command of where the sign may go. The through-line we keep naming: dividing signed numbers works exactly like multiplying them, and a single negative sign can be written in three equal places.",
+    "narrative": "This standard asks students to divide rational numbers and to explain that a single negative sign can sit in front of a fraction, on the numerator, or on the denominator without changing the value. The on-grade work settles that sign identity and then builds the computation: quotients of signed integers, quotients written as decimals by dividing top by bottom, fraction division by the reciprocal, and signed rates in real contexts. Students who stall here are rarely confused by the sign rule alone; most cannot carry out the underlying division. Intervention should rebuild the grade six skills of dividing fractions with the how many fit meaning and dividing decimals, which themselves rest on division facts and long division from grades three through five. Only after that unsigned division is solid should the signs come back.",
     "steps": [
       {
         "skill_id": "7NS4-S1",
@@ -40,57 +40,585 @@
   "skills": [
     {
       "skill_id": "7NS4-F1",
-      "name": "Recall basic division facts fluently",
+      "name": "Divide using facts: fair sharing and how many fit",
       "column": "foundation",
       "parent_standard": "7.NS.4",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 3,
-        "description": "Recall multiplication and division facts through 12 x 12 as inverse operations.",
-        "check_question": "What is 48 / 6?"
+        "description": "Recall division facts through 100 by thinking of equal shares or equal groups.",
+        "check_question": "What is 42 / 6?"
       },
-      "i_do_script": "A division fact is a groups question with a picture behind it: 45 / 5 asks 'how many groups of 5 fit in 45?' -- picture 45 dots dealt into rows of 5 and count the rows: 9. That's the same as using the times table backwards: I know 9 x 5 = 45, so 45 / 5 = 9. If I get stuck, I skip-count by the divisor until I reach the dividend. These facts have to be automatic, because every quotient in this standard starts with a plain division fact before I worry about signs.",
+      "i_do_script": "Division answers two picture questions. Fair sharing: 42 / 6 can ask, if I deal 42 counters into 6 equal rows, how many land in each row? Deal them out and each row gets 7. How many fit: 42 / 6 can also ask, how many groups of 6 fit inside 42? Circle groups of 6 and count 7 circles. Both pictures give the same fact, because 7 x 6 = 42. When I see a division, I ask what times the divisor makes the dividend, and the times table hands me the answer.",
       "canonical_error": {
-        "pattern": "Recalls a near-miss fact or reverses the relationship",
-        "example": "Says 56 / 8 = 6 (using 8 x 6 = 48) instead of 7",
-        "why": "The student grabs a neighboring multiplication fact instead of the exact one. Division asks for the factor that multiplies the divisor to the dividend."
+        "pattern": "Grabs a near-miss fact from the times table",
+        "example": "Says 54 / 6 = 8 (thinking of 6 x 8 = 48) instead of 9",
+        "why": "The student stops at a neighboring multiplication fact. Division asks for the exact factor: the number that multiplies the divisor to land on the dividend, not close to it."
       },
-      "item_template": "A single whole-number division fact. Short numeric response fluency bank.",
+      "item_template": "A single whole-number division fact through 100, sometimes framed as equal shares or equal groups. Short numeric response fluency bank.",
       "sample_items": [
         {
-          "stem": "45 / 5",
-          "answer": "9"
+          "stem": "42 / 6",
+          "answer": "7"
+        },
+        {
+          "stem": "63 / 9",
+          "answer": "7"
         },
         {
           "stem": "56 / 8",
           "answer": "7"
         },
         {
-          "stem": "72 / 9",
+          "stem": "45 / 5",
+          "answer": "9"
+        },
+        {
+          "stem": "72 / 8",
+          "answer": "9"
+        },
+        {
+          "stem": "36 / 4",
+          "answer": "9"
+        },
+        {
+          "stem": "24 counters are shared equally among 3 friends. How many does each friend get?",
           "answer": "8"
         },
         {
-          "stem": "63 / 7",
+          "stem": "How many groups of 7 fit in 63?",
           "answer": "9"
         },
         {
-          "stem": "54 / 6",
-          "answer": "9"
+          "stem": "48 / 6",
+          "answer": "8"
         }
       ],
       "redirect_script": {
-        "stop": "What times the divisor gives the top number?",
-        "prompt": "Turn it into a multiplication question: 56 / 8 means '8 times what is 56?' Skip-count by 8 if you need to: 8, 16, 24, 32, 40, 48, 56 -- that's 7 jumps.",
-        "praise": "You used the times table backwards -- that's exactly how division works."
+        "stop": "What number times the divisor gives you the starting number?",
+        "prompt": "Turn it into a times question: 54 / 6 asks 6 times what is 54. Skip count by 6 if you need to: 6, 12, 18, 24, 30, 36, 42, 48, 54. That is 9 jumps, so the answer is 9.",
+        "praise": "You used the times table backwards, and that is exactly what division is."
       },
       "vocabulary": [
         {
           "term": "Dividend",
-          "definition": "The number being divided (the top number in a fraction bar)."
+          "definition": "The number being divided; the total you start with."
         },
         {
           "term": "Divisor",
-          "definition": "The number you divide by (the bottom number in a fraction bar)."
+          "definition": "The number you divide by; the size or count of the groups."
+        },
+        {
+          "term": "Quotient",
+          "definition": "The answer to a division problem."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7NS4-B1",
+        "if_fail": "Review grade 3 multiplication and division facts with arrays and equal-groups pictures."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw 42 dots as an array. Ask the two questions side by side: deal 42 into 6 equal rows, and circle groups of 6 inside 42."
+        },
+        {
+          "kind": "ask",
+          "text": "How many dots in each row? How many circles of 6 did you make?"
+        },
+        {
+          "kind": "say",
+          "text": "Both pictures land on 7, because 7 x 6 = 42. Sharing into 6 rows and fitting groups of 6 are the same fact seen two ways: 42 / 6 = 7."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 8, ask what 8 x 6 is. Is 48 the number we started with?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 63 / 7, then 40 / 5."
+        }
+      ]
+    },
+    {
+      "skill_id": "7NS4-F2",
+      "name": "Divide whole numbers with long division, including remainders",
+      "column": "foundation",
+      "parent_standard": "7.NS.4",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 4,
+        "description": "Divide a two or three digit number by a one digit number, recording any remainder.",
+        "check_question": "What is 96 / 4?"
+      },
+      "i_do_script": "Long division is fair sharing done one place at a time. Watch 96 / 4 with base ten blocks: 9 tens and 6 ones shared among 4 groups. Each group gets 2 tens, using 8 tens, with 1 ten left. Trade that ten for 10 ones, so now 16 ones. Each group gets 4 ones. Every group holds 2 tens 4 ones, so 96 / 4 = 24. When the pieces do not share out evenly, the leftovers are the remainder: 58 / 4 gives 14 in each group with 2 left over, written 14 R2. The written algorithm just records the share, the trade, and the leftovers.",
+      "canonical_error": {
+        "pattern": "Loses a place value during the division",
+        "example": "For 132 / 6 writes 2 R12 or 202, instead of 22",
+        "why": "The student divides digit by digit without trading the leftover into the next place, or writes a quotient digit for a place that was already used. Each leftover must be traded down and combined with the next digit before dividing again."
+      },
+      "item_template": "A two or three digit dividend divided by a one digit divisor, with or without a remainder. Short numeric response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "96 / 4",
+          "answer": "24"
+        },
+        {
+          "stem": "84 / 6",
+          "answer": "14"
+        },
+        {
+          "stem": "75 / 5",
+          "answer": "15"
+        },
+        {
+          "stem": "58 / 4",
+          "answer": "14 R2"
+        },
+        {
+          "stem": "132 / 6",
+          "answer": "22"
+        },
+        {
+          "stem": "91 / 7",
+          "answer": "13"
+        },
+        {
+          "stem": "65 / 4",
+          "answer": "16 R1"
+        },
+        {
+          "stem": "208 / 8",
+          "answer": "26"
+        }
+      ],
+      "redirect_script": {
+        "stop": "What happened to the leftover from the last place?",
+        "prompt": "Share the biggest place first, then trade what is left into the next place before you divide again. In 132 / 6, share the 13 tens: 2 tens each uses 12 tens, 1 ten left. Trade it: 12 ones. Share those: 2 each. That is 22.",
+        "praise": "You shared, traded, and shared again. That is the whole algorithm."
+      },
+      "vocabulary": [
+        {
+          "term": "Remainder",
+          "definition": "What is left over when a number does not divide evenly."
+        },
+        {
+          "term": "Regroup",
+          "definition": "Trade a leftover from one place for ten of the next smaller place, like 1 ten for 10 ones."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7NS4-B2",
+        "if_fail": "Review grade 4 division with base ten blocks, sharing tens and ones one place at a time."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Set out 9 tens rods and 6 ones cubes for 96, and draw 4 empty group circles."
+        },
+        {
+          "kind": "ask",
+          "text": "How many tens can each of the 4 groups get? What do we do with the ten that is left?"
+        },
+        {
+          "kind": "say",
+          "text": "Each group takes 2 tens, using 8. Trade the leftover ten for 10 ones, making 16 ones. Each group takes 4 ones. Every group holds 24, so 96 / 4 = 24."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 21 or 2 R16, point at the trade: did the leftover ten get broken into ones and shared?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: share 75 / 5 the same way, tens first, then trade."
+        }
+      ]
+    },
+    {
+      "skill_id": "7NS4-B1",
+      "name": "Divide positive fractions using the how many fit meaning",
+      "column": "looking_back",
+      "parent_standard": "7.NS.4",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Divide a whole number or fraction by a fraction, understanding the quotient as how many of the divisor fit in the dividend.",
+        "check_question": "How many 1/3s fit in 2?"
+      },
+      "i_do_script": "Dividing by a fraction asks a fitting question: 2 / (1/3) means how many 1/3 pieces fit inside 2 wholes. Lay third-size strips along 2 whole bars and count: 3 fit in each whole, so 6 fit in 2. That count is exactly what multiplying by the reciprocal computes: each whole holds 3 copies, so 2 x 3 = 6. Watch a harder one: (3/4) / (1/8) asks how many eighths fit in 3/4. Each fourth holds 2 eighths, so 3 fourths hold 6 eighths: the answer is 6, and (3/4) x 8 = 6 agrees. Model the fit first, then let keep change flip do the counting.",
+      "canonical_error": {
+        "pattern": "Multiplies straight across or flips the wrong fraction",
+        "example": "For (1/2) / (1/4) writes 1/8 instead of 2",
+        "why": "The student treats division like multiplication and never flips the divisor. The fit picture catches it: 1/4 fits into 1/2 two times, so the answer must be 2, not a tiny fraction."
+      },
+      "item_template": "A positive whole number or fraction divided by a positive fraction, with clean quotients. Framed as how many fit or as a bare quotient. Numeric response or MC.",
+      "sample_items": [
+        {
+          "stem": "How many 1/3s fit in 2?",
+          "answer": "6"
+        },
+        {
+          "stem": "How many 1/4s fit in 3/4?",
+          "answer": "3"
+        },
+        {
+          "stem": "(1/2) / (1/8)",
+          "answer": "4"
+        },
+        {
+          "stem": "(5/6) / (1/6)",
+          "answer": "5"
+        },
+        {
+          "stem": "(3/4) / (1/2)",
+          "answer": "3/2 (or 1 1/2)",
+          "choices": [
+            "3/2",
+            "3/8",
+            "2/3",
+            "1/4"
+          ],
+          "distractor_logic": "Half fits into 3/4 one and a half times: (3/4) x 2 = 3/2. Multiplying straight across gives 3/8; flipping the first fraction gives 2/3."
+        },
+        {
+          "stem": "(2/3) / (1/6)",
+          "answer": "4"
+        },
+        {
+          "stem": "4 / (2/5)",
+          "answer": "10",
+          "choices": [
+            "10",
+            "8/5",
+            "2/10",
+            "5/8"
+          ],
+          "distractor_logic": "Each whole holds 5/2 copies of 2/5, so 4 wholes hold 10. Multiplying straight across gives 8/5."
+        },
+        {
+          "stem": "(5/8) / (1/4)",
+          "answer": "5/2 (or 2 1/2)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "How many of the second fraction fit in the first? More than one, or less?",
+        "prompt": "Draw the fit before you compute: lay divisor-size pieces along the dividend and count. Then check with keep change flip: keep the first fraction, change divide to multiply, flip the second. Does the count match?",
+        "praise": "You counted the fit and the flip gave the same number. That is what fraction division means."
+      },
+      "vocabulary": [
+        {
+          "term": "Reciprocal",
+          "definition": "A fraction flipped over: the reciprocal of 2/5 is 5/2."
+        },
+        {
+          "term": "Quotient",
+          "definition": "The answer to a division; here, how many of the divisor fit in the dividend."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7NS4-S2",
+        "if_fail": "7NS4-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a bar showing 3/4 shaded. Below it, draw eighth-size pieces and slide them along the shaded part."
+        },
+        {
+          "kind": "ask",
+          "text": "How many eighth pieces cover the shaded 3/4 exactly?"
+        },
+        {
+          "kind": "say",
+          "text": "Each fourth holds 2 eighths, so 3 fourths hold 6 eighths. So (3/4) / (1/8) = 6. Keep change flip agrees: (3/4) x (8/1) = 24/4 = 6."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 3/32, ask whether 6 little pieces or a tiny fraction of a piece covered the bar. The picture decides."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: use the fit picture for (1/2) / (1/8), then check with the flip."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "How many 1/2s fit in 3?",
+          "answer": "6"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "(3/4) / (1/4)",
+          "answer": "3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2 / (1/3)",
+          "answer": "6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "(5/6) / (1/3)",
+          "answer": "5/2 (or 2 1/2)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "(3/5) / (2/5)",
+          "answer": "3/2 (or 1 1/2)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "(7/8) / (1/2)",
+          "answer": "7/4 (or 1 3/4)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "(2/3) / (3/4). Is the answer more or less than 1? Explain, then compute.",
+          "answer": "Less than 1, because 3/4 is bigger than 2/3, so it does not fit even once. (2/3) x (4/3) = 8/9."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo wrote (1/2) / (1/4) = 1/8. Find his mistake and fix it.",
+          "shown_work": [
+            "(1/2) / (1/4)",
+            "= (1 x 1) / (2 x 4)",
+            "= 1/8"
+          ],
+          "answer": "He multiplied straight across instead of flipping the divisor. A 1/4 piece fits into 1/2 twice, so (1/2) x (4/1) = 2."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "How Many Fit?",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Fraction strips (wholes, halves, thirds, fourths, sixths, eighths)",
+            "Whiteboards"
+          ],
+          "instructions": "1. Draw a card like 2 / (1/3).\n2. Lay out the dividend with strips: 2 whole bars.\n3. Line up 1/3 strips along it and count how many fit: 6.\n4. Write the division and the count, then check with keep change flip.\n5. Repeat with (3/4) / (1/8) and (1/2) / (1/4). Say each time: dividing asks how many fit."
+        },
+        {
+          "type": "matching",
+          "title": "Fit the Flip",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: division cards, matching flipped multiplication cards, answer cards"
+          ],
+          "instructions": "1. Spread all cards face up.\n2. Match each division like (5/6) / (1/6) to its flipped form (5/6) x (6/1) and its answer 5.\n3. To claim a triple, say the fit sentence out loud: five sixth-pieces fit in 5/6.\n4. Two decoy cards multiply straight across; set them aside and explain the error.",
+          "content": {
+            "pairs": [
+              {
+                "left": "2 / (1/3)",
+                "right": "2 x 3 = 6"
+              },
+              {
+                "left": "(1/2) / (1/8)",
+                "right": "(1/2) x 8 = 4"
+              },
+              {
+                "left": "(5/6) / (1/6)",
+                "right": "(5/6) x 6 = 5"
+              },
+              {
+                "left": "(3/4) / (1/2)",
+                "right": "(3/4) x 2 = 3/2"
+              },
+              {
+                "left": "4 / (2/5)",
+                "right": "4 x (5/2) = 10"
+              },
+              {
+                "left": "(2/3) / (1/6)",
+                "right": "(2/3) x 6 = 4"
+              }
+            ],
+            "decoys": [
+              "(1/2) / (1/4) = 1/8",
+              "(3/4) / (1/2) = 3/8"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Fraction strips make the how many fit meaning visible before keep change flip is named as a shortcut."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The multiply straight across slip is stable and baitable; finding and fixing it against the fit picture confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud, fit first, then flip to check, models the two-representation habit students need."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many of the second fraction fit in the first? Estimate before you compute.",
+          "Should the answer be bigger or smaller than 1? How do you know?",
+          "What does the reciprocal count in this picture?",
+          "Which fraction gets flipped, the first or the second?",
+          "How can you check your quotient by multiplying back?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student multiplies straight across without flipping.",
+            "say": "Go to the strips: how many 1/4 pieces actually fit in 1/2? Two. Your answer of 1/8 says less than one piece fits. Flip the divisor and multiply.",
+            "praise": "You checked the answer against the fit picture, so the flip made sense."
+          },
+          {
+            "if_you_see": "Student flips the first fraction instead of the second.",
+            "say": "Keep the first fraction as it is; only the divisor flips. The reciprocal of the divisor counts how many copies fit in each whole.",
+            "praise": "You kept the dividend and flipped only the divisor, exactly right."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "How many 1/4s fit in 2?",
+            "look_for": "8, from the picture or from 2 x 4. A tiny fraction answer means straight-across multiplying."
+          },
+          {
+            "prompt": "(5/6) / (1/6)",
+            "look_for": "5, said as five sixth-pieces fit in 5/6, not 5/36."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Divide (3/4) / (1/8).",
+        "answer": "6",
+        "steps": [
+          {
+            "math": "ask the fit question",
+            "annotation": "How many 1/8 pieces fit inside 3/4?"
+          },
+          {
+            "math": "each 1/4 holds 2 eighths",
+            "annotation": "So 3 fourths hold 3 x 2 = 6 eighths."
+          },
+          {
+            "math": "keep change flip: (3/4) x (8/1)",
+            "annotation": "Keep 3/4, change divide to multiply, flip 1/8 to 8/1."
+          },
+          {
+            "math": "24/4 = 6",
+            "annotation": "The flip count matches the picture: 6 pieces fit."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Divide (5/6) / (1/6).",
+        "answer": "5",
+        "steps": [
+          {
+            "math": "ask the fit question",
+            "annotation": "How many 1/6 pieces fit inside 5/6?",
+            "given": true
+          },
+          {
+            "math": "keep change flip: (5/6) x (6/1)",
+            "annotation": "Keep 5/6, change to multiply, flip the divisor.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply and simplify.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Say the answer as a fit count.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "Dividing by ___ asks how many ___ pieces fit in ___.",
+        "I kept ___, changed divide to multiply, and flipped ___ to ___."
+      ],
+      "fluency_source": "7NS4-F1"
+    },
+    {
+      "skill_id": "7NS4-B2",
+      "name": "Divide multi-digit numbers and decimals",
+      "column": "looking_back",
+      "parent_standard": "7.NS.4",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Divide whole numbers and decimals fluently, including quotients that continue into decimal places.",
+        "check_question": "What is 6.4 / 0.8?"
+      },
+      "i_do_script": "Decimal division is whole number division with the places managed. Watch 6.4 / 0.8: I do not want to share by a piece of a number, so I multiply both numbers by 10. That is fair because a quotient does not change when both numbers scale the same way: 6.4 / 0.8 becomes 64 / 8 = 8. Money shows it: 64 dimes shared into piles of 8 dimes makes 8 piles. When a division does not come out even, I keep going past the decimal point: 5 / 4 is 1 with 1 left, trade for tenths, 10 tenths / 4 is 2 tenths with 2 left, trade for hundredths, 20 / 4 = 5, so 1.25.",
+      "canonical_error": {
+        "pattern": "Misplaces the decimal point in the quotient",
+        "example": "For 6.4 / 0.8 writes 0.8 or 80 instead of 8",
+        "why": "The student shifts the decimal in only one number, or guesses where the point goes afterward. Both numbers must scale by the same power of ten, and an estimate catches a wild answer: 6.4 split into 0.8 size pieces is about 8 pieces."
+      },
+      "item_template": "A quotient of positive whole numbers or decimals with clean, calculator-free numbers. Quotient may continue into tenths or hundredths. Numeric response or MC.",
+      "sample_items": [
+        {
+          "stem": "6.4 / 0.8",
+          "answer": "8"
+        },
+        {
+          "stem": "3.6 / 4",
+          "answer": "0.9"
+        },
+        {
+          "stem": "91 / 7",
+          "answer": "13"
+        },
+        {
+          "stem": "7.2 / 0.9",
+          "answer": "8"
+        },
+        {
+          "stem": "5 / 4",
+          "answer": "1.25",
+          "choices": [
+            "1.25",
+            "1.2",
+            "1 R1",
+            "0.8"
+          ],
+          "distractor_logic": "Continue past the point: 1, then 2 tenths, then 5 hundredths. Stopping early gives 1 R1 or 1.2; flipping the division gives 0.8."
+        },
+        {
+          "stem": "0.35 / 0.05",
+          "answer": "7"
+        },
+        {
+          "stem": "12.6 / 3",
+          "answer": "4.2"
+        },
+        {
+          "stem": "9 / 6",
+          "answer": "1.5",
+          "choices": [
+            "1.5",
+            "1 R3",
+            "0.66",
+            "15"
+          ],
+          "distractor_logic": "9 / 6 = 1 with 3 left; trade for tenths: 30 tenths / 6 = 5 tenths, so 1.5. Misplacing the point gives 15."
+        }
+      ],
+      "redirect_script": {
+        "stop": "About how big should this quotient be? Estimate first.",
+        "prompt": "Scale both numbers by the same power of ten until the divisor is a whole number, then divide. 6.4 / 0.8 becomes 64 / 8. If the division does not end, trade the leftover into the next smaller place and keep dividing.",
+        "praise": "You scaled both numbers together and your answer matched your estimate."
+      },
+      "vocabulary": [
+        {
+          "term": "Power of ten",
+          "definition": "10, 100, 1000, and so on; multiplying by one shifts every digit to a larger place."
         },
         {
           "term": "Quotient",
@@ -99,167 +627,211 @@
       ],
       "next_steps": {
         "if_pass": "7NS4-S2",
-        "if_fail": "Review multiplication and division facts (grade 3)."
+        "if_fail": "7NS4-F2"
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Show 63 as a bar split into equal groups of 7 -- how many groups fit?",
-          "visual": {
-            "type": "bar_model",
-            "label": "63 split into groups of 7",
-            "segments": [
-              {
-                "span": 1,
-                "label": "7"
-              },
-              {
-                "span": 1,
-                "label": "7"
-              },
-              {
-                "span": 1,
-                "label": "7"
-              },
-              {
-                "span": 1,
-                "label": "7"
-              },
-              {
-                "span": 1,
-                "label": "7"
-              },
-              {
-                "span": 1,
-                "label": "7"
-              },
-              {
-                "span": 1,
-                "label": "7"
-              },
-              {
-                "span": 1,
-                "label": "7"
-              },
-              {
-                "span": 1,
-                "label": "7"
-              }
-            ]
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write '63 / 7 = ?'"
+          "text": "Write 6.4 / 0.8 and build 6.4 as 64 dimes. Ask how many piles of 8 dimes you can make."
         },
         {
           "kind": "ask",
-          "text": "What number times 7 equals 63?"
+          "text": "Why is 64 dimes shared into piles of 8 dimes the same problem as 6.4 / 0.8?"
         },
         {
           "kind": "say",
-          "text": "9 x 7 = 63, so 63 / 7 = 9."
+          "text": "Both numbers were multiplied by 10, and scaling both the same way keeps the quotient: 64 / 8 = 8, so 6.4 / 0.8 = 8. Estimate check: 0.8 fits into 6.4 about 8 times."
         },
         {
           "kind": "watch",
-          "text": "If a student says 8, ask 'what is 8 x 7? Is that 63?'"
+          "text": "If a student writes 0.8, ask the estimate question: could 0.8 fit into 6.4 less than one time?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: 72 / 8, then 54 / 9."
+          "text": "Your turn: scale and solve 7.2 / 0.9, then continue 5 / 4 past the decimal point."
         }
-      ]
-    },
-    {
-      "skill_id": "7NS4-F2",
-      "name": "Determine the sign of a product of signed numbers",
-      "column": "foundation",
-      "parent_standard": "7.NS.4",
-      "prerequisite_skill": {
-        "type": "gap",
-        "grade": 7,
-        "description": "Apply the sign rules for multiplying signed numbers (from 7.NS.3): same signs positive, different signs negative.",
-        "check_question": "Is (-3) x (-4) positive or negative?"
-      },
-      "i_do_script": "The sign rule isn't a decree -- a pattern forces it. Watch: 2 x (-5) = -10, 1 x (-5) = -5, 0 x (-5) = 0. The answers climb by 5 every step, so the next step, (-1) x (-5), has to be +5. Multiplying signed numbers is all about counting negative signs. Same signs make a positive; different signs make a negative. Watch: (-3) x (-4) -- two negatives, so the answer is positive 12. And (-6) x 2 -- one negative, so the answer is negative 12. This matters because division follows the exact same sign rule: division of integers holds the same properties as multiplication.",
-      "canonical_error": {
-        "pattern": "Loses track of how many negative signs there are",
-        "example": "Says (-3) x (-4) = -12 (thinking 'a negative makes it negative') instead of +12",
-        "why": "The student stops at the first negative sign instead of counting both. Two negatives cancel to a positive; one negative stays negative."
-      },
-      "item_template": "A product of two signed numbers, or a sign-only judgment. Short numeric response fluency bank.",
-      "sample_items": [
+      ],
+      "engine_stems": [],
+      "practice_problems": [
         {
-          "stem": "(-3) x (-4)",
+          "difficulty": "warm_up",
+          "stem": "84 / 7",
           "answer": "12"
         },
         {
-          "stem": "(-6) x 2",
-          "answer": "-12"
+          "difficulty": "warm_up",
+          "stem": "4.8 / 6",
+          "answer": "0.8"
         },
         {
-          "stem": "5 x (-3)",
-          "answer": "-15"
+          "difficulty": "core",
+          "stem": "8.4 / 0.7",
+          "answer": "12"
         },
         {
-          "stem": "(-7) x (-2)",
-          "answer": "14"
+          "difficulty": "core",
+          "stem": "3.6 / 0.4",
+          "answer": "9"
         },
         {
-          "stem": "Two negatives multiplied give a ___ answer.",
-          "answer": "positive"
+          "difficulty": "core",
+          "stem": "7.5 / 6",
+          "answer": "1.25"
+        },
+        {
+          "difficulty": "core",
+          "stem": "0.72 / 0.9",
+          "answer": "0.8"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "10.8 / 2.4",
+          "answer": "4.5"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia divided 6.4 / 0.8 and got 0.8. Find her mistake and fix it.",
+          "shown_work": [
+            "6.4 / 0.8",
+            "moved the decimal in 6.4 only: 64 / 0.8",
+            "wrote 0.8"
+          ],
+          "answer": "She scaled only one number and then guessed the point. Multiply both by 10: 64 / 8 = 8. Estimate agrees: 0.8 fits in 6.4 about 8 times."
         }
       ],
-      "redirect_script": {
-        "stop": "How many negative signs do you see?",
-        "prompt": "Run the pattern again: when the answers reach zero, do they stop or keep climbing? Count the negatives. An even number (like two) makes the answer positive; an odd number (like one) makes it negative. (-3) x (-4) has two, so it is positive.",
-        "praise": "You counted the negatives -- that's the whole sign rule."
-      },
-      "vocabulary": [
+      "activities": [
         {
-          "term": "Product",
-          "definition": "The result of multiplying numbers together."
+          "type": "hands_on",
+          "title": "Dimes and Piles",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Play money or drawn dollars, dimes, and pennies",
+            "Whiteboards"
+          ],
+          "instructions": "1. Build 6.4 as 64 dimes.\n2. Make piles of 8 dimes and count the piles: 8, so 6.4 / 0.8 = 8.\n3. Write the scaled problem 64 / 8 next to the money and say: both numbers times 10, quotient unchanged.\n4. Repeat with 0.35 / 0.05 using pennies (35 pennies into piles of 5).\n5. Finish with 5 / 4: share 5 dollars among 4 people, trading dollars for dimes and dimes for pennies to reach 1.25."
         },
         {
-          "term": "Sign rule",
-          "definition": "Same signs give a positive result; different signs give a negative result."
+          "type": "game",
+          "title": "Estimate First Lightning",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Slide deck of decimal quotients",
+            "Whiteboards"
+          ],
+          "instructions": "1. Flash a quotient like 7.2 / 0.9 for 5 seconds; students write only an estimate (about 8).\n2. Reveal and let them compute exactly by scaling both numbers.\n3. Score a point when the exact answer lands near the estimate.\n4. Debrief: which answers would the estimate have rejected, like 0.8 or 80?"
         }
       ],
-      "next_steps": {
-        "if_pass": "7NS4-S1",
-        "if_fail": "Review multiplying signed numbers (7.NS.3)."
-      },
-      "worked_example_script": [
+      "strategy_links": [
         {
-          "kind": "ask",
-          "text": "Look at this pattern: 2 x (-5) = -10, 1 x (-5) = -5, 0 x (-5) = 0 -- the answers climb by 5 each step. Keep it going two more steps: (-1) x (-5) = ? and (-2) x (-5) = ?"
+          "strategy_id": "strat-math-007",
+          "why": "Dimes and pennies make scaling both numbers by ten concrete before the move-the-point rule is named."
         },
         {
-          "kind": "show",
-          "text": "Write '(-5) x (-2)' and '(-5) x 2.'"
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud, estimate, scale both, divide, trade leftovers, makes the invisible place value decisions audible."
         },
         {
-          "kind": "ask",
-          "text": "How many negative signs are in each? Same or different signs?"
-        },
-        {
-          "kind": "say",
-          "text": "(-5) x (-2): two negatives -> positive 10. (-5) x 2: one negative -> negative 10."
-        },
-        {
-          "kind": "watch",
-          "text": "If a student writes (-5) x (-2) = -10, ask 'do two negatives stay negative or flip to positive?'"
-        },
-        {
-          "kind": "ask",
-          "text": "Your turn: (-8) x (-1), then 4 x (-6)."
+          "strategy_id": "strat-math-003",
+          "why": "The misplaced decimal point is a precise, predictable error worth baiting and fixing against an estimate."
         }
-      ]
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "About how big should the answer be? Estimate before you divide.",
+          "What did you multiply each number by? Was it the same for both?",
+          "Why does scaling both numbers keep the quotient the same?",
+          "The division did not end. What do you trade the leftover into?",
+          "Does your exact answer agree with your estimate?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student shifts the decimal in only one number.",
+            "say": "The quotient stays the same only when both numbers scale together. Build it in dimes: multiplying both by 10 turned 6.4 / 0.8 into 64 / 8.",
+            "praise": "You scaled both numbers the same way, so the answer stayed true."
+          },
+          {
+            "if_you_see": "Student stops at a remainder instead of continuing into decimal places.",
+            "say": "Trade the leftover for the next smaller place: 1 whole left becomes 10 tenths. Keep dividing until it ends or you reach the rounding place.",
+            "praise": "You traded down and kept dividing; that is how quotients grow decimal places."
+          },
+          {
+            "if_you_see": "Student's answer is wildly off, like 80 or 0.8 for 6.4 / 0.8.",
+            "say": "Ask the fit question first: about how many 0.8s fit in 6.4? About 8. Let the estimate throw out impossible answers.",
+            "praise": "Your estimate caught the misplaced point before I did."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "3.6 / 0.4",
+            "look_for": "9, after scaling both to 36 / 4. An answer of 0.9 or 90 is a point slip."
+          },
+          {
+            "prompt": "7.5 / 6",
+            "look_for": "1.25, continuing past the point instead of stopping at 1 R1.5."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Divide 6.4 / 0.8.",
+        "answer": "8",
+        "steps": [
+          {
+            "math": "estimate: about 8",
+            "annotation": "0.8 fits into 6.4 about 8 times."
+          },
+          {
+            "math": "scale both by 10: 64 / 8",
+            "annotation": "Multiplying both numbers by the same power of ten keeps the quotient."
+          },
+          {
+            "math": "64 / 8 = 8",
+            "annotation": "Now it is a basic fact."
+          },
+          {
+            "math": "check: 8 x 0.8 = 6.4",
+            "annotation": "Multiply back to confirm, and the estimate agrees."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Divide 7.2 / 0.9.",
+        "answer": "8",
+        "steps": [
+          {
+            "math": "estimate: about 8",
+            "annotation": "0.9 fits into 7.2 about 8 times.",
+            "given": true
+          },
+          {
+            "math": "scale both by 10: 72 / 9",
+            "annotation": "Same power of ten on both numbers.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Divide the whole numbers.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check by multiplying back.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I multiplied both numbers by ___ so the divisor became a whole number.",
+        "My estimate was about ___, and my exact answer ___."
+      ],
+      "fluency_source": "7NS4-F2"
     },
     {
       "skill_id": "7NS4-S1",
       "name": "Identify equivalent forms of a negative fraction",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.NS.4",
       "engine_stems": [
         1
@@ -550,7 +1122,7 @@
           }
         ]
       },
-      "fluency_source": "7NS4-F2",
+      "fluency_source": "7NS4-F1",
       "sentence_starters": [
         "This fraction has ___ negative sign(s), so its value is ___.",
         "-(p/q) equals ___ and ___ because the one negative can sit in three places."
@@ -1151,7 +1723,7 @@
           }
         ]
       },
-      "fluency_source": "7NS4-F1",
+      "fluency_source": "7NS4-B2",
       "sentence_starters": [
         "The fraction bar means divide, so ___ / ___ = ___.",
         "The signs are ___, so the decimal is ___."
@@ -1500,7 +2072,7 @@
           }
         ]
       },
-      "fluency_source": "7NS4-F1",
+      "fluency_source": "7NS4-B1",
       "sentence_starters": [
         "Keep ___, change to multiply, flip ___ to ___.",
         "There are ___ negative signs, so the quotient is ___."
@@ -1811,7 +2383,7 @@
           }
         ]
       },
-      "fluency_source": "7NS4-F1",
+      "fluency_source": "7NS4-B2",
       "sentence_starters": [
         "'___' means the amount is ___, and 'per ___' means I divide.",
         "The quotient is ___ / ___ = ___, which means ___."
@@ -2083,7 +2655,7 @@
           }
         ]
       },
-      "fluency_source": "7NS4-F2",
+      "fluency_source": "7NS4-F1",
       "sentence_starters": [
         "The one negative sign can go ___, ___, or ___.",
         "-(p/q) equals ___ and ___, but NOT ___ because that has two negatives."
@@ -2140,8 +2712,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7NS4-F1",
         "7NS4-F2"
@@ -2149,15 +2721,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7NS4-S1"
+        "7NS4-B1",
+        "7NS4-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7NS4-S1",
         "7NS4-S2",
         "7NS4-S3",
         "7NS4-S4",
@@ -2166,7 +2740,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7NS4-S6"
       ]
@@ -2175,6 +2749,8 @@
   "skill_sequence": [
     "7NS4-F1",
     "7NS4-F2",
+    "7NS4-B1",
+    "7NS4-B2",
     "7NS4-S1",
     "7NS4-S2",
     "7NS4-S3",
@@ -2185,18 +2761,24 @@
   "skill_tree": {
     "7NS4-F1": [],
     "7NS4-F2": [],
-    "7NS4-S1": [
+    "7NS4-B1": [
+      "7NS4-F1"
+    ],
+    "7NS4-B2": [
       "7NS4-F2"
     ],
+    "7NS4-S1": [],
     "7NS4-S2": [
-      "7NS4-F1",
-      "7NS4-F2"
+      "7NS4-B1",
+      "7NS4-B2"
     ],
     "7NS4-S3": [
-      "7NS4-S2"
+      "7NS4-S2",
+      "7NS4-B2"
     ],
     "7NS4-S4": [
-      "7NS4-S2"
+      "7NS4-S2",
+      "7NS4-B1"
     ],
     "7NS4-S5": [
       "7NS4-S3",
@@ -2207,17 +2789,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S3 (calculate a quotient as a decimal) -- the At-proficiency computational engine and the clearest place the sign error surfaces. If they pass, move up to S4 (dividing fractions), S5 (real-world quotients), and S6 (generating equivalent forms). If they fail, drop to S2 (integer quotients and the sign rule) and S1 (the -(p/q) identity) to find where the sign understanding breaks. S4 doubles as a branch check on fraction division specifically.",
+    "description": "Start with S3, calculating a quotient of rational numbers as a decimal, the At-proficiency core where both the division and the sign must work. If they pass, move up to S5 (real-world quotients) and S6 (generating equivalent negative-fraction forms). If they fail, drop below grade level: B1 checks grade 6 fraction division with the how many fit meaning, and B2 checks grade 6 decimal division, the two unsigned skills this standard's computation rests on. If those wobble, the foundations F1 (division facts as sharing and fitting) and F2 (long division with remainders) locate the gap in grades 3 to 5. S1, S2, and S4 remain available to probe the sign identity, integer quotients, and fraction division on grade.",
     "entry_skill": "7NS4-S3",
     "if_pass": [
       "7NS4-S5",
       "7NS4-S6"
     ],
     "if_fail": [
-      "7NS4-S1",
-      "7NS4-S2"
+      "7NS4-B1",
+      "7NS4-B2"
     ],
     "branch_skills": [
+      "7NS4-F1",
+      "7NS4-F2",
+      "7NS4-S1",
+      "7NS4-S2",
       "7NS4-S4"
     ]
   }

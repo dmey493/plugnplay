@@ -3,7 +3,7 @@
   "standard_text": "Solve equations of the form px + q = r and p(x + q) = r fluently, where p, q, and r are specific rational numbers. Represent real-world problems using equations of these forms and solve such problems.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard asks seventh graders to solve two families of linear equation -- px + q = r and p(x + q) = r -- fluently with rational numbers, and then to use those equations to model and solve real-world problems. 'Fluently' is the load-bearing word: students should run a dependable procedure, not reinvent it each time. So the progression starts with the pure mechanic. First, the two-step equation px + q = r: undo the operations in reverse order, clearing the added or subtracted constant before dividing by the coefficient -- and checking the answer by substituting it back. Next, the parenthetical form p(x + q) = r, where students learn two equivalent routes (divide by p first, or distribute p across the parentheses) and confront the classic trap of multiplying only the first term inside. The 'fluently, with rational numbers' demand runs through both, so the difficulty climbs from integers to a single fraction or decimal.\n\nWith the solving machinery in hand, the standard turns outward to modeling. Students first learn to IDENTIFY the equation that matches a situation -- giving every number a job, with the per-unit rate multiplying the variable and the one-time amount added on its own -- before they WRITE and solve their own, first with whole numbers and then with rational values (the baker's fractions, the shopper's decimals). The top of the progression stretches into representing one situation with more than one equivalent equation, comparing an algebraic solve to an arithmetic one, and judging whether a solution is reasonable. The order is deliberate: solve px + q = r, then p(x + q) = r, then identify, write, and finally represent-multiple-ways -- and underneath all of it runs one habit we keep returning to, that every legal move keeps the equation balanced and the answer isn't finished until a substitution proves it true. (Note: unlike eighth grade, the variable inside the parentheses always has a coefficient of 1 -- there is no p(ax + q), no combining like terms, and no variables on both sides.)",
+    "narrative": "This standard asks seventh graders to solve equations of the form px + q = r and p(x + q) = r fluently with rational numbers, and to write and solve equations of these forms from real-world situations. The on-grade skills build from solving the bare two-step equation, to handling the parentheses form, to identifying, writing, and finally comparing equivalent models of a situation. Students who stall here usually cannot yet undo an operation reliably or evaluate an expression in the right order, gaps that reach back to grades 3 through 5. Intervention should rebuild missing-number thinking and order of operations first, then the grade six skills of solving one-step equations and checking a value by substitution, and only then return to two-step solving.",
     "steps": [
       {
         "skill_id": "7AF3-S1",
@@ -40,192 +40,826 @@
   "skills": [
     {
       "skill_id": "7AF3-F1",
-      "name": "Solve one-step equations using inverse operations",
+      "name": "Find the missing number in an equation",
       "column": "foundation",
       "parent_standard": "7.AF.3",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Understand that an equation is balanced and that operations undo each other.",
-        "check_question": "What number makes x + 5 = 9 true?"
+        "grade": 4,
+        "description": "Use fact families and inverse operations to find the missing number in an addition, subtraction, multiplication, or division equation.",
+        "check_question": "What number goes in the box: [] + 7 = 15?"
       },
-      "i_do_script": "An equation is a riddle about a hidden number, and solving is walking BACKWARD to it -- if 8 was taken away from the number, you put 8 back. A one-step equation has just one thing happening to the variable, and I undo it with the opposite operation. Watch: x + 6 = 10. Six is ADDED to x, so I subtract 6 from BOTH sides: x = 4. Another: 3x = 21. Here x is MULTIPLIED by 3, so I divide both sides by 3: x = 7. Addition undoes subtraction; multiplication undoes division. Whatever I do to one side I do to the other so the equation stays balanced.",
+      "i_do_script": "A missing-number equation hides one number, and the other two point straight at it. Watch: [] + 7 = 15. On a number line I stand at 15 and the 7 was a jump forward, so I jump 7 back and land on 8. Check: 8 + 7 = 15. Now 8 x [] = 40. The fact family for 8 and 40 says 40 divided by 8 is 5, so the box is 5. Addition and subtraction undo each other, and so do multiplication and division. I always check by putting my number back in the box.",
       "canonical_error": {
-        "pattern": "Uses the same operation shown in the equation instead of its inverse",
-        "example": "For x + 6 = 10 the student ADDS 6 to get x = 16, instead of subtracting 6",
-        "why": "The student repeats the operation they see rather than undoing it. To isolate x you apply the INVERSE operation to both sides."
+        "pattern": "Combines the two given numbers with the operation shown instead of undoing it",
+        "example": "For [] + 7 = 15 the student adds 7 and 15 and writes 22",
+        "why": "The student treats the equation as a computation prompt instead of a riddle. The 7 was already added to the hidden number, so you take it back off: 15 - 7 = 8. The check exposes it: 22 + 7 is not 15."
       },
-      "item_template": "A one-step equation (x + q = r, x - q = r, px = r, or x/p = r) with rational values. Student isolates x. Short numeric response; good fluency bank.",
+      "item_template": "A one-operation missing-number equation with whole numbers ([] + q = r, [] - q = r, p x [] = r, or [] / p = r), facts within grade 4 range. Student finds the missing number. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Solve x + 7 = 12.",
-          "answer": "x = 5"
+          "stem": "[] + 7 = 15",
+          "answer": "8"
         },
         {
-          "stem": "Solve x - 4 = 9.",
-          "answer": "x = 13"
+          "stem": "[] - 6 = 9",
+          "answer": "15"
         },
         {
-          "stem": "Solve 3x = 21.",
-          "answer": "x = 7"
+          "stem": "8 x [] = 40",
+          "answer": "5"
         },
         {
-          "stem": "Solve x/5 = 4.",
-          "answer": "x = 20"
+          "stem": "[] / 4 = 6",
+          "answer": "24"
         },
         {
-          "stem": "Solve x + 3.5 = 8.",
-          "answer": "x = 4.5"
+          "stem": "12 + [] = 30",
+          "answer": "18"
         },
         {
-          "stem": "Solve 6x = 15.",
-          "answer": "x = 2.5"
+          "stem": "6 x [] = 54",
+          "answer": "9"
+        },
+        {
+          "stem": "45 / [] = 5",
+          "answer": "9"
+        },
+        {
+          "stem": "[] - 14 = 20",
+          "answer": "34"
         }
       ],
       "redirect_script": {
-        "stop": "Wait -- do the OPPOSITE, not the same.",
-        "prompt": "Read it as the riddle first: what happened to the hidden number, and what move puts it back? Ask what is happening to x: is it added, subtracted, multiplied, or divided? Do the inverse to BOTH sides. Added six? Subtract six.",
-        "praise": "You undid the operation with its inverse -- that isolates x."
+        "stop": "Is the box asking you to compute, or to undo?",
+        "prompt": "The equation already did something to the hidden number. Jump BACKWARD on the number line, or use the fact family: if adding 7 got you to 15, subtracting 7 gets you back. Then check by putting your answer in the box.",
+        "praise": "You went backward to find the hidden number and your check proved it."
       },
       "vocabulary": [
         {
-          "term": "Equation",
-          "definition": "A math sentence saying two expressions are equal, with an = sign."
+          "term": "Fact family",
+          "definition": "A set of related facts using the same three numbers, like 8 + 7 = 15, 15 - 7 = 8, and 15 - 8 = 7."
         },
         {
-          "term": "Inverse operation",
-          "definition": "The operation that undoes another: subtraction undoes addition, division undoes multiplication."
-        },
-        {
-          "term": "Isolate",
-          "definition": "Get the variable alone on one side of the equation."
+          "term": "Missing number",
+          "definition": "The hidden number in an equation, often shown as a box or blank."
         }
       ],
       "next_steps": {
-        "if_pass": "7AF3-S1",
-        "if_fail": "Review one-step equations (6.AF.3)."
+        "if_pass": "7AF3-B1",
+        "if_fail": "Review grade 3 and 4 fact families with fact triangles and number-line jumps."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Cover the x in x - 8 = 5 with your finger and read it as a riddle: 'some hidden number, take away 8, leaves 5.' Was the hidden number bigger or smaller than 5 before the 8 was taken? So which way do you move to get back to it?"
-        },
-        {
           "kind": "show",
-          "text": "Write 'x - 8 = 5.'"
+          "text": "Draw a number line from 0 to 20. Mark 15. Draw the [] + 7 = 15 story as a jump of 7 that LANDS on 15, starting from a mystery spot."
         },
         {
           "kind": "ask",
-          "text": "What is happening to x?"
+          "text": "The jump forward was 7 and it landed on 15. How do we find where it started?"
         },
         {
           "kind": "say",
-          "text": "8 is subtracted from x, so I add 8 to both sides: x = 13."
+          "text": "Jump 7 backward from 15 and land on 8. The missing number is 8, because 8 + 7 = 15. Undoing the jump finds the start."
         },
         {
           "kind": "watch",
-          "text": "If the student subtracts 8, ask 'does subtracting again undo a subtraction?'"
+          "text": "If a student says 22, walk the jump on the line: does starting at 22 and jumping 7 forward land on 15?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: 4x = 20. What is the inverse of times 4?"
+          "text": "Your turn: [] - 6 = 9. Which way do you jump to get back to the start?"
         }
       ]
     },
     {
       "skill_id": "7AF3-F2",
-      "name": "Compute fluently with rational numbers (fractions and decimals)",
+      "name": "Evaluate expressions with parentheses using the order of operations",
       "column": "foundation",
       "parent_standard": "7.AF.3",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Add, subtract, multiply, and divide fractions and decimals.",
-        "check_question": "What is 12 divided by 0.5?"
+        "grade": 5,
+        "description": "Evaluate a whole-number expression that has parentheses, doing the grouped part first and multiplying before adding.",
+        "check_question": "What is 4 x (3 + 2)?"
       },
-      "i_do_script": "Division asks 'how many of THIS fit inside THAT?' -- and lots of small pieces fit inside a big amount, so dividing by something smaller than 1 gives a count BIGGER than what you started with. Solving equations with rational numbers means I have to add, subtract, multiply, and divide fractions and decimals without freezing up. Watch a division that surprises people: 12 divided by 0.5. Dividing by one-half is the same as multiplying by 2, so 12 / 0.5 = 24 -- the answer gets BIGGER. And 9 / 1.5 = 6. With fractions, two-thirds of 9 is (2/3) x 9 = 6. A calculator is allowed on this standard, so the goal is knowing WHICH operation to do and trusting the result.",
+      "i_do_script": "Parentheses are a basket: whatever is inside gets bundled first, and the number outside acts on the whole basket. Watch: 4 x (3 + 2). The basket holds 3 + 2 = 5, and I have 4 baskets of 5, so 20. Compare that to 4 x 3 + 2 with no basket: multiplication goes first, 12 + 2 = 14. Different answers, because the basket changes what the 4 multiplies. Inside the parentheses first, then multiply or divide, then add or subtract.",
       "canonical_error": {
-        "pattern": "Assumes dividing always makes a number smaller (or multiplying always bigger), mishandling division by a number less than 1",
-        "example": "Thinks 12 / 0.5 = 6 because 'dividing makes it smaller,' instead of 24",
-        "why": "The student over-generalizes whole-number intuition. Dividing by a number between 0 and 1 makes the result LARGER; the operation, not the size, decides."
+        "pattern": "Ignores the parentheses and works left to right, or lets the outside number reach only the first number inside",
+        "example": "For 4 x (3 + 2) the student computes 4 x 3 = 12, then + 2, and writes 14",
+        "why": "The student multiplied the 4 by only the 3, but the parentheses bundle 3 + 2 into one amount of 5. The 4 baskets each hold 5 counters, so the total is 20, not 14."
       },
-      "item_template": "A single rational-number computation (fraction or decimal) of the kind that appears while solving. Short numeric response; fluency bank.",
+      "item_template": "A whole-number expression with one set of parentheses (sums and products within grade 5 range). Student evaluates it. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Compute 12 / 0.5.",
-          "answer": "24"
+          "stem": "4 x (3 + 2)",
+          "answer": "20"
         },
         {
-          "stem": "Compute 7.5 - 3.",
-          "answer": "4.5"
+          "stem": "(10 - 4) x 3",
+          "answer": "18"
         },
         {
-          "stem": "Compute (1/2) x 8.",
+          "stem": "2 x (5 + 6)",
+          "answer": "22"
+        },
+        {
+          "stem": "36 / (5 + 4)",
           "answer": "4"
         },
         {
-          "stem": "Compute 15 - 1.5.",
-          "answer": "13.5"
+          "stem": "20 - (6 + 4)",
+          "answer": "10"
         },
         {
-          "stem": "Compute 9 / 1.5.",
-          "answer": "6"
+          "stem": "(8 + 7) / 3",
+          "answer": "5"
         },
         {
-          "stem": "Compute (2/3) x 9.",
-          "answer": "6"
+          "stem": "3 x (4 + 2)",
+          "answer": "18"
+        },
+        {
+          "stem": "Which is greater: 3 x (4 + 2) or 3 x 4 + 2?",
+          "answer": "3 x (4 + 2), because it equals 18 and 3 x 4 + 2 equals 14"
         }
       ],
       "redirect_script": {
-        "stop": "Hold on -- check that with the calculator.",
-        "prompt": "Picture the coins first: how many quarter-dollars would fit inside that amount? Ask: am I dividing by a number LESS than 1? If so, the answer grows. Estimate first: 12 split into halves gives 24 halves.",
-        "praise": "You trusted the math over the 'dividing shrinks' myth -- exactly right."
+        "stop": "What is inside the basket?",
+        "prompt": "Do the parentheses first: bundle what is inside into one number. Then the number outside acts on that whole bundle, not just the first thing in it.",
+        "praise": "You bundled the basket first, so the outside number reached everything inside."
       },
       "vocabulary": [
         {
-          "term": "Rational number",
-          "definition": "Any number that can be written as a fraction of integers, including decimals and whole numbers."
+          "term": "Parentheses",
+          "definition": "Grouping symbols that bundle part of an expression to be done first."
         },
         {
-          "term": "Fluently",
-          "definition": "Working accurately and efficiently, without getting stuck on the arithmetic."
+          "term": "Order of operations",
+          "definition": "The agreed order for evaluating: parentheses first, then multiply or divide, then add or subtract."
         }
       ],
       "next_steps": {
-        "if_pass": "7AF3-S2",
-        "if_fail": "Review rational-number operations (7.C standards)."
+        "if_pass": "7AF3-B2",
+        "if_fail": "Review grade 5 order of operations with basket and array pictures."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Read 8 / 0.25 as a coin question: how many quarter-dollars fit in 8 dollars? Picture the stacks -- 4 quarters make each dollar. Before any rule: will the count of quarters be bigger or smaller than 8?"
-        },
-        {
           "kind": "show",
-          "text": "Write '8 / 0.25.'"
+          "text": "Draw 4 baskets. In each basket put 3 red counters and 2 blue counters."
         },
         {
           "kind": "ask",
-          "text": "Is 0.25 bigger or smaller than 1?"
+          "text": "How many counters are in ONE basket? So how many in all 4 baskets?"
         },
         {
           "kind": "say",
-          "text": "Smaller, so the answer grows: dividing by one-fourth is timesing by 4, so 8 / 0.25 = 32."
+          "text": "Each basket holds 3 + 2 = 5 counters, and 4 baskets of 5 make 20. That is 4 x (3 + 2) = 20. Writing 4 x 3 + 2 = 14 counts the blue counters from only one basket."
         },
         {
           "kind": "watch",
-          "text": "If the student writes 2, ask 'how many quarters are in 8?'"
+          "text": "If a student says 14, point at the picture: how many blue counters are really on the table?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: (3/4) x 8."
+          "text": "Your turn: draw or picture 2 x (5 + 6). What is in each basket, and what is the total?"
         }
       ]
     },
     {
+      "skill_id": "7AF3-B1",
+      "name": "Solve one-step equations of the form x + p = q and px = q",
+      "column": "looking_back",
+      "parent_standard": "7.AF.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Solve a one-step equation by applying the inverse operation to both sides, with whole numbers and simple positive fractions and decimals.",
+        "check_question": "Solve x + 9 = 17."
+      },
+      "i_do_script": "An equation is a balanced scale, and one thing has been done to x. To get x alone I undo that one thing on BOTH sides so the scale stays level. Watch: x + 9 = 17. Nine was added, so I subtract 9 from both sides: x = 8. Check: 8 + 9 = 17. Now 6x = 42. Here x is multiplied by 6, so I divide both sides by 6: x = 7. Check: 6 x 7 = 42. Name what happened to x, do the opposite to both sides, then check.",
+      "canonical_error": {
+        "pattern": "Applies the operation shown instead of its inverse, or changes only one side",
+        "example": "For x + 9 = 17 the student adds 9 to 17 and writes x = 26",
+        "why": "The student repeats the visible operation instead of undoing it. The 9 is already on x's side, so it must come OFF: subtract 9 from both sides. The check catches it: 26 + 9 is not 17."
+      },
+      "item_template": "A one-step equation (x + p = q, x - p = q, px = q, or x/p = q) with nonnegative rational numbers, at most one simple fraction or decimal. Student isolates x. Numeric or MC response.",
+      "sample_items": [
+        {
+          "stem": "An equation is given.\n\n  x + 9 = 17\n\nWhat is the solution to the equation?",
+          "answer": "8",
+          "choices": [
+            "8",
+            "9",
+            "26",
+            "153"
+          ],
+          "distractor_logic": "Subtract 9 from both sides: x = 8. '26' adds 9 instead of subtracting; '9' copies the constant; '153' multiplies 9 by 17."
+        },
+        {
+          "stem": "Solve x - 5 = 12.",
+          "answer": "x = 17"
+        },
+        {
+          "stem": "An equation is given.\n\n  5x = 35\n\nWhat is the solution to the equation?",
+          "answer": "7",
+          "choices": [
+            "7",
+            "30",
+            "40",
+            "175"
+          ],
+          "distractor_logic": "Divide both sides by 5: x = 7. '30' subtracts 5; '40' adds 5; '175' multiplies by 5 instead of dividing."
+        },
+        {
+          "stem": "Solve x/3 = 8.",
+          "answer": "x = 24"
+        },
+        {
+          "stem": "Solve 6x = 42.",
+          "answer": "x = 7"
+        },
+        {
+          "stem": "Solve x + 2.5 = 7.",
+          "answer": "x = 4.5"
+        },
+        {
+          "stem": "Solve 4x = 10.",
+          "answer": "x = 2.5"
+        },
+        {
+          "stem": "Solve x + 3/4 = 2.",
+          "answer": "x = 5/4 (or 1 1/4)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "What ONE thing happened to x?",
+        "prompt": "Name it out loud: added, subtracted, multiplied, or divided. Then do the opposite to BOTH sides so the scale stays balanced, and check by substituting your answer back.",
+        "praise": "You named the operation, undid it on both sides, and your check proved the answer."
+      },
+      "vocabulary": [
+        {
+          "term": "Inverse operation",
+          "definition": "The operation that undoes another: subtraction undoes addition, division undoes multiplication."
+        },
+        {
+          "term": "Solution",
+          "definition": "The value of the variable that makes the equation true."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7AF3-S1",
+        "if_fail": "7AF3-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a balanced pan scale. On the left pan put a bag labeled x and 9 loose counters. On the right pan put 17 counters."
+        },
+        {
+          "kind": "ask",
+          "text": "We want the bag alone on the left. What can we remove, and what must we do to keep the scale level?"
+        },
+        {
+          "kind": "say",
+          "text": "Take 9 counters off the LEFT and 9 off the RIGHT. The bag now balances 8 counters, so x = 8. Check: 8 + 9 = 17."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student removes counters from only one side, tip the drawn scale: what happens to the balance?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 6x = 42 means 6 identical bags balance 42 counters. How many counters in one bag?"
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What operation undoes adding 6?",
+          "answer": "Subtracting 6"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Solve x + 4 = 11.",
+          "answer": "x = 7"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve x - 8 = 15.",
+          "answer": "x = 23"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve 7x = 56.",
+          "answer": "x = 8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve x + 1.5 = 6.",
+          "answer": "x = 4.5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve x/5 = 6.",
+          "answer": "x = 30"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Solve 2.5x = 15.",
+          "answer": "x = 6"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo solved x + 8 = 20. Find his mistake and fix it.",
+          "shown_work": [
+            "x + 8 = 20",
+            "add 8 to both sides",
+            "x = 28"
+          ],
+          "answer": "Leo added 8 again instead of undoing it. Subtract 8 from both sides: x = 12. Check: 12 + 8 = 20."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Bag and Balance",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper bags or cups",
+            "Counters",
+            "A drawn or real pan balance mat"
+          ],
+          "instructions": "1. Partner A secretly puts counters in a bag and builds an equation on the balance mat, like bag + 9 counters on the left and 17 counters on the right.\n2. Partner B removes the same number of loose counters from BOTH sides until the bag is alone.\n3. Partner B says the solution; open the bag to check.\n4. For px = q, use several identical bags on the left and share the right side equally among them.\n5. Trade roles. Say each time: whatever leaves one side leaves the other."
+        },
+        {
+          "type": "matching",
+          "title": "Undo Move Match-Up",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per equation, one card per undo move"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each equation to the move that solves it, like x + 4 = 10 to 'subtract 4 from both sides.'\n3. To claim a match, state the solution and show the check out loud.\n4. Two decoy cards name a wrong move; set them aside and explain why they fail.",
+          "content": {
+            "pairs": [
+              {
+                "left": "x + 4 = 10",
+                "right": "Subtract 4 from both sides"
+              },
+              {
+                "left": "3x = 12",
+                "right": "Divide both sides by 3"
+              },
+              {
+                "left": "x - 5 = 9",
+                "right": "Add 5 to both sides"
+              },
+              {
+                "left": "x/2 = 8",
+                "right": "Multiply both sides by 2"
+              },
+              {
+                "left": "x + 9 = 20",
+                "right": "Subtract 9 from both sides"
+              },
+              {
+                "left": "5x = 45",
+                "right": "Divide both sides by 5"
+              }
+            ],
+            "decoys": [
+              "x + 4 = 10: add 4 to both sides",
+              "3x = 12: subtract 3 from both sides"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Bags and a pan balance make 'undo the same thing on both sides' visible before the inverse-operation rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The repeat-the-operation error is stable and predictable; finding and fixing it in worked examples confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "A choral routine of 'name the operation, do the opposite, both sides' hard-wires the solve habit."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What one thing is happening to x?",
+          "What move undoes that, and why must it happen on both sides?",
+          "How do you know the scale is still balanced after your move?",
+          "How can you prove your answer is right?",
+          "What would the check show if you had added instead of subtracted?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student applies the operation shown instead of its inverse.",
+            "say": "Point at the balance: the 9 is already ON x's side. Does adding more counters get the bag alone? Take 9 off both sides instead.",
+            "praise": "You undid the operation instead of repeating it, that is the whole move."
+          },
+          {
+            "if_you_see": "Student changes only one side of the equation.",
+            "say": "Tip the scale: if 9 leaves the left but not the right, the pans no longer balance. Whatever leaves one side leaves the other.",
+            "praise": "You kept both sides balanced, so the equation stayed true."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Solve x + 6 = 14.",
+            "look_for": "x = 8 by subtracting 6 from both sides. An answer of 20 signals the add-again error."
+          },
+          {
+            "prompt": "Solve 4x = 22.",
+            "look_for": "x = 5.5 by dividing both sides by 4. An answer of 18 signals subtracting instead of dividing."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Solve 5x = 40.",
+        "answer": "x = 8",
+        "steps": [
+          {
+            "math": "5x = 40",
+            "annotation": "One thing happened to x: it was multiplied by 5."
+          },
+          {
+            "math": "divide both sides by 5",
+            "annotation": "Division undoes multiplication, and it must happen on both sides."
+          },
+          {
+            "math": "x = 8",
+            "annotation": "Forty shared into 5 equal bags is 8 per bag."
+          },
+          {
+            "math": "check: 5 x 8 = 40, true",
+            "annotation": "Substitute back; both sides match, so x = 8."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Solve 6x = 42.",
+        "answer": "x = 7",
+        "steps": [
+          {
+            "math": "6x = 42",
+            "annotation": "One thing happened to x: it was multiplied by 6.",
+            "given": true
+          },
+          {
+            "math": "divide both sides by 6",
+            "annotation": "Division undoes the multiplication on both sides.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "State the value of x.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check by substituting your answer back into 6x = 42.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The one thing happening to x is ___, so I ___ both sides.",
+        "I checked by putting ___ back in, and both sides equal ___."
+      ],
+      "fluency_source": "7AF3-F1"
+    },
+    {
+      "skill_id": "7AF3-B2",
+      "name": "Use substitution to decide whether a value makes an equation true",
+      "column": "looking_back",
+      "parent_standard": "7.AF.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Substitute a value for the variable, evaluate in the correct order, and decide whether the equation is true.",
+        "check_question": "Is x = 4 a solution of 3x + 2 = 14?"
+      },
+      "i_do_script": "A solution is a value that makes the equation TRUE, and substitution is the test. Watch: is x = 4 a solution of 3x + 2 = 14? I replace x with 4: 3 x 4 + 2. Multiply first: 12. Then add: 14. The left side equals the right side, so yes, x = 4 is a solution. Try x = 5 in the same equation: 3 x 5 + 2 = 17, not 14, so x = 5 is not. Substitute, evaluate in order, compare the two sides.",
+      "canonical_error": {
+        "pattern": "Substitutes correctly but evaluates out of order, adding before multiplying",
+        "example": "Checking x = 5 in 2x + 3, the student computes 5 + 3 = 8 and then 2 x 8 = 16 instead of 2 x 5 + 3 = 13",
+        "why": "The student reads left to right through the substituted numbers and grabs the addition first. In 2x + 3 the 2 is glued to x by multiplication, so 2 times 5 happens before the 3 is added."
+      },
+      "item_template": "An equation of the form px + q = r or p(x + q) = r with a candidate value, or an expression to evaluate at a given value. Student substitutes, evaluates in order, and decides true or false. Yes/no with work, numeric, or MC response.",
+      "sample_items": [
+        {
+          "stem": "Is x = 4 a solution of 3x + 2 = 14?",
+          "answer": "Yes: 3 x 4 + 2 = 12 + 2 = 14"
+        },
+        {
+          "stem": "Is x = 5 a solution of 2x + 1 = 12?",
+          "answer": "No: 2 x 5 + 1 = 11, not 12"
+        },
+        {
+          "stem": "Which value of x makes x + 6 = 13 true?",
+          "answer": "7",
+          "choices": [
+            "5",
+            "6",
+            "7",
+            "19"
+          ],
+          "distractor_logic": "7 + 6 = 13. '19' adds 6 to 13 instead of testing; '6' copies the constant; '5' is a near miss that fails the check (5 + 6 = 11)."
+        },
+        {
+          "stem": "Evaluate 4x + 3 when x = 2.",
+          "answer": "11"
+        },
+        {
+          "stem": "Is x = 3 a solution of 5(x + 1) = 20?",
+          "answer": "Yes: 5(3 + 1) = 5 x 4 = 20"
+        },
+        {
+          "stem": "Is x = 10 a solution of 2(x - 4) = 10?",
+          "answer": "No: 2(10 - 4) = 12, not 10"
+        },
+        {
+          "stem": "Evaluate 2(x + 5) when x = 3.",
+          "answer": "16"
+        },
+        {
+          "stem": "Which value of x makes 4x = 22 true?",
+          "answer": "5.5",
+          "choices": [
+            "5.5",
+            "18",
+            "26",
+            "88"
+          ],
+          "distractor_logic": "4 x 5.5 = 22. '18' subtracts 4; '26' adds 4; '88' multiplies 22 by 4."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which operation is glued to x?",
+        "prompt": "Substitute the value, then evaluate in order: parentheses first, multiplication before addition. Only after you have one number on each side do you compare and decide true or false.",
+        "praise": "You multiplied before adding and compared both sides, that is a real check."
+      },
+      "vocabulary": [
+        {
+          "term": "Substitute",
+          "definition": "Replace the variable with a specific value."
+        },
+        {
+          "term": "Solution",
+          "definition": "A value that makes the equation true when substituted."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7AF3-S1",
+        "if_fail": "7AF3-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Build 3x + 2 with objects: 3 identical cups (each hiding the same secret number of counters) and 2 loose counters."
+        },
+        {
+          "kind": "ask",
+          "text": "If each cup holds 4 counters, how many counters are on the table in all?"
+        },
+        {
+          "kind": "say",
+          "text": "Three cups of 4 make 12, plus the 2 loose counters is 14. So when x = 4, the expression 3x + 2 equals 14, and the equation 3x + 2 = 14 is TRUE. x = 4 is a solution."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student computes 4 + 2 = 6 first and then 3 x 6 = 18, point at the cups: are the 2 loose counters inside any cup?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: with the same cups, is x = 5 a solution of 3x + 2 = 14?"
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate 2x + 1 when x = 3.",
+          "answer": "7"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate 5x when x = 4.",
+          "answer": "20"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is x = 6 a solution of 4x - 3 = 21?",
+          "answer": "Yes: 4 x 6 - 3 = 24 - 3 = 21"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is x = 2 a solution of 3(x + 4) = 18?",
+          "answer": "Yes: 3(2 + 4) = 3 x 6 = 18"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is x = 9 a solution of 2x + 5 = 21?",
+          "answer": "No: 2 x 9 + 5 = 23, not 21"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which makes 6x + 2 = 32 true: x = 3 or x = 5?",
+          "answer": "x = 5, because 6 x 5 + 2 = 32; x = 3 gives 20"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Test x = 4, x = 4.5, and x = 5 in 2x + 3 = 12. Which one is the solution?",
+          "answer": "x = 4.5, because 2 x 4.5 + 3 = 12; the others give 11 and 13"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia checked whether x = 5 is a solution of 2x + 3 = 13. Find her mistake and fix it.",
+          "shown_work": [
+            "2x + 3 with x = 5",
+            "5 + 3 = 8",
+            "2 x 8 = 16, so x = 5 is not a solution"
+          ],
+          "answer": "Mia added before multiplying. The 2 is glued to x, so multiply first: 2 x 5 = 10, then 10 + 3 = 13. Both sides match, so x = 5 IS a solution."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Cups and Counters Check",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper cups",
+            "Counters",
+            "Equation cards like 3x + 2 = 14 and 2(x + 1) = 10"
+          ],
+          "instructions": "1. Draw an equation card and a value card, like 3x + 2 = 14 with x = 4.\n2. Build the left side: one cup per x, loose counters for the added constant.\n3. Put the value in every cup, then count the total on the table.\n4. Compare the count to the right side: match means solution, no match means not.\n5. Say each time: cups first, loose counters after."
+        },
+        {
+          "type": "card_sort",
+          "title": "Solution or Not?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set: 8 value-and-equation cards"
+          ],
+          "instructions": "1. Each card pairs an equation with a candidate value, like 'x = 4 in 3x + 2 = 14.'\n2. Substitute and evaluate in order, showing the arithmetic on a whiteboard.\n3. Sort the card into 'Solution' or 'Not a solution.'\n4. The group must agree on the substituted arithmetic before a card is placed.\n5. Debrief: which cards trick people who add before multiplying?",
+          "content": {
+            "categories": [
+              "Solution",
+              "Not a solution"
+            ],
+            "cards": [
+              {
+                "text": "x = 4 in 3x + 2 = 14",
+                "category": "Solution"
+              },
+              {
+                "text": "x = 5 in 2x + 1 = 12",
+                "category": "Not a solution"
+              },
+              {
+                "text": "x = 7 in x + 6 = 13",
+                "category": "Solution"
+              },
+              {
+                "text": "x = 3 in 5(x + 1) = 20",
+                "category": "Solution"
+              },
+              {
+                "text": "x = 10 in 2(x - 4) = 10",
+                "category": "Not a solution"
+              },
+              {
+                "text": "x = 6 in 4x - 3 = 21",
+                "category": "Solution"
+              },
+              {
+                "text": "x = 2 in 6x = 15",
+                "category": "Not a solution"
+              },
+              {
+                "text": "x = 2.5 in 6x = 15",
+                "category": "Solution"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Cups for x and loose counters for the constant make 'multiply before adding' physical before the order rule is named."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'the 2 is glued to x, so multiply first' makes the invisible order choice audible and checkable."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The add-first evaluation error is precise and baitable, ideal for find-and-fix work."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What does it mean for a value to be a solution?",
+          "After you substitute, which operation happens first, and why?",
+          "What number did each side become? Do they match?",
+          "If the sides do not match, what does that tell you about the value?",
+          "How is checking p(x + q) different from checking px + q?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds the constant before multiplying the coefficient.",
+            "say": "Look at the cups: the 2 loose counters are not inside any cup. Multiply the cups out first, then add the loose counters.",
+            "praise": "You multiplied first and added after, so the value came out true."
+          },
+          {
+            "if_you_see": "Student evaluates one side but never compares it to the other.",
+            "say": "A check has two sides. Write what the left side became, write the right side, and say whether they match.",
+            "praise": "You compared both sides, that is what decides solution or not."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Is x = 3 a solution of 4x + 1 = 13?",
+            "look_for": "Yes: 4 x 3 + 1 = 13. An answer of 16 (from 3 + 1 first) signals the order error."
+          },
+          {
+            "prompt": "Evaluate 2(x + 3) when x = 4.",
+            "look_for": "14, doing the parentheses first: 2 x 7. An answer of 11 means the 2 reached only the x."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Is x = 4 a solution of 3x + 2 = 14?",
+        "answer": "Yes, x = 4 is a solution",
+        "steps": [
+          {
+            "math": "substitute: 3(4) + 2",
+            "annotation": "Replace x with 4 everywhere it appears."
+          },
+          {
+            "math": "multiply first: 12 + 2",
+            "annotation": "The 3 is glued to x by multiplication, so it goes before the addition."
+          },
+          {
+            "math": "add: 14",
+            "annotation": "The left side becomes one number."
+          },
+          {
+            "math": "compare: 14 = 14, true",
+            "annotation": "Both sides match, so x = 4 makes the equation true."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Is x = 3 a solution of 4x + 5 = 17?",
+        "answer": "Yes, x = 3 is a solution",
+        "steps": [
+          {
+            "math": "substitute: 4(3) + 5",
+            "annotation": "Replace x with 3.",
+            "given": true
+          },
+          {
+            "math": "multiply first: 12 + 5",
+            "annotation": "The coefficient multiplies before the constant is added.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Finish the addition on the left side.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Compare the two sides and decide true or false.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I substituted ___ for x, and the left side became ___.",
+        "The sides ___ match, so x = ___ ___ a solution."
+      ],
+      "fluency_source": "7AF3-F2"
+    },
+    {
       "skill_id": "7AF3-S1",
       "name": "Solve two-step equations of the form px + q = r",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.AF.3",
       "engine_stems": [
         1
@@ -494,7 +1128,7 @@
           }
         ]
       },
-      "fluency_source": "7AF3-F1",
+      "fluency_source": "7AF3-B1",
       "sentence_starters": [
         "First I undo the ___ by ___ing both sides, which gives ___.",
         "Then I divide both sides by ___ to get x = ___."
@@ -799,7 +1433,7 @@
           }
         ]
       },
-      "fluency_source": "7AF3-F2",
+      "fluency_source": "7AF3-B2",
       "sentence_starters": [
         "I can divide both sides by ___ first, which gives ___.",
         "If I distribute, ___ times x is ___ and ___ times ___ is ___."
@@ -1126,7 +1760,7 @@
           }
         ]
       },
-      "fluency_source": "7AF3-F1",
+      "fluency_source": "7AF3-B1",
       "sentence_starters": [
         "The number ___ happens per ___, so it multiplies the variable.",
         "The number ___ happens once, so I add it on its own."
@@ -1389,7 +2023,7 @@
           }
         ]
       },
-      "fluency_source": "7AF3-F1",
+      "fluency_source": "7AF3-B1",
       "sentence_starters": [
         "The whole group is (___ + ___), and each gets ___, so my equation is ___.",
         "Solving, x = ___, which means ___ in the story."
@@ -1684,7 +2318,7 @@
           }
         ]
       },
-      "fluency_source": "7AF3-F2",
+      "fluency_source": "7AF3-B2",
       "sentence_starters": [
         "The one-time amount is ___ and the per-unit rate is ___, so my equation is ___.",
         "After I subtract ___, x is still times ___, so I divide to get x = ___."
@@ -1978,7 +2612,7 @@
           }
         ]
       },
-      "fluency_source": "7AF3-F1",
+      "fluency_source": "7AF3-B1",
       "sentence_starters": [
         "The grouped form is ___ and the distributed form is ___; they are equivalent because ___.",
         "The answer ___ is reasonable because ___."
@@ -2035,8 +2669,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7AF3-F1",
         "7AF3-F2"
@@ -2044,15 +2678,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7AF3-S1"
+        "7AF3-B1",
+        "7AF3-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7AF3-S1",
         "7AF3-S2",
         "7AF3-S3",
         "7AF3-S4",
@@ -2061,7 +2697,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7AF3-S6"
       ]
@@ -2070,6 +2706,8 @@
   "skill_sequence": [
     "7AF3-F1",
     "7AF3-F2",
+    "7AF3-B1",
+    "7AF3-B2",
     "7AF3-S1",
     "7AF3-S2",
     "7AF3-S3",
@@ -2080,8 +2718,15 @@
   "skill_tree": {
     "7AF3-F1": [],
     "7AF3-F2": [],
-    "7AF3-S1": [
+    "7AF3-B1": [
       "7AF3-F1"
+    ],
+    "7AF3-B2": [
+      "7AF3-F2"
+    ],
+    "7AF3-S1": [
+      "7AF3-B1",
+      "7AF3-B2"
     ],
     "7AF3-S2": [
       "7AF3-S1",
@@ -2103,19 +2748,22 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (write and solve a real-world equation) -- the At-proficiency core of the standard. If they pass, push to S5 (rational-number contexts) and S6 (multiple equivalent equations and reasonableness). If they fail, split the diagnosis: S1 checks whether they can solve px + q = r, S2 whether they can solve p(x + q) = r, and S3 whether they can translate a situation into the right equation. S6 also branches off the top of the application side.",
+    "description": "Start with S4, writing and solving a real-world equation, the At-proficiency core. If they pass, push to S5 (rational-number contexts) and S6 (equivalent equations and reasonableness). If they fail, drop below grade level: B1 checks one-step equation solving and B2 checks substitution and order of operations, the two grade 6 skills two-step solving leans on. If those wobble, the foundations F1 (missing-number equations) and F2 (parentheses and order of operations) locate the gap in grades 3 through 5. S1, S2, and S3 remain available to probe the standard's own solving and modeling mechanics.",
     "entry_skill": "7AF3-S4",
     "if_pass": [
       "7AF3-S5",
       "7AF3-S6"
     ],
     "if_fail": [
+      "7AF3-B1",
+      "7AF3-B2"
+    ],
+    "branch_skills": [
+      "7AF3-F1",
+      "7AF3-F2",
       "7AF3-S1",
       "7AF3-S2",
       "7AF3-S3"
-    ],
-    "branch_skills": [
-      "7AF3-S6"
     ]
   }
 }

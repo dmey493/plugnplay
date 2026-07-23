@@ -3,7 +3,7 @@
   "standard_text": "Graph a line given its slope and a point on the line. Find the slope of a line given its graph.",
   "schema_version": 3,
   "progression": {
-    "narrative": "The standard names two reciprocal moves: FIND the slope of a line from its graph, and GRAPH a line from a slope and a point. Both rest on one idea -- slope is the constant ratio of vertical change to horizontal change (rise over run), and its sign tells you which way the line leans. So the arc starts by making slope qualitative: is the line climbing, falling, flat, or vertical (positive, negative, zero, or undefined)? Students who jump straight to a number too early invert rise and run or drop the sign, so we settle direction first.\n\nFrom there students quantify: count the rise and run between two lattice points and write slope as rise over run, first with friendly positive whole-number points, then with integer points that force a negative slope (the spec allows positive OR negative slopes). Next they reverse the machine -- given a slope and a point, they PLOT the point and use the rise/run to step to a second point and draw the line, honoring the sign (down for a negative slope). The capstone extensions push past the two core moves: use a slope and one point to generate OTHER points on the same line, and read a slope straight out of a real-world rate (vertical change over horizontal change). The through-line we keep naming: slope is rise over run with a sign, and every task here -- reading a graph, drawing a line, finding new points, interpreting a rate -- is that one ratio used forward or backward.",
+    "narrative": "This standard asks students to find the slope of a line from its graph and to graph a line given its slope and one point on it. The on-grade work moves from classifying a slope as positive, negative, zero, or undefined, to counting rise over run between lattice points, keeping the sign on falling lines, and finally reversing the process to draw a line from a slope and a point. Students who struggle here usually cannot place or read coordinates reliably, or cannot form and reduce the rise over run ratio. Intervention should start with the grade 3 to 5 foundations, plotting in the first quadrant and writing fractions in simplest form, then rebuild the grade six skills of graphing in all four quadrants and finding unit rates, and only then return to slope itself.",
     "steps": [
       {
         "skill_id": "7AF6-S1",
@@ -40,230 +40,835 @@
   "skills": [
     {
       "skill_id": "7AF6-F1",
-      "name": "Plot and read ordered pairs on a coordinate grid",
+      "name": "Plot and read points in the first quadrant of a coordinate grid",
       "column": "foundation",
       "parent_standard": "7.AF.6",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Plot a point (x, y) and read a marked point's coordinates in all four quadrants.",
-        "check_question": "Where is the point (3, -2) on a grid -- how far right or left, and how far up or down?"
+        "grade": 5,
+        "description": "Plot a point (x, y) with whole-number coordinates in the first quadrant and read a marked point's coordinates.",
+        "check_question": "To plot the point (3, 5), how far do you go across, and how far up?"
       },
-      "i_do_script": "On a grid, order is everything: 'right 4 then down 1' and 'right 1 then down 4' land in two different places, so (4, -1) can only mean one of them. The tiebreaker never changes -- the first number is the across move. A point (x, y) is two moves from the origin: the first number is how far RIGHT (or left if negative), the second is how far UP (or down if negative). Watch (3, 2): start at (0, 0), go right 3, then up 2. For (2, -1): right 2, then DOWN 1. To READ a point I reverse it -- count across for x, up or down for y. The order never changes: x first (across), y second (up).",
+      "i_do_script": "A grid point is an address made of two moves from the corner (0, 0), and the order never changes: across first, then up. Watch (3, 5): I start at the origin, walk RIGHT 3 along the bottom, then climb UP 5. The first number is always the across move on the x-axis; the second is always the up move on the y-axis. To read a marked point I reverse it: count how far across it sits, then how far up. Right 3 then up 5 and right 5 then up 3 land on two different spots, so the order is the whole game.",
       "canonical_error": {
-        "pattern": "Reverses the coordinates -- goes up by x and right by y",
-        "example": "Plots (3, 2) by going up 3 and right 2, landing on (2, 3) instead",
-        "why": "The student forgets the fixed order (x across, then y up) and swaps the two moves. The first coordinate is always the horizontal one."
+        "pattern": "Reverses the coordinates, going up by the first number and across by the second",
+        "example": "Plots (3, 5) by going up 3 and right 5, landing on (5, 3) instead",
+        "why": "The student forgets the fixed order. The first number is always the across move; the second is always the up move."
       },
-      "item_template": "Plot a given ordered pair, or read the coordinates of a marked point (integers, including negatives). Short response.",
+      "item_template": "Plot a given ordered pair or read a marked point's coordinates. Whole numbers only, first quadrant only. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "To plot (5, 3), how far do you go right, and how far up?",
-          "answer": "Right 5, up 3"
+          "stem": "To plot (3, 5), how far do you go across, and how far up?",
+          "answer": "Across (right) 3, up 5"
         },
         {
-          "stem": "A point is 2 to the right and 4 down from the origin. Write its coordinates.",
-          "answer": "(2, -4)"
+          "stem": "A point is 2 across and 6 up from the origin. Write its coordinates.",
+          "answer": "(2, 6)"
         },
         {
-          "stem": "Which coordinate tells you how far to move up or down?",
-          "answer": "The second one (the y)"
+          "stem": "In the ordered pair (4, 1), which number is the x-coordinate?",
+          "answer": "4"
         },
         {
-          "stem": "Describe the moves to plot (-3, 1).",
-          "answer": "Left 3, up 1"
+          "stem": "Which coordinate tells you how far to go up, the first or the second?",
+          "answer": "The second (the y-coordinate)"
+        },
+        {
+          "stem": "Describe the moves to plot (6, 2).",
+          "answer": "Right 6, up 2"
+        },
+        {
+          "stem": "A point is 7 across and 0 up. Write its coordinates.",
+          "answer": "(7, 0)"
+        },
+        {
+          "stem": "Where is the point (0, 4)?",
+          "answer": "On the y-axis, 4 up from the origin"
+        },
+        {
+          "stem": "What are the coordinates of the origin?",
+          "answer": "(0, 0)"
         }
       ],
       "redirect_script": {
-        "stop": "Which number is the 'across' one?",
-        "prompt": "Look at the two marked spots -- swapping the moves lands you on the wrong one. Which number did you walk ACROSS? Always x first, then y: go RIGHT (or left) by the first number, then UP (or down) by the second. Point to the first number and say 'across'; the second, 'up.'",
-        "praise": "You moved across before up -- x always comes first."
+        "stop": "Which number is the across number?",
+        "prompt": "Always across first, then up. Put your finger on (0, 0), walk right by the first number, then climb up by the second. Say 'across, then up' as you move.",
+        "praise": "You went across first and up second, that is exactly the order."
       },
       "vocabulary": [
         {
           "term": "Ordered pair",
-          "definition": "Two numbers (x, y) giving a point's position: across, then up or down."
+          "definition": "Two numbers (x, y) that give a point's address: across, then up."
         },
         {
-          "term": "x-coordinate",
-          "definition": "The first number in (x, y); how far across from the origin."
+          "term": "Origin",
+          "definition": "The corner point (0, 0) where the x-axis and y-axis meet."
         },
         {
-          "term": "y-coordinate",
-          "definition": "The second number in (x, y); how far up or down from the origin."
+          "term": "x-axis",
+          "definition": "The number line that runs across the bottom of the grid."
+        },
+        {
+          "term": "y-axis",
+          "definition": "The number line that runs up the side of the grid."
         }
       ],
       "next_steps": {
-        "if_pass": "7AF6-S1",
-        "if_fail": "Review plotting points (6.AF.5)."
+        "if_pass": "7AF6-B1",
+        "if_fail": "Review grade 5 first-quadrant graphing with a labeled grid: walk the across move on the floor line first, then the up move."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Mark both spots on the grid: right 4 then down 1 lands at (4, -1); right 1 then down 4 lands at (1, -4). Two different points -- so the order of the two moves matters.",
-          "visual": {
-            "type": "coordinate_grid",
-            "x_range": [
-              -1,
-              5
-            ],
-            "y_range": [
-              -5,
-              1
-            ],
-            "points": [
-              {
-                "x": 4,
-                "y": -1,
-                "label": "(4, -1)"
-              },
-              {
-                "x": 1,
-                "y": -4,
-                "label": "(1, -4)"
-              }
-            ]
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write 'Plot the point (4, -1).'"
+          "text": "Draw a first-quadrant grid from 0 to 8 on each axis. Mark two spots: right 3 then up 5, and right 5 then up 3. Label them A and B."
         },
         {
           "kind": "ask",
-          "text": "Which move comes first -- across or up/down? By how much?"
+          "text": "A and B are different spots. Which one is the point (3, 5)?"
         },
         {
           "kind": "say",
-          "text": "Across first: right 4. Then down 1 (because the y is negative). That lands us at (4, -1)."
+          "text": "A is (3, 5): across 3 first, then up 5. The first number is always the across move, so the order of the moves decides which spot you land on."
         },
         {
           "kind": "watch",
-          "text": "If a student goes down 4 and right 1, ask 'which number is the x -- the across number?'"
+          "text": "If a student picks B, ask which number they walked across. The across number must be the first one."
         },
         {
           "kind": "ask",
-          "text": "Your turn: plot (2, 3), then read back where you landed."
+          "text": "Your turn: plot (2, 6), then read back the coordinates of the point you marked."
         }
       ]
     },
     {
       "skill_id": "7AF6-F2",
-      "name": "Count the rise and run between two points on a grid",
+      "name": "Find equivalent fractions and write a fraction in simplest form",
       "column": "foundation",
       "parent_standard": "7.AF.6",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Find the vertical change (rise) and horizontal change (run) between two points, keeping the direction of each move.",
-        "check_question": "From (1, 2) to (4, 8), how far up do you go, and how far across?"
+        "grade": 4,
+        "description": "Recognize and generate equivalent fractions and write a fraction in simplest form.",
+        "check_question": "Write 6/8 in simplest form."
       },
-      "i_do_script": "Getting from one grid point to another is an L-shaped trip: slide ACROSS the floor first, then climb UP (or drop DOWN) the wall. The flat leg and the climbing leg of that L are two different distances, and each has its own name. To get from one point to another I count two moves: the RISE is the up-or-down change in y, the RUN is the across change in x. Watch (1, 2) to (4, 8): I go UP from 2 to 8, that's a rise of 6; I go ACROSS from 1 to 4, that's a run of 3. If the second point is LOWER, the rise is negative: from (2, 5) to (5, 2) I go DOWN 3, so the rise is -3, and the run is 3. Rise is always the vertical (y) change; run is always the horizontal (x) change.",
+      "i_do_script": "Two fractions are equivalent when they cover the same amount with different sized pieces. Watch 6/8 on a fraction strip: 6 of the 8 pieces are shaded. If I glue the pieces into pairs, the same shading is 3 of 4 bigger pieces, so 6/8 = 3/4. On paper that gluing is dividing top and bottom by the same number: 6 divided by 2 is 3, and 8 divided by 2 is 4, so 6/8 = 3/4. A fraction is in simplest form when no number bigger than 1 divides both the top and the bottom.",
       "canonical_error": {
-        "pattern": "Swaps rise and run -- counts the horizontal change as the rise -- or ignores a downward move's negative sign",
-        "example": "From (1, 2) to (4, 8) reports rise 3, run 6 (swapped), or from (2, 5) to (5, 2) reports rise 3 instead of -3",
-        "why": "The student mixes up which axis is which, or forgets that going DOWN makes the rise negative. Rise is the change in y (up positive, down negative); run is the change in x."
+        "pattern": "Divides only one part of the fraction, or subtracts instead of dividing",
+        "example": "Writes 6/8 = 3/8 by halving only the top, or 6/8 = 4/6 by subtracting 2 from both",
+        "why": "The student changes the amount instead of renaming it. To keep the same amount, top and bottom must be divided by the same number."
       },
-      "item_template": "Two points (integers). Student states rise (change in y) and run (change in x) with correct sign. Short response fluency bank.",
+      "item_template": "One fraction to simplify, or an equivalent-fraction pair to complete or check. Denominators up to 12, clean divisors. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "From (1, 2) to (4, 8): what is the rise, and what is the run?",
-          "answer": "Rise 6, run 3"
+          "stem": "Write 6/8 in simplest form.",
+          "answer": "3/4"
         },
         {
-          "stem": "From (0, 1) to (2, 7): rise and run?",
-          "answer": "Rise 6, run 2"
+          "stem": "Write 2/4 in simplest form.",
+          "answer": "1/2"
         },
         {
-          "stem": "From (2, 5) to (5, 2): rise and run? (Watch the direction.)",
-          "answer": "Rise -3, run 3 (down 3, right 3)"
+          "stem": "Fill in the blank: 1/2 = ?/6",
+          "answer": "3"
         },
         {
-          "stem": "From (1, 4) to (3, 0): rise and run?",
-          "answer": "Rise -4, run 2 (down 4, right 2)"
+          "stem": "Write 4/12 in simplest form.",
+          "answer": "1/3"
+        },
+        {
+          "stem": "Is 4/6 equivalent to 2/3? How do you know?",
+          "answer": "Yes, divide top and bottom of 4/6 by 2"
+        },
+        {
+          "stem": "Write 8/12 in simplest form.",
+          "answer": "2/3"
+        },
+        {
+          "stem": "Fill in the blank: 2/5 = 4/?",
+          "answer": "10"
+        },
+        {
+          "stem": "Which fraction is equivalent to 3/4: 6/8 or 4/5?",
+          "answer": "6/8"
         }
       ],
       "redirect_script": {
-        "stop": "Which change is the rise -- up/down or across?",
-        "prompt": "Trace the L between your two points again: which leg lies flat along the floor, and which leg climbs (or drops)? Rise is the UP-or-DOWN change (the y numbers); run is the ACROSS change (the x numbers). If the second point is lower, the rise is negative. Say 'rise then run' as you count.",
-        "praise": "You counted the vertical change as the rise and kept its sign -- that's exactly right."
+        "stop": "What did you do to the top, and what did you do to the bottom?",
+        "prompt": "To rename a fraction you must divide the top and the bottom by the same number. Find a number that goes into both, divide both, and check whether an even bigger number still divides both.",
+        "praise": "You divided top and bottom by the same number, so the amount never changed."
       },
       "vocabulary": [
         {
-          "term": "Rise",
-          "definition": "The vertical change between two points (the change in y); negative if the line goes down."
+          "term": "Equivalent fractions",
+          "definition": "Fractions that name the same amount with different sized pieces, like 6/8 and 3/4."
         },
         {
-          "term": "Run",
-          "definition": "The horizontal change between two points (the change in x)."
-        },
-        {
-          "term": "Vertical change",
-          "definition": "How far up or down you move from one point to another."
-        },
-        {
-          "term": "Horizontal change",
-          "definition": "How far left or right you move from one point to another."
+          "term": "Simplest form",
+          "definition": "A fraction whose top and bottom share no divisor bigger than 1."
         }
       ],
       "next_steps": {
-        "if_pass": "7AF6-S2",
-        "if_fail": "Review reading coordinates (7AF6-F1)."
+        "if_pass": "7AF6-B2",
+        "if_fail": "Review grade 4 equivalent fractions with fraction strips or an area model: same shading, bigger pieces."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Plot (2, 1) and (6, 9) and trace the L between them: slide across from x = 2 to x = 6 -- that flat leg is 4 long -- then climb from y = 1 up to y = 9 -- that tall leg is 8. The climbing leg is the rise; the flat leg is the run.",
-          "visual": {
-            "type": "coordinate_grid",
-            "x_range": [
-              0,
-              7
-            ],
-            "y_range": [
-              0,
-              10
-            ],
-            "points": [
-              {
-                "x": 2,
-                "y": 1,
-                "label": "(2, 1)"
-              },
-              {
-                "x": 6,
-                "y": 9,
-                "label": "(6, 9)"
-              }
-            ]
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write 'From (2, 1) to (6, 9): find the rise and the run.'"
+          "text": "Draw a strip cut into 8 equal pieces and shade 6. Below it, draw a same-length strip cut into 4 pieces and shade until the shading lines up."
         },
         {
           "kind": "ask",
-          "text": "Which numbers give the up/down move? Which give the across move?"
+          "text": "How many of the 4 big pieces are shaded? Is the shaded amount the same on both strips?"
         },
         {
           "kind": "say",
-          "text": "Up from 1 to 9 is a rise of 8; across from 2 to 6 is a run of 4. Rise 8, run 4."
+          "text": "3 of the 4 big pieces match the shading exactly, so 6/8 = 3/4. Dividing the top and bottom by 2 is the same as gluing the pieces into pairs."
         },
         {
           "kind": "watch",
-          "text": "If a student says rise 4, run 8, ask 'is 4 the up amount or the across amount?'"
+          "text": "If a student writes 3/8, point at the strips: did the bottom strip still have 8 pieces after the gluing?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: from (3, 7) to (5, 1), find the rise and run -- watch the direction."
+          "text": "Your turn: use the strips to write 4/12 in simplest form."
         }
       ]
     },
     {
+      "skill_id": "7AF6-B1",
+      "name": "Plot and read ordered pairs in all four quadrants",
+      "column": "looking_back",
+      "parent_standard": "7.AF.6",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Plot a point with integer coordinates in any quadrant and read a marked point's coordinates, using negative numbers for left and down moves.",
+        "check_question": "Describe the moves to plot (-3, 2)."
+      },
+      "i_do_script": "In grade six the grid grows in every direction, and the signs steer the moves. The order never changes, x first and y second, but now a negative x means LEFT and a negative y means DOWN. Watch (-3, 2): start at the origin, go left 3 because the x is negative, then up 2. For (4, -1): right 4, then down 1. To read a marked point I reverse it: left or right gives the x with its sign, up or down gives the y with its sign. The two signs together also name the quadrant the point sits in.",
+      "canonical_error": {
+        "pattern": "Ignores a negative sign and moves right or up instead of left or down",
+        "example": "Plots (-3, 2) by going right 3 and up 2, landing on (3, 2)",
+        "why": "The student keeps the grade 5 habit that every move is right or up. The sign is part of the direction: negative x is left, negative y is down."
+      },
+      "item_template": "Plot a given ordered pair with integer coordinates, read a marked point, or name a point's quadrant. All four quadrants. Short or MC response.",
+      "sample_items": [
+        {
+          "stem": "Describe the moves to plot (-3, 2).",
+          "answer": "Left 3, up 2"
+        },
+        {
+          "stem": "A point is 4 to the left and 1 down from the origin. Write its coordinates.",
+          "answer": "(-4, -1)"
+        },
+        {
+          "stem": "Describe the moves to plot (5, -2).",
+          "answer": "Right 5, down 2"
+        },
+        {
+          "stem": "Which quadrant holds the point (-2, 5)?",
+          "answer": "Quadrant II",
+          "choices": [
+            "Quadrant I",
+            "Quadrant II",
+            "Quadrant III",
+            "Quadrant IV"
+          ],
+          "distractor_logic": "Negative x and positive y is upper left, Quadrant II. 'Quadrant I' ignores the negative x; 'Quadrant IV' swaps the two signs."
+        },
+        {
+          "stem": "A point is 3 to the right and 4 down. Write its coordinates.",
+          "answer": "(3, -4)"
+        },
+        {
+          "stem": "Which point sits on the x-axis?",
+          "answer": "(5, 0)",
+          "choices": [
+            "(5, 0)",
+            "(0, 5)",
+            "(5, 5)",
+            "(-5, 5)"
+          ],
+          "distractor_logic": "On the x-axis the y-coordinate is 0. '(0, 5)' is on the y-axis; the others are off both axes."
+        },
+        {
+          "stem": "Write the coordinates of the point 2 left and 6 up from the origin.",
+          "answer": "(-2, 6)"
+        },
+        {
+          "stem": "In which quadrant are both coordinates negative?",
+          "answer": "Quadrant III"
+        }
+      ],
+      "redirect_script": {
+        "stop": "What does the negative sign tell you to do?",
+        "prompt": "The order is still x first, then y, but the sign steers each move: positive x right, negative x left, positive y up, negative y down. Say the direction out loud before you move.",
+        "praise": "You let the sign steer the move, left for negative x, and landed exactly right."
+      },
+      "vocabulary": [
+        {
+          "term": "Quadrant",
+          "definition": "One of the four regions the axes cut the plane into, numbered I to IV counterclockwise from the upper right."
+        },
+        {
+          "term": "Integer coordinates",
+          "definition": "Coordinates that are positive or negative whole numbers or zero."
+        },
+        {
+          "term": "Origin",
+          "definition": "The point (0, 0) where the axes cross; every plot starts there."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7AF6-S1",
+        "if_fail": "7AF6-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a full four-quadrant grid from -5 to 5 on both axes. Trace the walk for (-3, 2): from the origin step LEFT 3, then UP 2, and mark the point."
+        },
+        {
+          "kind": "ask",
+          "text": "Why did we go left instead of right? Which quadrant did we land in?"
+        },
+        {
+          "kind": "say",
+          "text": "The x is -3, and a negative x means left. Up 2 for the positive y. Left and up is the upper left region, Quadrant II."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student walks right 3, ask what the sign on the 3 says. The sign is the direction."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: plot (4, -1), name its quadrant, then read back its coordinates."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Describe the moves to plot (2, 3).",
+          "answer": "Right 2, up 3"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "In an ordered pair, which coordinate controls up and down?",
+          "answer": "The second one, the y-coordinate"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Describe the moves to plot (-4, 3), and name its quadrant.",
+          "answer": "Left 4, up 3; Quadrant II"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A point is 2 left and 4 up from the origin. Write its coordinates.",
+          "answer": "(-2, 4)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which quadrant holds (-3, -5)?",
+          "answer": "Quadrant III (left and down)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Where is the point (0, -3)?",
+          "answer": "On the y-axis, 3 below the origin"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "The point (3, -2) is reflected straight across the x-axis. What are the new coordinates?",
+          "answer": "(3, 2); the across move stays, the up-down move flips sign"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Kira plotted (2, -5) by going down 2 and right 5. Find her mistake and fix it.",
+          "shown_work": [
+            "Point to plot: (2, -5)",
+            "Kira went down 2, then right 5",
+            "She landed on (5, -2)"
+          ],
+          "answer": "She swapped the moves. The first number is the across move: right 2, then down 5, landing at (2, -5)."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Walk the Grid",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Large four-quadrant grid drawn on paper or tape on the floor",
+            "Ordered pair cards including negatives",
+            "A counter or marker per pair"
+          ],
+          "instructions": "1. Place the counter on the origin.\n2. Draw a card like (-3, 2). Before moving, say the walk out loud: left 3, up 2.\n3. Walk the counter, mark the point, and name the quadrant.\n4. Partner reads the marked point back as coordinates to check.\n5. Repeat for 6 cards, at least one in each quadrant and one on an axis. Say each time: x steers across, y steers up or down, the sign is the direction."
+        },
+        {
+          "type": "matching",
+          "title": "Point Address Match",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per ordered pair, one card per walk description"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each ordered pair like (-4, 1) to its walk like left 4, up 1.\n3. To claim a match, name the quadrant or axis the point lands on.\n4. Two decoy walk cards swap the moves; set them aside and say what pair they actually plot.",
+          "content": {
+            "pairs": [
+              {
+                "left": "(-3, 2)",
+                "right": "left 3, up 2"
+              },
+              {
+                "left": "(3, -2)",
+                "right": "right 3, down 2"
+              },
+              {
+                "left": "(-1, -4)",
+                "right": "left 1, down 4"
+              },
+              {
+                "left": "(4, 1)",
+                "right": "right 4, up 1"
+              },
+              {
+                "left": "(0, -5)",
+                "right": "no across move, down 5"
+              },
+              {
+                "left": "(-5, 0)",
+                "right": "left 5, no up or down move"
+              }
+            ],
+            "decoys": [
+              "up 3, left 2",
+              "down 3, right 2"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Physically walking the two moves on a floor or table grid makes the order and the signed directions concrete before any rule is stated."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The swapped-moves and dropped-sign errors are stable and predictable; finding and fixing them in worked plots confronts both directly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Saying the walk out loud, left 3 then up 2, makes the invisible choice of direction audible and checkable."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which number is the across move, and what does its sign tell you?",
+          "Before you move, say the walk out loud. Which direction first?",
+          "Which quadrant will this point land in? How do the two signs tell you?",
+          "What is true about every point on the x-axis?",
+          "If both coordinates were positive instead, where would the point be?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student ignores a negative sign and moves right or up anyway.",
+            "say": "The sign is the direction. Negative x means left, negative y means down. Say the direction before you step.",
+            "praise": "You read the sign as a direction, that is the grade six upgrade."
+          },
+          {
+            "if_you_see": "Student swaps the moves, going up by x and across by y.",
+            "say": "Across always comes first. Put your finger on the first number and say across, then the second and say up or down.",
+            "praise": "Across first, then up or down. You kept the order."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Describe the moves to plot (-2, -3).",
+            "look_for": "Left 2, down 3, landing in Quadrant III. Right or up moves mean a dropped sign."
+          },
+          {
+            "prompt": "What are the coordinates of a point 5 right and 3 down?",
+            "look_for": "(5, -3), with the negative on the y, not the x."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Plot the point (-3, 4). Describe each move and name the quadrant.",
+        "answer": "Left 3, up 4; Quadrant II",
+        "steps": [
+          {
+            "math": "start at the origin (0, 0)",
+            "annotation": "Every plot starts where the axes cross."
+          },
+          {
+            "math": "x = -3, so move LEFT 3",
+            "annotation": "The first number is the across move; the negative sign means left."
+          },
+          {
+            "math": "y = 4, so move UP 4",
+            "annotation": "The second number is the vertical move; positive means up."
+          },
+          {
+            "math": "left and up: Quadrant II",
+            "annotation": "Negative x with positive y is the upper left region."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Plot the point (2, -5). Describe each move and name the quadrant.",
+        "answer": "Right 2, down 5; Quadrant IV",
+        "steps": [
+          {
+            "math": "start at the origin (0, 0)",
+            "annotation": "Every plot starts at the origin.",
+            "given": true
+          },
+          {
+            "math": "x = 2, so move RIGHT 2",
+            "annotation": "Positive x means right.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Use the y-coordinate and its sign to make the vertical move.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the quadrant from the two signs.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The x is ___, so I move ___ (left/right) by ___.",
+        "The y is ___, so I move ___ (up/down) by ___.",
+        "The signs are ___ and ___, so the point is in Quadrant ___."
+      ],
+      "fluency_source": "7AF6-F1"
+    },
+    {
+      "skill_id": "7AF6-B2",
+      "name": "Write a rate comparing two quantities and find the unit rate",
+      "column": "looking_back",
+      "parent_standard": "7.AF.6",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Write a rate as a fraction comparing two quantities and divide to find the unit rate.",
+        "check_question": "A car travels 120 miles in 3 hours at a steady speed. How many miles per hour is that?"
+      },
+      "i_do_script": "A rate compares two different quantities, and the unit rate tells how much of the first for exactly ONE of the second. Watch: 120 miles in 3 hours. I write the rate as a fraction, 120 miles / 3 hours, with the quantity I am measuring on top. To get the unit rate I divide: 120 / 3 = 40, so 40 miles per hour, 40 miles for each 1 hour. On a double number line, 3 hours lines up with 120 miles, so 1 hour lines up with 40 miles. Per always means for one, and for one means divide.",
+      "canonical_error": {
+        "pattern": "Divides in the wrong order, putting the wrong quantity on top",
+        "example": "For 120 miles in 3 hours writes 3 / 120 = 1/40 and calls it 1/40 mile per hour",
+        "why": "The student divides the two numbers in the order they appear instead of asking what per what. Miles per hour means miles on top, divided by hours."
+      },
+      "item_template": "A rate of two whole-number quantities. Student writes the rate as a fraction and finds the unit rate, as a whole number, money amount, or simple fraction with denominator 2, 3, 4, or 5. Short or MC response.",
+      "sample_items": [
+        {
+          "stem": "A car travels 120 miles in 3 hours at a steady speed. How many miles per hour?",
+          "answer": "40 miles per hour"
+        },
+        {
+          "stem": "6 notebooks cost $18. What is the cost per notebook?",
+          "answer": "$3 per notebook"
+        },
+        {
+          "stem": "A runner goes 3 laps in 12 minutes at a steady pace. How many minutes per lap?",
+          "answer": "4 minutes per lap"
+        },
+        {
+          "stem": "A printer prints 90 pages in 5 minutes. What is the unit rate in pages per minute?",
+          "answer": "18",
+          "choices": [
+            "18",
+            "1/18",
+            "85",
+            "450"
+          ],
+          "distractor_logic": "90 / 5 = 18 pages each minute. '1/18' divides in the wrong order; '85' subtracts; '450' multiplies."
+        },
+        {
+          "stem": "A recipe uses 8 cups of flour for 4 batches. How many cups per batch?",
+          "answer": "2 cups per batch"
+        },
+        {
+          "stem": "A mail carrier delivers to 20 houses every 15 minutes at a constant rate. How many houses per minute?",
+          "answer": "4/3",
+          "choices": [
+            "4/3",
+            "3/4",
+            "5",
+            "300"
+          ],
+          "distractor_logic": "20 / 15 = 4/3 houses each minute. '3/4' divides in the wrong order; '5' subtracts; '300' multiplies."
+        },
+        {
+          "stem": "$20 buys 5 pounds of apples. What is the price per pound?",
+          "answer": "$4 per pound"
+        },
+        {
+          "stem": "A faucet fills 9 gallons in 6 minutes. How many gallons per minute? Write the answer in simplest form.",
+          "answer": "3/2 gallons per minute (1 1/2)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "What per what? Which quantity goes on top?",
+        "prompt": "Say the unit first: miles PER hour means miles on top, divided by hours. Write the rate as a fraction with the asked-for quantity on top, then divide to get the amount for one.",
+        "praise": "You put the asked-for quantity on top and divided, so your rate says how much for one."
+      },
+      "vocabulary": [
+        {
+          "term": "Rate",
+          "definition": "A comparison of two different quantities, like 120 miles in 3 hours."
+        },
+        {
+          "term": "Unit rate",
+          "definition": "How much of one quantity for exactly one of the other, like 40 miles per 1 hour."
+        },
+        {
+          "term": "Per",
+          "definition": "For each one; the word that tells you which quantity goes on top."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7AF6-S2",
+        "if_fail": "7AF6-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a double number line: hours on the bottom marked 0, 1, 2, 3; miles on top with 120 above the 3."
+        },
+        {
+          "kind": "ask",
+          "text": "If 3 hours lines up with 120 miles, what should line up with 1 hour?"
+        },
+        {
+          "kind": "say",
+          "text": "Cut 120 into 3 equal jumps: 120 / 3 = 40. So 1 hour lines up with 40 miles, and the unit rate is 40 miles per hour."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 3 / 120, ask what per what: miles per hour puts miles on top."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: use a double number line to find the cost per notebook when 6 notebooks cost $18."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "$12 buys 4 pens. What is the cost per pen?",
+          "answer": "$3 per pen"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A bus travels 60 miles in 2 hours. How many miles per hour?",
+          "answer": "30 miles per hour"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A swimmer does 18 laps in 6 practices, the same number each practice. How many laps per practice?",
+          "answer": "3 laps per practice"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A student types 150 words in 5 minutes. What is the unit rate in words per minute?",
+          "answer": "30 words per minute"
+        },
+        {
+          "difficulty": "core",
+          "stem": "6 muffins cost $9. What is the cost per muffin?",
+          "answer": "$1.50 per muffin (9 / 6)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A mail carrier delivers to 20 houses every 15 minutes. How many houses per minute? Write the answer in simplest form.",
+          "answer": "4/3 houses per minute"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Store A sells 5 pounds of rice for $20. Store B sells 3 pounds for $15. Which store has the lower price per pound?",
+          "answer": "Store A: 20/5 = $4 per pound beats Store B: 15/3 = $5 per pound"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Jia found the speed for 240 miles in 4 hours. Find her mistake and fix it.",
+          "shown_work": [
+            "rate = 4 / 240",
+            "= 1/60",
+            "So the car goes 1/60 mile per hour."
+          ],
+          "answer": "She divided hours by miles. Miles per hour puts miles on top: 240 / 4 = 60 miles per hour. A car covering 1/60 mile in a whole hour would barely move, so the answer also fails a sense check."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Double Number Line Build",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Blank double number line strips",
+            "Rate cards with whole-number pairs",
+            "Counters"
+          ],
+          "instructions": "1. Draw a card like 120 miles in 3 hours.\n2. Build the double number line: hours on the bottom 0 to 3, the total 120 above the 3.\n3. Cut the top into equal jumps to find what lines up with 1 hour.\n4. Write the unit rate with its label: 40 miles per hour.\n5. Repeat with $18 for 6 notebooks and 20 houses in 15 minutes. Say each time: per means for one, and for one means divide."
+        },
+        {
+          "type": "matching",
+          "title": "Rate to Unit Rate Match",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per rate situation, one card per unit rate"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each situation like 90 pages in 5 minutes to its unit rate like 18 pages per minute.\n3. To claim a match, say the division out loud with the asked-for quantity on top.\n4. Two decoy cards divide in the wrong order; set them aside and explain what they would actually measure.",
+          "content": {
+            "pairs": [
+              {
+                "left": "120 miles in 3 hours",
+                "right": "40 miles per hour"
+              },
+              {
+                "left": "$18 for 6 notebooks",
+                "right": "$3 per notebook"
+              },
+              {
+                "left": "90 pages in 5 minutes",
+                "right": "18 pages per minute"
+              },
+              {
+                "left": "8 cups for 4 batches",
+                "right": "2 cups per batch"
+              },
+              {
+                "left": "20 houses in 15 minutes",
+                "right": "4/3 houses per minute"
+              },
+              {
+                "left": "$20 for 5 pounds",
+                "right": "$4 per pound"
+              }
+            ],
+            "decoys": [
+              "1/40 mile per hour",
+              "2 notebooks per dollar"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The double number line makes 'cut the total into equal jumps to find the amount for one' visible before the divide rule is named."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Saying 'what per what' aloud before dividing makes the choice of numerator audible and catches the wrong-order division."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The wrong-order division is a stable error; analyzing a worked wrong answer like 1/60 mile per hour builds the sense check."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What per what? Which quantity is the question asking for one of?",
+          "Which number goes on top of your rate fraction, and why?",
+          "What does your answer mean for exactly one hour (or one dollar, or one lap)?",
+          "Does your unit rate pass a sense check? Is it a reasonable size?",
+          "Where does the unit rate show up on your double number line?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student divides in the wrong order and gets a tiny fraction for an obviously large rate.",
+            "say": "Say the unit first: miles per hour means miles on top. Then check the size: could a car really cover 1/60 of a mile in an hour?",
+            "praise": "You matched the top of the fraction to the unit you were asked for."
+          },
+          {
+            "if_you_see": "Student adds or subtracts the two quantities instead of dividing.",
+            "say": "A rate shares the total equally across the units. Put the total on a double number line and cut it into equal jumps, one jump per unit.",
+            "praise": "You shared the total equally, that is what dividing does."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "80 pages in 4 days. How many pages per day?",
+            "look_for": "20 pages per day, from 80 / 4. An answer of 1/20 means wrong-order division."
+          },
+          {
+            "prompt": "$15 for 6 rolls. Cost per roll?",
+            "look_for": "$2.50 per roll, from 15 / 6, with the money on top."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A train travels 180 miles in 3 hours at a constant speed. Find the unit rate in miles per hour.",
+        "answer": "60 miles per hour",
+        "steps": [
+          {
+            "math": "asked for: miles per hour",
+            "annotation": "Per hour means miles on top, hours on the bottom."
+          },
+          {
+            "math": "rate = 180 miles / 3 hours",
+            "annotation": "Write the rate as a fraction with the asked-for quantity on top."
+          },
+          {
+            "math": "180 / 3 = 60",
+            "annotation": "Divide to find the amount for one hour."
+          },
+          {
+            "math": "unit rate = 60 miles per hour",
+            "annotation": "Label the answer: 60 miles for each 1 hour."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "4 pounds of apples cost $14. Find the unit rate in dollars per pound.",
+        "answer": "$3.50 per pound",
+        "steps": [
+          {
+            "math": "asked for: dollars per pound",
+            "annotation": "Per pound means dollars on top, pounds on the bottom.",
+            "given": true
+          },
+          {
+            "math": "rate = 14 dollars / 4 pounds",
+            "annotation": "Write the rate fraction with dollars on top.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Divide to find the cost of one pound.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the unit rate with its label.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The question asks for ___ per ___, so ___ goes on top.",
+        "I divided ___ by ___ to find the amount for one ___."
+      ],
+      "fluency_source": "7AF6-F2"
+    },
+    {
       "skill_id": "7AF6-S1",
       "name": "Classify the slope of a line as positive, negative, zero, or undefined",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.AF.6",
       "engine_stems": [
         1
@@ -571,7 +1176,7 @@
           }
         ]
       },
-      "fluency_source": "7AF6-F1",
+      "fluency_source": "7AF6-B1",
       "sentence_starters": [
         "Reading left to right the line ___, so the slope is ___.",
         "The line is flat/vertical, so the slope is ___ (zero/undefined)."
@@ -1023,7 +1628,7 @@
           }
         ]
       },
-      "fluency_source": "7AF6-F2",
+      "fluency_source": "7AF6-B2",
       "sentence_starters": [
         "The rise is ___ and the run is ___, so slope = ___ / ___.",
         "Rise goes on top, so the slope reduces to ___."
@@ -1472,7 +2077,7 @@
           }
         ]
       },
-      "fluency_source": "7AF6-F2",
+      "fluency_source": "7AF6-B1",
       "sentence_starters": [
         "The line ___ (rises/falls), so the rise is ___ and the slope is ___.",
         "Using the same order, slope = (y2 - y1) / (x2 - x1) = ___."
@@ -1797,7 +2402,7 @@
           }
         ]
       },
-      "fluency_source": "7AF6-F2",
+      "fluency_source": "7AF6-B1",
       "sentence_starters": [
         "I plot ___ first, then step run ___ across and rise ___ up/down.",
         "Slope ___ means rise ___ over run ___, so the next point is ___."
@@ -2109,7 +2714,7 @@
           }
         ]
       },
-      "fluency_source": "7AF6-F2",
+      "fluency_source": "7AF6-B1",
       "sentence_starters": [
         "From (___, ___) I step run ___ across and rise ___ to reach (___, ___).",
         "The point is on/off the line because rise/run = ___, which does/doesn't match the slope."
@@ -2441,7 +3046,7 @@
           }
         ]
       },
-      "fluency_source": "7AF6-F2",
+      "fluency_source": "7AF6-B2",
       "sentence_starters": [
         "The y-axis quantity is ___ and the x-axis quantity is ___, so slope = ___ / ___.",
         "Reduced, the rate (slope) is ___."
@@ -2498,8 +3103,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7AF6-F1",
         "7AF6-F2"
@@ -2507,15 +3112,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7AF6-S1"
+        "7AF6-B1",
+        "7AF6-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7AF6-S1",
         "7AF6-S2",
         "7AF6-S3",
         "7AF6-S4"
@@ -2523,7 +3130,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7AF6-S5",
         "7AF6-S6"
@@ -2533,6 +3140,8 @@
   "skill_sequence": [
     "7AF6-F1",
     "7AF6-F2",
+    "7AF6-B1",
+    "7AF6-B2",
     "7AF6-S1",
     "7AF6-S2",
     "7AF6-S3",
@@ -2543,20 +3152,26 @@
   "skill_tree": {
     "7AF6-F1": [],
     "7AF6-F2": [],
-    "7AF6-S1": [
+    "7AF6-B1": [
       "7AF6-F1"
     ],
+    "7AF6-B2": [
+      "7AF6-F2"
+    ],
+    "7AF6-S1": [
+      "7AF6-B1"
+    ],
     "7AF6-S2": [
-      "7AF6-F2",
-      "7AF6-F1"
+      "7AF6-B1",
+      "7AF6-B2"
     ],
     "7AF6-S3": [
       "7AF6-S2",
-      "7AF6-F2"
+      "7AF6-B2"
     ],
     "7AF6-S4": [
       "7AF6-S2",
-      "7AF6-F1"
+      "7AF6-B1"
     ],
     "7AF6-S5": [
       "7AF6-S4",
@@ -2567,19 +3182,22 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S2 (find slope from a graph using rise over run) -- the entry grade-level expectation. If they pass, move through S3 (negative slopes) and S4 (graph a line from slope and a point). If they fail, drop to S1 to check whether they can even classify a slope's direction, then to F2 for the rise/run mechanic. S5 (find other points) and S6 (real-world rate) branch off as the Above-proficiency extensions.",
-    "entry_skill": "7AF6-S2",
+    "description": "Start with S3, finding a slope from a graph with the sign kept on falling lines, the At-proficiency computational core. If they pass, move up to S4 (graph a line from a slope and a point) and the extensions S5 (find other points) and S6 (slope as a real-world rate). If they fail, drop below grade level: B1 checks four-quadrant plotting and B2 checks unit rates, the two grade 6 skills slope work leans on. If those wobble, the foundations F1 (first-quadrant plotting) and F2 (equivalent fractions and simplest form) locate the gap in grades 3 to 5. S1 and S2 remain available to probe the standard's own classification and rise over run groundwork.",
+    "entry_skill": "7AF6-S3",
     "if_pass": [
-      "7AF6-S3",
-      "7AF6-S4"
-    ],
-    "if_fail": [
-      "7AF6-S1",
-      "7AF6-F2"
-    ],
-    "branch_skills": [
+      "7AF6-S4",
       "7AF6-S5",
       "7AF6-S6"
+    ],
+    "if_fail": [
+      "7AF6-B1",
+      "7AF6-B2"
+    ],
+    "branch_skills": [
+      "7AF6-F1",
+      "7AF6-F2",
+      "7AF6-S1",
+      "7AF6-S2"
     ]
   }
 }

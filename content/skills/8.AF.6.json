@@ -3,7 +3,7 @@
   "standard_text": "Construct a function to model a linear relationship between two quantities given a verbal description, table of values, or graph. Within the context of a problem, describe the meaning of m (rate of change) and b (y-intercept) in y = mx + b.",
   "schema_version": 3,
   "progression": {
-    "narrative": "8.AF.6 asks students to CONSTRUCT a linear function from a representation and then INTERPRET its two parameters in context. Reading the standard's own logic, a student cannot build y = mx + b until they can pull the two numbers that go into it out of a table, a graph, an equation, or a verbal description. So the arc begins by isolating those two pieces separately: the rate of change m (the constant amount y changes for each unit of x, found as change in y over change in x) and the initial value b (the y-value when x = 0, the point (0, b)). Only once both are secure does the student assemble them into the slope-intercept equation -- and the central trap the whole standard guards against is swapping the two, writing the starting amount as the coefficient of x or the rate as the constant.\n\nFrom construction the work turns to meaning. Students first match a described situation to the equation that models it (recognizing which number is the per-unit rate and which is the starting amount), then construct a function from a context or table and put the rate of change into words for that situation. At the top of the progression they write the equation -- including cases where the rate is negative or the initial value must be read from context ('at sea level', 'money to start') -- and interpret BOTH m and b, describing how the two quantities change together. The through-line we keep naming: m is the per-unit change (the slope), b is where the situation starts (the y-intercept), and y = mx + b ties them together.",
+    "narrative": "8.AF.6 asks students to build y = mx + b from a verbal description, table, or graph and to explain what m and b mean in the situation. The on-grade skills isolate the two parameters first, finding the rate of change from tables and equations and the initial value even when x = 0 is not shown, then assemble the equation and interpret it in context. Students who stall here usually lack the grade 7 proportional reasoning the standard grows from: finding a unit rate from a table or description and reading the constant of proportionality off a graph of y = kx. Below that sit two older gaps, extending constant add patterns from grade 4 and plotting first-quadrant points from grade 5. Intervention rebuilds those layers in order and then returns to slope and intercept.",
     "steps": [
       {
         "skill_id": "8AF6-S1",
@@ -40,203 +40,839 @@
   "skills": [
     {
       "skill_id": "8AF6-F1",
-      "name": "Compute the rate of change (slope) from two points",
+      "name": "Extend a number pattern with a constant add rule and state the rule",
       "column": "foundation",
       "parent_standard": "8.AF.6",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 7,
-        "description": "Given two points, divide the change in y by the change in x to get the constant rate of change.",
-        "check_question": "For the points (2, 5) and (4, 11), what is the rate of change?"
+        "grade": 4,
+        "description": "Continue a number pattern that adds or subtracts the same amount each step, and name the rule.",
+        "check_question": "The pattern is 3, 7, 11, 15. What is the rule, and what number comes next?"
       },
-      "i_do_script": "Slope answers a per-1 question: for every single step x takes to the right, how far does y climb? If y climbs 6 while x takes 2 steps, I share that 6 climb across the 2 steps to get the climb per single step. The rate of change, or slope, is how much y goes up for each 1 that x goes up -- and I get it by dividing the change in y by the change in x. Watch the points (2, 5) and (4, 11): y went from 5 to 11, a change of 6; x went from 2 to 4, a change of 2. So the rate is 6 divided by 2 = 3. The change in y always goes on TOP, the change in x on the bottom, because I want the amount of y per 1 x.",
+      "i_do_script": "A pattern with a constant rule takes the same size step every time. Watch the pattern 3, 7, 11, 15. From 3 to 7 is a jump of 4, from 7 to 11 is a jump of 4, and from 11 to 15 is a jump of 4. Every jump is the same, so the rule is add 4, and the next number is 15 + 4 = 19. On a number line I draw the hops: same size hop, over and over. To find a rule, I check the jump between neighbors, and I check it more than once to make sure it never changes.",
       "canonical_error": {
-        "pattern": "Divides the change in x by the change in y, inverting the slope",
-        "example": "For (2, 5) and (4, 11), computes (4 - 2)/(11 - 5) = 2/6 = 1/3 instead of (11 - 5)/(4 - 2) = 3",
-        "why": "The student divides the two differences without tracking that slope is y-per-1-x, so the change in y must be on top. Inverting gives x per y, a completely different number."
+        "pattern": "Names the rule from a single pair or from the first number instead of the constant jump",
+        "example": "For 3, 7, 11, 15 says the rule is add 3 because the pattern starts at 3",
+        "why": "The student reads the starting number as the rule. The rule is the jump between neighbors, found by subtracting a number from the next one, and it must be the same jump every time."
       },
-      "item_template": "Two points given. Student computes slope = (change in y)/(change in x). Short-response fluency bank.",
+      "item_template": "A number pattern with a constant add or subtract rule. Student names the rule, continues the pattern, or finds a later term. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Find the rate of change between (2, 5) and (4, 11).",
-          "answer": "3"
+          "stem": "The pattern is 3, 7, 11, 15. What is the rule?",
+          "answer": "Add 4"
         },
         {
-          "stem": "Find the rate of change between (1, 4) and (3, 10).",
-          "answer": "3"
+          "stem": "Start at 5 and add 3 each time. Write the next three numbers after 5.",
+          "answer": "8, 11, 14"
         },
         {
-          "stem": "Find the rate of change between (0, 7) and (5, 22).",
-          "answer": "3"
+          "stem": "The pattern is 2, 8, 14, 20. What number comes next?",
+          "answer": "26"
         },
         {
-          "stem": "Find the rate of change between (2, 3) and (6, 5).",
-          "answer": "1/2"
+          "stem": "The pattern is 40, 35, 30, 25. What is the rule?",
+          "answer": "Subtract 5"
         },
         {
-          "stem": "Find the rate of change between (1, 10) and (4, 4).",
-          "answer": "-2"
+          "stem": "Start at 10 and add 6 each time. What is the fourth number in the pattern?",
+          "answer": "28"
+        },
+        {
+          "stem": "The pattern is 9, 14, 19, 24. What number comes next?",
+          "answer": "29"
+        },
+        {
+          "stem": "The pattern is 1, 4, 7, 10. What is the sixth number in the pattern?",
+          "answer": "16"
+        },
+        {
+          "stem": "Start at 0 and add 8 each time. Write the first four numbers.",
+          "answer": "0, 8, 16, 24"
         }
       ],
       "redirect_script": {
-        "stop": "Which change goes on top -- the y or the x?",
-        "prompt": "Point at the two dots: the CLIMB in y gets shared across the STEPS in x, so the climb goes on top. Slope is y for 1 x, so put the change in y on top: (change in y) over (change in x). If your answer is a tiny fraction when you expected a whole rate, you divided the wrong way -- flip it.",
-        "praise": "You put the change in y over the change in x -- that's the slope, right-side up."
+        "stop": "What is the jump from one number to the next?",
+        "prompt": "Subtract a number from its neighbor to find the jump, then check the next pair to be sure the jump is the same. The rule is the jump, not the starting number.",
+        "praise": "You checked the jump between neighbors more than once, that is exactly how you find a rule."
       },
       "vocabulary": [
         {
-          "term": "Rate of change",
-          "definition": "How much y changes for each 1 that x increases; the slope m in y = mx + b."
+          "term": "Pattern",
+          "definition": "A list of numbers that follows a rule."
         },
         {
-          "term": "Slope",
-          "definition": "The constant rate of change of a line, m; change in y divided by change in x."
+          "term": "Rule",
+          "definition": "What you do to each number to get the next one, like add 4 or subtract 5."
         }
       ],
       "next_steps": {
-        "if_pass": "8AF6-S1",
-        "if_fail": "Review finding a unit rate (7.RP.3)."
+        "if_pass": "8AF6-B1",
+        "if_fail": "Review grade 4 skip counting and repeated addition on a number line."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Plot (1, 4) and (5, 16). Walking from the first dot to the second, x takes 4 steps right while y climbs 12. If y climbs 12 across 4 steps, how much does it climb per single step?",
-          "visual": {
-            "type": "coordinate_grid",
-            "x_range": [
-              0,
-              6
-            ],
-            "y_range": [
-              0,
-              18
-            ],
-            "points": [
-              {
-                "x": 1,
-                "y": 4,
-                "label": "A"
-              },
-              {
-                "x": 5,
-                "y": 16,
-                "label": "B"
-              }
-            ]
-          }
-        },
-        {
           "kind": "show",
-          "text": "Write 'Find the rate of change between (1, 4) and (5, 16).'"
+          "text": "Draw a number line from 0 to 20. Mark 3, 7, 11, and 15, then draw the hop from each mark to the next."
         },
         {
           "kind": "ask",
-          "text": "To get the per-1 rate, what do you divide by what?"
+          "text": "How big is each hop? Are all the hops the same size?"
         },
         {
           "kind": "say",
-          "text": "(change in y)/(change in x) = (16 - 4)/(5 - 1) = 12/4 = 3. The rate is 3."
+          "text": "Every hop is 4, so the rule is add 4. The next number is one more hop: 15 + 4 = 19."
         },
         {
           "kind": "watch",
-          "text": "If a student writes 4/12, ask 'is the rate the y for one x, or the x for one y?'"
+          "text": "If a student says the rule is add 3 because the pattern starts at 3, point at the hops: the start is where you stand, the rule is how far you hop."
         },
         {
           "kind": "ask",
-          "text": "Your turn: find the rate of change between (2, 3) and (6, 5)."
+          "text": "Your turn: the pattern is 2, 8, 14, 20. What is the rule, and what comes next?"
         }
       ]
     },
     {
       "skill_id": "8AF6-F2",
-      "name": "Read the initial value (y-intercept) as the value when x is 0",
+      "name": "Plot and name points in the first quadrant of the coordinate plane",
       "column": "foundation",
       "parent_standard": "8.AF.6",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 8,
-        "description": "Identify the y-intercept of a linear function as the y-value when x = 0, written as the point (0, b).",
-        "check_question": "In the equation y = 3x + 7, what is the y-intercept?"
+        "grade": 5,
+        "description": "Use an ordered pair (x, y) to plot or name a point in the first quadrant, going right for x and up for y.",
+        "check_question": "To plot the point (4, 2), how far do you go right, and how far do you go up?"
       },
-      "i_do_script": "The start of a situation is the moment x = 0 -- and when x is 0, the x-term wipes itself out: 3 x 0 is nothing, so only the lone number is left standing. The initial value, or y-intercept, is where a situation starts -- the value of y when x is 0. In y = mx + b it is the b, the number by itself with no x. Watch y = 3x + 7: the b is 7, so the y-intercept is 7, written as the point (0, 7). In a table it is the y-value in the row where x = 0. The trap is grabbing the number in front of x -- that is the slope, not the starting value.",
+      "i_do_script": "An ordered pair is a set of directions from the origin, the corner point (0, 0). The first number tells how far to walk right along the x-axis, and the second tells how far to climb up. Watch me plot (4, 2): I start at the origin, walk 4 right, then climb 2 up, and mark the point. The order matters: (4, 2) and (2, 4) are different points. If the first number is 0, I do not walk right at all, so the point sits on the y-axis, like (0, 3).",
       "canonical_error": {
-        "pattern": "Reads the coefficient of x (the slope) as the y-intercept",
-        "example": "For y = 3x + 7 says the y-intercept is 3 (the slope) instead of 7",
-        "why": "The student picks the first number they see instead of the value when x = 0. In y = mx + b the y-intercept is b, the constant term -- the coefficient of x is the rate of change."
+        "pattern": "Reverses the coordinates, going up first and right second",
+        "example": "Plots (4, 2) by going up 4 and right 2, landing on (2, 4)",
+        "why": "The student treats the pair as up then over. The first number is always the walk right along the x-axis, and the second is the climb up. Order is part of the name."
       },
-      "item_template": "An equation, table with x = 0, or short description. Student names the y-intercept (0, b). Short-response fluency bank.",
+      "item_template": "A first-quadrant grid. Student plots a given ordered pair or names the ordered pair for a marked point. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "In the equation y = 3x + 7, what is the y-intercept?",
-          "answer": "7 (the point (0, 7))"
+          "stem": "Which ordered pair names the point 3 right and 5 up from the origin?",
+          "answer": "(3, 5)"
         },
         {
-          "stem": "A table has the rows (0, 5), (1, 8), (2, 11). What is the initial value?",
-          "answer": "5"
+          "stem": "To plot (4, 2), how far right and how far up do you go?",
+          "answer": "4 right, 2 up"
         },
         {
-          "stem": "A gym charges a $20 sign-up fee, then a monthly cost. What is the initial value?",
-          "answer": "20"
+          "stem": "What ordered pair names the origin?",
+          "answer": "(0, 0)"
         },
         {
-          "stem": "In the equation y = 2x - 4, write the y-intercept as an ordered pair.",
-          "answer": "(0, -4)"
+          "stem": "A point sits on the y-axis, 6 up from the origin. What is its ordered pair?",
+          "answer": "(0, 6)"
         },
         {
-          "stem": "A table has the rows (0, 9), (2, 15), (4, 21). What is the y-intercept?",
-          "answer": "9 (the point (0, 9))"
+          "stem": "In the ordered pair (2, 7), which number tells you how far to go right?",
+          "answer": "2"
+        },
+        {
+          "stem": "You plot the point (0, 4). Which axis does it sit on?",
+          "answer": "The y-axis"
+        },
+        {
+          "stem": "A point is at (5, 0). How far up from the x-axis is it?",
+          "answer": "0, it sits on the x-axis"
+        },
+        {
+          "stem": "Which point is higher on the grid: (3, 2) or (3, 6)?",
+          "answer": "(3, 6)"
         }
       ],
       "redirect_script": {
-        "stop": "What is y when x is zero?",
-        "prompt": "The y-intercept is the value when x = 0 -- the number by itself in y = mx + b, or the y in the row where x = 0. Circle the number with NO x next to it. The number in front of x is the slope, not the starting value.",
-        "praise": "You found the value when x = 0 -- that's the initial value, the y-intercept."
+        "stop": "Which number is the walk right, and which is the climb up?",
+        "prompt": "Say the directions out loud: over first, up second. The first number in the pair is the walk right along the x-axis, the second is the climb up.",
+        "praise": "You went right first and up second, that is exactly what the ordered pair says."
       },
       "vocabulary": [
         {
-          "term": "y-intercept",
-          "definition": "The y-value where the line crosses the y-axis, when x = 0; written as the point (0, b)."
+          "term": "Ordered pair",
+          "definition": "Two numbers (x, y) that name a point: right x, then up y."
         },
         {
-          "term": "Initial value",
-          "definition": "The starting amount of a situation, the value of y when x = 0; the b in y = mx + b."
+          "term": "Origin",
+          "definition": "The point (0, 0), where the x-axis and y-axis cross."
         }
       ],
       "next_steps": {
-        "if_pass": "8AF6-S3",
-        "if_fail": "Review plotting and reading the point (0, b) on a graph."
+        "if_pass": "8AF6-B2",
+        "if_fail": "Review grade 5 coordinate grids: label the axes, find the origin, and walk right then up."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "In y = 5x + 12, set x = 0 and compute: 5 x 0 + 12 = ? Which number survives when x is 0, and which number gets wiped out?"
-        },
-        {
           "kind": "show",
-          "text": "Write 'y = 5x + 12. What is the y-intercept?'"
+          "text": "Draw a first-quadrant grid from 0 to 6 on both axes. Put your pencil on the origin (0, 0)."
         },
         {
           "kind": "ask",
-          "text": "Which number is by itself, with no x next to it?"
+          "text": "To plot (4, 2), which way do you move first, and how far?"
         },
         {
           "kind": "say",
-          "text": "The 12 has no x, so the y-intercept is 12 -- the point (0, 12). The 5 is the slope."
+          "text": "Walk 4 right along the x-axis, then climb 2 up, and mark the point. That mark is (4, 2)."
         },
         {
           "kind": "watch",
-          "text": "If a student says 5, ask 'is that the number with x, or the number alone?'"
+          "text": "If a student climbs 4 up first, they land on (2, 4). Ask them to compare the two marks: are they the same point?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: give the y-intercept of y = 2x - 4 as an ordered pair."
+          "text": "Your turn: plot (0, 3). Which axis does it sit on, and why?"
         }
       ]
     },
     {
+      "skill_id": "8AF6-B1",
+      "name": "Find the unit rate (constant of proportionality) from a table or description",
+      "column": "looking_back",
+      "parent_standard": "8.AF.6",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Divide to find the per-one amount in a proportional relationship given as a table or a verbal description.",
+        "check_question": "A car travels 150 miles in 3 hours at a steady speed. What is the unit rate in miles per hour?"
+      },
+      "i_do_script": "A unit rate answers a per-one question: how much for one hour, one pound, one batch? Watch: a car goes 150 miles in 3 hours at a steady speed. To share 150 miles across 3 hours, I divide: 150 divided by 3 is 50, so the unit rate is 50 miles per hour. On a double number line, 3 hours sits under 150 miles, and cutting both into 3 equal parts puts 1 hour under 50 miles. In a proportional table the unit rate is the same no matter which row I use: divide y by x and every row gives the same number. That per-one number is the constant of proportionality.",
+      "canonical_error": {
+        "pattern": "Multiplies the two quantities or copies a table value instead of dividing to get the per-one amount",
+        "example": "For 150 miles in 3 hours, says the rate is 450 because 150 times 3, or says 150 because that is the biggest number",
+        "why": "The student does not connect unit rate to division. A rate is an amount shared across units, so you divide the total by the number of units to get the amount for one."
+      },
+      "item_template": "A proportional relationship given as a short description or a two-row table (whole numbers, money, or simple fractions). Student divides to find the unit rate. MC or short response.",
+      "sample_items": [
+        {
+          "stem": "A recipe uses 12 cups of flour for 4 batches. What is the unit rate in cups per batch?",
+          "answer": "3",
+          "choices": [
+            "3",
+            "12",
+            "4",
+            "48"
+          ],
+          "distractor_logic": "12/4 = 3 cups per batch. '12' copies the total, '4' copies the batches, '48' multiplies instead of dividing."
+        },
+        {
+          "stem": "A car travels 150 miles in 3 hours at a steady speed. What is the unit rate in miles per hour?",
+          "answer": "50"
+        },
+        {
+          "stem": "A table shows 2 pounds of apples cost $9 and 6 pounds cost $27. What is the cost per pound?",
+          "answer": "$4.50"
+        },
+        {
+          "stem": "A trail mix recipe uses 3/4 cup of raisins for 1/2 batch. How many cups of raisins are in one whole batch?",
+          "answer": "1 1/2 cups (3/4 divided by 1/2 = 3/2)"
+        },
+        {
+          "stem": "In a proportional table, y = 14 when x = 2. What is the constant of proportionality?",
+          "answer": "7",
+          "choices": [
+            "7",
+            "14",
+            "2",
+            "28"
+          ],
+          "distractor_logic": "k = y/x = 14/2 = 7. '14' copies y without dividing, '2' copies x, '28' multiplies 14 by 2."
+        },
+        {
+          "stem": "Ribbon costs $6 for 8 feet. What is the price per foot?",
+          "answer": "$0.75"
+        },
+        {
+          "stem": "A printer prints 45 pages in 9 minutes. How many pages per minute?",
+          "answer": "5"
+        },
+        {
+          "stem": "y is proportional to x, and y = 24 when x = 6. What is the constant of proportionality k?",
+          "answer": "4",
+          "choices": [
+            "4",
+            "24",
+            "6",
+            "144"
+          ],
+          "distractor_logic": "k = 24/6 = 4. '24' and '6' copy the given values, '144' multiplies them."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is that the amount for ONE unit, or for several?",
+        "prompt": "A unit rate is the amount for one. Share the total across the units by dividing: total amount divided by number of units. Check with a second row of the table, the answer should match.",
+        "praise": "You divided to get the per-one amount, that is the unit rate."
+      },
+      "vocabulary": [
+        {
+          "term": "Unit rate",
+          "definition": "The amount of one quantity for exactly one unit of the other, like miles per one hour."
+        },
+        {
+          "term": "Constant of proportionality",
+          "definition": "The number k you multiply x by to get y in a proportional relationship; it equals y divided by x."
+        },
+        {
+          "term": "Proportional relationship",
+          "definition": "A relationship where y divided by x is the same number for every pair."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF6-S1",
+        "if_fail": "8AF6-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a double number line: hours on the bottom from 0 to 3, miles on top from 0 to 150. Mark 3 hours under 150 miles."
+        },
+        {
+          "kind": "ask",
+          "text": "We want the miles for just ONE hour. How can we cut both lines to see it?"
+        },
+        {
+          "kind": "say",
+          "text": "Cut both into 3 equal parts. Each part is 1 hour on the bottom and 150 divided by 3 = 50 miles on top. The unit rate is 50 miles per hour."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 450, ask what 150 times 3 would mean: miles for 9 hours, not for 1. Sharing across hours is division."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 45 pages in 9 minutes. Use the double number line idea to find pages per minute."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A bus travels 60 miles in 2 hours at a steady speed. What is the unit rate?",
+          "answer": "30 miles per hour"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "5 pens cost $10. What is the cost per pen?",
+          "answer": "$2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Bananas cost $5.40 for 4 pounds. What is the cost per pound?",
+          "answer": "$1.35"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A table shows 3 shirts cost $21 and 5 shirts cost $35. What is the constant of proportionality (cost per shirt)?",
+          "answer": "$7, since 21/3 = 7 and 35/5 = 7"
+        },
+        {
+          "difficulty": "core",
+          "stem": "1/2 gallon of paint covers 1/4 of a wall. How many gallons cover the whole wall?",
+          "answer": "2 gallons, since (1/2) divided by (1/4) = 2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A faucet fills 18 gallons in 4 minutes. How many gallons per minute?",
+          "answer": "4.5 gallons per minute"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Which is the better buy: 12 ounces of cereal for $3.00 or 20 ounces for $4.00? Explain with unit rates.",
+          "answer": "20 ounces for $4.00. It costs $0.20 per ounce; the 12 ounce box costs $0.25 per ounce."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Maria found a unit rate. Find her mistake and fix it.",
+          "shown_work": [
+            "A hiker walks 90 miles in 2 weeks at a steady pace.",
+            "Maria wrote: 90 x 2 = 180, so the rate is 180 miles per week."
+          ],
+          "answer": "She multiplied instead of dividing. Sharing 90 miles across 2 weeks means 90/2 = 45 miles per week."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Share It Across the Line",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Blank double number lines",
+            "Counters",
+            "Pencils"
+          ],
+          "instructions": "1. Each pair gets a rate story like 150 miles in 3 hours.\n2. Draw the double number line: units on the bottom, amount on top, with the given pair marked.\n3. Cut both lines into equal parts until 1 unit sits alone, and label the amount above it.\n4. Write the division sentence that matches the cut, like 150/3 = 50.\n5. Repeat with $9 for 2 pounds and 45 pages in 9 minutes. Say each time: divide to get the amount for one."
+        },
+        {
+          "type": "matching",
+          "title": "Rate Match-Up",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per rate story, one card per unit rate"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each story like '$6 for 8 feet' to its unit rate like '$0.75 per foot'.\n3. To claim a match, say the division sentence out loud.\n4. Two decoy cards show a multiplied answer; set them aside and explain what went wrong.",
+          "content": {
+            "pairs": [
+              {
+                "left": "150 miles in 3 hours",
+                "right": "50 miles per hour"
+              },
+              {
+                "left": "12 cups for 4 batches",
+                "right": "3 cups per batch"
+              },
+              {
+                "left": "$6 for 8 feet",
+                "right": "$0.75 per foot"
+              },
+              {
+                "left": "45 pages in 9 minutes",
+                "right": "5 pages per minute"
+              },
+              {
+                "left": "$9 for 2 pounds",
+                "right": "$4.50 per pound"
+              },
+              {
+                "left": "60 miles in 2 hours",
+                "right": "30 miles per hour"
+              }
+            ],
+            "decoys": [
+              "450 miles per hour",
+              "48 cups per batch"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The double number line makes 'share the total across the units' visible before the divide rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Multiplying instead of dividing is a stable slip; finding and fixing it in worked examples confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'total divided by units gives the amount for one' models the decision the student keeps skipping."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the amount for exactly one unit here?",
+          "What do you divide by what, and why that order?",
+          "If you use a different row of the table, do you get the same unit rate?",
+          "What would multiplying the two numbers actually tell you?",
+          "How would you label your answer: miles, hours, or miles per hour?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student multiplies the two quantities to get the rate.",
+            "say": "Point at the double number line: 150 miles is being shared across 3 hours. Sharing is division. What is 150 divided by 3?",
+            "praise": "You divided the total by the units, that gives the amount for one."
+          },
+          {
+            "if_you_see": "Student copies a y-value from the table as the constant of proportionality.",
+            "say": "That number is the amount for several units, not for one. Divide y by x in that row, then check another row to see the same k appear.",
+            "praise": "You checked two rows and got the same k, that is what makes it constant."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A train goes 120 miles in 4 hours. Unit rate?",
+            "look_for": "30 miles per hour, from 120/4. An answer of 480 means multiplying instead of dividing."
+          },
+          {
+            "prompt": "In a proportional table, y = 18 when x = 3. What is k?",
+            "look_for": "6, from 18/3. An answer of 18 means copying y without dividing."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Apples cost $18 for 4 pounds. What is the unit rate in dollars per pound?",
+        "answer": "$4.50 per pound",
+        "steps": [
+          {
+            "math": "18 dollars shared across 4 pounds",
+            "annotation": "A unit rate is the amount for one pound, so share the total."
+          },
+          {
+            "math": "18 / 4 = 4.5",
+            "annotation": "Divide the total dollars by the number of pounds."
+          },
+          {
+            "math": "unit rate = $4.50 per pound",
+            "annotation": "Label the answer per one pound."
+          },
+          {
+            "math": "check: 4.50 x 4 = 18",
+            "annotation": "Multiplying back by 4 pounds returns the total, so the rate is right."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Oranges cost $14 for 8 pounds. What is the unit rate in dollars per pound?",
+        "answer": "$1.75 per pound",
+        "steps": [
+          {
+            "math": "14 dollars shared across 8 pounds",
+            "annotation": "The unit rate is the cost of one pound.",
+            "given": true
+          },
+          {
+            "math": "14 / 8 = 1.75",
+            "annotation": "Divide the total dollars by the pounds.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "State the unit rate with its label.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check by multiplying the rate back by 8 pounds.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The unit rate is ___ per ___ because I divided ___ by ___.",
+        "Every row of the table gives k = ___, so the relationship is proportional."
+      ],
+      "fluency_source": "8AF6-F1"
+    },
+    {
+      "skill_id": "8AF6-B2",
+      "name": "Read the constant of proportionality from a graph and write y = kx",
+      "column": "looking_back",
+      "parent_standard": "8.AF.6",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "On a graph of a proportional relationship, find k as the y-value at x = 1 (or y divided by x at any point) and write the equation y = kx.",
+        "check_question": "A proportional graph passes through the point (2, 10). What is the constant of proportionality?"
+      },
+      "i_do_script": "A proportional relationship graphs as a straight line through the origin, and its whole story is one number k. Watch a line through (0, 0) and (2, 10). The constant of proportionality is the y-value when x = 1, and I can get it from ANY point by dividing y by x: 10 divided by 2 is 5. So the point (1, 5) is on the line, k = 5, and the equation is y = 5x. Two checks matter: the line must pass through (0, 0) to be proportional at all, and if my point is not at x = 1, I must divide, not copy the y-value.",
+      "canonical_error": {
+        "pattern": "Copies the y-value of a labeled point as k even when its x is not 1",
+        "example": "For a proportional graph through (2, 10), says k = 10 and writes y = 10x",
+        "why": "The student treats any marked point as the per-one point. k is the y-value at x = 1, so from a point like (2, 10) you must divide y by x to get 10/2 = 5."
+      },
+      "item_template": "A proportional graph (line through the origin) with one labeled point, or a described point. Student finds k, names the point (1, k), or writes y = kx. MC or short response.",
+      "sample_items": [
+        {
+          "stem": "A proportional graph passes through (1, 5). What is the constant of proportionality?",
+          "answer": "5"
+        },
+        {
+          "stem": "A proportional graph passes through (2, 10). What is the constant of proportionality?",
+          "answer": "5",
+          "choices": [
+            "5",
+            "10",
+            "2",
+            "20"
+          ],
+          "distractor_logic": "k = 10/2 = 5. '10' copies the y-value without dividing, '2' copies x, '20' multiplies the coordinates."
+        },
+        {
+          "stem": "A proportional graph passes through (1, 3). Write its equation.",
+          "answer": "y = 3x"
+        },
+        {
+          "stem": "The graph of y = kx passes through (4, 6). What is k?",
+          "answer": "3/2 (or 1.5), since 6/4 = 3/2"
+        },
+        {
+          "stem": "Which point must every proportional graph pass through?",
+          "answer": "(0, 0)",
+          "choices": [
+            "(0, 0)",
+            "(1, 1)",
+            "(0, 1)",
+            "(1, 0)"
+          ],
+          "distractor_logic": "Proportional lines pass through the origin. '(1, 1)' confuses through-the-origin with k = 1; the axis points (0, 1) and (1, 0) bait axis mix-ups."
+        },
+        {
+          "stem": "A proportional graph passes through (3, 12). Write its equation.",
+          "answer": "y = 4x"
+        },
+        {
+          "stem": "On the graph of y = 2.5x, what is y when x = 1?",
+          "answer": "2.5"
+        },
+        {
+          "stem": "A line passes through (0, 4) and (1, 9). Is it a proportional relationship?",
+          "answer": "No, it does not pass through (0, 0)",
+          "choices": [
+            "No, it does not pass through (0, 0)",
+            "Yes, because it is a straight line",
+            "Yes, because y increases when x increases",
+            "No, because 9 is too large"
+          ],
+          "distractor_logic": "Proportional requires a line through the origin; this line starts at (0, 4). 'Straight line' and 'y increases' are true but not sufficient; '9 is too large' is irrelevant."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is that point at x = 1?",
+        "prompt": "k is the y-value when x = 1. If your point is somewhere else, divide y by x to get back to one. Then write y = kx with that per-one number.",
+        "praise": "You divided y by x to get the per-one value, that is k."
+      },
+      "vocabulary": [
+        {
+          "term": "Constant of proportionality",
+          "definition": "The number k in y = kx; on the graph it is the y-value at x = 1."
+        },
+        {
+          "term": "Origin",
+          "definition": "The point (0, 0); every proportional graph passes through it."
+        },
+        {
+          "term": "Proportional relationship",
+          "definition": "A relationship where y = kx; its graph is a straight line through the origin."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF6-S2",
+        "if_fail": "8AF6-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a first-quadrant grid. Plot (0, 0) and (2, 10), and draw the line through them."
+        },
+        {
+          "kind": "ask",
+          "text": "We want the point on this line where x = 1. It sits halfway between the origin and (2, 10). What is its y-value?"
+        },
+        {
+          "kind": "say",
+          "text": "Halfway up from 0 to 10 is 5, so the line passes through (1, 5). That per-one value is k, and dividing confirms it: 10/2 = 5. The equation is y = 5x."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes y = 10x, plot (1, 10) and ask: is that point on our line? The labeled point is at x = 2, so its y must be split across 2."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a proportional graph passes through (3, 12). Find k and write the equation."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A proportional graph passes through (1, 7). What is k?",
+          "answer": "7"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A proportional relationship has k = 3. Write its equation.",
+          "answer": "y = 3x"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A proportional graph passes through (2, 8). What is the constant of proportionality?",
+          "answer": "4, since 8/2 = 4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A proportional graph passes through (5, 2). What is k?",
+          "answer": "2/5, since 2/5 = 0.4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A proportional graph passes through (1, 4.5). Write its equation.",
+          "answer": "y = 4.5x"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A proportional graph passes through (4, 10). What is y when x = 1?",
+          "answer": "2.5, since 10/4 = 2.5"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Line A is proportional through (2, 6). Line B is proportional through (3, 6). Which line is steeper? Explain with k.",
+          "answer": "Line A. Its k is 6/2 = 3, while Line B's k is 6/3 = 2, and a larger k means a steeper line."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo wrote an equation from a proportional graph. Find his mistake and fix it.",
+          "shown_work": [
+            "The graph passes through (0, 0) and (2, 12).",
+            "Leo wrote: the point shows y = 12, so y = 12x."
+          ],
+          "answer": "He copied the y-value of a point at x = 2, not x = 1. k = 12/2 = 6, so the equation is y = 6x."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Find the Per-One Point",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper",
+            "Rulers",
+            "Story cards with one labeled point each"
+          ],
+          "instructions": "1. Each pair gets a card like 'proportional, passes through (2, 10)'.\n2. Plot the origin and the given point, then draw the line with a ruler.\n3. Find where the line crosses x = 1 and circle that point.\n4. Check by dividing y by x from the given point, then write y = kx.\n5. Repeat with (3, 12) and (4, 6). Say each time: k lives at x = 1."
+        },
+        {
+          "type": "matching",
+          "title": "Graph to Equation",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per labeled graph point, one card per equation"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each point card like 'through (2, 10)' to its equation like 'y = 5x'.\n3. To claim a match, say the division that gives k.\n4. Two decoy equations copy the y-value without dividing; set them aside and explain the error.",
+          "content": {
+            "pairs": [
+              {
+                "left": "proportional, through (2, 10)",
+                "right": "y = 5x"
+              },
+              {
+                "left": "proportional, through (3, 12)",
+                "right": "y = 4x"
+              },
+              {
+                "left": "proportional, through (1, 7)",
+                "right": "y = 7x"
+              },
+              {
+                "left": "proportional, through (4, 6)",
+                "right": "y = (3/2)x"
+              },
+              {
+                "left": "proportional, through (5, 2)",
+                "right": "y = (2/5)x"
+              },
+              {
+                "left": "proportional, through (2, 9)",
+                "right": "y = 4.5x"
+              }
+            ],
+            "decoys": [
+              "y = 10x",
+              "y = 12x"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Drawing the line and circling the x = 1 crossing grounds k as a location on the graph before the divide rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Copying a point's y-value as k is a precise, predictable slip that a find-and-fix names cleanly."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'is a line through (0, 4) proportional?' surfaces the through-the-origin requirement."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Does this line pass through the origin? Why does that matter?",
+          "Where does the line cross x = 1, and what is that y-value called?",
+          "Your labeled point is at x = 2. How do you get back to one?",
+          "If k = 4, what point at x = 1 must be on the graph?",
+          "Would a different point on the same line give a different k?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student copies the y-value of a labeled point as k when x is not 1.",
+            "say": "Plot the point (1, your k) and check: is it on the line? Divide y by x from the labeled point to find the true per-one value.",
+            "praise": "You divided back to x = 1, that is where k lives."
+          },
+          {
+            "if_you_see": "Student calls a line proportional even though it does not pass through the origin.",
+            "say": "Check x = 0 first. A proportional relationship has y = 0 when x = 0, so the line must pass through (0, 0).",
+            "praise": "You checked the origin first, that is the fastest proportionality test."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A proportional graph passes through (2, 14). What is k?",
+            "look_for": "7, from 14/2. An answer of 14 means copying the y-value without dividing."
+          },
+          {
+            "prompt": "A line passes through (0, 3) and (1, 8). Is it proportional?",
+            "look_for": "No, it does not pass through the origin."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A proportional graph passes through the point (2, 10). Find k and write the equation.",
+        "answer": "k = 5, so y = 5x",
+        "steps": [
+          {
+            "math": "check: line passes through (0, 0)",
+            "annotation": "Proportional graphs always pass through the origin."
+          },
+          {
+            "math": "k = y / x = 10 / 2",
+            "annotation": "The labeled point is at x = 2, so divide to get the per-one value."
+          },
+          {
+            "math": "k = 5, point (1, 5) is on the line",
+            "annotation": "k is the y-value at x = 1."
+          },
+          {
+            "math": "y = 5x",
+            "annotation": "Write the equation with k as the multiplier of x."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A proportional graph passes through the point (4, 6). Find k and write the equation.",
+        "answer": "k = 3/2, so y = (3/2)x",
+        "steps": [
+          {
+            "math": "check: line passes through (0, 0)",
+            "annotation": "Confirm the graph is proportional.",
+            "given": true
+          },
+          {
+            "math": "k = y / x = 6 / 4",
+            "annotation": "The point is at x = 4, so divide y by x.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Simplify to find k and name the point at x = 1.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the equation y = kx.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The line passes through (___, ___), so k = ___ divided by ___ = ___.",
+        "k is the y-value at x = 1, so the equation is y = ___ x.",
+        "The line does or does not pass through (0, 0), so it is or is not proportional."
+      ],
+      "fluency_source": "8AF6-F2"
+    },
+    {
       "skill_id": "8AF6-S1",
       "name": "Determine the rate of change (slope m) from a table of values",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "8.AF.6",
       "engine_stems": [
         1
@@ -602,7 +1238,7 @@
           }
         ]
       },
-      "fluency_source": "8AF6-F1",
+      "fluency_source": "8AF6-B1",
       "sentence_starters": [
         "x changes by ___ and y changes by ___, so the slope is ___ divided by ___.",
         "The rate of change is ___ because ___."
@@ -709,7 +1345,7 @@
     {
       "skill_id": "8AF6-S2",
       "name": "Determine the rate of change (slope m) from an equation in y = mx + b form",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "8.AF.6",
       "engine_stems": [
         2
@@ -1017,7 +1653,7 @@
           }
         ]
       },
-      "fluency_source": "8AF6-F1",
+      "fluency_source": "8AF6-B1",
       "sentence_starters": [
         "The number with x is ___, so the rate of change is ___.",
         "The ___ is by itself, so it is the y-intercept, not the slope."
@@ -1074,7 +1710,7 @@
     {
       "skill_id": "8AF6-S3",
       "name": "Determine the initial value (y-intercept b) from a table, description, or equation",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "8.AF.6",
       "prerequisite_skill": {
         "type": "skill",
@@ -1366,7 +2002,7 @@
           }
         ]
       },
-      "fluency_source": "8AF6-F2",
+      "fluency_source": "8AF6-B2",
       "sentence_starters": [
         "The value when x = 0 is ___, so the y-intercept is (0, ___).",
         "The table starts at x = ___, so I step back by the slope to get ___."
@@ -1723,7 +2359,7 @@
           }
         ]
       },
-      "fluency_source": "8AF6-F1",
+      "fluency_source": "8AF6-B1",
       "sentence_starters": [
         "The amount that repeats each x is ___, so m = ___.",
         "The starting amount is ___, so b = ___, and the equation is y = ___x + ___."
@@ -2030,7 +2666,7 @@
           }
         ]
       },
-      "fluency_source": "8AF6-F1",
+      "fluency_source": "8AF6-B1",
       "sentence_starters": [
         "The rate of change is ___, which means y goes up ___ for every ___.",
         "In this situation, ___ increases by ___ each ___."
@@ -2326,7 +2962,7 @@
           }
         ]
       },
-      "fluency_source": "8AF6-F2",
+      "fluency_source": "8AF6-B2",
       "sentence_starters": [
         "m = ___ means y ___ (goes up/down) by ___ for each ___.",
         "b = ___ means the situation starts at ___ when x = 0."
@@ -2383,8 +3019,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 4-6) prerequisite skills. Start intervention here.",
       "skills": [
         "8AF6-F1",
         "8AF6-F2"
@@ -2392,24 +3028,26 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 7) skills that feed this standard directly.",
       "skills": [
-        "8AF6-S1",
-        "8AF6-S2",
-        "8AF6-S3"
+        "8AF6-B1",
+        "8AF6-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "8AF6-S1",
+        "8AF6-S2",
+        "8AF6-S3",
         "8AF6-S4",
         "8AF6-S5"
       ]
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "8AF6-S6"
       ]
@@ -2418,6 +3056,8 @@
   "skill_sequence": [
     "8AF6-F1",
     "8AF6-F2",
+    "8AF6-B1",
+    "8AF6-B2",
     "8AF6-S1",
     "8AF6-S2",
     "8AF6-S3",
@@ -2428,14 +3068,21 @@
   "skill_tree": {
     "8AF6-F1": [],
     "8AF6-F2": [],
-    "8AF6-S1": [
+    "8AF6-B1": [
       "8AF6-F1"
+    ],
+    "8AF6-B2": [
+      "8AF6-F2"
+    ],
+    "8AF6-S1": [
+      "8AF6-B1"
     ],
     "8AF6-S2": [
-      "8AF6-F1"
+      "8AF6-B1",
+      "8AF6-B2"
     ],
     "8AF6-S3": [
-      "8AF6-F2"
+      "8AF6-B2"
     ],
     "8AF6-S4": [
       "8AF6-S1",
@@ -2449,16 +3096,20 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (construct the equation for a described situation) -- the core act of the standard, and where the m-and-b swap lives. If they pass, move to S5 and S6 (construct and interpret the rate of change, then interpret both m and b in context). If they fail, drop to S1 to check whether they can even pull the rate of change out of a table, then to the foundations. S2 (rate from an equation) and S3 (find the initial value) branch off as the other two building blocks the construction depends on.",
+    "description": "Start with S4, constructing the equation for a described situation, the heart of the standard and home of the m-and-b swap. If they pass, move up to S5 and S6 to interpret the rate of change and then both parameters in context. If they fail, drop one grade: B1 checks unit rates from tables and descriptions, and B2 checks reading the constant of proportionality off a graph of y = kx, the grade 7 proportional core that slope and intercept grow from. If those wobble, F1 (constant add patterns) and F2 (first-quadrant plotting) locate the gap in grades 4 and 5. S1, S2, and S3 remain available to probe the standard's own slope and intercept building blocks.",
     "entry_skill": "8AF6-S4",
     "if_pass": [
       "8AF6-S5",
       "8AF6-S6"
     ],
     "if_fail": [
-      "8AF6-S1"
+      "8AF6-B1",
+      "8AF6-B2"
     ],
     "branch_skills": [
+      "8AF6-F1",
+      "8AF6-F2",
+      "8AF6-S1",
       "8AF6-S2",
       "8AF6-S3"
     ]

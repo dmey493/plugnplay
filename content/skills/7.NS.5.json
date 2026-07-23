@@ -3,7 +3,7 @@
   "standard_text": "Find the prime factorization of whole numbers and write the results using exponents.",
   "schema_version": 3,
   "progression": {
-    "narrative": "Prime factorization rests on one idea: every whole number greater than 1 is either prime -- divisible only by 1 and itself -- or it is composite and can be broken down into a product of primes. The standard asks students to find that product and write it compactly with exponents, so the arc must begin with the vocabulary the whole topic depends on. Before a student can factor anything, they have to look at a number and decide whether it is prime or composite, because a composite number is the only kind that factors further, and the classic trap is calling an odd number like 21 or 51 prime without ever testing 3, 5, or 7.\n\nFrom there the work is a controlled descent. Students take a composite number and pull out one prime factor at a time -- a factor tree or a division ladder -- until every branch ends in a prime, then write the result as a product like 2 x 2 x 2 x 3. Once that product is reliable, exponent notation is just shorthand: repeated primes get collected, so 2 x 2 x 2 x 3 becomes 2^3 x 3, and 72 = 2 x 2 x 2 x 3 x 3 becomes 2^3 x 3^2. Numbers then grow from under 100 into the 100-200 range, which raises the arithmetic load without changing the method. The capstone flips the task around: students analyze a factorization someone else wrote -- supplying a missing exponent, or judging whether a claimed factorization is correct and fully reduced to primes -- which is only possible once the forward procedure is automatic. The through-line we keep naming: keep dividing until every factor is prime, then collect the repeats into exponents, and always multiply back to check.",
+    "narrative": "This standard asks students to break a whole number up to 200 into a product of primes and record that product with exponents. The on-grade work runs from classifying numbers as prime or composite, through factoring completely without exponents, to writing and generating exponent form and finally analyzing a factorization someone else wrote. Students who stall here usually cannot pull factors out of a number quickly or misread what an exponent counts, most often reading 3^2 as 3 x 2. Intervention should rebuild the grade 6 skills first: writing and evaluating whole number exponents as repeated multiplication, and finding the greatest common factor and least common multiple of two numbers. If those wobble, drop to the true foundations, multiplication and division fact families from grade 3 and listing all the factor pairs of a number from grade 4.",
     "steps": [
       {
         "skill_id": "7NS5-S1",
@@ -40,192 +40,812 @@
   "skills": [
     {
       "skill_id": "7NS5-F1",
-      "name": "Recognize whether a whole number is prime or composite",
+      "name": "Use multiplication and division fact families",
       "column": "foundation",
       "parent_standard": "7.NS.5",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 5,
-        "description": "Decide whether a whole number is prime (only factors 1 and itself) or composite (has more factors).",
-        "check_question": "Is 13 prime or composite? What about 15?"
+        "grade": 3,
+        "description": "Recall basic multiplication facts and use them to solve the related division facts in the same family.",
+        "check_question": "What is 6 x 7? So what is 42 divided by 6?"
       },
-      "i_do_script": "Before any definitions, try to build the number into equal rows: 51 counters stack into 3 rows of 17 with none left over, so 51 hides a factor pair even though it is odd. A number that builds a rectangle like that is composite; a number that only ever makes one long line is prime. A prime number has exactly two factors: 1 and itself. A composite number has more than two factors, so it can be split into smaller whole-number factors. Watch: 13 is prime because nothing from 2 to 12 divides it evenly. 15 is composite because 3 x 5 = 15. To test a number I try dividing by 2, then 3, then 5, then 7 -- if any divides evenly, it is composite.",
+      "i_do_script": "A multiplication fact and its division facts describe the same array. Watch: I build 3 rows of 8 counters. That one picture gives me a whole family: 3 x 8 = 24, 8 x 3 = 24, 24 / 3 = 8, and 24 / 8 = 3. So when I see 42 / 6, I do not start dividing from scratch. I ask, 6 times what makes 42? I know 6 x 7 = 42, so 42 / 6 = 7. Every division fact is a multiplication fact asked backwards.",
       "canonical_error": {
-        "pattern": "Calls an odd number prime without testing whether 3, 5, or 7 divides it",
-        "example": "Says 51 is prime, missing that 51 = 3 x 17",
-        "why": "The student assumes 'odd means prime' and stops after checking divisibility by 2. Odd numbers still have to be checked against 3, 5, 7, and 11 before they can be called prime."
+        "pattern": "Treats division as unrelated to multiplication and computes it with the wrong operation",
+        "example": "Writes 24 / 3 = 21 by subtracting, or guesses 42 / 6 = 8",
+        "why": "The student does not connect division to the multiplication fact in the same family. Division asks a missing-factor question: 24 / 3 means 3 times what makes 24, and 3 x 8 = 24 answers it."
       },
-      "item_template": "A whole number under 100. Student states prime or composite. Short response fluency bank.",
+      "item_template": "A basic multiplication fact, its related division fact, or a complete-the-fact-family task with factors through 9. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Is 13 prime or composite?",
-          "answer": "Prime"
+          "stem": "What is 6 x 7?",
+          "answer": "42"
         },
         {
-          "stem": "Is 15 prime or composite?",
-          "answer": "Composite (3 x 5)"
+          "stem": "What is 42 / 6?",
+          "answer": "7"
         },
         {
-          "stem": "Is 51 prime or composite?",
-          "answer": "Composite (3 x 17)"
+          "stem": "What is 7 x 8?",
+          "answer": "56"
         },
         {
-          "stem": "Is 47 prime or composite?",
-          "answer": "Prime"
+          "stem": "What is 56 / 8?",
+          "answer": "7"
         },
         {
-          "stem": "Is 1 prime or composite?",
-          "answer": "Neither -- 1 has only one factor"
+          "stem": "Write the two division facts in the family of 3 x 8 = 24.",
+          "answer": "24 / 3 = 8 and 24 / 8 = 3"
         },
         {
-          "stem": "Is 91 prime or composite?",
-          "answer": "Composite (7 x 13)"
+          "stem": "What is 9 x 6?",
+          "answer": "54"
+        },
+        {
+          "stem": "What is 45 / 5?",
+          "answer": "9"
+        },
+        {
+          "stem": "Fill in the blank: 4 x ___ = 36",
+          "answer": "9"
         }
       ],
       "redirect_script": {
-        "stop": "Did you test 3, 5, and 7, not just 2?",
-        "prompt": "Try building the number into equal rows first: 51 stacks into 3 rows of 17 with none left over, so it cannot be prime. Odd does not mean prime. Try dividing by 3, then 5, then 7. If any goes in evenly, it is composite. 51 looks prime, but 3 x 17 = 51.",
-        "praise": "You checked the small primes before deciding -- that's how you spot a hidden factor."
+        "stop": "Which multiplication fact lives in the same family as this division?",
+        "prompt": "Turn the division into a missing-factor question. For 42 / 6, ask 6 times what makes 42. Picture the array: 6 rows of 7 counters make 42, so the answer is 7.",
+        "praise": "You used the multiplication fact to answer the division, that is the fact family doing the work."
       },
       "vocabulary": [
         {
-          "term": "Prime number",
-          "definition": "A whole number greater than 1 with exactly two factors: 1 and itself."
+          "term": "Fact family",
+          "definition": "The set of multiplication and division facts made from the same three numbers, like 3, 8, and 24."
         },
         {
-          "term": "Composite number",
-          "definition": "A whole number greater than 1 that has more than two factors, so it can be broken into smaller factors."
+          "term": "Array",
+          "definition": "Objects arranged in equal rows; the rows and columns show a multiplication fact."
         }
       ],
       "next_steps": {
-        "if_pass": "7NS5-S1",
-        "if_fail": "Review prime and composite numbers (5.NS)."
+        "if_pass": "7NS5-B1",
+        "if_fail": "Review grade 3 multiplication and division with arrays (equal rows of counters that show one whole fact family)."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Deal 51 counters into rows of 3: you get 17 full rows and nothing left over. 51 builds a perfect rectangle, so something besides 1 and 51 divides it."
-        },
-        {
-          "kind": "show",
-          "text": "Write the number 51."
+          "text": "Build 3 rows of 8 counters. Count them: 24 in all."
         },
         {
           "kind": "ask",
-          "text": "It's odd -- but is it prime? What might divide it?"
+          "text": "What multiplication fact does this array show? What happens if I split the 24 counters back into rows of 8?"
         },
         {
           "kind": "say",
-          "text": "Add the digits: 5 + 1 = 6, a multiple of 3, so 3 divides 51. 51 = 3 x 17 -- composite."
+          "text": "The array shows 3 x 8 = 24, and splitting back gives 24 / 8 = 3 and 24 / 3 = 8. One picture, four facts: that is a fact family."
         },
         {
           "kind": "watch",
-          "text": "If a student says 51 is prime, ask 'did you try dividing by 3?'"
+          "text": "If a student writes 24 / 3 = 21, point at the array: dividing splits into equal rows, it does not take 3 away."
         },
         {
           "kind": "ask",
-          "text": "Your turn: is 47 prime or composite?"
+          "text": "Your turn: use a fact you know to find 56 / 8."
         }
       ]
     },
     {
       "skill_id": "7NS5-F2",
-      "name": "Recall multiplication facts and use divisibility rules",
+      "name": "Find all the factor pairs of a whole number",
       "column": "foundation",
       "parent_standard": "7.NS.5",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 4,
-        "description": "Recall basic multiplication facts and use divisibility rules for 2, 3, 5, and 10.",
-        "check_question": "Name a factor pair for 24. Is 72 divisible by 3?"
+        "description": "List every factor pair of a whole number up to 100 by testing divisors in order.",
+        "check_question": "Name all the factor pairs of 24."
       },
-      "i_do_script": "The divisibility shortcuts aren't magic. Ends-in-even means divisible by 2 because every ten is already even, so only the last digit matters. The digit-sum trick for 3 works because every 10 is 9 + 1 and every 100 is 99 + 1: 72 = 7 tens + 2 = 7 x (9 + 1) + 2, and the 9s are already divisible by 3, so only 7 + 2 has to be. Factoring quickly depends on knowing multiplication facts and a few divisibility shortcuts. A number is divisible by 2 if it ends in an even digit, by 5 if it ends in 0 or 5, and by 3 if its digits add to a multiple of 3. Watch 72: it is even, so 2 goes in; and 7 + 2 = 9, a multiple of 3, so 3 goes in too. Knowing 8 x 9 = 72 lets me split it instantly.",
+      "i_do_script": "A factor pair of a number is two whole numbers that multiply to make it, and every pair is a rectangle. Watch 24: with 24 tiles I can build 1 row of 24, 2 rows of 12, 3 rows of 8, and 4 rows of 6. Rows of 5 leave tiles sticking out, so 5 is not a factor. I test 1, then 2, then 3, then 4, in order, and I stop once the pairs start repeating. The factor pairs of 24 are 1 x 24, 2 x 12, 3 x 8, and 4 x 6.",
       "canonical_error": {
-        "pattern": "Applies the last-digit test to divisibility by 3 instead of adding the digits",
-        "example": "Says 72 is not divisible by 3 because it does not end in 3, 6, or 9",
-        "why": "The student uses the last-digit rule (which works for 2, 5, and 10) on 3, where the rule is about the digit SUM. 7 + 2 = 9 is a multiple of 3, so 72 is divisible by 3."
+        "pattern": "Misses factor pairs by only checking 1, 2, and the number itself",
+        "example": "Says the factors of 24 are 1, 2, 12, and 24, skipping 3 x 8 and 4 x 6",
+        "why": "The student stops testing after 2 instead of trying every whole number in order. Testing 3, 4, 5, and so on until the pairs meet in the middle is what makes the list complete."
       },
-      "item_template": "A divisibility or factor-pair question. Short response fluency bank.",
+      "item_template": "A whole number up to 100. Student lists all factor pairs, decides whether one number is a factor of another, or completes a missing factor pair. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Is 72 divisible by 3?",
-          "answer": "Yes (7 + 2 = 9)"
+          "stem": "List all the factor pairs of 24.",
+          "answer": "1 x 24, 2 x 12, 3 x 8, 4 x 6"
         },
         {
-          "stem": "Name a factor pair for 24.",
-          "answer": "e.g., 4 x 6, 3 x 8, or 2 x 12"
+          "stem": "List all the factor pairs of 18.",
+          "answer": "1 x 18, 2 x 9, 3 x 6"
         },
         {
-          "stem": "Is 95 divisible by 5?",
-          "answer": "Yes (ends in 5)"
+          "stem": "Is 4 a factor of 30?",
+          "answer": "No, 30 / 4 leaves a remainder"
         },
         {
-          "stem": "What is 8 x 9?",
-          "answer": "72"
+          "stem": "Complete the factor pair for 36: 4 x ___",
+          "answer": "9"
         },
         {
-          "stem": "Is 84 divisible by 2?",
-          "answer": "Yes (it is even)"
+          "stem": "List all the factor pairs of 16.",
+          "answer": "1 x 16, 2 x 8, 4 x 4"
         },
         {
-          "stem": "Is 81 divisible by 3?",
-          "answer": "Yes (8 + 1 = 9)"
+          "stem": "Is 6 a factor of 54?",
+          "answer": "Yes, 6 x 9 = 54"
+        },
+        {
+          "stem": "List all the factor pairs of 30.",
+          "answer": "1 x 30, 2 x 15, 3 x 10, 5 x 6"
+        },
+        {
+          "stem": "Complete the factor pair for 40: 5 x ___",
+          "answer": "8"
         }
       ],
       "redirect_script": {
-        "stop": "For 3, add the digits -- did you?",
-        "prompt": "The last-digit test is only for 2, 5, and 10. For 3, add the digits and check whether THAT sum is a multiple of 3. For 72: 7 + 2 = 9, so yes.",
-        "praise": "You used the digit-sum rule for 3 -- that's the right shortcut."
+        "stop": "Did you test every number in order, or did you skip some?",
+        "prompt": "Build the rectangles: try rows of 1, 2, 3, 4, and so on. Each rectangle that comes out even is a factor pair. Stop when the pairs start repeating, like 4 x 6 and 6 x 4.",
+        "praise": "You tested the divisors in order, so no pair could hide from you."
       },
       "vocabulary": [
         {
-          "term": "Factor",
-          "definition": "A whole number that divides another evenly, with no remainder."
+          "term": "Factor pair",
+          "definition": "Two whole numbers that multiply to make a given number, like 3 and 8 for 24."
         },
         {
-          "term": "Divisibility rule",
-          "definition": "A quick test that tells you whether one number divides another without doing the full division."
+          "term": "Factor",
+          "definition": "A whole number that divides another evenly, with no remainder."
         }
       ],
       "next_steps": {
-        "if_pass": "7NS5-S2",
-        "if_fail": "Review multiplication facts and divisibility (4.C)."
+        "if_pass": "7NS5-B2",
+        "if_fail": "Review grade 4 factors by building rectangles with tiles (every even rectangle is a factor pair)."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write 72 = 70 + 2 = 7 x (9 + 1) + 2. Circle the 7 x 9 part."
+          "text": "Take 24 tiles. Build 1 row of 24, then 2 rows of 12, then 3 rows of 8, then 4 rows of 6."
         },
         {
           "kind": "ask",
-          "text": "The circled part is made of 9s -- is it already divisible by 3? So what's the only part left to check? That's why we add the digits: 7 + 2."
-        },
-        {
-          "kind": "show",
-          "text": "Write the number 72."
-        },
-        {
-          "kind": "ask",
-          "text": "Is it divisible by 2? By 3? How can you tell?"
+          "text": "Can you build 5 equal rows with all 24 tiles? What happens?"
         },
         {
           "kind": "say",
-          "text": "It's even, so 2 works. 7 + 2 = 9, a multiple of 3, so 3 works. 72 = 8 x 9."
+          "text": "Rows of 5 leave 4 tiles sticking out, so 5 is not a factor. Rows of 6 just repeat the 4 x 6 rectangle sideways, so the list is done: 1 x 24, 2 x 12, 3 x 8, 4 x 6."
         },
         {
           "kind": "watch",
-          "text": "If a student says 72 isn't divisible by 3 'because it doesn't end in 3,' remind them to add the digits."
+          "text": "If a student lists only 1, 2, 12, and 24, ask them to try building 3 rows before calling the list finished."
         },
         {
           "kind": "ask",
-          "text": "Your turn: is 84 divisible by 3?"
+          "text": "Your turn: find all the factor pairs of 18."
         }
       ]
     },
     {
+      "skill_id": "7NS5-B1",
+      "name": "Write and evaluate whole number exponents as repeated multiplication",
+      "column": "looking_back",
+      "parent_standard": "7.NS.5",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Read an exponent as a count of repeated factors, convert between expanded form and exponent form, and evaluate small powers.",
+        "check_question": "What is 2^3? Is it 6 or 8?"
+      },
+      "i_do_script": "An exponent counts how many copies of the base are multiplied together. Watch: 3^2 is a 3 by 3 square of tiles, 9 tiles, not a 3 by 2 rectangle of 6. So 3^2 = 3 x 3 = 9, and 2^3 = 2 x 2 x 2 = 8, not 6. Going the other way, 5 x 5 x 5 has three copies of 5, so I write 5^3. The exponent is a count of factors, never a number to multiply by.",
+      "canonical_error": {
+        "pattern": "Multiplies the base by the exponent instead of using repeated multiplication",
+        "example": "Says 2^3 = 6 or 3^2 = 6",
+        "why": "The student reads the exponent as a factor instead of a count. 2^3 means three copies of 2 multiplied together, 2 x 2 x 2 = 8; the tile picture of 3^2 as a 3 by 3 square makes the difference visible."
+      },
+      "item_template": "A power with a single-digit base and exponent 2 to 5, or a repeated product to rewrite in exponent form. Student evaluates or converts. Numeric or MC response.",
+      "sample_items": [
+        {
+          "stem": "Write 3 x 3 x 3 x 3 using an exponent.",
+          "answer": "3^4"
+        },
+        {
+          "stem": "What is 2^3?",
+          "answer": "8",
+          "choices": [
+            "5",
+            "6",
+            "8",
+            "9"
+          ],
+          "distractor_logic": "2^3 = 2 x 2 x 2 = 8. 6 is 2 x 3 (base times exponent), 5 is 2 + 3, 9 is 3^2."
+        },
+        {
+          "stem": "What is 5^2?",
+          "answer": "25",
+          "choices": [
+            "7",
+            "10",
+            "25",
+            "52"
+          ],
+          "distractor_logic": "5^2 = 5 x 5 = 25. 10 is 5 x 2, 7 is 5 + 2, 52 reads the digits side by side."
+        },
+        {
+          "stem": "Write 10 x 10 x 10 using an exponent.",
+          "answer": "10^3"
+        },
+        {
+          "stem": "What is 3^3?",
+          "answer": "27"
+        },
+        {
+          "stem": "Which is greater, 2^4 or 4^2?",
+          "answer": "Neither, both equal 16"
+        },
+        {
+          "stem": "Write 7^2 as repeated multiplication, then evaluate.",
+          "answer": "7 x 7 = 49"
+        },
+        {
+          "stem": "What is 10^4?",
+          "answer": "10000"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is the exponent a factor, or a count of factors?",
+        "prompt": "Expand it first: 2^3 means 2 x 2 x 2. Write out every copy of the base, then multiply. If your answer came from base times exponent, you skipped the expansion.",
+        "praise": "You expanded the power before multiplying, so the exponent counted the factors like it should."
+      },
+      "vocabulary": [
+        {
+          "term": "Base",
+          "definition": "The number being multiplied repeatedly; in 3^2 the base is 3."
+        },
+        {
+          "term": "Exponent",
+          "definition": "The small raised number that counts how many copies of the base are multiplied; in 3^2 the exponent is 2."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7NS5-S1",
+        "if_fail": "7NS5-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Build 3^2 with tiles as a 3 by 3 square. Next to it, build a 3 by 2 rectangle."
+        },
+        {
+          "kind": "ask",
+          "text": "Which picture shows 3^2? How many tiles are in each?"
+        },
+        {
+          "kind": "say",
+          "text": "The square is 3^2: three rows of three, 9 tiles. The rectangle is 3 x 2 = 6, a different thing. The exponent says how many threes multiply, not what to multiply by."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 3^2 = 6, send them back to the square: count the tiles."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: expand and evaluate 2^4."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Write 4 x 4 using an exponent.",
+          "answer": "4^2"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is 10^2?",
+          "answer": "100"
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is 2^4?",
+          "answer": "16"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Write 5 x 5 x 5 using an exponent, then evaluate.",
+          "answer": "5^3 = 125"
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is 3^4?",
+          "answer": "81"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which is larger, 2^5 or 5^2? Show both values.",
+          "answer": "2^5 = 32 and 5^2 = 25, so 2^5 is larger."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Evaluate 2^3 x 3^2.",
+          "answer": "8 x 9 = 72"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Kai evaluated 4^3. Find his mistake and fix it.",
+          "shown_work": [
+            "4^3",
+            "= 4 x 3",
+            "= 12"
+          ],
+          "answer": "He multiplied the base by the exponent. 4^3 means 4 x 4 x 4 = 64."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Square It, Cube It",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Square tiles",
+            "Linking cubes",
+            "Whiteboards"
+          ],
+          "instructions": "1. Build 3^2 as a 3 by 3 square of tiles and count: 9.\n2. Build 3 x 2 as a rectangle next to it and count: 6. Say what makes the two different.\n3. Build 2^3 as a 2 by 2 by 2 cube from linking cubes and count: 8.\n4. For each build, write the exponent form, the expanded form, and the value.\n5. Say each time: the exponent counts the copies, it is not a factor."
+        },
+        {
+          "type": "matching",
+          "title": "Three Forms Match",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: expanded-form cards and exponent-with-value cards"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each expanded product like 2 x 2 x 2 to its exponent card like 2^3 = 8.\n3. To claim a match, read the exponent out loud as a count: three copies of 2.\n4. Two decoy cards use base times exponent; set them aside and explain the error.",
+          "content": {
+            "pairs": [
+              {
+                "left": "2 x 2 x 2",
+                "right": "2^3 = 8"
+              },
+              {
+                "left": "3 x 3",
+                "right": "3^2 = 9"
+              },
+              {
+                "left": "5 x 5",
+                "right": "5^2 = 25"
+              },
+              {
+                "left": "2 x 2 x 2 x 2",
+                "right": "2^4 = 16"
+              },
+              {
+                "left": "10 x 10 x 10",
+                "right": "10^3 = 1000"
+              },
+              {
+                "left": "3 x 3 x 3",
+                "right": "3^3 = 27"
+              }
+            ],
+            "decoys": [
+              "2^3 = 6",
+              "3^2 = 6"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Squares and cubes built from tiles make 'the exponent counts copies' concrete before the notation is drilled."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The base-times-exponent error is stable and predictable; finding and fixing it in shown work confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Rapid choral response on small powers builds the automatic recall that factoring with exponents leans on."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What does the exponent count in this expression?",
+          "How many copies of the base are being multiplied?",
+          "Is 2^3 the same as 2 x 3? Prove it with tiles.",
+          "Can you write this power in expanded form before you evaluate?",
+          "Why are 2^4 and 4^2 equal but 2^5 and 5^2 not?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student computes base times exponent, like 2^3 = 6.",
+            "say": "Expand first: 2^3 is 2 x 2 x 2. Write every copy of the base, then multiply. Count the tiles in the cube: 8, not 6.",
+            "praise": "You expanded before you multiplied, so the exponent did its real job."
+          },
+          {
+            "if_you_see": "Student writes the exponent as the number of multiplication signs, like calling 2 x 2 x 2 a power of 2 with exponent 2.",
+            "say": "Count the copies of the base, not the multiplication signs. 2 x 2 x 2 has three 2s, so it is 2^3.",
+            "praise": "You counted the factors themselves, that is what the exponent records."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "What is 3^2?",
+            "look_for": "9. An answer of 6 means the student multiplied 3 x 2."
+          },
+          {
+            "prompt": "Write 2 x 2 x 2 x 2 with an exponent.",
+            "look_for": "2^4, with the exponent counting four copies of 2."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Evaluate 2^4.",
+        "answer": "16",
+        "steps": [
+          {
+            "math": "2^4 means 2 x 2 x 2 x 2",
+            "annotation": "The exponent 4 counts four copies of the base 2."
+          },
+          {
+            "math": "2 x 2 = 4",
+            "annotation": "Multiply the first two copies."
+          },
+          {
+            "math": "4 x 2 = 8, then 8 x 2 = 16",
+            "annotation": "Keep multiplying one copy at a time."
+          },
+          {
+            "math": "2^4 = 16",
+            "annotation": "Not 8: base times exponent would miss two doublings."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Evaluate 3^3.",
+        "answer": "27",
+        "steps": [
+          {
+            "math": "3^3 means 3 x 3 x 3",
+            "annotation": "The exponent 3 counts three copies of the base 3.",
+            "given": true
+          },
+          {
+            "math": "3 x 3 = 9",
+            "annotation": "Multiply the first two copies.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply by the last copy of 3.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the value of 3^3.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The exponent ___ tells me to multiply ___ copies of ___.",
+        "Expanded, ___^___ = ___, which equals ___."
+      ],
+      "fluency_source": "7NS5-F1"
+    },
+    {
+      "skill_id": "7NS5-B2",
+      "name": "Find the greatest common factor and least common multiple of two numbers",
+      "column": "looking_back",
+      "parent_standard": "7.NS.5",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "List factors and multiples of two whole numbers, then identify the greatest common factor and the least common multiple.",
+        "check_question": "What is the greatest common factor of 12 and 18?"
+      },
+      "i_do_script": "GCF and LCM come from two different lists. Watch 12 and 18: the factors of 12 are 1, 2, 3, 4, 6, 12 and the factors of 18 are 1, 2, 3, 6, 9, 18. Circling the shared ones gives 1, 2, 3, 6, and the greatest is 6, so the GCF is 6. For the LCM I list multiples instead: 12, 24, 36 and 18, 36, and the first shared one is 36. Factor lists go down inside the number, multiple lists climb up past it, and mixing them up is the classic error.",
+      "canonical_error": {
+        "pattern": "Confuses factors with multiples, so the GCF question gets an LCM answer or vice versa",
+        "example": "Says the GCF of 6 and 8 is 24, or gives 2 as the LCM of 6 and 8",
+        "why": "The student lists the wrong kind of number. Factors divide into the number and are never bigger than it; multiples are skip counts that are never smaller. A GCF larger than one of the numbers is a sure sign the lists got swapped."
+      },
+      "item_template": "Two whole numbers, each at most 100 for GCF and at most 12 for LCM. Student finds the GCF or the LCM. Numeric or MC response.",
+      "sample_items": [
+        {
+          "stem": "Find the GCF of 12 and 18.",
+          "answer": "6"
+        },
+        {
+          "stem": "Find the GCF of 24 and 36.",
+          "answer": "12"
+        },
+        {
+          "stem": "Find the LCM of 4 and 6.",
+          "answer": "12"
+        },
+        {
+          "stem": "Find the LCM of 3 and 5.",
+          "answer": "15"
+        },
+        {
+          "stem": "What is the GCF of 12 and 30?",
+          "answer": "6",
+          "choices": [
+            "2",
+            "3",
+            "6",
+            "60"
+          ],
+          "distractor_logic": "Shared factors of 12 and 30 are 1, 2, 3, 6; the greatest is 6. 2 and 3 are common factors but not the greatest; 60 is the LCM, not a factor."
+        },
+        {
+          "stem": "Find the GCF of 8 and 20.",
+          "answer": "4"
+        },
+        {
+          "stem": "Find the LCM of 6 and 8.",
+          "answer": "24"
+        },
+        {
+          "stem": "Find the GCF of 15 and 25.",
+          "answer": "5"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Are you listing factors or multiples right now?",
+        "prompt": "GCF needs factor lists: numbers that divide in, never bigger than the number itself. LCM needs multiple lists: skip counts that climb past the number. Make the right list first, then circle what is shared.",
+        "praise": "You picked the right kind of list before you compared, that is the whole decision."
+      },
+      "vocabulary": [
+        {
+          "term": "Greatest common factor (GCF)",
+          "definition": "The largest whole number that divides both numbers evenly."
+        },
+        {
+          "term": "Least common multiple (LCM)",
+          "definition": "The smallest number that appears in the skip counts of both numbers."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7NS5-S1",
+        "if_fail": "7NS5-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write two factor lists side by side: 12 gives 1, 2, 3, 4, 6, 12 and 18 gives 1, 2, 3, 6, 9, 18. Circle every number that appears in both."
+        },
+        {
+          "kind": "ask",
+          "text": "Which circled number is the greatest? Could a shared factor ever be bigger than 12 here?"
+        },
+        {
+          "kind": "say",
+          "text": "The shared factors are 1, 2, 3, 6, so the GCF is 6. A factor of 12 can never pass 12, so an answer like 36 would mean I listed multiples by mistake."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 36, ask whether 36 divides 12. That is the factor-versus-multiple mix-up."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: list multiples of 4 and 6 and find their LCM."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "List all the factors of 12.",
+          "answer": "1, 2, 3, 4, 6, 12"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "List the first five multiples of 6.",
+          "answer": "6, 12, 18, 24, 30"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the GCF of 18 and 27.",
+          "answer": "9"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the LCM of 5 and 10.",
+          "answer": "10"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the GCF of 16 and 40.",
+          "answer": "8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the LCM of 4 and 10.",
+          "answer": "20"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Find the GCF of 36 and 54.",
+          "answer": "18"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia found the GCF of 6 and 8. Find her mistake and fix it.",
+          "shown_work": [
+            "6: 6, 12, 18, 24",
+            "8: 8, 16, 24",
+            "GCF = 24"
+          ],
+          "answer": "She listed multiples, so 24 is the LCM. Factors of 6 are 1, 2, 3, 6 and factors of 8 are 1, 2, 4, 8, so the GCF is 2."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Rectangle Overlap",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Square tiles",
+            "Two-column recording sheet"
+          ],
+          "instructions": "1. With tiles, build every rectangle for 12 and record the factor pairs: 1 x 12, 2 x 6, 3 x 4.\n2. Do the same for 18: 1 x 18, 2 x 9, 3 x 6.\n3. Write both factor lists and circle every number that shows up in both.\n4. Name the greatest circled number: that is the GCF, 6.\n5. Repeat with 8 and 20. Say each time: factors come from rectangles inside the number."
+        },
+        {
+          "type": "card_sort",
+          "title": "Factor List or Multiple List?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Question cards asking for a GCF or an LCM",
+            "Two header cards: Factor lists, Multiple lists"
+          ],
+          "instructions": "1. Deal the question cards face down.\n2. Flip one at a time: decide whether solving it needs factor lists or multiple lists, and place it under that header.\n3. Justify each placement out loud: GCF divides in, LCM climbs up.\n4. Then solve two cards from each pile and check that no GCF answer is bigger than either number.",
+          "content": {
+            "categories": [
+              "Factor lists",
+              "Multiple lists"
+            ],
+            "cards": [
+              {
+                "text": "Find the GCF of 12 and 18.",
+                "category": "Factor lists"
+              },
+              {
+                "text": "Find the LCM of 4 and 6.",
+                "category": "Multiple lists"
+              },
+              {
+                "text": "Find the GCF of 15 and 25.",
+                "category": "Factor lists"
+              },
+              {
+                "text": "Find the LCM of 3 and 5.",
+                "category": "Multiple lists"
+              },
+              {
+                "text": "Find the GCF of 24 and 36.",
+                "category": "Factor lists"
+              },
+              {
+                "text": "Find the LCM of 6 and 8.",
+                "category": "Multiple lists"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building factor pairs as tile rectangles keeps 'factors live inside the number' concrete before the list procedure is drilled."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud about which list a question needs makes the invisible factor-versus-multiple decision audible and checkable."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The swapped-list error, answering a GCF question with the LCM, is precise and recurring, so a find-and-fix targets it directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Does this question need factor lists or multiple lists?",
+          "Can a factor of 12 ever be bigger than 12?",
+          "What numbers appear on both of your lists?",
+          "Why do we want the greatest one for GCF but the least one for LCM?",
+          "How could you check that 6 really divides both 12 and 18?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student answers a GCF question with a number bigger than one of the two numbers.",
+            "say": "A factor has to divide in, so it can never be bigger than the number. You listed multiples. Rebuild the factor lists and circle what is shared.",
+            "praise": "You caught it because your answer was too big to divide in, that check works every time."
+          },
+          {
+            "if_you_see": "Student finds a common factor but stops before the greatest one, like 2 for 12 and 18.",
+            "say": "2 is common, but is it the greatest? Finish both lists all the way and compare every shared number before you choose.",
+            "praise": "You finished the lists before choosing, so the greatest one could not hide."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "GCF of 12 and 18?",
+            "look_for": "6. An answer of 36 means the student listed multiples instead of factors."
+          },
+          {
+            "prompt": "LCM of 4 and 6?",
+            "look_for": "12. An answer of 2 means the student found a common factor instead of a multiple."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Find the GCF of 24 and 36.",
+        "answer": "12",
+        "steps": [
+          {
+            "math": "factors of 24: 1, 2, 3, 4, 6, 8, 12, 24",
+            "annotation": "Test divisors in order so nothing is skipped."
+          },
+          {
+            "math": "factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36",
+            "annotation": "Same routine for the second number."
+          },
+          {
+            "math": "shared: 1, 2, 3, 4, 6, 12",
+            "annotation": "Circle every number on both lists."
+          },
+          {
+            "math": "GCF = 12",
+            "annotation": "The greatest shared factor; check that 12 divides both 24 and 36."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Find the GCF of 18 and 30.",
+        "answer": "6",
+        "steps": [
+          {
+            "math": "factors of 18: 1, 2, 3, 6, 9, 18",
+            "annotation": "List the factors of the first number in order.",
+            "given": true
+          },
+          {
+            "math": "factors of 30: 1, 2, 3, 5, 6, 10, 15, 30",
+            "annotation": "List the factors of the second number.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Circle the factors that appear on both lists.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the greatest shared factor.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "This question needs ___ lists because it asks for a common ___.",
+        "The shared factors are ___, and the greatest is ___.",
+        "My answer cannot be right because a factor of ___ cannot be bigger than ___."
+      ],
+      "fluency_source": "7NS5-F2"
+    },
+    {
       "skill_id": "7NS5-S1",
       "name": "Classify whole numbers as prime or composite",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.NS.5",
       "engine_stems": [
         1
@@ -548,7 +1168,7 @@
     {
       "skill_id": "7NS5-S2",
       "name": "Write the prime factorization of a number without exponents",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.NS.5",
       "engine_stems": [
         2
@@ -1069,7 +1689,7 @@
           }
         ]
       },
-      "fluency_source": "7NS5-F2",
+      "fluency_source": "7NS5-B1",
       "sentence_starters": [
         "The prime ___ appears ___ times, so I write ___^___.",
         "Expanded, ___ = ___; with exponents it is ___."
@@ -1338,7 +1958,7 @@
           }
         ]
       },
-      "fluency_source": "7NS5-F2",
+      "fluency_source": "7NS5-B1",
       "sentence_starters": [
         "I divide ___ by ___ to get ___, then keep going until the quotient is prime.",
         "___ = ___, and it multiplies back to ___."
@@ -1660,7 +2280,7 @@
           }
         ]
       },
-      "fluency_source": "7NS5-F2",
+      "fluency_source": "7NS5-B1",
       "sentence_starters": [
         "With x = ___, the product is ___, which equals the number.",
         "I divided ___ by the known part to get ___, so x = ___."
@@ -1955,7 +2575,7 @@
           }
         ]
       },
-      "fluency_source": "7NS5-F2",
+      "fluency_source": "7NS5-B1",
       "sentence_starters": [
         "This is / is not a prime factorization because ___.",
         "The correct prime factorization of ___ is ___."
@@ -2012,8 +2632,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7NS5-F1",
         "7NS5-F2"
@@ -2021,23 +2641,25 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7NS5-S1",
-        "7NS5-S2"
+        "7NS5-B1",
+        "7NS5-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7NS5-S1",
+        "7NS5-S2",
         "7NS5-S3",
         "7NS5-S4"
       ]
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7NS5-S5",
         "7NS5-S6"
@@ -2047,6 +2669,8 @@
   "skill_sequence": [
     "7NS5-F1",
     "7NS5-F2",
+    "7NS5-B1",
+    "7NS5-B2",
     "7NS5-S1",
     "7NS5-S2",
     "7NS5-S3",
@@ -2057,15 +2681,23 @@
   "skill_tree": {
     "7NS5-F1": [],
     "7NS5-F2": [],
-    "7NS5-S1": [
+    "7NS5-B1": [
       "7NS5-F1"
+    ],
+    "7NS5-B2": [
+      "7NS5-F2"
+    ],
+    "7NS5-S1": [
+      "7NS5-B1",
+      "7NS5-B2"
     ],
     "7NS5-S2": [
       "7NS5-S1",
       "7NS5-F2"
     ],
     "7NS5-S3": [
-      "7NS5-S2"
+      "7NS5-S2",
+      "7NS5-B1"
     ],
     "7NS5-S4": [
       "7NS5-S3"
@@ -2080,17 +2712,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (generate the prime factorization of a 100-200 number using exponents) -- the At-proficiency computational core. If they pass, move to S5 (find a missing exponent) and S6 (verify and justify a factorization). If they fail, split: S1 checks whether prime vs composite is understood, and S2 checks whether a number can be broken into primes at all. S3 (collecting repeats into exponents) branches off as the notation support check.",
+    "description": "Start with S4, generating the prime factorization of a 100 to 200 number with exponents, the At-proficiency core. If they pass, move up to S5 (find a missing exponent) and S6 (verify and justify a factorization). If they fail, drop below grade level: B1 checks whether exponents are read as repeated multiplication and B2 checks GCF and LCM, the two grade 6 skills this standard leans on. If those wobble, the foundations locate the gap in grades 3 and 4: F1 probes multiplication and division fact families and F2 probes listing all the factor pairs of a number. S1, S2, and S3 remain available to probe the standard's own classify, factor, and exponent-notation groundwork.",
     "entry_skill": "7NS5-S4",
     "if_pass": [
       "7NS5-S5",
       "7NS5-S6"
     ],
     "if_fail": [
-      "7NS5-S1",
-      "7NS5-S2"
+      "7NS5-B1",
+      "7NS5-B2"
     ],
     "branch_skills": [
+      "7NS5-F1",
+      "7NS5-F2",
+      "7NS5-S1",
+      "7NS5-S2",
       "7NS5-S3"
     ]
   }

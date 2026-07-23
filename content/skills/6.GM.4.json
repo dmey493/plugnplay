@@ -3,7 +3,7 @@
   "standard_text": "Find the volume of a right rectangular prism with fractional edge lengths using unit cubes of the appropriate unit fraction edge lengths (e.g., using technology or concrete materials) and show that the volume is the same as would be found by multiplying the edge lengths of the prism. Apply the formulas V = lwh and V = Bh to find volumes of right rectangular prisms with fractional edge lengths to solve real-world and other mathematical problems.",
   "schema_version": 3,
   "progression": {
-    "narrative": "6.GM.4 makes two demands, in a deliberate order. First, UNDERSTAND: show that volume with fractional edges still means filling space -- pack a prism with unit-fraction cubes and prove the packing count, converted to cubic units, is exactly what multiplying the edge lengths gives. Second, APPLY: use V = lwh and V = Bh fluently on real-world and mathematical problems. The progression follows that logic. A student first extends the familiar V = lwh to a single fractional edge (S1), where the layer picture still carries them. Then comes the standard's conceptual heart (S2): packing with 1/2-inch or 1/3-cm cubes and discovering that a small cube is NOT a cubic unit -- eight half-inch cubes make one cubic inch -- so count and volume finally separate. With that understanding secured, computation scales up to two and three fractional dimensions (S3), gets applied to real packing and filling contexts (S4), and folds into the V = Bh form, where the base area arrives pre-multiplied (S5). The capstone (S6) runs the formula in reverse -- given the volume, recover a missing edge or propose possible dimensions -- which is where this standard hands off to grade-7 geometry and to equation thinking. Two foundations sit underneath: fraction multiplication (F1), because every item here ends in it, and the grade-5 image of volume as counting unit cubes (F2), because every idea here is built on it.",
+    "narrative": "6.GM.4 asks students to find the volume of a right rectangular prism when one or more edges are fractions, first by packing it with unit-fraction cubes and showing the count matches the edge product, then by applying V = l x w x h and V = B x h to real and mathematical problems. The on-grade skills build in that order: extend the formula to a single fractional edge, prove that eight half-inch cubes make one cubic inch so cube count and volume separate, scale up to two and three fractional edges, apply the formulas in context, and read B as a finished base area. Students who struggle here almost always carry gaps from earlier grades. The most common are shaky fraction multiplication and a thin picture of volume as layers of unit cubes, both grade 5 work, sitting on top of even older gaps in whole-number multiplication and rectangle area. Intervention should rebuild those layers from the bottom, then return to the fractional edges.",
     "steps": [
       {
         "skill_id": "6GM4-S1",
@@ -40,521 +40,795 @@
   "skills": [
     {
       "skill_id": "6GM4-F1",
-      "name": "Multiply fractions, whole numbers, and mixed numbers accurately",
+      "name": "Multiply whole numbers fluently",
       "column": "foundation",
       "parent_standard": "6.GM.4",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 5,
-        "description": "Multiply a fraction by a fraction and a fraction by a whole number",
-        "check_question": "What is 1/2 x 1/3?"
+        "grade": 3,
+        "description": "Multiply two whole numbers using equal groups or an array.",
+        "check_question": "What is 6 x 4?"
       },
-      "i_do_script": "Every volume problem in this standard ends with multiplying fractions, so that move has to be solid first. Model 2 1/2 x 1 1/2 out loud: rewrite each mixed number as an improper fraction (5/2 and 3/2), multiply straight across to get 15/4, and rename it 3 3/4. Do NOT multiply the whole parts and fraction parts separately -- show the student why 2 x 1 = 2 plus 1/2 x 1/2 = 1/4 misses the two cross pieces.",
+      "i_do_script": "Multiplying is a fast way to count equal groups, and every volume problem later ends in it. Watch 6 x 4: I make 6 rows with 4 in each row and count 24, so 6 x 4 = 24. I never add the two numbers, because 6 + 4 is only 10 and that leaves most of the group uncounted. Say the groups out loud: 6 groups of 4 is 24.",
       "canonical_error": {
-        "pattern": "Multiplies the whole-number parts and the fraction parts of mixed numbers separately",
-        "example": "For 2 1/2 x 1 1/2, student computes 2 x 1 = 2 and 1/2 x 1/2 = 1/4, then answers 2 1/4 instead of 3 3/4",
-        "why": "The student treats a mixed number as two separate numbers instead of one quantity. Multiplication distributes over BOTH parts of BOTH numbers, so splitting them drops the two cross products (2 x 1/2 and 1 x 1/2)."
+        "pattern": "Adds the two factors instead of multiplying them",
+        "example": "For 6 x 4, writes 10 instead of 24",
+        "why": "The student reads x as +. Multiplication means equal groups: 6 x 4 is 6 groups of 4, which is 24. Adding 6 and 4 gives 10 and leaves most of the group uncounted."
       },
-      "redirect_script": {
-        "stop": "Hold on -- mixed numbers can't be split like that.",
-        "prompt": "Rewrite each mixed number as an improper fraction first. 2 1/2 is 5/2 and 1 1/2 is 3/2. Now multiply straight across: top times top, bottom times bottom. What do you get?",
-        "praise": "You converted to improper fractions and multiplied straight across -- that method never misses a piece."
-      },
-      "item_template": "A single multiplication: fraction x fraction, fraction x whole number, or mixed number x fraction/whole. NR (numeric response). Stems short enough for a timed fluency sprint.",
+      "item_template": "A single whole-number multiplication with one-digit or small factors. Student gives the product. Short response fluency bank, no calculator.",
       "sample_items": [
         {
-          "stem": "What is 1/2 x 1/3?",
-          "answer": "1/6",
-          "choices": null,
-          "distractor_logic": "Watch for adding numerators and denominators, or for cross-multiplying instead of multiplying straight across"
+          "stem": "6 x 4",
+          "answer": "24"
         },
         {
-          "stem": "What is 1/2 x 3/4?",
-          "answer": "3/8",
-          "choices": null,
-          "distractor_logic": "Watch for adding numerators and denominators, or for cross-multiplying instead of multiplying straight across"
+          "stem": "7 x 3",
+          "answer": "21"
         },
         {
-          "stem": "What is 2/3 x 1/4?",
-          "answer": "1/6",
-          "choices": null,
-          "distractor_logic": "Watch for adding numerators and denominators, or for cross-multiplying instead of multiplying straight across"
+          "stem": "8 x 5",
+          "answer": "40"
         },
         {
-          "stem": "What is 3/4 x 4/5?",
-          "answer": "3/5",
-          "choices": null,
-          "distractor_logic": "Watch for adding numerators and denominators, or for cross-multiplying instead of multiplying straight across"
+          "stem": "9 x 6",
+          "answer": "54"
         },
         {
-          "stem": "What is 1/2 x 8?",
-          "answer": "4",
-          "choices": null,
-          "distractor_logic": "Watch for multiplying only part of the mixed number by the whole number, or for treating the fraction as division"
+          "stem": "4 x 4",
+          "answer": "16"
         },
         {
-          "stem": "What is 1/3 x 9?",
-          "answer": "3",
-          "choices": null,
-          "distractor_logic": "Watch for multiplying only part of the mixed number by the whole number, or for treating the fraction as division"
+          "stem": "3 x 8",
+          "answer": "24"
         },
         {
-          "stem": "What is 3/4 x 8?",
-          "answer": "6",
-          "choices": null,
-          "distractor_logic": "Watch for multiplying only part of the mixed number by the whole number, or for treating the fraction as division"
+          "stem": "7 x 7",
+          "answer": "49"
         },
         {
-          "stem": "What is 2/5 x 10?",
-          "answer": "4",
-          "choices": null,
-          "distractor_logic": "Watch for multiplying only part of the mixed number by the whole number, or for treating the fraction as division"
+          "stem": "6 x 8",
+          "answer": "48"
         },
         {
-          "stem": "What is 2 1/2 x 2?",
-          "answer": "5",
-          "choices": null,
-          "distractor_logic": "Watch for multiplying only part of the mixed number by the whole number, or for treating the fraction as division"
-        },
-        {
-          "stem": "What is 1 1/2 x 4?",
-          "answer": "6",
-          "choices": null,
-          "distractor_logic": "Watch for multiplying only part of the mixed number by the whole number, or for treating the fraction as division"
-        },
-        {
-          "stem": "What is 2 1/2 x 1 1/2?",
-          "answer": "3 3/4",
-          "choices": null,
-          "distractor_logic": "Watch for 2 1/4 -- multiplying the whole parts and the fraction parts separately instead of converting to improper fractions"
-        },
-        {
-          "stem": "What is 1 1/4 x 8?",
-          "answer": "10",
-          "choices": null,
-          "distractor_logic": "Watch for multiplying only part of the mixed number by the whole number, or for treating the fraction as division"
-        },
-        {
-          "stem": "What is 3 1/2 x 2?",
-          "answer": "7",
-          "choices": null,
-          "distractor_logic": "Watch for multiplying only part of the mixed number by the whole number, or for treating the fraction as division"
-        },
-        {
-          "stem": "What is 1 1/3 x 3/4?",
-          "answer": "1",
-          "choices": null,
-          "distractor_logic": "Watch for adding numerators and denominators, or for cross-multiplying instead of multiplying straight across"
-        },
-        {
-          "stem": "What is 2 1/4 x 4?",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "Watch for multiplying only part of the mixed number by the whole number, or for treating the fraction as division"
-        },
-        {
-          "stem": "What is 1 1/2 x 1 1/2?",
-          "answer": "2 1/4",
-          "choices": null,
-          "distractor_logic": "Watch for 1 1/4 -- multiplying the whole parts and the fraction parts separately instead of converting to improper fractions"
+          "stem": "5 x 9",
+          "answer": "45"
         }
       ],
+      "redirect_script": {
+        "stop": "Did you add those numbers or multiply them?",
+        "prompt": "Multiplication counts equal groups. For 6 x 4, make 6 rows of 4 and count, or add 4 six times. Adding 6 and 4 only gives 10 and misses the rest of the group.",
+        "praise": "You counted the groups and multiplied, that is exactly it."
+      },
       "vocabulary": [
         {
-          "term": "Numerator",
-          "definition": "The top number of a fraction -- how many parts you have."
+          "term": "Factor",
+          "definition": "A number being multiplied. In 6 x 4, both 6 and 4 are factors."
         },
         {
-          "term": "Denominator",
-          "definition": "The bottom number of a fraction -- how many equal parts make one whole."
+          "term": "Product",
+          "definition": "The answer to a multiplication. The product of 6 and 4 is 24."
         },
         {
-          "term": "Mixed number",
-          "definition": "A whole number and a fraction together, like 2 1/2."
-        },
-        {
-          "term": "Improper fraction",
-          "definition": "A fraction whose top is bigger than its bottom, like 5/2 -- another way to write 2 1/2."
+          "term": "Array",
+          "definition": "Objects arranged in equal rows and columns, a picture of multiplication."
         }
       ],
       "next_steps": {
-        "if_pass": "6GM4-F2",
-        "if_fail": "Review grade-5 fraction multiplication with area models before returning to this skill."
+        "if_pass": "6GM4-B1",
+        "if_fail": "Review grade 3 multiplication with arrays and equal groups before returning to this skill."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write on the board: 2 1/2 x 1 1/2 = ?"
+          "text": "Draw 6 rows of dots with 4 dots in each row."
         },
         {
           "kind": "ask",
-          "text": "Before we compute -- estimate. 2 1/2 groups of 1 1/2: should the answer be bigger or smaller than 2 1/2? Why?"
+          "text": "How many dots are in one row? How many rows are there?"
         },
         {
           "kind": "say",
-          "text": "Mixed numbers are sneaky to multiply, so we rename them first. 2 1/2 means 5 halves, so we write 5/2. 1 1/2 means 3 halves, so we write 3/2."
-        },
-        {
-          "kind": "ask",
-          "text": "Now that both are plain fractions, how do we multiply two fractions?"
-        },
-        {
-          "kind": "show",
-          "text": "Write: 5/2 x 3/2 = 15/4. Top times top, bottom times bottom."
-        },
-        {
-          "kind": "ask",
-          "text": "15/4 is an improper fraction. How many whole ones are hiding in 15 fourths, and what's left over?"
+          "text": "This array shows 6 groups of 4. Counting all the dots gives 24, so 6 x 4 = 24. Multiplying is faster than adding 4 six times."
         },
         {
           "kind": "watch",
-          "text": "If the student had answered 2 1/4 at the start (2 x 1 and 1/2 x 1/2), don't just correct it -- compare it to the estimate. 2 1/4 is smaller than 2 1/2, but we agreed the answer had to be BIGGER. Let that contradiction drive the fix."
+          "text": "If a student says 10, they added 6 + 4. Point at the array: adding names just two numbers, but the array holds 24 dots."
         },
         {
-          "kind": "say",
-          "text": "So 2 1/2 x 1 1/2 = 3 3/4. Convert to improper fractions, multiply straight across, rename. Same three moves every time."
+          "kind": "ask",
+          "text": "Your turn: build 7 rows of 3 and tell me 7 x 3."
         }
       ]
     },
     {
       "skill_id": "6GM4-F2",
-      "name": "Understand volume as the count of unit cubes filling a prism",
+      "name": "Find the area of a rectangle by multiplying side lengths",
       "column": "foundation",
       "parent_standard": "6.GM.4",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 5,
-        "description": "Recognize volume as an attribute measured by packing a solid with unit cubes (5.M.4/5.M.5)",
-        "check_question": "A box holds 2 layers of 6 cubes each. How many cubes fill the box?"
+        "grade": 3,
+        "description": "Find the area of a rectangle by covering it with unit squares and multiplying the side lengths.",
+        "check_question": "A rectangle is 4 units long and 3 units wide. What is its area?"
       },
-      "i_do_script": "Volume answers one question: how many unit cubes fit inside with no gaps? Model with a 4 x 3 x 2 box: the bottom layer is 4 rows of 3, so 12 cubes, and there are 2 layers, so 24 cubes -- the volume is 24 cubic units. Say 'layer' out loud every time; the layer picture is what makes V = l x w x h feel obvious instead of magical.",
+      "i_do_script": "Area tells how many unit squares cover a rectangle, and it is the picture underneath every base and layer in volume. Watch a 4 by 3 rectangle: one row holds 4 squares and there are 3 rows, so I multiply 4 x 3 = 12 square units. I do not add the sides, because 4 + 3 = 7 counts steps along an edge, not the squares inside. Multiply the two side lengths and label the answer in square units.",
       "canonical_error": {
-        "pattern": "Combines the three dimensions additively instead of seeing layers of cubes",
-        "example": "For a box 4 units by 3 units by 2 units, student answers 9 (4 + 3 + 2) instead of 24",
-        "why": "The student sees three labeled numbers and reaches for the most familiar way to combine them -- addition. They haven't built the image of a layer of cubes (4 x 3) repeated 2 times, which is what makes volume multiplicative."
+        "pattern": "Adds the two side lengths instead of multiplying them",
+        "example": "For a 4 by 3 rectangle, writes 7 (4 + 3) instead of 12",
+        "why": "The student combines the sides the way perimeter does. Area counts the squares inside, which is 3 rows of 4, so the side lengths must be multiplied, not added."
       },
-      "redirect_script": {
-        "stop": "Wait -- let's build it instead of adding it.",
-        "prompt": "Picture just the bottom layer of cubes. How many rows, and how many cubes in each row? Multiply those to count one layer. Now, how many layers stack up to the top? Multiply again.",
-        "praise": "You counted a layer and stacked it -- that's exactly what volume means."
-      },
-      "item_template": "A prism with whole-number dimensions (given in words or on a labeled figure). Student counts or computes the number of unit cubes / cubic units. NR (numeric response).",
+      "item_template": "A rectangle with whole-number side lengths, given in words or on a grid. Student multiplies the side lengths to find the area in square units. Short response fluency bank, no calculator.",
       "sample_items": [
         {
-          "stem": "A box is 4 units long, 3 units wide, and 2 units tall. It is filled completely with cubes that are 1 unit on each edge.\n\nHow many unit cubes fill the box?",
-          "answer": "24",
-          "choices": null,
-          "distractor_logic": "Watch for 9 (adding the three dimensions) or 12 (counting only the bottom layer)",
-          "render_data": {
-            "type": "rectangular_prism",
-            "front_face": "106.7,200.0 193.3,200.0 193.3,150.0 106.7,150.0",
-            "top_face": "106.7,150.0 193.3,150.0 225.8,131.2 139.2,131.2",
-            "right_face": "193.3,200.0 225.8,181.2 225.8,131.2 193.3,150.0",
-            "hidden_edges": [
-              {
-                "x1": 106.7,
-                "y1": 200,
-                "x2": 139.2,
-                "y2": 181.2
-              },
-              {
-                "x1": 139.2,
-                "y1": 181.2,
-                "x2": 225.8,
-                "y2": 181.2
-              },
-              {
-                "x1": 139.2,
-                "y1": 181.2,
-                "x2": 139.2,
-                "y2": 131.2
-              }
-            ],
-            "length_label": "l = 4 units",
-            "width_label": "w = 3 units",
-            "height_label": "h = 2 units",
-            "length_label_pos": {
-              "x": 150.0,
-              "y": 218
-            },
-            "width_label_pos": {
-              "x": 219.5,
-              "y": 202.6
-            },
-            "height_label_pos": {
-              "x": 91.7,
-              "y": 175.0
-            }
-          }
+          "stem": "A rectangle is 4 units long and 3 units wide. What is its area in square units?",
+          "answer": "12 square units"
         },
         {
-          "stem": "A box is 5 units long, 2 units wide, and 3 units tall. It is filled completely with cubes that are 1 unit on each edge.\n\nHow many unit cubes fill the box?",
-          "answer": "30",
-          "choices": null,
-          "distractor_logic": "Watch for 10 (adding the three dimensions) or 10 (counting only the bottom layer)",
-          "render_data": {
-            "type": "rectangular_prism",
-            "front_face": "106.7,200.0 193.3,200.0 193.3,140.0 106.7,140.0",
-            "top_face": "106.7,140.0 193.3,140.0 210.6,130.0 124.0,130.0",
-            "right_face": "193.3,200.0 210.6,190.0 210.6,130.0 193.3,140.0",
-            "hidden_edges": [
-              {
-                "x1": 106.7,
-                "y1": 200,
-                "x2": 124.0,
-                "y2": 190.0
-              },
-              {
-                "x1": 124.0,
-                "y1": 190.0,
-                "x2": 210.6,
-                "y2": 190.0
-              },
-              {
-                "x1": 124.0,
-                "y1": 190.0,
-                "x2": 124.0,
-                "y2": 130.0
-              }
-            ],
-            "length_label": "l = 5 units",
-            "width_label": "w = 2 units",
-            "height_label": "h = 3 units",
-            "length_label_pos": {
-              "x": 150.0,
-              "y": 218
-            },
-            "width_label_pos": {
-              "x": 212.0,
-              "y": 207.0
-            },
-            "height_label_pos": {
-              "x": 91.7,
-              "y": 170.0
-            }
-          }
+          "stem": "A rectangle is 5 units by 2 units. What is its area in square units?",
+          "answer": "10 square units"
         },
         {
-          "stem": "One layer of a box holds 12 unit cubes. The box holds 3 layers with no gaps. How many unit cubes fill the box?",
-          "answer": "36",
-          "choices": null,
-          "distractor_logic": "Watch for 15 (adding 12 + 3) -- the student isn't seeing repeated layers as multiplication"
+          "stem": "A rectangle is 6 units by 4 units. What is its area?",
+          "answer": "24 square units"
         },
         {
-          "stem": "A rectangular prism is shown below. It is 6 units long, 2 units wide, and 2 units tall.\n\nWhat is the volume, in cubic units, of the prism?",
-          "answer": "24",
-          "choices": null,
-          "distractor_logic": "Watch for 10 (adding the edges) or 12 (stopping after two dimensions)",
-          "render_data": {
-            "type": "rectangular_prism",
-            "front_face": "106.7,200.0 193.3,200.0 193.3,166.7 106.7,166.7",
-            "top_face": "106.7,166.7 193.3,166.7 207.7,158.3 121.1,158.3",
-            "right_face": "193.3,200.0 207.7,191.7 207.7,158.3 193.3,166.7",
-            "hidden_edges": [
-              {
-                "x1": 106.7,
-                "y1": 200,
-                "x2": 121.1,
-                "y2": 191.7
-              },
-              {
-                "x1": 121.1,
-                "y1": 191.7,
-                "x2": 207.7,
-                "y2": 191.7
-              },
-              {
-                "x1": 121.1,
-                "y1": 191.7,
-                "x2": 121.1,
-                "y2": 158.3
-              }
-            ],
-            "length_label": "l = 6 units",
-            "width_label": "w = 2 units",
-            "height_label": "h = 2 units",
-            "length_label_pos": {
-              "x": 150.0,
-              "y": 218
-            },
-            "width_label_pos": {
-              "x": 210.5,
-              "y": 207.8
-            },
-            "height_label_pos": {
-              "x": 91.7,
-              "y": 183.3
-            }
-          }
+          "stem": "A rectangle is 7 units by 3 units. What is its area?",
+          "answer": "21 square units"
         },
         {
-          "stem": "A rectangular prism is shown below. It is 3 units long, 3 units wide, and 3 units tall.\n\nWhat is the volume, in cubic units, of the prism?",
-          "answer": "27",
-          "choices": null,
-          "distractor_logic": "Watch for 9 (adding the edges) or 9 (stopping after two dimensions)",
-          "render_data": {
-            "type": "rectangular_prism",
-            "front_face": "106.7,200.0 193.3,200.0 193.3,100.0 106.7,100.0",
-            "top_face": "106.7,100.0 193.3,100.0 236.6,75.0 150.0,75.0",
-            "right_face": "193.3,200.0 236.6,175.0 236.6,75.0 193.3,100.0",
-            "hidden_edges": [
-              {
-                "x1": 106.7,
-                "y1": 200,
-                "x2": 150.0,
-                "y2": 175.0
-              },
-              {
-                "x1": 150.0,
-                "y1": 175.0,
-                "x2": 236.6,
-                "y2": 175.0
-              },
-              {
-                "x1": 150.0,
-                "y1": 175.0,
-                "x2": 150.0,
-                "y2": 75.0
-              }
-            ],
-            "length_label": "l = 3 units",
-            "width_label": "w = 3 units",
-            "height_label": "h = 3 units",
-            "length_label_pos": {
-              "x": 150.0,
-              "y": 218
-            },
-            "width_label_pos": {
-              "x": 225.0,
-              "y": 199.5
-            },
-            "height_label_pos": {
-              "x": 91.7,
-              "y": 150.0
-            }
-          }
+          "stem": "A square is 5 units on each side. What is its area?",
+          "answer": "25 square units"
         },
         {
-          "stem": "A prism is filled with 2 layers of 10 unit cubes each. What is its volume in cubic units?",
-          "answer": "20",
-          "choices": null,
-          "distractor_logic": "Watch for 12 (adding 2 + 10) instead of multiplying layers by cubes per layer"
+          "stem": "A rectangle is 8 units by 2 units. What is its area?",
+          "answer": "16 square units"
         },
         {
-          "stem": "A box holds exactly 18 unit cubes, and each cube is 1 cubic centimeter. What is the volume of the box, in cubic centimeters?",
-          "answer": "18",
-          "choices": null,
-          "distractor_logic": "Tests the definition itself: volume IS the count of unit cubes -- no extra computation needed"
+          "stem": "A rectangle is 9 units by 2 units. What is its area?",
+          "answer": "18 square units"
         },
         {
-          "stem": "A rectangular prism is shown below.\n\nHow many 1-unit cubes are needed to fill it, and what is its volume in cubic units?",
-          "answer": "14 cubes; 14 cubic units",
-          "choices": null,
-          "distractor_logic": "Checks that the student says the SAME number twice -- cube count and volume are the same thing here",
-          "render_data": {
-            "type": "rectangular_prism",
-            "front_face": "106.7,200.0 193.3,200.0 193.3,170.0 106.7,170.0",
-            "top_face": "106.7,170.0 193.3,170.0 206.3,162.5 119.7,162.5",
-            "right_face": "193.3,200.0 206.3,192.5 206.3,162.5 193.3,170.0",
-            "hidden_edges": [
-              {
-                "x1": 106.7,
-                "y1": 200,
-                "x2": 119.7,
-                "y2": 192.5
-              },
-              {
-                "x1": 119.7,
-                "y1": 192.5,
-                "x2": 206.3,
-                "y2": 192.5
-              },
-              {
-                "x1": 119.7,
-                "y1": 192.5,
-                "x2": 119.7,
-                "y2": 162.5
-              }
-            ],
-            "length_label": "l = 7 units",
-            "width_label": "w = 2 units",
-            "height_label": "h = 1 units",
-            "length_label_pos": {
-              "x": 150.0,
-              "y": 218
-            },
-            "width_label_pos": {
-              "x": 209.8,
-              "y": 208.2
-            },
-            "height_label_pos": {
-              "x": 91.7,
-              "y": 185.0
-            }
-          }
+          "stem": "One row of a rectangle holds 6 unit squares, and there are 3 rows. What is the area?",
+          "answer": "18 square units"
         }
       ],
+      "redirect_script": {
+        "stop": "Are you adding the sides or multiplying them?",
+        "prompt": "Area counts the unit squares inside. Multiply the two side lengths: a 4 by 3 rectangle has 3 rows of 4 squares, so 12. Adding the sides counts an edge, not the inside.",
+        "praise": "You multiplied the side lengths and labeled square units, that is area."
+      },
       "vocabulary": [
         {
-          "term": "Volume",
-          "definition": "The amount of space inside a solid -- measured by how many unit cubes fill it."
+          "term": "Area",
+          "definition": "The number of unit squares that cover a flat shape, labeled in square units."
         },
         {
-          "term": "Unit cube",
-          "definition": "A cube that is exactly 1 unit long on every edge."
+          "term": "Square unit",
+          "definition": "A square that is 1 unit on every side, used to measure area."
         },
         {
-          "term": "Cubic unit",
-          "definition": "The space one unit cube takes up; volume is always labeled in cubic units."
-        },
-        {
-          "term": "Layer",
-          "definition": "One flat level of cubes inside a prism; a prism is layers stacked on top of each other."
+          "term": "Side length",
+          "definition": "How long one side of a rectangle is."
         }
       ],
       "next_steps": {
-        "if_pass": "6GM4-S1",
-        "if_fail": "Build 2-layer prisms from linking cubes and count before returning to this skill."
+        "if_pass": "6GM4-B2",
+        "if_fail": "Review grade 3 area by tiling a rectangle with unit squares before returning to this skill."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Sketch (or display) a box labeled 4 units long, 3 units wide, 2 units tall."
+          "text": "Draw a rectangle 4 squares wide and 3 squares tall on grid paper."
         },
         {
           "kind": "ask",
-          "text": "If we filled this box with 1-unit cubes, describe just the BOTTOM layer. How many rows of cubes, and how many in each row?"
-        },
-        {
-          "kind": "ask",
-          "text": "So how many cubes are in that one layer? What operation did you just use?"
-        },
-        {
-          "kind": "ask",
-          "text": "The box is 2 units tall. How many of those layers stack inside it?"
-        },
-        {
-          "kind": "ask",
-          "text": "12 cubes per layer, 2 layers -- how many cubes in all?"
-        },
-        {
-          "kind": "watch",
-          "text": "If the student says 9, they added 4 + 3 + 2. Hand them 24 linking cubes (or draw the layers) and have them physically build the bottom layer -- the addition answer collapses the moment they see 12 cubes in one layer alone."
+          "text": "How many unit squares are in one row? How many rows fill the rectangle?"
         },
         {
           "kind": "say",
-          "text": "24 cubes means the volume is 24 cubic units. Volume is a COUNT of cubes -- length times width counts one layer, and height counts the layers."
+          "text": "Each row has 4 squares and there are 3 rows, so the rectangle holds 4 x 3 = 12 unit squares. The area is 12 square units. Area multiplies the two side lengths."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 7, they added 4 + 3. That counts steps along part of the border, not the squares inside. Have them shade the squares and count 12."
         },
         {
           "kind": "ask",
-          "text": "Without building it, how many unit cubes would fill a 5 by 2 by 3 box? Talk me through the layers."
+          "text": "Your turn: a rectangle is 5 wide and 2 tall. Shade it and give the area."
         }
       ]
     },
     {
+      "skill_id": "6GM4-B1",
+      "name": "Multiply fractions, whole numbers, and mixed numbers",
+      "column": "looking_back",
+      "parent_standard": "6.GM.4",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Multiply a fraction by a fraction and a fraction by a whole number.",
+        "check_question": "What is 1/2 x 1/3?"
+      },
+      "i_do_script": "Every fractional edge in a volume problem gets multiplied, so this move has to be automatic. Watch 2/3 x 1/2: I multiply the tops, 2 x 1 = 2, and the bottoms, 3 x 2 = 6, to get 2/6, which is 1/3. For a mixed number like 2 1/2 x 1 1/2, I first rewrite each as an improper fraction, 5/2 and 3/2, then multiply straight across to get 15/4, and rename it 3 3/4. I never multiply the whole parts and fraction parts separately, because that drops the cross pieces.",
+      "canonical_error": {
+        "pattern": "Multiplies the whole parts and the fraction parts of a mixed number separately",
+        "example": "For 2 1/2 x 1 1/2, computes 2 x 1 = 2 and 1/2 x 1/2 = 1/4, then answers 2 1/4 instead of 3 3/4",
+        "why": "The student treats a mixed number as two separate numbers. Multiplying has to cover both parts of both numbers, so splitting them drops the cross products 2 x 1/2 and 1 x 1/2. Rewriting as improper fractions keeps every piece."
+      },
+      "item_template": "One multiplication: fraction by fraction, fraction by whole number, or mixed number by fraction or whole number. Numeric response, clean numbers, no calculator.",
+      "sample_items": [
+        {
+          "stem": "1/2 x 1/3",
+          "answer": "1/6"
+        },
+        {
+          "stem": "3/4 x 1/2",
+          "answer": "3/8"
+        },
+        {
+          "stem": "2/3 x 6",
+          "answer": "4"
+        },
+        {
+          "stem": "3/5 x 10",
+          "answer": "6"
+        },
+        {
+          "stem": "1/4 x 1/4",
+          "answer": "1/16"
+        },
+        {
+          "stem": "2 1/2 x 2",
+          "answer": "5"
+        },
+        {
+          "stem": "1 1/3 x 3/4",
+          "answer": "1"
+        },
+        {
+          "stem": "3/4 x 4/5",
+          "answer": "3/5"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Can a mixed number be split into two multiplications like that?",
+        "prompt": "Rewrite each mixed number as an improper fraction first, then multiply straight across: top times top, bottom times bottom. 2 1/2 is 5/2 and 1 1/2 is 3/2.",
+        "praise": "You converted to improper fractions and multiplied straight across, that method never misses a piece."
+      },
+      "vocabulary": [
+        {
+          "term": "Numerator",
+          "definition": "The top number of a fraction, how many parts you have."
+        },
+        {
+          "term": "Denominator",
+          "definition": "The bottom number of a fraction, how many equal parts make one whole."
+        },
+        {
+          "term": "Improper fraction",
+          "definition": "A fraction whose top is bigger than its bottom, like 5/2, another way to write 2 1/2."
+        },
+        {
+          "term": "Mixed number",
+          "definition": "A whole number and a fraction together, like 2 1/2."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6GM4-S1",
+        "if_fail": "6GM4-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a square and cut it into 3 equal columns; shade 2 of them to show 2/3."
+        },
+        {
+          "kind": "ask",
+          "text": "Now cut the same square into 2 rows and keep just 1 row. What part of the shaded 2/3 are we keeping?"
+        },
+        {
+          "kind": "say",
+          "text": "Cutting the 2/3 into 2 equal rows and keeping one row leaves 2 out of 6 small rectangles, so 2/3 x 1/2 = 2/6 = 1/3. Multiplying tops and bottoms, 2 x 1 over 3 x 2, gives the same 2/6."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 2/5 by adding, point at the grid: the small rectangles come from 3 x 2, not 3 + 2."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: multiply 3/4 x 1/2 by multiplying the tops and the bottoms."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "1/2 x 1/4",
+          "answer": "1/8"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "1/3 x 6",
+          "answer": "2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2/3 x 1/2",
+          "answer": "1/3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "3/4 x 8",
+          "answer": "6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2/5 x 3/4",
+          "answer": "3/10"
+        },
+        {
+          "difficulty": "core",
+          "stem": "1 1/2 x 4",
+          "answer": "6"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "2 1/2 x 1 1/2",
+          "answer": "3 3/4"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Maya wrote 2 1/2 x 1 1/2 = 2 1/4. Find her mistake and fix it.",
+          "shown_work": [
+            "2 1/2 x 1 1/2",
+            "2 x 1 = 2 and 1/2 x 1/2 = 1/4",
+            "= 2 1/4"
+          ],
+          "answer": "She multiplied the whole parts and the fraction parts separately, which drops the cross pieces. Rewrite as improper fractions: 5/2 x 3/2 = 15/4 = 3 3/4."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Part of a Part",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper",
+            "Two colored pencils"
+          ],
+          "instructions": "1. Each pair gets a product like 2/3 x 1/2.\n2. Shade 2/3 of a grid square in the first color by cutting it into 3 columns.\n3. Cut the same square into 2 rows and outline just 1 row in the second color.\n4. Count the small rectangles shaded in both: 2 out of 6, so 2/6 = 1/3.\n5. Write 2/3 x 1/2 = 2/6 and check it against multiplying tops and bottoms. Repeat with 3/4 x 1/2 and 1/2 x 1/2."
+        },
+        {
+          "type": "matching",
+          "title": "Improper First",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: mixed-number products and their improper-fraction setups"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each mixed-number product like 2 1/2 x 1 1/2 to its improper-fraction setup 5/2 x 3/2.\n3. To claim a match, say the product as a mixed number out loud.\n4. Two decoy cards used the split-the-parts error; set them aside and explain the mistake.",
+          "content": {
+            "pairs": [
+              {
+                "left": "2 1/2 x 1 1/2",
+                "right": "5/2 x 3/2"
+              },
+              {
+                "left": "1 1/2 x 1 1/2",
+                "right": "3/2 x 3/2"
+              },
+              {
+                "left": "1 1/4 x 2",
+                "right": "5/4 x 2/1"
+              },
+              {
+                "left": "2 1/3 x 1 1/2",
+                "right": "7/3 x 3/2"
+              }
+            ],
+            "decoys": [
+              "2 1/2 x 1 1/2 = 2 1/4",
+              "1 1/2 x 1 1/2 = 1 1/4"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The area-model grid shows fraction multiplication as a part of a part before the top-times-top rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The split-the-mixed-number error is stable and predictable; finding and fixing it in worked examples confronts it directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Are these two numbers being multiplied or added? How can you tell?",
+          "What does 2/3 x 1/2 mean in the grid picture, a part of a part?",
+          "Why do we rewrite a mixed number as an improper fraction before multiplying?",
+          "When you multiply straight across, what happens to the tops? To the bottoms?",
+          "Is your product bigger or smaller than you started with, and does that make sense?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student multiplies the whole parts and fraction parts of a mixed number separately.",
+            "say": "A mixed number is one quantity. Rewrite 2 1/2 as 5/2 and 1 1/2 as 3/2, then multiply straight across so no piece is dropped.",
+            "praise": "You converted first, so every cross piece was counted."
+          },
+          {
+            "if_you_see": "Student adds numerators and denominators instead of multiplying.",
+            "say": "Multiplying is not adding. For 2/3 x 1/2, multiply the tops, 2 x 1, and the bottoms, 3 x 2, to get 2/6.",
+            "praise": "You multiplied tops and bottoms, that is the rule."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "1/2 x 1/3",
+            "look_for": "1/6, from 1 x 1 over 2 x 3, not 2/5 from adding."
+          },
+          {
+            "prompt": "2 1/2 x 2",
+            "look_for": "5, from 5/2 x 2 = 10/2, not 4 1/2 from doubling only the whole part."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Multiply 2 1/2 x 1 1/2.",
+        "answer": "3 3/4",
+        "steps": [
+          {
+            "math": "2 1/2 = 5/2 and 1 1/2 = 3/2",
+            "annotation": "Rewrite each mixed number as an improper fraction."
+          },
+          {
+            "math": "5/2 x 3/2",
+            "annotation": "Set up the multiplication with the improper fractions."
+          },
+          {
+            "math": "= 15/4",
+            "annotation": "Multiply straight across: 5 x 3 over 2 x 2."
+          },
+          {
+            "math": "= 3 3/4",
+            "annotation": "Rename the improper fraction: 15/4 is 3 wholes and 3/4."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Multiply 1 1/2 x 2 1/3.",
+        "answer": "3 1/2",
+        "steps": [
+          {
+            "math": "1 1/2 = 3/2 and 2 1/3 = 7/3",
+            "annotation": "Rewrite each mixed number as an improper fraction.",
+            "given": true
+          },
+          {
+            "math": "3/2 x 7/3",
+            "annotation": "Set up the multiplication.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply straight across, top times top and bottom times bottom.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Rename the improper fraction as a mixed number.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I rewrote ___ as ___ and ___ as ___ so I could multiply straight across.",
+        "The product is ___ because I multiplied the tops and the bottoms."
+      ],
+      "fluency_source": "6GM4-F1"
+    },
+    {
+      "skill_id": "6GM4-B2",
+      "name": "Find the volume of a right rectangular prism with whole-number edges",
+      "column": "looking_back",
+      "parent_standard": "6.GM.4",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Find volume by counting unit cubes and by multiplying the edge lengths of a prism with whole-number edges.",
+        "check_question": "A box is 4 units by 3 units by 2 units. What is its volume?"
+      },
+      "i_do_script": "Volume counts the unit cubes that fill a box with no gaps, and the layer picture makes the formula obvious. Watch a 4 by 3 by 2 box: the bottom layer is 4 rows of 3, so 12 cubes, and 2 layers stack up, so 12 x 2 = 24 cubic units. That is exactly V = l x w x h, 4 x 3 x 2 = 24, and it is also V = B x h, where the base area B is 12. I never add the three edges, because 4 + 3 + 2 = 9 counts a path along the box, not the space inside.",
+      "canonical_error": {
+        "pattern": "Adds the three edge lengths instead of multiplying them",
+        "example": "For a 4 by 3 by 2 box, answers 9 (4 + 3 + 2) instead of 24",
+        "why": "Three labeled numbers trigger the habit of adding. Volume is layers of cubes: 4 x 3 = 12 in one layer, taken 2 times, so the edges must be multiplied."
+      },
+      "item_template": "A right rectangular prism with whole-number edges, given in words or as a base area with a height. Student finds the volume in cubic units. Numeric response, no calculator.",
+      "sample_items": [
+        {
+          "stem": "A box is 4 units by 3 units by 2 units. How many unit cubes fill it?",
+          "answer": "24"
+        },
+        {
+          "stem": "A box is 5 units by 2 units by 3 units. What is its volume in cubic units?",
+          "answer": "30"
+        },
+        {
+          "stem": "One layer of a box holds 12 cubes and the box holds 3 layers. What is the volume in cubic units?",
+          "answer": "36"
+        },
+        {
+          "stem": "A prism is 6 units by 2 units by 2 units. What is its volume in cubic units?",
+          "answer": "24"
+        },
+        {
+          "stem": "A cube is 3 units on each edge. What is its volume in cubic units?",
+          "answer": "27"
+        },
+        {
+          "stem": "A prism has a base area of 10 square units and a height of 4 units. What is the volume?",
+          "answer": "40"
+        },
+        {
+          "stem": "A box holds 18 unit cubes, each 1 cubic centimeter. What is the volume in cubic centimeters?",
+          "answer": "18"
+        },
+        {
+          "stem": "A prism is 7 units by 2 units by 1 unit. What is its volume in cubic units?",
+          "answer": "14"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you add those three edges or multiply them?",
+        "prompt": "Volume multiplies. Count one layer first: length times width. Then multiply by the height to stack the layers. For 4 by 3 by 2, that is 12 then 24.",
+        "praise": "You counted a layer and stacked it, that is volume."
+      },
+      "vocabulary": [
+        {
+          "term": "Volume",
+          "definition": "The amount of space inside a solid, counted in unit cubes."
+        },
+        {
+          "term": "Unit cube",
+          "definition": "A cube that is 1 unit on every edge, worth 1 cubic unit."
+        },
+        {
+          "term": "Layer",
+          "definition": "One flat level of unit cubes; a prism is layers stacked to its height."
+        },
+        {
+          "term": "Base area (B)",
+          "definition": "The number of unit squares covering the bottom of a prism, equal to length times width."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6GM4-S1",
+        "if_fail": "6GM4-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Build or sketch a box 4 cubes long, 3 cubes wide, and 2 cubes tall."
+        },
+        {
+          "kind": "ask",
+          "text": "How many cubes are in just the bottom layer? What did you multiply to get it?"
+        },
+        {
+          "kind": "ask",
+          "text": "How many of those layers stack to the top?"
+        },
+        {
+          "kind": "say",
+          "text": "One layer is 4 x 3 = 12 cubes, and 2 layers make 12 x 2 = 24 cubic units. That is V = l x w x h and also V = B x h with B = 12."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 9, they added 4 + 3 + 2. Have them build the bottom layer alone; seeing 12 cubes in one layer collapses the adding answer."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: how many unit cubes fill a 5 by 2 by 3 box? Talk through the layers."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A box is 3 units by 2 units by 4 units. What is its volume in cubic units?",
+          "answer": "24"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A box is 5 units by 2 units by 2 units. What is its volume in cubic units?",
+          "answer": "20"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A prism is 6 units by 4 units by 2 units. What is its volume in cubic units?",
+          "answer": "48"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cube is 4 units on each edge. What is its volume in cubic units?",
+          "answer": "64"
+        },
+        {
+          "difficulty": "core",
+          "stem": "One layer of a box holds 10 unit cubes and the box has 4 layers. What is the volume in cubic units?",
+          "answer": "40"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A prism has a base area of 12 square units and a height of 5 units. Use V = B x h to find the volume.",
+          "answer": "60"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A prism is 7 units by 2 units by 2 units. What is its volume, and how does it compare to a 7 by 2 by 1 prism?",
+          "answer": "28 cubic units, which is double the 14 cubic units of the 7 by 2 by 1 prism because it has twice as many layers."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Sam found the volume of a 4 by 3 by 2 box. Find his mistake and fix it.",
+          "shown_work": [
+            "V = 4 + 3 + 2",
+            "V = 9 cubic units"
+          ],
+          "answer": "24 cubic units. Volume multiplies the edges: V = 4 x 3 x 2 = 24. Adding the edges counts a path, not the cubes inside."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build and Count the Layers",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Linking cubes",
+            "Whiteboard"
+          ],
+          "instructions": "1. Each group builds the bottom layer of a 4 by 3 box and counts it, 12 cubes.\n2. Stack a second identical layer and count the total, 24.\n3. Write V = 4 x 3 x 2 = 24 and circle the 12 as the base area B.\n4. Rebuild as a 5 by 2 box with 3 layers and write V = 5 x 2 x 3 = 30.\n5. Debrief: why does the height tell how many layers, and why do we multiply instead of add?"
+        },
+        {
+          "type": "matching",
+          "title": "Prism to Volume Match",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Dimension cards and volume cards"
+          ],
+          "instructions": "1. Lay the dimension cards face up and the volume cards in a face-down pool.\n2. Flip a volume card and race to match it to the prism whose edges produce it.\n3. Defend every match out loud with V = l x w x h.\n4. Two decoy volume cards are sums of the edges; if a pair grabs one, have them multiply to check.",
+          "content": {
+            "pairs": [
+              {
+                "left": "4 by 3 by 2",
+                "right": "24 cubic units"
+              },
+              {
+                "left": "5 by 2 by 3",
+                "right": "30 cubic units"
+              },
+              {
+                "left": "6 by 4 by 2",
+                "right": "48 cubic units"
+              },
+              {
+                "left": "3 by 3 by 3",
+                "right": "27 cubic units"
+              }
+            ],
+            "decoys": [
+              "9 cubic units",
+              "10 cubic units"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building layers with linking cubes grounds volume as stacked area before the formula is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The add-the-edges error is concrete and visible; find-and-fix work makes students say why volume multiplies."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Before you compute, are you adding or multiplying, and why does volume need multiplying?",
+          "How many cubes are in one layer of this prism?",
+          "What does the height tell you about the number of layers?",
+          "Where is the base area B in your prism, and what is it here?",
+          "Your answer is in cubic units. What did the word cubic tell us we counted?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds the three edges, such as 4 + 3 + 2 = 9.",
+            "say": "Volume is layers of cubes, never a sum. Count one layer, 4 x 3 = 12, then multiply by 2 layers for 24.",
+            "praise": "You counted a layer and stacked it, so the edges got multiplied."
+          },
+          {
+            "if_you_see": "Student multiplies length and width but forgets the height.",
+            "say": "You found one layer. The box is more than one layer tall, so multiply by the height to stack them.",
+            "praise": "You added the height back in by multiplying, so all three edges counted."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A 5 by 2 by 3 box, volume in cubic units.",
+            "look_for": "30, from 5 x 2 x 3. A 10 means the student added the edges."
+          },
+          {
+            "prompt": "Base area 8 square units, height 4 units, volume?",
+            "look_for": "32, using V = B x h, not 12 from adding."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Find the volume of a box that is 4 units by 3 units by 2 units.",
+        "answer": "24 cubic units",
+        "steps": [
+          {
+            "math": "V = l x w x h",
+            "annotation": "Volume multiplies all three edges, never adds them."
+          },
+          {
+            "math": "V = 4 x 3 x 2",
+            "annotation": "Copy each edge into the formula."
+          },
+          {
+            "math": "V = 12 x 2",
+            "annotation": "Multiply length and width to count one layer: 4 x 3 = 12 cubes."
+          },
+          {
+            "math": "V = 24 cubic units",
+            "annotation": "Multiply by the height to stack 2 layers: 12 x 2 = 24."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Find the volume of a box that is 5 units by 3 units by 2 units.",
+        "answer": "30 cubic units",
+        "steps": [
+          {
+            "math": "V = l x w x h",
+            "annotation": "Volume multiplies all three edges.",
+            "given": true
+          },
+          {
+            "math": "V = 5 x 3 x 2",
+            "annotation": "Copy each edge into the formula.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply length and width to count one layer.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply by the height and label in cubic units.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "One layer holds ___ cubes, and there are ___ layers, so the volume is ___.",
+        "I multiplied ___ x ___ x ___ because volume counts cubes, not a path around the box."
+      ],
+      "fluency_source": "6GM4-F2"
+    },
+    {
       "skill_id": "6GM4-S1",
       "name": "Calculate the volume of a prism with one fractional edge",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.GM.4",
       "engine_stems": [
         1
@@ -1197,7 +1471,7 @@
         "I multiplied all three edges: ___ x ___ x ___ = ___.",
         "I knew to multiply (not add) because volume counts layers of cubes."
       ],
-      "fluency_source": "6GM4-F1"
+      "fluency_source": "6GM4-B1"
     },
     {
       "skill_id": "6GM4-S2",
@@ -1869,7 +2143,7 @@
         "Each small cube is ___ of a cubic unit because ___ x ___ x ___ = ___.",
         "The cube count and l x w x h agree: ___ cubes x ___ each = ___."
       ],
-      "fluency_source": "6GM4-F1"
+      "fluency_source": "6GM4-B1"
     },
     {
       "skill_id": "6GM4-S3",
@@ -2702,7 +2976,7 @@
         "My volume line has three factors: ___ x ___ x ___.",
         "I know ___ is just a face's area because it only used two dimensions."
       ],
-      "fluency_source": "6GM4-F1"
+      "fluency_source": "6GM4-B1"
     },
     {
       "skill_id": "6GM4-S4",
@@ -3239,7 +3513,7 @@
         "One cube's volume is ___ because ___ x ___ x ___ = ___.",
         "I checked my count two ways: counting along edges and dividing ___ by ___."
       ],
-      "fluency_source": "6GM4-F1"
+      "fluency_source": "6GM4-B1"
     },
     {
       "skill_id": "6GM4-S5",
@@ -3996,7 +4270,7 @@
         "B = ___ square units because the base is ___ times ___.",
         "V = Bh worked because B already holds l x w -- then I multiplied by the height."
       ],
-      "fluency_source": "6GM4-F1"
+      "fluency_source": "6GM4-B1"
     },
     {
       "skill_id": "6GM4-S6",
@@ -4578,13 +4852,13 @@
         "The volume is ___, so ___ x ___ x h = ___ and h = ___ / ___.",
         "My forward check: ___ x ___ x ___ = ___, which matches the given volume."
       ],
-      "fluency_source": "6GM4-F1"
+      "fluency_source": "6GM4-B1"
     }
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation",
-      "description": "Tier III -- prerequisite skills from grade 5. If a student can't access Looking Back, start here.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-4) prerequisite skills. Start intervention here.",
       "skills": [
         "6GM4-F1",
         "6GM4-F2"
@@ -4592,15 +4866,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "The easiest on-standard work -- one fractional edge. Fix this first if grade-level items are out of reach.",
+      "description": "One grade below (grade 5) skills that feed this standard directly.",
       "skills": [
-        "6GM4-S1"
+        "6GM4-B1",
+        "6GM4-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "Core 6.GM.4 skills -- packing with unit-fraction cubes, V = lwh with fractional dimensions, real-world problems, and V = Bh.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "6GM4-S1",
         "6GM4-S2",
         "6GM4-S3",
         "6GM4-S4",
@@ -4609,7 +4885,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Extension -- reverse the formula to find missing dimensions. The bridge to 7.GM.3.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "6GM4-S6"
       ]
@@ -4618,6 +4894,8 @@
   "skill_sequence": [
     "6GM4-F1",
     "6GM4-F2",
+    "6GM4-B1",
+    "6GM4-B2",
     "6GM4-S1",
     "6GM4-S2",
     "6GM4-S3",
@@ -4630,9 +4908,15 @@
     "6GM4-F2": [
       "6GM4-F1"
     ],
-    "6GM4-S1": [
-      "6GM4-F1",
+    "6GM4-B1": [
+      "6GM4-F1"
+    ],
+    "6GM4-B2": [
       "6GM4-F2"
+    ],
+    "6GM4-S1": [
+      "6GM4-B1",
+      "6GM4-B2"
     ],
     "6GM4-S2": [
       "6GM4-S1"
@@ -4651,18 +4935,22 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S3 (V = lwh with fractional dimensions) -- the standard's computational center. If they pass, check the applications and the reverse direction (S4, S5, then S6). If they fail, drop back to S1 (one fractional edge) and the conceptual anchor S2; a student who can't do S1 likely needs the F1 fraction-multiplication or F2 unit-cube foundations.",
+    "description": "Start with S3, applying V = l x w x h when two or three edges are fractional, the standard's computational core. If the student passes, move up to the applications S4 and S5, and then the reverse-direction extension S6. If the student fails, drop below grade level: B1 checks grade 5 fraction multiplication and B2 checks grade 5 whole-number volume by counting unit cubes, the two skills every fractional-edge item leans on. If those wobble, the foundations F1 (whole-number multiplication) and F2 (area of a rectangle) locate the gap back in grade 3. S1 and S2 stay available to probe the standard's own one-edge and unit-cube-packing groundwork.",
     "entry_skill": "6GM4-S3",
     "if_pass": [
       "6GM4-S4",
-      "6GM4-S5"
+      "6GM4-S5",
+      "6GM4-S6"
     ],
     "if_fail": [
-      "6GM4-S1",
-      "6GM4-S2"
+      "6GM4-B1",
+      "6GM4-B2"
     ],
     "branch_skills": [
-      "6GM4-S6"
+      "6GM4-F1",
+      "6GM4-F2",
+      "6GM4-S1",
+      "6GM4-S2"
     ]
   }
 }

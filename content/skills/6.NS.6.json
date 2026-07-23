@@ -3,7 +3,7 @@
   "standard_text": "Find the greatest common factor of two whole numbers less than or equal to 100 and the least common multiple of two whole numbers less than or equal to 12. Use the distributive property to express a sum of two whole numbers from 1 to 100, with a common factor as a multiple of a sum of two whole numbers with no common factor.",
   "schema_version": 3,
   "progression": {
-    "narrative": "6.NS.6 asks students to do three related things with whole numbers: find the greatest common factor (GCF) of two numbers up to 100, find the least common multiple (LCM) of two numbers up to 12, and use the distributive property to rewrite a sum like 8 + 20 as 4(2 + 5). All three sit on one prerequisite: knowing what factors and multiples ARE and being able to produce them quickly. The progression starts by handing students the lists (S1 and S2) -- with the factors or multiples already written out, the only new work is choosing the greatest COMMON factor or the least COMMON multiple, which is exactly where the classic GCF-vs-LCM swap first shows up. Then the scaffolding comes away: students generate the lists themselves for any pair up to 100 (S3, GCF) or up to 12 (S4, LCM). With GCF secure, the distributive property step (S5) puts it to work: pull the GCF out of both addends and write the sum as a multiple of a sum -- the standard's most test-visible move, and the one where students most often factor one addend and forget the other. Finally S6 sends both ideas into real-world problems, where nobody says 'GCF' or 'LCM' and the student must decide which tool the story is asking for.",
+    "narrative": "6.NS.6 asks students to find the greatest common factor of two whole numbers up to 100, the least common multiple of two whole numbers up to 12, and to use the distributive property to rewrite a sum like 8 + 20 as 4(2 + 5). The on-grade skills build in one line: first choose the GCF or LCM from lists that are handed over (S1 and S2), then generate the factor and multiple lists without help (S3 and S4), then pull the GCF out of both addends to rewrite a sum (S5). Students who stall here almost always carry gaps from well below grade six, most often shaky multiplication and division facts and a blurry line between factors and multiples. The grade five skills sitting just under this work are multiplying a whole number by a sum and dividing whole numbers to find quotients, the exact moves the distributive rewrite and the factor hunt lean on. Intervention should rebuild the facts and the factor versus multiple distinction first, then the grade five multiply-over-a-sum and division skills, and only then return to GCF, LCM, and the distributive property.",
     "steps": [
       {
         "skill_id": "6NS6-S1",
@@ -40,151 +40,103 @@
   "skills": [
     {
       "skill_id": "6NS6-F1",
-      "name": "Recall multiplication facts and factor pairs quickly",
+      "name": "Recall multiplication and division facts through 12",
       "column": "foundation",
       "parent_standard": "6.NS.6",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 3,
-        "description": "Fluent recall of multiplication and division facts through 12 x 12",
-        "check_question": "What is 6 x 7? What number times 8 gives 56?"
+        "description": "Fluently recall multiplication and division facts within 100, including missing-factor facts.",
+        "check_question": "What is 7 x 8? What number times 6 gives 42?"
       },
-      "i_do_script": "The 6s facts live on a ladder -- 6, 12, 18, 24, 30, 36, 42, 48 -- and every product is its own rung: 42 is the seventh rung up, 48 is the eighth. A missing-factor question is just asking which rung a number sits on. Every skill in this standard leans on fast facts. Watch me find a missing factor: 6 x __ = 42. I ask 'six times WHAT is 42?' and skip-count if I need to: 6, 12, 18, 24, 30, 36, 42 -- that's seven sixes, so the missing factor is 7. Don't lecture; just fire quick facts at the student and let them build speed.",
+      "i_do_script": "Every fact is a rectangle of dots. Watch: 6 x 7 is 6 rows of 7, and counting the array gives 42, so 6 x 7 = 42. The same rectangle read backward answers 42 / 6 = 7 and 42 / 7 = 6, so one picture holds four facts. Every GCF, LCM, and distributive step in this standard rides on these facts being instant. Do not lecture: skip-count to rebuild a shaky fact, then fire short facts until recall is fast.",
       "canonical_error": {
-        "pattern": "Recalls a nearby fact instead of the right one, or can't run a fact backward (missing factor)",
-        "example": "For 6 x __ = 42, the student answers 8 because they remember '48' living near the 6s row",
-        "why": "The facts were memorized one-directionally (6 x 7 = 42) and never practiced as 'what times 6 gives 42?', so division-shaped recall pulls the nearest familiar product."
+        "pattern": "Grabs a neighboring product or cannot run a fact backward for a missing factor",
+        "example": "For 6 x __ = 42 the student answers 8 because 48 sits near the 6s row",
+        "why": "The facts were memorized one direction only, so a division-shaped question pulls the closest familiar product instead of the true missing factor."
       },
-      "redirect_script": {
-        "stop": "Hold on -- let's check that fact.",
-        "prompt": "Skip-count by 6 out loud with me: 6, 12, 18... stop when you hit 42. Count how many sixes that took on your fingers.",
-        "praise": "You ran the fact backward -- that's exactly what factoring is."
-      },
-      "item_template": "A single multiplication fact, missing-factor fact, is-it-a-factor yes/no, or list-all-factors prompt. Short answer, no choices -- built for timed fluency sprints.",
+      "item_template": "A single multiplication fact, a division fact, or a missing-factor fact. Short answer, no choices, built for timed fluency sprints.",
       "sample_items": [
         {
+          "stem": "7 x 8",
+          "answer": "56"
+        },
+        {
+          "stem": "6 x 9",
+          "answer": "54"
+        },
+        {
+          "stem": "9 x 7",
+          "answer": "63"
+        },
+        {
+          "stem": "8 x 12",
+          "answer": "96"
+        },
+        {
+          "stem": "48 / 6",
+          "answer": "8"
+        },
+        {
+          "stem": "56 / 7",
+          "answer": "8"
+        },
+        {
+          "stem": "63 / 9",
+          "answer": "7"
+        },
+        {
           "stem": "6 x __ = 42",
-          "answer": "7",
-          "choices": null,
-          "distractor_logic": "Students weak on the 6s and 7s facts guess 6 or 8"
+          "answer": "7"
         },
         {
-          "stem": "8 x __ = 56",
-          "answer": "7",
-          "choices": null,
-          "distractor_logic": "Confusing 56 with 54 (6 x 9) is the common slip"
+          "stem": "8 x __ = 72",
+          "answer": "9"
         },
         {
-          "stem": "9 x __ = 63",
-          "answer": "7",
-          "choices": null,
-          "distractor_logic": "Students who skip-count may land on 6 (54) or 8 (72)"
-        },
-        {
-          "stem": "12 x __ = 96",
-          "answer": "8",
-          "choices": null,
-          "distractor_logic": "Guessing 7 gives 84; the 12s facts past 10 are shaky"
-        },
-        {
-          "stem": "7 x __ = 91",
-          "answer": "13",
-          "choices": null,
-          "distractor_logic": "Students who stop at the 10s facts answer 'none'"
-        },
-        {
-          "stem": "What is 7 x 8?",
-          "answer": "56",
-          "choices": null,
-          "distractor_logic": "54 (from 6 x 9) is the classic near-miss"
-        },
-        {
-          "stem": "What is 6 x 12?",
-          "answer": "72",
-          "choices": null,
-          "distractor_logic": "60 (6 x 10) plus a guess; the 12s row is the gap"
-        },
-        {
-          "stem": "Is 4 a factor of 30? (yes or no)",
-          "answer": "no",
-          "choices": null,
-          "distractor_logic": "Students say yes because 30 is even, like 4"
-        },
-        {
-          "stem": "Is 6 a factor of 54? (yes or no)",
-          "answer": "yes",
-          "choices": null,
-          "distractor_logic": "Students say no because 54 is not in the 6s row they memorized (6 x 9 = 54)"
-        },
-        {
-          "stem": "Is 3 a factor of 51? (yes or no)",
-          "answer": "yes",
-          "choices": null,
-          "distractor_logic": "Students say no because 51 looks prime; 5 + 1 = 6 shows it is divisible by 3"
-        },
-        {
-          "stem": "Is 8 a factor of 60? (yes or no)",
-          "answer": "no",
-          "choices": null,
-          "distractor_logic": "Students say yes because 60 is divisible by lots of numbers; 60 / 8 = 7.5"
-        },
-        {
-          "stem": "List all the factors of 10.",
-          "answer": "1, 2, 5, 10",
-          "choices": null,
-          "distractor_logic": "Students forget 1 and the number itself are factors"
-        },
-        {
-          "stem": "List all the factors of 16.",
-          "answer": "1, 2, 4, 8, 16",
-          "choices": null,
-          "distractor_logic": "Students miss 4 x 4 = 16 and skip a factor, or forget 1 and 16"
-        },
-        {
-          "stem": "List all the factors of 21.",
-          "answer": "1, 3, 7, 21",
-          "choices": null,
-          "distractor_logic": "Students say 21 is prime because it is odd; 3 x 7 = 21"
+          "stem": "84 / 12",
+          "answer": "7"
         }
       ],
+      "redirect_script": {
+        "stop": "Hold on, let us check that fact.",
+        "prompt": "Skip-count by 6 out loud with me: 6, 12, 18, and stop the moment you reach 42. Count how many sixes that took.",
+        "praise": "You ran the fact backward, and that is exactly what factoring will ask you to do."
+      },
       "vocabulary": [
         {
           "term": "Factor",
-          "definition": "A whole number that divides another number evenly, with nothing left over."
-        },
-        {
-          "term": "Factor pair",
-          "definition": "Two numbers that multiply to make a target number, like 4 and 6 for 24."
+          "definition": "A number multiplied in a multiplication problem, like the 6 and 7 in 6 x 7."
         },
         {
           "term": "Product",
-          "definition": "The answer you get when you multiply two numbers."
+          "definition": "The answer to a multiplication problem, like 42 in 6 x 7 = 42."
+        },
+        {
+          "term": "Missing factor",
+          "definition": "The unknown number in a fact like 6 x __ = 42, found by dividing."
         }
       ],
       "next_steps": {
-        "if_pass": "6NS6-F2",
-        "if_fail": "Review multiplication facts with skip-counting and a facts chart before returning."
+        "if_pass": "6NS6-B1",
+        "if_fail": "Rebuild multiplication and division facts with arrays and a facts chart, using skip-counting for the shaky rows."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write the 6s ladder up the board: 6, 12, 18, 24, 30, 36, 42, 48. Tap each rung and raise a finger per tap -- 42 takes seven taps, 48 takes eight. They're neighboring rungs, which is exactly why they're easy to mix up; the ladder settles which is which."
-        },
-        {
-          "kind": "show",
-          "text": "Write on the board: 6 x __ = 42."
+          "text": "Draw a 6 by 7 array of dots. Count it by rows: 7, 14, 21, 28, 35, 42. So 6 x 7 = 42."
         },
         {
           "kind": "ask",
-          "text": "Read it with me: six times WHAT equals 42. What is this question asking you to find?"
+          "text": "Cover the answer. If I ask 42 / 6, what part of this same rectangle am I hunting for?"
         },
         {
-          "kind": "ask",
-          "text": "If you don't know it cold, how could skip-counting by 6 get you there?"
+          "kind": "say",
+          "text": "42 / 6 asks how many are in each of 6 rows: 7. One rectangle gives 6 x 7 = 42 and 42 / 6 = 7 at once."
         },
         {
           "kind": "show",
-          "text": "Skip-count together, raising one finger per six: 6, 12, 18, 24, 30, 36, 42."
+          "text": "Write 6 x __ = 42 and skip-count by 6 together, raising a finger each time: 6, 12, 18, 24, 30, 36, 42."
         },
         {
           "kind": "ask",
@@ -192,116 +144,89 @@
         },
         {
           "kind": "watch",
-          "text": "If the student answers 8, they grabbed the nearby fact 6 x 8 = 48. Have them multiply 6 x 8 out loud and compare to 42."
-        },
-        {
-          "kind": "say",
-          "text": "6 x 7 = 42 and 42 / 6 = 7 are the same fact wearing two outfits. Knowing facts backward is what makes factors fast."
+          "text": "If the student says 8, they reached for 6 x 8 = 48. Have them multiply 6 x 8 aloud and compare to 42."
         },
         {
           "kind": "ask",
-          "text": "Your turn, rapid fire: 8 x __ = 56. Then: is 4 a factor of 30?"
+          "text": "Your turn, quick: 8 x __ = 72, then 63 / 9."
         }
       ]
     },
     {
       "skill_id": "6NS6-F2",
-      "name": "Distinguish factors of a number from multiples of a number",
+      "name": "Find factor pairs and identify multiples of a number",
       "column": "foundation",
       "parent_standard": "6.NS.6",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 4,
-        "description": "Find factor pairs for whole numbers to 100 and recognize multiples (4.CA.4)",
-        "check_question": "Name one factor of 12 and one multiple of 12. How are they different?"
+        "description": "Find all factor pairs for a whole number to 100 and list multiples of a number (4.CA.4).",
+        "check_question": "List every factor of 24. Then list the first four multiples of 6."
       },
-      "i_do_script": "Factors and multiples get swapped constantly, so we pin them down with one picture. Take 6. Factors of 6 fit INSIDE it: 1, 2, 3, 6 -- they divide 6 evenly, and the list stops at 6. Multiples of 6 grow FROM it: 6, 12, 18, 24, ... -- the 6s skip-counting row, and it never ends. Factors are small and few; multiples are big and endless.",
+      "i_do_script": "Factors and multiples get swapped all the time, so pin them with one picture. Take 6. The factors of 6 fit INSIDE it: 1, 2, 3, 6, they divide 6 evenly and the list stops at 6. The multiples of 6 grow FROM it: 6, 12, 18, 24, and on forever, the skip-counting row. Factors are few and never bigger than the number; multiples are endless and never smaller than the number. Hunt factors in pairs so none hide: 1 x 6 and 2 x 3 give the whole list.",
       "canonical_error": {
-        "pattern": "Uses 'factor' and 'multiple' interchangeably -- calls 12 a factor of 6, or 3 a multiple of 6",
-        "example": "Asked for a factor of 6, the student says 12 'because 6 goes into 12'",
-        "why": "Both words live in the same multiplication fact (3 x 2 = 6), and the student never anchored which side of the fact each word names: factors divide INTO the number, multiples are what the number builds."
+        "pattern": "Uses factor and multiple as if they mean the same thing",
+        "example": "Asked for a factor of 6, the student says 12 because 6 goes into 12",
+        "why": "Both words live in one multiplication fact, and the student never fixed which side each names: factors divide into the number, multiples are what the number builds."
       },
-      "redirect_script": {
-        "stop": "Wait -- which direction does that word point?",
-        "prompt": "Say the sentence both ways and pick the true one: '12 divides evenly into 6' or '6 divides evenly into 12.' Factors of 6 must divide INTO 6. Is 12 smaller than or equal to 6?",
-        "praise": "You checked which number divides into which -- that's the whole distinction."
-      },
-      "item_template": "Given a number, identify whether a second number is a factor of it or a multiple of it, or pick the factor/multiple from a short list. MC or short answer.",
+      "item_template": "Given a number, list its factors or its first multiples, decide whether a second number is a factor or a multiple, or pick the factor or multiple from a short list.",
       "sample_items": [
         {
-          "stem": "Which number is a FACTOR of 8: 4 or 16?",
-          "answer": "4",
-          "choices": [
-            "4",
-            "16"
-          ],
-          "distractor_logic": "16 tempts students who reason '8 goes into 16' -- that makes 16 a multiple, not a factor"
+          "stem": "List all the factors of 24.",
+          "answer": "1, 2, 3, 4, 6, 8, 12, 24"
         },
         {
-          "stem": "Which number is a MULTIPLE of 6: 3 or 18?",
-          "answer": "18",
+          "stem": "List all the factors of 36.",
+          "answer": "1, 2, 3, 4, 6, 9, 12, 18, 36"
+        },
+        {
+          "stem": "List the first four multiples of 6.",
+          "answer": "6, 12, 18, 24"
+        },
+        {
+          "stem": "Is 4 a factor of 20? (yes or no)",
+          "answer": "yes"
+        },
+        {
+          "stem": "Is 7 a factor of 30? (yes or no)",
+          "answer": "no"
+        },
+        {
+          "stem": "Is 24 a multiple of 8? (yes or no)",
+          "answer": "yes"
+        },
+        {
+          "stem": "Is 15 a multiple of 6? (yes or no)",
+          "answer": "no"
+        },
+        {
+          "stem": "Write one factor pair for 18.",
+          "answer": "1 and 18, 2 and 9, or 3 and 6"
+        },
+        {
+          "stem": "Which number is a FACTOR of 12: 3 or 24?",
+          "answer": "3",
           "choices": [
             "3",
-            "18"
+            "24"
           ],
-          "distractor_logic": "3 tempts students because 3 is related to 6; but 3 is a factor of 6, not a multiple"
+          "distractor_logic": "24 tempts students who reason 12 goes into 24, but that makes 24 a multiple, not a factor"
         },
         {
-          "stem": "Is 5 a factor of 20, a multiple of 20, or both?",
-          "answer": "A factor of 20",
+          "stem": "Which number is a MULTIPLE of 5: 1 or 20?",
+          "answer": "20",
           "choices": [
-            "A factor of 20",
-            "A multiple of 20",
-            "Both"
+            "1",
+            "20"
           ],
-          "distractor_logic": "Students who blur the words pick 'both'; 5 divides into 20 but 5 is not in the 20s skip-count row"
-        },
-        {
-          "stem": "Is 30 a factor of 10 or a multiple of 10?",
-          "answer": "A multiple of 10",
-          "choices": [
-            "A factor of 10",
-            "A multiple of 10"
-          ],
-          "distractor_logic": "Students who ignore size say factor; a factor of 10 can never be bigger than 10"
-        },
-        {
-          "stem": "List the factors of 12, then list the first three multiples of 12.",
-          "answer": "Factors: 1, 2, 3, 4, 6, 12. Multiples: 12, 24, 36.",
-          "choices": null,
-          "distractor_logic": "Students who swap the words write 12, 24, 36 as 'factors'; watch for missing 1 and 12 in the factor list"
-        },
-        {
-          "stem": "True or false: every number is both a factor of itself and a multiple of itself.",
-          "answer": "True",
-          "choices": [
-            "True",
-            "False"
-          ],
-          "distractor_logic": "Students say false because they think factors must be smaller and multiples must be bigger"
-        },
-        {
-          "stem": "Which list shows MULTIPLES of 9: (1, 3, 9) or (9, 18, 27)?",
-          "answer": "9, 18, 27",
-          "choices": [
-            "1, 3, 9",
-            "9, 18, 27"
-          ],
-          "distractor_logic": "1, 3, 9 is the factor list -- students who pick it are reading 'multiple' as 'factor'"
-        },
-        {
-          "stem": "Can a factor of 40 be greater than 40? Explain in one sentence.",
-          "answer": "No -- a factor must divide evenly into 40, so it cannot be bigger than 40.",
-          "choices": null,
-          "distractor_logic": "Students who say yes are picturing multiples, which do grow past 40"
-        },
-        {
-          "stem": "7 x 4 = 28. In this fact, which numbers are factors, and what is 28 called?",
-          "answer": "7 and 4 are factors; 28 is the product (a multiple of both 7 and 4).",
-          "choices": null,
-          "distractor_logic": "Students may call 28 a factor because it sits in the same fact family"
+          "distractor_logic": "1 is a factor of 5, not a multiple; multiples of 5 grow from 5"
         }
       ],
+      "redirect_script": {
+        "stop": "Wait, which direction does that word point?",
+        "prompt": "Say both sentences and keep the true one: 6 divides into 12, or 12 divides into 6. A factor of 6 must divide INTO 6, so it can never be bigger than 6.",
+        "praise": "You checked which number divides into which, and that is the whole difference."
+      },
       "vocabulary": [
         {
           "term": "Factor",
@@ -312,8 +237,135 @@
           "definition": "A number you land on when skip-counting: 12, 24, 36 are multiples of 12."
         },
         {
-          "term": "Divisible",
-          "definition": "A number is divisible by another if it divides with no remainder."
+          "term": "Factor pair",
+          "definition": "Two numbers that multiply to a target, like 3 and 4 for 12."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS6-B2",
+        "if_fail": "Review grade 4 factor pairs and multiples with arrays: build every rectangle for a number to find all its factors."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Put 12 tiles on the table. Build every rectangle: 1 by 12, 2 by 6, 3 by 4. The side lengths are the factors: 1, 2, 3, 4, 6, 12."
+        },
+        {
+          "kind": "ask",
+          "text": "Could a rectangle be 5 wide with 12 tiles and no gaps? Try it. What does that tell you about 5 and 12?"
+        },
+        {
+          "kind": "say",
+          "text": "Only side lengths that fill the tiles exactly are factors, so factors fit inside and stop at 12. No factor of 12 can be bigger than 12."
+        },
+        {
+          "kind": "show",
+          "text": "Now skip-count by 12 for multiples: 12, 24, 36, 48. The list grows past 12 forever."
+        },
+        {
+          "kind": "ask",
+          "text": "Which list has small numbers that stop, and which has big numbers that never stop?"
+        },
+        {
+          "kind": "watch",
+          "text": "If the student calls 24 a factor of 12, hand them 12 tiles: can they build a rectangle with a side of 24?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: list every factor of 18, then the first three multiples of 18."
+        }
+      ]
+    },
+    {
+      "skill_id": "6NS6-B1",
+      "name": "Multiply a whole number by a sum using the distributive property",
+      "column": "looking_back",
+      "parent_standard": "6.NS.6",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Multiply a whole number by a sum by multiplying each addend and adding, using an area model.",
+        "check_question": "What is 4 x (9 + 2)?"
+      },
+      "i_do_script": "A number times a sum spreads across BOTH addends. Watch 6 x (5 + 2). I draw one rectangle 6 tall and 7 wide, then split the width into 5 and 2. The left piece is 6 x 5 = 30 and the right piece is 6 x 2 = 12, so 6 x (5 + 2) = 30 + 12 = 42. The 6 has to multiply the 5 AND the 2, never just one of them. This is the same move you will run in reverse when you pull a common factor out of a sum.",
+      "canonical_error": {
+        "pattern": "Multiplies the outside number by only the first addend and copies or adds the second addend unchanged",
+        "example": "For 4 x (9 + 2) the student writes 36 + 2 = 38 instead of 36 + 8 = 44",
+        "why": "The student treats the parentheses as one multiplication on the first number instead of spreading the multiplier across both addends, so the second addend never gets multiplied."
+      },
+      "item_template": "Multiply a whole number by a sum of two whole numbers, or break a factor into a sum to multiply. Numeric or expression response, no calculator; the multiplier must reach both addends.",
+      "sample_items": [
+        {
+          "stem": "3 x (4 + 6)",
+          "answer": "30"
+        },
+        {
+          "stem": "What is 5 x (3 + 4)?",
+          "answer": "35",
+          "choices": [
+            "19",
+            "35",
+            "23",
+            "7"
+          ],
+          "distractor_logic": "19 = 15 + 4 multiplies only the first addend; 7 is just 3 + 4; 23 mixes both errors"
+        },
+        {
+          "stem": "6 x (10 + 4)",
+          "answer": "84"
+        },
+        {
+          "stem": "Which expression equals 4 x (9 + 2)?",
+          "answer": "4 x 9 + 4 x 2",
+          "choices": [
+            "4 x 9 + 4 x 2",
+            "4 x 9 + 2",
+            "9 + 4 x 2",
+            "4 + 9 + 2"
+          ],
+          "distractor_logic": "4 x 9 + 2 distributes to only the first addend; the others drop the multiplication"
+        },
+        {
+          "stem": "Break apart to multiply: 7 x 12 as 7 x (10 + 2).",
+          "answer": "84"
+        },
+        {
+          "stem": "8 x (5 + 5)",
+          "answer": "80"
+        },
+        {
+          "stem": "What is 2 x (8 + 6)?",
+          "answer": "28",
+          "choices": [
+            "28",
+            "22",
+            "16",
+            "14"
+          ],
+          "distractor_logic": "22 = 16 + 6 forgets to double the 6; 16 is 2 x 8 alone; 14 is 8 + 6"
+        },
+        {
+          "stem": "9 x (3 + 4)",
+          "answer": "63"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Stop, did the outside number reach both addends?",
+        "prompt": "Multiply the outside number by the first addend, then by the second addend, then add. In 4 x (9 + 2), that is 4 x 9 and 4 x 2.",
+        "praise": "Both addends got multiplied, so the two pieces add up to the true product."
+      },
+      "vocabulary": [
+        {
+          "term": "Distributive property",
+          "definition": "Multiplying a sum is the same as multiplying each addend and adding: a x (b + c) = a x b + a x c."
+        },
+        {
+          "term": "Addend",
+          "definition": "A number being added, like the 5 and 2 in 5 + 2."
+        },
+        {
+          "term": "Area model",
+          "definition": "A rectangle split into parts that shows a number times a sum as the sum of the parts."
         }
       ],
       "next_steps": {
@@ -323,42 +375,554 @@
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write '6' in the middle of the board. On the left write 'Factors of 6', on the right write 'Multiples of 6'."
+          "text": "Draw a rectangle 6 tall and label the width as 5 + 2. Draw a line splitting the width into a 5 part and a 2 part."
         },
         {
           "kind": "ask",
-          "text": "What numbers divide evenly into 6 with nothing left over? Let's list them on the left."
-        },
-        {
-          "kind": "watch",
-          "text": "Make sure 1 and 6 both make the list -- students routinely leave them off."
-        },
-        {
-          "kind": "ask",
-          "text": "Now skip-count by 6 for the right side: 6, 12, 18... How long could this list go?"
-        },
-        {
-          "kind": "ask",
-          "text": "Look at both lists. Which list has small numbers that stop? Which has big numbers that never stop?"
+          "text": "What is the area of the left piece, 6 by 5? What is the area of the right piece, 6 by 2?"
         },
         {
           "kind": "say",
-          "text": "Factors fit INSIDE the number -- few and small. Multiples grow FROM the number -- endless. That size test will save you every time."
+          "text": "Left is 30, right is 12, so the whole rectangle is 30 + 12 = 42. That is why 6 x (5 + 2) = 6 x 5 + 6 x 2."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student writes 30 + 2, point at the right piece: its area is 6 rows of 2, not 2. Have them recount it."
         },
         {
           "kind": "ask",
-          "text": "Quick check: is 12 a factor of 6 or a multiple of 6? Use the size test to defend your answer."
-        },
-        {
-          "kind": "ask",
-          "text": "Last one on your own: name two factors of 20 and two multiples of 20."
+          "text": "Your turn: draw 4 x (9 + 2) as two pieces and add them."
         }
-      ]
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "2 x (3 + 4)",
+          "answer": "14"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "5 x (2 + 6)",
+          "answer": "40"
+        },
+        {
+          "difficulty": "core",
+          "stem": "4 x (9 + 2)",
+          "answer": "44"
+        },
+        {
+          "difficulty": "core",
+          "stem": "6 x (5 + 3)",
+          "answer": "48"
+        },
+        {
+          "difficulty": "core",
+          "stem": "3 x (7 + 6)",
+          "answer": "39"
+        },
+        {
+          "difficulty": "core",
+          "stem": "7 x (4 + 5)",
+          "answer": "63"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Break apart to multiply: 8 x 13 using 8 x (10 + 3).",
+          "answer": "104"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Noah wrote 6 x (5 + 2) = 30 + 2 = 32. Find his mistake and fix it.",
+          "shown_work": [
+            "6 x (5 + 2)",
+            "6 x 5 = 30",
+            "30 + 2 = 32"
+          ],
+          "answer": "6 x (5 + 2) = 6 x 5 + 6 x 2 = 30 + 12 = 42. Noah multiplied only the 5. The 6 has to multiply the 2 as well."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Split the Rectangle",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper",
+            "Colored pencils"
+          ],
+          "instructions": "1. Each pair gets a problem like 6 x (5 + 2).\n2. Draw one rectangle 6 tall and (5 + 2) wide on the grid.\n3. Shade the 6 by 5 part one color and the 6 by 2 part another, then count each area.\n4. Write the two areas and add them: 30 + 12 = 42. Say each time: the outside number reaches both parts.\n5. Repeat with 4 x (9 + 2) and 3 x (7 + 6)."
+        },
+        {
+          "type": "matching",
+          "title": "Both Parts Match-Up",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: a number-times-a-sum card and its two-part expansion card"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each card like 4 x (9 + 2) to its expansion 4 x 9 + 4 x 2.\n3. To claim a match, say both products out loud and give the total.\n4. Two decoy cards expand only the first addend; set them aside and explain what is missing.",
+          "content": {
+            "pairs": [
+              {
+                "left": "6 x (5 + 2)",
+                "right": "6 x 5 + 6 x 2"
+              },
+              {
+                "left": "4 x (9 + 2)",
+                "right": "4 x 9 + 4 x 2"
+              },
+              {
+                "left": "3 x (7 + 6)",
+                "right": "3 x 7 + 3 x 6"
+              },
+              {
+                "left": "7 x (4 + 5)",
+                "right": "7 x 4 + 7 x 5"
+              },
+              {
+                "left": "2 x (8 + 6)",
+                "right": "2 x 8 + 2 x 6"
+              },
+              {
+                "left": "5 x (3 + 4)",
+                "right": "5 x 3 + 5 x 4"
+              }
+            ],
+            "decoys": [
+              "4 x 9 + 2",
+              "6 x 5 + 2"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The area model shows a number times a sum as one rectangle split into two parts, making the reach to both addends visible before the rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The distribute-to-one-part error is stable and easy to bait, so finding and fixing it in worked examples confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Setting a correct expansion beside the forgot-a-part version makes the both-addends rule pop by contrast."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How wide is the whole rectangle before you split it?",
+          "What is the area of each piece, and why do you add them?",
+          "Did the outside number reach both addends? Show me both products.",
+          "What would go wrong if only the first addend got multiplied?",
+          "How is 6 x (5 + 2) connected to 6 x 7?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student multiplies only the first addend and copies the second, writing 30 + 2 for 6 x (5 + 2).",
+            "say": "Point at the second piece of the rectangle: it is 6 rows of 2, so its area is 12, not 2. Multiply the outside number by the second addend too.",
+            "praise": "Both pieces are counted now, so the parts add to the real product."
+          },
+          {
+            "if_you_see": "Student adds inside the parentheses first, which is fine, but then multiplies wrong outside.",
+            "say": "You can add first: 5 + 2 = 7, then 6 x 7. Or spread the 6 across both. Try it both ways and check they match.",
+            "praise": "Both routes gave 42, so you can pick whichever is easier."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "4 x (9 + 2)",
+            "look_for": "44, with 4 x 9 = 36 and 4 x 2 = 8, not 38."
+          },
+          {
+            "prompt": "Which is bigger and why: 6 x (5 + 2) or 6 x 5 + 2?",
+            "look_for": "6 x (5 + 2) = 42 is bigger; 6 x 5 + 2 = 32 only multiplies the 5."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Multiply 6 x (5 + 2).",
+        "answer": "42",
+        "steps": [
+          {
+            "math": "width 5 + 2 = 7, height 6",
+            "annotation": "Draw one rectangle 6 tall and split the width into a 5 part and a 2 part."
+          },
+          {
+            "math": "6 x 5 = 30",
+            "annotation": "Area of the left piece."
+          },
+          {
+            "math": "6 x 2 = 12",
+            "annotation": "Area of the right piece, the addend students often skip."
+          },
+          {
+            "math": "30 + 12 = 42",
+            "annotation": "Add the two pieces. Check: 6 x 7 = 42."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Multiply 4 x (9 + 2).",
+        "answer": "44",
+        "steps": [
+          {
+            "math": "width 9 + 2 = 11, height 4",
+            "annotation": "Split the width into a 9 part and a 2 part.",
+            "given": true
+          },
+          {
+            "math": "4 x 9 = 36",
+            "annotation": "Area of the first piece.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Find the area of the second piece, 4 x 2.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Add the two pieces and state the product.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I split the width into ___ and ___, so the two pieces are ___ and ___.",
+        "The outside number ___ multiplies both ___ and ___, then I add."
+      ],
+      "fluency_source": "6NS6-F1"
+    },
+    {
+      "skill_id": "6NS6-B2",
+      "name": "Divide whole numbers to find equal groups and test factors",
+      "column": "looking_back",
+      "parent_standard": "6.NS.6",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Find whole-number quotients and use division to test whether one number divides another evenly.",
+        "check_question": "What is 84 / 7? Does 6 divide 84 evenly?"
+      },
+      "i_do_script": "Dividing splits a total into equal groups, and it also tests factors. Watch 96 / 8. I share 96 into 8 equal groups: 8 x 10 = 80 puts 10 in each group and leaves 16, then 16 / 8 = 2 more each, so 12 in each group and nothing left over. Because the division came out even, 8 is a factor of 96. A factor has to divide with NO remainder, so a leftover means it is not a factor. Every GCF hunt is really a string of these divide-and-check questions.",
+      "canonical_error": {
+        "pattern": "Ignores or rounds away a remainder and calls the division even",
+        "example": "For 30 / 4 the student writes about 7 and says 4 is a factor of 30",
+        "why": "The student stops at the whole-number part and drops the remainder, so a division that leaves 2 gets treated as if it came out even and 4 is wrongly called a factor."
+      },
+      "item_template": "Divide two whole numbers to find the quotient, share a total into equal groups, or test whether one number is a factor of another. Numeric or yes/no response, no calculator; a factor must divide with no remainder.",
+      "sample_items": [
+        {
+          "stem": "48 / 6",
+          "answer": "8"
+        },
+        {
+          "stem": "90 / 9",
+          "answer": "10"
+        },
+        {
+          "stem": "Which division has no remainder?",
+          "answer": "54 / 6",
+          "choices": [
+            "50 / 8",
+            "54 / 6",
+            "40 / 7",
+            "30 / 8"
+          ],
+          "distractor_logic": "54 / 6 = 9 exactly; 50 / 8, 40 / 7, and 30 / 8 each leave a remainder"
+        },
+        {
+          "stem": "Is 8 a factor of 56? (yes or no)",
+          "answer": "yes"
+        },
+        {
+          "stem": "Is 9 a factor of 60? (yes or no)",
+          "answer": "no"
+        },
+        {
+          "stem": "A baker packs 84 muffins into boxes of 12. How many boxes?",
+          "answer": "7",
+          "choices": [
+            "6",
+            "7",
+            "8",
+            "72"
+          ],
+          "distractor_logic": "72 = 84 - 12 subtracts instead of dividing; 6 and 8 miss the exact quotient 7"
+        },
+        {
+          "stem": "72 / 8",
+          "answer": "9"
+        },
+        {
+          "stem": "60 / 5",
+          "answer": "12"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait, is there a remainder?",
+        "prompt": "Finish the division and check for leftovers. 30 shared into groups of 4 leaves 2 over, so 4 does not divide 30 evenly.",
+        "praise": "You checked the remainder, and no leftover is what makes a number a true factor."
+      },
+      "vocabulary": [
+        {
+          "term": "Quotient",
+          "definition": "The answer to a division problem, like 12 in 96 / 8 = 12."
+        },
+        {
+          "term": "Remainder",
+          "definition": "What is left over when a number does not divide evenly."
+        },
+        {
+          "term": "Factor",
+          "definition": "A number that divides another with no remainder, like 8 in 96 / 8 = 12."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6NS6-S1",
+        "if_fail": "6NS6-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Set out 96 counters and 8 cups. Deal the counters one round at a time into the 8 cups."
+        },
+        {
+          "kind": "ask",
+          "text": "After putting 10 in each cup you have used 80. How many counters are left to keep dealing?"
+        },
+        {
+          "kind": "say",
+          "text": "16 are left, and 16 / 8 = 2 more per cup, so each cup holds 12 and none are left over. That means 96 / 8 = 12 and 8 is a factor of 96."
+        },
+        {
+          "kind": "watch",
+          "text": "If the student says 30 / 4 comes out even, hand them 30 counters and 4 cups: two counters cannot be dealt evenly, so 4 is not a factor of 30."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: share 84 into 7 equal groups, then tell me if 7 is a factor of 84."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "36 / 6",
+          "answer": "6"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "40 / 8",
+          "answer": "5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "84 / 7",
+          "answer": "12"
+        },
+        {
+          "difficulty": "core",
+          "stem": "96 / 8",
+          "answer": "12"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is 6 a factor of 84? Divide to show your answer.",
+          "answer": "Yes, 84 / 6 = 14 with no remainder."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A teacher shares 72 markers into groups of 6. How many groups?",
+          "answer": "12"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Is 17 a factor of both 51 and 68? Divide to check.",
+          "answer": "Yes: 51 / 17 = 3 and 68 / 17 = 4, both with no remainder."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Priya wrote: 30 / 4 = 7 remainder 2, so 4 is a factor of 30. Find her mistake and fix it.",
+          "shown_work": [
+            "30 / 4",
+            "= 7 remainder 2",
+            "so 4 is a factor of 30"
+          ],
+          "answer": "A factor must divide with NO remainder. 30 / 4 leaves 2, so 4 is not a factor of 30. The factors of 30 are 1, 2, 3, 5, 6, 10, 15, 30."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Deal Into Cups",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Counters or beans",
+            "Small cups or paper plates"
+          ],
+          "instructions": "1. Each pair gets a division like 72 / 6.\n2. Set out 6 cups and deal 72 counters one round at a time.\n3. Count how many land in each cup, that is the quotient, and check whether any are left over.\n4. Write the fact 72 / 6 = 12 and say whether 6 is a factor of 72.\n5. Repeat with 84 / 7 and a tricky one, 30 / 4, where two counters are left and 4 is not a factor."
+        },
+        {
+          "type": "card_sort",
+          "title": "Factor or Not a Factor?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Division cards like 84 / 6, 60 / 9, 96 / 8, 50 / 8"
+          ],
+          "instructions": "1. Partners take turns drawing a card and dividing to find the quotient and any remainder.\n2. Sort each card: divides evenly, so a factor, or leaves a remainder, so not a factor.\n3. To place a card, say the division fact out loud with its remainder.\n4. Debrief: how does a remainder tell you the number is not a factor?",
+          "content": {
+            "categories": [
+              "Divides evenly (a factor)",
+              "Leaves a remainder (not a factor)"
+            ],
+            "cards": [
+              {
+                "text": "84 / 6",
+                "category": "Divides evenly (a factor)"
+              },
+              {
+                "text": "96 / 8",
+                "category": "Divides evenly (a factor)"
+              },
+              {
+                "text": "72 / 9",
+                "category": "Divides evenly (a factor)"
+              },
+              {
+                "text": "60 / 5",
+                "category": "Divides evenly (a factor)"
+              },
+              {
+                "text": "60 / 9",
+                "category": "Leaves a remainder (not a factor)"
+              },
+              {
+                "text": "50 / 8",
+                "category": "Leaves a remainder (not a factor)"
+              },
+              {
+                "text": "40 / 7",
+                "category": "Leaves a remainder (not a factor)"
+              },
+              {
+                "text": "30 / 4",
+                "category": "Leaves a remainder (not a factor)"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Dealing counters into cups makes division as equal groups concrete before the factor-test rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The dropped-remainder error is common and easy to bait, so finding it in worked examples confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Gradual release fits the divide-and-check routine: model one, share one together, then let students test factors on their own."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many go in each group, and is anything left over?",
+          "What does a remainder tell you about whether this number is a factor?",
+          "Can a factor of 30 ever be bigger than 30? Why not?",
+          "How could you check your quotient with multiplication?",
+          "You found 84 / 6 = 14. Say the matching multiplication fact."
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student drops the remainder and calls the number a factor, saying 4 is a factor of 30.",
+            "say": "Finish the division: 30 into groups of 4 leaves 2 over. A leftover means 4 does not divide 30 evenly, so it is not a factor.",
+            "praise": "You checked the remainder, and that is how you tell a real factor from a near miss."
+          },
+          {
+            "if_you_see": "Student subtracts instead of dividing for an equal-groups story.",
+            "say": "The story splits the total into equal groups, so it is division, not subtraction. How many groups of 12 fit in 84?",
+            "praise": "You divided into equal groups, which is exactly what the story asked for."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "96 / 8",
+            "look_for": "12, with a check of 8 x 12 = 96 and no remainder."
+          },
+          {
+            "prompt": "Is 7 a factor of 84? How do you know?",
+            "look_for": "Yes, because 84 / 7 = 12 with no remainder."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Divide 96 / 8.",
+        "answer": "12",
+        "steps": [
+          {
+            "math": "share 96 into 8 equal groups",
+            "annotation": "Deal the total round by round into 8 groups."
+          },
+          {
+            "math": "8 x 10 = 80, leaving 96 - 80 = 16",
+            "annotation": "Put 10 in each group first, then see what is left."
+          },
+          {
+            "math": "16 / 8 = 2 more each, so 10 + 2 = 12",
+            "annotation": "Finish sharing the leftovers."
+          },
+          {
+            "math": "96 / 8 = 12, no remainder",
+            "annotation": "Check: 8 x 12 = 96, so 8 is a factor of 96."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Divide 84 / 7.",
+        "answer": "12",
+        "steps": [
+          {
+            "math": "share 84 into 7 equal groups",
+            "annotation": "Deal the total into 7 groups.",
+            "given": true
+          },
+          {
+            "math": "7 x 10 = 70, leaving 84 - 70 = 14",
+            "annotation": "Put 10 in each group, then see what is left.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Share the 14 that are left: 14 / 7 in each group.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the quotient and check 7 x __ = 84.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I shared ___ into ___ equal groups, so each group has ___.",
+        "There (is / is no) remainder, so ___ (is / is not) a factor of ___."
+      ],
+      "fluency_source": "6NS6-F1"
     },
     {
       "skill_id": "6NS6-S1",
       "name": "Identify the greatest common factor from given factor lists",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.NS.6",
       "engine_stems": [
         1
@@ -804,7 +1368,7 @@
     {
       "skill_id": "6NS6-S2",
       "name": "Identify the least common multiple from given multiples lists",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.NS.6",
       "engine_stems": [
         2
@@ -2651,8 +3215,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation",
-      "description": "Tier III -- 2+ grade levels below. If a student can't access Looking Back, start here.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-4) prerequisite skills. Start intervention here.",
       "skills": [
         "6NS6-F1",
         "6NS6-F2"
@@ -2660,16 +3224,18 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Prerequisite skills -- fix these first if a student can't access grade-level work",
+      "description": "One grade below (grade 5) skills that feed this standard directly.",
       "skills": [
-        "6NS6-S1",
-        "6NS6-S2"
+        "6NS6-B1",
+        "6NS6-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "Core 6.NS.6 skills -- the standard itself",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "6NS6-S1",
+        "6NS6-S2",
         "6NS6-S3",
         "6NS6-S4",
         "6NS6-S5"
@@ -2677,7 +3243,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Extension skills -- for students ready to push ahead",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "6NS6-S6"
       ]
@@ -2686,6 +3252,8 @@
   "skill_sequence": [
     "6NS6-F1",
     "6NS6-F2",
+    "6NS6-B1",
+    "6NS6-B2",
     "6NS6-S1",
     "6NS6-S2",
     "6NS6-S3",
@@ -2698,9 +3266,15 @@
     "6NS6-F2": [
       "6NS6-F1"
     ],
-    "6NS6-S1": [
-      "6NS6-F1",
+    "6NS6-B1": [
+      "6NS6-F1"
+    ],
+    "6NS6-B2": [
       "6NS6-F2"
+    ],
+    "6NS6-S1": [
+      "6NS6-F2",
+      "6NS6-B2"
     ],
     "6NS6-S2": [
       "6NS6-F2"
@@ -2712,7 +3286,8 @@
       "6NS6-S2"
     ],
     "6NS6-S5": [
-      "6NS6-S3"
+      "6NS6-S3",
+      "6NS6-B1"
     ],
     "6NS6-S6": [
       "6NS6-S3",
@@ -2720,17 +3295,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S3 (find the GCF of two numbers with no lists given) -- it exposes both the factor-generation skill and the GCF-vs-LCM swap at once. If they pass, move to S5 (distributive property) and S6 (real-world). If they fail, back up to S1/S2 to see whether the gap is selecting from lists or generating the lists at all.",
+    "description": "Start with S3, finding the GCF of two numbers with no lists given, because it exposes both the factor-generation skill and the GCF versus LCM swap at once. If the student passes, move up to S5, the distributive property, and S6, real-world tool choice. If the student fails, drop below grade level to the grade five B skills: B1 checks multiplying a whole number by a sum and B2 checks dividing to find quotients and test factors, the two moves the distributive rewrite and the factor hunt depend on. If those wobble, the foundations F1, multiplication and division facts, and F2, factor pairs versus multiples, locate the gap in grades 3 and 4. S1, S2, and S4 stay available to probe selecting from given lists and generating multiples.",
     "entry_skill": "6NS6-S3",
     "if_pass": [
       "6NS6-S5",
       "6NS6-S6"
     ],
     "if_fail": [
-      "6NS6-S1",
-      "6NS6-S2"
+      "6NS6-B1",
+      "6NS6-B2"
     ],
     "branch_skills": [
+      "6NS6-F1",
+      "6NS6-F2",
+      "6NS6-S1",
+      "6NS6-S2",
       "6NS6-S4"
     ]
   }

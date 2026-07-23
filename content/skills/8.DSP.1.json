@@ -3,7 +3,7 @@
   "standard_text": "Construct and interpret scatter plots for bivariate measurement data to investigate patterns of association between two quantitative variables. Describe patterns such as clustering, outliers, positive or negative association, linear association, and nonlinear association.",
   "schema_version": 3,
   "progression": {
-    "narrative": "A scatter plot turns two columns of measurements into a single picture, and reading that picture is a chain of increasingly precise judgments. First a student has to see that each dot is a PAIR -- one measurement of x and one of y for the same thing -- and grasp the language 'as x increases, y ...'. Once dots are pairs, the first real judgment is DIRECTION: do the dots drift up to the right (positive association), down to the right (negative association), or scatter with no drift at all (no association)? Then comes FORM: does the cloud hug a straight line (linear) or bend along a curve (nonlinear)? Riding alongside direction and form are two local features the standard names by hand -- CLUSTERING (points bunched into groups) and OUTLIERS (a lone point far from the pattern) -- which describe where the data sits, not which way it trends.\n\nThe payoff of the standard is putting all of this together IN CONTEXT: constructing a plot from a data table and then describing it in the variables' own words -- 'as temperature rose, hot-chocolate sales fell, roughly in a straight line, with one unusually warm day standing apart.' The arc tops out in argument: analyzing whether a described pattern actually matches a plot, building a plot to match given descriptors, and refusing to slide from 'these two things move together' to 'one causes the other.' The Indiana item spec keeps every association visually obvious and one data set per graph, so the work is always description and interpretation, never a computed statistic.",
+    "narrative": "This standard asks students to construct scatter plots from two-variable data and describe what they see: positive, negative, or no association, linear or nonlinear form, and local features like clusters and outliers. The on-grade work moves from naming the direction of the drift, to judging straight versus curved, to spotting clusters and lone points, and finally to building a plot from a table and describing it in the variables' own words. Students who stall here usually cannot yet plot an ordered pair reliably or read how one quantity changes with another in a table. Intervention should rebuild those grades 5 and 6 foundations, then the grade 7 skills of reading proportional graphs point by point and describing a dot plot's shape and stray values, before returning to scatter plots.",
     "steps": [
       {
         "skill_id": "8DSP1-S1",
@@ -40,227 +40,797 @@
   "skills": [
     {
       "skill_id": "8DSP1-F1",
-      "name": "Plot and read an ordered pair (x, y) on a coordinate grid",
+      "name": "Plot and name ordered pairs in the first quadrant",
       "column": "foundation",
       "parent_standard": "8.DSP.1",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 5,
-        "description": "Plot a point from an ordered pair (x, y) and read the coordinates of a plotted point, moving right for x then up for y.",
-        "check_question": "Where does the point (3, 5) go -- right 3 and up 5, or right 5 and up 3?"
+        "description": "Plot a point from an ordered pair (x, y), moving right for the first number and up for the second, and read the pair for a plotted point.",
+        "check_question": "To plot (2, 6), how far right and how far up do you move?"
       },
-      "i_do_script": "Walking directions come in a fixed order: go RIGHT down the hallway first, then UP the stairs -- so 'right 3, up 5' ends somewhere different from 'right 5, up 3'. Every dot on a scatter plot is an ordered pair, and order matters: the FIRST number is x (how far RIGHT) and the SECOND is y (how far UP). Watch me plot (3, 5): I start at the corner, move RIGHT 3, then UP 5, and make my dot there. To read a point that is 4 right and 2 up, I write it as (4, 2) -- x first, y second. The trap is swapping them: (3, 5) and (5, 3) land in completely different places.",
+      "i_do_script": "An ordered pair is a set of walking directions, and the order is fixed: right first, then up. Watch me plot (3, 5): I start at the corner where the axes meet, walk right 3, then walk up 5, and put my dot there. To read a dot that sits 4 right and 2 up, I write (4, 2), x first, y second. The trap is swapping the numbers: (3, 5) and (5, 3) land on two different dots, and I can prove it by walking both paths on the grid.",
       "canonical_error": {
-        "pattern": "Swaps the x- and y-coordinates -- moves up for the first number and right for the second",
-        "example": "To plot (3, 5) the student moves RIGHT 5 and UP 3, landing at (5, 3) instead of (3, 5)",
-        "why": "The student has not fixed the order of the pair. The first coordinate is always the horizontal (x) move and the second is always the vertical (y) move; reversing them plots a different point and would flip the look of a whole scatter plot."
+        "pattern": "Swaps the coordinates, moving up for the first number and right for the second",
+        "example": "Plots (3, 5) by going right 5 and up 3, landing at (5, 3)",
+        "why": "The student has not fixed the order of the pair. The first number is always the horizontal move and the second is always the vertical move, so reversing them plots a different point."
       },
-      "item_template": "An ordered pair to plot, or a described point (so many right, so many up) to name. Short-response fluency bank. (No figure needed -- described in text.)",
+      "item_template": "An ordered pair to plot, or a point described as so many right and so many up to name as a pair. Whole numbers 0 to 10. Short response fluency bank.",
       "sample_items": [
         {
           "stem": "To plot (2, 7), how far right and how far up do you move?",
-          "answer": "Right 2, up 7."
+          "answer": "Right 2, up 7"
         },
         {
-          "stem": "A point is 6 to the right and 1 up. Write it as an ordered pair.",
+          "stem": "A dot is 6 right and 1 up. Write its ordered pair.",
           "answer": "(6, 1)"
         },
         {
-          "stem": "Which point is farther to the right: (8, 2) or (3, 9)?",
-          "answer": "(8, 2) -- its x-coordinate 8 is larger."
-        },
-        {
           "stem": "Do (4, 9) and (9, 4) name the same point?",
-          "answer": "No -- order matters; they are different points."
+          "answer": "No, order matters, they are different points"
         },
         {
-          "stem": "For the pair (5, 0), how far up do you move?",
-          "answer": "0 -- the point sits on the x-axis."
+          "stem": "Which point is farther right: (8, 2) or (3, 9)?",
+          "answer": "(8, 2), its x-coordinate 8 is larger"
         },
         {
-          "stem": "A dot is at 3 right and 3 up. Write its ordered pair.",
+          "stem": "Which point is higher up: (8, 2) or (3, 9)?",
+          "answer": "(3, 9), its y-coordinate 9 is larger"
+        },
+        {
+          "stem": "For (5, 0), how far up do you move?",
+          "answer": "0, the point sits on the x-axis"
+        },
+        {
+          "stem": "For (0, 4), how far right do you move?",
+          "answer": "0, the point sits on the y-axis"
+        },
+        {
+          "stem": "A dot is 3 right and 3 up. Write its ordered pair.",
           "answer": "(3, 3)"
         }
       ],
       "redirect_script": {
-        "stop": "Which number moves you right -- the first or the second?",
-        "prompt": "Walk BOTH orders on the grid with your finger -- your way and the reverse -- and see that they land on two different dots. Always read the pair in order: FIRST number is the right move (x), SECOND number is the up move (y). Point to each number and say 'right, then up' before you place the dot.",
-        "praise": "You moved right for the first number and up for the second -- ordered pair done right."
+        "stop": "Which number moves you right, the first or the second?",
+        "prompt": "Walk both orders on the grid with your finger and see that they land on two different dots. Say 'right, then up' as you point to each number before you place the dot.",
+        "praise": "You moved right for the first number and up for the second, that is exactly how an ordered pair works."
       },
       "vocabulary": [
         {
           "term": "Ordered pair",
-          "definition": "Two numbers (x, y) that give a point's horizontal then vertical position."
+          "definition": "Two numbers (x, y) that give a point's position: right first, then up."
         },
         {
           "term": "x-coordinate",
-          "definition": "The first number in a pair; how far right (or left) the point is."
+          "definition": "The first number in a pair; how far right the point sits."
         },
         {
           "term": "y-coordinate",
-          "definition": "The second number in a pair; how far up (or down) the point is."
-        },
-        {
-          "term": "Bivariate data",
-          "definition": "Data made of pairs, with two measurements recorded for each item."
+          "definition": "The second number in a pair; how far up the point sits."
         }
       ],
       "next_steps": {
-        "if_pass": "8DSP1-S1",
-        "if_fail": "Review plotting points on the coordinate plane (grade 5)."
+        "if_pass": "8DSP1-B1",
+        "if_fail": "Review grade 5 coordinate grids by walking points on a floor grid or large graph paper, right first and then up."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Show two dots made from the SAME two numbers: one dot is right 4, up 2, and the other is right 2, up 4. Same numbers, two different spots -- the order of the walk decides which dot you get.",
-          "visual": {
-            "type": "coordinate_grid",
-            "x_range": [
-              0,
-              6
-            ],
-            "y_range": [
-              0,
-              6
-            ],
-            "points": [
-              {
-                "x": 4,
-                "y": 2,
-                "label": "(4, 2)"
-              },
-              {
-                "x": 2,
-                "y": 4,
-                "label": "(2, 4)"
-              }
-            ]
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write 'Plot (4, 2) and (2, 4). Are they the same point?'"
+          "text": "Draw a 0 to 6 grid. Plot (4, 2) and (2, 4) as two dots."
         },
         {
           "kind": "ask",
-          "text": "For (4, 2), which number tells you how far right, and which tells you how far up?"
+          "text": "Same two numbers made both dots. Why are they in different spots?"
         },
         {
           "kind": "say",
-          "text": "(4, 2) is right 4, up 2. (2, 4) is right 2, up 4. Different points -- order matters."
+          "text": "(4, 2) is right 4 then up 2. (2, 4) is right 2 then up 4. The order of the walk decides where the dot lands."
         },
         {
           "kind": "watch",
-          "text": "If a student plots both at the same spot, ask 'did you keep x first and y second for each one?'"
+          "text": "If a student puts both dots in one spot, ask which number moved them right for each pair."
         },
         {
           "kind": "ask",
-          "text": "Your turn: plot (5, 1) and (1, 5) and tell me how they are different."
+          "text": "Your turn: plot (5, 1) and (1, 5) and tell me how they differ."
         }
       ]
     },
     {
       "skill_id": "8DSP1-F2",
-      "name": "Interpret how y changes as x increases from a table of pairs",
+      "name": "Describe how one quantity changes with another from a two-variable table",
       "column": "foundation",
       "parent_standard": "8.DSP.1",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 6,
-        "description": "Order pairs by their x-value and describe whether the y-values increase or decrease as x increases.",
-        "check_question": "For (5, 10), (1, 4), (3, 7), put them in order of x and say whether y goes up or down."
+        "description": "Given a table of two related quantities, tell which variable depends on the other and describe whether the dependent quantity increases or decreases as the independent quantity increases.",
+        "check_question": "A table shows hours worked 1, 2, 3 and pay 9, 18, 27. As hours go up, what does pay do?"
       },
-      "i_do_script": "A list of pairs is just the order someone happened to write them down -- like kids arriving at a door in random order. Before you compare their heights, you line the kids up by age; data works the same way. To see a relationship, I ask 'as x gets bigger, what does y do?' -- but only after I line the pairs up in ORDER of x. Watch (5, 10), (1, 4), (3, 7): jumbled, the y-column reads 10, 4, 7 and looks like nothing. Sorted by x -- (1, 4), (3, 7), (5, 10) -- the y-values climb 4, 7, 10, so y INCREASES as x increases. The rule: sort by x first, then read the y-values in that order to see the direction.",
+      "i_do_script": "A two-column table tells a story about two quantities that change together, and I read it one row at a time. Watch this table: hours worked 1, 2, 3, 4 and pay 9, 18, 27, 36. Hours is the quantity I control, so it is the independent variable, and pay depends on hours, so pay is the dependent variable. Reading down the rows, as hours climb 1, 2, 3, 4, pay climbs 9, 18, 27, 36. So I say the relationship in a sentence: as hours worked increase, pay increases. I always read the rows in order of the independent variable before I decide.",
       "canonical_error": {
-        "pattern": "Describes how y changes by reading the y-column in list order, without first ordering the pairs by x",
-        "example": "For (5, 10), (1, 4), (3, 7) reads the y-column as 10, 4, 7 and says 'y goes up then down, no pattern,' instead of sorting by x to (1,4),(3,7),(5,10) and seeing y rise",
-        "why": "Covariation is about how y moves AS x increases, so the pairs must be ordered by x before the y-values are read. Reading y in the order it happens to be listed describes nothing about the relationship between the two variables."
+        "pattern": "Describes the change by reading rows in whatever order they are listed instead of ordering by the independent variable",
+        "example": "For rows (3, 12), (1, 4), (2, 8) reads the second column as 12, 4, 8 and says there is no pattern",
+        "why": "The question is how the dependent quantity changes AS the independent quantity increases, so the rows must be put in order of the independent variable first. List order is just the order someone wrote them down."
       },
-      "item_template": "A short list of pairs given out of order. Student sorts by x and states whether y increases or decreases. Short-response fluency bank. (No figure needed.)",
+      "item_template": "A small table of two related quantities (3 to 5 rows, whole numbers). Student names the independent and dependent variable or states whether the second quantity increases or decreases as the first increases. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Order by x and say what y does: (3, 6), (1, 2), (2, 4).",
-          "answer": "Sorted: (1,2),(2,4),(3,6). y increases as x increases."
+          "stem": "Hours worked: 1, 2, 3. Pay: 9, 18, 27. As hours increase, what does pay do?",
+          "answer": "Pay increases (9, 18, 27)"
         },
         {
-          "stem": "Order by x and say what y does: (4, 5), (2, 9), (3, 7).",
-          "answer": "Sorted: (2,9),(3,7),(4,5). y decreases as x increases."
+          "stem": "Weeks: 1, 2, 3, 4. Money left: 40, 30, 20, 10. As weeks increase, what does money left do?",
+          "answer": "Money left decreases (40, 30, 20, 10)"
         },
         {
-          "stem": "As x increases in (1, 20), (2, 30), (3, 40), what happens to y?",
-          "answer": "y increases (20, 30, 40)."
+          "stem": "In the hours and pay table, which quantity depends on the other?",
+          "answer": "Pay depends on hours worked, so pay is the dependent variable"
         },
         {
-          "stem": "As x increases in (10, 8), (20, 5), (30, 2), what happens to y?",
-          "answer": "y decreases (8, 5, 2)."
+          "stem": "Rows out of order: (3, 12), (1, 4), (2, 8). Put them in order of the first quantity and say what the second does.",
+          "answer": "Ordered: (1, 4), (2, 8), (3, 12). The second quantity increases"
         },
         {
-          "stem": "Why must you sort the pairs by x before deciding if y goes up or down?",
-          "answer": "Because the direction is about how y changes AS x grows, so x must be in order first."
+          "stem": "Rows: (4, 5), (2, 9), (3, 7). Order by the first quantity. Does the second rise or fall?",
+          "answer": "Ordered: (2, 9), (3, 7), (4, 5). It falls"
         },
         {
-          "stem": "Order by x: (6, 1), (2, 5), (4, 3). Does y rise or fall?",
-          "answer": "Sorted: (2,5),(4,3),(6,1). y falls as x rises."
+          "stem": "Bags: 1, 2, 3. Apples: 6, 12, 18. How many apples does each new bag add?",
+          "answer": "6 apples per bag"
+        },
+        {
+          "stem": "Why must you order the rows before deciding if the second quantity goes up or down?",
+          "answer": "Because the change is described as the first quantity increases, so the first quantity must be in order"
+        },
+        {
+          "stem": "Minutes: 5, 10, 15. Water in tub (gallons): 30, 20, 10. As minutes increase, what does the water do?",
+          "answer": "It decreases, the tub is draining"
         }
       ],
       "redirect_script": {
-        "stop": "Are your pairs in order of x yet?",
-        "prompt": "Before you decide what y does, line the pairs up from smallest x to largest x. THEN read the y-values in that order and say whether they climb or fall.",
-        "praise": "You sorted by x first, then read y -- that's how you see the real direction."
+        "stop": "Are the rows in order of the first quantity yet?",
+        "prompt": "Line the rows up from smallest to largest first quantity, then read the second column top to bottom and say whether it climbs or falls.",
+        "praise": "You ordered the rows first and then read the change, that is how you see the real relationship."
       },
       "vocabulary": [
         {
-          "term": "Increases",
-          "definition": "Gets larger; the values go up."
+          "term": "Independent variable",
+          "definition": "The quantity you choose or control; the one you read in order."
         },
         {
-          "term": "Decreases",
-          "definition": "Gets smaller; the values go down."
-        },
-        {
-          "term": "Explanatory variable (x)",
-          "definition": "The input variable you read across; the 'as x increases' one."
-        },
-        {
-          "term": "Response variable (y)",
-          "definition": "The output variable whose change you describe as x increases."
+          "term": "Dependent variable",
+          "definition": "The quantity that responds; its value depends on the independent variable."
         }
       ],
       "next_steps": {
-        "if_pass": "8DSP1-S1",
-        "if_fail": "Review reading tables and describing change (grade 6)."
+        "if_pass": "8DSP1-B2",
+        "if_fail": "Review grade 6 tables of related quantities using a simple in-out machine picture with one rule."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Here are three (age, height) pairs written in the order the kids walked in: (4, 8), (1, 2), (3, 6). Does the walk-in order tell us anything about how height changes with age? Line the kids up from youngest to oldest first -- NOW read the heights: what do they do?"
-        },
-        {
           "kind": "show",
-          "text": "Write '(4, 8), (1, 2), (3, 6). As x increases, what does y do?'"
+          "text": "Draw a table: weeks 1, 2, 3, 4 in one column and money left 40, 30, 20, 10 in the other. Sketch a bar for each money value so the bars step down."
         },
         {
           "kind": "ask",
-          "text": "What is the first thing we do before reading the y-values?"
+          "text": "Which quantity depends on the other? What do the bars do as the weeks go by?"
         },
         {
           "kind": "say",
-          "text": "Sort by x: (1, 2), (3, 6), (4, 8). Now the y-values read 2, 6, 8 -- they climb, so y increases as x increases."
+          "text": "Money left depends on weeks, and the bars shrink 40, 30, 20, 10. As weeks increase, money left decreases by 10 each week."
         },
         {
           "kind": "watch",
-          "text": "If a student reads y as 8, 2, 6 and says 'no pattern,' ask 'did you put the x-values in order first?'"
+          "text": "If a student reads the money column out of row order, have them number the rows by weeks first."
         },
         {
           "kind": "ask",
-          "text": "Your turn: (5, 3), (1, 11), (3, 7) -- order by x and tell me what y does."
+          "text": "Your turn: hours 1, 2, 3 and miles 4, 8, 12. Say the relationship in one sentence."
         }
       ]
     },
     {
+      "skill_id": "8DSP1-B1",
+      "name": "Graph a proportional relationship and interpret points in context",
+      "column": "looking_back",
+      "parent_standard": "8.DSP.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Plot points from a proportional table, see that they form a straight line through the origin, and explain what a point (x, y) means in the situation.",
+        "check_question": "Apples cost 3 dollars per pound. On the graph of this relationship, what does the point (4, 12) mean?"
+      },
+      "i_do_script": "In grade 7 we graphed relationships where every point follows one steady rule. Watch: apples cost 3 dollars per pound, so I build the table (1, 3), (2, 6), (3, 9), (4, 12) and plot each pair. The dots line up on a straight line that passes through (0, 0), because 0 pounds cost 0 dollars. Each point is a sentence: (4, 12) says 4 pounds cost 12 dollars, and (1, 3) names the unit rate, 3 dollars for 1 pound. This is the cleanest picture of two quantities moving together, and a scatter plot is the messy real-data version of the same idea.",
+      "canonical_error": {
+        "pattern": "Reads a point as two separate numbers instead of one pair with a meaning in context",
+        "example": "For the point (4, 12) on the apples graph says 'there are 4 dollars and 12 pounds' or cannot say what the point means",
+        "why": "A point on the graph is one fact about the situation: the x-value and y-value belong to the same purchase. The student must attach x to its variable and y to its variable, in order, before reading the meaning."
+      },
+      "item_template": "A proportional situation with a whole-number unit rate (2 to 9). Student completes or plots the table, states the meaning of a point, names the unit rate point, or checks whether a table is proportional. Short response.",
+      "sample_items": [
+        {
+          "stem": "Apples cost 3 dollars per pound. What does the point (4, 12) on the graph mean?",
+          "answer": "4 pounds of apples cost 12 dollars"
+        },
+        {
+          "stem": "On the apples graph (3 dollars per pound), which point shows the unit rate?",
+          "answer": "(1, 3), 1 pound costs 3 dollars"
+        },
+        {
+          "stem": "A biker rides 8 miles each hour. Complete the pair: (3, ?)",
+          "answer": "(3, 24), 3 hours is 24 miles"
+        },
+        {
+          "stem": "Does the graph of a proportional relationship pass through (0, 0)? Why?",
+          "answer": "Yes, 0 of the first quantity gives 0 of the second"
+        },
+        {
+          "stem": "Table: (1, 5), (2, 10), (3, 15). Is it proportional? What is the unit rate?",
+          "answer": "Yes, y is always 5 times x, unit rate 5"
+        },
+        {
+          "stem": "Table: (1, 4), (2, 7), (3, 10). Is it proportional?",
+          "answer": "No, 4/1, 7/2, 10/3 are not equal, and the line would not pass through (0, 0)"
+        },
+        {
+          "stem": "A car goes 60 miles in 1 hour at a steady speed. What point shows the distance after 2 hours?",
+          "answer": "(2, 120)"
+        },
+        {
+          "stem": "On a graph of pounds vs cost, point A is (2, 8) and point B is (5, 20). Which purchase cost more?",
+          "answer": "Point B, 20 dollars for 5 pounds"
+        }
+      ],
+      "redirect_script": {
+        "stop": "What does the x of that point stand for, and what does the y stand for?",
+        "prompt": "Say the point as a sentence using the axis labels: x pounds cost y dollars. The two numbers describe one purchase together, not two separate things.",
+        "praise": "You read the point as one fact about the situation, that is interpreting the graph."
+      },
+      "vocabulary": [
+        {
+          "term": "Proportional relationship",
+          "definition": "Two quantities where one is always the same multiple of the other; the graph is a straight line through (0, 0)."
+        },
+        {
+          "term": "Unit rate",
+          "definition": "The amount of y for exactly 1 of x; the y-value of the point (1, r)."
+        },
+        {
+          "term": "Origin",
+          "definition": "The point (0, 0) where the two axes meet."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP1-S1",
+        "if_fail": "8DSP1-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Build the table for apples at 3 dollars per pound: (1, 3), (2, 6), (3, 9), (4, 12). Plot the four points on a grid with pounds across and dollars up."
+        },
+        {
+          "kind": "ask",
+          "text": "What shape do the dots make? Would the line pass through (0, 0)?"
+        },
+        {
+          "kind": "say",
+          "text": "The dots sit on a straight line through the origin because every pound adds the same 3 dollars. The point (4, 12) says 4 pounds cost 12 dollars, and (1, 3) is the unit rate."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student reads (4, 12) as two unrelated numbers, have them label each number with its axis name before speaking."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a walker goes 4 miles per hour. Plot three points and tell me what (2, 8) means."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Oranges cost 2 dollars per pound. Complete the table: (1, 2), (2, 4), (3, ?)",
+          "answer": "(3, 6)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "On a pounds vs dollars graph, what does the point (1, 2) tell you?",
+          "answer": "1 pound costs 2 dollars, the unit rate"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A printer prints 6 pages per minute. Plot the points for 1, 2, and 3 minutes and name them.",
+          "answer": "(1, 6), (2, 12), (3, 18)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "On the printer graph, what does the point (3, 18) mean?",
+          "answer": "In 3 minutes the printer prints 18 pages"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Table: (2, 10), (4, 20), (6, 30). Is it proportional, and what is the unit rate?",
+          "answer": "Yes, y is 5 times x every row, unit rate 5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Why does the graph of a steady 8 miles per hour ride pass through (0, 0)?",
+          "answer": "After 0 hours the rider has gone 0 miles"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two workers: A's graph passes through (1, 12) and B's through (1, 15). Who earns more per hour, and how do their lines compare?",
+          "answer": "B earns more, 15 dollars per hour vs 12, so B's line is steeper"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Kim looked at the point (4, 12) on the apples graph (3 dollars per pound). Find and fix her mistake.",
+          "shown_work": [
+            "Kim wrote: 'The 4 means 4 dollars.'",
+            "'The 12 means 12 pounds.'"
+          ],
+          "answer": "Kim swapped the variables. Pounds is on the x-axis and cost on the y-axis, so (4, 12) means 4 pounds cost 12 dollars. Check: 4 pounds times 3 dollars per pound is 12 dollars."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build the Line from the Deal",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper",
+            "Counters or coins",
+            "Deal cards like '3 dollars per pound' and '8 miles per hour'"
+          ],
+          "instructions": "1. Draw a deal card and build its table with counters: 1 pound gets 3 counters, 2 pounds get 6, up to 5 pounds.\n2. Plot each row as a point on grid paper with labeled axes.\n3. Lay a ruler along the dots: they line up and aim at (0, 0). Say why 0 gives 0.\n4. Pick any dot and say it as a sentence: this many pounds cost this many dollars.\n5. Repeat with a second deal card and compare which line is steeper and why."
+        },
+        {
+          "type": "matching",
+          "title": "Point, Meaning, Rate",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: point cards, meaning-sentence cards, unit rate cards"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each point card, like (4, 12) on the apples graph, to its meaning sentence and its unit rate card.\n3. To claim a match, read the sentence aloud with the axis labels.\n4. Two decoy meaning cards swap the variables; set them aside and explain the swap.",
+          "content": {
+            "pairs": [
+              {
+                "left": "(4, 12) on apples at 3 dollars per pound",
+                "right": "4 pounds cost 12 dollars"
+              },
+              {
+                "left": "(1, 3) on apples at 3 dollars per pound",
+                "right": "1 pound costs 3 dollars, the unit rate"
+              },
+              {
+                "left": "(2, 16) on a ride at 8 miles per hour",
+                "right": "2 hours covers 16 miles"
+              },
+              {
+                "left": "(3, 18) on a printer at 6 pages per minute",
+                "right": "3 minutes prints 18 pages"
+              },
+              {
+                "left": "(0, 0) on any proportional graph",
+                "right": "None of the first quantity gives none of the second"
+              }
+            ],
+            "decoys": [
+              "(4, 12) means 4 dollars buys 12 pounds",
+              "(2, 16) means 2 miles takes 16 hours"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building the table with counters and then plotting makes the point-as-one-fact idea concrete before the graph language is named."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Saying each point aloud as a sentence with axis labels makes the invisible reading order, x then y with their variables, audible and checkable."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The variable-swap misreading of a point is stable and baitable; find-and-fix items confront it directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What does the x-axis measure, and what does the y-axis measure?",
+          "Say the point (3, 9) as a sentence about the situation.",
+          "Which point shows the unit rate, and how do you know?",
+          "Why must the line pass through (0, 0)?",
+          "If the price per pound went up, what would happen to the line?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reads a point's numbers without attaching them to the variables, or swaps them.",
+            "say": "Touch the x-axis label, then the point's first number; touch the y-axis label, then the second number. Now say the sentence.",
+            "praise": "You matched each number to its axis, so the point told you a true fact."
+          },
+          {
+            "if_you_see": "Student thinks any increasing table is proportional.",
+            "say": "Check the rule row by row: is y always the same multiple of x? In (1, 4), (2, 7), (3, 10) it is not, so the points do not aim at (0, 0).",
+            "praise": "You tested the multiply rule instead of just noticing it goes up, that is the real check."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Bananas cost 2 dollars per pound. What does (5, 10) mean on the graph?",
+            "look_for": "5 pounds cost 10 dollars, not 5 dollars for 10 pounds."
+          },
+          {
+            "prompt": "Which point on that graph shows the unit rate?",
+            "look_for": "(1, 2), one pound for 2 dollars."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Apples cost 3 dollars per pound. Graph the relationship and explain what the point (4, 12) means.",
+        "answer": "The points lie on a straight line through (0, 0); (4, 12) means 4 pounds cost 12 dollars.",
+        "steps": [
+          {
+            "math": "table: (1, 3), (2, 6), (3, 9), (4, 12)",
+            "annotation": "Each pound adds 3 dollars, so multiply pounds by 3."
+          },
+          {
+            "math": "plot with pounds across, dollars up",
+            "annotation": "Each row becomes one point on the grid."
+          },
+          {
+            "math": "dots line up through (0, 0)",
+            "annotation": "0 pounds cost 0 dollars, and the rate never changes."
+          },
+          {
+            "math": "(4, 12): 4 pounds cost 12 dollars",
+            "annotation": "Read x with its axis, then y with its axis, as one fact."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A biker rides 8 miles each hour. Graph the relationship and explain what the point (3, 24) means.",
+        "answer": "The points lie on a line through (0, 0); (3, 24) means 3 hours covers 24 miles.",
+        "steps": [
+          {
+            "math": "table: (1, 8), (2, 16), (3, 24)",
+            "annotation": "Multiply hours by 8 to get miles.",
+            "given": true
+          },
+          {
+            "math": "plot with hours across, miles up",
+            "annotation": "Each row becomes one point.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "What shape do the dots make, and where does the line start?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Say what (3, 24) means using the axis labels.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The point (___, ___) means ___ of the first quantity gives ___ of the second.",
+        "The unit rate is ___ because the point (1, ___) is on the line."
+      ],
+      "fluency_source": "8DSP1-F1"
+    },
+    {
+      "skill_id": "8DSP1-B2",
+      "name": "Describe a data set from a dot plot, including values that fall far from the rest",
+      "column": "looking_back",
+      "parent_standard": "8.DSP.1",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Read a dot plot of one measured quantity and describe where the data bunches, how spread out it is, and whether any value sits far from the others.",
+        "check_question": "Quiz scores on a dot plot bunch between 7 and 9, and one dot sits at 2. How would you describe the dot at 2?"
+      },
+      "i_do_script": "In grade 7 we described a whole data set from a dot plot, one dot per measurement. Watch this plot of minutes spent on homework: dots pile up over 20, 25, and 30, and one lone dot sits over 60. First I say where the data bunches: most students spent 20 to 30 minutes. Then I say how spread out it is: from 20 to 60, a range of 40. Last I name any stray value: the 60 sits far from the pile, so it stands apart from the rest of the data. Bunch, spread, stray: those three words describe almost any plot, and they are the same eyes we will use on scatter plots.",
+      "canonical_error": {
+        "pattern": "Calls the highest or lowest value a stray point even when it sits right next to the rest of the data",
+        "example": "For dots at 20, 22, 24, 25, 26, 28 says '28 is way off by itself because it is the biggest'",
+        "why": "A value stands apart only when there is a wide gap between it and the rest of the data. Being the maximum or minimum is not enough; the student must look for the gap, not the rank."
+      },
+      "item_template": "A small dot plot described in text (values and counts, whole numbers). Student states where the data bunches, the range, or which value if any sits far from the rest. Short response.",
+      "sample_items": [
+        {
+          "stem": "Dots at 20, 22, 24, 25, 26, 28 and one dot at 60. Which value sits far from the rest?",
+          "answer": "60, there is a wide gap between 28 and 60"
+        },
+        {
+          "stem": "Dots at 7, 7, 8, 8, 8, 9, 9. Where does the data bunch?",
+          "answer": "Between 7 and 9, mostly at 8"
+        },
+        {
+          "stem": "Dots at 10, 12, 13, 15, 40. What is the range of the data?",
+          "answer": "40 - 10 = 30"
+        },
+        {
+          "stem": "Dots at 5, 6, 6, 7, 8. Is the 8 far from the rest of the data? Why or why not?",
+          "answer": "No, it sits right next to the 7, there is no wide gap"
+        },
+        {
+          "stem": "Dots at 2, 30, 31, 32, 33, 34. Which value stands apart?",
+          "answer": "2, the rest bunch from 30 to 34"
+        },
+        {
+          "stem": "How many measurements does a dot plot with 12 dots show?",
+          "answer": "12, one dot per measurement"
+        },
+        {
+          "stem": "Dots at 50, 52, 55, 55, 58, 60. Does any value sit far from the rest?",
+          "answer": "No, the values run close together from 50 to 60"
+        },
+        {
+          "stem": "Dots bunch from 15 to 20 with one dot at 45. Describe the data in one sentence.",
+          "answer": "Most values bunch between 15 and 20, and 45 sits far from the rest"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is there a wide gap before that value, or is it just the biggest?",
+        "prompt": "Slide your finger along the number line. A value stands apart only if you cross a wide empty stretch to reach it. Biggest is a rank; far away is a gap.",
+        "praise": "You looked for the gap instead of the rank, that is how you spot a value that truly stands apart."
+      },
+      "vocabulary": [
+        {
+          "term": "Dot plot",
+          "definition": "A number line with one dot above it for each measurement in the data set."
+        },
+        {
+          "term": "Range",
+          "definition": "The greatest value minus the least value; how wide the data spreads."
+        },
+        {
+          "term": "Gap",
+          "definition": "A stretch of the number line inside the data with no dots on it."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8DSP1-S1",
+        "if_fail": "8DSP1-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a number line from 0 to 70. Stack dots at 20, 22, 24, 25, 26, 28 and one dot at 60."
+        },
+        {
+          "kind": "ask",
+          "text": "Where do the dots pile up? Do you cross any wide empty stretch to reach a dot?"
+        },
+        {
+          "kind": "say",
+          "text": "The data bunches from 20 to 28. Between 28 and 60 the line is empty, a wide gap, so the 60 stands far from the rest. The range is 60 - 20 = 40."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 28 stands apart because it is the biggest of the pile, have them trace from 26 to 28: no gap."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: dots at 5, 6, 6, 7, 8 and one at 25. Describe the bunch, the range, and any stray value."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A dot plot has dots at 3, 3, 4, 4, 4, 5. Where does the data bunch?",
+          "answer": "From 3 to 5, mostly at 4"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Dots at 10, 12, 14, 20. What is the range?",
+          "answer": "20 - 10 = 10"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Dots at 15, 16, 16, 17, 18 and one dot at 40. Which value sits far from the rest, and how do you know?",
+          "answer": "40, there is a wide empty gap between 18 and 40"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Dots at 1, 25, 26, 27, 28. Which value stands apart? Does a stray value have to be the biggest?",
+          "answer": "1 stands apart; no, a stray value can be the smallest, it just needs a wide gap"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Dots at 30, 32, 33, 35, 36, 38. Does any value sit far from the rest?",
+          "answer": "No, the values run close together with no wide gap"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Class quiz scores: dots bunch from 7 to 9 and one dot sits at 2. Describe the data in one sentence.",
+          "answer": "Most scores bunch between 7 and 9, and the score of 2 sits far from the rest"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Make up 7 data values so the dots bunch between 40 and 45 and exactly one value stands far apart.",
+          "answer": "Example: 40, 41, 42, 43, 44, 45, 70. Six values bunch from 40 to 45 and 70 sits past a wide gap"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo described the dot plot with dots at 20, 22, 24, 25, 26, 28. Find and fix his mistake.",
+          "shown_work": [
+            "Leo wrote: '28 is the biggest value.'",
+            "'So 28 is way off by itself.'"
+          ],
+          "answer": "Leo used rank instead of a gap. 28 sits right next to 26, so nothing stands apart in this data. A value is far from the rest only when a wide empty stretch separates it."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Sticky Dot Line",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Painter's tape number line on a table or wall",
+            "Sticky dots or sticky notes",
+            "Data cards"
+          ],
+          "instructions": "1. Read a data card, like minutes of homework: 20, 22, 24, 25, 26, 28, 60.\n2. Place one sticky dot above the line for each value.\n3. Put one hand over the bunch and slide a finger across any wide empty stretch to a lone dot.\n4. Say the three-part description aloud: where it bunches, the range, any value that stands apart.\n5. Repeat with a card that has no stray value and notice the description changes."
+        },
+        {
+          "type": "card_sort",
+          "title": "Gap or Just the Biggest?",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Card set of small data lists"
+          ],
+          "instructions": "1. Sort each card into 'Has a value far from the rest' or 'All values run together.'\n2. For each card, sketch the dots on a mini number line before sorting; the sort is judged by the picture.\n3. Rule check: a stray value needs a wide gap, not just the top rank.\n4. Debrief with a card whose biggest value is NOT a stray value and explain why.",
+          "content": {
+            "categories": [
+              "Has a value far from the rest",
+              "All values run together"
+            ],
+            "cards": [
+              {
+                "text": "20, 22, 24, 25, 26, 28, 60",
+                "category": "Has a value far from the rest"
+              },
+              {
+                "text": "20, 22, 24, 25, 26, 28",
+                "category": "All values run together"
+              },
+              {
+                "text": "2, 30, 31, 32, 33, 34",
+                "category": "Has a value far from the rest"
+              },
+              {
+                "text": "50, 52, 55, 55, 58, 60",
+                "category": "All values run together"
+              },
+              {
+                "text": "15, 16, 16, 17, 18, 40",
+                "category": "Has a value far from the rest"
+              },
+              {
+                "text": "7, 7, 8, 8, 8, 9, 9",
+                "category": "All values run together"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Placing physical dots on a real number line makes bunch, spread, and gap visible before the descriptive vocabulary is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The biggest-equals-stray error is stable and baitable; find-and-fix with a finger trace along the gap corrects it."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Pairs arguing over 'gap or just the biggest' cards must defend their sort aloud, surfacing the rank-versus-gap confusion."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Where do the dots pile up?",
+          "What is the range of this data?",
+          "Do you cross a wide empty stretch to reach that dot, or is it next to its neighbors?",
+          "Can the smallest value be the one that stands apart?",
+          "How would the description change if we removed the stray dot?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student calls the maximum or minimum a stray value with no gap present.",
+            "say": "Trace the number line with your finger from the pile to that dot. Did you cross a wide empty stretch? No gap means it belongs with the rest.",
+            "praise": "You checked for the gap, not the rank, that is the real test."
+          },
+          {
+            "if_you_see": "Student describes single dots instead of the whole data set.",
+            "say": "Zoom out. Cover the plot with your hand and describe the shape: where is the pile, how wide is the spread, is anything far away?",
+            "praise": "You described the whole set in one sentence, that is reading the plot like a picture."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Dots at 10, 11, 12, 13 and one at 35: which value stands apart?",
+            "look_for": "35, because of the wide gap after 13, not merely because it is largest."
+          },
+          {
+            "prompt": "Dots at 40, 42, 44, 45, 48: does any value stand apart?",
+            "look_for": "No, the values run close together with no wide gap."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Homework minutes: dots at 20, 22, 24, 25, 26, 28 and one dot at 60. Describe the data.",
+        "answer": "The data bunches from 20 to 28, the range is 40, and 60 sits far from the rest.",
+        "steps": [
+          {
+            "math": "bunch: dots pile from 20 to 28",
+            "annotation": "Say where most of the data sits."
+          },
+          {
+            "math": "range: 60 - 20 = 40",
+            "annotation": "Greatest minus least tells the spread."
+          },
+          {
+            "math": "gap: nothing between 28 and 60",
+            "annotation": "A wide empty stretch separates 60 from the pile."
+          },
+          {
+            "math": "60 stands far from the rest",
+            "annotation": "A value past a wide gap stands apart from the data."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Quiz scores: dots at 7, 7, 8, 8, 9 and one dot at 2. Describe the data.",
+        "answer": "The data bunches from 7 to 9, the range is 7, and 2 sits far from the rest.",
+        "steps": [
+          {
+            "math": "bunch: dots pile from 7 to 9",
+            "annotation": "Say where most of the data sits.",
+            "given": true
+          },
+          {
+            "math": "range: 9 - 2 = 7",
+            "annotation": "Greatest minus least.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Is there a wide empty stretch between the pile and any dot?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the value that stands apart, if any.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "Most of the data bunches between ___ and ___.",
+        "The value ___ stands apart because there is a wide gap between it and ___.",
+        "The range is ___ because ___ minus ___ is ___."
+      ],
+      "fluency_source": "8DSP1-F2"
+    },
+    {
       "skill_id": "8DSP1-S1",
       "name": "Identify the type of association shown by a scatter plot as positive, negative, or none",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "8.DSP.1",
       "engine_stems": [
         1
@@ -533,7 +1103,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP1-F1",
+      "fluency_source": "8DSP1-B2",
       "sentence_starters": [
         "As x increases, y ___, so the dots drift ___ to the right.",
         "This is a ___ association because the y-values ___ as x increases."
@@ -823,7 +1393,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP1-F1",
+      "fluency_source": "8DSP1-B1",
       "sentence_starters": [
         "The steps between the y-values are ___, so the path is ___.",
         "This association is ___ (linear/nonlinear) because the points ___."
@@ -1158,7 +1728,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP1-F1",
+      "fluency_source": "8DSP1-B2",
       "sentence_starters": [
         "The points near ___ are a cluster because they are ___.",
         "The point ___ is an outlier because it sits ___ from the others."
@@ -1491,7 +2061,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP1-F1",
+      "fluency_source": "8DSP1-B1",
       "sentence_starters": [
         "This plot is ___ (direction) and ___ (form), and it also has ___.",
         "Two characteristics of this data are ___ and ___."
@@ -1759,7 +2329,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP1-F1",
+      "fluency_source": "8DSP1-B1",
       "sentence_starters": [
         "As ___ increases, ___ ___, so this is a ___ association.",
         "In this context, the plot shows that ___."
@@ -2052,7 +2622,7 @@
           }
         ]
       },
-      "fluency_source": "8DSP1-F1",
+      "fluency_source": "8DSP1-B2",
       "sentence_starters": [
         "The plot shows a ___ association, but that does not prove ___ because ___.",
         "A better, justified statement is that ___."
@@ -2109,8 +2679,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites — fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 4-6) prerequisite skills. Start intervention here.",
       "skills": [
         "8DSP1-F1",
         "8DSP1-F2"
@@ -2118,15 +2688,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 7) skills that feed this standard directly.",
       "skills": [
-        "8DSP1-S1"
+        "8DSP1-B1",
+        "8DSP1-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "8DSP1-S1",
         "8DSP1-S2",
         "8DSP1-S3",
         "8DSP1-S4",
@@ -2135,7 +2707,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "8DSP1-S6"
       ]
@@ -2144,6 +2716,8 @@
   "skill_sequence": [
     "8DSP1-F1",
     "8DSP1-F2",
+    "8DSP1-B1",
+    "8DSP1-B2",
     "8DSP1-S1",
     "8DSP1-S2",
     "8DSP1-S3",
@@ -2154,9 +2728,15 @@
   "skill_tree": {
     "8DSP1-F1": [],
     "8DSP1-F2": [],
-    "8DSP1-S1": [
-      "8DSP1-F1",
+    "8DSP1-B1": [
+      "8DSP1-F1"
+    ],
+    "8DSP1-B2": [
       "8DSP1-F2"
+    ],
+    "8DSP1-S1": [
+      "8DSP1-B1",
+      "8DSP1-B2"
     ],
     "8DSP1-S2": [
       "8DSP1-S1"
@@ -2177,17 +2757,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (describe more than one characteristic of a scatter plot at once) -- the synthesis workhorse that pulls together direction, form, and outliers, matched to the Approaching-band items. If they pass, push to S5 (construct and interpret in context) and S6 (analyze, critique, and build plots to match descriptors). If they fail, drop to S1 (identify the association as positive/negative/none) and S2 (classify the form as linear/nonlinear) to find where the description breaks. S3 (identify clustering and outliers) branches off as the feature-spotting skill that feeds the full description.",
+    "description": "Start with S4, describing more than one characteristic of a scatter plot at once, the Approaching-to-At hinge. If they pass, move up to S5 (construct and interpret in context) and S6 (critique and build to match descriptors). If they fail, drop below grade level: B1 checks whether the student can graph a proportional relationship and read a point as one fact in context, and B2 checks whether they can describe a dot plot's bunch, spread, and stray values, the two grade 7 habits scatter plot description leans on. If those wobble, the foundations F1 (plotting ordered pairs, grade 5) and F2 (reading how one quantity changes with another in a table, grade 6) locate the gap. S1, S2, and S3 remain available to probe the standard's own direction, form, and cluster-outlier judgments.",
     "entry_skill": "8DSP1-S4",
     "if_pass": [
       "8DSP1-S5",
       "8DSP1-S6"
     ],
     "if_fail": [
-      "8DSP1-S1",
-      "8DSP1-S2"
+      "8DSP1-B1",
+      "8DSP1-B2"
     ],
     "branch_skills": [
+      "8DSP1-F1",
+      "8DSP1-F2",
+      "8DSP1-S1",
+      "8DSP1-S2",
       "8DSP1-S3"
     ]
   }

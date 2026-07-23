@@ -3,7 +3,7 @@
   "standard_text": "Apply the sums of interior angles of triangles and quadrilaterals to solve real-world and mathematical problems.",
   "schema_version": 3,
   "progression": {
-    "narrative": "6.GM.2 rests on two facts -- a triangle's interior angles always total 180 degrees, and a quadrilateral's always total 360 -- and then demands that students APPLY them to real-world and mathematical problems. The progression follows that logic. First the facts themselves must be anchored to their shapes, with the two-triangles picture explaining why a quadrilateral gets double (S1). Then application begins in its simplest form: one missing angle in a labeled figure, found by adding the knowns and subtracting from the right total (S2). Real-world problems add the translation step -- finding the triangle inside the ramp or the quadrilateral inside the window frame, and reading angles the figure marks with symbols like the right-angle square instead of numbers (S3). Next the figure disappears: with two unknowns, subtraction only produces a shared budget, and students must reason about which combinations are possible (S4). Finally the standard's problem-solving demand deepens in two directions: testing someone else's claim against the angle sum and justifying the verdict (S5), and decomposing compound figures into triangles and quadrilaterals, where each sub-shape obeys its own total (S6).",
+    "narrative": "6.GM.2 asks students to apply two facts, that a triangle's interior angles total 180 degrees and a quadrilateral's total 360 degrees, to solve real-world and mathematical problems. The on-grade skills build in one line: name which shape you are in and its total, add the known angles, subtract to find the missing one, then stretch that routine to real contexts, to problems with no figure, and to compound shapes. Students who struggle here usually carry gaps from well below grade six. The most common blockers are grade 5 skills: telling a triangle from a quadrilateral and its special types, and adding or subtracting the decimal angle measures the harder problems use. Intervention should rebuild the grade 3 and 4 basics of what a degree, a right angle, and a whole-number sum are, then the grade 5 classification and decimal work, before returning to the angle-sum routine.",
     "steps": [
       {
         "skill_id": "6GM2-S1",
@@ -40,541 +40,167 @@
   "skills": [
     {
       "skill_id": "6GM2-F1",
-      "name": "Read angle marks and labels in a figure",
+      "name": "Recognize angles, right angles, and benchmark angle measures",
       "column": "foundation",
       "parent_standard": "6.GM.2",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 4,
-        "description": "Recognize angles as figures formed by two rays and identify right angles",
-        "check_question": "Draw a corner of a piece of paper. How many degrees is that angle?"
+        "description": "Recognize an angle as two rays from a common point and identify right angles.",
+        "check_question": "How many degrees is the square corner of a piece of paper?"
       },
-      "i_do_script": "Before we can find missing angles, we have to read what a figure is telling us. Point to a triangle with one angle labeled 40 degrees, one labeled x, and one corner marked with a small square. Say: this little degree circle means we're measuring in degrees, the small square in the corner is a secret label -- it always means exactly 90 degrees even when no number is written -- and x marks the angle we don't know yet.",
+      "i_do_script": "An angle is measured in degrees, and a few sizes come up again and again. A square corner, like the corner of this paper, is a right angle: exactly 90 degrees, and figures mark it with a small square instead of a number. Two right angles laid against each other make a straight line, which is 180 degrees. Four right angles around one point make a full turn, which is 360 degrees. Fold a corner of paper to see the 90, then open it flat along an edge to see the 180.",
       "canonical_error": {
-        "pattern": "Ignores the small square symbol, treating a right angle as unknown or as zero",
-        "example": "In a triangle with a small square in one corner and a 30 degree label, the student says only one angle is known",
-        "why": "The student expects every known angle to have a number next to it. The square is a symbol, not a number, so it doesn't register as information -- they never learned that the square IS the label for 90 degrees."
+        "pattern": "Does not read the small square as a known 90 degree angle.",
+        "example": "In a triangle with one corner marked by a small square, the student says that corner has no measure.",
+        "why": "The student expects every angle to show a number. The small square is the symbol for a right angle, so it always means exactly 90 degrees even when no number is printed."
       },
-      "item_template": "A triangle or quadrilateral with angles labeled with degree measures, a small square, or a letter. Student identifies what one mark means or how many angle measures are actually known. MC with 4 choices.",
+      "item_template": "A single angle named or shown, or a benchmark turn. Student names the measure of a right angle, straight angle, or full turn, or reads the small-square right-angle mark. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "In the figure, one corner of the triangle is marked with a small square. What is the measure of that angle?",
-          "answer": "90 degrees",
-          "choices": [
-            "45 degrees",
-            "90 degrees",
-            "100 degrees",
-            "It cannot be determined"
-          ],
-          "distractor_logic": "Students who never learned the square symbol pick 'cannot be determined'; 45 comes from guessing 'half a corner'",
-          "render_data": {
-            "type": "polygon_angles",
-            "shape": "triangle",
-            "vertices": [
-              {
-                "x": 60,
-                "y": 180
-              },
-              {
-                "x": 180,
-                "y": 180
-              },
-              {
-                "x": 60.0,
-                "y": 96.0
-              }
-            ],
-            "angles": [
-              {
-                "value": "90",
-                "label": "90"
-              },
-              {
-                "value": "35",
-                "label": "35°"
-              },
-              {
-                "value": "55",
-                "label": "55°"
-              }
-            ],
-            "right_angle_indices": [
-              0
-            ],
-            "label_offsets": [
-              {
-                "dx": -28.7,
-                "dy": 20.1
-              },
-              {
-                "dx": 33.0,
-                "dy": 11.6
-              },
-              {
-                "dx": -20.3,
-                "dy": -28.5
-              }
-            ]
-          }
+          "stem": "How many degrees is a right angle?",
+          "answer": "90"
         },
         {
-          "stem": "In the figure, the triangle has angles labeled 40 degrees, x degrees, and 65 degrees. Which angle is the unknown angle?",
-          "answer": "The angle labeled x",
-          "choices": [
-            "The angle labeled 40 degrees",
-            "The angle labeled x",
-            "The angle labeled 65 degrees",
-            "All three angles are unknown"
-          ],
-          "distractor_logic": "Checks that the student reads a letter as 'value not given yet' rather than as a measurement",
-          "render_data": {
-            "type": "polygon_angles",
-            "shape": "triangle",
-            "vertices": [
-              {
-                "x": 60,
-                "y": 180
-              },
-              {
-                "x": 180,
-                "y": 180
-              },
-              {
-                "x": 146.3,
-                "y": 107.6
-              }
-            ],
-            "angles": [
-              {
-                "value": "40",
-                "label": "40°"
-              },
-              {
-                "value": "65",
-                "label": "65°"
-              },
-              {
-                "value": "?",
-                "label": "x°"
-              }
-            ],
-            "right_angle_indices": [],
-            "label_offsets": [
-              {
-                "dx": -33.0,
-                "dy": 11.6
-              },
-              {
-                "dx": 31.7,
-                "dy": 14.9
-              },
-              {
-                "dx": 12.0,
-                "dy": -32.9
-              }
-            ]
-          }
+          "stem": "What symbol marks a right angle in a figure?",
+          "answer": "a small square"
         },
         {
-          "stem": "The quadrilateral in the figure has one corner marked with a small square and three corners labeled with degree measures. How many of the four angle measures do you actually know?",
-          "answer": "4",
-          "choices": [
-            "1",
-            "2",
-            "3",
-            "4"
-          ],
-          "distractor_logic": "Students who don't count the square as a known 90 answer 3",
-          "render_data": {
-            "type": "polygon_angles",
-            "shape": "quadrilateral",
-            "vertices": [
-              {
-                "x": 60,
-                "y": 180
-              },
-              {
-                "x": 180,
-                "y": 180
-              },
-              {
-                "x": 162.0,
-                "y": 96.0
-              },
-              {
-                "x": 78.0,
-                "y": 96.0
-              }
-            ],
-            "angles": [
-              {
-                "value": "90",
-                "label": "90"
-              },
-              {
-                "value": "80",
-                "label": "80°"
-              },
-              {
-                "value": "100",
-                "label": "100°"
-              },
-              {
-                "value": "90",
-                "label": "90°"
-              }
-            ],
-            "right_angle_indices": [
-              0
-            ],
-            "label_offsets": [
-              {
-                "dx": -28.7,
-                "dy": 20.1
-              },
-              {
-                "dx": 28.7,
-                "dy": 20.1
-              },
-              {
-                "dx": 24.7,
-                "dy": -24.7
-              },
-              {
-                "dx": -24.7,
-                "dy": -24.7
-              }
-            ]
-          }
+          "stem": "How many degrees is a straight angle (a straight line)?",
+          "answer": "180"
         },
         {
-          "stem": "What does the small degree circle after a number like 75 tell you?",
-          "answer": "The angle is measured in degrees",
-          "choices": [
-            "The angle is measured in degrees",
-            "The angle is a right angle",
-            "The number is an estimate",
-            "The angle is the largest in the shape"
-          ],
-          "distractor_logic": "Confusing the degree symbol with the right-angle square is common when both appear in one figure"
+          "stem": "How many degrees is a full turn all the way around a point?",
+          "answer": "360"
         },
         {
-          "stem": "In the figure, the triangle has angles labeled 90, 28 degrees, and x degrees. The 90 angle is marked with a small square. Which angles do you know the measure of?",
-          "answer": "The 90 degree angle and the 28 degree angle",
-          "choices": [
-            "Only the 28 degree angle",
-            "The 90 degree angle and the 28 degree angle",
-            "Only the x angle",
-            "None of the angles"
-          ],
-          "distractor_logic": "'Only the 28 degree angle' is the square-blindness error -- the student doesn't count the square as a known measure",
-          "render_data": {
-            "type": "polygon_angles",
-            "shape": "triangle",
-            "vertices": [
-              {
-                "x": 60,
-                "y": 180
-              },
-              {
-                "x": 180,
-                "y": 180
-              },
-              {
-                "x": 60.0,
-                "y": 116.2
-              }
-            ],
-            "angles": [
-              {
-                "value": "90",
-                "label": "90"
-              },
-              {
-                "value": "28",
-                "label": "28°"
-              },
-              {
-                "value": "?",
-                "label": "x°"
-              }
-            ],
-            "right_angle_indices": [
-              0
-            ],
-            "label_offsets": [
-              {
-                "dx": -30.9,
-                "dy": 16.4
-              },
-              {
-                "dx": 33.8,
-                "dy": 9.0
-              },
-              {
-                "dx": -24.0,
-                "dy": -25.5
-              }
-            ]
-          }
+          "stem": "Two right angles laid side by side form a straight line. How many degrees is that?",
+          "answer": "180"
         },
         {
-          "stem": "An angle in a figure is labeled x degrees. What does that tell you?",
-          "answer": "The measure is unknown -- x stands for the number of degrees we need to find",
-          "choices": [
-            "The measure is unknown -- x stands for the number of degrees we need to find",
-            "The angle measures exactly 24 degrees because x is the 24th letter",
-            "The angle is not really there",
-            "The angle measures 0 degrees"
-          ],
-          "distractor_logic": "Tests that the letter reads as a placeholder for a number, not a code or a zero"
+          "stem": "How many right angles fit in a full turn?",
+          "answer": "4"
         },
         {
-          "stem": "In the quadrilateral shown, which corner is the right angle?",
-          "answer": "The corner marked with the small square",
-          "choices": [
-            "The corner marked with the small square",
-            "The corner labeled 110 degrees",
-            "The corner labeled 75 degrees",
-            "There is no right angle"
-          ],
-          "distractor_logic": "'There is no right angle' is the square-blindness error; 110 baits students who think the biggest number is 'most right'",
-          "render_data": {
-            "type": "polygon_angles",
-            "shape": "quadrilateral",
-            "vertices": [
-              {
-                "x": 60,
-                "y": 180
-              },
-              {
-                "x": 180,
-                "y": 180
-              },
-              {
-                "x": 162.0,
-                "y": 96.0
-              },
-              {
-                "x": 78.0,
-                "y": 96.0
-              }
-            ],
-            "angles": [
-              {
-                "value": "90",
-                "label": "90"
-              },
-              {
-                "value": "110",
-                "label": "110°"
-              },
-              {
-                "value": "75",
-                "label": "75°"
-              },
-              {
-                "value": "85",
-                "label": "85°"
-              }
-            ],
-            "right_angle_indices": [
-              0
-            ],
-            "label_offsets": [
-              {
-                "dx": -28.7,
-                "dy": 20.1
-              },
-              {
-                "dx": 28.7,
-                "dy": 20.1
-              },
-              {
-                "dx": 24.7,
-                "dy": -24.7
-              },
-              {
-                "dx": -24.7,
-                "dy": -24.7
-              }
-            ]
-          }
+          "stem": "A corner of a triangle is marked with a small square. How many degrees is that corner?",
+          "answer": "90"
         },
         {
-          "stem": "A triangle has two corners marked with matching arcs. What do the matching arcs tell you?",
-          "answer": "Those two angles have equal measures",
-          "choices": [
-            "Those two angles have equal measures",
-            "Those two angles are both 90 degrees",
-            "Those two angles are unknown",
-            "The triangle is a quadrilateral"
-          ],
-          "distractor_logic": "The spec says students should know arcs mark equal angles; 'both 90' confuses arcs with the right-angle square"
-        }
-      ],
-      "vocabulary": [
-        {
-          "term": "Interior angle",
-          "definition": "An angle on the inside of a shape, at one of its corners."
+          "stem": "Is a 90 degree angle acute, right, or obtuse?",
+          "answer": "right"
         },
         {
-          "term": "Degrees",
-          "definition": "The unit we use to measure how open an angle is, written with a small circle like 45°."
-        },
-        {
-          "term": "Right angle",
-          "definition": "An angle that measures exactly 90 degrees -- figures mark it with a small square instead of a number."
+          "stem": "How many degrees is half of a full turn?",
+          "answer": "180"
         }
       ],
       "redirect_script": {
-        "stop": "Wait -- look at that corner again.",
-        "prompt": "See the small square in that corner? That square is a label, just like a number. Every time you see it, write 90 next to it before you do anything else. Now how many angles do you know?",
-        "praise": "You spotted the square and turned it into 90 degrees. Now the figure can't hide anything from you."
+        "stop": "Look at that corner again.",
+        "prompt": "The small square is a label. Every time you see it, write 90 next to that corner before you do anything else. A right angle is always 90 degrees.",
+        "praise": "You turned the square into 90 degrees. Now the figure cannot hide an angle from you."
       },
+      "vocabulary": [
+        {
+          "term": "Right angle",
+          "definition": "An angle that measures exactly 90 degrees, marked in a figure with a small square."
+        },
+        {
+          "term": "Straight angle",
+          "definition": "A straight line seen as an angle, measuring 180 degrees, the same as two right angles."
+        },
+        {
+          "term": "Degree",
+          "definition": "The unit used to measure how open an angle is, written with a small circle like 90 degrees."
+        }
+      ],
       "next_steps": {
-        "if_pass": "6GM2-F2",
-        "if_fail": "Practice naming angle types (right, acute, obtuse) on real objects -- door corners, scissors, clock hands -- before returning to labeled figures."
+        "if_pass": "6GM2-B1",
+        "if_fail": "Practice naming right, acute, and obtuse angles on real objects like door corners, scissors, and clock hands (grade 4) before returning to labeled figures."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw a triangle on the board. Label one angle 35 degrees, mark one corner with a small square, and label the third angle x."
+          "text": "Fold a square corner of paper. Hold it into the corner of your desk. Say: this is a right angle, 90 degrees."
         },
         {
           "kind": "ask",
-          "text": "This figure is talking to us with three different labels. What do you notice about the three corners?"
-        },
-        {
-          "kind": "ask",
-          "text": "One corner has a number with a little circle -- 35 degrees. What is that little circle telling us?"
-        },
-        {
-          "kind": "ask",
-          "text": "One corner has a small square drawn in it and no number at all. Have you seen that mark before? What do you think it means?"
+          "text": "How many of these folded corners fit along the straight edge of the desk?"
         },
         {
           "kind": "say",
-          "text": "That square is math shorthand. It always means exactly 90 degrees -- a right angle -- even when nobody writes the number. Corners of paper, corners of doors: all 90, all marked with the square."
-        },
-        {
-          "kind": "ask",
-          "text": "The last corner just says x. Is x a measurement? What is it doing there?"
+          "text": "Two right corners fill the straight edge, so a straight line is 90 plus 90, which is 180 degrees. Four corners fit all the way around a point, so a full turn is 360 degrees."
         },
         {
           "kind": "watch",
-          "text": "If the student says the figure has only ONE known angle, they are skipping the square. Have them write 90 inside the square corner in pencil, then recount."
+          "text": "If a student thinks a wider looking opening must be more than 90, lay the folded corner on top of it to compare against a true right angle."
         },
         {
           "kind": "ask",
-          "text": "So altogether: how many angle measures do we KNOW in this triangle, and which one is our mystery?"
+          "text": "Your turn: a corner of a triangle is marked with a small square. How many degrees is it?"
         }
       ]
     },
     {
       "skill_id": "6GM2-F2",
-      "name": "Add and subtract angle measures from 180 and 360 fluently",
+      "name": "Add and subtract multi-digit whole numbers fluently",
       "column": "foundation",
       "parent_standard": "6.GM.2",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 4,
-        "description": "Fluently add and subtract multi-digit whole numbers with regrouping",
+        "description": "Fluently add and subtract multi-digit whole numbers, including subtracting from numbers that end in zero.",
         "check_question": "What is 180 - 65?"
       },
-      "i_do_script": "Every missing-angle problem in this standard ends with the same arithmetic: add up the angles you know, then subtract from 180 or 360. Model 360 - 275 out loud: 275 plus 25 gets me to 300, plus 60 more gets me to 360, so the answer is 25 + 60 = 85. Counting up beats borrowing when the starting number ends in zeros.",
+      "i_do_script": "Every missing-angle problem ends with the same arithmetic: add the angles you know, then subtract from 180 or 360. When the total ends in zero, counting up beats borrowing. Watch 360 - 275: from 275 up to 300 is 25, and from 300 up to 360 is 60, so the difference is 25 plus 60, which is 85. Draw the hops on an open number line so the two jumps are easy to see and add.",
       "canonical_error": {
-        "pattern": "Regrouping errors when subtracting from 180 or 360, which end in zeros",
-        "example": "For 180 - 65 the student answers 125 instead of 115, borrowing across the 8 incorrectly",
-        "why": "Subtracting from numbers ending in 0 forces regrouping in two places at once. The student runs the borrowing procedure mechanically and loses a ten, and never estimates to catch it."
+        "pattern": "Regrouping slips when subtracting from 180 or 360, which end in zeros.",
+        "example": "For 180 - 65 the student writes 125 instead of 115, losing a ten while borrowing across the zero.",
+        "why": "Subtracting from a number that ends in zero forces borrowing in two places at once. Counting up from the smaller number avoids the borrow entirely."
       },
-      "item_template": "A bare addition or subtraction problem using 180 or 360 and angle-sized whole numbers. NR (numeric response). No context, no figure.",
+      "item_template": "A bare whole-number addition or subtraction using 180, 360, or angle-sized numbers. Numeric response, no figure, no context.",
       "sample_items": [
         {
-          "stem": "180 - 60 = ?",
-          "answer": "120",
-          "choices": null,
-          "distractor_logic": "Watch for regrouping slips across the tens place -- answers off by 10 mean a borrowing error."
+          "stem": "180 - 65",
+          "answer": "115"
         },
         {
-          "stem": "180 - 45 = ?",
-          "answer": "135",
-          "choices": null,
-          "distractor_logic": "Watch for regrouping slips across the tens place -- answers off by 10 mean a borrowing error."
+          "stem": "90 + 45",
+          "answer": "135"
         },
         {
-          "stem": "180 - 90 = ?",
-          "answer": "90",
-          "choices": null,
-          "distractor_logic": "Watch for regrouping slips across the tens place -- answers off by 10 mean a borrowing error."
+          "stem": "360 - 90",
+          "answer": "270"
         },
         {
-          "stem": "180 - 75 = ?",
-          "answer": "105",
-          "choices": null,
-          "distractor_logic": "Watch for regrouping slips across the tens place -- answers off by 10 mean a borrowing error."
+          "stem": "180 - 90",
+          "answer": "90"
         },
         {
-          "stem": "180 - 115 = ?",
-          "answer": "65",
-          "choices": null,
-          "distractor_logic": "Watch for regrouping slips across the tens place -- answers off by 10 mean a borrowing error."
+          "stem": "70 + 55",
+          "answer": "125"
         },
         {
-          "stem": "180 - 138 = ?",
-          "answer": "42",
-          "choices": null,
-          "distractor_logic": "Watch for regrouping slips across the tens place -- answers off by 10 mean a borrowing error."
+          "stem": "360 - 125",
+          "answer": "235"
         },
         {
-          "stem": "360 - 90 = ?",
-          "answer": "270",
-          "choices": null,
-          "distractor_logic": "Watch for regrouping slips across the tens place -- answers off by 10 mean a borrowing error."
+          "stem": "180 - 47 - 33",
+          "answer": "100"
         },
         {
-          "stem": "360 - 180 = ?",
-          "answer": "180",
-          "choices": null,
-          "distractor_logic": "Watch for regrouping slips across the tens place -- answers off by 10 mean a borrowing error."
+          "stem": "110 + 95 + 80",
+          "answer": "285"
         },
         {
-          "stem": "360 - 250 = ?",
-          "answer": "110",
-          "choices": null,
-          "distractor_logic": "Watch for regrouping slips across the tens place -- answers off by 10 mean a borrowing error."
-        },
-        {
-          "stem": "360 - 285 = ?",
-          "answer": "75",
-          "choices": null,
-          "distractor_logic": "Watch for regrouping slips across the tens place -- answers off by 10 mean a borrowing error."
-        },
-        {
-          "stem": "70 + 85 = ?",
-          "answer": "155",
-          "choices": null,
-          "distractor_logic": "Watch for regrouping slips across the tens place -- answers off by 10 mean a borrowing error."
-        },
-        {
-          "stem": "95 + 110 + 80 = ?",
-          "answer": "285",
-          "choices": null,
-          "distractor_logic": "Watch for regrouping slips across the tens place -- answers off by 10 mean a borrowing error."
-        },
-        {
-          "stem": "180 - 52 - 48 = ?",
-          "answer": "80",
-          "choices": null,
-          "distractor_logic": "Watch for regrouping slips across the tens place -- answers off by 10 mean a borrowing error."
-        },
-        {
-          "stem": "360 - 100 - 90 - 85 = ?",
-          "answer": "85",
-          "choices": null,
-          "distractor_logic": "Watch for regrouping slips across the tens place -- answers off by 10 mean a borrowing error."
+          "stem": "360 - 100 - 90 - 85",
+          "answer": "85"
         }
       ],
+      "redirect_script": {
+        "stop": "Let us check that by counting up.",
+        "prompt": "Start at the number you subtracted and count up to the total. How much to the next hundred, then how much more to 180 or 360? Add the two hops.",
+        "praise": "You counted up instead of borrowing, which is the fastest way when the big number ends in zero."
+      },
       "vocabulary": [
         {
           "term": "Sum",
@@ -585,54 +211,603 @@
           "definition": "The answer you get when you subtract one number from another."
         }
       ],
-      "redirect_script": {
-        "stop": "Hold on -- let's check that with adding up.",
-        "prompt": "Start at the number you subtracted and count UP to 180: how much to the next ten, then how much more to 180? Add those two hops together.",
-        "praise": "You counted up instead of borrowing -- that's the fastest way when the big number ends in zero."
-      },
       "next_steps": {
-        "if_pass": "6GM2-S1",
-        "if_fail": "Drill subtraction from 100 first (100 - 35, 100 - 62) until counting up is automatic, then return to 180 and 360."
+        "if_pass": "6GM2-B2",
+        "if_fail": "Drill subtraction from 100 first, like 100 - 35 and 100 - 62, until counting up is automatic, then return to 180 and 360 (grade 3 to 4)."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write on the board: 360 - 275 = ?"
+          "text": "Write 360 - 275. Draw an open number line with 275 on the left and 360 on the right."
         },
         {
           "kind": "ask",
-          "text": "Before we compute -- about how big should the answer be? Closer to 10, 100, or 300?"
+          "text": "About how big should the answer be, closer to 10, 100, or 300?"
         },
         {
           "kind": "say",
-          "text": "Instead of borrowing, I'm going to count UP from 275 to 360. Watch."
-        },
-        {
-          "kind": "show",
-          "text": "Draw hops: 275 --(+25)--> 300 --(+60)--> 360. Write 25 + 60 = 85."
-        },
-        {
-          "kind": "ask",
-          "text": "Why did I jump to 300 first instead of subtracting digit by digit?"
-        },
-        {
-          "kind": "ask",
-          "text": "Check it: does 275 + 85 really make 360? Add it and see."
-        },
-        {
-          "kind": "ask",
-          "text": "Your turn: use counting up for 180 - 115. What's your first hop?"
+          "text": "Count up in hops: 275 plus 25 reaches 300, then 300 plus 60 reaches 360. Add the hops: 25 plus 60 is 85."
         },
         {
           "kind": "watch",
-          "text": "If the student's answer is off by exactly 10, they borrowed wrong. Don't reteach borrowing -- move them to counting up, which sidesteps it."
+          "text": "If a student's answer is off by exactly 10, they borrowed wrong. Move them to counting up, which sidesteps the borrow."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: use counting up for 180 - 115. What is your first hop?"
         }
       ]
     },
     {
+      "skill_id": "6GM2-B1",
+      "name": "Classify triangles and quadrilaterals by their sides and angles",
+      "column": "looking_back",
+      "parent_standard": "6.GM.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Sort two-dimensional figures by their number of sides and angles, and name triangles, quadrilaterals, and their special types.",
+        "check_question": "How many sides does a quadrilateral have, and is a square a quadrilateral?"
+      },
+      "i_do_script": "Before you can use 180 for a triangle or 360 for a quadrilateral, you have to name the shape. Count the sides: three straight sides is a triangle, four straight sides is a quadrilateral. Triangles have special types by their angles, a right triangle has one square corner and an equilateral triangle has three equal angles. Quadrilaterals also come in types: a square and a rectangle both have four right angles, and a rhombus and a trapezoid are quadrilaterals too. A special name does not remove a shape from its family, because every four sided figure is still a quadrilateral.",
+      "canonical_error": {
+        "pattern": "Thinks a shape with a special name, like a square or rectangle, is not a quadrilateral.",
+        "example": "Says a square is not a quadrilateral because it is a square.",
+        "why": "The student treats the special name and the general family as opposites. A square has four sides, so it is a quadrilateral, and so are rectangles, rhombuses, and trapezoids."
+      },
+      "item_template": "A named or pictured shape. Student classifies it as a triangle or a quadrilateral, names its special type, or counts its sides and angles. Multiple choice or short response.",
+      "sample_items": [
+        {
+          "stem": "How many sides and how many angles does a triangle have?",
+          "answer": "3 sides and 3 angles"
+        },
+        {
+          "stem": "How many sides and how many angles does a quadrilateral have?",
+          "answer": "4 sides and 4 angles"
+        },
+        {
+          "stem": "Is a square a triangle or a quadrilateral?",
+          "answer": "quadrilateral",
+          "choices": [
+            "triangle",
+            "quadrilateral",
+            "neither",
+            "both"
+          ],
+          "distractor_logic": "Students who think a special name removes a shape from its family pick neither; a square has 4 sides, so it is a quadrilateral."
+        },
+        {
+          "stem": "A closed shape has 3 straight sides. What is it called?",
+          "answer": "a triangle",
+          "choices": [
+            "a triangle",
+            "a quadrilateral",
+            "a rectangle",
+            "a rhombus"
+          ],
+          "distractor_logic": "The three quadrilateral options bait students who do not connect 3 sides to triangle."
+        },
+        {
+          "stem": "Name the special triangle that has three equal sides and three equal angles.",
+          "answer": "equilateral triangle"
+        },
+        {
+          "stem": "How many right angles does a rectangle have?",
+          "answer": "4",
+          "choices": [
+            "1",
+            "2",
+            "4",
+            "0"
+          ],
+          "distractor_logic": "Students who picture only one square corner answer 1 or 2; a rectangle has four right angles."
+        },
+        {
+          "stem": "Which shape is NOT a quadrilateral: square, trapezoid, triangle, or rhombus?",
+          "answer": "triangle",
+          "choices": [
+            "square",
+            "trapezoid",
+            "triangle",
+            "rhombus"
+          ],
+          "distractor_logic": "Square, trapezoid, and rhombus are all four sided; only the triangle has three sides."
+        },
+        {
+          "stem": "A trapezoid has how many sides and angles?",
+          "answer": "4 sides and 4 angles"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Count the straight sides first.",
+        "prompt": "Three sides is a triangle, four sides is a quadrilateral. Say the number of sides out loud, then name the family before you name the special type.",
+        "praise": "You counted the sides and named the family. A square is still a quadrilateral, and it always will be."
+      },
+      "vocabulary": [
+        {
+          "term": "Triangle",
+          "definition": "A closed shape with exactly 3 straight sides and 3 angles."
+        },
+        {
+          "term": "Quadrilateral",
+          "definition": "A closed shape with exactly 4 straight sides and 4 angles. Squares, rectangles, rhombuses, and trapezoids are all quadrilaterals."
+        },
+        {
+          "term": "Right angle",
+          "definition": "A 90 degree angle, the square corner. A rectangle and a square each have four of them."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6GM2-S1",
+        "if_fail": "6GM2-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Lay out cut-out shapes: a square, a right triangle, a trapezoid, and an equilateral triangle."
+        },
+        {
+          "kind": "ask",
+          "text": "Point to each shape and count its straight sides out loud. Which pile does it go in, triangles or quadrilaterals?"
+        },
+        {
+          "kind": "say",
+          "text": "Three sides go in the triangle pile, four sides go in the quadrilateral pile. The right triangle and the equilateral triangle are triangles, the square and the trapezoid are quadrilaterals."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student sets the square aside as not a quadrilateral, count its sides together: four sides means it belongs in the quadrilateral pile, special name and all."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a shape has four straight sides. Triangle or quadrilateral?"
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "How many sides does a triangle have? How many does a quadrilateral have?",
+          "answer": "A triangle has 3 sides; a quadrilateral has 4 sides."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Is a rhombus a triangle or a quadrilateral?",
+          "answer": "A quadrilateral, because it has 4 sides."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Sort these into triangles and quadrilaterals: square, right triangle, trapezoid, equilateral triangle.",
+          "answer": "Triangles: right triangle, equilateral triangle. Quadrilaterals: square, trapezoid."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Marcus says a square cannot be a quadrilateral because it is a square. Is he right? Explain.",
+          "answer": "No. A square has 4 sides, so it is a quadrilateral. Square is its special name, but it stays in the quadrilateral family."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Name each triangle by its angles: one has a square corner, and another has three equal angles.",
+          "answer": "The one with a square corner is a right triangle; the one with three equal angles is an equilateral triangle."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which special quadrilaterals have four right angles?",
+          "answer": "A square and a rectangle."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A diagonal is drawn across a rhombus from one corner to the opposite corner. How many triangles is it split into, and how many sides does each triangle have?",
+          "answer": "Two triangles, each with 3 sides."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "A student sorted shapes and put the rectangle in the not a quadrilateral pile. Find the mistake and fix it.",
+          "shown_work": [
+            "Square: quadrilateral",
+            "Trapezoid: quadrilateral",
+            "Rectangle: NOT a quadrilateral",
+            "Triangle: not a quadrilateral"
+          ],
+          "answer": "The rectangle has 4 straight sides, so it is a quadrilateral. Only the triangle, with 3 sides, is not a quadrilateral."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Sort by Sides",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "A bag of cut-out shapes (triangles and quadrilaterals of many types)",
+            "Two labeled mats: Triangles and Quadrilaterals"
+          ],
+          "instructions": "1. Each pair empties the bag of shapes.\n2. One partner picks a shape, counts its straight sides out loud, and places it on the correct mat.\n3. The other partner checks: does the count match the mat?\n4. Then sub-sort the Quadrilaterals mat into shapes with four right angles (squares, rectangles) and shapes without.\n5. Say each time: I counted this many sides, so it is a triangle or a quadrilateral."
+        },
+        {
+          "type": "game",
+          "title": "Family or Not",
+          "time_minutes": 8,
+          "grouping": "small_group",
+          "materials": [
+            "A deck of shape name cards"
+          ],
+          "instructions": "1. Shuffle the deck and flip one card, like square or triangle.\n2. Players race to say whether the shape is a quadrilateral and give the reason: how many sides it has.\n3. The first correct reason keeps the card.\n4. Slip the special names (rhombus, rectangle, trapezoid) in often to catch anyone who forgets they are quadrilaterals."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Handling and sorting real cut-out shapes makes count the sides a physical move before the classification is named."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Sort and justify in pairs surfaces who is naming shapes from a memorized picture and who is actually counting sides."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Quick choral rounds of three sides, triangle and four sides, quadrilateral build the automatic sides to family pairing."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many straight sides does this shape have? So which family is it in?",
+          "A square has its own name. Does that stop it from being a quadrilateral? Why not?",
+          "What makes a triangle a right triangle instead of just a triangle?",
+          "Which quadrilaterals have four right angles, and which do not?",
+          "If a shape has four straight sides, what do you already know about it?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student says a square or rectangle is not a quadrilateral.",
+            "say": "Count its sides with me. Four straight sides means it is a quadrilateral, no matter what special name it also has.",
+            "praise": "You kept the shape in its family. A square is always a quadrilateral."
+          },
+          {
+            "if_you_see": "Student names a shape by how it is turned, like calling a tilted square a diamond in a different family.",
+            "say": "Turn it back upright. Did any side disappear? The number of sides did not change, so the name did not change.",
+            "praise": "You judged by the sides, not by the tilt."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Is a trapezoid a triangle or a quadrilateral?",
+            "look_for": "Quadrilateral, with the reason that it has four sides."
+          },
+          {
+            "prompt": "How many right angles does a rectangle have?",
+            "look_for": "4, not 1 or 2."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Classify this shape: it has 4 straight sides and 4 corners. Is it a triangle or a quadrilateral, and could it also have a special name?",
+        "answer": "A quadrilateral",
+        "steps": [
+          {
+            "math": "count the straight sides: 4",
+            "annotation": "The number of sides names the family."
+          },
+          {
+            "math": "4 sides = quadrilateral",
+            "annotation": "Every closed shape with four straight sides is a quadrilateral."
+          },
+          {
+            "math": "special names: square, rectangle, rhombus, trapezoid",
+            "annotation": "If it also has four right angles it is a rectangle or square, but it is a quadrilateral either way."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Classify a shape that has 3 straight sides and one square corner.",
+        "answer": "a right triangle",
+        "steps": [
+          {
+            "math": "count the straight sides: 3",
+            "annotation": "The number of sides names the family.",
+            "given": true
+          },
+          {
+            "math": "3 sides = triangle",
+            "annotation": "Every closed shape with three straight sides is a triangle.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "The square corner is a right angle. What special triangle has a right angle?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the full name of the shape.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "This shape has ___ straight sides, so it is a ___.",
+        "A square is a quadrilateral because ___."
+      ],
+      "fluency_source": "6GM2-F1"
+    },
+    {
+      "skill_id": "6GM2-B2",
+      "name": "Add and subtract decimals to the hundredths",
+      "column": "looking_back",
+      "parent_standard": "6.GM.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Add and subtract decimals to hundredths by lining up place values.",
+        "check_question": "What is 90 - 47.5?"
+      },
+      "i_do_script": "Decimals add and subtract place by place, so the decimal points must line up. For 90 - 47.5, write 90 as 90.0 so both numbers show a tenths place, line up the points, and subtract: 90.0 - 47.5 = 42.5. Lining up the points is really lining up the place values, ones under ones and tenths under tenths. On a hundredths grid or in money, tenths add to tenths and hundredths add to hundredths.",
+      "canonical_error": {
+        "pattern": "Right-aligns the digits instead of lining up the decimal points.",
+        "example": "Computes 4.2 + 0.35 by stacking 42 over 35 and gets 0.77.",
+        "why": "The student lines up the last digits like whole-number addition, which puts tenths under hundredths. Only matching place values can be added."
+      },
+      "item_template": "Add or subtract two decimals to the hundredths, often angle-sized numbers. Numeric response, one renaming or an appended zero may be needed.",
+      "sample_items": [
+        {
+          "stem": "2.4 + 3.5",
+          "answer": "5.9"
+        },
+        {
+          "stem": "6.75 - 2.5",
+          "answer": "4.25"
+        },
+        {
+          "stem": "90 - 47.5",
+          "answer": "42.5"
+        },
+        {
+          "stem": "180 - 132.5",
+          "answer": "47.5"
+        },
+        {
+          "stem": "101.5 + 88.5",
+          "answer": "190"
+        },
+        {
+          "stem": "0.8 + 0.35",
+          "answer": "1.15"
+        },
+        {
+          "stem": "5 - 1.25",
+          "answer": "3.75"
+        },
+        {
+          "stem": "47.5 + 90 + 42.5",
+          "answer": "180"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Are the decimal points lined up?",
+        "prompt": "Stack the numbers so the decimal points sit in one column, adding a zero if a place is empty. Then add or subtract each place.",
+        "praise": "You lined up the places, so every digit landed where it belongs."
+      },
+      "vocabulary": [
+        {
+          "term": "Place value",
+          "definition": "The size a digit's position gives it: ones, tenths, hundredths."
+        },
+        {
+          "term": "Tenths",
+          "definition": "The first place to the right of the decimal point; one tenth is 0.1."
+        },
+        {
+          "term": "Regroup",
+          "definition": "Trade ten of one place for one of the next larger place, like ten tenths for one whole."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6GM2-S1",
+        "if_fail": "6GM2-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 90 - 47.5 stacked, with 90 rewritten as 90.0 and the decimal points in one column."
+        },
+        {
+          "kind": "ask",
+          "text": "Why can I write 90 as 90.0 without changing it?"
+        },
+        {
+          "kind": "say",
+          "text": "Ninety and ninety point zero are the same amount. Now subtract place by place: 0 tenths minus 5 tenths needs a trade, so borrow one from the ones. The result is 42.5."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student stacks 47.5 under 90 by the last digit, ask what place each digit is in. Tenths cannot line up under ones."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: line up and solve 180 - 132.5."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "0.3 + 0.4",
+          "answer": "0.7"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "1.5 + 2.4",
+          "answer": "3.9"
+        },
+        {
+          "difficulty": "core",
+          "stem": "90 - 47.5",
+          "answer": "42.5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "180 - 101.5 - 42.5",
+          "answer": "36"
+        },
+        {
+          "difficulty": "core",
+          "stem": "6.3 - 2.45",
+          "answer": "3.85"
+        },
+        {
+          "difficulty": "core",
+          "stem": "0.6 + 0.75",
+          "answer": "1.35"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "360 - 88.5 - 101.5 - 92",
+          "answer": "78"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia wrote 4.2 + 0.35 = 0.77. Find the mistake and fix it.",
+          "shown_work": [
+            "4.2 + 0.35",
+            "stacked 42 over 35 by the last digit",
+            "= 0.77"
+          ],
+          "answer": "She lined up the last digits instead of the decimal points. 4.20 + 0.35 = 4.55."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build It in Money",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Play money or drawn dollars, dimes, and pennies",
+            "Whiteboards"
+          ],
+          "instructions": "1. Build 6.75 in money: 6 dollars, 7 dimes, 5 pennies.\n2. Subtract 2.5 by taking away 2 dollars and 5 dimes, trading a dollar for ten dimes if a place runs short.\n3. Write the stacked problem next to the money and match each trade to a regroup.\n4. Repeat with 90 - 47.5, writing 90 as 90 dollars and trading down to subtract.\n5. Say each time: dollars with dollars, dimes with dimes, pennies with pennies."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Spot the Slide",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Worked-problem slips, half aligned and half misaligned"
+          ],
+          "instructions": "1. Deal the slips face down.\n2. Flip one at a time and decide: were the decimal points lined up, or did a digit slide into the wrong place?\n3. For each wrong slip, name the place that got mixed, like tenths added to hundredths, and fix it.\n4. Sort the slips into Lined Up and Slid piles; the group must agree before sorting.",
+          "content": {
+            "worked_problem": "4.2 + 0.35 stacked by the last digits gives 0.77",
+            "error_step": "42 stacked over 35, decimal points ignored",
+            "why": "Right-aligning puts the 2 tenths under the 5 hundredths, so unlike places were added."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Money and hundredths grids make place-value alignment concrete before the line-up-the-points rule is named."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud while stacking makes the choice of which digit sits under which audible and checkable."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Sorting aligned against misaligned worked examples confronts the right-align bug directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What place is this digit in? What place is the digit under it?",
+          "Why can you write 90 as 90.0 without changing its value?",
+          "Where did the trade come from when you subtracted the tenths?",
+          "Estimate first: should 90 - 47.5 be more or less than 40?",
+          "How is trading a dollar for ten dimes the same as regrouping?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student right-aligns the digits and ignores the decimal points.",
+            "say": "Build both numbers in money. Can pennies add to dimes? Line up the points so each place adds to its own kind.",
+            "praise": "You matched place to place, so the answer came out true."
+          },
+          {
+            "if_you_see": "Student subtracts the smaller digit from the larger regardless of order.",
+            "say": "In 90 - 47.5 you cannot take 5 tenths from 0 tenths without trading. Trade one from the ones for ten tenths first.",
+            "praise": "You regrouped instead of flipping the digits, which keeps the value honest."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "0.8 + 0.35",
+            "look_for": "1.15, with the 8 tenths added to 3 tenths, not to 5 hundredths."
+          },
+          {
+            "prompt": "5 - 1.25",
+            "look_for": "3.75, after writing 5 as 5.00."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Subtract 90 - 47.5.",
+        "answer": "42.5",
+        "steps": [
+          {
+            "math": "90 = 90.0",
+            "annotation": "Append a zero so both numbers show a tenths place."
+          },
+          {
+            "math": "line up: 90.0 over 47.5",
+            "annotation": "Decimal points in one column put each place over its match."
+          },
+          {
+            "math": "tenths: 0 - 5 needs a trade, borrow 1 from the ones for 10 tenths",
+            "annotation": "Ten tenths minus 5 tenths is 5 tenths."
+          },
+          {
+            "math": "whole numbers: 89 - 47 = 42, so 42.5",
+            "annotation": "Finish the whole-number places after the trade."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Add 101.5 + 88.5.",
+        "answer": "190",
+        "steps": [
+          {
+            "math": "line up the decimal points: 101.5 over 88.5",
+            "annotation": "Ones under ones, tenths under tenths.",
+            "given": true
+          },
+          {
+            "math": "tenths: 5 + 5 = 10 tenths, regroup to 1 whole",
+            "annotation": "Ten tenths make one whole; write 0 and carry 1.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Add the ones and tens with the carried 1.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the sum.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I lined up the decimal points so that ___ adds to ___.",
+        "I wrote ___ as ___ so both numbers show the same places."
+      ],
+      "fluency_source": "6GM2-F2"
+    },
+    {
       "skill_id": "6GM2-S1",
       "name": "Identify the interior angle sums of triangles and quadrilaterals",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.GM.2",
       "engine_stems": [
         1
@@ -1067,7 +1242,7 @@
         "This shape is a ___, so its angles add to ___.",
         "A quadrilateral's sum is 360 because ___."
       ],
-      "fluency_source": "6GM2-F2",
+      "fluency_source": "6GM2-B1",
       "worked_example_script": [
         {
           "kind": "show",
@@ -4693,6 +4868,8 @@
   "skill_sequence": [
     "6GM2-F1",
     "6GM2-F2",
+    "6GM2-B1",
+    "6GM2-B2",
     "6GM2-S1",
     "6GM2-S2",
     "6GM2-S3",
@@ -4702,8 +4879,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation",
-      "description": "Tier III -- 2+ grade levels below. If a student can't access Looking Back, start here.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-4) prerequisite skills. Start intervention here.",
       "skills": [
         "6GM2-F1",
         "6GM2-F2"
@@ -4711,15 +4888,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Prerequisite skills -- fix these first if a student can't access grade-level work",
+      "description": "One grade below (grade 5) skills that feed this standard directly.",
       "skills": [
-        "6GM2-S1"
+        "6GM2-B1",
+        "6GM2-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "Core 6.GM.2 skills -- the standard itself",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "6GM2-S1",
         "6GM2-S2",
         "6GM2-S3",
         "6GM2-S4"
@@ -4727,7 +4906,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Extension skills -- for students ready to push ahead",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "6GM2-S5",
         "6GM2-S6"
@@ -4737,12 +4916,20 @@
   "skill_tree": {
     "6GM2-F1": [],
     "6GM2-F2": [],
+    "6GM2-B1": [
+      "6GM2-F1"
+    ],
+    "6GM2-B2": [
+      "6GM2-F2"
+    ],
     "6GM2-S1": [
+      "6GM2-B1",
       "6GM2-F1"
     ],
     "6GM2-S2": [
       "6GM2-S1",
-      "6GM2-F2"
+      "6GM2-F2",
+      "6GM2-B2"
     ],
     "6GM2-S3": [
       "6GM2-S2",
@@ -4760,7 +4947,7 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S2 (missing angle in a labeled figure) -- it exercises the whole core routine. If they pass, branch to S3/S4 and then the Looking Forward pair. If they fail, check S1 (do they even own the 180/360 facts?) and the foundations (can they read the figure's marks, and is the subtraction itself reliable?). This avoids testing all 8 skills when the student may only need 1-2.",
+    "description": "Start with S2, finding a missing angle in a labeled triangle or quadrilateral, the standard's core computational routine. If they pass, move up through S3 (real-world contexts), S4 (reasoning with no figure), and the Looking Forward pair S5 and S6. If they fail, drop below grade level: B1 checks whether they can classify triangles and quadrilaterals by their properties, which decides the 180 or 360 total, and B2 checks decimal addition and subtraction, which the harder problems lean on. If those wobble, the foundations F1 (recognizing angles, right angles, and the 180 and 360 benchmarks) and F2 (multi-digit whole-number arithmetic) locate the gap in grades 3 to 4. S1 stays available to probe whether the 180 and 360 facts themselves are anchored.",
     "entry_skill": "6GM2-S2",
     "if_pass": [
       "6GM2-S3",
@@ -4769,13 +4956,13 @@
       "6GM2-S6"
     ],
     "if_fail": [
-      "6GM2-S1",
-      "6GM2-F1",
-      "6GM2-F2"
+      "6GM2-B1",
+      "6GM2-B2"
     ],
     "branch_skills": [
-      "6GM2-S3",
-      "6GM2-S4"
+      "6GM2-F1",
+      "6GM2-F2",
+      "6GM2-S1"
     ]
   }
 }

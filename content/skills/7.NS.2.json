@@ -3,7 +3,7 @@
   "standard_text": "Show that the distance between two rational numbers on the number line is the absolute value of their difference, and apply this principle in real-world contexts.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard turns subtraction into a story about distance. The distance between two numbers on the number line is the absolute value of their difference, |a - b| — and because distance can never be negative, the absolute value is doing essential work. So the arc begins by settling absolute value itself: |x| is how far x is from zero, always non-negative. That idea, |-7| = 7, is the anchor.\n\nFrom there the standard builds the subtraction mechanic that makes the distance formula run. The move students most need is 'add the opposite': a - b becomes a + (-b), which quietly converts every subtraction into the signed addition they already know. The trickiest case is subtracting a negative — 3.5 - (-2.5) — where the two minus signs turn into a plus and the result grows. Fractions and decimals raise the number difficulty without changing the logic. Then students find distance as |a - b| directly, and apply it to contexts: how far a temperature fell, the gap between an elevation above and below sea level, the change in a bank balance. The capstone reasons abstractly about a - b = c from positions on a number line. The through-line we keep naming: subtracting is adding the opposite, and the distance between two numbers is the absolute value of that difference.",
+    "narrative": "This standard asks students to subtract rational numbers and to show that the distance between two numbers on a number line is the absolute value of their difference, |a - b|. The on-grade work runs from reading absolute value as distance from zero, through the add-the-opposite subtraction rule, to distance problems and real contexts like temperature drops and elevation gaps. The case that blocks most students is subtracting a negative, where two minus signs become a plus. Students who struggle usually carry gaps from well below grade seven: shaky regrouping in whole-number subtraction and no picture of a difference as a distance you can count on a number line. Intervention should rebuild those foundations, then the grade six skills of plotting negative rationals and reading absolute value as size, and only then return to |a - b|.",
     "steps": [
       {
         "skill_id": "7NS2-S1",
@@ -40,194 +40,821 @@
   "skills": [
     {
       "skill_id": "7NS2-F1",
-      "name": "Place and compare rational numbers on a number line",
+      "name": "Subtract multi-digit whole numbers with regrouping",
       "column": "foundation",
       "parent_standard": "7.NS.2",
       "prerequisite_skill": {
         "type": "gap",
+        "grade": 4,
+        "description": "Subtract multi-digit whole numbers, trading a ten or a hundred when a place does not have enough.",
+        "check_question": "What is 74 - 38?"
+      },
+      "i_do_script": "Subtraction works place by place, and when a place does not have enough, I trade from the next place over. Watch 425 - 187 with base ten blocks. I cannot take 7 ones from 5 ones, so I trade 1 ten for 10 ones: now I have 1 ten and 15 ones, and 15 - 7 = 8. I cannot take 8 tens from 1 ten, so I trade 1 hundred for 10 tens: 11 tens - 8 tens = 3 tens. Finally 3 hundreds - 1 hundred = 2 hundreds. The answer is 238, and every trade kept the total the same.",
+      "canonical_error": {
+        "pattern": "Subtracts the smaller digit from the larger in each place, ignoring which number is on top",
+        "example": "For 425 - 187 writes 362, doing 7 - 5 in the ones and 8 - 2 in the tens",
+        "why": "The student flips each column instead of trading. The bottom digit must come off the top digit, and when the top digit is too small you trade from the next place, you do not swap the digits."
+      },
+      "item_template": "A two- or three-digit whole number subtraction that needs at least one regroup. Short response fluency bank, no calculator.",
+      "sample_items": [
+        {
+          "stem": "74 - 38",
+          "answer": "36"
+        },
+        {
+          "stem": "425 - 187",
+          "answer": "238"
+        },
+        {
+          "stem": "600 - 254",
+          "answer": "346"
+        },
+        {
+          "stem": "302 - 156",
+          "answer": "146"
+        },
+        {
+          "stem": "71 - 29",
+          "answer": "42"
+        },
+        {
+          "stem": "540 - 275",
+          "answer": "265"
+        },
+        {
+          "stem": "1000 - 638",
+          "answer": "362"
+        },
+        {
+          "stem": "813 - 546",
+          "answer": "267"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Does the top digit have enough to take the bottom digit away?",
+        "prompt": "If a place does not have enough, trade one from the next place over: one ten becomes ten ones. Never flip the digits, the bottom always comes off the top.",
+        "praise": "You traded instead of flipping, so every place subtracted honestly."
+      },
+      "vocabulary": [
+        {
+          "term": "Regroup",
+          "definition": "Trade one of a larger place for ten of the smaller place, like one ten for ten ones."
+        },
+        {
+          "term": "Difference",
+          "definition": "The answer to a subtraction problem."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7NS2-B2",
+        "if_fail": "Review grade 3 two-digit subtraction with base ten blocks, trading one ten for ten ones."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Build 52 with base ten blocks: 5 tens and 2 ones. We want to take away 27."
+        },
+        {
+          "kind": "ask",
+          "text": "Can we take 7 ones away from 2 ones? What could we trade?"
+        },
+        {
+          "kind": "say",
+          "text": "Trade 1 ten for 10 ones: now 4 tens and 12 ones. Take away 7 ones: 5 left. Take away 2 tens: 2 left. So 52 - 27 = 25."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 35 by doing 7 - 2 in the ones, point at the blocks: we are taking 7 ones AWAY from the 52, not the other way around."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: build and solve 63 - 28."
+        }
+      ]
+    },
+    {
+      "skill_id": "7NS2-F2",
+      "name": "Find how far apart two numbers are on a number line",
+      "column": "foundation",
+      "parent_standard": "7.NS.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 3,
+        "description": "Find the distance between two whole numbers by counting up in hops on a number line.",
+        "check_question": "On a number line, how far is it from 38 to 62?"
+      },
+      "i_do_script": "A subtraction question is also a distance question: how far apart are the two numbers? Watch: how far from 38 to 62? I hop up the number line in easy jumps. From 38 to 40 is 2. From 40 to 60 is 20. From 60 to 62 is 2 more. Add the hops: 2 + 20 + 2 = 24, so 38 and 62 are 24 apart, and 62 - 38 = 24. The gap between two numbers is something I can count, and a gap is never negative.",
+      "canonical_error": {
+        "pattern": "Counts the tick marks or the numbers themselves instead of the hops between them",
+        "example": "Says 9 and 15 are 7 apart because they count 9, 10, 11, 12, 13, 14, 15",
+        "why": "The student counts the numbers touched instead of the jumps between them. Distance counts hops, and from 9 to 15 there are 6 hops."
+      },
+      "item_template": "Two whole numbers on a number line. Student finds how far apart they are by counting up in hops. Short response fluency bank.",
+      "sample_items": [
+        {
+          "stem": "How far apart are 9 and 15 on a number line?",
+          "answer": "6"
+        },
+        {
+          "stem": "How far is it from 38 to 62?",
+          "answer": "24"
+        },
+        {
+          "stem": "Count up from 47 to 100. How far is the jump?",
+          "answer": "53"
+        },
+        {
+          "stem": "Start at 26 and hop to 51. How far did you hop?",
+          "answer": "25"
+        },
+        {
+          "stem": "Use counting up to find 60 - 18.",
+          "answer": "42"
+        },
+        {
+          "stem": "How far apart are 35 and 82?",
+          "answer": "47"
+        },
+        {
+          "stem": "How far is it from 14 to 41?",
+          "answer": "27"
+        },
+        {
+          "stem": "How far apart are 199 and 205?",
+          "answer": "6"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Are you counting numbers or counting hops?",
+        "prompt": "Distance is the number of hops BETWEEN the two numbers. Jump in easy pieces, to the next ten, then by tens, then the last bit, and add the hops.",
+        "praise": "You counted the hops, not the tick marks, so your distance is right."
+      },
+      "vocabulary": [
+        {
+          "term": "Number line",
+          "definition": "A line where numbers sit in order, evenly spaced."
+        },
+        {
+          "term": "Distance",
+          "definition": "How far apart two numbers are, counted in hops between them."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7NS2-B1",
+        "if_fail": "Review grade 2 and 3 number line hops, skip counting by tens and ones to travel between two numbers."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw an open number line. Mark 26 on the left and 51 on the right."
+        },
+        {
+          "kind": "ask",
+          "text": "What friendly number is a short hop from 26? How would you jump toward 51?"
+        },
+        {
+          "kind": "say",
+          "text": "Hop 4 to reach 30, hop 20 to reach 50, hop 1 to reach 51. Add the hops: 4 + 20 + 1 = 25. So 26 and 51 are 25 apart, and 51 - 26 = 25."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student gets 26, they counted the tick marks including both endpoints. Recount the jumps only."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: hop from 38 to 62 and add your hops."
+        }
+      ]
+    },
+    {
+      "skill_id": "7NS2-B1",
+      "name": "Plot and order positive and negative rational numbers on a number line",
+      "column": "looking_back",
+      "parent_standard": "7.NS.2",
+      "prerequisite_skill": {
+        "type": "gap",
         "grade": 6,
-        "description": "Order positive and negative rationals and place them correctly on a number line.",
+        "description": "Place positive and negative fractions and decimals on a number line and order them by position.",
         "check_question": "Which is greater, -5 or -2?"
       },
-      "i_do_script": "On a number line, numbers get bigger as you move RIGHT and smaller as you move LEFT. That means for negatives, the one closer to zero is bigger. Watch: -2 and -5. -2 is closer to zero (to the right), so -2 is greater than -5. It feels backwards because 5 is bigger than 2, but with a minus sign, farther left is smaller.",
+      "i_do_script": "On a number line, numbers grow to the right and shrink to the left, and that rule does not change when the numbers go negative. Watch me place -3/4: it is negative, so it sits left of zero, and it is less than one whole, so it sits between -1 and 0. Now compare -5 and -2: both sit left of zero, but -2 is closer to zero, farther right, so -2 is greater. It feels backwards because 5 is bigger than 2, but position decides order, not the digits. Every rational number, fraction or decimal, has exactly one spot on the line.",
       "canonical_error": {
-        "pattern": "Orders negative numbers by their size as if they were positive",
+        "pattern": "Orders negative numbers by digit size as if they were positive",
         "example": "Says -5 > -2 because 5 > 2, instead of -2 > -5",
-        "why": "The student compares the digits and ignores the sign. On the number line, a negative farther from zero is smaller, so -5 is less than -2."
+        "why": "The student compares the digits and ignores position. A negative farther from zero sits farther left, so it is smaller: -5 is less than -2."
       },
-      "item_template": "Two or more rationals to compare or order, including negatives. Short response fluency bank.",
+      "item_template": "Positive and negative fractions, decimals, and integers to plot, compare, or order on a number line. MC and short response.",
       "sample_items": [
         {
           "stem": "Which is greater, -5 or -2?",
-          "answer": "-2"
+          "answer": "-2",
+          "choices": [
+            "-5",
+            "-2",
+            "They are equal",
+            "Cannot tell without a number line"
+          ],
+          "distractor_logic": "-2 sits to the right of -5, closer to zero, so it is greater. Choosing -5 compares digits and ignores the signs."
+        },
+        {
+          "stem": "Which number sits between -1 and 0 on a number line?",
+          "answer": "-3/4",
+          "choices": [
+            "-3/4",
+            "-5/4",
+            "3/4",
+            "-2"
+          ],
+          "distractor_logic": "-3/4 is negative and less than one whole from zero. -5/4 is past -1, and 3/4 is on the positive side."
         },
         {
           "stem": "Order from least to greatest: -3, 1, -0.5.",
           "answer": "-3, -0.5, 1"
         },
         {
-          "stem": "Which is less, -1/2 or -3/4?",
-          "answer": "-3/4"
+          "stem": "What is the opposite of -7?",
+          "answer": "7"
+        },
+        {
+          "stem": "Which is farther LEFT on a number line, -6 or -1?",
+          "answer": "-6",
+          "choices": [
+            "-6",
+            "-1",
+            "They are at the same spot",
+            "0"
+          ],
+          "distractor_logic": "-6 is farther from zero on the negative side. Choosing -1 confuses farther left with closer to zero."
         },
         {
           "stem": "True or false: -8 < -3.",
           "answer": "True"
         },
         {
-          "stem": "Which is farther RIGHT on a number line, -6 or -1?",
-          "answer": "-1"
+          "stem": "Which is less, -1/2 or -3/4?",
+          "answer": "-3/4"
+        },
+        {
+          "stem": "A point is at -2.5. Between which two integers does it sit?",
+          "answer": "Between -3 and -2"
         }
       ],
       "redirect_script": {
-        "stop": "Which one is closer to zero?",
-        "prompt": "On a number line, right is bigger. For negatives, the one closer to zero is greater. Picture -2 and -5: -2 sits to the right, so it's larger.",
-        "praise": "You used the number line, not just the digits — that's how to order negatives."
+        "stop": "Where does each number SIT on the line?",
+        "prompt": "Place both numbers first, then read the order from position: right is greater, left is less. For negatives, closer to zero means greater.",
+        "praise": "You ordered by position on the line, not by the digits, that is how negatives work."
       },
       "vocabulary": [
         {
-          "term": "Number line",
-          "definition": "A line where numbers increase to the right and decrease to the left."
+          "term": "Rational number",
+          "definition": "Any number that can be written as a fraction, including integers, fractions, and decimals."
         },
         {
-          "term": "Rational number",
-          "definition": "Any number expressible as a fraction, including integers and decimals."
+          "term": "Opposite",
+          "definition": "The number the same distance from zero on the other side, like -7 and 7."
         }
       ],
       "next_steps": {
         "if_pass": "7NS2-S1",
-        "if_fail": "Review ordering rationals (6.NS)."
+        "if_fail": "7NS2-F2"
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Mark -4 and -1 on a number line."
+          "text": "Draw a number line from -3 to 3 with tick marks at every whole number and at the halves."
         },
         {
           "kind": "ask",
-          "text": "Which is farther right? Which is closer to zero?"
+          "text": "Where does -1.5 go? Is it left or right of -1?"
         },
         {
           "kind": "say",
-          "text": "-1 is farther right and closer to zero, so -1 > -4, even though 4 is bigger than 1."
+          "text": "-1.5 is negative and more than 1 from zero, so it sits between -2 and -1, half way. Since it is left of -1, we know -1.5 < -1."
         },
         {
           "kind": "watch",
-          "text": "If a student says -4 > -1, ask 'would you rather owe $4 or $1? Which is the bigger number?'"
+          "text": "If a student places -1.5 between -1 and 0, ask: is 1.5 more or less than 1? Then which side of -1 must it sit on?"
         },
         {
           "kind": "ask",
-          "text": "Your turn: which is greater, -7 or -3?"
+          "text": "Your turn: place -3/4 and -2.5, then order -3/4, -2.5, and 1 from least to greatest."
         }
-      ]
-    },
-    {
-      "skill_id": "7NS2-F2",
-      "name": "Add a signed number",
-      "column": "foundation",
-      "parent_standard": "7.NS.2",
-      "prerequisite_skill": {
-        "type": "gap",
-        "grade": 7,
-        "description": "Add two rationals with the same or opposite signs (from 7.NS.1).",
-        "check_question": "What is -6 + 4?"
-      },
-      "i_do_script": "On the number line, -6 + 4 is a walk left 6 and then a turn back right 4 -- the two moves fight each other, so they partly cancel instead of piling up. Whether the moves pile up or fight is the whole game. Subtraction is going to become addition, so I need signed addition solid. Same signs: add the sizes, keep the sign. Opposite signs: subtract the sizes, keep the sign of the number farther from zero. Watch: -6 + 4 — opposite signs, subtract 6 - 4 = 2, and -6 is farther, so -2. And -6 + (-4) — same signs, -10.",
-      "canonical_error": {
-        "pattern": "Applies same-sign rules to opposite signs (or vice versa)",
-        "example": "For -6 + 4 writes -10 (adding) instead of -2, or for -6 + (-4) writes -2 (subtracting) instead of -10",
-        "why": "The student doesn't first check whether the signs match. Same signs combine; opposite signs partly cancel."
-      },
-      "item_template": "A signed addition (same or opposite signs). Short response fluency bank.",
-      "sample_items": [
+      ],
+      "engine_stems": [],
+      "practice_problems": [
         {
-          "stem": "-6 + 4",
-          "answer": "-2"
-        },
-        {
-          "stem": "-6 + (-4)",
-          "answer": "-10"
-        },
-        {
-          "stem": "8 + (-3)",
-          "answer": "5"
-        },
-        {
-          "stem": "-2.5 + (-1.5)",
+          "difficulty": "warm_up",
+          "stem": "Which is greater, -4 or -7?",
           "answer": "-4"
         },
         {
-          "stem": "-7 + 10",
-          "answer": "3"
+          "difficulty": "warm_up",
+          "stem": "What is the opposite of 5?",
+          "answer": "-5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A point is at -1.5. Between which two integers does it sit?",
+          "answer": "Between -2 and -1"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Order from least to greatest: 2, -3, 0, -1.5.",
+          "answer": "-3, -1.5, 0, 2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which is farther left on the number line, -2 or -6?",
+          "answer": "-6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "True or false: -5 < -8.",
+          "answer": "False, -5 sits to the right of -8, so -5 > -8."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Marco ordered -2, -5, and -8 from least to greatest. Find his mistake and fix it.",
+          "shown_work": [
+            "Marco wrote: '-2, -5, -8, because 2 < 5 < 8.'"
+          ],
+          "answer": "Marco ordered by digits, but negatives farther from zero are smaller. Least to greatest is -8, -5, -2."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Name a rational number between -1 and -1/2.",
+          "answer": "Any number between them, for example -3/4."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Clothesline Number Line",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "A string stretched across the table or board",
+            "Cards: -3, -2.5, -1.5, -3/4, -1/2, 0, 1/2, 1, 2"
+          ],
+          "instructions": "1. Clip 0 to the middle of the string and -3 and 2 near the ends.\n2. Deal the remaining cards. Each student clips a card where it belongs and says why: left or right of zero, and between which two neighbors.\n3. The group checks spacing: is -2.5 half way between -3 and -2?\n4. Debrief: how do you decide which of two negatives is greater? (The one farther right, closer to zero.)"
+        },
+        {
+          "type": "card_sort",
+          "title": "Greater, Less, or Opposite",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Card deck of comparison and opposite claims"
+          ],
+          "instructions": "1. Spread the claim cards face up.\n2. Sort each into True or False, checking against a drawn number line, not the digits.\n3. For each False card, write the corrected claim.\n4. Debrief: which cards tried to trick you into comparing digits?",
+          "content": {
+            "categories": [
+              "True",
+              "False"
+            ],
+            "cards": [
+              {
+                "text": "-2 > -5",
+                "category": "True"
+              },
+              {
+                "text": "-5 > -2",
+                "category": "False"
+              },
+              {
+                "text": "-3/4 is between -1 and 0",
+                "category": "True"
+              },
+              {
+                "text": "-8 < -3",
+                "category": "True"
+              },
+              {
+                "text": "The opposite of -4 is 4",
+                "category": "True"
+              },
+              {
+                "text": "-1.5 is between -1 and 0",
+                "category": "False"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Physically placing cards on a clothesline makes position, not digit size, the thing students reason with."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The digits-only ordering error is stable and predictable; finding and fixing it in sorted claims confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Quick choral rounds of 'which is greater' build an automatic closer-to-zero response for negatives."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is this number left or right of zero? How do you know?",
+          "Which of these two numbers is closer to zero?",
+          "Between which two integers does this fraction sit?",
+          "If a number is farther left, is it greater or less?",
+          "Where would the opposite of this number sit?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student says -5 > -2 because 5 > 2.",
+            "say": "Place both on the line. Which one is farther right? Right means greater, and -2 sits to the right of -5.",
+            "praise": "You checked position instead of digits, that is exactly how to order negatives."
+          },
+          {
+            "if_you_see": "Student places -3/4 to the left of -1.",
+            "say": "Is 3/4 more or less than 1 whole? Less, so -3/4 is less than one step from zero. It lands between -1 and 0.",
+            "praise": "You used the size of the fraction to find its spot."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Which is greater, -6 or -1?",
+            "look_for": "-1, because it is closer to zero. An answer of -6 diagnoses digit comparison."
+          },
+          {
+            "prompt": "Between which two integers is -1.25?",
+            "look_for": "Between -2 and -1. An answer of between -1 and 0 misplaces the size."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Order -2, 1.5, -3/4, and 0 from least to greatest.",
+        "answer": "-2, -3/4, 0, 1.5",
+        "steps": [
+          {
+            "math": "place the negatives: -2, then -3/4 between -1 and 0",
+            "annotation": "Negatives sit left of zero; -2 is farther left than -3/4."
+          },
+          {
+            "math": "place 0 and 1.5",
+            "annotation": "0 is the center; 1.5 sits between 1 and 2 on the right."
+          },
+          {
+            "math": "read left to right: -2, -3/4, 0, 1.5",
+            "annotation": "Least to greatest is just left to right."
+          },
+          {
+            "math": "check: -2 < -3/4 because -2 is farther from zero",
+            "annotation": "For negatives, farther from zero means smaller."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Order 1, -1.5, -1/2, and -2 from least to greatest.",
+        "answer": "-2, -1.5, -1/2, 1",
+        "steps": [
+          {
+            "math": "place the negatives: -2 farthest left, then -1.5, then -1/2",
+            "annotation": "Farther from zero on the negative side means farther left.",
+            "given": true
+          },
+          {
+            "math": "place 1 on the positive side",
+            "annotation": "The only positive number sits right of zero.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Read the order from left to right.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check one pair: which is less, -1.5 or -1/2, and why?",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "___ sits to the left of ___, so ___ is less.",
+        "___ is between ___ and ___ because it is ___ from zero.",
+        "For negatives, the number closer to zero is ___."
+      ],
+      "fluency_source": "7NS2-F2"
+    },
+    {
+      "skill_id": "7NS2-B2",
+      "name": "Interpret absolute value as size in real-world contexts",
+      "column": "looking_back",
+      "parent_standard": "7.NS.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Read |x| as a number's distance from zero and use it to describe the size of a signed quantity, keeping size separate from order.",
+        "check_question": "An account balance is -50 dollars. How many dollars are owed?"
+      },
+      "i_do_script": "A signed number tells two things at once: the sign tells direction and the absolute value tells size. Watch: a balance of -30 dollars. On a vertical number line, -30 sits 30 below zero, so |-30| = 30 is the size of the debt, 30 dollars owed. Now compare -30 dollars to a balance of 20 dollars. Which balance is greater? 20, because it sits higher on the line. But which involves more money? The debt, because |-30| = 30 is bigger than |20| = 20. Order comes from position, size comes from distance from zero, and I never mix the two.",
+      "canonical_error": {
+        "pattern": "Uses absolute value to decide order, treating the bigger size as the bigger number",
+        "example": "Says -30 > 20 because 30 is bigger than 20",
+        "why": "The student confuses size with order. |-30| = 30 is bigger than |20| = 20, but -30 sits far below 20 on the number line, so -30 < 20. Absolute value answers 'how big,' the sign answers 'which direction.'"
+      },
+      "item_template": "A signed quantity in context (balance, elevation, temperature) or a bare rational number. Student states its absolute value, its meaning as a size, or compares sizes versus order. MC and short response.",
+      "sample_items": [
+        {
+          "stem": "What is |-9|?",
+          "answer": "9"
+        },
+        {
+          "stem": "An account balance is -50 dollars. How many dollars are owed?",
+          "answer": "50 dollars"
+        },
+        {
+          "stem": "Which number has the greater absolute value, -12 or 8?",
+          "answer": "-12",
+          "choices": [
+            "-12",
+            "8",
+            "They are equal",
+            "Neither, absolute value is always 0"
+          ],
+          "distractor_logic": "|-12| = 12 and |8| = 8, so -12 has the greater absolute value even though -12 < 8. Choosing 8 confuses greater value with greater size."
+        },
+        {
+          "stem": "A fish swims at an elevation of -6 m. How far below the surface is it?",
+          "answer": "6 m"
+        },
+        {
+          "stem": "Which statement is true about -20 and 5?",
+          "answer": "-20 < 5 and |-20| > |5|",
+          "choices": [
+            "-20 > 5 and |-20| > |5|",
+            "-20 < 5 and |-20| > |5|",
+            "-20 < 5 and |-20| < |5|",
+            "-20 > 5 and |-20| < |5|"
+          ],
+          "distractor_logic": "-20 sits far left of 5, so -20 < 5; but its distance from zero is 20, bigger than 5. The distractors mix up order and size."
+        },
+        {
+          "stem": "What is |-2.5|?",
+          "answer": "2.5"
+        },
+        {
+          "stem": "Name both numbers whose absolute value is 6.",
+          "answer": "6 and -6"
+        },
+        {
+          "stem": "The temperature is -8 degrees. How many degrees away from zero is that?",
+          "answer": "8 degrees"
         }
       ],
       "redirect_script": {
-        "stop": "Same signs or opposite signs first?",
-        "prompt": "Picture the walks first: do both moves go the same direction, or does the second one turn back? Check the signs before anything. Same: add and keep the sign. Opposite: subtract and keep the farther number's sign.",
-        "praise": "You checked the signs first — that's the key to signed addition."
+        "stop": "Are you being asked which is GREATER, or which is BIGGER in size?",
+        "prompt": "Order comes from position on the line: higher or farther right is greater. Size comes from distance from zero: |x|. A big debt is a small number with a big absolute value.",
+        "praise": "You kept order and size separate, that is exactly what absolute value is for."
       },
       "vocabulary": [
         {
-          "term": "Signed number",
-          "definition": "A number with a positive or negative sign."
+          "term": "Absolute value",
+          "definition": "A number's distance from zero, written |x|; it is never negative."
         },
         {
-          "term": "Absolute value",
-          "definition": "A number's distance from zero, its size without the sign."
+          "term": "Magnitude",
+          "definition": "The size of a quantity, ignoring its direction or sign."
         }
       ],
       "next_steps": {
-        "if_pass": "7NS2-S4",
-        "if_fail": "Review adding signed numbers (7.NS.1)."
+        "if_pass": "7NS2-S1",
+        "if_fail": "7NS2-F1"
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Start at 0: walk left 9 steps, then turn around and walk right 5 steps. Do the two walks pile up or partly cancel? Where do you land?",
-          "visual": {
-            "type": "number_line_point",
-            "ticks": [
-              -10,
-              -9,
-              -8,
-              -7,
-              -6,
-              -5,
-              -4,
-              -3,
-              -2,
-              -1,
-              0
-            ],
-            "point_value": -4,
-            "point_label": "-9 + 5"
-          }
-        },
-        {
           "kind": "show",
-          "text": "Write '-9 + 5.'"
+          "text": "Draw a vertical number line from -40 to 40. Mark a balance of -30 dollars and a balance of 20 dollars."
         },
         {
           "kind": "ask",
-          "text": "Are the signs the same or opposite? Which number is farther from zero?"
+          "text": "Which balance is greater? Which balance involves more money?"
         },
         {
           "kind": "say",
-          "text": "Opposite. 9 - 5 = 4, and -9 is farther, so -4."
+          "text": "20 is greater because it sits higher. But the debt involves more money: |-30| = 30 dollars owed, and 30 is more than 20. Order and size are two different questions."
         },
         {
           "kind": "watch",
-          "text": "If a student writes -14, ask 'do opposite signs combine or cancel?'"
+          "text": "If a student says -30 is greater because 30 beats 20, point at the line: which mark is higher? Greater means higher, not bigger in size."
         },
         {
           "kind": "ask",
-          "text": "Your turn: -3 + 8, then -3 + (-8)."
+          "text": "Your turn: a diver is at -12 m and a bird is at 9 m. Who is farther from sea level?"
         }
-      ]
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What is |-4|?",
+          "answer": "4"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is |7|?",
+          "answer": "7"
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is |-15|?",
+          "answer": "15"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A balance is -35 dollars. How many dollars are owed?",
+          "answer": "35 dollars"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which is farther from zero, -9 or 6?",
+          "answer": "-9, because |-9| = 9 and |6| = 6."
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is |-1/2|?",
+          "answer": "1/2"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Deja compared -40 and 15. Find her mistake and fix it.",
+          "shown_work": [
+            "Deja wrote: '-40 > 15 because |-40| = 40 and 40 is bigger than 15.'"
+          ],
+          "answer": "She used size to decide order. -40 sits far left of 15, so -40 < 15. Her absolute values are right: |-40| = 40 is bigger than |15| = 15, but that answers a different question."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A diver is at -12 m and a bird is at 9 m. Who is farther from sea level, and how do you know?",
+          "answer": "The diver: |-12| = 12 and |9| = 9, and 12 > 9."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Sea Level Line",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "A vertical number line poster with 0 marked as sea level",
+            "Situation cards: bird at 9 m, diver at -12 m, submarine at -25 m, kite at 18 m, buoy at 0 m"
+          ],
+          "instructions": "1. Place each situation card at its spot on the vertical line.\n2. For each card, say two sentences: 'Its elevation is ___' and 'Its distance from sea level is ___.'\n3. Order the cards two ways: by elevation (lowest to highest) and by distance from sea level (closest to farthest).\n4. Debrief: why are the two orders different? (One uses position, the other uses absolute value.)"
+        },
+        {
+          "type": "card_sort",
+          "title": "Order or Size",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck of claims mixing order statements and size statements"
+          ],
+          "instructions": "1. Sort each claim into True or False.\n2. For every card, first say whether it is an order question (uses < or >) or a size question (uses |x| or 'farther from zero').\n3. Fix each False card in writing.\n4. Debrief: which claims tried to use size to answer an order question?",
+          "content": {
+            "categories": [
+              "True",
+              "False"
+            ],
+            "cards": [
+              {
+                "text": "|-30| = 30",
+                "category": "True"
+              },
+              {
+                "text": "-30 > 20",
+                "category": "False"
+              },
+              {
+                "text": "|-20| > |5|",
+                "category": "True"
+              },
+              {
+                "text": "-20 > 5",
+                "category": "False"
+              },
+              {
+                "text": "-9 is farther from zero than 6",
+                "category": "True"
+              },
+              {
+                "text": "|-6| = -6",
+                "category": "False"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "A vertical sea-level line makes the difference between position (order) and distance from zero (size) visible before any rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Using size to answer an order question is a precise, baitable error that find-and-fix work confronts directly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'is this an order question or a size question' models the decision students skip."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is this question asking which is greater, or which is bigger in size?",
+          "How far from zero is this number?",
+          "Can a distance from zero ever be negative?",
+          "Which balance is greater, and which involves more money? Why are those different?",
+          "What two numbers are exactly 6 from zero?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student says a negative with a big absolute value is greater than a small positive.",
+            "say": "Point at the line: which mark is higher or farther right? That one is greater. |x| only tells you how far from zero, not the order.",
+            "praise": "You answered the order question with position and the size question with absolute value."
+          },
+          {
+            "if_you_see": "Student writes |-6| = -6.",
+            "say": "The bars ask how far -6 is from zero. Count it: 6 units. A distance is never negative.",
+            "praise": "You read the bars as a distance, so your answer came out positive."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A balance is -45 dollars. How much is owed?",
+            "look_for": "45 dollars. An answer of -45 keeps the sign inside a size."
+          },
+          {
+            "prompt": "Which is greater, -25 or 10? Which is farther from zero?",
+            "look_for": "10 is greater; -25 is farther from zero. Reversing these diagnoses the size-order mix-up."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A balance is -45 dollars. What does |-45| tell you, and is -45 greater or less than 10?",
+        "answer": "|-45| = 45 dollars owed; -45 < 10",
+        "steps": [
+          {
+            "math": "|-45| = 45",
+            "annotation": "Distance from zero: the size of the debt is 45 dollars."
+          },
+          {
+            "math": "place -45 and 10 on the line",
+            "annotation": "-45 sits far below zero; 10 sits above it."
+          },
+          {
+            "math": "-45 < 10",
+            "annotation": "Order comes from position, and -45 is lower."
+          },
+          {
+            "math": "size 45 > size 10, but -45 < 10",
+            "annotation": "A bigger size does not make a bigger number."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A balance is -30 dollars and another is 12 dollars. Find each absolute value, then compare the balances.",
+        "answer": "|-30| = 30 and |12| = 12; -30 < 12",
+        "steps": [
+          {
+            "math": "|-30| = 30",
+            "annotation": "The debt's size is 30 dollars.",
+            "given": true
+          },
+          {
+            "math": "|12| = 12",
+            "annotation": "The credit's size is 12 dollars.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Place both on a number line and compare with < or >.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Say which balance is greater and which involves more money.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The sign tells ___, and the absolute value tells ___.",
+        "|___| = ___ because it is ___ units from zero.",
+        "___ is greater, but ___ is farther from zero."
+      ],
+      "fluency_source": "7NS2-F1"
     },
     {
       "skill_id": "7NS2-S1",
       "name": "Interpret absolute value as distance from zero",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.NS.2",
       "engine_stems": [
         1
@@ -488,7 +1115,7 @@
           }
         ]
       },
-      "fluency_source": "7NS2-F2",
+      "fluency_source": "7NS2-B1",
       "sentence_starters": [
         "The distance of ___ from zero is ___, so |___| = ___.",
         "Absolute value is never negative, so ___."
@@ -545,7 +1172,7 @@
     {
       "skill_id": "7NS2-S2",
       "name": "Evaluate the absolute value of a given number",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.NS.2",
       "engine_stems": [
         2
@@ -781,7 +1408,7 @@
           }
         ]
       },
-      "fluency_source": "7NS2-F2",
+      "fluency_source": "7NS2-B2",
       "sentence_starters": [
         "Inside the bars is ___, which equals ___; then the outside sign gives ___.",
         "|___| = ___ because absolute value is distance from zero."
@@ -1077,7 +1704,7 @@
           }
         ]
       },
-      "fluency_source": "7NS2-F2",
+      "fluency_source": "7NS2-B2",
       "sentence_starters": [
         "The distance is |___ - ___| = |___| = ___.",
         "Minus a negative becomes plus, so ___ - (___) = ___."
@@ -1350,7 +1977,7 @@
           }
         ]
       },
-      "fluency_source": "7NS2-F2",
+      "fluency_source": "7NS2-B2",
       "sentence_starters": [
         "___ - ___ becomes ___ + (___).",
         "Subtracting a negative is adding a positive, so ___ - (-___) = ___."
@@ -1635,7 +2262,7 @@
           }
         ]
       },
-      "fluency_source": "7NS2-F2",
+      "fluency_source": "7NS2-B2",
       "sentence_starters": [
         "'___' means the value goes ___, so I ___.",
         "The change is ___ - ___ = ___, which means ___."
@@ -1951,7 +2578,7 @@
           }
         ]
       },
-      "fluency_source": "7NS2-F2",
+      "fluency_source": "7NS2-B1",
       "sentence_starters": [
         "Since a is ___ than b, a - b is ___.",
         "|a - b| is the distance ___, always ___."
@@ -2008,8 +2635,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites — fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7NS2-F1",
         "7NS2-F2"
@@ -2017,16 +2644,18 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7NS2-S1",
-        "7NS2-S2"
+        "7NS2-B1",
+        "7NS2-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7NS2-S1",
+        "7NS2-S2",
         "7NS2-S3",
         "7NS2-S4",
         "7NS2-S5"
@@ -2034,7 +2663,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7NS2-S6"
       ]
@@ -2043,6 +2672,8 @@
   "skill_sequence": [
     "7NS2-F1",
     "7NS2-F2",
+    "7NS2-B1",
+    "7NS2-B2",
     "7NS2-S1",
     "7NS2-S2",
     "7NS2-S3",
@@ -2053,18 +2684,25 @@
   "skill_tree": {
     "7NS2-F1": [],
     "7NS2-F2": [],
-    "7NS2-S1": [
+    "7NS2-B1": [
+      "7NS2-F2"
+    ],
+    "7NS2-B2": [
       "7NS2-F1"
+    ],
+    "7NS2-S1": [
+      "7NS2-B1",
+      "7NS2-B2"
     ],
     "7NS2-S2": [
       "7NS2-S1"
     ],
     "7NS2-S3": [
-      "7NS2-S2",
-      "7NS2-F2"
+      "7NS2-S2"
     ],
     "7NS2-S4": [
-      "7NS2-F2"
+      "7NS2-S2",
+      "7NS2-B1"
     ],
     "7NS2-S5": [
       "7NS2-S4"
@@ -2075,17 +2713,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (subtract rationals by adding the opposite) -- the At-proficiency computational engine and the source of the double-negative error. If they pass, move to S3 (distance as |a - b|), S5 (real-world subtraction), and S6 (reasoning). If they fail, drop to S1/S2 to check whether absolute value itself is understood. S3 doubles as a branch check on the distance principle.",
+    "description": "Start with S4, subtracting rationals by adding the opposite, the At-proficiency computational core and the home of the double-negative error. If they pass, move up to S5 (real-world subtraction) and S6 (abstract reasoning about a - b). If they fail, drop one grade: B1 checks plotting and ordering negative rationals and B2 checks absolute value as size, the grade six ideas the distance formula leans on. If those wobble, the foundations F1 (whole-number subtraction with regrouping) and F2 (a difference as a countable distance on the number line) locate the gap in grades 3 and 4. S1, S2, and S3 stay available to probe absolute value and the distance principle on grade.",
     "entry_skill": "7NS2-S4",
     "if_pass": [
       "7NS2-S5",
       "7NS2-S6"
     ],
     "if_fail": [
-      "7NS2-S1",
-      "7NS2-S2"
+      "7NS2-B1",
+      "7NS2-B2"
     ],
     "branch_skills": [
+      "7NS2-F1",
+      "7NS2-F2",
+      "7NS2-S1",
+      "7NS2-S2",
       "7NS2-S3"
     ]
   }

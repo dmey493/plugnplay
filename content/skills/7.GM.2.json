@@ -3,7 +3,7 @@
   "standard_text": "Understand the formulas for area and circumference of a circle and use them to solve real-world and other mathematical problems; give an informal derivation of the relationship between circumference and area of a circle.",
   "schema_version": 3,
   "progression": {
-    "narrative": "The whole standard rests on one distinction and two formulas. The distinction is radius versus diameter: the radius reaches from the center to the edge, the diameter goes all the way across, and the diameter is always twice the radius. Confusing the two is the single most common error in this standard, so the progression makes radius ↔ diameter automatic first, alongside squaring a number (because area uses r²). From there the arc splits into the two forward formulas. Circumference, C = 2πr = πd, is a single multiplication. Area, A = πr², adds the squaring step and a second, costlier place for the radius/diameter trap to bite — using a diameter as the radius makes the area four times too big.\n\nOnce a student can go forward — a dimension to a circumference, a dimension to an area — the standard reverses the question: given a circumference or an area, work backwards to a radius or diameter. Circumference reverses with one division; area reverses with a division AND a square root, which is why it earns its own step. Then the formulas move into real-world contexts — fencing a garden, covering a pool, rolling a wheel — where the student must also decide WHICH formula the situation calls for. Finally the standard asks for the informal derivation of the relationship between the two: doubling the radius doubles the circumference but quadruples the area, the 'above' move that shows a student reasons about the formulas rather than just plugging into them. The through-line we keep naming: find the radius first, pick the right formula, and remember that area squares while circumference does not.",
+    "narrative": "This standard asks students to find the circumference and area of circles, work backwards from a given circumference or area to a radius or diameter, and explain how the two formulas relate. The on-grade work runs from the two forward formulas through the reverse problems to real contexts where the student must pick the right formula for the situation. Students who struggle here usually cannot yet handle any measurement formula, not just the circle ones: perimeter and area are still fuzzy ideas rather than distance around and squares covering. Intervention should start with the grade 3 to 5 basics, perimeter as adding side lengths and area as rows of unit squares, then rebuild the grade 6 skills of finding areas by decomposing shapes and evaluating a formula by substitution, and only then return to circles.",
     "steps": [
       {
         "skill_id": "7GM2-S1",
@@ -40,244 +40,799 @@
   "skills": [
     {
       "skill_id": "7GM2-F1",
-      "name": "Convert between the radius and diameter of a circle",
+      "name": "Find the perimeter of a rectangle by adding side lengths",
       "column": "foundation",
       "parent_standard": "7.GM.2",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Know that the diameter of a circle is twice the radius and the radius is half the diameter.",
-        "check_question": "A circle has a diameter of 10 cm. What is its radius?"
+        "grade": 3,
+        "description": "Find the distance around a rectangle by adding all four side lengths.",
+        "check_question": "A rectangle is 5 cm long and 3 cm wide. What is its perimeter?"
       },
-      "i_do_script": "Fold a circle in half and the crease is the diameter -- and from the center dot, that crease is exactly two radius-trips laid end to end, one out to each edge. The radius reaches from the center of a circle to its edge; the diameter goes all the way across through the center. The diameter is always TWICE the radius, and the radius is always HALF the diameter. Watch: if the diameter is 10, the radius is 10 divided by 2 = 5. If the radius is 7, the diameter is 2 times 7 = 14. Every circle formula is built on the radius, so the first thing I do with any circle is figure out the radius.",
+      "i_do_script": "Perimeter is the walk around the outside of a shape. Watch: this rectangle on grid paper is 5 units long and 3 units wide. I put my pencil at a corner and walk the edge, counting unit steps: 5 along the top, 3 down the side, 5 along the bottom, 3 back up. That is 5 + 3 + 5 + 3 = 16 units all the way around. A rectangle always has two matching lengths and two matching widths, so I add all four sides, not just the two I can see numbers on.",
       "canonical_error": {
-        "pattern": "Treats the radius and diameter as the same number, or halves and doubles in the wrong direction",
-        "example": "Given a diameter of 10, says the radius is 10 (or given a radius of 5, says the diameter is 5)",
-        "why": "The student has not anchored that d = 2r. The radius is the shorter, half-across measure; the diameter is the full-across measure, exactly double the radius."
+        "pattern": "Adds only the two labeled sides instead of all four",
+        "example": "For a 5 by 3 rectangle, writes 5 + 3 = 8 instead of 5 + 3 + 5 + 3 = 16",
+        "why": "The student adds the numbers printed on the picture and stops. A rectangle has four sides; the unlabeled length and width match the labeled ones and must be counted in the walk around."
       },
-      "item_template": "A circle's radius or diameter is given in text; the student finds the other. Short-response fluency bank.",
+      "item_template": "A rectangle or square with whole-number side lengths. Student finds the perimeter by adding all side lengths. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "A circle has a diameter of 10 cm. What is the radius?",
-          "answer": "5 cm"
+          "stem": "A rectangle is 5 cm long and 3 cm wide. What is its perimeter?",
+          "answer": "16 cm"
         },
         {
-          "stem": "A circle has a radius of 7 in. What is the diameter?",
-          "answer": "14 in."
+          "stem": "A rectangle is 6 in. long and 4 in. wide. What is its perimeter?",
+          "answer": "20 in."
         },
         {
-          "stem": "A circle has a diameter of 18 ft. What is the radius?",
-          "answer": "9 ft"
+          "stem": "A square has sides of 7 ft. What is its perimeter?",
+          "answer": "28 ft"
         },
         {
-          "stem": "A circle has a radius of 6 m. What is the diameter?",
-          "answer": "12 m"
+          "stem": "A rectangle is 8 m long and 3 m wide. What is its perimeter?",
+          "answer": "22 m"
         },
         {
-          "stem": "A circle has a diameter of 25 cm. What is the radius?",
-          "answer": "12.5 cm"
+          "stem": "A rectangle is 10 cm long and 5 cm wide. What is its perimeter?",
+          "answer": "30 cm"
         },
         {
-          "stem": "A circle has a radius of 3.5 in. What is the diameter?",
-          "answer": "7 in."
+          "stem": "A rectangle has sides of 4 in., 6 in., 4 in., and 6 in. What is its perimeter?",
+          "answer": "20 in."
+        },
+        {
+          "stem": "A rectangle is 9 ft long and 2 ft wide. What is its perimeter?",
+          "answer": "22 ft"
+        },
+        {
+          "stem": "A square has sides of 5 m. What is its perimeter?",
+          "answer": "20 m"
         }
       ],
       "redirect_script": {
-        "stop": "Wait — which is bigger, the radius or the diameter?",
-        "prompt": "Mark the center on the across-line first: it splits the diameter into two equal radius pieces -- which measure is the doubled one? The diameter goes all the way across, so it is DOUBLE the radius. To get the radius, cut the diameter in half; to get the diameter, double the radius.",
-        "praise": "You halved the diameter to get the radius — that's the r and d relationship."
+        "stop": "Did you walk all the way around the shape?",
+        "prompt": "Trace the edge with your finger and count every side as you pass it. A rectangle has four sides: two lengths and two widths. Add all four numbers, not just the two written on the picture.",
+        "praise": "You counted every side of the walk around, that is perimeter."
       },
       "vocabulary": [
         {
-          "term": "Radius",
-          "definition": "The distance from the center of a circle to its edge; half the diameter."
+          "term": "Perimeter",
+          "definition": "The distance all the way around the outside of a shape."
         },
         {
-          "term": "Diameter",
-          "definition": "The distance straight across a circle through the center; twice the radius."
+          "term": "Side length",
+          "definition": "How long one edge of a shape is."
         }
       ],
       "next_steps": {
-        "if_pass": "7GM2-S1",
-        "if_fail": "Review radius and diameter (6.GM.3)."
+        "if_pass": "7GM2-B2",
+        "if_fail": "Review grade 3 perimeter on grid paper: trace a shape's edge and count unit steps all the way around."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw the circle's across-line as a segment from 0 to 16 with the center dot at 8. The center cuts the 16 cm diameter into two equal radius pieces: 0 to 8, and 8 to 16 -- each radius is 8.",
-          "visual": {
-            "type": "number_line_point",
-            "ticks": [
-              0,
-              8,
-              16
-            ],
-            "point_value": 8,
-            "point_label": "center"
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write 'A circle has a diameter of 16 cm. Find the radius.'"
+          "text": "Draw a 5 by 3 rectangle on grid paper. Start a pencil at one corner and mark unit steps along the edge as you walk around."
         },
         {
           "kind": "ask",
-          "text": "Is the radius bigger or smaller than the diameter? By how much?"
+          "text": "How many steps along the top? Down the side? Do we stop there, or keep walking?"
         },
         {
           "kind": "say",
-          "text": "The radius is half. 16 divided by 2 = 8 cm."
+          "text": "Keep walking until you are back where you started: 5 + 3 + 5 + 3 = 16 steps. The perimeter is 16 units, the whole trip around."
         },
         {
           "kind": "watch",
-          "text": "If the student says 32, ask 'did you cut in half or double? The radius is the SHORTER measure.'"
+          "text": "If a student answers 8, ask them to finish the walk: you are only halfway around the rectangle."
         },
         {
           "kind": "ask",
-          "text": "Your turn: a circle has a radius of 9 in. Find the diameter."
+          "text": "Your turn: walk around a 6 by 2 rectangle. What is the perimeter?"
         }
       ]
     },
     {
       "skill_id": "7GM2-F2",
-      "name": "Square a number to evaluate r squared",
+      "name": "Find the area of a rectangle by counting rows of unit squares",
       "column": "foundation",
       "parent_standard": "7.GM.2",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Evaluate a number squared (n²) as n times n, not n times 2.",
-        "check_question": "What is 5 squared (5²)?"
+        "grade": 3,
+        "description": "Find the area of a rectangle by counting the unit squares that cover it, organized as equal rows.",
+        "check_question": "A rectangle is 4 squares wide and 3 squares tall. How many unit squares cover it?"
       },
-      "i_do_script": "r squared literally builds a SQUARE -- a patch of tiles r wide and r tall. An 8 by 8 patch holds 64 tiles, while doubling 8 only gives you two thin rows of it. Squaring a number means multiplying it by ITSELF, not by 2. Watch: 5 squared, written 5², means 5 times 5 = 25 — not 5 times 2 = 10. The little 2 is an exponent; it tells me how many times to use the number as a factor. In the area formula A = πr², the r² means radius times radius, so if the radius is 6, r² = 6 times 6 = 36.",
+      "i_do_script": "Area is how many unit squares it takes to cover a shape with no gaps. Watch: this rectangle is 4 squares wide and 3 squares tall. Instead of counting the squares one at a time, I see rows: each row holds 4 squares, and there are 3 rows. That is 4 + 4 + 4, or 3 rows of 4, which is 12 squares. Area counts the squares INSIDE the shape, so the answer is 12 square units, not a distance around.",
       "canonical_error": {
-        "pattern": "Doubles the base instead of multiplying it by itself",
-        "example": "Computes 6² as 12 (6 times 2) instead of 36 (6 times 6)",
-        "why": "The student reads the exponent 2 as 'multiply by 2.' Squaring means the number is used as a factor twice: n² = n times n."
+        "pattern": "Adds the side lengths instead of counting the covering squares, confusing area with perimeter",
+        "example": "For a 4 by 3 rectangle, writes 4 + 3 + 4 + 3 = 14 squares instead of 4 x 3 = 12",
+        "why": "The student measures the trip around the edge instead of the squares covering the inside. Perimeter is a walk around; area is a count of the squares that fill the shape."
       },
-      "item_template": "A whole or decimal number to square. Short-response fluency bank.",
+      "item_template": "A rectangle or square described by its width and height in unit squares. Student finds the area as rows of unit squares. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "What is 5²?",
-          "answer": "25"
+          "stem": "A rectangle is 4 squares wide and 3 squares tall. What is its area?",
+          "answer": "12 square units"
         },
         {
-          "stem": "What is 7²?",
-          "answer": "49"
+          "stem": "A rectangle is 5 squares wide and 2 squares tall. What is its area?",
+          "answer": "10 square units"
         },
         {
-          "stem": "What is 10²?",
-          "answer": "100"
+          "stem": "A rectangle is 6 squares wide and 4 squares tall. What is its area?",
+          "answer": "24 square units"
         },
         {
-          "stem": "If r = 6, what is r²?",
-          "answer": "36"
+          "stem": "A rectangle is 7 squares wide and 3 squares tall. What is its area?",
+          "answer": "21 square units"
         },
         {
-          "stem": "What is 3²?",
-          "answer": "9"
+          "stem": "A square is 5 squares on each side. What is its area?",
+          "answer": "25 square units"
         },
         {
-          "stem": "If r = 2.5, what is r²?",
-          "answer": "6.25"
+          "stem": "A rectangle is 8 squares wide and 2 squares tall. What is its area?",
+          "answer": "16 square units"
+        },
+        {
+          "stem": "A rectangle is 9 squares wide and 4 squares tall. What is its area?",
+          "answer": "36 square units"
+        },
+        {
+          "stem": "A rectangle is 10 squares wide and 6 squares tall. What is its area?",
+          "answer": "60 square units"
         }
       ],
       "redirect_script": {
-        "stop": "Wait — does the little 2 mean 'times 2'?",
-        "prompt": "Look at the tile square: is 16 the whole 8 by 8 square, or just two rows of it? The exponent 2 means multiply the number by ITSELF: 6² is 6 times 6, not 6 times 2. Write it out as 6 x 6 before you multiply.",
-        "praise": "You multiplied the number by itself — that's squaring."
+        "stop": "Are you counting the squares inside, or the steps around the edge?",
+        "prompt": "Shade one full row and count its squares. Then count how many rows there are. Rows of squares cover the inside; that count is the area.",
+        "praise": "You counted rows of squares covering the shape, that is exactly what area means."
       },
       "vocabulary": [
         {
-          "term": "Square (a number)",
-          "definition": "Multiply a number by itself; n² = n times n."
+          "term": "Area",
+          "definition": "The number of unit squares that cover a shape with no gaps or overlaps."
         },
         {
-          "term": "Exponent",
-          "definition": "A small raised number that tells how many times to use the base as a factor."
+          "term": "Row",
+          "definition": "A line of unit squares going across the shape; equal rows make area quick to count."
         }
       ],
       "next_steps": {
-        "if_pass": "7GM2-S2",
-        "if_fail": "Review exponents (6.AF.1)."
+        "if_pass": "7GM2-B1",
+        "if_fail": "Review grade 3 area by tiling: cover small rectangles with square tiles and count them."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Sketch a square of tiles 8 across and 8 up. Two rows alone hold 16 tiles -- that is all doubling gets you. Count the whole square: 8 rows of 8 = 64 tiles.",
-          "visual": {
-            "type": "fraction_bars",
-            "label": "8 rows of 8 tiles = 64 tiles",
-            "bars": [
-              {
-                "parts": 8,
-                "shaded": 8,
-                "label": "row 1"
-              },
-              {
-                "parts": 8,
-                "shaded": 8,
-                "label": "row 2"
-              },
-              {
-                "parts": 8,
-                "shaded": 8,
-                "label": "row 3"
-              },
-              {
-                "parts": 8,
-                "shaded": 8,
-                "label": "row 4"
-              },
-              {
-                "parts": 8,
-                "shaded": 8,
-                "label": "row 5"
-              },
-              {
-                "parts": 8,
-                "shaded": 8,
-                "label": "row 6"
-              },
-              {
-                "parts": 8,
-                "shaded": 8,
-                "label": "row 7"
-              },
-              {
-                "parts": 8,
-                "shaded": 8,
-                "label": "row 8"
-              }
-            ]
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write 'r = 8. Find r².'"
+          "text": "Draw a 4 by 3 rectangle on grid paper. Shade the top row of 4 squares in one color."
         },
         {
           "kind": "ask",
-          "text": "Does the 2 mean add another 8, double it, or multiply 8 by itself?"
+          "text": "How many squares are in one row? How many rows fill the rectangle?"
         },
         {
           "kind": "say",
-          "text": "Multiply by itself: 8 times 8 = 64."
+          "text": "Each row holds 4 squares and there are 3 rows: 4 + 4 + 4 = 12. The area is 12 square units, the squares covering the inside."
         },
         {
           "kind": "watch",
-          "text": "If the student writes 16, ask 'is that 8 times 8, or 8 times 2? Square means times itself.'"
+          "text": "If a student answers 14, they added the sides like a walk around. Point inside the shape: area counts the covering squares, not the edge."
         },
         {
           "kind": "ask",
-          "text": "Your turn: r = 9. Find r²."
+          "text": "Your turn: a rectangle is 6 squares wide and 2 squares tall. What is its area?"
         }
       ]
     },
     {
+      "skill_id": "7GM2-B1",
+      "name": "Find the area of triangles and composite figures by decomposing",
+      "column": "looking_back",
+      "parent_standard": "7.GM.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Find the area of a triangle as half a rectangle, and the area of a composite figure by splitting it into rectangles and triangles.",
+        "check_question": "A triangle has a base of 6 cm and a height of 4 cm. What is its area?"
+      },
+      "i_do_script": "Every triangle is half of a rectangle. Watch: draw a 6 by 4 rectangle and cut it along a diagonal. The rectangle's area is 6 x 4 = 24, and each triangle is exactly half, so the triangle's area is 24 / 2 = 12 square cm. That is why the rule is base times height, then divide by 2. For a composite figure, I split it into rectangles and triangles I know, find each piece's area, and add the pieces.",
+      "canonical_error": {
+        "pattern": "Forgets to halve, using base times height as the area of a triangle",
+        "example": "For a triangle with base 6 and height 4, writes 6 x 4 = 24 instead of 24 / 2 = 12",
+        "why": "Base times height gives the FULL rectangle the triangle sits in. The triangle is only half that rectangle, so the product must be divided by 2."
+      },
+      "item_template": "A triangle with a given base and height, a parallelogram, or a composite figure built from rectangles and triangles with whole-number dimensions. Student finds the area. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A triangle has a base of 6 cm and a height of 4 cm. What is its area?",
+          "answer": "12 sq cm"
+        },
+        {
+          "stem": "A triangle has a base of 10 in. and a height of 3 in. What is its area?",
+          "answer": "15 sq in."
+        },
+        {
+          "stem": "A triangle has a base of 8 m and a height of 5 m. What is its area?",
+          "answer": "20 sq m"
+        },
+        {
+          "stem": "An L-shaped figure is made of an 8 by 4 rectangle and a 3 by 2 rectangle. What is its total area?",
+          "answer": "38 square units"
+        },
+        {
+          "stem": "A triangle has a base of 7 ft and a height of 4 ft. What is its area?",
+          "answer": "14 sq ft"
+        },
+        {
+          "stem": "A parallelogram has a base of 6 cm and a height of 3 cm. What is its area?",
+          "answer": "18 sq cm"
+        },
+        {
+          "stem": "A figure is made of a 4 by 4 square and a triangle with base 4 and height 3. What is its total area?",
+          "answer": "22 square units"
+        },
+        {
+          "stem": "A triangle has a base of 12 cm and a height of 5 cm. What is its area?",
+          "answer": "30 sq cm"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is your answer the triangle, or the whole rectangle it sits in?",
+        "prompt": "Draw the rectangle around the triangle. Base times height fills that whole rectangle, and the triangle is only half of it. Multiply, then divide by 2.",
+        "praise": "You halved the rectangle, that is exactly where the triangle rule comes from."
+      },
+      "vocabulary": [
+        {
+          "term": "Base",
+          "definition": "The side of a triangle or parallelogram you measure along the bottom."
+        },
+        {
+          "term": "Height",
+          "definition": "The straight up-and-down distance from the base to the opposite point or side."
+        },
+        {
+          "term": "Composite figure",
+          "definition": "A shape built from simpler shapes like rectangles and triangles."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7GM2-S2",
+        "if_fail": "7GM2-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a 6 by 4 rectangle on grid paper and cut it along one diagonal into two triangles."
+        },
+        {
+          "kind": "ask",
+          "text": "What is the rectangle's area? Are the two triangles the same size?"
+        },
+        {
+          "kind": "say",
+          "text": "The rectangle holds 6 x 4 = 24 squares, and the diagonal splits it into two equal triangles, so each triangle is 24 / 2 = 12 square units."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 24, ask them to shade just the triangle: does it cover the whole rectangle, or half?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a triangle has a base of 10 and a height of 6. What is its area?"
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A rectangle is 6 m long and 3 m wide. What is its area?",
+          "answer": "18 sq m"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A triangle has a base of 4 cm and a height of 6 cm. What is its area?",
+          "answer": "12 sq cm"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A triangle has a base of 10 in. and a height of 7 in. What is its area?",
+          "answer": "35 sq in."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A parallelogram has a base of 8 cm and a height of 5 cm. What is its area?",
+          "answer": "40 sq cm"
+        },
+        {
+          "difficulty": "core",
+          "stem": "An L-shaped figure is made of a 5 by 4 rectangle and a 3 by 2 rectangle. What is its total area?",
+          "answer": "26 square units"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A triangle has a base of 9 ft and a height of 4 ft. What is its area?",
+          "answer": "18 sq ft"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A figure is made of a 6 by 6 square with a triangle of base 6 and height 4 on top. What is its total area?",
+          "answer": "48 square units (36 + 12)"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo found the area of a triangle with base 8 cm and height 5 cm. Find his mistake and fix it.",
+          "shown_work": [
+            "A = base x height",
+            "A = 8 x 5",
+            "A = 40 sq cm"
+          ],
+          "answer": "He found the full rectangle, not the triangle. A triangle is half: 8 x 5 = 40, then 40 / 2 = 20 sq cm."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Cut the Rectangle in Half",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper",
+            "Scissors",
+            "Glue sticks"
+          ],
+          "instructions": "1. Each pair draws a 6 by 4 rectangle on grid paper and writes its area (24).\n2. Cut the rectangle along a diagonal and stack the two triangles to show they match.\n3. Glue one triangle down and write its area as half the rectangle: 24 / 2 = 12.\n4. Repeat with an 8 by 5 rectangle.\n5. Say each time: base times height fills the rectangle, the triangle is half."
+        },
+        {
+          "type": "matching",
+          "title": "Shape to Area Match-Up",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per figure, one card per area"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each figure card to its area card.\n3. To claim a match, say whether you halved (triangle) or added pieces (composite).\n4. Two decoy area cards forgot to halve a triangle; set them aside and explain the error.",
+          "content": {
+            "pairs": [
+              {
+                "left": "Triangle, base 6, height 4",
+                "right": "12 square units"
+              },
+              {
+                "left": "Triangle, base 10, height 3",
+                "right": "15 square units"
+              },
+              {
+                "left": "Parallelogram, base 6, height 3",
+                "right": "18 square units"
+              },
+              {
+                "left": "Rectangle, 5 by 4",
+                "right": "20 square units"
+              },
+              {
+                "left": "L-shape: 8 by 4 plus 3 by 2",
+                "right": "38 square units"
+              },
+              {
+                "left": "Triangle, base 8, height 5",
+                "right": "20 square units"
+              }
+            ],
+            "decoys": [
+              "24 square units (6 x 4 not halved)",
+              "30 square units (10 x 3 not halved)"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Physically cutting a rectangle into two matching triangles shows why the formula halves before the rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The forgot-to-halve error is a stable single-step mistake, ideal for find-and-fix work."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'rectangle first, then half' models the order students collapse."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What rectangle does this triangle sit inside?",
+          "Did you multiply base times height? What does that number cover?",
+          "Why do we divide by 2 for a triangle but not for a rectangle?",
+          "How could you split this composite figure into shapes you know?",
+          "What units does area use here?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reports base times height as a triangle's area.",
+            "say": "Draw the rectangle around the triangle. Your number fills the whole rectangle; shade the triangle and see it is only half. Divide by 2.",
+            "praise": "You halved the rectangle, so your triangle area is true."
+          },
+          {
+            "if_you_see": "Student uses a slanted side as the height.",
+            "say": "Height is the straight up-and-down distance from the base, like a ladder standing on it, not the slanted edge.",
+            "praise": "You measured straight up from the base, that is the real height."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A triangle has a base of 6 and a height of 5. Area?",
+            "look_for": "15 (6 x 5 = 30, then halve). An answer of 30 means the halving was skipped."
+          },
+          {
+            "prompt": "An L-shape is a 4 by 3 rectangle plus a 2 by 2 square. Total area?",
+            "look_for": "16 (12 + 4), splitting the figure into two known pieces."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A triangle has a base of 6 cm and a height of 4 cm. What is its area?",
+        "answer": "12 sq cm",
+        "steps": [
+          {
+            "math": "rectangle: 6 x 4 = 24",
+            "annotation": "Base times height fills the rectangle the triangle sits in."
+          },
+          {
+            "math": "triangle = half the rectangle",
+            "annotation": "The diagonal cuts the rectangle into two equal triangles."
+          },
+          {
+            "math": "24 / 2 = 12",
+            "annotation": "Halve the rectangle's area."
+          },
+          {
+            "math": "A = 12 sq cm",
+            "annotation": "Area is in square units."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A triangle has a base of 10 in. and a height of 6 in. What is its area?",
+        "answer": "30 sq in.",
+        "steps": [
+          {
+            "math": "rectangle: 10 x 6 = 60",
+            "annotation": "Base times height fills the surrounding rectangle.",
+            "given": true
+          },
+          {
+            "math": "triangle = half the rectangle",
+            "annotation": "The triangle covers half of it.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Divide the rectangle's area by 2.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the triangle's area in square units.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The rectangle holds ___ squares, so the triangle holds half: ___.",
+        "I split the figure into ___ and ___, then added the areas.",
+        "The height is ___ because it goes straight up from the base."
+      ],
+      "fluency_source": "7GM2-F2"
+    },
+    {
+      "skill_id": "7GM2-B2",
+      "name": "Evaluate a formula by substituting a value for the variable",
+      "column": "looking_back",
+      "parent_standard": "7.GM.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Substitute a number for a variable in an expression or formula, including squaring, and evaluate it in the right order.",
+        "check_question": "Evaluate 2l + 2w when l = 6 and w = 4."
+      },
+      "i_do_script": "A formula is a recipe with a blank in it, and substituting means filling the blank with the number, everywhere the letter appears. Watch: P = 2l + 2w with l = 6 and w = 4. I rewrite the formula with the numbers in the blanks: 2 x 6 + 2 x 4. Multiply first, then add: 12 + 8 = 20. One more: s squared, written s^2, with s = 7 means 7 x 7 = 49, not 7 x 2. Substitute first, write the full expression, then follow the order of operations.",
+      "canonical_error": {
+        "pattern": "Evaluates a squared variable by doubling instead of multiplying the number by itself",
+        "example": "For s^2 with s = 7, writes 14 (7 x 2) instead of 49 (7 x 7)",
+        "why": "The student reads the exponent 2 as times 2. The exponent counts how many times the number is used as a factor: s^2 means s times s."
+      },
+      "item_template": "An expression or measurement formula with one or two variables, whole-number or simple decimal values, exponents no higher than 2. Student substitutes and evaluates. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "Evaluate 3n when n = 5.",
+          "answer": "15"
+        },
+        {
+          "stem": "Evaluate 2l + 2w when l = 6 and w = 4.",
+          "answer": "20"
+        },
+        {
+          "stem": "Evaluate s^2 when s = 7.",
+          "answer": "49"
+        },
+        {
+          "stem": "The formula P = 4s gives the perimeter of a square. Find P when s = 9.",
+          "answer": "36"
+        },
+        {
+          "stem": "Evaluate 6a when a = 2.5.",
+          "answer": "15"
+        },
+        {
+          "stem": "Evaluate n^2 when n = 10.",
+          "answer": "100"
+        },
+        {
+          "stem": "The formula A = l x w gives the area of a rectangle. Find A when l = 8 and w = 3.",
+          "answer": "24"
+        },
+        {
+          "stem": "Evaluate 2x + 3 when x = 6.",
+          "answer": "15"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did you replace the letter with the number everywhere it appears?",
+        "prompt": "Rewrite the formula with the number sitting in every blank the letter left. Then evaluate in order: exponents, then multiply, then add. Remember s^2 means s times itself.",
+        "praise": "You substituted first and then followed the order, that is how formulas work."
+      },
+      "vocabulary": [
+        {
+          "term": "Variable",
+          "definition": "A letter that holds the place of a number in an expression or formula."
+        },
+        {
+          "term": "Substitute",
+          "definition": "Replace a variable with its number everywhere it appears."
+        },
+        {
+          "term": "Evaluate",
+          "definition": "Work out the value of an expression after substituting."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7GM2-S1",
+        "if_fail": "7GM2-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write P = 2l + 2w on the board with l = 6 and w = 4. Draw a 6 by 4 rectangle underneath and label all four sides."
+        },
+        {
+          "kind": "ask",
+          "text": "Where does the 6 go in the formula? Where does the 4 go?"
+        },
+        {
+          "kind": "say",
+          "text": "Substitute: P = 2 x 6 + 2 x 4. Multiply first: 12 + 8. Add: P = 20. Check against the picture: 6 + 4 + 6 + 4 around the rectangle is also 20."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 2 x 6 + 2 x 4 = 2 x 10 = 20 by luck or adds left to right as 12 + 2 = 14 x 4, slow down the order: multiply both pairs first, then add."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: evaluate A = s^2 when s = 5. Is that 5 x 2 or 5 x 5?"
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate 4s when s = 3.",
+          "answer": "12"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate n + 7 when n = 5.",
+          "answer": "12"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 2l + 2w when l = 7 and w = 3.",
+          "answer": "20"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate s^2 when s = 8.",
+          "answer": "64"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 3.14 x d when d = 10.",
+          "answer": "31.4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate 5n - 2 when n = 4.",
+          "answer": "18"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "The formula A = b x h / 2 gives a triangle's area. Find A when b = 6 and h = 9.",
+          "answer": "27"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia evaluated s^2 when s = 9. Find her mistake and fix it.",
+          "shown_work": [
+            "s^2 with s = 9",
+            "= 9 x 2",
+            "= 18"
+          ],
+          "answer": "She read the exponent as times 2. Squaring means 9 times itself: 9 x 9 = 81."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build the Square, Then the Formula",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Square tiles or grid paper",
+            "Formula cards: A = s^2 with different s values"
+          ],
+          "instructions": "1. Draw a formula card, like A = s^2 with s = 4.\n2. Build the actual square with tiles: 4 rows of 4. Count the tiles (16).\n3. Write the substitution next to the build: 4^2 = 4 x 4 = 16, and check it matches the tile count.\n4. Try s = 5 and s = 6. Ask: would s x 2 ever match the tile count?\n5. Say each time: the exponent builds a square, it does not double."
+        },
+        {
+          "type": "matching",
+          "title": "Formula Fill-In Match",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: formula-with-values cards and value cards"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each formula card, like 2l + 2w with l = 5 and w = 2, to its value card.\n3. To claim a match, show the substituted expression out loud before the answer.\n4. Two decoy value cards come from doubling instead of squaring; set them aside and explain the error.",
+          "content": {
+            "pairs": [
+              {
+                "left": "2l + 2w, l = 5, w = 2",
+                "right": "14"
+              },
+              {
+                "left": "s^2, s = 6",
+                "right": "36"
+              },
+              {
+                "left": "4s, s = 7",
+                "right": "28"
+              },
+              {
+                "left": "3.14 x d, d = 20",
+                "right": "62.8"
+              },
+              {
+                "left": "n^2, n = 9",
+                "right": "81"
+              },
+              {
+                "left": "b x h / 2, b = 8, h = 5",
+                "right": "20"
+              }
+            ],
+            "decoys": [
+              "12 (6 x 2 instead of 6 x 6)",
+              "18 (9 x 2 instead of 9 x 9)"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building s^2 with tiles makes the exponent a picture, a square of tiles, before the rule is stated."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'replace the letter, write the whole expression, then evaluate in order' makes the invisible substitution step audible."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The doubling-instead-of-squaring error is predictable and worth confronting directly in worked examples."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What number replaces the letter, and where does it go?",
+          "Did you rewrite the whole expression before evaluating?",
+          "What does the exponent 2 tell you to do?",
+          "Which operation comes first here, and why?",
+          "How could you check your value against a picture of the shape?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student evaluates s^2 by multiplying by 2.",
+            "say": "Build it with tiles: s^2 is a square, s rows of s tiles. For s = 7 that is 7 x 7 = 49, and 14 would only be two rows.",
+            "praise": "You multiplied the number by itself, that is squaring."
+          },
+          {
+            "if_you_see": "Student substitutes for one variable but leaves the other as a letter, or drops a term.",
+            "say": "Every letter gets its number. Rewrite the whole formula with numbers in every blank before you compute anything.",
+            "praise": "You filled every blank first, so the arithmetic was straightforward."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Evaluate s^2 when s = 5.",
+            "look_for": "25 (5 x 5). An answer of 10 means the exponent was read as times 2."
+          },
+          {
+            "prompt": "Evaluate 2l + 2w when l = 8 and w = 3.",
+            "look_for": "22 (16 + 6), multiplying both pairs before adding."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Evaluate P = 2l + 2w when l = 6 and w = 4.",
+        "answer": "20",
+        "steps": [
+          {
+            "math": "P = 2l + 2w",
+            "annotation": "Start from the formula with its blanks."
+          },
+          {
+            "math": "P = 2 x 6 + 2 x 4",
+            "annotation": "Substitute: 6 for every l, 4 for every w."
+          },
+          {
+            "math": "P = 12 + 8",
+            "annotation": "Multiply first, following the order of operations."
+          },
+          {
+            "math": "P = 20",
+            "annotation": "Add. Check: 6 + 4 + 6 + 4 around the rectangle is also 20."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Evaluate P = 2l + 2w when l = 9 and w = 5.",
+        "answer": "28",
+        "steps": [
+          {
+            "math": "P = 2l + 2w",
+            "annotation": "Start from the formula.",
+            "given": true
+          },
+          {
+            "math": "P = 2 x 9 + 2 x 5",
+            "annotation": "Substitute 9 for l and 5 for w.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply both pairs.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Add and state P.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I replaced ___ with ___ everywhere it appears.",
+        "The exponent 2 means ___ times itself, so ___^2 = ___.",
+        "After substituting, I ___ first, then ___."
+      ],
+      "fluency_source": "7GM2-F1"
+    },
+    {
       "skill_id": "7GM2-S1",
       "name": "Calculate the circumference of a circle given the radius or diameter",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.GM.2",
       "engine_stems": [
         1
@@ -546,7 +1101,7 @@
           }
         ]
       },
-      "fluency_source": "7GM2-F1",
+      "fluency_source": "7GM2-B2",
       "sentence_starters": [
         "I was given the ___, so I use C = ___.",
         "The circumference is ___π, which is about ___."
@@ -603,7 +1158,7 @@
     {
       "skill_id": "7GM2-S2",
       "name": "Calculate the area of a circle given the radius or diameter",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.GM.2",
       "prerequisite_skill": {
         "type": "skill",
@@ -877,7 +1432,7 @@
           }
         ]
       },
-      "fluency_source": "7GM2-F2",
+      "fluency_source": "7GM2-B1",
       "sentence_starters": [
         "The radius is ___, so r² = ___ and the area is ___π.",
         "Because a diameter was given, first I ___ to get the radius."
@@ -1192,7 +1747,7 @@
           }
         ]
       },
-      "fluency_source": "7GM2-F1",
+      "fluency_source": "7GM2-B2",
       "sentence_starters": [
         "The circumference is ___π, so 2πr = ___π and r = ___.",
         "Dividing by π gives the ___, so to get the radius I also ___."
@@ -1473,7 +2028,7 @@
           }
         ]
       },
-      "fluency_source": "7GM2-F2",
+      "fluency_source": "7GM2-B1",
       "sentence_starters": [
         "The area is ___π, so r² = ___ and r = ___.",
         "Dividing by π leaves r², so I ___ to find the radius."
@@ -1774,7 +2329,7 @@
           }
         ]
       },
-      "fluency_source": "7GM2-F1",
+      "fluency_source": "7GM2-B2",
       "sentence_starters": [
         "This is about the ___, so I use ___.",
         "The story gave a ___, so the radius is ___."
@@ -2036,7 +2591,7 @@
           }
         ]
       },
-      "fluency_source": "7GM2-F2",
+      "fluency_source": "7GM2-B1",
       "sentence_starters": [
         "The radius changed by a factor of ___, so the area changes by ___² = ___.",
         "Circumference grows by ___, but area grows by ___ because it uses r²."
@@ -2093,8 +2648,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites — fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7GM2-F1",
         "7GM2-F2"
@@ -2102,16 +2657,18 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7GM2-S1",
-        "7GM2-S2"
+        "7GM2-B1",
+        "7GM2-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7GM2-S1",
+        "7GM2-S2",
         "7GM2-S3",
         "7GM2-S4",
         "7GM2-S5"
@@ -2119,7 +2676,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7GM2-S6"
       ]
@@ -2128,6 +2685,8 @@
   "skill_sequence": [
     "7GM2-F1",
     "7GM2-F2",
+    "7GM2-B1",
+    "7GM2-B2",
     "7GM2-S1",
     "7GM2-S2",
     "7GM2-S3",
@@ -2138,12 +2697,18 @@
   "skill_tree": {
     "7GM2-F1": [],
     "7GM2-F2": [],
-    "7GM2-S1": [
+    "7GM2-B1": [
+      "7GM2-F2"
+    ],
+    "7GM2-B2": [
       "7GM2-F1"
     ],
+    "7GM2-S1": [
+      "7GM2-B2"
+    ],
     "7GM2-S2": [
-      "7GM2-F1",
-      "7GM2-F2"
+      "7GM2-B1",
+      "7GM2-B2"
     ],
     "7GM2-S3": [
       "7GM2-S1"
@@ -2161,16 +2726,20 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S5 (a real-world circle problem) -- the At-proficiency workhorse where the student must choose circumference or area. If they pass, push to S6 (investigate how changing the radius affects circumference and area). If they fail, drop to S1 and S2 to check whether computing circumference and area from a radius or diameter is solid. S3 and S4 (working backwards from a circumference or an area) branch off as the reversal contexts.",
+    "description": "Start with S5, a real-world circle problem, the At-proficiency workhorse where the student must choose circumference or area. If they pass, push to S6 (how changing the radius affects circumference and area). If they fail, drop below grade level: B1 checks grade 6 area by decomposing (triangles, parallelograms, composite figures) and B2 checks evaluating a formula by substitution, the two skills the circle formulas lean on. If those wobble, the foundations F1 (perimeter as adding side lengths) and F2 (area as rows of unit squares) locate the gap in grades 3 to 5. S1 through S4 remain available to probe the standard's own forward and reverse formula work.",
     "entry_skill": "7GM2-S5",
     "if_pass": [
       "7GM2-S6"
     ],
     "if_fail": [
-      "7GM2-S1",
-      "7GM2-S2"
+      "7GM2-B1",
+      "7GM2-B2"
     ],
     "branch_skills": [
+      "7GM2-F1",
+      "7GM2-F2",
+      "7GM2-S1",
+      "7GM2-S2",
       "7GM2-S3",
       "7GM2-S4"
     ]

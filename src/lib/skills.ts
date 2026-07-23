@@ -297,9 +297,14 @@ export function findSkillById(skillId: string): FoundSkill | null {
 
 // ── Display metadata ────────────────────────────────────────────────────
 
-/** The three rendered buckets, in order. Foundation skills exist in the
- *  data (and in the diagnostic) but are deliberately not rendered yet. */
-export const BUCKET_ORDER = ["looking_back", "on_grade", "looking_forward"] as const;
+/** The four rendered buckets, in order. Foundation now renders first —
+ *  tier-2 intervention works primarily out of Foundation + Looking Back. */
+export const BUCKET_ORDER = [
+  "foundation",
+  "looking_back",
+  "on_grade",
+  "looking_forward",
+] as const;
 
 /** Brand-token accents per column (design.md: no off-palette hex). */
 export const COLUMN_META: Record<

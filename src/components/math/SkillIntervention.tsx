@@ -338,8 +338,8 @@ export default function SkillIntervention({ lessonNav }: { lessonNav: LessonNav 
             </p>
           </div>
 
-          {/* Three buckets: Looking Back / On Grade / Looking Forward */}
-          <div className="grid gap-6 lg:grid-cols-3">
+          {/* Four buckets: Foundation / Looking Back / On Grade / Looking Forward */}
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {BUCKET_ORDER.map((col) => {
               const colConfig = selectedSkillData.skill_columns[col];
               if (!colConfig) return null;
@@ -379,9 +379,7 @@ export default function SkillIntervention({ lessonNav }: { lessonNav: LessonNav 
         </div>
       )}
 
-      {/* Diagnostic Modal — includes foundation skills even though they
-          aren't rendered above; the diagnostic is where foundation gaps
-          surface. */}
+      {/* Diagnostic Modal — spans all four columns, foundation included. */}
       {diagnosticOpen && selectedSkillData && (
         <DiagnosticModal
           standardCode={selectedSkillData.standard_code}

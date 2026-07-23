@@ -3,7 +3,7 @@
   "standard_text": "Summarize numerical data sets in relation to their context in multiple ways, such as: a. Report the number of observations; b. Describe the nature of the attribute under investigation, including how it was measured and its units of measurement; c. Determine quantitative measures of center (mean and/or median) and spread (range and interquartile range); d. Describe any overall pattern and any striking deviations from the overall pattern with reference to the context in which the data were gathered; and e. Relate the choice of measures of center and spread to the shape of the data distribution and the context in which the data were gathered.",
   "schema_version": 3,
   "progression": {
-    "narrative": "6.DS.3 asks students to summarize a numerical data set in relation to its context -- and its own wording lays out the path. Before any of it is possible, a student needs two habits the standard quietly assumes: putting values in order (F1) and sharing a total equally (F2). The summarizing itself starts with the measures a fifth grader can almost reach: order the data and pull out the median, mode, and range (S1), then run the add-all-and-share procedure for the mean (S2) -- the first place the two 'centers' must be kept from blurring together. Parts (a) and (b) of the standard come next: reading a real display, counting its observations, and naming the attribute and units (S3), because a measure of center means nothing until you know what was measured. Then spread deepens beyond the range: the box plot and the interquartile range (S4), the spread of the middle half. Parts (d) and (e) are the payoff: describing clusters, peaks, gaps, and outliers, and letting the shape decide whether the mean or the median tells the honest story (S5). Finally the standard looks forward: predicting how every measure responds when a new value joins the data (S6) -- the balance-point reasoning that grade 7 comparison work is built on.",
+    "narrative": "6.DS.3 asks students to summarize a numerical data set in context: report how many observations there are, name the attribute and its units, find measures of center (mean and median) and spread (range and interquartile range), and describe the shape, clusters, peaks, gaps, and outliers. The on-grade work moves from finding the median, mode, and range and computing the mean, to reading real displays and reporting observations, then to the interquartile range from a box plot, and finally to letting the shape decide which center to trust. Students who struggle here usually carry gaps from well below grade six, most often shaky whole-number division and multi-digit addition and subtraction, which stall every mean and every range. One grade below, the grade five work of building and reading a line plot and finding the mean, median, and range of a whole-number set is the bridge that must be solid first. Intervention should rebuild the arithmetic, then the grade five statistics, and only then return to summarizing data in context.",
     "steps": [
       {
         "skill_id": "6DS3-S1",
@@ -40,193 +40,132 @@
   "skills": [
     {
       "skill_id": "6DS3-F1",
-      "name": "Order data values from least to greatest",
+      "name": "Add and subtract multi-digit whole numbers",
       "column": "foundation",
       "parent_standard": "6.DS.3",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 2,
-        "description": "Compare two whole numbers and tell which is greater",
-        "check_question": "Which is greater, 14 or 9?"
+        "grade": 4,
+        "description": "Add and subtract multi-digit whole numbers by lining up place values and regrouping.",
+        "check_question": "What is 128 + 47?"
       },
-      "i_do_script": "Ordering data is a line-up: picture the numbers as a scattered crowd of kids, and you pull out the shortest one at a time -- when the crowd is empty, the finished line must still hold every single kid, nobody left behind. Before we can find the middle of a data set, the numbers have to be lined up. Watch me order 9, 4, 7: I hunt for the smallest number first -- that's 4 -- write it down and cross it off the list. Then I hunt for the smallest number that's left -- 7 -- and keep going until the list is empty: 4, 7, 9. Cross-off-as-you-go means you never skip a number.",
+      "i_do_script": "Adding and subtracting is really about matching place values: ones with ones, tens with tens. Watch me add 128 + 47. I stack them so the ones line up under the ones. Ones: 8 + 7 = 15, so I write 5 and carry 1 ten. Tens: 2 + 4 + 1 = 7. Hundreds: 1. The sum is 175. For 52 - 8, I cannot take 8 from 2, so I regroup a ten into ten ones: now 12 - 8 = 4 ones and 4 tens are left, giving 44. Line up the places, then work one column at a time.",
       "canonical_error": {
-        "pattern": "Skips or repeats a value while re-ordering, so the ordered list has the wrong length",
-        "example": "Given 5, 1, 8, 3, 7 the student writes 1, 3, 5, 7 -- the 8 vanished",
-        "why": "The student re-orders by scanning back and forth without marking off values they've already used, so values get dropped or double-counted."
+        "pattern": "Subtracts the smaller digit from the larger in a column instead of regrouping",
+        "example": "For 52 - 8 the student does 8 - 2 in the ones place and writes 56 instead of 44",
+        "why": "You cannot take 8 from 2, so a ten must be regrouped into ten ones. Flipping the digits changes the value, but regrouping keeps it true."
       },
-      "redirect_script": {
-        "stop": "Hold on -- count your list before you move on.",
-        "prompt": "Count the numbers in the problem, then count the numbers in your ordered list. Do the counts match? Cross off each number in the original list as you place it.",
-        "praise": "You crossed off every value and your counts match -- that ordered list is trustworthy."
-      },
-      "item_template": "A short list of 3-5 whole numbers in random order. Student rewrites the list from least to greatest. NR (write the ordered list).",
+      "item_template": "Two multi-digit whole numbers to add or subtract, clean regrouping, no calculator. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Order least to greatest: 9, 4, 7",
-          "answer": "4, 7, 9",
+          "stem": "128 + 47",
+          "answer": "175",
           "choices": null,
-          "distractor_logic": "Watch for copying the list as written or ordering greatest to least"
+          "distractor_logic": "Watch for forgetting to carry the ten"
         },
         {
-          "stem": "Order least to greatest: 3, 8, 1",
-          "answer": "1, 3, 8",
+          "stem": "52 - 8",
+          "answer": "44",
           "choices": null,
-          "distractor_logic": "Watch for copying the list as written or ordering greatest to least"
+          "distractor_logic": "Watch for doing 8 - 2 instead of regrouping"
         },
         {
-          "stem": "Order least to greatest: 12, 5, 10",
-          "answer": "5, 10, 12",
+          "stem": "63 + 29",
+          "answer": "92",
           "choices": null,
-          "distractor_logic": "Watch for copying the list as written or ordering greatest to least"
+          "distractor_logic": "Watch for forgetting to carry the ten"
         },
         {
-          "stem": "Order least to greatest: 6, 2, 9",
-          "answer": "2, 6, 9",
+          "stem": "150 - 75",
+          "answer": "75",
           "choices": null,
-          "distractor_logic": "Watch for copying the list as written or ordering greatest to least"
+          "distractor_logic": "Watch for subtracting each digit the wrong way"
         },
         {
-          "stem": "Order least to greatest: 15, 11, 13",
-          "answer": "11, 13, 15",
+          "stem": "234 + 118",
+          "answer": "352",
           "choices": null,
-          "distractor_logic": "Watch for copying the list as written or ordering greatest to least"
+          "distractor_logic": "Watch for carrying into the wrong column"
         },
         {
-          "stem": "Order least to greatest: 7, 3, 5, 1",
-          "answer": "1, 3, 5, 7",
+          "stem": "300 - 145",
+          "answer": "155",
           "choices": null,
-          "distractor_logic": "Watch for copying the list as written or ordering greatest to least"
+          "distractor_logic": "Watch for trouble regrouping across the zeros"
         },
         {
-          "stem": "Order least to greatest: 10, 6, 14, 8",
-          "answer": "6, 8, 10, 14",
+          "stem": "76 + 84",
+          "answer": "160",
           "choices": null,
-          "distractor_logic": "Watch for copying the list as written or ordering greatest to least"
+          "distractor_logic": "Watch for forgetting to carry into the hundreds"
         },
         {
-          "stem": "Order least to greatest: 4, 9, 2, 6",
-          "answer": "2, 4, 6, 9",
+          "stem": "205 - 68",
+          "answer": "137",
           "choices": null,
-          "distractor_logic": "Watch for copying the list as written or ordering greatest to least"
-        },
-        {
-          "stem": "Order least to greatest: 20, 12, 16, 9",
-          "answer": "9, 12, 16, 20",
-          "choices": null,
-          "distractor_logic": "Watch for copying the list as written or ordering greatest to least"
-        },
-        {
-          "stem": "Order least to greatest: 5, 1, 8, 3, 7",
-          "answer": "1, 3, 5, 7, 8",
-          "choices": null,
-          "distractor_logic": "Watch for copying the list as written or ordering greatest to least"
-        },
-        {
-          "stem": "Order least to greatest: 11, 15, 9, 13, 10",
-          "answer": "9, 10, 11, 13, 15",
-          "choices": null,
-          "distractor_logic": "Watch for copying the list as written or ordering greatest to least"
-        },
-        {
-          "stem": "Order least to greatest: 2, 6, 4, 8, 5",
-          "answer": "2, 4, 5, 6, 8",
-          "choices": null,
-          "distractor_logic": "Watch for copying the list as written or ordering greatest to least"
-        },
-        {
-          "stem": "Order least to greatest: 18, 12, 15, 11",
-          "answer": "11, 12, 15, 18",
-          "choices": null,
-          "distractor_logic": "Watch for copying the list as written or ordering greatest to least"
-        },
-        {
-          "stem": "Order least to greatest: 30, 10, 20",
-          "answer": "10, 20, 30",
-          "choices": null,
-          "distractor_logic": "Watch for copying the list as written or ordering greatest to least"
+          "distractor_logic": "Watch for regrouping the wrong place"
         }
       ],
+      "redirect_script": {
+        "stop": "Wait, are your ones lined up under your ones?",
+        "prompt": "Stack the numbers so each place sits over its match, then work one column at a time. If you cannot subtract, regroup a ten before you take away.",
+        "praise": "You lined up the places and regrouped, so every digit landed where it belongs."
+      },
       "vocabulary": [
         {
-          "term": "Least",
-          "definition": "The smallest value in the list."
+          "term": "Regroup",
+          "definition": "Trade ten of one place for one of the next larger place, or the reverse, so you can add or subtract."
         },
         {
-          "term": "Greatest",
-          "definition": "The largest value in the list."
-        },
-        {
-          "term": "Order",
-          "definition": "Rewrite the values from smallest to largest so nothing is skipped."
+          "term": "Place value",
+          "definition": "The size a digit has because of its position: ones, tens, hundreds."
         }
       ],
       "next_steps": {
-        "if_pass": "Move to 6DS3-S1: with the list ordered, the student is ready to find the median, mode, and range.",
-        "if_fail": "Drop to comparing two numbers at a time ('Which is smaller, 9 or 4?') and build up to three-number lists before retrying."
+        "if_pass": "6DS3-B1",
+        "if_fail": "Review grade 3 addition and subtraction within 1000 using base-ten blocks before retrying."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Look at the crowd on the board: 5, 1, 8, 3, 7 -- five numbers standing around. If we pull them into a shortest-to-tallest line one at a time, how many have to be standing in the finished line? So what tells you instantly that a finished line of only four is broken?"
-        },
-        {
           "kind": "show",
-          "text": "Write on the board: 5, 1, 8, 3, 7. Say: 'We need these least to greatest.'"
+          "text": "Write 128 + 47 stacked, ones under ones, and draw place-value columns labeled hundreds, tens, ones."
         },
         {
           "kind": "ask",
-          "text": "Scan the whole list. What is the smallest number you can find?"
-        },
-        {
-          "kind": "show",
-          "text": "Write 1 on a new line and cross the 1 off the original list."
-        },
-        {
-          "kind": "ask",
-          "text": "Now look only at what's left: 5, 8, 3, 7. What's the smallest now?"
-        },
-        {
-          "kind": "watch",
-          "text": "If the student names 5 (first number they see) instead of 3, point at each remaining number and ask 'smaller or bigger than this one?'"
-        },
-        {
-          "kind": "ask",
-          "text": "Keep going -- what comes next each time until the list is empty?"
-        },
-        {
-          "kind": "ask",
-          "text": "Count the original list, count your new list. Do you have all 5 numbers?"
+          "text": "Add the ones: 8 + 7. Is that more than 9? What do we do with the extra ten?"
         },
         {
           "kind": "say",
-          "text": "1, 3, 5, 7, 8 -- every number placed, none lost. That cross-off habit is what makes the median findable later."
+          "text": "8 + 7 = 15, so write 5 and carry 1 ten. Tens: 2 + 4 + 1 = 7. Hundreds: 1. The sum is 175."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 56 for 52 - 8, hand them base-ten blocks: can you take 8 ones from 2 ones without trading a ten?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: line up and solve 63 + 29."
         }
       ]
     },
     {
       "skill_id": "6DS3-F2",
-      "name": "Divide a total equally to find a fair share",
+      "name": "Divide a whole number into equal groups",
       "column": "foundation",
       "parent_standard": "6.DS.3",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 3,
-        "description": "Recall basic division facts within 100",
+        "description": "Divide within 100 to share a total into equal groups with no remainder.",
         "check_question": "What is 24 divided by 4?"
       },
-      "i_do_script": "The mean is really a fair-share problem: pile everything together, then deal it out equally. Watch me share 24 stickers among 4 kids: 24 divided by 4 is 6, so each kid gets 6. If I deal them out one at a time -- one for you, one for you -- everyone ends up with the same 6. That 'same amount for everyone' number is exactly what the mean will be.",
+      "i_do_script": "Dividing is sharing a total into equal groups. Watch me share 24 among 4: I deal them out one to each group until they are gone, and each group ends with 6, so 24 divided by 4 is 6. I can also picture 24 counters in an array of 4 equal rows, and each row is 6. The answer is the size of one equal group. That equal-share number is exactly the number the mean will land on when I share a data total evenly.",
       "canonical_error": {
         "pattern": "Subtracts the number of groups from the total instead of dividing",
-        "example": "For 'share 30 among 5,' the student answers 25 (30 - 5) instead of 6",
-        "why": "The student sees two numbers and reaches for a familiar operation. They haven't connected 'share equally' with splitting into equal groups -- division."
+        "example": "For share 30 among 5 the student answers 25 (30 - 5) instead of 6",
+        "why": "The student grabs the nearest operation instead of sharing. Splitting a total into equal groups is division, and each group must end up the same size."
       },
-      "redirect_script": {
-        "stop": "Wait -- would everyone really get that many?",
-        "prompt": "Act it out: deal the total out one at a time into that many equal piles. When the piles are even, how many are in each pile? Which operation did your hands just do?",
-        "praise": "You split the total into equal groups -- that's division, and it's the engine behind every mean."
-      },
-      "item_template": "A total shared equally among a number of groups (facts within 100, no remainders). NR.",
+      "item_template": "A total shared equally among a number of groups, facts within 100, no remainders, no calculator. Short response fluency bank.",
       "sample_items": [
         {
           "stem": "Share 24 equally among 4. How many each?",
@@ -235,7 +174,7 @@
           "distractor_logic": "Watch for subtracting the group count instead of dividing"
         },
         {
-          "stem": "Share 30 equally among 5. How many each?",
+          "stem": "30 divided by 5",
           "answer": "6",
           "choices": null,
           "distractor_logic": "Watch for subtracting the group count instead of dividing"
@@ -247,7 +186,7 @@
           "distractor_logic": "Watch for subtracting the group count instead of dividing"
         },
         {
-          "stem": "Share 40 equally among 8. How many each?",
+          "stem": "40 divided by 8",
           "answer": "5",
           "choices": null,
           "distractor_logic": "Watch for subtracting the group count instead of dividing"
@@ -259,73 +198,659 @@
           "distractor_logic": "Watch for subtracting the group count instead of dividing"
         },
         {
-          "stem": "Share 21 equally among 3. How many each?",
+          "stem": "45 divided by 9",
+          "answer": "5",
+          "choices": null,
+          "distractor_logic": "Watch for subtracting the group count instead of dividing"
+        },
+        {
+          "stem": "Share 28 equally among 4. How many each?",
           "answer": "7",
           "choices": null,
           "distractor_logic": "Watch for subtracting the group count instead of dividing"
         },
         {
-          "stem": "Share 50 equally among 5. How many each?",
-          "answer": "10",
-          "choices": null,
-          "distractor_logic": "Watch for subtracting the group count instead of dividing"
-        },
-        {
-          "stem": "Share 32 equally among 4. How many each?",
-          "answer": "8",
+          "stem": "72 divided by 8",
+          "answer": "9",
           "choices": null,
           "distractor_logic": "Watch for subtracting the group count instead of dividing"
         }
       ],
+      "redirect_script": {
+        "stop": "Hold on, would every group really get that many?",
+        "prompt": "Deal the total out one at a time into that many equal groups. When the groups are even, how many are in one group? Which operation did your hands just do?",
+        "praise": "You split the total into equal groups, and that is division, the engine behind the mean."
+      },
       "vocabulary": [
-        {
-          "term": "Equal shares",
-          "definition": "Every group gets exactly the same amount."
-        },
         {
           "term": "Divide",
           "definition": "Split a total into equal groups."
+        },
+        {
+          "term": "Equal groups",
+          "definition": "Groups that all hold exactly the same amount."
         }
       ],
       "next_steps": {
-        "if_pass": "Move to 6DS3-S2: the mean is 'add them all, then share equally' -- the student now owns the sharing half.",
-        "if_fail": "Use counters to physically deal a total into equal piles, then reconnect the action to the division fact."
+        "if_pass": "6DS3-B2",
+        "if_fail": "Deal counters into equal piles by hand, then reconnect the action to the division fact, before retrying."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write: 'Share 24 stickers equally among 4 kids.' Draw 4 empty circles."
+          "text": "Write share 24 equally among 4 and draw 4 empty circles."
         },
         {
           "kind": "ask",
-          "text": "If we deal the stickers out one at a time around the circles, will every kid end up with the same number? Why?"
-        },
-        {
-          "kind": "ask",
-          "text": "Instead of dealing all 24 by hand, what division fact tells us the answer at once?"
-        },
-        {
-          "kind": "watch",
-          "text": "If the student says 20 (24 - 4), have them actually deal counters into the 4 circles and count a pile."
-        },
-        {
-          "kind": "ask",
-          "text": "So 24 / 4 = 6. What does the 6 mean in the story?"
-        },
-        {
-          "kind": "ask",
-          "text": "New one: share 30 among 5. What's the fact, and what does the answer mean?"
+          "text": "If we deal 24 counters one at a time around the 4 circles, will every circle end up with the same amount? Why?"
         },
         {
           "kind": "say",
-          "text": "That 'even them all out' number is going to come back with a fancy name soon: the mean."
+          "text": "Each circle ends with 6, so 24 divided by 4 is 6. We can also see it as an array of 4 equal rows of 6."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 20 by doing 24 - 4, have them actually deal counters into the 4 circles and count one."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: share 30 equally among 5. What is the size of one group?"
         }
       ]
     },
     {
+      "skill_id": "6DS3-B1",
+      "name": "Represent and read a numerical data set on a line plot",
+      "column": "looking_back",
+      "parent_standard": "6.DS.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Show a data set as X's on a line plot and read the total number of data points from it.",
+        "check_question": "A line plot has 2 X's over 3 and 1 X over 5. How many data points are shown?"
+      },
+      "i_do_script": "A line plot puts one X over each value on a number line, so every X stands for one data point. Watch me read this plot: 3 X's over 6, 1 X over 7, and 2 X's over 9. To count the observations I add the X's, not the number of stacks: 3 + 1 + 2 = 6 data points. The value that appears most often is the tallest stack, here 6. To build a plot from a list like 5, 6, 6, 8, 6, I put an X over each number as I read it, so 6 gets 3 X's.",
+      "canonical_error": {
+        "pattern": "Counts the number of different values on the line plot instead of the total number of X's",
+        "example": "A plot has X's over three values, so the student says there are 3 observations instead of adding the X's to get 6",
+        "why": "Each X is one observation. The number of observations is the total count of X's across all the stacks, not how many different numbers happen to have an X."
+      },
+      "item_template": "A small line plot described by its stacks (how many X's over each value), or a short data list to plot. Student counts observations, reads a frequency, or names the most common value. Numeric or short response.",
+      "sample_items": [
+        {
+          "stem": "A line plot shows 3 X's over 6, 1 X over 7, and 2 X's over 9. How many data points are shown?",
+          "answer": "6"
+        },
+        {
+          "stem": "On that line plot, which value appears most often?",
+          "answer": "6"
+        },
+        {
+          "stem": "A line plot of pets shows 4 X's over 0, 3 X's over 1, 2 X's over 2, and 1 X over 3. How many students answered?",
+          "answer": "10"
+        },
+        {
+          "stem": "On the pets line plot, how many students have exactly 2 pets?",
+          "answer": "2"
+        },
+        {
+          "stem": "For the data 5, 6, 6, 8, 6, how many X's go over 6 on a line plot?",
+          "answer": "3"
+        },
+        {
+          "stem": "A line plot shows 2 X's over 10, 2 X's over 12, and 1 X over 15. What is the greatest value?",
+          "answer": "15"
+        },
+        {
+          "stem": "A line plot has 1 X over 2, 2 X's over 3, and 2 X's over 5. How many observations are there?",
+          "answer": "5",
+          "choices": [
+            "5",
+            "3",
+            "2",
+            "10"
+          ],
+          "distractor_logic": "3 is the number of different values (the canonical error); 2 is the tallest single stack; 10 is doubling the count"
+        },
+        {
+          "stem": "A line plot shows 2 X's over 4, 4 X's over 5, and 2 X's over 6. Which value is the mode?",
+          "answer": "5",
+          "choices": [
+            "5",
+            "4",
+            "6",
+            "8"
+          ],
+          "distractor_logic": "4 and 6 each have only 2 X's; 8 is the total number of X's, not a value"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait, are you counting stacks or X's?",
+        "prompt": "Every X is one data point. Touch each X as you count, adding the X's from all the stacks, not the number of different values.",
+        "praise": "You added every X, so your count of observations is trustworthy."
+      },
+      "vocabulary": [
+        {
+          "term": "Line plot",
+          "definition": "A number line with an X above each value to show how often that value occurs."
+        },
+        {
+          "term": "Observation",
+          "definition": "One data point, shown by one X on a line plot."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6DS3-S3",
+        "if_fail": "6DS3-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a number line 6 to 9 and place 3 X's over 6, 1 X over 7, 2 X's over 9."
+        },
+        {
+          "kind": "ask",
+          "text": "How many different values have X's? Is that the same as how many data points there are?"
+        },
+        {
+          "kind": "say",
+          "text": "Three values have X's, but the data points are the X's themselves: 3 + 1 + 2 = 6 observations."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 3, point to a single stack of 3 X's and ask how many data points just that one stack holds."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: build a line plot for 5, 6, 6, 8, 6, then count the observations."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A line plot shows 3 X's over 6, 1 X over 7, and 2 X's over 9. How many data points in all?",
+          "answer": "6"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "On that line plot, which value appears most often (the mode)?",
+          "answer": "6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A line plot of pets shows 4 X's over 0, 3 X's over 1, 2 X's over 2, and 1 X over 3. How many students answered?",
+          "answer": "10",
+          "notes": "Add the X's from every stack: 4 + 3 + 2 + 1."
+        },
+        {
+          "difficulty": "core",
+          "stem": "On that pets line plot, how many students have exactly 2 pets?",
+          "answer": "2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "For the data 5, 6, 6, 8, 6, how many X's go over 6 on a line plot?",
+          "answer": "3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "For the data 5, 6, 6, 8, 6, what are the least and greatest values on the line plot?",
+          "answer": "Least 5, greatest 8"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A line plot of jump lengths in feet shows 2 X's over 3, 4 X's over 3 1/2, and 2 X's over 4. How many jumps were recorded?",
+          "answer": "8",
+          "notes": "Grade five line plots can use halves; still add the X's: 2 + 4 + 2."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia looked at a line plot and said there were 4 observations because X's sat over 4 values. Find her mistake and fix it.",
+          "shown_work": [
+            "Line plot: 2 X's over 1, 3 X's over 2, 1 X over 4, 2 X's over 5",
+            "X's sit over 4 different values",
+            "So there are 4 observations"
+          ],
+          "answer": "She counted the different values, not the X's. Add the X's: 2 + 3 + 1 + 2 = 8 observations."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build the Line Plot",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "A drawn number line",
+            "Sticky notes or counters for X's",
+            "A short data list card"
+          ],
+          "instructions": "1. Each pair gets a data list like 5, 6, 6, 8, 6.\n2. Place one sticky note as an X over each value as you read it down the list.\n3. When the list is done, count the X's, not the stacks, to find the number of observations.\n4. Circle the tallest stack and name it as the value that appears most often.\n5. Repeat with a second list and say each time: every X is one data point."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Stacks or X's",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Line-plot cards, some counted right and some counted by stacks"
+          ],
+          "instructions": "1. Flip one card at a time and read the claimed number of observations.\n2. Decide together whether the count added the X's or just counted the different values.\n3. For each wrong card, recount by touching every X and write the true total.\n4. Sort the cards into Counted X's and Counted Stacks piles and explain the split.",
+          "content": {
+            "worked_problem": "A plot with 2 X's over 1, 3 X's over 2, 1 X over 4, and 2 X's over 5 is called 4 observations.",
+            "error_step": "The student counted the 4 different values instead of adding the X's.",
+            "why": "Each X is one data point, so the total is 2 + 3 + 1 + 2 = 8 observations."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Placing physical X's on a number line before reading counts off a printed plot moves the skill from concrete to abstract."
+        },
+        {
+          "strategy_id": "strat-math-008",
+          "why": "Whiteboard Pass makes every student's line plot visible, so a miscount of X's gets caught right away."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The count-the-stacks error is stable and predictable, so finding and fixing it in a worked example confronts it head on."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many different values have X's? How many data points is that really?",
+          "If one stack has 4 X's, how many observations does that single stack hold?",
+          "Which stack is tallest, and what does that tell you about the data?",
+          "How would the plot change if we added one more value of 6?",
+          "What is the least value and the greatest value on this plot?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student counts the number of different values instead of the X's.",
+            "say": "Touch each X and count out loud. A stack of 3 X's is 3 data points, not 1.",
+            "praise": "You added every X, so the number of observations is right."
+          },
+          {
+            "if_you_see": "Student reads a frequency as the value instead of the count of X's.",
+            "say": "The value is the label on the number line; the count is how many X's sit above it. Which one did the question ask for?",
+            "praise": "You told the value apart from how many times it happened."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A plot has 2 X's over 3, 3 X's over 4, and 1 X over 7. How many observations?",
+            "look_for": "6 (adds 2 + 3 + 1), not 3 (the number of stacks)."
+          },
+          {
+            "prompt": "On that plot, which value appears most often?",
+            "look_for": "4, the tallest stack, not 7 (the largest value)."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A line plot shows 3 X's over 6, 1 X over 7, and 2 X's over 9. How many data points are shown?",
+        "answer": "6",
+        "steps": [
+          {
+            "math": "over 6: 3 X's, over 7: 1 X, over 9: 2 X's",
+            "annotation": "Read the height of each stack. Each X is one data point."
+          },
+          {
+            "math": "3 + 1 + 2",
+            "annotation": "Add the X's from every stack, not the number of stacks."
+          },
+          {
+            "math": "= 6 observations",
+            "annotation": "The total number of X's is the number of observations."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A line plot shows 2 X's over 1, 3 X's over 2, and 2 X's over 4. How many observations are there?",
+        "answer": "7",
+        "steps": [
+          {
+            "math": "stacks sit over 1, 2, and 4",
+            "annotation": "Three different values have X's.",
+            "given": true
+          },
+          {
+            "math": "over 1: 2 X's, over 2: 3 X's, over 4: 2 X's",
+            "annotation": "Read the height of each stack.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Add the X's from all three stacks.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the total number of observations.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The number of observations is ___ because I added the X's: ___.",
+        "The value that appears most often is ___ because it has the tallest stack of ___ X's."
+      ],
+      "fluency_source": "6DS3-F1"
+    },
+    {
+      "skill_id": "6DS3-B2",
+      "name": "Find the mean, median, and range of a whole-number data set",
+      "column": "looking_back",
+      "parent_standard": "6.DS.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Find the mean, median, mode, and range of a small set of whole numbers.",
+        "check_question": "What is the mean of 4, 6, 8, 2?"
+      },
+      "i_do_script": "These four measures each answer one question. Watch me with 2, 4, 9. The mean is the fair share: add every value, 2 + 4 + 9 = 15, then divide by how many, 15 divided by 3 = 5. The median is the middle after ordering: 2, 4, 9, so the median is 4. The mode is the value that shows up most, and here every value appears once, so there is no mode. The range is greatest minus least: 9 - 2 = 7. Add and divide for the mean, order and find the middle for the median.",
+      "canonical_error": {
+        "pattern": "Adds the values but forgets to divide, reporting the total as the mean",
+        "example": "For 2, 4, 9 the student says the mean is 15 instead of 5",
+        "why": "The student stops after the adding step. The mean is the fair-share amount, so the total must still be split equally among the number of values."
+      },
+      "item_template": "A small whole-number data set. Student finds the mean (clean division, no remainder), the median, the mode, or the range. Numeric or short response, no calculator.",
+      "sample_items": [
+        {
+          "stem": "Find the mean of 3, 7, 8, 2.",
+          "answer": "5"
+        },
+        {
+          "stem": "Find the median of 8, 3, 9, 5, 7.",
+          "answer": "7"
+        },
+        {
+          "stem": "Find the range of 4, 9, 6, 2.",
+          "answer": "7"
+        },
+        {
+          "stem": "Find the mode of 5, 8, 5, 2, 5, 9.",
+          "answer": "5"
+        },
+        {
+          "stem": "Find the mean of 10, 12, 8.",
+          "answer": "10"
+        },
+        {
+          "stem": "Find the median of 12, 4, 9.",
+          "answer": "9"
+        },
+        {
+          "stem": "Find the median of these quiz scores: 6, 2, 9, 4, 8.",
+          "answer": "6",
+          "choices": [
+            "6",
+            "9",
+            "7",
+            "5.8"
+          ],
+          "distractor_logic": "9 is the middle of the unordered list (order-first error); 7 is the range; 5.8 is the mean"
+        },
+        {
+          "stem": "Find the mean of these ages: 2, 4, 9.",
+          "answer": "5",
+          "choices": [
+            "5",
+            "4",
+            "7",
+            "15"
+          ],
+          "distractor_logic": "4 is the median; 7 is the range; 15 is the total (forgot to divide by 3)"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Wait, is that the mean or just the total?",
+        "prompt": "The mean is a fair share, so after you add every value you still divide by how many values there are. Order first before you hunt for a median.",
+        "praise": "You added and then divided, so that fair-share number really is the mean."
+      },
+      "vocabulary": [
+        {
+          "term": "Mean",
+          "definition": "Add all the values, then divide by how many; the fair-share amount."
+        },
+        {
+          "term": "Median",
+          "definition": "The middle value after the data is ordered least to greatest."
+        },
+        {
+          "term": "Range",
+          "definition": "Greatest value minus least value; how far the data spreads."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6DS3-S1",
+        "if_fail": "6DS3-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the data 2, 4, 9 and set out counters: 2, then 4, then 9 in three piles."
+        },
+        {
+          "kind": "ask",
+          "text": "For the mean, what do we do first, and what must we still do after we add?"
+        },
+        {
+          "kind": "say",
+          "text": "Add every value: 2 + 4 + 9 = 15. Then share it equally among the 3 values: 15 divided by 3 = 5, so the mean is 5."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 15, push the counters into 3 equal piles and ask how many are in one pile."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: order 2, 4, 9 and give the median, then find the range."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "The data is in order: 2, 5, 8. What is the median?",
+          "answer": "5"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Find the range of 4, 9, 6, 2.",
+          "answer": "7",
+          "notes": "Range is greatest minus least: 9 - 2. Watch for answering 9 (just the maximum)."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the mean of 3, 7, 8, 2.",
+          "answer": "5",
+          "notes": "Add to 20, then divide by 4."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the median of 15, 9, 12, 18, 10.",
+          "answer": "12",
+          "notes": "The list is unordered on purpose: order first, then find the middle."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the mode and range of 6, 4, 6, 9, 6, 5.",
+          "answer": "Mode 6, range 5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the mean of 10, 14, 6.",
+          "answer": "10",
+          "notes": "Add to 30, then divide by 3."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Find the median of 20, 8, 14, 6.",
+          "answer": "11",
+          "notes": "An even count: order to 6, 8, 14, 20 and average the two middle values, (8 + 14) / 2."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Sam found the mean of 2, 4, 9 and wrote 15. Find his mistake and fix it.",
+          "shown_work": [
+            "2, 4, 9",
+            "2 + 4 + 9 = 15",
+            "So the mean is 15"
+          ],
+          "answer": "He added but never divided. The mean is 15 / 3 = 5."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Deal It Out for the Mean",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Counters",
+            "Cups or paper plates as equal groups",
+            "Data cards"
+          ],
+          "instructions": "1. Each pair gets a small data set like 2, 4, 9 and builds each value as a pile of counters.\n2. Pour all the counters together to make the total, and count it.\n3. Deal the total out evenly into one cup per value.\n4. Count one cup: that equal-share amount is the mean.\n5. Repeat with 3, 7, 8, 2 and say each time: add them all, then share equally."
+        },
+        {
+          "type": "matching",
+          "title": "Which Measure Is It",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Description cards and measure cards"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each description to its measure and say the measure out loud to claim it.\n3. To lock a match, compute that measure for the sample set 3, 5, 5, 7.\n4. One decoy description, the middle of the unordered list, matches nothing; set it aside and explain why.",
+          "content": {
+            "pairs": [
+              {
+                "left": "Add every value, then divide by how many",
+                "right": "Mean"
+              },
+              {
+                "left": "The middle value after ordering",
+                "right": "Median"
+              },
+              {
+                "left": "The value that appears most often",
+                "right": "Mode"
+              },
+              {
+                "left": "Greatest value minus least value",
+                "right": "Range"
+              }
+            ],
+            "decoys": [
+              "The middle number of the list as written"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Dealing counters into equal groups before naming the divide step keeps the mean concrete instead of a rule to memorize."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Short number talks on quick equal-share division build the fluency the mean depends on."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Finding and fixing an add-but-forgot-to-divide mistake targets the standard mean error directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "For the mean, what step comes after you add every value?",
+          "Is the data in order yet? Why does the median need that?",
+          "How many values are you dividing by for the mean?",
+          "Could the range ever be larger than the greatest value? Why not?",
+          "If every value appears once, what is the mode?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reports the total as the mean.",
+            "say": "That is the total, not the fair share. Split it into equal groups: divide by how many values.",
+            "praise": "You divided the total, so now it really is the mean."
+          },
+          {
+            "if_you_see": "Student takes the middle of the unordered list for the median.",
+            "say": "Order the values first, then cover one from each end until one is left. Is it the same number you had?",
+            "praise": "You ordered first, and that is exactly how the median works."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Find the mean of 4, 6, 8, 2.",
+            "look_for": "5 (adds to 20, divides by 4). An answer of 20 means they forgot to divide."
+          },
+          {
+            "prompt": "Find the median of 6, 2, 9.",
+            "look_for": "6 (ordered 2, 6, 9). An answer of 2 means they took the middle of the raw list."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Find the mean of these ages: 2, 4, 9.",
+        "answer": "5",
+        "steps": [
+          {
+            "math": "2 + 4 + 9 = 15",
+            "annotation": "Add every value to get the total."
+          },
+          {
+            "math": "15 / 3 = 5",
+            "annotation": "Share the total equally among the 3 values."
+          },
+          {
+            "math": "mean = 5",
+            "annotation": "The mean is the fair-share amount, not the total."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Find the mean of 6, 8, 10, 4.",
+        "answer": "7",
+        "steps": [
+          {
+            "math": "6 + 8 + 10 + 4 = 28",
+            "annotation": "Add every value to get the total.",
+            "given": true
+          },
+          {
+            "math": "there are 4 values",
+            "annotation": "Count how many values to share among.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Divide the total by 4.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the mean.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The mean is ___ because I added to ___ and then divided by ___.",
+        "The median is ___ because after ordering, the middle value is ___."
+      ],
+      "fluency_source": "6DS3-F2"
+    },
+    {
       "skill_id": "6DS3-S1",
       "name": "Determine the median, mode, and range of a data set",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.DS.3",
       "engine_stems": [
         1
@@ -662,7 +1187,7 @@
     {
       "skill_id": "6DS3-S2",
       "name": "Calculate the mean of a data set",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.DS.3",
       "prerequisite_skill": {
         "type": "skill",
@@ -1019,7 +1544,7 @@
         "To find the mean I ___ all the values, then ___ by ___.",
         "The mean is ___ but the median is ___, because they use different procedures."
       ],
-      "fluency_source": "6DS3-F1"
+      "fluency_source": "6DS3-F2"
     },
     {
       "skill_id": "6DS3-S3",
@@ -2611,13 +3136,13 @@
         "The new value is ___ the current mean, so the mean will ___.",
         "The mean changed to ___ but the median ___, because ___."
       ],
-      "fluency_source": "6DS3-F1"
+      "fluency_source": "6DS3-F2"
     }
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation",
-      "description": "Tier III -- 2+ grade levels below. If a student can't access Looking Back, start here.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-4) prerequisite skills. Start intervention here.",
       "skills": [
         "6DS3-F1",
         "6DS3-F2"
@@ -2625,16 +3150,18 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Prerequisite skills -- fix these first if a student can't access grade-level work",
+      "description": "One grade below (grade 5) skills that feed this standard directly.",
       "skills": [
-        "6DS3-S1",
-        "6DS3-S2"
+        "6DS3-B1",
+        "6DS3-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "Core 6.DS.3 skills -- the standard itself",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "6DS3-S1",
+        "6DS3-S2",
         "6DS3-S3",
         "6DS3-S4",
         "6DS3-S5"
@@ -2642,7 +3169,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Extension skills -- for students ready to push ahead",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "6DS3-S6"
       ]
@@ -2651,6 +3178,8 @@
   "skill_sequence": [
     "6DS3-F1",
     "6DS3-F2",
+    "6DS3-B1",
+    "6DS3-B2",
     "6DS3-S1",
     "6DS3-S2",
     "6DS3-S3",
@@ -2661,15 +3190,22 @@
   "skill_tree": {
     "6DS3-F1": [],
     "6DS3-F2": [],
-    "6DS3-S1": [
+    "6DS3-B1": [
       "6DS3-F1"
+    ],
+    "6DS3-B2": [
+      "6DS3-F1",
+      "6DS3-F2"
+    ],
+    "6DS3-S1": [
+      "6DS3-B2"
     ],
     "6DS3-S2": [
       "6DS3-S1",
-      "6DS3-F2"
+      "6DS3-B2"
     ],
     "6DS3-S3": [
-      "6DS3-F1"
+      "6DS3-B1"
     ],
     "6DS3-S4": [
       "6DS3-S1",
@@ -2684,17 +3220,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (IQR from a box plot) -- it requires ordering, medians, and display reading all at once. If they pass, check the interpretive skills S5 and S6. If they fail, drop to the computation pair S1/S2 to find whether the gap is the median/range procedures or the mean. S3 (reading displays) is the branch to test when computations are fine but box-plot items still miss.",
+    "description": "Start with S4, the interquartile range from a box plot, which forces ordering, medians, and display reading all at once. If they pass, check the interpretive skills S5 (shape and choosing a measure) and S6 (predicting change). If they fail, drop one grade below to the B skills: B1 checks reading and building a line plot, and B2 checks the mean, median, and range of a whole-number set, the grade five statistics 6.DS.3 is built on. If those wobble, the foundations F1 (multi-digit addition and subtraction) and F2 (whole-number division) locate the arithmetic gap in grades 3 and 4. S1, S2, and S3 stay available to probe the standard's own median, mean, and display-reading work.",
     "entry_skill": "6DS3-S4",
     "if_pass": [
       "6DS3-S5",
       "6DS3-S6"
     ],
     "if_fail": [
-      "6DS3-S1",
-      "6DS3-S2"
+      "6DS3-B1",
+      "6DS3-B2"
     ],
     "branch_skills": [
+      "6DS3-F1",
+      "6DS3-F2",
+      "6DS3-S1",
+      "6DS3-S2",
       "6DS3-S3"
     ]
   }

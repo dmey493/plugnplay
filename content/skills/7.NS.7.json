@@ -3,7 +3,7 @@
   "standard_text": "Compute fluently with rational numbers using order of operations.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard is a fluency standard, but the word 'fluently' hides two separate demands that have to fire together: you must run the order of operations as a fixed algorithm, AND you must compute each individual operation correctly on signed rational numbers. A student can know that multiplication comes before addition and still land on the wrong answer because a negative sign slipped; a student can be perfect with negatives and still fail because they worked left to right. So the progression pins down both engines before combining them: first name the order of operations (grouping, then exponents, then multiply and divide left to right, then add and subtract left to right), and separately be reliable computing with two signed rationals. Those are the two foundations.\n\nFrom there the arc holds the ORDER constant and slowly raises the NUMBER difficulty, exactly the way the item spec bands the work. It opens with signed integers and two operations, where the whole game is 'multiply before you add' -- the left-to-right trap in its purest form. Next it adds grouping symbols, where a parenthesis has to be cleared first and the implied multiplication in 12(6 - 2) has to be seen. Then the numbers get harder without the logic changing: decimals to the hundredths, then expressions that mix fractions, decimals, and integers in the same problem, and finally multi-step expressions with three or more operations and grouping where one early slip corrupts everything after it. The capstone turns the process around -- given one expression, decide which others are equal to it, which forces a student to read order of operations and the properties of operations rather than just execute them. The single habit we name at every step: do the operations in the right order, and carry every sign faithfully as you go. The two errors we hunt all the way up are working left to right and losing a negative.",
+    "narrative": "This standard asks students to compute fluently with rational numbers using the order of operations, mixing integers, decimals to the hundredths, and fractions in the same expression. The on-grade work starts with two-operation signed-integer expressions and grouping symbols, extends the same fixed order to decimals and mixed rational forms, and ends with multi-step expressions and equivalence reasoning. Students who stall here usually carry gaps from well below grade seven: they never grounded a product as one grouped quantity, so they read expressions left to right, and they never learned what parentheses claim. Intervention should rebuild those grades 3 to 5 foundations first, then the grade six skills of running the full order of operations with whole-number exponents and evaluating expressions with positive fractions and decimals. Only after that order is automatic on friendly numbers should signed numbers come back in.",
     "steps": [
       {
         "skill_id": "7NS7-S1",
@@ -40,214 +40,856 @@
   "skills": [
     {
       "skill_id": "7NS7-F1",
-      "name": "State the order of operations for evaluating an expression",
+      "name": "Solve two-step problems with equal groups plus extras",
       "column": "foundation",
       "parent_standard": "7.NS.7",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Name the order of operations and say which operation comes first in a simple expression.",
-        "check_question": "In 3 + 4 x 5, which operation do you do first?"
+        "grade": 3,
+        "description": "Find a total when equal groups combine with loose extras, multiplying before adding.",
+        "check_question": "There are 3 boxes of 5 markers and 2 loose markers. How many markers in all?"
       },
-      "i_do_script": "The order isn't arbitrary -- it matches what the symbols mean. In 8 + 3 x 2, the '3 x 2' is one bundled quantity: three 2s, like 8 loose pencils plus 3 boxes of 2. You count the boxes' contents before adding them to the loose ones -- 8 + 6 = 14, never (8 + 3) x 2. Multiplication outranks addition because a product IS a single amount. Order of operations is the agreed-upon order for cleaning up an expression, so everyone gets the same answer. The order is: grouping symbols first (parentheses, brackets), then exponents, then multiply and divide as they come left to right, then add and subtract as they come left to right. Watch: 3 + 4 x 5. The multiplication has to happen before the addition, so 4 x 5 = 20 first, then 3 + 20 = 23. NOT 3 + 4 = 7 then times 5. Multiply and divide outrank add and subtract every time.",
+      "i_do_script": "Some amounts come packaged and some come loose, and I have to open the packages before I can count everything together. Watch: 3 boxes of 5 markers and 2 loose markers. The boxes hold 3 x 5 = 15 markers. Now I add the loose ones: 15 + 2 = 17. I never add the 3 boxes to the 2 loose markers, because a box is not a marker. In a picture, I draw 3 rows of 5 dots for the boxes and 2 dots off to the side, then count: the multiplication happens inside the picture before the loose dots join in.",
       "canonical_error": {
-        "pattern": "Works strictly left to right, doing whatever operation comes first in reading order",
-        "example": "For 3 + 4 x 5 the student computes 3 + 4 = 7, then 7 x 5 = 35 instead of 23",
-        "why": "The student treats an expression like a sentence read left to right, not knowing that multiplication and division are done before addition and subtraction. Reading order is not the same as operation order."
+        "pattern": "Adds the counts in reading order instead of finding the grouped amount first",
+        "example": "For 3 boxes of 5 plus 2 loose, computes 3 + 2 = 5 boxes-and-markers, then 5 x 5 = 25, or just adds 3 + 5 + 2 = 10",
+        "why": "The student treats every number as the same kind of thing. The 3 counts boxes and the 2 counts markers, so they cannot be added. The grouped amount 3 x 5 must be turned into markers before any adding."
       },
-      "item_template": "A short expression or a question naming which operation is done first. Short response fluency bank about the order itself, not the final value.",
+      "item_template": "A story with equal groups plus or minus loose extras. Whole numbers only, products within 100. Student finds the grouped amount first, then adds or subtracts. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "In 3 + 4 x 5, which operation do you do first?",
-          "answer": "Multiply (4 x 5)"
+          "stem": "3 boxes of 5 markers and 2 loose markers. How many markers in all?",
+          "answer": "17"
         },
         {
-          "stem": "List the order of operations from first to last.",
-          "answer": "Grouping, exponents, multiply/divide (left to right), add/subtract (left to right)"
+          "stem": "4 bags of 6 apples and 3 loose apples. How many apples in all?",
+          "answer": "27"
         },
         {
-          "stem": "In (2 + 3) x 4, what do you do first?",
-          "answer": "The parentheses (2 + 3 = 5)"
+          "stem": "2 packs of 10 pencils and 4 loose pencils. How many pencils in all?",
+          "answer": "24"
         },
         {
-          "stem": "Do you multiply or add first in 6 + 2 x 3?",
-          "answer": "Multiply (2 x 3 = 6)"
+          "stem": "5 rows of 4 chairs and 3 extra chairs. How many chairs in all?",
+          "answer": "23"
         },
         {
-          "stem": "In 12 / 4 x 2, do you divide or multiply first?",
-          "answer": "Divide -- left to right, so 12 / 4 first"
+          "stem": "6 boxes of 3 crayons and 5 loose crayons. How many crayons in all?",
+          "answer": "23"
         },
         {
-          "stem": "In 10 - 2^3, what happens before the subtraction?",
-          "answer": "The exponent (2^3 = 8)"
+          "stem": "Tia has 20 stickers. She gives away 2 sheets of 4 stickers. How many are left?",
+          "answer": "12"
+        },
+        {
+          "stem": "3 shelves of 8 books and 6 books on the desk. How many books in all?",
+          "answer": "30"
+        },
+        {
+          "stem": "4 packs of 5 cards and 7 loose cards. How many cards in all?",
+          "answer": "27"
         }
       ],
       "redirect_script": {
-        "stop": "Wait -- is reading order the same as doing order?",
-        "prompt": "Scan the whole expression before you compute. Circle any multiply or divide -- those get done before any add or subtract, no matter where they sit. Grouping and exponents come even earlier.",
-        "praise": "You picked the operation by rank, not by what came first -- that's the order of operations."
+        "stop": "What does each number count: groups, or things?",
+        "prompt": "Find out how many things are inside all the groups first. Multiply the groups by the size of each group, and only then bring in the loose ones. Boxes cannot be added to markers.",
+        "praise": "You opened the boxes first and then counted the loose ones, that is exactly the right order."
       },
       "vocabulary": [
         {
-          "term": "Order of operations",
-          "definition": "The set order for evaluating an expression: grouping, exponents, multiply/divide, then add/subtract."
+          "term": "Equal groups",
+          "definition": "Groups that each hold the same number of things, like 3 boxes of 5."
         },
         {
-          "term": "Grouping symbols",
-          "definition": "Parentheses or brackets that must be evaluated before anything outside them."
-        },
-        {
-          "term": "Exponent",
-          "definition": "A small raised number telling how many times to multiply the base by itself, like the 3 in 2^3."
+          "term": "Array",
+          "definition": "A picture of equal groups arranged in rows and columns, like 3 rows of 5 dots."
         }
       ],
       "next_steps": {
-        "if_pass": "7NS7-S1",
-        "if_fail": "Review order of operations (6.AF.1)."
+        "if_pass": "7NS7-B1",
+        "if_fail": "Review grade 3 equal-groups multiplication with arrays (rows of same-size groups within 100)."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Read 8 + 3 x 2 as a story: 8 loose pencils and 3 boxes of 2. Do you add the 3 boxes to the loose pencils, or their contents? So which part must be computed first, and why?"
-        },
-        {
           "kind": "show",
-          "text": "Write '8 + 3 x 2.'"
+          "text": "Draw 3 rows of 5 dots for the boxed markers, and 2 dots off to the side for the loose ones."
         },
         {
           "kind": "ask",
-          "text": "Which two operations are here? Which one outranks the other?"
+          "text": "How many dots are in the rows? Can the 2 loose dots join the count before we know that?"
         },
         {
           "kind": "say",
-          "text": "Multiply outranks add, so 3 x 2 = 6 first, then 8 + 6 = 14. Not 8 + 3 = 11 then times 2."
+          "text": "The rows hold 3 x 5 = 15 dots. Then the loose ones join: 15 + 2 = 17 markers. The multiplication finishes inside the picture before anything is added."
         },
         {
           "kind": "watch",
-          "text": "If a student says 22, ask 'did you multiply first, or add first?'"
+          "text": "If a student says 25, ask what the 3 counts and what the 2 counts. Boxes and markers are different things."
         },
         {
           "kind": "ask",
-          "text": "Your turn: in 10 - 4 x 2, which do you do first, and what is the answer?"
+          "text": "Your turn: 4 bags of 6 apples and 3 loose apples. Draw it, then count."
         }
       ]
     },
     {
       "skill_id": "7NS7-F2",
-      "name": "Compute with two signed rational numbers",
+      "name": "Use parentheses to show which part is computed first",
       "column": "foundation",
       "parent_standard": "7.NS.7",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 7,
-        "description": "Add, subtract, multiply, or divide two signed integers, fractions, or decimals.",
-        "check_question": "What is 3 x (-8)?"
+        "grade": 5,
+        "description": "Evaluate a whole-number expression with parentheses, doing the grouped part first.",
+        "check_question": "What is (2 + 3) x 4?"
       },
-      "i_do_script": "The sign rules aren't magic -- two pictures explain them. Multiplication is repeated jumps: 3 x (-8) means three jumps of 8 to the LEFT from 0, landing at -24 -- that's why a positive times a negative is negative. And the pattern 3 x (-8) = -24, 2 x (-8) = -16, 1 x (-8) = -8, 0 x (-8) = 0 climbs by 8 each step, so past zero (-1) x (-8) must be +8 -- that's why same signs give a positive. With the why in hand, here are the rules I run: same signs multiply/divide to a positive, different signs to a negative; adding two negatives makes a bigger negative; subtracting is adding the opposite. Watch: 3 x (-8): different signs, so -24. And -6 - (-2) is -6 + 2 = -4. I say the sign out loud before I write the number.",
+      "i_do_script": "Parentheses are a package: whatever sits inside gets finished before anything outside can touch it. Watch: (2 + 3) x 4. The package holds 2 + 3, so I finish it first: 5. Then I take 4 copies: 5 x 4 = 20. Without the parentheses, 2 + 3 x 4 is different: the 3 x 4 = 12 chunk is glued together, so it is 2 + 12 = 14. In a picture, (2 + 3) x 4 is 4 rows that each hold 2 dots and 3 dots, while 2 + 3 x 4 is 2 loose dots next to 3 rows of 4. The parentheses change which picture I draw, so they change the answer.",
       "canonical_error": {
-        "pattern": "Loses or mishandles a sign -- makes a negative product positive, or subtracts instead of adding a negative",
-        "example": "For 3 x (-8) writes 24 (dropping the negative) or for -6 - (-2) writes -8 (subtracting instead of adding the opposite)",
-        "why": "The student computes the sizes correctly but attaches the wrong sign, missing that different signs give a negative product and that subtracting a negative adds. The sign is part of the number, not decoration."
+        "pattern": "Ignores the parentheses and computes in reading order or by habit",
+        "example": "For (2 + 3) x 4 writes 2 + 12 = 14, or for 2 + 3 x 4 writes 5 x 4 = 20, treating both the same",
+        "why": "The student does not treat the parentheses as a package that must be finished first. The two expressions describe two different pictures, so they cannot have the same value."
       },
-      "item_template": "A single operation on two signed integers, fractions, or decimals. Short response fluency bank -- short, no choices, feeds the timed sprint.",
+      "item_template": "A whole-number expression with one set of parentheses, or a matched pair with and without parentheses. Student evaluates the grouped part first. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "-7 + (-5)",
-          "answer": "-12"
+          "stem": "(2 + 3) x 4",
+          "answer": "20"
         },
         {
-          "stem": "3 x (-8)",
-          "answer": "-24"
+          "stem": "2 + 3 x 4",
+          "answer": "14"
         },
         {
-          "stem": "-6 - (-2)",
-          "answer": "-4"
+          "stem": "(10 - 4) x 2",
+          "answer": "12"
         },
         {
-          "stem": "-3/4 x 8",
-          "answer": "-6"
+          "stem": "10 - 4 x 2",
+          "answer": "2"
         },
         {
-          "stem": "-15 / 3",
-          "answer": "-5"
+          "stem": "3 x (6 + 2)",
+          "answer": "24"
         },
         {
-          "stem": "2.5 + (-4)",
-          "answer": "-1.5"
+          "stem": "18 / (2 + 4)",
+          "answer": "3"
+        },
+        {
+          "stem": "(8 - 3) x (2 + 1)",
+          "answer": "15"
+        },
+        {
+          "stem": "Put parentheses in 5 + 3 x 2 so it equals 16.",
+          "answer": "(5 + 3) x 2"
         }
       ],
       "redirect_script": {
-        "stop": "What sign should this answer have?",
-        "prompt": "Picture the jumps first: which direction do they go, so which side of zero do you land on? Decide the sign first: different signs multiplying gives negative; subtracting a negative turns into adding. Then compute the size. Say the sign out loud before you write it.",
-        "praise": "You set the sign first, then the size -- signed computation done right."
+        "stop": "What is inside the package?",
+        "prompt": "Circle the parentheses and finish everything inside them before you touch anything outside. Then ask what the rest of the expression does with that finished number.",
+        "praise": "You finished the package first, that is exactly what parentheses ask for."
       },
       "vocabulary": [
         {
-          "term": "Rational number",
-          "definition": "Any number that can be written as a fraction, including integers and decimals."
+          "term": "Parentheses",
+          "definition": "Grouping symbols; everything inside them is computed before anything outside."
         },
         {
-          "term": "Opposite",
-          "definition": "The same number with the sign flipped; subtracting a number is adding its opposite."
-        },
-        {
-          "term": "Signed number",
-          "definition": "A number carrying a positive or negative sign."
+          "term": "Expression",
+          "definition": "A combination of numbers and operations with no equal sign, like (2 + 3) x 4."
         }
       ],
       "next_steps": {
-        "if_pass": "7NS7-S1",
-        "if_fail": "Review operations with rational numbers (7.NS.1-7.NS.6)."
+        "if_pass": "7NS7-B1",
+        "if_fail": "Review grade 5 numerical expressions with grouping symbols using dot pictures (rows that copy a whole package)."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw the jumps for 3 x (-8): starting at 0, three jumps of 8 to the left.",
-          "visual": {
-            "type": "number_line_point",
-            "ticks": [
-              -24,
-              -20,
-              -16,
-              -12,
-              -8,
-              -4,
-              0
-            ],
-            "point_value": -24,
-            "point_label": "3 x (-8)"
-          }
+          "text": "Draw two pictures. Picture A: 4 rows, each holding 2 dots and 3 dots. Picture B: 2 loose dots next to 3 rows of 4 dots."
         },
         {
           "kind": "ask",
-          "text": "Where do the jumps land? So what sign must 3 x (-8) have -- and why does a positive times a negative always land on the negative side?"
-        },
-        {
-          "kind": "show",
-          "text": "Write '-4 x 6.'"
-        },
-        {
-          "kind": "ask",
-          "text": "Same signs or different signs? So what sign is the answer?"
+          "text": "Which picture shows (2 + 3) x 4, and which shows 2 + 3 x 4? How can you tell?"
         },
         {
           "kind": "say",
-          "text": "Different signs, so negative. 4 x 6 = 24, so the answer is -24."
+          "text": "Picture A copies the whole package 2 + 3, so it is (2 + 3) x 4 = 5 x 4 = 20. Picture B glues only the 3 x 4 chunk, so it is 2 + 12 = 14. The parentheses decide what gets copied."
         },
         {
           "kind": "watch",
-          "text": "If a student writes 24, ask 'a negative times a positive gives what sign?'"
+          "text": "If a student gets the same answer for both, have them count the dots in each picture. The pictures do not match, so the answers cannot match."
         },
         {
           "kind": "ask",
-          "text": "Your turn: -9 - (-4). Rewrite the subtraction as adding the opposite first."
+          "text": "Your turn: draw and evaluate (10 - 4) x 2, then 10 - 4 x 2."
         }
       ]
     },
     {
+      "skill_id": "7NS7-B1",
+      "name": "Evaluate whole-number expressions using order of operations with exponents",
+      "column": "looking_back",
+      "parent_standard": "7.NS.7",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Evaluate a whole-number expression with parentheses, exponents, multiplication, division, addition, and subtraction in the correct order.",
+        "check_question": "What is 2 + 3^2 x 4?"
+      },
+      "i_do_script": "The order of operations is one fixed list: grouping symbols first, then exponents, then multiply and divide left to right, then add and subtract left to right. Watch: 2 + 3^2 x 4. The exponent goes first: 3^2 means 3 x 3, a 3 by 3 square of 9 tiles, never 3 x 2. Now the expression is 2 + 9 x 4. Multiply next: 9 x 4 = 36. Add last: 2 + 36 = 38. I scan the whole expression, do the highest-ranked operation, rewrite, and repeat until one number is left.",
+      "canonical_error": {
+        "pattern": "Reads an exponent as multiplication by the exponent, or works left to right",
+        "example": "For 2 + 3^2 x 4 computes 3^2 as 6 to get 2 + 24 = 26, or computes 2 + 3 = 5 first",
+        "why": "The student either treats 3^2 as 3 x 2 instead of 3 x 3, or runs the operations in reading order. An exponent counts copies of the base multiplied together, and the fixed order ranks it above multiplying and adding."
+      },
+      "item_template": "A whole-number expression with two or three operations drawn from parentheses, an exponent (squares and cubes of small bases), multiplication, division, addition, and subtraction. Positive whole numbers only, values within 100. Short numeric response.",
+      "sample_items": [
+        {
+          "stem": "Evaluate: 2 + 3^2 x 4.",
+          "answer": "38",
+          "distractor_logic": "26 comes from reading 3^2 as 3 x 2 = 6. 100 comes from working left to right: 2 + 3 = 5, 5^2 = 25, 25 x 4. Correct: 3^2 = 9, 9 x 4 = 36, 2 + 36 = 38."
+        },
+        {
+          "stem": "Evaluate: 5 x (7 - 3) + 2^2.",
+          "answer": "24",
+          "distractor_logic": "Parentheses first: 7 - 3 = 4, then 5 x 4 = 20, then 2^2 = 4, so 20 + 4 = 24. Reading 2^2 as 4 x 2 = 8 gives 28."
+        },
+        {
+          "stem": "Evaluate: 36 / 4 + 2 x 3.",
+          "answer": "15",
+          "distractor_logic": "Divide and multiply before adding: 9 + 6 = 15. Working straight left to right through the addition gives 11 x 3 = 33."
+        },
+        {
+          "stem": "Evaluate: 4^2 - 6.",
+          "answer": "10",
+          "distractor_logic": "4^2 = 16, then 16 - 6 = 10. Reading 4^2 as 4 x 2 = 8 gives 2."
+        },
+        {
+          "stem": "Evaluate: (2 + 4)^2.",
+          "answer": "36",
+          "distractor_logic": "Parentheses first: 2 + 4 = 6, then 6^2 = 36. Squaring only the 4 gives 2 + 16 = 18."
+        },
+        {
+          "stem": "Evaluate: 100 - 5 x 3^2.",
+          "answer": "55",
+          "distractor_logic": "Exponent first: 3^2 = 9, then 5 x 9 = 45, then 100 - 45 = 55. Doing 100 - 5 first gives 95 x 9."
+        },
+        {
+          "stem": "Evaluate: 8 + 12 / 4.",
+          "answer": "11",
+          "distractor_logic": "Divide first: 12 / 4 = 3, then 8 + 3 = 11. Adding first gives 20 / 4 = 5."
+        },
+        {
+          "stem": "Evaluate: 2^3 + 2 x 5.",
+          "answer": "18",
+          "distractor_logic": "2^3 = 8 and 2 x 5 = 10, so 18. Reading 2^3 as 2 x 3 = 6 gives 16."
+        }
+      ],
+      "redirect_script": {
+        "stop": "What does the exponent count: copies multiplied, or a factor?",
+        "prompt": "Say the list before you touch the numbers: grouping, exponents, multiply and divide, add and subtract. Rewrite the expression after each step so only the remaining work shows. 3^2 is a 3 by 3 square, nine tiles, not six.",
+        "praise": "You ran the list in order and rewrote after each step, that is the whole skill."
+      },
+      "vocabulary": [
+        {
+          "term": "Exponent",
+          "definition": "A small raised number telling how many copies of the base to multiply together, like the 2 in 3^2 = 3 x 3."
+        },
+        {
+          "term": "Order of operations",
+          "definition": "The fixed order for evaluating: grouping, exponents, multiply and divide left to right, add and subtract left to right."
+        },
+        {
+          "term": "Base",
+          "definition": "The number being repeated by an exponent, like the 3 in 3^2."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7NS7-S1",
+        "if_fail": "7NS7-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Build 3^2 with square tiles: a 3 by 3 square. Count the tiles."
+        },
+        {
+          "kind": "ask",
+          "text": "How many tiles? So is 3^2 equal to 9 or to 6? What would 3 x 2 look like instead?"
+        },
+        {
+          "kind": "say",
+          "text": "3^2 is the 3 by 3 square, 9 tiles. Now evaluate 2 + 3^2 x 4: exponent first gives 2 + 9 x 4, multiply gives 2 + 36, add gives 38."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 26, they read 3^2 as 6. Send them back to the tiles: a 3 by 3 square holds how many?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: evaluate 5 + 2^3 x 3. Say the list first, then rewrite after each step."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate: 3^2.",
+          "answer": "9"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate: 4 + 2 x 5.",
+          "answer": "14"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: 2 + 3^2 x 4.",
+          "answer": "38",
+          "notes": "Baits both the 3^2 = 6 misread and left to right."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: 5 x (7 - 3) + 2^2.",
+          "answer": "24",
+          "notes": "Grouping, exponent, multiply, add, all four ranks in one expression."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: 36 / 4 + 2 x 3.",
+          "answer": "15",
+          "notes": "Divide and multiply share a rank; the add waits."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: 100 - 5 x 3^2.",
+          "answer": "55",
+          "notes": "Guards against 100 - 5 done first."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Evaluate: (2 + 4)^2 - 3 x 10.",
+          "answer": "6",
+          "notes": "Parentheses feed the exponent: 36 - 30 = 6."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Liam evaluated 10 - 2^3. Find his mistake and fix it.",
+          "shown_work": [
+            "10 - 2^3",
+            "= 10 - 6",
+            "= 4"
+          ],
+          "answer": "Liam read 2^3 as 2 x 3 = 6. The exponent means 2 x 2 x 2 = 8, so 10 - 8 = 2."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build the Power First",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Square tiles or grid paper",
+            "Expression cards with exponents"
+          ],
+          "instructions": "1. Draw a card like 2 + 3^2 x 4.\n2. Build the exponent with tiles first: 3^2 is a 3 by 3 square. Count the tiles and write the value under the exponent.\n3. Rewrite the expression with the square replaced by its count: 2 + 9 x 4.\n4. Finish with multiply then add, rewriting after each step.\n5. Say each time: the power is a shape I build and count before anything else touches it."
+        },
+        {
+          "type": "card_sort",
+          "title": "First Move",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set: 8 whole-number expressions"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Sort each card by its FIRST move: Parentheses, Exponent, or Multiply/Divide.\n3. To place a card, say the first step out loud and what the expression becomes after it.\n4. Then evaluate two cards from each pile fully on paper.\n5. Debrief: which cards tempted someone to start at the left end?",
+          "content": {
+            "categories": [
+              "Parentheses first",
+              "Exponent first",
+              "Multiply or divide first"
+            ],
+            "cards": [
+              {
+                "text": "2 + 3^2 x 4",
+                "category": "Exponent first"
+              },
+              {
+                "text": "5 x (7 - 3) + 2^2",
+                "category": "Parentheses first"
+              },
+              {
+                "text": "36 / 4 + 2 x 3",
+                "category": "Multiply or divide first"
+              },
+              {
+                "text": "(2 + 4)^2",
+                "category": "Parentheses first"
+              },
+              {
+                "text": "100 - 5 x 3^2",
+                "category": "Exponent first"
+              },
+              {
+                "text": "8 + 12 / 4",
+                "category": "Multiply or divide first"
+              },
+              {
+                "text": "2^3 + 2 x 5",
+                "category": "Exponent first"
+              },
+              {
+                "text": "30 - (4 + 6)",
+                "category": "Parentheses first"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building 3^2 as a 3 by 3 tile square makes the exponent a countable shape before the rule 'exponents before multiplying' is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The 3^2 = 6 misread and the left-to-right slip both leave clean wrong numbers, ideal find-and-fix targets."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Saying the list aloud, grouping, exponents, multiply, add, while rewriting each line models the scan-and-rank habit."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What operations are in this expression, and which one ranks highest?",
+          "What does 3^2 mean? What would 3 x 2 look like instead?",
+          "What does the expression become after your first step?",
+          "Why does the exponent finish before the multiplication next to it?",
+          "Where would parentheses have to go to change this answer?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student computes 3^2 as 6 or 2^3 as 6.",
+            "say": "Build it: 3^2 is a 3 by 3 square of tiles. Count them. The exponent counts copies of the base, not a factor to multiply by.",
+            "praise": "You counted the square instead of multiplying by the exponent, that is what a power means."
+          },
+          {
+            "if_you_see": "Student works left to right, adding or subtracting before the exponent or multiply.",
+            "say": "Say the list first: grouping, exponents, multiply and divide, add and subtract. Find the highest rank present and do only that, then rewrite.",
+            "praise": "You picked the step by rank, not by position, exactly right."
+          },
+          {
+            "if_you_see": "Student does the exponent correctly but then skips the multiply and adds.",
+            "say": "Rewrite the expression after the exponent so you can scan again. Is there still a multiply waiting? It goes before the add.",
+            "praise": "You rescanned after each step, that is how the order stays honest."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Evaluate 4 + 3^2.",
+            "look_for": "13 (3^2 = 9 first). An answer of 10 means 3^2 was read as 6; 49 means 4 + 3 was done first."
+          },
+          {
+            "prompt": "Evaluate 20 - 2 x 3^2.",
+            "look_for": "2 (3^2 = 9, 2 x 9 = 18, 20 - 18). An answer of 162 means 20 - 2 was done first."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Evaluate: 2 + 3^2 x 4.",
+        "answer": "38",
+        "steps": [
+          {
+            "math": "2 + 3^2 x 4",
+            "annotation": "Scan by rank: no grouping, so the exponent goes first."
+          },
+          {
+            "math": "3^2 = 9",
+            "annotation": "The exponent means 3 x 3, a 3 by 3 square of 9 tiles."
+          },
+          {
+            "math": "2 + 9 x 4 = 2 + 36",
+            "annotation": "Multiply before adding: 9 x 4 = 36."
+          },
+          {
+            "math": "2 + 36 = 38",
+            "annotation": "Add last."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Evaluate: 5 + 2^3 x 6.",
+        "answer": "53",
+        "steps": [
+          {
+            "math": "2^3 = 8",
+            "annotation": "Exponent first: 2 x 2 x 2 = 8, not 2 x 3.",
+            "given": true
+          },
+          {
+            "math": "5 + 8 x 6",
+            "annotation": "Rewrite with the power replaced by its value.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply before adding.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Add and state the value.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The highest-ranked operation here is ___, so my first step is ___.",
+        "After that step the expression becomes ___.",
+        "3^2 means ___ copies of ___ multiplied, which is ___."
+      ],
+      "fluency_source": "7NS7-F1"
+    },
+    {
+      "skill_id": "7NS7-B2",
+      "name": "Evaluate expressions with positive fractions and decimals in the correct order",
+      "column": "looking_back",
+      "parent_standard": "7.NS.7",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Evaluate a two-step expression with positive fractions or decimals, keeping the order of operations.",
+        "check_question": "What is 2.5 + 0.5 x 6?"
+      },
+      "i_do_script": "The order of operations does not care what kind of numbers it meets: multiply and divide still finish before add and subtract. Watch: 2.5 + 0.5 x 6. The 0.5 x 6 chunk is glued together, half of 6 dollars, which is 3 dollars. Then 2.5 + 3 = 5.5. If I had read left to right I would have added 2.5 + 0.5 = 3 and gotten 18, which the money story says is far too big. Fractions work the same way: in 3/4 x 8 + 1.5, three fourths of 8 is 6, then 6 + 1.5 = 7.5. Multiply the glued chunk first, then add, and compute the fraction or decimal carefully.",
+      "canonical_error": {
+        "pattern": "Adds before multiplying once the numbers become fractions or decimals",
+        "example": "For 2.5 + 0.5 x 6 computes 2.5 + 0.5 = 3, then 3 x 6 = 18 instead of 0.5 x 6 = 3 first, giving 5.5",
+        "why": "The student holds the order with whole numbers but drops it when the numbers get harder, falling back to reading order. The rank of the operations never changes; only the arithmetic gets finer."
+      },
+      "item_template": "A one- or two-operation expression with positive fractions, decimals, or a mix, where the product or quotient is clean. Student multiplies or divides first, then adds or subtracts. No negatives. Short numeric response.",
+      "sample_items": [
+        {
+          "stem": "Evaluate: 2.5 + 0.5 x 6.",
+          "answer": "5.5",
+          "distractor_logic": "18 comes from adding 2.5 + 0.5 first. Correct: 0.5 x 6 = 3, then 2.5 + 3 = 5.5."
+        },
+        {
+          "stem": "Evaluate: 1/2 x 10 + 3.",
+          "answer": "8",
+          "distractor_logic": "Half of 10 is 5, then 5 + 3 = 8. Adding 10 + 3 first gives 6.5."
+        },
+        {
+          "stem": "Evaluate: 4.8 - 1.2 x 3.",
+          "answer": "1.2",
+          "distractor_logic": "1.2 x 3 = 3.6 first, then 4.8 - 3.6 = 1.2. Doing 4.8 - 1.2 first gives 10.8."
+        },
+        {
+          "stem": "Evaluate: 3/4 x 8 + 1.5.",
+          "answer": "7.5",
+          "distractor_logic": "Three fourths of 8 is 6, then 6 + 1.5 = 7.5. Adding 8 + 1.5 first gives 7.125."
+        },
+        {
+          "stem": "Evaluate: 6 x (1.5 + 0.5).",
+          "answer": "12",
+          "distractor_logic": "Parentheses first: 1.5 + 0.5 = 2, then 6 x 2 = 12. Multiplying 6 x 1.5 first gives 9.5."
+        },
+        {
+          "stem": "Evaluate: 2/3 x 9 - 4.",
+          "answer": "2",
+          "distractor_logic": "Two thirds of 9 is 6, then 6 - 4 = 2. Subtracting 9 - 4 first gives 10/3."
+        },
+        {
+          "stem": "Evaluate: 0.25 x 8 + 0.75.",
+          "answer": "2.75",
+          "distractor_logic": "0.25 x 8 = 2, then 2 + 0.75 = 2.75. Adding 8 + 0.75 first gives 2.1875."
+        },
+        {
+          "stem": "Evaluate: 5 - 1/2 x 6.",
+          "answer": "2",
+          "distractor_logic": "Half of 6 is 3, then 5 - 3 = 2. Doing 5 - 1/2 first gives 27."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Did the harder numbers change which step comes first?",
+        "prompt": "Tell it as money: which piece is the glued chunk, like half of 6 dollars? Settle that chunk first, exactly as with whole numbers, then add or subtract. Estimate before you finish so a wild answer gets caught.",
+        "praise": "You kept the order even with fractions and decimals, that is real fluency."
+      },
+      "vocabulary": [
+        {
+          "term": "Rational number",
+          "definition": "Any number that can be written as a fraction, including whole numbers and decimals."
+        },
+        {
+          "term": "Product",
+          "definition": "The result of multiplying, finished before any adding or subtracting."
+        },
+        {
+          "term": "Of",
+          "definition": "In a fraction phrase like half of 6, the word that signals multiplication."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7NS7-S1",
+        "if_fail": "7NS7-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "ask",
+          "text": "You have 2.50 in your pocket and you earn half of a 6 dollar job. Which amount has to be figured out before your money can be counted together?"
+        },
+        {
+          "kind": "say",
+          "text": "The half-of chunk: 0.5 x 6 = 3 dollars. Now count together: 2.50 + 3 = 5.50."
+        },
+        {
+          "kind": "show",
+          "text": "Write 2.5 + 0.5 x 6 and underline the 0.5 x 6 chunk."
+        },
+        {
+          "kind": "ask",
+          "text": "What happens if you add 2.5 + 0.5 first? Does 18 dollars fit the story of 2.50 plus half of 6?"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student adds first, send them back to the story: the half belongs to the 6 dollar job, not to the pocket money."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 1.5 + 0.25 x 8. Underline the glued chunk, settle it, then add."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate: 0.5 x 8.",
+          "answer": "4"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate: 1/4 x 12.",
+          "answer": "3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: 2.5 + 0.5 x 6.",
+          "answer": "5.5",
+          "notes": "Baits the left-to-right 2.5 + 0.5 slip."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: 3/4 x 8 + 1.5.",
+          "answer": "7.5",
+          "notes": "Fraction product, then a decimal addition."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: 4.8 - 1.2 x 3.",
+          "answer": "1.2",
+          "notes": "Guards against 4.8 - 1.2 done first."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: 6 x (1.5 + 0.5).",
+          "answer": "12",
+          "notes": "Parentheses first with decimals."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Evaluate: 1/2 x 10 + 0.25 x 4.",
+          "answer": "6",
+          "notes": "Two glued chunks: 5 + 1 = 6."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia evaluated 2.5 + 0.5 x 6. Find her mistake and fix it.",
+          "shown_work": [
+            "2.5 + 0.5 x 6",
+            "= 3 x 6",
+            "= 18"
+          ],
+          "answer": "Mia added 2.5 + 0.5 before multiplying. The 0.5 x 6 chunk finishes first: 0.5 x 6 = 3, then 2.5 + 3 = 5.5."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Settle the Chunk in Money",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Play money or drawn dollars, dimes, and quarters",
+            "Expression cards"
+          ],
+          "instructions": "1. Draw a card like 2.5 + 0.5 x 6.\n2. Tell it as a money story: 2.50 in your pocket, plus half of a 6 dollar job.\n3. Build the glued chunk first: lay out 6 dollars, take half, and count what the chunk is worth.\n4. Then combine with the pocket money and write the two steps next to the coins.\n5. Repeat with 3/4 x 8 + 1.5 and 5 - 1/2 x 6. Say each time: the chunk gets settled before anything joins it."
+        },
+        {
+          "type": "card_sort",
+          "title": "Estimate, Then Check",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set: 8 fraction and decimal expressions",
+            "Recording sheet"
+          ],
+          "instructions": "1. For each card, ESTIMATE first using friendly numbers: 2.5 + 0.5 x 6 is about 2 or 3 plus 3, so around 5 or 6.\n2. Sort the card into 'less than 5' or '5 or more' using only the estimate.\n3. Then compute exactly, multiplying or dividing before adding or subtracting.\n4. If the exact answer lands far from the estimate, hunt for the step done out of order.\n5. Debrief: which slips did estimating catch?",
+          "content": {
+            "categories": [
+              "Less than 5",
+              "5 or more"
+            ],
+            "cards": [
+              {
+                "text": "2.5 + 0.5 x 6",
+                "category": "5 or more"
+              },
+              {
+                "text": "4.8 - 1.2 x 3",
+                "category": "Less than 5"
+              },
+              {
+                "text": "3/4 x 8 + 1.5",
+                "category": "5 or more"
+              },
+              {
+                "text": "2/3 x 9 - 4",
+                "category": "Less than 5"
+              },
+              {
+                "text": "6 x (1.5 + 0.5)",
+                "category": "5 or more"
+              },
+              {
+                "text": "0.25 x 8 + 0.75",
+                "category": "Less than 5"
+              },
+              {
+                "text": "5 - 1/2 x 6",
+                "category": "Less than 5"
+              },
+              {
+                "text": "1/2 x 10 + 3",
+                "category": "5 or more"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Money makes the glued half-of chunk a physical amount that must be settled before anything joins it, grounding the order before the rule."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Estimating with friendly numbers before computing catches out-of-order work, because adding first inflates or shrinks the result wildly."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The left-to-right slip with decimals leaves a clean wrong number like 18, a strong find-and-fix anchor."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which part of this expression is one glued chunk? How do you know?",
+          "Does the decimal or the fraction change which operation goes first?",
+          "About how big should the answer be? Does your exact answer fit?",
+          "What is half of 6? So what does 0.5 x 6 have to equal?",
+          "What would the answer be if you broke the order, and why does the story reject it?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds before multiplying once decimals or fractions appear.",
+            "say": "The order never changes with the number type. Underline the multiply chunk, settle it first exactly as with whole numbers, then add.",
+            "praise": "You held the order even when the numbers got harder, that is the fluency this builds."
+          },
+          {
+            "if_you_see": "Student multiplies a fraction incorrectly, like 3/4 x 8 = 3/32.",
+            "say": "Say it as a phrase: three fourths OF 8. Split 8 into 4 parts of 2 and take 3 of them. How much is that?",
+            "praise": "You took the parts of the whole instead of juggling symbols, that is what the fraction means."
+          },
+          {
+            "if_you_see": "Student slides the decimal point in a product, like 0.5 x 6 = 30.",
+            "say": "Estimate first: half of 6 cannot be 30. Half of 6 dollars is 3 dollars, so the product is 3.",
+            "praise": "Your estimate caught the decimal slip before it spread."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Evaluate 1.5 + 0.5 x 4.",
+            "look_for": "3.5 (0.5 x 4 = 2 first). An answer of 8 means 1.5 + 0.5 was added first."
+          },
+          {
+            "prompt": "Evaluate 1/2 x 8 + 1.",
+            "look_for": "5 (half of 8 is 4, then plus 1). An answer of 4.5 means 8 + 1 was added first."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Evaluate: 2.5 + 0.5 x 6.",
+        "answer": "5.5",
+        "steps": [
+          {
+            "math": "2.5 + 0.5 x 6",
+            "annotation": "Scan by rank: the multiply chunk finishes before the add."
+          },
+          {
+            "math": "0.5 x 6 = 3",
+            "annotation": "Half of 6 is 3; the decimal does not change the order."
+          },
+          {
+            "math": "2.5 + 3",
+            "annotation": "Now a single addition remains."
+          },
+          {
+            "math": "= 5.5",
+            "annotation": "Line up the places: 2.5 + 3.0 = 5.5."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Evaluate: 1.5 + 0.25 x 8.",
+        "answer": "3.5",
+        "steps": [
+          {
+            "math": "1.5 + 0.25 x 8",
+            "annotation": "Underline the glued chunk: 0.25 x 8 goes first.",
+            "given": true
+          },
+          {
+            "math": "0.25 x 8 = 2",
+            "annotation": "A quarter of 8 is 2.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Add the settled chunk to 1.5.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the final value.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The glued chunk in this expression is ___, so I settle it first and get ___.",
+        "My estimate is about ___, and my exact answer ___ that estimate.",
+        "The numbers changed, but the order did not, so I still ___ before I ___."
+      ],
+      "fluency_source": "7NS7-F2"
+    },
+    {
       "skill_id": "7NS7-S1",
       "name": "Simplify a two-operation signed-integer expression in the correct order",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.NS.7",
       "engine_stems": [
         1
@@ -512,7 +1154,7 @@
           }
         ]
       },
-      "fluency_source": "7NS7-F2",
+      "fluency_source": "7NS7-B1",
       "sentence_starters": [
         "The highest-rank operation here is ___, so I do ___ first.",
         "After multiplying I get ___, then adding or subtracting gives ___."
@@ -569,7 +1211,7 @@
     {
       "skill_id": "7NS7-S2",
       "name": "Evaluate an integer expression with grouping symbols first",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.NS.7",
       "engine_stems": [
         2
@@ -826,7 +1468,7 @@
           }
         ]
       },
-      "fluency_source": "7NS7-F2",
+      "fluency_source": "7NS7-B1",
       "sentence_starters": [
         "Inside the parentheses I get ___, so the expression becomes ___.",
         "The number against the parenthesis means ___, so next I ___."
@@ -1149,7 +1791,7 @@
           }
         ]
       },
-      "fluency_source": "7NS7-F2",
+      "fluency_source": "7NS7-B2",
       "sentence_starters": [
         "The order is the same as with integers, so I ___ first.",
         "My estimate is about ___, and my exact answer ___ because ___."
@@ -1464,7 +2106,7 @@
           }
         ]
       },
-      "fluency_source": "7NS7-F2",
+      "fluency_source": "7NS7-B2",
       "sentence_starters": [
         "First I multiply ___, which gives ___.",
         "I convert ___ to ___ so the numbers are in the same form, then ___."
@@ -1747,7 +2389,7 @@
           }
         ]
       },
-      "fluency_source": "7NS7-F2",
+      "fluency_source": "7NS7-B2",
       "sentence_starters": [
         "My first step is ___ because it is the highest-rank operation present.",
         "After the grouping I have ___, then multiplying gives ___, then ___."
@@ -2061,7 +2703,7 @@
           }
         ]
       },
-      "fluency_source": "7NS7-F2",
+      "fluency_source": "7NS7-B2",
       "sentence_starters": [
         "The original expression equals ___, so an equivalent one must also equal ___.",
         "This candidate is / is not equal because ___."
@@ -2118,8 +2760,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7NS7-F1",
         "7NS7-F2"
@@ -2127,16 +2769,18 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7NS7-S1",
-        "7NS7-S2"
+        "7NS7-B1",
+        "7NS7-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7NS7-S1",
+        "7NS7-S2",
         "7NS7-S3",
         "7NS7-S4",
         "7NS7-S5"
@@ -2144,7 +2788,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7NS7-S6"
       ]
@@ -2153,6 +2797,8 @@
   "skill_sequence": [
     "7NS7-F1",
     "7NS7-F2",
+    "7NS7-B1",
+    "7NS7-B2",
     "7NS7-S1",
     "7NS7-S2",
     "7NS7-S3",
@@ -2163,9 +2809,16 @@
   "skill_tree": {
     "7NS7-F1": [],
     "7NS7-F2": [],
-    "7NS7-S1": [
+    "7NS7-B1": [
       "7NS7-F1",
       "7NS7-F2"
+    ],
+    "7NS7-B2": [
+      "7NS7-F2"
+    ],
+    "7NS7-S1": [
+      "7NS7-B1",
+      "7NS7-B2"
     ],
     "7NS7-S2": [
       "7NS7-S1"
@@ -2185,17 +2838,21 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (simplify a two-operation expression mixing fractions, decimals, and integers) -- the At-proficiency median that requires both correct order and correct signed computation on real rational numbers. If they pass, push to S5 (multi-step expressions with grouping) and S6 (identify equivalent expressions). If they fail, split the diagnosis: S1 checks whether they run multiply-before-add on plain integers, and S2 checks whether the grouping mechanic is intact. S3 (decimals) branches off as the number-type bridge when integer order is solid but decimal computation is the weak spot.",
+    "description": "Start with S4, simplifying a two-operation expression that mixes fractions, decimals, and integers, the At-proficiency core that demands both correct order and correct signed computation. If they pass, push up to S5 (multi-step expressions with grouping) and S6 (identify equivalent expressions). If they fail, drop below grade level: B1 checks the grade 6 order of operations with whole-number exponents on friendly whole numbers, and B2 checks whether the order survives positive fractions and decimals. If those wobble, the foundations F1 (equal groups plus extras, grades 3 to 4) and F2 (parentheses as a package, grade 5) locate where the multiply-first and grouping ideas broke. S1, S2, and S3 remain available to probe the standard's own signed-integer, grouping, and decimal steps once the below-grade order is solid.",
     "entry_skill": "7NS7-S4",
     "if_pass": [
       "7NS7-S5",
       "7NS7-S6"
     ],
     "if_fail": [
-      "7NS7-S1",
-      "7NS7-S2"
+      "7NS7-B1",
+      "7NS7-B2"
     ],
     "branch_skills": [
+      "7NS7-F1",
+      "7NS7-F2",
+      "7NS7-S1",
+      "7NS7-S2",
       "7NS7-S3"
     ]
   }

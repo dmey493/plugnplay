@@ -3,7 +3,7 @@
   "standard_text": "Solve real-world and other mathematical problems involving volume of cylinders and three-dimensional objects composed of right rectangular prisms.",
   "schema_version": 3,
   "progression": {
-    "narrative": "Volume is one idea told two ways: fill a solid with unit cubes and count them. For a box that count is length times width times height; for a cylinder it is the area of the round base, pi r squared, stacked h units high. So the progression starts by making those two volume computations automatic, because everything else in the standard is one of them plus a decision. The single most fragile move is the cylinder: the r in pi r squared h must be the RADIUS (half the diameter) and it must be SQUARED. Miss either and the base area is wrong before the height is ever multiplied. So the arc opens with the cylinder formula, then the composite solid, where the new idea is not a formula but a habit: cut the solid into prisms whose three dimensions you actually know, find each volume with l times w times h, and add.\n\nFrom those two atoms the standard fans outward. First it runs the machine backwards: given a volume and all but one measurement, recover the missing height, radius, or side length, which for a radius means dividing out pi AND taking a square root. Then it drops the computation into real-world questions where the volume is only step one and a further operation finishes the job, usually a division, into days of dog food, gallons, or paint cans. Then it combines the two shapes, fitting a cylinder into the smallest rectangular box, where the box side must span the DIAMETER, not the radius. Finally it reaches the hardest composites, where cylinders are REMOVED from a prism, a brick drilled with holes, and the answer is the prism minus every cylinder. The through-line we keep naming: find the base, multiply by the height, then decide whether to add a second piece, subtract a hollow, divide to answer a question, or work backwards to a missing measurement.",
+    "narrative": "This standard asks students to solve real-world and mathematical problems with the volume of cylinders and of solids built from right rectangular prisms. The on-grade work opens with the two core computations, pi r squared h for a cylinder and decompose-and-add for a composite prism, then runs those formulas backwards to recover a missing measurement, applies a volume inside a real context, and finally combines or subtracts the two shapes. Students who struggle here usually lack the below-grade picture of what area and volume even count: rows of unit squares covering a rectangle and layers of unit cubes filling a box. Intervention should rebuild that picture with grades 3 to 5 work, then restore the grade 6 skills of prism volume with fractional edges and surface area from nets, and only then return to cylinders and composites.",
     "steps": [
       {
         "skill_id": "7GM3-S1",
@@ -40,186 +40,810 @@
   "skills": [
     {
       "skill_id": "7GM3-F1",
-      "name": "Find the area of a rectangle and the area of a circle",
+      "name": "Find the area of a rectangle using rows of unit squares",
       "column": "foundation",
       "parent_standard": "7.GM.3",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 6,
-        "description": "Compute the area of a rectangle (length times width) and of a circle (pi times radius squared), using the radius, not the diameter.",
-        "check_question": "A circle has a diameter of 10. What is its radius, and what is pi times the radius squared? (Use 3.14 for pi.)"
+        "grade": 3,
+        "description": "See a rectangle's area as equal rows of unit squares and count it by multiplying rows times squares per row.",
+        "check_question": "A rectangle is covered by 4 rows of 6 squares. How many squares cover it?"
       },
-      "i_do_script": "Before any circle number goes into a formula, picture the circle with its center dot: the radius is only the trip from that dot out to the edge -- half the across-distance -- and the radius is what the formula squares. Every volume in this standard stands on a base area, so I make the two base areas automatic first. A rectangle's area is just length times width: an 8 by 5 rectangle is 8 times 5 = 40 square units. A circle's area is pi times the radius squared: with radius 3 that is 3.14 times 3 times 3 = 3.14 times 9 = 28.26 square units. The trap is the diameter: if I'm told the diameter is 10, the RADIUS is half of that, 5, and I square the 5, not the 10.",
+      "i_do_script": "Area counts the unit squares that cover a shape, and a rectangle makes that count easy because the squares line up in equal rows. Watch: a rectangle 6 units long and 4 units wide is covered by 4 rows with 6 squares in each row. I do not count one square at a time; I multiply: 4 rows times 6 squares is 24 squares, so the area is 24 square units. Length times width is just rows times squares per row.",
       "canonical_error": {
-        "pattern": "Uses the diameter in place of the radius, or multiplies pi by the radius without squaring it",
-        "example": "For a circle with diameter 10, computes 3.14 times 10 times 10 = 314, or 3.14 times 5 = 15.7, instead of 3.14 times 5 squared = 78.5",
-        "why": "The student grabs the number they were handed (the diameter) and skips both steps that make the circle right: halving the diameter to get the radius, and squaring that radius before multiplying by pi."
+        "pattern": "Adds the side lengths instead of multiplying, or counts only the squares around the border",
+        "example": "For a 6 by 4 rectangle, answers 10 (6 + 4) or 20 (the perimeter) instead of 24",
+        "why": "The student is measuring the edges instead of the covering. Area is the number of squares that fill the inside, and the grid shows 4 full rows of 6, which multiplication counts all at once."
       },
-      "item_template": "A rectangle (length, width) or a circle (radius or diameter). Student finds the area, using 3.14 for pi. Short response fluency bank.",
+      "item_template": "A rectangle given as a length and width or as rows of unit squares. Student finds the area in square units. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Find the area of a rectangle that is 8 cm by 5 cm.",
-          "answer": "40 square cm"
+          "stem": "A rectangle is covered by 4 rows of 6 unit squares. What is its area?",
+          "answer": "24 square units"
         },
         {
-          "stem": "Find the area of a circle with radius 3 in. Use 3.14 for pi.",
-          "answer": "28.26 square in"
+          "stem": "Find the area of a rectangle that is 8 units by 5 units.",
+          "answer": "40 square units"
         },
         {
-          "stem": "A circle has a diameter of 10 ft. Find its area. Use 3.14 for pi.",
-          "answer": "78.5 square ft (radius is 5)"
+          "stem": "Find the area of a rectangle that is 7 units by 3 units.",
+          "answer": "21 square units"
         },
         {
-          "stem": "Find the area of a rectangle that is 12 m by 4 m.",
-          "answer": "48 square m"
+          "stem": "A grid shows 3 rows with 9 squares in each row. What is the area?",
+          "answer": "27 square units"
+        },
+        {
+          "stem": "Find the area of a square that is 6 units on each side.",
+          "answer": "36 square units"
+        },
+        {
+          "stem": "A rug is 9 feet by 4 feet. How many square feet does it cover?",
+          "answer": "36 square feet"
+        },
+        {
+          "stem": "A rectangle has 5 rows of squares with 8 squares in each row. What is its area?",
+          "answer": "40 square units"
+        },
+        {
+          "stem": "Find the area of a rectangle that is 10 units by 7 units.",
+          "answer": "70 square units"
         }
       ],
       "redirect_script": {
-        "stop": "Wait -- is that number the radius or the diameter?",
-        "prompt": "Find the center dot first: how far is it from the center to the edge -- the whole 8, or half of it? If you were given the diameter, cut it in half to get the radius first. Then square the radius (radius times radius) before you multiply by 3.14.",
-        "praise": "You halved the diameter and squared the radius -- that's a correct circle area."
+        "stop": "Are you counting the squares inside, or the edges around the outside?",
+        "prompt": "Shade one full row and count its squares. Then count how many rows there are. Rows times squares per row is the area.",
+        "praise": "You counted a row and multiplied by the number of rows, that is exactly what area is."
       },
       "vocabulary": [
         {
-          "term": "Radius",
-          "definition": "The distance from the center of a circle to its edge; half the diameter."
-        },
-        {
-          "term": "Diameter",
-          "definition": "The distance across a circle through its center; twice the radius."
-        },
-        {
           "term": "Area",
-          "definition": "The number of square units that cover a flat shape."
+          "definition": "The number of unit squares that cover a flat shape."
+        },
+        {
+          "term": "Unit square",
+          "definition": "A square with sides 1 unit long; the counting piece for area."
+        },
+        {
+          "term": "Row",
+          "definition": "A line of squares going across a rectangle; equal rows make area a multiplication."
         }
       ],
       "next_steps": {
-        "if_pass": "7GM3-S1",
-        "if_fail": "Review area of rectangles and circles (6.GM.4 / 7.GM.2)."
+        "if_pass": "7GM3-B2",
+        "if_fail": "Review grade 3 area with grid paper: cover rectangles with unit squares and count by rows."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw the circle's across-line as a segment from 0 to 8 with the center dot at 4. The full 8 is the diameter; the radius is the half-trip from the center, 4 -- so 4 is the number that gets squared, not 8.",
-          "visual": {
-            "type": "number_line_point",
-            "ticks": [
-              0,
-              4,
-              8
-            ],
-            "point_value": 4,
-            "point_label": "center"
-          }
-        },
-        {
-          "kind": "show",
-          "text": "Write 'A circle has a diameter of 8. Find its area (use 3.14).'"
+          "text": "Draw a 6 by 4 rectangle on grid paper so every unit square shows. Shade the top row."
         },
         {
           "kind": "ask",
-          "text": "What is the radius when the diameter is 8? Then what do we do to the radius?"
+          "text": "How many squares are in one row? How many rows are there?"
         },
         {
           "kind": "say",
-          "text": "The radius is half of 8, which is 4. Square it: 4 times 4 = 16. Then 3.14 times 16 = 50.24 square units."
+          "text": "Each row holds 6 squares and there are 4 rows, so 4 times 6 = 24 squares cover it. The area is 24 square units, and that is all length times width means."
         },
         {
           "kind": "watch",
-          "text": "If the student uses 8 as the radius, ask 'is that the whole way across or halfway across? Which one is the radius?'"
+          "text": "If a student answers 10 or 20, they added or walked the border. Point inside: area counts the squares that fill it, not the fence around it."
         },
         {
           "kind": "ask",
-          "text": "Your turn: a rectangle 7 by 3, and a circle of radius 5 (use 3.14)."
+          "text": "Your turn: a rectangle 8 units by 5 units. How many rows, how many per row, and what is the area?"
         }
       ]
     },
     {
       "skill_id": "7GM3-F2",
-      "name": "Multiply three dimensions and square a radius",
+      "name": "Find the volume of a box by counting and layering unit cubes",
       "column": "foundation",
       "parent_standard": "7.GM.3",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 5,
-        "description": "Multiply three numbers together and evaluate a number squared, including simple decimals.",
-        "check_question": "Evaluate 4 times 3 times 5. Then evaluate 5 squared (5 times 5)."
+        "description": "See a rectangular prism's volume as identical layers of unit cubes and count it as cubes per layer times the number of layers.",
+        "check_question": "The bottom layer of a box holds 12 unit cubes and the box is 3 layers tall. How many cubes fill it?"
       },
-      "i_do_script": "The square in these formulas is a literal square: 4 squared is a 4-by-4 sheet of unit squares, 16 of them -- the formula starts from that 16-square sheet, and pi stretches it to cover the circular layer (about 3.14 of those sheets). Multiplying by the height just stacks that layer. Both volume formulas end in the same arithmetic: multiply a small pile of numbers, and one of them is squared. To multiply three dimensions I just go two at a time: 4 times 3 times 5 is 4 times 3 = 12, then 12 times 5 = 60. Squaring means a number times itself: 5 squared is 5 times 5 = 25, not 5 times 2. When I plug into pi r squared h, I square the radius first, then multiply by the height and by 3.14: for r = 5 and h = 6, that's 25 times 6 = 150, then 3.14 times 150 = 471.",
+      "i_do_script": "Volume counts the unit cubes that fill a solid, and a box fills up in identical layers. Watch a box 4 units long, 3 units wide, and 2 units tall. The bottom layer is a 4 by 3 sheet of cubes: 4 times 3 = 12 cubes. The box is 2 layers tall, so 12 cubes per layer times 2 layers is 24 cubes. That is why length times width times height works: the first two numbers count one layer, and the height counts the layers.",
       "canonical_error": {
-        "pattern": "Reads 'squared' as 'times 2,' or multiplies only two of the three dimensions",
-        "example": "Evaluates 5 squared as 5 times 2 = 10 instead of 5 times 5 = 25, or computes only 3.14 times 25 and forgets to multiply by the height",
-        "why": "The student treats the exponent 2 as a multiplier and loses track of how many factors a volume needs; squaring is a number times itself, and a volume multiplies all three dimensions (with the base dimension squared for a cylinder)."
+        "pattern": "Counts only the cubes showing on the outside, or adds the three dimensions instead of multiplying",
+        "example": "For a 4 by 3 by 2 box, answers 9 (4 + 3 + 2) or counts only the visible faces instead of 24",
+        "why": "The student is not yet seeing the hidden cubes inside the box. Building the bottom layer and stacking a second identical layer shows that every layer holds the same count, so multiplying finds them all."
       },
-      "item_template": "A product of two or three numbers, or a number squared, sometimes with 3.14 as a factor. Student evaluates it. Short response fluency bank.",
+      "item_template": "A rectangular prism given as three whole-number dimensions or as a layer count and layers. Student finds the volume in cubic units. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Evaluate 4 times 3 times 5.",
-          "answer": "60"
+          "stem": "The bottom layer of a box holds 12 unit cubes and the box is 3 layers tall. How many cubes fill it?",
+          "answer": "36 cubes"
         },
         {
-          "stem": "A radius is 5. What is the radius squared (5 times 5)?",
-          "answer": "25"
+          "stem": "Find the volume of a box that is 4 units by 3 units by 2 units.",
+          "answer": "24 cubic units"
         },
         {
-          "stem": "Evaluate 3.14 times 9 times 10.",
-          "answer": "282.6"
+          "stem": "Find the volume of a box that is 5 units by 2 units by 3 units.",
+          "answer": "30 cubic units"
         },
         {
-          "stem": "Evaluate 8 times 8 times 3.",
-          "answer": "192"
+          "stem": "A layer of cubes has 4 rows of 5 cubes. The box holds 3 of these layers. What is the volume?",
+          "answer": "60 cubic units"
+        },
+        {
+          "stem": "Find the volume of a cube that is 2 units on each edge.",
+          "answer": "8 cubic units"
+        },
+        {
+          "stem": "A box has a 6 by 3 bottom layer and is 4 layers tall. What is its volume?",
+          "answer": "72 cubic units"
+        },
+        {
+          "stem": "Find the volume of a box that is 10 units by 4 units by 2 units.",
+          "answer": "80 cubic units"
+        },
+        {
+          "stem": "A box holds 24 unit cubes in all, with 8 cubes in each layer. How many layers tall is it?",
+          "answer": "3 layers"
         }
       ],
       "redirect_script": {
-        "stop": "Hold on -- what does 'squared' actually tell you to do?",
-        "prompt": "Squared means the number times itself, not times two. Write it out: 5 squared is 5 times 5. Then count your factors -- a volume needs all three dimensions multiplied.",
-        "praise": "You squared by multiplying the number by itself and kept all three factors -- that's the whole product."
+        "stop": "How many cubes are in ONE full layer of this box?",
+        "prompt": "Build or draw the bottom layer first: length times width counts it. Then ask how many layers tall the box is and multiply. Cubes per layer, times layers.",
+        "praise": "You counted one layer and stacked it, that is exactly what volume does."
       },
       "vocabulary": [
         {
-          "term": "Squared",
-          "definition": "A number multiplied by itself; 5 squared means 5 times 5 = 25."
+          "term": "Volume",
+          "definition": "The number of unit cubes that fill a solid, measured in cubic units."
         },
         {
-          "term": "Dimension",
-          "definition": "A measured length of a solid, such as its length, width, or height."
+          "term": "Unit cube",
+          "definition": "A cube with edges 1 unit long; the counting piece for volume."
         },
         {
-          "term": "Product",
-          "definition": "The result of multiplying numbers together."
+          "term": "Layer",
+          "definition": "One flat sheet of cubes in a box; a box's volume is cubes per layer times the number of layers."
         }
       ],
       "next_steps": {
-        "if_pass": "7GM3-S1",
-        "if_fail": "Review multiplication and exponents (5.C / 6.C)."
+        "if_pass": "7GM3-B1",
+        "if_fail": "Review grade 5 volume by building boxes from unit cubes and counting one layer at a time."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write 'Evaluate 3.14 times 4 squared times 10.'"
+          "text": "Build the bottom layer of a 4 by 3 by 2 box from snap cubes: 4 rows of 3 cubes."
         },
         {
           "kind": "ask",
-          "text": "Which piece do we handle first -- what does 4 squared equal?"
+          "text": "How many cubes are in this one layer? If the box is 2 layers tall, how many cubes in all?"
         },
         {
           "kind": "say",
-          "text": "4 squared is 4 times 4 = 16. Now multiply left to right: 3.14 times 16 = 50.24, then times 10 = 502.4."
+          "text": "One layer is 4 times 3 = 12 cubes. Two identical layers make 12 times 2 = 24 cubes, so the volume is 24 cubic units. Length times width counts the layer, height counts the layers."
         },
         {
           "kind": "watch",
-          "text": "If the student writes 4 squared as 8, stop: 'squared is times itself, not times two -- 4 times 4.'"
+          "text": "If a student answers 9, they added 4 + 3 + 2. Hand them the cubes: does this box hold only 9 cubes? Build it and count."
         },
         {
           "kind": "ask",
-          "text": "Your turn: evaluate 6 times 6 times 3, and evaluate 2 squared times 5."
+          "text": "Your turn: a box 5 by 2 by 3. Cubes in one layer, number of layers, and the volume?"
         }
       ]
     },
     {
+      "skill_id": "7GM3-B1",
+      "name": "Find the volume of a right rectangular prism with fractional edge lengths",
+      "column": "looking_back",
+      "parent_standard": "7.GM.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Apply V = l x w x h to a right rectangular prism when one or more edges are fractions or mixed numbers.",
+        "check_question": "What is the volume of a box that is 4 by 3 by 2 1/2?"
+      },
+      "i_do_script": "The layer picture from whole-number boxes still works when an edge is a fraction; some layers are just partial layers. Watch a box 4 by 3 by 2 1/2. One full layer is 4 times 3 = 12 cubes. A height of 2 1/2 means 2 full layers and half a layer: 12 + 12 + 6 = 30 cubic units. The formula agrees: 12 times 2 1/2 is 12 times 2 plus 12 times 1/2, which is 24 + 6 = 30. Multiply all three edges; the fraction is a factor, not a leftover to tack on.",
+      "canonical_error": {
+        "pattern": "Multiplies the whole-number parts and then adds the fraction on at the end",
+        "example": "For a 4 by 3 by 2 1/2 box, computes 4 x 3 x 2 = 24 and answers 24 1/2 instead of 30",
+        "why": "The student treats the mixed number as a whole number plus a decoration. The 1/2 is half a LAYER, and half of a 12-cube layer is 6 cubes, so the fraction must be multiplied like every other factor."
+      },
+      "item_template": "A right rectangular prism with whole-number and fractional edge lengths (halves and simple mixed numbers, products that come out clean). Student finds the volume. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "Find the volume of a box that is 4 by 3 by 2 1/2.",
+          "answer": "30 cubic units"
+        },
+        {
+          "stem": "Find the volume of a box that is 5 by 2 by 1 1/2.",
+          "answer": "15 cubic units"
+        },
+        {
+          "stem": "Find the volume of a box that is 1/2 by 4 by 6.",
+          "answer": "12 cubic units"
+        },
+        {
+          "stem": "Find the volume of a box that is 3 1/2 by 2 by 4.",
+          "answer": "28 cubic units"
+        },
+        {
+          "stem": "Find the volume of a box that is 2 1/2 by 2 1/2 by 4.",
+          "answer": "25 cubic units"
+        },
+        {
+          "stem": "Find the volume of a box that is 6 by 1 1/2 by 2.",
+          "answer": "18 cubic units"
+        },
+        {
+          "stem": "Find the volume of a box that is 1/2 by 1/2 by 8.",
+          "answer": "2 cubic units"
+        },
+        {
+          "stem": "Find the volume of a box that is 4 1/2 by 2 by 3.",
+          "answer": "27 cubic units"
+        }
+      ],
+      "redirect_script": {
+        "stop": "What does the 1/2 in the height actually stand for?",
+        "prompt": "It is half a layer. Find one full layer with length times width, then multiply by the WHOLE height, fraction included. Half of a 12-cube layer is 6 cubes, so 2 1/2 layers is 24 + 6.",
+        "praise": "You multiplied the fraction like a real factor, so the half layer got counted."
+      },
+      "vocabulary": [
+        {
+          "term": "Mixed number",
+          "definition": "A whole number and a fraction together, like 2 1/2."
+        },
+        {
+          "term": "Right rectangular prism",
+          "definition": "A box shape whose faces are all rectangles; its volume is length times width times height."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7GM3-S1",
+        "if_fail": "7GM3-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a 4 by 3 by 2 1/2 box as a stack: two full layers of cubes and a thin half layer on top."
+        },
+        {
+          "kind": "ask",
+          "text": "How many cubes fill one full layer? What is half of that layer worth?"
+        },
+        {
+          "kind": "say",
+          "text": "One layer is 4 x 3 = 12. Two layers give 24, and the half layer gives 6, so the volume is 30 cubic units. The shortcut is 12 x 2 1/2 = 30, the same answer."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 24 1/2, they added the fraction instead of multiplying. Point at the half layer: is that thin slab worth half a cube, or half of twelve cubes?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a box 5 by 2 by 3 1/2. Find one layer, then the volume."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Find the volume of a box that is 5 by 2 by 3.",
+          "answer": "30 cubic units"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is 8 x 1 1/2?",
+          "answer": "12"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the volume of a box that is 4 by 3 by 2 1/2.",
+          "answer": "30 cubic units (12 x 2 1/2)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the volume of a box that is 6 by 2 by 1 1/2.",
+          "answer": "18 cubic units (12 x 1 1/2)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the volume of a box that is 2 1/2 by 4 by 2.",
+          "answer": "20 cubic units (2 1/2 x 4 = 10, then x 2)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the volume of a box that is 1/2 by 6 by 5.",
+          "answer": "15 cubic units (1/2 x 6 = 3, then x 5)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Find the volume of a box that is 2 1/2 by 2 by 3 1/2.",
+          "answer": "17 1/2 cubic units (2 1/2 x 2 = 5, then 5 x 3 1/2)"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Mia found the volume of a 4 by 3 by 2 1/2 box. Find her mistake and fix it.",
+          "shown_work": [
+            "4 x 3 x 2 = 24",
+            "then add the 1/2",
+            "V = 24 1/2 cubic units"
+          ],
+          "answer": "She added the 1/2 instead of multiplying by it. The half is half a layer of 12 cubes, worth 6. V = 12 x 2 1/2 = 30 cubic units."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build the Half Layer",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Snap cubes",
+            "Index cards to stand in for half layers",
+            "Recording sheet with rows for layer count, layers, volume"
+          ],
+          "instructions": "1. Build a 4 by 3 bottom layer of snap cubes and record its count (12).\n2. Stack a second full layer, then lay an index card on top labeled 'half layer = 6.'\n3. Write the total: 12 + 12 + 6 = 30, then check it against 12 x 2 1/2.\n4. Repeat for a 5 by 2 base with height 3 1/2.\n5. Say each time: a fraction in the height is a partial layer, so it multiplies."
+        },
+        {
+          "type": "matching",
+          "title": "Layer Match-Up",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: one card per box, one card per layer-by-layer sum"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each box, like '4 by 3 by 2 1/2,' to its layer sum, like '12 + 12 + 6.'\n3. To claim a match, state the volume out loud.\n4. Two decoy cards tack the fraction on instead of multiplying; set them aside and explain the error.",
+          "content": {
+            "pairs": [
+              {
+                "left": "4 by 3 by 2 1/2",
+                "right": "12 + 12 + 6 = 30"
+              },
+              {
+                "left": "5 by 2 by 3 1/2",
+                "right": "10 + 10 + 10 + 5 = 35"
+              },
+              {
+                "left": "6 by 2 by 1 1/2",
+                "right": "12 + 6 = 18"
+              },
+              {
+                "left": "4 by 2 by 2 1/2",
+                "right": "8 + 8 + 4 = 20"
+              },
+              {
+                "left": "3 by 3 by 1 1/2",
+                "right": "9 + 4 1/2 = 13 1/2"
+              },
+              {
+                "left": "10 by 2 by 2 1/2",
+                "right": "20 + 20 + 10 = 50"
+              }
+            ],
+            "decoys": [
+              "4 x 3 x 2 1/2 = 24 1/2",
+              "5 x 2 x 3 1/2 = 30 1/2"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building layers from cubes makes 'the fraction is half a layer' visible before the multiply-everything rule is named."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The tack-the-fraction-on error is stable and predictable; finding and fixing it in worked examples confronts it directly."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'one layer, times the whole height, fraction included' models the exact order students collapse."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many cubes fill one full layer of this box?",
+          "What does the fraction in the height stand for in the layer picture?",
+          "Is half of a 12-cube layer half a cube or six cubes?",
+          "Should the volume of a 4 by 3 by 2 1/2 box be closer to 24 or to 36? Why?",
+          "Does it matter which two edges you multiply first?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student multiplies the whole numbers and adds the fraction at the end.",
+            "say": "The 1/2 is half a layer, not half a cube. Find one layer, then multiply by the whole height including the fraction.",
+            "praise": "You multiplied by 2 1/2, so the half layer got its full count."
+          },
+          {
+            "if_you_see": "Student is stuck on the fraction multiplication itself.",
+            "say": "Split the height: 12 x 2 1/2 is 12 x 2 plus 12 x 1/2. Two full layers plus half a layer.",
+            "praise": "You split the mixed number and kept both pieces, that is the whole trick."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Volume of a box 4 by 2 by 2 1/2?",
+            "look_for": "20 cubic units (8 x 2 1/2). An answer of 16 1/2 means the fraction was added on."
+          },
+          {
+            "prompt": "What is 10 x 1 1/2?",
+            "look_for": "15 (10 + 5), splitting the mixed number into whole and half parts."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Find the volume of a box that is 4 by 3 by 2 1/2.",
+        "answer": "30 cubic units",
+        "steps": [
+          {
+            "math": "one layer: 4 x 3 = 12",
+            "annotation": "Length times width counts the cubes in one full layer."
+          },
+          {
+            "math": "V = 12 x 2 1/2",
+            "annotation": "Multiply by the whole height, fraction included."
+          },
+          {
+            "math": "12 x 2 = 24 and 12 x 1/2 = 6",
+            "annotation": "Two full layers plus half a layer."
+          },
+          {
+            "math": "24 + 6 = 30 cubic units",
+            "annotation": "Add the pieces for the total volume."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Find the volume of a box that is 5 by 2 by 3 1/2.",
+        "answer": "35 cubic units",
+        "steps": [
+          {
+            "math": "one layer: 5 x 2 = 10",
+            "annotation": "Count one full layer first.",
+            "given": true
+          },
+          {
+            "math": "V = 10 x 3 1/2 = 10 x 3 + 10 x 1/2",
+            "annotation": "Split the height into whole layers and the half layer.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Compute both pieces.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Add them and state the volume.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "One full layer holds ___ cubes, and the height is ___ layers.",
+        "The fraction ___ means part of a layer, worth ___ cubes."
+      ],
+      "fluency_source": "7GM3-F2"
+    },
+    {
+      "skill_id": "7GM3-B2",
+      "name": "Find the surface area of a rectangular prism using a net",
+      "column": "looking_back",
+      "parent_standard": "7.GM.3",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 6,
+        "description": "Unfold a rectangular prism into a net of six rectangles and add the areas of all six faces.",
+        "check_question": "A box is 4 by 3 by 2. What is its surface area?"
+      },
+      "i_do_script": "Surface area measures the wrapping, not the filling: unfold the box into a flat net and every face becomes a rectangle you can measure. Watch a box 4 by 3 by 2. Its six faces come in three matching pairs: top and bottom are 4 by 3, front and back are 4 by 2, and the two ends are 3 by 2. The pair areas are 12, 8, and 6, and each appears twice: 2 x 12 + 2 x 8 + 2 x 6 = 24 + 16 + 12 = 52 square units. Every face gets counted once, and faces come in pairs.",
+      "canonical_error": {
+        "pattern": "Adds only the three visible faces, forgetting each face has a matching opposite, or computes the volume instead",
+        "example": "For a 4 by 3 by 2 box, answers 26 (12 + 8 + 6, only three faces) or 24 (4 x 3 x 2, the volume) instead of 52",
+        "why": "The student measures only what the drawing shows, or reaches for the volume formula. The net makes all six faces visible at once, and the three hidden faces are twins of the three showing."
+      },
+      "item_template": "A rectangular prism given by three whole-number dimensions, sometimes with its net drawn. Student finds the surface area by adding the six face areas. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A box is 4 by 3 by 2. What is its surface area?",
+          "answer": "52 square units"
+        },
+        {
+          "stem": "A cube has edges 3 units long. What is its surface area?",
+          "answer": "54 square units"
+        },
+        {
+          "stem": "A box is 5 by 2 by 2. What is its surface area?",
+          "answer": "48 square units"
+        },
+        {
+          "stem": "A net shows the six faces of a cube with edge 4. What is the total area of the net?",
+          "answer": "96 square units"
+        },
+        {
+          "stem": "A box is 6 by 4 by 1. What is its surface area?",
+          "answer": "68 square units"
+        },
+        {
+          "stem": "A box is 10 by 2 by 3. What is its surface area?",
+          "answer": "112 square units"
+        },
+        {
+          "stem": "One face of a box is 5 by 4. What is the area of the face directly opposite it?",
+          "answer": "20 square units (opposite faces match)"
+        },
+        {
+          "stem": "A box is 8 by 1 by 1. What is its surface area?",
+          "answer": "34 square units"
+        }
+      ],
+      "redirect_script": {
+        "stop": "How many faces does a box have, and how many did you count?",
+        "prompt": "Unfold it: draw the net so all six rectangles show. Find the three different face sizes, double each one, and add. Every face has a twin.",
+        "praise": "You counted all six faces in their pairs, that is the whole surface."
+      },
+      "vocabulary": [
+        {
+          "term": "Surface area",
+          "definition": "The total area of all the faces of a solid, measured in square units."
+        },
+        {
+          "term": "Net",
+          "definition": "A flat unfolded pattern of a solid that shows every face as a flat shape."
+        },
+        {
+          "term": "Face",
+          "definition": "One flat side of a solid; a rectangular prism has six faces in three matching pairs."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "7GM3-S2",
+        "if_fail": "7GM3-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Unfold a small 4 by 3 by 2 box (or draw its net): six rectangles laid flat in a cross shape."
+        },
+        {
+          "kind": "ask",
+          "text": "How many rectangles are in the net? How many different sizes do you see?"
+        },
+        {
+          "kind": "say",
+          "text": "Six faces, three sizes, each size twice: 4 by 3 twice, 4 by 2 twice, 3 by 2 twice. That is 24 + 16 + 12 = 52 square units of wrapping."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 26, they counted each size once. Fold the net back up: where did the other three faces go?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a box 5 by 2 by 2. Name the three face pairs, then find the surface area."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What is the area of a 4 by 3 rectangle?",
+          "answer": "12 square units"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "How many faces does a rectangular prism have?",
+          "answer": "6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A cube has edges 2 units long. What is its surface area?",
+          "answer": "24 square units (6 x 4)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A box is 4 by 3 by 2. What is its surface area?",
+          "answer": "52 square units (2 x 12 + 2 x 8 + 2 x 6)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A box is 5 by 2 by 2. What is its surface area?",
+          "answer": "48 square units (2 x 10 + 2 x 10 + 2 x 4)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A net shows the six faces of a cube with edge 5. What is the total area of the net?",
+          "answer": "150 square units (6 x 25)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Box A is 4 by 3 by 2 and Box B is 6 by 2 by 2. Which needs more wrapping paper?",
+          "answer": "Box B: A has 52 square units, B has 2 x 12 + 2 x 12 + 2 x 4 = 56 square units."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Leo found the surface area of a 4 by 3 by 2 box. Find his mistake and fix it.",
+          "shown_work": [
+            "SA = 4 x 3 x 2",
+            "SA = 24 square units"
+          ],
+          "answer": "He found the volume, the filling, not the wrapping. Surface area adds all six faces: 2 x 12 + 2 x 8 + 2 x 6 = 52 square units."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Unwrap the Box",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Small cardboard boxes (tissue or snack boxes)",
+            "Scissors",
+            "Rulers",
+            "Recording sheet with rows for the three face pairs"
+          ],
+          "instructions": "1. Cut along the edges of a small box and unfold it flat into its net.\n2. Measure each rectangle in the net to the nearest unit and label it.\n3. Group the six faces into three matching pairs and record each pair's area.\n4. Add all six areas for the surface area.\n5. Say each time: six faces, three pairs, count them all."
+        },
+        {
+          "type": "card_sort",
+          "title": "Wrapping or Filling?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card set of 8 questions, half asking for surface area and half asking for volume"
+          ],
+          "instructions": "1. Read each card and sort it: does it ask about the wrapping (surface area) or the filling (volume)?\n2. For each surface area card, name the three face pairs before computing anything.\n3. Solve two cards from each pile.\n4. Debrief: which cards use square units and which use cubic units?",
+          "content": {
+            "categories": [
+              "Wrapping (surface area)",
+              "Filling (volume)"
+            ],
+            "cards": [
+              {
+                "text": "How much paper covers a 4 by 3 by 2 gift box?",
+                "category": "Wrapping (surface area)"
+              },
+              {
+                "text": "How much sand fills a 4 by 3 by 2 box?",
+                "category": "Filling (volume)"
+              },
+              {
+                "text": "How much paint coats the outside of a cube with edge 3?",
+                "category": "Wrapping (surface area)"
+              },
+              {
+                "text": "How many unit cubes fit in a 5 by 2 by 2 box?",
+                "category": "Filling (volume)"
+              },
+              {
+                "text": "How much cardboard makes a 5 by 2 by 2 carton?",
+                "category": "Wrapping (surface area)"
+              },
+              {
+                "text": "How much water fills a 6 by 4 by 1 tray?",
+                "category": "Filling (volume)"
+              },
+              {
+                "text": "What is the total area of a cube's net?",
+                "category": "Wrapping (surface area)"
+              },
+              {
+                "text": "How much cereal fits in a 10 by 2 by 3 box?",
+                "category": "Filling (volume)"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Physically unfolding a box into its net makes all six faces countable before the doubled-pairs formula is named."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'three sizes, each twice' makes the hidden opposite faces audible and checkable."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The three-faces-only and volume-instead errors are clean, one-move mistakes ideal for find-and-fix."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many faces does this box have, and how many sizes?",
+          "Which face is the twin of the one you just measured?",
+          "Is this question about the wrapping or the filling? What units does that mean?",
+          "What would the net of this box look like laid flat?",
+          "Why does surface area come out in square units when the box is a solid?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds only the three visible faces.",
+            "say": "Every face has a twin on the other side. Unfold the net: count all six rectangles, or double each of your three.",
+            "praise": "You doubled each pair, so no hidden face got skipped."
+          },
+          {
+            "if_you_see": "Student computes length times width times height.",
+            "say": "That counts the cubes inside, the filling. Surface area is the wrapping: add the areas of the six faces instead.",
+            "praise": "You switched from filling to wrapping and counted faces, that is surface area."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Surface area of a cube with edge 2?",
+            "look_for": "24 square units (6 faces of 4). An answer of 8 means volume was computed instead."
+          },
+          {
+            "prompt": "A box is 4 by 3 by 2. How many faces are 4 by 2?",
+            "look_for": "2 (front and back). Answering 1 signals the missing-twin error."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A box is 4 by 3 by 2. What is its surface area?",
+        "answer": "52 square units",
+        "steps": [
+          {
+            "math": "faces: 4x3, 4x2, 3x2, each twice",
+            "annotation": "A box has six faces in three matching pairs."
+          },
+          {
+            "math": "pair areas: 12, 8, 6",
+            "annotation": "Find the area of one face from each pair."
+          },
+          {
+            "math": "2 x 12 + 2 x 8 + 2 x 6 = 24 + 16 + 12",
+            "annotation": "Double each pair so the hidden twins get counted."
+          },
+          {
+            "math": "= 52 square units",
+            "annotation": "Add all six face areas."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A box is 5 by 2 by 2. What is its surface area?",
+        "answer": "48 square units",
+        "steps": [
+          {
+            "math": "faces: 5x2, 5x2, 2x2, each twice",
+            "annotation": "Name the three face pairs.",
+            "given": true
+          },
+          {
+            "math": "pair areas: 10, 10, 4",
+            "annotation": "Find one face area from each pair.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Double each pair area.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Add them and state the surface area.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The three face pairs are ___ by ___, ___ by ___, and ___ by ___.",
+        "This question asks about the ___, so my answer is in ___ units."
+      ],
+      "fluency_source": "7GM3-F1"
+    },
+    {
       "skill_id": "7GM3-S1",
       "name": "Calculate the volume of a cylinder using V = pi r squared h",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.GM.3",
       "engine_stems": [
         1
@@ -530,7 +1154,7 @@
     {
       "skill_id": "7GM3-S2",
       "name": "Calculate the volume of a composite solid by decomposing it into rectangular prisms",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "7.GM.3",
       "prerequisite_skill": {
         "type": "skill",
@@ -736,7 +1360,7 @@
           }
         ]
       },
-      "fluency_source": "7GM3-F2",
+      "fluency_source": "7GM3-B1",
       "sentence_starters": [
         "I cut the solid into ___ prisms.",
         "Prism 1 is ___, prism 2 is ___, so the total is ___ + ___ = ___."
@@ -1621,7 +2245,7 @@
           }
         ]
       },
-      "fluency_source": "7GM3-F2",
+      "fluency_source": "7GM3-B1",
       "sentence_starters": [
         "The diameter is 2 x ___ = ___, so the box is ___ by ___ by ___.",
         "Empty space = box - cylinder = ___ - ___ = ___."
@@ -1958,7 +2582,7 @@
           }
         ]
       },
-      "fluency_source": "7GM3-F2",
+      "fluency_source": "7GM3-B1",
       "sentence_starters": [
         "The solid is ___, and each hole removes ___, with ___ holes.",
         "Material left = ___ - (___ x ___) = ___."
@@ -2015,8 +2639,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites -- fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-5) prerequisite skills. Start intervention here.",
       "skills": [
         "7GM3-F1",
         "7GM3-F2"
@@ -2024,16 +2648,18 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 6) skills that feed this standard directly.",
       "skills": [
-        "7GM3-S1",
-        "7GM3-S2"
+        "7GM3-B1",
+        "7GM3-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "7GM3-S1",
+        "7GM3-S2",
         "7GM3-S3",
         "7GM3-S4",
         "7GM3-S5"
@@ -2041,7 +2667,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "7GM3-S6"
       ]
@@ -2050,6 +2676,8 @@
   "skill_sequence": [
     "7GM3-F1",
     "7GM3-F2",
+    "7GM3-B1",
+    "7GM3-B2",
     "7GM3-S1",
     "7GM3-S2",
     "7GM3-S3",
@@ -2060,12 +2688,18 @@
   "skill_tree": {
     "7GM3-F1": [],
     "7GM3-F2": [],
-    "7GM3-S1": [
-      "7GM3-F1",
+    "7GM3-B1": [
       "7GM3-F2"
     ],
+    "7GM3-B2": [
+      "7GM3-F1"
+    ],
+    "7GM3-S1": [
+      "7GM3-B1"
+    ],
     "7GM3-S2": [
-      "7GM3-F2"
+      "7GM3-B1",
+      "7GM3-B2"
     ],
     "7GM3-S3": [
       "7GM3-S1"
@@ -2083,19 +2717,22 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S1 (volume of a cylinder) -- the new grade-7 atom the whole standard rests on. If they pass, push to S4 (apply the volume in a real-world question) and S6 (complex composites with holes removed). If they fail, drop to F1 to check whether the base area (radius vs diameter, squaring) is even solid. S2 (composite prism volume), S3 (missing dimension), and S5 (cylinder inside a box) branch off the core as related contexts.",
-    "entry_skill": "7GM3-S1",
+    "description": "Start with S4, the At-proficiency application where a cylinder's volume is only step one of a real-world question. If they pass, push up to S5 (cylinder combined with a prism) and S6 (composites with cylinders removed). If they fail, drop one grade: B1 checks prism volume with fractional edges and B2 checks surface area from nets, the grade 6 skills this standard leans on. If those wobble, the foundations F1 (rectangle area as rows of squares) and F2 (box volume as layers of cubes) locate the gap in grades 3 to 5. S1 (cylinder volume), S2 (composite prism volume), and S3 (missing dimension) remain available to probe the standard's own computational core.",
+    "entry_skill": "7GM3-S4",
     "if_pass": [
-      "7GM3-S4",
+      "7GM3-S5",
       "7GM3-S6"
     ],
     "if_fail": [
-      "7GM3-F1"
+      "7GM3-B1",
+      "7GM3-B2"
     ],
     "branch_skills": [
+      "7GM3-F1",
+      "7GM3-F2",
+      "7GM3-S1",
       "7GM3-S2",
-      "7GM3-S3",
-      "7GM3-S5"
+      "7GM3-S3"
     ]
   }
 }

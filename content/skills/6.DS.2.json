@@ -3,7 +3,7 @@
   "standard_text": "Formulate statistical questions; collect and organize the data (e.g., using technology), and display and interpret the data with graphical representations (e.g., using technology).",
   "schema_version": 3,
   "progression": {
-    "narrative": "6.DS.2 walks the full statistical cycle: ask, collect, organize, display, interpret. The cycle only starts if a student can tell a statistical question from a fact question -- a statistical question anticipates variability, meaning different people or things will give different answers (S1). Recognition then becomes production: students formulate their own statistical questions, learning that the fix for a fact question is widening it from one person or thing to many (S2). With a question in hand, they plan how to collect the data -- survey, measurement, observation -- and organize the messy raw list into a frequency table whose counts must add back to the number of data points (S3).\n\nThen the data becomes a picture. Students read line plots and frequency tables with basic interpretation questions, keeping straight the two kinds of numbers in every display: the value on the line and the count of dots above it (S4). Next they connect displays back to questions -- every display keeps some information and throws the rest away, so only certain statistical questions can be answered by a given line plot, histogram, or box plot (S5). Finally students analyze histograms and box plots to draw conclusions and defend them with counts -- interval, frequency, and a 'because' (S6). Measures of center and spread wait for 6.DS.3; here every question stays at basic interpretation, using only positive rational numbers.",
+    "narrative": "6.DS.2 runs the whole statistical cycle: students formulate a question that anticipates variability, collect and organize the data, then display and interpret it on line plots, histograms, and box plots using only positive rational numbers. The on-grade skills build in order, from telling a statistical question from a fact question, to writing one, to organizing raw data into a frequency table, to reading a line plot, to matching a question with the display that answers it, and finally to defending a conclusion with counts. Students who stall here almost always carry gaps in reading and building data displays, not in the statistics ideas themselves. The most common blockers are grade 5 trouble reading a line plot and organizing data into a table, sitting on top of grade 3 and grade 4 gaps in reading a scaled bar graph and counting marks on a fractional line plot. Intervention should rebuild those display skills first, then return to formulating questions and interpreting the grade 6 displays.",
     "steps": [
       {
         "skill_id": "6DS2-S1",
@@ -40,297 +40,587 @@
   "skills": [
     {
       "skill_id": "6DS2-F1",
-      "name": "Count and record data using tallies and frequencies",
+      "name": "Read a scaled bar graph to answer how many and how many more questions",
       "column": "foundation",
       "parent_standard": "6.DS.2",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 3,
-        "description": "Count objects accurately, including tally marks bundled in groups of five, and add small counts.",
-        "check_question": "If I show you four tally bundles of 5 and 3 extra marks, how many did I count?"
+        "description": "Read a scaled picture or bar graph and solve how many more and how many less problems.",
+        "check_question": "A bar graph counts by 2s. A bar reaches the third line. What value does it show?"
       },
-      "i_do_script": "Start with your finger, not a rule: touch each number in the list and ask 'is this the one I'm hunting?' -- every matching touch earns exactly one tally mark, and non-matching touches earn nothing. Before we can organize data, we have to count it without losing track. I'll show a messy list like 5, 3, 5, 5, 2 and ask: how many times does 5 appear? We make one tally mark for each 5 we find -- ||| -- and that count of 3 is called the frequency. Watch out for the classic slip: counting a whole bundle of five tallies as just one mark.",
+      "i_do_script": "Before we can read line plots and histograms, we have to read the simplest picture of data: a bar graph. The trick that trips students is the scale. On a bar graph that counts by 2s, each gridline is worth 2, not 1, so a bar that reaches the fourth line shows 8. I point to the scale first, say its step out loud, then read the bar. For how many more, I compare two bars and find the difference, never just reading one bar.",
       "canonical_error": {
-        "pattern": "Counts each bundle of five tally marks as one mark, or counts how many numbers are in a list instead of how many match",
-        "example": "Shown |||| (crossed bundle) |||| (crossed bundle) ||, the student says 4 instead of 12; or asked how many 5s are in '5, 3, 5, 5, 2' the student says 5 because there are five numbers.",
-        "why": "The student treats a tally bundle as a single symbol rather than a package of five, and hasn't separated 'how many items in the list' from 'how many items match what I'm looking for.'"
+        "pattern": "Ignores the scale and counts each gridline as 1, or answers a how many more question by reading a single bar",
+        "example": "On a bar graph that counts by 2s, reads a bar at the fourth line as 4 instead of 8; or asked how many more chose pizza (12) than salad (5), answers 12.",
+        "why": "The student reads the picture like a count of ones and reads one bar instead of comparing two. The scale sets the size of each step, and how many more is always a difference between two bars."
       },
-      "redirect_script": {
-        "stop": "Hold on -- let's recount that together.",
-        "prompt": "Touch each bundle and say its value out loud: 'five, ten, fifteen...' A crossed bundle is worth 5, not 1. Then add the single marks one at a time.",
-        "praise": "You counted by fives and then by ones -- that's exactly how tallies work."
-      },
-      "item_template": "A short tally string, list of counts, or list of values. Student states the count, total, or frequency. Numeric response, no choices -- built for timed fluency work.",
+      "item_template": "A small scaled bar graph or a short list of category counts. Student reads a value, finds a total, or finds how many more. Numeric or one word response, no calculator, built for timed fluency.",
       "sample_items": [
         {
-          "stem": "Tally count: ||||| ||",
-          "answer": "7",
-          "choices": null,
-          "distractor_logic": "Students who count each group-of-5 bundle as 1 mark instead of 5 will be far too low."
+          "stem": "Bar graph: Red 5, Blue 8, Green 3. How many chose Blue?",
+          "answer": "8"
         },
         {
-          "stem": "Tally count: ||||| ||||| ||",
-          "answer": "12",
-          "choices": null,
-          "distractor_logic": "Students who count each group-of-5 bundle as 1 mark instead of 5 will be far too low."
+          "stem": "Bar graph: Red 5, Blue 8, Green 3. How many more chose Blue than Green?",
+          "answer": "5"
         },
         {
-          "stem": "Tally count: ||||| ||||",
-          "answer": "9",
-          "choices": null,
-          "distractor_logic": "Students who count each group-of-5 bundle as 1 mark instead of 5 will be far too low."
+          "stem": "Bar graph: Cats 6, Dogs 9. How many more chose Dogs than Cats?",
+          "answer": "3"
         },
         {
-          "stem": "Tally count: ||||| ||||| ||||| |",
-          "answer": "16",
-          "choices": null,
-          "distractor_logic": "Students who count each group-of-5 bundle as 1 mark instead of 5 will be far too low."
+          "stem": "Bar graph: Apple 7, Banana 4, Grape 5. How many students in all?",
+          "answer": "16"
         },
         {
-          "stem": "Tally count: ||||| ||||| ||||| ||||| |||",
-          "answer": "23",
-          "choices": null,
-          "distractor_logic": "Students who count each group-of-5 bundle as 1 mark instead of 5 will be far too low."
+          "stem": "A bar graph counts by 2s. A bar stands 5 marks high. What value does it show?",
+          "answer": "10"
         },
         {
-          "stem": "Counts: 4, 7, 2. Total?",
-          "answer": "13",
-          "choices": null,
-          "distractor_logic": "Adding errors, or counting how many numbers there are instead of adding them."
+          "stem": "Bar graph: Walk 8, Bus 12, Car 6, Bike 4. Which way did the most students travel?",
+          "answer": "Bus"
         },
         {
-          "stem": "Counts: 6, 6, 5. Total?",
-          "answer": "17",
-          "choices": null,
-          "distractor_logic": "Adding errors, or counting how many numbers there are instead of adding them."
+          "stem": "Bar graph: Walk 8, Bus 12, Car 6, Bike 4. How many more took the Bus than walked?",
+          "answer": "4"
         },
         {
-          "stem": "Counts: 3, 8, 4, 5. Total?",
-          "answer": "20",
-          "choices": null,
-          "distractor_logic": "Adding errors, or counting how many numbers there are instead of adding them."
+          "stem": "Bar graph: Monday 10, Tuesday 7, Wednesday 9. What is the total for the three days?",
+          "answer": "26"
         },
         {
-          "stem": "Counts: 9, 2, 7. Total?",
-          "answer": "18",
-          "choices": null,
-          "distractor_logic": "Adding errors, or counting how many numbers there are instead of adding them."
-        },
-        {
-          "stem": "How many 5s: 5, 3, 5, 5, 2",
-          "answer": "3",
-          "choices": null,
-          "distractor_logic": "Counting every number in the list (5) instead of only the 5s, or adding the values."
-        },
-        {
-          "stem": "How many 2s: 2, 4, 2, 1, 2, 2",
-          "answer": "4",
-          "choices": null,
-          "distractor_logic": "Counting every number in the list (6) instead of only the 2s, or adding the values."
-        },
-        {
-          "stem": "How many 8s: 7, 8, 8, 9, 8",
-          "answer": "3",
-          "choices": null,
-          "distractor_logic": "Counting every number in the list (5) instead of only the 8s, or adding the values."
-        },
-        {
-          "stem": "How many 0s: 0, 1, 0, 3, 0, 0",
-          "answer": "4",
-          "choices": null,
-          "distractor_logic": "Counting every number in the list (6) instead of only the 0s, or adding the values."
-        },
-        {
-          "stem": "How many 6s: 6, 5, 6, 6, 4, 6",
-          "answer": "4",
-          "choices": null,
-          "distractor_logic": "Counting every number in the list (6) instead of only the 6s, or adding the values."
+          "stem": "A bar graph counts by 5s. Grade 3 has a bar at 15 and Grade 4 at 25. How many more in Grade 4?",
+          "answer": "10"
         }
       ],
+      "redirect_script": {
+        "stop": "Hold on, what is each line on the scale worth?",
+        "prompt": "Read the scale first and say its step out loud, like counting by 2s. Then read the bar. For how many more, name both bars and subtract.",
+        "praise": "You used the scale and compared two bars, that is exactly how a bar graph works."
+      },
       "vocabulary": [
         {
-          "term": "Tally mark",
-          "definition": "A quick line you draw to count one thing; every fifth mark crosses the group to make a bundle of 5."
+          "term": "Bar graph",
+          "definition": "A graph that uses the height of bars to show how many are in each category."
         },
         {
-          "term": "Frequency",
-          "definition": "The number of times a value shows up in the data."
+          "term": "Scale",
+          "definition": "The numbers along the side of a graph that tell how much each gridline is worth."
         },
         {
-          "term": "Data",
-          "definition": "The pieces of information you collect, like everyone's answers to a question."
+          "term": "How many more",
+          "definition": "The difference between two amounts, found by subtracting the smaller from the larger."
         }
       ],
       "next_steps": {
-        "if_pass": "6DS2-F2",
-        "if_fail": "Practice counting tally bundles by fives with physical counters before returning to this skill."
+        "if_pass": "6DS2-B2",
+        "if_fail": "Practice reading a scaled bar graph by counting the scale out loud with a grade 3 graph before returning to this skill."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Here's the list: 5, 3, 5, 5, 2. We're hunting 5s. Touch each number and say 'match' or 'no match' out loud. How many touches were matches -- and is that the same as how many numbers you touched altogether?"
-        },
-        {
           "kind": "show",
-          "text": "Write on the board the list: 5, 3, 5, 5, 2. Ask the student to read it out loud."
+          "text": "Draw a bar graph that counts by 2s with bars Cats 6, Dogs 8, Fish 4. Label each gridline 2, 4, 6, 8."
         },
         {
           "kind": "ask",
-          "text": "We want to know how many times the number 5 appears. Is that the same as asking how many numbers are in the list?"
+          "text": "Each line is worth how much? So the Dogs bar reaches which line, and what value is that?"
+        },
+        {
+          "kind": "say",
+          "text": "The scale counts by 2s, so the Dogs bar at the fourth line is 8, not 4. Read the scale before the bar, every time."
+        },
+        {
+          "kind": "ask",
+          "text": "Now, how many more chose Dogs than Fish? Point to both bars."
+        },
+        {
+          "kind": "say",
+          "text": "Dogs is 8 and Fish is 4, and how many more is a difference: 8 minus 4 is 4."
         },
         {
           "kind": "watch",
-          "text": "If the student says 'five numbers, so the answer is 5,' pause. Have them point to each number and say 'match' or 'no match.'"
+          "text": "If a student answers 8, the single bar, send them back to point at both bars and subtract."
         },
         {
           "kind": "ask",
-          "text": "Make one tally mark every time you touch a 5. How many marks did you make?"
-        },
-        {
-          "kind": "say",
-          "text": "That count -- 3 -- is called the frequency of 5. Frequency just means 'how many times it happened.'"
-        },
-        {
-          "kind": "show",
-          "text": "Now draw two bundles of five tallies and two extra marks: ||||| ||||| || (on the board, draw each bundle as four marks with a slash across)."
-        },
-        {
-          "kind": "ask",
-          "text": "Each crossed bundle is worth five. Count by fives, then by ones. What's the total?"
-        },
-        {
-          "kind": "say",
-          "text": "Twelve -- five, ten, eleven, twelve. Bundles first, singles last, every time."
+          "text": "Your turn: how many more chose Cats than Fish?"
         }
       ]
     },
     {
       "skill_id": "6DS2-F2",
-      "name": "Recognize when answers to a question will vary",
+      "name": "Count marks on a line plot marked in halves and fourths",
       "column": "foundation",
       "parent_standard": "6.DS.2",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 5,
-        "description": "Understand that some questions have one fixed answer while others produce different answers from different people (5.DA.1 data experience).",
-        "check_question": "If I ask everyone in class 'How many siblings do you have?', will everyone say the same number?"
+        "grade": 4,
+        "description": "Make and read a line plot of measurements marked in halves and fourths, and count the X's above a value.",
+        "check_question": "A line plot has 3 X's above the value 2. How many measurements are 2?"
       },
-      "i_do_script": "Some questions have exactly one answer no matter who you ask -- 'How many days are in March?' is 31, period. Other questions get different answers from different people -- 'How many pets does your family have?' might be 0 for one student and 3 for another. That difference is called variability, and it's the whole reason we collect data. I'll read a question out loud and we'll vote: one answer, or answers that vary?",
+      "i_do_script": "A line plot puts one X above the number line for each thing we measured, and equal values stack up. The move I name every time: how many means count the X's above a value, and what size means read the number on the line. Our scale can be marked in halves and fourths, so a mark above 2 1/2 sits between the 2 and the 3. I model touching each X and counting, then reading the label underneath.",
       "canonical_error": {
-        "pattern": "Judges a question by whether it involves numbers instead of whether the answers differ from person to person",
-        "example": "Says 'How many days are in March?' will vary 'because it's a number question,' and says 'What's your favorite color?' has one answer 'because it's not about numbers.'",
-        "why": "The student is sorting by surface features (numbers vs. words) instead of imagining actually asking many people and checking whether the answers would come back different."
+        "pattern": "Confuses the value on the number line with the count of X's stacked above it",
+        "example": "A line plot has 4 X's above the value 3. Asked how many pencils are 3 inches long, the student answers 3; asked which length is most common, answers 4.",
+        "why": "The student mixes up the two numbers a line plot holds: the label tells the size, and the stack of X's tells how many. Counting the X's answers how many, reading the line answers what size."
       },
-      "redirect_script": {
-        "stop": "Wait -- let's actually imagine asking it.",
-        "prompt": "Picture asking 10 different students this question. Say the first three answers you'd hear out loud. Are they the same answer three times, or different?",
-        "praise": "You imagined real answers -- that's the test that always works."
-      },
-      "item_template": "A single everyday question. Student decides whether collected answers would vary or come back identical. Two-choice response.",
+      "item_template": "A line plot with X's over whole numbers, halves, and fourths. Student counts X's, names the most common value, or finds a total count. Numeric response, no calculator, built for timed fluency.",
       "sample_items": [
         {
-          "stem": "If we asked this question and collected answers, would we expect the answers to vary or would everyone give one answer? \"How many pets does each family on your street have?\"",
-          "answer": "Answers vary",
-          "choices": [
-            "Answers vary",
-            "One answer"
-          ],
-          "distractor_logic": "Different families have different numbers of pets, so the data varies."
+          "stem": "A line plot has 4 X's above the value 3. How many pencils are 3 inches long?",
+          "answer": "4"
         },
         {
-          "stem": "If we asked this question and collected answers, would we expect the answers to vary or would everyone give one answer? \"How many days are in the month of March?\"",
-          "answer": "One answer",
-          "choices": [
-            "Answers vary",
-            "One answer"
-          ],
-          "distractor_logic": "March always has 31 days -- a fact question with a single answer."
+          "stem": "A line plot has X's at 2, 2, 2, 3, 4, 4. How many data points in all?",
+          "answer": "6"
         },
         {
-          "stem": "If we asked this question and collected answers, would we expect the answers to vary or would everyone give one answer? \"How many minutes did each student in class sleep last night?\"",
-          "answer": "Answers vary",
-          "choices": [
-            "Answers vary",
-            "One answer"
-          ],
-          "distractor_logic": "Each student slept a different amount, so answers differ person to person."
+          "stem": "A line plot has 3 X's above 1/2 and 2 X's above 1. How many measured 1/2?",
+          "answer": "3"
         },
         {
-          "stem": "If we asked this question and collected answers, would we expect the answers to vary or would everyone give one answer? \"What time does the school day start at your school?\"",
-          "answer": "One answer",
-          "choices": [
-            "Answers vary",
-            "One answer"
-          ],
-          "distractor_logic": "The bell schedule is fixed -- everyone gives the same answer."
+          "stem": "Line plot of shoe sizes: 5 has 2 X's, 6 has 5 X's, 7 has 1 X. Which size is most common?",
+          "answer": "6"
         },
         {
-          "stem": "If we asked this question and collected answers, would we expect the answers to vary or would everyone give one answer? \"How tall is each player on the basketball team?\"",
-          "answer": "Answers vary",
-          "choices": [
-            "Answers vary",
-            "One answer"
-          ],
-          "distractor_logic": "Players have different heights, so measuring gives many different values."
+          "stem": "A line plot has 3 X's above 2 1/2 and 1 X above 3. How many more measured 2 1/2 than 3?",
+          "answer": "2"
         },
         {
-          "stem": "If we asked this question and collected answers, would we expect the answers to vary or would everyone give one answer? \"How many wheels does one bicycle have?\"",
-          "answer": "One answer",
-          "choices": [
-            "Answers vary",
-            "One answer"
-          ],
-          "distractor_logic": "A bicycle has 2 wheels by definition -- no variability."
+          "stem": "A line plot has X's at 1/4, 1/4, 1/2, 3/4, 3/4, 3/4. How many measured 3/4?",
+          "answer": "3"
         },
         {
-          "stem": "If we asked this question and collected answers, would we expect the answers to vary or would everyone give one answer? \"How many books did each sixth grader read this month?\"",
-          "answer": "Answers vary",
-          "choices": [
-            "Answers vary",
-            "One answer"
-          ],
-          "distractor_logic": "Reading amounts differ from student to student."
+          "stem": "A line plot has 8 X's total over 4, 5, and 6. If 4 has 3 X's and 5 has 2 X's, how many are above 6?",
+          "answer": "3"
         },
         {
-          "stem": "If we asked this question and collected answers, would we expect the answers to vary or would everyone give one answer? \"What is the capital of Indiana?\"",
-          "answer": "One answer",
-          "choices": [
-            "Answers vary",
-            "One answer"
-          ],
-          "distractor_logic": "Indianapolis is a fact -- asking more people doesn't change it."
+          "stem": "Line plot of jumps: 2 has 1 X, 2 1/2 has 4 X's, 3 has 2 X's. How many jumps in all?",
+          "answer": "7"
         },
         {
-          "stem": "If we asked this question and collected answers, would we expect the answers to vary or would everyone give one answer? \"How far does each student travel to get to school?\"",
-          "answer": "Answers vary",
-          "choices": [
-            "Answers vary",
-            "One answer"
-          ],
-          "distractor_logic": "Students live different distances away, so the data varies."
+          "stem": "A line plot has 5 X's above 1/2 and 5 X's above 1. Which length was measured more often?",
+          "answer": "Neither, they tie at 5"
         },
         {
-          "stem": "If we asked this question and collected answers, would we expect the answers to vary or would everyone give one answer? \"How many letters are in the word 'data'?\"",
-          "answer": "One answer",
-          "choices": [
-            "Answers vary",
-            "One answer"
-          ],
-          "distractor_logic": "Counting letters in a fixed word gives the same answer every time."
+          "stem": "Line plot: 10 has 2 X's, 10 1/2 has 3 X's, 11 has 5 X's. How many measured at least 10 1/2?",
+          "answer": "8"
         }
       ],
+      "redirect_script": {
+        "stop": "Which number are we after, the size or the count?",
+        "prompt": "Point to each X above the value and count them for how many. Read the label under the stack for what size.",
+        "praise": "You counted the X's for how many and read the line for the size, that is the whole move."
+      },
       "vocabulary": [
         {
-          "term": "Variability",
-          "definition": "When the answers or measurements are not all the same -- they vary."
+          "term": "Line plot",
+          "definition": "A number line with an X above each value for every data point, so equal values stack up."
         },
         {
-          "term": "Data",
-          "definition": "The collection of answers or measurements you gather."
+          "term": "Data point",
+          "definition": "One measurement or answer in the data set, shown by one X."
         },
         {
-          "term": "Fact question",
-          "definition": "A question with one fixed answer no matter who you ask, like 'How many days are in a week?'"
+          "term": "Most common",
+          "definition": "The value with the tallest stack of X's."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6DS2-B1",
+        "if_fail": "Practice building a line plot with counters over a scale of halves and fourths before returning to this skill."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a line plot of pencil lengths with X's: two X's above 2 inches, four X's above 3 inches, one X above 4 inches."
+        },
+        {
+          "kind": "ask",
+          "text": "How many pencils are 3 inches long? Are you counting X's or reading the line?"
+        },
+        {
+          "kind": "say",
+          "text": "There are four X's above 3, so four pencils are 3 inches long. The label 3 is the size, the four X's are how many."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 3, they read the label instead of counting X's. Have them touch each X."
+        },
+        {
+          "kind": "ask",
+          "text": "Which length is most common?"
+        },
+        {
+          "kind": "say",
+          "text": "The value 3 has the tallest stack, so 3 inches is most common. Count the stack, do not read the label."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: how many pencils are 2 inches long?"
+        }
+      ]
+    },
+    {
+      "skill_id": "6DS2-B1",
+      "name": "Read and interpret a line plot of numerical data",
+      "column": "looking_back",
+      "parent_standard": "6.DS.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Represent and interpret a numerical data set on a line plot, counting each X as one data point.",
+        "check_question": "A line plot has values 2, 2, 3, 5. How many data points are shown?"
+      },
+      "i_do_script": "A line plot holds a whole data set: every X is one data point, and stacks show which values came up most. I read it two ways: to count how many, I add up the X's; to find a total, I do not just add the labels, I add each value once for every X above it. The slip I name out loud: three different numbers on the plot does not mean three data points, because each X still counts. I model counting the X's, then finding a total value by value.",
+      "canonical_error": {
+        "pattern": "Counts the number of different values instead of the number of X's, or finds a total by adding the labels once each",
+        "example": "A line plot has values 2, 2, 2, 3, 5. Asked how many data points, the student says 3 because there are three different numbers, instead of 5.",
+        "why": "Each X is one data point, so the count is the number of X's, not the number of distinct labels. A total adds every value once for each X above it, not each label a single time."
+      },
+      "item_template": "A line plot of numerical data with whole numbers or simple fractions. Student finds how many data points, the most common value, or a total made from the values. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "A line plot has 3 X's over 2 and 4 X's over 5. How many data points in all?",
+          "answer": "7"
+        },
+        {
+          "stem": "Line plot: 1 has 2 X's, 2 has 5 X's, 3 has 3 X's. How many measured 2?",
+          "answer": "5"
+        },
+        {
+          "stem": "Line plot: 1 has 2 X's, 2 has 5 X's, 3 has 3 X's. How many data points in all?",
+          "answer": "10"
+        },
+        {
+          "stem": "A line plot of goals per game: 0 has 4 X's, 1 has 3 X's, 2 has 3 X's, 3 has 2 X's. How many games are shown?",
+          "answer": "12"
+        },
+        {
+          "stem": "Using the same goals plot, how many goals were scored in all?",
+          "answer": "15"
+        },
+        {
+          "stem": "Line plot of quiz scores: 6 has 1 X, 7 has 4 X's, 8 has 5 X's, 9 has 2 X's. Which score was most common?",
+          "answer": "8"
+        },
+        {
+          "stem": "A line plot shows shoe sizes with 3 X's over size 6. What does the 3 tell you?",
+          "answer": "Three students wear size 6",
+          "choices": [
+            "Three students wear size 6",
+            "The shoe size is 3",
+            "The largest size is 6",
+            "Three different sizes were measured"
+          ],
+          "distractor_logic": "The value for count confusion picks 'the shoe size is 3'; the count of values confusion picks 'three different sizes were measured'."
+        },
+        {
+          "stem": "A line plot has 10 X's total over the values 3, 4, and 5. If 3 has 4 X's and 4 has 4 X's, how many are over 5?",
+          "answer": "2"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is that the number of X's, or the number of different values?",
+        "prompt": "Touch every X and count them, even the ones stacked on the same value. For a total, add each value once for every X above it.",
+        "praise": "You counted every X, so no data point got left out."
+      },
+      "vocabulary": [
+        {
+          "term": "Line plot",
+          "definition": "A number line with one X above a value for each data point."
+        },
+        {
+          "term": "Frequency",
+          "definition": "How many times a value appears, shown by the number of X's above it."
+        },
+        {
+          "term": "Total",
+          "definition": "The sum you get by adding every value once for each X above it."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "6DS2-S1",
+        "if_fail": "6DS2-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a line plot of books read with X's: two above 1, four above 2, three above 3, one above 4."
+        },
+        {
+          "kind": "ask",
+          "text": "How many students are shown? Count every X, including the stacked ones."
+        },
+        {
+          "kind": "say",
+          "text": "Add the X's: 2 plus 4 plus 3 plus 1 is 10 students. Ten X's, not four different numbers."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 4 because there are four values, point to each X and count 10."
+        },
+        {
+          "kind": "ask",
+          "text": "Now the total number of books. Do we just add 1, 2, 3, 4?"
+        },
+        {
+          "kind": "say",
+          "text": "No. Each value counts once for every X: 1 times 2, 2 times 4, 3 times 3, 4 times 1, which is 2 plus 8 plus 9 plus 4 is 23 books."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: if one more student read 2 books, how many students now?"
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A line plot has 2 X's over 4 and 3 X's over 5. How many data points in all?",
+          "answer": "5"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A line plot has 3 X's over 6 and 1 X over 7. How many measured 6?",
+          "answer": "3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A line plot of pets per family shows 3 X's over 0, 5 X's over 1, 2 X's over 2, and 2 X's over 3. How many families were surveyed?",
+          "answer": "12"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Using the same pets plot, how many pets are there in all?",
+          "answer": "15"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A line plot of heights shows 2 X's over 48, 4 X's over 50, and 3 X's over 52. Which height is most common?",
+          "answer": "50"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Using the same height plot, how many students are 50 inches or taller?",
+          "answer": "7"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A line plot shows 12 data points over the values 1, 2, 3, and 4. Values 1, 2, and 3 each have 3 X's. How many X's are over 4?",
+          "answer": "3"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "A line plot has 4 X's over 2, 3 X's over 3, and 2 X's over 5. Ben says 3 students are shown because there are 3 different numbers. Find his mistake and fix it.",
+          "shown_work": [
+            "Values with X's: 2, 3, 5",
+            "Three different values",
+            "So 3 students"
+          ],
+          "answer": "Each X is one student, not each value. Count every X: 4 + 3 + 2 = 9 students."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build the Plot, Count the X's",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Number line strips",
+            "Sticky notes or counters for X's"
+          ],
+          "instructions": "1. Give each pair a small data set, like books read: 1, 2, 2, 3, 3, 3, 4.\n2. Place one sticky note above the matching number for each value, stacking equal values.\n3. Count all the sticky notes to find how many data points. Say the number out loud.\n4. Find the total by adding each value once for every note above it.\n5. Repeat with a second data set and trade with another pair to check."
+        },
+        {
+          "type": "game",
+          "title": "Count or Value? Lightning Round",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Show a line plot on the board and read a question: how many, or what value.\n2. On three, students hold up C for count the X's or V for read the line.\n3. Any split becomes a quick debate: a student from each side explains the move.\n4. Keep score of class accuracy and try to beat it next round."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building the line plot with physical X's before reading it makes each data point countable and keeps count separate from value."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud while pointing at X's names the count versus value choice that students skip."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The count the values not the X's error is stable, so finding and fixing it in a worked plot confronts it directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Are you counting X's, or reading the number on the line?",
+          "How many data points are on this plot? How do you know none were missed?",
+          "Which value has the tallest stack, and what does that tell you?",
+          "For a total, why can we not just add the labels once each?",
+          "If I added one more X above 2, what changes, the count or the value?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student counts the number of different values instead of the X's.",
+            "say": "Touch each X and count out loud, even the ones stacked on the same number. How many X's did you count?",
+            "praise": "You counted every X, so every data point got included."
+          },
+          {
+            "if_you_see": "Student finds a total by adding the labels 1, 2, 3 once each.",
+            "say": "Each value repeats once for every X above it. How many X's are over 2, and how much is that in all?",
+            "praise": "You added each value once per X, that keeps the total honest."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Line plot: 2 has 3 X's, 3 has 2 X's. How many data points?",
+            "look_for": "5, counting all X's, not 2 different values."
+          },
+          {
+            "prompt": "Line plot: 4 has 2 X's, 5 has 1 X. What is the total of the values?",
+            "look_for": "13, from 4 plus 4 plus 5, not 9 from 4 plus 5."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A line plot of books read shows 2 X's over 1, 4 X's over 2, 3 X's over 3, and 1 X over 4. How many students are shown, and how many books were read in all?",
+        "answer": "10 students, 23 books",
+        "steps": [
+          {
+            "math": "count the X's: 1 has 2, 2 has 4, 3 has 3, 4 has 1",
+            "annotation": "Each X is one student."
+          },
+          {
+            "math": "2 + 4 + 3 + 1 = 10 students",
+            "annotation": "Add all the X's for how many students."
+          },
+          {
+            "math": "1x2 + 2x4 + 3x3 + 4x1 = 2 + 8 + 9 + 4",
+            "annotation": "Each value counts once for every X above it."
+          },
+          {
+            "math": "2 + 8 + 9 + 4 = 23 books",
+            "annotation": "Add those for the total number of books."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A line plot of reading minutes shows 3 X's over 5, 2 X's over 10, and 4 X's over 15. How many students are shown, and how many minutes in all?",
+        "answer": "9 students, 95 minutes",
+        "steps": [
+          {
+            "math": "count the X's: 5 has 3, 10 has 2, 15 has 4",
+            "annotation": "Each X is one student.",
+            "given": true
+          },
+          {
+            "math": "3 + 2 + 4 = 9 students",
+            "annotation": "Add all the X's for how many students.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Multiply each value by the number of X's above it.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Add those products for the total minutes.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "To count the data points, I add every X on the plot.",
+        "The value ___ appears ___ times because its stack has ___ X's."
+      ],
+      "fluency_source": "6DS2-F2"
+    },
+    {
+      "skill_id": "6DS2-B2",
+      "name": "Read a bar graph and frequency table to compare data",
+      "column": "looking_back",
+      "parent_standard": "6.DS.2",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 5,
+        "description": "Organize data into a frequency table and bar graph, compare categories, and tell categorical from numerical data.",
+        "check_question": "A bar graph shows 7 apples and 4 pears. How many more apples than pears?"
+      },
+      "i_do_script": "A bar graph and a frequency table show the same counts two ways, and I can move between them. How many more always means the difference between two bars, so I read both bars and subtract, never just the taller one. I also decide what kind of data it is: names like favorite sport are categorical, while measurements like height in inches are numerical. I model reading each bar, comparing two of them, and adding all of them for a total.",
+      "canonical_error": {
+        "pattern": "Answers a how many more question by reading one bar instead of finding the difference between two bars",
+        "example": "A bar graph shows Pizza 12 and Salad 5. Asked how many more chose pizza than salad, the student answers 12 instead of 12 minus 5 equals 7.",
+        "why": "How many more compares two amounts, so it is always a subtraction. Reading the taller bar reports a total for one category, not the gap between two."
+      },
+      "item_template": "A bar graph or frequency table of categorical data. Student finds how many more, a total, the most common category, or tells categorical from numerical data. Numeric or one word response.",
+      "sample_items": [
+        {
+          "stem": "Bar graph: Pizza 12, Tacos 7, Salad 5. How many more chose Pizza than Tacos?",
+          "answer": "5"
+        },
+        {
+          "stem": "Bar graph: Pizza 12, Tacos 7, Salad 5. How many students voted in all?",
+          "answer": "24"
+        },
+        {
+          "stem": "Frequency table: Red 6, Blue 9, Green 4. Which color got the most votes?",
+          "answer": "Blue"
+        },
+        {
+          "stem": "Frequency table: Red 6, Blue 9, Green 4. How many more chose Blue than Red?",
+          "answer": "3"
+        },
+        {
+          "stem": "Bar graph: Bus 15, Walk 10, Car 8, Bike 5. How many more ride the Bus than walk?",
+          "answer": "5"
+        },
+        {
+          "stem": "A survey records each student's favorite sport. Is this data categorical or numerical?",
+          "answer": "Categorical"
+        },
+        {
+          "stem": "A survey records each student's height in inches. Is this data categorical or numerical?",
+          "answer": "Numerical"
+        },
+        {
+          "stem": "A bar graph shows 14 cats and 9 dogs. How many more cats than dogs?",
+          "answer": "5",
+          "choices": [
+            "5",
+            "9",
+            "14",
+            "23"
+          ],
+          "distractor_logic": "14 is the single cat bar, the how many more error; 23 is the total of both; 9 is the dog bar."
+        }
+      ],
+      "redirect_script": {
+        "stop": "How many more means a difference, so where are your two bars?",
+        "prompt": "Read both bars, then subtract the smaller from the larger. One bar alone only gives a total for that category.",
+        "praise": "You compared two bars and subtracted, that is what how many more asks for."
+      },
+      "vocabulary": [
+        {
+          "term": "Frequency table",
+          "definition": "A table that lists each category next to how many times it was chosen."
+        },
+        {
+          "term": "Categorical data",
+          "definition": "Data whose answers are names or labels, like favorite color."
+        },
+        {
+          "term": "Numerical data",
+          "definition": "Data whose answers are numbers you measure or count, like height."
         }
       ],
       "next_steps": {
@@ -340,42 +630,247 @@
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write two questions on the board: 'How many days are in March?' and 'How many pets does your family have?'"
+          "text": "Draw a bar graph of favorite snacks: Popcorn 9, Fruit 6, Chips 5."
         },
         {
           "kind": "ask",
-          "text": "Let's ask the first one to three different people. What will each person say?"
+          "text": "How many more chose Popcorn than Chips? Which two bars do you need?"
         },
         {
           "kind": "say",
-          "text": "Everyone says 31. Asking more people doesn't change anything -- one fixed answer."
-        },
-        {
-          "kind": "ask",
-          "text": "Now the pet question. If I asked you, then your neighbor, then me -- would we all say the same number?"
+          "text": "Popcorn is 9 and Chips is 5, so how many more is 9 minus 5, which is 4. Two bars, one difference."
         },
         {
           "kind": "watch",
-          "text": "Listen for 'it depends on the person.' If the student says 'it's a number question so it varies,' point back to the March question -- also numbers, but never varies."
+          "text": "If a student answers 9, they read one bar. Have them name both bars and subtract."
         },
         {
           "kind": "ask",
-          "text": "So what actually decides whether answers vary -- whether the question uses numbers, or something else?"
+          "text": "How many students voted in all?"
         },
         {
           "kind": "say",
-          "text": "It's whether different people or things give different answers. That difference is called variability."
+          "text": "A total adds every bar: 9 plus 6 plus 5 is 20 students."
         },
         {
           "kind": "ask",
-          "text": "Your turn: 'How many wheels does one bicycle have?' Vary, or one answer? Prove it by imagining three answers."
+          "text": "Is favorite snack categorical or numerical data?"
+        },
+        {
+          "kind": "say",
+          "text": "The answers are names, not measurements, so this data is categorical."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: how many more chose Fruit than Chips?"
         }
-      ]
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A frequency table shows Cats 8 and Dogs 5. How many more cats than dogs?",
+          "answer": "3"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A bar graph shows Apple 6, Banana 6, Grape 3. Which two tied?",
+          "answer": "Apple and Banana"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A bar graph shows Soccer 10, Basketball 7, Tennis 4, Swim 3. How many students were surveyed in all?",
+          "answer": "24"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Using the same sports graph, how many more play Soccer than Swim?",
+          "answer": "7"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A frequency table shows Grade 5 read 12 books and Grade 6 read 20 books. How many more did Grade 6 read?",
+          "answer": "8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A survey asks each classmate their favorite color and how many pets they own. Which of the two data sets is numerical?",
+          "answer": "The number of pets; favorite color is categorical."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A bar graph shows four fruits with 30 votes in all. Apple got 9, Banana 8, and Grape 7. How many votes did the fourth fruit, Orange, get?",
+          "answer": "6"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "A bar graph shows Pizza 12 and Salad 5. Maya says 12 more students chose pizza than salad. Find her mistake and fix it.",
+          "shown_work": [
+            "Pizza bar reaches 12",
+            "So 12 more chose pizza"
+          ],
+          "answer": "She read the pizza bar instead of comparing the two bars. How many more means the difference: 12 - 5 = 7."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Survey, Tally, and Compare",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Chart paper",
+            "Connecting cubes or sticky notes"
+          ],
+          "instructions": "1. Groups pick a categorical survey question, like favorite fruit, and poll the class.\n2. Tally the answers into a frequency table, one row per category.\n3. Build a bar graph by stacking cubes for each category, one tower per category.\n4. Answer two questions: how many more chose the top category than the lowest, and how many voted in all.\n5. Say why the data is categorical, not numerical."
+        },
+        {
+          "type": "card_sort",
+          "title": "Categorical or Numerical Sort",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "One deck of data-question cards per pair"
+          ],
+          "instructions": "1. Pairs sort each card under CATEGORICAL or NUMERICAL.\n2. Rule: before placing a card, say one answer a person might give. A name means categorical, a measurement or a count means numerical.\n3. Two trap cards use number labels for categories, like jersey numbers; defend those out loud.\n4. Debrief: what test told you which pile a card belonged in?",
+          "content": {
+            "categories": [
+              "Categorical",
+              "Numerical"
+            ],
+            "cards": [
+              {
+                "text": "Favorite school lunch",
+                "category": "Categorical"
+              },
+              {
+                "text": "Height in inches",
+                "category": "Numerical"
+              },
+              {
+                "text": "Eye color",
+                "category": "Categorical"
+              },
+              {
+                "text": "Number of siblings",
+                "category": "Numerical"
+              },
+              {
+                "text": "Favorite sport",
+                "category": "Categorical"
+              },
+              {
+                "text": "Minutes spent reading",
+                "category": "Numerical"
+              }
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Stacking cubes into bars before reading the graph makes how many more a visible gap between two towers."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The read one bar error for how many more is predictable, so analyzing a wrong answer targets it head on."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think Pair Share on categorical versus numerical forces students to justify the sort before the class settles it."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many more asks for a difference. Which two bars do you need?",
+          "What is the total, and which bars go into it?",
+          "Is this data names or measurements? So is it categorical or numerical?",
+          "Which category has the most? How does the bar show that?",
+          "If two bars are the same height, what does that mean?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reads one bar to answer how many more.",
+            "say": "How many more compares two amounts. Read both bars, then subtract the smaller from the larger.",
+            "praise": "You compared two bars and subtracted, that is what how many more means."
+          },
+          {
+            "if_you_see": "Student calls favorite color numerical because the counts are numbers.",
+            "say": "The counts are numbers, but the answers people gave are color names. Names make the data categorical.",
+            "praise": "You looked at what people answered, not just the counts, that is the test."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Bar graph: Apples 8, Pears 3. How many more apples than pears?",
+            "look_for": "5, from 8 minus 3, not 8."
+          },
+          {
+            "prompt": "A survey of favorite movie. Categorical or numerical?",
+            "look_for": "Categorical, because the answers are titles, not measurements."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A bar graph of favorite snacks shows Popcorn 9, Fruit 6, and Chips 5. How many more chose Popcorn than Chips, and how many students voted in all?",
+        "answer": "4 more chose Popcorn; 20 students voted",
+        "steps": [
+          {
+            "math": "read the bars: Popcorn 9, Fruit 6, Chips 5",
+            "annotation": "Find the height of each bar."
+          },
+          {
+            "math": "9 - 5 = 4",
+            "annotation": "How many more means the difference between two bars."
+          },
+          {
+            "math": "9 + 6 + 5",
+            "annotation": "A total adds every bar."
+          },
+          {
+            "math": "9 + 6 + 5 = 20 students",
+            "annotation": "Add for the number of voters."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A bar graph of favorite pets shows Dogs 8, Cats 5, and Birds 2. How many more chose Dogs than Birds, and how many votes in all?",
+        "answer": "6 more chose Dogs; 15 votes",
+        "steps": [
+          {
+            "math": "read the bars: Dogs 8, Cats 5, Birds 2",
+            "annotation": "Find the height of each bar.",
+            "given": true
+          },
+          {
+            "math": "8 - 2 = 6",
+            "annotation": "How many more means the difference between two bars.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Add every bar for the total.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the total number of votes.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "How many more means I subtract ___ from ___.",
+        "This data is ___ because the answers are ___."
+      ],
+      "fluency_source": "6DS2-F1"
     },
     {
       "skill_id": "6DS2-S1",
       "name": "Distinguish statistical from non-statistical questions",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.DS.2",
       "engine_stems": [
         1
@@ -736,7 +1231,7 @@
     {
       "skill_id": "6DS2-S2",
       "name": "Formulate statistical questions that anticipate variability",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "6.DS.2",
       "prerequisite_skill": {
         "type": "skill",
@@ -1968,7 +2463,7 @@
         "This is a count-the-dots question because it asks how many ___.",
         "I knew the answer was ___ because the dots above ___ tell me ___."
       ],
-      "fluency_source": "6DS2-F1"
+      "fluency_source": "6DS2-F2"
     },
     {
       "skill_id": "6DS2-S5",
@@ -2417,7 +2912,7 @@
         "This display can answer the question because it keeps ___.",
         "This display cannot answer that because ___ was thrown away when the data was ___."
       ],
-      "fluency_source": "6DS2-F1"
+      "fluency_source": "6DS2-F2"
     },
     {
       "skill_id": "6DS2-S6",
@@ -2787,13 +3282,13 @@
         "Most of the data falls between ___ and ___ because those bars hold ___ out of ___ values.",
         "The claim is not supported because the display shows ___, not ___."
       ],
-      "fluency_source": "6DS2-F1"
+      "fluency_source": "6DS2-F2"
     }
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation",
-      "description": "Tier III -- 2+ grade levels below. If a student can't access Looking Back, start here.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 3-4) prerequisite skills. Start intervention here.",
       "skills": [
         "6DS2-F1",
         "6DS2-F2"
@@ -2801,16 +3296,18 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Prerequisite skills -- fix these first if a student can't access grade-level work",
+      "description": "One grade below (grade 5) skills that feed this standard directly.",
       "skills": [
-        "6DS2-S1",
-        "6DS2-S2"
+        "6DS2-B1",
+        "6DS2-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "Core 6.DS.2 skills -- the standard itself",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "6DS2-S1",
+        "6DS2-S2",
         "6DS2-S3",
         "6DS2-S4",
         "6DS2-S5"
@@ -2818,7 +3315,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Extension skills -- for students ready to push ahead",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "6DS2-S6"
       ]
@@ -2827,6 +3324,8 @@
   "skill_sequence": [
     "6DS2-F1",
     "6DS2-F2",
+    "6DS2-B1",
+    "6DS2-B2",
     "6DS2-S1",
     "6DS2-S2",
     "6DS2-S3",
@@ -2839,18 +3338,26 @@
     "6DS2-F2": [
       "6DS2-F1"
     ],
-    "6DS2-S1": [
+    "6DS2-B1": [
       "6DS2-F2"
+    ],
+    "6DS2-B2": [
+      "6DS2-F1"
+    ],
+    "6DS2-S1": [
+      "6DS2-B1",
+      "6DS2-B2"
     ],
     "6DS2-S2": [
       "6DS2-S1"
     ],
     "6DS2-S3": [
       "6DS2-S2",
-      "6DS2-F1"
+      "6DS2-B2"
     ],
     "6DS2-S4": [
-      "6DS2-S3"
+      "6DS2-S3",
+      "6DS2-B1"
     ],
     "6DS2-S5": [
       "6DS2-S4",
@@ -2861,18 +3368,22 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4 (interpret line plots) -- the center of the standard. If they pass, move up to S5 (match questions to displays) and S6 (draw conclusions). If they fail, check whether the gap is conceptual (S1: what makes a question statistical) or organizational (S3: building frequency tables). S2 (formulating questions) is the branch skill for students solid on recognition but weak on production.",
+    "description": "Start with S4, reading a line plot, the standard's on-grade core. If the student passes, move up to S5 (match a question to the display that answers it) and S6 (analyze histograms and box plots to defend a conclusion). If S4 fails, drop one grade to the looking-back skills: B1 checks reading a line plot and B2 checks reading a bar graph and frequency table, the two grade 5 data-display skills the standard is built on. If those wobble, the foundations locate the gap in grades 3 and 4: F1 reads a scaled bar graph and F2 counts marks on a fractional line plot. S1, S2, and S3 stay available to probe the standard's own question-writing and data-organizing steps.",
     "entry_skill": "6DS2-S4",
     "if_pass": [
       "6DS2-S5",
       "6DS2-S6"
     ],
     "if_fail": [
-      "6DS2-S1",
-      "6DS2-S3"
+      "6DS2-B1",
+      "6DS2-B2"
     ],
     "branch_skills": [
-      "6DS2-S2"
+      "6DS2-F1",
+      "6DS2-F2",
+      "6DS2-S1",
+      "6DS2-S2",
+      "6DS2-S3"
     ]
   }
 }

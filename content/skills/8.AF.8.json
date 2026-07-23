@@ -3,7 +3,7 @@
   "standard_text": "Understand that solutions to a system of two linear equations correspond to the point(s) of intersection of their graphs; solve and approximate solutions of a system by graphing (and interpret whether a system has one solution, no solution, or infinitely many).",
   "schema_version": 3,
   "progression": {
-    "narrative": "The whole standard rests on one idea: a solution to a system of two linear equations is an ordered pair (x, y) that makes BOTH equations true at once, and on a graph that pair is exactly the point where the two lines cross. So the arc begins by settling what 'solution' means for a system — the intersection point — and how the graph tells you how many there are: one if the lines cross once, none if they are parallel and never cross, infinitely many if they are the very same line. From there students learn to read that intersection point off a given graph (and to approximate it when it falls between gridlines), then to produce the graph themselves from two equations in y = mx + b form and find where the lines meet.\n\nBecause the intersection point must satisfy both equations, verification by substitution is the spine that keeps the whole thing honest: a candidate point is only the solution if it checks in BOTH equations, not just one. That check is what separates a real solution from a coordinate swap or a point that happens to sit on one line. The capstone takes the idea into context — two cost plans graphed as lines whose crossing is the break-even point — where students estimate the solution and interpret which option is better before and after that point. The through-line we keep naming: the solution is the shared point; parallel means no shared point (no solution); identical means every point is shared (infinitely many); and any answer can be tested by putting it back into both equations.",
+    "narrative": "This standard asks students to solve a system of two linear equations by graphing: the solution is the point where the two lines intersect, and the graph also tells whether there is one solution, no solution, or infinitely many. The on-grade work moves from counting solutions on a given graph, to reading or approximating the intersection point, to graphing both lines from y = mx + b form and confirming the crossing point in both equations. Students who struggle here usually carry gaps from well below grade eight, most often shaky point plotting and weak substitution. Intervention should start with those foundations, rebuild the grade seven skills of graphing a proportional relationship as a line and solving two-step equations, and only then return to systems. Every candidate answer can be tested by substituting it into both equations.",
     "steps": [
       {
         "skill_id": "8AF8-S1",
@@ -40,216 +40,763 @@
   "skills": [
     {
       "skill_id": "8AF8-F1",
-      "name": "Graph a linear equation given in slope-intercept form",
+      "name": "Plot and name points on the coordinate plane",
       "column": "foundation",
       "parent_standard": "8.AF.8",
       "prerequisite_skill": {
         "type": "gap",
-        "grade": 8,
-        "description": "Plot a line y = mx + b by starting at the y-intercept (0, b) and using the slope m as rise over run.",
-        "check_question": "For y = 2x + 1, where do you put your first point, and where does the next point go?"
+        "grade": 5,
+        "description": "Plot a point from an ordered pair and name the ordered pair for a plotted point in the first quadrant, moving across first and up second.",
+        "check_question": "To plot (3, 5), how far do you go across, and how far up?"
       },
-      "i_do_script": "b is what y equals when x is 0 -- zero steps across, so you haven't left the y-axis yet. That is why every line's starting dot sits ON the y-axis, never on the x-axis. To graph a line written as y = mx + b, I start with b — that is the y-intercept, the spot on the y-axis where x is 0. Watch y = 2x + 1: b is 1, so my first point is (0, 1), right on the y-axis. Then the slope 2 means rise over run = 2 over 1, so from (0, 1) I go up 2 and right 1 to (1, 3), and draw the straight line. If the slope were negative, like -2, I would go DOWN 2 and right 1.",
+      "i_do_script": "An ordered pair is a set of directions: the first number tells how far to walk across from 0, and the second tells how far to climb up. Watch (3, 5): I start at the origin, walk 3 spaces to the right along the bottom axis, then climb 5 spaces up, and put my dot there. The order matters: (3, 5) and (5, 3) are two different dots, because walking 5 and climbing 3 lands somewhere else. To name a plotted point, I do the same walk in reverse: count across to get the first number, then count up to get the second.",
       "canonical_error": {
-        "pattern": "Puts the y-intercept b on the x-axis, or applies the slope as run-over-rise (across first in the wrong ratio)",
-        "example": "For y = 2x + 3, plots the starting point at (3, 0) instead of (0, 3), or moves right 2 and up 1 instead of up 2 and right 1",
-        "why": "b is the y-value when x = 0, so it sits on the y-axis at (0, b). The slope m is rise over run — up m for every 1 across; flipping it draws the wrong steepness."
+        "pattern": "Reverses the order, going up first and across second",
+        "example": "Plots (3, 5) by going up 3 and across 5, landing on (5, 3)",
+        "why": "The first number in an ordered pair is always the across move and the second is the up move. Swapping them lands on a different point."
       },
-      "item_template": "A linear equation in y = mx + b form. Student names the y-intercept point and the slope moves (rise/run). Short response fluency bank.",
+      "item_template": "An ordered pair in the first quadrant. Student plots the point, names a plotted point, or describes the across and up moves. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "For y = 2x + 1, what point is the y-intercept?",
-          "answer": "(0, 1)"
+          "stem": "To plot (3, 5), how far across and how far up do you go?",
+          "answer": "3 across, 5 up"
         },
         {
-          "stem": "For y = 3x - 2, from the y-intercept, describe the slope move to the next point.",
-          "answer": "Up 3, right 1"
+          "stem": "A point sits 4 across and 2 up from the origin. Write its ordered pair.",
+          "answer": "(4, 2)"
         },
         {
-          "stem": "For y = -x + 4, where is the y-intercept, and which way does the line go?",
-          "answer": "(0, 4); down 1, right 1 (falls)"
+          "stem": "Are (2, 6) and (6, 2) the same point?",
+          "answer": "No, the across and up moves are different"
         },
         {
-          "stem": "For y = (1/2)x, name the y-intercept and one more point.",
-          "answer": "(0, 0) and (2, 1)"
+          "stem": "What point is at the origin, where the two axes cross?",
+          "answer": "(0, 0)"
+        },
+        {
+          "stem": "To plot (0, 4), how far across do you go?",
+          "answer": "0 across, so the point sits on the up axis, 4 up"
+        },
+        {
+          "stem": "A point sits 7 across and 0 up. Write its ordered pair.",
+          "answer": "(7, 0)"
+        },
+        {
+          "stem": "Which number in (5, 1) tells the up move?",
+          "answer": "1, the second number"
+        },
+        {
+          "stem": "A point sits 1 across and 6 up. Write its ordered pair.",
+          "answer": "(1, 6)"
         }
       ],
       "redirect_script": {
-        "stop": "Is b on the y-axis or the x-axis?",
-        "prompt": "Start at (0, b) on the y-axis — that is where x = 0. Then use the slope as UP m and RIGHT 1 (down if m is negative). Point to b and say 'up the y-axis first.'",
-        "praise": "You anchored at (0, b) and used rise over run — that's the line drawn right."
+        "stop": "Which number is the across move, the first or the second?",
+        "prompt": "Start at the origin. Walk across by the first number, then climb up by the second. Say 'across, then up' as you move your finger.",
+        "praise": "You walked across first and up second, that is exactly how the pair works."
       },
       "vocabulary": [
         {
-          "term": "Slope-intercept form",
-          "definition": "An equation written y = mx + b, where m is the slope and b is the y-intercept."
+          "term": "Ordered pair",
+          "definition": "Two numbers naming a point: across first, up second."
         },
         {
-          "term": "y-intercept (b)",
-          "definition": "The y-value where a line crosses the y-axis; the point (0, b)."
-        },
-        {
-          "term": "Slope (m)",
-          "definition": "How steep a line is: rise over run, the up (or down) move for every 1 to the right."
+          "term": "Origin",
+          "definition": "The point (0, 0) where the two axes cross; every walk starts there."
         }
       ],
       "next_steps": {
-        "if_pass": "8AF8-S1",
-        "if_fail": "Review graphing lines (8.AF.4)."
+        "if_pass": "8AF8-B1",
+        "if_fail": "Review grade 5 coordinate graphing with a floor grid or geoboard (walk across, then up, from the origin)."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "For y = 3x - 1, set x = 0: y = 3 x 0 - 1 = -1. Zero steps across means you are still standing ON the y-axis -- so where exactly is the starting dot?",
-          "visual": {
-            "type": "coordinate_grid",
-            "x_range": [
-              -2,
-              4
-            ],
-            "y_range": [
-              -3,
-              4
-            ],
-            "points": [
-              {
-                "x": 0,
-                "y": -1,
-                "label": "x = 0"
-              }
-            ]
-          }
-        },
-        {
           "kind": "show",
-          "text": "Write 'Graph y = 3x - 1.'"
+          "text": "Draw a first-quadrant grid from 0 to 6 on both axes. Circle the origin."
         },
         {
           "kind": "ask",
-          "text": "What is b, and where does the first point go?"
+          "text": "To plot (3, 5), where do we start, and which way do we move first?"
         },
         {
           "kind": "say",
-          "text": "b is -1, so start at (0, -1). Slope 3 is up 3, right 1, landing at (1, 2). Draw the line through both."
+          "text": "Start at the origin. Walk 3 spaces across, then climb 5 spaces up, and mark the dot. The pair reads across, then up."
         },
         {
           "kind": "watch",
-          "text": "If a student starts at (-1, 0), ask 'is -1 the x-value or the y-value when x = 0?'"
+          "text": "If a student climbs 3 first, plot both (3, 5) and (5, 3) and ask if they are the same dot."
         },
         {
           "kind": "ask",
-          "text": "Your turn: graph y = -2x + 4 — name the y-intercept and the next point."
+          "text": "Your turn: plot (4, 2) and tell me each move as you make it."
         }
       ]
     },
     {
       "skill_id": "8AF8-F2",
-      "name": "Check whether an ordered pair satisfies a linear equation",
+      "name": "Use substitution to decide whether a value makes an equation true",
       "column": "foundation",
       "parent_standard": "8.AF.8",
       "prerequisite_skill": {
         "type": "gap",
         "grade": 6,
-        "description": "Substitute the x-value and y-value of a point into an equation and decide whether the equation is true.",
-        "check_question": "Is (2, 5) a solution of y = 2x + 1? How would you check?"
+        "description": "Substitute a given number for the variable in a one-step equation and decide whether the equation becomes true.",
+        "check_question": "Does x = 4 make x + 3 = 7 true? How do you check?"
       },
-      "i_do_script": "A point's two numbers come in alphabet order -- x first, then y -- so (2, 5) means x is 2 and y is 5 before I ever touch the equation. To test if a point (x, y) fits an equation, I substitute the first number for x and the second for y, then see if the two sides are equal. Watch (2, 5) in y = 2x + 1: I put 2 in for x, so 2 times 2 plus 1 = 5, and the y is 5 — they match, so (2, 5) works. If I plug in a point and the sides do NOT match, that point is not on the line.",
+      "i_do_script": "An equation is a claim, and substituting a number tests whether the claim is true. Watch: does x = 4 make x + 3 = 7 true? I replace x with 4 and compute the left side: 4 + 3 = 7. The two sides match, so x = 4 makes it true. Now test x = 5 in the same equation: 5 + 3 = 8, but the right side says 7. The sides do not match, so x = 5 does not make it true. A value only works if both sides come out equal.",
       "canonical_error": {
-        "pattern": "Substitutes the x-value in for y (or y for x), reversing the coordinates when checking",
-        "example": "To test (2, 5) in y = 2x + 1, plugs 5 in for x: 2(5) + 1 = 11, then compares to 2, instead of using x = 2 to get 2(2) + 1 = 5",
-        "why": "In (x, y) the first number is x and the second is y. Substitute x, compute the right side, and compare it to the given y — mixing them up tests a different point."
+        "pattern": "Says a value works without computing both sides, or computes and ignores the mismatch",
+        "example": "Tests x = 5 in x + 3 = 7, gets 8, and still says yes because 5 is close",
+        "why": "True means the two sides are exactly equal after substituting. Close is not equal; if the sides differ at all, the value does not make the equation true."
       },
-      "item_template": "An ordered pair and a linear equation. Student substitutes and answers yes/no whether the point is on the line. Short response fluency bank.",
+      "item_template": "A one-step equation and a candidate value. Student substitutes, computes both sides, and answers yes or no. Short response fluency bank.",
       "sample_items": [
         {
-          "stem": "Is (2, 5) a solution of y = 2x + 1? Show the check.",
-          "answer": "Yes: 2(2) + 1 = 5, matches y = 5"
+          "stem": "Does x = 4 make x + 3 = 7 true?",
+          "answer": "Yes: 4 + 3 = 7"
         },
         {
-          "stem": "Is (1, 4) a solution of y = x + 3?",
-          "answer": "Yes: 1 + 3 = 4"
+          "stem": "Does x = 6 make 2x = 12 true?",
+          "answer": "Yes: 2 x 6 = 12"
         },
         {
-          "stem": "Is (3, 2) a solution of y = 2x - 5?",
-          "answer": "No: 2(3) - 5 = 1, not 2"
+          "stem": "Does x = 5 make x + 3 = 7 true?",
+          "answer": "No: 5 + 3 = 8, not 7"
         },
         {
-          "stem": "Is (0, 4) a solution of y = -2x + 4?",
-          "answer": "Yes: -2(0) + 4 = 4"
+          "stem": "Does x = 3 make 12 - x = 9 true?",
+          "answer": "Yes: 12 - 3 = 9"
+        },
+        {
+          "stem": "Does x = 4 make 3x = 15 true?",
+          "answer": "No: 3 x 4 = 12, not 15"
+        },
+        {
+          "stem": "Does x = 10 make x/2 = 5 true?",
+          "answer": "Yes: 10 divided by 2 is 5"
+        },
+        {
+          "stem": "Does x = 7 make x - 2 = 5 true?",
+          "answer": "Yes: 7 - 2 = 5"
+        },
+        {
+          "stem": "Does x = 2 make 8x = 18 true?",
+          "answer": "No: 8 x 2 = 16, not 18"
         }
       ],
       "redirect_script": {
-        "stop": "Which number goes in for x — the first or the second?",
-        "prompt": "The first number is x, the second is y. Put the x-value into the equation, work out the right side, and see if it equals the y-value. Point to each number and say 'x' then 'y.'",
-        "praise": "You put the x in for x and checked against the y — that's a real substitution test."
+        "stop": "What did each side come out to after you substituted?",
+        "prompt": "Replace the variable with the number, compute the side it sits in, and compare it to the other side. Yes only if the two sides are exactly equal.",
+        "praise": "You computed both sides and compared them, that is a real check."
       },
       "vocabulary": [
         {
           "term": "Substitute",
-          "definition": "Replace a variable with its number, then compute."
-        },
-        {
-          "term": "Ordered pair",
-          "definition": "Two numbers (x, y) naming a point: x first (across), y second (up)."
+          "definition": "Replace a variable with a number, then compute."
         },
         {
           "term": "Solution of an equation",
-          "definition": "A point (x, y) that makes the equation true when substituted in."
+          "definition": "A value that makes the equation true when substituted in."
         }
       ],
       "next_steps": {
-        "if_pass": "8AF8-S2",
-        "if_fail": "Review substitution (6.AF.2)."
+        "if_pass": "8AF8-B2",
+        "if_fail": "Review grade 6 equations as balance claims (a pan balance picture: both sides must weigh the same)."
       },
       "worked_example_script": [
         {
-          "kind": "ask",
-          "text": "Plot the point (4, 5): 4 across, 5 up -- the across-number comes first, just like x comes before y in the alphabet. So in (4, 5), which number is the x?",
-          "visual": {
-            "type": "coordinate_grid",
-            "x_range": [
-              0,
-              6
-            ],
-            "y_range": [
-              0,
-              6
-            ],
-            "points": [
-              {
-                "x": 4,
-                "y": 5,
-                "label": "(4, 5)"
-              }
-            ]
-          }
-        },
-        {
           "kind": "show",
-          "text": "Write 'Is (4, 5) a solution of y = x + 1?'"
+          "text": "Draw a pan balance. Write x + 3 on the left pan and 7 on the right pan."
         },
         {
           "kind": "ask",
-          "text": "What goes in for x? What is the y we compare against?"
+          "text": "If x is 4, what does the left pan weigh? Does it balance the 7?"
         },
         {
           "kind": "say",
-          "text": "x is 4: 4 + 1 = 5. The y is 5, so it matches — (4, 5) is on the line."
+          "text": "4 + 3 = 7, so the pans balance: x = 4 makes the equation true. Try x = 5: the left pan weighs 8 and tips down, so 5 does not work."
         },
         {
           "kind": "watch",
-          "text": "If a student computes 5 + 1 = 6, ask 'is 5 the x or the y? Which one do we substitute for x?'"
+          "text": "If a student says 5 works because it is close, point at the tipped balance: close does not balance."
         },
         {
           "kind": "ask",
-          "text": "Your turn: is (3, 7) a solution of y = 2x + 1?"
+          "text": "Your turn: does x = 6 make 2x = 12 true? Show both sides."
         }
       ]
     },
     {
+      "skill_id": "8AF8-B1",
+      "name": "Graph a proportional relationship and read points as rate statements",
+      "column": "looking_back",
+      "parent_standard": "8.AF.8",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Plot the line for a proportional relationship from its unit rate, and read a point (x, y) as a statement about the situation, including (1, r) as the unit rate.",
+        "check_question": "Apples cost 3 dollars per pound. What points would the cost graph pass through for 0, 1, and 2 pounds?"
+      },
+      "i_do_script": "A proportional relationship graphs as a straight line through the origin, and the unit rate tells how fast it climbs. Watch: apples cost 3 dollars per pound. Zero pounds costs 0 dollars, so the line starts at (0, 0). One pound costs 3 dollars, point (1, 3). Two pounds costs 6 dollars, point (2, 6). I plot those points, and they line up, so I draw the line through them. Every point on the line is a statement: (4, 12) says 4 pounds cost 12 dollars, and the point (1, 3) always shows the unit rate.",
+      "canonical_error": {
+        "pattern": "Plots points with the coordinates reversed, or starts the line somewhere other than the origin",
+        "example": "For 3 dollars per pound, plots (3, 1) instead of (1, 3), or starts the line at (0, 3)",
+        "why": "The across value is the input (pounds) and the up value is the output (dollars), so 1 pound at 3 dollars is (1, 3). A proportional relationship always includes (0, 0) because zero of the input costs zero."
+      },
+      "item_template": "A real-world unit rate (whole number or simple fraction). Student names points the line passes through, plots the line, or reads a point as a statement. Numeric or short response.",
+      "sample_items": [
+        {
+          "stem": "Apples cost 3 dollars per pound. Name the points for 0, 1, and 2 pounds.",
+          "answer": "(0, 0), (1, 3), (2, 6)"
+        },
+        {
+          "stem": "A bike rides 8 miles per hour. What point shows the distance after 3 hours?",
+          "answer": "(3, 24)"
+        },
+        {
+          "stem": "The point (1, 5) is on the graph of a proportional relationship. What is the unit rate?",
+          "answer": "5 per 1"
+        },
+        {
+          "stem": "Why does the graph of every proportional relationship pass through (0, 0)?",
+          "answer": "Zero of the input gives zero of the output"
+        },
+        {
+          "stem": "A graph of cost per pound passes through (2, 9). What does that point say?",
+          "answer": "2 pounds cost 9 dollars"
+        },
+        {
+          "stem": "Water fills at 4 gallons per minute. Name the points for 1, 2, and 5 minutes.",
+          "answer": "(1, 4), (2, 8), (5, 20)"
+        },
+        {
+          "stem": "A proportional graph passes through (4, 10). What is the unit rate?",
+          "answer": "2.5 per 1"
+        },
+        {
+          "stem": "Pencils cost 2 dollars each. Which point is on the cost graph: (2, 1) or (1, 2)?",
+          "answer": "(1, 2), because 1 pencil costs 2 dollars"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which axis is the input, and which is the output?",
+        "prompt": "Start at (0, 0). For each 1 across, climb by the unit rate. Then read any point as a sentence: across amount of input gives up amount of output.",
+        "praise": "You anchored at the origin and climbed by the rate, that is the line drawn right."
+      },
+      "vocabulary": [
+        {
+          "term": "Proportional relationship",
+          "definition": "A relationship where the output is always the same multiple of the input; its graph is a line through the origin."
+        },
+        {
+          "term": "Unit rate",
+          "definition": "The output for exactly 1 of the input; on the graph it is the point (1, r)."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF8-S1",
+        "if_fail": "8AF8-F1"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a grid with pounds across and dollars up. Say: apples cost 3 dollars per pound."
+        },
+        {
+          "kind": "ask",
+          "text": "What does 0 pounds cost? 1 pound? 2 pounds? Where do those points go?"
+        },
+        {
+          "kind": "say",
+          "text": "Plot (0, 0), (1, 3), and (2, 6). They line up, so draw the line through them. The point (1, 3) is the unit rate: 1 pound, 3 dollars."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student plots (3, 1), ask which axis holds pounds. Is it 3 pounds for 1 dollar, or 1 pound for 3 dollars?"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: a car goes 5 miles per minute of the ride. Name three points and sketch the line."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A proportional graph always passes through which point?",
+          "answer": "(0, 0), the origin"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Bananas cost 2 dollars per pound. What point shows the cost of 1 pound?",
+          "answer": "(1, 2)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A printer prints 6 pages per minute. Name the points for 0, 1, and 3 minutes, then sketch the line.",
+          "answer": "(0, 0), (1, 6), (3, 18); a line through the origin climbing 6 per 1"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A proportional graph passes through (1, 4). What point is directly above 5 on the across axis?",
+          "answer": "(5, 20)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A graph of miles per hour passes through (2, 12). What is the unit rate, and what point shows it?",
+          "answer": "6 miles per hour; (1, 6)"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Grapes cost 2.50 dollars per pound. What does the point (4, 10) on the cost graph say?",
+          "answer": "4 pounds cost 10 dollars"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two workers are graphed on one grid: Ana at 3 walls per day and Ben at 5 walls per day. Whose line is steeper, and where do the two lines meet?",
+          "answer": "Ben's line is steeper; both lines pass through (0, 0), so they meet only at the origin"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Milk costs 4 dollars per gallon. Jo plotted the cost graph through (0, 0) and (4, 1). Find her mistake and fix it.",
+          "shown_work": [
+            "Rate: 4 dollars per gallon",
+            "Points plotted: (0, 0) and (4, 1)",
+            "Line drawn through both"
+          ],
+          "answer": "Jo reversed the coordinates. One gallon costs 4 dollars, so the point is (1, 4), not (4, 1). The line goes through (0, 0), (1, 4), (2, 8)."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Climb by the Rate",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Grid paper",
+            "Rate cards (3 dollars per pound, 5 miles per hour, 2 pages per minute)",
+            "Counters"
+          ],
+          "instructions": "1. Each pair draws axes and labels them with the card's input and output.\n2. Place a counter at (0, 0) and say why the line starts there.\n3. Step the counter: 1 across, up by the rate. Mark a point at each step and say the sentence, like 2 pounds cost 6 dollars.\n4. Draw the line through the marks and circle (1, r) as the unit rate point.\n5. Trade grids and read three points off a partner's line as sentences."
+        },
+        {
+          "type": "matching",
+          "title": "Rate, Point, Sentence",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Card deck: rate cards, point cards, and sentence cards"
+          ],
+          "instructions": "1. Spread the cards face up.\n2. Match each rate to the point (1, r) that shows it and to a sentence one of its points makes.\n3. To claim a match, say where the line starts and how it climbs.\n4. Two decoy point cards have reversed coordinates; set them aside and explain why they are wrong.",
+          "content": {
+            "pairs": [
+              {
+                "left": "3 dollars per pound",
+                "right": "(1, 3); 2 pounds cost 6 dollars"
+              },
+              {
+                "left": "8 miles per hour",
+                "right": "(1, 8); 3 hours is 24 miles"
+              },
+              {
+                "left": "4 gallons per minute",
+                "right": "(1, 4); 5 minutes fills 20 gallons"
+              },
+              {
+                "left": "2 dollars per pencil",
+                "right": "(1, 2); 6 pencils cost 12 dollars"
+              },
+              {
+                "left": "6 pages per minute",
+                "right": "(1, 6); 4 minutes prints 24 pages"
+              },
+              {
+                "left": "5 walls per day",
+                "right": "(1, 5); 2 days is 10 walls"
+              }
+            ],
+            "decoys": [
+              "(3, 1) for 3 dollars per pound",
+              "(8, 1) for 8 miles per hour"
+            ]
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Stepping a counter 1 across and up by the rate makes the line's climb concrete before slope language appears."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Saying each point as a sentence out loud keeps the across and up values attached to their meanings, which blocks the coordinate swap."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The reversed-point error is precise and plottable, ideal for a find-and-fix."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Why does the line start at (0, 0)?",
+          "For each 1 across, how far up does the line climb?",
+          "What sentence does the point (2, 6) say in this situation?",
+          "Which point on the line shows the unit rate?",
+          "If the rate were bigger, what would change about the line?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student plots the rate point with the coordinates reversed, like (3, 1) for 3 dollars per pound.",
+            "say": "Read the axes first: pounds across, dollars up. One pound costs 3 dollars, so go 1 across and 3 up.",
+            "praise": "You matched each number to its axis, so the point tells the truth."
+          },
+          {
+            "if_you_see": "Student starts the line above the origin, at (0, r).",
+            "say": "What does zero pounds cost? Zero input gives zero output, so the line must pass through (0, 0).",
+            "praise": "You anchored the line at the origin, that is what proportional means."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A drink costs 2 dollars per bottle. Name the points for 0, 1, and 4 bottles.",
+            "look_for": "(0, 0), (1, 2), (4, 8), with the count across and the cost up."
+          },
+          {
+            "prompt": "A proportional graph passes through (3, 12). What is the unit rate?",
+            "look_for": "4 per 1, found by dividing 12 by 3; the point (1, 4)."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Apples cost 3 dollars per pound. Graph the cost and name the point for 4 pounds.",
+        "answer": "A line through (0, 0), (1, 3), (2, 6); the point for 4 pounds is (4, 12).",
+        "steps": [
+          {
+            "math": "0 pounds -> 0 dollars: (0, 0)",
+            "annotation": "Zero input gives zero output, so the line starts at the origin."
+          },
+          {
+            "math": "1 pound -> 3 dollars: (1, 3)",
+            "annotation": "The unit rate point: 1 across, 3 up."
+          },
+          {
+            "math": "2 pounds -> 6 dollars: (2, 6)",
+            "annotation": "Each step across climbs 3 more; draw the line through the points."
+          },
+          {
+            "math": "4 pounds -> 4 x 3 = 12: (4, 12)",
+            "annotation": "Read the point as a sentence: 4 pounds cost 12 dollars."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A hose fills 4 gallons per minute. Graph the amount filled and name the point for 5 minutes.",
+        "answer": "A line through (0, 0), (1, 4), (2, 8); the point for 5 minutes is (5, 20).",
+        "steps": [
+          {
+            "math": "0 minutes -> 0 gallons: (0, 0)",
+            "annotation": "The line starts at the origin.",
+            "given": true
+          },
+          {
+            "math": "1 minute -> 4 gallons: (1, 4)",
+            "annotation": "The unit rate point: 1 across, 4 up.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name one more point and draw the line.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Find the point for 5 minutes and say it as a sentence.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The line starts at (0, 0) because zero ___ gives zero ___.",
+        "The point (___ , ___) says that ___ of the input gives ___ of the output."
+      ],
+      "fluency_source": "8AF8-F1"
+    },
+    {
+      "skill_id": "8AF8-B2",
+      "name": "Solve two-step equations of the form px + q = r",
+      "column": "looking_back",
+      "parent_standard": "8.AF.8",
+      "prerequisite_skill": {
+        "type": "gap",
+        "grade": 7,
+        "description": "Solve equations like 2x + 3 = 11 by undoing the addition first and the multiplication second, then check by substitution.",
+        "check_question": "What is x if 2x + 3 = 11?"
+      },
+      "i_do_script": "A two-step equation wraps x in two operations, and I unwrap them in reverse order. Watch 2x + 3 = 11: the x was multiplied by 2, then 3 was added. I undo the addition first: subtract 3 from both sides, leaving 2x = 8. Then I undo the multiplication: divide both sides by 2, so x = 4. Last, I check by substitution: 2 times 4 plus 3 is 11, so x = 4 is right. Both sides get the same move every time, or the balance breaks.",
+      "canonical_error": {
+        "pattern": "Divides before subtracting, or applies a move to only one side",
+        "example": "For 2x + 3 = 11, divides only 11 by 2 to get x + 3 = 5.5, or subtracts 3 from the left side only",
+        "why": "The equation is a balance: every move must hit both full sides. Undo in reverse order, the added number first, then the multiplier, and the check by substitution catches any slip."
+      },
+      "item_template": "An equation px + q = r with integer p, q and a clean solution. Student solves for x and checks by substitution. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "Solve: 2x + 3 = 11",
+          "answer": "x = 4"
+        },
+        {
+          "stem": "Solve: 3x - 5 = 10",
+          "answer": "x = 5"
+        },
+        {
+          "stem": "Solve: 4x + 1 = 9",
+          "answer": "x = 2"
+        },
+        {
+          "stem": "Solve: 5x - 2 = 18",
+          "answer": "x = 4"
+        },
+        {
+          "stem": "Solve: 2x + 7 = 7",
+          "answer": "x = 0"
+        },
+        {
+          "stem": "Solve: 6x + 4 = 22",
+          "answer": "x = 3"
+        },
+        {
+          "stem": "Solve: 3x + 2 = 20",
+          "answer": "x = 6"
+        },
+        {
+          "stem": "Solve: 4x - 6 = 10",
+          "answer": "x = 4"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which operation do you undo first, and did both sides get the move?",
+        "prompt": "Undo the added or subtracted number first, on both sides. Then divide both sides by the multiplier. Finish by substituting your answer back in.",
+        "praise": "You undid in reverse order and kept both sides balanced, that is the whole method."
+      },
+      "vocabulary": [
+        {
+          "term": "Inverse operation",
+          "definition": "The operation that undoes another: subtraction undoes addition, division undoes multiplication."
+        },
+        {
+          "term": "Balance",
+          "definition": "An equation stays true only when every move is made to both full sides."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "8AF8-S2",
+        "if_fail": "8AF8-F2"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a pan balance: two x-bags and 3 unit chips on the left pan, 11 chips on the right. Write 2x + 3 = 11 underneath."
+        },
+        {
+          "kind": "ask",
+          "text": "What can we remove from BOTH pans without tipping the balance?"
+        },
+        {
+          "kind": "say",
+          "text": "Take 3 chips off each pan: 2x = 8. Two bags weigh 8, so split both pans in half: one bag weighs 4. x = 4, and the check 2(4) + 3 = 11 confirms it."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student divides 11 by 2 first, point at the pans: the 3 chips are still sitting there, so the bags do not own the whole 11."
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: solve 3x + 2 = 14 and check your answer."
+        }
+      ],
+      "engine_stems": [],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Solve: x + 5 = 12",
+          "answer": "x = 7"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Solve: 3x = 15",
+          "answer": "x = 5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve: 2x + 3 = 15",
+          "answer": "x = 6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve: 4x - 7 = 13",
+          "answer": "x = 5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve: 5x + 2 = 32",
+          "answer": "x = 6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Solve 3x - 4 = 11, then check your answer by substitution.",
+          "answer": "x = 5; check: 3(5) - 4 = 11"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Solve: 7 = 2x - 5",
+          "answer": "x = 6"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Sam solved 2x + 6 = 14. Find his mistake and fix it.",
+          "shown_work": [
+            "2x + 6 = 14",
+            "x + 6 = 7",
+            "x = 1"
+          ],
+          "answer": "Sam divided by 2 before removing the 6, and he only divided part of the left side. Subtract 6 first: 2x = 8, so x = 4. Check: 2(4) + 6 = 14."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Bags and Chips Balance",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper bags or cups labeled x",
+            "Counters or chips",
+            "A drawn pan balance mat"
+          ],
+          "instructions": "1. Build 2x + 3 = 11: two bags and 3 chips on the left mat, 11 chips on the right.\n2. Remove 3 chips from EACH side and say why the balance holds.\n3. Split both sides into two equal groups: one bag matches 4 chips, so x = 4.\n4. Check by refilling: put 4 chips in each bag and count the left side to 11.\n5. Repeat with 3x + 2 = 14 and 4x - 1 = 11, always saying: same move, both sides."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Whose Balance Broke?",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Worked-solution slips, half correct and half with one bad move"
+          ],
+          "instructions": "1. Deal the slips face down.\n2. Flip one at a time: decide whether every move hit both sides and came in the right order.\n3. For each broken slip, name the bad move (divided too early, or one side only) and fix it.\n4. Verify each fix by substituting the answer back into the original equation.",
+          "content": {
+            "worked_problem": "2x + 6 = 14 solved as x + 6 = 7, x = 1",
+            "error_step": "Divided the 2x by 2 without dividing the whole left side and the right side properly, before removing the 6",
+            "why": "Dividing must hit both full sides, and the added 6 has to come off first: 2x = 8, x = 4."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Bags and chips on a balance make undo-in-reverse-order visible before it becomes a rule."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud, what happened to x and what undoes it, makes the order of moves audible and checkable."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Dividing too early is a stable error; finding and fixing it in shown work confronts it directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What two things happened to x in this equation?",
+          "Which operation do you undo first, and why that one?",
+          "Did both sides get the same move?",
+          "How can you prove your answer is right without asking me?",
+          "What would go wrong if you divided before subtracting?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student divides by the coefficient before removing the added number.",
+            "say": "Look at the balance: the extra chips are still on the pan, so the bags do not own the whole total. Take the chips off both sides first.",
+            "praise": "You cleared the added number first, so the divide came out clean."
+          },
+          {
+            "if_you_see": "Student applies a move to one side only.",
+            "say": "An equation is a balance. If you take 3 off the left, the right tips unless you take 3 off it too. Same move, both sides.",
+            "praise": "You kept both sides matched, so the equation stayed true."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Solve 2x + 5 = 13.",
+            "look_for": "x = 4, subtracting 5 first. An answer of 6.5 or 9 means the student divided early or moved one side only."
+          },
+          {
+            "prompt": "Is x = 3 the solution of 4x - 2 = 10?",
+            "look_for": "Yes, checked by substitution: 4(3) - 2 = 10."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Solve 2x + 3 = 11.",
+        "answer": "x = 4",
+        "steps": [
+          {
+            "math": "2x + 3 = 11",
+            "annotation": "x was multiplied by 2, then 3 was added; undo in reverse order."
+          },
+          {
+            "math": "2x = 8",
+            "annotation": "Subtract 3 from both sides."
+          },
+          {
+            "math": "x = 4",
+            "annotation": "Divide both sides by 2."
+          },
+          {
+            "math": "check: 2(4) + 3 = 11",
+            "annotation": "Substitute back; both sides match, so x = 4 is correct."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Solve 3x - 4 = 11.",
+        "answer": "x = 5",
+        "steps": [
+          {
+            "math": "3x - 4 = 11",
+            "annotation": "x was multiplied by 3, then 4 was subtracted; undo in reverse order.",
+            "given": true
+          },
+          {
+            "math": "3x = 15",
+            "annotation": "Add 4 to both sides.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Divide both sides by 3.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check by substituting your answer back in.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "First I undo the ___ by ___ on both sides.",
+        "I know x = ___ is right because substituting it gives ___ on both sides."
+      ],
+      "fluency_source": "8AF8-F2"
+    },
+    {
       "skill_id": "8AF8-S1",
       "name": "Determine the number of solutions of a system from its graph",
-      "column": "looking_back",
+      "column": "on_grade",
       "parent_standard": "8.AF.8",
       "engine_stems": [
         1
@@ -1303,7 +1850,7 @@
           }
         ]
       },
-      "fluency_source": "8AF8-F2",
+      "fluency_source": "8AF8-F1",
       "sentence_starters": [
         "The lines cross at ___ across and ___ up, so the solution is (___, ___).",
         "My best estimate for the crossing is about (___, ___)."
@@ -2327,8 +2874,8 @@
   ],
   "skill_columns": {
     "foundation": {
-      "label": "Foundation (Tier III)",
-      "description": "Pre-grade-level prerequisites — fix these first.",
+      "label": "Foundation (Tier 3)",
+      "description": "Well below grade level (grades 4-6) prerequisite skills. Start intervention here.",
       "skills": [
         "8AF8-F1",
         "8AF8-F2"
@@ -2336,15 +2883,17 @@
     },
     "looking_back": {
       "label": "Looking Back",
-      "description": "Skills the student should have but may need re-teaching.",
+      "description": "One grade below (grade 7) skills that feed this standard directly.",
       "skills": [
-        "8AF8-S1"
+        "8AF8-B1",
+        "8AF8-B2"
       ]
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "The standard's actual grade-level expectations.",
+      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
       "skills": [
+        "8AF8-S1",
         "8AF8-S2",
         "8AF8-S3",
         "8AF8-S4",
@@ -2353,7 +2902,7 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Bridge to the next standard.",
+      "description": "Above-proficiency work and bridges to later standards.",
       "skills": [
         "8AF8-S6"
       ]
@@ -2362,6 +2911,8 @@
   "skill_sequence": [
     "8AF8-F1",
     "8AF8-F2",
+    "8AF8-B1",
+    "8AF8-B2",
     "8AF8-S1",
     "8AF8-S2",
     "8AF8-S3",
@@ -2372,15 +2923,21 @@
   "skill_tree": {
     "8AF8-F1": [],
     "8AF8-F2": [],
-    "8AF8-S1": [
+    "8AF8-B1": [
       "8AF8-F1"
     ],
-    "8AF8-S2": [
+    "8AF8-B2": [
       "8AF8-F2"
+    ],
+    "8AF8-S1": [
+      "8AF8-B1"
+    ],
+    "8AF8-S2": [
+      "8AF8-B2"
     ],
     "8AF8-S3": [
       "8AF8-S1",
-      "8AF8-F1"
+      "8AF8-B1"
     ],
     "8AF8-S4": [
       "8AF8-S3",
@@ -2395,19 +2952,22 @@
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S3 (read or approximate the solution from a given graph) -- the Approaching-band core and where the coordinate-swap error lives. If they pass, move up through S4 (graph a system yourself) and S5 (determine and confirm the solution from equations). If they fail, drop to S1 (determine the number of solutions from a graph) and, if needed, F1 (graph a line). S2 (verify a point in both equations) and S6 (interpret a real-world system) branch off as the verification and application checks.",
-    "entry_skill": "8AF8-S3",
+    "description": "Start with S4, graphing a system from y = mx + b form and naming the intersection, the At-proficiency core. If they pass, move up to S5 (determine and confirm the solution from equations) and S6 (interpret a real-world system). If they fail, drop below grade level: B1 checks graphing a proportional relationship as a line through the origin, and B2 checks solving two-step equations, the two grade 7 skills that graphing and verifying systems lean on. If those wobble, the foundations F1 (plotting points) and F2 (substitution as a truth test) locate the gap in grades 5 and 6. S1, S2, and S3 remain available to probe counting solutions, checking a point in both equations, and reading an intersection off a given graph.",
+    "entry_skill": "8AF8-S4",
     "if_pass": [
-      "8AF8-S4",
-      "8AF8-S5"
+      "8AF8-S5",
+      "8AF8-S6"
     ],
     "if_fail": [
-      "8AF8-S1",
-      "8AF8-F1"
+      "8AF8-B1",
+      "8AF8-B2"
     ],
     "branch_skills": [
+      "8AF8-F1",
+      "8AF8-F2",
+      "8AF8-S1",
       "8AF8-S2",
-      "8AF8-S6"
+      "8AF8-S3"
     ]
   }
 }
