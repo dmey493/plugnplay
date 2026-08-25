@@ -473,4 +473,196 @@ body.project-mode {
   body.printing-sheet .print-sheet table {
     break-inside: avoid;
   }
+
+  /* ── Lesson planner: the one-page plan ────────────────────────────────
+     The planner UI is marked `.no-print` (hidden by the universal rule at
+     the top of this block); `.plan-print-sheet` is the inverse — hidden on
+     screen, revealed here. Plain black on white: an administrator's copy
+     and a binder page, not a brand artifact. */
+  .plan-print-sheet {
+    display: block !important;
+    color: #000;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+}
+
+/* Screen-side half of the pair above. Kept OUT of the print block so the
+   sheet is never visible in the app itself. */
+.plan-print-sheet {
+  display: none;
+}
+
+.plan-sheet-head {
+  border-bottom: 2pt solid #000;
+  padding-bottom: 5pt;
+  margin-bottom: 10pt;
+}
+
+/* Week print: one section per day. Each day tries to stay whole on a page;
+   a day longer than a page still breaks rather than being clipped. */
+.plan-sheet-day {
+  break-inside: avoid;
+  margin-bottom: 16pt;
+}
+
+.plan-sheet-day + .plan-sheet-day {
+  border-top: 0.5pt solid #999;
+  padding-top: 12pt;
+}
+
+.plan-sheet-week-head {
+  margin-bottom: 12pt;
+}
+
+/* Unit heading in the course contents print. */
+.plan-sheet-unit {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 13pt;
+  font-weight: 800;
+  margin: 10pt 0 2pt;
+}
+
+/* The all-preps week grid: five day columns plus a course column. */
+.plan-sheet-week {
+  table-layout: fixed;
+}
+
+.plan-sheet-week th,
+.plan-sheet-week td {
+  border: 0.5pt solid #999;
+  padding: 4pt;
+  vertical-align: top;
+  font-size: 9pt;
+}
+
+.plan-sheet-week thead th {
+  border-bottom: 1pt solid #000;
+  background: #f2f2f2;
+}
+
+.plan-sheet-col-course {
+  width: 78pt;
+  font-weight: 700;
+  text-align: left;
+}
+
+.plan-sheet-title {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 19pt;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.plan-sheet-meta {
+  font-size: 10pt;
+  margin: 3pt 0 0;
+}
+
+.plan-sheet-field {
+  display: block;
+  margin-bottom: 8pt;
+  break-inside: avoid;
+}
+
+.plan-sheet-field-label {
+  display: block;
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.plan-sheet-field-value {
+  display: block;
+  font-size: 11pt;
+  white-space: pre-wrap;
+}
+
+.plan-sheet-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10pt 0;
+}
+
+.plan-sheet-table th {
+  border-bottom: 1pt solid #000;
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0 6pt 3pt 0;
+}
+
+.plan-sheet-table td {
+  border-bottom: 0.5pt solid #999;
+  padding: 5pt 6pt 5pt 0;
+  vertical-align: top;
+  break-inside: avoid;
+}
+
+.plan-sheet-table tfoot td {
+  border-bottom: none;
+  border-top: 1pt solid #000;
+  font-size: 10pt;
+  padding-top: 5pt;
+}
+
+.plan-sheet-col-time {
+  width: 62pt;
+  white-space: nowrap;
+}
+
+.plan-sheet-col-kind {
+  width: 76pt;
+  font-size: 9.5pt;
+}
+
+/* Minute the segment begins, as a running clock down the page. */
+.plan-sheet-start {
+  display: block;
+  font-size: 8pt;
+  color: #555;
+}
+
+.plan-sheet-activity {
+  display: block;
+  font-weight: 600;
+}
+
+.plan-sheet-std {
+  display: block;
+  font-size: 9pt;
+  color: #333;
+}
+
+.plan-sheet-note {
+  display: block;
+  font-size: 9.5pt;
+  font-style: italic;
+  white-space: pre-wrap;
+}
+
+.plan-sheet-empty {
+  color: #666;
+  font-style: italic;
+}
+
+.plan-sheet-reflection {
+  margin-top: 12pt;
+  break-inside: avoid;
+}
+
+.plan-sheet-rule {
+  display: block;
+  border-bottom: 0.5pt solid #999;
+  height: 16pt;
+}
+
+.plan-sheet-footer {
+  margin-top: 12pt;
+  font-size: 8pt;
+  color: #666;
 }

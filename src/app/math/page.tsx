@@ -40,6 +40,23 @@ const RESOURCES: TileEntry[] = [
     ),
   },
   {
+    // Parked while the planner is still being built out. It lives at
+    // /planner (subject-neutral) and is still reachable from the header nav.
+    hidden: true,
+    title: "Lesson planner",
+    description:
+      "Build a course, break it into units, and block out each period minute by minute. Schedule every prep across the week, then print it on one page.",
+    href: "/planner",
+    color: "#3f42d9",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="4" width="18" height="17" rx="2" />
+        <path d="M3 9h18M8 2v4M16 2v4" />
+        <path d="M7 13h6M7 17h4" />
+      </svg>
+    ),
+  },
+  {
     title: "Problem generator",
     description:
       "Standards-aligned exit tickets, tiered Mild/Medium/Spicy sets, and proficiency checks. Review and swap each question before printing.",
@@ -70,7 +87,7 @@ const RESOURCES: TileEntry[] = [
   {
     title: "Skill intervention",
     description:
-      "Tier 2 intervention built as a learning progression per standard — practice, activities, teacher moves, diagnostics, and printable packets.",
+      "Tier 2 intervention built as a learning progression per standard — click a skill for its worksheet, plus diagnostics and progress checks.",
     href: "/math/intervention",
     color: "#f97316",
     icon: (

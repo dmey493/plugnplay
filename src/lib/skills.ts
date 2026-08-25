@@ -297,8 +297,10 @@ export function findSkillById(skillId: string): FoundSkill | null {
 
 // ── Display metadata ────────────────────────────────────────────────────
 
-/** The four rendered buckets, in order. Foundation now renders first —
- *  tier-2 intervention works primarily out of Foundation + Looking Back. */
+/** The four buckets in progression order, weakest prerequisite first.
+ *  This is the canonical DATA order; the intervention page arranges them
+ *  differently on screen (On Grade leads, Foundation closes) because
+ *  reading priority and progression order are not the same thing. */
 export const BUCKET_ORDER = [
   "foundation",
   "looking_back",

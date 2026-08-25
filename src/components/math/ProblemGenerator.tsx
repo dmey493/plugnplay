@@ -6,6 +6,7 @@ import Button from "@/components/ui/Button";
 import ReviewPanel from "./ReviewPanel";
 import StandardPicker from "./StandardPicker";
 import type { LessonNav } from "@/lib/lessons";
+import type { CheckpointNav } from "@/lib/checkpoints";
 
 type Mode = "exit_ticket" | "mms" | "proficiency" | null;
 
@@ -67,7 +68,13 @@ const MODES = [
   },
 ];
 
-export default function ProblemGenerator({ lessonNav }: { lessonNav: LessonNav }) {
+export default function ProblemGenerator({
+  lessonNav,
+  checkpointNav,
+}: {
+  lessonNav: LessonNav;
+  checkpointNav?: CheckpointNav;
+}) {
   const searchParams = useSearchParams();
 
   const [grade, setGrade] = useState<number>(6);
@@ -251,6 +258,7 @@ export default function ProblemGenerator({ lessonNav }: { lessonNav: LessonNav }
           onGradeChange={handleGradeChange}
           onStandardChange={handleStandardChange}
           lessonNav={lessonNav}
+          checkpointNav={checkpointNav}
         />
       </div>
 

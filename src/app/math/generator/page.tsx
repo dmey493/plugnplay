@@ -4,6 +4,7 @@ import Container from "@/components/layout/Container";
 import PageBanner from "@/components/ui/PageBanner";
 import ProblemGenerator from "@/components/math/ProblemGenerator";
 import { getLessonNav } from "@/lib/lessons";
+import { getCheckpointNav } from "@/lib/checkpoints";
 
 export const metadata: Metadata = {
   title: "Problem Generator | Math | Plug N Play",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 
 export default async function GeneratorPage() {
   const lessonNav = await getLessonNav();
+  const checkpointNav = await getCheckpointNav();
   return (
     <>
       <PageBanner
@@ -28,7 +30,7 @@ export default async function GeneratorPage() {
       <section className="bg-pnp-gray-50 py-10 md:py-14">
         <Container>
           <Suspense fallback={<div className="min-h-[60vh]" />}>
-            <ProblemGenerator lessonNav={lessonNav} />
+            <ProblemGenerator lessonNav={lessonNav} checkpointNav={checkpointNav} />
           </Suspense>
         </Container>
       </section>

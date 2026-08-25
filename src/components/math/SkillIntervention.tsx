@@ -3,16 +3,17 @@
 import { useState, useRef, useEffect } from "react";
 import {
   AVAILABLE_STANDARDS,
-  BUCKET_ORDER,
   COLUMN_META,
   isPacketReady,
   isV2,
   progressionIndex,
   progressionStep,
   type Skill,
+  type SkillColumn,
   type SkillData,
 } from "@/lib/skills";
 import type { LessonNav } from "@/lib/lessons";
+import type { CheckpointNav } from "@/lib/checkpoints";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Tag from "@/components/ui/Tag";
@@ -24,17 +25,69 @@ import StandardPicker from "./StandardPicker";
  * SkillIntervention — the Tier 2 progression view.
  *
  * A standard is presented as a logical learning progression (v2 data):
- * numbered steps flowing through the three buckets Looking Back → On
- * Grade → Looking Forward. Foundation skills stay in the data (and in
- * the diagnostic) but are intentionally not rendered here yet.
+ * numbered steps flowing through the buckets Looking Back → On Grade →
+ * Looking Forward, with Foundation holding the far-below prerequisites.
+ *
+ * Layout follows what a teacher should read first, not the progression's
+ * chronological order: On Grade leads at full width, the two adjacent
+ * grades sit side by side under it, and Foundation runs last. Four equal
+ * columns made Foundation look like the starting point, which is the
+ * wrong emphasis for a grade-level class.
  */
 
-function ProjectorIcon({ size = 13 }: { size?: number }) {
+/**
+ * One bucket and its skills.
+ *
+ * `gridClass` controls how the skills lay out inside the card: the
+ * full-width buckets run them across the page, the paired ones keep to
+ * two. Everything else about a bucket is identical wherever it sits.
+ */
+function BucketCard({
+  col,
+  data,
+  gridClass,
+  highlightedSkillIds,
+  lessonActive,
+}: {
+  col: SkillColumn;
+  data: SkillData;
+  gridClass: string;
+  highlightedSkillIds: Set<string>;
+  lessonActive: boolean;
+}) {
+  const colConfig = data.skill_columns[col];
+  if (!colConfig) return null;
+
+  const meta = COLUMN_META[col];
+  const colSkills = data.skills.filter((s) => s.column === col);
+
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="2" y="4" width="20" height="13" rx="2" />
-      <path d="M8 21h8M12 17v4" />
-    </svg>
+    <Card accent={meta.accent} className="p-4 pt-5">
+      <div className="mb-4 border-b border-pnp-gray-100 pb-3">
+        <h3 className="font-heading text-base font-extrabold text-pnp-navy">
+          {colConfig.label}
+        </h3>
+        <p className="mt-0.5 text-xs text-pnp-gray-500">{colConfig.description}</p>
+      </div>
+
+      <div className={`grid items-start gap-3 ${gridClass}`}>
+        {colSkills.map((skill) => (
+          <SkillCard
+            key={skill.skill_id}
+            skill={skill}
+            data={data}
+            highlighted={highlightedSkillIds.has(skill.skill_id)}
+            dimmed={lessonActive && !highlightedSkillIds.has(skill.skill_id)}
+          />
+        ))}
+      </div>
+
+      {colSkills.length === 0 && (
+        <p className="py-4 text-center text-xs text-pnp-gray-500">
+          No skills in this category
+        </p>
+      )}
+    </Card>
   );
 }
 
@@ -61,110 +114,84 @@ function SkillCard({
   // sample-item preview (sample_items[0] is typically the I-Do item).
   const previewItem = skill.sample_items?.[1] ?? skill.sample_items?.[0];
 
-  const counts = v2
-    ? [
-        `${skill.practice_problems?.length ?? 0} problems`,
-        `${skill.activities?.length ?? 0} activities`,
-        `${skill.strategy_links?.length ?? 0} strategies`,
-      ].join(" · ")
-    : null;
-
   return (
     <>
-      <div
-        className={`rounded-lg bg-white p-4 transition-opacity ${
+      {/* The whole card is the button: one skill, one action — generate its
+          worksheet. Activities, the detail page, and projection are off. */}
+      <button
+        type="button"
+        onClick={() => ready && setShowModal(true)}
+        disabled={!ready}
+        title={
+          ready
+            ? `Generate the worksheet for ${skill.name}`
+            : "Not enough authored items or engine mapping for this skill yet"
+        }
+        className={`w-full rounded-lg bg-white p-4 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pnp-accent focus-visible:ring-offset-2 ${
           highlighted
             ? "border-2 border-pnp-accent pnp-lesson-flash"
             : "border border-pnp-gray-200"
-        } ${dimmed ? "opacity-50" : ""}`}
+        } ${dimmed ? "opacity-50" : ""} ${
+          ready
+            ? "cursor-pointer hover:border-pnp-accent hover:shadow-md"
+            : "cursor-not-allowed"
+        }`}
       >
         {highlighted && (
           <span className="mb-2 inline-flex items-center rounded-md bg-pnp-accent px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white">
             This lesson
           </span>
         )}
-        <div className="flex items-start gap-3">
+        {/* Spans, not divs/headings: a button may only contain phrasing
+            content, so every block here is a span set to flex/block. */}
+        <span className="flex items-start gap-3">
           {stepNumber !== null && (
-            <div
+            <span
               className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
               style={{ backgroundColor: accent }}
               aria-label={`Step ${stepNumber}`}
             >
               {stepNumber}
-            </div>
+            </span>
           )}
-          <div className="min-w-0 flex-1">
-            <h4 className="font-heading text-sm font-bold leading-snug text-pnp-navy">
+          <span className="min-w-0 flex-1">
+            <span className="block font-heading text-sm font-bold leading-snug text-pnp-navy">
               {skill.name}
-            </h4>
+            </span>
 
             {v2 && step ? (
-              <p className="mt-1.5 text-xs leading-relaxed text-pnp-gray-600">
+              <span className="mt-1.5 block text-xs leading-relaxed text-pnp-gray-600">
                 {step.rationale}
-              </p>
+              </span>
             ) : (
               previewItem && (
-                <div className="mt-2 whitespace-pre-wrap break-words rounded bg-pnp-gray-50 px-3 py-2 text-xs italic text-pnp-gray-600">
+                <span className="mt-2 block whitespace-pre-wrap break-words rounded bg-pnp-gray-50 px-3 py-2 text-xs italic text-pnp-gray-600">
                   {previewItem.stem}
-                </div>
+                </span>
               )
             )}
 
-            {counts && (
-              <p className="mt-2 text-xs font-semibold text-pnp-gray-500">{counts}</p>
-            )}
-
-            <div className="mt-3 flex flex-wrap items-center justify-end gap-2">
-              {v2 && (skill.activities?.length ?? 0) > 0 && (
-                <Button
-                  href={`/math/intervention/${skill.skill_id}?tab=Activities`}
-                  tier="tertiary"
-                  size="small"
-                  title="Jump straight to this skill's activities, with printable materials"
-                >
-                  {`Activities · ${skill.activities?.length}`}
-                </Button>
-              )}
-              {v2 && (
-                <Button
-                  href={`/math/intervention/${skill.skill_id}`}
-                  tier="tertiary"
-                  size="small"
-                  trailingIcon={
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  }
-                >
-                  Open
-                </Button>
-              )}
+            <span className="mt-3 flex items-center justify-end gap-1.5 text-xs font-bold text-pnp-navy">
+              {ready ? "Generate worksheet" : "Coming soon"}
               {ready && (
-                <Button
-                  href={`/math/intervention/${skill.skill_id}/project`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  tier="secondary"
-                  size="small"
-                  icon={<ProjectorIcon />}
-                  title="Project problems and digital activity for whole-class display"
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
                 >
-                  Project
-                </Button>
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
               )}
-              <Button
-                tier="secondary"
-                size="small"
-                onClick={() => ready && setShowModal(true)}
-                disabled={!ready}
-                title={ready ? "Generate skill packet PDF" : "Not enough authored items or engine mapping for this skill yet"}
-              >
-                {ready ? "Generate" : "Coming soon"}
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
+            </span>
+          </span>
+        </span>
+      </button>
 
       {showModal && (
         <SkillPacketModal
@@ -210,7 +237,13 @@ function lessonsForStandard(
   return out;
 }
 
-export default function SkillIntervention({ lessonNav }: { lessonNav: LessonNav }) {
+export default function SkillIntervention({
+  lessonNav,
+  checkpointNav,
+}: {
+  lessonNav: LessonNav;
+  checkpointNav?: CheckpointNav;
+}) {
   const [grade, setGrade] = useState<number>(6);
   const [standard, setStandard] = useState<string>("");
   const [diagnosticOpen, setDiagnosticOpen] = useState(false);
@@ -265,6 +298,7 @@ export default function SkillIntervention({ lessonNav }: { lessonNav: LessonNav 
           onGradeChange={handleGrade}
           onStandardChange={handleStandardChange}
           lessonNav={lessonNav}
+          checkpointNav={checkpointNav}
           isEnabled={(code) => code in AVAILABLE_STANDARDS}
         />
       </Card>
@@ -338,43 +372,43 @@ export default function SkillIntervention({ lessonNav }: { lessonNav: LessonNav 
             </p>
           </div>
 
-          {/* Four buckets: Foundation / Looking Back / On Grade / Looking Forward */}
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {BUCKET_ORDER.map((col) => {
-              const colConfig = selectedSkillData.skill_columns[col];
-              if (!colConfig) return null;
-              const meta = COLUMN_META[col];
-              const colSkills = selectedSkillData.skills.filter((s) => s.column === col);
+          {/* On Grade leads, full width, its skills running across. The two
+              adjacent grades pair up beneath it, and Foundation closes the
+              page so far-below prerequisites read as a fallback rather than
+              the starting point. */}
+          <div className="space-y-6">
+            <BucketCard
+              col="on_grade"
+              data={selectedSkillData}
+              gridClass="sm:grid-cols-2 xl:grid-cols-3"
+              highlightedSkillIds={highlightedSkillIds}
+              lessonActive={lessonActive}
+            />
 
-              return (
-                <Card key={col} accent={meta.accent} className="p-4 pt-5">
-                  <div className="mb-4 border-b border-pnp-gray-100 pb-3">
-                    <h3 className="font-heading text-base font-extrabold text-pnp-navy">
-                      {colConfig.label}
-                    </h3>
-                    <p className="mt-0.5 text-xs text-pnp-gray-500">{colConfig.description}</p>
-                  </div>
+            <div className="grid gap-6 lg:grid-cols-2">
+              <BucketCard
+                col="looking_back"
+                data={selectedSkillData}
+                gridClass="sm:grid-cols-2"
+                highlightedSkillIds={highlightedSkillIds}
+                lessonActive={lessonActive}
+              />
+              <BucketCard
+                col="looking_forward"
+                data={selectedSkillData}
+                gridClass="sm:grid-cols-2"
+                highlightedSkillIds={highlightedSkillIds}
+                lessonActive={lessonActive}
+              />
+            </div>
 
-                  <div className="space-y-3">
-                    {colSkills.map((skill) => (
-                      <SkillCard
-                        key={skill.skill_id}
-                        skill={skill}
-                        data={selectedSkillData}
-                        highlighted={highlightedSkillIds.has(skill.skill_id)}
-                        dimmed={lessonActive && !highlightedSkillIds.has(skill.skill_id)}
-                      />
-                    ))}
-                  </div>
-
-                  {colSkills.length === 0 && (
-                    <p className="py-4 text-center text-xs text-pnp-gray-500">
-                      No skills in this category
-                    </p>
-                  )}
-                </Card>
-              );
-            })}
+            <BucketCard
+              col="foundation"
+              data={selectedSkillData}
+              gridClass="sm:grid-cols-2 xl:grid-cols-4"
+              highlightedSkillIds={highlightedSkillIds}
+              lessonActive={lessonActive}
+            />
           </div>
         </div>
       )}

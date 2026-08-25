@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { getStandardsByDomain } from "@/lib/standards";
 import type { LessonNav } from "@/lib/lessons";
+import type { CheckpointNav } from "@/lib/checkpoints";
 import Button from "@/components/ui/Button";
 import Tag from "@/components/ui/Tag";
 
@@ -10,12 +11,15 @@ import Tag from "@/components/ui/Tag";
  * StandardPicker — the shared "pick a standard" control used by both the
  * Problem Generator and the Skill Intervention page.
  *
- * Two lenses on the same set of standards:
+ * Three lenses on the same set of standards:
  *   - By strand: standards grouped under their domain (AF / NS / GM / DSP),
  *     shown as a scannable board of chips instead of a long dropdown.
  *   - By lesson: the teacher's textbook modules → lessons; picking a lesson
  *     selects the standard that lesson teaches. Easier to find for teachers
  *     who think in lesson numbers ("1-3 Scientific Notation") not codes.
+ *   - By checkpoint: the district's "Ready for iLearn" windows and the
+ *     standards each one assesses, taken from the scope and sequence. This
+ *     is the lens for "what do I need to have taught by Checkpoint 2".
  *
  * Once a standard is chosen the board COLLAPSES to a one-line summary with a
  * "Change" button, so the long list doesn't push the page's next step way
@@ -28,6 +32,14 @@ import Tag from "@/components/ui/Tag";
 
 const GRADES = [6, 7, 8] as const;
 
+const MODES = ["strand", "lesson", "checkpoint"] as const;
+
+const MODE_LABEL: Record<(typeof MODES)[number], string> = {
+  strand: "By strand",
+  lesson: "By lesson",
+  checkpoint: "By checkpoint",
+};
+
 interface Props {
   grade: number;
   standard: string;
@@ -36,6 +48,10 @@ interface Props {
    *  view, so the caller can highlight that specific lesson. */
   onStandardChange: (code: string, lessonLabel?: string) => void;
   lessonNav: LessonNav;
+  /** Checkpoint windows per grade. Grades without a published scope and
+   *  sequence are absent, and the checkpoint lens says so rather than
+   *  inventing a mapping. Omit to hide the lens entirely. */
+  checkpointNav?: CheckpointNav;
   /** When present, standards for which this returns false are shown disabled. */
   isEnabled?: (code: string) => boolean;
   /** Suffix shown on disabled entries. */
@@ -67,10 +83,11 @@ export default function StandardPicker({
   onGradeChange,
   onStandardChange,
   lessonNav,
+  checkpointNav,
   isEnabled,
   disabledNote = "coming soon",
 }: Props) {
-  const [mode, setMode] = useState<"strand" | "lesson">("strand");
+  const [mode, setMode] = useState<"strand" | "lesson" | "checkpoint">("strand");
   // Single-open accordion for by-lesson. null = "first module open by
   // default"; a non-matching sentinel = "all collapsed".
   const [openModuleId, setOpenModuleId] = useState<string | null>(null);
@@ -79,6 +96,17 @@ export default function StandardPicker({
 
   const enabled = (code: string) => (isEnabled ? isEnabled(code) : true);
   const domainGroups = getStandardsByDomain(grade);
+  const byCode = new Map(
+    Object.values(domainGroups).flat().map((st) => [st.code, st])
+  );
+  const gradeCheckpoints = checkpointNav?.[grade];
+  // Standards the framework assesses only on the summative appear under no
+  // checkpoint heading, so they get their own group rather than vanishing.
+  const summativeOnlyCodes = gradeCheckpoints
+    ? Object.values(gradeCheckpoints.standards)
+        .filter((st) => st.checkpoints.length === 0)
+        .map((st) => st.code)
+    : [];
   const modules = lessonNav[grade] ?? [];
   const activeOpenId = openModuleId ?? modules[0]?.id ?? null;
 
@@ -143,7 +171,7 @@ export default function StandardPicker({
                 aria-label="Choose how to find a standard"
                 className="inline-flex items-center gap-1 rounded-lg border border-pnp-gray-200 bg-white p-1"
               >
-                {(["strand", "lesson"] as const).map((m) => {
+                {MODES.filter((m) => m !== "checkpoint" || checkpointNav).map((m) => {
                   const active = mode === m;
                   return (
                     <button
@@ -158,7 +186,7 @@ export default function StandardPicker({
                           : "text-pnp-gray-700 hover:bg-pnp-gray-100"
                       }`}
                     >
-                      {m === "strand" ? "By strand" : "By lesson"}
+                      {MODE_LABEL[m]}
                     </button>
                   );
                 })}
@@ -166,7 +194,155 @@ export default function StandardPicker({
             </div>
 
             <div className="mt-4">
-              {mode === "strand" ? (
+              {mode === "checkpoint" ? (
+                !gradeCheckpoints ? (
+                  <p className="rounded-md border-2 border-dashed border-pnp-gray-200 px-4 py-6 text-center text-sm text-pnp-gray-500">
+                    No checkpoint map for grade {grade} yet — it comes from the
+                    district scope and sequence, and grade {grade} does not have
+                    one on file. Try{" "}
+                    <span className="font-semibold">By strand</span>.
+                  </p>
+                ) : (
+                  <div className="space-y-6">
+                    {gradeCheckpoints.checkpoints.map((cp) => (
+                      <div key={cp.id}>
+                        <div className="mb-2 flex flex-wrap items-baseline gap-2">
+                          <h3 className="font-heading text-sm font-extrabold text-pnp-navy">
+                            {cp.label}
+                          </h3>
+                          {cp.window && (
+                            <span className="text-xs font-semibold text-pnp-gray-500">
+                              {cp.window}
+                            </span>
+                          )}
+                          <span className="text-xs text-pnp-gray-500">
+                            {cp.window} · {cp.items} · {cp.standards.length}{" "}
+                            {cp.standards.length === 1 ? "standard" : "standards"}
+                          </span>
+                        </div>
+
+                        <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                          {cp.standards.map((code) => {
+                            const st = byCode.get(code);
+                            const en = enabled(code);
+                            const selected = code === standard;
+                            return (
+                              <button
+                                key={code}
+                                type="button"
+                                disabled={!en}
+                                aria-pressed={selected}
+                                onClick={() => en && selectStandard(code)}
+                                className={`flex flex-col rounded-md border-2 p-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pnp-accent focus-visible:ring-offset-2 ${
+                                  selected
+                                    ? "border-pnp-accent bg-pnp-accent-soft"
+                                    : en
+                                      ? "border-pnp-gray-200 bg-white hover:border-pnp-accent"
+                                      : "cursor-not-allowed border-pnp-gray-100 bg-pnp-gray-50"
+                                }`}
+                              >
+                                <span
+                                  className={`font-heading text-sm font-bold ${
+                                    en ? "text-pnp-navy" : "text-pnp-gray-400"
+                                  }`}
+                                >
+                                  {code}
+                                </span>
+                                <span
+                                  className={`mt-0.5 text-xs leading-snug ${
+                                    en ? "text-pnp-gray-600" : "text-pnp-gray-400"
+                                  }`}
+                                >
+                                  {st?.text ?? ""}
+                                  {!en ? ` (${disabledNote})` : ""}
+                                </span>
+                                {gradeCheckpoints.standards[code] && (
+                                  <span className="mt-1 flex flex-wrap items-center gap-1.5">
+                                    {gradeCheckpoints.standards[code].priority ===
+                                      "Essential" && (
+                                      <span className="rounded bg-pnp-accent-soft px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-pnp-accent">
+                                        Essential
+                                      </span>
+                                    )}
+                                    <span className="text-[10px] font-semibold text-pnp-gray-500">
+                                      {gradeCheckpoints.standards[code].calculator}
+                                    </span>
+                                  </span>
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
+
+                    {summativeOnlyCodes.length > 0 && (
+                      <div>
+                        <div className="mb-2 flex flex-wrap items-baseline gap-2">
+                          <h3 className="font-heading text-sm font-extrabold text-pnp-navy">
+                            Summative only
+                          </h3>
+                          <span className="text-xs text-pnp-gray-500">
+                            {gradeCheckpoints.summativeWindow} ·{" "}
+                            {summativeOnlyCodes.length} standards on no checkpoint
+                          </span>
+                        </div>
+                        <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                          {summativeOnlyCodes.map((code) => {
+                            const st = byCode.get(code);
+                            const en = enabled(code);
+                            const selected = code === standard;
+                            return (
+                              <button
+                                key={code}
+                                type="button"
+                                disabled={!en}
+                                aria-pressed={selected}
+                                onClick={() => en && selectStandard(code)}
+                                className={`flex flex-col rounded-md border-2 border-dashed p-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pnp-accent focus-visible:ring-offset-2 ${
+                                  selected
+                                    ? "border-pnp-accent bg-pnp-accent-soft"
+                                    : en
+                                      ? "border-pnp-gray-300 bg-white hover:border-pnp-accent"
+                                      : "cursor-not-allowed border-pnp-gray-100 bg-pnp-gray-50"
+                                }`}
+                              >
+                                <span
+                                  className={`font-heading text-sm font-bold ${
+                                    en ? "text-pnp-navy" : "text-pnp-gray-400"
+                                  }`}
+                                >
+                                  {code}
+                                </span>
+                                <span
+                                  className={`mt-0.5 text-xs leading-snug ${
+                                    en ? "text-pnp-gray-600" : "text-pnp-gray-400"
+                                  }`}
+                                >
+                                  {st?.text ?? ""}
+                                  {!en ? ` (${disabledNote})` : ""}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+
+                    <p className="rounded-md border border-pnp-gray-200 bg-pnp-gray-50 p-3 text-xs leading-snug text-pnp-gray-600">
+                      <strong className="text-pnp-navy">
+                        {gradeCheckpoints.basis === "framework"
+                          ? "Assessed on each checkpoint."
+                          : "Taught before each checkpoint."}
+                      </strong>{" "}
+                      {gradeCheckpoints.note} Summative:{" "}
+                      {gradeCheckpoints.summativeItems.toLowerCase()},{" "}
+                      {gradeCheckpoints.summativeWindow}. Source:{" "}
+                      {gradeCheckpoints.source}.
+                    </p>
+                  </div>
+                )
+              ) : mode === "strand" ? (
                 <div className="space-y-6">
                   {Object.entries(domainGroups).map(([domainName, standards]) => (
                     <div key={domainName}>

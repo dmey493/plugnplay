@@ -108,6 +108,8 @@ export default function Header() {
           >
             Strategies
           </Link>
+          {/* Planner is unlinked while it's still being built out. The route
+              at /planner stays live — it just isn't advertised yet. */}
           <Link
             href="/classes"
             className="rounded-lg px-4 py-2 text-base font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white"
@@ -168,6 +170,7 @@ export default function Header() {
           >
             Strategies
           </Link>
+          {/* Planner intentionally omitted here too — see the desktop nav. */}
           <Link
             href="/classes"
             onClick={() => setMobileOpen(false)}
