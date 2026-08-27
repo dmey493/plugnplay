@@ -25,15 +25,68 @@ content is grandfathered until the Tier 1/2 sweeps land):
           standards; every strategy_links.strategy_id exists in
           web/content/strategies/math.
 
+Session Sheet v4 gate (thinking moves + full backward fade). Applies only to
+skills that carry the new fields (guided_example / worked_solution checks), so
+legacy v3 content is untouched:
+  Gate 6  a) every `check` uses a move from the closed menu, with a
+             non-empty prompt (<=110 chars) and answer; at most one check
+             per step; a skill with guided_example has >=1 check.
+          b) (strict-warn) no name_trap check on the worked solution, or a
+             name_trap that shares no content words with canonical_error.
+          b2) (strict-warn) no blank-step hint in faded/guided cues a move
+             by name — the through-line fade needs the cue.
+          c) `given` flags form a true-prefix in faded_example and
+             guided_example; each has >=1 given; faded has >=1 blank.
+          d) fade ladder — guided gives strictly fewer steps than faded;
+             faded fades ONLY the last step; step counts match the
+             worked_solution.
+          e) a Find the Mistake source exists: >=1 practice problem of
+             type error_analysis with shown_work.
+
 Run:  python engine/validate_content.py [--strict]
 Wire into CI as a gate before shipping content; authoring runs --strict.
 """
 import json, io, glob, os, sys
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+def _find_root():
+    """Walk up from this file until we find the repo root (the dir holding
+    BOTH skill mirrors). The old dirname(dirname(__file__)) broke for the
+    web/engine copy — it globbed web/web/content/skills, matched nothing,
+    and 'passed' vacuously."""
+    d = os.path.dirname(os.path.abspath(__file__))
+    for _ in range(6):
+        if (os.path.isdir(os.path.join(d, "web", "content", "skills"))
+                and os.path.isdir(os.path.join(d, "authoring", "data", "skills"))):
+            return d
+        d = os.path.dirname(d)
+    sys.exit("validate_content: could not locate repo root (web/content/skills "
+             "+ authoring/data/skills) above " + os.path.abspath(__file__))
+
+
+ROOT = _find_root()
 WEB = os.path.join(ROOT, "web", "content", "skills")
 AUTH = os.path.join(ROOT, "authoring", "data", "skills")
 STRATS = os.path.join(ROOT, "web", "content", "strategies", "math")
+
+# Gate 6a: the closed thinking-moves menu (mirror of THINKING_MOVES in
+# generate_skill_packet.py and the glossary in
+# authoring/directives/skill_authoring/thinking_moves.md).
+THINKING_MOVES = {
+    "spot_signal": "Spot the Signal",
+    "show_it":     "Show It",
+    "call_it":     "Call It",
+    "say_why":     "Say Why",
+    "check_it":    "Check It",
+    "name_trap":   "Name the Trap",
+}
+# Words too generic to count as shared content between a name_trap check and
+# the canonical error (Gate 6b overlap test).
+_STOPWORDS = {
+    "the", "a", "an", "is", "are", "of", "to", "in", "on", "and", "or", "not",
+    "it", "its", "that", "this", "with", "for", "as", "at", "by", "be", "was",
+    "student", "students", "answer", "number", "value", "problem", "wrong",
+}
 
 # Representations a strategy-link rationale can promise. If the why-text
 # names one, the lesson itself must contain it (Gate 1). Keep terms specific
@@ -50,6 +103,12 @@ MODEL_TERMS = [
 ANCHOR_TERMS = MODEL_TERMS + [
     "grid", "pattern", "picture", "diagram", "model", "draw", "shade", "build",
 ]
+
+
+def _content_words(text):
+    """Lowercased word set minus stopwords, for the Gate 6b overlap test."""
+    words = "".join(ch if ch.isalnum() else " " for ch in text.lower()).split()
+    return {w for w in words if len(w) > 2 and w not in _STOPWORDS}
 
 
 def lesson_text(s):
@@ -82,7 +141,12 @@ def main():
 
     seen_activities = {}  # (title, instructions) -> "skill_id (file)"
 
-    for wf in sorted(glob.glob(os.path.join(WEB, "*.json"))):
+    skill_files = sorted(glob.glob(os.path.join(WEB, "*.json")))
+    if not skill_files:
+        sys.exit(f"validate_content: no skill files found in {WEB} -- "
+                 "refusing to pass vacuously")
+
+    for wf in skill_files:
         base = os.path.basename(wf)
         wj = json.load(io.open(wf, encoding="utf-8"))
         cf = os.path.join(AUTH, base)
@@ -151,6 +215,107 @@ def main():
             if is_foundation and not any(t in text for t in ANCHOR_TERMS):
                 gate.append(
                     f"{where}: foundation skill has no concrete representation anywhere in its lesson (Gate 4)")
+
+            # -- Gate 6: Session Sheet v4 (micro-checks + backward fade) ---
+            ws = s.get("worked_solution") or {}
+            ws_steps = ws.get("steps") or []
+            checks = [st.get("check") for st in ws_steps if st.get("check")]
+            guided = s.get("guided_example")
+            faded = s.get("faded_example")
+            if guided or checks:
+                # 6a — checks are well-formed and on-menu.
+                for n, st in enumerate(ws_steps, start=1):
+                    c = st.get("check")
+                    if not c:
+                        continue
+                    if c.get("move") not in THINKING_MOVES:
+                        failures.append(
+                            f"{where}: step {n} check move '{c.get('move')}' not in the thinking-moves menu (Gate 6a)")
+                    prompt = (c.get("prompt") or "").strip()
+                    if not prompt:
+                        failures.append(f"{where}: step {n} check has an empty prompt (Gate 6a)")
+                    elif len(prompt) > 110:
+                        failures.append(
+                            f"{where}: step {n} check prompt is {len(prompt)} chars (max 110) (Gate 6a)")
+                    if not str(c.get("answer") or "").strip():
+                        failures.append(f"{where}: step {n} check has an empty answer (Gate 6a)")
+                if guided and not checks:
+                    failures.append(
+                        f"{where}: has guided_example but no micro-checks on the worked solution (Gate 6a)")
+
+                # 6b (strict-warn) — a name_trap should exist and echo the
+                # canonical error.
+                err = s.get("canonical_error") or {}
+                traps = [c for c in checks if c and c.get("move") == "name_trap"]
+                if not traps:
+                    gate.append(
+                        f"{where}: no Name the Trap check on the worked solution (Gate 6b)")
+                elif not (err.get("pattern") or "").strip():
+                    gate.append(
+                        f"{where}: name_trap check but empty canonical_error.pattern (Gate 6b)")
+                else:
+                    err_words = _content_words(
+                        (err.get("pattern") or "") + " " + (err.get("example") or ""))
+                    for c in traps:
+                        trap_words = _content_words(
+                            (c.get("prompt") or "") + " " + str(c.get("answer") or ""))
+                        if err_words and not (trap_words & err_words):
+                            gate.append(
+                                f"{where}: name_trap check shares no content words with the canonical error (Gate 6b)")
+
+                # 6b2 (strict-warn) — blank-step hints cue a move by name.
+                for bname, block in (("faded_example", faded),
+                                     ("guided_example", guided)):
+                    if not block:
+                        continue
+                    hints = " ".join(
+                        (st.get("annotation") or "")
+                        for st in block.get("steps") or [] if not st.get("given")).lower()
+                    if hints and not any(mv.lower() in hints
+                                         for mv in THINKING_MOVES.values()):
+                        gate.append(
+                            f"{where}: no {bname} blank-step hint cues a thinking move by name (Gate 6b2)")
+
+                # 6c — fade shape: givens are a true-prefix, >=1 given.
+                def _givens(block):
+                    return [bool(st.get("given"))
+                            for st in (block.get("steps") or [])]
+                for bname, block in (("faded_example", faded),
+                                     ("guided_example", guided)):
+                    if not block:
+                        continue
+                    g = _givens(block)
+                    first_blank = g.index(False) if False in g else len(g)
+                    if any(g[first_blank:]):
+                        failures.append(
+                            f"{where}: {bname} gives a step after a blank -- fade from the bottom (Gate 6c)")
+                    if not any(g):
+                        failures.append(f"{where}: {bname} has no given step (Gate 6c)")
+                if faded and all(_givens(faded)):
+                    failures.append(f"{where}: faded_example has no blank step (Gate 6c)")
+
+                # 6d — the ladder itself.
+                if guided:
+                    if not faded:
+                        failures.append(f"{where}: guided_example without a faded_example (Gate 6d)")
+                    else:
+                        fg, gg = _givens(faded), _givens(guided)
+                        if sum(gg) >= sum(fg):
+                            failures.append(
+                                f"{where}: guided_example gives {sum(gg)} steps, faded gives {sum(fg)} -- guided must give strictly fewer (Gate 6d)")
+                        if fg.count(False) != 1:
+                            failures.append(
+                                f"{where}: faded_example has {fg.count(False)} blanks -- must fade exactly the last step (Gate 6d)")
+                        if ws_steps and not (len(ws_steps) == len(fg) == len(gg)):
+                            failures.append(
+                                f"{where}: step counts differ (worked {len(ws_steps)} / faded {len(fg)} / guided {len(gg)}) (Gate 6d)")
+
+                # 6e — the Find the Mistake source.
+                if guided and not any(
+                        p.get("type") == "error_analysis" and p.get("shown_work")
+                        for p in s.get("practice_problems") or []):
+                    failures.append(
+                        f"{where}: no error_analysis practice problem with shown_work (Find the Mistake source) (Gate 6e)")
 
     if warnings:
         print(f"GATE WARNINGS ({len(warnings)}) — will fail under --strict:")

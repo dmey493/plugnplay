@@ -80,11 +80,25 @@ def _draw_footer(pdf, standard_code, skill_name):
     pdf.set_draw_color(*SB_BROWN)
     pdf.set_line_width(0.4)
     pdf.line(0, footer_y, pdf.w, footer_y)
-    quote = _STRUGGLE_QUOTES[hash(standard_code + skill_name) % len(_STRUGGLE_QUOTES)]
+    # Student pages repeat the first sentence frame here so the language is
+    # still in reach during Your Turn (the callout only prints once, up in
+    # the guided section). Companion pages keep the struggle quote —
+    # `pdf._pnp_frame` is set for student pages and cleared before the
+    # teacher pages.
+    frame = getattr(pdf, "_pnp_frame", None)
+    if frame:
+        text = frame.strip()
+        if len(text) > 70:
+            cut = text[:70].rsplit(" ", 1)[0]
+            text = cut + "..."
+        left = f'Say it:  "{text}"'
+    else:
+        quote = _STRUGGLE_QUOTES[hash(standard_code + skill_name) % len(_STRUGGLE_QUOTES)]
+        left = f'"{quote}"'
     pdf.set_text_color(*SB_BROWN)
     pdf.set_font(pdf.ff, "I", 7)
     pdf.set_xy(PAGE_MARGIN, footer_y + 2)
-    pdf.cell(pdf.w * 0.55, 5, f'"{quote}"')
+    pdf.cell(pdf.w * 0.55, 5, left)
     pdf.set_font(pdf.ff, "", 7)
     label = f"Plug N Play  |  Page {pdf.page_no()}"
     lw = pdf.get_string_width(label)
@@ -268,6 +282,30 @@ SESSION_DOSAGE = (
     "Short on time? Do the starred core items and always finish with the exit ticket. "
     "Recheck placement about every 6 sessions."
 )
+
+# v4 pacing: Watch & learn gains the micro-checks, Let's try together is the
+# guided faded problem (not a 3-item set), Your turn ends with Find the Mistake.
+SESSION_DOSAGE_V4 = (
+    "Session at a glance: ~30 min, 3-5x/week, groups of 3-5. Pacing -- fluency 3 / "
+    "Watch & learn + checks 6 / You finish it 4 / Let's try together 5 / "
+    "Your turn + Find the mistake 8 / exit 4 min. "
+    "Short on time? Do the starred core items and always finish with the exit ticket. "
+    "Recheck placement about every 6 sessions."
+)
+
+# The closed menu of thinking moves (schema_version 4 micro-checks). Student-
+# facing names teachers can call out ("do your Name the Trap"). The enum ids
+# are the only values valid in `worked_solution.steps[*].check.move`
+# (validate_content.py Gate 6). See authoring/directives/skill_authoring/
+# thinking_moves.md for the glossary.
+THINKING_MOVES = {
+    "spot_signal": "Spot the Signal",
+    "show_it":     "Show It",
+    "call_it":     "Call It",
+    "say_why":     "Say Why",
+    "check_it":    "Check It",
+    "name_trap":   "Name the Trap",
+}
 
 
 def _chip_header(pdf, label, subtitle, tint, ink, usable_w):
@@ -988,7 +1026,8 @@ def _load_stem_class(standard_code):
     return None
 
 
-def _fill_items_from_engine(skill, standard_code, target_count=10, session=1):
+def _fill_items_from_engine(skill, standard_code, target_count=10, session=1,
+                            exclude_stems=None):
     """Build a deterministic problem set for this skill + session.
 
     Two sessions = two non-overlapping problem sets for the same skill.
@@ -1020,7 +1059,11 @@ def _fill_items_from_engine(skill, standard_code, target_count=10, session=1):
     # items with a difficulty label (warm_up / core / stretch). They rank
     # as authored quality and their difficulty drives ordering in
     # _allocate_items. Dedupe against sample_items by stem.
-    seen = {(it.get("stem") or "").strip() for it in authored}
+    # Stems claimed by a dedicated slot elsewhere on the sheet (e.g. the v4
+    # "Find the Mistake" item) are kept out of the pool so they can't print
+    # twice.
+    excluded = {s.strip() for s in (exclude_stems or []) if s and s.strip()}
+    seen = {(it.get("stem") or "").strip() for it in authored} | excluded
     diff_rank = {"warm_up": 0, "core": 1, "stretch": 2}
     curated = sorted(
         (p for p in (skill.get("practice_problems") or [])
@@ -1375,6 +1418,11 @@ def _write_worked_solution(pdf, ws, usable_w):
         if h:
             pdf.set_y(rd_top + h + 2)
 
+    # Micro-checks (v4): steps may carry a `check` — a 5-second student
+    # action from the closed thinking-moves menu. Letters run a/b/c over
+    # the steps that HAVE checks (not every step gets one).
+    check_letter = 0
+    any_checks = any(s.get("check") for s in ws.get("steps", []))
     for i, step in enumerate(ws.get("steps", []), start=1):
         y = pdf.get_y()
         pdf.set_xy(PAGE_MARGIN + 6, y)
@@ -1392,6 +1440,41 @@ def _write_worked_solution(pdf, ws, usable_w):
             pdf.set_x(PAGE_MARGIN + 13)
             pdf.multi_cell(usable_w - 20, 3.8, ann, new_x="LMARGIN", new_y="NEXT")
             pdf.set_text_color(*SB_DARK)
+        check = step.get("check")
+        if check and check.get("prompt"):
+            letter = chr(ord("a") + check_letter)
+            check_letter += 1
+            cy = pdf.get_y() + 0.8
+            # Checkbox outline the student ticks after doing the move.
+            pdf.set_draw_color(30, 64, 175)
+            pdf.set_line_width(0.35)
+            pdf.rect(PAGE_MARGIN + 13, cy + 0.6, 3.2, 3.2, style="D",
+                     round_corners=True, corner_radius=0.7)
+            pdf.set_font(ff, "B", 8)
+            pdf.set_text_color(30, 64, 175)
+            pdf.set_xy(PAGE_MARGIN + 17.5, cy)
+            pdf.cell(4, 4.4, f"{letter}.")
+            # Tiny tinted chip with the move's name — the teacher call-out
+            # handle ("do check b" / "do your Name the Trap").
+            move_label = THINKING_MOVES.get(check.get("move"),
+                                            check.get("move") or "")
+            pdf.set_font(ff, "B", 6.5)
+            chip_w = pdf.get_string_width(move_label.upper()) + 4
+            pdf.set_fill_color(219, 234, 254)
+            pdf.rect(PAGE_MARGIN + 22, cy + 0.2, chip_w, 4, style="F",
+                     round_corners=True, corner_radius=2)
+            pdf.set_xy(PAGE_MARGIN + 22, cy + 0.4)
+            pdf.cell(chip_w, 3.6, move_label.upper(), align="C")
+            pdf.set_font(ff, "", 8)
+            pdf.set_text_color(*SB_DARK)
+            pdf.set_xy(PAGE_MARGIN + 22 + chip_w + 2, cy)
+            pdf.multi_cell(usable_w - (22 + chip_w + 2) - 8, 4.4,
+                           check.get("prompt", ""),
+                           new_x="LMARGIN", new_y="NEXT")
+            if pdf.get_y() < cy + 4.6:
+                pdf.set_y(cy + 4.6)
+            pdf.set_draw_color(0, 0, 0)
+            pdf.set_line_width(0.3)
         pdf.ln(1.5)
 
     ans = ws.get("answer", "")
@@ -1433,19 +1516,33 @@ def _write_worked_solution(pdf, ws, usable_w):
             pdf.set_y(ay + box_h + 1)
         pdf.set_text_color(*SB_DARK)
 
+    # One-line move legend so cued names later on the sheet ("Do your
+    # Check It...") are decodable without flipping back.
+    if any_checks:
+        pdf.ln(1)
+        pdf.set_font(ff, "", 6.5)
+        pdf.set_text_color(*ANNOT_GRAY)
+        pdf.set_x(PAGE_MARGIN + 6)
+        legend = ("Thinking moves:  Spot the Signal = circle the deciding word "
+                  "* Show It = mark the model * Call It = predict first * "
+                  "Say Why = explain it your way * Check It = does it fit? * "
+                  "Name the Trap = say the tempting wrong answer")
+        pdf.multi_cell(usable_w - 12, 3.2, legend, new_x="LMARGIN", new_y="NEXT")
+        pdf.set_text_color(*SB_DARK)
+
     _accent_bar(pdf, PAGE_MARGIN + 1.2, body_top, pdf.get_y(), (147, 187, 245))
     pdf.ln(5)
 
 
-def _write_faded_example(pdf, fe, usable_w):
+def _write_fade_block(pdf, fe, usable_w, label, subtitle, tint, ink, bar_rgb):
     """Faded worked example: the given steps are printed, the missing ones
     become labeled blanks the student supplies (IES rec 1: strategically
-    faded steps)."""
+    faded steps). Parameterized so the same block renders both fade rungs:
+    "You finish it" (faded_example, last step blank) and "Let's try
+    together" (guided_example, only the first step given)."""
     ff = pdf.ff
 
-    _chip_header(pdf, "You finish it",
-                 "Fill in the missing steps yourself.",
-                 (219, 250, 219), (21, 128, 61), usable_w)
+    _chip_header(pdf, label, subtitle, tint, ink, usable_w)
     pdf.ln(0.5)
 
     body_top = pdf.get_y()
@@ -1466,7 +1563,7 @@ def _write_faded_example(pdf, fe, usable_w):
         y = pdf.get_y()
         pdf.set_xy(PAGE_MARGIN + 6, y)
         pdf.set_font(ff, "B", 9)
-        pdf.set_text_color(21, 128, 61)
+        pdf.set_text_color(*ink)
         pdf.cell(6, 5, f"{i}.")
         pdf.set_text_color(*SB_DARK)
         if step.get("given") and step.get("math"):
@@ -1488,7 +1585,7 @@ def _write_faded_example(pdf, fe, usable_w):
             pdf.set_text_color(*SB_DARK)
         pdf.ln(1.5)
 
-    _accent_bar(pdf, PAGE_MARGIN + 1.2, body_top, pdf.get_y(), (134, 209, 156))
+    _accent_bar(pdf, PAGE_MARGIN + 1.2, body_top, pdf.get_y(), bar_rgb)
     pdf.set_draw_color(0, 0, 0)
     pdf.set_line_width(0.3)
     pdf.ln(5)
@@ -2620,8 +2717,28 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
     # 10 items per session: 1 worked example + 3 try it + 2 we do +
     # 2 you do + 2 exit. Two sessions provide 20 unique items per skill
     # so a teacher can run the same skill twice without repeats.
-    items = _fill_items_from_engine(skill, standard_code,
-                                    target_count=10, session=session)
+    # v4 (schema_version 4) skills carry a `guided_example` — the middle rung
+    # of the backward fade — and end "Your turn" with a fixed Find the
+    # Mistake slot sourced from the error_analysis practice problem. Claim
+    # that problem's stem up front so the general item pool can't reprint it.
+    guided_example = skill.get("guided_example")
+    ftm_item = None
+    if guided_example:
+        for p in (skill.get("practice_problems") or []):
+            if p.get("type") == "error_analysis" and p.get("shown_work"):
+                ftm_item = {
+                    "stem": p.get("stem", ""),
+                    "answer": p.get("answer", ""),
+                    "choices": None,
+                    "type": "error_analysis",
+                    "shown_work": p.get("shown_work"),
+                    "render_data": p.get("render_data"),
+                }
+                break
+
+    items = _fill_items_from_engine(
+        skill, standard_code, target_count=10, session=session,
+        exclude_stems=[ftm_item["stem"]] if ftm_item else None)
 
     # Slice into the gradual-release sections.
     sections = _allocate_items(items)
@@ -2659,6 +2776,19 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
     worked_solution = skill.get("worked_solution")
     faded_example = skill.get("faded_example")
     sentence_starters = skill.get("sentence_starters") or []
+
+    # v4 full backward fade: the guided_example (same problem structure,
+    # only the lead step given) replaces the engine diagnose items in
+    # "Let's try together" — those items switched problem type mid-sheet
+    # and broke the fade. Legacy skills keep the diagnose block.
+    if guided_example:
+        diag_items = []
+
+    # v4 student pages repeat the first sentence frame in the footer (cleared
+    # again before the teacher companion). Legacy skills keep the quote so
+    # their packets render exactly as before.
+    pdf._pnp_frame = (sentence_starters[0]
+                      if (guided_example and sentence_starters) else None)
 
     def _ensure_room(needed):
         page_bottom_safe = pdf.h - SB_FOOTER_HEIGHT - 8
@@ -2702,17 +2832,36 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
         # for the student); older skills fall back to the boxed problem
         # the teacher models from the companion script.
         if worked_solution:
-            _ensure_room(24 + 14 * len(worked_solution.get("steps", [])))
+            ws_steps = worked_solution.get("steps", [])
+            n_checks = sum(1 for s in ws_steps if s.get("check"))
+            _ensure_room(24 + 14 * len(ws_steps) + 8 * n_checks
+                         + (6 if n_checks else 0))
             _write_worked_solution(pdf, worked_solution, usable_w)
         elif we_item:
             _set_column(pdf, "full")
             _write_worked_example(pdf, we_item, skill.get("i_do_script", ""),
                                   _col_w(pdf), show_answer=False)
 
-        # ---- FADED EXAMPLE (student supplies the missing steps) ----
+        # ---- FADED EXAMPLE (student supplies the missing step) ----
         if faded_example:
             _ensure_room(24 + 12 * len(faded_example.get("steps", [])))
-            _write_faded_example(pdf, faded_example, usable_w)
+            _write_fade_block(pdf, faded_example, usable_w,
+                              "You finish it",
+                              "Fill in the missing steps yourself.",
+                              (219, 250, 219), (21, 128, 61), (134, 209, 156))
+
+        # ---- GUIDED EXAMPLE (v4: the middle fade rung) ----
+        # Same problem structure with only the lead step given — the student
+        # does the rest with the teacher. Replaces the engine diagnose items.
+        if guided_example:
+            _ensure_room(24 + 12 * len(guided_example.get("steps", []))
+                         + (14 + 5 * len(sentence_starters) if sentence_starters else 0))
+            _write_sentence_starters(pdf, sentence_starters, usable_w)
+            _write_fade_block(pdf, guided_example, usable_w,
+                              "Let's try together",
+                              "Same kind of problem. Your teacher starts it -- you take it from there. Say your thinking out loud.",
+                              SECTION_COLORS["we_do"][0], SECTION_COLORS["we_do"][1],
+                              (240, 200, 120))
 
         # Practice items flow in two labeled blocks so the gradual release
         # is visible to the student: guided ("Let's Try Together") then
@@ -2730,14 +2879,31 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
             _write_sentence_starters(pdf, sentence_starters, usable_w)
             q_num = _render_two_column_block(pdf, guided_items, q_num,
                                              _write_student_question)
-        if independent_items:
+        if independent_items or ftm_item:
+            first_it = independent_items[0] if independent_items else ftm_item
             _write_section_header_safe(
                 pdf, "Your turn",
                 "Try these on your own. Show your work.",
                 SECTION_COLORS["you_do"], usable_w,
-                next_item_height=_estimate_item_height(independent_items[0]))
+                next_item_height=_estimate_item_height(first_it))
             q_num = _render_two_column_block(pdf, independent_items, q_num,
                                              _write_student_question)
+            # ---- FIND THE MISTAKE (v4: fixed error-analysis slot) ----
+            # Always targets this skill's canonical error — the student-side
+            # mirror of the teacher companion's WATCH FOR box.
+            if ftm_item:
+                _ensure_room(_estimate_item_height(ftm_item) + 8)
+                pdf.set_font(ff, "B", 8.5)
+                pdf.set_text_color(21, 128, 61)
+                pdf.set_x(PAGE_MARGIN)
+                pdf.cell(usable_w, 4.5,
+                         "Find the mistake -- someone already tried this one. Catch the error.",
+                         new_x="LMARGIN", new_y="NEXT")
+                pdf.set_text_color(*SB_DARK)
+                pdf.ln(0.5)
+                _set_column(pdf, "full")
+                _write_student_question(pdf, q_num, ftm_item, _col_w(pdf))
+                q_num += 1
 
         # ---- MIXED REVIEW (interleaved items from earlier skills) ----
         if mixed_items:
@@ -2785,6 +2951,9 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
         pdf.output(output_path)
         return output_path
 
+    # Companion pages keep the struggle-quote footer, not the student frame.
+    pdf._pnp_frame = None
+
     pdf.set_auto_page_break(auto=True, margin=20)
     pdf.add_page()
 
@@ -2804,7 +2973,9 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
     pdf.set_font(ff, "I", 7.5)
     pdf.set_text_color(*ANNOT_GRAY)
     pdf.set_x(PAGE_MARGIN)
-    pdf.multi_cell(usable_w, 3.4, SESSION_DOSAGE, new_x="LMARGIN", new_y="NEXT")
+    pdf.multi_cell(usable_w, 3.4,
+                   SESSION_DOSAGE_V4 if guided_example else SESSION_DOSAGE,
+                   new_x="LMARGIN", new_y="NEXT")
     pdf.set_text_color(*SB_DARK)
     pdf.ln(2.5)
 
@@ -3094,9 +3265,24 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
             f"{(it.get('stem') or '').strip()} {it.get('answer', '')}"
             for it in fluency["items"])
         extras.append(("FLUENCY SPRINT KEY (" + fluency.get("title", "") + ")", key))
+    if worked_solution:
+        checks = [s.get("check") for s in worked_solution.get("steps", [])
+                  if s.get("check")]
+        if checks:
+            key = "   ".join(
+                f"{chr(ord('a') + i)}. [{THINKING_MOVES.get(c.get('move'), c.get('move') or '')}] {c.get('answer', '')}"
+                for i, c in enumerate(checks))
+            extras.append(("WATCH & LEARN MICRO-CHECKS",
+                           key + "  --  call them by letter (\"do check b\") or by move name."))
     if faded_example:
         extras.append(("FADED EXAMPLE",
                        f"Final answer: {faded_example.get('answer', '')}. The blank steps are the student's to voice -- any correct chain of reasoning counts."))
+    if guided_example:
+        extras.append(("LET'S TRY TOGETHER (guided example)",
+                       f"Final answer: {guided_example.get('answer', '')}. Only the first step is given -- the student carries the rest; prompt with the cued thinking move, not the math."))
+    if ftm_item:
+        extras.append(("FIND THE MISTAKE",
+                       f"Answer: {ftm_item.get('answer', '')}. Mirrors the WATCH FOR error above -- if the student can't find it, reteach from the Quick Reference redirect."))
     for label, body in extras:
         pdf.ln(2)
         pdf.set_font(ff, "B", 8)
@@ -3554,12 +3740,16 @@ def main():
             return out
 
         has_ws = bool(skill.get("worked_solution"))
+        # v4 skills replace the diagnose items with the guided_example block
+        # on paper — mirror that here so the board matches the sheet.
+        has_guided = bool(skill.get("guided_example"))
         section_plan = [
-            ("diagnose", "Let's Try Together"),
             ("we_do", "Your Turn"),
             ("you_do", "Your Turn"),
             ("exit", "Show What You Know"),
         ]
+        if not has_guided:
+            section_plan.insert(0, ("diagnose", "Let's Try Together"))
         if not has_ws:
             section_plan.insert(0, ("worked_example", "Worked Example"))
         for sec_key, label in section_plan:
@@ -3609,6 +3799,7 @@ def main():
             "fluency": fluency,
             "worked_solution": _webify_ws(skill.get("worked_solution")),
             "faded_example": _webify_ws(skill.get("faded_example")),
+            "guided_example": _webify_ws(skill.get("guided_example")),
             "sentence_starters": skill.get("sentence_starters"),
         }))
         return

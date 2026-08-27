@@ -142,6 +142,51 @@ export interface TeacherMoves {
   quick_checks: Array<{ prompt: string; look_for: string }>;
 }
 
+/** The closed menu of session-sheet micro-check moves (schema v4).
+ *  Mirrors THINKING_MOVES in engine/generate_skill_packet.py and the
+ *  glossary in authoring/directives/skill_authoring/thinking_moves.md. */
+export type ThinkingMove =
+  | "spot_signal"
+  | "show_it"
+  | "call_it"
+  | "say_why"
+  | "check_it"
+  | "name_trap";
+
+export const THINKING_MOVE_LABELS: Record<ThinkingMove, string> = {
+  spot_signal: "Spot the Signal",
+  show_it: "Show It",
+  call_it: "Call It",
+  say_why: "Say Why",
+  check_it: "Check It",
+  name_trap: "Name the Trap",
+};
+
+/** A 5-second student action attached to a worked-solution step (v4). */
+export interface MicroCheck {
+  move: ThinkingMove;
+  prompt: string;
+  /** Teacher key — prints only in the companion. */
+  answer: string;
+}
+
+export interface WorkedStep {
+  /** null on faded/guided blank steps the student fills in. */
+  math: string | null;
+  annotation?: string;
+  /** faded_example / guided_example only: given steps print, others blank. */
+  given?: boolean;
+  /** worked_solution only (v4). */
+  check?: MicroCheck;
+}
+
+export interface WorkedSolution {
+  stem: string;
+  answer: string;
+  steps: WorkedStep[];
+  render_data?: Record<string, unknown>;
+}
+
 export interface Skill {
   skill_id: string;
   name: string;
@@ -159,6 +204,13 @@ export interface Skill {
   activities?: Activity[];
   strategy_links?: StrategyLink[];
   teacher_moves?: TeacherMoves;
+  // v3 session-sheet fields (optional — absent on Foundation skills)
+  worked_solution?: WorkedSolution;
+  faded_example?: WorkedSolution;
+  sentence_starters?: string[];
+  fluency_source?: string;
+  // v4 backward-fade middle rung ("Let's try together" as a faded problem)
+  guided_example?: WorkedSolution;
 }
 
 export interface ProgressionStep {
