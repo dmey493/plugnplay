@@ -26,9 +26,9 @@ import BlockDetails from "./BlockDetails";
 import ScheduleGrid, { SLOT_PREFIX } from "./ScheduleGrid";
 import type { ResizeEdge } from "./ScheduleGrid";
 
-import { activityType } from "@/lib/activity-types";
-import type { ActivityType } from "@/lib/activity-types";
-import type { Lesson, PlanBlock } from "@/lib/lesson-plans";
+import { activityType } from "@/lib/classroom/activity-types";
+import type { ActivityType } from "@/lib/classroom/activity-types";
+import type { Lesson, PlanBlock } from "@/lib/classroom/lesson-plans";
 import {
   SLOT_MIN,
   clamp,
@@ -37,7 +37,7 @@ import {
   newBlock,
   nextOpenStart,
   snap,
-} from "@/lib/lesson-plans";
+} from "@/lib/classroom/lesson-plans";
 
 const FIELD =
   "w-full rounded-lg border-2 border-pnp-gray-300 px-2 py-1.5 text-sm text-pnp-navy placeholder:text-pnp-gray-400 focus-visible:border-pnp-accent focus-visible:outline-none";

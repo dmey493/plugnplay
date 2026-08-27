@@ -1,11 +1,11 @@
 """
 Skill authoring driver — pure Python orchestrator. No LLM calls.
 
-The driver reads a live skill from `Cooties/data/skills/{standard}.json`,
+The driver reads a live skill from `authoring/data/skills/{standard}.json`,
 runs it through the 5-gate pipeline, and writes the authored result to
-`Cooties/data/skills/_staging/{standard}.json`. Each gate is run by a
+`authoring/data/skills/_staging/{standard}.json`. Each gate is run by a
 Claude Code subagent reading the matching directive in
-`Cooties/directives/skill_authoring/`. The driver itself is the glue:
+`authoring/directives/skill_authoring/`. The driver itself is the glue:
 
   1. `prepare_input(skill_id, gate_name)` — emits the JSON the next
      subagent needs as input.
@@ -39,10 +39,25 @@ import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-LIVE_DIR = ROOT / "Cooties" / "data" / "skills"
+
+def _find_root():
+    """Walk up from this file until we find the project root — the dir that
+    holds authoring/data/skills. A fixed parent-count broke when this script
+    moved into web/engine/agents/ (it resolved to web/, which has no
+    authoring/)."""
+    d = Path(__file__).resolve().parent
+    for _ in range(6):
+        if (d / "authoring" / "data" / "skills").is_dir():
+            return d
+        d = d.parent
+    sys.exit("author_skill: could not locate project root (authoring/data/skills) "
+             "above " + str(Path(__file__).resolve()))
+
+
+ROOT = _find_root()
+LIVE_DIR = ROOT / "authoring" / "data" / "skills"
 STAGING_DIR = LIVE_DIR / "_staging"
-DIRECTIVES_DIR = ROOT / "Cooties" / "directives" / "skill_authoring"
+DIRECTIVES_DIR = ROOT / "authoring" / "directives" / "skill_authoring"
 
 GATES = ["map_skill", "author_stems", "check_math", "check_subskill_fit", "author_strategy"]
 

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import type { ContentEnvelope, ThinSliceBody } from "@/lib/types";
+import type { ContentEnvelope, ThinSliceBody } from "@/lib/core/types";
 
 interface Props {
   slices: ContentEnvelope[];

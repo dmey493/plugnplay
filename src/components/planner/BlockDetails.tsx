@@ -13,9 +13,9 @@
  */
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { ACTIVITY_TYPES, activityType } from "@/lib/activity-types";
-import type { Grouping, PlanBlock } from "@/lib/lesson-plans";
-import { GROUPING_LABEL, SLOT_MIN, blockEnd } from "@/lib/lesson-plans";
+import { ACTIVITY_TYPES, activityType } from "@/lib/classroom/activity-types";
+import type { Grouping, PlanBlock } from "@/lib/classroom/lesson-plans";
+import { GROUPING_LABEL, SLOT_MIN, blockEnd } from "@/lib/classroom/lesson-plans";
 
 const CARD_W = 320;
 const GAP = 10;

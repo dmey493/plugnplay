@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { NAV_ITEMS } from "@/lib/constants";
+import { NAV_ITEMS } from "@/lib/core/constants";
 
 export default function Footer() {
   return (

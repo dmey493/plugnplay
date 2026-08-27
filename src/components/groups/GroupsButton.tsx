@@ -13,7 +13,7 @@ import {
   updateClass,
   type Class,
   type Student,
-} from "@/lib/classes";
+} from "@/lib/classroom/classes";
 import MagnetSnapAnimation from "./MagnetSnapAnimation";
 import SlotReelsAnimation from "./SlotReelsAnimation";
 import GroupsResult from "./GroupsResult";

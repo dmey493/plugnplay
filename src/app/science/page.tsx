@@ -3,8 +3,8 @@ import Container from "@/components/layout/Container";
 import PageBanner from "@/components/ui/PageBanner";
 import Card from "@/components/ui/Card";
 import { ArrowRightIcon } from "@/components/ui/icons";
-import { stimulusCount } from "@/lib/science";
-import { graphCount } from "@/lib/gotw";
+import { stimulusCount } from "@/lib/library/science";
+import { graphCount } from "@/lib/library/gotw";
 
 export const metadata: Metadata = {
   title: "Science | Plug N Play",

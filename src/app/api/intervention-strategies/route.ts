@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 
-import { getAllStrategies } from "@/lib/content";
+import { getAllStrategies } from "@/lib/library/strategies";
 
 export async function GET() {
   try {

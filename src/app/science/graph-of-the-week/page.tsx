@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Container from "@/components/layout/Container";
 import PageBanner from "@/components/ui/PageBanner";
 import GraphOfWeekGenerator from "@/components/science/GraphOfWeekGenerator";
-import { graphCount } from "@/lib/gotw";
+import { graphCount } from "@/lib/library/gotw";
 
 export const metadata: Metadata = {
   title: "Graph of the Week | Science | Plug N Play",

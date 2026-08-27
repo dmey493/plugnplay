@@ -57,9 +57,9 @@ def clean_dict(d):
 def load_skill_data(standard_code, skill_id):
     base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     # Bundled layout (engine ships inside the web app): skills at content/skills.
-    # Fallbacks cover the original Cooties dev data and monorepo web/ layouts.
+    # Fallbacks cover the original authoring dev data and monorepo web/ layouts.
     bundled_dir = os.path.join(base, "content", "skills")
-    skills_dir = os.path.join(base, "Cooties", "data", "skills")
+    skills_dir = os.path.join(base, "authoring", "data", "skills")
     web_skills_dir = os.path.join(base, "web", "content", "skills")
     for d in [bundled_dir, skills_dir, web_skills_dir]:
         path = os.path.join(d, f"{standard_code}.json")

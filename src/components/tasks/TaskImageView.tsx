@@ -1,4 +1,4 @@
-import type { TaskImage } from "@/lib/types";
+import type { TaskImage } from "@/lib/core/types";
 import InteractiveImage from "./interactive/InteractiveImage";
 
 interface Props {

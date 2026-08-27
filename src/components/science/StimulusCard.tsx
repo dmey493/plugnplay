@@ -1,4 +1,4 @@
-import type { Stimulus } from "@/lib/science";
+import type { Stimulus } from "@/lib/library/science";
 import Figure from "./Figure";
 import QuestionList from "./QuestionList";
 

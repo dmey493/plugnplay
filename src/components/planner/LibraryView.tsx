@@ -13,8 +13,8 @@
 
 import { useState } from "react";
 import Button from "@/components/ui/Button";
-import type { Course, Lesson, Unit } from "@/lib/lesson-plans";
-import { lessonMinutes, periodFor } from "@/lib/lesson-plans";
+import type { Course, Lesson, Unit } from "@/lib/classroom/lesson-plans";
+import { lessonMinutes, periodFor } from "@/lib/classroom/lesson-plans";
 
 interface Props {
   course: Course;

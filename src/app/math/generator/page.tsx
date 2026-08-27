@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import Container from "@/components/layout/Container";
 import PageBanner from "@/components/ui/PageBanner";
-import ProblemGenerator from "@/components/math/ProblemGenerator";
-import { getLessonNav } from "@/lib/lessons";
-import { getCheckpointNav } from "@/lib/checkpoints";
+import ProblemGenerator from "@/components/generator/ProblemGenerator";
+import { getLessonNav } from "@/lib/library/lessons";
+import { getCheckpointNav } from "@/lib/standards/checkpoints";
 
 export const metadata: Metadata = {
   title: "Problem Generator | Math | Plug N Play",

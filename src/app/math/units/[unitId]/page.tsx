@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
-import { getUnitById, getAllUnits } from "@/lib/units";
-import { getAllTasks } from "@/lib/tasks";
-import { getAllThinSlices } from "@/lib/thin-slices";
+import { getUnitById, getAllUnits } from "@/lib/library/units";
+import { getAllTasks } from "@/lib/library/tasks";
+import { getAllThinSlices } from "@/lib/library/thin-slices";
 import UnitDetail from "@/components/units/UnitDetail";
 
 interface PageProps {

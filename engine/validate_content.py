@@ -3,7 +3,7 @@
 
 Fails (exit 1) if any shipped skill would silently degrade the teacher's
 close-the-loop experience. Checks, for every standard:
-  1. web/content/skills and Cooties/data/skills mirrors parse-equal.
+  1. web/content/skills and authoring/data/skills mirrors parse-equal.
   2. Every non-foundation skill has non-empty next_steps.if_pass AND if_fail
      (an empty route collapses the packet to a generic "repeat this skill",
      which contradicts the authored diagnostic_flow — review priority #4).
@@ -32,7 +32,7 @@ import json, io, glob, os, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB = os.path.join(ROOT, "web", "content", "skills")
-COO = os.path.join(ROOT, "Cooties", "data", "skills")
+AUTH = os.path.join(ROOT, "authoring", "data", "skills")
 STRATS = os.path.join(ROOT, "web", "content", "strategies", "math")
 
 # Representations a strategy-link rationale can promise. If the why-text
@@ -85,13 +85,13 @@ def main():
     for wf in sorted(glob.glob(os.path.join(WEB, "*.json"))):
         base = os.path.basename(wf)
         wj = json.load(io.open(wf, encoding="utf-8"))
-        cf = os.path.join(COO, base)
+        cf = os.path.join(AUTH, base)
         if not os.path.exists(cf):
-            failures.append(f"{base}: missing Cooties mirror")
+            failures.append(f"{base}: missing authoring mirror")
             continue
         cj = json.load(io.open(cf, encoding="utf-8"))
         if wj != cj:
-            failures.append(f"{base}: web/Cooties mirrors differ")
+            failures.append(f"{base}: web/authoring mirrors differ")
 
         for s in wj.get("skills", []):
             sid = s.get("skill_id", "?")

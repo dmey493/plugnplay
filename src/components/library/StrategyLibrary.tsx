@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import type { ContentEnvelope, FilterState } from "@/lib/types";
-import { filterStrategies } from "@/lib/content-filter";
+import type { ContentEnvelope, FilterState } from "@/lib/core/types";
+import { filterStrategies } from "@/lib/library/strategies-filter";
 import FilterBar from "./FilterBar";
 import StrategyCard from "./StrategyCard";
 import EmptyState from "./EmptyState";

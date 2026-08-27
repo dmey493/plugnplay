@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 
-import { endRoom } from "@/lib/remote-store";
+import { endRoom } from "@/lib/classroom/remote-store";
 
 /**
  * Projection-side explicit disconnect. Called when the teacher hits

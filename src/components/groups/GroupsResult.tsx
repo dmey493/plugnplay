@@ -1,6 +1,6 @@
 "use client";
 
-import type { Student } from "@/lib/classes";
+import type { Student } from "@/lib/classroom/classes";
 
 /**
  * Final groups view — what the teacher leaves with.

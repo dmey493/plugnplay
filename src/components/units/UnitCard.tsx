@@ -1,6 +1,6 @@
-import type { UnitFile } from "@/lib/types";
+import type { UnitFile } from "@/lib/core/types";
 import Card from "@/components/ui/Card";
-import { brandAccent } from "@/lib/constants";
+import { brandAccent } from "@/lib/core/constants";
 import { ArrowRightIcon } from "@/components/ui/icons";
 
 /**

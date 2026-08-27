@@ -1,5 +1,5 @@
-import { BRAND_CYCLE } from "@/lib/constants";
-import type { Figure } from "@/lib/science";
+import { BRAND_CYCLE } from "@/lib/core/constants";
+import type { Figure } from "@/lib/library/science";
 
 /**
  * Lightweight SVG chart for the ILEARN stimulus figures: bar, grouped_bar,

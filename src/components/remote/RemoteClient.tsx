@@ -8,8 +8,8 @@ import type {
   ProjectionState,
   RemoteCommand,
   RemoteTaskBundle,
-} from "@/lib/types";
-import { isValidRoomCode, normaliseRoomCode } from "@/lib/remote-codes";
+} from "@/lib/core/types";
+import { isValidRoomCode, normaliseRoomCode } from "@/lib/classroom/remote-codes";
 import RemoteCodeEntry from "./RemoteCodeEntry";
 import RemoteDashboard from "./RemoteDashboard";
 

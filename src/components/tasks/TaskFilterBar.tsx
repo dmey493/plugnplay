@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import type { TaskFilterState, LessonFormat, DurationBucket, BrowseMode } from "@/lib/types";
-import type { StandardsSystem } from "@/lib/tasks-filter";
+import type { TaskFilterState, LessonFormat, DurationBucket, BrowseMode } from "@/lib/core/types";
+import type { StandardsSystem } from "@/lib/library/tasks-filter";
 import Button from "@/components/ui/Button";
 
 // The unified library has just two formats. Sub-types (Anchor, Investigation,

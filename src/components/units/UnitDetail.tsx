@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { ContentEnvelope, UnitFile, WarmupRef } from "@/lib/types";
+import type { ContentEnvelope, UnitFile, WarmupRef } from "@/lib/core/types";
 import TaskCard from "@/components/tasks/TaskCard";
 import BrowseModeToggle from "./BrowseModeToggle";
 import Button from "@/components/ui/Button";

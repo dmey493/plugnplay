@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getAllThinSlices, getThinSliceById } from "@/lib/thin-slices";
-import type { ThinSliceBody } from "@/lib/types";
+import { getAllThinSlices, getThinSliceById } from "@/lib/library/thin-slices";
+import type { ThinSliceBody } from "@/lib/core/types";
 import ThinSliceRunner from "@/components/thin-slices/ThinSliceRunner";
 
 export async function generateStaticParams() {

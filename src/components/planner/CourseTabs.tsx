@@ -11,7 +11,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
-import type { Course } from "@/lib/lesson-plans";
+import type { Course } from "@/lib/classroom/lesson-plans";
 
 export const WEEKS_TAB = "__weeks__";
 

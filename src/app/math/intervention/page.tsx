@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Container from "@/components/layout/Container";
 import PageBanner from "@/components/ui/PageBanner";
-import SkillIntervention from "@/components/math/SkillIntervention";
-import { getLessonNav } from "@/lib/lessons";
-import { getCheckpointNav } from "@/lib/checkpoints";
+import SkillIntervention from "@/components/intervention/SkillIntervention";
+import { getLessonNav } from "@/lib/library/lessons";
+import { getCheckpointNav } from "@/lib/standards/checkpoints";
 
 export const metadata: Metadata = {
   title: "Skill Intervention | Math | Plug N Play",

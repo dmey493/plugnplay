@@ -1,6 +1,6 @@
 "use client";
 
-import type { ThinSliceShape } from "@/lib/types";
+import type { ThinSliceShape } from "@/lib/core/types";
 
 interface Props {
   shape: ThinSliceShape;

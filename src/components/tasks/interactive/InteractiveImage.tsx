@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import type { InteractiveImageComponent } from "@/lib/types";
+import type { InteractiveImageComponent } from "@/lib/core/types";
 
 /**
  * Dispatches to the right built-in interactive image component, lazy-loaded

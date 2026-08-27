@@ -1,6 +1,6 @@
-import { primaryStandard as primaryStandardOf, formatOf } from "@/lib/tasks-filter";
-import { getStandardLabel } from "@/lib/standards-labels";
-import type { ContentEnvelope, TaskBody } from "@/lib/types";
+import { primaryStandard as primaryStandardOf, formatOf } from "@/lib/library/tasks-filter";
+import { getStandardLabel } from "@/lib/standards/standards-labels";
+import type { ContentEnvelope, TaskBody } from "@/lib/core/types";
 import Badge, { type BadgeTone } from "@/components/ui/Badge";
 import Tag from "@/components/ui/Tag";
 import Card from "@/components/ui/Card";

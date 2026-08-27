@@ -1,8 +1,8 @@
 export const dynamic = "force-dynamic";
 
-import type { JoinResponse } from "@/lib/types";
-import { joinRoom } from "@/lib/remote-store";
-import { isValidRoomCode, normaliseRoomCode } from "@/lib/remote-codes";
+import type { JoinResponse } from "@/lib/core/types";
+import { joinRoom } from "@/lib/classroom/remote-store";
+import { isValidRoomCode, normaliseRoomCode } from "@/lib/classroom/remote-codes";
 
 /**
  * Phone-side join. Called once when the user types or QR-scans into a

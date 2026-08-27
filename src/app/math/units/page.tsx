@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
-import { getAllUnits } from "@/lib/units";
+import { getAllUnits } from "@/lib/library/units";
 import UnitsBrowse from "@/components/units/UnitsBrowse";
 
 export const metadata: Metadata = {

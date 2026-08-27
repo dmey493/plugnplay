@@ -7,7 +7,7 @@ import {
   deleteClass,
   getClasses,
   type Class,
-} from "@/lib/classes";
+} from "@/lib/classroom/classes";
 
 /**
  * Classes index — list every class saved locally in this browser, plus

@@ -11,7 +11,7 @@ import {
   STRANDS,
   PRACTICES,
   toolAccent,
-} from "@/lib/approach";
+} from "@/lib/library/approach";
 
 export const metadata: Metadata = {
   title: "Our teaching approach | Math | Plug N Play",

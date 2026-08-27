@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Button from "@/components/ui/Button";
 import GraphOfWeekPrintModal from "./GraphOfWeekPrintModal";
-import { worksheetUrl, type GotwEntry } from "@/lib/gotw";
+import { worksheetUrl, type GotwEntry } from "@/lib/library/gotw";
 
 /** On-screen worksheet preview (the print-ready front/back sheet, embedded)
  *  + a Print action that opens the clean print-preview modal — the same

@@ -5,10 +5,10 @@ import type {
   ProjectionState,
   RemoteTaskBundle,
   TaskBody,
-} from "@/lib/types";
-import { getTaskById } from "@/lib/tasks";
-import { parsePrompt } from "@/lib/split-prompt";
-import { createRoom } from "@/lib/remote-store";
+} from "@/lib/core/types";
+import { getTaskById } from "@/lib/library/tasks";
+import { parsePrompt } from "@/lib/generators/split-prompt";
+import { createRoom } from "@/lib/classroom/remote-store";
 
 /**
  * Projection-side handshake. Called once when the teacher clicks Connect

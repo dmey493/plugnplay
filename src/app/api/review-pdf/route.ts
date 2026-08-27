@@ -1,5 +1,5 @@
 export const dynamic = "force-dynamic";
-import { generateReviewPdf } from "@/lib/engine";
+import { generateReviewPdf } from "@/lib/generators/engine";
 
 export async function POST(request: Request) {
   try {

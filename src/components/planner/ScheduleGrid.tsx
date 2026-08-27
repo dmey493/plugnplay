@@ -20,9 +20,9 @@
 
 import { useCallback, useEffect, useRef } from "react";
 import { useDraggable, useDroppable } from "@dnd-kit/core";
-import { activityType } from "@/lib/activity-types";
-import type { PlanBlock } from "@/lib/lesson-plans";
-import { SLOT_MIN, blockEnd, overlaps } from "@/lib/lesson-plans";
+import { activityType } from "@/lib/classroom/activity-types";
+import type { PlanBlock } from "@/lib/classroom/lesson-plans";
+import { SLOT_MIN, blockEnd, overlaps } from "@/lib/classroom/lesson-plans";
 
 /** Pixels per minute. 5 minutes = 30px keeps the shortest block tappable. */
 export const PX_PER_MIN = 30 / SLOT_MIN;

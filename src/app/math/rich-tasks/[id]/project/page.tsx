@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getAllTasks, getTaskById } from "@/lib/tasks";
-import { primaryStandard as primaryStandardOf } from "@/lib/tasks-filter";
-import type { TaskBody } from "@/lib/types";
+import { getAllTasks, getTaskById } from "@/lib/library/tasks";
+import { primaryStandard as primaryStandardOf } from "@/lib/library/tasks-filter";
+import type { TaskBody } from "@/lib/core/types";
 import ProjectionView from "@/components/tasks/ProjectionView";
 
 export async function generateStaticParams() {

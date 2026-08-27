@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useLayoutEffect, useCallback, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { parsePrompt, parseBulletedList } from "@/lib/split-prompt";
+import { parsePrompt, parseBulletedList } from "@/lib/generators/split-prompt";
 import MarkdownText from "./MarkdownText";
 import RemoteConnectModal from "./RemoteConnectModal";
 import type {
@@ -10,19 +10,19 @@ import type {
   HeartbeatResponse,
   ProjectionState,
   RemoteCommand,
-} from "@/lib/types";
+} from "@/lib/core/types";
 import type { TimerController } from "./TimerOverlay";
 import {
   PROJECTION_THEMES,
   THEME_ORDER,
   type ThemeId,
-} from "@/lib/projection-themes";
-import type { TaskImage } from "@/lib/types";
+} from "@/lib/classroom/projection-themes";
+import type { TaskImage } from "@/lib/core/types";
 import InteractiveImage from "./interactive/InteractiveImage";
-import DrawingOverlay from "@/components/intervention/DrawingOverlay";
+import DrawingOverlay from "@/components/projection/DrawingOverlay";
 import TimerOverlay from "./TimerOverlay";
 import GroupsButton, { type GroupsRemoteAction } from "@/components/groups/GroupsButton";
-import { getClasses, getLastGroups } from "@/lib/classes";
+import { getClasses, getLastGroups } from "@/lib/classroom/classes";
 
 /** Read the current groups mirror + class list from localStorage for the
  *  heartbeat broadcast. Called on the client only (connect + each tick),

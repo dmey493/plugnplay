@@ -2,7 +2,7 @@ import Container from "@/components/layout/Container";
 import Button from "@/components/ui/Button";
 import Tile from "@/components/ui/Tile";
 import { ICONS, ArrowRightIcon } from "@/components/ui/icons";
-import { JUMP_IN } from "@/lib/constants";
+import { JUMP_IN } from "@/lib/core/constants";
 
 /**
  * HeroSection — the "playground" hero (redesign direction C).

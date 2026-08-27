@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Container from "@/components/layout/Container";
 import PageBanner from "@/components/ui/PageBanner";
 import ScienceGenerator from "@/components/science/ScienceGenerator";
-import { stimulusCount } from "@/lib/science";
+import { stimulusCount } from "@/lib/library/science";
 
 export const metadata: Metadata = {
   title: "Stimulus Generator | Science | Plug N Play",

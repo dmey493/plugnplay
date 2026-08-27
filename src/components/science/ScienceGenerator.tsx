@@ -7,7 +7,7 @@ import {
   standardsByDomain,
   getStandard,
   type Figure,
-} from "@/lib/science";
+} from "@/lib/library/science";
 import StimulusView from "./StimulusView";
 
 function figureLabel(fig?: Figure): string {

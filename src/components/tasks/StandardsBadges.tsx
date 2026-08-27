@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import type { ContentEnvelope, TaskBody } from "@/lib/types";
-import { displayStandardsFor, type StandardsSystem } from "@/lib/tasks-filter";
-import { getStandardLabel } from "@/lib/standards-labels";
+import type { ContentEnvelope, TaskBody } from "@/lib/core/types";
+import { displayStandardsFor, type StandardsSystem } from "@/lib/library/tasks-filter";
+import { getStandardLabel } from "@/lib/standards/standards-labels";
 
 /**
  * Toggleable standards display for the task detail page header.

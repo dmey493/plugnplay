@@ -15,8 +15,8 @@
  * approach `tools/canvas/exportPdf.ts` already uses for the whiteboard.
  */
 
-import { activityType } from "@/lib/activity-types";
-import type { Course, Lesson, Library, Week } from "@/lib/lesson-plans";
+import { activityType } from "@/lib/classroom/activity-types";
+import type { Course, Lesson, Library, Week } from "@/lib/classroom/lesson-plans";
 import {
   DAY_LABELS,
   GROUPING_LABEL,
@@ -25,7 +25,7 @@ import {
   lessonMinutes,
   periodFor,
   sortedBlocks,
-} from "@/lib/lesson-plans";
+} from "@/lib/classroom/lesson-plans";
 
 /** "2026-08-19" → "Wednesday, August 19, 2026". Parsed as local time
  *  (the `new Date("yyyy-mm-dd")` overload is UTC and shifts the day back

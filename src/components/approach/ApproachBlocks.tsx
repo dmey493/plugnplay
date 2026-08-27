@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import type { Block } from "@/lib/approach";
+import type { Block } from "@/lib/library/approach";
 
 /**
  * Renderer for the teaching-approach content blocks (see lib/approach.ts).

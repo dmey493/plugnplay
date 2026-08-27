@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import type { Question, QuestionKind } from "@/lib/science";
-import { questionLabel } from "@/lib/science";
+import type { Question, QuestionKind } from "@/lib/library/science";
+import { questionLabel } from "@/lib/library/science";
 
 const LETTERS = "abcdefgh".split("");
 

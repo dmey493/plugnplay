@@ -4,7 +4,7 @@ import {
   getAllApproachPages,
   getApproachPage,
   type ApproachSection,
-} from "@/lib/approach";
+} from "@/lib/library/approach";
 import Container from "@/components/layout/Container";
 import PageBanner from "@/components/ui/PageBanner";
 import ApproachBlocks from "@/components/approach/ApproachBlocks";

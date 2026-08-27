@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Button from "@/components/ui/Button";
 import { ArrowRightIcon } from "@/components/ui/icons";
-import type { UnitFile } from "@/lib/types";
+import type { UnitFile } from "@/lib/core/types";
 import UnitCard from "./UnitCard";
 import BrowseModeToggle from "./BrowseModeToggle";
 

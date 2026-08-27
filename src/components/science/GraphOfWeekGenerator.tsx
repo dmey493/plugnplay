@@ -9,7 +9,7 @@ import {
   standardsForGrade,
   entriesForStandard,
   type GotwEntry,
-} from "@/lib/gotw";
+} from "@/lib/library/gotw";
 import GraphOfWeekView from "./GraphOfWeekView";
 
 const CHART_LABELS: Record<string, string> = {

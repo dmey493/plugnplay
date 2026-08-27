@@ -1,5 +1,5 @@
-import type { ContentEnvelope } from "@/lib/types";
-import { getSubjectBySlug } from "@/lib/constants";
+import type { ContentEnvelope } from "@/lib/core/types";
+import { getSubjectBySlug } from "@/lib/core/constants";
 import Card from "@/components/ui/Card";
 import Badge, { type BadgeTone } from "@/components/ui/Badge";
 import Tag from "@/components/ui/Tag";

@@ -5,8 +5,8 @@ import type {
   ProjectionState,
   RemoteCommand,
   RemoteTaskBundle,
-} from "@/lib/types";
-import { formGroups } from "@/lib/classes";
+} from "@/lib/core/types";
+import { formGroups } from "@/lib/classroom/classes";
 import RemoteDashboard from "./RemoteDashboard";
 
 /**

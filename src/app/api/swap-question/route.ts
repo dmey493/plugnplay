@@ -1,5 +1,5 @@
 export const dynamic = "force-dynamic";
-import { callReviewApi } from "@/lib/engine";
+import { callReviewApi } from "@/lib/generators/engine";
 
 export async function POST(request: Request) {
   try {

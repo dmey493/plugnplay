@@ -7,12 +7,12 @@ import type {
   ProjectionState,
   RemoteCommand,
   RemoteTaskBundle,
-} from "@/lib/types";
+} from "@/lib/core/types";
 import {
   PROJECTION_THEMES,
   THEME_ORDER,
   type ThemeId,
-} from "@/lib/projection-themes";
+} from "@/lib/classroom/projection-themes";
 import MarkdownText from "@/components/tasks/MarkdownText";
 
 /**

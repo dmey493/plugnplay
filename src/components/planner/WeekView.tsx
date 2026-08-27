@@ -15,13 +15,13 @@
 
 import { useState } from "react";
 import Button from "@/components/ui/Button";
-import type { Course, Library, Week, WeekCell } from "@/lib/lesson-plans";
+import type { Course, Library, Week, WeekCell } from "@/lib/classroom/lesson-plans";
 import {
   DAY_LABELS,
   cellLesson,
   lessonMinutes,
   weekDayPeriod,
-} from "@/lib/lesson-plans";
+} from "@/lib/classroom/lesson-plans";
 
 interface Props {
   library: Library;

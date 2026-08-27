@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PageBanner from "@/components/ui/PageBanner";
 import StimulusView from "@/components/science/StimulusView";
-import { STANDARDS, DOMAINS, DOMAIN_ACCENT, getStandard } from "@/lib/science";
+import { STANDARDS, DOMAINS, DOMAIN_ACCENT, getStandard } from "@/lib/library/science";
 
 export function generateStaticParams() {
   return STANDARDS.map((s) => ({ pe: s.pe }));

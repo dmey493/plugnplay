@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import type { FilterState } from "@/lib/types";
-import { SUBJECTS, GRADES, PURPOSES, MTSS_TIERS } from "@/lib/constants";
+import type { FilterState } from "@/lib/core/types";
+import { SUBJECTS, GRADES, PURPOSES, MTSS_TIERS } from "@/lib/core/constants";
 
 function SearchIcon() {
   return (

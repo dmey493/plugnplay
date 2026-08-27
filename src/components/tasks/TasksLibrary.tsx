@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import type { ContentEnvelope, TaskBody, TaskFilterState, BrowseMode } from "@/lib/types";
-import { filterTasks, displayStandardsFor, type StandardsSystem } from "@/lib/tasks-filter";
-import { getStandardLabel } from "@/lib/standards-labels";
+import type { ContentEnvelope, TaskBody, TaskFilterState, BrowseMode } from "@/lib/core/types";
+import { filterTasks, displayStandardsFor, type StandardsSystem } from "@/lib/library/tasks-filter";
+import { getStandardLabel } from "@/lib/standards/standards-labels";
 import TaskCard from "./TaskCard";
 import TaskFilterBar from "./TaskFilterBar";
 

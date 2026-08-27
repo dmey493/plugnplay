@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 
-import type { PollResponse } from "@/lib/types";
-import { getPolledState } from "@/lib/remote-store";
+import type { PollResponse } from "@/lib/core/types";
+import { getPolledState } from "@/lib/classroom/remote-store";
 
 /**
  * Phone-side poll (~2Hz). Read-only fetch of the projection's latest

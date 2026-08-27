@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 
-import type { RemoteCommand } from "@/lib/types";
-import { pushCommand } from "@/lib/remote-store";
+import type { RemoteCommand } from "@/lib/core/types";
+import { pushCommand } from "@/lib/classroom/remote-store";
 
 /**
  * Phone-side command. Fired immediately on every user action

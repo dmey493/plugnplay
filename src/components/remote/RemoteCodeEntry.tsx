@@ -5,7 +5,7 @@ import {
   ROOM_CODE_ALPHABET,
   ROOM_CODE_LENGTH,
   normaliseRoomCode,
-} from "@/lib/remote-codes";
+} from "@/lib/classroom/remote-codes";
 
 /**
  * Four-character code entry. Single big input that accepts only valid

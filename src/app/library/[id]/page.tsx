@@ -1,13 +1,13 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getAllStrategies, getStrategyById } from "@/lib/content";
-import { getSubjectBySlug, PURPOSES } from "@/lib/constants";
+import { getAllStrategies, getStrategyById } from "@/lib/library/strategies";
+import { getSubjectBySlug, PURPOSES } from "@/lib/core/constants";
 import Container from "@/components/layout/Container";
 import PageBanner from "@/components/ui/PageBanner";
 import Card from "@/components/ui/Card";
 import Badge, { type BadgeTone } from "@/components/ui/Badge";
 import Tag from "@/components/ui/Tag";
-import type { StrategyBody } from "@/lib/types";
+import type { StrategyBody } from "@/lib/core/types";
 
 const SUBJECT_TONE: Record<string, BadgeTone> = {
   math: "blue",

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import Container from "@/components/layout/Container";
 import PageBanner from "@/components/ui/PageBanner";
-import WodbBrowse from "@/components/math/wodb/WodbBrowse";
-import { getAllWodb } from "@/lib/wodb";
+import WodbBrowse from "@/components/wodb/WodbBrowse";
+import { getAllWodb } from "@/lib/library/wodb";
 
 export const metadata: Metadata = {
   title: "Which One Doesn't Belong? | Math | Plug N Play",

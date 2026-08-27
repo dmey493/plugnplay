@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getAllStrategies } from "@/lib/content";
+import { getAllStrategies } from "@/lib/library/strategies";
 import Container from "@/components/layout/Container";
 import PageBanner from "@/components/ui/PageBanner";
 import StrategyLibrary from "@/components/library/StrategyLibrary";

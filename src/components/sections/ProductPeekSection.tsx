@@ -2,7 +2,7 @@ import Container from "@/components/layout/Container";
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import Tag from "@/components/ui/Tag";
-import { getTaskById } from "@/lib/tasks";
+import { getTaskById } from "@/lib/library/tasks";
 
 /**
  * ProductPeekSection — "show, don't tell" (redesign direction B).

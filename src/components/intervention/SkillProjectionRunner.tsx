@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { PROJECTION_THEMES, THEME_ORDER, type ThemeId, type ThemeConfig } from "@/lib/projection-themes";
-import { InlineDiagram, MathText, type RenderData } from "./InlineMath";
-import DrawingOverlay from "./DrawingOverlay";
+import { PROJECTION_THEMES, THEME_ORDER, type ThemeId, type ThemeConfig } from "@/lib/classroom/projection-themes";
+import { InlineDiagram, MathText, type RenderData } from "@/components/projection/InlineMath";
+import DrawingOverlay from "@/components/projection/DrawingOverlay";
 import GroupsButton from "@/components/groups/GroupsButton";
 
 interface ProjItem {

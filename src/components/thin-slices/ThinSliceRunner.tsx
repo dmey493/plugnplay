@@ -2,12 +2,12 @@
 
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import type { ThinSliceShape, ThinSliceStep } from "@/lib/types";
+import type { ThinSliceShape, ThinSliceStep } from "@/lib/core/types";
 import MathExpression from "./MathExpression";
 import ShapeRenderer from "./ShapeRenderer";
 import OrganizerOverlay, { type OrganizerKind } from "./OrganizerOverlay";
 import { useBubblePhysics } from "./useBubblePhysics";
-import DrawingOverlay from "@/components/intervention/DrawingOverlay";
+import DrawingOverlay from "@/components/projection/DrawingOverlay";
 import TimerOverlay from "@/components/tasks/TimerOverlay";
 import GroupsButton from "@/components/groups/GroupsButton";
 

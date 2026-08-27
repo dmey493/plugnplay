@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Container from "@/components/layout/Container";
 import PageBanner from "@/components/ui/PageBanner";
 import Button from "@/components/ui/Button";
-import { getAllTasks } from "@/lib/tasks";
-import { getAllThinSlices } from "@/lib/thin-slices";
+import { getAllTasks } from "@/lib/library/tasks";
+import { getAllThinSlices } from "@/lib/library/thin-slices";
 import TasksLibrary from "@/components/tasks/TasksLibrary";
 
 export const metadata: Metadata = {

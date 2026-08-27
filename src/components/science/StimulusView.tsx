@@ -4,7 +4,7 @@ import { useState } from "react";
 import Button from "@/components/ui/Button";
 import StimulusCard from "./StimulusCard";
 import StimulusPrintModal from "./StimulusPrintModal";
-import type { Stimulus } from "@/lib/science";
+import type { Stimulus } from "@/lib/library/science";
 
 /** On-screen stimulus (interactive card) + a Print action that opens the
  *  clean print-preview modal. */

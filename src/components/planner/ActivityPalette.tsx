@@ -10,8 +10,8 @@
  */
 
 import { useDraggable } from "@dnd-kit/core";
-import { ACTIVITY_TYPES, GROUP_LABEL } from "@/lib/activity-types";
-import type { ActivityGroup, ActivityType } from "@/lib/activity-types";
+import { ACTIVITY_TYPES, GROUP_LABEL } from "@/lib/classroom/activity-types";
+import type { ActivityGroup, ActivityType } from "@/lib/classroom/activity-types";
 
 export const PALETTE_PREFIX = "type:";
 

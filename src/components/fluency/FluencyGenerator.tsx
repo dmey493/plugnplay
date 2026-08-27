@@ -11,7 +11,7 @@ import {
   type FluencyTopic,
   type Difficulty,
   type Problem,
-} from "@/lib/fluency-gen";
+} from "@/lib/generators/fluency-gen";
 import ShapeRenderer from "./ShapeRenderer";
 
 const DEFAULT_OPTS: FluencyOptions = {

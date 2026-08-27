@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import type { Student } from "@/lib/classes";
+import type { Student } from "@/lib/classroom/classes";
 
 /**
  * Card-deal randomization animation — 3D version.

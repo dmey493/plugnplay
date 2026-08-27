@@ -1,4 +1,4 @@
-import type { Figure as FigureData } from "@/lib/science";
+import type { Figure as FigureData } from "@/lib/library/science";
 import Chart from "./Chart";
 
 /** Renders a cluster figure: a rendered chart, a data table, or the one

@@ -3,8 +3,8 @@ export const dynamic = "force-dynamic";
 import type {
   HeartbeatResponse,
   ProjectionState,
-} from "@/lib/types";
-import { heartbeat } from "@/lib/remote-store";
+} from "@/lib/core/types";
+import { heartbeat } from "@/lib/classroom/remote-store";
 
 /**
  * Projection-side heartbeat (~1Hz). Publishes the projection's current

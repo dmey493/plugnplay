@@ -9,7 +9,7 @@ import {
   updateClass,
   type Class,
   type Student,
-} from "@/lib/classes";
+} from "@/lib/classroom/classes";
 
 /**
  * Class detail — roster editor for one class.

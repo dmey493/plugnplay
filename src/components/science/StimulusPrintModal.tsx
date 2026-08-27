@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Button from "@/components/ui/Button";
 import PrintSheet from "./PrintSheet";
-import type { Stimulus } from "@/lib/science";
+import type { Stimulus } from "@/lib/library/science";
 
 /**
  * Print preview for one stimulus. Shows the clean, worksheet-formatted sheet

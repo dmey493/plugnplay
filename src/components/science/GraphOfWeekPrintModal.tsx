@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Button from "@/components/ui/Button";
-import { worksheetUrl, type GotwEntry } from "@/lib/gotw";
+import { worksheetUrl, type GotwEntry } from "@/lib/library/gotw";
 
 /**
  * Print preview for one Graph of the Week worksheet. Mirrors the stimulus

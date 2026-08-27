@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 
-import { leaveRoom } from "@/lib/remote-store";
+import { leaveRoom } from "@/lib/classroom/remote-store";
 
 /**
  * Phone-side disconnect. Marks the room un-paired but leaves it alive

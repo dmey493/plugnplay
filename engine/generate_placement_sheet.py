@@ -34,7 +34,7 @@ COLUMN_LABELS = [
 
 def _load(standard):
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    path = os.path.join(root, "Cooties", "data", "skills", f"{standard}.json")
+    path = os.path.join(root, "authoring", "data", "skills", f"{standard}.json")
     if not os.path.exists(path):
         path = os.path.join(root, "web", "content", "skills", f"{standard}.json")
     with open(path, encoding="utf-8") as fh:

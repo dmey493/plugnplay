@@ -1,6 +1,6 @@
 "use client";
 
-import type { ShapeSpec } from "@/lib/fluency-gen";
+import type { ShapeSpec } from "@/lib/generators/fluency-gen";
 
 /**
  * Inline labeled-shape diagram for geometry fluency problems.

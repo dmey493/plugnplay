@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getAllTasks, getTaskById } from "@/lib/tasks";
-import type { TaskBody, TaskType } from "@/lib/types";
+import { getAllTasks, getTaskById } from "@/lib/library/tasks";
+import type { TaskBody, TaskType } from "@/lib/core/types";
 import Container from "@/components/layout/Container";
 import TaskActionBar from "@/components/tasks/TaskActionBar";
 import TaskImageView from "@/components/tasks/TaskImageView";

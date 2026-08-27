@@ -23,7 +23,7 @@ import LibraryView from "./LibraryView";
 import PlanSheet from "./PlanSheet";
 import WeekView from "./WeekView";
 
-import type { Course, Lesson, Library, Unit, Week } from "@/lib/lesson-plans";
+import type { Course, Lesson, Library, Unit, Week } from "@/lib/classroom/lesson-plans";
 import {
   COURSE_COLORS,
   DAY_LABELS,
@@ -38,7 +38,7 @@ import {
   newId,
   parseCourseExport,
   saveLibrary,
-} from "@/lib/lesson-plans";
+} from "@/lib/classroom/lesson-plans";
 
 const UI_KEY = "pnp:planner-ui";
 const SAVE_DEBOUNCE_MS = 500;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { Student } from "@/lib/classes";
+import type { Student } from "@/lib/classroom/classes";
 
 /**
  * Magnet-snap randomization animation.

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import Container from "@/components/layout/Container";
 import PageBanner from "@/components/ui/PageBanner";
-import NumberTalksBrowse from "@/components/math/number-talks/NumberTalksBrowse";
-import { getAllNumberTalks } from "@/lib/number-talks";
+import NumberTalksBrowse from "@/components/number-talks/NumberTalksBrowse";
+import { getAllNumberTalks } from "@/lib/library/number-talks";
 
 export const metadata: Metadata = {
   title: "Number Talks | Math | Plug N Play",
