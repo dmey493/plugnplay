@@ -23,26 +23,30 @@ Properties of Exponents (all covered across the bank):
   - Zero Exponent: a^0 = 1                          (stem 5)
 
 5 Stems, each rotating item styles across variants (variant_idx % 3):
-  Stem 1 (Below-MC, DOK 2, Easy):
+  Stem 1 (Below-MC, DOK 2, Easy): Match a power expression to its expanded or simplified equivalent
       0: power-of-a-power expanded notation, e.g. (3^2)^4
       1: product-of-powers expanded notation (state-spec style), e.g.
          3^2 x 3^5 -> "(3*3)*(3*3*3*3*3) = 3^7"
       2: simple product rule, e.g. 4^2 x 4^3 -> 4^5
-  Stem 2 (Approaching-MC, DOK 2, Easy):
+  Stem 2 (Approaching-MC, DOK 2, Easy): Identify an equivalent expression using product, power, or negative exponent rules
       0: product of powers
       1: negative-exponent recognition, e.g. "equivalent to 1/27?" -> 3^-3
       2: power of a power, e.g. (6^3)^4 -> 6^12
-  Stem 3 (Approaching-NR, DOK 2, Medium):
+  Stem 3 (Approaching-NR, DOK 2, Medium): Simplify a product or quotient of powers
       0: product of powers
       1: quotient of powers, e.g. 4^5 / 4^3 -> 4^2
       2: expanded quotient, e.g. (8x8x8x8x8x8)/(8x8x8) -> 8^3
-  Stem 4 (At-MC, DOK 2, Medium) -- negative exponents throughout:
+  Stem 4 (At-MC, DOK 2, Medium): Simplify an expression with negative exponents
       0: multi-property simplify with a negative power inside,
          e.g. 5^4 x (5^-2)^3
       1: quotient producing a negative exponent, e.g. 4^2 / 4^5 -> 4^-3
       2: rewrite a negative-exponent product with a positive exponent,
          e.g. 5^-4 x 5^1 -> 1/(5^3)
-  Stem 5 (Above-NR, DOK 2, Difficult):
+  Stem 5 (Above-NR, DOK 2, Difficult): Solve for a missing exponent or base
+  Stem 6 (Below-NR):    Missing exponent in a single-property equality (DOK 1, easy)
+  Stem 7 (Approaching-NR): Missing exponent where two properties combine (DOK 2, medium)
+  Stem 8 (At-MC):       Product of powers with a fractional base (DOK 2, medium)
+  Stem 9 (Above-ER):    Find and explain the error in a worked simplification (DOK 3, difficult)
       0: zero-power solve, e.g. 5^a = 1 -> a = 0
       1: solve-for-exponents, e.g. 3^5 x a^5 / 12^2 = 12^b -> a=4, b=3
       2: open-ended pair, e.g. 6^a x 6^b / 6^3 = 1/6^4 -> a+b = -1
@@ -71,6 +75,7 @@ from engine.models import (
 )
 from engine.number_generators import NumberGenerator
 from engine.context_pools import pick_name
+from engine.stem_guards import distinct_choices
 
 
 STANDARD_CODE = "8.NS.3"
@@ -208,12 +213,80 @@ class Stem8NS3:
 
     def stem1_below_mc(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(1, variant_idx)
-        style = variant_idx % 3
+        # Style 3 is new for the 2026-08-17 revision, which added the negative
+        # exponent property to the Below descriptor.
+        style = variant_idx % 4
         if style == 0:
             return self._below_power_of_power_expanded(rng, variant_idx)
         elif style == 1:
             return self._below_product_expanded(rng, variant_idx)
-        return self._below_product_rule(rng, variant_idx)
+        elif style == 2:
+            return self._below_product_rule(rng, variant_idx)
+        return self._below_negative_exponent(rng, variant_idx)
+
+    def _below_negative_exponent(self, rng, variant_idx):
+        """Below style 3: negative exponents, new in the 2026-08-17 revision.
+
+        Reproduces the specification's own item shape, (5^-3 x 5^4)^2 = 5^2:
+        a product of powers whose exponents partly cancel, then raised to a
+        power. The distractors are the two ways the sign can go wrong and the
+        two ways the exponents can be combined wrongly.
+        """
+        base = rng.randint(2, 7)
+        neg = rng.randint(2, 5)
+        pos = rng.randint(neg + 1, neg + 4)     # keep the inner result positive
+        outer = 2
+        inner_exp = pos - neg
+        result_exp = inner_exp * outer
+
+        _assert_eq(_pow(base, -neg) * _pow(base, pos), _pow(base, inner_exp),
+                   f"stem1 neg-exp {base}^-{neg} x {base}^{pos}")
+        _assert_eq(_pow(base, inner_exp) ** outer, _pow(base, result_exp),
+                   f"stem1 neg-exp outer ({base}^{inner_exp})^{outer}")
+
+        expr_text = f"({_exp(base, -neg)} x {_exp(base, pos)})^{outer}"
+        correct = _exp(base, result_exp)
+
+        options = [
+            (correct, True, None),
+            (f"1/{_exp(base, result_exp)}", False,
+             "Carries the negative sign through to the result"),
+            (f"1/{_exp(base, (pos + neg) * outer)}", False,
+             "Adds the exponents as if both were positive, then negates"),
+            (_exp(base, (pos + neg) * outer), False,
+             "Adds the exponents instead of subtracting for the negative one"),
+        ]
+        rng.shuffle(options)
+        choices = [QuestionChoice(key=chr(ord("a") + i), text=t, text_latex=t,
+                                  is_correct=c, distractor_rationale=r)
+                   for i, (t, c, r) in enumerate(options)]
+        key = next(c.key for c in choices if c.is_correct).upper()
+
+        stem_text = (
+            f"An expression is given.\n\n  {expr_text}\n\n"
+            f"Select an equivalent expression."
+        )
+        worked = (
+            f"Product of powers: add the exponents, keeping the negative.\n"
+            f"{_exp(base, -neg)} x {_exp(base, pos)} = "
+            f"{_exp(base, -neg + pos)} = {_exp(base, inner_exp)}\n"
+            f"Power of a power: multiply the exponents.\n"
+            f"({_exp(base, inner_exp)})^{outer} = {_exp(base, result_exp)}"
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.MC, Difficulty.EASY, 1, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.BELOW,
+            difficulty=Difficulty.EASY, dok=2, item_type=ItemType.MC,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{key}. {correct}", answer_latex=f"{key}. {correct}",
+            worked_solution=worked, choices=choices,
+            context_scenario="negative exponent with product and power rules",
+            seed=self.base_seed * 1000 + 100 + variant_idx,
+            stem_index=1, variant_index=variant_idx,
+        )
 
     def _below_power_of_power_expanded(self, rng, variant_idx):
         base = rng.randint(2, 7)
@@ -848,6 +921,270 @@ class Stem8NS3:
     # MAIN GENERATION METHODS
     # ================================================================
 
+    # ================================================================
+    # STEM 6: Below Proficiency - NR (DOK 1, Easy)
+    # NEW. "Identify unknown exponents in simple equality statements involving
+    # a SINGLE exponent property."
+    # ================================================================
+    def stem6_below_nr(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(6, variant_idx)
+
+        base = rng.randint(2, 9)
+        prop = rng.choice(["product", "power"])
+        if prop == "product":
+            a = rng.randint(2, 6)
+            b = rng.randint(2, 6)
+            total = a + b
+            _assert_eq(_pow(base, a) * _pow(base, b), _pow(base, total),
+                       "stem6 product")
+            equation = f"{_exp(base, a)} x {_exp(base, '?')} = {_exp(base, total)}"
+            answer = b
+            worked = (
+                f"Product of powers: the exponents add.\n"
+                f"{a} + ? = {total}, so ? = {answer}."
+            )
+        else:
+            a = rng.randint(2, 4)
+            b = rng.randint(2, 4)
+            total = a * b
+            _assert_eq(_pow(base, a) ** b, _pow(base, total), "stem6 power")
+            equation = f"({_exp(base, a)})^? = {_exp(base, total)}"
+            answer = b
+            worked = (
+                f"Power of a power: the exponents multiply.\n"
+                f"{a} x ? = {total}, so ? = {answer}."
+            )
+
+        stem_text = (
+            f"An equation is given.\n\n  {equation}\n\n"
+            f"What is the value of the missing exponent?"
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.NR, Difficulty.EASY, 6, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.BELOW,
+            difficulty=Difficulty.EASY, dok=1, item_type=ItemType.NR,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=str(answer), answer_latex=str(answer),
+            worked_solution=worked,
+            context_scenario="missing exponent, one property",
+            seed=self.base_seed * 1000 + 600 + variant_idx,
+            stem_index=6, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 7: Approaching Proficiency - NR (DOK 2, Medium)
+    # NEW. "Determine missing exponents in simple equality statements involving
+    # TWO properties" - here a power of a power feeding a product or quotient,
+    # so the student cannot get there with one rule.
+    # ================================================================
+    def stem7_approaching_nr(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(7, variant_idx)
+
+        base = rng.randint(2, 7)
+        inner = rng.randint(2, 4)
+        outer = rng.randint(2, 3)
+        extra = rng.randint(2, 5)
+
+        if rng.random() < 0.5:
+            total = inner * outer + extra
+            _assert_eq(_pow(base, inner) ** outer * _pow(base, extra),
+                       _pow(base, total), "stem7 power-then-product")
+            equation = (f"({_exp(base, inner)})^{outer} x {_exp(base, '?')} "
+                        f"= {_exp(base, total)}")
+            answer = extra
+            worked = (
+                f"Power of a power first: ({_exp(base, inner)})^{outer} = "
+                f"{_exp(base, inner * outer)}\n"
+                f"Then product of powers: {inner * outer} + ? = {total}, "
+                f"so ? = {answer}."
+            )
+        else:
+            total = inner * outer - extra
+            while total < 1:
+                extra = rng.randint(1, max(1, inner * outer - 1))
+                total = inner * outer - extra
+            _assert_eq(_pow(base, inner) ** outer / _pow(base, extra),
+                       _pow(base, total), "stem7 power-then-quotient")
+            equation = (f"({_exp(base, inner)})^{outer} / {_exp(base, '?')} "
+                        f"= {_exp(base, total)}")
+            answer = extra
+            worked = (
+                f"Power of a power first: ({_exp(base, inner)})^{outer} = "
+                f"{_exp(base, inner * outer)}\n"
+                f"Then quotient of powers: {inner * outer} - ? = {total}, "
+                f"so ? = {answer}."
+            )
+
+        stem_text = (
+            f"An equation is given.\n\n  {equation}\n\n"
+            f"What is the value of the missing exponent?"
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING,
+                                         ItemType.NR, Difficulty.MEDIUM, 7, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.APPROACHING,
+            difficulty=Difficulty.MEDIUM, dok=2, item_type=ItemType.NR,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=str(answer), answer_latex=str(answer),
+            worked_solution=worked,
+            context_scenario="missing exponent, two properties",
+            seed=self.base_seed * 1000 + 700 + variant_idx,
+            stem_index=7, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 8: At Proficiency - MC (DOK 2, Medium)
+    # NEW. "...including those with FRACTIONAL BASES", which did not appear in
+    # the old item set at all.
+    # ================================================================
+    @distinct_choices
+    def stem8_at_mc(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(8, variant_idx)
+
+        # A base like 2/6 would print unreduced, which is not how a fractional
+        # base is ever written in the specification.
+        from math import gcd
+        num = rng.randint(1, 4)
+        den = rng.randint(num + 1, 6)
+        while gcd(num, den) != 1:
+            num = rng.randint(1, 4)
+            den = rng.randint(num + 1, 6)
+        a = rng.randint(2, 5)
+        b = rng.randint(2, 4)
+        # When a + b == a * b (2 and 2), the "multiplied the exponents"
+        # distractor becomes the correct answer.
+        while a + b == a * b:
+            a = rng.randint(2, 5)
+            b = rng.randint(2, 4)
+        total = a + b
+        frac = f"({num}/{den})"
+
+        _assert_eq(Fraction(num, den) ** a * Fraction(num, den) ** b,
+                   Fraction(num, den) ** total, "stem8 fractional base")
+
+        correct = f"{frac}^{total}"
+        options = [
+            (correct, True, None),
+            (f"{frac}^{a * b}", False, "Multiplies the exponents instead of adding"),
+            (f"({num ** 2}/{den ** 2})^{total}", False,
+             "Squares the base as well as combining the exponents"),
+            # den * 2 collides with den ** 2 when den is 2, so the altered base
+            # moves the numerator instead.
+            (f"({num + 1}/{den})^{total}", False,
+             "Changes the base instead of leaving it alone"),
+        ]
+        rng.shuffle(options)
+        choices = [QuestionChoice(key=chr(ord("a") + i), text=t, text_latex=t,
+                                  is_correct=c, distractor_rationale=r)
+                   for i, (t, c, r) in enumerate(options)]
+        key = next(c.key for c in choices if c.is_correct).upper()
+
+        stem_text = (
+            f"An expression is given.\n\n  {frac}^{a} x {frac}^{b}\n\n"
+            f"Select an equivalent expression."
+        )
+        worked = (
+            f"The product of powers rule works the same for a fractional base.\n"
+            f"The base {frac} does not change; the exponents add.\n"
+            f"{a} + {b} = {total}, so the expression equals {correct}."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.AT,
+                                         ItemType.MC, Difficulty.MEDIUM, 8, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.AT,
+            difficulty=Difficulty.MEDIUM, dok=2, item_type=ItemType.MC,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{key}. {correct}", answer_latex=f"{key}. {correct}",
+            worked_solution=worked, choices=choices,
+            context_scenario="product of powers with a fractional base",
+            seed=self.base_seed * 1000 + 800 + variant_idx,
+            stem_index=8, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 9: Above Proficiency - ER (DOK 3, Difficult)
+    # NEW. The revision's added Above item shows a student's work in a table,
+    # asks where it goes wrong, and asks for the correct simplification. The
+    # planted error is the classic one: multiplying exponents where the product
+    # rule calls for adding them.
+    # ================================================================
+    def stem9_above_er(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(9, variant_idx)
+        student = pick_name(rng)
+
+        base = rng.randint(2, 6)
+        a = rng.randint(2, 5)
+        b = rng.randint(2, 4)
+        c = rng.randint(2, 3)
+        # a + b == a * b (as with 2 and 2) makes the planted mistake give the
+        # right answer, leaving nothing to find.
+        while a + b == a * b:
+            a = rng.randint(2, 5)
+            b = rng.randint(2, 4)
+
+        # (base^a x base^b)^c  ->  base^((a+b)*c)
+        correct_exp = (a + b) * c
+        wrong_exp = (a * b) * c
+        _assert_eq(_pow(base, a) * _pow(base, b), _pow(base, a + b), "stem9 product")
+        _assert_ne(_pow(base, correct_exp), _pow(base, wrong_exp), "stem9 error is real")
+
+        expr = f"({_exp(base, a)} x {_exp(base, b)})^{c}"
+        steps = (
+            f"Step 1: {_exp(base, a)} x {_exp(base, b)} = {_exp(base, a * b)}\n"
+            f"Step 2: ({_exp(base, a * b)})^{c} = {_exp(base, wrong_exp)}"
+        )
+
+        stem_text = (
+            f"An expression is given.\n\n  {expr}\n\n"
+            f"{student} simplifies the expression incorrectly. "
+            f"{student}'s work is shown.\n\n{steps}\n\n"
+            f"Identify where {student} made an error and explain how to "
+            f"simplify the expression correctly."
+        )
+
+        answer = (
+            f"The error is in Step 1. {student} multiplied the exponents, but "
+            f"the product of powers rule adds them: "
+            f"{_exp(base, a)} x {_exp(base, b)} = {_exp(base, a + b)}, "
+            f"not {_exp(base, a * b)}.\n"
+            f"Step 2 applies the power of a power rule correctly, so once "
+            f"Step 1 is fixed the work finishes as "
+            f"({_exp(base, a + b)})^{c} = {_exp(base, correct_exp)}.\n"
+            f"Exponents add when powers of the same base are multiplied, and "
+            f"multiply only when a power is raised to another power."
+        )
+
+        worked = (
+            f"Correct simplification:\n"
+            f"{_exp(base, a)} x {_exp(base, b)} = {_exp(base, a + b)}  "
+            f"(add the exponents)\n"
+            f"({_exp(base, a + b)})^{c} = {_exp(base, correct_exp)}  "
+            f"(multiply the exponents)\n"
+            f"{student} got {_exp(base, wrong_exp)} by adding and multiplying "
+            f"the wrong way round in Step 1."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE,
+                                         ItemType.ER, Difficulty.DIFFICULT, 9, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.ABOVE,
+            difficulty=Difficulty.DIFFICULT, dok=3, item_type=ItemType.ER,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=answer, answer_latex=answer,
+            worked_solution=worked,
+            context_scenario="error analysis of an exponent simplification",
+            seed=self.base_seed * 1000 + 900 + variant_idx,
+            stem_index=9, variant_index=variant_idx,
+        )
+
     def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
         all_questions = []
         stem_methods = [
@@ -856,6 +1193,10 @@ class Stem8NS3:
             self.stem3_approaching_nr,
             self.stem4_at_mc,
             self.stem5_above_nr,
+            self.stem6_below_nr,
+            self.stem7_approaching_nr,
+            self.stem8_at_mc,
+            self.stem9_above_er,
         ]
         for stem_fn in stem_methods:
             for v in range(variants_per_stem):
@@ -874,6 +1215,10 @@ class Stem8NS3:
             3: self.stem3_approaching_nr,
             4: self.stem4_at_mc,
             5: self.stem5_above_nr,
+            6: self.stem6_below_nr,
+            7: self.stem7_approaching_nr,
+            8: self.stem8_at_mc,
+            9: self.stem9_above_er,
         }
         fn = stem_methods.get(stem_index)
         if not fn:

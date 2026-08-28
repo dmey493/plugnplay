@@ -16,6 +16,8 @@ Content Limits:
   Stem 3 (Approaching-MC):  Solve inequality with fractions (DOK 2, Medium)
   Stem 4 (At-MP):           Real-world: write equation + solve (DOK 2, Medium)
   Stem 5 (Above-MP):        Real-world: write + solve + explain (DOK 3, Medium)
+  Stem 6 (Below-MP):    Evaluate both sides, then decide if a value is a solution (DOK 2, medium)
+  Stem 7 (Approaching-MC): Solution set of an inequality, including the direction (DOK 2, medium)
 """
 
 import random
@@ -26,11 +28,12 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 from engine.models import (
-    GeneratedQuestion, QuestionPart,
+    GeneratedQuestion, QuestionChoice, QuestionPart,
     Difficulty, ProficiencyLevel, ItemType,
     make_question_id
 )
 from engine.number_generators import NumberGenerator
+from engine.stem_guards import distinct_choices
 from engine.distractor_engine import shuffle_choices
 from engine.context_pools import pick_name
 
@@ -687,6 +690,169 @@ class Stem8AF1:
     # MAIN GENERATION METHOD
     # ================================================================
 
+    # ================================================================
+    # STEM 6: Below Proficiency - MP (DOK 2, Medium)
+    # NEW. The revision's Below item asks for the value of each side before the
+    # conclusion, so a student cannot guess from the shape of the equation.
+    # ================================================================
+    def stem6_below_mp(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(6, variant_idx)
+
+        # Left side is a constant expression; right side is linear in x.
+        p = rng.randint(2, 9)
+        q = rng.randint(2, 9)
+        left_value = p * q
+
+        coeff = rng.choice([2, 4, 5, 10])
+        test_value = rng.randint(2, 12)
+        # Half the time the value really is a solution.
+        is_solution = rng.random() < 0.5
+        if is_solution:
+            constant = left_value - coeff * test_value
+        else:
+            offset = rng.choice([-12, -8, -6, 6, 8, 12])
+            constant = left_value - coeff * test_value + offset
+        right_value = coeff * test_value + constant
+
+        scale = rng.choice([Fraction(1, 2), Fraction(1, 1)])
+        if scale == Fraction(1, 2) and (coeff % 2 or constant % 2):
+            scale = Fraction(1, 1)
+
+        if scale == Fraction(1, 2):
+            right_text = f"0.5({coeff * 2}x + {constant * 2})"
+        else:
+            right_text = f"{coeff}x + {constant}" if constant >= 0 else \
+                         f"{coeff}x - {abs(constant)}"
+
+        equation = f"{p}({q * 1}) = {right_text}" if False else \
+                   f"{p} x {q} = {right_text}"
+
+        stem_text = (
+            f"An equation is given.\n\n  {equation}\n\n"
+            f"Complete the sentences to explain whether {test_value} is a "
+            f"solution to the equation.\n\n"
+            f"Part A: The value of the left side is ______.\n\n"
+            f"Part B: The value of the right side when x = {test_value} is ______."
+        )
+
+        verdict = "is" if is_solution else "is not"
+        part_a = QuestionPart(
+            label="Part A", prompt="The value of the left side is",
+            prompt_latex="The value of the left side is",
+            answer=str(left_value), answer_latex=str(left_value),
+            item_type=ItemType.NR,
+        )
+        part_b = QuestionPart(
+            label="Part B",
+            prompt=f"The value of the right side when x = {test_value} is",
+            prompt_latex=f"The value of the right side when x = {test_value} is",
+            answer=str(right_value), answer_latex=str(right_value),
+            item_type=ItemType.NR,
+        )
+
+        worked = (
+            f"Left side: {p} x {q} = {left_value}\n"
+            f"Right side at x = {test_value}: {coeff} x {test_value} "
+            f"{'+' if constant >= 0 else '-'} {abs(constant)} = {right_value}\n"
+            f"The two sides are {'equal' if is_solution else 'not equal'}, so "
+            f"{test_value} {verdict} a solution."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.MP, Difficulty.MEDIUM, 6, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.BELOW,
+            difficulty=Difficulty.MEDIUM, dok=2, item_type=ItemType.MP,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=(f"Part A: {left_value}; Part B: {right_value}; "
+                         f"{test_value} {verdict} a solution"),
+            answer_latex=(f"Part A: {left_value}; Part B: {right_value}; "
+                          f"{test_value} {verdict} a solution"),
+            worked_solution=worked, parts=[part_a, part_b],
+            context_scenario="evaluate both sides then conclude",
+            seed=self.base_seed * 1000 + 600 + variant_idx,
+            stem_index=6, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 7: Approaching Proficiency - MC (DOK 2, Medium)
+    # NEW. Replaces the retired free-response fraction inequality with the
+    # dropdown format the revision introduced. Dividing by a negative reverses
+    # the symbol, so the direction is what the item is really testing and the
+    # distractors are the three other symbol-and-value pairings.
+    # ================================================================
+    @distinct_choices
+    def stem7_approaching_mc(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(7, variant_idx)
+
+        coeff = rng.choice([-6, -5, -4, -3, -2, 2, 3, 4, 5, 6])
+        solution = rng.randint(-8, 8)
+        constant = rng.randint(-12, 12)
+        rhs = coeff * solution + constant
+        # When the solution equals the right-hand side, the "forgot to divide"
+        # distractor becomes the correct answer and the item ships duplicates.
+        tries = 0
+        while solution == rhs and tries < 30:
+            tries += 1
+            solution = rng.randint(-8, 8)
+            constant = rng.randint(-12, 12)
+            rhs = coeff * solution + constant
+        symbol = rng.choice([">", "<"])
+
+        # Dividing by a negative coefficient flips the symbol.
+        result_symbol = symbol
+        if coeff < 0:
+            result_symbol = "<" if symbol == ">" else ">"
+
+        const_text = f"+ {constant}" if constant >= 0 else f"- {abs(constant)}"
+        inequality = f"{coeff}x {const_text} {symbol} {rhs}"
+        correct = f"x {result_symbol} {solution}"
+
+        flipped = "<" if result_symbol == ">" else ">"
+        options = [
+            (correct, True, None),
+            (f"x {flipped} {solution}", False,
+             "Keeps the symbol the same after dividing by a negative"
+             if coeff < 0 else "Reverses the symbol when the coefficient is positive"),
+            (f"x {result_symbol} {rhs}", False,
+             "Uses the right-hand side without dividing by the coefficient"),
+            (f"x {flipped} {rhs}", False,
+             "Both errors together: no division and the wrong direction"),
+        ]
+        rng.shuffle(options)
+        choices = [QuestionChoice(key=chr(ord("a") + i), text=t, text_latex=t,
+                                  is_correct=c, distractor_rationale=r)
+                   for i, (t, c, r) in enumerate(options)]
+        key = next(c.key for c in choices if c.is_correct).upper()
+
+        stem_text = (
+            f"An inequality is given.\n\n  {inequality}\n\n"
+            f"Which statement shows the solution set?"
+        )
+        worked = (
+            f"Subtract {constant} from both sides: {coeff}x {symbol} "
+            f"{rhs - constant}\n"
+            f"Divide both sides by {coeff}"
+            + (f". Dividing by a negative reverses the symbol.\n"
+               if coeff < 0 else ".\n")
+            + f"{correct}"
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING,
+                                         ItemType.MC, Difficulty.MEDIUM, 7, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.APPROACHING,
+            difficulty=Difficulty.MEDIUM, dok=2, item_type=ItemType.MC,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{key}. {correct}", answer_latex=f"{key}. {correct}",
+            worked_solution=worked, choices=choices,
+            context_scenario="solution set with the inequality direction",
+            seed=self.base_seed * 1000 + 700 + variant_idx,
+            stem_index=7, variant_index=variant_idx,
+        )
+
     def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
         all_questions = []
         stem_methods = [
@@ -695,6 +861,8 @@ class Stem8AF1:
             self.stem3_approaching_mc,
             self.stem4_at_mp,
             self.stem5_above_mp,
+            self.stem6_below_mp,
+            self.stem7_approaching_mc,
         ]
         for stem_fn in stem_methods:
             for v in range(variants_per_stem):
@@ -709,6 +877,8 @@ class Stem8AF1:
             3: self.stem3_approaching_mc,
             4: self.stem4_at_mp,
             5: self.stem5_above_mp,
+            6: self.stem6_below_mp,
+            7: self.stem7_approaching_mc,
         }
         fn = stem_methods[stem_index]
         return [fn(v) for v in range(variants_per_stem)]

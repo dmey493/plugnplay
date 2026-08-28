@@ -1,6 +1,6 @@
 {
   "standard_code": "8.NS.3",
-  "standard_text": "Apply the properties of integer exponents to generate equivalent numerical expressions (product of powers, quotient of powers, power of a power, power of a product, zero exponent, and negative exponents).",
+  "standard_text": "Given a numeric expression with common rational number bases and integer exponents, apply the properties of exponents to generate equivalent expressions.",
   "schema_version": 3,
   "progression": {
     "narrative": "This standard asks students to apply the properties of integer exponents, product of powers, quotient of powers, power of a power, power of a product, zero exponent, and negative exponents, to generate equivalent numerical expressions. The on-grade work builds from matching a power to its expanded notation, through each named rule one at a time, to combining several rules in one expression. Every rule rests on one idea: an exponent counts how many times the base is used as a factor. Students who stall here usually carry older gaps, most often weak multiplication fact and factor knowledge from grade 4 and a shaky grasp of exponent notation from grade 6. Intervention should rebuild those foundations, then the grade 7 skills of prime factorization with exponents and squares and square roots, before returning to the rules themselves.",
@@ -1162,7 +1162,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "8NS3-S2",
@@ -1170,7 +1171,8 @@
       "column": "on_grade",
       "parent_standard": "8.NS.3",
       "engine_stems": [
-        2
+        2,
+        8
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -1466,7 +1468,309 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
+    },
+    {
+      "skill_id": "8NS3-S6",
+      "name": "Find a missing exponent in an equation using the properties of exponents",
+      "column": "on_grade",
+      "parent_standard": "8.NS.3",
+      "engine_stems": [
+        5,
+        6,
+        7
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8NS3-S2"
+      },
+      "i_do_script": "Before any rule, count factors: 2^7 is seven 2s multiplied together, and the 2^3 already hands me three of them -- so the mystery power has to supply exactly the rest. When an exponent is missing, I use the property in reverse and then check. Watch 2^a x 2^3 = 2^7: the product rule says a + 3 = 7, so a = 4. I check by substituting: 2^4 x 2^3 = 2^7 -- correct. For a quotient 5^a / 5^2 = 5^4, the rule says a - 2 = 4, so a = 6. The key is to write the exponent equation the property gives you, solve it, and always substitute back to confirm.",
+      "canonical_error": {
+        "pattern": "Sets up the wrong exponent operation, or guesses the missing exponent without checking it against the equation",
+        "example": "For 5^a / 5^2 = 5^4 answers a = 2 (subtracting 4 - 2) instead of a = 6 (since a - 2 = 4 means a = 4 + 2)",
+        "why": "The student mixes up which way the operation runs. A quotient means a - 2 = 4, so a = 6; a product means a + 3 = 7, so a = 4. Writing the property's exponent equation and substituting back catches the error."
+      },
+      "item_template": "An equality statement with one exponent replaced by a variable. The item spec grades this across three rungs by how many properties are in play: a single property is below proficiency, two properties is approaching, and a complex multi-property expression is at proficiency. Vary the number of properties, not just the numbers. MC or numeric response.",
+      "sample_items": [
+        {
+          "stem": "An equation is given: 2^a x 2^3 = 2^7. What is the value of a?",
+          "answer": "4",
+          "distractor_logic": "Product of powers: a + 3 = 7, so a = 4. Check: 2^4 x 2^3 = 2^7."
+        },
+        {
+          "stem": "An equation is given: 5^a / 5^2 = 5^4. What is the value of a?",
+          "answer": "6",
+          "distractor_logic": "Quotient of powers: a - 2 = 4, so a = 6. Answering 2 subtracts the wrong way."
+        },
+        {
+          "stem": "An equation is given: (3^a)^2 = 3^6. What is the value of a?",
+          "answer": "3",
+          "distractor_logic": "Power of a power: a x 2 = 6, so a = 3."
+        },
+        {
+          "stem": "An equation is given: 3^a = 1. What is the value of a?",
+          "answer": "0",
+          "distractor_logic": "Any nonzero base to the zero power is 1, so a = 0."
+        }
+      ],
+      "redirect_script": {
+        "stop": "What exponent equation does the property give you?",
+        "prompt": "Expand into factors first: how many 2s or 5s does each side of the equation actually contain? Write the rule as an equation, then solve. For 5^a / 5^2 = 5^4, quotient means a - 2 = 4, so a = 6. Substitute back: 5^6 / 5^2 = 5^4. If it doesn't check, fix the setup.",
+        "praise": "You set up the exponent equation from the property and checked it -- that's how you find a missing exponent."
+      },
+      "vocabulary": [
+        {
+          "term": "Equation",
+          "definition": "A statement that two expressions are equal, like 2^a x 2^3 = 2^7."
+        },
+        {
+          "term": "Substitute",
+          "definition": "Put a value in for a variable to check whether the equation is true."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for 8NS3-S3: the quotient of powers and power of a power rules.",
+        "if_fail": "Drop back to 8NS3-S2 and rebuild the product rule before reversing it to find a missing exponent."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Expand the right side of 2^a x 2^3 = 2^7: seven 2s in a row, 2 x 2 x 2 x 2 x 2 x 2 x 2. Underline three of them to stand for the 2^3."
+        },
+        {
+          "kind": "ask",
+          "text": "How many 2s are left un-underlined for 2^a to supply? So what must a be?"
+        },
+        {
+          "kind": "say",
+          "text": "Four 2s are left, so a = 4 -- that IS the equation a + 3 = 7. Counting factors also settles a quotient: in 5^a / 5^2 = 5^4, the division CANCELS two 5s, so 5^a must start with 4 + 2 = 6 of them, and a = 6, never 2."
+        },
+        {
+          "kind": "show",
+          "text": "Write '2^a x 2^3 = 2^7.'"
+        },
+        {
+          "kind": "ask",
+          "text": "Which property connects the exponents, and what equation does it give?"
+        },
+        {
+          "kind": "say",
+          "text": "Product of powers: a + 3 = 7, so a = 4. Check: 2^4 x 2^3 = 2^7 -- correct."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers a = 4 for a quotient by adding, ask 'does subtracting fit a division?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: 5^a / 5^2 = 5^4. Find a."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "2^a x 2^2 = 2^5. Find a.",
+          "answer": "3"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "3^a = 1. Find a.",
+          "answer": "0"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2^a x 2^3 = 2^7. Find a.",
+          "answer": "4",
+          "notes": "Product: a + 3 = 7."
+        },
+        {
+          "difficulty": "core",
+          "stem": "5^a / 5^2 = 5^4. Find a.",
+          "answer": "6",
+          "notes": "Quotient: a - 2 = 4, so a = 6. Baits a = 2 (subtracting the wrong way)."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Reese solved for a missing exponent. Find and fix the mistake.",
+          "shown_work": [
+            "Problem: 5^a / 5^2 = 5^4.",
+            "Reese wrote: 'a = 4 - 2 = 2.'"
+          ],
+          "answer": "A quotient means a - 2 = 4, so a = 4 + 2 = 6, not 4 - 2. Check: 5^6 / 5^2 = 5^4. Reese subtracted the wrong way.",
+          "notes": "Canonical error: setting up the exponent equation backwards and not checking."
+        },
+        {
+          "difficulty": "core",
+          "stem": "(2^a)^3 = 2^12. Find a.",
+          "answer": "4",
+          "notes": "Power of a power: a x 3 = 12."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "3^a x 3^5 = 3^2. Find a, and explain how a can be negative.",
+          "answer": "a + 5 = 2, so a = -3. A negative exponent is fine; check: 3^-3 x 3^5 = 3^2.",
+          "notes": "Negative solution -- the sum of exponents can be less than either."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "2^a x 2^b = 2^7. Give one set of possible values for a and b, then a second, different set.",
+          "answer": "Any a and b with a + b = 7, e.g., a = 4, b = 3 or a = 5, b = 2.",
+          "notes": "Reverse: two unknowns, more than one correct answer."
+        }
+      ],
+      "activities": [
+        {
+          "type": "matching",
+          "title": "Equation to Missing Exponent",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Equation cards with a missing exponent",
+            "Value cards for a"
+          ],
+          "instructions": "1. Match each equation card to the value of a that makes it true.\n2. For each match, say which property you used and the exponent equation it gives (add, subtract, or multiply).\n3. Substitute a back into the equation to confirm both sides are equal.\n4. Two value cards are decoys from the backwards setup -- explain why they don't work.\n5. Debrief: how does substituting back catch a wrong answer?",
+          "content": {
+            "pairs": [
+              {
+                "left": "2^a x 2^3 = 2^7",
+                "right": "a = 4"
+              },
+              {
+                "left": "5^a / 5^2 = 5^4",
+                "right": "a = 6"
+              },
+              {
+                "left": "(3^a)^2 = 3^6",
+                "right": "a = 3"
+              },
+              {
+                "left": "3^a = 1",
+                "right": "a = 0"
+              }
+            ],
+            "decoys": [
+              "a = 2",
+              "a = 12"
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "Set It Up, Then Check",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Reese's 'a = 2' work"
+          ],
+          "instructions": "1. Read Reese's claim that a = 2 for 5^a / 5^2 = 5^4.\n2. Write the exponent equation the quotient rule gives (a - 2 = 4).\n3. Solve for a and substitute it back into the original equation.\n4. Write one sentence: how does substituting back show whether your answer is right?",
+          "content": {
+            "worked_problem": "Solve 5^a / 5^2 = 5^4. Reese wrote a = 2.",
+            "error_step": "Reese computed 4 - 2 instead of solving a - 2 = 4.",
+            "why": "a - 2 = 4 means a = 6. Check: 5^6 / 5^2 = 5^4. Substituting back catches the backwards setup."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Studying a correct solved equation beside a backwards one trains students to verify a missing exponent by substituting back."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The backwards-setup error is a precise mistake a find-and-fix that ends in a substitution check corrects."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on 'why isn't a = 2 here?' pushes students to justify the exponent equation, not just state an answer."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which property links the exponents in this equation?",
+          "What exponent equation does that property give you?",
+          "When you substitute your answer back, are both sides equal?",
+          "Does the operation on the exponents add, subtract, or multiply here?",
+          "Can the missing exponent be negative or zero? How would you know?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student sets up the wrong exponent operation, or guesses without checking against the equation.",
+            "say": "Write the rule as an equation, then solve. For 5^a / 5^2 = 5^4, quotient means a - 2 = 4, so a = 6. Substitute back: 5^6 / 5^2 = 5^4. If it doesn't check, fix the setup.",
+            "praise": "You set up the exponent equation from the property and checked it -- that's how you find a missing exponent."
+          },
+          {
+            "if_you_see": "Student rejects a negative or zero answer as impossible.",
+            "say": "Exponents can be zero or negative. If a + 5 = 2, then a = -3, and that's a valid exponent. Check it by substituting.",
+            "praise": "You accepted the negative exponent and verified it -- that's correct reasoning."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "2^a x 2^4 = 2^6. Find a.",
+            "look_for": "2. An answer of 10 means the student subtracted from the total wrong, or added 4 + 6."
+          },
+          {
+            "prompt": "(2^a)^3 = 2^12. Find a.",
+            "look_for": "4. An answer of 9 (12 - 3) means the student subtracted instead of dividing for a power of a power."
+          }
+        ]
+      },
+      "fluency_source": "8NS3-B2",
+      "sentence_starters": [
+        "The property gives the equation ___, so a = ___.",
+        "I substitute a = ___ back and get ___ = ___, so it checks."
+      ],
+      "worked_solution": {
+        "stem": "Solve for a: 2^a x 2^3 = 2^7.",
+        "answer": "4",
+        "steps": [
+          {
+            "math": "2^a x 2^3 = 2^7",
+            "annotation": "Same base multiplied, so use the product of powers rule."
+          },
+          {
+            "math": "a + 3 = 7",
+            "annotation": "The product rule adds the exponents; set that sum equal to 7."
+          },
+          {
+            "math": "a = 7 - 3 = 4",
+            "annotation": "Solve the exponent equation for a."
+          },
+          {
+            "math": "check: 2^4 x 2^3 = 2^7",
+            "annotation": "Substitute back to confirm both sides match."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Solve for a: 5^a / 5^2 = 5^4.",
+        "answer": "6",
+        "steps": [
+          {
+            "math": "5^a / 5^2 = 5^4",
+            "annotation": "Same base divided, so use the quotient of powers rule.",
+            "given": true
+          },
+          {
+            "math": "a - 2 = 4",
+            "annotation": "The quotient rule subtracts the exponents; set that equal to 4.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Solve a - 2 = 4 for a.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Substitute a back into the equation to check.",
+            "given": false
+          }
+        ]
+      },
+      "pld_band": "approaching"
     },
     {
       "skill_id": "8NS3-S3",
@@ -1758,7 +2062,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "approaching"
     },
     {
       "skill_id": "8NS3-S4",
@@ -2055,7 +2360,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "at"
     },
     {
       "skill_id": "8NS3-S5",
@@ -2063,7 +2369,8 @@
       "column": "on_grade",
       "parent_standard": "8.NS.3",
       "engine_stems": [
-        4
+        4,
+        9
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -2126,7 +2433,7 @@
         }
       ],
       "next_steps": {
-        "if_pass": "8NS3-S6",
+        "if_pass": "Ready for 8NS3-S7: equations with more than one missing exponent, and critiquing a worked simplification.",
         "if_fail": "8NS3-S4"
       },
       "worked_example_script": [
@@ -2364,305 +2671,323 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "at"
     },
     {
-      "skill_id": "8NS3-S6",
-      "name": "Find a missing exponent in an equation using the properties of exponents",
+      "skill_id": "8NS3-S7",
+      "name": "Solve for more than one missing exponent and critique a worked simplification",
       "column": "looking_forward",
       "parent_standard": "8.NS.3",
-      "engine_stems": [
-        5
-      ],
       "prerequisite_skill": {
         "type": "skill",
-        "skill_id": "8NS3-S5"
+        "skill_id": "8NS3-S6"
       },
-      "i_do_script": "Before any rule, count factors: 2^7 is seven 2s multiplied together, and the 2^3 already hands me three of them -- so the mystery power has to supply exactly the rest. When an exponent is missing, I use the property in reverse and then check. Watch 2^a x 2^3 = 2^7: the product rule says a + 3 = 7, so a = 4. I check by substituting: 2^4 x 2^3 = 2^7 -- correct. For a quotient 5^a / 5^2 = 5^4, the rule says a - 2 = 4, so a = 6. The key is to write the exponent equation the property gives you, solve it, and always substitute back to confirm.",
+      "i_do_script": "Every missing exponent you have found so far had one answer. Watch what happens when two are missing: 6^a times 6^b over 6^3 equals 1 over 6^4. Same base, so I combine -- a plus b minus 3 on the left, and negative 4 on the right. That gives a + b - 3 = -4, so a + b = -1. I cannot pin down a, and I cannot pin down b, but I know exactly what they sum to. There are infinitely many answers and every one of them satisfies a + b = -1.",
       "canonical_error": {
-        "pattern": "Sets up the wrong exponent operation, or guesses the missing exponent without checking it against the equation",
-        "example": "For 5^a / 5^2 = 5^4 answers a = 2 (subtracting 4 - 2) instead of a = 6 (since a - 2 = 4 means a = 4 + 2)",
-        "why": "The student mixes up which way the operation runs. A quotient means a - 2 = 4, so a = 6; a product means a + 3 = 7, so a = 4. Writing the property's exponent equation and substituting back catches the error."
+        "pattern": "Treats an equation with two unknown exponents as unsolvable, or invents a second condition to force a single answer",
+        "example": "Given 6^a x 6^b / 6^3 = 1/6^4, answers 'not enough information', or assumes a = b and reports a = b = -0.5",
+        "why": "Every previous exponent task had exactly one answer, so the student reads 'more than one answer' as 'no answer'. Assuming the unknowns are equal is the shortcut that restores the familiar one-answer shape, and nothing in the problem licenses it."
       },
-      "item_template": "An equation with a missing exponent, involving a product, quotient, power of a power, or a zero/negative result. Student finds the exponent. Numeric response.",
+      "item_template": "Either (a) an equation with two unknown exponents where any pair satisfying one relationship is correct, or (b) a multi-step simplification worked out in a table with one property misapplied, to be located and corrected. Constructed response.",
       "sample_items": [
         {
-          "stem": "An equation is given: 2^a x 2^3 = 2^7. What is the value of a?",
-          "answer": "4",
-          "distractor_logic": "Product of powers: a + 3 = 7, so a = 4. Check: 2^4 x 2^3 = 2^7."
+          "stem": "6^a x 6^b / 6^3 = 1/6^4. Give one possible pair of values for a and b.",
+          "answer": "Any pair with a + b = -1, for example a = 0 and b = -1, or a = 2 and b = -3",
+          "choices": null,
+          "distractor_logic": "'Not enough information' is the canonical error; a = b = -0.5 invents a condition and leaves integer exponents."
         },
         {
-          "stem": "An equation is given: 5^a / 5^2 = 5^4. What is the value of a?",
-          "answer": "6",
-          "distractor_logic": "Quotient of powers: a - 2 = 4, so a = 6. Answering 2 subtracts the wrong way."
+          "stem": "Select the three expressions equivalent to (4^3)^2 x 4^2: 4^8, 4^7, 4^6 x 4^2, 4^5 x 4^2, 1/4^8, 4^16/4^8.",
+          "answer": "4^8, 4^6 x 4^2, and 4^16/4^8",
+          "choices": null,
+          "distractor_logic": "4^7 adds where it should multiply; 1/4^8 flips the sign of a positive exponent; 4^5 x 4^2 mis-multiplies 3 and 2."
         },
         {
-          "stem": "An equation is given: (3^a)^2 = 3^6. What is the value of a?",
-          "answer": "3",
-          "distractor_logic": "Power of a power: a x 2 = 6, so a = 3."
+          "stem": "Josie simplified (2^-3 x 2^5)^2 and got 1/2^4. Her step 3 read: '2^2 raised to the 2 is 2^-4.' Identify her error and give the correct value.",
+          "answer": "Step 3 is wrong. 2^-3 x 2^5 = 2^2, and (2^2)^2 = 2^4, not 2^-4. Josie carried a negative sign forward from the original -3 exponent after it had already been used. The correct value is 2^4, which is 16.",
+          "choices": null,
+          "distractor_logic": "Students who only check the final line will accept 1/2^4 because it looks like a legitimate negative-exponent answer."
         },
         {
-          "stem": "An equation is given: 3^a = 1. What is the value of a?",
-          "answer": "0",
-          "distractor_logic": "Any nonzero base to the zero power is 1, so a = 0."
+          "stem": "5^m x 5^n = 5^0. What must be true about m and n? Give two different pairs that work.",
+          "answer": "m + n = 0, so m and n are opposites. For example m = 3 and n = -3, or m = -1 and n = 1.",
+          "choices": null,
+          "distractor_logic": "Answering m = n = 0 gives one valid pair but misses that the condition is a relationship, not a value."
         }
       ],
       "redirect_script": {
-        "stop": "What exponent equation does the property give you?",
-        "prompt": "Expand into factors first: how many 2s or 5s does each side of the equation actually contain? Write the rule as an equation, then solve. For 5^a / 5^2 = 5^4, quotient means a - 2 = 4, so a = 6. Substitute back: 5^6 / 5^2 = 5^4. If it doesn't check, fix the setup.",
-        "praise": "You set up the exponent equation from the property and checked it -- that's how you find a missing exponent."
+        "stop": "How many answers is this problem allowed to have?",
+        "prompt": "Combine both sides into a single exponent statement first. If what you get relates the two unknowns instead of pinning one down, then the relationship IS the answer -- pick any pair that fits it.",
+        "praise": "You reported the relationship instead of forcing a single number. That is what the question actually asked for."
       },
       "vocabulary": [
         {
-          "term": "Equation",
-          "definition": "A statement that two expressions are equal, like 2^a x 2^3 = 2^7."
+          "term": "Relationship",
+          "definition": "A condition linking two unknowns, such as a + b = -1. It can be the complete answer even though neither unknown is determined."
         },
         {
-          "term": "Substitute",
-          "definition": "Put a value in for a variable to check whether the equation is true."
+          "term": "Counterexample",
+          "definition": "One case that shows a claimed step is wrong."
+        },
+        {
+          "term": "Zero exponent",
+          "definition": "Any nonzero base to the power 0 equals 1, so an exponent statement equal to 1 means the exponents summed to 0."
         }
       ],
+      "manipulative_visual": "Two blank exponent cards over a shared base, with a target card showing the required total. Students slide integer values into the two blanks until the totals match, then find a second pair that also matches -- the point lands when a second and third arrangement work equally well.",
       "next_steps": {
-        "if_pass": "Ready for Algebra I exponent and radical work (AI.NF.2).",
-        "if_fail": "8NS3-S5"
+        "if_pass": "Ready for Algebra I: AI.NF.2 extends these properties to expressions with variable bases.",
+        "if_fail": "Drop back to 8NS3-S6 and rebuild with one missing exponent until combining both sides to a single statement is automatic, then reintroduce the second unknown."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Expand the right side of 2^a x 2^3 = 2^7: seven 2s in a row, 2 x 2 x 2 x 2 x 2 x 2 x 2. Underline three of them to stand for the 2^3."
+          "text": "Write on the board: 6^a x 6^b / 6^3 = 1/6^4. Leave plenty of space underneath."
         },
         {
           "kind": "ask",
-          "text": "How many 2s are left un-underlined for 2^a to supply? So what must a be?"
-        },
-        {
-          "kind": "say",
-          "text": "Four 2s are left, so a = 4 -- that IS the equation a + 3 = 7. Counting factors also settles a quotient: in 5^a / 5^2 = 5^4, the division CANCELS two 5s, so 5^a must start with 4 + 2 = 6 of them, and a = 6, never 2."
-        },
-        {
-          "kind": "show",
-          "text": "Write '2^a x 2^3 = 2^7.'"
+          "text": "Same base everywhere. On the left, what happens to the exponents when I multiply, and then when I divide?"
         },
         {
           "kind": "ask",
-          "text": "Which property connects the exponents, and what equation does it give?"
+          "text": "So the left side is 6 to the what? Say the expression using a and b."
         },
         {
-          "kind": "say",
-          "text": "Product of powers: a + 3 = 7, so a = 4. Check: 2^4 x 2^3 = 2^7 -- correct."
+          "kind": "ask",
+          "text": "Now the right side: 1 over 6^4. How do I write that as 6 to a single power?"
         },
         {
           "kind": "watch",
-          "text": "If a student answers a = 4 for a quotient by adding, ask 'does subtracting fit a division?'"
+          "text": "If the student stalls and says there is not enough information, do not supply the answer. Ask them to write down the equation they DO have, then ask what it tells them about a and b together."
         },
         {
           "kind": "ask",
-          "text": "Your turn: 5^a / 5^2 = 5^4. Find a."
+          "text": "We have a + b - 3 = -4, so a + b = -1. Give me one pair that works. Now give me a completely different pair."
+        },
+        {
+          "kind": "ask",
+          "text": "Both pairs check out. So what is the actual answer to this problem -- a pair of numbers, or something else?"
+        },
+        {
+          "kind": "say",
+          "text": "The relationship is the answer. Some exponent equations pin down a value; this one pins down a sum, and every pair that fits is correct."
         }
       ],
+      "printable_artifact": {
+        "title": "When There Is More Than One Answer",
+        "kind": "reference_card",
+        "instructions": "Combine to one exponent statement per side, then read what it determines.",
+        "items": [
+          "Multiply, same base  ->  add exponents.   Divide  ->  subtract.   Power of a power  ->  multiply.",
+          "1/b^k  =  b^-k.     b^0 = 1.",
+          "One unknown  ->  one answer.   Two unknowns in one equation  ->  a relationship.",
+          "6^a x 6^b / 6^3 = 1/6^4   ->   a + b - 3 = -4   ->   a + b = -1.",
+          "Checking a critique: verify EVERY step, not just the last line."
+        ]
+      },
       "practice_problems": [
         {
           "difficulty": "warm_up",
-          "stem": "2^a x 2^2 = 2^5. Find a.",
-          "answer": "3"
+          "stem": "Write 1/3^5 as a power of 3 with a single exponent.",
+          "answer": "3^-5"
         },
         {
           "difficulty": "warm_up",
-          "stem": "3^a = 1. Find a.",
+          "stem": "5^m x 5^n = 5^0. What must m + n equal?",
           "answer": "0"
         },
         {
           "difficulty": "core",
-          "stem": "2^a x 2^3 = 2^7. Find a.",
-          "answer": "4",
-          "notes": "Product: a + 3 = 7."
+          "stem": "6^a x 6^b / 6^3 = 1/6^4. Give one possible set of values for a and b.",
+          "answer": "Any pair with a + b = -1, e.g. a = 0 and b = -1, or a = 2 and b = -3.",
+          "notes": "The spec's own above-proficiency item. Ask for a second pair after the first -- that is where the idea lands."
         },
         {
           "difficulty": "core",
-          "stem": "5^a / 5^2 = 5^4. Find a.",
-          "answer": "6",
-          "notes": "Quotient: a - 2 = 4, so a = 6. Baits a = 2 (subtracting the wrong way)."
+          "stem": "Select the three expressions equivalent to (4^3)^2 x 4^2, from: 4^8, 4^7, 4^6 x 4^2, 4^5 x 4^2, 1/4^8, 4^16/4^8.",
+          "answer": "4^8, 4^6 x 4^2, and 4^16/4^8",
+          "notes": "Three correct answers rather than one. 4^7 is the add-instead-of-multiply slip."
+        },
+        {
+          "difficulty": "core",
+          "stem": "2^x x 2^y = 2^-6, and x is positive. Give a possible pair for x and y, and explain why y must be negative.",
+          "answer": "x + y = -6, so with x positive, e.g. x = 2 and y = -8. y must be negative because a positive x already exceeds -6, so y has to pull the sum down past zero.",
+          "notes": "Adds a constraint that narrows the family without collapsing it to one answer."
         },
         {
           "difficulty": "core",
           "type": "error_analysis",
-          "stem": "Reese solved for a missing exponent. Find and fix the mistake.",
+          "stem": "Josie simplified an expression incorrectly. Find her error and simplify correctly.",
           "shown_work": [
-            "Problem: 5^a / 5^2 = 5^4.",
-            "Reese wrote: 'a = 4 - 2 = 2.'"
+            "Simplify (2^-3 x 2^5)^2.",
+            "Step 1:  2^-3 x 2^5  =  2^(-3 + 5)",
+            "Step 2:  =  2^2",
+            "Step 3:  (2^2)^2  =  2^-4",
+            "Step 4:  =  1/2^4"
           ],
-          "answer": "A quotient means a - 2 = 4, so a = 4 + 2 = 6, not 4 - 2. Check: 5^6 / 5^2 = 5^4. Reese subtracted the wrong way.",
-          "notes": "Canonical error: setting up the exponent equation backwards and not checking."
-        },
-        {
-          "difficulty": "core",
-          "stem": "(2^a)^3 = 2^12. Find a.",
-          "answer": "4",
-          "notes": "Power of a power: a x 3 = 12."
+          "answer": "Step 3 is the error. Raising 2^2 to the power 2 multiplies the exponents: 2 x 2 = 4, so (2^2)^2 = 2^4. Josie carried the negative sign down from the original -3 exponent even though it had already been used in step 1. The correct simplification is 2^4, which is 16.",
+          "notes": "Steps 1, 2, and 4 are all internally valid, so a student checking only the final line accepts it. The error is one step deep."
         },
         {
           "difficulty": "stretch",
-          "stem": "3^a x 3^5 = 3^2. Find a, and explain how a can be negative.",
-          "answer": "a + 5 = 2, so a = -3. A negative exponent is fine; check: 3^-3 x 3^5 = 3^2.",
-          "notes": "Negative solution -- the sum of exponents can be less than either."
+          "stem": "3^a / 3^b = 1. What does this tell you about a and b? How many pairs satisfy it?",
+          "answer": "3^(a-b) = 3^0, so a - b = 0, meaning a = b. Infinitely many pairs work, but they are constrained to be equal -- unlike a + b = -1, this relationship forces the two unknowns to match."
         },
         {
           "difficulty": "stretch",
-          "stem": "2^a x 2^b = 2^7. Give one set of possible values for a and b, then a second, different set.",
-          "answer": "Any a and b with a + b = 7, e.g., a = 4, b = 3 or a = 5, b = 2.",
-          "notes": "Reverse: two unknowns, more than one correct answer."
+          "stem": "Write your own exponent equation with two missing exponents whose answer is the relationship m + n = 4. Then write a second equation whose answer is m - n = 4. Trade with a partner.",
+          "answer": "Any valid pair, e.g. 7^m x 7^n = 7^4 for the first, and 7^m / 7^n = 7^4 for the second. The multiplication or division decides which relationship falls out.",
+          "notes": "Constructing the problem exposes whether the student knows which operation produces which relationship."
         }
       ],
       "activities": [
         {
-          "type": "matching",
-          "title": "Equation to Missing Exponent",
+          "type": "hands_on",
+          "title": "Two Blanks, Many Fills",
           "time_minutes": 10,
           "grouping": "pairs",
           "materials": [
-            "Equation cards with a missing exponent",
-            "Value cards for a"
+            "Base cards",
+            "Integer tiles from -6 to 6",
+            "Target cards"
           ],
-          "instructions": "1. Match each equation card to the value of a that makes it true.\n2. For each match, say which property you used and the exponent equation it gives (add, subtract, or multiply).\n3. Substitute a back into the equation to confirm both sides are equal.\n4. Two value cards are decoys from the backwards setup -- explain why they don't work.\n5. Debrief: how does substituting back catch a wrong answer?",
-          "content": {
-            "pairs": [
-              {
-                "left": "2^a x 2^3 = 2^7",
-                "right": "a = 4"
-              },
-              {
-                "left": "5^a / 5^2 = 5^4",
-                "right": "a = 6"
-              },
-              {
-                "left": "(3^a)^2 = 3^6",
-                "right": "a = 3"
-              },
-              {
-                "left": "3^a = 1",
-                "right": "a = 0"
-              }
-            ],
-            "decoys": [
-              "a = 2",
-              "a = 12"
-            ]
-          }
+          "instructions": "1. Lay out an equation frame with two blank exponent slots over a shared base and a target on the right.\n2. Pairs fill both blanks with integer tiles so the equation holds, then record the pair.\n3. Rule: a pair only scores if the team can find a SECOND different fill for the same frame.\n4. After three frames, ask what all the winning fills for a frame had in common -- the relationship is what survives.\n5. Close with a frame whose relationship is a - b = 0 and ask why the fills behave differently there."
         },
         {
           "type": "error_analysis",
-          "title": "Set It Up, Then Check",
-          "time_minutes": 8,
-          "grouping": "individual",
+          "title": "Josie's Third Step",
+          "time_minutes": 10,
+          "grouping": "pairs",
           "materials": [
-            "Slip with Reese's 'a = 2' work"
+            "Printed four-step work sample"
           ],
-          "instructions": "1. Read Reese's claim that a = 2 for 5^a / 5^2 = 5^4.\n2. Write the exponent equation the quotient rule gives (a - 2 = 4).\n3. Solve for a and substitute it back into the original equation.\n4. Write one sentence: how does substituting back show whether your answer is right?",
+          "instructions": "1. Pairs verify each of Josie's four steps independently and mark each one right or wrong before discussing.\n2. Ask first: how many steps are actually correct? (Three of four.)\n3. Pairs name the property Josie misapplied in step 3 and state what it should have produced.\n4. Pairs write the correct simplification and evaluate it as a whole number.\n5. Debrief: what checking habit would have caught this, given that the final line looks perfectly reasonable?",
           "content": {
-            "worked_problem": "Solve 5^a / 5^2 = 5^4. Reese wrote a = 2.",
-            "error_step": "Reese computed 4 - 2 instead of solving a - 2 = 4.",
-            "why": "a - 2 = 4 means a = 6. Check: 5^6 / 5^2 = 5^4. Substituting back catches the backwards setup."
+            "worked_problem": "Simplify (2^-3 x 2^5)^2. Josie wrote: 2^(-3+5) = 2^2; (2^2)^2 = 2^-4; = 1/2^4.",
+            "error_step": "Step 3 -- Josie raised 2^2 to the power 2 and produced 2^-4, reusing a negative sign that had already been consumed in step 1.",
+            "why": "Power of a power multiplies exponents: 2 x 2 = 4, so (2^2)^2 = 2^4 = 16. Nothing in step 3 is negative; the -3 was used up when it combined with 5."
           }
+        },
+        {
+          "type": "game",
+          "title": "Name the Relationship",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Post an equation with two unknown exponents: 9^a x 9^b = 9^7, 5^a / 5^b = 5^-2, 4^a x 4^b = 1.\n2. Students write the RELATIONSHIP, not a pair of values.\n3. A correct relationship with no values scores full; a valid pair with no relationship scores half.\n4. Final round: post one with a single unknown mixed in, so students have to notice which kind of answer the question wants."
         }
       ],
       "strategy_links": [
         {
           "strategy_id": "strat-math-009",
-          "why": "Studying a correct solved equation beside a backwards one trains students to verify a missing exponent by substituting back."
+          "why": "Josie's four-step work sits beside a correct simplification, and only one step differs -- the contrast is the lesson."
         },
         {
           "strategy_id": "strat-math-003",
-          "why": "The backwards-setup error is a precise mistake a find-and-fix that ends in a substitution check corrects."
+          "why": "Locating an error one step deep in otherwise valid work is exactly the above-proficiency demand in this standard."
         },
         {
-          "strategy_id": "strat-math-001",
-          "why": "Think-pair-share on 'why isn't a = 2 here?' pushes students to justify the exponent equation, not just state an answer."
+          "strategy_id": "strat-math-008",
+          "why": "Passing the whiteboard between partners for each exponent step surfaces the moment where add, subtract, and multiply get confused."
         }
       ],
       "teacher_moves": {
         "questioning_prompts": [
-          "Which property links the exponents in this equation?",
-          "What exponent equation does that property give you?",
-          "When you substitute your answer back, are both sides equal?",
-          "Does the operation on the exponents add, subtract, or multiply here?",
-          "Can the missing exponent be negative or zero? How would you know?"
+          "Combine each side to a single power first. What equation do you actually have?",
+          "Does that equation pin down a value, or link two unknowns?",
+          "You found one pair. Find me a completely different pair that also works.",
+          "You checked the last line. Now check step 3 on its own -- does it follow from step 2?"
         ],
         "misconception_redirects": [
           {
-            "if_you_see": "Student sets up the wrong exponent operation, or guesses without checking against the equation.",
-            "say": "Write the rule as an equation, then solve. For 5^a / 5^2 = 5^4, quotient means a - 2 = 4, so a = 6. Substitute back: 5^6 / 5^2 = 5^4. If it doesn't check, fix the setup.",
-            "praise": "You set up the exponent equation from the property and checked it -- that's how you find a missing exponent."
+            "if_you_see": "Student writes 'not enough information' for an equation with two unknown exponents.",
+            "say": "Combine both sides into a single exponent statement first. If what you get relates the two unknowns instead of pinning one down, then the relationship IS the answer -- pick any pair that fits it.",
+            "praise": "You reported the relationship instead of forcing a single number. That is what the question actually asked for."
           },
           {
-            "if_you_see": "Student rejects a negative or zero answer as impossible.",
-            "say": "Exponents can be zero or negative. If a + 5 = 2, then a = -3, and that's a valid exponent. Check it by substituting.",
-            "praise": "You accepted the negative exponent and verified it -- that's correct reasoning."
+            "if_you_see": "Student assumes the two unknown exponents are equal to force one answer.",
+            "say": "Where does the problem say they are the same? Try a pair that isn't equal and check whether it still works.",
+            "praise": "Good -- you tested the assumption instead of keeping it because it made the problem familiar."
+          },
+          {
+            "if_you_see": "Student checks only the final line of a worked solution and accepts it.",
+            "say": "The last line can look right and still come from a broken step. Verify each step against the one above it.",
+            "praise": "You checked the steps, not the appearance of the answer."
           }
         ],
         "quick_checks": [
           {
-            "prompt": "2^a x 2^4 = 2^6. Find a.",
-            "look_for": "2. An answer of 10 means the student subtracted from the total wrong, or added 4 + 6."
+            "prompt": "4^a x 4^b = 4^9. What is the answer to this question?",
+            "look_for": "'a + b = 9.' A single pair with no relationship means the family is not yet visible; 'not enough info' means the canonical error is live."
           },
           {
-            "prompt": "(2^a)^3 = 2^12. Find a.",
-            "look_for": "4. An answer of 9 (12 - 3) means the student subtracted instead of dividing for a power of a power."
+            "prompt": "(3^2)^3 -- exponent, and which property?",
+            "look_for": "3^6, power of a power, multiply. 3^5 means add and multiply are still swapping."
           }
         ]
       },
-      "fluency_source": "8NS3-B2",
-      "sentence_starters": [
-        "The property gives the equation ___, so a = ___.",
-        "I substitute a = ___ back and get ___ = ___, so it checks."
-      ],
       "worked_solution": {
-        "stem": "Solve for a: 2^a x 2^3 = 2^7.",
-        "answer": "4",
+        "stem": "6^a x 6^b / 6^3 = 1/6^4. What is one possible set of values for a and b?",
+        "answer": "Any pair with a + b = -1, for example a = 0 and b = -1",
         "steps": [
           {
-            "math": "2^a x 2^3 = 2^7",
-            "annotation": "Same base multiplied, so use the product of powers rule."
+            "math": "Left side: 6^a x 6^b / 6^3 = 6^(a + b - 3).",
+            "annotation": "Same base: add for the product, subtract for the quotient."
           },
           {
-            "math": "a + 3 = 7",
-            "annotation": "The product rule adds the exponents; set that sum equal to 7."
+            "math": "Right side: 1/6^4 = 6^-4.",
+            "annotation": "A reciprocal is a negative exponent."
           },
           {
-            "math": "a = 7 - 3 = 4",
-            "annotation": "Solve the exponent equation for a."
+            "math": "Same base on both sides, so a + b - 3 = -4.",
+            "annotation": "Equal powers of the same base means equal exponents."
           },
           {
-            "math": "check: 2^4 x 2^3 = 2^7",
-            "annotation": "Substitute back to confirm both sides match."
+            "math": "a + b = -1.",
+            "annotation": "Two unknowns, one equation -- this relationship is the answer."
+          },
+          {
+            "math": "Pick any pair: a = 0, b = -1. Check: 6^0 x 6^-1 / 6^3 = 6^-4.",
+            "annotation": "a = 2, b = -3 works too. Infinitely many, all summing to -1."
           }
         ]
       },
       "faded_example": {
-        "stem": "Solve for a: 5^a / 5^2 = 5^4.",
-        "answer": "6",
+        "stem": "5^a x 5^b / 5^2 = 1/5^3. What is one possible set of values for a and b?",
+        "answer": "Any pair with a + b = -1, for example a = 1 and b = -2",
         "steps": [
           {
-            "math": "5^a / 5^2 = 5^4",
-            "annotation": "Same base divided, so use the quotient of powers rule.",
+            "math": "Left side: 5^a x 5^b / 5^2 = 5^(a + b - 2).",
+            "annotation": "Add for the product, subtract for the quotient.",
             "given": true
           },
           {
-            "math": "a - 2 = 4",
-            "annotation": "The quotient rule subtracts the exponents; set that equal to 4.",
+            "math": "Right side: 1/5^3 = 5^-3.",
+            "annotation": "A reciprocal is a negative exponent.",
+            "given": true
+          },
+          {
+            "math": "Same base both sides, so a + b - 2 = -3.",
+            "annotation": "Equal powers of the same base means equal exponents.",
             "given": true
           },
           {
             "math": null,
-            "annotation": "Solve a - 2 = 4 for a.",
-            "given": false
-          },
-          {
-            "math": null,
-            "annotation": "Substitute a back into the equation to check.",
+            "annotation": "Solve for the relationship, then name one pair that fits it and check your pair in the original equation.",
             "given": false
           }
         ]
-      }
+      },
+      "sentence_starters": [
+        "Combining the left side gives ___ to the power ___.",
+        "The equation tells me ___ + ___ = ___, so any pair that fits works.",
+        "Step ___ is wrong because ___ should have produced ___."
+      ],
+      "fluency_source": "8NS3-F2",
+      "pld_band": "above"
     }
   ],
   "skill_columns": {
@@ -2684,10 +3009,11 @@
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
+      "description": "This standard's own expectations, climbing from Below Proficiency to At Proficiency. Every skill here is grade-level work.",
       "skills": [
         "8NS3-S1",
         "8NS3-S2",
+        "8NS3-S6",
         "8NS3-S3",
         "8NS3-S4",
         "8NS3-S5"
@@ -2695,9 +3021,9 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Above-proficiency work and bridges to later standards.",
+      "description": "Above Proficiency on this standard, and bridges to later standards.",
       "skills": [
-        "8NS3-S6"
+        "8NS3-S7"
       ]
     }
   },
@@ -2708,10 +3034,11 @@
     "8NS3-B2",
     "8NS3-S1",
     "8NS3-S2",
+    "8NS3-S6",
     "8NS3-S3",
     "8NS3-S4",
     "8NS3-S5",
-    "8NS3-S6"
+    "8NS3-S7"
   ],
   "skill_tree": {
     "8NS3-F1": [],
@@ -2731,7 +3058,7 @@
       "8NS3-F2"
     ],
     "8NS3-S3": [
-      "8NS3-S2"
+      "8NS3-S6"
     ],
     "8NS3-S4": [
       "8NS3-S3",
@@ -2742,15 +3069,19 @@
       "8NS3-S4"
     ],
     "8NS3-S6": [
-      "8NS3-S5",
       "8NS3-S2"
+    ],
+    "8NS3-S7": [
+      "8NS3-S5",
+      "8NS3-S6"
     ]
   },
   "diagnostic_flow": {
     "description": "Start with S5, applying more than one property in a single expression, the At-proficiency core. If they pass, move up to S6, finding a missing exponent. If they fail, drop below grade level: B1 checks prime factorization with exponents and B2 checks squares and square roots, the two grade 7 skills (7.NS.5 and 7.NS.6) the item spec names as looking back. If those wobble, the foundations F1 (factor pairs and prime numbers, grade 4) and F2 (exponent notation and small powers, grade 6) locate the gap. S1 through S4 remain available to probe the standard's own single-property groundwork.",
     "entry_skill": "8NS3-S5",
     "if_pass": [
-      "8NS3-S6"
+      "8NS3-S5",
+      "8NS3-S7"
     ],
     "if_fail": [
       "8NS3-B1",
@@ -2762,7 +3093,16 @@
       "8NS3-S1",
       "8NS3-S2",
       "8NS3-S3",
-      "8NS3-S4"
+      "8NS3-S4",
+      "8NS3-S6"
     ]
+  },
+  "pld_descriptors": {
+    "source": "refreshed",
+    "note": "Verbatim from the ILEARN item specification. These are performance bands on THIS standard, not lower-grade content: a student at Below Proficiency is working on this standard at its least complex entry point.",
+    "below": "Apply the product of powers, power of a power, and negative exponent properties to identify equivalent, fully simplified numerical expressions using integer bases and exponents. Identify unknown exponents in simple equality statements involving a single exponent property.",
+    "approaching": "Apply the product of powers, power of a power, negative exponent, and quotient of powers properties to generate or identify equivalent expressions, including expressions that are not fully simplified. Determine missing exponents in simple equality statements involving two properties.",
+    "at": "Apply the product of powers, power of a power, negative exponent, quotient of powers, and zero exponent properties to generate or identify equivalent expressions, including those with fractional bases. Find missing exponents in complex expressions. Simplify expressions involving negative integers in the quotient property.",
+    "above": "Apply multiple exponent properties flexibly to analyze, compare, and generate more than two equivalent expressions. Find the value of more than one missing exponent."
   }
 }

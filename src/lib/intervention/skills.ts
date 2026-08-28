@@ -187,10 +187,29 @@ export interface WorkedSolution {
   render_data?: Record<string, unknown>;
 }
 
+/** The four ILEARN proficiency bands. These are performance levels on the
+ *  standard in front of you, NOT lower-grade content: a skill tagged
+ *  "below" is grade-level work at its least complex entry point. */
+export type PldBand = "below" | "approaching" | "at" | "above";
+
+export const PLD_BAND_LABELS: Record<PldBand, string> = {
+  below: "Below Proficiency",
+  approaching: "Approaching Proficiency",
+  at: "At Proficiency",
+  above: "Above Proficiency",
+};
+
+/** Ladder order, used to group the On Grade column. */
+export const PLD_BAND_ORDER: PldBand[] = ["below", "approaching", "at", "above"];
+
 export interface Skill {
   skill_id: string;
   name: string;
   column: SkillColumn;
+  /** Which proficiency band this skill answers. On-grade and
+   *  looking-forward skills carry it; foundation and looking-back do not,
+   *  because those are below-grade prerequisites rather than bands. */
+  pld_band?: PldBand;
   canonical_error?: { pattern: string; example: string; why?: string };
   i_do_script?: string;
   redirect_script?: { stop: string; prompt: string; praise: string };
@@ -219,6 +238,16 @@ export interface ProgressionStep {
   rationale: string;
 }
 
+export interface PldDescriptors {
+  /** "refreshed" = the 2026-08 spec rewrite; "prior" = not yet rewritten. */
+  source: "refreshed" | "prior";
+  note: string;
+  below: string;
+  approaching: string;
+  at: string;
+  above: string;
+}
+
 export interface SkillData {
   standard_code: string;
   standard_text: string;
@@ -228,6 +257,8 @@ export interface SkillData {
   skill_columns: Partial<
     Record<SkillColumn, { label: string; description: string; skills: string[] }>
   >;
+  /** The four band statements, verbatim from the item specification. */
+  pld_descriptors?: PldDescriptors;
 }
 
 export const AVAILABLE_STANDARDS: Record<string, SkillData> = {

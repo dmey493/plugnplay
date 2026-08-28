@@ -807,7 +807,8 @@
       "column": "on_grade",
       "parent_standard": "7.NS.3",
       "engine_stems": [
-        1
+        1,
+        6
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -1099,7 +1100,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "7NS3-S2",
@@ -1451,7 +1453,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "7NS3-S3",
@@ -1723,7 +1726,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "approaching"
     },
     {
       "skill_id": "7NS3-S4",
@@ -2024,7 +2028,345 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "approaching"
+    },
+    {
+      "skill_id": "7NS3-S6",
+      "name": "Identify and create equivalent signed products using properties of operations",
+      "column": "on_grade",
+      "parent_standard": "7.NS.3",
+      "engine_stems": [
+        5,
+        8,
+        9
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS3-S4"
+      },
+      "i_do_script": "Two expressions are equivalent when they name the same product. A key move: a single negative sign can move from one factor to the other without changing the value, because a negative times a positive is still negative. Watch (-4/9)(3/4): its value is -1/3, and (4/9)(-3/4) is also -1/3 -- the negative just moved. But (-4/9)(-3/4) is NOT equivalent: adding a second negative makes it +1/3. Count the negatives to check equivalence.",
+      "canonical_error": {
+        "pattern": "Thinks adding or flipping a second negative sign keeps the value the same",
+        "example": "Claims (-4/9)(-3/4) is equivalent to (-4/9)(3/4), when the first is +1/3 and the second is -1/3",
+        "why": "The student treats every sign change as harmless. Moving ONE negative between factors preserves the value, but adding a SECOND negative flips the sign (odd vs even count of negatives)."
+      },
+      "item_template": "A signed product; student selects or writes expressions with the same value using the properties/sign rules. MC/multi-select.",
+      "sample_items": [
+        {
+          "stem": "Select two expressions that are equivalent to (-4/9)(3/4).",
+          "answer": "-1/3 and (4/9)(-3/4)",
+          "choices": [
+            "-1/3",
+            "1/3",
+            "(4/9)(3/4)",
+            "(4/9)(-3/4)",
+            "(-4/9)(-3/4)"
+          ],
+          "distractor_logic": "(-4/9)(3/4) = -1/3, and (4/9)(-3/4) = -1/3 (one negative each). 1/3, (4/9)(3/4), and (-4/9)(-3/4) all equal +1/3."
+        },
+        {
+          "stem": "Which equals (-2/3)(3/5): -2/5 or 2/5?",
+          "answer": "-2/5",
+          "choices": [
+            "-2/5",
+            "2/5"
+          ],
+          "distractor_logic": "One negative factor: (-2/3)(3/5) = -2/5."
+        },
+        {
+          "stem": "Which product equals (-3/8)(-2/3)?",
+          "answer": "1/4",
+          "choices": [
+            "1/4",
+            "-1/4"
+          ],
+          "distractor_logic": "Two negatives make a positive: 6/24 = 1/4."
+        },
+        {
+          "stem": "Is (4/9)(3/4) equivalent to (-4/9)(3/4)?",
+          "answer": "No -- (4/9)(3/4) = 1/3, but (-4/9)(3/4) = -1/3.",
+          "distractor_logic": "Dropping the negative changes the sign, so they are not equivalent."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Count the negatives in each expression.",
+        "prompt": "Moving ONE negative between factors keeps the value; adding a SECOND negative flips it. Count the negatives in both expressions -- same count (even/even or odd/odd) means equivalent.",
+        "praise": "You checked equivalence by counting negatives, not by eyeballing the signs."
+      },
+      "vocabulary": [
+        {
+          "term": "Equivalent expressions",
+          "definition": "Expressions that have the same value."
+        },
+        {
+          "term": "Properties of operations",
+          "definition": "Rules like commutative and distributive that let you rewrite an expression without changing its value."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for 7NS3-S5: apply the distributive property to expressions with rational coefficients.",
+        "if_fail": "Drop back to 7NS3-S4 and rebuild multiplication of signed rationals before matching equivalent forms."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write '(-4/9)(3/4)' and list (4/9)(-3/4) and (-4/9)(-3/4).'"
+        },
+        {
+          "kind": "ask",
+          "text": "What is the value of the first? How many negatives does each option have?"
+        },
+        {
+          "kind": "say",
+          "text": "First is -1/3 (one negative). (4/9)(-3/4) also has one negative -> -1/3, equivalent. (-4/9)(-3/4) has two -> +1/3, not equivalent."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student picks (-4/9)(-3/4), ask 'how many negatives now? Two negatives make a ...?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: find an expression equivalent to (-2/3)(3/5)."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Is (-4/9)(3/4) positive or negative?",
+          "answer": "Negative (one negative factor)."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Does moving the negative from one factor to the other change the value: (-2/3)(3/5) vs (2/3)(-3/5)?",
+          "answer": "No -- both equal -2/5."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which is equivalent to (-4/9)(3/4): (4/9)(-3/4) or (-4/9)(-3/4)?",
+          "answer": "(4/9)(-3/4)",
+          "notes": "Same one-negative count preserves the value."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Select two expressions equivalent to (-4/9)(3/4): -1/3, 1/3, (4/9)(3/4), (4/9)(-3/4), (-4/9)(-3/4).",
+          "answer": "-1/3 and (4/9)(-3/4)",
+          "notes": "Both have one negative -> -1/3."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Jade chose expressions equivalent to (-4/9)(3/4). Find and fix her mistake.",
+          "shown_work": [
+            "Jade wrote: '(-4/9)(3/4) = -1/3, so (-4/9)(-3/4) is also equivalent.'"
+          ],
+          "answer": "(-4/9)(-3/4) = +1/3, which is NOT equal to -1/3. Two negatives make a positive, flipping the value. The equivalent one is (4/9)(-3/4) = -1/3.",
+          "notes": "Canonical error: a second negative treated as harmless."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which equals (-3/8)(-2/3): 1/4 or -1/4?",
+          "answer": "1/4",
+          "notes": "Two negatives -> positive."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write two DIFFERENT products of two fractions, each equal to -2/5.",
+          "answer": "Sample: (-2/3)(3/5) and (2/3)(-3/5) (each is -2/5). Also (-2/5)(1) works.",
+          "notes": "Create-your-own equivalents."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why (-4/9)(3/4) and (4/9)(-3/4) are equal but (-4/9)(-3/4) is not.",
+          "answer": "The first two each have exactly ONE negative factor, so both are -1/3; the third has TWO negatives, making it +1/3.",
+          "notes": "Explain the even/odd sign logic."
+        }
+      ],
+      "activities": [
+        {
+          "type": "card_sort",
+          "title": "Equivalent or Not",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Expression cards referencing (-4/9)(3/4)"
+          ],
+          "instructions": "1. The target is (-4/9)(3/4) = -1/3.\n2. Sort each card into 'Equivalent to the target' or 'Not equivalent.'\n3. Justify by counting negatives (equivalent = same value, -1/3).\n4. Debrief: which cards flipped the sign, and why?",
+          "content": {
+            "categories": [
+              "Equivalent to (-4/9)(3/4)",
+              "Not equivalent"
+            ],
+            "cards": [
+              {
+                "text": "-1/3",
+                "category": "Equivalent to (-4/9)(3/4)"
+              },
+              {
+                "text": "(4/9)(-3/4)",
+                "category": "Equivalent to (-4/9)(3/4)"
+              },
+              {
+                "text": "1/3",
+                "category": "Not equivalent"
+              },
+              {
+                "text": "(4/9)(3/4)",
+                "category": "Not equivalent"
+              },
+              {
+                "text": "(-4/9)(-3/4)",
+                "category": "Not equivalent"
+              }
+            ]
+          }
+        },
+        {
+          "type": "matching",
+          "title": "Same Value, Moved Sign",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Product cards",
+            "Equivalent-expression cards"
+          ],
+          "instructions": "1. Match each product to a DIFFERENT expression with the same value.\n2. Use the move-one-negative rule to build the match.\n3. Reject decoys that added a second negative.\n4. Debrief: how many negatives must equivalent expressions share?",
+          "content": {
+            "pairs": [
+              {
+                "left": "(-2/3)(3/5)",
+                "right": "(2/3)(-3/5)"
+              },
+              {
+                "left": "(-3/8)(2/3)",
+                "right": "(3/8)(-2/3)"
+              },
+              {
+                "left": "(-4/9)(3/4)",
+                "right": "(4/9)(-3/4)"
+              }
+            ],
+            "decoys": [
+              "(2/3)(3/5)",
+              "(-3/8)(-2/3)"
+            ]
+          }
+        },
+        {
+          "type": "error_analysis",
+          "title": "One Negative or Two?",
+          "time_minutes": 8,
+          "grouping": "individual",
+          "materials": [
+            "Slip with Jade's equivalence claim"
+          ],
+          "instructions": "1. Read Jade's claim that (-4/9)(-3/4) is equivalent to (-4/9)(3/4).\n2. Count the negatives in each expression.\n3. Compute both values and compare.\n4. Write the rule for when moving a sign keeps the value.",
+          "content": {
+            "worked_problem": "Target (-4/9)(3/4) = -1/3. Jade said (-4/9)(-3/4) is equivalent.",
+            "error_step": "Jade added a second negative, which flips the sign.",
+            "why": "(-4/9)(-3/4) = +1/3, not -1/3; equivalent expressions must have the same count of negatives (parity)."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Think-pair-share on which expressions are equivalent surfaces the move-one-vs-add-a-second-negative reasoning for debate."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The second-negative-is-harmless slip is a precise error a counterexample corrects."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "Journaling the rule for equivalent signed products consolidates the parity reasoning."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the value of the original expression?",
+          "How many negative factors does each option have?",
+          "Does moving one negative change the value?",
+          "What happens when you add a second negative?",
+          "Can you write a different expression with the same value?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student thinks adding or flipping a second negative keeps the value the same.",
+            "say": "Moving ONE negative between factors keeps the value; adding a SECOND negative flips it. Count the negatives in both expressions -- same count (even/even or odd/odd) means equivalent.",
+            "praise": "You checked equivalence by counting negatives, not by eyeballing the signs."
+          },
+          {
+            "if_you_see": "Student drops a negative entirely and calls it equivalent.",
+            "say": "Dropping a negative changes an odd count to even, flipping the sign. (4/9)(3/4) is +1/3, not -1/3.",
+            "praise": "You noticed that removing a negative flips the value."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Is (2/3)(-3/5) equivalent to (-2/3)(3/5)?",
+            "look_for": "Yes, both -2/5 (one negative each). 'No' misses the move-one-negative rule."
+          },
+          {
+            "prompt": "Is (-3/8)(-2/3) equivalent to (-3/8)(2/3)?",
+            "look_for": "No: +1/4 vs -1/4. 'Yes' treats the second negative as harmless."
+          }
+        ]
+      },
+      "fluency_source": "7NS3-B1",
+      "sentence_starters": [
+        "The original has ___ negative(s), so its value is ___.",
+        "This expression is / is not equivalent because it has ___ negative(s)."
+      ],
+      "worked_solution": {
+        "stem": "Select the expressions equivalent to (-4/9)(3/4).",
+        "answer": "-1/3 and (4/9)(-3/4)",
+        "steps": [
+          {
+            "math": "(-4/9)(3/4) = -12/36 = -1/3",
+            "annotation": "One negative factor -> the product is negative."
+          },
+          {
+            "math": "(4/9)(-3/4) = -12/36 = -1/3",
+            "annotation": "Moving the one negative keeps the value."
+          },
+          {
+            "math": "(-4/9)(-3/4) = +1/3 -> NOT equivalent",
+            "annotation": "Two negatives make it positive."
+          },
+          {
+            "math": "equivalent: -1/3 and (4/9)(-3/4)",
+            "annotation": "Same value, -1/3."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Select the expressions equivalent to (-2/3)(3/5).",
+        "answer": "-2/5 and (2/3)(-3/5)",
+        "steps": [
+          {
+            "math": "(-2/3)(3/5) = -6/15 = -2/5",
+            "annotation": "One negative -> negative product.",
+            "given": true
+          },
+          {
+            "math": "move the one negative: (2/3)(-3/5) = -2/5",
+            "annotation": "Still one negative, still -2/5.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Decide whether (-2/3)(-3/5) is equivalent (check the sign).",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "List the two equivalent expressions.",
+            "given": false
+          }
+        ]
+      },
+      "pld_band": "approaching"
     },
     {
       "skill_id": "7NS3-S5",
@@ -2032,7 +2374,8 @@
       "column": "on_grade",
       "parent_standard": "7.NS.3",
       "engine_stems": [
-        3
+        3,
+        7
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -2083,7 +2426,7 @@
         }
       ],
       "next_steps": {
-        "if_pass": "7NS3-S6",
+        "if_pass": "Ready for 7NS3-S7: generalize the sign of a product when the factors are letters.",
         "if_fail": "7NS3-S4"
       },
       "worked_example_script": [
@@ -2352,341 +2695,320 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "at"
     },
     {
-      "skill_id": "7NS3-S6",
-      "name": "Identify and create equivalent signed products using properties of operations",
+      "skill_id": "7NS3-S7",
+      "name": "Generalize the sign of a product using variables and inequalities",
       "column": "looking_forward",
       "parent_standard": "7.NS.3",
-      "engine_stems": [
-        5
-      ],
       "prerequisite_skill": {
         "type": "skill",
-        "skill_id": "7NS3-S5"
+        "skill_id": "7NS3-S6"
       },
-      "i_do_script": "Two expressions are equivalent when they name the same product. A key move: a single negative sign can move from one factor to the other without changing the value, because a negative times a positive is still negative. Watch (-4/9)(3/4): its value is -1/3, and (4/9)(-3/4) is also -1/3 -- the negative just moved. But (-4/9)(-3/4) is NOT equivalent: adding a second negative makes it +1/3. Count the negatives to check equivalence.",
+      "i_do_script": "You already know how to find the sign of a product by counting negative factors. Now the factors are letters, and you are told only which side of zero each one lives on. Watch: a < 0 and b > 0. I do not know what a and b are, and I do not need to. One factor is negative, one is positive, so exactly one negative goes into the product -- and one negative makes the product negative. So ab < 0, for every a and b that fit the description.",
       "canonical_error": {
-        "pattern": "Thinks adding or flipping a second negative sign keeps the value the same",
-        "example": "Claims (-4/9)(-3/4) is equivalent to (-4/9)(3/4), when the first is +1/3 and the second is -1/3",
-        "why": "The student treats every sign change as harmless. Moving ONE negative between factors preserves the value, but adding a SECOND negative flips the sign (odd vs even count of negatives)."
+        "pattern": "Distributes the sign of a variable across a sum, concluding that r(s + t) must be negative-times-positive term by term rather than finding the sign of the sum first",
+        "example": "Given r < 0, s > 0, t > 0, says r(s + t) > 0 'because rs is negative and rt is negative and two negatives make a positive'",
+        "why": "The student is applying the counting-negatives rule to terms that are being ADDED, not multiplied. The rule only governs factors. Inside the parentheses s + t is a single positive quantity, so r(s + t) is one negative times one positive."
       },
-      "item_template": "A signed product; student selects or writes expressions with the same value using the properties/sign rules. MC/multi-select.",
+      "item_template": "Variables with stated signs (a < 0, b > 0) and a claim about the sign or magnitude of a product or a product of a sum. Multiple choice, multi-select, or construct-an-inequality. No numeric answer exists; the reasoning is the answer.",
       "sample_items": [
         {
-          "stem": "Select two expressions that are equivalent to (-4/9)(3/4).",
-          "answer": "-1/3 and (4/9)(-3/4)",
+          "stem": "Suppose a < 0 and b > 0. Which statement is true about the product ab?",
+          "answer": "ab < 0",
           "choices": [
-            "-1/3",
-            "1/3",
-            "(4/9)(3/4)",
-            "(4/9)(-3/4)",
-            "(-4/9)(-3/4)"
+            "ab > 0",
+            "ab < 0",
+            "ab = 0",
+            "Cannot be determined"
           ],
-          "distractor_logic": "(-4/9)(3/4) = -1/3, and (4/9)(-3/4) = -1/3 (one negative each). 1/3, (4/9)(3/4), and (-4/9)(-3/4) all equal +1/3."
+          "distractor_logic": "'Cannot be determined' tempts students who think they need actual values; ab > 0 comes from miscounting the negatives."
         },
         {
-          "stem": "Which equals (-2/3)(3/5): -2/5 or 2/5?",
-          "answer": "-2/5",
-          "choices": [
-            "-2/5",
-            "2/5"
-          ],
-          "distractor_logic": "One negative factor: (-2/3)(3/5) = -2/5."
+          "stem": "If r < 0, s > 0, and t > 0, select the three true statements: rs < 0, rt < 0, r(st) > 0, r(s + t) < 0, r(s + t) > 0, rst = 0.",
+          "answer": "rs < 0, rt < 0, and r(s + t) < 0",
+          "choices": null,
+          "distractor_logic": "r(st) > 0 miscounts one negative as two; r(s + t) > 0 is the distribute-the-sign error; rst = 0 imports the zero-product rule with nothing equal to zero."
         },
         {
-          "stem": "Which product equals (-3/8)(-2/3)?",
-          "answer": "1/4",
-          "choices": [
-            "1/4",
-            "-1/4"
-          ],
-          "distractor_logic": "Two negatives make a positive: 6/24 = 1/4."
+          "stem": "m < 0 and n < 0. Is mn greater than, less than, or equal to zero? Write an inequality and justify it.",
+          "answer": "mn > 0. Two negative factors, and two negatives make a positive product.",
+          "choices": null,
+          "distractor_logic": "mn < 0 counts the negatives but not the pairing."
         },
         {
-          "stem": "Is (4/9)(3/4) equivalent to (-4/9)(3/4)?",
-          "answer": "No -- (4/9)(3/4) = 1/3, but (-4/9)(3/4) = -1/3.",
-          "distractor_logic": "Dropping the negative changes the sign, so they are not equivalent."
+          "stem": "p < 0 and q > 0, and |p| > |q|. What can you say about the sign of p + q, and about the sign of pq?",
+          "answer": "p + q < 0 because the negative has the larger magnitude; pq < 0 because exactly one factor is negative. Sign of a sum depends on magnitude; sign of a product does not.",
+          "choices": null,
+          "distractor_logic": "Answering the same for both shows the sum rule and the product rule have collapsed into one."
         }
       ],
       "redirect_script": {
-        "stop": "Count the negatives in each expression.",
-        "prompt": "Moving ONE negative between factors keeps the value; adding a SECOND negative flips it. Count the negatives in both expressions -- same count (even/even or odd/odd) means equivalent.",
-        "praise": "You checked equivalence by counting negatives, not by eyeballing the signs."
+        "stop": "Wait -- are those two things being multiplied, or added?",
+        "prompt": "Count negatives only among FACTORS. Look inside the parentheses first and decide the sign of what is in there, then count how many negative factors you actually have.",
+        "praise": "You found the sign of the sum first, then counted factors. That keeps the two rules from running together."
       },
       "vocabulary": [
         {
-          "term": "Equivalent expressions",
-          "definition": "Expressions that have the same value."
+          "term": "Factor",
+          "definition": "A quantity being multiplied. The counting-negatives rule applies to factors only."
         },
         {
-          "term": "Properties of operations",
-          "definition": "Rules like commutative and distributive that let you rewrite an expression without changing its value."
+          "term": "Magnitude",
+          "definition": "How far a number is from zero, ignoring its sign. Written |a|."
+        },
+        {
+          "term": "Generalize",
+          "definition": "State something true for every number fitting a description, not just for one example."
+        },
+        {
+          "term": "Inequality",
+          "definition": "A statement using <, >, or = to compare, such as ab < 0."
         }
       ],
+      "manipulative_visual": "Two sign cards (a NEG card and a POS card) laid out as factors, with a third card that opens to reveal a parenthesis holding a sum. Students physically resolve what is inside the parenthesis to a single sign card before counting negatives, which makes the sum-then-multiply order concrete.",
       "next_steps": {
-        "if_pass": "Ready for 8.NS and operations with rational numbers in algebra.",
-        "if_fail": "7NS3-S5"
+        "if_pass": "Ready for 7.AF territory: reasoning about expressions with variables, where sign analysis supports solving and comparing.",
+        "if_fail": "Drop back to 7NS3-S2 with numbers only, then re-enter here by replacing one number at a time with a letter whose sign is stated."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write '(-4/9)(3/4)' and list (4/9)(-3/4) and (-4/9)(-3/4).'"
+          "text": "Write on the board: a < 0, b > 0. Underneath write ab, and leave a blank for the sign."
         },
         {
           "kind": "ask",
-          "text": "What is the value of the first? How many negatives does each option have?"
+          "text": "I have not told you what a and b are. Do you need to know, to decide the sign of ab?"
         },
         {
-          "kind": "say",
-          "text": "First is -1/3 (one negative). (4/9)(-3/4) also has one negative -> -1/3, equivalent. (-4/9)(-3/4) has two -> +1/3, not equivalent."
+          "kind": "ask",
+          "text": "How many of these two factors are negative? Count them out loud."
+        },
+        {
+          "kind": "ask",
+          "text": "One negative factor. What does one negative do to a product?"
         },
         {
           "kind": "watch",
-          "text": "If a student picks (-4/9)(-3/4), ask 'how many negatives now? Two negatives make a ...?'"
+          "text": "If the student wants to pick values for a and b, let them -- then ask them to pick a DIFFERENT pair and check whether the sign changed. Two cases with the same sign is the argument."
         },
         {
           "kind": "ask",
-          "text": "Your turn: find an expression equivalent to (-2/3)(3/5)."
+          "text": "New one: r < 0, s > 0, t > 0. What is the sign of r(s + t)? Careful -- how many factors are there here?"
+        },
+        {
+          "kind": "ask",
+          "text": "Inside the parentheses, s + t is positive plus positive. So what sign is that whole quantity, before r touches it?"
+        },
+        {
+          "kind": "say",
+          "text": "Two factors: r, which is negative, and (s + t), which is positive. One negative factor, so r(s + t) < 0. Resolve the parenthesis first, then count."
         }
       ],
+      "printable_artifact": {
+        "title": "Sign Rules for Letters Reference Card",
+        "kind": "reference_card",
+        "instructions": "Count negatives among FACTORS. Resolve anything inside parentheses to a single sign first.",
+        "items": [
+          "One negative factor  ->  product is negative.",
+          "Two negative factors  ->  product is positive.",
+          "a < 0, b > 0  ->  ab < 0, whatever a and b are.",
+          "r < 0, s > 0, t > 0  ->  (s + t) is POSITIVE, so r(s + t) < 0.",
+          "Adding is not multiplying: the sign of a SUM depends on magnitude, the sign of a PRODUCT does not.",
+          "A product equals 0 only when a factor equals 0."
+        ]
+      },
       "practice_problems": [
         {
           "difficulty": "warm_up",
-          "stem": "Is (-4/9)(3/4) positive or negative?",
-          "answer": "Negative (one negative factor)."
+          "stem": "a < 0 and b > 0. Is ab positive or negative?",
+          "answer": "Negative -- exactly one negative factor."
         },
         {
           "difficulty": "warm_up",
-          "stem": "Does moving the negative from one factor to the other change the value: (-2/3)(3/5) vs (2/3)(-3/5)?",
-          "answer": "No -- both equal -2/5."
+          "stem": "m < 0 and n < 0. Is mn positive or negative?",
+          "answer": "Positive -- two negative factors."
         },
         {
           "difficulty": "core",
-          "stem": "Which is equivalent to (-4/9)(3/4): (4/9)(-3/4) or (-4/9)(-3/4)?",
-          "answer": "(4/9)(-3/4)",
-          "notes": "Same one-negative count preserves the value."
+          "stem": "Suppose a < 0 and b > 0. Which is true about ab: ab > 0, ab < 0, ab = 0, or cannot be determined?",
+          "answer": "ab < 0",
+          "notes": "'Cannot be determined' is the tempting wrong answer -- the sign is fully determined even though the value is not."
         },
         {
           "difficulty": "core",
-          "stem": "Select two expressions equivalent to (-4/9)(3/4): -1/3, 1/3, (4/9)(3/4), (4/9)(-3/4), (-4/9)(-3/4).",
-          "answer": "-1/3 and (4/9)(-3/4)",
-          "notes": "Both have one negative -> -1/3."
+          "stem": "If r < 0, s > 0, and t > 0, select the three true statements: (1) rs < 0  (2) rt < 0  (3) r(st) > 0  (4) r(s + t) < 0  (5) r(s + t) > 0  (6) rst = 0",
+          "answer": "Statements 1, 2, and 4",
+          "notes": "Statement 5 is the canonical error; statement 3 miscounts a single negative as two; statement 6 invokes the zero-product rule with no zero present."
+        },
+        {
+          "difficulty": "core",
+          "stem": "m < 0 and n < 0. Write an inequality comparing mn to zero, and justify it in one sentence.",
+          "answer": "mn > 0, because two negative factors make a positive product."
         },
         {
           "difficulty": "core",
           "type": "error_analysis",
-          "stem": "Jade chose expressions equivalent to (-4/9)(3/4). Find and fix her mistake.",
+          "stem": "Read Owen's reasoning. Find his mistake and fix it.",
           "shown_work": [
-            "Jade wrote: '(-4/9)(3/4) = -1/3, so (-4/9)(-3/4) is also equivalent.'"
+            "Given: r < 0, s > 0, t > 0. Owen must decide the sign of r(s + t).",
+            "Owen wrote: 'r times s is negative. r times t is negative. Two negatives make a positive, so r(s + t) > 0.'"
           ],
-          "answer": "(-4/9)(-3/4) = +1/3, which is NOT equal to -1/3. Two negatives make a positive, flipping the value. The equivalent one is (4/9)(-3/4) = -1/3.",
-          "notes": "Canonical error: a second negative treated as harmless."
-        },
-        {
-          "difficulty": "core",
-          "stem": "Which equals (-3/8)(-2/3): 1/4 or -1/4?",
-          "answer": "1/4",
-          "notes": "Two negatives -> positive."
+          "answer": "r(s + t) < 0. Owen distributed correctly but then counted rs and rt as FACTORS -- they are being added, not multiplied. Two negative quantities added together make a bigger negative, not a positive. The quick route: s + t is positive plus positive, so it is one positive quantity, and r is one negative factor. One negative factor makes the product negative.",
+          "notes": "The canonical error. Worth running with numbers too: r = -2, s = 3, t = 4 gives -2(7) = -14, and -6 + -8 = -14. Both routes agree, and neither is positive."
         },
         {
           "difficulty": "stretch",
-          "stem": "Write two DIFFERENT products of two fractions, each equal to -2/5.",
-          "answer": "Sample: (-2/3)(3/5) and (2/3)(-3/5) (each is -2/5). Also (-2/5)(1) works.",
-          "notes": "Create-your-own equivalents."
+          "stem": "p < 0 and q > 0, and |p| > |q|. What is the sign of p + q? What is the sign of pq? Explain why the two questions need different reasoning.",
+          "answer": "p + q < 0 and pq < 0. For the sum, the sign depends on which number is farther from zero, so the magnitude fact matters. For the product, only the count of negative factors matters, so |p| > |q| is irrelevant. Sums need magnitude; products need only signs.",
+          "notes": "Separates the two rules that Owen's error collapses."
         },
         {
           "difficulty": "stretch",
-          "stem": "Explain why (-4/9)(3/4) and (4/9)(-3/4) are equal but (-4/9)(-3/4) is not.",
-          "answer": "The first two each have exactly ONE negative factor, so both are -1/3; the third has TWO negatives, making it +1/3.",
-          "notes": "Explain the even/odd sign logic."
+          "stem": "Is it possible for a < 0, b < 0, and ab < 0 all to be true at once? Explain.",
+          "answer": "No. Two negative factors always produce a positive product, so ab < 0 contradicts a < 0 and b < 0. There is no counterexample to find -- the three statements cannot hold together.",
+          "notes": "Asks students to argue that no case exists, which is harder than producing one."
         }
       ],
       "activities": [
         {
-          "type": "card_sort",
-          "title": "Equivalent or Not",
-          "time_minutes": 12,
+          "type": "hands_on",
+          "title": "Resolve the Parenthesis First",
+          "time_minutes": 10,
           "grouping": "small_group",
           "materials": [
-            "Expression cards referencing (-4/9)(3/4)"
+            "NEG and POS sign cards",
+            "Folded parenthesis cards holding a sum"
           ],
-          "instructions": "1. The target is (-4/9)(3/4) = -1/3.\n2. Sort each card into 'Equivalent to the target' or 'Not equivalent.'\n3. Justify by counting negatives (equivalent = same value, -1/3).\n4. Debrief: which cards flipped the sign, and why?",
-          "content": {
-            "categories": [
-              "Equivalent to (-4/9)(3/4)",
-              "Not equivalent"
-            ],
-            "cards": [
-              {
-                "text": "-1/3",
-                "category": "Equivalent to (-4/9)(3/4)"
-              },
-              {
-                "text": "(4/9)(-3/4)",
-                "category": "Equivalent to (-4/9)(3/4)"
-              },
-              {
-                "text": "1/3",
-                "category": "Not equivalent"
-              },
-              {
-                "text": "(4/9)(3/4)",
-                "category": "Not equivalent"
-              },
-              {
-                "text": "(-4/9)(-3/4)",
-                "category": "Not equivalent"
-              }
-            ]
-          }
-        },
-        {
-          "type": "matching",
-          "title": "Same Value, Moved Sign",
-          "time_minutes": 10,
-          "grouping": "pairs",
-          "materials": [
-            "Product cards",
-            "Equivalent-expression cards"
-          ],
-          "instructions": "1. Match each product to a DIFFERENT expression with the same value.\n2. Use the move-one-negative rule to build the match.\n3. Reject decoys that added a second negative.\n4. Debrief: how many negatives must equivalent expressions share?",
-          "content": {
-            "pairs": [
-              {
-                "left": "(-2/3)(3/5)",
-                "right": "(2/3)(-3/5)"
-              },
-              {
-                "left": "(-3/8)(2/3)",
-                "right": "(3/8)(-2/3)"
-              },
-              {
-                "left": "(-4/9)(3/4)",
-                "right": "(4/9)(-3/4)"
-              }
-            ],
-            "decoys": [
-              "(2/3)(3/5)",
-              "(-3/8)(-2/3)"
-            ]
-          }
+          "instructions": "1. Lay out an expression using sign cards, with one folded card representing a parenthesis holding a sum.\n2. Before anyone counts negatives, the group must open the folded card and agree on ONE sign for the whole parenthesis.\n3. Replace the folded card with a single sign card carrying that sign.\n4. Now count negative factors across the flat layout and name the sign of the product.\n5. Repeat with r(s + t), r(s - t) where s < t, and r(st). Ask what changed each time and why."
         },
         {
           "type": "error_analysis",
-          "title": "One Negative or Two?",
-          "time_minutes": 8,
-          "grouping": "individual",
+          "title": "Owen Counted the Wrong Things",
+          "time_minutes": 10,
+          "grouping": "pairs",
           "materials": [
-            "Slip with Jade's equivalence claim"
+            "Printed problem slip"
           ],
-          "instructions": "1. Read Jade's claim that (-4/9)(-3/4) is equivalent to (-4/9)(3/4).\n2. Count the negatives in each expression.\n3. Compute both values and compare.\n4. Write the rule for when moving a sign keeps the value.",
+          "instructions": "1. Pairs read Owen's reasoning and mark the exact sentence where it goes wrong.\n2. Ask first: why is 'two negatives make a positive' a reasonable thing to reach for? (Because it is true -- for factors.)\n3. Pairs test Owen's claim with r = -2, s = 3, t = 4 and report both routes.\n4. Pairs write one sentence stating when the two-negatives rule applies and when it does not.",
           "content": {
-            "worked_problem": "Target (-4/9)(3/4) = -1/3. Jade said (-4/9)(-3/4) is equivalent.",
-            "error_step": "Jade added a second negative, which flips the sign.",
-            "why": "(-4/9)(-3/4) = +1/3, not -1/3; equivalent expressions must have the same count of negatives (parity)."
+            "worked_problem": "r < 0, s > 0, t > 0. Owen wrote: 'r times s is negative, r times t is negative, two negatives make a positive, so r(s + t) > 0.'",
+            "error_step": "Owen applied the counting-negatives rule to rs and rt, which are being added rather than multiplied.",
+            "why": "The rule governs factors only. s + t is a single positive quantity and r is a single negative factor, so r(s + t) < 0. Checking with r = -2, s = 3, t = 4 gives -14 either way."
           }
+        },
+        {
+          "type": "game",
+          "title": "Determined or Not",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Three response cards per student: POSITIVE, NEGATIVE, DEPENDS"
+          ],
+          "instructions": "1. Post a setup (a < 0, b > 0) and an expression (ab, a + b, a(b + b), ab^2).\n2. Students raise a card. DEPENDS is correct only when magnitude decides the answer.\n3. Any student showing DEPENDS must produce two cases with different signs; any student showing a sign must state the factor count.\n4. Final round: a < 0, b > 0, and |a| > |b| -- ask for a + b and for ab, and let the class find that adding the magnitude fact changes only one of them."
         }
       ],
       "strategy_links": [
         {
           "strategy_id": "strat-math-001",
-          "why": "Think-pair-share on which expressions are equivalent surfaces the move-one-vs-add-a-second-negative reasoning for debate."
+          "why": "Sign claims about letters have no computed answer to check against, so pairs must defend reasoning aloud and meet a counterexample from someone else."
         },
         {
           "strategy_id": "strat-math-003",
-          "why": "The second-negative-is-harmless slip is a precise error a counterexample corrects."
+          "why": "Owen's work is the canonical distribute-the-sign error written out, which is the exact form the above-proficiency items take."
         },
         {
-          "strategy_id": "strat-math-004",
-          "why": "Journaling the rule for equivalent signed products consolidates the parity reasoning."
+          "strategy_id": "strat-math-007",
+          "why": "The sign cards and folded parenthesis card give the resolve-then-count order a concrete stage before it becomes symbolic."
         }
       ],
       "teacher_moves": {
         "questioning_prompts": [
-          "What is the value of the original expression?",
-          "How many negative factors does each option have?",
-          "Does moving one negative change the value?",
-          "What happens when you add a second negative?",
-          "Can you write a different expression with the same value?"
+          "How many FACTORS are in this expression? Are those two things multiplied or added?",
+          "What sign is everything inside the parentheses, before anything multiplies it?",
+          "You said the sign is determined. Could you pick two very different pairs of values and get the same sign both times?",
+          "Which of these questions needs magnitude, and which needs only the signs?"
         ],
         "misconception_redirects": [
           {
-            "if_you_see": "Student thinks adding or flipping a second negative keeps the value the same.",
-            "say": "Moving ONE negative between factors keeps the value; adding a SECOND negative flips it. Count the negatives in both expressions -- same count (even/even or odd/odd) means equivalent.",
-            "praise": "You checked equivalence by counting negatives, not by eyeballing the signs."
+            "if_you_see": "Student distributes and then counts the two resulting negative terms as 'two negatives making a positive.'",
+            "say": "Count negatives only among FACTORS. Look inside the parentheses first and decide the sign of what is in there, then count how many negative factors you actually have.",
+            "praise": "You found the sign of the sum first, then counted factors. That keeps the two rules from running together."
           },
           {
-            "if_you_see": "Student drops a negative entirely and calls it equivalent.",
-            "say": "Dropping a negative changes an odd count to even, flipping the sign. (4/9)(3/4) is +1/3, not -1/3.",
-            "praise": "You noticed that removing a negative flips the value."
+            "if_you_see": "Student answers 'cannot be determined' because no values are given.",
+            "say": "Pick any a below zero and any b above zero you like. Now pick a wildly different pair. Did the sign of ab change?",
+            "praise": "Right -- the value isn't determined but the sign is, and the sign is what was asked."
+          },
+          {
+            "if_you_see": "Student selects rst = 0 when no variable is zero.",
+            "say": "A product is zero only when one of the factors is zero. Is any of r, s, or t equal to zero here?",
+            "praise": "Good -- you checked the condition instead of matching the shape of a rule you knew."
           }
         ],
         "quick_checks": [
           {
-            "prompt": "Is (2/3)(-3/5) equivalent to (-2/3)(3/5)?",
-            "look_for": "Yes, both -2/5 (one negative each). 'No' misses the move-one-negative rule."
+            "prompt": "a < 0, b > 0. Sign of ab, and how many negative factors?",
+            "look_for": "'Negative, one negative factor.' 'Cannot be determined' means the sign and the value are still fused."
           },
           {
-            "prompt": "Is (-3/8)(-2/3) equivalent to (-3/8)(2/3)?",
-            "look_for": "No: +1/4 vs -1/4. 'Yes' treats the second negative as harmless."
+            "prompt": "r < 0, s > 0, t > 0. Sign of r(s + t)?",
+            "look_for": "Negative, with the parenthesis resolved first. Positive means Owen's error is live."
           }
         ]
       },
-      "fluency_source": "7NS3-B1",
-      "sentence_starters": [
-        "The original has ___ negative(s), so its value is ___.",
-        "This expression is / is not equivalent because it has ___ negative(s)."
-      ],
       "worked_solution": {
-        "stem": "Select the expressions equivalent to (-4/9)(3/4).",
-        "answer": "-1/3 and (4/9)(-3/4)",
+        "stem": "If r < 0, s > 0, and t > 0, determine the sign of r(s + t).",
+        "answer": "r(s + t) < 0",
         "steps": [
           {
-            "math": "(-4/9)(3/4) = -12/36 = -1/3",
-            "annotation": "One negative factor -> the product is negative."
+            "math": "Inside first: s > 0 and t > 0, so s + t > 0.",
+            "annotation": "Positive plus positive is positive. Resolve the parenthesis to one sign."
           },
           {
-            "math": "(4/9)(-3/4) = -12/36 = -1/3",
-            "annotation": "Moving the one negative keeps the value."
+            "math": "Now the expression is r times a positive quantity.",
+            "annotation": "Two factors: r, and (s + t)."
           },
           {
-            "math": "(-4/9)(-3/4) = +1/3 -> NOT equivalent",
-            "annotation": "Two negatives make it positive."
+            "math": "r < 0, so exactly one factor is negative.",
+            "annotation": "Count negatives among factors only."
           },
           {
-            "math": "equivalent: -1/3 and (4/9)(-3/4)",
-            "annotation": "Same value, -1/3."
+            "math": "One negative factor, so r(s + t) < 0.",
+            "annotation": "True for every r, s, t fitting the description -- no values needed."
           }
         ]
       },
       "faded_example": {
-        "stem": "Select the expressions equivalent to (-2/3)(3/5).",
-        "answer": "-2/5 and (2/3)(-3/5)",
+        "stem": "If m < 0, p > 0, and q > 0, determine the sign of m(p + q).",
+        "answer": "m(p + q) < 0",
         "steps": [
           {
-            "math": "(-2/3)(3/5) = -6/15 = -2/5",
-            "annotation": "One negative -> negative product.",
+            "math": "Inside first: p > 0 and q > 0, so p + q > 0.",
+            "annotation": "Positive plus positive is positive.",
             "given": true
           },
           {
-            "math": "move the one negative: (2/3)(-3/5) = -2/5",
-            "annotation": "Still one negative, still -2/5.",
+            "math": "Now the expression is m times a positive quantity.",
+            "annotation": "Two factors: m, and (p + q).",
             "given": true
           },
           {
             "math": null,
-            "annotation": "Decide whether (-2/3)(-3/5) is equivalent (check the sign).",
-            "given": false
-          },
-          {
-            "math": null,
-            "annotation": "List the two equivalent expressions.",
+            "annotation": "Count the negative factors, then write the inequality comparing m(p + q) to 0.",
             "given": false
           }
         ]
-      }
+      },
+      "sentence_starters": [
+        "Inside the parentheses, ___ + ___ is ___, so that whole quantity is ___.",
+        "There are ___ negative factors, so the product is ___.",
+        "The sign is determined even though the value is not, because ___."
+      ],
+      "fluency_source": "7NS3-F1",
+      "pld_band": "above"
     }
   ],
   "skill_columns": {
@@ -2708,20 +3030,21 @@
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
+      "description": "This standard's own expectations, climbing from Below Proficiency to At Proficiency. Every skill here is grade-level work.",
       "skills": [
         "7NS3-S1",
         "7NS3-S2",
         "7NS3-S3",
         "7NS3-S4",
+        "7NS3-S6",
         "7NS3-S5"
       ]
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Above-proficiency work and bridges to later standards.",
+      "description": "Above Proficiency on this standard, and bridges to later standards.",
       "skills": [
-        "7NS3-S6"
+        "7NS3-S7"
       ]
     }
   },
@@ -2734,8 +3057,9 @@
     "7NS3-S2",
     "7NS3-S3",
     "7NS3-S4",
+    "7NS3-S6",
     "7NS3-S5",
-    "7NS3-S6"
+    "7NS3-S7"
   ],
   "skill_tree": {
     "7NS3-F1": [],
@@ -2763,11 +3087,14 @@
       "7NS3-B2"
     ],
     "7NS3-S5": [
-      "7NS3-S4"
+      "7NS3-S6"
     ],
     "7NS3-S6": [
-      "7NS3-S4",
-      "7NS3-S5"
+      "7NS3-S4"
+    ],
+    "7NS3-S7": [
+      "7NS3-S5",
+      "7NS3-S6"
     ]
   },
   "diagnostic_flow": {
@@ -2775,7 +3102,7 @@
     "entry_skill": "7NS3-S4",
     "if_pass": [
       "7NS3-S5",
-      "7NS3-S6"
+      "7NS3-S7"
     ],
     "if_fail": [
       "7NS3-B1",
@@ -2786,7 +3113,16 @@
       "7NS3-F2",
       "7NS3-S1",
       "7NS3-S2",
-      "7NS3-S3"
+      "7NS3-S3",
+      "7NS3-S6"
     ]
+  },
+  "pld_descriptors": {
+    "source": "refreshed",
+    "note": "Verbatim from the ILEARN item specification. These are performance bands on THIS standard, not lower-grade content: a student at Below Proficiency is working on this standard at its least complex entry point.",
+    "below": "Multiply two integers or simple rational numbers with opposite signs using a model. Determine whether a multiplication expression with two or three rational numbers will result in a positive or negative product.",
+    "approaching": "Apply properties to multiply two or three rational numbers without the use of a model. Apply the distributive property to integer expressions involving a coefficient multiplied by a sum or difference, and identify equivalent expressions.",
+    "at": "Apply the distributive property to simplify expressions with rational numbers. Evaluate numerical expressions written as a coefficient multiplied by a sum or difference.",
+    "above": "Identify, generate, and justify multiple equivalent expressions with rational numbers and variables. Analyze and generalize the sign and magnitude of products. Determine whether a product is greater than, less than, or equal to zero and select or construct inequalities that accurately represent the product."
   }
 }

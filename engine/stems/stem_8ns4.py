@@ -27,6 +27,8 @@ Difficulty Tiers:
       (rotates: percent increase w/ conversion factor, total after
       conversion, recipe scaling, multi-item purchase)
   Stem 5 (Above-NR, DOK 3, Difficult): Solve complex multi-step with percent/fractions
+  Stem 6 (Above-NR):    Percent change computed across signed values (DOK 3, difficult)
+  Stem 7 (Above-NR):    Repeated percent decrease then a unit conversion (DOK 3, difficult)
 """
 
 import random
@@ -722,6 +724,152 @@ class Stem8NS4:
     # MAIN GENERATION METHODS
     # ================================================================
 
+    # ================================================================
+    # STEM 6: Above Proficiency - NR (DOK 3, Difficult)
+    # NEW. Percent change across SIGNED values. Starting below zero is what
+    # makes it hard: the change is positive while the starting value is
+    # negative, so the student has to reason about magnitude separately from
+    # direction and divide by the absolute value of the original.
+    # ================================================================
+    def stem6_above_nr(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(6, variant_idx)
+
+        # The specification's own item goes from -40 with changes of +8, -2 and
+        # +14, a net +20 for a +50% change. Keep the same shape: a starting
+        # magnitude comfortably larger than the hourly changes, so the percent
+        # lands somewhere believable instead of at -240%.
+        start = -rng.choice([40, 50, 60, 80, 100])
+        pool = [-14, -12, -8, -6, -2, 2, 4, 8, 12, 14]
+
+        def draw():
+            ds = [rng.choice(pool) for _ in range(3)]
+            return ds, start + sum(ds)
+
+        deltas, end = draw()
+        tries = 0
+        # Reject a zero net change (no percent to state), a change larger than
+        # the starting magnitude (percent beyond 100%, unlike the spec item),
+        # and any change that does not land on a clean hundredth of a percent.
+        while tries < 80 and (end == start
+                              or abs(end - start) > abs(start)
+                              or (abs(end - start) * 10000) % abs(start)):
+            tries += 1
+            deltas, end = draw()
+        change = end - start
+        pct = round(change * 100 / abs(start), 2)
+
+        setting, unit, thing = rng.choice([
+            ("A research freezer", "degrees Fahrenheit", "temperature"),
+            ("A cold storage room", "degrees Celsius", "temperature"),
+            ("A tank below the waterline", "centimetres", "level"),
+        ])
+
+        rows = "\n".join(
+            f"Hour {i + 1}: {'+' if d > 0 else ''}{d} {unit}"
+            for i, d in enumerate(deltas))
+
+        stem_text = (
+            f"{setting} starts at {start} {unit}.\n\n"
+            f"The table shows the change each hour.\n\n{rows}\n\n"
+            f"What is the overall percent change in {thing} from the start to "
+            f"after 3 hours? Round to the nearest hundredth of a percent."
+        )
+
+        worked = (
+            f"Total change: {' + '.join(str(d) for d in deltas)} = {change} {unit}\n"
+            f"Ending value: {start} + ({change}) = {end} {unit}\n"
+            f"Percent change compares the change with the size of the ORIGINAL "
+            f"value, so divide by |{start}| = {abs(start)}.\n"
+            f"{change} / {abs(start)} = {change / abs(start):.4f}\n"
+            f"As a percent: {pct}%"
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE,
+                                         ItemType.NR, Difficulty.DIFFICULT, 6, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.ABOVE,
+            difficulty=Difficulty.DIFFICULT, dok=3, item_type=ItemType.NR,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{pct}%", answer_latex=f"{pct}%",
+            worked_solution=worked,
+            context_scenario="percent change across signed values",
+            seed=self.base_seed * 1000 + 600 + variant_idx,
+            stem_index=6, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 7: Above Proficiency - NR (DOK 3, Difficult)
+    # NEW. A percent decrease applied twice, the second on the ALREADY reduced
+    # amount, followed by a unit conversion. Adding the two percents is the
+    # error the item is built to catch.
+    # ================================================================
+    def stem7_above_nr(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(7, variant_idx)
+
+        start = rng.choice([420, 480, 500, 620, 750, 800, 900, 1200])
+        p1 = rng.choice([10, 12, 15, 18, 20, 25])
+        p2 = rng.choice([8, 10, 12, 15, 20])
+        # Two different percents, as in the specification's own item (18% then
+        # 12%): equal ones invite the reading that a single rate was applied.
+        while p2 == p1:
+            p2 = rng.choice([8, 10, 12, 15, 20])
+
+        after1 = Fraction(start) * (100 - p1) / 100
+        after2 = after1 * (100 - p2) / 100
+        converted = after2 / 1000
+
+        # Round half up on the exact Fraction. Python's round() is banker's
+        # rounding on a float, which turned 0.3485 into 0.348 when the answer
+        # key should read 0.349.
+        scaled = converted * 1000
+        floor = scaled.numerator // scaled.denominator
+        if scaled - floor >= Fraction(1, 2):
+            floor += 1
+        answer = float(Fraction(floor, 1000))
+
+        # The measured quantity is named per scenario: a reservoir does not
+        # hold a "charge".
+        device, small, large, process, quantity = rng.choice([
+            ("A battery", "mAh", "Ah", "A cooling process", "charge"),
+            ("A capacitor", "mF", "F", "A discharge cycle", "stored energy"),
+            ("A reservoir", "mL", "L", "An evaporation cycle", "volume"),
+            ("A fuel cell", "mL", "L", "A slow leak", "fuel"),
+        ])
+
+        stem_text = (
+            f"{device} holds {start} {small}.\n\n"
+            f"- {process} decreases the {quantity} by {p1}%.\n"
+            f"- After 5 minutes it decreases by a further {p2}% of the new amount.\n"
+            f"- 1 {large} = 1000 {small}\n\n"
+            f"What is the final amount in {large}? Round to the nearest "
+            f"thousandth."
+        )
+
+        worked = (
+            f"First decrease: {start} x (100 - {p1})% = {start} x "
+            f"{(100 - p1) / 100:g} = {float(after1):g} {small}\n"
+            f"Second decrease is taken on the NEW amount, not the original:\n"
+            f"{float(after1):g} x {(100 - p2) / 100:g} = {float(after2):g} {small}\n"
+            f"Convert: {float(after2):g} / 1000 = {answer} {large}\n"
+            f"Adding the percents ({p1}% + {p2}% = {p1 + p2}%) would give a "
+            f"different, incorrect answer."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE,
+                                         ItemType.NR, Difficulty.DIFFICULT, 7, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.ABOVE,
+            difficulty=Difficulty.DIFFICULT, dok=3, item_type=ItemType.NR,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{answer} {large}", answer_latex=f"{answer} {large}",
+            worked_solution=worked,
+            context_scenario="repeated percent decrease with a conversion",
+            seed=self.base_seed * 1000 + 700 + variant_idx,
+            stem_index=7, variant_index=variant_idx,
+        )
+
     def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
         all_questions = []
         stem_methods = [
@@ -730,6 +878,8 @@ class Stem8NS4:
             self.stem3_approaching_nr,
             self.stem4_at_nr,
             self.stem5_above_nr,
+            self.stem6_above_nr,
+            self.stem7_above_nr,
         ]
         for stem_fn in stem_methods:
             for v in range(variants_per_stem):
@@ -748,6 +898,8 @@ class Stem8NS4:
             3: self.stem3_approaching_nr,
             4: self.stem4_at_nr,
             5: self.stem5_above_nr,
+            6: self.stem6_above_nr,
+            7: self.stem7_above_nr,
         }
         fn = stem_methods.get(stem_index)
         if not fn:

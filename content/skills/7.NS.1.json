@@ -789,7 +789,8 @@
       "column": "on_grade",
       "parent_standard": "7.NS.1",
       "engine_stems": [
-        1
+        1,
+        7
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -1041,7 +1042,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "7NS1-S2",
@@ -1357,7 +1359,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "approaching"
     },
     {
       "skill_id": "7NS1-S3",
@@ -1618,7 +1621,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "approaching"
     },
     {
       "skill_id": "7NS1-S4",
@@ -1922,7 +1926,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "at"
     },
     {
       "skill_id": "7NS1-S5",
@@ -1981,7 +1986,7 @@
         }
       ],
       "next_steps": {
-        "if_pass": "7NS1-S6",
+        "if_pass": "Ready for 7NS1-S7: put the number line reasoning into words, which is what at proficiency now asks for.",
         "if_fail": "7NS1-S4"
       },
       "worked_example_script": [
@@ -2206,7 +2211,321 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "at"
+    },
+    {
+      "skill_id": "7NS1-S7",
+      "name": "Explain how a number line can be used to add rational numbers",
+      "column": "on_grade",
+      "parent_standard": "7.NS.1",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS1-S4"
+      },
+      "i_do_script": "You can already add signed numbers. Now you have to say WHY the number line gives the right answer, because that explanation is what the standard asks for. Here is the whole idea in one sentence: the first number tells you where to start, and the second number tells you how far to travel and which way. A positive second number travels right. A negative second number travels left. Watch -5 + 3: start at -5, travel 3 to the right, land on -2. I did not subtract anything. I moved.",
+      "canonical_error": {
+        "pattern": "Explains a signed sum by naming the arithmetic shortcut instead of the movement, so the number line becomes an illustration of an answer already found rather than the reason for it",
+        "example": "Asked to explain -5 + 3 = -2 on a number line, writes 'because 5 - 3 = 2 and the bigger number is negative' without ever describing a start point or a direction",
+        "why": "The subtract-and-keep-the-bigger-sign rule works, so the student reaches for it first and treats the number line as decoration. When the numbers get harder or turn into variables the rule has no meaning to fall back on, because the movement it summarizes was never learned."
+      },
+      "item_template": "A signed addition and a number line. The student writes or selects the explanation: where to start, how far to travel, which direction, and where that lands. The explanation is the answer; the sum alone earns nothing.",
+      "sample_items": [
+        {
+          "stem": "Explain how the number line shows that -5 + 3 = -2. Your explanation must say where to start, how far to move, and in which direction.",
+          "answer": "Start at -5. The second number is positive 3, so travel 3 units to the right. That lands on -2.",
+          "choices": null,
+          "distractor_logic": "'5 - 3 = 2 and 5 is bigger so it's negative' is a correct rule and an incorrect explanation -- it never uses the line."
+        },
+        {
+          "stem": "Which explanation correctly describes how a number line shows 4 + (-7)?",
+          "answer": "Start at 4 and move 7 units to the left, landing on -3.",
+          "choices": [
+            "Start at 4 and move 7 units to the left, landing on -3.",
+            "Start at 7 and move 4 units to the left, landing on 3.",
+            "Start at 4 and move 7 units to the right, landing on 11.",
+            "Subtract 4 from 7 and keep the negative sign."
+          ],
+          "distractor_logic": "The last option is the shortcut restated -- true arithmetic, but not an explanation of the model."
+        },
+        {
+          "stem": "A number line shows a jump starting at -2, travelling 6 units right, ending at 4. Write the addition equation it models, and explain how you know.",
+          "answer": "-2 + 6 = 4. The start point is the first addend, the jump length and direction give the second addend (right means positive 6), and the landing point is the sum.",
+          "choices": null,
+          "distractor_logic": "Writing 4 - 6 = -2 reads the picture backwards, treating the landing point as the start."
+        },
+        {
+          "stem": "Marcus says adding a negative number always moves you left on the number line. Is he right? Explain, and say what decides the direction.",
+          "answer": "Yes. The sign of the number being added decides the direction, not the sign of where you start. Adding a negative always travels left, whether you begin at 8 or at -8.",
+          "choices": null,
+          "distractor_logic": "Saying it depends on where you start confuses the start point with the direction of travel."
+        }
+      ],
+      "redirect_script": {
+        "stop": "You gave me the answer. Now give me the trip -- where did you start?",
+        "prompt": "Three things, in order: your starting point, how far you travel, which direction. The second number tells you the distance AND the direction. Say all three out loud before you write anything.",
+        "praise": "That is an explanation. Someone who had never seen this problem could follow it and land where you did."
+      },
+      "vocabulary": [
+        {
+          "term": "Start point",
+          "definition": "The first addend. Where you put your finger before you move."
+        },
+        {
+          "term": "Direction",
+          "definition": "Which way you travel. The sign of the second addend decides it: positive right, negative left."
+        },
+        {
+          "term": "Magnitude",
+          "definition": "How far you travel, ignoring the sign."
+        },
+        {
+          "term": "Sum",
+          "definition": "The landing point after the trip."
+        }
+      ],
+      "manipulative_visual": "A large floor number line with a student standing on the first addend. The class calls the direction, the student walks the distance, and where they stop is the sum. Because a person cannot walk two directions at once, the explanation has to name one.",
+      "next_steps": {
+        "if_pass": "Ready for 7NS1-S6: reason about sums when the numbers are replaced by letters and only their positions are known.",
+        "if_fail": "Drop back to 7NS1-S4 and rebuild the computation, then return here and require the three-part trip out loud before any answer is written."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a number line from -8 to 8. Write -5 + 3 above it. Put a finger on -5 and leave it there."
+        },
+        {
+          "kind": "ask",
+          "text": "My finger is on -5. Why did I start there and not somewhere else?"
+        },
+        {
+          "kind": "ask",
+          "text": "The second number is 3. It tells me two things at once. What are they?"
+        },
+        {
+          "kind": "watch",
+          "text": "If the student answers '-2' immediately, accept the value and then ask them to describe the trip. If they cannot, that is the gap this skill exists to close -- the rule is running without the model underneath it."
+        },
+        {
+          "kind": "ask",
+          "text": "Positive 3 means travel right, 3 units. Count with me from -5. Where do we land?"
+        },
+        {
+          "kind": "ask",
+          "text": "Now the hard question: I never subtracted anything. So why do so many people say 'subtract' for this problem?"
+        },
+        {
+          "kind": "ask",
+          "text": "New one: 4 + (-7). Same three parts. Where do I start, how far, which way?"
+        },
+        {
+          "kind": "say",
+          "text": "Start, distance, direction, landing. Say those four and you have explained it. The shortcut gives you the answer; the trip gives you the reason."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Explain the Trip Reference Card",
+        "kind": "reference_card",
+        "instructions": "An explanation needs all four parts. An answer alone is not an explanation.",
+        "items": [
+          "1. START at the first number.",
+          "2. The second number gives the DISTANCE.",
+          "3. Its SIGN gives the direction: positive -> right, negative -> left.",
+          "4. Where you LAND is the sum.",
+          "-5 + 3: start -5, travel 3, go right, land -2.",
+          "4 + (-7): start 4, travel 7, go left, land -3.",
+          "The direction comes from the number being ADDED, never from where you started."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "For 6 + (-2): where do you start, and which direction do you travel?",
+          "answer": "Start at 6, travel left."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A jump starts at -1 and travels 5 units right. Where does it land?",
+          "answer": "4"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Explain how a number line shows that -5 + 3 = -2. Name the start point, the distance, the direction, and the landing point.",
+          "answer": "Start at -5. The second number is positive 3, so travel 3 units to the right. You land on -2.",
+          "notes": "An answer of '-2' with no trip scores nothing here -- the explanation is the task."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which explanation describes 4 + (-7) correctly?  (a) Start at 4, move 7 left, land on -3.  (b) Start at 7, move 4 left, land on 3.  (c) Start at 4, move 7 right, land on 11.  (d) Subtract 4 from 7 and keep the negative.",
+          "answer": "(a)",
+          "notes": "Option (d) produces the right number by the wrong kind of reasoning, which is exactly what this skill screens for."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A number line shows a jump starting at -2, travelling 6 units to the right, ending at 4. Write the addition equation it models and explain how you read it.",
+          "answer": "-2 + 6 = 4. The start is the first addend, the jump length with its direction is the second addend, and the landing point is the sum."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Read Nadia's explanation. Find what is missing and fix it.",
+          "shown_work": [
+            "Task: explain how a number line shows -8 + 3 = -5.",
+            "Nadia wrote: 'Because 8 - 3 = 5, and 8 is bigger than 3 and it's negative, so the answer is -5.'"
+          ],
+          "answer": "Nadia's arithmetic is right and her answer is right, but she never explained the number line -- she explained a shortcut. A number line explanation has to say: start at -8; the second number is positive 3, so travel 3 units to the right; you land on -5. Her rule works, but it does not describe the model the question asked about.",
+          "notes": "The canonical error. Students often resist this one because their answer was correct -- the point is that the question asked for a different thing."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain how a number line shows -3.5 + 1.25. Then explain why the trip is exactly the same shape as -3 + 1, even though the numbers are messier.",
+          "answer": "Start at -3.5, travel 1.25 units right, land on -2.25. The shape is identical because the start point, distance, and direction do not care whether the numbers are whole -- only the tick spacing changes."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two students both land on the correct answer for -6 + 10. One says 'start at -6, travel 10 right, land on 4.' The other says '10 - 6 = 4 and 10 is bigger and positive so it's positive 4.' Both are correct. Which one has explained the number line, and why does the difference matter later?",
+          "answer": "The first explained the number line; the second explained a rule. It matters because when the numbers become letters, or when a problem asks WHY rather than WHAT, the rule has nothing underneath it while the trip still describes what is happening.",
+          "notes": "Makes the distinction the skill rests on into the object of the question."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Walk the Sum",
+          "time_minutes": 12,
+          "grouping": "whole_class",
+          "materials": [
+            "Floor number line from -10 to 10 (tape or rope)",
+            "Expression cards"
+          ],
+          "instructions": "1. Post an expression such as -5 + 3. One student stands on the first addend.\n2. Before anyone moves, the class must call out the distance and the direction, and say what told them the direction.\n3. The walker moves and stops. The class names the landing point.\n4. Rule: the walker may not move until someone has said the SIGN of the second addend out loud.\n5. Run one where both addends are negative and one where the walker crosses zero. Ask what stayed the same about the procedure."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Nadia Explained the Shortcut",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Printed explanation slip",
+            "Blank number lines"
+          ],
+          "instructions": "1. Pairs read Nadia's explanation and decide first whether her ANSWER is correct. (It is.)\n2. Ask: if her answer is right, what is missing?\n3. Pairs draw the number line for -8 + 3 and label the four parts of the trip.\n4. Pairs rewrite Nadia's explanation so that someone who had never seen the problem could follow it.\n5. Debrief: when would her shortcut stop being enough?",
+          "content": {
+            "worked_problem": "Explain how a number line shows -8 + 3 = -5. Nadia wrote: '8 - 3 = 5, and 8 is bigger and negative, so -5.'",
+            "error_step": "Nadia explained an arithmetic shortcut rather than the number line the question asked about.",
+            "why": "The explanation the standard wants names a start point (-8), a distance (3), a direction (right, because the addend is positive), and a landing point (-5). Nadia's rule produces the answer without ever describing the model."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Four Parts or Nothing",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Post a signed addition. Partners have 30 seconds to write the four parts: start, distance, direction, landing.\n2. All four parts correct scores; the right sum with fewer than four parts scores zero.\n3. Swap who writes each round.\n4. Final round uses decimals, so the parts stay the same while the arithmetic gets harder."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-005",
+          "why": "The explanation IS the skill, so the teacher narrating a full trip aloud before students attempt one is the model they are being asked to reproduce."
+        },
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The floor number line keeps the trip concrete, and a person walking cannot travel two directions at once, which forces the direction to be named."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "Writing the four-part explanation in words is the assessed product here, not a computed value."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Where do you start, and what told you to start there?",
+          "Which of the two numbers decides the direction? How do you know it is that one and not the other?",
+          "You gave me the answer. Now give me the trip.",
+          "Could someone who has never seen this problem follow your explanation and land where you did?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student explains by naming the subtract-and-keep-the-bigger-sign rule.",
+            "say": "Three things, in order: your starting point, how far you travel, which direction. The second number tells you the distance AND the direction. Say all three out loud before you write anything.",
+            "praise": "That is an explanation. Someone who had never seen this problem could follow it and land where you did."
+          },
+          {
+            "if_you_see": "Student says the direction depends on the sign of the starting number.",
+            "say": "Try it twice: 8 + (-3), then -8 + (-3). Which way did you travel each time? Did the start point change the direction?",
+            "praise": "Right -- the number being added owns the direction, wherever you begin."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "-4 + 9: give me the four parts.",
+            "look_for": "Start -4, distance 9, direction right, land 5. A bare '5' means the model is still not carrying the reasoning."
+          },
+          {
+            "prompt": "What decides which way you travel?",
+            "look_for": "The sign of the second addend. 'Whichever number is bigger' is the shortcut leaking back in."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Explain how a number line shows that -5 + 3 = -2.",
+        "answer": "Start at -5, travel 3 units right, land on -2",
+        "steps": [
+          {
+            "math": "Start at -5.",
+            "annotation": "The first addend is the starting point -- put a finger there."
+          },
+          {
+            "math": "The second addend is +3, so travel 3 units.",
+            "annotation": "The size of the number gives the distance."
+          },
+          {
+            "math": "It is positive, so travel to the RIGHT.",
+            "annotation": "The sign gives the direction. Positive right, negative left."
+          },
+          {
+            "math": "Landing point: -2. So -5 + 3 = -2.",
+            "annotation": "Where the trip ends is the sum. Nothing was subtracted."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Explain how a number line shows that -6 + 4 = -2.",
+        "answer": "Start at -6, travel 4 units right, land on -2",
+        "steps": [
+          {
+            "math": "Start at -6.",
+            "annotation": "The first addend is the starting point.",
+            "given": true
+          },
+          {
+            "math": "The second addend is +4, so travel 4 units.",
+            "annotation": "The size of the number gives the distance.",
+            "given": true
+          },
+          {
+            "math": "It is positive, so travel to the RIGHT.",
+            "annotation": "The sign gives the direction.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the landing point and write the full sentence explaining the trip.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "Start at ___. The second number is ___, so travel ___ units to the ___.",
+        "That lands on ___, so ___ + ___ = ___.",
+        "The direction comes from ___, not from ___."
+      ],
+      "fluency_source": "7NS1-F1",
+      "pld_band": "at"
     },
     {
       "skill_id": "7NS1-S6",
@@ -2520,7 +2839,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "above"
     }
   ],
   "skill_columns": {
@@ -2542,18 +2862,19 @@
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
+      "description": "This standard's own expectations, climbing from Below Proficiency to At Proficiency. Every skill here is grade-level work.",
       "skills": [
         "7NS1-S1",
         "7NS1-S2",
         "7NS1-S3",
         "7NS1-S4",
-        "7NS1-S5"
+        "7NS1-S5",
+        "7NS1-S7"
       ]
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Above-proficiency work and bridges to later standards.",
+      "description": "Above Proficiency on this standard, and bridges to later standards.",
       "skills": [
         "7NS1-S6"
       ]
@@ -2569,6 +2890,7 @@
     "7NS1-S3",
     "7NS1-S4",
     "7NS1-S5",
+    "7NS1-S7",
     "7NS1-S6"
   ],
   "skill_tree": {
@@ -2599,13 +2921,17 @@
     "7NS1-S6": [
       "7NS1-S4",
       "7NS1-S1"
+    ],
+    "7NS1-S7": [
+      "7NS1-S4",
+      "7NS1-S5"
     ]
   },
   "diagnostic_flow": {
     "description": "Start with S4, adding rationals with opposite signs, the At-proficiency computational core. If they pass, move up to S5 (interpret sums in context) and S6 (reason abstractly). If they fail, drop below grade level: B1 checks unlike-denominator fraction addition and B2 checks decimal arithmetic, the two grade 6 skills signed-number work leans on. If those wobble, the foundations F1 (decimal place value) and F2 (like-denominator fractions) locate the gap in grades 3-5. S1, S2, and S3 remain available to probe the standard's own zero-pair and distance groundwork.",
     "entry_skill": "7NS1-S4",
     "if_pass": [
-      "7NS1-S5",
+      "7NS1-S7",
       "7NS1-S6"
     ],
     "if_fail": [
@@ -2619,5 +2945,13 @@
       "7NS1-S2",
       "7NS1-S3"
     ]
+  },
+  "pld_descriptors": {
+    "source": "refreshed",
+    "note": "Verbatim from the ILEARN item specification. These are performance bands on THIS standard, not lower-grade content: a student at Below Proficiency is working on this standard at its least complex entry point.",
+    "below": "Identify and write the opposite of a number plotted on a given number line and use this understanding to find number pairs that sum to zero, including in simple real-world situations.",
+    "approaching": "Determine when two numbers on a number line sum to zero and identify or write expressions that represent this relationship. Calculate sums of positive and negative integers or decimals on a number line or solve simple real-world problems using these sums.",
+    "at": "Calculate the sum of two positive and negative numbers and/or interpret the results by describing real-world situations. Explain how a number line can be used to add rational numbers.",
+    "above": "Reason about generalizations of adding positive and negative numbers when given an addition expression or a number line."
   }
 }

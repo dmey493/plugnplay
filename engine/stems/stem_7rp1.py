@@ -39,6 +39,7 @@ from engine.models import (
 )
 from engine.number_generators import NumberGenerator
 from engine.context_pools import pick_name, CONTEXTS_7RP1
+from engine.stem_guards import distinct_choices
 
 
 STANDARD_CODE = "7.RP.1"
@@ -158,6 +159,7 @@ class Stem7RP1:
     # Identify which statement represents a unit rate
     # ================================================================
 
+    @distinct_choices
     def stem2_approaching_mc(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(2, variant_idx)
         name = pick_name(rng)
@@ -362,6 +364,7 @@ class Stem7RP1:
     # Part B: Use the equation to find the cost/value for a given amount
     # ================================================================
 
+    @distinct_choices
     def stem5_above_mp(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(5, variant_idx)
         name = pick_name(rng)

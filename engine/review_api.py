@@ -79,6 +79,21 @@ def filter_diff(questions, diff_str):
     return [q for q in questions if q.difficulty == diff] if diff else questions
 
 
+def filter_stems(questions, stems):
+    """Narrow to the stems that practise one intervention skill.
+
+    `stems` is the skill's `engine_stems` list from
+    web/content/skills/<STD>.json - 1-based indices into this standard's stem
+    module. An empty or missing list means "no skill picked", so nothing is
+    filtered. An unknown index yields an empty pool, which every caller falls
+    back out of rather than returning zero questions.
+    """
+    if not stems:
+        return questions
+    wanted = {int(i) for i in stems}
+    return [q for q in questions if q.stem_index in wanted]
+
+
 def handle_review_generate(params):
     standard = params["standard"]
     fmt = params.get("format", "exit_ticket")
@@ -96,11 +111,21 @@ def handle_review_generate(params):
     if fmt == "exit_ticket":
         prof = params.get("exit_proficiency", "any")
         diff = params.get("exit_difficulty", "any")
+        stems = params.get("stems")
         pool = all_questions
-        if prof != "any":
+        # A picked skill IS the proficiency choice - its stems already sit at
+        # one level - so the skill filter supersedes exit_proficiency rather
+        # than stacking with it.
+        if stems:
+            narrowed = filter_stems(pool, stems)
+            if narrowed:
+                pool = narrowed
+        elif prof != "any":
             pool = filter_prof(pool, prof)
         if diff != "any":
-            pool = filter_diff(pool, diff)
+            narrowed = filter_diff(pool, diff)
+            if narrowed:
+                pool = narrowed
         if not pool:
             pool = all_questions
         q = random.choice(pool)
@@ -150,7 +175,10 @@ def handle_review_generate(params):
     elif fmt == "proficiency":
         level = params.get("proficiency_level", "at")
         count = int(params.get("prof_count", 4))
-        pool = filter_prof(all_questions, level)
+        stems = params.get("stems")
+        # Same rule as the exit ticket: a picked skill replaces the level
+        # dropdown, it does not narrow within it.
+        pool = filter_stems(all_questions, stems) if stems else filter_prof(all_questions, level)
         if not pool:
             pool = all_questions
         selected = random.sample(pool, min(count, len(pool)))
@@ -166,11 +194,20 @@ def handle_swap_question(params):
     exclude_ids = set(params.get("exclude_ids", []))
     target_prof = params.get("proficiency_level")
     target_diff = params.get("difficulty")
+    stems = params.get("stems")
 
     all_questions, _ = get_questions(standard, seed)
 
     # Find candidates matching proficiency + difficulty, excluding current selections
     candidates = [q for q in all_questions if q.question_id not in exclude_ids]
+    # When the set was built for one skill, a swap has to stay inside that
+    # skill - otherwise "Swap" quietly hands back a problem for a different
+    # skill than the worksheet says it is practising.
+    if stems:
+        narrowed = filter_stems(candidates, stems)
+        if narrowed:
+            return question_to_dict(random.choice(narrowed))
+        return {"error": "No replacement questions available"}
     if target_prof:
         narrowed = filter_prof(candidates, target_prof)
         if target_diff:

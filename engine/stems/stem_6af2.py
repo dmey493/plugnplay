@@ -37,6 +37,7 @@ from engine.models import (
 )
 from engine.number_generators import NumberGenerator, ALLOWED_DENOMINATORS
 from engine.context_pools import pick_name
+from engine.stem_guards import distinct_choices
 
 
 STANDARD_CODE = "6.AF.2"
@@ -373,6 +374,7 @@ class Stem6AF2:
     # "Select the two inequalities in which 11 is a solution."
     # ================================================================
 
+    @distinct_choices
     def stem4_approaching_ms(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(4, variant_idx)
 

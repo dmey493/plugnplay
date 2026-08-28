@@ -8,6 +8,9 @@ import {
   isV2,
   progressionIndex,
   progressionStep,
+  PLD_BAND_LABELS,
+  PLD_BAND_ORDER,
+  type PldBand,
   type Skill,
   type SkillColumn,
   type SkillData,
@@ -61,6 +64,18 @@ function BucketCard({
   const meta = COLUMN_META[col];
   const colSkills = data.skills.filter((s) => s.column === col);
 
+  // The On Grade column is a ladder, not a list: group it under the
+  // proficiency band each skill answers so a teacher can see that the first
+  // skills are the standard's least complex entry point, not full mastery.
+  const grouped =
+    col === "on_grade"
+      ? PLD_BAND_ORDER.map((band) => ({
+          band,
+          skills: colSkills.filter((sk) => sk.pld_band === band),
+        })).filter((g) => g.skills.length > 0)
+      : null;
+  const descriptors = data.pld_descriptors;
+
   return (
     <Card accent={meta.accent} className="p-4 pt-5">
       <div className="mb-4 border-b border-pnp-gray-100 pb-3">
@@ -70,17 +85,50 @@ function BucketCard({
         <p className="mt-0.5 text-xs text-pnp-gray-500">{colConfig.description}</p>
       </div>
 
-      <div className={`grid items-start gap-3 ${gridClass}`}>
-        {colSkills.map((skill) => (
-          <SkillCard
-            key={skill.skill_id}
-            skill={skill}
-            data={data}
-            highlighted={highlightedSkillIds.has(skill.skill_id)}
-            dimmed={lessonActive && !highlightedSkillIds.has(skill.skill_id)}
-          />
-        ))}
-      </div>
+      {grouped ? (
+        <div className="grid gap-5">
+          {grouped.map(({ band, skills }) => (
+            <div key={band}>
+              <div className="mb-2 flex items-baseline gap-2">
+                <h4 className="font-heading text-xs font-extrabold uppercase tracking-wide text-pnp-navy">
+                  {PLD_BAND_LABELS[band]}
+                </h4>
+                <span className="text-[11px] text-pnp-gray-500">
+                  {skills.length} {skills.length === 1 ? "skill" : "skills"}
+                </span>
+              </div>
+              {descriptors && (
+                <p className="mb-2.5 border-l-0 text-[11px] leading-relaxed text-pnp-gray-600">
+                  {descriptors[band]}
+                </p>
+              )}
+              <div className={`grid items-start gap-3 ${gridClass}`}>
+                {skills.map((skill) => (
+                  <SkillCard
+                    key={skill.skill_id}
+                    skill={skill}
+                    data={data}
+                    highlighted={highlightedSkillIds.has(skill.skill_id)}
+                    dimmed={lessonActive && !highlightedSkillIds.has(skill.skill_id)}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className={`grid items-start gap-3 ${gridClass}`}>
+          {colSkills.map((skill) => (
+            <SkillCard
+              key={skill.skill_id}
+              skill={skill}
+              data={data}
+              highlighted={highlightedSkillIds.has(skill.skill_id)}
+              dimmed={lessonActive && !highlightedSkillIds.has(skill.skill_id)}
+            />
+          ))}
+        </div>
+      )}
 
       {colSkills.length === 0 && (
         <p className="py-4 text-center text-xs text-pnp-gray-500">
@@ -90,6 +138,14 @@ function BucketCard({
     </Card>
   );
 }
+
+/** Light-to-dark ramp: the darker the chip, the higher the band. */
+const PLD_BAND_STYLE: Record<PldBand, string> = {
+  below: "bg-pnp-gray-100 text-pnp-gray-700",
+  approaching: "bg-sky-100 text-sky-800",
+  at: "bg-sky-200 text-sky-900",
+  above: "bg-pnp-navy text-white",
+};
 
 function SkillCard({
   skill,
@@ -158,6 +214,17 @@ function SkillCard({
             <span className="block font-heading text-sm font-bold leading-snug text-pnp-navy">
               {skill.name}
             </span>
+
+            {/* The band travels with the card, so it still reads correctly
+                when a card is seen outside its column (search, lesson
+                highlight, projection). */}
+            {skill.pld_band && (
+              <span
+                className={`mt-1.5 inline-block rounded px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${PLD_BAND_STYLE[skill.pld_band]}`}
+              >
+                {PLD_BAND_LABELS[skill.pld_band]}
+              </span>
+            )}
 
             {v2 && step ? (
               <span className="mt-1.5 block text-xs leading-relaxed text-pnp-gray-600">

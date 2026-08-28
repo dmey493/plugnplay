@@ -4,7 +4,7 @@ Stem generator for 7.NS.5:
   using exponents.
 
 Content Limits:
-  - Limit numbers to 200 or less
+  - Limit numbers to 225 or less
   - The prime factorization of a prime number should be written as the
     number itself (e.g., 17 is 17, not 17 x 1)
   - Students must understand prime and composite numbers
@@ -13,14 +13,22 @@ Content Limits:
 Difficulty Tiers:
   Easy: Numbers < 100 with two or fewer prime factors
   Medium: Numbers < 100 with three or four prime factors
-  Difficult: Numbers from 100 to 200; prime factorization uses an exponent of 1
+  Difficult: Numbers from 100 to 225; prime factorization uses an exponent of 1
 
-5 Stems from the Item Spec:
+The 2026-08-17 revision moved the missing-exponent task down to Approaching
+(stem 5), narrowed Below to multiples of 10 built from 2, 3 and 5 (stem 2),
+and added a missing-factor bullet at Below (stem 6). Above became analyze
+and justify for numbers 225 or greater, so stem 7 was written for it.
+Stems 1, 3 and 4 already match their descriptors and were left untouched.
+
+7 Stems from the Item Spec:
   Stem 1 (Below-MS):       Classify numbers as prime or composite (DOK 1, easy)
   Stem 2 (Below-NR):       Prime factorization without exponents (DOK 1, medium)
   Stem 3 (Approaching-MC): Prime factorization with exponents (DOK 1, easy)
   Stem 4 (At-NR):          Generate prime factorization using exponents (DOK 2, difficult)
-  Stem 5 (Above-MC):       Identify missing exponent in a given prime factorization (DOK 1, difficult)
+  Stem 5 (Approaching-MC): Determine the missing exponent in a prime factorization (DOK 2, medium)
+  Stem 6 (Below-NR):    Find a missing factor when all factors are 2, 3 or 5 (DOK 1, easy)
+  Stem 7 (Above-ER):    Analyze and justify a prime factorization of a number 225 or greater (DOK 3, difficult)
 """
 
 import random
@@ -47,18 +55,19 @@ VARIANTS_PER_STEM = 20
 # HELPERS
 # ============================================================
 
-# Primes up to 200 for classification tasks
-PRIMES_TO_200 = [
+# Primes up to 225 for classification tasks (spec content limit: numbers <= 225)
+PRIMES_TO_225 = [
     2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,
     53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113,
-    127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199
+    127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199,
+    211, 223
 ]
-PRIMES_TO_100 = [p for p in PRIMES_TO_200 if p < 100]
-PRIMES_SET = set(PRIMES_TO_200)
+PRIMES_TO_100 = [p for p in PRIMES_TO_225 if p < 100]
+PRIMES_SET = set(PRIMES_TO_225)
 
 # Composites in useful ranges
 COMPOSITES_TO_100 = [n for n in range(4, 100) if n not in PRIMES_SET and n > 1]
-COMPOSITES_100_200 = [n for n in range(100, 201) if n not in PRIMES_SET]
+COMPOSITES_100_225 = [n for n in range(100, 226) if n not in PRIMES_SET]
 
 
 def prime_factorize(n):
@@ -197,12 +206,11 @@ class Stem7NS5:
         # loop bug when p1*p2*p3 >= 100 and all exponents are 1.
         # Generate directly here to avoid that bug.
         # Pick 3 distinct small primes, compute product, ensure < 100.
+        # The 2026-08-17 Below descriptor limits identification to "whole
+        # numbers that are multiples of 10 using only the prime numbers 2, 3,
+        # and 5", so the old pool (24, 42, 66, 78 and friends) no longer fits.
         _medium_candidates = [
-            # n = product of 3+ prime factors with multiplicity, n < 100
-            30, 42, 60, 66, 70, 78,    # 3 distinct primes
-            12, 18, 20, 24, 28, 36,    # 2 primes, 3-4 factors total
-            40, 44, 45, 48, 50, 54,
-            56, 72, 75, 80, 84, 90, 96,
+            20, 30, 40, 50, 60, 90, 100, 120, 150, 180, 200, 250, 300,
         ]
         n = rng.choice(_medium_candidates)
         factors = prime_factorize(n)
@@ -371,7 +379,7 @@ class Stem7NS5:
 
     # ================================================================
     # STEM 4: At Proficiency - NR (DOK 2, Difficult)
-    # Generate prime factorization using exponents for numbers 100-200
+    # Generate prime factorization using exponents for numbers 100-225
     # e.g., "Find the prime factorization of 120. Write using exponents."
     # Answer: 2^3 x 3 x 5
     # ================================================================
@@ -379,14 +387,15 @@ class Stem7NS5:
     def stem4_at_nr(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(4, variant_idx)
 
-        # Difficult: number 100-200
+        # Difficult: number 100-225
         # NOTE: NumberGenerator.prime_factorization("difficult") has an
         # infinite loop bug when exponent adjustments oscillate.
         # Use a curated candidate list instead.
         _difficult_candidates = [
             100, 104, 108, 112, 120, 125, 126, 128, 132, 135,
             140, 144, 147, 150, 152, 156, 160, 162, 168, 175,
-            176, 180, 189, 192, 196, 198, 200
+            176, 180, 189, 192, 196, 198, 200, 204, 207, 208,
+            210, 216, 220, 224, 225
         ]
         n = rng.choice(_difficult_candidates)
         factors = prime_factorize(n)
@@ -416,7 +425,7 @@ class Stem7NS5:
             stem_text=stem_text, stem_latex=stem_text,
             answer_text=correct_str, answer_latex=f"${correct_str}$",
             worked_solution=worked,
-            context_scenario="prime factorization with exponents (100-200)",
+            context_scenario="prime factorization with exponents (100-225)",
             seed=self.base_seed * 1000 + 400 + variant_idx,
             stem_index=4, variant_index=variant_idx
         )
@@ -429,16 +438,17 @@ class Stem7NS5:
     # Answer: 2
     # ================================================================
 
-    def stem5_above_mc(self, variant_idx: int) -> GeneratedQuestion:
+    def stem5_approaching_mc(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(5, variant_idx)
 
-        # Difficult: number 100-200
+        # Difficult: number 100-225
         # NOTE: NumberGenerator.prime_factorization("difficult") has an
         # infinite loop bug. Use curated candidates instead.
         _difficult_candidates = [
             100, 104, 108, 112, 120, 125, 126, 128, 132, 135,
             140, 144, 147, 150, 152, 156, 160, 162, 168, 175,
-            176, 180, 189, 192, 196, 198, 200
+            176, 180, 189, 192, 196, 198, 200, 204, 207, 208,
+            210, 216, 220, 224, 225
         ]
         n = rng.choice(_difficult_candidates)
         factors = prime_factorize(n)
@@ -510,13 +520,13 @@ class Stem7NS5:
             f"So x = {hidden_exp}."
         )
 
-        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE, ItemType.MC,
-                               Difficulty.DIFFICULT, 5, variant_idx)
+        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING, ItemType.MC,
+                               Difficulty.MEDIUM, 5, variant_idx)
 
         return GeneratedQuestion(
             question_id=qid, standard_code=STANDARD_CODE,
-            proficiency_level=ProficiencyLevel.ABOVE,
-            difficulty=Difficulty.DIFFICULT, dok=1, item_type=ItemType.MC,
+            proficiency_level=ProficiencyLevel.APPROACHING,
+            difficulty=Difficulty.MEDIUM, dok=1, item_type=ItemType.MC,
             stem_text=stem_text, stem_latex=stem_text,
             answer_text=correct_letter, answer_latex=correct_letter,
             worked_solution=worked,
@@ -529,6 +539,148 @@ class Stem7NS5:
     # MAIN GENERATION METHODS
     # ================================================================
 
+    # ================================================================
+    # STEM 6: Below Proficiency - NR (DOK 1, Easy)
+    # NEW for the 2026-08-17 revision. Below gained "find a missing factor in
+    # a prime factorization equality statement when all factors are 2, 3, or 5".
+    # ================================================================
+    def stem6_below_nr(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(6, variant_idx)
+
+        # Multiples of 10 whose factorisation uses only 2, 3 and 5, matching
+        # the Below content limit.
+        candidates = [20, 30, 40, 50, 60, 90, 100, 120, 150, 180, 200, 250, 300]
+        n = rng.choice(candidates)
+
+        factors = []
+        rest = n
+        for p in (2, 3, 5):
+            while rest % p == 0:
+                factors.append(p)
+                rest //= p
+        rng.shuffle(factors)
+        hidden = rng.randrange(len(factors))
+        answer = factors[hidden]
+        shown = ["______" if i == hidden else str(f) for i, f in enumerate(factors)]
+
+        stem_text = (
+            "An equation is given."
+            "\n\n" + " x ".join(shown) + f" = {n}"
+            "\n\nWhat is the missing factor?"
+        )
+
+        others = [f for i, f in enumerate(factors) if i != hidden]
+        worked = (
+            f"Multiply the factors that are shown: "
+            f"{' x '.join(str(f) for f in others)} = {n // answer}\n"
+            f"{n} / {n // answer} = {answer}\n"
+            f"The missing factor is {answer}."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.NR, Difficulty.EASY, 6, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.BELOW,
+            difficulty=Difficulty.EASY, dok=1, item_type=ItemType.NR,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=str(answer), answer_latex=str(answer),
+            worked_solution=worked,
+            context_scenario="missing factor in a prime factorization",
+            seed=self.base_seed * 1000 + 600 + variant_idx,
+            stem_index=6, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 7: Above Proficiency - ER (DOK 3, Difficult)
+    # NEW for the 2026-08-17 revision. Above became "analyze and justify the
+    # accuracy of a prime factorization expressed with exponents, including
+    # multi-step decomposition of whole numbers 225 or greater". Stem 5 moved
+    # down to Approaching, so without this Above would have no coverage.
+    # ================================================================
+    def stem7_above_er(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(7, variant_idx)
+        student = pick_name(rng)
+
+        # Whole numbers 225 or greater, as the descriptor requires.
+        candidates = [225, 240, 252, 270, 288, 300, 315, 324, 336, 350,
+                      360, 375, 392, 400, 432, 450, 486, 500, 504, 540]
+        n = rng.choice(candidates)
+
+        counts = {}
+        rest = n
+        p = 2
+        while p * p <= rest:
+            while rest % p == 0:
+                counts[p] = counts.get(p, 0) + 1
+                rest //= p
+            p += 1
+        if rest > 1:
+            counts[rest] = counts.get(rest, 0) + 1
+
+        def render(cs):
+            parts = []
+            for base in sorted(cs):
+                e = cs[base]
+                parts.append(f"{base}^{e}" if e > 1 else str(base))
+            return " x ".join(parts)
+
+        correct = render(counts)
+
+        # The classic error: stop one decomposition short, leaving a composite
+        # factor in place. Pick a prime with an exponent to fold back up.
+        foldable = [b for b, e in counts.items() if e >= 2]
+        if foldable:
+            base = rng.choice(foldable)
+            wrong = dict(counts)
+            wrong[base] -= 2
+            if wrong[base] == 0:
+                del wrong[base]
+            composite = base * base
+            wrong_parts = [render(wrong)] if wrong else []
+            wrong_parts.append(str(composite))
+            claimed = " x ".join(p for p in wrong_parts if p)
+            flaw = (f"{composite} is not prime; it is {base} x {base}, so the "
+                    f"factorization is not finished")
+        else:
+            base = max(counts)
+            claimed = render({b: e for b, e in counts.items() if b != base}) + f" x {base}^2"
+            flaw = f"the exponent on {base} is wrong; {base} appears only once"
+
+        stem_text = (
+            f"{student} writes the prime factorization of {n} as:"
+            f"\n\n{claimed}"
+            f"\n\nIs {student} correct? Analyze the factorization and use "
+            f"words and equations to justify your answer."
+        )
+
+        answer = (
+            f"{student} is not correct. The product does reach {n}, but {flaw}.\n"
+            f"Decomposing completely gives {n} = {correct}.\n"
+            f"A prime factorization is finished only when every factor is prime."
+        )
+
+        worked = (
+            f"Check the product first, then check that every factor is prime.\n"
+            f"{student} wrote: {claimed}\n"
+            f"Problem: {flaw}.\n"
+            f"Correct factorization: {n} = {correct}"
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE,
+                                         ItemType.ER, Difficulty.DIFFICULT, 7, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.ABOVE,
+            difficulty=Difficulty.DIFFICULT, dok=3, item_type=ItemType.ER,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=answer, answer_latex=answer,
+            worked_solution=worked,
+            context_scenario="analyze and justify a prime factorization",
+            seed=self.base_seed * 1000 + 700 + variant_idx,
+            stem_index=7, variant_index=variant_idx,
+        )
+
     def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
         all_questions = []
         stem_methods = [
@@ -536,7 +688,9 @@ class Stem7NS5:
             self.stem2_below_nr,
             self.stem3_approaching_mc,
             self.stem4_at_nr,
-            self.stem5_above_mc,
+            self.stem5_approaching_mc,
+            self.stem6_below_nr,
+            self.stem7_above_er,
         ]
         for stem_fn in stem_methods:
             for v in range(variants_per_stem):
@@ -554,7 +708,9 @@ class Stem7NS5:
             2: self.stem2_below_nr,
             3: self.stem3_approaching_mc,
             4: self.stem4_at_nr,
-            5: self.stem5_above_mc,
+            5: self.stem5_approaching_mc,
+            6: self.stem6_below_nr,
+            7: self.stem7_above_er,
         }
         fn = stem_methods.get(stem_index)
         if not fn:

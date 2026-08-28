@@ -16,12 +16,19 @@ Difficulty Tiers:
   Medium: whole numbers, two operations inside grouping or two sets of grouping
   Difficult: fractions/decimals, two sets of grouping
 
-5 Stems from the Item Spec:
+The 2026-08-17 revision moved 'identify equivalent expressions by a property'
+down to Approaching (stem 5) and rewrote Above around complex rational
+expressions and placing grouping symbols, neither of which existed, so stems
+6 and 7 were written for it. Stems 1 to 4 were left untouched.
+
+7 Stems from the Item Spec:
   Stem 1 (Below-NR):      Evaluate expression like 6 x (42/7) + 100 (DOK 1, easy)
   Stem 2 (Below-MC):      Identify which property is being applied (DOK 2, easy)
   Stem 3 (Approaching-MC): Evaluate expression with brackets like [(54/9 + 14)/4] (DOK 1, medium)
   Stem 4 (At-NR):         Evaluate expression with fractions/decimals and exponents (DOK 1, difficult)
-  Stem 5 (Above-MS):      Select multiple expressions equivalent to a given one (DOK 2, easy)
+  Stem 5 (Approaching-MS): Identify equivalent expressions by a property (DOK 2, medium)
+  Stem 6 (Above-NR):    Complex rational expression, operations above and below the bar (DOK 2, difficult)
+  Stem 7 (Above-MC):    Place grouping symbols to make an expression equal a target (DOK 3, difficult)
 """
 
 import random
@@ -559,7 +566,7 @@ class Stem6NS5:
     # (using distributive property)
     # ================================================================
 
-    def stem5_above_ms(self, variant_idx: int) -> GeneratedQuestion:
+    def stem5_approaching_ms(self, variant_idx: int) -> GeneratedQuestion:
         """Above Proficiency - Select equivalent expressions (multi-select).
 
         Given a(b + c), students select all equivalent expressions from a list.
@@ -643,13 +650,13 @@ class Stem6NS5:
             f"Correct answers: {', '.join(correct_use)}"
         )
 
-        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE, ItemType.MS,
+        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING, ItemType.MS,
                                Difficulty.EASY, 5, variant_idx)
 
         return GeneratedQuestion(
             question_id=qid,
             standard_code=STANDARD_CODE,
-            proficiency_level=ProficiencyLevel.ABOVE,
+            proficiency_level=ProficiencyLevel.APPROACHING,
             difficulty=Difficulty.EASY,
             dok=2,
             item_type=ItemType.MS,
@@ -669,6 +676,158 @@ class Stem6NS5:
     # MAIN GENERATION METHODS
     # ================================================================
 
+    # ================================================================
+    # STEM 6: Above Proficiency - NR (DOK 2, Difficult)
+    # NEW. Above gained complex rational expressions: operations stacked in
+    # BOTH the numerator and the denominator of a fraction, so the student must
+    # finish each half before dividing.
+    # ================================================================
+    def stem6_above_nr(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(6, variant_idx)
+
+        # Build a denominator that divides the numerator exactly, so the answer
+        # stays a whole number and the difficulty sits in the structure rather
+        # than in messy division.
+        for _ in range(40):
+            base = rng.choice([2, 3, 4, 5])
+            exp = rng.choice([2, 3])
+            add = rng.randint(1, 9)
+            mult = rng.randint(2, 4)
+            numerator = (add + base ** exp) * mult
+
+            d_a = rng.randint(6, 20)
+            d_b = rng.randint(2, 5)
+            d_c = rng.choice([2, 3, 4])
+            if (d_a - d_b) % d_c:
+                continue
+            denominator = (d_a - d_b) // d_c
+            if denominator <= 1 or numerator % denominator:
+                continue
+            break
+        else:
+            base, exp, add, mult = 3, 2, 1, 2
+            numerator = (add + base ** exp) * mult
+            d_a, d_b, d_c, denominator = 10, 4, 3, 2
+
+        result = numerator // denominator
+
+        stem_text = (
+            f"Evaluate the expression.\n\n"
+            f"[({add} + {base}^{exp}) x {mult}] / [({d_a} - {d_b}) / {d_c}]"
+        )
+
+        worked = (
+            f"Work out the numerator and the denominator separately.\n"
+            f"Numerator: ({add} + {base}^{exp}) x {mult} = "
+            f"({add} + {base ** exp}) x {mult} = {add + base ** exp} x {mult} "
+            f"= {numerator}\n"
+            f"Denominator: ({d_a} - {d_b}) / {d_c} = {d_a - d_b} / {d_c} = {denominator}\n"
+            f"Then divide: {numerator} / {denominator} = {result}"
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE,
+                                         ItemType.NR, Difficulty.DIFFICULT, 6, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.ABOVE,
+            difficulty=Difficulty.DIFFICULT, dok=2, item_type=ItemType.NR,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=str(result), answer_latex=str(result),
+            worked_solution=worked,
+            context_scenario="complex rational expression",
+            seed=self.base_seed * 1000 + 600 + variant_idx,
+            stem_index=6, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 7: Above Proficiency - MC (DOK 3, Difficult)
+    # NEW. "Place grouping symbols within a numerical expression to set it
+    # equal to a given value." The student works backwards from the target
+    # rather than evaluating left to right.
+    # ================================================================
+    def stem7_above_mc(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(7, variant_idx)
+
+        # 6.NS.5 is a positive-rational-numbers standard, so every placement
+        # must stay positive: c > d keeps (c - d) above zero, and the guard
+        # below rejects any draw where a placement still lands at or below it.
+        def draw():
+            a = rng.randint(2, 9)
+            b = rng.randint(2, 9)
+            d = rng.randint(2, 5)
+            c = rng.randint(d + 1, 9)
+            return a, b, c, d
+
+        a, b, c, d = draw()
+        for _ in range(40):
+            vals = [(a + b) * c - d, a + b * (c - d), (a + b) * (c - d), a + (b * c - d)]
+            if len(set(vals)) == 4 and all(v > 0 for v in vals):
+                break
+            a, b, c, d = draw()
+
+        bare = f"{a} + {b} x {c} - {d}"
+        # Four placements; each evaluates differently.
+        forms = {
+            f"({a} + {b}) x {c} - {d}": (a + b) * c - d,
+            f"{a} + {b} x ({c} - {d})": a + b * (c - d),
+            f"({a} + {b}) x ({c} - {d})": (a + b) * (c - d),
+            f"{a} + ({b} x {c} - {d})": a + (b * c - d),
+        }
+        # Fall back to a known-good set if the search above ran out of tries:
+        # four distinct positive values are required or more than one option
+        # would be correct.
+        if len(set(forms.values())) < 4 or any(v <= 0 for v in forms.values()):
+            a, b, c, d = 3, 4, 7, 2
+            bare = f"{a} + {b} x {c} - {d}"
+            forms = {
+                f"({a} + {b}) x {c} - {d}": (a + b) * c - d,
+                f"{a} + {b} x ({c} - {d})": a + b * (c - d),
+                f"({a} + {b}) x ({c} - {d})": (a + b) * (c - d),
+                f"{a} + ({b} x {c} - {d})": a + (b * c - d),
+            }
+
+        target_expr = rng.choice(list(forms))
+        target = forms[target_expr]
+
+        options = []
+        for expr, value in forms.items():
+            if expr == target_expr:
+                options.append((expr, True, None))
+            else:
+                options.append((expr, False,
+                                f"Evaluates to {value}, not {target}"))
+        rng.shuffle(options)
+        choices = [QuestionChoice(key=chr(ord("a") + i), text=t, text_latex=t,
+                                  is_correct=cr, distractor_rationale=r)
+                   for i, (t, cr, r) in enumerate(options)]
+        key = next(c.key for c in choices if c.is_correct).upper()
+
+        stem_text = (
+            f"An expression is given.\n\n{bare}\n\n"
+            f"Where should parentheses be placed so that the expression "
+            f"equals {target}?"
+        )
+
+        worked = (
+            f"Try each placement and evaluate with the order of operations.\n"
+            + "\n".join(f"{expr} = {value}" for expr, value in forms.items())
+            + f"\nOnly {target_expr} equals {target}."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE,
+                                         ItemType.MC, Difficulty.DIFFICULT, 7, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.ABOVE,
+            difficulty=Difficulty.DIFFICULT, dok=3, item_type=ItemType.MC,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{key}. {target_expr}", answer_latex=f"{key}. {target_expr}",
+            worked_solution=worked, choices=choices,
+            context_scenario="place grouping symbols to hit a target value",
+            seed=self.base_seed * 1000 + 700 + variant_idx,
+            stem_index=7, variant_index=variant_idx,
+        )
+
     def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
         """Generate all variants for all 5 stems.
 
@@ -681,7 +840,9 @@ class Stem6NS5:
             self.stem2_below_mc,
             self.stem3_approaching_mc,
             self.stem4_at_nr,
-            self.stem5_above_ms,
+            self.stem5_approaching_ms,
+            self.stem6_above_nr,
+            self.stem7_above_mc,
         ]
 
         for stem_fn in stem_methods:
@@ -703,7 +864,9 @@ class Stem6NS5:
             2: self.stem2_below_mc,
             3: self.stem3_approaching_mc,
             4: self.stem4_at_nr,
-            5: self.stem5_above_ms,
+            5: self.stem5_approaching_ms,
+            6: self.stem6_above_nr,
+            7: self.stem7_above_mc,
         }
 
         fn = stem_methods.get(stem_index)

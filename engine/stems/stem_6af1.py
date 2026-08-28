@@ -37,6 +37,7 @@ from engine.models import (
 )
 from engine.number_generators import NumberGenerator
 from engine.context_pools import pick_name, pick_name_pair
+from engine.stem_guards import distinct_choices
 
 
 STANDARD_CODE = "6.AF.1"
@@ -319,6 +320,7 @@ class Stem6AF1:
     # "7 less than the product of 2 and a number" → choose expression
     # ================================================================
 
+    @distinct_choices
     def stem1_below_mc(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(1, variant_idx)
 

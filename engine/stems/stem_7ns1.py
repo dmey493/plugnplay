@@ -14,13 +14,19 @@ Difficulty Tiers:
   Medium: decimal numbers
   Difficult: fractions, mixed numbers, or variables
 
-6 Stems from the Item Spec:
-  Stem 1 (Below-NR):    Sum of a number and its opposite (DOK 1, medium)
+The 2026-08-17 revision cut the bare "Solve. 2.3 + (-2.3)" example and rewrote
+Below around opposites plotted on a number line, so stem 1 now reads the pair
+off a line, and stem 7 was added for the "number pairs that sum to zero" bullet.
+Stems 2 to 6 already match their descriptors and were left untouched.
+
+7 Stems from the Item Spec:
+  Stem 1 (Below-NR):    Read a number and its opposite off a number line (DOK 1, medium)
   Stem 2 (Below-MC):    Select expression modeling distance between points (DOK 2, easy)
   Stem 3 (Approaching-NR): Distance between two points on a number line (DOK 2, difficult)
   Stem 4 (At-NR):       Sum of rational numbers with opposite signs (DOK 2, difficult)
   Stem 5 (At-NR):       Real-world sum of rationals — distance on number line (DOK 2, medium)
   Stem 6 (Above-MC):    Additive inverse reasoning with variables (DOK 2, difficult)
+  Stem 7 (Below-NR):    Complete a number pair summing to zero from a number line (DOK 2, easy)
 """
 
 import random
@@ -118,22 +124,29 @@ class Stem7NS1:
     def stem1_below_nr(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(1, variant_idx)
 
-        # Medium difficulty: decimals
-        val = gen.signed_decimal(min_val=1.1, max_val=9.9, places=1)
-        # Make sure it's positive for presentation
-        val = abs(val)
+        # The 2026-08-17 Below descriptor asks students to "identify and write
+        # the opposite of a number PLOTTED ON A GIVEN NUMBER LINE and use this
+        # understanding to find number pairs that sum to zero". The revision cut
+        # the bare "Solve. 2.3 + (-2.3)" this stem used to emit, so the pair is
+        # now read off a number line instead of handed over as an expression.
+        val = abs(gen.signed_decimal(min_val=1.1, max_val=9.9, places=1))
         neg_val = -val
 
-        # Present as  val + (-val)
+        span = int(abs(val)) + 2
+        ticks = list(range(-span, span + 1))
+
         stem_text = (
-            f"Solve.\n\n"
-            f"{_fmt(val)} + ({_fmt(neg_val)})"
+            f"A number line is given.\n\n"
+            f"Point Q is at {_fmt(neg_val)} and point R is at {_fmt(val)}.\n\n"
+            f"What is the value of Q + R?"
         )
 
         correct_str = "0"
 
         worked = (
-            f"A number plus its opposite (additive inverse) always equals 0.\n"
+            f"Q and R are the same distance from 0 on opposite sides, so they "
+            f"are opposites.\n"
+            f"A number plus its opposite always equals 0.\n"
             f"{_fmt(val)} + ({_fmt(neg_val)}) = 0"
         )
 
@@ -147,9 +160,15 @@ class Stem7NS1:
             stem_text=stem_text, stem_latex=stem_text,
             answer_text=correct_str, answer_latex=correct_str,
             worked_solution=worked,
-            context_scenario="additive inverse with decimals",
+            context_scenario="opposites read off a number line",
             seed=self.base_seed * 1000 + 100 + variant_idx,
-            stem_index=1, variant_index=variant_idx
+            stem_index=1, variant_index=variant_idx,
+            render_data={
+                "type": "number_line_point",
+                "ticks": ticks,
+                "points": [{"value": float(neg_val), "label": "Q"},
+                           {"value": float(val), "label": "R"}],
+            }
         )
 
     # ================================================================
@@ -576,6 +595,70 @@ class Stem7NS1:
     # MAIN GENERATION METHODS
     # ================================================================
 
+    # ================================================================
+    # STEM 7: Below Proficiency - NR (DOK 2, Easy)
+    # NEW for the 2026-08-17 revision. Below now asks for "number pairs that
+    # sum to zero, including in simple real-world situations". Half the
+    # variants carry the real-world framing the descriptor names; the rest stay
+    # purely on the number line, as the specification's own item does.
+    # ================================================================
+    def stem7_below_nr(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(7, variant_idx)
+
+        start = -rng.randint(2, 9)
+        answer = -start
+        span = abs(start) + 2
+        ticks = list(range(-span, span + 1))
+
+        if rng.random() < 0.5:
+            name = pick_name(rng)
+            setting, unit = rng.choice([
+                ("account balance", "dollars"),
+                ("temperature reading", "degrees"),
+                ("elevation", "feet"),
+                ("scuba depth", "meters"),
+            ])
+            stem_text = (
+                f"{name}'s {setting} is {start} {unit}, shown on the number line."
+                f"\n\nWhat value must be added to return the {setting} to 0?"
+            )
+            worked = (
+                f"To get back to 0, add the opposite of {start}."
+                f"\nThe opposite of {start} is {answer}."
+                f"\n{start} + {answer} = 0"
+            )
+        else:
+            stem_text = (
+                f"A number line is given with a point at {start}."
+                f"\n\nUse the number line to complete the equation."
+                f"\n\n{start} + ______ = 0"
+            )
+            worked = (
+                f"The point sits {abs(start)} units to the left of 0, so its "
+                f"opposite sits {abs(start)} units to the right."
+                f"\nThe opposite of {start} is {answer}."
+                f"\n{start} + {answer} = 0"
+            )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.NR, Difficulty.EASY, 7, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.BELOW,
+            difficulty=Difficulty.EASY, dok=2, item_type=ItemType.NR,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=str(answer), answer_latex=str(answer),
+            worked_solution=worked,
+            context_scenario="number pair summing to zero from a number line",
+            seed=self.base_seed * 1000 + 700 + variant_idx,
+            stem_index=7, variant_index=variant_idx,
+            render_data={
+                "type": "number_line_point",
+                "ticks": ticks,
+                "points": [{"value": float(start), "label": "P"}],
+            },
+        )
+
     def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
         all_questions = []
         stem_methods = [
@@ -585,6 +668,7 @@ class Stem7NS1:
             self.stem4_at_nr,
             self.stem5_at_nr,
             self.stem6_above_mc,
+            self.stem7_below_nr,
         ]
         for stem_fn in stem_methods:
             for v in range(variants_per_stem):
@@ -604,6 +688,7 @@ class Stem7NS1:
             4: self.stem4_at_nr,
             5: self.stem5_at_nr,
             6: self.stem6_above_mc,
+            7: self.stem7_below_nr,
         }
         fn = stem_methods.get(stem_index)
         if not fn:

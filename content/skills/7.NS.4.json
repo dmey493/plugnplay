@@ -1,6 +1,6 @@
 {
   "standard_code": "7.NS.4",
-  "standard_text": "Find quotients of rational numbers; understand that if p and q are integers, then -(p/q) = (-p)/q = p/(-q) for all nonzero integers.",
+  "standard_text": "Explain that if p and q are integers, then -(p/q) = (-p)/q = p/(-q) for all nonzero integers.",
   "schema_version": 3,
   "progression": {
     "narrative": "This standard asks students to divide rational numbers and to explain that a single negative sign can sit in front of a fraction, on the numerator, or on the denominator without changing the value. The on-grade work settles that sign identity and then builds the computation: quotients of signed integers, quotients written as decimals by dividing top by bottom, fraction division by the reciprocal, and signed rates in real contexts. Students who stall here are rarely confused by the sign rule alone; most cannot carry out the underlying division. Intervention should rebuild the grade six skills of dividing fractions with the how many fit meaning and dividing decimals, which themselves rest on division facts and long division from grades three through five. Only after that unsigned division is solid should the signs come back.",
@@ -16,6 +16,11 @@
         "rationale": "The first computation: find the quotient of two signed integers by dividing the sizes and applying the sign rule (same signs positive, different signs negative), which division inherits from multiplication."
       },
       {
+        "skill_id": "7NS4-S7",
+        "verb": "model",
+        "rationale": "The approaching-proficiency bullet added in the refreshed spec: calculate a quotient of rational numbers using a model. Sharing negatives into groups shows why a negative divided by a positive is negative, and counting groups shows why two negatives divide to a positive -- the sign rules are justified before they are applied unaided."
+      },
+      {
         "skill_id": "7NS4-S3",
         "verb": "calculate",
         "rationale": "The At-proficiency demand: calculate a quotient as a decimal by dividing numerator by denominator, since a fraction bar means division. The sign is attached after the division."
@@ -26,14 +31,9 @@
         "rationale": "The difficult band: divide fractions by multiplying by the reciprocal (keep-change-flip), carrying the signed-division rule through the harder number type."
       },
       {
-        "skill_id": "7NS4-S5",
-        "verb": "apply",
-        "rationale": "Apply signed division to real contexts -- a rate of descent, an average change -- where the sign of the quotient carries meaning. Bounded to clean rational quotients the spec's number types allow."
-      },
-      {
         "skill_id": "7NS4-S6",
         "verb": "generate",
-        "rationale": "The Above-proficiency synthesis: generate multiple equivalent forms of a negative fraction, demonstrating fluent command of the -(p/q) = (-p)/q = p/(-q) identity from the other direction."
+        "rationale": "The Above-proficiency synthesis, now two bullets: generate multiple equivalent forms of a negative rational number including variable forms and double negatives, AND justify the equivalence using the -(p/q) = (-p)/q = p/(-q) identity. The justification is assessed separately from the expression."
       }
     ]
   },
@@ -834,7 +834,8 @@
       "column": "on_grade",
       "parent_standard": "7.NS.4",
       "engine_stems": [
-        1
+        1,
+        7
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -1174,7 +1175,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "7NS4-S2",
@@ -1182,7 +1184,8 @@
       "column": "on_grade",
       "parent_standard": "7.NS.4",
       "engine_stems": [
-        2
+        2,
+        6
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -1261,7 +1264,7 @@
         }
       ],
       "next_steps": {
-        "if_pass": "7NS4-S3",
+        "if_pass": "Ready for 7NS4-S7: use a model to see why the sign rules for division hold.",
         "if_fail": "7NS4-F1"
       },
       "worked_example_script": [
@@ -1502,7 +1505,316 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
+    },
+    {
+      "skill_id": "7NS4-S7",
+      "name": "Find a quotient of signed numbers using a model",
+      "column": "on_grade",
+      "parent_standard": "7.NS.4",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS4-S2"
+      },
+      "i_do_script": "Before the sign rules become automatic, a model shows you why they are true. Watch twelve negative counters. I want negative twelve divided by four, so I share them into four equal groups. Each group ends up with three negative counters. The answer is negative three, and I did not apply a rule -- I counted what landed in one group. Division asks how many go in each group, or how many groups you can make, and the counters answer either question.",
+      "canonical_error": {
+        "pattern": "Reads the model's total as the quotient, or reports the number of groups when the item asked what is in each group",
+        "example": "Shown twelve negative counters in four groups of three, writes -12 / 4 = -12, or writes -12 / 4 = 4 by reporting the group count instead of the group size",
+        "why": "The picture contains three numbers -- the total, the number of groups, and the size of each group -- and all three are visible at once. Without deciding in advance which question the equation asks, the student reports whichever number they noticed."
+      },
+      "item_template": "A counter or number-line model of a division with at least one negative quantity. The student matches it to a division equation, or reads the quotient off the model. MC or numeric response.",
+      "sample_items": [
+        {
+          "stem": "A model shows 12 negative counters separated into 4 equal groups. Which division equation does it represent?",
+          "answer": "-12 / 4 = -3",
+          "choices": [
+            "-12 x (-3) = 4",
+            "12 / (-4) = -3",
+            "-3 / 4 = -12",
+            "-12 / 4 = -3"
+          ],
+          "distractor_logic": "The third option inverts the roles of quotient and dividend; the second changes which quantity is negative."
+        },
+        {
+          "stem": "A model shows 15 negative counters shared equally into 5 groups. What is in each group, and what division equation matches?",
+          "answer": "3 negative counters in each group; -15 / 5 = -3",
+          "choices": null,
+          "distractor_logic": "Answering 5 reports the number of groups rather than the group size."
+        },
+        {
+          "stem": "A model shows 10 negative counters being taken away 2 at a time. How many times can this be done, and what equation matches?",
+          "answer": "5 times; -10 / -2 = 5",
+          "choices": null,
+          "distractor_logic": "This is the how-many-groups meaning, and the quotient comes out positive -- which surprises students expecting a negative."
+        },
+        {
+          "stem": "Explain why the model for -12 / 4 gives a negative quotient but the model for -12 / -4 gives a positive one.",
+          "answer": "Sharing 12 negatives into 4 groups puts negatives in each group, so the quotient is negative. Asking how many groups of 4 negatives fit into 12 negatives counts groups, and a count of groups is positive.",
+          "choices": null,
+          "distractor_logic": "Citing the sign rule without the model misses what the item is testing."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which question is this equation asking -- how many in each group, or how many groups?",
+        "prompt": "Point at the total first. Then decide: are you sharing it into a known number of groups, or pulling out groups of a known size? The quotient answers only one of those, so name which before you read the picture.",
+        "praise": "You named the question before reading the model. That is why you picked the right number out of the three on the page."
+      },
+      "vocabulary": [
+        {
+          "term": "Dividend",
+          "definition": "The total you start with -- all the counters."
+        },
+        {
+          "term": "Divisor",
+          "definition": "Either the number of groups, or the size of each group, depending on the question."
+        },
+        {
+          "term": "Quotient",
+          "definition": "The answer. It is whichever of the two the divisor was not."
+        },
+        {
+          "term": "Model",
+          "definition": "A picture of the division -- counters, groups, or jumps on a number line."
+        }
+      ],
+      "manipulative_visual": "Two-colour counters, negatives face up, physically pushed into circles drawn on paper. Sharing into a fixed number of circles answers 'how many in each'; filling circles of a fixed size answers 'how many circles'. The same counters, arranged two ways, produce the two meanings.",
+      "next_steps": {
+        "if_pass": "Ready for 7NS4-S3: calculate quotients without a model, using the sign rules the model justifies.",
+        "if_fail": "Drop back to 7NS4-S2 for the sign of a quotient, then return here and name the question aloud before touching the counters."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Lay out 12 counters, negative side up. Draw 4 circles on the paper beside them."
+        },
+        {
+          "kind": "ask",
+          "text": "I am going to share these 12 negatives equally into these 4 circles. Before I do -- what is the question I am answering?"
+        },
+        {
+          "kind": "ask",
+          "text": "How many go in each circle. Deal them out with me. What lands in one circle?"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student answers 4, ask them to point at what the 4 counts. It counts circles, not counters in a circle. The equation asks for the second."
+        },
+        {
+          "kind": "ask",
+          "text": "Three negatives in each circle. So what division equation did we just act out?"
+        },
+        {
+          "kind": "ask",
+          "text": "Now a different question with the same 12 counters: how many groups of 3 negatives can I pull out? Try it."
+        },
+        {
+          "kind": "ask",
+          "text": "Four groups. So -12 divided by -3 is 4, a positive. Why did that come out positive when the last one was negative?"
+        },
+        {
+          "kind": "say",
+          "text": "Same counters, two questions. Sharing into groups gives you what is in a group. Pulling out groups gives you a count of groups, and a count is positive."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Two Questions, One Pile",
+        "kind": "reference_card",
+        "instructions": "Decide which question the equation asks before you read the model.",
+        "items": [
+          "SHARING: 'how many in each group?'  -12 shared into 4 groups  ->  -3 in each.",
+          "GROUPING: 'how many groups fit?'   groups of -3 out of -12  ->  4 groups.",
+          "A count of groups is always POSITIVE.",
+          "-12 / 4 = -3     sharing negatives gives negatives in each group",
+          "-12 / -3 = 4     counting groups gives a positive count",
+          "The picture shows three numbers. Name the question first."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "8 negative counters are shared equally into 4 groups. How many are in each group?",
+          "answer": "2 negative counters, so -8 / 4 = -2"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Is the quotient of a negative divided by a positive negative or positive?",
+          "answer": "Negative"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A model shows 12 negative counters separated into 4 equal groups. Which division equation does it represent?  (a) -12 x (-3) = 4  (b) 12 / (-4) = -3  (c) -3 / 4 = -12  (d) -12 / 4 = -3",
+          "answer": "(d) -12 / 4 = -3",
+          "notes": "The spec's own approaching item. Option (c) swaps the quotient and the dividend."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A model shows 15 negative counters shared equally into 5 groups. What is in each group, and what equation matches?",
+          "answer": "3 negative counters in each group; -15 / 5 = -3",
+          "notes": "Answering 5 reports the group count, which is what the divisor already told you."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A model shows 10 negative counters being removed 2 at a time. How many times can this be done, and what equation matches?",
+          "answer": "5 times; -10 / -2 = 5",
+          "notes": "The grouping meaning. The quotient is positive because it counts groups, which often surprises students."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Read Tariq's work. Find his mistake and fix it.",
+          "shown_work": [
+            "A model shows 12 negative counters arranged in 4 equal groups of 3.",
+            "Tariq wrote: '-12 / 4 = 4, because there are 4 groups in the picture.'"
+          ],
+          "answer": "-12 / 4 = -3. Tariq reported the number of groups, but the 4 in his equation is already the number of groups -- it is the divisor. The quotient has to be the other quantity: what sits in each group, which is 3 negative counters, so -3. The picture holds three numbers, and the equation tells you which two are given and which one you are solving for.",
+          "notes": "The canonical error. Have students label all three numbers on the picture before writing anything."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Draw or describe a model for -18 / 6, then a model for -18 / -6. Explain why one quotient is negative and the other is positive.",
+          "answer": "-18 / 6: share 18 negatives into 6 groups, giving 3 negatives in each, so the quotient is -3. -18 / -6: pull out groups of 6 negatives from 18 negatives, giving 3 groups, so the quotient is 3. Sharing reports what is in a group and keeps the negative; grouping reports a count of groups and a count is positive."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Kai says a model can never show a positive divided by a negative, such as 12 / -3. Is Kai right? Explain what such a model would have to mean.",
+          "answer": "A counter model struggles here, because you cannot pull negative-sized groups out of a positive pile. The number line handles it: 12 / -3 asks how many jumps of -3 land you on 12 starting from 0, which requires going backwards, giving -4. The sign rules extend past what counters can show, which is why models justify the rules rather than replace them.",
+          "notes": "Names the limit of the model honestly rather than pretending it covers every case."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Share It or Pull It",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Two-colour counters",
+            "Paper with drawn circles"
+          ],
+          "instructions": "1. Partner A lays out a pile of negative counters and states a division equation.\n2. Partner B decides which question it asks -- share into groups, or pull out groups -- and says so before touching anything.\n3. Partner B acts it out and reads the quotient off the result.\n4. Partner A checks that the quotient reported is the number NOT already in the equation.\n5. Swap. Include one pair where the same total is used for both meanings, and compare the two quotients."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Tariq Read the Groups",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip",
+            "Counters"
+          ],
+          "instructions": "1. Pairs build Tariq's picture with counters: 12 negatives in 4 groups of 3.\n2. Pairs label all three numbers on the picture: total, number of groups, size of each group.\n3. Ask: which of the three is already written in his equation? Which is he solving for?\n4. Pairs write the corrected equation and one sentence on how to tell the quotient from the divisor.",
+          "content": {
+            "worked_problem": "A model shows 12 negative counters in 4 equal groups of 3. Tariq wrote -12 / 4 = 4 because there are 4 groups.",
+            "error_step": "Tariq reported the number of groups, which was already the divisor in his own equation.",
+            "why": "The picture holds three quantities: the total (-12), the number of groups (4), and the size of each group (-3). The equation gives the first two, so the quotient must be the third: -12 / 4 = -3."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Name the Question First",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Response cards: SHARE / GROUP"
+          ],
+          "instructions": "1. Post a division equation with at least one negative.\n2. Students raise SHARE or GROUP to say which meaning a counter model would use, before any computation.\n3. Then they give the quotient and its sign.\n4. Correct meaning plus correct sign scores; the right number with the wrong meaning scores half.\n5. Final round: post 12 / -3 and let the class discover the counters run out of road."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The counters are the concrete stage that justifies the sign rules before those rules are applied without a picture."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Tariq's group-count answer is the canonical error, and labelling all three numbers on the picture disposes of it."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Whether an equation calls for sharing or grouping is genuinely arguable, so pairs must defend a reading before acting."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which question is this equation asking: how many in each group, or how many groups?",
+          "Label all three numbers on the picture. Which two are in the equation already?",
+          "Point at what your answer counts. Counters, or circles?",
+          "Why did that quotient come out positive when the last one was negative?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reports the number of groups when the equation already supplies it.",
+            "say": "Point at the total first. Then decide: are you sharing it into a known number of groups, or pulling out groups of a known size? The quotient answers only one of those, so name which before you read the picture.",
+            "praise": "You named the question before reading the model. That is why you picked the right number out of the three on the page."
+          },
+          {
+            "if_you_see": "Student expects every quotient involving negatives to be negative.",
+            "say": "What does your answer count in this model -- counters, or groups? Can a count of groups be negative?",
+            "praise": "Right -- counting groups gives a positive, which is why two negatives divide to a positive."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "9 negatives shared into 3 groups. Equation and quotient.",
+            "look_for": "-9 / 3 = -3. An answer of 3 reports the group count."
+          },
+          {
+            "prompt": "-9 / -3 -- share or group, and what is the quotient?",
+            "look_for": "Group; 3, positive. Naming it as sharing means the two meanings are still fused."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A model shows 12 negative counters separated into 4 equal groups. Which division equation does it represent?",
+        "answer": "-12 / 4 = -3",
+        "steps": [
+          {
+            "math": "Total in the picture: 12 negatives, so the dividend is -12.",
+            "annotation": "Start by naming what the whole pile is."
+          },
+          {
+            "math": "The counters are shared into 4 groups, so the divisor is 4.",
+            "annotation": "This is the sharing meaning: the number of groups is given."
+          },
+          {
+            "math": "Each group holds 3 negative counters, so the quotient is -3.",
+            "annotation": "The quotient is the quantity the equation did NOT already give."
+          },
+          {
+            "math": "-12 / 4 = -3.",
+            "annotation": "Negatives shared into groups leave negatives in each group."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A model shows 15 negative counters separated into 5 equal groups. Which division equation does it represent?",
+        "answer": "-15 / 5 = -3",
+        "steps": [
+          {
+            "math": "Total in the picture: 15 negatives, so the dividend is -15.",
+            "annotation": "Start by naming what the whole pile is.",
+            "given": true
+          },
+          {
+            "math": "The counters are shared into 5 groups, so the divisor is 5.",
+            "annotation": "The sharing meaning: the number of groups is given.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Read what sits in ONE group, give it the right sign, and write the full equation.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The total is ___, and the model ___ it into ___.",
+        "This equation asks ___, so the quotient is ___.",
+        "The quotient is ___ because it counts ___."
+      ],
+      "fluency_source": "7NS4-F1",
+      "pld_band": "approaching"
     },
     {
       "skill_id": "7NS4-S3",
@@ -1775,7 +2087,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "at"
     },
     {
       "skill_id": "7NS4-S4",
@@ -1858,7 +2171,7 @@
         }
       ],
       "next_steps": {
-        "if_pass": "7NS4-S5",
+        "if_pass": "7NS4-S3",
         "if_fail": "7NS4-S2"
       },
       "worked_example_script": [
@@ -2124,322 +2437,12 @@
             "given": false
           }
         ]
-      }
-    },
-    {
-      "skill_id": "7NS4-S5",
-      "name": "Solve real-world problems involving quotients of rational numbers",
-      "column": "on_grade",
-      "parent_standard": "7.NS.4",
-      "prerequisite_skill": {
-        "type": "skill",
-        "skill_id": "7NS4-S3"
       },
-      "i_do_script": "Picture the diver's depth on a vertical number line: the trip starts at 0 and ends at -45 feet, cut into 5 equal one-minute drops. Each drop is a downward -- negative -- step, and that picture IS the problem. Real division problems ask 'how much per unit' or 'split into equal parts,' and the sign carries meaning. Watch: a diver goes down 45 feet over 5 minutes. Down is negative, so that is -45 / 5 = -9 feet per minute. The -9 tells me the diver drops 9 feet each minute. I set the sign from the situation -- down, loss, or below is negative -- then divide.",
-      "canonical_error": {
-        "pattern": "Assigns the wrong sign to the situation, or multiplies/adds instead of dividing",
-        "example": "For 'down 45 feet over 5 minutes' writes 45 / 5 = 9 ft/min (missing the downward = negative) or 45 x 5",
-        "why": "The student does not translate the direction word into a sign, or picks the wrong operation. A rate or an equal-share is a division, and down/loss/below is negative."
-      },
-      "item_template": "A real-world rate or equal-share problem with a signed quantity. Student sets up the quotient, computes, and interprets. Numeric response (with units).",
-      "sample_items": [
-        {
-          "stem": "A diver descends 45 feet over 5 minutes at a steady rate. What is the diver's change in depth per minute?",
-          "answer": "-9 feet per minute",
-          "distractor_logic": "Down is negative: -45 / 5 = -9. Missing the sign gives 9."
-        },
-        {
-          "stem": "A bank account loses a total of $63 evenly over 9 months. What is the change per month?",
-          "answer": "-$7 per month",
-          "distractor_logic": "-63 / 9 = -7; a loss is negative."
-        },
-        {
-          "stem": "A stock falls $12.50 evenly over 5 days. What is the change per day?",
-          "answer": "-$2.50 per day",
-          "distractor_logic": "-12.50 / 5 = -2.5; a fall is negative."
-        },
-        {
-          "stem": "A recipe splits -3/4 cup of concentrate (a 3/4 cup reduction) equally among 3 batches. What is the change per batch?",
-          "answer": "-1/4 cup per batch",
-          "distractor_logic": "(-3/4) / 3 = -3/4 x 1/3 = -1/4."
-        },
-        {
-          "stem": "The temperature dropped 15 degrees evenly over 6 hours. What was the change per hour, as a decimal?",
-          "answer": "-2.5 degrees per hour",
-          "distractor_logic": "-15 / 6 = -2.5; a drop is negative."
-        }
-      ],
-      "redirect_script": {
-        "stop": "Down or up? Then divide.",
-        "prompt": "Sketch it first: where does the trip end on the number line -- above zero or below? First set the sign from the story: down, loss, or below is negative. This is a 'per unit' or 'equal share' question, so DIVIDE the total by the number of units. -45 / 5 = -9 feet per minute.",
-        "praise": "You matched the direction to a sign and divided for the rate -- that's the application."
-      },
-      "vocabulary": [
-        {
-          "term": "Rate",
-          "definition": "How much of one quantity per one unit of another, found by dividing."
-        },
-        {
-          "term": "Per",
-          "definition": "'For each,' signaling division (dollars per day, feet per minute)."
-        }
-      ],
-      "next_steps": {
-        "if_pass": "7NS4-S6",
-        "if_fail": "7NS4-S3"
-      },
-      "worked_example_script": [
-        {
-          "kind": "show",
-          "text": "Sketch the submarine's depth: it starts at 0 at the surface and, 4 minutes later, sits at -60 m -- below the surface.",
-          "visual": {
-            "type": "number_line_point",
-            "ticks": [
-              -60,
-              -45,
-              -30,
-              -15,
-              0
-            ],
-            "point_value": -60,
-            "point_label": "depth after 4 min"
-          }
-        },
-        {
-          "kind": "ask",
-          "text": "The trip down is cut into 4 equal minutes. Does the depth change by the same amount each minute? And is each of those one-minute changes upward or downward?"
-        },
-        {
-          "kind": "say",
-          "text": "Four equal downward steps that total -60 means each minute is -60 / 4 = -15 m. An answer of +15 would mean the sub ROSE every minute -- and the picture says otherwise."
-        },
-        {
-          "kind": "show",
-          "text": "Write 'A submarine descends 60 m over 4 minutes. Change in depth per minute?'"
-        },
-        {
-          "kind": "ask",
-          "text": "Is 'descends' positive or negative? Is 'per minute' a divide?"
-        },
-        {
-          "kind": "say",
-          "text": "Descends is negative and 'per minute' means divide: -60 / 4 = -15 m per minute."
-        },
-        {
-          "kind": "watch",
-          "text": "If a student writes 15, ask 'which direction is the sub moving -- up or down?'"
-        },
-        {
-          "kind": "ask",
-          "text": "Your turn: a savings jar loses $18 evenly over 6 weeks -- change per week?"
-        }
-      ],
-      "practice_problems": [
-        {
-          "difficulty": "warm_up",
-          "stem": "'Per hour' tells you to do which operation?",
-          "answer": "Divide."
-        },
-        {
-          "difficulty": "warm_up",
-          "stem": "A drop, a loss, or 'below' gets which sign?",
-          "answer": "Negative."
-        },
-        {
-          "difficulty": "core",
-          "stem": "A diver descends 45 feet over 5 minutes. Change in depth per minute?",
-          "answer": "-9 feet per minute",
-          "notes": "Baits leaving off the negative."
-        },
-        {
-          "difficulty": "core",
-          "stem": "A bank account loses $63 evenly over 9 months. Change per month?",
-          "answer": "-$7 per month",
-          "notes": "Loss is negative."
-        },
-        {
-          "difficulty": "core",
-          "type": "error_analysis",
-          "stem": "Sam found the per-day change of a stock that fell $12.50 over 5 days. Find and fix the mistake.",
-          "shown_work": [
-            "Sam wrote: '12.50 / 5 = 2.50, so the change is +$2.50 per day.'"
-          ],
-          "answer": "A fall is negative, so the total change is -12.50 and -12.50 / 5 = -$2.50 per day. Sam used the right size but the wrong sign.",
-          "notes": "Canonical error: missed that a fall is negative."
-        },
-        {
-          "difficulty": "core",
-          "stem": "The temperature dropped 15 degrees evenly over 6 hours. Change per hour, as a decimal?",
-          "answer": "-2.5 degrees per hour",
-          "notes": "Signed decimal quotient in context."
-        },
-        {
-          "difficulty": "stretch",
-          "stem": "A hiker's elevation changes by -1200 feet over 8 equal segments. What is the change per segment, and does it mean up or down?",
-          "answer": "-1200 / 8 = -150 feet per segment; the negative means the hiker went DOWN 150 feet each segment.",
-          "notes": "Interpret the sign of the quotient."
-        },
-        {
-          "difficulty": "stretch",
-          "stem": "Write a real-world story that the quotient -20 / 4 = -5 could represent.",
-          "answer": "Sample: a pool drains 20 gallons evenly over 4 minutes, a change of -5 gallons per minute.",
-          "notes": "Reverse: produce a context for a signed quotient."
-        }
-      ],
-      "activities": [
-        {
-          "type": "matching",
-          "title": "Story to Signed Quotient",
-          "time_minutes": 10,
-          "grouping": "pairs",
-          "materials": [
-            "Situation cards",
-            "Quotient set-up cards"
-          ],
-          "instructions": "1. For each story ('descends 45 ft over 5 min', 'loses $63 over 9 months'), choose the correct signed division set-up.\n2. Compute the quotient and write its units.\n3. Say what the sign means in the story (down, loss, below).\n4. Debrief: which words told you the sign, and which told you to divide?",
-          "content": {
-            "pairs": [
-              {
-                "left": "Descends 45 ft over 5 min",
-                "right": "-45 / 5 = -9 ft per min"
-              },
-              {
-                "left": "Loses $63 over 9 months",
-                "right": "-63 / 9 = -7 dollars per month"
-              },
-              {
-                "left": "Falls $12.50 over 5 days",
-                "right": "-12.50 / 5 = -2.50 dollars per day"
-              },
-              {
-                "left": "Drops 15 degrees over 6 hours",
-                "right": "-15 / 6 = -2.5 degrees per hour"
-              }
-            ],
-            "decoys": [
-              "45 / 5 = 9 ft per min",
-              "63 x 9 = 567"
-            ]
-          }
-        },
-        {
-          "type": "error_analysis",
-          "title": "Which Way Is the Change?",
-          "time_minutes": 8,
-          "grouping": "individual",
-          "materials": [
-            "Slip with Sam's stock work"
-          ],
-          "instructions": "1. Read Sam's claim that a $12.50 fall over 5 days is +$2.50 per day.\n2. Decide whether a 'fall' is positive or negative.\n3. Redo the division with the correct sign.\n4. Write which words in a story signal a negative amount.",
-          "content": {
-            "worked_problem": "Stock falls $12.50 over 5 days. Sam wrote 12.50 / 5 = +$2.50 per day.",
-            "error_step": "Sam treated a fall as a positive change.",
-            "why": "A fall is negative: -12.50 / 5 = -$2.50 per day."
-          }
-        }
-      ],
-      "strategy_links": [
-        {
-          "strategy_id": "strat-math-001",
-          "why": "Think-pair-share on 'is this change up or down?' builds interpretation of the quotient's sign."
-        },
-        {
-          "strategy_id": "strat-math-004",
-          "why": "A journal note mapping direction words to signs and to division consolidates the translation."
-        },
-        {
-          "strategy_id": "strat-math-003",
-          "why": "The wrong-sign-in-context error is precise and correctable with a find-and-fix."
-        }
-      ],
-      "teacher_moves": {
-        "questioning_prompts": [
-          "Does this word (drop, loss, below) make the amount positive or negative?",
-          "Is this a 'per unit' or 'equal share' question -- so do you divide?",
-          "What total goes on top, and what number of units goes on the bottom?",
-          "What does the sign of your answer mean in the story?",
-          "What are the units of your quotient?"
-        ],
-        "misconception_redirects": [
-          {
-            "if_you_see": "Student assigns the wrong sign to the situation, or multiplies/adds instead of dividing.",
-            "say": "First set the sign from the story: down, loss, or below is negative. This is a 'per unit' or 'equal share' question, so DIVIDE the total by the number of units. -45 / 5 = -9 feet per minute.",
-            "praise": "You matched the direction to a sign and divided for the rate -- that's the application."
-          },
-          {
-            "if_you_see": "Student gets the right number but leaves off the units or the meaning.",
-            "say": "Finish the sentence: attach the units and say what the sign means -- '-9 feet per minute means dropping 9 feet each minute.'",
-            "praise": "You interpreted the signed quotient back in the story."
-          }
-        ],
-        "quick_checks": [
-          {
-            "prompt": "A well's water level drops 24 inches evenly over 8 days. Change per day?",
-            "look_for": "-3 inches per day. An answer of 3 misses that a drop is negative."
-          },
-          {
-            "prompt": "A debt of $30 is paid off evenly over 6 weeks (change from -30 to 0). Change per week?",
-            "look_for": "+$5 per week (0 - (-30) = 30, then 30/6 = 5). A -5 misreads the direction of the change."
-          }
-        ]
-      },
-      "fluency_source": "7NS4-B2",
-      "sentence_starters": [
-        "'___' means the amount is ___, and 'per ___' means I divide.",
-        "The quotient is ___ / ___ = ___, which means ___."
-      ],
-      "worked_solution": {
-        "stem": "A diver descends 45 feet over 5 minutes at a steady rate. What is the diver's change in depth per minute?",
-        "answer": "-9 feet per minute",
-        "steps": [
-          {
-            "math": "descends -> negative; total change = -45 feet",
-            "annotation": "Translate the direction word into a sign."
-          },
-          {
-            "math": "'per minute' -> divide by 5",
-            "annotation": "A rate is a division."
-          },
-          {
-            "math": "-45 / 5 = -9",
-            "annotation": "Different signs give a negative quotient."
-          },
-          {
-            "math": "-9 feet per minute (dropping 9 ft each minute)",
-            "annotation": "Interpret the sign in the story."
-          }
-        ]
-      },
-      "faded_example": {
-        "stem": "A bank account loses $63 evenly over 9 months. What is the change per month?",
-        "answer": "-$7 per month",
-        "steps": [
-          {
-            "math": "loses -> negative; total change = -$63",
-            "annotation": "A loss is negative.",
-            "given": true
-          },
-          {
-            "math": "'per month' -> divide by 9",
-            "annotation": "Split the total into equal months.",
-            "given": true
-          },
-          {
-            "math": null,
-            "annotation": "Divide and apply the sign rule.",
-            "given": false
-          },
-          {
-            "math": null,
-            "annotation": "State the answer with units and its meaning.",
-            "given": false
-          }
-        ]
-      }
+      "pld_band": "at"
     },
     {
       "skill_id": "7NS4-S6",
-      "name": "Generate multiple equivalent forms of a negative fraction",
+      "name": "Generate and justify equivalent forms of a negative fraction, including variable forms",
       "column": "looking_forward",
       "parent_standard": "7.NS.4",
       "engine_stems": [
@@ -2455,7 +2458,7 @@
         "example": "Lists -3/(-8) as equivalent to -(3/8), or writes -6/8 (changing the value) as a 'form' of -(3/8)",
         "why": "The student adds a second negative sign (which cancels to positive) or alters the numbers instead of just relocating the one negative sign."
       },
-      "item_template": "A negative fraction; student writes two or more equivalent forms (relocating the single negative sign). Numeric response.",
+      "item_template": "Generate two or more equivalent forms of a negative rational number, including forms with variables, double negatives, and non-simplified expressions, AND justify why they are equivalent using the property -(p/q) = (-p)/q = p/(-q). Often a two-part item: Part A produces an expression, Part B explains the reasoning. The justification is assessed separately from the expression.",
       "sample_items": [
         {
           "stem": "Write two fractions equivalent to -(3/8).",
@@ -2495,7 +2498,7 @@
       ],
       "next_steps": {
         "if_pass": "Ready for 8.NS and rational-number operations in equations.",
-        "if_fail": "7NS4-S1"
+        "if_fail": "Drop back to 7NS4-S1 and rebuild equivalent forms with numbers before adding variables and justification."
       },
       "worked_example_script": [
         {
@@ -2534,52 +2537,54 @@
       "practice_problems": [
         {
           "difficulty": "warm_up",
-          "stem": "Write -(4/7) with the negative on the numerator.",
-          "answer": "-4/7"
+          "stem": "Write one fraction equivalent to -3/5.",
+          "answer": "-3/5 or 3/-5"
         },
         {
           "difficulty": "warm_up",
-          "stem": "Write -(4/7) with the negative on the denominator.",
-          "answer": "4/(-7)"
+          "stem": "Is -(-2/7) the same as 2/7?",
+          "answer": "Yes -- two negatives on the outside cancel."
         },
         {
           "difficulty": "core",
-          "stem": "Write two fractions equivalent to -(3/8).",
-          "answer": "-3/8 and 3/(-8)",
-          "notes": "Relocate the single sign."
+          "stem": "Create two fractions that are equivalent to -7/8.",
+          "answer": "-7/8 and 7/-8 (also acceptable: -(7/8), or -(-7/-8))",
+          "notes": "The spec's own above item. Ask for a third to push past the two obvious placements."
         },
         {
           "difficulty": "core",
-          "stem": "Write two fractions equivalent to -(5/9).",
-          "answer": "-5/9 and 5/(-9)"
+          "type": "multi_part",
+          "stem": "This item has two parts.\nPart A: Create a different expression equivalent to -(a/b).\nPart B: Explain how you developed your expression and why it is equivalent, using math properties, rules, or equations.",
+          "answer": "Part A: (-a)/b or a/(-b). Part B: for nonzero integers a and b, the negative sign may sit in front of the fraction, in the numerator, or in the denominator -- but in only one of those places at a time -- and all three name the same rational number. Placing a negative on BOTH the numerator and the denominator would cancel them and change the sign.",
+          "notes": "Part B is the assessed half. An expression with no reasoning earns half at most."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Select the two expressions equivalent to -6/5, from: -6/5, -6/-5, 6/-5, -(-6/5), -(6/5).",
+          "answer": "6/-5 and -(6/5)  (together with the given -6/5, these all name the same value)",
+          "notes": "-6/-5 and -(-6/5) both come out positive, which is the double-negative trap."
         },
         {
           "difficulty": "core",
           "type": "error_analysis",
-          "stem": "Jamie generated forms of -(2/7). Find and fix the mistake.",
+          "stem": "Read Yusuf's work. Find his mistake and fix it.",
           "shown_work": [
-            "Jamie wrote: 'Two forms of -(2/7): 2/(-7) and -2/(-7).'"
+            "Task: write an expression equivalent to -(m/n).",
+            "Yusuf wrote: '(-m)/(-n), because you can put the negative sign anywhere you want.'"
           ],
-          "answer": "2/(-7) is correct, but -2/(-7) has two negatives and equals +2/7. A correct second form is -2/7. Jamie added a second negative sign.",
-          "notes": "Canonical error: two-negative form treated as equivalent."
-        },
-        {
-          "difficulty": "core",
-          "stem": "Which is NOT equivalent to -(4/11): -4/11, 4/(-11), -4/(-11)?",
-          "answer": "-4/(-11) -- it equals +4/11.",
-          "notes": "Spot the double-negative form."
+          "answer": "(-m)/(-n) is not equivalent -- it equals m/n, the positive value. The negative may be placed in exactly ONE of three positions: in front of the fraction, in the numerator, or in the denominator. Putting it in two positions cancels the two negatives. Correct answers are (-m)/n or m/(-n). Test it with m = 3 and n = 4: -(3/4) is -0.75, while (-3)/(-4) is +0.75.",
+          "notes": "The canonical error at this rung, and the numerical test settles it in one line."
         },
         {
           "difficulty": "stretch",
-          "stem": "Besides moving the sign, write a form of -(3/8) using equivalent fractions (scale up).",
-          "answer": "Sample: -6/16 or 6/(-16); scale numerator and denominator by 2 and keep the single negative.",
-          "notes": "Combine the sign identity with equivalent-fraction scaling."
+          "stem": "Explain why -(p/q) = (-p)/q = p/(-q) for all nonzero integers p and q, and say what goes wrong if the negative is placed in two positions at once.",
+          "answer": "All three place a single factor of -1 on the same quantity, so they name the same number: dividing a negative by a positive, or a positive by a negative, both give a negative result of the same magnitude. Placing negatives in two positions means multiplying by -1 twice, which returns the original positive value and changes the number."
         },
         {
           "difficulty": "stretch",
-          "stem": "A classmate writes three 'equal' forms of -(5/6): -5/6, 5/(-6), and -5/(-6). Which one is wrong and why?",
-          "answer": "-5/(-6) is wrong: two negative signs cancel to +5/6. The other two each have one negative and equal -(5/6).",
-          "notes": "Reverse: critique a generated set."
+          "stem": "Fill in the missing value and justify it: -(4/x) = 4/(-9). What is x, and how do you know?",
+          "answer": "x = 9. The right side places the negative in the denominator with a 9 there, and the left side places it in front with x in the denominator. For the two to name the same number the denominators must match in magnitude, so x = 9. Check: -(4/9) = -0.444... and 4/(-9) = -0.444...",
+          "notes": "The spec's 'determine or justify the missing value in an equivalence statement' bullet."
         }
       ],
       "activities": [
@@ -2707,7 +2712,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "above"
     }
   ],
   "skill_columns": {
@@ -2729,18 +2735,18 @@
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
+      "description": "This standard's own expectations, climbing from Below Proficiency to At Proficiency. Every skill here is grade-level work.",
       "skills": [
         "7NS4-S1",
         "7NS4-S2",
+        "7NS4-S7",
         "7NS4-S3",
-        "7NS4-S4",
-        "7NS4-S5"
+        "7NS4-S4"
       ]
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Above-proficiency work and bridges to later standards.",
+      "description": "Above Proficiency on this standard, and bridges to later standards.",
       "skills": [
         "7NS4-S6"
       ]
@@ -2753,9 +2759,9 @@
     "7NS4-B2",
     "7NS4-S1",
     "7NS4-S2",
+    "7NS4-S7",
     "7NS4-S3",
     "7NS4-S4",
-    "7NS4-S5",
     "7NS4-S6"
   ],
   "skill_tree": {
@@ -2773,26 +2779,23 @@
       "7NS4-B2"
     ],
     "7NS4-S3": [
-      "7NS4-S2",
-      "7NS4-B2"
+      "7NS4-S7"
     ],
     "7NS4-S4": [
       "7NS4-S2",
       "7NS4-B1"
     ],
-    "7NS4-S5": [
-      "7NS4-S3",
-      "7NS4-S4"
-    ],
     "7NS4-S6": [
       "7NS4-S1"
+    ],
+    "7NS4-S7": [
+      "7NS4-S2"
     ]
   },
   "diagnostic_flow": {
     "description": "Start with S3, calculating a quotient of rational numbers as a decimal, the At-proficiency core where both the division and the sign must work. If they pass, move up to S5 (real-world quotients) and S6 (generating equivalent negative-fraction forms). If they fail, drop below grade level: B1 checks grade 6 fraction division with the how many fit meaning, and B2 checks grade 6 decimal division, the two unsigned skills this standard's computation rests on. If those wobble, the foundations F1 (division facts as sharing and fitting) and F2 (long division with remainders) locate the gap in grades 3 to 5. S1, S2, and S4 remain available to probe the sign identity, integer quotients, and fraction division on grade.",
     "entry_skill": "7NS4-S3",
     "if_pass": [
-      "7NS4-S5",
       "7NS4-S6"
     ],
     "if_fail": [
@@ -2806,5 +2809,13 @@
       "7NS4-S2",
       "7NS4-S4"
     ]
+  },
+  "pld_descriptors": {
+    "source": "refreshed",
+    "note": "Verbatim from the ILEARN item specification. These are performance bands on THIS standard, not lower-grade content: a student at Below Proficiency is working on this standard at its least complex entry point.",
+    "below": "Identify equivalent fractions that satisfy -(p/q) = (-p)/q = p/(-q) when p and q are integers in tasks that do not require simplification. Identify the sign of the quotient when dividing two rational numbers in straightforward cases.",
+    "approaching": "Generate an equivalent fraction that satisfies -(p/q) = (-p)/q = p/(-q). Identify equivalent fractions that satisfy the property. Calculate the quotient of two rational numbers using a model.",
+    "at": "Identify equivalent fractions that satisfy the property in tasks that require simplification. Calculate the quotient of two rational numbers using properties of operations or rules for dividing signed numbers.",
+    "above": "Generate or identify multiple equivalent fractions representing negative rational numbers, including expressions with variables, double negatives, and non-simplified forms. Determine or justify the missing value in an equivalence statement and explain the reasoning used to verify equivalency."
   }
 }

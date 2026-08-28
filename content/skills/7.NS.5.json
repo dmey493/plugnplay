@@ -3,7 +3,7 @@
   "standard_text": "Find the prime factorization of whole numbers and write the results using exponents.",
   "schema_version": 3,
   "progression": {
-    "narrative": "This standard asks students to break a whole number up to 200 into a product of primes and record that product with exponents. The on-grade work runs from classifying numbers as prime or composite, through factoring completely without exponents, to writing and generating exponent form and finally analyzing a factorization someone else wrote. Students who stall here usually cannot pull factors out of a number quickly or misread what an exponent counts, most often reading 3^2 as 3 x 2. Intervention should rebuild the grade 6 skills first: writing and evaluating whole number exponents as repeated multiplication, and finding the greatest common factor and least common multiple of two numbers. If those wobble, drop to the true foundations, multiplication and division fact families from grade 3 and listing all the factor pairs of a number from grade 4.",
+    "narrative": "This standard asks students to break a whole number up to 225 into a product of primes and record that product with exponents. The on-grade work runs from classifying numbers as prime or composite, through factoring completely without exponents, to writing and generating exponent form and finally analyzing a factorization someone else wrote. Students who stall here usually cannot pull factors out of a number quickly or misread what an exponent counts, most often reading 3^2 as 3 x 2. Intervention should rebuild the grade 6 skills first: writing and evaluating whole number exponents as repeated multiplication, and finding the greatest common factor and least common multiple of two numbers. If those wobble, drop to the true foundations, multiplication and division fact families from grade 3 and listing all the factor pairs of a number from grade 4.",
     "steps": [
       {
         "skill_id": "7NS5-S1",
@@ -23,12 +23,12 @@
       {
         "skill_id": "7NS5-S4",
         "verb": "generate",
-        "rationale": "The At-proficiency task: independently generate the full prime factorization of a number from 100 to 200 using exponents. Larger numbers raise the arithmetic load and demand a reliable division ladder plus a product check."
+        "rationale": "The At-proficiency task: independently generate the full prime factorization of a number from 100 to 225 using exponents. Larger numbers raise the arithmetic load and demand a reliable division ladder plus a product check."
       },
       {
         "skill_id": "7NS5-S5",
         "verb": "analyze",
-        "rationale": "The Above-proficiency reversal at DOK 1-2: given a factorization with one exponent hidden, determine the exponent that makes the product equal the number. Requires reading exponent form fluently and verifying by multiplying back."
+        "rationale": "The approaching-proficiency reversal at DOK 1-2: given a factorization with one exponent hidden, determine the exponent that makes the product equal the number. The item spec names this as approaching proficiency, one rung below generating the factorization unaided. Requires reading exponent form fluently and verifying by multiplying back."
       },
       {
         "skill_id": "7NS5-S6",
@@ -1163,7 +1163,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "7NS5-S2",
@@ -1171,7 +1172,8 @@
       "column": "on_grade",
       "parent_standard": "7.NS.5",
       "engine_stems": [
-        2
+        2,
+        6
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -1432,7 +1434,304 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
+    },
+    {
+      "skill_id": "7NS5-S8",
+      "name": "Find a missing factor in a prime factorization",
+      "column": "on_grade",
+      "parent_standard": "7.NS.5",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS5-S2"
+      },
+      "i_do_script": "A factorization is given with one factor blanked out, and the product is given. Finding the blank is division, not guessing. Watch: 2 times 2 times 2 times 5 times blank equals 200. I multiply the factors I can see -- 2 times 2 times 2 times 5 is 40. Then 200 divided by 40 is 5. So the missing factor is 5, and I check by multiplying everything back: 8 times 25 is 200.",
+      "canonical_error": {
+        "pattern": "Guesses the missing factor from the pattern of the visible factors rather than dividing the product by them",
+        "example": "For 2 x 2 x 2 x 5 x __ = 200, writes 2 because the list started with 2s, or writes 200 because that is the number on the other side",
+        "why": "The visible factors form a tidy pattern, so continuing it feels like the task. Dividing requires seeing the blank as an unknown to be solved for rather than a slot to be filled by eye."
+      },
+      "item_template": "A prime factorization with one factor replaced by a blank, and the product given. All factors limited to 2, 3, and 5. The student finds the missing factor. Numeric response or MC.",
+      "sample_items": [
+        {
+          "stem": "Fill in the blank to complete the prime factorization of 200:  2 x 2 x 2 x 5 x ___",
+          "answer": "5",
+          "choices": null,
+          "distractor_logic": "2 comes from continuing the pattern; 25 comes from dividing by 8 but not recognising the result must be prime."
+        },
+        {
+          "stem": "Complete the prime factorization of 90:  2 x 3 x 3 x ___",
+          "answer": "5",
+          "choices": [
+            "2",
+            "3",
+            "5",
+            "9"
+          ],
+          "distractor_logic": "9 is the product of the two visible 3s rather than the missing factor; 3 continues the pattern."
+        },
+        {
+          "stem": "Complete the prime factorization of 120:  2 x 2 x 2 x 3 x ___",
+          "answer": "5",
+          "choices": null,
+          "distractor_logic": "Answering 15 divides correctly by 8 but stops before checking the result is prime."
+        },
+        {
+          "stem": "Marisol says the missing factor in 2 x 3 x 5 x ___ = 150 is 3. Check her answer and correct it if needed.",
+          "answer": "She is incorrect. 2 x 3 x 5 = 30, and 150 divided by 30 is 5, so the missing factor is 5. Her answer of 3 gives 90, not 150.",
+          "choices": null,
+          "distractor_logic": "Marisol repeated a factor already present, which is the pattern-continuation error."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Do not fill the blank yet. What do the factors you CAN see multiply to?",
+        "prompt": "Multiply the visible factors together first. Then divide the product by that number. The answer to that division is the missing factor. Check it by multiplying everything back.",
+        "praise": "You divided instead of guessing, and you checked by multiplying back. That works no matter how long the list is."
+      },
+      "vocabulary": [
+        {
+          "term": "Factor",
+          "definition": "A number being multiplied. Every factor in a prime factorization is prime."
+        },
+        {
+          "term": "Product",
+          "definition": "The result of multiplying. In these problems it is the number given on the other side of the equals sign."
+        },
+        {
+          "term": "Prime",
+          "definition": "A whole number greater than 1 whose only factors are 1 and itself."
+        }
+      ],
+      "manipulative_visual": "Factor tiles laid in a row with one slot left empty and the product written on a card at the end. Students physically multiply the tiles they have, then use division to work out what the empty slot must hold, placing a tile only after the division is done.",
+      "next_steps": {
+        "if_pass": "Ready for 7NS5-S3: write a full prime factorization using exponents.",
+        "if_fail": "Drop back to 7NS5-S2 and rebuild writing a complete factorization before working backwards from a blank."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board: 2 x 2 x 2 x 5 x ___ = 200. Underline the blank."
+        },
+        {
+          "kind": "ask",
+          "text": "Which numbers can I already see? Multiply just those together for me."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student fills the blank with 2 straight away, write it in and multiply the whole line out with them: 80, not 200. Let the check reject it rather than telling them."
+        },
+        {
+          "kind": "ask",
+          "text": "The visible factors give 40. If 40 times the blank has to equal 200, what operation finds the blank?"
+        },
+        {
+          "kind": "ask",
+          "text": "200 divided by 40. What is that?"
+        },
+        {
+          "kind": "ask",
+          "text": "5. Now check: 2 x 2 x 2 x 5 x 5. Multiply it all out. Do we get 200?"
+        },
+        {
+          "kind": "say",
+          "text": "Multiply what you can see, divide the product by it, then multiply everything back to check. Never fill a blank by pattern."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Find the Missing Factor",
+        "kind": "reference_card",
+        "instructions": "Three steps, in order. The blank is solved for, never guessed.",
+        "items": [
+          "1. MULTIPLY the factors you can see.",
+          "2. DIVIDE the product by that number.",
+          "3. CHECK by multiplying the whole list back.",
+          "2 x 2 x 2 x 5 x ___ = 200:  visible = 40,  200 / 40 = 5.",
+          "The missing factor must be PRIME. If your answer is not, keep factoring.",
+          "Trap: repeating a factor because the list looks like a pattern."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What is 2 x 2 x 2 x 5?",
+          "answer": "40"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is 200 divided by 40?",
+          "answer": "5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Fill in the blank to complete the prime factorization of 200:  2 x 2 x 2 x 5 x ___",
+          "answer": "5",
+          "notes": "The spec's own below-proficiency item. Visible factors give 40; 200 / 40 = 5."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Complete the prime factorization of 90:  2 x 3 x 3 x ___   (a) 2  (b) 3  (c) 5  (d) 9",
+          "answer": "(c) 5",
+          "notes": "Option (d) is the product of the two visible 3s, a common misread of what the blank holds."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Complete the prime factorization of 120:  2 x 2 x 2 x 3 x ___",
+          "answer": "5",
+          "notes": "Visible factors give 24; 120 / 24 = 5."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Read Marisol's work. Find her mistake and fix it.",
+          "shown_work": [
+            "Complete the prime factorization of 150:  2 x 3 x 5 x ___",
+            "Marisol wrote: '3, because the list already has a 3 and factorizations usually repeat.'"
+          ],
+          "answer": "The missing factor is 5. Marisol guessed from the pattern instead of dividing. The visible factors multiply to 2 x 3 x 5 = 30, and 150 divided by 30 is 5. Her answer of 3 would give 2 x 3 x 5 x 3 = 90, not 150. Checking by multiplying back catches this immediately.",
+          "notes": "The canonical error. Have students multiply her answer out rather than telling them it is wrong."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Complete the prime factorization of 180:  2 x 2 x 3 x 3 x ___  and explain how you know your answer must be prime.",
+          "answer": "5. The visible factors give 36, and 180 / 36 = 5. It must be prime because a prime factorization contains only primes -- if the division had given 10, that would signal a missing slot, since 10 factors further into 2 x 5."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A factorization reads 2 x 5 x ___ x ___ = 250, and both blanks hold the same prime. What is it? Show your reasoning.",
+          "answer": "5. The visible factors give 10, and 250 / 10 = 25. Since both blanks hold the same prime and multiply to 25, each must be 5. Check: 2 x 5 x 5 x 5 = 250.",
+          "notes": "Two blanks turns one division into a division plus a square root style step."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Fill the Empty Slot",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Factor tiles (2s, 3s, 5s)",
+            "Product cards"
+          ],
+          "instructions": "1. Partner A lays out a factorization with one empty slot and shows the product card.\n2. Partner B multiplies the visible tiles aloud, then states the division that finds the blank.\n3. Only after saying the division may they place a tile.\n4. Both partners multiply the full row back to check.\n5. Swap. Include one round with two empty slots holding the same prime."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Marisol Followed the Pattern",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip",
+            "Factor tiles"
+          ],
+          "instructions": "1. Pairs read Marisol's answer and lay it out with tiles.\n2. Pairs multiply her full row out and compare it to 150.\n3. Ask: what number did her row actually make? What went wrong?\n4. Pairs perform the division and place the correct tile, then write one sentence about why checking matters.",
+          "content": {
+            "worked_problem": "Complete 2 x 3 x 5 x ___ = 150. Marisol wrote 3, reasoning that factorizations usually repeat a factor.",
+            "error_step": "Marisol filled the blank by continuing the pattern instead of dividing the product by the visible factors.",
+            "why": "2 x 3 x 5 = 30 and 150 / 30 = 5, so the missing factor is 5. Her answer produces 90, which multiplying back would have revealed."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Divide, Do Not Guess",
+          "time_minutes": 7,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Post a factorization with a blank and its product.\n2. Students write TWO things: the product of the visible factors, and the missing factor.\n3. Both correct scores; the right blank with no visible-product shown scores half.\n4. Final round: post one where the division gives a composite number, so students have to notice a second slot is missing."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Factor tiles make the empty slot a physical gap that has to be solved for, and multiplying the row back is a concrete check."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Marisol's pattern guess is the canonical error and is disproved by multiplying her own answer out."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What do the factors you can see multiply to?",
+          "If that number times the blank equals the product, what operation finds the blank?",
+          "Multiply your whole row back. Do you get the product?",
+          "Is your answer prime? What would it mean if it were not?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student fills the blank by repeating a visible factor.",
+            "say": "Multiply the visible factors together first. Then divide the product by that number. The answer to that division is the missing factor. Check it by multiplying everything back.",
+            "praise": "You divided instead of guessing, and you checked by multiplying back. That works no matter how long the list is."
+          },
+          {
+            "if_you_see": "Student divides correctly but reports a composite result as the missing factor.",
+            "say": "Is your answer prime? If not, how many slots should the factorization really have?",
+            "praise": "Good catch -- a composite result means another factor is hiding."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "2 x 2 x 3 x ___ = 60. Visible product, then the blank.",
+            "look_for": "12, then 5. A blank filled without stating 12 means guessing is still in play."
+          },
+          {
+            "prompt": "Could the missing factor ever be 6?",
+            "look_for": "No, 6 is not prime. Hesitation means the prime constraint is not held."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Fill in the blank to complete the prime factorization of 200:  2 x 2 x 2 x 5 x ___",
+        "answer": "5",
+        "steps": [
+          {
+            "math": "Multiply the visible factors: 2 x 2 x 2 x 5 = 40.",
+            "annotation": "Handle what you can see before touching the blank."
+          },
+          {
+            "math": "40 times the blank must equal 200.",
+            "annotation": "Name the relationship before solving it."
+          },
+          {
+            "math": "200 divided by 40 = 5.",
+            "annotation": "Division finds the unknown factor."
+          },
+          {
+            "math": "Check: 2 x 2 x 2 x 5 x 5 = 200, and 5 is prime.",
+            "annotation": "Multiply back, and confirm the answer is prime."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Fill in the blank to complete the prime factorization of 90:  2 x 3 x 3 x ___",
+        "answer": "5",
+        "steps": [
+          {
+            "math": "Multiply the visible factors: 2 x 3 x 3 = 18.",
+            "annotation": "Handle what you can see before touching the blank.",
+            "given": true
+          },
+          {
+            "math": "18 times the blank must equal 90.",
+            "annotation": "Name the relationship before solving it.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Do the division that finds the blank, then multiply the whole row back to check.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The factors I can see multiply to ___.",
+        "___ divided by ___ is ___, so the missing factor is ___.",
+        "Check: ___ x ___ x ___ = ___."
+      ],
+      "fluency_source": "7NS5-F1",
+      "pld_band": "below"
     },
     {
       "skill_id": "7NS5-S3",
@@ -1741,288 +2040,20 @@
             "given": false
           }
         ]
-      }
-    },
-    {
-      "skill_id": "7NS5-S4",
-      "name": "Generate the prime factorization of a number from 100 to 200 using exponents",
-      "column": "on_grade",
-      "parent_standard": "7.NS.5",
-      "engine_stems": [
-        4
-      ],
-      "prerequisite_skill": {
-        "type": "skill",
-        "skill_id": "7NS5-S3"
       },
-      "i_do_script": "Think of factoring as peeling: every division peels exactly one prime off the number, and the peels must multiply back to rebuild it. Watch 120 get halved: 60, then 30, then 15 -- three peels of 2 before the 2s run out. For a bigger number I use a division ladder: divide by the smallest prime that fits, then keep dividing the quotient. Watch 120: 120 / 2 = 60, 60 / 2 = 30, 30 / 2 = 15, 15 / 3 = 5, and 5 is prime. The primes I divided by are 2, 2, 2, 3, 5, so 120 = 2^3 x 3 x 5. A bigger number doesn't change the method -- I just keep dividing until the quotient is prime, then multiply back to check.",
-      "canonical_error": {
-        "pattern": "Stops the division ladder early or drops a prime, so the factorization does not multiply back to the number",
-        "example": "For 120 writes 2^2 x 3 x 5 (= 60), having divided by 2 only twice instead of three times",
-        "why": "The student loses count of how many times a prime divides, or quits before reaching a prime quotient. Every division must continue until the quotient is prime, and the factorization must multiply back to the original number."
-      },
-      "item_template": "A whole number from 100 to 200. Student generates the prime factorization using exponents. Numeric/expression response.",
-      "sample_items": [
-        {
-          "stem": "Find the prime factorization of 120. Write the answer using exponents.",
-          "answer": "2^3 x 3 x 5"
-        },
-        {
-          "stem": "Find the prime factorization of 144. Write the answer using exponents.",
-          "answer": "2^4 x 3^2"
-        },
-        {
-          "stem": "Find the prime factorization of 126. Write the answer using exponents.",
-          "answer": "2 x 3^2 x 7"
-        },
-        {
-          "stem": "Find the prime factorization of 175. Write the answer using exponents.",
-          "answer": "5^2 x 7"
-        }
-      ],
-      "redirect_script": {
-        "stop": "Does your answer multiply back to the number?",
-        "prompt": "Keep dividing until the quotient is prime, and count every division. Then multiply your primes back -- if you don't get the original number, you dropped one. 120 needs three 2s: 2^3 x 3 x 5.",
-        "praise": "You divided all the way to a prime and checked the product -- that's a complete factorization."
-      },
-      "vocabulary": [
-        {
-          "term": "Division ladder",
-          "definition": "A method that divides a number by primes one at a time, stacking the quotients until a prime is reached."
-        },
-        {
-          "term": "Prime factorization",
-          "definition": "A number written as a product of only prime numbers, using exponents for repeats."
-        }
-      ],
-      "next_steps": {
-        "if_pass": "7NS5-S5",
-        "if_fail": "7NS5-S3"
-      },
-      "worked_example_script": [
-        {
-          "kind": "show",
-          "text": "Write 120 and peel one 2 off at a time: 120 -> 60 -> 30 -> 15. Make a tally mark for every 2 you peel."
-        },
-        {
-          "kind": "ask",
-          "text": "How many tally marks did you make before landing on the odd number 15? Count them."
-        },
-        {
-          "kind": "say",
-          "text": "Three halvings means three 2s in the factorization -- and the peels have to rebuild the number: 2 x 2 x 2 x 3 x 5 = 120. If your primes multiply back to something else, a peel went missing."
-        },
-        {
-          "kind": "show",
-          "text": "Write '120' and set up a division ladder."
-        },
-        {
-          "kind": "ask",
-          "text": "What's the smallest prime that divides 120?"
-        },
-        {
-          "kind": "say",
-          "text": "120 / 2 = 60, / 2 = 30, / 2 = 15, / 3 = 5. Primes: 2, 2, 2, 3, 5, so 120 = 2^3 x 3 x 5."
-        },
-        {
-          "kind": "watch",
-          "text": "If a student writes 2^2 x 3 x 5, ask 'does that multiply back to 120?'"
-        },
-        {
-          "kind": "ask",
-          "text": "Your turn: find the prime factorization of 144."
-        }
-      ],
-      "practice_problems": [
-        {
-          "difficulty": "warm_up",
-          "stem": "120 / 2 = ? Then divide that by 2 again.",
-          "answer": "60, then 30"
-        },
-        {
-          "difficulty": "warm_up",
-          "stem": "Find the prime factorization of 100 using exponents.",
-          "answer": "2^2 x 5^2"
-        },
-        {
-          "difficulty": "core",
-          "stem": "Prime factorization of 120 (exponents)?",
-          "answer": "2^3 x 3 x 5",
-          "notes": "Baits 2^2 x 3 x 5 (= 60), one 2 too few."
-        },
-        {
-          "difficulty": "core",
-          "stem": "Prime factorization of 180 (exponents)?",
-          "answer": "2^2 x 3^2 x 5",
-          "notes": "Three distinct primes, two of them squared."
-        },
-        {
-          "difficulty": "core",
-          "type": "error_analysis",
-          "stem": "Lena found the prime factorization of 120. Find and fix her mistake.",
-          "shown_work": [
-            "Lena wrote: '120 = 2 x 2 x 3 x 5 = 2^2 x 3 x 5.'"
-          ],
-          "answer": "That product is only 60, not 120. 120 = 2 x 2 x 2 x 3 x 5 = 2^3 x 3 x 5 -- she divided by 2 one time too few. Check: 8 x 3 x 5 = 120.",
-          "notes": "Canonical error: stopping the ladder early; the product doesn't match the number."
-        },
-        {
-          "difficulty": "core",
-          "stem": "Prime factorization of 168 (exponents)?",
-          "answer": "2^3 x 3 x 7",
-          "notes": "168 = 8 x 21."
-        },
-        {
-          "difficulty": "stretch",
-          "stem": "Find the prime factorization of 189, then explain how you know you're finished.",
-          "answer": "189 = 3^3 x 7. You're finished because 7 is prime and nothing divides further; check: 27 x 7 = 189.",
-          "notes": "Odd number -- 2 never divides it, so start at 3."
-        },
-        {
-          "difficulty": "stretch",
-          "stem": "Two numbers have prime factorizations 2^2 x 3^2 x 5 and 2^3 x 3 x 5. Which is larger, and what are the numbers?",
-          "answer": "2^2 x 3^2 x 5 = 180 and 2^3 x 3 x 5 = 120, so the first (180) is larger.",
-          "notes": "Reverse: compare via expanded values."
-        }
-      ],
-      "activities": [
-        {
-          "type": "hands_on",
-          "title": "Division Ladder Relay",
-          "time_minutes": 12,
-          "grouping": "small_group",
-          "materials": [
-            "Number cards 100-200",
-            "Prime-divisor reference strip (2, 3, 5, 7, 11, 13)"
-          ],
-          "instructions": "1. Draw a number card between 100 and 200.\n2. Build a division ladder: divide by the smallest prime that fits, write the quotient below, repeat.\n3. Stop when the quotient is prime; the primes down the side are your factors.\n4. Collect repeats into exponents and MULTIPLY BACK to confirm you get the card's number.\n5. Debrief: what tells you the ladder is done?"
-        },
-        {
-          "type": "error_analysis",
-          "title": "Multiply It Back",
-          "time_minutes": 8,
-          "grouping": "pairs",
-          "materials": [
-            "Slip with Lena's '2^2 x 3 x 5' work"
-          ],
-          "instructions": "1. Read Lena's answer of 2^2 x 3 x 5 for 120.\n2. Multiply her factorization out -- what number do you actually get?\n3. Redo the division ladder for 120 and count the 2s.\n4. Write the corrected factorization and the product check.",
-          "content": {
-            "worked_problem": "Prime factorization of 120. Lena wrote 2^2 x 3 x 5.",
-            "error_step": "Lena divided by 2 only twice; 2^2 x 3 x 5 = 60, not 120.",
-            "why": "120 = 2 x 2 x 2 x 3 x 5 = 2^3 x 3 x 5. Always multiply back to check."
-          }
-        }
-      ],
-      "strategy_links": [
-        {
-          "strategy_id": "strat-math-006",
-          "why": "Modeling the division ladder, then doing one together, then releasing is the gradual-release routine this multi-step procedure needs."
-        },
-        {
-          "strategy_id": "strat-math-003",
-          "why": "The dropped-prime error (product doesn't match) is precisely the mistake a multiply-back find-and-fix catches."
-        },
-        {
-          "strategy_id": "strat-math-005",
-          "why": "Thinking aloud 'keep dividing until the quotient is prime, then check the product' models the self-monitoring the skill requires."
-        }
-      ],
-      "teacher_moves": {
-        "questioning_prompts": [
-          "What is the smallest prime that divides this number?",
-          "Does your factorization multiply back to the original number?",
-          "How many times did 2 divide in?",
-          "How do you know you've reached the end of the ladder?",
-          "Which primes repeat, and what exponents do they get?"
-        ],
-        "misconception_redirects": [
-          {
-            "if_you_see": "Student stops the division ladder early, so the product comes out too small.",
-            "say": "Keep dividing until the quotient is prime, and count every division. Then multiply your primes back -- if you don't get the original number, you dropped one. 120 needs three 2s: 2^3 x 3 x 5.",
-            "praise": "You divided all the way to a prime and checked the product -- that's a complete factorization."
-          },
-          {
-            "if_you_see": "Student divides by a composite (like 4 or 6) and calls it a prime factor.",
-            "say": "Divide only by primes. If you used 4, split it into 2 x 2. Restart the ladder using the smallest prime.",
-            "praise": "You used only prime divisors -- that keeps the factorization correct."
-          }
-        ],
-        "quick_checks": [
-          {
-            "prompt": "Prime factorization of 100?",
-            "look_for": "2^2 x 5^2. A '4 x 25' answer means the composite factors weren't reduced."
-          },
-          {
-            "prompt": "Does 2^2 x 3 x 5 equal 120?",
-            "look_for": "No -- it equals 60. Recognizing the mismatch shows the product check is working."
-          }
-        ]
-      },
-      "fluency_source": "7NS5-B1",
-      "sentence_starters": [
-        "I divide ___ by ___ to get ___, then keep going until the quotient is prime.",
-        "___ = ___, and it multiplies back to ___."
-      ],
-      "worked_solution": {
-        "stem": "Find the prime factorization of 150 using exponents.",
-        "answer": "2 x 3 x 5^2",
-        "steps": [
-          {
-            "math": "150 / 2 = 75",
-            "annotation": "Divide by the smallest prime, 2."
-          },
-          {
-            "math": "75 / 3 = 25",
-            "annotation": "2 won't go into 75; try 3."
-          },
-          {
-            "math": "25 / 5 = 5, and 5 is prime",
-            "annotation": "Keep dividing until the quotient is prime."
-          },
-          {
-            "math": "150 = 2 x 3 x 5 x 5 = 2 x 3 x 5^2",
-            "annotation": "Collect the two 5s into an exponent."
-          }
-        ]
-      },
-      "faded_example": {
-        "stem": "Find the prime factorization of 108 using exponents.",
-        "answer": "2^2 x 3^3",
-        "steps": [
-          {
-            "math": "108 / 2 = 54, 54 / 2 = 27",
-            "annotation": "Divide out both 2s.",
-            "given": true
-          },
-          {
-            "math": "27 / 3 = 9, 9 / 3 = 3, 3 is prime",
-            "annotation": "Divide out the 3s until the quotient is prime.",
-            "given": true
-          },
-          {
-            "math": null,
-            "annotation": "Count the primes -- two 2s and three 3s -- and write them with exponents.",
-            "given": false
-          },
-          {
-            "math": null,
-            "annotation": "Multiply back to check you get 108.",
-            "given": false
-          }
-        ]
-      }
+      "pld_band": "approaching"
     },
     {
       "skill_id": "7NS5-S5",
       "name": "Find a missing exponent in a given prime factorization",
-      "column": "looking_forward",
+      "column": "on_grade",
       "parent_standard": "7.NS.5",
       "engine_stems": [
         5
       ],
       "prerequisite_skill": {
         "type": "skill",
-        "skill_id": "7NS5-S4"
+        "skill_id": "7NS5-S3"
       },
       "i_do_script": "An equation like this is a target: the product has to land exactly on 150, so any guess for x can be tested by multiplying it out. Try x = 1: 2 x 3 x 5 = 30 -- one whole factor of 5 short of the target. When a factorization is given with one exponent hidden, I work out how many times that prime must divide the number. Watch: 2 x 3 x 5^x = 150. I know 2 x 3 = 6, and 150 / 6 = 25 = 5 x 5, so 5 is used twice: x = 2. I can also just factor 150 myself (2 x 3 x 5^2) and read the exponent off. The exponent counts how many times its prime appears.",
       "canonical_error": {
@@ -2030,7 +2061,7 @@
         "example": "For 2 x 3 x 5^x = 150 answers x = 1 (giving 30) instead of x = 2 (giving 150)",
         "why": "The student picks an exponent from the look of the expression instead of testing it. The correct exponent is the one that makes the whole product equal the target number."
       },
-      "item_template": "A prime factorization of a number 100-200 with one exponent shown as x. Student finds x. MC or numeric.",
+      "item_template": "A prime factorization of a number 100-225 with one exponent shown as x. Student finds x. MC or numeric.",
       "sample_items": [
         {
           "stem": "The prime factorization of 150 is 2 x 3 x 5^x = 150. What is the missing exponent x?",
@@ -2093,8 +2124,8 @@
         }
       ],
       "next_steps": {
-        "if_pass": "7NS5-S6",
-        "if_fail": "7NS5-S4"
+        "if_pass": "Ready for 7NS5-S4: generate the whole factorization from scratch, with exponents.",
+        "if_fail": "Drop back to 7NS5-S3 and rebuild exponent form on factorizations the student writes themselves before hiding an exponent."
       },
       "worked_example_script": [
         {
@@ -2332,7 +2363,574 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "approaching"
+    },
+    {
+      "skill_id": "7NS5-S4",
+      "name": "Generate the prime factorization of a number from 100 to 225 using exponents",
+      "column": "on_grade",
+      "parent_standard": "7.NS.5",
+      "engine_stems": [
+        4
+      ],
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS5-S3"
+      },
+      "i_do_script": "Think of factoring as peeling: every division peels exactly one prime off the number, and the peels must multiply back to rebuild it. Watch 120 get halved: 60, then 30, then 15 -- three peels of 2 before the 2s run out. For a bigger number I use a division ladder: divide by the smallest prime that fits, then keep dividing the quotient. Watch 120: 120 / 2 = 60, 60 / 2 = 30, 30 / 2 = 15, 15 / 3 = 5, and 5 is prime. The primes I divided by are 2, 2, 2, 3, 5, so 120 = 2^3 x 3 x 5. A bigger number doesn't change the method -- I just keep dividing until the quotient is prime, then multiply back to check.",
+      "canonical_error": {
+        "pattern": "Stops the division ladder early or drops a prime, so the factorization does not multiply back to the number",
+        "example": "For 120 writes 2^2 x 3 x 5 (= 60), having divided by 2 only twice instead of three times",
+        "why": "The student loses count of how many times a prime divides, or quits before reaching a prime quotient. Every division must continue until the quotient is prime, and the factorization must multiply back to the original number."
+      },
+      "item_template": "A whole number from 100 to 225. Student generates the prime factorization using exponents. Numeric/expression response.",
+      "sample_items": [
+        {
+          "stem": "Find the prime factorization of 120. Write the answer using exponents.",
+          "answer": "2^3 x 3 x 5"
+        },
+        {
+          "stem": "Find the prime factorization of 144. Write the answer using exponents.",
+          "answer": "2^4 x 3^2"
+        },
+        {
+          "stem": "Find the prime factorization of 126. Write the answer using exponents.",
+          "answer": "2 x 3^2 x 7"
+        },
+        {
+          "stem": "Find the prime factorization of 175. Write the answer using exponents.",
+          "answer": "5^2 x 7"
+        }
+      ],
+      "redirect_script": {
+        "stop": "Does your answer multiply back to the number?",
+        "prompt": "Keep dividing until the quotient is prime, and count every division. Then multiply your primes back -- if you don't get the original number, you dropped one. 120 needs three 2s: 2^3 x 3 x 5.",
+        "praise": "You divided all the way to a prime and checked the product -- that's a complete factorization."
+      },
+      "vocabulary": [
+        {
+          "term": "Division ladder",
+          "definition": "A method that divides a number by primes one at a time, stacking the quotients until a prime is reached."
+        },
+        {
+          "term": "Prime factorization",
+          "definition": "A number written as a product of only prime numbers, using exponents for repeats."
+        }
+      ],
+      "next_steps": {
+        "if_pass": "Ready for 7NS5-S9: recover the exponents when the bases are given and the product is known.",
+        "if_fail": "7NS5-S3"
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 120 and peel one 2 off at a time: 120 -> 60 -> 30 -> 15. Make a tally mark for every 2 you peel."
+        },
+        {
+          "kind": "ask",
+          "text": "How many tally marks did you make before landing on the odd number 15? Count them."
+        },
+        {
+          "kind": "say",
+          "text": "Three halvings means three 2s in the factorization -- and the peels have to rebuild the number: 2 x 2 x 2 x 3 x 5 = 120. If your primes multiply back to something else, a peel went missing."
+        },
+        {
+          "kind": "show",
+          "text": "Write '120' and set up a division ladder."
+        },
+        {
+          "kind": "ask",
+          "text": "What's the smallest prime that divides 120?"
+        },
+        {
+          "kind": "say",
+          "text": "120 / 2 = 60, / 2 = 30, / 2 = 15, / 3 = 5. Primes: 2, 2, 2, 3, 5, so 120 = 2^3 x 3 x 5."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 2^2 x 3 x 5, ask 'does that multiply back to 120?'"
+        },
+        {
+          "kind": "ask",
+          "text": "Your turn: find the prime factorization of 144."
+        }
+      ],
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "120 / 2 = ? Then divide that by 2 again.",
+          "answer": "60, then 30"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Find the prime factorization of 100 using exponents.",
+          "answer": "2^2 x 5^2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Prime factorization of 120 (exponents)?",
+          "answer": "2^3 x 3 x 5",
+          "notes": "Baits 2^2 x 3 x 5 (= 60), one 2 too few."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Prime factorization of 180 (exponents)?",
+          "answer": "2^2 x 3^2 x 5",
+          "notes": "Three distinct primes, two of them squared."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Lena found the prime factorization of 120. Find and fix her mistake.",
+          "shown_work": [
+            "Lena wrote: '120 = 2 x 2 x 3 x 5 = 2^2 x 3 x 5.'"
+          ],
+          "answer": "That product is only 60, not 120. 120 = 2 x 2 x 2 x 3 x 5 = 2^3 x 3 x 5 -- she divided by 2 one time too few. Check: 8 x 3 x 5 = 120.",
+          "notes": "Canonical error: stopping the ladder early; the product doesn't match the number."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Prime factorization of 168 (exponents)?",
+          "answer": "2^3 x 3 x 7",
+          "notes": "168 = 8 x 21."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Find the prime factorization of 189, then explain how you know you're finished.",
+          "answer": "189 = 3^3 x 7. You're finished because 7 is prime and nothing divides further; check: 27 x 7 = 189.",
+          "notes": "Odd number -- 2 never divides it, so start at 3."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two numbers have prime factorizations 2^2 x 3^2 x 5 and 2^3 x 3 x 5. Which is larger, and what are the numbers?",
+          "answer": "2^2 x 3^2 x 5 = 180 and 2^3 x 3 x 5 = 120, so the first (180) is larger.",
+          "notes": "Reverse: compare via expanded values."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Division Ladder Relay",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Number cards 100-225",
+            "Prime-divisor reference strip (2, 3, 5, 7, 11, 13)"
+          ],
+          "instructions": "1. Draw a number card between 100 and 225.\n2. Build a division ladder: divide by the smallest prime that fits, write the quotient below, repeat.\n3. Stop when the quotient is prime; the primes down the side are your factors.\n4. Collect repeats into exponents and MULTIPLY BACK to confirm you get the card's number.\n5. Debrief: what tells you the ladder is done?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Multiply It Back",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Slip with Lena's '2^2 x 3 x 5' work"
+          ],
+          "instructions": "1. Read Lena's answer of 2^2 x 3 x 5 for 120.\n2. Multiply her factorization out -- what number do you actually get?\n3. Redo the division ladder for 120 and count the 2s.\n4. Write the corrected factorization and the product check.",
+          "content": {
+            "worked_problem": "Prime factorization of 120. Lena wrote 2^2 x 3 x 5.",
+            "error_step": "Lena divided by 2 only twice; 2^2 x 3 x 5 = 60, not 120.",
+            "why": "120 = 2 x 2 x 2 x 3 x 5 = 2^3 x 3 x 5. Always multiply back to check."
+          }
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-006",
+          "why": "Modeling the division ladder, then doing one together, then releasing is the gradual-release routine this multi-step procedure needs."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The dropped-prime error (product doesn't match) is precisely the mistake a multiply-back find-and-fix catches."
+        },
+        {
+          "strategy_id": "strat-math-005",
+          "why": "Thinking aloud 'keep dividing until the quotient is prime, then check the product' models the self-monitoring the skill requires."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the smallest prime that divides this number?",
+          "Does your factorization multiply back to the original number?",
+          "How many times did 2 divide in?",
+          "How do you know you've reached the end of the ladder?",
+          "Which primes repeat, and what exponents do they get?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student stops the division ladder early, so the product comes out too small.",
+            "say": "Keep dividing until the quotient is prime, and count every division. Then multiply your primes back -- if you don't get the original number, you dropped one. 120 needs three 2s: 2^3 x 3 x 5.",
+            "praise": "You divided all the way to a prime and checked the product -- that's a complete factorization."
+          },
+          {
+            "if_you_see": "Student divides by a composite (like 4 or 6) and calls it a prime factor.",
+            "say": "Divide only by primes. If you used 4, split it into 2 x 2. Restart the ladder using the smallest prime.",
+            "praise": "You used only prime divisors -- that keeps the factorization correct."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Prime factorization of 100?",
+            "look_for": "2^2 x 5^2. A '4 x 25' answer means the composite factors weren't reduced."
+          },
+          {
+            "prompt": "Does 2^2 x 3 x 5 equal 120?",
+            "look_for": "No -- it equals 60. Recognizing the mismatch shows the product check is working."
+          }
+        ]
+      },
+      "fluency_source": "7NS5-B1",
+      "sentence_starters": [
+        "I divide ___ by ___ to get ___, then keep going until the quotient is prime.",
+        "___ = ___, and it multiplies back to ___."
+      ],
+      "worked_solution": {
+        "stem": "Find the prime factorization of 150 using exponents.",
+        "answer": "2 x 3 x 5^2",
+        "steps": [
+          {
+            "math": "150 / 2 = 75",
+            "annotation": "Divide by the smallest prime, 2."
+          },
+          {
+            "math": "75 / 3 = 25",
+            "annotation": "2 won't go into 75; try 3."
+          },
+          {
+            "math": "25 / 5 = 5, and 5 is prime",
+            "annotation": "Keep dividing until the quotient is prime."
+          },
+          {
+            "math": "150 = 2 x 3 x 5 x 5 = 2 x 3 x 5^2",
+            "annotation": "Collect the two 5s into an exponent."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Find the prime factorization of 108 using exponents.",
+        "answer": "2^2 x 3^3",
+        "steps": [
+          {
+            "math": "108 / 2 = 54, 54 / 2 = 27",
+            "annotation": "Divide out both 2s.",
+            "given": true
+          },
+          {
+            "math": "27 / 3 = 9, 9 / 3 = 3, 3 is prime",
+            "annotation": "Divide out the 3s until the quotient is prime.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Count the primes -- two 2s and three 3s -- and write them with exponents.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply back to check you get 108.",
+            "given": false
+          }
+        ]
+      },
+      "pld_band": "at"
+    },
+    {
+      "skill_id": "7NS5-S9",
+      "name": "Find the values of variable exponents from a given product",
+      "column": "on_grade",
+      "parent_standard": "7.NS.5",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS5-S4"
+      },
+      "i_do_script": "This one runs the factorization backwards with letters in it. Two to the a times five to the b equals 200. I already know how to factor 200: two times two times two times five times five. That is three 2s and two 5s. So a counts the 2s and b counts the 5s: a is 3 and b is 2. Factor the number first, then count each prime. The letters are just labels for how many of each you found.",
+      "canonical_error": {
+        "pattern": "Reads an exponent as the count of distinct primes, or assigns the exponents to the wrong bases",
+        "example": "For 2^a x 5^b = 200, answers a = 2 and b = 2 because there are two different primes, or swaps them to a = 2 and b = 3",
+        "why": "The student knows exponents count something but has not fixed what. Nothing in the notation forces a to attach to the 2s rather than to the primes in general, so the count they produce is whichever count they happened to make."
+      },
+      "item_template": "An exponential expression with variable exponents over given prime bases, equal to a stated product. The student factors the product and reports each exponent. Numeric response, usually two values.",
+      "sample_items": [
+        {
+          "stem": "2^a x 5^b = 200. What are the values of a and b?",
+          "answer": "a = 3, b = 2",
+          "choices": null,
+          "distractor_logic": "a = 2, b = 2 counts distinct primes; swapping to a = 2, b = 3 attaches each count to the wrong base."
+        },
+        {
+          "stem": "2^a x 3^b = 72. What are the values of a and b?",
+          "answer": "a = 3, b = 2",
+          "choices": null,
+          "distractor_logic": "Students who stop factoring at 8 x 9 without breaking those down report a = 1, b = 1."
+        },
+        {
+          "stem": "3^a x 5^b = 225. What are the values of a and b?",
+          "answer": "a = 2, b = 2",
+          "choices": null,
+          "distractor_logic": "Equal exponents make swapping invisible here, so this item checks the factoring rather than the assignment."
+        },
+        {
+          "stem": "2^a x 7^b = 196. Find a and b, and explain how you knew which exponent went with which base.",
+          "answer": "a = 2, b = 2, since 196 = 2 x 2 x 7 x 7. Each exponent counts how many times its own base appears in the factorization.",
+          "choices": null,
+          "distractor_logic": "An answer without the explanation leaves the assignment rule untested."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Factor the number completely first. What does the full list of primes look like?",
+        "prompt": "Now count how many 2s are in that list -- that count is the exponent on the 2. Count the other prime separately. Each exponent counts its own base, not the number of different primes.",
+        "praise": "You counted each base separately against the full factorization. That is why the exponents landed on the right letters."
+      },
+      "vocabulary": [
+        {
+          "term": "Exponent",
+          "definition": "How many times a base is used as a factor. It counts one base only."
+        },
+        {
+          "term": "Base",
+          "definition": "The number being raised to a power. Here the bases are given and the exponents are unknown."
+        },
+        {
+          "term": "Variable exponent",
+          "definition": "A letter standing in for an exponent that has to be found."
+        }
+      ],
+      "manipulative_visual": "Two labelled bins, one for each base. Students break the number into prime factor tiles and drop each tile into its bin, then simply count what is in each bin. The bin counts are the exponents, so the assignment cannot go astray.",
+      "next_steps": {
+        "if_pass": "Ready for 7NS5-S6: judge whether a factorization someone else wrote is correct, and justify it.",
+        "if_fail": "Drop back to 7NS5-S4 and rebuild generating a factorization with exponents before solving for the exponents from a product."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board: 2^a x 5^b = 200. Draw two bins underneath, one labelled 2 and one labelled 5."
+        },
+        {
+          "kind": "ask",
+          "text": "Before we worry about a and b, what is the full prime factorization of 200?"
+        },
+        {
+          "kind": "ask",
+          "text": "2 x 2 x 2 x 5 x 5. Drop each of those into its bin. How many are in the 2 bin?"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says a = 2 because there are two different primes, point at the bins. The 2 bin holds three tiles. The count they need is in the bin, not in the number of bins."
+        },
+        {
+          "kind": "ask",
+          "text": "Three in the 2 bin, two in the 5 bin. So a is what, and b is what?"
+        },
+        {
+          "kind": "ask",
+          "text": "Check it: 2 cubed is 8, 5 squared is 25, and 8 times 25 is what?"
+        },
+        {
+          "kind": "say",
+          "text": "Factor completely, sort into bins, count each bin. The exponent counts its own base and nothing else."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Each Exponent Counts Its Own Base",
+        "kind": "reference_card",
+        "instructions": "Factor first. Sort second. Count third. Check last.",
+        "items": [
+          "1. FACTOR the number completely into primes.",
+          "2. SORT the primes by base.",
+          "3. COUNT each base separately -- that count is its exponent.",
+          "4. CHECK by evaluating the powers and multiplying.",
+          "200 = 2 x 2 x 2 x 5 x 5  ->  2^3 x 5^2,  so a = 3 and b = 2.",
+          "TRAP: a is NOT the number of different primes.",
+          "TRAP: keep each count with its own base -- do not swap them."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Write the prime factorization of 72.",
+          "answer": "2 x 2 x 2 x 3 x 3"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "How many 2s are in the prime factorization of 200?",
+          "answer": "Three"
+        },
+        {
+          "difficulty": "core",
+          "stem": "2^a x 5^b = 200. What are the values of a and b?",
+          "answer": "a = 3, b = 2",
+          "notes": "200 = 2 x 2 x 2 x 5 x 5. Check: 8 x 25 = 200."
+        },
+        {
+          "difficulty": "core",
+          "stem": "2^a x 3^b = 72. What are the values of a and b?",
+          "answer": "a = 3, b = 2",
+          "notes": "72 = 2 x 2 x 2 x 3 x 3. Check: 8 x 9 = 72."
+        },
+        {
+          "difficulty": "core",
+          "stem": "3^a x 5^b = 225. What are the values of a and b?",
+          "answer": "a = 2, b = 2",
+          "notes": "225 = 3 x 3 x 5 x 5. Equal exponents, so this item tests the factoring rather than the assignment."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Read Devon's work. Find his mistake and fix it.",
+          "shown_work": [
+            "2^a x 5^b = 200. Find a and b.",
+            "Devon wrote: 'There are two different primes in 200, which are 2 and 5. So a = 2 and b = 2.'"
+          ],
+          "answer": "a = 3 and b = 2. Devon counted how many DIFFERENT primes appear instead of how many times each one appears. The full factorization is 2 x 2 x 2 x 5 x 5, which holds three 2s and two 5s. Check his answer: 2 squared times 5 squared is 4 x 25 = 100, not 200, so it fails immediately.",
+          "notes": "The canonical error. The check at the end is the fastest disproof and worth requiring every time."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "2^a x 7^b = 196. Find a and b, then explain how you knew which exponent belonged to which base.",
+          "answer": "a = 2 and b = 2, since 196 = 2 x 2 x 7 x 7. Each exponent counts only its own base: two 2s give a = 2, and two 7s give b = 2."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A student claims 2^a x 5^b = 150 has a whole-number solution. Is the claim possible? Explain.",
+          "answer": "No. 150 factors as 2 x 3 x 5 x 5, and that 3 cannot be produced by any power of 2 or 5. An expression using only the bases 2 and 5 can only make numbers whose prime factors are 2s and 5s, so 150 is out of reach.",
+          "notes": "Asks students to argue that no solution exists, which is a stronger demand than finding one."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Sort Into Bins",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Prime factor tiles",
+            "Two labelled bins or paper plates"
+          ],
+          "instructions": "1. Pairs factor a given number completely into prime tiles.\n2. Each tile is dropped into the bin matching its base.\n3. Pairs count the tiles in each bin and write the exponents.\n4. Pairs evaluate the powers and multiply to check they recover the original number.\n5. Run one number with three distinct primes and ask why the given expression would not work."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Devon Counted the Bins",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip",
+            "Prime factor tiles"
+          ],
+          "instructions": "1. Pairs read Devon's reasoning and evaluate his answer: 2 squared times 5 squared.\n2. Ask: what number did he actually make?\n3. Pairs build 200 with tiles, sort into bins, and count.\n4. Pairs write one sentence distinguishing 'how many different primes' from 'how many of each prime'.",
+          "content": {
+            "worked_problem": "2^a x 5^b = 200. Devon wrote a = 2 and b = 2 because 200 contains two different primes.",
+            "error_step": "Devon counted distinct primes rather than the multiplicity of each prime.",
+            "why": "200 = 2 x 2 x 2 x 5 x 5, so a = 3 and b = 2. His answer evaluates to 4 x 25 = 100, which the check exposes at once."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Two Counts, One Check",
+          "time_minutes": 7,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Post an expression such as 2^a x 3^b = 108.\n2. Students write both exponents AND the check multiplication.\n3. Both correct scores; exponents without a check score half.\n4. Final round: post one with no whole-number solution and see who spots that a third prime is in the way."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The bins make the multiplicity of each prime countable, so the exponent cannot attach to the wrong base."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Devon's distinct-primes count is the canonical error and is disproved in one multiplication."
+        },
+        {
+          "strategy_id": "strat-math-008",
+          "why": "Passing the whiteboard for factor, sort, count, check makes each stage someone's responsibility."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is the complete prime factorization, before any letters?",
+          "How many 2s are in that list? How many 5s?",
+          "Which exponent belongs to which base? How do you know it is not the other way round?",
+          "Evaluate your answer and multiply. Do you get the original number back?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reports the number of distinct primes as an exponent.",
+            "say": "Now count how many 2s are in that list -- that count is the exponent on the 2. Count the other prime separately. Each exponent counts its own base, not the number of different primes.",
+            "praise": "You counted each base separately against the full factorization. That is why the exponents landed on the right letters."
+          },
+          {
+            "if_you_see": "Student swaps the two exponents between bases.",
+            "say": "Evaluate what you wrote and multiply it out. Did you get the original number?",
+            "praise": "The check caught the swap. That is exactly what it is for."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "2^a x 3^b = 24. Give both.",
+            "look_for": "a = 3, b = 1. a = 2 means distinct primes are being counted."
+          },
+          {
+            "prompt": "How do you check your exponents?",
+            "look_for": "Evaluate the powers and multiply back to the original number."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "2^a x 5^b = 200. What are the values of a and b?",
+        "answer": "a = 3, b = 2",
+        "steps": [
+          {
+            "math": "Factor 200 completely: 200 = 2 x 2 x 2 x 5 x 5.",
+            "annotation": "Get the full prime list before looking at the letters."
+          },
+          {
+            "math": "Count the 2s: there are three.",
+            "annotation": "That count is the exponent on the base 2, so a = 3."
+          },
+          {
+            "math": "Count the 5s: there are two.",
+            "annotation": "That count is the exponent on the base 5, so b = 2."
+          },
+          {
+            "math": "Check: 2^3 x 5^2 = 8 x 25 = 200.",
+            "annotation": "Evaluating and multiplying back confirms both the counts and the assignment."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "2^a x 3^b = 72. What are the values of a and b?",
+        "answer": "a = 3, b = 2",
+        "steps": [
+          {
+            "math": "Factor 72 completely: 72 = 2 x 2 x 2 x 3 x 3.",
+            "annotation": "Get the full prime list before looking at the letters.",
+            "given": true
+          },
+          {
+            "math": "Count the 2s: there are three, so a = 3.",
+            "annotation": "That count is the exponent on the base 2.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Count the other base to find b, then check by evaluating both powers and multiplying.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The full factorization is ___.",
+        "There are ___ copies of ___, so ___ = ___.",
+        "Check: ___ x ___ = ___."
+      ],
+      "fluency_source": "7NS5-F1",
+      "pld_band": "at"
     },
     {
       "skill_id": "7NS5-S6",
@@ -2627,7 +3225,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "above"
     }
   ],
   "skill_columns": {
@@ -2649,19 +3248,21 @@
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
+      "description": "This standard's own expectations, climbing from Below Proficiency to At Proficiency. Every skill here is grade-level work.",
       "skills": [
         "7NS5-S1",
         "7NS5-S2",
+        "7NS5-S8",
         "7NS5-S3",
-        "7NS5-S4"
+        "7NS5-S5",
+        "7NS5-S4",
+        "7NS5-S9"
       ]
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Above-proficiency work and bridges to later standards.",
+      "description": "Above Proficiency on this standard, and bridges to later standards.",
       "skills": [
-        "7NS5-S5",
         "7NS5-S6"
       ]
     }
@@ -2673,9 +3274,11 @@
     "7NS5-B2",
     "7NS5-S1",
     "7NS5-S2",
+    "7NS5-S8",
     "7NS5-S3",
-    "7NS5-S4",
     "7NS5-S5",
+    "7NS5-S4",
+    "7NS5-S9",
     "7NS5-S6"
   ],
   "skill_tree": {
@@ -2703,19 +3306,24 @@
       "7NS5-S3"
     ],
     "7NS5-S5": [
-      "7NS5-S4",
       "7NS5-S3"
     ],
     "7NS5-S6": [
       "7NS5-S4",
       "7NS5-S1"
+    ],
+    "7NS5-S8": [
+      "7NS5-S2"
+    ],
+    "7NS5-S9": [
+      "7NS5-S4"
     ]
   },
   "diagnostic_flow": {
-    "description": "Start with S4, generating the prime factorization of a 100 to 200 number with exponents, the At-proficiency core. If they pass, move up to S5 (find a missing exponent) and S6 (verify and justify a factorization). If they fail, drop below grade level: B1 checks whether exponents are read as repeated multiplication and B2 checks GCF and LCM, the two grade 6 skills this standard leans on. If those wobble, the foundations locate the gap in grades 3 and 4: F1 probes multiplication and division fact families and F2 probes listing all the factor pairs of a number. S1, S2, and S3 remain available to probe the standard's own classify, factor, and exponent-notation groundwork.",
+    "description": "Start with S4, generating the prime factorization of a 100 to 225 number with exponents, the At-proficiency core. If they pass, move up to S6 (verify and justify a factorization). If they stall, S5 (find a missing exponent) is the approaching-proficiency rung just below S4 and isolates whether the student can read exponent form at all. If they fail, drop below grade level: B1 checks whether exponents are read as repeated multiplication and B2 checks GCF and LCM, the two grade 6 skills this standard leans on. If those wobble, the foundations locate the gap in grades 3 and 4: F1 probes multiplication and division fact families and F2 probes listing all the factor pairs of a number. S1, S2, and S3 remain available to probe the standard's own classify, factor, and exponent-notation groundwork.",
     "entry_skill": "7NS5-S4",
     "if_pass": [
-      "7NS5-S5",
+      "7NS5-S9",
       "7NS5-S6"
     ],
     "if_fail": [
@@ -2727,7 +3335,17 @@
       "7NS5-F2",
       "7NS5-S1",
       "7NS5-S2",
-      "7NS5-S3"
+      "7NS5-S3",
+      "7NS5-S5",
+      "7NS5-S8"
     ]
+  },
+  "pld_descriptors": {
+    "source": "refreshed",
+    "note": "Verbatim from the ILEARN item specification. These are performance bands on THIS standard, not lower-grade content: a student at Below Proficiency is working on this standard at its least complex entry point.",
+    "below": "Classify numbers as either prime or composite. Identify the correct prime factorization of whole numbers that are multiples of 10 using only the prime numbers 2, 3, and 5. Find a missing factor in a prime factorization equality statement when all factors are 2, 3, or 5.",
+    "approaching": "Identify the prime factorization of whole numbers less than 225, including numbers that are not multiples of 10. Determine the missing exponent in a prime factorization expression. Identify equivalent prime factorization forms.",
+    "at": "Generate the prime factorization of whole numbers. Determine the value of variables in an exponential expression when given the numerical value of the product.",
+    "above": "Analyze and justify the accuracy of a prime factorization expressed with exponents, including factorizations involving multi-step decomposition."
   }
 }

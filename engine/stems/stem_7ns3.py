@@ -13,12 +13,21 @@ Difficulty Tiers:
   Medium: Multiplication with one non-integer rational number
   Difficult: Multiplication of 2 or more non-integer rational numbers
 
-5 Stems from the Item Spec:
+The 2026-08-17 revision moved the equivalence multi-select down from Above
+to Approaching (stem 5), and added sign reasoning at Below (stem 6) and at
+Above (stems 8 and 9), plus a coefficient-on-a-mixed-sum item at At (stem 7).
+Stems 1 to 4 already match their descriptors and were left untouched.
+
+9 Stems from the Item Spec:
   Stem 1 (Below-MC):       Identify the expression modeled by a number line (DOK 2, easy)
   Stem 2 (Approaching-NR): Compute the product of signed integers (DOK 1, easy)
   Stem 3 (At-MC):          Apply distributive property to simplify (DOK 2, medium)
   Stem 4 (At-NR):          Multiply mixed signed numbers including fractions/decimals (DOK 1, difficult)
-  Stem 5 (Above-MS):       Identify equivalent expressions using sign rules (DOK 2, difficult)
+  Stem 5 (Approaching-MS): Identify equivalent expressions using sign rules (DOK 2, medium)
+  Stem 6 (Below-MS):    Judge the sign of a product without computing (DOK 2, easy)
+  Stem 7 (At-NR):       Rational coefficient on a fraction-plus-decimal sum (DOK 2, difficult)
+  Stem 8 (Above-MS):    Which statements hold given sign conditions on three variables (DOK 3, difficult)
+  Stem 9 (Above-MC):    Sign of a product of two variables (DOK 3, difficult)
 """
 
 import random
@@ -421,7 +430,7 @@ class Stem7NS3:
     # e.g., Select two expressions equivalent to (-4/9)(3/4)
     # ================================================================
 
-    def stem5_above_ms(self, variant_idx: int) -> GeneratedQuestion:
+    def stem5_approaching_ms(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(5, variant_idx)
 
         # Generate two signed fractions
@@ -537,13 +546,13 @@ class Stem7NS3:
             f"Correct answers: {correct_letters}"
         )
 
-        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE, ItemType.MS,
-                               Difficulty.DIFFICULT, 5, variant_idx)
+        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING, ItemType.MS,
+                               Difficulty.MEDIUM, 5, variant_idx)
 
         return GeneratedQuestion(
             question_id=qid, standard_code=STANDARD_CODE,
-            proficiency_level=ProficiencyLevel.ABOVE,
-            difficulty=Difficulty.DIFFICULT, dok=2, item_type=ItemType.MS,
+            proficiency_level=ProficiencyLevel.APPROACHING,
+            difficulty=Difficulty.MEDIUM, dok=2, item_type=ItemType.MS,
             stem_text=stem_text, stem_latex=stem_text,
             answer_text=correct_letters, answer_latex=correct_letters,
             worked_solution=worked,
@@ -556,6 +565,238 @@ class Stem7NS3:
     # MAIN GENERATION METHODS
     # ================================================================
 
+    # ================================================================
+    # STEM 6: Below Proficiency - MS (DOK 2, Easy)
+    # NEW. Below gained "determine whether a multiplication expression with
+    # two or three rational numbers will result in a positive or negative
+    # product". The point is to judge by counting negative factors, not to
+    # multiply, so the numbers stay small and the options stay unevaluated.
+    # ================================================================
+    def stem6_below_ms(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(6, variant_idx)
+
+        def make(n_factors, n_negative):
+            vals = []
+            for k in range(n_factors):
+                mag = rng.choice([2, 3, 4, 5, 6, 8])
+                if rng.random() < 0.3:
+                    mag = Fraction(1, rng.choice([2, 3, 4]))
+                vals.append(-mag if k < n_negative else mag)
+            rng.shuffle(vals)
+            text = "".join(f"({_fmt(v) if not isinstance(v, Fraction) else _fmt_frac(v)})"
+                           for v in vals)
+            positive = (n_negative % 2 == 0)
+            return text, positive
+
+        options, seen = [], set()
+        want_pos, want_neg = 2, 4
+        tries = 0
+        while (want_pos or want_neg) and tries < 80:
+            tries += 1
+            n_factors = rng.choice([2, 3])
+            n_negative = rng.randint(0, n_factors)
+            text, positive = make(n_factors, n_negative)
+            if text in seen:
+                continue
+            if positive and want_pos:
+                seen.add(text); options.append((text, True, None)); want_pos -= 1
+            elif not positive and want_neg:
+                seen.add(text)
+                options.append((text, False,
+                                "An odd number of negative factors makes the product negative"))
+                want_neg -= 1
+
+        rng.shuffle(options)
+        choices = [QuestionChoice(key=chr(ord("a") + i), text=t, text_latex=t,
+                                  is_correct=c, distractor_rationale=r)
+                   for i, (t, c, r) in enumerate(options)]
+        keys = [c.key.upper() for c in choices if c.is_correct]
+
+        stem_text = "Which two expressions have a positive value?"
+        worked = (
+            "Count the negative factors in each expression.\n"
+            "An even number of negative factors gives a positive product; "
+            "an odd number gives a negative product.\n"
+            "No multiplication is needed."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.MS, Difficulty.EASY, 6, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.BELOW,
+            difficulty=Difficulty.EASY, dok=2, item_type=ItemType.MS,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=", ".join(keys), answer_latex=", ".join(keys),
+            worked_solution=worked, choices=choices,
+            context_scenario="sign of a product without computing",
+            seed=self.base_seed * 1000 + 600 + variant_idx,
+            stem_index=6, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 7: At Proficiency - NR (DOK 2, Difficult)
+    # NEW. "Evaluate numerical expressions written as a coefficient multiplied
+    # by a sum or difference", with a decimal and a fraction inside the
+    # parentheses so the student must convert before adding. Mirrors the
+    # specification's own At item.
+    # ================================================================
+    def stem7_at_nr(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(7, variant_idx)
+
+        # Every value is a power-of-two-and-five denominator, so the answer
+        # always terminates rather than repeating.
+        coeff = Fraction(rng.choice([-30, -25, -20, -15, -12, 12, 15, 20, 25, 30]), 10)
+        # Proper fractions only: 4/4 or 4/2 would reduce to a whole number and
+        # the item would stop being a mixed-form conversion.
+        frac = rng.choice([Fraction(1, 2), Fraction(1, 4), Fraction(3, 4),
+                           Fraction(1, 5), Fraction(2, 5), Fraction(3, 5),
+                           Fraction(4, 5)])
+        dec = Fraction(rng.choice([-75, -50, -25, 25, 50, 75]), 100)
+        inner = frac + dec
+        while inner == 0:
+            dec = Fraction(rng.choice([-75, -50, -25, 25, 50, 75]), 100)
+            inner = frac + dec
+        result = coeff * inner
+
+        # A negative addend is parenthesised so the expression never reads as
+        # two operators in a row.
+        dec_str = f"+ {_fmt(dec)}" if dec > 0 else f"+ ({_fmt(dec)})"
+        stem_text = (
+            f"What is the value of {_fmt(coeff)}({_fmt_frac(frac)} {dec_str})?"
+        )
+
+        worked = (
+            f"Write both numbers inside the parentheses in the same form.\n"
+            f"{_fmt_frac(frac)} = {_fmt(frac)}\n"
+            f"{_fmt(frac)} + ({_fmt(dec)}) = {_fmt(inner)}\n"
+            f"{_fmt(coeff)} x {_fmt(inner)} = {_fmt(result)}"
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.AT,
+                                         ItemType.NR, Difficulty.DIFFICULT, 7, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.AT,
+            difficulty=Difficulty.DIFFICULT, dok=2, item_type=ItemType.NR,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=_fmt(result), answer_latex=_fmt(result),
+            worked_solution=worked,
+            context_scenario="rational coefficient on a mixed-form sum",
+            seed=self.base_seed * 1000 + 700 + variant_idx,
+            stem_index=7, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 8: Above Proficiency - MS (DOK 3, Difficult)
+    # NEW. Reproduces the specification's item 05: given sign conditions on
+    # three variables, decide which statements about their products and sums
+    # must be true. Nothing is computed; the reasoning is entirely about sign.
+    # ================================================================
+    def stem8_above_ms(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(8, variant_idx)
+
+        neg, pos1, pos2 = rng.sample(["r", "s", "t", "m", "n", "p"], 3)
+        conditions = f"{neg} < 0, {pos1} > 0, {pos2} > 0"
+
+        statements = [
+            (f"{neg}{pos1} < 0", True),
+            (f"{neg}{pos2} < 0", True),
+            (f"{neg}({pos1}{pos2}) > 0", False),
+            (f"{neg}({pos1} + {pos2}) < 0", True),
+            (f"{neg}({pos1} + {pos2}) > 0", False),
+            (f"{neg}{pos1}{pos2} = 0", False),
+        ]
+        rng.shuffle(statements)
+        why = {
+            f"{neg}({pos1}{pos2}) > 0": "A negative times a positive product is negative",
+            f"{neg}({pos1} + {pos2}) > 0": "The sum of two positives is positive, so the product is negative",
+            f"{neg}{pos1}{pos2} = 0": "A product is zero only when a factor is zero, and none is",
+        }
+        choices = [QuestionChoice(key=chr(ord("a") + i), text=t, text_latex=t,
+                                  is_correct=c,
+                                  distractor_rationale=None if c else why.get(t))
+                   for i, (t, c) in enumerate(statements)]
+        keys = [c.key.upper() for c in choices if c.is_correct]
+
+        stem_text = f"If {conditions}, select three true statements."
+        worked = (
+            f"{neg} is negative; {pos1} and {pos2} are positive.\n"
+            f"Negative times positive is negative, so {neg}{pos1} < 0 and {neg}{pos2} < 0.\n"
+            f"{pos1}{pos2} > 0, so {neg}({pos1}{pos2}) < 0, not greater than 0.\n"
+            f"{pos1} + {pos2} > 0, so {neg}({pos1} + {pos2}) < 0.\n"
+            f"No factor is zero, so the product cannot be 0."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE,
+                                         ItemType.MS, Difficulty.DIFFICULT, 8, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.ABOVE,
+            difficulty=Difficulty.DIFFICULT, dok=3, item_type=ItemType.MS,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=", ".join(keys), answer_latex=", ".join(keys),
+            worked_solution=worked, choices=choices,
+            context_scenario="sign reasoning over three variables",
+            seed=self.base_seed * 1000 + 800 + variant_idx,
+            stem_index=8, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 9: Above Proficiency - MC (DOK 3, Difficult)
+    # NEW. "Determine whether a product is greater than, less than, or equal
+    # to zero" for two variables with given signs - the simplest form of the
+    # generalisation the revised Above descriptor asks for.
+    # ================================================================
+    def stem9_above_mc(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(9, variant_idx)
+
+        x, y = rng.sample(["x", "y", "a", "b", "m", "n"], 2)
+        x_neg = rng.random() < 0.5
+        y_neg = rng.random() < 0.5
+        cond = f"{x} {'<' if x_neg else '>'} 0 and {y} {'<' if y_neg else '>'} 0"
+        product_negative = x_neg != y_neg
+
+        correct = f"{x}{y} < 0" if product_negative else f"{x}{y} > 0"
+        options = [
+            (correct, True, None),
+            (f"{x}{y} > 0" if product_negative else f"{x}{y} < 0", False,
+             "Miscounts the negative factors"),
+            (f"{x}{y} = 0", False,
+             "A product is zero only when a factor is zero"),
+            (f"{x}{y} < {x}", False,
+             "Compares the product to a factor, which the signs alone do not decide"),
+        ]
+        rng.shuffle(options)
+        choices = [QuestionChoice(key=chr(ord("a") + i), text=t, text_latex=t,
+                                  is_correct=c, distractor_rationale=r)
+                   for i, (t, c, r) in enumerate(options)]
+        key = next(c.key for c in choices if c.is_correct).upper()
+
+        stem_text = f"Suppose {cond}. Which statement is true about the product {x}{y}?"
+        n_neg = int(x_neg) + int(y_neg)
+        worked = (
+            f"There {'is' if n_neg == 1 else 'are'} {n_neg} negative "
+            f"factor{'' if n_neg == 1 else 's'}.\n"
+            f"An {'odd' if n_neg % 2 else 'even'} number of negative factors gives a "
+            f"{'negative' if product_negative else 'positive'} product.\n"
+            f"So {correct}."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE,
+                                         ItemType.MC, Difficulty.DIFFICULT, 9, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.ABOVE,
+            difficulty=Difficulty.DIFFICULT, dok=3, item_type=ItemType.MC,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{key}. {correct}", answer_latex=f"{key}. {correct}",
+            worked_solution=worked, choices=choices,
+            context_scenario="sign of a product of two variables",
+            seed=self.base_seed * 1000 + 900 + variant_idx,
+            stem_index=9, variant_index=variant_idx,
+        )
+
     def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
         all_questions = []
         stem_methods = [
@@ -563,7 +804,11 @@ class Stem7NS3:
             self.stem2_approaching_nr,
             self.stem3_at_mc,
             self.stem4_at_nr,
-            self.stem5_above_ms,
+            self.stem5_approaching_ms,
+            self.stem6_below_ms,
+            self.stem7_at_nr,
+            self.stem8_above_ms,
+            self.stem9_above_mc,
         ]
         for stem_fn in stem_methods:
             for v in range(variants_per_stem):
@@ -581,7 +826,11 @@ class Stem7NS3:
             2: self.stem2_approaching_nr,
             3: self.stem3_at_mc,
             4: self.stem4_at_nr,
-            5: self.stem5_above_ms,
+            5: self.stem5_approaching_ms,
+            6: self.stem6_below_ms,
+            7: self.stem7_at_nr,
+            8: self.stem8_above_ms,
+            9: self.stem9_above_mc,
         }
         fn = stem_methods.get(stem_index)
         if not fn:

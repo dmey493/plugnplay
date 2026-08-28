@@ -35,6 +35,7 @@ from engine.models import (
 )
 from engine.number_generators import NumberGenerator
 from engine.svg_helpers import coord_grid_polygon_svg
+from engine.stem_guards import distinct_choices
 
 
 STANDARD_CODE = "6.AF.5"
@@ -150,6 +151,7 @@ class Stem6AF5:
     # ----------------------------------------------------------------
     # Stem 1: Below – Identify points on coordinate plane (MC, DOK 1)
     # ----------------------------------------------------------------
+    @distinct_choices
     def _stem1(self, variant_idx):
         gen, rng = self._make_gen(1, variant_idx)
 

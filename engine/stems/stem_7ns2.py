@@ -14,13 +14,25 @@ Difficulty Tiers:
   Medium: decimal numbers (must have a negative value or negative solution)
   Difficult: fractions or mixed numbers; calculate distance using absolute value
 
-6 Stems from the Item Spec:
+The 2026-08-17 revision added two descriptor bullets nothing covered:
+Below gained 'calculate the distance between given integers plotted on a
+labeled number line to solve simple real-world problems' (stem 7), and
+Approaching gained 'identify expressions that represent the distance
+between a positive and negative number as the absolute value of their
+difference' (stem 8). Stem 3 was also adjusted: the same revision asks for
+the difference on a number line or in a real-world problem, so its bare
+'Solve.' drill no longer matched the level. Stems 1, 2 and 4 to 6 still
+match their descriptors and were left untouched.
+
+8 Stems from the Item Spec:
   Stem 1 (Below-MC):    Identify absolute value of a number on number line (DOK 2, difficult)
   Stem 2 (Below-NR):    Write the absolute value of a given number (DOK 1, easy)
-  Stem 3 (Approaching-NR): Calculate distance / subtract with negatives (DOK 2, medium)
+  Stem 3 (Approaching-NR): Find a difference across zero in a real-world setting (DOK 2, medium)
   Stem 4 (At-NR):       Subtract rational numbers — fractions/decimals (DOK 1, difficult)
   Stem 5 (At-NR):       Real-world subtraction with signed numbers (DOK 2, easy)
   Stem 6 (Above-MS):    Reason about a - b = c using number line with variables (DOK 3, difficult)
+  Stem 7 (Below-NR):    Distance between two plotted integers in a real-world setting (DOK 2, easy)
+  Stem 8 (Approaching-MS): Identify expressions giving distance as the absolute value of a difference (DOK 2, medium)
 """
 
 import random
@@ -267,17 +279,31 @@ class Stem7NS2:
         b_str = _fmt(b)
         result_str = _fmt(result)
 
+        # The 2026-08-17 Approaching descriptor asks for this difference to be
+        # found "on a number line or [to] solve simple real-world problems".
+        # A bare "Solve." drill satisfies neither, so the calculation now sits
+        # in a situation that crosses zero. The arithmetic is unchanged.
+        setting, unit, low_phrase = rng.choice([
+            ("The temperature", "degrees", "below zero"),
+            ("A diver's position", "meters", "below sea level"),
+            ("An account balance", "dollars", "overdrawn"),
+            ("An elevation reading", "feet", "below sea level"),
+        ])
         stem_text = (
-            f"Solve.\n\n"
-            f"{a_str} - ({b_str})"
+            f"{setting} was {_fmt(abs(b))} {unit} {low_phrase}, "
+            f"recorded as {b_str} {unit}.\n"
+            f"It later read {a_str} {unit}.\n\n"
+            f"What is the difference between the later value and the earlier one, "
+            f"in {unit}?"
         )
 
         correct_str = result_str
 
         worked = (
+            f"Difference = later value - earlier value = {a_str} - ({b_str})\n"
             f"Subtracting a negative is the same as adding the positive.\n"
             f"{a_str} - ({b_str}) = {a_str} + {_fmt(abs(b))}\n"
-            f"= {result_str}"
+            f"= {result_str} {unit}"
         )
 
         qid = make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING, ItemType.NR,
@@ -290,7 +316,7 @@ class Stem7NS2:
             stem_text=stem_text, stem_latex=stem_text,
             answer_text=correct_str, answer_latex=correct_str,
             worked_solution=worked,
-            context_scenario="subtract negative decimal",
+            context_scenario="difference across zero in context",
             seed=self.base_seed * 1000 + 300 + variant_idx,
             stem_index=3, variant_index=variant_idx
         )
@@ -620,6 +646,138 @@ class Stem7NS2:
     # MAIN GENERATION METHODS
     # ================================================================
 
+    # ================================================================
+    # STEM 7: Below Proficiency - NR (DOK 2, Easy)
+    # NEW for the 2026-08-17 revision. The Below descriptor gained
+    # "Calculate the distance between given integers plotted on a labeled
+    # number line to solve simple real-world problems." Nothing generated it.
+    # ================================================================
+    def stem7_below_nr(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(7, variant_idx)
+        name = pick_name(rng)
+
+        start = -rng.randint(2, 8)
+        end = rng.randint(2, 8)
+        distance = end - start
+
+        activity, unit, low_phrase, high_phrase = rng.choice([
+            ("hike", "meters", "below sea level", "above sea level"),
+            ("dive", "meters", "below the surface", "above the surface"),
+            ("climb", "feet", "below the ridge", "above the ridge"),
+            ("walk", "feet", "below street level", "above street level"),
+        ])
+
+        span = max(abs(start), abs(end)) + 2
+        ticks = list(range(-span, span + 1))
+
+        stem_text = (
+            f"{name} starts a {activity} at {abs(start)} {unit} {low_phrase} "
+            f"and ends at {end} {unit} {high_phrase}.\n\n"
+            f"The number line models the situation.\n\n"
+            f"What is the distance, in {unit}, between the start and the end?"
+        )
+
+        worked = (
+            f"Start is at {start} and end is at {end}.\n"
+            f"Distance is the absolute value of the difference:\n"
+            f"|{end} - ({start})| = |{end} + {abs(start)}| = {distance}\n"
+            f"On the number line, count {abs(start)} up to 0 and {end} more, "
+            f"which is {distance} {unit}."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.NR, Difficulty.EASY, 7, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.BELOW,
+            difficulty=Difficulty.EASY, dok=2, item_type=ItemType.NR,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=str(distance), answer_latex=str(distance),
+            worked_solution=worked,
+            context_scenario="distance between plotted integers in context",
+            seed=self.base_seed * 1000 + 700 + variant_idx,
+            stem_index=7, variant_index=variant_idx,
+            render_data={
+                "type": "number_line_point",
+                "ticks": ticks,
+                "points": [{"value": float(start), "label": "start"},
+                           {"value": float(end), "label": "end"}],
+            },
+        )
+
+    # ================================================================
+    # STEM 8: Approaching Proficiency - MS (DOK 2, Medium)
+    # NEW for the 2026-08-17 revision. Reproduces the specification's own
+    # item: identify which expressions give the distance between a positive
+    # and a negative number as the absolute value of their difference.
+    # Both orders of subtraction are correct; dropping the absolute value or
+    # adding instead of subtracting is not.
+    # ================================================================
+    def stem8_approaching_ms(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(8, variant_idx)
+
+        neg = -rng.randint(3, 12)
+        pos = rng.randint(2, 11)
+        distance = pos - neg
+
+        options = [
+            (f"|{neg} - {pos}|", True, None),
+            (f"|{pos} - ({neg})|", True, None),
+            (f"|{neg} + {pos}|", False,
+             "Adds instead of subtracting, so it gives the gap to zero, not the distance"),
+            (f"{neg} - {pos}", False,
+             "Drops the absolute value, so the result is negative and cannot be a distance"),
+            (f"{neg} + {pos}", False,
+             "Adds and drops the absolute value"),
+        ]
+        rng.shuffle(options)
+
+        choices = []
+        for i, (text, is_correct, rationale) in enumerate(options):
+            choices.append(QuestionChoice(
+                key=chr(ord("a") + i), text=text, text_latex=text,
+                is_correct=is_correct, distractor_rationale=rationale,
+            ))
+        correct_keys = [c.key for c in choices if c.is_correct]
+
+        span = max(abs(neg), abs(pos)) + 2
+        ticks = list(range(-span, span + 1))
+
+        stem_text = (
+            f"A number line is given, with points plotted at {neg} and {pos}.\n\n"
+            f"Select two expressions that represent the distance between "
+            f"these two numbers on a number line."
+        )
+
+        worked = (
+            f"Distance is the absolute value of the difference, and subtraction "
+            f"can go either way round.\n"
+            f"|{neg} - {pos}| = |{neg - pos}| = {distance}\n"
+            f"|{pos} - ({neg})| = |{pos + abs(neg)}| = {distance}\n"
+            f"Adding the two numbers gives {neg + pos}, which is not the distance."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING,
+                                         ItemType.MS, Difficulty.MEDIUM, 8, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.APPROACHING,
+            difficulty=Difficulty.MEDIUM, dok=2, item_type=ItemType.MS,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=", ".join(k.upper() for k in correct_keys),
+            answer_latex=", ".join(k.upper() for k in correct_keys),
+            worked_solution=worked, choices=choices,
+            context_scenario="absolute value of a difference as distance",
+            seed=self.base_seed * 1000 + 800 + variant_idx,
+            stem_index=8, variant_index=variant_idx,
+            render_data={
+                "type": "number_line_point",
+                "ticks": ticks,
+                "points": [{"value": float(neg), "label": ""},
+                           {"value": float(pos), "label": ""}],
+            },
+        )
+
     def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
         all_questions = []
         stem_methods = [
@@ -629,6 +787,8 @@ class Stem7NS2:
             self.stem4_at_nr,
             self.stem5_at_nr,
             self.stem6_above_ms,
+            self.stem7_below_nr,
+            self.stem8_approaching_ms,
         ]
         for stem_fn in stem_methods:
             for v in range(variants_per_stem):
@@ -648,6 +808,8 @@ class Stem7NS2:
             4: self.stem4_at_nr,
             5: self.stem5_at_nr,
             6: self.stem6_above_ms,
+            7: self.stem7_below_nr,
+            8: self.stem8_approaching_ms,
         }
         fn = stem_methods.get(stem_index)
         if not fn:

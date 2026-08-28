@@ -219,6 +219,10 @@ export default function ReviewPanel({
           exclude_ids: questions.map((x) => x.question_id),
           proficiency_level: q.proficiency_level,
           difficulty: q.difficulty,
+          // When the set was built from chosen stems, a replacement has to come
+          // from those same stems. Otherwise Swap quietly hands back a problem
+          // for a different practice than the one the teacher picked.
+          stems: requestParams.stems,
         }),
       });
       const replacement = await res.json();

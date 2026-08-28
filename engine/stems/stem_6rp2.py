@@ -38,6 +38,7 @@ from engine.models import (
 )
 from engine.number_generators import NumberGenerator
 from engine.context_pools import pick_name, CONTEXTS_6RP2
+from engine.stem_guards import distinct_choices
 
 
 STANDARD_CODE = "6.RP.2"
@@ -73,6 +74,7 @@ class Stem6RP2:
     # Identify which statement describes a unit rate
     # ================================================================
 
+    @distinct_choices
     def stem1_below_mc(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(1, variant_idx)
 

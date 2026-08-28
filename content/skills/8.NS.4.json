@@ -1,6 +1,6 @@
 {
   "standard_code": "8.NS.4",
-  "standard_text": "Solve real-world and other mathematical problems involving rational numbers and requiring multiple operations (e.g., problems combining fractions, decimals, and percents).",
+  "standard_text": "Solve real-world problems with rational numbers by using multiple operations.",
   "schema_version": 3,
   "progression": {
     "narrative": "8.NS.4 asks students to solve real world problems with rational numbers that take two or more operations, often mixing fractions, decimals, and percents and sometimes embedding a unit conversion. The on-grade skills climb from identifying the equation that models a situation, through order of operations on bare expressions, to two-step and then three or four step problems, with percent increase and decrease reserved for the top band. Because a calculator is allowed, the real bottleneck is setup: choosing the operations, sequencing the steps, and applying each percent to the correct base. Students who stall here usually carry grade 7 gaps in percent applications like tax, tip, and discount, and in solving two-step equations of the form px + q = r. Intervention rebuilds those grade 7 skills first, resting on the deeper foundations of grade 4 fraction and decimal equivalence and grade 6 one-step equations.",
@@ -1164,7 +1164,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "8NS4-S2",
@@ -1480,7 +1481,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "8NS4-S3",
@@ -1808,7 +1810,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "approaching"
     },
     {
       "skill_id": "8NS4-S4",
@@ -1875,7 +1878,7 @@
         }
       ],
       "next_steps": {
-        "if_pass": "8NS4-S5",
+        "if_pass": "Ready for 8NS4-S7: problems carrying one percent step or one unit conversion.",
         "if_fail": "8NS4-S3"
       },
       "worked_example_script": [
@@ -2087,7 +2090,328 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "approaching"
+    },
+    {
+      "skill_id": "8NS4-S7",
+      "name": "Solve a problem needing one percent step or one unit conversion",
+      "column": "on_grade",
+      "parent_standard": "8.NS.4",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8NS4-S4"
+      },
+      "i_do_script": "A percent step is one multiplication, not two. Watch a 6 percent surcharge on 19.50. Most people find 6 percent, get 1.17, and then add. That works, but there is a faster and safer version: 100 percent plus 6 percent is 106 percent, so multiply by 1.06 once. One step, one number, nothing to forget to add back. A discount works the same way in reverse -- 25 percent off means you pay 75 percent, so multiply by 0.75.",
+      "canonical_error": {
+        "pattern": "Multiplies by the percent itself and reports that as the answer, so the increase or the discount amount is returned instead of the new total",
+        "example": "For a 6 percent surcharge on $19.50, answers $1.17; for 25 percent off a $48 jacket, answers $12",
+        "why": "The multiplication the student performed is genuinely the first half of the work, and its result is a real quantity in the problem, so it feels finished. Nothing in the arithmetic signals that the question asked for the total rather than the change."
+      },
+      "item_template": "A real-world problem requiring exactly one percent calculation OR one unit conversion, sometimes with exponent notation in the quantities. Two or three operations total. MC or numeric response.",
+      "sample_items": [
+        {
+          "stem": "A school orders 234 folders. They pack into boxes of 18. Shipping costs $1.50 per box, and the company adds a 6% fuel surcharge. What is the final shipping cost?",
+          "answer": "$20.67",
+          "choices": [
+            "$18.75",
+            "$19.53",
+            "$20.67",
+            "$21.00"
+          ],
+          "distractor_logic": "$19.50 with no surcharge, or the surcharge alone, are the near misses this set is built around."
+        },
+        {
+          "stem": "A jacket costs $48.00 and is 25% off. A coupon takes $5 off the discounted price. What is the final cost?",
+          "answer": "$31.00",
+          "choices": null,
+          "distractor_logic": "$12 is the discount amount; $43 subtracts only the coupon."
+        },
+        {
+          "stem": "A common flea is 2^-4 inch long and can jump 2^3 inches high. How many times its body length can a flea jump?",
+          "answer": "128 times",
+          "choices": null,
+          "distractor_logic": "Adding the exponents gives 2^-1; students who do not recognise this as a division stall entirely."
+        },
+        {
+          "stem": "A recipe needs 2.5 liters of stock. Stock comes in 500 mL cartons and there are 1,000 mL in a liter. How many cartons are needed?",
+          "answer": "5 cartons",
+          "choices": null,
+          "distractor_logic": "Dividing 2.5 by 500 without converting gives 0.005 and no sensible carton count."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Read the question's last sentence again. Is it asking for the change, or for the new total?",
+        "prompt": "For an increase, multiply by 1 plus the percent. For a decrease, multiply by 1 minus the percent. One multiplication gives the new total directly, so there is nothing left to add or subtract afterwards.",
+        "praise": "You went straight to the total in one multiplication. That is fewer steps and one less thing to forget."
+      },
+      "vocabulary": [
+        {
+          "term": "Percent increase",
+          "definition": "The new amount is more than the original. Multiply by 1 plus the percent, as a decimal."
+        },
+        {
+          "term": "Percent decrease",
+          "definition": "The new amount is less. Multiply by 1 minus the percent."
+        },
+        {
+          "term": "Surcharge",
+          "definition": "An amount added on, usually stated as a percent of the original."
+        },
+        {
+          "term": "Unit conversion",
+          "definition": "Rewriting a quantity in different units. The conversion factor is given in the problem."
+        }
+      ],
+      "manipulative_visual": "A percent bar split into 100 parts with the original amount underneath. For an increase the bar is extended past 100; for a decrease it is cut short. Students read the multiplier off the bar's total length, which makes 1.06 and 0.75 visible as lengths rather than remembered rules.",
+      "next_steps": {
+        "if_pass": "Ready for 8NS4-S5: problems combining a percent step WITH a unit conversion, in the right order.",
+        "if_fail": "Drop back to 8NS4-B1 for finding tax, tip, and discount amounts, then return here and ask 'change or total?' before every answer."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a percent bar of 100 parts with $19.50 written underneath it. Write '6% surcharge' above."
+        },
+        {
+          "kind": "ask",
+          "text": "A surcharge adds on. On this bar, does the final amount stop before 100, at 100, or past it?"
+        },
+        {
+          "kind": "ask",
+          "text": "Past it -- 106 parts. So what single number do I multiply $19.50 by?"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student computes 0.06 x 19.50 = 1.17 and stops, do not mark it wrong. Ask what the 1.17 is -- it is the surcharge, not the bill. Then ask what the bill is."
+        },
+        {
+          "kind": "ask",
+          "text": "19.50 times 1.06. What do we get?"
+        },
+        {
+          "kind": "ask",
+          "text": "Now a discount: 25 percent off $48. Where does the bar stop, and what is the multiplier?"
+        },
+        {
+          "kind": "ask",
+          "text": "75 parts, so multiply by 0.75. And then the $5 coupon comes off after. Why after, not before?"
+        },
+        {
+          "kind": "say",
+          "text": "One multiplication takes you to the new total. Always ask whether the question wants the change or the total, because the change is only half the work."
+        }
+      ],
+      "printable_artifact": {
+        "title": "One Multiplication to the Total",
+        "kind": "reference_card",
+        "instructions": "Decide first: does the question want the CHANGE or the NEW TOTAL?",
+        "items": [
+          "Increase by p%   ->  multiply by (1 + p/100).   6% up  ->  x 1.06",
+          "Decrease by p%   ->  multiply by (1 - p/100).   25% off ->  x 0.75",
+          "The change alone: multiply by p/100. Usually NOT the answer.",
+          "$19.50 with 6% surcharge  ->  19.50 x 1.06 = $20.67",
+          "$48 at 25% off           ->  48 x 0.75 = $36",
+          "Unit conversion: the factor is given in the problem. Convert BEFORE the percent.",
+          "Exponents in context: 2^3 / 2^-4 = 2^(3-(-4)) = 2^7 = 128"
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What single number do you multiply by to increase an amount by 8%?",
+          "answer": "1.08"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What single number do you multiply by to take 30% off?",
+          "answer": "0.70"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A school orders 234 folders. They pack into boxes holding 18 folders each. Shipping costs $1.50 per box, and the company adds a 6% fuel surcharge. What is the final shipping cost?  (a) $18.75  (b) $19.53  (c) $20.67  (d) $21.00",
+          "answer": "(c) $20.67",
+          "notes": "234 / 18 = 13 boxes; 13 x 1.50 = $19.50; 19.50 x 1.06 = $20.67. Option (b) applies the surcharge to one box."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A jacket costs $48.00 and goes on sale for 25% off. A coupon then takes $5 off the discounted price. What is the final cost?",
+          "answer": "$31.00",
+          "notes": "48 x 0.75 = $36, then 36 - 5 = $31. Order matters -- the coupon applies after the percent."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A recipe needs 2.5 liters of stock. Stock comes in 500 mL cartons, and there are 1,000 mL in a liter. How many cartons are needed?",
+          "answer": "5 cartons",
+          "notes": "Convert first: 2.5 L = 2,500 mL. Then 2,500 / 500 = 5."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Read Nia's work. Find her mistake and fix it.",
+          "shown_work": [
+            "A $19.50 shipping charge has a 6% fuel surcharge added. What is the final cost?",
+            "Nia wrote: '0.06 x 19.50 = 1.17. The final cost is $1.17.'"
+          ],
+          "answer": "$20.67. Nia computed the surcharge correctly, but $1.17 is the amount ADDED, not the bill. She needed either to add it on (19.50 + 1.17 = 20.67) or to multiply once by 1.06 (19.50 x 1.06 = 20.67). A sense-check catches it: a surcharge makes a bill bigger, and $1.17 is far smaller than the original $19.50.",
+          "notes": "The canonical error for this rung, and the sense-check is the habit worth requiring."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A common flea is 2^-4 inch long and can jump 2^3 inches high. How many times its own body length can it jump?",
+          "answer": "128 times. The comparison is a division: 2^3 / 2^-4 = 2^(3 - (-4)) = 2^7 = 128.",
+          "notes": "The spec's approaching item. Recognising 'how many times its size' as a division is the whole difficulty."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A tablet is listed at $240 and the store adds 7% sales tax. A classmate says the total is 'about $247 because 7% of 240 is about 7.' Evaluate the reasoning and give the correct total.",
+          "answer": "The total is $256.80 (240 x 1.07). The classmate confused 7 percent with 7 dollars. Seven percent of 240 is 16.80, not 7, so the estimate is far too low. A quick sense-check: 10% of 240 would be 24, so 7% must be somewhat under that.",
+          "notes": "Attacks the percent-as-a-number-of-dollars slip, which sits underneath the canonical error."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Stretch or Cut the Bar",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Paper strips marked in 10 sections",
+            "Scissors",
+            "Tape"
+          ],
+          "instructions": "1. Each pair marks a strip as 100 percent and labels the original amount underneath.\n2. For an increase, the pair tapes on extra sections; for a decrease, they cut sections off.\n3. The pair reads the final bar length as a decimal multiplier and writes it down.\n4. Only then do they compute, using that single multiplier.\n5. Run one increase and one decrease with the same original amount, and compare the two multipliers."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Nia Stopped at the Surcharge",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Pairs read Nia's work and decide whether her multiplication is correct. (It is.)\n2. Ask: what quantity in the problem is $1.17? Is that what was asked for?\n3. Pairs finish the problem two ways -- adding on, and multiplying by 1.06 -- and confirm both give $20.67.\n4. Pairs write a one-sentence sense-check that would catch this error every time.",
+          "content": {
+            "worked_problem": "A $19.50 shipping charge gets a 6% surcharge. Nia wrote: 0.06 x 19.50 = 1.17, so the final cost is $1.17.",
+            "error_step": "Nia reported the surcharge amount as the final cost.",
+            "why": "$1.17 is what gets added. The bill is 19.50 + 1.17 = $20.67, or 19.50 x 1.06 in one step. A surcharge makes a bill larger, so an answer smaller than the original cannot be right."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Multiplier Only",
+          "time_minutes": 7,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Post a percent situation: 'up 12%', 'down 40%', '5% surcharge', '15% off'.\n2. Students write only the single multiplier, not any answer.\n3. Correct multipliers score. Speed up as accuracy holds.\n4. Final round: post 'up 100%' and 'down 100%' and discuss why the multipliers are 2 and 0."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The percent bar makes 1.06 and 0.75 physical lengths rather than remembered rules, which is what stops the change being mistaken for the total."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Nia's stopped-halfway answer is the canonical error and is caught by a sense-check the students write themselves."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Naming the single multiplier for a stated percent is a fluency worth building in short rounds."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Does the question want the change, or the new total?",
+          "What single number could you multiply by to land on the total in one step?",
+          "Is your answer bigger or smaller than you started with? Should it be?",
+          "If a conversion and a percent are both needed, which one comes first here?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student reports the percent amount as the final answer.",
+            "say": "For an increase, multiply by 1 plus the percent. For a decrease, multiply by 1 minus the percent. One multiplication gives the new total directly, so there is nothing left to add or subtract afterwards.",
+            "praise": "You went straight to the total in one multiplication. That is fewer steps and one less thing to forget."
+          },
+          {
+            "if_you_see": "Student treats a percent as an amount of money, e.g. 7% of $240 as $7.",
+            "say": "What would 10 percent of that be? So should 7 percent be near that, or near seven dollars?",
+            "praise": "Benchmarking against 10 percent is the fastest check there is."
+          },
+          {
+            "if_you_see": "Student applies a percent before a required unit conversion.",
+            "say": "What units is the percent supposed to act on? Get everything into those units first.",
+            "praise": "Right -- convert, then apply the percent."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "$80 with 5% tax -- one multiplier and the total.",
+            "look_for": "1.05 and $84. Answering $4 reports the tax alone."
+          },
+          {
+            "prompt": "2^5 / 2^-2 -- what is it?",
+            "look_for": "2^7 = 128. Adding the exponents gives 2^3 and misses the double negative."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A school orders 234 folders, packed into boxes of 18. Shipping is $1.50 per box plus a 6% fuel surcharge. What is the final shipping cost?",
+        "answer": "$20.67",
+        "steps": [
+          {
+            "math": "Boxes: 234 / 18 = 13.",
+            "annotation": "Find how many boxes before anything is priced."
+          },
+          {
+            "math": "Shipping before the surcharge: 13 x 1.50 = $19.50.",
+            "annotation": "This is the amount the percent will act on."
+          },
+          {
+            "math": "A 6% surcharge means multiplying by 1.06.",
+            "annotation": "100% plus 6% -- one multiplication to the total."
+          },
+          {
+            "math": "19.50 x 1.06 = $20.67.",
+            "annotation": "Sense-check: slightly more than $19.50, as a surcharge should be."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A club orders 180 badges, packed into boxes of 15. Shipping is $2.00 per box plus a 5% fuel surcharge. What is the final shipping cost?",
+        "answer": "$25.20",
+        "steps": [
+          {
+            "math": "Boxes: 180 / 15 = 12.",
+            "annotation": "Find how many boxes before anything is priced.",
+            "given": true
+          },
+          {
+            "math": "Shipping before the surcharge: 12 x 2.00 = $24.00.",
+            "annotation": "This is the amount the percent will act on.",
+            "given": true
+          },
+          {
+            "math": "A 5% surcharge means multiplying by 1.05.",
+            "annotation": "100% plus 5% -- one multiplication to the total.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Do the multiplication, state the final cost, and sense-check it against $24.00.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The percent acts on ___, which I found by ___.",
+        "A ___% ___ means multiplying by ___.",
+        "The answer should be ___ than ___, and it is."
+      ],
+      "fluency_source": "8NS4-F1",
+      "pld_band": "approaching"
     },
     {
       "skill_id": "8NS4-S5",
@@ -2095,7 +2419,9 @@
       "column": "on_grade",
       "parent_standard": "8.NS.4",
       "engine_stems": [
-        4
+        5,
+        6,
+        7
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -2107,7 +2433,7 @@
         "example": "For 48 gallons plus 17 liters (1 liter = 0.26 gallons), computes 48 + 17 = 65 instead of 48 + 17 x 0.26 = 52.42",
         "why": "The student adds numbers in different units as if they were the same, skipping the conversion the stem provides. Quantities must be in the same unit before they are combined, and every step in a three- or four-step chain has to be carried out."
       },
-      "item_template": "A three- to four-step real-world problem, often with a unit conversion given in the stem (liters to gallons, gallons to fluid ounces, feet to inches) plus a combine or divide step. Numeric response.",
+      "item_template": "A three- to four-step real-world problem, often with a unit conversion given in the stem (liters to gallons, gallons to fluid ounces, feet to inches) plus a combine or divide step. Numeric response. The refreshed spec also places signed values at this rung, so some items should carry negative quantities (temperatures, balances, elevations) whose sign has to be interpreted rather than ignored.",
       "sample_items": [
         {
           "stem": "A store had 48 gallons of milk in stock. A delivery of 17 liters of milk arrived.\n\n1 liter is approximately 0.26 gallons.\n\nHow many total gallons of milk does the store have now? Round to the nearest whole number.",
@@ -2230,6 +2556,18 @@
           "stem": "A 12-foot board is cut into 8-inch pieces. 1 foot = 12 inches. How many whole pieces can be cut?",
           "answer": "18 pieces (12 x 12 = 144 inches, then 144 / 8)",
           "notes": "Less friendly: convert feet to inches, then divide."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A checking account is overdrawn at -$85.50. Three deposits of $42.25 each are made, and the bank then charges a $12 overdraft fee. What is the final balance?",
+          "answer": "$29.25. Deposits: 3 x 42.25 = $126.75. Balance: -85.50 + 126.75 = $41.25. After the fee: 41.25 - 12 = $29.25.",
+          "notes": "Signed start value. Students who drop the negative sign get $214.25 and never notice."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A hiker starts at an elevation of -85 feet and climbs at 12.5 feet per minute for 14 minutes. What is the final elevation?",
+          "answer": "90 feet above sea level. 12.5 x 14 = 175 feet climbed; -85 + 175 = 90.",
+          "notes": "Crossing zero. An answer of -260 comes from subtracting rather than adding the climb."
         }
       ],
       "activities": [
@@ -2357,7 +2695,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "at"
     },
     {
       "skill_id": "8NS4-S6",
@@ -2365,7 +2704,9 @@
       "column": "looking_forward",
       "parent_standard": "8.NS.4",
       "engine_stems": [
-        5
+        5,
+        6,
+        7
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -2424,7 +2765,7 @@
         }
       ],
       "next_steps": {
-        "if_pass": "Ready for Algebra I (linear and exponential equations, and percent applications).",
+        "if_pass": "Ready for 8NS4-S8: two percent changes in a row, where the second acts on the amount the first produced.",
         "if_fail": "8NS4-S5"
       },
       "worked_example_script": [
@@ -2628,7 +2969,334 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "above"
+    },
+    {
+      "skill_id": "8NS4-S8",
+      "name": "Solve problems with repeated or signed percent change",
+      "column": "looking_forward",
+      "parent_standard": "8.NS.4",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8NS4-S6"
+      },
+      "i_do_script": "Two percent changes in a row do not add up. Watch a price go up 25 percent and then down 25 percent. It does not come back to where it started. Up 25 is times 1.25, down 25 is times 0.75, and 1.25 times 0.75 is 0.9375 -- so the price ends 6.25 percent BELOW where it began. The second percent acts on the new amount, not the original one, and that is why the two do not cancel.",
+      "canonical_error": {
+        "pattern": "Adds or subtracts successive percents instead of multiplying the factors, and applies the second percent to the original amount rather than to the new one",
+        "example": "Says a price up 25% then down 25% returns to the original, or treats an 18% decrease followed by a 12% decrease as a single 30% decrease",
+        "why": "Percents look like quantities that combine by addition, and for a single step nothing contradicts that. The base changing between steps is invisible in the wording -- the problem says 'decreases by 12%' without saying 12% of what, and the student supplies the original."
+      },
+      "item_template": "Two or more percent changes applied in sequence, or a percent change spanning signed values, often with a unit conversion. Numeric response with rounding specified.",
+      "sample_items": [
+        {
+          "stem": "A battery holds 620 mAh. A cooling process decreases the charge by 18%. After five minutes it decreases by a further 12% of the new amount. What is the final charge in Ah, to the nearest hundredth? (1 Ah = 1000 mAh)",
+          "answer": "0.45 Ah",
+          "choices": null,
+          "distractor_logic": "Treating it as a single 30% decrease gives 434 mAh, or 0.43 Ah."
+        },
+        {
+          "stem": "A freezer starts at -40 degrees F. After three hours the temperature is -20 degrees F. What is the percent increase in temperature over the three hours?",
+          "answer": "50%. The change is 20 degrees, and 20 divided by 40 is 0.5.",
+          "choices": null,
+          "distractor_logic": "Dividing by -20 or by 60 comes from picking the wrong base or the wrong change."
+        },
+        {
+          "stem": "A price rises 25% and then falls 25%. Is the final price higher, lower, or the same as the original? By how much, as a percent?",
+          "answer": "Lower, by 6.25%. The factors multiply: 1.25 x 0.75 = 0.9375, which is 6.25% below the original.",
+          "choices": null,
+          "distractor_logic": "'The same' is the canonical error, and it is the intuitive answer."
+        },
+        {
+          "stem": "Jose makes 6 gallons of fruit drink, 37.5% of which is apple juice. Apple juice comes in 64-fluid-ounce bottles at $2.29 each, and 128 fluid ounces make a gallon. How much does the apple juice cost?",
+          "answer": "$11.45. 6 gallons is 768 fl oz; 37.5% of that is 288 fl oz; 288 / 64 = 4.5 bottles, so 5 bottles must be bought; 5 x 2.29 = $11.45.",
+          "choices": null,
+          "distractor_logic": "Buying 4.5 bottles gives $10.31 and ignores that bottles are sold whole."
+        }
+      ],
+      "redirect_script": {
+        "stop": "The second percent acts on what amount -- the original, or the one you just calculated?",
+        "prompt": "Do not add the percents. Turn each change into a multiplier and multiply them in order. The result of the first change is what the second one acts on.",
+        "praise": "You multiplied the factors instead of adding the percents. That is why the second change landed on the right base."
+      },
+      "vocabulary": [
+        {
+          "term": "Successive percent change",
+          "definition": "Two or more changes applied one after another, each acting on the result of the last."
+        },
+        {
+          "term": "Multiplier",
+          "definition": "The single number a change is equivalent to. Up 18% is x 1.18; down 18% is x 0.82."
+        },
+        {
+          "term": "Base",
+          "definition": "The amount a percent is taken of. In a second change, the base is the new amount."
+        },
+        {
+          "term": "Percent increase",
+          "definition": "The change divided by the ORIGINAL amount, expressed as a percent."
+        }
+      ],
+      "manipulative_visual": "Two percent bars drawn end to end, the second one scaled to the length of the first one's result rather than to the original. Seeing the second bar built on a shorter base makes it obvious why 25 up and 25 down do not cancel.",
+      "next_steps": {
+        "if_pass": "Ready for Algebra I: exponential change formalises repeated percent multipliers into growth and decay.",
+        "if_fail": "Drop back to 8NS4-S6 for a single percent change, then return here and write both multipliers before computing anything."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board: a price of $80 goes up 25%, then down 25%. Draw one percent bar for the original."
+        },
+        {
+          "kind": "ask",
+          "text": "Before we compute -- where do you think it ends up? Vote: higher, lower, or the same."
+        },
+        {
+          "kind": "watch",
+          "text": "Most of the room will say the same. Record the vote on the board; you will come back to it. The prediction being wrong is the lesson, so let it stand."
+        },
+        {
+          "kind": "ask",
+          "text": "Up 25 percent. What multiplier, and what is 80 times it?"
+        },
+        {
+          "kind": "ask",
+          "text": "Now down 25 percent. Careful -- 25 percent of WHAT? Point at the number it acts on."
+        },
+        {
+          "kind": "ask",
+          "text": "25 percent of 100, not of 80. So 100 times 0.75 is what?"
+        },
+        {
+          "kind": "ask",
+          "text": "$75. We started at $80. Look back at the vote -- why did so many of us expect $80?"
+        },
+        {
+          "kind": "say",
+          "text": "The base changed between the two steps. Turn each change into a multiplier and multiply them: 1.25 times 0.75 is 0.9375, which is 6.25 percent down overall."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Percents Multiply, They Do Not Add",
+        "kind": "reference_card",
+        "instructions": "Each change acts on the result of the one before it.",
+        "items": [
+          "Up p%   ->  x (1 + p/100).    Down p%  ->  x (1 - p/100).",
+          "Two changes in a row: MULTIPLY the two multipliers.",
+          "Up 25% then down 25%:  1.25 x 0.75 = 0.9375  ->  6.25% DOWN, not back to start.",
+          "Down 18% then down 12%:  0.82 x 0.88 = 0.7216  ->  NOT down 30%.",
+          "Percent increase = (change) / (ORIGINAL), even when values are negative.",
+          "-40 to -20: change is 20, original size is 40, so 50% increase.",
+          "If the answer must be a whole item (bottles, boxes), round UP."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What multiplier represents a 12% decrease?",
+          "answer": "0.88"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A $50 item rises 10%. What is the new price?",
+          "answer": "$55"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A battery holds 620 mAh. A cooling process decreases the charge by 18%. After five minutes the charge decreases by a further 12% of the new amount. What is the final charge in Ah, to the nearest hundredth? (1 Ah = 1,000 mAh)",
+          "answer": "0.45 Ah. 620 x 0.82 = 508.4; 508.4 x 0.88 = 447.392 mAh; divided by 1,000 gives 0.447392, which rounds to 0.45 Ah.",
+          "notes": "Treating it as a single 30% decrease gives 434 mAh and 0.43 Ah, which is the canonical error."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A price rises 25% and then falls 25%. Is the final price higher, lower, or the same as the original, and by what percent?",
+          "answer": "Lower, by 6.25%. The multipliers give 1.25 x 0.75 = 0.9375, so the final price is 93.75% of the original.",
+          "notes": "Poll the class before computing -- most predict 'the same', which is the point."
+        },
+        {
+          "difficulty": "core",
+          "stem": "A research freezer begins at -40 degrees F. Over three hours it rises to -20 degrees F. What is the percent increase in temperature over the three hours?",
+          "answer": "50%. The change is 20 degrees and the original magnitude is 40, so 20 / 40 = 0.50.",
+          "notes": "Signed values. The base is the size of the starting value, and the change is the difference between the two."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Read Dominic's work. Find his mistake and fix it.",
+          "shown_work": [
+            "A 620 mAh battery loses 18% of its charge, then loses a further 12% of the new amount.",
+            "Dominic wrote: '18 + 12 = 30, so the battery lost 30%. 620 x 0.70 = 434 mAh.'"
+          ],
+          "answer": "447.392 mAh, which is about 0.45 Ah. Dominic added the two percents, but the second 12% acts on the amount left after the first loss, not on the original 620. Multiply the factors in order: 620 x 0.82 = 508.4, then 508.4 x 0.88 = 447.392. Adding the percents always overstates a repeated decrease, because the second one is taken from a smaller base.",
+          "notes": "The canonical error. The direction of the error is worth naming: adding always overstates a repeated decrease."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Jose makes 6 gallons of fruit drink, 37.5% of it apple juice. Apple juice comes in 64-fluid-ounce bottles costing $2.29 each, and 128 fluid ounces make a gallon. How much does the apple juice cost?",
+          "answer": "$11.45. 6 x 128 = 768 fl oz; 37.5% of 768 = 288 fl oz; 288 / 64 = 4.5 bottles; bottles are sold whole so 5 are needed; 5 x 2.29 = $11.45.",
+          "notes": "The 4.5 has to round UP, because half a bottle cannot be bought. Answering $10.31 ignores that."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A shop raises a price by 20% and then wants a single discount that returns it exactly to the original. What percent discount is needed, and why is it not 20%?",
+          "answer": "About 16.67%. After the rise the price is 1.20 times the original, and to return you must multiply by 1/1.20 = 0.8333, which is a 16.67% decrease. It is not 20% because the discount is taken from the larger, raised price, so a smaller percent removes the same amount of money.",
+          "notes": "Runs the canonical error in reverse and forces the changing base into the open."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build the Second Bar on the First",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper strips",
+            "Scissors",
+            "Tape",
+            "Rulers"
+          ],
+          "instructions": "1. Pairs cut a strip to represent the original amount and label it.\n2. They apply the first percent change physically, taping on or cutting off, and label the result.\n3. Rule: the second change must be measured against the NEW strip, not the original one.\n4. Pairs record both multipliers and their product, then check it against the final strip length.\n5. Run the up-25-then-down-25 case and measure how far short of the original the final strip falls."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Dominic Added the Percents",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip",
+            "Calculators"
+          ],
+          "instructions": "1. Pairs read Dominic's work and compute the correct value before discussing.\n2. Ask first: is 30% a reasonable estimate of the total loss? (It is close, which is why the error survives.)\n3. Pairs compute both ways and find the gap between 434 and 447.4.\n4. Pairs decide whether adding percents overstates or understates a repeated decrease, and explain why.",
+          "content": {
+            "worked_problem": "A 620 mAh battery loses 18%, then loses 12% of the new amount. Dominic wrote: 18 + 12 = 30%, so 620 x 0.70 = 434 mAh.",
+            "error_step": "Dominic added the two percents, applying the second one to the original amount instead of the reduced one.",
+            "why": "Multipliers combine by multiplication: 0.82 x 0.88 = 0.7216, so the battery keeps 72.16%, not 70%. The second 12% is taken from 508.4, not from 620, so adding the percents always overstates a repeated decrease."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Predict, Then Multiply",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Response cards: HIGHER / LOWER / SAME"
+          ],
+          "instructions": "1. Post two successive changes, such as up 30% then down 30%.\n2. Students predict HIGHER, LOWER, or SAME before any arithmetic.\n3. Record the class vote, then compute the product of the multipliers together.\n4. Score the class as a whole on how often the prediction matched.\n5. Final round: up 50% then down 50%, where the gap is largest and most surprising."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building the second bar against the first one's result makes the changing base physical, which is exactly what the wording hides."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Dominic's added percents are the canonical error, and the gap between 434 and 447 gives it a size."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "The predict-then-check vote only works if students commit publicly first, which pair discussion makes safe."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "The second percent is taken of what amount? Point at it.",
+          "Write both multipliers before you compute anything. What is their product?",
+          "Predict first: higher, lower, or the same? Now check.",
+          "For a percent increase, what goes on the bottom of the fraction?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds successive percents into a single change.",
+            "say": "Do not add the percents. Turn each change into a multiplier and multiply them in order. The result of the first change is what the second one acts on.",
+            "praise": "You multiplied the factors instead of adding the percents. That is why the second change landed on the right base."
+          },
+          {
+            "if_you_see": "Student says up p% then down p% returns to the original.",
+            "say": "The second percent comes off a bigger number than the first went on. Does the same percent of a bigger number take away more or less?",
+            "praise": "Right -- the bases differ, so the two changes are not the same size in money."
+          },
+          {
+            "if_you_see": "Student divides by the final value rather than the original when finding percent increase.",
+            "say": "Percent increase compares the change to where you STARTED. Which number is the starting one?",
+            "praise": "Good -- the original goes on the bottom, every time."
+          },
+          {
+            "if_you_see": "Student reports a fractional number of whole items, such as 4.5 bottles.",
+            "say": "Can you buy half a bottle? What has to happen to that number?",
+            "praise": "Round up -- you need enough, and part of a bottle is not for sale."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Down 20% then down 10% -- one multiplier for the whole thing.",
+            "look_for": "0.8 x 0.9 = 0.72. An answer of 0.70 means the percents were added."
+          },
+          {
+            "prompt": "-50 rises to -25. Percent increase?",
+            "look_for": "50%, from 25 / 50. Using 25 as the base gives 100% and misreads the original."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "A battery holds 620 mAh. It loses 18% of its charge, then loses a further 12% of the new amount. What is the final charge in Ah, to the nearest hundredth? (1 Ah = 1,000 mAh)",
+        "answer": "0.45 Ah",
+        "steps": [
+          {
+            "math": "First change: down 18% means multiplying by 0.82.",
+            "annotation": "100% minus 18%."
+          },
+          {
+            "math": "620 x 0.82 = 508.4 mAh.",
+            "annotation": "This is the new base for the second change."
+          },
+          {
+            "math": "Second change: down 12% of the NEW amount means x 0.88.",
+            "annotation": "508.4, not 620. This is the step the error skips."
+          },
+          {
+            "math": "508.4 x 0.88 = 447.392 mAh.",
+            "annotation": "Equivalently, 620 x 0.82 x 0.88."
+          },
+          {
+            "math": "Convert: 447.392 / 1000 = 0.447392 Ah, which rounds to 0.45 Ah.",
+            "annotation": "Convert last, and round only at the end."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A tank holds 400 mL. It loses 25% of its contents, then loses a further 20% of the new amount. What is the final volume in liters, to the nearest hundredth? (1 L = 1,000 mL)",
+        "answer": "0.24 L",
+        "steps": [
+          {
+            "math": "First change: down 25% means multiplying by 0.75.",
+            "annotation": "100% minus 25%.",
+            "given": true
+          },
+          {
+            "math": "400 x 0.75 = 300 mL.",
+            "annotation": "This is the new base for the second change.",
+            "given": true
+          },
+          {
+            "math": "Second change: down 20% of the NEW amount means x 0.80.",
+            "annotation": "300, not 400.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Finish the multiplication, convert to liters, and round to the nearest hundredth.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The first change is a multiplier of ___, giving ___.",
+        "The second change acts on ___, not on ___, so the multiplier is ___.",
+        "Overall the amount was multiplied by ___, which is a ___% ___."
+      ],
+      "fluency_source": "8NS4-F1",
+      "pld_band": "above"
     }
   ],
   "skill_columns": {
@@ -2650,20 +3318,22 @@
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
+      "description": "This standard's own expectations, climbing from Below Proficiency to At Proficiency. Every skill here is grade-level work.",
       "skills": [
         "8NS4-S1",
         "8NS4-S2",
         "8NS4-S3",
         "8NS4-S4",
+        "8NS4-S7",
         "8NS4-S5"
       ]
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Above-proficiency work and bridges to later standards.",
+      "description": "Above Proficiency on this standard, and bridges to later standards.",
       "skills": [
-        "8NS4-S6"
+        "8NS4-S6",
+        "8NS4-S8"
       ]
     }
   },
@@ -2676,8 +3346,10 @@
     "8NS4-S2",
     "8NS4-S3",
     "8NS4-S4",
+    "8NS4-S7",
     "8NS4-S5",
-    "8NS4-S6"
+    "8NS4-S6",
+    "8NS4-S8"
   ],
   "skill_tree": {
     "8NS4-F1": [],
@@ -2703,18 +3375,26 @@
       "8NS4-S3"
     ],
     "8NS4-S5": [
-      "8NS4-S4"
+      "8NS4-S7"
     ],
     "8NS4-S6": [
       "8NS4-S5",
       "8NS4-F1"
+    ],
+    "8NS4-S7": [
+      "8NS4-S4",
+      "8NS4-B1"
+    ],
+    "8NS4-S8": [
+      "8NS4-S6"
     ]
   },
   "diagnostic_flow": {
     "description": "Start with S5, a three or four step real-world problem with an embedded unit conversion, the At-proficiency core. If they pass, push up to S6, the Above-band percent increase and decrease problems. If they fail, drop one grade: B1 checks the grade 7 percent applications (tax, tip, discount) and B2 checks grade 7 two-step equations, the two skills multi-step setup leans on. If those wobble, the foundations F1 (grade 4 fraction and decimal equivalence) and F2 (grade 6 one-step equations) locate the deeper gap. S1 through S4 remain available to probe the standard's own modeling, order of operations, and two-step solving ladder.",
     "entry_skill": "8NS4-S5",
     "if_pass": [
-      "8NS4-S6"
+      "8NS4-S6",
+      "8NS4-S8"
     ],
     "if_fail": [
       "8NS4-B1",
@@ -2726,7 +3406,16 @@
       "8NS4-S1",
       "8NS4-S2",
       "8NS4-S3",
-      "8NS4-S4"
+      "8NS4-S4",
+      "8NS4-S7"
     ]
+  },
+  "pld_descriptors": {
+    "source": "refreshed",
+    "note": "Verbatim from the ILEARN item specification. These are performance bands on THIS standard, not lower-grade content: a student at Below Proficiency is working on this standard at its least complex entry point.",
+    "below": "Identify expressions or steps to solving real-world problems with rational numbers and two or more steps.",
+    "approaching": "Determine solutions to simple real-world problems that involve rational numbers by recognizing operations, including applying one percent calculation or unit conversion.",
+    "at": "Determine solutions to real-world problems involving multiple operations with rational numbers that require selecting operations based on the structure of the content and integrating percent reasoning with multiple steps. Solve complex problems that require interpreting signed values and applying percent reasoning or conversions in the appropriate order.",
+    "above": "Determine solutions to complex real-world problems that require advanced reasoning with percentages. Solve extended problems that require integrating signed quantities, multi-step percent changes (including repeated or negative percents), additive or multiplicative adjustments, and selective conversions."
   }
 }

@@ -35,6 +35,7 @@ from engine.models import (
 )
 from engine.number_generators import NumberGenerator, five_number_summary
 from engine.svg_helpers import dot_plot_svg, box_plot_svg
+from engine.stem_guards import distinct_choices
 
 
 STANDARD_CODE = "6.DS.3"
@@ -91,6 +92,7 @@ class Stem6DS3:
     # ----------------------------------------------------------------
     # Stem 1: Below – Calculate mean, median, range (MC, DOK 1)
     # ----------------------------------------------------------------
+    @distinct_choices
     def _stem1(self, variant_idx):
         gen, rng = self._make_gen(1, variant_idx)
         context = rng.choice(DATA_CONTEXTS)

@@ -1179,7 +1179,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "7NS6-S2",
@@ -1425,6 +1426,11 @@
             "if_you_see": "Student gives the square of the number instead of its root.",
             "say": "A square root goes DOWN to the factor. The square root of 256 is 16, not 256 -- find what times itself makes 256.",
             "praise": "You moved to the factor that squares to it -- that's the root, not the square."
+          },
+          {
+            "if_you_see": "Student assumes every perfect square has exactly one square root.",
+            "say": "Multiply the opposite of your answer by itself. Does it give the same number? A perfect square has two roots; the bare radical symbol reports the positive one.",
+            "praise": "You checked both signs instead of stopping at the first one that worked."
           }
         ],
         "quick_checks": [
@@ -1490,7 +1496,307 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
+    },
+    {
+      "skill_id": "7NS6-S7",
+      "name": "Write an expression showing that squaring and square rooting undo each other",
+      "column": "on_grade",
+      "parent_standard": "7.NS.6",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS6-S2"
+      },
+      "i_do_script": "You already know squaring and square rooting undo each other. Now you have to write that down as an expression instead of saying it. Watch: I start with 7, square it to get 49, then take the square root of 49 and I am back at 7. Written as one expression that is the square root of 7 squared, and it equals 7. The letter version says the same thing for every number: the square root of n squared equals n. The expression is a sentence, and it says the two operations cancel.",
+      "canonical_error": {
+        "pattern": "Writes the two operations side by side rather than nested, so the expression does not actually undo anything",
+        "example": "Writes 'the square root of n, then n squared' as two separate expressions, or writes n^2 = sqrt(n), treating the inverse relationship as an equality between the two operations",
+        "why": "The student understands the relationship in words -- one undoes the other -- but has not seen that undoing means applying the second operation TO the result of the first. Nesting is the notation for 'then', and nothing in the spoken version signals it."
+      },
+      "item_template": "Build or select an expression showing that squaring and square rooting are inverse operations, using either a number or a variable. Tile-drag, MC, or short constructed response.",
+      "sample_items": [
+        {
+          "stem": "Create an expression that represents the inverse relationship between squaring a number and finding its square root. Use the variable n.",
+          "answer": "The square root of n squared equals n (equivalently, the square of the square root of n equals n)",
+          "choices": null,
+          "distractor_logic": "Writing n^2 and sqrt(n) as two separate expressions shows the nesting was missed."
+        },
+        {
+          "stem": "Which expression shows that squaring and square rooting undo each other?",
+          "answer": "sqrt(6^2) = 6",
+          "choices": [
+            "6^2 = sqrt(6)",
+            "sqrt(6) x 6^2",
+            "sqrt(6^2) = 6",
+            "6^2 + sqrt(6) = 6"
+          ],
+          "distractor_logic": "The first sets the two operations equal to each other; the others combine them with an operation instead of nesting them."
+        },
+        {
+          "stem": "Fill in the blanks so the statement is true:  sqrt(9^2) = ___  and  (sqrt(81))^2 = ___",
+          "answer": "9 and 81",
+          "choices": null,
+          "distractor_logic": "Answering 81 and 9 shows the nesting order was read backwards."
+        },
+        {
+          "stem": "Explain in one sentence why sqrt(12^2) equals 12 without computing 12 squared.",
+          "answer": "Squaring 12 and then taking the square root undoes the squaring, so the result returns to 12. The operations cancel, so the arithmetic is unnecessary.",
+          "choices": null,
+          "distractor_logic": "Computing 144 and then rooting it gets the right answer but misses that the relationship makes the computation avoidable."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Are your two operations sitting side by side, or is one inside the other?",
+        "prompt": "Undoing means doing the second operation TO the result of the first. Put one inside the other: square the number, then take the root of that whole thing. Write the inside part first and wrap the root around it.",
+        "praise": "You nested them instead of listing them. That is what makes the expression say 'undo'."
+      },
+      "vocabulary": [
+        {
+          "term": "Inverse operations",
+          "definition": "Two operations that undo each other, like squaring and square rooting."
+        },
+        {
+          "term": "Nested",
+          "definition": "One operation applied to the result of another, written one inside the other."
+        },
+        {
+          "term": "Expression",
+          "definition": "A mathematical phrase. Here it has to say that the two operations cancel."
+        }
+      ],
+      "manipulative_visual": "Two nesting cups labelled SQUARE and ROOT. A number card dropped into SQUARE comes out as its square; dropping that into ROOT returns the original card. Physically nesting the cups shows why the notation nests too.",
+      "next_steps": {
+        "if_pass": "Ready for 7NS6-S3 and S4: evaluate roots and identify which expressions equal a given value.",
+        "if_fail": "Drop back to 7NS6-S2 and rebuild finding square roots of perfect squares before writing the relationship symbolically."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Set two cups on the desk, labelled SQUARE and ROOT. Hold up a card with 7 on it."
+        },
+        {
+          "kind": "ask",
+          "text": "I drop 7 into the SQUARE cup. What comes out?"
+        },
+        {
+          "kind": "ask",
+          "text": "Now I take that 49 and drop it into the ROOT cup. What comes out?"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student writes 7^2 and sqrt(7) side by side, ask them which number goes into the second cup. The answer is the OUTPUT of the first, and that is what nesting records."
+        },
+        {
+          "kind": "ask",
+          "text": "We started at 7 and ended at 7. How do I write that as one expression instead of two steps?"
+        },
+        {
+          "kind": "ask",
+          "text": "The square root of 7 squared. Where do the parentheses or the bar go, so it is clear the squaring happens first?"
+        },
+        {
+          "kind": "ask",
+          "text": "Now replace 7 with n. Does the statement still hold? For which numbers?"
+        },
+        {
+          "kind": "say",
+          "text": "Nested, not side by side. The inside operation runs first, and the outside one undoes it."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Nest Them, Do Not List Them",
+        "kind": "reference_card",
+        "instructions": "Undoing means one operation applied to the result of the other.",
+        "items": [
+          "sqrt(7^2) = 7      Square first, then root. You come back.",
+          "(sqrt(49))^2 = 49  Root first, then square. Also comes back.",
+          "sqrt(n^2) = n      The letter version, for any n at or above 0.",
+          "WRONG: n^2 = sqrt(n)   That sets the operations equal, not inverse.",
+          "WRONG: n^2 and sqrt(n) written side by side -- nothing is undone.",
+          "The inside runs first. That is what the nesting records."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What is 5 squared?",
+          "answer": "25"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is the square root of 25?",
+          "answer": "5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which expression shows that squaring and square rooting undo each other?  (a) 6^2 = sqrt(6)  (b) sqrt(6) x 6^2  (c) sqrt(6^2) = 6  (d) 6^2 + sqrt(6) = 6",
+          "answer": "(c)",
+          "notes": "Option (a) sets the operations equal rather than inverse -- the most common wrong choice."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Fill in the blanks so both statements are true:  sqrt(9^2) = ___   and   (sqrt(81))^2 = ___",
+          "answer": "9 and 81",
+          "notes": "Answering 81 then 9 means the nesting order was read backwards."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Create an expression using the variable n that represents the inverse relationship between squaring and finding a square root.",
+          "answer": "sqrt(n^2) = n, or equivalently (sqrt(n))^2 = n",
+          "notes": "Two separate expressions written side by side do not earn it -- the nesting is the idea."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Read Aisha's work. Find her mistake and fix it.",
+          "shown_work": [
+            "Task: write an expression showing that squaring and square rooting are inverse operations.",
+            "Aisha wrote: 'n^2 = sqrt(n), because squaring and rooting are opposites so they are equal.'"
+          ],
+          "answer": "Aisha wrote that the two operations are EQUAL, not that they undo each other. Test it with n = 9: 9 squared is 81 and the square root of 9 is 3, so the statement is false. Inverse means one operation applied to the result of the other, which is written by nesting: sqrt(n^2) = n. Check with n = 9: sqrt(81) = 9.",
+          "notes": "The canonical error. The n = 9 counterexample disposes of it faster than any explanation."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why sqrt(12^2) equals 12 without ever computing 12 squared.",
+          "answer": "The square root undoes the squaring, so the value returns to what went in. Because the operations cancel, there is no need to work out 144 and then root it -- the answer is the starting number."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Does sqrt(n^2) = n hold for every number n? Try n = 5 and n = -5, and say what you find.",
+          "answer": "It holds for n = 5: sqrt(25) = 5. It fails for n = -5: (-5) squared is 25, and sqrt(25) is 5, not -5. So the statement holds when n is zero or positive. For negative n the square root returns the positive partner instead.",
+          "notes": "Sets up 7NS6-S8 on negative roots, and rewards testing a claim rather than accepting it."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Two Cups",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Two cups labelled SQUARE and ROOT",
+            "Number cards"
+          ],
+          "instructions": "1. A student drops a number card into SQUARE and announces the output.\n2. That output goes into ROOT, and the group announces what comes back.\n3. The group writes the round as ONE nested expression, not two.\n4. Reverse the cup order and write that expression too.\n5. Ask: does the order matter? Try it with a card that is not a perfect square and discuss."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Aisha Set Them Equal",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Pairs read Aisha's expression and test it with n = 9 before saying anything about it.\n2. Ask: what does her statement claim, and what does the test show?\n3. Pairs write the corrected nested expression and test that with n = 9.\n4. Pairs write one sentence explaining the difference between 'equal' and 'inverse'.",
+          "content": {
+            "worked_problem": "Write an expression showing squaring and square rooting are inverse. Aisha wrote n^2 = sqrt(n).",
+            "error_step": "Aisha set the two operations equal to each other rather than nesting one inside the other.",
+            "why": "With n = 9 her statement claims 81 = 3, which is false. Inverse means applying one operation to the result of the other: sqrt(n^2) = n, which gives sqrt(81) = 9."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Nested or Not",
+          "time_minutes": 7,
+          "grouping": "whole_class",
+          "materials": [
+            "Response cards: NESTED / NOT NESTED"
+          ],
+          "instructions": "1. Post an expression: sqrt(4^2), 4^2 = sqrt(4), (sqrt(16))^2, sqrt(4) + 4^2.\n2. Students raise NESTED or NOT NESTED and, if nested, say what the whole thing equals.\n3. A correct card with a wrong value scores half.\n4. Final round: post sqrt(n^2) with n negative and let the disagreement stand as a bridge to the next skill."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The two cups make nesting physical -- the output of one is literally what goes into the other."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Aisha's equals-sign version is the canonical error and falls to a single substitution."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which operation happens first in your expression? How can a reader tell?",
+          "What number goes into the second operation -- the original, or the result of the first?",
+          "Test your statement with n = 9. Does it hold?",
+          "Is your expression saying the operations are equal, or that they undo each other?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student writes the two operations side by side or joined by an operation sign.",
+            "say": "Undoing means doing the second operation TO the result of the first. Put one inside the other: square the number, then take the root of that whole thing. Write the inside part first and wrap the root around it.",
+            "praise": "You nested them instead of listing them. That is what makes the expression say 'undo'."
+          },
+          {
+            "if_you_see": "Student writes n^2 = sqrt(n).",
+            "say": "Try that with n = 9. What does the left side give, and what does the right side give?",
+            "praise": "One substitution settled it. Equal and inverse are different claims."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Write an expression showing squaring and rooting undo each other.",
+            "look_for": "A nested form such as sqrt(n^2) = n. Two side-by-side expressions means the nesting is missing."
+          },
+          {
+            "prompt": "sqrt(11^2) -- answer without computing 121.",
+            "look_for": "11, justified by cancellation rather than arithmetic."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Create an expression that represents the inverse relationship between squaring a number and finding its square root.",
+        "answer": "sqrt(n^2) = n",
+        "steps": [
+          {
+            "math": "Start with a number: n.",
+            "annotation": "Use a letter so the statement covers every case."
+          },
+          {
+            "math": "Square it: n^2.",
+            "annotation": "This is the first operation, so it goes on the inside."
+          },
+          {
+            "math": "Take the square root of THAT result: sqrt(n^2).",
+            "annotation": "The second operation wraps around the first. Nesting records the order."
+          },
+          {
+            "math": "The result returns to the start: sqrt(n^2) = n.",
+            "annotation": "Check with n = 7: sqrt(49) = 7."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Create an expression showing that taking a square root and then squaring returns the original number.",
+        "answer": "(sqrt(n))^2 = n",
+        "steps": [
+          {
+            "math": "Start with a number: n.",
+            "annotation": "Use a letter so the statement covers every case.",
+            "given": true
+          },
+          {
+            "math": "Take its square root: sqrt(n).",
+            "annotation": "This is the first operation, so it goes on the inside.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Apply the second operation to that whole result, then write the full statement and check it with n = 49.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "First I ___ the number, which gives ___.",
+        "Then I ___ that result, which brings me back to ___.",
+        "As one expression: ___ = ___."
+      ],
+      "fluency_source": "7NS6-F1",
+      "pld_band": "below"
     },
     {
       "skill_id": "7NS6-S3",
@@ -1828,7 +2134,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "approaching"
     },
     {
       "skill_id": "7NS6-S4",
@@ -1836,7 +2143,9 @@
       "column": "on_grade",
       "parent_standard": "7.NS.6",
       "engine_stems": [
-        4
+        4,
+        8,
+        9
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -2179,7 +2488,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "approaching"
     },
     {
       "skill_id": "7NS6-S5",
@@ -2238,7 +2548,7 @@
         }
       ],
       "next_steps": {
-        "if_pass": "7NS6-S6",
+        "if_pass": "Ready for 7NS6-S8: perfect squares have two roots, and the question decides which one is wanted.",
         "if_fail": "7NS6-S3"
       },
       "worked_example_script": [
@@ -2409,6 +2719,11 @@
             "if_you_see": "Student takes another square root of k instead of squaring.",
             "say": "You already have the root; to get x you go the other way and SQUARE it. The square root of x = 13 means x = 13 x 13 = 169.",
             "praise": "You squared to travel back to x -- the inverse of the root."
+          },
+          {
+            "if_you_see": "Student solves a squared equation and reports only the positive solution.",
+            "say": "Square the opposite of your answer too. Does it also satisfy the equation? Squaring erases the sign, so these equations have two solutions.",
+            "praise": "You checked both signs instead of stopping at the first one that worked."
           }
         ],
         "quick_checks": [
@@ -2474,7 +2789,311 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "at"
+    },
+    {
+      "skill_id": "7NS6-S8",
+      "name": "Find the negative square root of a perfect square",
+      "column": "on_grade",
+      "parent_standard": "7.NS.6",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS6-S5"
+      },
+      "i_do_script": "Here is something the last four skills quietly hid from you. Twelve squared is 144. But negative twelve squared is also 144, because a negative times a negative is positive. So 144 has two numbers that square to it: 12 and negative 12. When a question asks for the negative square root of 144, it wants negative 12. The radical symbol on its own means the positive one, so the question has to say negative when it wants the other.",
+      "canonical_error": {
+        "pattern": "Treats every square root as positive, so a request for the negative root returns the positive value, or a squared-equals equation returns only one of its two solutions",
+        "example": "Answers 12 when asked for the negative square root of 144, or answers 'n = 8' for n squared = 64 without noticing that -8 also works",
+        "why": "Every square root the student has met so far was positive, because that is what the bare radical symbol means. Nothing has yet forced them to separate 'the number the radical gives you' from 'the numbers that square to this', and those are different sets."
+      },
+      "item_template": "A perfect square with an explicit request for the negative root, or an equation of the form n squared equals a perfect square where both solutions are wanted. Numeric response, sometimes two answers.",
+      "sample_items": [
+        {
+          "stem": "What is the negative square root of 144?",
+          "answer": "-12",
+          "choices": null,
+          "distractor_logic": "12 ignores the word negative; -72 halves the radicand instead of rooting it."
+        },
+        {
+          "stem": "n squared = 64. Find all values of n.",
+          "answer": "n = 8 and n = -8",
+          "choices": null,
+          "distractor_logic": "Giving only 8 is the canonical omission; giving 32 halves rather than roots."
+        },
+        {
+          "stem": "Explain why 169 has two numbers that square to it, but the expression sqrt(169) has only one value.",
+          "answer": "Both 13 and -13 square to 169, because a negative times a negative is positive. The radical symbol is defined to give the positive root only, so sqrt(169) is 13. To ask for the other one you write -sqrt(169), which is -13.",
+          "choices": null,
+          "distractor_logic": "Saying 169 has only one root misses the negative; saying sqrt(169) is both misses the convention."
+        },
+        {
+          "stem": "Find the negative square root of 400, and then find all solutions to x squared = 400.",
+          "answer": "The negative square root is -20. The equation has two solutions: x = 20 and x = -20.",
+          "choices": null,
+          "distractor_logic": "Reporting one answer for both parts shows the two questions have not been separated."
+        }
+      ],
+      "redirect_script": {
+        "stop": "How many numbers square to give that value? Count them.",
+        "prompt": "Two numbers square to every positive perfect square: the positive one and its opposite. Check by squaring both. Then read the question again -- is it asking for the negative root, or for all the solutions?",
+        "praise": "You found both, then answered the question that was actually asked. Those are two separate moves."
+      },
+      "vocabulary": [
+        {
+          "term": "Negative square root",
+          "definition": "The negative number that squares to a given value. Written with a minus sign in front of the radical."
+        },
+        {
+          "term": "Principal square root",
+          "definition": "The positive one. The bare radical symbol always means this."
+        },
+        {
+          "term": "Solutions",
+          "definition": "All values that satisfy an equation. An equation like n squared = 64 has two."
+        }
+      ],
+      "manipulative_visual": "A number line with a perfect square marked at the top and two arrows dropping to its two roots, symmetric about zero. The symmetry makes it obvious that roots come in pairs while the radical symbol picks one side.",
+      "next_steps": {
+        "if_pass": "Ready for 7NS6-S6: analyse statements involving squares and roots with variables, and justify them.",
+        "if_fail": "Drop back to 7NS6-S5, solving a square-root equation by squaring, then return here and square both candidates every time."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 12^2 = 144 on the board. Underneath, write (-12)^2 = ___ and leave it blank."
+        },
+        {
+          "kind": "ask",
+          "text": "Negative 12 times negative 12. What is the sign of the answer, and what is the value?"
+        },
+        {
+          "kind": "ask",
+          "text": "So how many numbers square to give 144? Name them both."
+        },
+        {
+          "kind": "watch",
+          "text": "If a student insists there is only one, have them multiply -12 by -12 on paper. The sign rule they already own does the convincing."
+        },
+        {
+          "kind": "ask",
+          "text": "Now: what is the NEGATIVE square root of 144?"
+        },
+        {
+          "kind": "ask",
+          "text": "Different question: sqrt(144), with just the symbol. What does that give, and why only one answer?"
+        },
+        {
+          "kind": "ask",
+          "text": "Last one: n squared = 144. How many solutions does that equation have?"
+        },
+        {
+          "kind": "say",
+          "text": "Two numbers square to it. The bare radical means the positive one. An equation asks for both. Read which of the three you are being asked."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Roots Come in Pairs",
+        "kind": "reference_card",
+        "instructions": "Every positive perfect square has two roots. Which one you report depends on the question.",
+        "items": [
+          "12^2 = 144  AND  (-12)^2 = 144.  Two numbers, one square.",
+          "sqrt(144) = 12          the bare radical means the POSITIVE root",
+          "-sqrt(144) = -12        the negative square root",
+          "n^2 = 144  ->  n = 12 OR n = -12    an equation wants BOTH",
+          "Check any candidate by squaring it.",
+          "TRAP: answering 12 when the question said negative."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What is (-9) x (-9)?",
+          "answer": "81"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Name two numbers that square to 25.",
+          "answer": "5 and -5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is the negative square root of 144?",
+          "answer": "-12",
+          "notes": "The spec's own at-proficiency item. Answering 12 is the canonical error."
+        },
+        {
+          "difficulty": "core",
+          "stem": "n squared = 64. Find all values of n.",
+          "answer": "n = 8 and n = -8",
+          "notes": "An equation asks for every solution. Giving only 8 is the omission this skill exists to fix."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Find the negative square root of 400, then find all solutions to x squared = 400.",
+          "answer": "Negative square root: -20. Solutions to the equation: x = 20 and x = -20.",
+          "notes": "Two different questions about the same number, deliberately side by side."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Read Callum's work. Find his mistake and fix it.",
+          "shown_work": [
+            "Task: solve n squared = 121.",
+            "Callum wrote: 'The square root of 121 is 11, so n = 11.'"
+          ],
+          "answer": "n = 11 and n = -11. Callum found one solution and stopped. Squaring removes the sign, so both 11 and -11 give 121: 11 x 11 = 121 and (-11) x (-11) = 121. An equation of the form n squared equals a positive number always has two solutions. His answer is not wrong, it is incomplete.",
+          "notes": "The canonical omission. Emphasise that Callum's answer is half right, which is why it is easy to miss."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain why 169 has two numbers that square to it, but the expression sqrt(169) has only one value.",
+          "answer": "Both 13 and -13 square to 169, because multiplying two negatives gives a positive. The radical symbol is defined to return only the positive root, so sqrt(169) = 13. The negative one is written -sqrt(169) = -13. The number has two roots; the symbol names one of them."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Does the equation n squared = -49 have any solutions? Explain.",
+          "answer": "No. Squaring any number, positive or negative, gives a result that is zero or positive, so nothing squares to a negative value. Unlike n squared = 49, which has two solutions, this one has none.",
+          "notes": "Contrasts two solutions against none, which sharpens what the squaring actually does to sign."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Both Arrows Down",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Number lines from -20 to 20",
+            "Perfect square cards"
+          ],
+          "instructions": "1. Partner A draws a perfect square card and writes it above the number line.\n2. Partner B draws BOTH arrows down to the two roots and labels them.\n3. Partner A squares each labelled root to confirm both land on the card.\n4. Partner B then answers three questions from the same picture: the square root, the negative square root, and all solutions to n squared equals the card.\n5. Swap. Include 400 so the number line has to be scaled."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Callum Stopped at One",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Pairs read Callum's work and decide whether his answer is wrong. (It is incomplete, not wrong.)\n2. Pairs test -11 by squaring it and confirm it also satisfies the equation.\n3. Pairs write the complete solution set.\n4. Pairs write one sentence about when to give one root and when to give two.",
+          "content": {
+            "worked_problem": "Solve n squared = 121. Callum wrote: 'sqrt(121) = 11, so n = 11.'",
+            "error_step": "Callum reported only the positive root for an equation that has two solutions.",
+            "why": "Squaring erases the sign, so 11 and -11 both give 121. An equation of the form n squared equals a positive value always has two solutions; the bare radical symbol, by contrast, names only the positive one."
+          }
+        },
+        {
+          "type": "game",
+          "title": "One, Two, or None",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Three response cards per student: ONE / TWO / NONE"
+          ],
+          "instructions": "1. Post a prompt: sqrt(81); the negative square root of 81; n^2 = 81; n^2 = -81.\n2. Students raise how many values the prompt has, then give them.\n3. The count is scored separately from the values, so a right count with a wrong value still earns something.\n4. Final round: -sqrt(81), where the count is one but the value is negative."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The two arrows dropping symmetrically from one perfect square make the pairing of roots visible rather than asserted."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Callum's incomplete answer is the canonical omission, and testing -11 by squaring confirms it in one step."
+        },
+        {
+          "strategy_id": "strat-math-001",
+          "why": "Whether an answer should have one value or two is genuinely arguable for students, so pairs need to defend a reading of the question."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many numbers square to give that value? Name them both.",
+          "Is the question asking for the square root, the negative square root, or all the solutions?",
+          "Square your answer. Does it give the original number? Now square its opposite.",
+          "Why does the radical symbol give only one value when the number has two roots?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student gives the positive value when the negative root was requested.",
+            "say": "Two numbers square to every positive perfect square: the positive one and its opposite. Check by squaring both. Then read the question again -- is it asking for the negative root, or for all the solutions?",
+            "praise": "You found both, then answered the question that was actually asked. Those are two separate moves."
+          },
+          {
+            "if_you_see": "Student solves n squared = k and reports only the positive solution.",
+            "say": "Square the opposite of your answer. Does it also satisfy the equation?",
+            "praise": "Right -- squaring erases the sign, so the equation has two solutions."
+          },
+          {
+            "if_you_see": "Student claims sqrt(k) equals both the positive and negative root.",
+            "say": "The number has two roots, but the symbol is defined to pick one. How would you write the other one?",
+            "praise": "Good -- put a minus in front of the radical when you want the negative one."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Negative square root of 196.",
+            "look_for": "-14. Answering 14 means the word negative was skipped."
+          },
+          {
+            "prompt": "n squared = 100. How many solutions, and what are they?",
+            "look_for": "Two: 10 and -10. One answer means the pair is not yet automatic."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "What is the negative square root of 144?",
+        "answer": "-12",
+        "steps": [
+          {
+            "math": "Find the numbers that square to 144.",
+            "annotation": "12 x 12 = 144, and (-12) x (-12) = 144 as well."
+          },
+          {
+            "math": "144 has two roots: 12 and -12.",
+            "annotation": "Roots of a positive perfect square always come in a pair."
+          },
+          {
+            "math": "The question asks for the NEGATIVE square root.",
+            "annotation": "Read which of the pair is wanted."
+          },
+          {
+            "math": "The answer is -12. Check: (-12) x (-12) = 144.",
+            "annotation": "Squaring the answer confirms it."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "What is the negative square root of 225?",
+        "answer": "-15",
+        "steps": [
+          {
+            "math": "Find the numbers that square to 225.",
+            "annotation": "15 x 15 = 225, and (-15) x (-15) = 225 as well.",
+            "given": true
+          },
+          {
+            "math": "225 has two roots: 15 and -15.",
+            "annotation": "Roots of a positive perfect square always come in a pair.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Read which of the pair the question wants, state it, and check by squaring.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "Two numbers square to ___: they are ___ and ___.",
+        "The question asks for ___, so the answer is ___.",
+        "Check: ___ x ___ = ___."
+      ],
+      "fluency_source": "7NS6-F1",
+      "pld_band": "at"
     },
     {
       "skill_id": "7NS6-S6",
@@ -2482,7 +3101,9 @@
       "column": "looking_forward",
       "parent_standard": "7.NS.6",
       "engine_stems": [
-        6
+        6,
+        7,
+        10
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -2794,7 +3415,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "above"
     }
   ],
   "skill_columns": {
@@ -2816,18 +3438,20 @@
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
+      "description": "This standard's own expectations, climbing from Below Proficiency to At Proficiency. Every skill here is grade-level work.",
       "skills": [
         "7NS6-S1",
         "7NS6-S2",
+        "7NS6-S7",
         "7NS6-S3",
         "7NS6-S4",
-        "7NS6-S5"
+        "7NS6-S5",
+        "7NS6-S8"
       ]
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Above-proficiency work and bridges to later standards.",
+      "description": "Above Proficiency on this standard, and bridges to later standards.",
       "skills": [
         "7NS6-S6"
       ]
@@ -2840,9 +3464,11 @@
     "7NS6-B2",
     "7NS6-S1",
     "7NS6-S2",
+    "7NS6-S7",
     "7NS6-S3",
     "7NS6-S4",
     "7NS6-S5",
+    "7NS6-S8",
     "7NS6-S6"
   ],
   "skill_tree": {
@@ -2876,13 +3502,19 @@
     "7NS6-S6": [
       "7NS6-S4",
       "7NS6-S5"
+    ],
+    "7NS6-S7": [
+      "7NS6-S2"
+    ],
+    "7NS6-S8": [
+      "7NS6-S5"
     ]
   },
   "diagnostic_flow": {
     "description": "Start with S4, matching a value to the square root expression that produces it, the At proficiency test of the inverse relationship. If they pass, move up to S5 (undo a square root by squaring to recover the number) and S6 (justify why the two operations cancel). If they fail, drop one grade: B1 checks whether the student can evaluate whole number exponents at all, and B2 checks order of operations when an exponent sits inside a larger expression. If those wobble, the foundations F1 (multiplication facts built in square arrays) and F2 (area as rows times columns) locate the gap in grades 3 and 4. S1, S2, and S3 stay available to probe perfect square recognition and root finding on grade.",
     "entry_skill": "7NS6-S4",
     "if_pass": [
-      "7NS6-S5",
+      "7NS6-S8",
       "7NS6-S6"
     ],
     "if_fail": [
@@ -2894,7 +3526,16 @@
       "7NS6-F2",
       "7NS6-S1",
       "7NS6-S2",
-      "7NS6-S3"
+      "7NS6-S3",
+      "7NS6-S7"
     ]
+  },
+  "pld_descriptors": {
+    "source": "refreshed",
+    "note": "Verbatim from the ILEARN item specification. These are performance bands on THIS standard, not lower-grade content: a student at Below Proficiency is working on this standard at its least complex entry point.",
+    "below": "Identify numbers that are perfect squares. Calculate square roots of perfect square whole numbers less than or equal to 144. Represent the inverse relationship between squaring and square rooting symbolically using numbers or variables in simple expressions.",
+    "approaching": "Calculate square roots of perfect square whole numbers and identify or write equivalent expressions involving square roots and squared numbers using the inverse relationship, including values between 144 and 400. Apply the inverse relationship to determine up to two equivalent expressions for a given whole-number value.",
+    "at": "Find negative square roots of perfect squares. Determine missing values in equality statements involving square roots and squared numbers. Distinguish accurate equivalent expressions from incorrect forms.",
+    "above": "Apply the inverse relationship between squaring and square roots to evaluate, compare, or generate complex expressions involving radicals, exponents, and variables and justify the reasoning used. Analyze statements to determine missing values or verify correctness."
   }
 }

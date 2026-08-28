@@ -19,6 +19,9 @@ Difficulty Tiers:
   Stem 3 (Approaching-MC): Identify values that model a situation with decimals (DOK 2, medium)
   Stem 4 (At-NR):     Write the rational number for a real-world situation (DOK 2, medium)
   Stem 5 (Above-MC):  Interpret game scores recorded as changes and select true statement (DOK 3, easy)
+  Stem 6 (Below-MC):    Infer the sign when the amount is withheld (DOK 2, easy)
+  Stem 7 (At-NR):       Interpret a table of signed differences against a goal (DOK 2, medium)
+  Stem 8 (Above-ER):    Critique a signed representation and explain the error (DOK 3, difficult)
 """
 
 import random
@@ -511,6 +514,196 @@ class Stem6NS1:
     # MAIN GENERATION METHODS
     # ================================================================
 
+    # ================================================================
+    # STEM 6: Below Proficiency - MC (DOK 2, Easy)
+    # NEW. The amount is deliberately withheld: the student must realise a
+    # deduction is negative without a value to work from. That is a step up
+    # from stem 2, where the quantity is stated.
+    # ================================================================
+    def stem6_below_mc(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(6, variant_idx)
+        name = pick_name(rng)
+
+        start = rng.choice([20, 25, 40, 50, 75, 100])
+        answer = -rng.randint(2, 15)
+
+        setting, event, unit = rng.choice([
+            ("in a bank account", "A fee is taken out of the account", "dollars"),
+            ("on a gift card", "A purchase is made with the card", "dollars"),
+            ("in a savings jar", "Some money is spent from the jar", "dollars"),
+            ("of credit on a phone plan", "A call uses some of the credit", "dollars"),
+            ("of battery charge left", "The battery drains", "percent"),
+        ])
+
+        options = [
+            (str(answer), True, None),
+            (str(-answer), False, "Right size, wrong sign: a deduction is negative"),
+            ("0", False, "Zero would mean nothing was taken out"),
+            (str(start), False, "This is the starting amount, not the change"),
+        ]
+        rng.shuffle(options)
+        choices = [QuestionChoice(key=chr(ord("a") + i), text=t, text_latex=t,
+                                  is_correct=c, distractor_rationale=r)
+                   for i, (t, c, r) in enumerate(options)]
+        key = next(c.key for c in choices if c.is_correct).upper()
+
+        stem_text = (
+            f"{name} has {start} {unit} {setting}.\n\n"
+            f"{event}.\n\n"
+            f"Which number could represent this change?"
+        )
+        worked = (
+            f"The amount is not given, so decide the sign instead of the size.\n"
+            f"The quantity goes down, and a decrease is written as a negative "
+            f"number.\n"
+            f"{answer} is the only negative choice, so it is the one that could "
+            f"represent the change."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.MC, Difficulty.EASY, 6, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.BELOW,
+            difficulty=Difficulty.EASY, dok=2, item_type=ItemType.MC,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{key}. {answer}", answer_latex=f"{key}. {answer}",
+            worked_solution=worked, choices=choices,
+            context_scenario="infer the sign with the amount withheld",
+            seed=self.base_seed * 1000 + 600 + variant_idx,
+            stem_index=6, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 7: At Proficiency - NR (DOK 2, Medium)
+    # NEW. A table of signed differences against a goal, open response with no
+    # answer choices. Zero appears deliberately: it means the goal was met
+    # exactly, which is the "interpret the meaning of 0" half of the At
+    # descriptor.
+    # ================================================================
+    def stem7_at_nr(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(7, variant_idx)
+        name = pick_name(rng)
+
+        days = rng.choice([5, 6])
+        n_under = rng.randint(1, 3)
+        n_zero = rng.randint(0, 1)
+        n_over = days - n_under - n_zero
+
+        diffs = ([-round(rng.uniform(0.2, 1.8), 1) for _ in range(n_under)]
+                 + [0.0] * n_zero
+                 + [round(rng.uniform(0.2, 1.8), 1) for _ in range(n_over)])
+        rng.shuffle(diffs)
+
+        goal, unit, activity = rng.choice([
+            (3, "miles", "walking"),
+            (2, "miles", "running"),
+            (30, "minutes", "reading"),
+            (4, "laps", "swimming"),
+        ])
+
+        labels = ["Day %d" % (i + 1) for i in range(days)]
+        table = "\n".join(
+            f"{lab}: {('+' if d > 0 else '')}{_fmt(d)}" for lab, d in zip(labels, diffs))
+
+        stem_text = (
+            f"{name} sets a goal of {activity} {goal} {unit} each day for "
+            f"{days} days.\n\n"
+            f"Each day {name} records the difference between the goal and the "
+            f"actual amount. A positive number means more than the goal and a "
+            f"negative number means less.\n\n"
+            f"{table}\n\n"
+            f"On how many days did {name} fall short of the goal?"
+        )
+
+        worked = (
+            f"A negative difference means less than the goal.\n"
+            f"Negative entries: "
+            f"{', '.join(_fmt(d) for d in diffs if d < 0) or 'none'}\n"
+            + (f"A difference of 0 means the goal was met exactly, so it does "
+               f"not count as falling short.\n" if n_zero else "")
+            + f"{name} fell short on {n_under} day{'' if n_under == 1 else 's'}."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.AT,
+                                         ItemType.NR, Difficulty.MEDIUM, 7, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.AT,
+            difficulty=Difficulty.MEDIUM, dok=2, item_type=ItemType.NR,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=str(n_under), answer_latex=str(n_under),
+            worked_solution=worked,
+            context_scenario="interpret signed differences against a goal",
+            seed=self.base_seed * 1000 + 700 + variant_idx,
+            stem_index=7, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 8: Above Proficiency - ER (DOK 3, Difficult)
+    # NEW. Above is "critique a representation ... or explain the structure of
+    # a model". The existing Above stem asks which statement is true, which is
+    # interpretation rather than critique.
+    # ================================================================
+    def stem8_above_er(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(8, variant_idx)
+        student = pick_name(rng)
+
+        amount = rng.randint(3, 15)
+        rising = rng.random() < 0.5
+
+        setting, up_word, down_word, unit, zero_means = rng.choice([
+            ("the temperature outside", "warmer", "colder", "degrees",
+             "the temperature is unchanged from yesterday"),
+            ("the water level in a tank", "higher", "lower", "inches",
+             "the level is unchanged"),
+            ("a hiker's position", "above", "below", "feet",
+             "the hiker is back at sea level"),
+        ])
+
+        direction = up_word if rising else down_word
+        claimed = -amount if rising else amount
+        correct = amount if rising else -amount
+
+        stem_text = (
+            f"A student writes {claimed} to show that {setting} is {amount} "
+            f"{unit} {direction} than yesterday.\n\n"
+            f"Is the student correct? Explain your answer."
+        )
+
+        answer = (
+            f"The student is not correct. Writing {claimed} says the change is "
+            f"{'a decrease' if rising else 'an increase'}, but {direction} means "
+            f"the opposite.\n"
+            f"The correct number is {correct}, because a change of "
+            f"{amount} {unit} {direction} is "
+            f"{'above' if rising else 'below'} the starting point.\n"
+            f"The sign carries the direction of the change; the size {amount} "
+            f"was already right. A value of 0 would mean {zero_means}."
+        )
+
+        worked = (
+            f"Decide what the sign has to mean before checking the number.\n"
+            f"{direction} is {'an increase' if rising else 'a decrease'}, so the "
+            f"number must be {'positive' if rising else 'negative'}.\n"
+            f"The student wrote {claimed}, which has the wrong sign.\n"
+            f"Correct representation: {correct}"
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE,
+                                         ItemType.ER, Difficulty.DIFFICULT, 8, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.ABOVE,
+            difficulty=Difficulty.DIFFICULT, dok=3, item_type=ItemType.ER,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=answer, answer_latex=answer,
+            worked_solution=worked,
+            context_scenario="critique a signed representation",
+            seed=self.base_seed * 1000 + 800 + variant_idx,
+            stem_index=8, variant_index=variant_idx,
+        )
+
     def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
         all_questions = []
         stem_methods = [
@@ -519,6 +712,9 @@ class Stem6NS1:
             self.stem3_approaching_mc,
             self.stem4_at_nr,
             self.stem5_above_mc,
+            self.stem6_below_mc,
+            self.stem7_at_nr,
+            self.stem8_above_er,
         ]
         for stem_fn in stem_methods:
             for v in range(variants_per_stem):
@@ -537,6 +733,9 @@ class Stem6NS1:
             3: self.stem3_approaching_mc,
             4: self.stem4_at_nr,
             5: self.stem5_above_mc,
+            6: self.stem6_below_mc,
+            7: self.stem7_at_nr,
+            8: self.stem8_above_er,
         }
         fn = stem_methods.get(stem_index)
         if not fn:

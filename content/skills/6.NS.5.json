@@ -764,6 +764,308 @@
       "fluency_source": "6NS5-F2"
     },
     {
+      "skill_id": "6NS5-S7",
+      "name": "Identify the first step in evaluating an expression",
+      "column": "on_grade",
+      "parent_standard": "6.NS.5",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "6NS5-S1"
+      },
+      "i_do_script": "Before you evaluate anything, you have to know where to start, and where to start is almost never the left. Watch: 8 plus 3 times 5 squared. Reading order says start with 8 plus 3. The order of operations says no -- exponents come first, so the first step is 5 squared. Naming the first step out loud, before touching a pencil, is what stops the whole thing going wrong on line one.",
+      "canonical_error": {
+        "pattern": "Names the leftmost operation as the first step, applying reading order instead of the order of operations",
+        "example": "For 8 + 3 x 5^2, says the first step is 8 + 3; for 20 - 2 x 3^2, says the first step is 20 - 2",
+        "why": "Reading left to right is automatic after years of practice, and expressions look like sentences. The order of operations is a rule the student knows but has to consciously override reading with, and nothing about the expression's appearance triggers the override."
+      },
+      "item_template": "An expression with two or more operations, possibly with grouping symbols or an exponent. The student names or selects only the FIRST step -- no evaluation required. MC or short response.",
+      "sample_items": [
+        {
+          "stem": "An expression is given: 8 + 3 x 5^2. What is the first step in evaluating it?",
+          "answer": "Evaluate 5^2",
+          "choices": [
+            "Add 8 + 3",
+            "Multiply 3 x 5",
+            "Evaluate 5^2",
+            "Subtract"
+          ],
+          "distractor_logic": "'Add 8 + 3' is reading order; 'Multiply 3 x 5' skips the exponent."
+        },
+        {
+          "stem": "What is the first step in evaluating 6 x (42 / 7) + 100?",
+          "answer": "Divide 42 by 7, inside the parentheses",
+          "choices": null,
+          "distractor_logic": "Multiplying 6 by 42 first ignores the grouping symbols."
+        },
+        {
+          "stem": "What is the first step in evaluating [(9 + 3) / 4] x 5?",
+          "answer": "Add 9 + 3, the innermost grouping",
+          "choices": null,
+          "distractor_logic": "Starting with the division treats the brackets as the innermost group."
+        },
+        {
+          "stem": "Two students disagree about 20 - 2 x 3^2. One says start with 20 - 2; the other says start with 3^2. Who is right, and why?",
+          "answer": "The second student. Exponents come before multiplication and subtraction, so 3^2 is evaluated first. Starting with 20 - 2 follows reading order, not the order of operations.",
+          "choices": null,
+          "distractor_logic": "Siding with the first student is the canonical error stated as a position to defend."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Do not evaluate yet. Just point at what has to happen first.",
+        "prompt": "Scan the whole expression before you start. Grouping symbols first, innermost ones before outer ones. Then exponents. Then multiply and divide. Left to right is the LAST tiebreaker, not the first rule.",
+        "praise": "You scanned the whole expression before choosing. That is what stops line one from going wrong."
+      },
+      "vocabulary": [
+        {
+          "term": "Order of operations",
+          "definition": "Grouping symbols, then exponents, then multiplication and division left to right, then addition and subtraction left to right."
+        },
+        {
+          "term": "Grouping symbols",
+          "definition": "Parentheses and brackets. Whatever is inside is evaluated as one quantity, innermost first."
+        },
+        {
+          "term": "Innermost",
+          "definition": "The grouping with nothing else inside it. That one goes first."
+        }
+      ],
+      "manipulative_visual": "The expression written on a strip with a highlighter. Students highlight only the part they would do first, without writing any arithmetic. Comparing highlighted strips across the room surfaces the reading-order habit instantly.",
+      "next_steps": {
+        "if_pass": "Ready for 6NS5-S3: evaluate expressions with nested grouping symbols and multiple operations.",
+        "if_fail": "Drop back to 6NS5-S1 and rebuild with one set of parentheses and whole numbers before adding exponents."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write 8 + 3 x 5^2 on the board. Hand out highlighters and do not write any arithmetic."
+        },
+        {
+          "kind": "ask",
+          "text": "Highlight only the part you would do FIRST. Do not work anything out."
+        },
+        {
+          "kind": "watch",
+          "text": "Most hands will highlight 8 + 3. Do not correct it yet -- collect two or three different highlights and put them side by side. The disagreement is the lesson."
+        },
+        {
+          "kind": "ask",
+          "text": "Some of you chose 8 + 3 and some chose 5 squared. What rule decides between them?"
+        },
+        {
+          "kind": "ask",
+          "text": "Are there any grouping symbols here? No. So what comes next in the order?"
+        },
+        {
+          "kind": "ask",
+          "text": "Exponents. So the first step is 5 squared. Why is 8 + 3 so tempting?"
+        },
+        {
+          "kind": "ask",
+          "text": "New one: 6 x (42 / 7) + 100. Highlight the first step now."
+        },
+        {
+          "kind": "say",
+          "text": "Scan the whole expression, then choose. Grouping first, then exponents, then multiply and divide. Reading order is the last tiebreaker, never the first rule."
+        }
+      ],
+      "printable_artifact": {
+        "title": "What Goes First",
+        "kind": "reference_card",
+        "instructions": "Scan the whole expression before writing anything. Name the first step out loud.",
+        "items": [
+          "1. GROUPING symbols -- innermost first.",
+          "2. EXPONENTS.",
+          "3. MULTIPLY and DIVIDE, left to right.",
+          "4. ADD and SUBTRACT, left to right.",
+          "8 + 3 x 5^2   ->  first step is 5^2, NOT 8 + 3.",
+          "6 x (42 / 7) + 100  ->  first step is 42 / 7.",
+          "[(9 + 3) / 4] x 5  ->  first step is 9 + 3, the innermost group.",
+          "Left to right breaks ties WITHIN a level. It never picks the level."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What is the first step in evaluating (4 + 6) / 2 - 3?",
+          "answer": "Add 4 + 6, inside the parentheses"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is the first step in evaluating 5 + 2^3?",
+          "answer": "Evaluate 2^3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "An expression is given: 8 + 3 x 5^2. What is the first step?  (a) Add 8 + 3  (b) Multiply 3 x 5  (c) Evaluate 5^2  (d) Subtract",
+          "answer": "(c) Evaluate 5^2",
+          "notes": "Option (a) is reading order, the canonical error; option (b) skips the exponent level entirely."
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is the first step in evaluating 6 x (42 / 7) + 100?",
+          "answer": "Divide 42 by 7, inside the parentheses",
+          "notes": "Grouping outranks the multiplication sitting to its left."
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is the first step in evaluating [(9 + 3) / 4] x 5?",
+          "answer": "Add 9 + 3, the innermost grouping",
+          "notes": "Two levels of grouping -- innermost goes first."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Read Tomas's work. Find his mistake and fix it.",
+          "shown_work": [
+            "Evaluate 20 - 2 x 3^2.",
+            "Tomas wrote: 'First 20 - 2 = 18. Then 18 x 3 = 54. Then 54 squared is 2916.'"
+          ],
+          "answer": "Tomas evaluated left to right instead of by the order of operations. The first step is the exponent: 3^2 = 9. Then multiply: 2 x 9 = 18. Then subtract: 20 - 18 = 2. The correct value is 2, not 2916. Naming the first step before starting would have caught it, because there is an exponent in the expression and exponents outrank both operations he began with.",
+          "notes": "The canonical error carried all the way through, which shows how far one wrong first step travels."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Write an expression with three operations where the first step is NOT the leftmost operation, and say what the first step is.",
+          "answer": "Answers vary, e.g. 10 + 4 x 2^3, where the first step is 2^3. Any expression whose leftmost operation is outranked by an exponent or a grouping further right qualifies.",
+          "notes": "Constructing the trap requires understanding what creates it."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "In 12 / 3 x 2, some students say to multiply first because multiplication comes before division in the rule. Are they right? Explain what 'left to right' actually means here.",
+          "answer": "They are not right. Multiplication and division sit at the SAME level, so neither outranks the other -- you work left to right within the level. So 12 / 3 = 4 first, then 4 x 2 = 8. Doing 3 x 2 first would give 12 / 6 = 2, which is wrong.",
+          "notes": "Separates 'levels' from 'the order the letters appear in the mnemonic', a distinct and common confusion."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Highlight, Do Not Solve",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Expression strips",
+            "Highlighters"
+          ],
+          "instructions": "1. Each pair gets a strip with an expression and no space to work.\n2. Both partners independently highlight the part they would do first.\n3. Partners compare. If they disagree, they name the rule that settles it before looking at any answer.\n4. Only after agreeing do they write the value.\n5. Rotate strips. Include at least one with nested brackets and one where multiplication and division sit side by side."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Tomas Read Left to Right",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Pairs read Tomas's three lines and mark the first line that went wrong.\n2. Ask first: why is starting at the left so natural? (It is how everything else is read.)\n3. Pairs redo the expression naming each step before performing it.\n4. Pairs compare 2 with Tomas's 2916 and discuss how far one wrong first step travelled.",
+          "content": {
+            "worked_problem": "Evaluate 20 - 2 x 3^2. Tomas wrote: 20 - 2 = 18, then 18 x 3 = 54, then 54 squared = 2916.",
+            "error_step": "Tomas began with the leftmost operation instead of the exponent.",
+            "why": "Exponents outrank multiplication and subtraction, so 3^2 = 9 comes first, then 2 x 9 = 18, then 20 - 18 = 2. Every later line inherited the first line's error."
+          }
+        },
+        {
+          "type": "game",
+          "title": "First Step Only",
+          "time_minutes": 7,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Post an expression. Students write ONLY the first step -- writing the answer scores zero.\n2. Reveal and compare. Anyone who wrote a value instead of a step loses the round.\n3. Speed up as accuracy holds.\n4. Final round: post 12 / 3 x 2 and let the same-level tie be argued out."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Naming the first step is a single quick answer from the whole class, so choral response surfaces the reading-order habit across the room at once."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Tomas's work shows a wrong first step carried through three lines, which makes the cost of line one concrete."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Point at what happens first. Do not work it out.",
+          "Are there any grouping symbols? Which is the innermost?",
+          "Is there an exponent anywhere? Where does it sit in the order?",
+          "Do multiplication and division outrank each other, or share a level?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student names the leftmost operation as the first step.",
+            "say": "Scan the whole expression before you start. Grouping symbols first, innermost ones before outer ones. Then exponents. Then multiply and divide. Left to right is the LAST tiebreaker, not the first rule.",
+            "praise": "You scanned the whole expression before choosing. That is what stops line one from going wrong."
+          },
+          {
+            "if_you_see": "Student thinks multiplication always precedes division because of the mnemonic order.",
+            "say": "Are those two on the same level or different levels? What decides between operations that share a level?",
+            "praise": "Right -- same level, so left to right settles it."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "9 + 2 x 4^2 -- first step only.",
+            "look_for": "4^2. Answering 9 + 2 is the reading-order habit."
+          },
+          {
+            "prompt": "[(8 + 2) x 3] - 5 -- first step only.",
+            "look_for": "8 + 2, the innermost grouping."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "An expression is given: 8 + 3 x 5^2. What is the first step in evaluating it?",
+        "answer": "Evaluate 5^2",
+        "steps": [
+          {
+            "math": "Scan the whole expression before choosing.",
+            "annotation": "Do not start at the left by habit."
+          },
+          {
+            "math": "Grouping symbols? There are none here.",
+            "annotation": "Level one is empty, so move down."
+          },
+          {
+            "math": "Exponents? Yes -- 5^2.",
+            "annotation": "Exponents outrank both the addition and the multiplication."
+          },
+          {
+            "math": "First step: evaluate 5^2.",
+            "annotation": "8 + 3 is tempting only because it is leftmost."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "An expression is given: 20 - 2 x 3^2. What is the first step in evaluating it?",
+        "answer": "Evaluate 3^2",
+        "steps": [
+          {
+            "math": "Scan the whole expression before choosing.",
+            "annotation": "Do not start at the left by habit.",
+            "given": true
+          },
+          {
+            "math": "Grouping symbols? There are none here.",
+            "annotation": "Level one is empty, so move down.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Check the next level down and name the first step. Why is 20 - 2 the tempting wrong choice?",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "There ___ grouping symbols, so I look at ___ next.",
+        "The first step is ___ because ___ outranks ___.",
+        "___ is tempting because it is leftmost, but ___."
+      ],
+      "fluency_source": "6NS5-F1",
+      "pld_band": "below"
+    },
+    {
       "skill_id": "6NS5-S1",
       "name": "Evaluate expressions with one set of parentheses and whole numbers",
       "column": "on_grade",
@@ -1119,7 +1421,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "6NS5-S2",
@@ -1465,7 +1768,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "6NS5-S3",
@@ -1767,7 +2071,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "approaching"
     },
     {
       "skill_id": "6NS5-S4",
@@ -1838,7 +2143,7 @@
         }
       ],
       "next_steps": {
-        "if_pass": "Move to 6NS5-S5 (equivalent expressions with the distributive property), then 6NS5-S6 to build and verify equivalent expressions yourself.",
+        "if_pass": "Ready for 6NS5-S6 and 6NS5-S8: place grouping symbols to hit a target value, and evaluate expressions with a full expression above and below a fraction bar.",
         "if_fail": "If the exponent is the failure point, drill expand-then-compute on bare powers. If fractions/decimals are the failure point, revisit 6NS5-F2."
       },
       "worked_example_script": [
@@ -2099,7 +2404,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "at"
     },
     {
       "skill_id": "6NS5-S5",
@@ -2478,7 +2784,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "at"
     },
     {
       "skill_id": "6NS5-S6",
@@ -2486,7 +2793,9 @@
       "column": "looking_forward",
       "parent_standard": "6.NS.5",
       "engine_stems": [
-        5
+        5,
+        6,
+        7
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -2819,7 +3128,316 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "above"
+    },
+    {
+      "skill_id": "6NS5-S8",
+      "name": "Evaluate expressions with a full expression above and below a fraction bar",
+      "column": "looking_forward",
+      "parent_standard": "6.NS.5",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "6NS5-S4"
+      },
+      "i_do_script": "A fraction bar is a grouping symbol, and it groups twice at once -- everything above it, and everything below it. Watch: (12 plus 8) over (4 plus 1). I cannot divide anything until both halves are single numbers. Top: 12 plus 8 is 20. Bottom: 4 plus 1 is 5. Now 20 divided by 5 is 4. Two groups, resolved separately, and only then the division.",
+      "canonical_error": {
+        "pattern": "Divides term by term across the fraction bar instead of resolving the numerator and denominator to single values first",
+        "example": "For (12 + 8) / (4 + 1), computes 12/4 + 8/1 = 3 + 8 = 11, instead of 20 / 5 = 4",
+        "why": "The bar looks like a division sign between visible numbers, and dividing the ones that line up feels natural. Because the bar carries no parentheses, nothing on the page signals that the top and bottom are each a single grouped quantity."
+      },
+      "item_template": "An expression with a multi-term numerator, a multi-term denominator, or both, possibly nested inside further grouping and combined with exponents. Numeric response.",
+      "sample_items": [
+        {
+          "stem": "Evaluate: (2 + 3)^2 - [(12 + 8) / (4 + 1)]",
+          "answer": "21",
+          "choices": null,
+          "distractor_logic": "Dividing term by term gives 11 inside the bracket and a final answer of 14."
+        },
+        {
+          "stem": "Evaluate: [(15 + 9) / (2 + 4)] x 3",
+          "answer": "12",
+          "choices": null,
+          "distractor_logic": "15/2 + 9/4 term by term produces a non-integer and signals the error immediately."
+        },
+        {
+          "stem": "Evaluate: (3^2 + 6) / (7 - 2)",
+          "answer": "3",
+          "choices": null,
+          "distractor_logic": "Evaluating 3^2 after dividing, or splitting the bar, both break it."
+        },
+        {
+          "stem": "Evaluate: 24 / (2 + 4) + 5^2",
+          "answer": "29",
+          "choices": null,
+          "distractor_logic": "24/2 + 4 = 16 comes from ignoring the grouping in the denominator."
+        }
+      ],
+      "redirect_script": {
+        "stop": "How many numbers are on top right now? How many on the bottom?",
+        "prompt": "The bar groups everything above it and everything below it. Reduce the top to ONE number and the bottom to ONE number before you divide anything. Then do the division once.",
+        "praise": "You collapsed each half to a single value before dividing. That is what the bar was telling you to do."
+      },
+      "vocabulary": [
+        {
+          "term": "Numerator",
+          "definition": "Everything above the fraction bar, treated as one grouped quantity."
+        },
+        {
+          "term": "Denominator",
+          "definition": "Everything below the fraction bar, treated as one grouped quantity."
+        },
+        {
+          "term": "Fraction bar",
+          "definition": "A grouping symbol and a division sign at once. It groups first, divides second."
+        }
+      ],
+      "manipulative_visual": "The expression written with the numerator and denominator each on their own card, and a physical bar between them. A card cannot be moved until it holds a single number, which makes 'collapse each half first' a physical precondition for dividing.",
+      "next_steps": {
+        "if_pass": "Ready for 6.NS.7 and beyond: expressions with variables, where the same grouping rules carry over unchanged.",
+        "if_fail": "Drop back to 6NS5-S3 for nested grouping symbols, then return here and rewrite each fraction bar with explicit parentheses before evaluating."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write (12 + 8) over (4 + 1) as a stacked fraction on the board, with a long bar."
+        },
+        {
+          "kind": "ask",
+          "text": "Point at everything the bar is grouping. How many separate groups are there?"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student starts computing 12 divided by 4, stop and ask them how many numbers are on top. Two is not a single quantity, so nothing can be divided yet."
+        },
+        {
+          "kind": "ask",
+          "text": "Two groups: the top and the bottom. Collapse the top first -- what single number is it?"
+        },
+        {
+          "kind": "ask",
+          "text": "20. Now the bottom. What single number is that?"
+        },
+        {
+          "kind": "ask",
+          "text": "Now, and only now, the bar acts as division. 20 divided by 5 is what?"
+        },
+        {
+          "kind": "ask",
+          "text": "New one: (2 + 3) squared minus that whole fraction. Which piece gets resolved first, and why?"
+        },
+        {
+          "kind": "say",
+          "text": "The bar groups twice and divides once. Collapse the top, collapse the bottom, then divide."
+        }
+      ],
+      "printable_artifact": {
+        "title": "The Bar Groups Twice",
+        "kind": "reference_card",
+        "instructions": "Never divide until the top and the bottom are each a single number.",
+        "items": [
+          "The bar is a grouping symbol AND a division sign.",
+          "1. Collapse the NUMERATOR to one number.",
+          "2. Collapse the DENOMINATOR to one number.",
+          "3. Then divide, once.",
+          "(12 + 8) / (4 + 1)  =  20 / 5  =  4.",
+          "WRONG: 12/4 + 8/1 = 11. The bar does not distribute.",
+          "Rewriting the bar with explicit parentheses makes the grouping visible."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate (10 + 6) / (2 + 2).",
+          "answer": "4"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Evaluate (18 - 6) / (2 + 2).",
+          "answer": "3"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: (2 + 3)^2 - [(12 + 8) / (4 + 1)]",
+          "answer": "21",
+          "notes": "Top collapses to 20, bottom to 5, so the bracket is 4. Then 25 - 4 = 21."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: [(15 + 9) / (2 + 4)] x 3",
+          "answer": "12",
+          "notes": "24 over 6 is 4, then times 3."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Evaluate: (3^2 + 6) / (7 - 2)",
+          "answer": "3",
+          "notes": "The exponent lives inside the numerator group, so it is resolved before the numerator collapses."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Read Priya's work. Find her mistake and fix it.",
+          "shown_work": [
+            "Evaluate (12 + 8) / (4 + 1).",
+            "Priya wrote: '12 divided by 4 is 3, and 8 divided by 1 is 8, so the answer is 3 + 8 = 11.'"
+          ],
+          "answer": "The answer is 4. Priya divided term by term, but the fraction bar groups the whole top and the whole bottom -- it does not pair up the numbers that happen to line up. Collapse each half first: the top is 12 + 8 = 20 and the bottom is 4 + 1 = 5, so the expression is 20 / 5 = 4. Rewriting the bar as (12 + 8) / (4 + 1) with parentheses makes the grouping visible.",
+          "notes": "The canonical error. The parenthesis rewrite is the fix worth teaching as a habit."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Evaluate: 24 / (2 + 4) + 5^2",
+          "answer": "29",
+          "notes": "The denominator group is resolved first, giving 4, then the exponent, then the addition."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Rewrite (20 - 4) / (3 + 1) using explicit parentheses, then evaluate. Explain why the parentheses do not change the value.",
+          "answer": "(20 - 4) / (3 + 1) = 16 / 4 = 4. The parentheses change nothing because the bar was already grouping both halves -- writing them just makes visible what the bar was doing silently."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Two Cards, One Bar",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Blank index cards",
+            "A long strip for the bar"
+          ],
+          "instructions": "1. Pairs copy the numerator onto one card and the denominator onto another, with the bar strip between them.\n2. Rule: a card may not be used in the division until it holds exactly one number.\n3. Pairs collapse each card, writing the single value on its back.\n4. Flip both cards and perform the division once.\n5. Run one where an exponent sits inside the numerator, so the collapsing has its own internal order."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Priya Divided Across the Bar",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Pairs read Priya's work and compute the correct value before discussing her method.\n2. Ask first: why does pairing 12 with 4 and 8 with 1 feel reasonable? (They line up visually.)\n3. Pairs rewrite the expression with explicit parentheses and evaluate again.\n4. Pairs test Priya's method on (10 + 6) / (2 + 2), where it gives 8 instead of 4, and write one sentence about what the bar actually groups.",
+          "content": {
+            "worked_problem": "Evaluate (12 + 8) / (4 + 1). Priya wrote: 12/4 = 3, 8/1 = 8, so 3 + 8 = 11.",
+            "error_step": "Priya divided term by term across the bar instead of collapsing the numerator and denominator first.",
+            "why": "The bar groups everything above it and everything below it. The top is 20, the bottom is 5, so the value is 4. Her method fails again on (10 + 6) / (2 + 2), giving 8 rather than 4."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Collapse First",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Post a stacked expression. Students write only the two collapsed values -- top and bottom -- not the final answer.\n2. Both collapsed values correct scores. A final answer with no collapsed pair scores zero.\n3. Reveal, then everyone performs the single division together.\n4. Final round: an expression with an exponent inside the numerator and a subtraction in the denominator."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The two cards make 'collapse before dividing' a physical precondition rather than a remembered rule."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Priya's term-by-term division is the canonical error, and it fails again on a second example the students choose."
+        },
+        {
+          "strategy_id": "strat-math-009",
+          "why": "Setting her work beside a correct evaluation isolates the single move that differs."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many numbers are on top right now? Can you divide yet?",
+          "What single value does the numerator collapse to? The denominator?",
+          "If you rewrote this bar using parentheses, where would they go?",
+          "Does the bar pair up the numbers that line up, or group the whole top and the whole bottom?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student divides term by term across the fraction bar.",
+            "say": "The bar groups everything above it and everything below it. Reduce the top to ONE number and the bottom to ONE number before you divide anything. Then do the division once.",
+            "praise": "You collapsed each half to a single value before dividing. That is what the bar was telling you to do."
+          },
+          {
+            "if_you_see": "Student evaluates an exponent in the numerator after collapsing rather than before.",
+            "say": "Inside the numerator, the order of operations still applies. What comes first in there?",
+            "praise": "Right -- each half has its own internal order before it collapses."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "(14 + 6) / (2 + 3) -- top value, bottom value, then the answer.",
+            "look_for": "20, 5, 4. A first answer of 7 + 2 means the bar is being distributed."
+          },
+          {
+            "prompt": "Where would parentheses go in that expression?",
+            "look_for": "Around the whole numerator and the whole denominator."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Evaluate: (2 + 3)^2 - [(12 + 8) / (4 + 1)]",
+        "answer": "21",
+        "steps": [
+          {
+            "math": "Numerator: 12 + 8 = 20.",
+            "annotation": "The bar groups the whole top -- collapse it to one number."
+          },
+          {
+            "math": "Denominator: 4 + 1 = 5.",
+            "annotation": "And the whole bottom. Now the division is legal."
+          },
+          {
+            "math": "The fraction is 20 / 5 = 4.",
+            "annotation": "One division, once both halves are single values."
+          },
+          {
+            "math": "(2 + 3)^2 = 5^2 = 25.",
+            "annotation": "Grouping inside first, then the exponent."
+          },
+          {
+            "math": "25 - 4 = 21.",
+            "annotation": "Subtract last."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Evaluate: (1 + 4)^2 - [(10 + 5) / (2 + 1)]",
+        "answer": "20",
+        "steps": [
+          {
+            "math": "Numerator: 10 + 5 = 15.",
+            "annotation": "The bar groups the whole top -- collapse it to one number.",
+            "given": true
+          },
+          {
+            "math": "Denominator: 2 + 1 = 3.",
+            "annotation": "And the whole bottom. Now the division is legal.",
+            "given": true
+          },
+          {
+            "math": "The fraction is 15 / 3 = 5.",
+            "annotation": "One division, once both halves are single values.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Evaluate the squared grouping, then subtract, and state the value.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The numerator collapses to ___ and the denominator collapses to ___.",
+        "Now the bar divides once: ___ / ___ = ___.",
+        "I cannot divide yet because ___."
+      ],
+      "fluency_source": "6NS5-F1",
+      "pld_band": "above"
     }
   ],
   "skill_sequence": [
@@ -2827,12 +3445,14 @@
     "6NS5-F2",
     "6NS5-B1",
     "6NS5-B2",
+    "6NS5-S7",
     "6NS5-S1",
     "6NS5-S2",
     "6NS5-S3",
     "6NS5-S4",
     "6NS5-S5",
-    "6NS5-S6"
+    "6NS5-S6",
+    "6NS5-S8"
   ],
   "skill_columns": {
     "foundation": {
@@ -2853,8 +3473,9 @@
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
+      "description": "This standard's own expectations, climbing from Below Proficiency to At Proficiency. Every skill here is grade-level work.",
       "skills": [
+        "6NS5-S7",
         "6NS5-S1",
         "6NS5-S2",
         "6NS5-S3",
@@ -2864,9 +3485,10 @@
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Above-proficiency work and bridges to later standards.",
+      "description": "Above Proficiency on this standard, and bridges to later standards.",
       "skills": [
-        "6NS5-S6"
+        "6NS5-S6",
+        "6NS5-S8"
       ]
     }
   },
@@ -2882,7 +3504,7 @@
       "6NS5-F2"
     ],
     "6NS5-S1": [
-      "6NS5-B1"
+      "6NS5-S7"
     ],
     "6NS5-S2": [
       "6NS5-F1"
@@ -2901,14 +3523,21 @@
     "6NS5-S6": [
       "6NS5-S4",
       "6NS5-S5"
+    ],
+    "6NS5-S7": [
+      "6NS5-B1"
+    ],
+    "6NS5-S8": [
+      "6NS5-S4",
+      "6NS5-S3"
     ]
   },
   "diagnostic_flow": {
     "description": "Start with S4, the at proficiency core: evaluate an expression that combines a whole number exponent with fractions or decimals and grouping. If the student passes, probe upward with S5 (rewrite an expression with the distributive property) and S6 (place grouping symbols to hit a target value). If they fail, drop below grade six to the grade five skills: B1 checks whole number order of operations with grouping symbols, and B2 checks fraction and decimal computation, the two pillars every grade six expression stands on. If those wobble, the foundations locate the gap further down, F1 for multiplication and division facts and F2 for fractions with like denominators. S1, S2, and S3 stay available to probe single parenthesis evaluation, property naming, and nested grouping.",
     "entry_skill": "6NS5-S4",
     "if_pass": [
-      "6NS5-S5",
-      "6NS5-S6"
+      "6NS5-S6",
+      "6NS5-S8"
     ],
     "if_fail": [
       "6NS5-B1",
@@ -2919,7 +3548,16 @@
       "6NS5-F2",
       "6NS5-S1",
       "6NS5-S2",
-      "6NS5-S3"
+      "6NS5-S3",
+      "6NS5-S7"
     ]
+  },
+  "pld_descriptors": {
+    "source": "refreshed",
+    "note": "Verbatim from the ILEARN item specification. These are performance bands on THIS standard, not lower-grade content: a student at Below Proficiency is working on this standard at its least complex entry point.",
+    "below": "Evaluate numerical expressions for a solution when expressions include positive whole numbers and parentheses. Identify equivalent numerical expressions generated using one of the properties of operations. Identify the first step in evaluating a numerical expression using the order of operations.",
+    "approaching": "Apply the order of operations to evaluate or identify equivalent expressions for numerical expressions including positive whole numbers, benchmark fractions and decimals, exponents of 2 and 3, and parentheses and brackets. Identify one or more equivalent expressions by applying a mathematical property.",
+    "at": "Apply the order of operations and mathematical properties to evaluate numerical expressions with positive rational numbers and a combination of parentheses, brackets, and whole number exponents, including 0 and 1. Generate equivalent numerical expressions by applying one mathematical property.",
+    "above": "Place grouping symbols within a numerical expression to set it equal to a given value. Apply the order of operations to evaluate numerical expressions that may involve complex rational expressions, more than one set of grouping symbols, or the distributive property."
   }
 }

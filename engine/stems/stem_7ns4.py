@@ -14,12 +14,24 @@ Difficulty Tiers:
   Medium: Limit to integers and decimals, at least one negative number
   Difficult: Includes fractions
 
-5 Stems from the Item Spec:
+The 2026-08-17 revision added a model-based division bullet at Approaching
+(stem 6) and required Above to justify equivalence in writing, so stem 5
+gained a Part B explanation rather than being replaced. Stems 1 to 4 were
+left untouched.
+
+Stem 2 moved from Approaching to At: the revision dropped the plain
+'choose the quotient' item from Approaching, and calculating a quotient by the
+sign rules is now an At descriptor. Stem 7 was added so Approaching still
+covers its own 'generate and identify equivalent fractions' bullets.
+
+7 Stems from the Item Spec:
   Stem 1 (Below-MS):       Identify equivalent fractions satisfying -(p/q) = (-p)/q = p/(-q) (DOK 1, medium)
-  Stem 2 (Approaching-MC): Choose the quotient of two signed integers (DOK 1, easy)
+  Stem 2 (At-MC):         Choose the quotient of two signed integers (DOK 1, easy)
   Stem 3 (At-NR):          Calculate the quotient of two integers as a decimal (DOK 1, easy)
   Stem 4 (At-MC):          Divide with fractions (DOK 1, difficult)
-  Stem 5 (Above-NR):       Generate equivalent fractions for -(p/q) (DOK 1, easy)
+  Stem 5 (Above-ER):    Generate equivalent signed fractions AND justify the equivalence (DOK 3, difficult)
+  Stem 6 (Approaching-MC): Read a division equation off a grouped-counter model (DOK 2, medium)
+  Stem 7 (Approaching-MC): Identify an equivalent form of a negative fraction (DOK 2, medium)
 """
 
 import random
@@ -173,7 +185,7 @@ class Stem7NS4:
     # e.g., -45 / 9 = ?
     # ================================================================
 
-    def stem2_approaching_mc(self, variant_idx: int) -> GeneratedQuestion:
+    def stem2_at_mc(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(2, variant_idx)
 
         # Generate dividend and divisor (integers, one negative)
@@ -233,12 +245,12 @@ class Stem7NS4:
             f"Apply sign: {correct_str}"
         )
 
-        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING, ItemType.MC,
+        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.AT, ItemType.MC,
                                Difficulty.EASY, 2, variant_idx)
 
         return GeneratedQuestion(
             question_id=qid, standard_code=STANDARD_CODE,
-            proficiency_level=ProficiencyLevel.APPROACHING,
+            proficiency_level=ProficiencyLevel.AT,
             difficulty=Difficulty.EASY, dok=1, item_type=ItemType.MC,
             stem_text=stem_text, stem_latex=stem_text,
             answer_text=correct_letter, answer_latex=correct_letter,
@@ -316,9 +328,9 @@ class Stem7NS4:
         return GeneratedQuestion(
             question_id=qid, standard_code=STANDARD_CODE,
             proficiency_level=ProficiencyLevel.AT,
-            difficulty=Difficulty.EASY, dok=1, item_type=ItemType.NR,
+            difficulty=Difficulty.DIFFICULT, dok=2, item_type=ItemType.NR,
             stem_text=stem_text, stem_latex=stem_text,
-            answer_text=correct_str, answer_latex=f"${correct_str}$",
+            answer_text=correct_str, answer_latex=correct_str,
             worked_solution=worked,
             context_scenario="integer quotient as decimal",
             seed=self.base_seed * 1000 + 300 + variant_idx,
@@ -430,26 +442,44 @@ class Stem7NS4:
         form3 = f"{p}/{-q}"
 
         # Accept any two of: form2 and form3 (form1 is the given)
-        correct_str = f"{-p}/{q} and {p}/{-q}"
-
+        # The 2026-08-17 Above descriptor requires the student to "explain the
+        # reasoning used to verify equivalency", and the specification's added
+        # item is explicitly two-part. Generating the forms is Part A; saying
+        # why they are equivalent is Part B.
         stem_text = (
-            f"Write two fractions that are equivalent to -({p}/{q}).\n\n"
-            f"Write your answers in the boxes."
+            f"This item has two parts.\n\n"
+            f"Part A: Write two fractions that are equivalent to -({p}/{q}).\n\n"
+            f"Part B: Explain how you developed your expressions and why they "
+            f"are equivalent, using mathematical reasoning."
+        )
+
+        correct_str = (
+            f"Part A: {-p}/{q} and {p}/{-q}. "
+            f"Part B: A fraction is negative when exactly one of the numerator "
+            f"or the denominator is negative, so the sign can sit in front of "
+            f"the fraction, on the numerator, or on the denominator without "
+            f"changing the value: -({p}/{q}) = {-p}/{q} = {p}/{-q}. Each form "
+            f"still represents {p} parts of size 1/{q} counted in the negative "
+            f"direction."
         )
 
         worked = (
             f"The rule: -(p/q) = (-p)/q = p/(-q)\n"
             f"-({p}/{q}) = {-p}/{q} = {p}/{-q}\n"
-            f"Two equivalent fractions: {-p}/{q} and {p}/{-q}"
+            f"Part A: two equivalent fractions are {-p}/{q} and {p}/{-q}\n"
+            f"Part B: moving the negative sign between the numerator, the "
+            f"denominator, and the front of the fraction leaves the value "
+            f"unchanged, because only the number of negative factors decides "
+            f"the sign, and there is exactly one in every form."
         )
 
-        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE, ItemType.NR,
-                               Difficulty.EASY, 5, variant_idx)
+        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE, ItemType.ER,
+                               Difficulty.DIFFICULT, 5, variant_idx)
 
         return GeneratedQuestion(
             question_id=qid, standard_code=STANDARD_CODE,
             proficiency_level=ProficiencyLevel.ABOVE,
-            difficulty=Difficulty.EASY, dok=1, item_type=ItemType.NR,
+            difficulty=Difficulty.DIFFICULT, dok=3, item_type=ItemType.ER,
             stem_text=stem_text, stem_latex=stem_text,
             answer_text=correct_str, answer_latex=f"${correct_str}$",
             worked_solution=worked,
@@ -462,14 +492,141 @@ class Stem7NS4:
     # MAIN GENERATION METHODS
     # ================================================================
 
+    # ================================================================
+    # STEM 6: Approaching Proficiency - MC (DOK 2, Medium)
+    # NEW. Approaching gained "calculate the quotient of two rational numbers
+    # using a model". The model is a row of grouped counters: the student reads
+    # the division equation off the grouping rather than computing it.
+    # ================================================================
+    def stem6_approaching_mc(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(6, variant_idx)
+
+        groups = rng.randint(2, 6)
+        per_group = rng.randint(2, 6)
+        # When the number of groups equals the group size, the "divided by the
+        # group size" distractor becomes the correct equation, so the item
+        # would ship two identical options.
+        while per_group == groups:
+            per_group = rng.randint(2, 6)
+        total = groups * per_group
+        # The counters are negative, so the quotient's sign is the point.
+        quotient = -per_group
+
+        model_rows = " | ".join(
+            " ".join("(-1)" for _ in range(per_group)) for _ in range(groups)
+        )
+
+        correct = f"{-total} / {groups} = {quotient}"
+        options = [
+            (correct, True, None),
+            (f"{-total} / {groups} = {per_group}", False,
+             "Drops the negative sign from the quotient"),
+            (f"{total} / {groups} = {per_group}", False,
+             "Reads the counters as positive"),
+            (f"{-total} / {per_group} = {-groups}", False,
+             "Divides by the group size instead of the number of groups"),
+        ]
+        rng.shuffle(options)
+        choices = [QuestionChoice(key=chr(ord("a") + i), text=t, text_latex=t,
+                                  is_correct=c, distractor_rationale=r)
+                   for i, (t, c, r) in enumerate(options)]
+        key = next(c.key for c in choices if c.is_correct).upper()
+
+        stem_text = (
+            f"A model is shown. Each (-1) is one negative counter, and the "
+            f"counters are separated into {groups} equal groups.\n\n"
+            f"{model_rows}\n\n"
+            f"Which division equation is represented by the model?"
+        )
+
+        worked = (
+            f"There are {total} negative counters in all, so the total is {-total}.\n"
+            f"They are split into {groups} equal groups.\n"
+            f"{-total} / {groups} = {quotient}, since each group holds "
+            f"{per_group} negative counters."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING,
+                                         ItemType.MC, Difficulty.MEDIUM, 6, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.APPROACHING,
+            difficulty=Difficulty.MEDIUM, dok=2, item_type=ItemType.MC,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{key}. {correct}", answer_latex=f"{key}. {correct}",
+            worked_solution=worked, choices=choices,
+            context_scenario="division equation read off a model",
+            seed=self.base_seed * 1000 + 600 + variant_idx,
+            stem_index=6, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 7: Approaching Proficiency - MC (DOK 2, Medium)
+    # NEW. Approaching asks students to "generate an equivalent fraction that
+    # satisfies the sign property" and to "identify equivalent fractions that
+    # satisfy the sign properties". This is the Above task (stem 5) without the
+    # written justification, which is what separates the two levels.
+    # ================================================================
+    def stem7_approaching_mc(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(7, variant_idx)
+
+        p = rng.randint(1, 11)
+        q = rng.randint(2, 12)
+        while Fraction(p, q).denominator == 1:
+            q = rng.randint(2, 12)
+
+        # Which of the three equivalent forms is shown, and which is asked for.
+        forms = [f"-({p}/{q})", f"{-p}/{q}", f"{p}/{-q}"]
+        given_i = rng.randrange(3)
+        given = forms[given_i]
+        answer = forms[(given_i + 1) % 3]
+        other = forms[(given_i + 2) % 3]
+
+        options = [
+            (answer, True, None),
+            (f"{p}/{q}", False, "Drops the negative sign entirely"),
+            (f"{-p}/{-q}", False,
+             "Two negatives make the fraction positive, so this is not equivalent"),
+            (f"{q}/{-p}", False, "Inverts the fraction instead of moving the sign"),
+        ]
+        rng.shuffle(options)
+        choices = [QuestionChoice(key=chr(ord("a") + i), text=t, text_latex=t,
+                                  is_correct=c, distractor_rationale=r)
+                   for i, (t, c, r) in enumerate(options)]
+        key = next(c.key for c in choices if c.is_correct).upper()
+
+        stem_text = f"Which fraction is equivalent to {given}?"
+        worked = (
+            f"A fraction is negative when exactly one of the numerator or the "
+            f"denominator is negative.\n"
+            f"-(p/q) = (-p)/q = p/(-q), so {forms[0]} = {forms[1]} = {forms[2]}.\n"
+            f"{given} is therefore equivalent to {answer} (and to {other})."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING,
+                                         ItemType.MC, Difficulty.MEDIUM, 7, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.APPROACHING,
+            difficulty=Difficulty.MEDIUM, dok=2, item_type=ItemType.MC,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{key}. {answer}", answer_latex=f"{key}. {answer}",
+            worked_solution=worked, choices=choices,
+            context_scenario="equivalent form of a negative fraction",
+            seed=self.base_seed * 1000 + 700 + variant_idx,
+            stem_index=7, variant_index=variant_idx,
+        )
+
     def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
         all_questions = []
         stem_methods = [
             self.stem1_below_ms,
-            self.stem2_approaching_mc,
+            self.stem2_at_mc,
             self.stem3_at_nr,
             self.stem4_at_mc,
             self.stem5_above_nr,
+            self.stem6_approaching_mc,
+            self.stem7_approaching_mc,
         ]
         for stem_fn in stem_methods:
             for v in range(variants_per_stem):
@@ -484,10 +641,12 @@ class Stem7NS4:
                                 variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
         stem_methods = {
             1: self.stem1_below_ms,
-            2: self.stem2_approaching_mc,
+            2: self.stem2_at_mc,
             3: self.stem3_at_nr,
             4: self.stem4_at_mc,
             5: self.stem5_above_nr,
+            6: self.stem6_approaching_mc,
+            7: self.stem7_approaching_mc,
         }
         fn = stem_methods.get(stem_index)
         if not fn:

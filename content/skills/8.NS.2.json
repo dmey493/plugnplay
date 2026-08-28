@@ -1,6 +1,6 @@
 {
   "standard_code": "8.NS.2",
-  "standard_text": "Use rational approximations of irrational numbers to compare their sizes, locate them approximately on a number line, and estimate the value of expressions (e.g., place the square root of 2 between 1 and 2, closer to 1.4).",
+  "standard_text": "Use rational approximations of irrational numbers to compare the size of irrational numbers, plot them approximately on a number line, and estimate the value of expressions involving irrational numbers.",
   "schema_version": 3,
   "progression": {
     "narrative": "This standard asks students to approximate irrational numbers with nearby rationals so they can compare their sizes, plot them on a number line, and estimate expressions like the square root of 2 plus 3, all without a calculator. The on-grade work repeats one move: bracket a square root between the two perfect squares that hug it, lean toward the closer one, then use that estimate to place, compare, or select. Students who stall here usually lack the grade 7 groundwork, which is instant recall of perfect squares and their roots and comfort ordering rational numbers on a number line. Below that sit grade 4 and 5 gaps in multiplication facts and decimal comparison, where errors like 7 squared is 14 and more digits means bigger are born. Intervention rebuilds facts and decimal placement first, then perfect square roots and rational ordering, and only then returns to estimating irrationals.",
@@ -838,7 +838,8 @@
       "column": "on_grade",
       "parent_standard": "8.NS.2",
       "engine_stems": [
-        1
+        1,
+        6
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -1149,7 +1150,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "8NS2-S2",
@@ -1449,7 +1451,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "8NS2-S3",
@@ -1801,7 +1804,326 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
+    },
+    {
+      "skill_id": "8NS2-S7",
+      "name": "Approximate an irrational expression to the nearest tenth",
+      "column": "on_grade",
+      "parent_standard": "8.NS.2",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8NS2-S3"
+      },
+      "i_do_script": "Nearest whole number was the easy version: find the two perfect squares it sits between and pick the closer one. Nearest tenth needs one more move. Watch the square root of 24. It sits between 16 and 25, so between 4 and 5, and 24 is much closer to 25, so I expect something near 4.9. I test it: 4.9 times 4.9 is 24.01. That is just past 24, so the square root of 24 is a hair under 4.9. To the nearest tenth, 4.9. And when there is an operation under the radical, that comes first -- always simplify inside before you estimate.",
+      "canonical_error": {
+        "pattern": "Applies the square root to only part of the radicand when an operation sits underneath it, or estimates before simplifying inside",
+        "example": "For the square root of (3 squared plus 3), computes 3 plus the square root of 3, or takes the square root of 9 and then adds 3, instead of simplifying 9 plus 3 to 12 first",
+        "why": "The radical bar is a grouping symbol, but it does not look like parentheses, so the student treats the terms under it as separate. Every prior square root had a single number underneath, so there was never an inside to simplify."
+      },
+      "item_template": "An irrational value to approximate to the nearest tenth. Some items place an operation inside the radicand so the expression must be simplified before it is estimated. Multiple choice with tenth-place options, or numeric response.",
+      "sample_items": [
+        {
+          "stem": "Select the nearest approximation of the square root of 24.",
+          "answer": "4.9",
+          "choices": [
+            "4.0",
+            "4.9",
+            "5.1",
+            "5.5"
+          ],
+          "distractor_logic": "5.1 and 5.5 overshoot past the square root of 25; 4.0 is the floor of the interval rather than an estimate."
+        },
+        {
+          "stem": "Which range contains the value of the square root of (3 squared plus 3)?",
+          "answer": "Between 3 and 4",
+          "choices": [
+            "Between 11 and 12",
+            "Between 5 and 6",
+            "Between 4 and 5",
+            "Between 3 and 4"
+          ],
+          "distractor_logic": "Between 5 and 6 comes from simplifying to 9 plus 3 correctly but then mis-estimating; 'between 11 and 12' comes from never taking the root at all."
+        },
+        {
+          "stem": "Approximate the square root of 55 to the nearest tenth. Show the multiplication you used to check.",
+          "answer": "About 7.4, because 7.4 times 7.4 is 54.76 and 7.5 times 7.5 is 56.25, so 55 sits nearer 7.4",
+          "choices": null,
+          "distractor_logic": "Answering 7.5 without testing shows the midpoint was assumed rather than checked."
+        },
+        {
+          "stem": "Approximate 2 times pi to the nearest tenth.",
+          "answer": "About 6.3, using pi as roughly 3.14, so 2 times 3.14 is 6.28",
+          "choices": null,
+          "distractor_logic": "6.2 comes from truncating rather than rounding; 3.1 comes from forgetting the coefficient."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Is there an operation underneath that radical? Handle it before you estimate anything.",
+        "prompt": "The radical bar groups everything under it, like parentheses. Simplify inside to a single number first. Then find the two perfect squares it sits between, and test a tenth by multiplying it by itself.",
+        "praise": "You simplified inside first and then tested your tenth by squaring it. That is the whole method."
+      },
+      "vocabulary": [
+        {
+          "term": "Radicand",
+          "definition": "Everything underneath the radical bar. It is grouped, so it gets simplified first."
+        },
+        {
+          "term": "Nearest tenth",
+          "definition": "One digit after the decimal point."
+        },
+        {
+          "term": "Perfect square",
+          "definition": "A whole number that is some whole number times itself. They are the landmarks you estimate between."
+        },
+        {
+          "term": "Approximate",
+          "definition": "A close value, not an exact one. Irrational numbers have no exact decimal."
+        }
+      ],
+      "manipulative_visual": "A number line marked in tenths between two consecutive whole numbers. Students place a candidate tenth, square it on a whiteboard, and slide the marker until the square straddles the target. The squaring check becomes a physical narrowing rather than a guess.",
+      "next_steps": {
+        "if_pass": "Ready for 8NS2-S5: compare an irrational number to a rational one using these approximations.",
+        "if_fail": "Drop back to 8NS2-S3, locating a root between two consecutive whole numbers, before adding the tenth place."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write the square root of 24 on the board, and underneath it write 16 and 25 with a gap between them."
+        },
+        {
+          "kind": "ask",
+          "text": "24 sits between which two perfect squares? So the answer sits between which two whole numbers?"
+        },
+        {
+          "kind": "ask",
+          "text": "Is 24 nearer 16 or nearer 25? So should our estimate be nearer 4 or nearer 5?"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student says 4.5 because it is halfway, have them square it: 20.25. That is well short of 24, which shows the value sits higher than halfway. Let the test do the correcting."
+        },
+        {
+          "kind": "ask",
+          "text": "Try 4.9. What is 4.9 times 4.9? We got 24.01 -- just past 24. What does that tell us?"
+        },
+        {
+          "kind": "ask",
+          "text": "New one: the square root of (3 squared plus 3). Before we estimate anything, what has to happen underneath the bar?"
+        },
+        {
+          "kind": "ask",
+          "text": "9 plus 3 is 12. Now the square root of 12 -- between which whole numbers, and nearer which one?"
+        },
+        {
+          "kind": "say",
+          "text": "Simplify inside, find the two landmarks, then test a tenth by squaring it. The squaring is what turns a guess into an estimate."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Estimate to the Tenth",
+        "kind": "reference_card",
+        "instructions": "Three moves, in this order. Never estimate before you simplify inside.",
+        "items": [
+          "1. SIMPLIFY under the bar. The radical groups everything beneath it.",
+          "2. LANDMARK: find the perfect squares on either side.",
+          "3. TEST a tenth: multiply it by itself and compare to the target.",
+          "sqrt(24): between 16 and 25, so between 4 and 5. 4.9 x 4.9 = 24.01, so about 4.9.",
+          "sqrt(3^2 + 3) = sqrt(12), NOT 3 + sqrt(3).",
+          "k x pi: use pi about 3.14, then multiply. 2pi is about 6.3."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "The square root of 30 sits between which two whole numbers?",
+          "answer": "Between 5 and 6"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is 4.9 times 4.9?",
+          "answer": "24.01"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Select the nearest approximation of the square root of 24: 4.0, 4.9, 5.1, or 5.5.",
+          "answer": "4.9",
+          "notes": "The spec's own approaching item. 5.1 and 5.5 exceed the square root of 25, which is 5."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Approximate the square root of 55 to the nearest tenth. Show the multiplication you used to check.",
+          "answer": "About 7.4. Check: 7.4 x 7.4 = 54.76 and 7.5 x 7.5 = 56.25, so 55 is nearer 7.4."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which range contains the value of the square root of (3 squared plus 3)?  (a) between 11 and 12  (b) between 5 and 6  (c) between 4 and 5  (d) between 3 and 4",
+          "answer": "(d) between 3 and 4",
+          "notes": "Simplify to the square root of 12 first. 12 sits between 9 and 16, so the value is between 3 and 4."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Read Kwame's work. Find his mistake and fix it.",
+          "shown_work": [
+            "Approximate the square root of (5 squared plus 11) to the nearest tenth.",
+            "Kwame wrote: 'The square root of 5 squared is 5. So this is 5 plus the square root of 11, which is about 5 + 3.3 = 8.3.'"
+          ],
+          "answer": "About 6.0. Kwame split the radicand, but the radical bar groups everything underneath it, so the inside has to be simplified first: 5 squared plus 11 is 25 plus 11, which is 36. The square root of 36 is exactly 6. A square root does not distribute across addition -- his method would also claim the square root of (9 plus 16) is 3 plus 4, which is 7, when it is really the square root of 25, which is 5.",
+          "notes": "The canonical error, and the counterexample at the end is worth running with the class -- it makes the non-distribution concrete."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Approximate 2 times pi to the nearest tenth, and explain why your method differs from estimating a square root.",
+          "answer": "About 6.3, since pi is roughly 3.14 and 2 x 3.14 = 6.28. It differs because pi has a known decimal approximation to start from, so there is nothing to squeeze between landmarks -- you multiply and round."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Without a calculator, decide which is larger: the square root of 40 or 6.3. Justify with a multiplication.",
+          "answer": "The square root of 40 is larger. Check by squaring: 6.3 x 6.3 = 39.69, which falls short of 40, so the square root of 40 must be slightly greater than 6.3 (it is about 6.32).",
+          "notes": "Deliberately requires the squaring test rather than intuition; students who guess get it backwards."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Squeeze to the Tenth",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Number lines marked in tenths",
+            "Markers",
+            "Whiteboards for squaring"
+          ],
+          "instructions": "1. Post a non-perfect square such as 24, 40, or 55.\n2. Partner A names the two whole-number landmarks and marks them.\n3. Partner B picks a tenth between them and squares it on the whiteboard.\n4. Compare the square to the target and slide the marker up or down. Repeat until two neighbouring tenths straddle the target.\n5. Record the nearer one. Run at least one item with an operation under the radical so the simplify-first step gets practised."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Kwame Split the Radical",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Pairs read Kwame's work and compute the correct value before discussing his method.\n2. Ask first: why is splitting tempting? (It looks like distributing, which works for multiplication.)\n3. Pairs test his method on the square root of (9 plus 16), where the answer is checkable: his way gives 7, the correct way gives 5.\n4. Pairs write one sentence about what the radical bar does to the terms underneath it.",
+          "content": {
+            "worked_problem": "Approximate the square root of (5 squared plus 11). Kwame wrote: 'sqrt(5 squared) is 5, so this is 5 + sqrt(11), about 8.3.'",
+            "error_step": "Kwame split the radical across an addition instead of simplifying the radicand first.",
+            "why": "The radical bar groups everything beneath it. 25 plus 11 is 36, and the square root of 36 is exactly 6. Testing his method on sqrt(9 + 16) exposes it: he would get 7 where the true value is 5."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Higher or Lower, Squared",
+          "time_minutes": 8,
+          "grouping": "small_group",
+          "materials": [
+            "Target cards",
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Post a target such as the square root of 47.\n2. Students write a tenth-place guess and square it.\n3. Reveal squares around the group: anyone whose square is above the target says HIGHER, below says LOWER.\n4. Round two: everyone must guess between the closest HIGHER and closest LOWER from round one.\n5. Two rounds is usually enough to pin the tenth. Debrief on why squaring is faster than guessing."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The tenth-marked number line plus the squaring check keeps estimation concrete instead of a remembered decimal."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Kwame's split radical is the canonical error, and it is checkable against a case with an exact answer."
+        },
+        {
+          "strategy_id": "strat-math-002",
+          "why": "Squaring tenths mentally to narrow an interval is exactly the kind of reasoning a number talk builds."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Is there an operation under the radical? What happens to it first?",
+          "Which two perfect squares does the radicand sit between?",
+          "You said 4.5. Square it. Does that land above or below the target?",
+          "Which two tenths does the value fall between? Which is it nearer?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student splits a radical across an addition inside the radicand.",
+            "say": "The radical bar groups everything under it, like parentheses. Simplify inside to a single number first. Then find the two perfect squares it sits between, and test a tenth by multiplying it by itself.",
+            "praise": "You simplified inside first and then tested your tenth by squaring it. That is the whole method."
+          },
+          {
+            "if_you_see": "Student picks the midpoint tenth because it is halfway between the whole numbers.",
+            "say": "Square your guess and compare it to the target. Did you land above or below? Now adjust.",
+            "praise": "You tested instead of assuming halfway. Squares don't grow evenly, so halfway rarely lands right."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "sqrt(24) to the nearest tenth, and what did you square to check?",
+            "look_for": "4.9, checked with 4.9 x 4.9 = 24.01. An untested answer is a guess."
+          },
+          {
+            "prompt": "sqrt(4^2 + 9) -- what is the first move?",
+            "look_for": "Simplify to sqrt(25). Splitting into 4 + 3 means the grouping is not yet seen."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Approximate the square root of 24 to the nearest tenth.",
+        "answer": "About 4.9",
+        "steps": [
+          {
+            "math": "Nothing to simplify under the bar: the radicand is 24.",
+            "annotation": "Check for an operation inside first, every time."
+          },
+          {
+            "math": "24 sits between the perfect squares 16 and 25, so the value is between 4 and 5.",
+            "annotation": "The landmarks bracket the answer."
+          },
+          {
+            "math": "24 is much nearer 25 than 16, so try a tenth near 5. Test 4.9: 4.9 x 4.9 = 24.01.",
+            "annotation": "Squaring the guess is the test."
+          },
+          {
+            "math": "24.01 is barely above 24, so the root is just under 4.9. To the nearest tenth, 4.9.",
+            "annotation": "Two neighbouring tenths straddle the target; report the nearer one."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Approximate the square root of 38 to the nearest tenth.",
+        "answer": "About 6.2",
+        "steps": [
+          {
+            "math": "Nothing to simplify under the bar: the radicand is 38.",
+            "annotation": "Check for an operation inside first.",
+            "given": true
+          },
+          {
+            "math": "38 sits between the perfect squares 36 and 49, so the value is between 6 and 7.",
+            "annotation": "The landmarks bracket the answer.",
+            "given": true
+          },
+          {
+            "math": "38 is much nearer 36, so try a tenth just above 6. Test 6.2: 6.2 x 6.2 = 38.44.",
+            "annotation": "Squaring the guess is the test.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Compare 38.44 to 38, test the tenth below if you need to, and state the answer to the nearest tenth.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "Under the bar simplifies to ___, so I am estimating the square root of ___.",
+        "It sits between ___ and ___, so the answer is between ___ and ___.",
+        "I tested ___ because ___ x ___ = ___, which is ___ the target."
+      ],
+      "fluency_source": "8NS2-F1",
+      "pld_band": "approaching"
     },
     {
       "skill_id": "8NS2-S4",
@@ -2132,7 +2454,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "approaching"
     },
     {
       "skill_id": "8NS2-S5",
@@ -2191,7 +2514,7 @@
         }
       ],
       "next_steps": {
-        "if_pass": "8NS2-S6",
+        "if_pass": "Ready for 8NS2-S8: produce a number that satisfies a stated comparison, rather than judging one you were given.",
         "if_fail": "8NS2-S3"
       },
       "worked_example_script": [
@@ -2459,7 +2782,311 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "at"
+    },
+    {
+      "skill_id": "8NS2-S8",
+      "name": "Name a number that meets a given comparison requirement",
+      "column": "on_grade",
+      "parent_standard": "8.NS.2",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8NS2-S5"
+      },
+      "i_do_script": "Until now you were handed numbers and asked to compare them. Now you are handed a condition and asked to produce a number that satisfies it. Watch: name an irrational number between 5 and 6. I need a square root landing in that stretch, so I need a radicand between 25 and 36 that is not a perfect square. 30 works, so the square root of 30 works. And so does the square root of 27, and the square root of 31. Many answers, all correct, and I can check every one by squaring the bounds.",
+      "canonical_error": {
+        "pattern": "Produces a number that satisfies the interval but not the rational-or-irrational requirement, most often by naming a perfect square root or a terminating decimal when an irrational is asked for",
+        "example": "Asked for an irrational number between 5 and 6, answers 5.5, or answers the square root of 25 because it 'looks irrational'",
+        "why": "The student attends to the interval, which is the visible constraint, and treats the word irrational as decoration. The square root symbol reads as a signal for irrational regardless of what sits under it, so sqrt(25) passes their check even though it equals 5."
+      },
+      "item_template": "A condition rather than a question: an interval plus a number-type requirement (rational or irrational), or a comparison to satisfy. The student produces a value and justifies that it meets every part of the condition. Open response with many correct answers.",
+      "sample_items": [
+        {
+          "stem": "Name an irrational number between 5 and 6. Justify that your number satisfies both requirements.",
+          "answer": "Any square root of a non-perfect square between 25 and 36, e.g. the square root of 30. It is between 5 and 6 because 25 < 30 < 36, and it is irrational because 30 is not a perfect square.",
+          "choices": null,
+          "distractor_logic": "5.5 satisfies the interval but is rational; sqrt(25) is neither irrational nor strictly between."
+        },
+        {
+          "stem": "Name a rational number between the square root of 7 and the square root of 11.",
+          "answer": "Any terminating decimal between about 2.65 and about 3.32, for example 3",
+          "choices": null,
+          "distractor_logic": "Naming another square root satisfies the interval but not the rational requirement."
+        },
+        {
+          "stem": "Name a number greater than 3 times pi.",
+          "answer": "Any value above about 9.42, for example 10",
+          "choices": null,
+          "distractor_logic": "Answering 9 shows pi was rounded down to 3 rather than approximated to 3.14."
+        },
+        {
+          "stem": "Is it possible to name an irrational number between 4 and 4.1? Explain.",
+          "answer": "Yes. Any square root of a non-perfect square between 16 and 16.81 works, such as the square root of 16.5. Narrow intervals still contain infinitely many irrational numbers.",
+          "choices": null,
+          "distractor_logic": "Saying no treats the interval's width as the limit rather than the density of the reals."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Read the condition back to me. How many requirements are in it?",
+        "prompt": "There are two: the interval AND the kind of number. Check them separately. Is your value inside the interval? Now, is it actually irrational -- is the radicand a perfect square?",
+        "praise": "You checked both requirements, not just the one you could see on the number line."
+      },
+      "vocabulary": [
+        {
+          "term": "Irrational",
+          "definition": "A number whose decimal never ends and never repeats. Square roots of non-perfect squares, and pi, are irrational."
+        },
+        {
+          "term": "Rational",
+          "definition": "A number that can be written as a fraction of integers. Terminating and repeating decimals are rational."
+        },
+        {
+          "term": "Condition",
+          "definition": "A requirement an answer must satisfy. A problem may state more than one at once."
+        },
+        {
+          "term": "Non-perfect square",
+          "definition": "A whole number that is not any whole number times itself. Its square root is irrational."
+        }
+      ],
+      "manipulative_visual": "A two-column sort with interval cards across the top and RATIONAL / IRRATIONAL rows down the side. A produced number must be placed in exactly one cell, which forces both requirements to be checked before it is committed.",
+      "next_steps": {
+        "if_pass": "Ready for 8NS2-S9: order a whole set of rational and irrational values and justify the ordering.",
+        "if_fail": "Drop back to 8NS2-S5 and rebuild comparing a given irrational to a rational before producing one to order."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board: name an irrational number between 5 and 6. Underline the word irrational and the interval separately."
+        },
+        {
+          "kind": "ask",
+          "text": "There are two requirements in this sentence. What are they?"
+        },
+        {
+          "kind": "ask",
+          "text": "If I want a square root between 5 and 6, what does the number under the radical have to sit between?"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student offers 5.5, accept that it meets the interval and ask them the second question: is 5.5 irrational? The condition they missed is the one to name aloud."
+        },
+        {
+          "kind": "ask",
+          "text": "Between 25 and 36. Pick one that is not a perfect square. Somebody give me one."
+        },
+        {
+          "kind": "ask",
+          "text": "Square root of 30. Check requirement one: is 30 between 25 and 36? Check requirement two: is 30 a perfect square?"
+        },
+        {
+          "kind": "ask",
+          "text": "Give me a completely different answer that also passes both checks."
+        },
+        {
+          "kind": "say",
+          "text": "Two requirements, two checks, many correct answers. The radical symbol alone does not make a number irrational -- what sits under it decides."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Two Checks Before You Answer",
+        "kind": "reference_card",
+        "instructions": "Conditions usually carry more than one requirement. Check each separately.",
+        "items": [
+          "Check 1 -- INTERVAL: is my value strictly inside?",
+          "Check 2 -- TYPE: is it the kind of number asked for?",
+          "Irrational between 5 and 6: need a radicand between 25 and 36 that is NOT a perfect square.",
+          "sqrt(30) passes both.  5.5 passes the interval only.  sqrt(25) passes neither.",
+          "A radical sign does not make a number irrational -- the radicand decides.",
+          "Rational between two roots: a plain decimal or whole number is easiest."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Is the square root of 36 rational or irrational? How do you know?",
+          "answer": "Rational -- 36 is a perfect square, so the root is exactly 6."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Name any irrational number.",
+          "answer": "Any non-perfect-square root or a multiple of pi, e.g. the square root of 2"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Name an irrational number between 5 and 6. Justify that your number satisfies both requirements.",
+          "answer": "For example the square root of 30: it lies between 5 and 6 because 25 < 30 < 36, and it is irrational because 30 is not a perfect square.",
+          "notes": "Ask for a second, different answer -- the family is the idea."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Name a rational number between the square root of 7 and the square root of 11.",
+          "answer": "3 works, since the square root of 7 is about 2.65 and the square root of 11 is about 3.32. Any terminating decimal in that stretch is fine.",
+          "notes": "Reverses the type requirement, so students cannot default to producing a radical."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Name a number greater than 3 times pi but less than 10.",
+          "answer": "Any value between about 9.42 and 10, for example 9.8",
+          "notes": "Requires approximating 3 x 3.14 first. Answering 9 means pi was rounded to 3."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Read Marisol's answer. Find her mistake and fix it.",
+          "shown_work": [
+            "Task: name an irrational number between 5 and 6.",
+            "Marisol wrote: 'The square root of 25, because it has a square root sign so it is irrational, and 25 is between 5 and 6 if you take the root.'"
+          ],
+          "answer": "The square root of 25 is exactly 5, which is rational and is not strictly between 5 and 6. The radical sign does not make a number irrational -- what sits underneath decides, and 25 is a perfect square. For a value between 5 and 6 the radicand has to sit between 25 and 36, and to be irrational it must not be a perfect square. The square root of 30 works.",
+          "notes": "The canonical error, and it fails both requirements at once, which makes it a good discussion piece."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Is it possible to name an irrational number between 4 and 4.1? Explain your reasoning and give one if it is possible.",
+          "answer": "Yes. The interval for the radicand runs from 16 to 16.81, so the square root of 16.5 works. A narrow interval still contains infinitely many irrational numbers -- narrowness limits how easy they are to name, not whether they exist."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Name a number that is greater than the square root of 50 and less than 7.5, and say whether your answer is rational or irrational. Then name one of the other type that also fits.",
+          "answer": "The square root of 50 is about 7.07, so the interval runs from about 7.07 to 7.5. Rational: 7.2. Irrational: the square root of 53, since 53 sits between 50 and 56.25 and is not a perfect square.",
+          "notes": "Forces both types out of a single interval, which is the At bullet at full strength."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Two-Check Sort",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Interval cards",
+            "Blank number cards",
+            "A RATIONAL / IRRATIONAL sorting mat"
+          ],
+          "instructions": "1. Draw an interval card, such as 'between 5 and 6'.\n2. Each student writes one number they believe satisfies the interval and places it in the RATIONAL or IRRATIONAL row.\n3. The group checks each placement against both requirements before scoring it.\n4. A card in the wrong row still counts as inside the interval -- name which check it failed.\n5. Rotate intervals. Include one narrow interval such as 4 to 4.1."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Marisol Trusted the Symbol",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Printed problem slip"
+          ],
+          "instructions": "1. Pairs read Marisol's answer and evaluate the square root of 25 exactly.\n2. Ask first: which of the two requirements does her answer fail? (Both.)\n3. Pairs work out what the radicand must sit between for a value between 5 and 6, then name a valid answer.\n4. Pairs write one sentence about what actually decides whether a square root is irrational.",
+          "content": {
+            "worked_problem": "Name an irrational number between 5 and 6. Marisol wrote the square root of 25, reasoning that the radical sign makes it irrational.",
+            "error_step": "Marisol treated the radical symbol as the marker of irrationality instead of checking the radicand.",
+            "why": "The square root of 25 is exactly 5 -- rational, and not strictly inside the interval. The radicand has to sit between 25 and 36 and not be a perfect square; the square root of 30 satisfies both."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Name One, Name Another",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Post a condition carrying two requirements.\n2. Students write an answer and hold it up.\n3. Every distinct valid answer scores the whole class a point; a repeat scores nothing.\n4. Any answer that fails a check gets named by which check it failed, not just marked wrong.\n5. Final round: post a condition with no valid answer, such as 'a rational number between the square root of 2 and the square root of 2', and see who notices."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-001",
+          "why": "With many correct answers there is no key to check against, so students have to test each other's values against the stated conditions."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Marisol's answer fails both requirements at once, which makes the two-check habit visible."
+        },
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The sorting mat forces the type requirement to be committed to physically rather than left implicit."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many requirements are in that condition? Name them separately.",
+          "Your number is in the interval. Is it the right KIND of number?",
+          "What does the radicand have to sit between for the root to land in that interval?",
+          "Give me a completely different answer that also passes both checks."
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student names a rational value when an irrational one was required.",
+            "say": "There are two: the interval AND the kind of number. Check them separately. Is your value inside the interval? Now, is it actually irrational -- is the radicand a perfect square?",
+            "praise": "You checked both requirements, not just the one you could see on the number line."
+          },
+          {
+            "if_you_see": "Student treats any expression with a radical sign as irrational.",
+            "say": "Work out what is under that radical. Is it a perfect square? What does the root actually equal?",
+            "praise": "Right -- the radicand decides, not the symbol."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Irrational number between 3 and 4 -- give me one.",
+            "look_for": "A root of a non-perfect square between 9 and 16, e.g. sqrt(10). A decimal like 3.5 means the type check was skipped."
+          },
+          {
+            "prompt": "Is sqrt(49) irrational?",
+            "look_for": "No, it is 7. A yes means the symbol is still standing in for the property."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Name an irrational number between 5 and 6, and justify that it meets both requirements.",
+        "answer": "The square root of 30 (also correct: sqrt(27), sqrt(31), and many others)",
+        "steps": [
+          {
+            "math": "Two requirements: strictly between 5 and 6, and irrational.",
+            "annotation": "Read the condition apart before answering."
+          },
+          {
+            "math": "For a square root between 5 and 6, the radicand sits between 5 squared and 6 squared: between 25 and 36.",
+            "annotation": "Square the bounds to convert the interval."
+          },
+          {
+            "math": "Choose a value in that range that is not a perfect square: 30.",
+            "annotation": "Not a perfect square is what makes the root irrational."
+          },
+          {
+            "math": "Check: 25 < 30 < 36, so 5 < sqrt(30) < 6. And 30 is not a perfect square, so sqrt(30) is irrational.",
+            "annotation": "Both requirements verified separately."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Name an irrational number between 7 and 8, and justify that it meets both requirements.",
+        "answer": "The square root of 55 (also correct: sqrt(50), sqrt(60), and many others)",
+        "steps": [
+          {
+            "math": "Two requirements: strictly between 7 and 8, and irrational.",
+            "annotation": "Read the condition apart before answering.",
+            "given": true
+          },
+          {
+            "math": "The radicand sits between 7 squared and 8 squared: between 49 and 64.",
+            "annotation": "Square the bounds to convert the interval.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Pick a radicand in that range that is not a perfect square, then verify both requirements.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The condition has ___ requirements: ___ and ___.",
+        "For a root between ___ and ___, the radicand must sit between ___ and ___.",
+        "___ works because ___, and it is irrational because ___."
+      ],
+      "fluency_source": "8NS2-F1",
+      "pld_band": "at"
     },
     {
       "skill_id": "8NS2-S6",
@@ -2467,7 +3094,8 @@
       "column": "looking_forward",
       "parent_standard": "8.NS.2",
       "engine_stems": [
-        5
+        5,
+        7
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -2786,7 +3414,325 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "above"
+    },
+    {
+      "skill_id": "8NS2-S9",
+      "name": "Order a mixed set of rational and irrational numbers and justify the order",
+      "column": "looking_forward",
+      "parent_standard": "8.NS.2",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "8NS2-S8"
+      },
+      "i_do_script": "A list with square roots, decimals, whole numbers, and multiples of pi cannot be sorted by looking. Every value has to be converted into the same currency first, and that currency is a decimal approximation. Watch: 3pi, sqrt(35), 7.4, sqrt(50), 9. I approximate every single one before I move anything. 3pi is about 9.42, sqrt(35) is about 5.9, 7.4 is 7.4, sqrt(50) is about 7.07, 9 is 9. Now the order is obvious. The approximating is the work; the sorting is the easy part.",
+      "canonical_error": {
+        "pattern": "Sorts by the radicand or the coefficient rather than by the value of the expression, so large numbers under a radical are placed as though they were large numbers",
+        "example": "Orders sqrt(35) after 9 because 35 is greater than 9, or places 3pi below 7.4 because 3 is less than 7",
+        "why": "The student compares the symbols they can read directly instead of what the expression evaluates to. The radicand and the coefficient are the visible numbers, and nothing on the page announces that sqrt(35) is smaller than 6."
+      },
+      "item_template": "A list of four to six values mixing rational and irrational forms, to be ordered least to greatest, plus a written justification explaining how the comparison was made. Two-part response; the justification is assessed separately from the ordering.",
+      "sample_items": [
+        {
+          "stem": "Order from least to greatest: 3pi, the square root of 35, 7.4, the square root of 50, 9. Then justify your ordering by explaining how you compared the rational and irrational values.",
+          "answer": "sqrt(35) (about 5.92), sqrt(50) (about 7.07), 7.4, 9, 3pi (about 9.42). Every value was approximated as a decimal so they could be compared on one scale.",
+          "choices": null,
+          "distractor_logic": "Placing sqrt(50) or sqrt(35) last comes from ordering by radicand; placing 3pi first comes from ordering by coefficient."
+        },
+        {
+          "stem": "Order from least to greatest: 2pi, 6, the square root of 40, 6.5.",
+          "answer": "6, 2pi (about 6.28), sqrt(40) (about 6.32), 6.5",
+          "choices": null,
+          "distractor_logic": "These four are deliberately close together, so estimating to the nearest whole number is not precise enough to separate them."
+        },
+        {
+          "stem": "Jonah ordered sqrt(20), 4.5, and sqrt(17) as sqrt(17), sqrt(20), 4.5. Is he correct? Justify.",
+          "answer": "Yes, Jonah is correct. sqrt(17) is about 4.12, sqrt(20) is about 4.47, and 4.5 is greater than both, so his order is right. Not every critique item contains an error.",
+          "choices": null,
+          "distractor_logic": "Students who expect every critique item to contain an error will invent one."
+        },
+        {
+          "stem": "Which is larger, the square root of 80 or 3pi? Justify with approximations.",
+          "answer": "3pi. The square root of 80 is about 8.94 and 3pi is about 9.42.",
+          "choices": null,
+          "distractor_logic": "Comparing 80 to 3 makes the square root look much larger."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Before you order anything -- what is every one of those worth as a decimal?",
+        "prompt": "Convert every value to a decimal approximation first, and write each one above its expression. You cannot compare a radicand to a coefficient to a decimal. Get them into the same currency, then sort.",
+        "praise": "You approximated everything before sorting anything. That is why the ordering came out right the first time."
+      },
+      "vocabulary": [
+        {
+          "term": "Approximation",
+          "definition": "A close decimal value used so different forms can be compared on one scale."
+        },
+        {
+          "term": "Justify",
+          "definition": "Explain how you knew, not just what you decided."
+        },
+        {
+          "term": "Radicand",
+          "definition": "The number under the radical. Its size is not the size of the expression."
+        },
+        {
+          "term": "Coefficient",
+          "definition": "The multiplier in front, as the 3 in 3pi."
+        }
+      ],
+      "manipulative_visual": "Index cards each showing an expression on the front and its decimal approximation on the back. Students order face-down by approximation, then flip the whole row to reveal the original expressions in sorted order, which makes the conversion step visibly load-bearing.",
+      "next_steps": {
+        "if_pass": "Ready for Algebra I: AI.NF.1 works with the real number system and these comparisons directly.",
+        "if_fail": "Drop back to 8NS2-S7 and rebuild tenth-place approximation, then return here with lists of three before moving to five."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Write on the board, spaced far apart: 3pi, sqrt(35), 7.4, sqrt(50), 9. Leave a blank line above each."
+        },
+        {
+          "kind": "ask",
+          "text": "Could I sort these by looking at them? What makes that hard?"
+        },
+        {
+          "kind": "ask",
+          "text": "Let's convert everything first. What is sqrt(35) worth, roughly? Which perfect squares does 35 sit between?"
+        },
+        {
+          "kind": "watch",
+          "text": "If a student starts moving values before all five are approximated, stop and ask what sqrt(50) is worth. Sorting a value you have not converted is where the error enters."
+        },
+        {
+          "kind": "ask",
+          "text": "3pi -- what do we use for pi, and what does that give us?"
+        },
+        {
+          "kind": "ask",
+          "text": "All five approximated. Now read me the order, least to greatest."
+        },
+        {
+          "kind": "ask",
+          "text": "Look at 9 and 3pi. Why would someone put 9 last if they sorted by the numbers they could see?"
+        },
+        {
+          "kind": "say",
+          "text": "Approximate everything, then sort. And the justification has to say that -- the reasoning is what is being assessed, not just the row."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Same Currency First",
+        "kind": "reference_card",
+        "instructions": "Never sort a value you have not converted. Approximate all of them, then order.",
+        "items": [
+          "sqrt(n): find the perfect squares either side, estimate to a tenth.",
+          "k x pi: use pi about 3.14, multiply.",
+          "Decimals and whole numbers: already in decimal form.",
+          "3pi is about 9.42.  sqrt(35) is about 5.92.  sqrt(50) is about 7.07.",
+          "The RADICAND is not the value: sqrt(35) is smaller than 9, even though 35 is bigger.",
+          "The justification must say HOW you compared, not just the final order."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Approximate the square root of 35 to the nearest tenth.",
+          "answer": "About 5.9"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Approximate 3 times pi.",
+          "answer": "About 9.42"
+        },
+        {
+          "difficulty": "core",
+          "type": "multi_part",
+          "stem": "A list of numbers is given: 3pi, the square root of 35, 7.4, the square root of 50, 9.\nPart A: Order the numbers from least to greatest.\nPart B: Justify your ordering by explaining how you compared the rational and irrational values.",
+          "answer": "Part A: sqrt(35), sqrt(50), 7.4, 9, 3pi. Part B: each value was approximated as a decimal first -- sqrt(35) about 5.92, sqrt(50) about 7.07, 7.4 exactly, 9 exactly, 3pi about 9.42 -- so all five could be compared on the same scale.",
+          "notes": "The spec's own above-proficiency item. Part B is assessed separately; an ordering with no method earns half."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Order from least to greatest: 2pi, 6, the square root of 40, 6.5.",
+          "answer": "6, 2pi (about 6.28), sqrt(40) (about 6.32), 6.5",
+          "notes": "Deliberately tight. Nearest-whole-number estimates cannot separate 2pi from sqrt(40) -- tenths are required."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which is larger, the square root of 80 or 3 times pi? Justify with approximations.",
+          "answer": "3pi is larger: sqrt(80) is about 8.94 and 3pi is about 9.42.",
+          "notes": "Comparing 80 against 3 makes the root look far bigger, which is the trap."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Read Lena's ordering. Decide whether it is correct and explain.",
+          "shown_work": [
+            "Task: order from least to greatest -- sqrt(30), 5.6, 4pi, 6.",
+            "Lena wrote: '5.6, 6, 4pi, sqrt(30), because 30 is the biggest number in the list and 4 is the smallest.'"
+          ],
+          "answer": "Lena's order is wrong. She sorted by the numbers she could read rather than by value. Approximating: sqrt(30) is about 5.48, 5.6 is 5.6, 4pi is about 12.57, and 6 is 6. The correct order is sqrt(30), 5.6, 6, 4pi. The radicand 30 is not the size of sqrt(30), and the coefficient 4 is not the size of 4pi.",
+          "notes": "The canonical error in both directions at once -- radicand too big, coefficient too small."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Build a list of four numbers -- at least one square root, at least one multiple of pi, and at least one decimal -- whose correct order is the exact reverse of the order they would take if someone sorted by the visible numbers. Trade with a partner.",
+          "answer": "Answers vary. For example sqrt(80), 2pi, 9.5, 3: sorting by visible numbers gives 2pi, 3, sqrt(80), 9.5, while true order is 3, 2pi (about 6.28), sqrt(80) (about 8.94), 9.5.",
+          "notes": "Constructing the trap requires understanding it from both sides."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Two students order a list correctly but justify it differently. One writes 'I approximated each value to a decimal and compared.' The other writes 'I just knew.' Both orders are right. Should they earn the same credit? Explain what a justification has to contain.",
+          "answer": "No. The task asks for the ordering and the reasoning, so a justification must name the method: converting every value to a decimal approximation so the forms can be compared on one scale. 'I just knew' gives the reader nothing to check and would not survive a harder list."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Flip the Row",
+          "time_minutes": 12,
+          "grouping": "small_group",
+          "materials": [
+            "Index cards with an expression on the front and space on the back"
+          ],
+          "instructions": "1. Each group gets five cards showing mixed forms.\n2. Groups write the decimal approximation on the BACK of each card, one at a time, with no sorting yet.\n3. Turn all cards approximation-side up and order the row.\n4. Flip the whole row to reveal the original expressions in sorted order.\n5. Debrief: which card's position was most surprising, and what would you have guessed from the front alone?"
+        },
+        {
+          "type": "error_analysis",
+          "title": "Lena Sorted What She Could See",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Printed ordering slip"
+          ],
+          "instructions": "1. Pairs read Lena's order and her reason before checking anything.\n2. Pairs approximate all four values and write each above its expression.\n3. Pairs identify both of Lena's errors -- the radicand read as a value, and the coefficient read as a value.\n4. Pairs write a corrected order plus a one-sentence justification naming the method.",
+          "content": {
+            "worked_problem": "Order sqrt(30), 5.6, 4pi, 6 from least to greatest. Lena wrote 5.6, 6, 4pi, sqrt(30), reasoning that 30 is largest and 4 is smallest.",
+            "error_step": "Lena ordered by the visible numbers -- the radicand and the coefficient -- instead of by the value each expression represents.",
+            "why": "Approximating gives sqrt(30) about 5.48, 5.6, 6, and 4pi about 12.57, so the correct order is sqrt(30), 5.6, 6, 4pi. The number under a radical shrinks when the root is taken; the number in front of pi multiplies."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Insert the Card",
+          "time_minutes": 8,
+          "grouping": "whole_class",
+          "materials": [
+            "A pre-ordered row of expression cards on the board",
+            "Fresh cards"
+          ],
+          "instructions": "1. Post four expressions already in correct order with gaps between them.\n2. Hand a student a new card. They must place it in the correct gap and state its approximation aloud.\n3. The class votes before the placement is confirmed.\n4. A correct placement with no approximation stated does not score -- the method is the point.\n5. Finish with a card that lands between two very close neighbours so tenths matter."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-004",
+          "why": "Part B of these items is written reasoning, so composing the justification in words is the assessed product."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Lena's ordering carries the canonical error in both directions and is checkable by approximation."
+        },
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The flip-the-row cards make the conversion step physically prior to the sorting step."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What is every value on that list worth as a decimal? Write them all before you move anything.",
+          "Is the number under the radical the same as the value of the expression?",
+          "Your order is right. Now what does your justification tell a reader about HOW you compared?",
+          "Which two values on this list are closest? Are your approximations precise enough to separate them?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student orders by radicand or by coefficient.",
+            "say": "Convert every value to a decimal approximation first, and write each one above its expression. You cannot compare a radicand to a coefficient to a decimal. Get them into the same currency, then sort.",
+            "praise": "You approximated everything before sorting anything. That is why the ordering came out right the first time."
+          },
+          {
+            "if_you_see": "Student produces a correct order with a justification of 'I just knew.'",
+            "say": "Part B asks how you compared. Write the sentence a reader could follow to get the same order.",
+            "praise": "That justification names the method. Someone could repeat your reasoning on a different list."
+          },
+          {
+            "if_you_see": "Student rounds everything to whole numbers and cannot separate two close values.",
+            "say": "Those two rounded to the same whole number. Go one decimal place further and compare again.",
+            "praise": "Good -- precision matched to how close the values actually are."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Bigger: sqrt(35) or 9?",
+            "look_for": "9, because sqrt(35) is about 5.9. Choosing sqrt(35) means the radicand is being read as the value."
+          },
+          {
+            "prompt": "How do you compare 3pi to 7.4?",
+            "look_for": "Approximate 3pi to about 9.42, then compare. Comparing 3 to 7.4 is the coefficient error."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Order from least to greatest: 3pi, sqrt(35), 7.4, sqrt(50), 9. Justify your ordering.",
+        "answer": "sqrt(35), sqrt(50), 7.4, 9, 3pi",
+        "steps": [
+          {
+            "math": "Approximate every value before sorting: sqrt(35) is about 5.92.",
+            "annotation": "35 sits between 25 and 36, much nearer 36."
+          },
+          {
+            "math": "sqrt(50) is about 7.07; 7.4 and 9 are already decimals.",
+            "annotation": "50 sits just above 49, so the root is just above 7."
+          },
+          {
+            "math": "3pi is about 3 x 3.14 = 9.42.",
+            "annotation": "Multiply the coefficient by the approximation of pi."
+          },
+          {
+            "math": "Sort the approximations: 5.92, 7.07, 7.4, 9, 9.42.",
+            "annotation": "One scale, so the comparison is direct."
+          },
+          {
+            "math": "Order: sqrt(35), sqrt(50), 7.4, 9, 3pi.",
+            "annotation": "Justification: every value was approximated as a decimal so all five could be compared on the same scale."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Order from least to greatest: 2pi, sqrt(30), 5.6, 8. Justify your ordering.",
+        "answer": "sqrt(30), 5.6, 2pi, 8",
+        "steps": [
+          {
+            "math": "Approximate every value before sorting: sqrt(30) is about 5.48.",
+            "annotation": "30 sits between 25 and 36, nearer 25.",
+            "given": true
+          },
+          {
+            "math": "2pi is about 2 x 3.14 = 6.28; 5.6 and 8 are already decimals.",
+            "annotation": "Multiply the coefficient by the approximation of pi.",
+            "given": true
+          },
+          {
+            "math": "Sort the approximations: 5.48, 5.6, 6.28, 8.",
+            "annotation": "One scale, so the comparison is direct.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Write the order using the original expressions, then write the justification naming the method you used.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "First I approximated every value: ___ is about ___, ___ is about ___.",
+        "Comparing the approximations gives the order ___.",
+        "I compared the rational and irrational values by ___."
+      ],
+      "fluency_source": "8NS2-F1",
+      "pld_band": "above"
     }
   ],
   "skill_columns": {
@@ -2808,20 +3754,23 @@
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
+      "description": "This standard's own expectations, climbing from Below Proficiency to At Proficiency. Every skill here is grade-level work.",
       "skills": [
         "8NS2-S1",
         "8NS2-S2",
         "8NS2-S3",
+        "8NS2-S7",
         "8NS2-S4",
-        "8NS2-S5"
+        "8NS2-S5",
+        "8NS2-S8"
       ]
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Above-proficiency work and bridges to later standards.",
+      "description": "Above Proficiency on this standard, and bridges to later standards.",
       "skills": [
-        "8NS2-S6"
+        "8NS2-S6",
+        "8NS2-S9"
       ]
     }
   },
@@ -2833,9 +3782,12 @@
     "8NS2-S1",
     "8NS2-S2",
     "8NS2-S3",
+    "8NS2-S7",
     "8NS2-S4",
     "8NS2-S5",
-    "8NS2-S6"
+    "8NS2-S8",
+    "8NS2-S6",
+    "8NS2-S9"
   ],
   "skill_tree": {
     "8NS2-F1": [],
@@ -2865,14 +3817,25 @@
     ],
     "8NS2-S6": [
       "8NS2-S5"
+    ],
+    "8NS2-S7": [
+      "8NS2-S3"
+    ],
+    "8NS2-S8": [
+      "8NS2-S5"
+    ],
+    "8NS2-S9": [
+      "8NS2-S8",
+      "8NS2-S6"
     ]
   },
   "diagnostic_flow": {
     "description": "Start with S3, naming the two consecutive whole numbers that bracket a square root, the move the whole standard rests on. If they pass, move up to S5 (compare an irrational number to a rational one) and S6 (estimate expressions). If they fail, drop one grade: B1 checks square roots of perfect squares and B2 checks ordering rational numbers on a number line, the two grade 7 skills bracketing leans on. If those wobble, the foundations F1 (multiplication facts and square arrays, grade 4) and F2 (decimal comparison and placement, grade 5) locate the gap. S1, S2, and S4 remain available to probe estimating, plotting, and range selection on grade level.",
     "entry_skill": "8NS2-S3",
     "if_pass": [
-      "8NS2-S5",
-      "8NS2-S6"
+      "8NS2-S8",
+      "8NS2-S6",
+      "8NS2-S9"
     ],
     "if_fail": [
       "8NS2-B1",
@@ -2883,7 +3846,16 @@
       "8NS2-F2",
       "8NS2-S1",
       "8NS2-S2",
-      "8NS2-S4"
+      "8NS2-S4",
+      "8NS2-S7"
     ]
+  },
+  "pld_descriptors": {
+    "source": "refreshed",
+    "note": "Verbatim from the ILEARN item specification. These are performance bands on THIS standard, not lower-grade content: a student at Below Proficiency is working on this standard at its least complex entry point.",
+    "below": "Plot rational approximations of irrational numbers on a number line. Identify an irrational number that is greater than or less than a given whole number. Identify the approximate value to the nearest whole number of an irrational number.",
+    "approaching": "Identify approximated values of irrational numbers to the nearest tenth, including those with a numerical operation in the radicand, requiring simplification prior to approximation. Compare irrational numbers within intervals.",
+    "at": "Compare a rational number and a rational approximation of an irrational number using inequalities, number lines, or verbal statements. Determine rational and/or irrational numbers that meet given comparison requirements.",
+    "above": "Analyze and compare values using rational approximations of complex irrational expressions and large non-perfect square radicals. Order sets of rational and irrational numbers from least to greatest and justify comparisons."
   }
 }

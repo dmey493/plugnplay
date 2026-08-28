@@ -20,6 +20,10 @@ Difficulty Tiers:
   Stem 4 (At-MC):          Which expression has a value of k? (DOK 1, easy)
   Stem 5 (At-NR):          sqrt(x) = k, find x (DOK 1, difficult)
   Stem 6 (Above-MC):       Apply inverse relationship between squaring and square root (DOK 2, easy)
+  Stem 7 (Below-MC):    State the inverse relationship between squaring and rooting (DOK 2, easy)
+  Stem 8 (Approaching-MS): Two equivalent expressions for a whole-number value (DOK 2, medium)
+  Stem 9 (At-NR):       Negative square root of a perfect square (DOK 1, medium)
+  Stem 10 (Above-MS):   Verify statements about squares, roots and negatives (DOK 3, difficult)
 """
 
 import random
@@ -534,6 +538,202 @@ class Stem7NS6:
     # MAIN GENERATION METHODS
     # ================================================================
 
+    # ================================================================
+    # STEM 7: Below Proficiency - MC (DOK 2, Easy)
+    # NEW. Below gained "represent the inverse relationship between squaring
+    # and square rooting symbolically". The specification's item is a drag-and
+    # -drop into two boxes; on paper that becomes a choice of which expression
+    # states the relationship correctly.
+    # ================================================================
+    def stem7_below_mc(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(7, variant_idx)
+
+        sq, root = rng.choice(_easy_squares() + _medium_squares())
+        use_variable = rng.random() < 0.5
+        sym = "n" if use_variable else str(root)
+        shown = "n" if use_variable else str(root)
+
+        correct = f"sqrt({shown}^2) = {shown}"
+        options = [
+            (correct, True, None),
+            (f"sqrt({shown})^2 = {shown}^2", False,
+             "Squares the root instead of undoing the square"),
+            (f"sqrt({shown}^2) = {shown}^2", False,
+             "Leaves the exponent in place, so the root does not undo anything"),
+            (f"sqrt({shown}^2) = 2{shown}", False,
+             "Treats the exponent as a multiplier by 2"),
+        ]
+        rng.shuffle(options)
+        choices = []
+        for i, (text, is_correct, why) in enumerate(options):
+            choices.append(QuestionChoice(key=chr(ord("a") + i), text=text,
+                                          text_latex=text, is_correct=is_correct,
+                                          distractor_rationale=why))
+        key = next(c.key for c in choices if c.is_correct).upper()
+
+        subject = "any number n" if use_variable else f"the number {root}"
+        stem_text = (
+            f"Which equation shows that squaring and taking a square root "
+            f"undo each other for {subject}?"
+        )
+        worked = (
+            f"Squaring and square rooting are inverse operations, so the root "
+            f"of a square returns the original number.\n"
+            f"sqrt({shown}^2) = {shown}"
+            + ("" if use_variable else f", because {root}^2 = {sq} and sqrt({sq}) = {root}.")
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.MC, Difficulty.EASY, 7, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.BELOW,
+            difficulty=Difficulty.EASY, dok=2, item_type=ItemType.MC,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{key}. {correct}", answer_latex=f"{key}. {correct}",
+            worked_solution=worked, choices=choices,
+            context_scenario="inverse relationship stated symbolically",
+            seed=self.base_seed * 1000 + 700 + variant_idx,
+            stem_index=7, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 8: Approaching Proficiency - MS (DOK 2, Medium)
+    # NEW. Reproduces the specification's own item, captured verbatim in
+    # authoring/data/spec_items_2026-08.json (item 08): exactly two of six
+    # expressions equal the target, and the four wrong ones cluster around the
+    # square so a student who inverts the relationship still lands on an option.
+    # ================================================================
+    def stem8_approaching_ms(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(8, variant_idx)
+
+        sq, root = rng.choice(_easy_squares() + _medium_squares())
+
+        options = [
+            (f"sqrt({sq})", True, None),
+            (f"sqrt({root}^2)", True, None),
+            (f"sqrt({root})", False,
+             "Takes the root of the value itself rather than of its square"),
+            (f"{sq}^2", False, "Squares the square, moving further from the value"),
+            (f"{root}^2", False, "Squares instead of taking a root"),
+            (f"{root} x {root}", False, "The same square written as a product"),
+        ]
+        rng.shuffle(options)
+        choices = []
+        for i, (text, is_correct, why) in enumerate(options):
+            choices.append(QuestionChoice(key=chr(ord("a") + i), text=text,
+                                          text_latex=text, is_correct=is_correct,
+                                          distractor_rationale=why))
+        keys = [c.key.upper() for c in choices if c.is_correct]
+
+        stem_text = f"Select two expressions that are equivalent to {root}."
+        worked = (
+            f"sqrt({sq}) = {root} because {root}^2 = {sq}.\n"
+            f"sqrt({root}^2) = {root} for the same reason: the root undoes the square.\n"
+            f"The other options all equal {sq} or sqrt({root}), not {root}."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING,
+                                         ItemType.MS, Difficulty.MEDIUM, 8, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.APPROACHING,
+            difficulty=Difficulty.MEDIUM, dok=2, item_type=ItemType.MS,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=", ".join(keys), answer_latex=", ".join(keys),
+            worked_solution=worked, choices=choices,
+            context_scenario="two equivalent expressions for a value",
+            seed=self.base_seed * 1000 + 800 + variant_idx,
+            stem_index=8, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 9: At Proficiency - NR (DOK 1, Medium)
+    # NEW. "Find negative square roots of perfect squares" is the flagship
+    # addition to At: negative roots appear nowhere in the old specification.
+    # ================================================================
+    def stem9_at_nr(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(9, variant_idx)
+
+        sq, root = rng.choice(_medium_squares() + _difficult_squares())
+
+        stem_text = f"What is the negative square root of {sq}?"
+        worked = (
+            f"{root}^2 = {sq}, so the two square roots of {sq} are {root} and -{root}.\n"
+            f"The negative square root is -{root}."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.AT,
+                                         ItemType.NR, Difficulty.MEDIUM, 9, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.AT,
+            difficulty=Difficulty.MEDIUM, dok=1, item_type=ItemType.NR,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"-{root}", answer_latex=f"-{root}",
+            worked_solution=worked,
+            context_scenario="negative square root of a perfect square",
+            seed=self.base_seed * 1000 + 900 + variant_idx,
+            stem_index=9, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 10: Above Proficiency - MS (DOK 3, Difficult)
+    # NEW. Above became "analyze statements involving squared numbers and
+    # square roots to determine missing values or verify correctness". The
+    # false options turn on the convention that the radical sign denotes the
+    # principal (non-negative) root, which is exactly the distinction the
+    # negative-root work at At sets up.
+    # ================================================================
+    def stem10_above_ms(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(10, variant_idx)
+
+        sq, root = rng.choice(_medium_squares() + _difficult_squares())
+
+        options = [
+            (f"sqrt({sq}) = {root}", True, None),
+            (f"-sqrt({sq}) = -{root}", True, None),
+            (f"If x^2 = {sq}, then x = {root} or x = -{root}", True, None),
+            (f"sqrt({sq}) = -{root}", False,
+             "The radical sign gives the principal root, which is not negative"),
+            (f"sqrt({sq}) = {root} or -{root}", False,
+             "Same confusion: the radical names one value, not both"),
+            (f"(-{root})^2 = -{sq}", False,
+             "A negative number squared is positive"),
+        ]
+        rng.shuffle(options)
+        choices = []
+        for i, (text, is_correct, why) in enumerate(options):
+            choices.append(QuestionChoice(key=chr(ord("a") + i), text=text,
+                                          text_latex=text, is_correct=is_correct,
+                                          distractor_rationale=why))
+        keys = [c.key.upper() for c in choices if c.is_correct]
+
+        stem_text = "Select three statements that are true."
+        worked = (
+            f"{root}^2 = {sq} and (-{root})^2 = {sq}, so {sq} has two square "
+            f"roots: {root} and -{root}.\n"
+            f"The radical sign means the principal root, so sqrt({sq}) = {root} "
+            f"only.\n"
+            f"Writing -sqrt({sq}) is how the negative root is named, giving "
+            f"-{root}.\n"
+            f"Solving x^2 = {sq} does admit both roots."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE,
+                                         ItemType.MS, Difficulty.DIFFICULT, 10, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.ABOVE,
+            difficulty=Difficulty.DIFFICULT, dok=3, item_type=ItemType.MS,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=", ".join(keys), answer_latex=", ".join(keys),
+            worked_solution=worked, choices=choices,
+            context_scenario="verify statements about squares and roots",
+            seed=self.base_seed * 1000 + 1000 + variant_idx,
+            stem_index=10, variant_index=variant_idx,
+        )
+
     def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
         all_questions = []
         stem_methods = [
@@ -543,6 +743,10 @@ class Stem7NS6:
             self.stem4_at_mc,
             self.stem5_at_nr,
             self.stem6_above_mc,
+            self.stem7_below_mc,
+            self.stem8_approaching_ms,
+            self.stem9_at_nr,
+            self.stem10_above_ms,
         ]
         for stem_fn in stem_methods:
             for v in range(variants_per_stem):
@@ -564,6 +768,10 @@ class Stem7NS6:
             4: self.stem4_at_mc,
             5: self.stem5_at_nr,
             6: self.stem6_above_mc,
+            7: self.stem7_below_mc,
+            8: self.stem8_approaching_ms,
+            9: self.stem9_at_nr,
+            10: self.stem10_above_ms,
         }
         fn = stem_methods.get(stem_index)
         if not fn:

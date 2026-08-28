@@ -857,7 +857,8 @@
       "column": "on_grade",
       "parent_standard": "7.NS.2",
       "engine_stems": [
-        1
+        1,
+        7
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -1167,7 +1168,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "7NS2-S2",
@@ -1460,7 +1462,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "below"
     },
     {
       "skill_id": "7NS2-S3",
@@ -1468,7 +1471,8 @@
       "column": "on_grade",
       "parent_standard": "7.NS.2",
       "engine_stems": [
-        3
+        3,
+        8
       ],
       "prerequisite_skill": {
         "type": "skill",
@@ -1756,7 +1760,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "approaching"
     },
     {
       "skill_id": "7NS2-S4",
@@ -2029,7 +2034,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "approaching"
     },
     {
       "skill_id": "7NS2-S5",
@@ -2088,7 +2094,7 @@
         }
       ],
       "next_steps": {
-        "if_pass": "7NS2-S6",
+        "if_pass": "Ready for 7NS2-S7: put the number line reasoning into words, which is what at proficiency now asks for.",
         "if_fail": "7NS2-S4"
       },
       "worked_example_script": [
@@ -2314,7 +2320,323 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "at"
+    },
+    {
+      "skill_id": "7NS2-S7",
+      "name": "Explain how a number line can be used to subtract rational numbers",
+      "column": "on_grade",
+      "parent_standard": "7.NS.2",
+      "prerequisite_skill": {
+        "type": "skill",
+        "skill_id": "7NS2-S4"
+      },
+      "i_do_script": "Subtraction on a number line is the same trip as addition with one change: the minus sign turns you around first. Start at the first number, face the direction the second number points, then reverse. Watch 3 - (-2): start at 3, the -2 points left, but subtraction reverses me, so I travel right 2 and land on 5. That is why subtracting a negative gets bigger. Not because two negatives make a positive -- because the minus sign turned me around.",
+      "canonical_error": {
+        "pattern": "Explains subtracting a negative by citing 'two negatives make a positive' instead of describing the reversal, so the rule survives but the reason does not",
+        "example": "Asked to explain 3 - (-2) = 5 on a number line, writes 'the two minus signs cancel so it becomes 3 + 2' with no start point, no direction, and no turn",
+        "why": "The keep-change-change rule is fast and reliable, so it gets learned as the whole story. It describes what the symbols do, not what happens on the line, and when a student is asked WHY subtracting a negative increases a value they have nothing to say."
+      },
+      "item_template": "A signed subtraction and a number line. The student writes or selects the explanation: start point, which way the second number points, the reversal, and the landing point. The explanation is the assessed product.",
+      "sample_items": [
+        {
+          "stem": "Explain how a number line shows that 3 - (-2) = 5. Your explanation must include the direction you face and the turn.",
+          "answer": "Start at 3. The second number is -2, which points left. Subtraction reverses that, so travel 2 units right instead, landing on 5.",
+          "choices": null,
+          "distractor_logic": "'Two negatives make a positive so 3 + 2 = 5' is the rule restated, not the model explained."
+        },
+        {
+          "stem": "Which explanation correctly describes -1 - 4 on a number line?",
+          "answer": "Start at -1. The 4 points right, but subtraction reverses it, so travel 4 units left, landing on -5.",
+          "choices": [
+            "Start at -1. The 4 points right, but subtraction reverses it, so travel 4 units left, landing on -5.",
+            "Start at -1 and travel 4 units right, landing on 3.",
+            "Start at 4 and travel 1 unit left, landing on 3.",
+            "Two negatives make a positive, so the answer is 3."
+          ],
+          "distractor_logic": "The final option applies the rule where there is only one negative, producing a wrong answer as well as a wrong explanation."
+        },
+        {
+          "stem": "Why does subtracting a negative number move you to the right on a number line? Explain in your own words.",
+          "answer": "A negative number points left. Subtraction reverses whichever way the second number points, so a left-pointing number becomes a right-hand trip. That is why the result gets bigger.",
+          "choices": null,
+          "distractor_logic": "'Because two negatives make a positive' names the outcome without giving the reason."
+        },
+        {
+          "stem": "A number line shows a trip starting at 2, travelling 6 units left, ending at -4. Write both a subtraction equation and an addition equation the trip could model, and explain why both fit.",
+          "answer": "2 - 6 = -4 and 2 + (-6) = -4. Both describe the same trip: six units left from 2. Subtracting a positive and adding a negative produce the identical movement.",
+          "choices": null,
+          "distractor_logic": "Offering only one equation misses that the two are the same journey described twice."
+        }
+      ],
+      "redirect_script": {
+        "stop": "Which way does the second number point, before subtraction touches it?",
+        "prompt": "Four parts: start point, the way the second number points, the reversal because it is subtraction, and where you land. Say the turn out loud -- that is the part the rule leaves out.",
+        "praise": "You explained the turn. Now you can say WHY subtracting a negative gets bigger, not just that it does."
+      },
+      "vocabulary": [
+        {
+          "term": "Reverse",
+          "definition": "Turn around. Subtraction flips the direction the second number points."
+        },
+        {
+          "term": "Direction",
+          "definition": "Which way a number points: positive right, negative left."
+        },
+        {
+          "term": "Difference",
+          "definition": "The landing point after the trip."
+        },
+        {
+          "term": "Absolute value",
+          "definition": "Distance from zero, which is how far you travel regardless of sign."
+        }
+      ],
+      "manipulative_visual": "A student on the floor number line holds an arrow card. For addition they walk the way the arrow points; for subtraction they physically turn 180 degrees before walking. The turn is a body movement, which makes the reversal impossible to skip.",
+      "next_steps": {
+        "if_pass": "Ready for 7NS2-S6: reason about differences when the numbers are replaced by letters and only their positions are known.",
+        "if_fail": "Drop back to 7NS2-S4, adding the opposite, then return here and require the turn to be named out loud before any answer is written."
+      },
+      "worked_example_script": [
+        {
+          "kind": "show",
+          "text": "Draw a number line from -8 to 8. Write 3 - (-2) above it. Put a finger on 3."
+        },
+        {
+          "kind": "ask",
+          "text": "My finger is on 3. The second number is -2. Before subtraction does anything, which way does -2 point?"
+        },
+        {
+          "kind": "ask",
+          "text": "Left. Now here is the whole trick: the minus sign in front says reverse. If -2 points left and I reverse, which way do I actually travel?"
+        },
+        {
+          "kind": "watch",
+          "text": "If the student says 'two negatives make a positive,' accept that the answer will be right and then ask: why does that rule work? The turn is the answer they are missing."
+        },
+        {
+          "kind": "ask",
+          "text": "Travel 2 units right from 3. Where do we land?"
+        },
+        {
+          "kind": "ask",
+          "text": "So subtracting a negative made the value bigger. Say why, using the word turn."
+        },
+        {
+          "kind": "ask",
+          "text": "Now -1 - 4. Which way does 4 point? What does the minus sign do to it? Where do we land?"
+        },
+        {
+          "kind": "say",
+          "text": "Start, point, reverse, land. The rule tells you the answer; the turn tells you the reason."
+        }
+      ],
+      "printable_artifact": {
+        "title": "Subtraction Turns You Around",
+        "kind": "reference_card",
+        "instructions": "Every subtraction explanation has four parts. The turn is the one people leave out.",
+        "items": [
+          "1. START at the first number.",
+          "2. The second number POINTS: positive -> right, negative -> left.",
+          "3. Subtraction REVERSES that direction. Turn around.",
+          "4. Travel the distance and LAND. That is the difference.",
+          "3 - (-2): start 3, -2 points left, reverse to right, travel 2, land 5.",
+          "-1 - 4: start -1, 4 points right, reverse to left, travel 4, land -5.",
+          "Subtracting a negative gets BIGGER because the turn sends you right."
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "In 7 - 3, which way does the 3 point, and which way do you actually travel?",
+          "answer": "The 3 points right; subtraction reverses it, so you travel left."
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "A trip starts at 1 and travels 4 units right. Where does it land?",
+          "answer": "5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Explain how a number line shows that 3 - (-2) = 5. Include the direction the second number points and the turn.",
+          "answer": "Start at 3. The -2 points left. Subtraction reverses that, so travel 2 units to the right, landing on 5.",
+          "notes": "'Two negatives make a positive' earns nothing here -- the turn is the assessed idea."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which explanation describes -1 - 4 correctly?  (a) Start at -1, the 4 points right, subtraction reverses it, travel 4 left, land -5.  (b) Start at -1, travel 4 right, land 3.  (c) Start at 4, travel 1 left, land 3.  (d) Two negatives make a positive, so 3.",
+          "answer": "(a)",
+          "notes": "Option (d) misapplies the rule where only one negative exists, so it is wrong twice over."
+        },
+        {
+          "difficulty": "core",
+          "stem": "Why does subtracting a negative number move you right on a number line? Answer without using the phrase 'two negatives make a positive.'",
+          "answer": "A negative number points left, and subtraction reverses the direction the second number points. Reversing a left-pointing number gives a right-hand trip, so the value increases.",
+          "notes": "The banned phrase is the point of the item."
+        },
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Read Theo's explanation. Find what is missing and fix it.",
+          "shown_work": [
+            "Task: explain how a number line shows 5 - (-3) = 8.",
+            "Theo wrote: 'The two minus signs cancel each other out, so it turns into 5 + 3, which is 8.'"
+          ],
+          "answer": "Theo's answer is correct and his rule works, but he explained the symbols, not the number line. The explanation the question asks for is: start at 5; the -3 points left; subtraction reverses that direction, so travel 3 units to the right; you land on 8. His version cannot say WHY the signs cancel -- the turn is the reason.",
+          "notes": "The canonical error. Expect pushback because Theo's answer is right; the question asked for something he did not provide."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A number line shows a trip starting at 2, travelling 6 units left, ending at -4. Write both a subtraction equation and an addition equation this trip could model, and explain why both are correct.",
+          "answer": "2 - 6 = -4 and 2 + (-6) = -4. Both describe six units left from 2. Subtracting a positive and adding a negative are the same movement, which is why adding the opposite always works."
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Explain how a number line shows -2.5 - (-4) and then explain why the answer is positive even though both numbers written down are negative.",
+          "answer": "Start at -2.5. The -4 points left; subtraction reverses it, so travel 4 units right, landing on 1.5. The answer is positive because the rightward trip of 4 units is longer than the 2.5 units you began below zero, so you cross zero before you stop.",
+          "notes": "Forces the explanation to account for crossing zero, which the rule never mentions."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Turn Before You Walk",
+          "time_minutes": 12,
+          "grouping": "whole_class",
+          "materials": [
+            "Floor number line from -10 to 10",
+            "Arrow cards",
+            "ADD and SUBTRACT signs"
+          ],
+          "instructions": "1. A student stands on the first number holding an arrow card for the second number, pointed the way that number points.\n2. Hold up ADD or SUBTRACT. On SUBTRACT the walker must physically turn 180 degrees before moving.\n3. The class counts the units aloud as the walker travels.\n4. Run 3 - (-2) and 3 + (-2) back to back and ask why the walker ended in different places starting from the same spot.\n5. Close with one where the walker crosses zero and name where the crossing happened."
+        },
+        {
+          "type": "error_analysis",
+          "title": "Theo Cancelled the Signs",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Printed explanation slip",
+            "Blank number lines"
+          ],
+          "instructions": "1. Pairs read Theo's explanation and confirm his answer is correct.\n2. Ask: if the answer is right, what did the question want that he did not give?\n3. Pairs draw the number line for 5 - (-3) and mark the start, the way -3 points, the turn, and the landing.\n4. Pairs rewrite Theo's explanation using the word 'turn' and without the phrase 'cancel out.'\n5. Debrief: Theo's rule is genuinely useful -- when is it enough, and when is it not?",
+          "content": {
+            "worked_problem": "Explain how a number line shows 5 - (-3) = 8. Theo wrote: 'The two minus signs cancel out, so it turns into 5 + 3 = 8.'",
+            "error_step": "Theo explained what the symbols do rather than what happens on the number line.",
+            "why": "The explanation asked for is: start at 5, the -3 points left, subtraction reverses it, travel 3 right, land on 8. The turn is why the signs appear to cancel, and Theo's version has no way to say so."
+          }
+        },
+        {
+          "type": "game",
+          "title": "Name the Turn",
+          "time_minutes": 8,
+          "grouping": "pairs",
+          "materials": [
+            "Mini whiteboards"
+          ],
+          "instructions": "1. Post a signed subtraction. Partners write four things: start, the way the second number points, the direction after the turn, and the landing point.\n2. All four correct scores; a correct difference with a missing turn scores zero.\n3. Any pair using the phrase 'two negatives make a positive' loses the round regardless of the answer.\n4. Final round uses a decimal or a mixed number so the four parts stay while the arithmetic hardens."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-005",
+          "why": "The teacher narrating start-point-reverse-land aloud is exactly the product students are then asked to produce."
+        },
+        {
+          "strategy_id": "strat-math-007",
+          "why": "The floor number line and the physical 180-degree turn make the reversal a body movement before it is a sentence."
+        },
+        {
+          "strategy_id": "strat-math-004",
+          "why": "Writing the explanation in words, without the cancelling rule, is the assessed product for this bullet."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which way does the second number point, before subtraction touches it?",
+          "What does the minus sign in front of it do to that direction?",
+          "Explain why subtracting a negative gets bigger, without using the word cancel.",
+          "Show me the same trip written as an addition. Why is it the same journey?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student explains with 'two negatives make a positive' or 'the signs cancel.'",
+            "say": "Four parts: start point, the way the second number points, the reversal because it is subtraction, and where you land. Say the turn out loud -- that is the part the rule leaves out.",
+            "praise": "You explained the turn. Now you can say WHY subtracting a negative gets bigger, not just that it does."
+          },
+          {
+            "if_you_see": "Student applies the cancelling rule to a problem with only one negative, such as -1 - 4.",
+            "say": "Count the minus signs that are actually next to each other. Is there a second one here, or just the subtraction?",
+            "praise": "Right -- one negative, no cancelling. The turn still tells you what to do."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "6 - (-2): give me the four parts.",
+            "look_for": "Start 6, -2 points left, reverse to right, land 8. A bare '8' means the rule is still carrying it."
+          },
+          {
+            "prompt": "Why does subtracting a negative get bigger?",
+            "look_for": "Because the turn sends a left-pointing number rightward. 'Two negatives make a positive' is the error restated."
+          }
+        ]
+      },
+      "worked_solution": {
+        "stem": "Explain how a number line shows that 3 - (-2) = 5.",
+        "answer": "Start at 3, reverse the left-pointing -2, travel 2 units right, land on 5",
+        "steps": [
+          {
+            "math": "Start at 3.",
+            "annotation": "The first number is the starting point."
+          },
+          {
+            "math": "The second number is -2, which points LEFT.",
+            "annotation": "Read the direction before subtraction touches it."
+          },
+          {
+            "math": "Subtraction reverses that direction: turn around, so travel RIGHT.",
+            "annotation": "This turn is the whole reason the value grows."
+          },
+          {
+            "math": "Travel 2 units right from 3 and land on 5. So 3 - (-2) = 5.",
+            "annotation": "Nothing cancelled -- the trip reversed."
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Explain how a number line shows that 4 - (-3) = 7.",
+        "answer": "Start at 4, reverse the left-pointing -3, travel 3 units right, land on 7",
+        "steps": [
+          {
+            "math": "Start at 4.",
+            "annotation": "The first number is the starting point.",
+            "given": true
+          },
+          {
+            "math": "The second number is -3, which points LEFT.",
+            "annotation": "Read the direction before subtraction touches it.",
+            "given": true
+          },
+          {
+            "math": "Subtraction reverses that direction: travel RIGHT.",
+            "annotation": "The turn is why the value grows.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Travel the distance, name the landing point, and write the full explanation as one sentence.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "Start at ___. The second number is ___, which points ___.",
+        "Subtraction reverses that, so I travel ___ units to the ___.",
+        "I land on ___, so ___ - ___ = ___."
+      ],
+      "fluency_source": "7NS2-F1",
+      "pld_band": "at"
     },
     {
       "skill_id": "7NS2-S6",
@@ -2630,7 +2952,8 @@
             "given": false
           }
         ]
-      }
+      },
+      "pld_band": "above"
     }
   ],
   "skill_columns": {
@@ -2652,18 +2975,19 @@
     },
     "on_grade": {
       "label": "On Grade",
-      "description": "This standard's own expectations, from below proficiency up to at proficiency.",
+      "description": "This standard's own expectations, climbing from Below Proficiency to At Proficiency. Every skill here is grade-level work.",
       "skills": [
         "7NS2-S1",
         "7NS2-S2",
         "7NS2-S3",
         "7NS2-S4",
-        "7NS2-S5"
+        "7NS2-S5",
+        "7NS2-S7"
       ]
     },
     "looking_forward": {
       "label": "Looking Forward",
-      "description": "Above-proficiency work and bridges to later standards.",
+      "description": "Above Proficiency on this standard, and bridges to later standards.",
       "skills": [
         "7NS2-S6"
       ]
@@ -2679,6 +3003,7 @@
     "7NS2-S3",
     "7NS2-S4",
     "7NS2-S5",
+    "7NS2-S7",
     "7NS2-S6"
   ],
   "skill_tree": {
@@ -2710,13 +3035,17 @@
     "7NS2-S6": [
       "7NS2-S4",
       "7NS2-S3"
+    ],
+    "7NS2-S7": [
+      "7NS2-S4",
+      "7NS2-S5"
     ]
   },
   "diagnostic_flow": {
     "description": "Start with S4, subtracting rationals by adding the opposite, the At-proficiency computational core and the home of the double-negative error. If they pass, move up to S5 (real-world subtraction) and S6 (abstract reasoning about a - b). If they fail, drop one grade: B1 checks plotting and ordering negative rationals and B2 checks absolute value as size, the grade six ideas the distance formula leans on. If those wobble, the foundations F1 (whole-number subtraction with regrouping) and F2 (a difference as a countable distance on the number line) locate the gap in grades 3 and 4. S1, S2, and S3 stay available to probe absolute value and the distance principle on grade.",
     "entry_skill": "7NS2-S4",
     "if_pass": [
-      "7NS2-S5",
+      "7NS2-S7",
       "7NS2-S6"
     ],
     "if_fail": [
@@ -2730,5 +3059,13 @@
       "7NS2-S2",
       "7NS2-S3"
     ]
+  },
+  "pld_descriptors": {
+    "source": "refreshed",
+    "note": "Verbatim from the ILEARN item specification. These are performance bands on THIS standard, not lower-grade content: a student at Below Proficiency is working on this standard at its least complex entry point.",
+    "below": "Identify or write the absolute value of a given number. Calculate the distance between given integers plotted on a labeled number line to solve simple real-world problems.",
+    "approaching": "Identify expressions that represent the distance between a positive and negative number as the absolute value of their difference. Calculate the difference between positive and negative integers or decimals on a number line or solve simple real-world problems using these differences.",
+    "at": "Calculate the difference between rational numbers and/or interpret the results by describing real-world situations. Explain how a number line can be used to subtract rational numbers. Identify or write expressions that represent the distance between a positive and negative number as the absolute value of their difference.",
+    "above": "Reason about generalizations of subtracting positive and negative numbers when given a subtraction expression or a number line."
   }
 }

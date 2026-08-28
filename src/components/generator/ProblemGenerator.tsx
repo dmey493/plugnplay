@@ -5,6 +5,19 @@ import { useSearchParams } from "next/navigation";
 import Button from "@/components/ui/Button";
 import ReviewPanel from "./ReviewPanel";
 import StandardPicker from "@/components/standards/StandardPicker";
+import Badge, { type BadgeTone } from "@/components/ui/Badge";
+import {
+  formatRevised,
+  getPlds,
+  PROFICIENCY_LABELS,
+  PROFICIENCY_LEVELS,
+  type ProficiencyLevel,
+} from "@/lib/standards/plds";
+import {
+  findStems,
+  getStemsByLevel,
+  type StemsByLevel,
+} from "@/lib/generators/stem-picker";
 import type { LessonNav } from "@/lib/library/lessons";
 import type { CheckpointNav } from "@/lib/standards/checkpoints";
 
@@ -27,6 +40,22 @@ interface ReviewData {
   tiers?: Record<string, number[]>;
   mms_axis?: string;
 }
+
+// Same level-to-tone pairing the review panel uses on generated questions,
+// so a level reads the same colour wherever a teacher meets it.
+const PLD_TONE: Record<ProficiencyLevel, BadgeTone> = {
+  below: "red",
+  approaching: "yellow",
+  at: "emerald",
+  above: "blue",
+};
+
+const NO_STEMS: StemsByLevel = {
+  below: [],
+  approaching: [],
+  at: [],
+  above: [],
+};
 
 const MODES = [
   {
@@ -141,10 +170,14 @@ export default function ProblemGenerator({
   const handleGradeChange = (g: number) => {
     setGrade(g);
     setStandard("");
+    setSelectedStems([]);
   };
 
   const handleStandardChange = (code: string) => {
     setStandard(code);
+    // Stem indices are per standard, so carrying a selection across would
+    // filter the new standard's questions by an unrelated stem number.
+    setSelectedStems([]);
     scrollPending.current = true;
   };
 
@@ -156,6 +189,25 @@ export default function ProblemGenerator({
   }, [standard]);
 
   const canGenerate = standard !== "" && mode !== null && !generating;
+
+  // The assessment's own words for what each level demands. Shown under the
+  // standard so the format choice is made against the level's actual demand,
+  // not just its name. Null for 6.NS.2, which has no item specification in
+  // the repo; that standard simply shows no descriptors.
+  const plds = standard ? getPlds(standard) : null;
+  const pldRevised = formatRevised(plds?.revised);
+
+  // The stems behind each level, and what the teacher has opened and picked.
+  // Picking a stem is what makes "practise this one thing" possible: the
+  // engine then draws only from that stem instead of the whole level.
+  const stemsByLevel = standard ? getStemsByLevel(standard) : NO_STEMS;
+  const [selectedStems, setSelectedStems] = useState<number[]>([]);
+  const pickedStems = standard ? findStems(standard, selectedStems) : [];
+
+  const toggleStem = (index: number) =>
+    setSelectedStems((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
 
   const buildRequestBody = useCallback(() => {
     const body: Record<string, unknown> = {
@@ -172,8 +224,15 @@ export default function ProblemGenerator({
       body.proficiency_level = profLevel;
       body.prof_count = profCount;
     }
+    // Chosen stems supersede the level dropdown on the engine side: a stem
+    // already sits at one level, so filtering by both would only ever narrow
+    // to the same pool or to nothing. Not sent for Mild/Medium/Spicy, which
+    // has to span levels to build its tiers.
+    if (mode !== "mms" && selectedStems.length > 0) {
+      body.stems = selectedStems;
+    }
     return body;
-  }, [standard, mode, exitProficiency, exitDifficulty, mmsAxis, mmsPerTier, profLevel, profCount]);
+  }, [standard, mode, exitProficiency, exitDifficulty, mmsAxis, mmsPerTier, profLevel, profCount, selectedStems]);
 
   const handleGenerate = async () => {
     if (!canGenerate) return;
@@ -262,44 +321,151 @@ export default function ProblemGenerator({
         />
       </div>
 
-      {/* Next step — choose a format. Broken into its own bordered panel so
-          it clearly reads as the stage AFTER picking a standard, and the
-          panel is scrolled into view the moment a standard is selected. */}
+      {/* Everything downstream of picking a standard. The scroll target sits
+          on the wrapper so the proficiency descriptors land in view first and
+          the format panel follows, rather than the teacher scrolling past
+          them. */}
       {standard && (
-        <div
-          key={standard}
-          ref={nextStepRef}
-          className="pnp-reveal mt-8 scroll-mt-24 rounded-lg border-2 border-pnp-gray-200 bg-pnp-gray-50 p-5 md:p-6"
-        >
-          <p className="text-xs font-bold uppercase tracking-widest text-pnp-accent">
-            Next step · Choose a format
-          </p>
-          <div className="mt-4 grid gap-3 sm:grid-cols-3">
-            {MODES.map((m) => (
-              <button
-                key={m.id}
-                onClick={() => setMode(m.id)}
-                className={`group relative flex flex-col items-center overflow-hidden rounded-lg border-2 p-4 text-center transition-all ${
-                  mode === m.id
-                    ? "border-pnp-accent bg-pnp-accent text-white"
-                    : "border-pnp-gray-200 bg-white text-pnp-navy hover:border-pnp-accent/50"
-                }`}
-              >
-                <div className={`mb-2 ${mode === m.id ? "text-white" : "text-pnp-accent"}`}>
-                  {m.icon}
-                </div>
-                <span className="text-sm font-bold">{m.title}</span>
-                <span className={`mt-1 text-xs ${mode === m.id ? "text-white/70" : "text-pnp-gray-500"}`}>
-                  {m.description}
-                </span>
-              </button>
-            ))}
+        <div key={standard} ref={nextStepRef} className="scroll-mt-24">
+          {/* What the assessment asks for at each level. Sits between the
+              standard and the format choice because it is context for that
+              choice: a teacher picking Proficiency Set should see what "At" means
+              for this standard before picking it. */}
+          {plds && (
+            <div className="pnp-reveal mt-8 rounded-lg border-2 border-pnp-gray-200 bg-white p-5 md:p-6">
+              <p className="text-xs font-bold uppercase tracking-widest text-pnp-gray-500">
+                What ILEARN asks for at each level
+              </p>
+              {/* IDOE is rewriting these on a rolling basis and the rewrites
+                  change what a level asks for, so the date earns its place on
+                  the page rather than sitting in the build. */}
+              {pldRevised && (
+                <p className="mt-1 text-xs text-pnp-gray-500">
+                  Indiana revised this standard&rsquo;s descriptors on {pldRevised}.
+                </p>
+              )}
+              {/* Four columns so the levels can be read across as a ladder:
+                  what changes from Below to Above is the point, and that only
+                  shows when they sit side by side. Scrolls inside its own box
+                  on narrow screens rather than squeezing the columns. */}
+              <div className="mt-4 overflow-x-auto">
+                <table className="w-full min-w-[46rem] table-fixed border-collapse">
+                  <thead>
+                    <tr>
+                      {PROFICIENCY_LEVELS.map((level) => (
+                        <th
+                          key={level}
+                          className="border-b-2 border-pnp-gray-200 px-4 pb-2 text-left align-bottom first:pl-0 last:pr-0"
+                        >
+                          <Badge tone={PLD_TONE[level]}>
+                            {PROFICIENCY_LABELS[level]}
+                          </Badge>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      {PROFICIENCY_LEVELS.map((level) => (
+                        <td
+                          key={level}
+                          className="px-4 pt-3 align-top text-sm font-normal leading-relaxed text-pnp-gray-700 first:pl-0 last:pr-0"
+                        >
+                          {plds[level] ?? (
+                            <span className="text-pnp-gray-400">
+                              Not published for this standard.
+                            </span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                    {/* Every level's practices, always visible. A teacher can
+                        read the whole ladder at once and click straight to the
+                        one they want, with no disclosure step in the way. */}
+                    <tr>
+                      {PROFICIENCY_LEVELS.map((level) => (
+                          <td
+                            key={level}
+                            className="px-4 pb-1 pt-4 align-top first:pl-0 last:pr-0"
+                          >
+                            {stemsByLevel[level].length === 0 ? (
+                              <p className="text-xs text-pnp-gray-400">
+                                No practice available at this level.
+                              </p>
+                            ) : (
+                              <ul className="flex flex-col gap-2">
+                                {stemsByLevel[level].map((stem) => {
+                                  const picked = selectedStems.includes(stem.index);
+                                  return (
+                                    <li key={stem.index}>
+                                      <button
+                                        type="button"
+                                        onClick={() => toggleStem(stem.index)}
+                                        aria-pressed={picked}
+                                        className={`w-full rounded-lg border-2 px-3 py-2 text-left transition-colors ${
+                                          picked
+                                            ? "border-pnp-accent bg-pnp-accent-soft"
+                                            : "border-pnp-gray-200 bg-white hover:border-pnp-accent/50"
+                                        }`}
+                                      >
+                                        <span
+                                          className={`block text-sm font-semibold leading-snug ${
+                                            picked ? "text-pnp-accent-press" : "text-pnp-navy"
+                                          }`}
+                                        >
+                                          {stem.describes}
+                                        </span>
+                                        {stem.itemType && (
+                                          <span className="mt-0.5 block text-xs text-pnp-gray-500">
+                                            {stem.itemType}
+                                          </span>
+                                        )}
+                                      </button>
+                                    </li>
+                                  );
+                                })}
+                              </ul>
+                            )}
+                          </td>
+                        ))}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          <div className="pnp-reveal mt-8 rounded-lg border-2 border-pnp-gray-200 bg-pnp-gray-50 p-5 md:p-6">
+            <p className="text-xs font-bold uppercase tracking-widest text-pnp-accent">
+              Next step · Choose a format
+            </p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-3">
+              {MODES.map((m) => (
+                <button
+                  key={m.id}
+                  onClick={() => setMode(m.id)}
+                  className={`group relative flex flex-col items-center overflow-hidden rounded-lg border-2 p-4 text-center transition-all ${
+                    mode === m.id
+                      ? "border-pnp-accent bg-pnp-accent text-white"
+                      : "border-pnp-gray-200 bg-white text-pnp-navy hover:border-pnp-accent/50"
+                  }`}
+                >
+                  <div className={`mb-2 ${mode === m.id ? "text-white" : "text-pnp-accent"}`}>
+                    {m.icon}
+                  </div>
+                  <span className="text-sm font-bold">{m.title}</span>
+                  <span className={`mt-1 text-xs ${mode === m.id ? "text-white/70" : "text-pnp-gray-500"}`}>
+                    {m.description}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}
 
       {/* Step 4: Mode-specific options */}
-      {mode === "exit_ticket" && (
+      {mode === "exit_ticket" && selectedStems.length === 0 && (
         <div className="mt-6 flex flex-wrap gap-4">
           <div>
             <label className="text-xs font-bold uppercase tracking-widest text-pnp-gray-500">
@@ -347,21 +513,23 @@ export default function ProblemGenerator({
 
       {mode === "proficiency" && (
         <div className="mt-6 flex flex-wrap gap-4">
-          <div>
-            <label className="text-xs font-bold uppercase tracking-widest text-pnp-gray-500">
-              Proficiency Level
-            </label>
-            <select
-              value={profLevel}
-              onChange={(e) => setProfLevel(e.target.value)}
-              className="mt-2 block rounded-lg border-2 border-pnp-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-pnp-navy outline-none focus:border-pnp-accent"
-            >
-              <option value="below">Below</option>
-              <option value="approaching">Approaching</option>
-              <option value="at">At</option>
-              <option value="above">Above</option>
-            </select>
-          </div>
+          {selectedStems.length === 0 && (
+            <div>
+              <label className="text-xs font-bold uppercase tracking-widest text-pnp-gray-500">
+                Proficiency Level
+              </label>
+              <select
+                value={profLevel}
+                onChange={(e) => setProfLevel(e.target.value)}
+                className="mt-2 block rounded-lg border-2 border-pnp-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-pnp-navy outline-none focus:border-pnp-accent"
+              >
+                <option value="below">Below</option>
+                <option value="approaching">Approaching</option>
+                <option value="at">At</option>
+                <option value="above">Above</option>
+              </select>
+            </div>
+          )}
           <div>
             <label className="text-xs font-bold uppercase tracking-widest text-pnp-gray-500">
               Number of Questions
@@ -376,6 +544,47 @@ export default function ProblemGenerator({
               ))}
             </select>
           </div>
+        </div>
+      )}
+
+      {/* What the set will be built from. Mild/Medium/Spicy has to span the
+          levels to make its tiers, so it says plainly that the choice does not
+          apply there rather than silently ignoring it. */}
+      {mode !== null && pickedStems.length > 0 && (
+        <div className="mt-6 rounded-lg border-2 border-pnp-accent/30 bg-pnp-accent-soft/40 px-4 py-3">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <p className="text-xs font-bold uppercase tracking-widest text-pnp-accent-press">
+              {mode === "mms"
+                ? "Not used for Mild / Medium / Spicy"
+                : `Building from ${pickedStems.length === 1 ? "this practice" : "these practices"}`}
+            </p>
+            <button
+              type="button"
+              onClick={() => setSelectedStems([])}
+              className="text-xs font-semibold text-pnp-accent underline underline-offset-2 hover:text-pnp-accent-press"
+            >
+              Clear
+            </button>
+          </div>
+          <ul className="mt-2 flex flex-col gap-1">
+            {pickedStems.map((stem) => (
+              <li
+                key={stem.index}
+                className="flex flex-wrap items-baseline gap-2 text-sm text-pnp-navy"
+              >
+                <Badge tone={PLD_TONE[stem.level]}>
+                  {PROFICIENCY_LABELS[stem.level]}
+                </Badge>
+                <span className="font-medium">{stem.describes}</span>
+              </li>
+            ))}
+          </ul>
+          {mode === "mms" && (
+            <p className="mt-2 text-xs text-pnp-gray-600">
+              A tiered set draws one problem from each level, so it ignores this
+              choice. Use Exit Ticket or Proficiency Set to practise just these.
+            </p>
+          )}
         </div>
       )}
 

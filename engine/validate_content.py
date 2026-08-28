@@ -36,7 +36,8 @@ legacy v3 content is untouched:
           b2) (strict-warn) no blank-step hint in faded/guided cues a move
              by name — the through-line fade needs the cue.
           c) `given` flags form a true-prefix in faded_example and
-             guided_example; each has >=1 given; faded has >=1 blank.
+             guided_example; faded has >=1 given and >=1 blank. guided may
+             give nothing -- it hands over every step with a clue per line.
           d) fade ladder — guided gives strictly fewer steps than faded;
              faded fades ONLY the last step; step counts match the
              worked_solution.
@@ -289,7 +290,10 @@ def main():
                     if any(g[first_blank:]):
                         failures.append(
                             f"{where}: {bname} gives a step after a blank -- fade from the bottom (Gate 6c)")
-                    if not any(g):
+                    # guided_example may give nothing at all: "Let's try
+                    # together" hands the student every step with a clue under
+                    # each line. faded_example still needs its given prefix.
+                    if bname == "faded_example" and not any(g):
                         failures.append(f"{where}: {bname} has no given step (Gate 6c)")
                 if faded and all(_givens(faded)):
                     failures.append(f"{where}: faded_example has no blank step (Gate 6c)")

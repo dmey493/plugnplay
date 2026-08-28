@@ -1,27 +1,40 @@
 """
 Stem generator for 6.NS.4:
   Solve real-world problems with positive fractions and decimals by using
-  one or two operations.
+  one or two operations. (E)
+
+REBUILT for the 2026-08-24 specification revision. Indiana deleted the entire
+"Solve." computation-drill family from this standard: bare arithmetic no longer
+appears at any level, and the Below descriptor changed from "Compute fluently
+with positive fractions and decimals" to "Solve simple real-world problems...".
+The old stems 1 and 2 (Add fractions / Subtract decimals) were retired with it.
+
+Difficulty is no longer set by the old easy/medium/difficult context table. The
+ladder is now number precision and form conversion:
+  Below        decimals to hundredths, benchmark fractions, one or two operations
+  Approaching  same numbers, but the problem forces converting between forms
+  At           decimals to thousandths, several operations, precise computation
+  Above        non-routine structure, or critique of someone else's reasoning
 
 Content Limits:
   - Positive fractions and mixed numbers
-  - Positive decimals to thousandths
-  - Maximum of 2 operations
-  - Minimize order of operations at Below level
+  - Positive decimals to the thousandths place
+  - Maximum of 2 operations at Below and Approaching
   - Calculator: NOT ALLOWED
 
-Difficulty Tiers:
-  Easy: add/subtract only, fractions or decimals exclusively
-  Medium: any operation, fractions or decimals exclusively
-  Difficult: any operation, mix of fractions and decimals
+7 Stems from the revised Item Spec:
+  Stem 1 (Below-MC): Number-of-groups-unknown with a benchmark mixed number
+  Stem 2 (Below-MC): Two-operation part-part-whole with money
+  Stem 3 (Approaching-MC): Add across number forms, fractions plus a decimal
+  Stem 4 (Approaching-MC): Decimal divided by a non-benchmark fraction
+  Stem 5 (At-MP): Multi-operation problem carrying thousandths precision
+  Stem 6 (Above-ER): Critique a division-remainder misconception
+  Stem 7 (Above-MP): Non-routine comparison of different discount structures
 
-6 Stems from the Item Spec:
-  Stem 1 (Below-NR):      Add fractions (DOK 1, easy)
-  Stem 2 (Below-NR):      Subtract decimals (DOK 1, easy)
-  Stem 3 (Approaching-NR): One-step word problem with fraction multiply/divide (DOK 2, medium)
-  Stem 4 (Approaching-MC): One-step decimal word problem, multiply/divide (DOK 2, medium)
-  Stem 5 (At-NR):         Two-step problem mixing fractions and decimals (DOK 2, difficult)
-  Stem 6 (Above-MP):      Evaluate reasoning about two-step decimal problem (DOK 3, medium)
+The four items the specification prints are captured verbatim in
+authoring/data/spec_items_2026-08.json and are reproducible here: 1 1/2 cups at
+0.25 -> 6 jars (stem 1); 2.4 m at 3/10 -> 8 bookmarks (stem 4); 0.35 gal/mi over
+120.5 mi -> 42.175 gal (stem 5); 12.75 lb at 0.4 -> 31 full, 0.35 left (stem 6).
 """
 
 import random
@@ -33,388 +46,338 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 from engine.models import (
     GeneratedQuestion, QuestionChoice, QuestionPart,
-    Difficulty, ProficiencyLevel, ItemType, RationalNumber,
+    Difficulty, ProficiencyLevel, ItemType,
     make_question_id
 )
 from engine.number_generators import NumberGenerator
-from engine.context_pools import CONTEXTS_6NS4, pick_name
+from engine.context_pools import pick_name
 
 
 STANDARD_CODE = "6.NS.4"
 VARIANTS_PER_STEM = 20
 
+# Benchmark container sizes. Restricted to quarters and halves so a whole number
+# of them always lands on a benchmark mixed number, which is what Below allows.
+BENCHMARK_SIZES = [Fraction(1, 4), Fraction(1, 2), Fraction(3, 4)]
 
-# ============================================================
-# HELPERS
-# ============================================================
+# Fractions that are deliberately NOT benchmarks. Approaching is defined by
+# having to convert between forms, and a benchmark converts by sight.
+#
+# Fifths and tenths only. Eighths were tried and removed: 3/8 of a whole number
+# lands on thousandths (3.375), which breaks the Approaching content limit of
+# "decimals to the hundredths" AND makes the printed total a rounded value, so
+# the division in the stem would no longer come out even.
+NON_BENCHMARK = [Fraction(1, 5), Fraction(2, 5), Fraction(3, 5), Fraction(4, 5),
+                 Fraction(3, 10), Fraction(7, 10), Fraction(9, 10)]
+
 
 def _fmt_fraction(val: Fraction) -> str:
-    """Format a Fraction as a mixed number string (e.g. '4 1/2') or fraction."""
+    """Mixed-number display: 7/2 -> '3 1/2', 3/4 -> '3/4', 4 -> '4'."""
     if val.denominator == 1:
-        return str(int(val))
-    whole = int(val)
-    remainder = val - whole
+        return str(val.numerator)
+    whole = val.numerator // val.denominator
+    rem = val - whole
     if whole == 0:
-        return f"{remainder.numerator}/{remainder.denominator}"
-    return f"{whole} {remainder.numerator}/{remainder.denominator}"
+        return f"{rem.numerator}/{rem.denominator}"
+    return f"{whole} {rem.numerator}/{rem.denominator}"
 
 
-def _fmt_decimal(val: Fraction, places: int = 2) -> str:
-    """Format a Fraction as a decimal string with specified places."""
-    f = float(val)
-    if f == int(f):
-        return str(int(f))
-    # Use enough places to show the value cleanly
-    formatted = f"{f:.{places}f}"
-    # Strip trailing zeros but keep at least one decimal place
-    if '.' in formatted:
-        formatted = formatted.rstrip('0').rstrip('.')
-    return formatted
+def _fmt_decimal(val, places: int = 2) -> str:
+    """Trim trailing zeros but never show fewer than one decimal place."""
+    text = f"{float(val):.{places}f}".rstrip("0")
+    return text + "0" if text.endswith(".") else text
+
+
+def _money(val) -> str:
+    return f"${float(val):.2f}"
+
+
+def _round_half_up(value: Fraction, places: int = 2) -> Fraction:
+    """Round exactly, half away from zero, the way students are taught.
+
+    Python's round() is banker's rounding, so round(424.575, 2) can land on
+    424.57. Money answers are graded half-up, and the arithmetic here is exact
+    Fractions anyway, so we round on the Fraction rather than on a float.
+    """
+    scale = 10 ** places
+    scaled = value * scale
+    floor = scaled.numerator // scaled.denominator
+    if scaled - floor >= Fraction(1, 2):
+        floor += 1
+    return Fraction(floor, scale)
+
+
+def _build_mc(rng, correct, candidates, fmt, fallback_step):
+    """Build four shuffled choices; return them plus the key of the correct one.
+
+    Distractors are deduplicated on their FORMATTED text, not their numeric
+    value. Two different quantities can render identically once rounded for
+    display (8.67 and 9 both print as "9"), and a question that ships the same
+    string twice has no defensible answer. When an error model collides or lands
+    on the correct value it is dropped, and we step away from the correct answer
+    instead so the item still has four distinct options.
+    """
+    correct_text = fmt(correct)
+    seen = {correct_text}
+    picked = []
+
+    for value, rationale in candidates:
+        if float(value) <= 0:
+            continue
+        text = fmt(value)
+        if text in seen:
+            continue
+        seen.add(text)
+        picked.append((text, rationale))
+        if len(picked) == 3:
+            break
+
+    step = 1
+    while len(picked) < 3 and step <= 60:
+        value = correct + fallback_step * step
+        if float(value) > 0:
+            text = fmt(value)
+            if text not in seen:
+                seen.add(text)
+                picked.append((text, "Arithmetic slip"))
+        step += 1
+
+    rows = [(correct_text, True, None)] + [(t, False, r) for t, r in picked]
+    rng.shuffle(rows)
+
+    letters = "ABCD"
+    choices = []
+    correct_key = "A"
+    for i, (text, is_correct, rationale) in enumerate(rows):
+        key = letters[i]
+        if is_correct:
+            correct_key = key
+        choices.append(QuestionChoice(
+            key=key.lower(), text=text, text_latex=text,
+            is_correct=is_correct, distractor_rationale=rationale,
+        ))
+    return choices, correct_key
 
 
 class Stem6NS4:
-    """Generates ~20 variants for each of 6 stems from the 6.NS.4 item spec."""
+    """Generates ~20 variants for each of 7 stems from the revised 6.NS.4 spec."""
 
     def __init__(self, seed: int = 42):
         self.base_seed = seed
 
     def _make_gen(self, stem_idx: int, variant_idx: int):
-        """Create a seeded NumberGenerator for a specific stem+variant."""
         seed = self.base_seed * 1000 + stem_idx * 100 + variant_idx
         return NumberGenerator(seed), random.Random(seed)
 
     # ================================================================
-    # STEM 1: Below Proficiency - NR (DOK 1, Easy)
-    # Add fractions: e.g., 4 1/2 + 3 2/3 = ?
+    # STEM 1: Below Proficiency - MC (DOK 2, Easy)
+    # Number-of-groups-unknown. One operation, benchmark mixed number.
+    # Spec anchor: 1 1/2 cups of glitter into 0.25-cup jars -> 6 jars.
     # ================================================================
-
-    def stem1_below_nr(self, variant_idx: int) -> GeneratedQuestion:
-        """Below Proficiency - Add two mixed numbers (fractions only).
-
-        Students add two positive mixed numbers.
-        Difficulty: easy (fractions only, add/subtract only)
-        """
+    def stem1_below_mc(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(1, variant_idx)
+        name = pick_name(rng)
 
-        # Generate two mixed numbers with manageable denominators
-        a = gen.mixed_number(max_whole=9, max_denom=6)
-        b = gen.mixed_number(max_whole=9, max_denom=6)
-        answer = a + b
+        size = rng.choice(BENCHMARK_SIZES)
+        groups = rng.randint(5, 12)
+        total = size * groups
+        # The total must carry a fraction, or this stops being a benchmark
+        # mixed-number task and becomes whole-number division.
+        tries = 0
+        while total.denominator == 1 and tries < 12:
+            groups = rng.randint(5, 12)
+            total = size * groups
+            tries += 1
+        if total.denominator == 1:
+            size, groups = Fraction(1, 4), 7
+            total = size * groups
 
-        a_str = _fmt_fraction(a)
-        b_str = _fmt_fraction(b)
-        answer_str = _fmt_fraction(answer)
+        what, singular, plural, unit = rng.choice([
+            ("small craft jars with glitter", "jar", "jars", "cups"),
+            ("palettes with paint", "palette", "palettes", "cups"),
+            ("bags with birdseed", "bag", "bags", "pounds"),
+            ("bottles with syrup", "bottle", "bottles", "liters"),
+            ("containers with rice", "container", "containers", "pounds"),
+            ("tins with candle wax", "tin", "tins", "pounds"),
+            ("jars with honey", "jar", "jars", "cups"),
+            ("bins with laundry detergent", "bin", "bins", "cups"),
+            ("flasks with apple juice", "flask", "flasks", "liters"),
+            ("boxes with play sand", "box", "boxes", "pounds"),
+        ])
 
-        a_rn = RationalNumber(a, "mixed")
-        b_rn = RationalNumber(b, "mixed")
-        answer_rn = RationalNumber(answer, "mixed")
+        size_str = _fmt_decimal(size)
+        total_str = _fmt_fraction(total)
 
-        stem_text = f"Add.\n\n{a_str} + {b_str}"
-        stem_latex = f"Add.\n\n${a_rn.latex()} + {b_rn.latex()}$"
-
-        # Worked solution showing common denominator
-        from math import gcd
-        lcd = (a.denominator * b.denominator) // gcd(a.denominator, b.denominator)
-        a_frac_part = a - int(a)
-        b_frac_part = b - int(b)
-        a_new_num = a_frac_part.numerator * (lcd // a_frac_part.denominator) if a_frac_part != 0 else 0
-        b_new_num = b_frac_part.numerator * (lcd // b_frac_part.denominator) if b_frac_part != 0 else 0
-
-        worked = (
-            f"Find a common denominator: LCD = {lcd}\n"
-            f"{a_str} + {b_str}\n"
-            f"= {int(a)} {a_new_num}/{lcd} + {int(b)} {b_new_num}/{lcd}\n"
-            f"= {answer_str}"
+        stem_text = (
+            f"{name} fills {what}.\n\n"
+            f"- Each {singular} holds {size_str} {unit}.\n"
+            f"- {name} has {total_str} {unit} available.\n\n"
+            f"How many {plural} can {name} fill completely?"
         )
 
-        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW, ItemType.NR,
-                               Difficulty.EASY, 1, variant_idx)
+        whole_only = int(total) / float(size)
+        rounded_up = (int(total) + 1) / float(size)
+        choices, correct_key = _build_mc(rng, groups, [
+            (whole_only, "Uses only the whole-number part and ignores the fraction"),
+            (groups - 1, "Off by one; drops the final full group"),
+            (rounded_up, "Rounds the total up to the next whole number first"),
+        ], lambda v: str(int(round(float(v)))), fallback_step=2)
+
+        worked = (
+            f"Divide the amount available by the size of one {singular}.\n"
+            f"{total_str} / {size_str} = {groups}\n"
+            f"{name} can fill {groups} {plural} completely."
+        )
 
         return GeneratedQuestion(
-            question_id=qid,
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.MC, Difficulty.EASY, 1, variant_idx),
             standard_code=STANDARD_CODE,
             proficiency_level=ProficiencyLevel.BELOW,
             difficulty=Difficulty.EASY,
-            dok=1,
-            item_type=ItemType.NR,
+            dok=2,
+            item_type=ItemType.MC,
             stem_text=stem_text,
-            stem_latex=stem_latex,
-            answer_text=answer_str,
-            answer_latex=f"${answer_rn.latex()}$",
+            stem_latex=stem_text,
+            answer_text=f"{correct_key}. {groups}",
+            answer_latex=f"{correct_key}. {groups}",
             worked_solution=worked,
-            context_scenario="fraction addition",
+            choices=choices,
+            context_scenario="number-of-groups-unknown division",
             seed=self.base_seed * 1000 + 100 + variant_idx,
             stem_index=1,
-            variant_index=variant_idx
+            variant_index=variant_idx,
         )
 
     # ================================================================
-    # STEM 2: Below Proficiency - NR (DOK 1, Easy)
-    # Subtract decimals: e.g., 42.80 - 13.55 = ?
+    # STEM 2: Below Proficiency - MC (DOK 2, Easy)
+    # Two operations, part-part-whole with money. Two operations count as
+    # Below now, provided the numbers stay simple.
     # ================================================================
-
-    def stem2_below_nr(self, variant_idx: int) -> GeneratedQuestion:
-        """Below Proficiency - Subtract two decimals.
-
-        Students subtract two positive decimals.
-        Difficulty: easy (decimals only, add/subtract only)
-        """
+    def stem2_below_mc(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(2, variant_idx)
+        name = pick_name(rng)
 
-        # Generate two 2-place decimals; ensure a > b so result is positive
-        a = gen.decimal_2place(20.00, 99.99)
-        b = gen.decimal_2place(5.00, 50.00)
-        if b >= a:
-            a, b = b + gen.decimal_2place(10.00, 30.00), a
-        answer = a - b
+        weight = Fraction(rng.randint(15, 65), 10)          # tenths, 1.5 to 6.5
+        unit_price = Fraction(rng.choice([100, 150, 200, 250, 300]), 100)
+        part_cost = weight * unit_price                      # lands on hundredths
+        other_cost = Fraction(rng.randint(120, 899), 100)
+        total = part_cost + other_cost
 
-        a_str = f"{float(a):.2f}"
-        b_str = f"{float(b):.2f}"
-        answer_str = f"{float(answer):.2f}"
+        produce, other = rng.choice([
+            ("bananas", "a carton of milk"),
+            ("apples", "a loaf of bread"),
+            ("grapes", "a box of cereal"),
+            ("potatoes", "a bag of flour"),
+            ("tomatoes", "a jar of sauce"),
+            ("carrots", "a block of cheese"),
+            ("oranges", "a bottle of juice"),
+            ("onions", "a bag of rice"),
+            ("peppers", "a dozen eggs"),
+            ("mushrooms", "a tub of yogurt"),
+        ])
 
-        stem_text = f"Subtract.\n\n{a_str} - {b_str}"
-        stem_latex = f"Subtract.\n\n${a_str} - {b_str}$"
+        stem_text = (
+            f"{name} buys {produce} and {other} at the grocery store.\n\n"
+            f"- {name} buys {_fmt_decimal(weight, 1)} pounds of {produce} "
+            f"for {_money(unit_price)} per pound.\n"
+            f"- {name} spends a total of {_money(total)}.\n\n"
+            f"How much did {name} pay for {other}?"
+        )
+
+        choices, correct_key = _build_mc(rng, other_cost, [
+            (total - unit_price, "Subtracts the price per pound instead of the total cost"),
+            (total - part_cost / 10, "Misplaces the decimal point when multiplying"),
+            (total + unit_price, "Adds instead of subtracting"),
+        ], _money, fallback_step=Fraction(1, 1))
 
         worked = (
-            f"  {a_str}\n"
-            f"- {b_str}\n"
-            f"--------\n"
-            f"  {answer_str}"
+            f"Cost of the {produce}: {_fmt_decimal(weight, 1)} x "
+            f"{_money(unit_price)} = {_money(part_cost)}\n"
+            f"Cost of {other}: {_money(total)} - {_money(part_cost)} = {_money(other_cost)}"
         )
 
-        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW, ItemType.NR,
-                               Difficulty.EASY, 2, variant_idx)
-
         return GeneratedQuestion(
-            question_id=qid,
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.MC, Difficulty.EASY, 2, variant_idx),
             standard_code=STANDARD_CODE,
             proficiency_level=ProficiencyLevel.BELOW,
             difficulty=Difficulty.EASY,
-            dok=1,
-            item_type=ItemType.NR,
+            dok=2,
+            item_type=ItemType.MC,
             stem_text=stem_text,
-            stem_latex=stem_latex,
-            answer_text=answer_str,
-            answer_latex=f"${answer_str}$",
+            stem_latex=stem_text,
+            answer_text=f"{correct_key}. {_money(other_cost)}",
+            answer_latex=f"{correct_key}. {_money(other_cost)}",
             worked_solution=worked,
-            context_scenario="decimal subtraction",
+            choices=choices,
+            context_scenario="part-part-whole with money",
             seed=self.base_seed * 1000 + 200 + variant_idx,
             stem_index=2,
-            variant_index=variant_idx
+            variant_index=variant_idx,
         )
 
     # ================================================================
-    # STEM 3: Approaching Proficiency - NR (DOK 2, Medium)
-    # One-step word problem with fraction multiplication or division
+    # STEM 3: Approaching Proficiency - MC (DOK 2, Medium)
+    # Fractions and a decimal in one problem, so a form conversion is forced.
     # ================================================================
-
-    def stem3_approaching_nr(self, variant_idx: int) -> GeneratedQuestion:
-        """Approaching Proficiency - One-step fraction word problem.
-
-        Real-world context requiring multiplication or division of fractions.
-        Difficulty: medium (fractions only, any operation)
-        """
+    def stem3_approaching_mc(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(3, variant_idx)
         name = pick_name(rng)
 
-        # Choose multiply or divide
-        operation = rng.choice(["multiply", "divide"])
+        f1 = rng.choice([Fraction(1, 2), Fraction(1, 4), Fraction(3, 4)])
+        f2 = rng.choice([Fraction(1, 2), Fraction(1, 4), Fraction(3, 4)])
+        dec = Fraction(rng.randint(25, 250), 100)
+        total = f1 + f2 + dec
 
-        if operation == "multiply":
-            # E.g., "A recipe calls for 2/3 cup of flour. Name wants to make 4 1/2 batches."
-            frac_a = gen.proper_fraction(max_denom=6)
-            mixed_b = gen.mixed_number(max_whole=5, max_denom=4)
-            answer = frac_a * mixed_b
+        dish, a_name, b_name, c_name, unit, single = rng.choice([
+            ("a smoothie", "orange juice", "apple juice", "strawberries", "cups", "cup"),
+            ("a fruit salad", "diced melon", "sliced banana", "blueberries", "cups", "cup"),
+            ("trail mix", "raisins", "almonds", "granola", "cups", "cup"),
+            ("a punch", "lemonade", "pineapple juice", "sparkling water", "liters", "liter"),
+            ("a soup", "chopped carrots", "diced celery", "broth", "cups", "cup"),
+            ("a pancake batter", "milk", "water", "oil", "cups", "cup"),
+            ("a yogurt bowl", "plain yogurt", "honey", "frozen berries", "cups", "cup"),
+            ("a marinade", "olive oil", "vinegar", "soy sauce", "cups", "cup"),
+            ("iced tea", "brewed tea", "lemon juice", "cold water", "liters", "liter"),
+            ("a paint mix", "blue paint", "white paint", "clear medium", "liters", "liter"),
+        ])
 
-            a_str = _fmt_fraction(frac_a)
-            b_str = _fmt_fraction(mixed_b)
-            answer_str = _fmt_fraction(answer)
-
-            a_rn = RationalNumber(frac_a, "fraction")
-            b_rn = RationalNumber(mixed_b, "mixed")
-            answer_rn = RationalNumber(answer, "mixed")
-
-            contexts = [
-                f"A recipe calls for {a_str} cups of sugar per batch. {name} wants to make {b_str} batches. How many cups of sugar does {name} need?",
-                f"{name} can walk {a_str} miles in one hour. How far will {name} walk in {b_str} hours?",
-                f"Each serving of juice requires {a_str} cups. {name} needs {b_str} servings. How many cups of juice does {name} need in all?",
-                f"A garden plot is {a_str} acres wide. The plot is {b_str} acres long. What is the area of the garden in square acres?",
-            ]
-            stem_text = rng.choice(contexts)
-
-            # Convert mixed to improper for worked solution
-            b_imp_num = mixed_b.numerator
-            b_imp_den = mixed_b.denominator
-            worked = (
-                f"Multiply: {a_str} x {b_str}\n"
-                f"= {frac_a.numerator}/{frac_a.denominator} x {b_imp_num}/{b_imp_den}\n"
-                f"= {answer.numerator}/{answer.denominator}\n"
-                f"= {answer_str}"
-            )
-        else:
-            # Division: e.g., "Name has 3 1/4 pounds to divide into bags of 1/2 pound each"
-            mixed_a = gen.mixed_number(max_whole=5, max_denom=4)
-            frac_b = gen.proper_fraction(max_denom=6)
-            # Ensure frac_b is not too tiny
-            while frac_b < Fraction(1, 6):
-                frac_b = gen.proper_fraction(max_denom=6)
-            answer = mixed_a / frac_b
-
-            a_str = _fmt_fraction(mixed_a)
-            b_str = _fmt_fraction(frac_b)
-            answer_str = _fmt_fraction(answer)
-
-            a_rn = RationalNumber(mixed_a, "mixed")
-            b_rn = RationalNumber(frac_b, "fraction")
-            answer_rn = RationalNumber(answer, "mixed")
-
-            contexts = [
-                f"{name} has {a_str} pounds of trail mix to divide into bags of {b_str} pound each. How many bags can {name} make?",
-                f"A ribbon is {a_str} yards long. {name} cuts it into pieces that are {b_str} yard each. How many pieces does {name} get?",
-                f"{name} has {a_str} gallons of paint. Each wall needs {b_str} gallon. How many walls can {name} paint?",
-            ]
-            stem_text = rng.choice(contexts)
-
-            recip = Fraction(frac_b.denominator, frac_b.numerator)
-            worked = (
-                f"Divide: {a_str} / {b_str}\n"
-                f"= {mixed_a.numerator}/{mixed_a.denominator} x {recip.numerator}/{recip.denominator}\n"
-                f"= {answer.numerator}/{answer.denominator}\n"
-                f"= {answer_str}"
-            )
-
-        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING, ItemType.NR,
-                               Difficulty.MEDIUM, 3, variant_idx)
-
-        return GeneratedQuestion(
-            question_id=qid,
-            standard_code=STANDARD_CODE,
-            proficiency_level=ProficiencyLevel.APPROACHING,
-            difficulty=Difficulty.MEDIUM,
-            dok=2,
-            item_type=ItemType.NR,
-            stem_text=stem_text,
-            stem_latex=stem_text,
-            answer_text=answer_str,
-            answer_latex=f"${answer_rn.latex()}$",
-            worked_solution=worked,
-            context_scenario=f"fraction {operation} word problem",
-            seed=self.base_seed * 1000 + 300 + variant_idx,
-            stem_index=3,
-            variant_index=variant_idx
+        stem_text = (
+            f"{name} makes {dish}.\n\n"
+            f"- {name} uses {_fmt_fraction(f1)} {single} of {a_name}.\n"
+            f"- {name} uses {_fmt_fraction(f2)} {single} of {b_name}.\n"
+            f"- {name} uses {_fmt_decimal(dec)} {unit} of {c_name}.\n\n"
+            f"How many {unit} of {a_name}, {b_name}, and {c_name} "
+            f"does {name} use in total?"
         )
 
-    # ================================================================
-    # STEM 4: Approaching Proficiency - MC (DOK 2, Medium)
-    # One-step decimal word problem (multiply or divide)
-    # ================================================================
+        # Error models a form conversion actually produces.
+        digits_error = (Fraction(f1.numerator * 10 + f1.denominator, 100)
+                        + f2 + dec)                              # 3/4 read as 0.34
+        denom_tenths = f1 + Fraction(f2.denominator, 10) + dec   # 1/4 read as 0.4
+        fractions_only = f1 + f2                                 # drops the decimal
 
-    def stem4_approaching_mc(self, variant_idx: int) -> GeneratedQuestion:
-        """Approaching Proficiency - One-step decimal word problem (MC).
+        def fmt(v):
+            return f"{_fmt_decimal(v)} {unit}"
 
-        Real-world context requiring multiplication or division of decimals.
-        Difficulty: medium (decimals only, any operation)
-        """
-        gen, rng = self._make_gen(4, variant_idx)
-        name = pick_name(rng)
+        choices, correct_key = _build_mc(rng, total, [
+            (digits_error, "Reads the fraction's digits as decimal digits"),
+            (denom_tenths, "Uses the denominator as a tenths value"),
+            (fractions_only, "Adds only the two fractions and drops the decimal"),
+        ], fmt, fallback_step=Fraction(5, 100))
 
-        operation = rng.choice(["multiply", "divide"])
-
-        if operation == "multiply":
-            # e.g., "Each shirt costs $12.75. Name buys 4 shirts."
-            unit_price = gen.money(3.00, 25.00)
-            quantity = int(gen.whole_number(2, 9))
-            answer = unit_price * quantity
-
-            price_str = f"{float(unit_price):.2f}"
-            answer_str = f"{float(answer):.2f}"
-
-            contexts = [
-                f"Each notebook costs ${price_str}. {name} buys {quantity} notebooks. What is the total cost?",
-                f"{name} earns ${price_str} per hour. How much does {name} earn in {quantity} hours?",
-                f"A bag of apples weighs {price_str} pounds. {name} buys {quantity} bags. What is the total weight in pounds?",
-                f"Each bottle holds {price_str} liters. {name} has {quantity} bottles. How many liters does {name} have in all?",
-            ]
-            stem_text = rng.choice(contexts)
-
-            # Distractors from common errors
-            distractors = set()
-            distractors.add(float(unit_price) + quantity)                # added instead
-            distractors.add(float(unit_price) * (quantity + 1))          # one extra
-            distractors.add(float(unit_price) * (quantity - 1))          # one fewer
-            distractors.add(round(float(unit_price) * quantity / 10, 2)) # decimal place error
-            distractors.discard(float(answer))
-
-            worked = (
-                f"Multiply: ${price_str} x {quantity}\n"
-                f"= ${answer_str}"
-            )
-
-        else:
-            # e.g., "Name has $45.60 to buy pens at $3.80 each."
-            unit_price = gen.money(2.00, 15.00)
-            quantity = int(gen.whole_number(3, 8))
-            total = unit_price * quantity
-
-            total_str = f"{float(total):.2f}"
-            price_str = f"{float(unit_price):.2f}"
-            answer = unit_price  # reframe: total / quantity = unit_price
-            # Actually, let's ask "how many items" -> answer = quantity
-            answer = Fraction(quantity)
-            answer_str = str(quantity)
-
-            contexts = [
-                f"{name} has ${total_str} to spend on pencils that cost ${price_str} each. How many pencils can {name} buy?",
-                f"A rope that is {total_str} feet long is cut into pieces of {price_str} feet each. How many pieces are there?",
-                f"{name} divides ${total_str} equally among friends, giving each friend ${price_str}. How many friends does {name} have?",
-            ]
-            stem_text = rng.choice(contexts)
-
-            distractors = set()
-            distractors.add(quantity + 1)
-            distractors.add(quantity - 1)
-            distractors.add(quantity * 2)
-            distractors.add(round(float(total) + float(unit_price), 2))
-            distractors.discard(float(answer))
-
-            worked = (
-                f"Divide: {total_str} / {price_str}\n"
-                f"= {answer_str}"
-            )
-
-        # Build MC choices
-        distractors = [d for d in distractors if d > 0 and d != float(answer)][:3]
-        while len(distractors) < 3:
-            d = float(answer) + rng.choice([-5, -2, 2, 5, 10])
-            if d > 0 and d != float(answer) and d not in distractors:
-                distractors.append(d)
-
-        def _fmt_choice(v):
-            if v == int(v):
-                return str(int(v))
-            return f"{v:.2f}"
-
-        all_options = [(_fmt_choice(float(answer)), True)]
-        for d in distractors[:3]:
-            all_options.append((_fmt_choice(d), False))
-        rng.shuffle(all_options)
-
-        choices = []
-        for i, (text, is_correct) in enumerate(all_options):
-            choices.append(QuestionChoice(
-                key=chr(ord('a') + i),
-                text=text,
-                text_latex=f"${text}$",
-                is_correct=is_correct,
-            ))
-
-        correct_letter = next(c.key for c in choices if c.is_correct)
-
-        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING, ItemType.MC,
-                               Difficulty.MEDIUM, 4, variant_idx)
+        worked = (
+            f"Write every amount in the same form.\n"
+            f"{_fmt_fraction(f1)} = {_fmt_decimal(f1)}, "
+            f"{_fmt_fraction(f2)} = {_fmt_decimal(f2)}\n"
+            f"{_fmt_decimal(f1)} + {_fmt_decimal(f2)} + {_fmt_decimal(dec)} "
+            f"= {_fmt_decimal(total)} {unit}"
+        )
 
         return GeneratedQuestion(
-            question_id=qid,
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING,
+                                         ItemType.MC, Difficulty.MEDIUM, 3, variant_idx),
             standard_code=STANDARD_CODE,
             proficiency_level=ProficiencyLevel.APPROACHING,
             difficulty=Difficulty.MEDIUM,
@@ -422,171 +385,165 @@ class Stem6NS4:
             item_type=ItemType.MC,
             stem_text=stem_text,
             stem_latex=stem_text,
-            answer_text=correct_letter,
-            answer_latex=correct_letter,
+            answer_text=f"{correct_key}. {fmt(total)}",
+            answer_latex=f"{correct_key}. {fmt(total)}",
             worked_solution=worked,
             choices=choices,
-            context_scenario=f"decimal {operation} word problem",
-            seed=self.base_seed * 1000 + 400 + variant_idx,
-            stem_index=4,
-            variant_index=variant_idx
+            context_scenario="adding across number forms",
+            seed=self.base_seed * 1000 + 300 + variant_idx,
+            stem_index=3,
+            variant_index=variant_idx,
         )
 
     # ================================================================
-    # STEM 5: At Proficiency - NR (DOK 2, Difficult)
-    # Two-step problem mixing fractions and decimals
+    # STEM 4: Approaching Proficiency - MC (DOK 2, Medium)
+    # Decimal divided by a NON-benchmark fraction.
+    # Spec anchor: 2.4 m of ribbon at 3/10 m each -> 8 bookmarks.
     # ================================================================
+    def stem4_approaching_mc(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(4, variant_idx)
+        name = pick_name(rng)
 
+        piece = rng.choice(NON_BENCHMARK)
+        count = rng.randint(5, 12)
+        total = piece * count
+
+        material, noun, product, single, unit, unit_single = rng.choice([
+            ("a ribbon", "ribbon", "bookmarks", "bookmark", "meters", "meter"),
+            ("a board", "board", "shelves", "shelf", "feet", "foot"),
+            ("a rope", "rope", "jump ropes", "jump rope", "meters", "meter"),
+            ("a roll of tape", "roll", "labels", "label", "meters", "meter"),
+            ("a length of wire", "wire", "hooks", "hook", "feet", "foot"),
+            ("a chain", "chain", "keyrings", "keyring", "meters", "meter"),
+            ("a strip of felt", "strip", "patches", "patch", "meters", "meter"),
+            ("a plank", "plank", "birdhouses", "birdhouse", "feet", "foot"),
+            ("a length of trim", "trim", "picture frames", "picture frame", "feet", "foot"),
+            ("a spool of cord", "cord", "bracelets", "bracelet", "meters", "meter"),
+        ])
+
+        stem_text = (
+            f"{name} makes {product} from {material}.\n\n"
+            f"- The {noun} is {_fmt_decimal(total)} {unit} long.\n"
+            f"- Each {single} uses {_fmt_fraction(piece)} {unit_single} of it.\n\n"
+            f"How many {product} can {name} make?"
+        )
+
+        choices, correct_key = _build_mc(rng, count, [
+            (count - 2, "Miscounts by two when sharing out the length"),
+            (count - 1, "Off by one; drops the final full piece"),
+            (count + 2, "Uses a smaller piece size than the one given"),
+        ], lambda v: str(int(round(float(v)))), fallback_step=3)
+
+        worked = (
+            f"Divide the total length by the length of one {single}.\n"
+            f"{_fmt_decimal(total)} / {_fmt_fraction(piece)} = "
+            f"{_fmt_decimal(total)} / {_fmt_decimal(piece)} = {count}\n"
+            f"{name} can make {count} {product}."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING,
+                                         ItemType.MC, Difficulty.MEDIUM, 4, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.APPROACHING,
+            difficulty=Difficulty.MEDIUM,
+            dok=2,
+            item_type=ItemType.MC,
+            stem_text=stem_text,
+            stem_latex=stem_text,
+            answer_text=f"{correct_key}. {count}",
+            answer_latex=f"{correct_key}. {count}",
+            worked_solution=worked,
+            choices=choices,
+            context_scenario="dividing a decimal by a non-benchmark fraction",
+            seed=self.base_seed * 1000 + 400 + variant_idx,
+            stem_index=4,
+            variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 5: At Proficiency - MP (DOK 2, Difficult)
+    # Several operations, and the intermediate value runs to thousandths.
+    # Spec anchor: 0.35 gal/mile over 120.5 miles -> 42.175 gallons.
+    # ================================================================
     def stem5_at_mp(self, variant_idx: int) -> GeneratedQuestion:
-        """At Proficiency - Multi-part two-step problem mixing fractions and decimals.
-
-        Part A: Calculate the intermediate result.
-        Part B: Use the intermediate result to find the final answer.
-        Difficulty: difficult (mix of fractions and decimals, any operation)
-        """
         gen, rng = self._make_gen(5, variant_idx)
         name = pick_name(rng)
 
-        scenario = rng.choice(["earn_spend", "recipe_leftover", "distance_two_parts"])
+        rate = Fraction(rng.randint(15, 85), 100)        # hundredths
+        amount = Fraction(rng.randint(805, 1995), 10)    # tenths
+        used = rate * amount                             # thousandths
+        price = Fraction(rng.choice([225, 275, 325, 375, 425]), 100)
+        cost = used * price
+        cost_rounded = _round_half_up(cost, 2)
 
-        if scenario == "earn_spend":
-            rate = gen.money(7.00, 15.00)
-            hours = gen.mixed_number(max_whole=4, max_denom=4)
-            spending = gen.money(5.00, 20.00)
-            earnings = rate * hours
-            answer = earnings - spending
-            while answer <= 0:
-                spending = gen.money(2.00, float(earnings) - 1.00)
-                answer = earnings - spending
+        (doing, device, rate_unit, dist_lead, dist_unit,
+         price_lead, price_unit, quantity_name, thing) = rng.choice([
+            ("plans a road trip", "car uses", "gallons of gas per mile",
+             "The total distance for the trip is", "miles", "Gas costs",
+             "per gallon", "gallons of gas", "gas"),
+            ("plans a large paint job", "sprayer uses", "gallons of paint per square foot",
+             "The total area to cover is", "square feet", "Paint costs",
+             "per gallon", "gallons of paint", "paint"),
+            ("plans a lawn treatment", "spreader uses", "gallons of fertilizer per square foot",
+             "The total area to treat is", "square feet", "Fertilizer costs",
+             "per gallon", "gallons of fertilizer", "fertilizer"),
+            ("plans a boat trip", "boat uses", "gallons of fuel per mile",
+             "The total distance on the water is", "miles", "Fuel costs",
+             "per gallon", "gallons of fuel", "fuel"),
+            ("plans a sealing job", "roller uses", "gallons of sealant per square foot",
+             "The total area to seal is", "square feet", "Sealant costs",
+             "per gallon", "gallons of sealant", "sealant"),
+            ("plans a delivery route", "van uses", "gallons of gas per mile",
+             "The total route is", "miles", "Gas costs",
+             "per gallon", "gallons of gas", "gas"),
+            ("plans a wall mural", "airbrush uses", "gallons of primer per square foot",
+             "The total area to prime is", "square feet", "Primer costs",
+             "per gallon", "gallons of primer", "primer"),
+            ("plans a moving trip", "truck uses", "gallons of gas per mile",
+             "The total distance to the new house is", "miles", "Gas costs",
+             "per gallon", "gallons of gas", "gas"),
+        ])
 
-            rate_str = f"{float(rate):.2f}"
-            hours_str = _fmt_fraction(hours)
-            spending_str = f"{float(spending):.2f}"
-            earnings_str = f"{float(earnings):.2f}"
-            answer_str = f"{float(answer):.2f}"
+        stem_text = (
+            f"This item has two parts.\n\n"
+            f"{name} {doing}.\n\n"
+            f"- {name}'s {device} {_fmt_decimal(rate)} {rate_unit}.\n"
+            f"- {dist_lead} {_fmt_decimal(amount, 1)} {dist_unit}.\n"
+            f"- {price_lead} {_money(price)} {price_unit}.\n\n"
+            f"Part A: How many {quantity_name} will {name} need in total?\n\n"
+            f"Part B: How much will {name} spend on {thing}? "
+            f"Round your answer to the nearest hundredth."
+        )
 
-            stem_text = (
-                f"{name} earns ${rate_str} per hour and works for "
-                f"{hours_str} hours. Then {name} spends ${spending_str} on lunch.\n\n"
-                f"Part A: How much does {name} earn before lunch?\n\n"
-                f"Part B: How much money does {name} have after buying lunch?"
-            )
+        used_str = _fmt_decimal(used, 3)
+        part_a = QuestionPart(
+            label="Part A",
+            prompt=f"How many {quantity_name} will {name} need in total?",
+            prompt_latex=f"How many {quantity_name} will {name} need in total?",
+            answer=used_str,
+            answer_latex=used_str,
+            item_type=ItemType.NR,
+        )
+        part_b = QuestionPart(
+            label="Part B",
+            prompt=f"How much will {name} spend on {thing}?",
+            prompt_latex=f"How much will {name} spend on {thing}?",
+            answer=_money(cost_rounded),
+            answer_latex=_money(cost_rounded),
+            item_type=ItemType.NR,
+        )
 
-            part_a = QuestionPart(
-                label="Part A",
-                prompt=f"How much does {name} earn before lunch?",
-                prompt_latex=f"How much does {name} earn before lunch?",
-                answer=f"${earnings_str}",
-                answer_latex=f"\\${earnings_str}",
-                item_type=ItemType.NR,
-            )
-            part_b = QuestionPart(
-                label="Part B",
-                prompt=f"How much money does {name} have after buying lunch?",
-                prompt_latex=f"How much money does {name} have after buying lunch?",
-                answer=f"${answer_str}",
-                answer_latex=f"\\${answer_str}",
-                item_type=ItemType.NR,
-            )
-
-            worked = (
-                f"Part A: ${rate_str} x {hours_str} = ${earnings_str}\n"
-                f"Part B: ${earnings_str} - ${spending_str} = ${answer_str}"
-            )
-
-        elif scenario == "recipe_leftover":
-            total = gen.decimal_1place(3.0, 10.0)
-            per_serving = gen.proper_fraction(max_denom=4)
-            servings = int(gen.whole_number(2, 6))
-            used = per_serving * servings
-            while total <= used:
-                total = total + gen.decimal_1place(2.0, 5.0)
-            answer = total - used
-
-            total_str = _fmt_decimal(total)
-            per_str = _fmt_fraction(per_serving)
-            used_str = _fmt_decimal(used)
-            answer_val = float(answer)
-            answer_str = f"{answer_val:.2f}" if answer_val != int(answer_val) else str(int(answer_val))
-
-            stem_text = (
-                f"{name} has {total_str} cups of sugar. A recipe uses "
-                f"{per_str} cup of sugar per serving. {name} makes "
-                f"{servings} servings.\n\n"
-                f"Part A: How many cups of sugar does {name} use?\n\n"
-                f"Part B: How many cups of sugar does {name} have left?"
-            )
-
-            part_a = QuestionPart(
-                label="Part A",
-                prompt=f"How many cups of sugar does {name} use?",
-                prompt_latex=f"How many cups of sugar does {name} use?",
-                answer=used_str,
-                answer_latex=used_str,
-                item_type=ItemType.NR,
-            )
-            part_b = QuestionPart(
-                label="Part B",
-                prompt=f"How many cups of sugar does {name} have left?",
-                prompt_latex=f"How many cups of sugar does {name} have left?",
-                answer=answer_str,
-                answer_latex=answer_str,
-                item_type=ItemType.NR,
-            )
-
-            worked = (
-                f"Part A: {per_str} x {servings} = {used_str} cups\n"
-                f"Part B: {total_str} - {used_str} = {answer_str} cups"
-            )
-
-        else:  # distance_two_parts
-            part1 = gen.decimal_1place(1.0, 5.0)
-            part2 = gen.mixed_number(max_whole=3, max_denom=4)
-            walked = part1 + part2
-            goal = walked + gen.decimal_1place(1.0, 5.0)
-            answer = goal - walked
-
-            part1_str = _fmt_decimal(part1)
-            part2_str = _fmt_fraction(part2)
-            goal_str = _fmt_decimal(goal)
-            walked_str = _fmt_decimal(walked)
-            answer_str = _fmt_decimal(answer)
-
-            stem_text = (
-                f"{name} wants to walk {goal_str} miles today. "
-                f"In the morning, {name} walked {part1_str} miles. "
-                f"In the afternoon, {name} walked {part2_str} miles.\n\n"
-                f"Part A: How many miles has {name} walked so far?\n\n"
-                f"Part B: How many more miles does {name} need to walk?"
-            )
-
-            part_a = QuestionPart(
-                label="Part A",
-                prompt=f"How many miles has {name} walked so far?",
-                prompt_latex=f"How many miles has {name} walked so far?",
-                answer=f"{walked_str} miles",
-                answer_latex=f"{walked_str} miles",
-                item_type=ItemType.NR,
-            )
-            part_b = QuestionPart(
-                label="Part B",
-                prompt=f"How many more miles does {name} need to walk?",
-                prompt_latex=f"How many more miles does {name} need to walk?",
-                answer=f"{answer_str} miles",
-                answer_latex=f"{answer_str} miles",
-                item_type=ItemType.NR,
-            )
-
-            worked = (
-                f"Part A: {part1_str} + {part2_str} = {walked_str} miles\n"
-                f"Part B: {goal_str} - {walked_str} = {answer_str} miles"
-            )
-
-        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.AT, ItemType.MP,
-                               Difficulty.DIFFICULT, 5, variant_idx)
+        worked = (
+            f"Part A: {_fmt_decimal(rate)} x {_fmt_decimal(amount, 1)} = {used_str}\n"
+            f"  Keep all three decimal places; rounding here changes Part B.\n"
+            f"Part B: {used_str} x {_money(price)} = {_fmt_decimal(cost, 5)}\n"
+            f"  Rounded to the nearest hundredth: {_money(cost_rounded)}"
+        )
 
         return GeneratedQuestion(
-            question_id=qid,
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.AT,
+                                         ItemType.MP, Difficulty.DIFFICULT, 5, variant_idx),
             standard_code=STANDARD_CODE,
             proficiency_level=ProficiencyLevel.AT,
             difficulty=Difficulty.DIFFICULT,
@@ -594,179 +551,239 @@ class Stem6NS4:
             item_type=ItemType.MP,
             stem_text=stem_text,
             stem_latex=stem_text,
-            answer_text=f"Part A: see solution; Part B: {answer_str}",
-            answer_latex=f"Part A: see solution; Part B: {answer_str}",
+            answer_text=f"Part A: {used_str}; Part B: {_money(cost_rounded)}",
+            answer_latex=f"Part A: {used_str}; Part B: {_money(cost_rounded)}",
             worked_solution=worked,
             parts=[part_a, part_b],
-            context_scenario=scenario,
+            context_scenario="multi-operation with thousandths precision",
             seed=self.base_seed * 1000 + 500 + variant_idx,
             stem_index=5,
-            variant_index=variant_idx
+            variant_index=variant_idx,
         )
 
     # ================================================================
-    # STEM 6: Above Proficiency - MP (DOK 3, Medium)
-    # Evaluate reasoning about a two-step decimal problem
+    # STEM 6: Above Proficiency - ER (DOK 3, Difficult)
+    # Critique a solution. The misconception is reading the decimal part of a
+    # quotient as the physical amount left over.
+    # Spec anchor: 12.75 lb of clay into 0.4 lb containers -> 31, 0.35 left.
     # ================================================================
-
-    def stem6_above_mp(self, variant_idx: int) -> GeneratedQuestion:
-        """Above Proficiency - Multi-part: evaluate reasoning about a decimal problem.
-
-        Part A: Identify the error in a student's work on a two-step decimal problem.
-        Part B: Solve the problem correctly.
-        Difficulty: medium (decimals, any operation)
-        """
+    def stem6_above_er(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(6, variant_idx)
-        name = pick_name(rng)
-        student_name = pick_name(rng)
-        while student_name == name:
-            student_name = pick_name(rng)
+        student = pick_name(rng)
 
-        # Generate a two-step decimal problem
-        # Pattern: buy multiple items at a price, then apply a flat amount change
-        unit_price = gen.money(3.00, 12.00)
-        quantity = int(gen.whole_number(3, 8))
-        extra = gen.money(2.00, 10.00)
-        total = unit_price * quantity + extra
+        size = Fraction(rng.choice([20, 25, 40, 50, 60, 75]), 100)
+        total = Fraction(rng.randint(505, 1995), 100)
+        quotient = total / size
+        filled = int(quotient)
+        leftover = total - filled * size
+        tries = 0
+        # A zero remainder removes the misconception the item is built on.
+        while leftover == 0 and tries < 12:
+            total = Fraction(rng.randint(505, 1995), 100)
+            quotient = total / size
+            filled = int(quotient)
+            leftover = total - filled * size
+            tries += 1
+        claimed = quotient - filled   # the decimal tail the student misreads
 
-        price_str = f"{float(unit_price):.2f}"
-        extra_str = f"{float(extra):.2f}"
-        total_str = f"{float(total):.2f}"
-        subtotal_str = f"{float(unit_price * quantity):.2f}"
-
-        # Choose an error type
-        error_type = rng.choice(["added_instead", "wrong_multiply", "forgot_step"])
-
-        if error_type == "added_instead":
-            # Student added unit_price + quantity instead of multiplying
-            wrong_subtotal = float(unit_price) + quantity
-            wrong_answer = wrong_subtotal + float(extra)
-            wrong_str = f"{wrong_answer:.2f}"
-            error_desc = (
-                f"{student_name} added ${price_str} + {quantity} = "
-                f"${float(unit_price) + quantity:.2f} instead of multiplying "
-                f"${price_str} x {quantity} = ${subtotal_str}."
-            )
-        elif error_type == "wrong_multiply":
-            # Student misplaced decimal in multiplication
-            wrong_subtotal = float(unit_price) * quantity * 10
-            wrong_answer = wrong_subtotal + float(extra)
-            wrong_str = f"{wrong_answer:.2f}"
-            error_desc = (
-                f"{student_name} got ${wrong_subtotal:.2f} for the multiplication "
-                f"instead of ${subtotal_str}. The decimal point was misplaced."
-            )
-        else:
-            # Student forgot to add the extra amount
-            wrong_answer = float(unit_price * quantity)
-            wrong_str = f"{wrong_answer:.2f}"
-            error_desc = (
-                f"{student_name} correctly multiplied ${price_str} x {quantity} = "
-                f"${subtotal_str} but forgot to add the ${extra_str}."
-            )
+        material, holder, single, unit = rng.choice([
+            ("modeling clay", "containers", "container", "pounds"),
+            ("potting soil", "planters", "planter", "pounds"),
+            ("apple cider", "bottles", "bottle", "liters"),
+            ("floor sealant", "trays", "tray", "gallons"),
+            ("wildflower seed", "packets", "packet", "pounds"),
+            ("maple syrup", "jars", "jar", "liters"),
+            ("sidewalk chalk powder", "tubs", "tub", "pounds"),
+            ("hand sanitizer", "pump bottles", "pump bottle", "liters"),
+            ("birdseed", "feeders", "feeder", "pounds"),
+        ])
 
         stem_text = (
-            f"{name} buys {quantity} items at ${price_str} each and pays an "
-            f"additional ${extra_str} for shipping.\n\n"
-            f"{student_name} says the total cost is ${wrong_str}.\n\n"
-            f"Part A: Explain the error in {student_name}'s reasoning.\n\n"
-            f"Part B: What is the correct total cost?"
+            f"{student} is packing {material} for a school event.\n\n"
+            f"- {student} has {_fmt_decimal(total)} {unit} of {material}.\n"
+            f"- {student} packs it into {holder} that hold "
+            f"{_fmt_decimal(size)} {unit} each.\n\n"
+            f"{student} calculates that {filled} {holder} can be filled with "
+            f"{_fmt_decimal(claimed, 3)} {unit} of {material} left over.\n\n"
+            f"Is {student}'s conclusion correct? Evaluate {student}'s answer and "
+            f"use words and equations to explain your answer."
+        )
+
+        answer = (
+            f"{student}'s solution is partially correct. The number of full "
+            f"{holder} is right: {filled}. The amount left over is not.\n"
+            f"{_fmt_decimal(total)} / {_fmt_decimal(size)} = "
+            f"{_fmt_decimal(quotient, 3)}, so {filled} {holder} can be filled. "
+            f"{student} read the {_fmt_decimal(claimed, 3)} after the decimal "
+            f"point as the amount left over, but that is a part of one "
+            f"{single}, not a measure of {material}.\n"
+            f"Left over = {_fmt_decimal(total)} - {filled} x "
+            f"{_fmt_decimal(size)} = {_fmt_decimal(leftover)} {unit}."
+        )
+
+        worked = (
+            f"Divide: {_fmt_decimal(total)} / {_fmt_decimal(size)} = "
+            f"{_fmt_decimal(quotient, 3)}\n"
+            f"Full {holder}: {filled}\n"
+            f"Used: {filled} x {_fmt_decimal(size)} = {_fmt_decimal(filled * size)}\n"
+            f"Left over: {_fmt_decimal(total)} - {_fmt_decimal(filled * size)} "
+            f"= {_fmt_decimal(leftover)}\n"
+            f"The student's {_fmt_decimal(claimed, 3)} is the fractional part of "
+            f"the quotient, not the leftover amount."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE,
+                                         ItemType.ER, Difficulty.DIFFICULT, 6, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.ABOVE,
+            difficulty=Difficulty.DIFFICULT,
+            dok=3,
+            item_type=ItemType.ER,
+            stem_text=stem_text,
+            stem_latex=stem_text,
+            answer_text=answer,
+            answer_latex=answer,
+            worked_solution=worked,
+            context_scenario="critique of a division remainder",
+            seed=self.base_seed * 1000 + 600 + variant_idx,
+            stem_index=6,
+            variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 7: Above Proficiency - MP (DOK 3, Difficult)
+    # Non-routine: each option carries a DIFFERENT discount structure, so the
+    # steps have to be inferred rather than executed.
+    # ================================================================
+    def stem7_above_mp(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(7, variant_idx)
+        name = pick_name(rng)
+
+        qty = rng.choice([8, 10, 12, 14, 16])
+        p_half = Fraction(rng.randint(3200, 4400), 100)    # buy one, second half off
+        p_plain = Fraction(rng.randint(2600, 3200), 100)   # no sale
+        p_off = Fraction(rng.randint(3000, 3800), 100)     # flat amount off each
+        off = Fraction(rng.choice([500, 650, 750, 900]), 100)
+
+        def totals():
+            return (qty * p_half * Fraction(3, 4),
+                    qty * p_plain,
+                    qty * (p_off - off))
+
+        # The flat-discount option has to win by a clear margin, but NOT by a
+        # runaway one. If it is far cheaper per item, a student can pick it off
+        # by eye and never compute a total, which is exactly the reasoning this
+        # non-routine item exists to require. Target: cheapest by more than $5
+        # but by less than a fifth of its own total.
+        def spread_ok(half, plain, off_total):
+            second = min(half, plain)
+            gap = second - off_total
+            return gap > 5 and gap < off_total * Fraction(1, 5)
+
+        t_half, t_plain, t_off = totals()
+        tries = 0
+        while not spread_ok(t_half, t_plain, t_off) and tries < 40:
+            off = Fraction(rng.choice([400, 500, 650, 750]), 100)
+            p_off = Fraction(rng.randint(3000, 3600), 100)
+            p_plain = Fraction(rng.randint(2800, 3300), 100)
+            p_half = Fraction(rng.randint(3400, 4200), 100)
+            t_half, t_plain, t_off = totals()
+            tries += 1
+
+        kind, item = rng.choice([
+            ("costumes", "costume"), ("jerseys", "jersey"),
+            ("aprons", "apron"), ("jackets", "jacket"),
+        ])
+        a, b, c = rng.sample(["Mermaid", "Cowgirl", "Dragon", "Falcon", "Comet"], 3)
+
+        stem_text = (
+            f"This item has two parts.\n\n"
+            f"{name} must choose new {kind} for a class of {qty} students.\n\n"
+            f"- The {a} {item} costs {_money(p_half)}. For each {a} {item} "
+            f"bought, the second one is half off.\n"
+            f"- The {b} {item} costs {_money(p_plain)}. It is not on sale.\n"
+            f"- The {c} {item} costs {_money(p_off)}, on sale for {_money(off)} "
+            f"off each {item}.\n\n"
+            f"{name} buys the same {item} for every student.\n\n"
+            f"Part A: Which {item} costs the least in total?\n\n"
+            f"Part B: What is that total for {qty} {kind}?"
         )
 
         part_a = QuestionPart(
             label="Part A",
-            prompt=f"Explain the error in {student_name}'s reasoning.",
-            prompt_latex=f"Explain the error in {student_name}'s reasoning.",
-            answer=error_desc,
-            answer_latex=error_desc,
-            item_type=ItemType.NR,
+            prompt=f"Which {item} costs the least in total?",
+            prompt_latex=f"Which {item} costs the least in total?",
+            answer=c, answer_latex=c, item_type=ItemType.MC,
         )
         part_b = QuestionPart(
             label="Part B",
-            prompt=f"What is the correct total cost?",
-            prompt_latex=f"What is the correct total cost?",
-            answer=f"${total_str}",
-            answer_latex=f"\\${total_str}",
+            prompt=f"What is that total for {qty} {kind}?",
+            prompt_latex=f"What is that total for {qty} {kind}?",
+            answer=_money(t_off),
+            answer_latex=_money(t_off),
             item_type=ItemType.NR,
         )
 
         worked = (
-            f"Part A: {error_desc}\n\n"
-            f"Part B:\n"
-            f"  Step 1: ${price_str} x {quantity} = ${subtotal_str}\n"
-            f"  Step 2: ${subtotal_str} + ${extra_str} = ${total_str}\n"
-            f"  Correct total: ${total_str}"
+            f"Each option is priced a different way, so each needs its own steps.\n"
+            f"{a}: a pair costs {_money(p_half)} + {_money(p_half / 2)} = "
+            f"{_money(p_half * Fraction(3, 2))}. "
+            f"{qty // 2} pairs x {_money(p_half * Fraction(3, 2))} = {_money(t_half)}\n"
+            f"{b}: {qty} x {_money(p_plain)} = {_money(t_plain)}\n"
+            f"{c}: {_money(p_off)} - {_money(off)} = {_money(p_off - off)} each, "
+            f"so {qty} x {_money(p_off - off)} = {_money(t_off)}\n"
+            f"The {c} {item} costs the least, at {_money(t_off)}."
         )
 
-        qid = make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE, ItemType.MP,
-                               Difficulty.MEDIUM, 6, variant_idx)
-
         return GeneratedQuestion(
-            question_id=qid,
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE,
+                                         ItemType.MP, Difficulty.DIFFICULT, 7, variant_idx),
             standard_code=STANDARD_CODE,
             proficiency_level=ProficiencyLevel.ABOVE,
-            difficulty=Difficulty.MEDIUM,
+            difficulty=Difficulty.DIFFICULT,
             dok=3,
             item_type=ItemType.MP,
             stem_text=stem_text,
             stem_latex=stem_text,
-            answer_text=f"Part A: {error_desc} Part B: ${total_str}",
-            answer_latex=f"Part A: {error_desc} Part B: \\${total_str}",
+            answer_text=f"Part A: {c}; Part B: {_money(t_off)}",
+            answer_latex=f"Part A: {c}; Part B: {_money(t_off)}",
             worked_solution=worked,
             parts=[part_a, part_b],
-            context_scenario="evaluate reasoning about decimal computation",
-            seed=self.base_seed * 1000 + 600 + variant_idx,
-            stem_index=6,
-            variant_index=variant_idx
+            context_scenario="non-routine comparison of discount structures",
+            seed=self.base_seed * 1000 + 700 + variant_idx,
+            stem_index=7,
+            variant_index=variant_idx,
         )
 
     # ================================================================
-    # MAIN GENERATION METHODS
-    # ================================================================
+    def _stem_methods(self):
+        return {
+            1: self.stem1_below_mc,
+            2: self.stem2_below_mc,
+            3: self.stem3_approaching_mc,
+            4: self.stem4_approaching_mc,
+            5: self.stem5_at_mp,
+            6: self.stem6_above_er,
+            7: self.stem7_above_mp,
+        }
 
-    def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
-        """Generate all variants for all 6 stems.
-
-        Returns ~120 questions (6 stems x 20 variants).
-        """
+    def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM):
         all_questions = []
-
-        stem_methods = [
-            self.stem1_below_nr,
-            self.stem2_below_nr,
-            self.stem3_approaching_nr,
-            self.stem4_approaching_mc,
-            self.stem5_at_mp,
-            self.stem6_above_mp,
-        ]
-
-        for stem_fn in stem_methods:
+        for _, fn in sorted(self._stem_methods().items()):
             for v in range(variants_per_stem):
                 try:
-                    question = stem_fn(v)
-                    all_questions.append(question)
+                    all_questions.append(fn(v))
                 except Exception as e:
-                    print(f"Error generating {stem_fn.__name__} variant {v}: {e}")
+                    print(f"Error generating {fn.__name__} variant {v}: {e}")
                     continue
-
         return all_questions
 
     def generate_stem_variants(self, stem_index: int,
-                                variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
-        """Generate variants for a single stem (1-6)."""
-        stem_methods = {
-            1: self.stem1_below_nr,
-            2: self.stem2_below_nr,
-            3: self.stem3_approaching_nr,
-            4: self.stem4_approaching_mc,
-            5: self.stem5_at_mp,
-            6: self.stem6_above_mp,
-        }
-
-        fn = stem_methods.get(stem_index)
+                               variants_per_stem: int = VARIANTS_PER_STEM):
+        fn = self._stem_methods().get(stem_index)
         if not fn:
-            raise ValueError(f"Invalid stem index: {stem_index}. Must be 1-6.")
-
+            raise ValueError(f"Invalid stem index: {stem_index}. Must be 1-7.")
         questions = []
         for v in range(variants_per_stem):
             try:
@@ -774,32 +791,16 @@ class Stem6NS4:
             except Exception as e:
                 print(f"Error generating stem {stem_index} variant {v}: {e}")
                 continue
-
         return questions
 
 
-# ================================================================
-# CLI ENTRY POINT FOR TESTING
-# ================================================================
-
 if __name__ == "__main__":
-    print("Generating 6.NS.4 question variants...")
-    print("=" * 60)
-
     generator = Stem6NS4(seed=42)
-    all_questions = generator.generate_all_variants(variants_per_stem=3)
-
-    for q in all_questions:
-        print(f"\n{'='*60}")
-        print(f"ID: {q.question_id}")
-        print(f"Stem {q.stem_index} | {q.proficiency_level.value} | {q.difficulty.value} | DOK {q.dok} | {q.item_type.value}")
-        print(f"\n{q.stem_text}")
+    for q in generator.generate_all_variants(variants_per_stem=2):
+        print("=" * 66)
+        print(f"Stem {q.stem_index} | {q.proficiency_level.value} | {q.item_type.value}")
+        print(q.stem_text)
         if q.choices:
             for c in q.choices:
-                marker = " *" if c.is_correct else ""
-                print(f"  {c.key}. {c.text}{marker}")
-        print(f"\nAnswer: {q.answer_text}")
-        print(f"\nWorked Solution:\n{q.worked_solution}")
-
-    print(f"\n{'='*60}")
-    print(f"Total questions generated: {len(all_questions)}")
+                print(f"  {c.key}. {c.text}{' *' if c.is_correct else ''}")
+        print(f"Answer: {q.answer_text}")

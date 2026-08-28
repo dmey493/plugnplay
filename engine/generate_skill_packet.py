@@ -41,6 +41,10 @@ def _clean(text):
             .replace('\u2026', '...')
             .replace('\u00d7', 'x')
             .replace('\u00f7', '/')
+            # Deliberately NOT stripped: U+2212 MINUS SIGN and
+            # U+2192 RIGHTWARDS ARROW. Arial carries both and the
+            # PDF is Unicode. A hyphen beside a numeral reads as a
+            # dash; '->' reads as two punctuation marks.
             )
 
 
@@ -52,6 +56,14 @@ def clean_dict(d):
     if isinstance(d, list):
         return [clean_dict(item) for item in d]
     return d
+
+
+PLD_BAND_LABELS = {
+    "below": "Below Proficiency",
+    "approaching": "Approaching Proficiency",
+    "at": "At Proficiency",
+    "above": "Above Proficiency",
+}
 
 
 def load_skill_data(standard_code, skill_id):
@@ -1140,16 +1152,34 @@ def _fill_items_from_engine(skill, standard_code, target_count=10, session=1,
             # happens per-section in _allocate_items, not by item format.
             ordered = pool
 
-            # Skip duplicates of authored stems and of each other.
-            seen_stems = {(it.get("stem") or "").strip() for it in authored}
+            # Skip duplicates of authored items and of each other.
+            #
+            # Key on the stem AND the choices. A multiple-choice stem often
+            # holds the question constant and varies only the options
+            # ("Which situation is best represented by a negative number?"),
+            # so keying on stem text alone collapsed 20 distinct questions
+            # into one and starved session 2.
+            def _dedup_key(item):
+                stem_text = (item.get("stem") or "").strip()
+                choices = item.get("choices") or []
+                if choices:
+                    parts = []
+                    for c in choices:
+                        parts.append((c if isinstance(c, str)
+                                      else getattr(c, "text", str(c))).strip())
+                    return stem_text + "||" + "|".join(sorted(parts))
+                return stem_text
+
+            seen_stems = {_dedup_key(it) for it in authored}
             for q in ordered:
                 new_item = _engine_question_to_sample_item(q)
                 stem_text = (new_item.get("stem") or "").strip()
-                if not stem_text or stem_text in seen_stems:
+                key = _dedup_key(new_item)
+                if not stem_text or key in seen_stems:
                     continue
                 new_item["_source"] = "engine"
                 engine_items.append(new_item)
-                seen_stems.add(stem_text)
+                seen_stems.add(key)
                 if len(authored) + len(engine_items) >= master_target:
                     break
 
@@ -1421,9 +1451,49 @@ def _write_worked_solution(pdf, ws, usable_w):
     # Micro-checks (v4): steps may carry a `check` — a 5-second student
     # action from the closed thinking-moves menu. Letters run a/b/c over
     # the steps that HAVE checks (not every step gets one).
+    def _draw_check(check, letter):
+        """One micro-check row: checkbox, letter, move chip, prompt.
+
+        Drawn ABOVE the step it belongs to. The page asks; the teacher
+        leads the reveal. A student meets the question before the answer.
+        """
+        cy = pdf.get_y() + 0.8
+        pdf.set_draw_color(30, 64, 175)
+        pdf.set_line_width(0.35)
+        pdf.rect(PAGE_MARGIN + 13, cy + 0.6, 3.2, 3.2, style="D",
+                 round_corners=True, corner_radius=0.7)
+        pdf.set_font(ff, "B", 8)
+        pdf.set_text_color(30, 64, 175)
+        pdf.set_xy(PAGE_MARGIN + 17.5, cy)
+        pdf.cell(4, 4.4, f"{letter}.")
+        move_label = THINKING_MOVES.get(check.get("move"),
+                                        check.get("move") or "")
+        pdf.set_font(ff, "B", 6.5)
+        chip_w = pdf.get_string_width(move_label.upper()) + 4
+        pdf.set_fill_color(219, 234, 254)
+        pdf.rect(PAGE_MARGIN + 22, cy + 0.2, chip_w, 4, style="F",
+                 round_corners=True, corner_radius=2)
+        pdf.set_xy(PAGE_MARGIN + 22, cy + 0.4)
+        pdf.cell(chip_w, 3.6, move_label.upper(), align="C")
+        pdf.set_font(ff, "", 8)
+        pdf.set_text_color(*SB_DARK)
+        pdf.set_xy(PAGE_MARGIN + 22 + chip_w + 2, cy)
+        pdf.multi_cell(usable_w - (22 + chip_w + 2) - 8, 4.4,
+                       check.get("prompt", ""),
+                       new_x="LMARGIN", new_y="NEXT")
+        if pdf.get_y() < cy + 4.6:
+            pdf.set_y(cy + 4.6)
+        pdf.set_draw_color(0, 0, 0)
+        pdf.set_line_width(0.3)
+
     check_letter = 0
     any_checks = any(s.get("check") for s in ws.get("steps", []))
     for i, step in enumerate(ws.get("steps", []), start=1):
+        # Ask before revealing: the check for this step prints above it.
+        check = step.get("check")
+        if check and check.get("prompt"):
+            _draw_check(check, chr(ord("a") + check_letter))
+            check_letter += 1
         y = pdf.get_y()
         pdf.set_xy(PAGE_MARGIN + 6, y)
         pdf.set_font(ff, "B", 9)
@@ -1440,41 +1510,6 @@ def _write_worked_solution(pdf, ws, usable_w):
             pdf.set_x(PAGE_MARGIN + 13)
             pdf.multi_cell(usable_w - 20, 3.8, ann, new_x="LMARGIN", new_y="NEXT")
             pdf.set_text_color(*SB_DARK)
-        check = step.get("check")
-        if check and check.get("prompt"):
-            letter = chr(ord("a") + check_letter)
-            check_letter += 1
-            cy = pdf.get_y() + 0.8
-            # Checkbox outline the student ticks after doing the move.
-            pdf.set_draw_color(30, 64, 175)
-            pdf.set_line_width(0.35)
-            pdf.rect(PAGE_MARGIN + 13, cy + 0.6, 3.2, 3.2, style="D",
-                     round_corners=True, corner_radius=0.7)
-            pdf.set_font(ff, "B", 8)
-            pdf.set_text_color(30, 64, 175)
-            pdf.set_xy(PAGE_MARGIN + 17.5, cy)
-            pdf.cell(4, 4.4, f"{letter}.")
-            # Tiny tinted chip with the move's name — the teacher call-out
-            # handle ("do check b" / "do your Name the Trap").
-            move_label = THINKING_MOVES.get(check.get("move"),
-                                            check.get("move") or "")
-            pdf.set_font(ff, "B", 6.5)
-            chip_w = pdf.get_string_width(move_label.upper()) + 4
-            pdf.set_fill_color(219, 234, 254)
-            pdf.rect(PAGE_MARGIN + 22, cy + 0.2, chip_w, 4, style="F",
-                     round_corners=True, corner_radius=2)
-            pdf.set_xy(PAGE_MARGIN + 22, cy + 0.4)
-            pdf.cell(chip_w, 3.6, move_label.upper(), align="C")
-            pdf.set_font(ff, "", 8)
-            pdf.set_text_color(*SB_DARK)
-            pdf.set_xy(PAGE_MARGIN + 22 + chip_w + 2, cy)
-            pdf.multi_cell(usable_w - (22 + chip_w + 2) - 8, 4.4,
-                           check.get("prompt", ""),
-                           new_x="LMARGIN", new_y="NEXT")
-            if pdf.get_y() < cy + 4.6:
-                pdf.set_y(cy + 4.6)
-            pdf.set_draw_color(0, 0, 0)
-            pdf.set_line_width(0.3)
         pdf.ln(1.5)
 
     ans = ws.get("answer", "")
@@ -1514,20 +1549,6 @@ def _write_worked_solution(pdf, ws, usable_w):
             pdf.set_xy(PAGE_MARGIN + 6 + pad, ay + pad)
             pdf.multi_cell(text_w, lh, full, new_x="LMARGIN", new_y="NEXT")
             pdf.set_y(ay + box_h + 1)
-        pdf.set_text_color(*SB_DARK)
-
-    # One-line move legend so cued names later on the sheet ("Do your
-    # Check It...") are decodable without flipping back.
-    if any_checks:
-        pdf.ln(1)
-        pdf.set_font(ff, "", 6.5)
-        pdf.set_text_color(*ANNOT_GRAY)
-        pdf.set_x(PAGE_MARGIN + 6)
-        legend = ("Thinking moves:  Spot the Signal = circle the deciding word "
-                  "* Show It = mark the model * Call It = predict first * "
-                  "Say Why = explain it your way * Check It = does it fit? * "
-                  "Name the Trap = say the tempting wrong answer")
-        pdf.multi_cell(usable_w - 12, 3.2, legend, new_x="LMARGIN", new_y="NEXT")
         pdf.set_text_color(*SB_DARK)
 
     _accent_bar(pdf, PAGE_MARGIN + 1.2, body_top, pdf.get_y(), (147, 187, 245))
@@ -2695,9 +2716,25 @@ def _write_section_header(pdf, label, subtitle, color, usable_w):
     pdf.ln(1)
 
 
+# Student-handout sections a caller may switch off. All default to True, so
+# an older client that sends nothing still gets the full packet.
+SECTION_KEYS = (
+    "fluency_sprint",     # Fluency sprint
+    "watch_learn",        # Watch & learn
+    "you_finish",         # You finish it
+    "lets_try",           # Let's try together
+    "your_turn",          # Your turn
+    "level_up",           # the stretch items inside Your turn
+    "find_mistake",       # Find the mistake
+    "remember_these",     # Remember these?
+    "show_what_you_know",  # Show what you know (exit ticket)
+)
+
+
 def generate_skill_packet_pdf(skill, standard_data, output_path,
                                student_copies=1, include_teacher_companion=True,
-                               include_printable_artifact=True, session=1):
+                               include_printable_artifact=True, session=1,
+                               sections=None):
     """Generate a skill packet PDF following the gradual-release flow.
 
     Sections (student handout, in order):
@@ -2709,6 +2746,10 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
       check -> Vocabulary -> Concrete/visual -> per-section question blocks
       with answer + watch-for + redirect script.
     """
+    # Unknown keys are ignored; missing keys default to on.
+    sections = dict(sections or {})
+    inc = {k: bool(sections.get(k, True)) for k in SECTION_KEYS}
+
     standard_code = standard_data["standard_code"]
     # Top up sample_items from the question engine when the skill JSON has
     # fewer than 10 authored items. The engine returns standard-aligned
@@ -2823,7 +2864,7 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
         pdf.ln(1.5)
 
         # ---- FLUENCY SPRINT (timed warm-up on mastered content) ----
-        if fluency:
+        if fluency and inc["fluency_sprint"]:
             _set_column(pdf, "full")
             _write_fluency_block(pdf, fluency, usable_w)
 
@@ -2831,19 +2872,19 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
         # v3 skills carry a true worked solution (annotated steps printed
         # for the student); older skills fall back to the boxed problem
         # the teacher models from the companion script.
-        if worked_solution:
+        if worked_solution and inc["watch_learn"]:
             ws_steps = worked_solution.get("steps", [])
             n_checks = sum(1 for s in ws_steps if s.get("check"))
             _ensure_room(24 + 14 * len(ws_steps) + 8 * n_checks
                          + (6 if n_checks else 0))
             _write_worked_solution(pdf, worked_solution, usable_w)
-        elif we_item:
+        elif we_item and inc["watch_learn"]:
             _set_column(pdf, "full")
             _write_worked_example(pdf, we_item, skill.get("i_do_script", ""),
                                   _col_w(pdf), show_answer=False)
 
         # ---- FADED EXAMPLE (student supplies the missing step) ----
-        if faded_example:
+        if faded_example and inc["you_finish"]:
             _ensure_room(24 + 12 * len(faded_example.get("steps", [])))
             _write_fade_block(pdf, faded_example, usable_w,
                               "You finish it",
@@ -2853,13 +2894,13 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
         # ---- GUIDED EXAMPLE (v4: the middle fade rung) ----
         # Same problem structure with only the lead step given — the student
         # does the rest with the teacher. Replaces the engine diagnose items.
-        if guided_example:
+        if guided_example and inc["lets_try"]:
             _ensure_room(24 + 12 * len(guided_example.get("steps", []))
                          + (14 + 5 * len(sentence_starters) if sentence_starters else 0))
             _write_sentence_starters(pdf, sentence_starters, usable_w)
             _write_fade_block(pdf, guided_example, usable_w,
                               "Let's try together",
-                              "Same kind of problem. Your teacher starts it -- you take it from there. Say your thinking out loud.",
+                              "Same kind of problem, all yours. Use the clue under each line. Say your thinking out loud.",
                               SECTION_COLORS["we_do"][0], SECTION_COLORS["we_do"][1],
                               (240, 200, 120))
 
@@ -2867,8 +2908,13 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
         # is visible to the student: guided ("Let's Try Together") then
         # independent ("Your Turn"). Kid-friendly labels, not teacher
         # jargon — the teacher companion keeps the internal section names.
-        guided_items = list(diag_items)
+        guided_items = list(diag_items) if inc["lets_try"] else []
         independent_items = list(we_do_items) + list(you_do_items)
+        if not inc["level_up"]:
+            independent_items = [it for it in independent_items
+                                 if it.get("difficulty") != "stretch"]
+        if not inc["your_turn"]:
+            independent_items = []
         if guided_items:
             _write_section_header_safe(
                 pdf, "Let's try together",
@@ -2879,34 +2925,35 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
             _write_sentence_starters(pdf, sentence_starters, usable_w)
             q_num = _render_two_column_block(pdf, guided_items, q_num,
                                              _write_student_question)
-        if independent_items or ftm_item:
-            first_it = independent_items[0] if independent_items else ftm_item
+        if independent_items:
             _write_section_header_safe(
                 pdf, "Your turn",
                 "Try these on your own. Show your work.",
                 SECTION_COLORS["you_do"], usable_w,
-                next_item_height=_estimate_item_height(first_it))
+                next_item_height=_estimate_item_height(independent_items[0]))
             q_num = _render_two_column_block(pdf, independent_items, q_num,
                                              _write_student_question)
-            # ---- FIND THE MISTAKE (v4: fixed error-analysis slot) ----
-            # Always targets this skill's canonical error — the student-side
-            # mirror of the teacher companion's WATCH FOR box.
-            if ftm_item:
-                _ensure_room(_estimate_item_height(ftm_item) + 8)
-                pdf.set_font(ff, "B", 8.5)
-                pdf.set_text_color(21, 128, 61)
-                pdf.set_x(PAGE_MARGIN)
-                pdf.cell(usable_w, 4.5,
-                         "Find the mistake -- someone already tried this one. Catch the error.",
-                         new_x="LMARGIN", new_y="NEXT")
-                pdf.set_text_color(*SB_DARK)
-                pdf.ln(0.5)
-                _set_column(pdf, "full")
-                _write_student_question(pdf, q_num, ftm_item, _col_w(pdf))
-                q_num += 1
+
+        # ---- FIND THE MISTAKE (v4: fixed error-analysis slot) ----
+        # Always targets this skill's canonical error — the student-side
+        # mirror of the teacher companion's WATCH FOR box. It carries its own
+        # heading, so it stands alone when "Your turn" is switched off.
+        if ftm_item and inc["find_mistake"]:
+            _ensure_room(_estimate_item_height(ftm_item) + 8)
+            pdf.set_font(ff, "B", 8.5)
+            pdf.set_text_color(21, 128, 61)
+            pdf.set_x(PAGE_MARGIN)
+            pdf.cell(usable_w, 4.5,
+                     "Find the mistake -- someone already tried this one. Catch the error.",
+                     new_x="LMARGIN", new_y="NEXT")
+            pdf.set_text_color(*SB_DARK)
+            pdf.ln(0.5)
+            _set_column(pdf, "full")
+            _write_student_question(pdf, q_num, ftm_item, _col_w(pdf))
+            q_num += 1
 
         # ---- MIXED REVIEW (interleaved items from earlier skills) ----
-        if mixed_items:
+        if mixed_items and inc["remember_these"]:
             _write_section_header_safe(
                 pdf, "Remember these?",
                 "Mixed practice from skills you've already worked on -- watch out, they're not all the same kind!",
@@ -2916,6 +2963,12 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
                                              _write_student_question)
 
         # ---- Exit Ticket placement ----
+        # Switched off: close the page out here and skip the whole block,
+        # including the dedicated page it would otherwise claim.
+        if not inc["show_what_you_know"]:
+            _draw_footer(pdf, standard_code, skill["name"])
+            continue
+
         # Estimate space the Exit Ticket section needs. If there's only one
         # item AND it fits in what's left of page 1, render it inline.
         # Otherwise put it on its own page so it's collectable.
@@ -2969,6 +3022,33 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
     pdf.set_x(PAGE_MARGIN)
     pdf.cell(usable_w, 6, f"Skill: {skill['name']}", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(1)
+
+    # Proficiency band + the state's own descriptor for it. A teacher needs
+    # to know a "below proficiency" skill is grade-level work at its least
+    # complex entry point, not lower-grade content.
+    band = skill.get("pld_band")
+    descriptors = (standard_data or {}).get("pld_descriptors") or {}
+    if band and descriptors.get(band):
+        label = PLD_BAND_LABELS.get(band, band)
+        pdf.set_font(ff, "B", 8)
+        pdf.set_text_color(*SB_DARK)
+        pdf.set_x(PAGE_MARGIN)
+        pdf.cell(usable_w, 4, f"ILEARN proficiency level: {label}",
+                 new_x="LMARGIN", new_y="NEXT")
+        pdf.set_font(ff, "", 7.5)
+        pdf.set_text_color(*ANNOT_GRAY)
+        pdf.set_x(PAGE_MARGIN)
+        pdf.multi_cell(usable_w, 3.4, _clean(descriptors[band]),
+                       new_x="LMARGIN", new_y="NEXT")
+        if band in ("below", "approaching"):
+            pdf.set_font(ff, "I", 7)
+            pdf.set_x(PAGE_MARGIN)
+            pdf.multi_cell(usable_w, 3.2,
+                           "This is grade-level work at the entry point of the standard, "
+                           "not content from a lower grade.",
+                           new_x="LMARGIN", new_y="NEXT")
+        pdf.set_text_color(*SB_DARK)
+        pdf.ln(2)
     # Dosage / pacing one-liner so a coach can score fidelity (review #6).
     pdf.set_font(ff, "I", 7.5)
     pdf.set_text_color(*ANNOT_GRAY)
@@ -3815,7 +3895,8 @@ def main():
                                student_copies=student_copies,
                                include_teacher_companion=include_teacher,
                                include_printable_artifact=include_artifact,
-                               session=session)
+                               session=session,
+                               sections=params.get("sections"))
     print(json.dumps({"path": output_path, "size": os.path.getsize(output_path)}))
 
 

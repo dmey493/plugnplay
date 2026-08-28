@@ -22,6 +22,8 @@ Difficulty Tiers:
   Stem 3 (Approaching-MS, DOK 2, Difficult): Select all numbers in a given range
   Stem 4 (At-TM, DOK 2, Medium): Compare irrational and rational numbers (true/false)
   Stem 5 (Above-MS, DOK 2, Difficult): Select expressions > a given value
+  Stem 6 (Below-MC):    Which irrational number exceeds a whole-number benchmark (DOK 2, easy)
+  Stem 7 (Above-ER):    Order rationals and irrationals, then justify the ordering (DOK 3, difficult)
 """
 
 import random
@@ -611,6 +613,172 @@ class Stem8NS2:
     # MAIN GENERATION METHODS
     # ================================================================
 
+    # ================================================================
+    # STEM 6: Below Proficiency - MC (DOK 2, Easy)
+    # NEW. Compare irrational numbers against a whole-number benchmark. The
+    # distractors are chosen so every wrong radical lies in the interval just
+    # below the benchmark: rounding to the nearest whole number gives the same
+    # answer for several options, so the student has to compare the radicand
+    # with the benchmark squared.
+    # ================================================================
+    def stem6_below_mc(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(6, variant_idx)
+
+        benchmark = rng.randint(6, 15)
+        sq = benchmark * benchmark
+
+        def is_perfect(n):
+            r = int(n ** 0.5)
+            return r * r == n
+
+        # One radicand above the benchmark, close enough that it is not obvious.
+        above_pool = [n for n in range(sq + 1, sq + 26) if not is_perfect(n)]
+        # Two radicands below, both inside the previous whole-number interval.
+        below_pool = [n for n in range((benchmark - 1) ** 2 + 1, sq)
+                      if not is_perfect(n)]
+        if not above_pool or len(below_pool) < 2:
+            benchmark, sq = 12, 144
+            above_pool = [150, 148, 155]
+            below_pool = [122, 130, 138]
+
+        correct_radicand = rng.choice(above_pool)
+        wrong_radicands = rng.sample(below_pool, 2)
+
+        # A multiple of pi, as the specification's item has, so not every option
+        # is a radical. It MUST fall below the benchmark: with benchmark 6 the
+        # old range still allowed 2pi = 6.28, which made a second option
+        # correct.
+        max_mult = int((benchmark - 0.5) / 3.141592653589793)
+        pi_mult = rng.randint(1, max(1, max_mult))
+
+        correct = f"sqrt({correct_radicand})"
+        options = [
+            (correct, True, None),
+            (f"sqrt({wrong_radicands[0]})", False,
+             f"{wrong_radicands[0]} is less than {sq}, so this is less than {benchmark}"),
+            (f"sqrt({wrong_radicands[1]})", False,
+             f"{wrong_radicands[1]} is less than {sq}, so this is less than {benchmark}"),
+            (f"{pi_mult}pi" if pi_mult > 1 else "pi", False,
+             f"about {pi_mult * 3.14159:.1f}, less than {benchmark}"),
+        ]
+        rng.shuffle(options)
+        choices = [QuestionChoice(key=chr(ord("a") + i), text=t, text_latex=t,
+                                  is_correct=c, distractor_rationale=r)
+                   for i, (t, c, r) in enumerate(options)]
+        key = next(c.key for c in choices if c.is_correct).upper()
+
+        stem_text = f"Which irrational number is greater than {benchmark}?"
+        worked = (
+            f"Compare each radicand with {benchmark}^2 = {sq}.\n"
+            f"{correct_radicand} > {sq}, so sqrt({correct_radicand}) > {benchmark}.\n"
+            f"{wrong_radicands[0]} and {wrong_radicands[1]} are both less than "
+            f"{sq}, so those roots are less than {benchmark}.\n"
+            f"{pi_mult}pi is about {pi_mult * 3.14159:.2f}, also less than {benchmark}."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.MC, Difficulty.EASY, 6, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.BELOW,
+            difficulty=Difficulty.EASY, dok=2, item_type=ItemType.MC,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{key}. {correct}", answer_latex=f"{key}. {correct}",
+            worked_solution=worked, choices=choices,
+            context_scenario="compare an irrational to a whole-number benchmark",
+            seed=self.base_seed * 1000 + 600 + variant_idx,
+            stem_index=6, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 7: Above Proficiency - ER (DOK 3, Difficult)
+    # NEW. "Order sets of rational and irrational numbers from least to
+    # greatest and justify comparisons." Deliberately unscaffolded: no answer
+    # choices, and the justification is required rather than optional.
+    # ================================================================
+    def stem7_above_er(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(7, variant_idx)
+
+        def is_perfect(n):
+            r = int(n ** 0.5)
+            return r * r == n
+
+        radicand = rng.choice([n for n in range(8, 60) if not is_perfect(n)])
+        pi_mult = rng.choice([1, 2])
+        whole = rng.randint(2, 7)
+        frac_den = rng.choice([2, 4])
+        frac_num = rng.choice([n for n in range(3, 16) if n % frac_den])
+        decimal = round(rng.uniform(1.5, 7.5), 2)
+
+        items = [
+            (f"sqrt({radicand})", radicand ** 0.5),
+            (f"{pi_mult}pi" if pi_mult > 1 else "pi", pi_mult * 3.141592653589793),
+            (str(whole), float(whole)),
+            (f"{frac_num}/{frac_den}", frac_num / frac_den),
+            (f"{decimal:g}", decimal),
+        ]
+        # Two values too close together would make the ordering a coin flip.
+        vals = sorted(v for _, v in items)
+        tries = 0
+        while any(abs(vals[i + 1] - vals[i]) < 0.12 for i in range(len(vals) - 1)) and tries < 40:
+            tries += 1
+            radicand = rng.choice([n for n in range(8, 60) if not is_perfect(n)])
+            whole = rng.randint(2, 7)
+            frac_num = rng.choice([n for n in range(3, 16) if n % frac_den])
+            decimal = round(rng.uniform(1.5, 7.5), 2)
+            items = [
+                (f"sqrt({radicand})", radicand ** 0.5),
+                (f"{pi_mult}pi" if pi_mult > 1 else "pi", pi_mult * 3.141592653589793),
+                (str(whole), float(whole)),
+                (f"{frac_num}/{frac_den}", frac_num / frac_den),
+                (f"{decimal:g}", decimal),
+            ]
+            vals = sorted(v for _, v in items)
+
+        shuffled = items[:]
+        rng.shuffle(shuffled)
+        ordered = sorted(items, key=lambda p: p[1])
+
+        listing = ", ".join(label for label, _ in shuffled)
+        answer_order = ", ".join(label for label, _ in ordered)
+
+        stem_text = (
+            f"This item has two parts.\n\n"
+            f"A list of rational and irrational numbers is given.\n\n"
+            f"{listing}\n\n"
+            f"Part A: Order the numbers from least to greatest.\n\n"
+            f"Part B: Justify your ordering by explaining how you compared the "
+            f"rational and irrational numbers."
+        )
+
+        approx = "; ".join(f"{label} is about {value:.2f}" for label, value in ordered)
+        answer = (
+            f"Part A: {answer_order}\n"
+            f"Part B: Replace each irrational number with a rational "
+            f"approximation, then compare all five as decimals. {approx}. "
+            f"Ordering those decimals gives {answer_order}."
+        )
+
+        worked = (
+            f"Approximate every value as a decimal:\n"
+            + "\n".join(f"  {label} = {value:.3f}" for label, value in ordered)
+            + f"\nLeast to greatest: {answer_order}"
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.ABOVE,
+                                         ItemType.ER, Difficulty.DIFFICULT, 7, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.ABOVE,
+            difficulty=Difficulty.DIFFICULT, dok=3, item_type=ItemType.ER,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=answer, answer_latex=answer,
+            worked_solution=worked,
+            context_scenario="order and justify rationals and irrationals",
+            seed=self.base_seed * 1000 + 700 + variant_idx,
+            stem_index=7, variant_index=variant_idx,
+        )
+
     def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
         all_questions = []
         stem_methods = [
@@ -619,6 +787,8 @@ class Stem8NS2:
             self.stem3_approaching_ms,
             self.stem4_at_tm,
             self.stem5_above_ms,
+            self.stem6_below_mc,
+            self.stem7_above_er,
         ]
         for stem_fn in stem_methods:
             for v in range(variants_per_stem):
@@ -637,6 +807,8 @@ class Stem8NS2:
             3: self.stem3_approaching_ms,
             4: self.stem4_at_tm,
             5: self.stem5_above_ms,
+            6: self.stem6_below_mc,
+            7: self.stem7_above_er,
         }
         fn = stem_methods.get(stem_index)
         if not fn:

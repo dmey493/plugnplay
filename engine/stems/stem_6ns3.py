@@ -22,6 +22,10 @@ Difficulty Tiers:
   Stem 4 (Approaching-MC): Which inequality correctly compares two temperatures? (DOK 2, easy)
   Stem 5 (At-NR):     Order a list of non-integer rationals from least to greatest (DOK 2, difficult)
   Stem 6 (Above-MC):  Student claims -72 > -71.99, another claims -71.99 > -72 - who is correct? (DOK 3, medium)
+  Stem 7 (Below-MC):    Order three decimals to the thousandths (DOK 2, easy)
+  Stem 8 (Below-MC):    Which number is closest to a target (DOK 2, easy)
+  Stem 9 (Approaching-MC): Compare a fraction against a decimal benchmark (DOK 2, medium)
+  Stem 10 (At-NR):      Name a rational number between two given values (DOK 2, medium)
 """
 
 import random
@@ -676,6 +680,280 @@ class Stem6NS3:
     # MAIN GENERATION METHODS
     # ================================================================
 
+    # ================================================================
+    # STEM 7: Below Proficiency - MC (DOK 2, Easy)
+    # NEW. Ordering decimals to the THOUSANDTHS now sits at Below. The prices
+    # deliberately share their leading digits so place value has to be read
+    # all the way out rather than judged at a glance.
+    # ================================================================
+    def stem7_below_mc(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(7, variant_idx)
+
+        # Two prices share their tenths digit and one does not, matching the
+        # specification's own example (3.489 / 3.455 / 3.502). That mix is what
+        # makes the item work: one comparison is settled at the tenths place,
+        # the other only at the hundredths or thousandths.
+        whole = rng.randint(2, 5)
+        tenth = rng.randint(3, 7)
+        pair = rng.sample(range(tenth * 100, tenth * 100 + 100), 2)
+        odd_tenth = tenth + rng.choice([-1, 1])
+        odd = rng.randrange(odd_tenth * 100, odd_tenth * 100 + 100)
+        thousandths = pair + [odd]
+        values = [whole + th / 1000.0 for th in thousandths]
+
+        kind, names, unit = rng.choice([
+            ("gas stations", ["FuelMax", "QuickFuel", "SpeedyGas"], "per gallon"),
+            ("markets", ["Green Grocer", "Fresh Mart", "Value Foods"], "per pound"),
+            ("suppliers", ["Northline", "Beacon", "Crestway"], "per litre"),
+        ])
+        pairs = list(zip(names, values))
+        rng.shuffle(pairs)
+
+        listing = "\n".join(f"{n}: ${v:.3f}" for n, v in pairs)
+        ordered = [n for n, _ in sorted(pairs, key=lambda p: p[1])]
+
+        def render(seq):
+            return ", ".join(seq)
+
+        correct = render(ordered)
+        options = [
+            (correct, True, None),
+            (render(list(reversed(ordered))), False,
+             "Ordered from greatest to least instead"),
+            (render([ordered[1], ordered[0], ordered[2]]), False,
+             "Compares only the first decimal place"),
+            (render([ordered[0], ordered[2], ordered[1]]), False,
+             "Compares only the first two decimal places"),
+        ]
+        rng.shuffle(options)
+        choices = [QuestionChoice(key=chr(ord("a") + i), text=t, text_latex=t,
+                                  is_correct=c, distractor_rationale=r)
+                   for i, (t, c, r) in enumerate(options)]
+        key = next(c.key for c in choices if c.is_correct).upper()
+
+        stem_text = (
+            f"Three {kind} list their prices {unit}.\n\n{listing}\n\n"
+            f"Which list shows the {kind} in order from least to greatest price?"
+        )
+        worked = (
+            f"All three prices share the same whole number, so compare the "
+            f"decimals place by place.\n"
+            + "\n".join(f"{n}: {v:.3f}" for n, v in sorted(pairs, key=lambda p: p[1]))
+            + f"\nFrom least to greatest: {correct}"
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.MC, Difficulty.EASY, 7, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.BELOW,
+            difficulty=Difficulty.EASY, dok=2, item_type=ItemType.MC,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{key}. {correct}", answer_latex=f"{key}. {correct}",
+            worked_solution=worked, choices=choices,
+            context_scenario="order decimals to the thousandths",
+            seed=self.base_seed * 1000 + 700 + variant_idx,
+            stem_index=7, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 8: Below Proficiency - MC (DOK 2, Easy)
+    # NEW. "Closest to" asks about position on the number line without
+    # comparing formally, so the options sit on both sides of the target.
+    # ================================================================
+    def stem8_below_mc(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(8, variant_idx)
+
+        target = rng.choice([-4, -3, -2, -1, 1, 2, 3, 4])
+        offsets = rng.sample([0.1, 0.2, 0.3, 0.6, 0.8, 1.1, 1.4], 4)
+        nearest = min(offsets)
+        candidates = []
+        for off in offsets:
+            sign = rng.choice([-1, 1])
+            candidates.append(round(target + sign * off, 2))
+        # Guard against two options landing the same distance away, which would
+        # leave the item with two defensible answers.
+        while len({round(abs(c - target), 3) for c in candidates}) != 4:
+            offsets = rng.sample([0.1, 0.2, 0.3, 0.6, 0.8, 1.1, 1.4], 4)
+            nearest = min(offsets)
+            candidates = [round(target + rng.choice([-1, 1]) * o, 2) for o in offsets]
+
+        correct_val = min(candidates, key=lambda c: abs(c - target))
+        options = []
+        for c in candidates:
+            if c == correct_val:
+                options.append((_fmt(c), True, None))
+            else:
+                options.append((_fmt(c), False,
+                                f"{abs(round(c - target, 2))} away from {target}, "
+                                f"which is further than {nearest}"))
+        rng.shuffle(options)
+        choices = [QuestionChoice(key=chr(ord("a") + i), text=t, text_latex=t,
+                                  is_correct=cr, distractor_rationale=r)
+                   for i, (t, cr, r) in enumerate(options)]
+        key = next(c.key for c in choices if c.is_correct).upper()
+
+        stem_text = f"Which number is closest to {target} on the number line?"
+        worked = (
+            f"Find how far each number is from {target}.\n"
+            + "\n".join(f"{_fmt(c)} is {abs(round(c - target, 2))} away"
+                         for c in sorted(candidates, key=lambda c: abs(c - target)))
+            + f"\n{_fmt(correct_val)} is the closest."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.BELOW,
+                                         ItemType.MC, Difficulty.EASY, 8, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.BELOW,
+            difficulty=Difficulty.EASY, dok=2, item_type=ItemType.MC,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{key}. {_fmt(correct_val)}",
+            answer_latex=f"{key}. {_fmt(correct_val)}",
+            worked_solution=worked, choices=choices,
+            context_scenario="closeness on the number line",
+            seed=self.base_seed * 1000 + 800 + variant_idx,
+            stem_index=8, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 9: Approaching Proficiency - MC (DOK 2, Medium)
+    # NEW. The revision's Approaching items mix number types, so the student
+    # must convert a fraction to a decimal (or the reverse) before comparing.
+    # ================================================================
+    def stem9_approaching_mc(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(9, variant_idx)
+
+        benchmark = Fraction(rng.choice([3, 5, 7, 9, 11]), 2) / rng.choice([1, 1, 2])
+        bench_dec = float(benchmark)
+
+        # Distinct values only. Sampling with replacement used to let the same
+        # fraction appear as two different options, and a duplicate choice has
+        # no defensible answer. Fractions that reduce to a whole number are
+        # dropped too, since the item is about converting between forms.
+        def pool():
+            seen = set()
+            out = []
+            for _ in range(60):
+                f = Fraction(rng.randint(1, 15), rng.choice([2, 4, 5, 8]))
+                if f.denominator == 1 or float(f) == bench_dec or f in seen:
+                    continue
+                seen.add(f)
+                out.append(f)
+            return out
+
+        candidates = pool()
+        above = [f for f in candidates if float(f) > bench_dec]
+        below = [f for f in candidates if float(f) < bench_dec]
+        tries = 0
+        while (not above or len(below) < 3) and tries < 20:
+            tries += 1
+            candidates = pool()
+            above = [f for f in candidates if float(f) > bench_dec]
+            below = [f for f in candidates if float(f) < bench_dec]
+        if not above or len(below) < 3:
+            benchmark = Fraction(3, 2); bench_dec = 1.5
+            above = [Fraction(7, 4)]
+            below = [Fraction(1, 2), Fraction(5, 4), Fraction(1, 4)]
+
+        # Prefer the distractors nearest the benchmark: a wrong option that is
+        # obviously tiny does not test the conversion.
+        below = sorted(below, key=lambda f: bench_dec - float(f))
+        above = sorted(above, key=lambda f: float(f) - bench_dec)
+
+        correct = above[0]
+        wrong = below[:3]
+
+        # The benchmark prints as a decimal and the options as fractions, so a
+        # conversion is forced in every variant.
+        def show(f):
+            return _fmt_frac(f)
+
+        options = [(show(correct), True, None)]
+        for w in wrong:
+            options.append((show(w), False,
+                            f"{show(w)} = {float(w):g}, which is less than {bench_dec:g}"))
+        rng.shuffle(options)
+        choices = [QuestionChoice(key=chr(ord("a") + i), text=t, text_latex=t,
+                                  is_correct=c, distractor_rationale=r)
+                   for i, (t, c, r) in enumerate(options)]
+        key = next(c.key for c in choices if c.is_correct).upper()
+
+        item, unit = rng.choice([
+            ("package weights", "pounds"), ("bottle volumes", "litres"),
+            ("board lengths", "metres"), ("bag weights", "kilograms"),
+        ])
+        stem_text = (
+            f"A store compares {item} to {bench_dec:g} {unit}.\n\n"
+            f"Which weight is greater than {bench_dec:g} {unit}?"
+        )
+        worked = (
+            f"Write each fraction as a decimal, then compare to {bench_dec:g}.\n"
+            + "\n".join(f"{show(f)} = {float(f):g}" for f in [correct] + list(wrong))
+            + f"\nOnly {show(correct)} = {float(correct):g} is greater than {bench_dec:g}."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.APPROACHING,
+                                         ItemType.MC, Difficulty.MEDIUM, 9, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.APPROACHING,
+            difficulty=Difficulty.MEDIUM, dok=2, item_type=ItemType.MC,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=f"{key}. {show(correct)}", answer_latex=f"{key}. {show(correct)}",
+            worked_solution=worked, choices=choices,
+            context_scenario="compare across number forms",
+            seed=self.base_seed * 1000 + 900 + variant_idx,
+            stem_index=9, variant_index=variant_idx,
+        )
+
+    # ================================================================
+    # STEM 10: At Proficiency - NR (DOK 2, Medium)
+    # NEW. "Identify a rational number that lies between two given rational
+    # numbers." Open response, no options, and any value strictly between the
+    # two endpoints is acceptable.
+    # ================================================================
+    def stem10_at_nr(self, variant_idx: int) -> GeneratedQuestion:
+        gen, rng = self._make_gen(10, variant_idx)
+
+        low_whole = rng.randint(-6, 4)
+        low = round(low_whole - rng.choice([0.1, 0.2, 0.4, 0.6, 0.8]), 2)
+        high = low_whole + rng.choice([0, 1])
+        if high <= low:
+            high = low_whole + 1
+        example = round((low + high) / 2, 2)
+
+        stem_text = (
+            f"A rational number, x, is located between {_fmt(low)} and "
+            f"{_fmt(high)} on the number line.\n\n"
+            f"What is a possible value for x?"
+        )
+        answer = (
+            f"Any value strictly between {_fmt(low)} and {_fmt(high)}, "
+            f"for example {_fmt(example)}"
+        )
+        worked = (
+            f"The value must be greater than {_fmt(low)} and less than "
+            f"{_fmt(high)}.\n"
+            f"Halfway between them is ({_fmt(low)} + {_fmt(high)}) / 2 = "
+            f"{_fmt(example)}, which works.\n"
+            f"Any other number in that interval is also correct."
+        )
+
+        return GeneratedQuestion(
+            question_id=make_question_id(STANDARD_CODE, ProficiencyLevel.AT,
+                                         ItemType.NR, Difficulty.MEDIUM, 10, variant_idx),
+            standard_code=STANDARD_CODE,
+            proficiency_level=ProficiencyLevel.AT,
+            difficulty=Difficulty.MEDIUM, dok=2, item_type=ItemType.NR,
+            stem_text=stem_text, stem_latex=stem_text,
+            answer_text=answer, answer_latex=answer,
+            worked_solution=worked,
+            context_scenario="name a value between two rationals",
+            seed=self.base_seed * 1000 + 1000 + variant_idx,
+            stem_index=10, variant_index=variant_idx,
+        )
+
     def generate_all_variants(self, variants_per_stem: int = VARIANTS_PER_STEM) -> list[GeneratedQuestion]:
         all_questions = []
         stem_methods = [
@@ -685,6 +963,10 @@ class Stem6NS3:
             self.stem4_approaching_mc,
             self.stem5_at_nr,
             self.stem6_above_mp,
+            self.stem7_below_mc,
+            self.stem8_below_mc,
+            self.stem9_approaching_mc,
+            self.stem10_at_nr,
         ]
         for stem_fn in stem_methods:
             for v in range(variants_per_stem):
@@ -704,6 +986,10 @@ class Stem6NS3:
             4: self.stem4_approaching_mc,
             5: self.stem5_at_nr,
             6: self.stem6_above_mp,
+            7: self.stem7_below_mc,
+            8: self.stem8_below_mc,
+            9: self.stem9_approaching_mc,
+            10: self.stem10_at_nr,
         }
         fn = stem_methods.get(stem_index)
         if not fn:

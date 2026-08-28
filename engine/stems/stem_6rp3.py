@@ -36,6 +36,7 @@ from engine.models import (
 )
 from engine.number_generators import NumberGenerator
 from engine.context_pools import pick_name, CONTEXTS_6RP4
+from engine.stem_guards import distinct_choices
 
 
 STANDARD_CODE = "6.RP.3"
@@ -119,6 +120,7 @@ class Stem6RP3:
     # Select all ratios equivalent to a given ratio
     # ================================================================
 
+    @distinct_choices
     def stem2_below_ms(self, variant_idx: int) -> GeneratedQuestion:
         gen, rng = self._make_gen(2, variant_idx)
 
