@@ -8,7 +8,7 @@ import { getCheckpointNav } from "@/lib/standards/checkpoints";
 export const metadata: Metadata = {
   title: "Skill Intervention | Math | Plug N Play",
   description:
-    "Tier 2 skill intervention organized as a learning progression per standard — pick a skill to generate its worksheet, plus diagnostics and progress checks.",
+    "Tier 2 skill intervention mapped as a learning progression per standard — see which skills run in parallel and where they converge, then generate a worksheet, diagnostic, or progress check.",
 };
 
 export default async function InterventionPage() {
@@ -19,7 +19,7 @@ export default async function InterventionPage() {
       <PageBanner
         tone="light"
         title="Skill intervention"
-        subtitle="Pick a standard to see its learning progression — skills organized by Looking Back, On Grade, and Looking Forward. Click any skill to generate its worksheet."
+        subtitle="Pick a standard to map its learning progression, from the far-below prerequisites through the grade-level rungs and out to what comes next. Skills that sit side by side carry the same weight; the lines show which ones have to be in place before the next skill. Click any skill to generate its worksheet."
         back={{ href: "/math", label: "Back to Math" }}
       />
 

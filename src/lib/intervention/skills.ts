@@ -365,6 +365,31 @@ export function isPacketReady(skill: Skill): boolean {
   );
 }
 
+/** The part of a skill id that varies within a standard: "6NS1-S3" -> "S3".
+ *  Every id in the corpus is exactly "<standard><tag>", one dash, so the tag
+ *  is whatever follows it. This is what a card wears so a teacher can find
+ *  the skill the teacher companion's NEXT STEPS box names. */
+export function shortSkillTag(skillId: string): string {
+  const dash = skillId.indexOf("-");
+  return dash === -1 ? skillId : skillId.slice(dash + 1);
+}
+
+/** Skill ids referenced by a next_steps branch.
+ *
+ *  Two thirds of the corpus stores a bare id ("6NS1-F2"); the rest stores a
+ *  sentence that mentions one or more ids ("Drop to 6NS1-F2 and drill single
+ *  direction words"). Both need to become findable tags, so match ids
+ *  anywhere in the string rather than testing the whole value. Roughly a
+ *  third of prose branches name no skill at all (they say "reteach this" or
+ *  describe an off-ladder review) — those correctly yield []. */
+const SKILL_ID_RE = /\b\d[A-Z]{1,3}\d+-[A-Z]\d+\b/g;
+
+export function nextStepRefs(branch: string | undefined): string[] {
+  if (!branch) return [];
+  const seen = new Set<string>(branch.match(SKILL_ID_RE) ?? []);
+  return [...seen];
+}
+
 export interface FoundSkill {
   skill: Skill;
   data: SkillData;
