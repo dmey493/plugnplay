@@ -866,6 +866,16 @@ def _draw_render_data(pdf, x, y, render_data, max_width=120):
                 lines=render_data.get("lines", []),
                 **kw,
             )
+        if rd_type == "array":
+            # rows x cols of unit squares, for the multiplication-fact skills
+            # that ask the student to picture and split an array.
+            return pdf._draw_array(
+                x, y,
+                rows=render_data.get("rows", 0),
+                cols=render_data.get("cols", 0),
+                split_after=render_data.get("split_after"),
+                max_width=max_width,
+            )
         if rd_type == "data_table":
             # Yes/No truth table, etc. The MathPDF helper already does column
             # sizing; we pass max_width so it fits the column.

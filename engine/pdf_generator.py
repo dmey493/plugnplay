@@ -1044,6 +1044,56 @@ class MathPDF(FPDF):
         return total_h
 
     # ============================================================
+    # ARRAY RENDERING
+    # ============================================================
+
+    def _draw_array(self, x, y, rows, cols, split_after=None, cell=4.2,
+                    max_width=None):
+        """Draw a rows x cols array of unit squares.
+
+        The multiplication-fact skills ask the student to picture an array and
+        then split it ("7 x 4, half of this array"), so the picture has to be on
+        the page for the check to mean anything.
+
+        split_after: draw a heavier rule after this many rows, showing the split
+        the worked example talks about.
+        """
+        if not rows or not cols:
+            return 0
+        if max_width:
+            cell = min(cell, (max_width - 2) / cols)
+        w, h = cols * cell, rows * cell
+
+        self.set_draw_color(120, 120, 120)
+        self.set_line_width(0.15)
+        self.set_fill_color(233, 240, 250)
+        for r in range(rows):
+            for c in range(cols):
+                self.rect(x + c * cell, y + r * cell, cell, cell, style="FD")
+
+        # Outer border, then the split rule if one was asked for.
+        self.set_draw_color(0, 0, 0)
+        self.set_line_width(0.4)
+        self.rect(x, y, w, h)
+        if split_after and 0 < split_after < rows:
+            self.set_line_width(0.7)
+            self.line(x, y + split_after * cell, x + w, y + split_after * cell)
+
+        # Dimension labels: rows down the left, columns across the top.
+        self.set_font(self.ff, "", 6.5)
+        self.set_text_color(90, 90, 90)
+        lbl = f"{cols}"
+        self.set_xy(x + w / 2 - self.get_string_width(lbl) / 2, y - 4)
+        self.cell(self.get_string_width(lbl) + 1, 3, lbl, align="C")
+        lbl = f"{rows}"
+        self.set_xy(x - 5, y + h / 2 - 1.5)
+        self.cell(4, 3, lbl, align="R")
+        self.set_text_color(0, 0, 0)
+        self.set_fill_color(255, 255, 255)
+        self.set_line_width(0.3)
+        return h + 5
+
+    # ============================================================
     # COORDINATE GRID RENDERING
     # ============================================================
 
