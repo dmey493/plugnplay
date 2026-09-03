@@ -2228,39 +2228,48 @@ def _draw_bus_icon(pdf, x, y, w=20, h=12):
     """No-op: icon removed. The title text handles branding."""
     pass
 
-
-# Productive struggle quotes for PDF footers
+# Productive-struggle quips for the sheet footer.
+#
+# Every line here is about STRUGGLE AS PART OF LEARNING MATHEMATICS -- being
+# stuck, trying an approach that fails, being confused on the way to
+# understanding. Generic motivational-poster lines ("a smooth sea never made a
+# skilled sailor", "the view from the top is worth the climb") were removed:
+# they say nothing about what a student is doing when a problem is hard, which
+# is the only thing this footer is for.
+#
+# Keep them short enough to fit the footer beside the page number, and keep
+# them addressed to the student in the moment, not to their future self.
 _STRUGGLE_QUOTES = [
-    "Mistakes are proof you're trying.",
-    "The struggle is where the learning happens.",
-    "Stuck? Good. That's where the magic happens.",
-    "Your brain grows stronger when you work through hard problems.",
-    "Progress, not perfection.",
-    "Be brave enough to be bad at something new.",
-    "Confusion is the beginning of understanding.",
-    "Plug in. Play on.",
+    "Stuck is where the learning starts.",
+    "Confusion means you are close to understanding something new.",
+    "A wrong turn still tells you something about the road.",
+    "The hard part IS the work. You are doing it right.",
+    "Trying an approach that fails is how you find the one that works.",
+    "Your brain grows most on the problems that fight back.",
+    "If you knew it already, it would not be worth practising.",
+    "Slow and thinking beats fast and guessing.",
+    "Say what you tried. That is data, not failure.",
+    "Not yet is a different thing from not ever.",
+    "The second attempt knows something the first one did not.",
+    "Rereading the problem is a strategy, not a stall.",
+    "Being unsure and keeping going is what mathematicians do.",
+    "You are allowed to think about one problem for a long time.",
+    "Mistakes you can explain are worth more than answers you cannot.",
+    "Getting it wrong and finding out why is the whole point.",
     "Hard is not the same as impossible.",
-    "Every expert was once a beginner.",
-    "You don't have to be perfect to be amazing.",
-    "The only real mistake is the one you don't learn from.",
-    "Struggling means you're growing.",
-    "Math is not about speed. It's about understanding.",
-    "If it doesn't challenge you, it doesn't change you.",
-    "Your best work happens outside your comfort zone.",
-    "Effort is what turns ability into achievement.",
-    "Not yet doesn't mean not ever.",
-    "The view from the top is worth the climb.",
-    "Smart is not something you are. It's something you become.",
-    "You are braver than you believe and stronger than you seem.",
-    "Mistakes are just detours, not dead ends.",
-    "Keep going - the answer is closer than you think.",
-    "Think of hard problems as brain push-ups.",
-    "Great things never come from comfort zones.",
-    "Fall seven times, stand up eight.",
-    "The challenge you face today is building the strength you need tomorrow.",
-    "Every try makes the next one easier.",
-    "A smooth sea never made a skilled sailor.",
-    "Believe in the power of yet.",
+    "Every expert has been exactly this stuck before.",
+    "Ask what you know before you ask what to do.",
+    "The struggle you feel is your brain building something.",
+    "Understanding beats speed. Every time.",
+    "Start with the part you DO understand.",
+    "A false start is still a start.",
+    "You do not have to see the whole path to take the next step.",
+    "Check your work like you are trying to prove yourself wrong.",
+    "Effort is what turns can't-yet into can.",
+    "The problem is hard for everyone, not just you.",
+    "Write down the messy thinking. That is where the answer hides.",
+    "Struggling well today makes tomorrow easier.",
+    "Keep going. Being stuck is temporary.",
 ]
 
 
