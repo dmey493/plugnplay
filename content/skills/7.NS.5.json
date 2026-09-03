@@ -130,6 +130,87 @@
           "kind": "ask",
           "text": "Your turn: use a fact you know to find 56 / 8."
         }
+      ],
+      "worked_solution": {
+        "stem": "Use a fact family to find 24 / 3.",
+        "answer": "8",
+        "steps": [
+          {
+            "math": "ask: 3 times what makes 24?",
+            "annotation": "Division and multiplication are the same fact read two ways.",
+            "check": {
+              "move": "call_it",
+              "prompt": "What is 3 x 8?",
+              "answer": "24"
+            }
+          },
+          {
+            "math": "3 x 8 = 24, so 24 / 3 = 8",
+            "annotation": "The fact family gives the quotient directly."
+          },
+          {
+            "math": "24 / 3 = 8",
+            "annotation": "One family: 3 x 8 = 24, 8 x 3 = 24, 24 / 3 = 8, 24 / 8 = 3.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 21 for 24 / 3? Which operation did they do?",
+              "answer": "subtraction — 24 minus 3, not 24 shared into 3s"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Use a fact family to find 42 / 6.",
+        "answer": "7",
+        "steps": [
+          {
+            "math": "ask: 6 times what makes 42?",
+            "annotation": "Read the division as a multiplication.",
+            "given": true
+          },
+          {
+            "math": "6 x 7 = 42",
+            "annotation": "Climb the sixes.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Check It — state the quotient, then multiply back to confirm.",
+            "given": false
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Use a fact family to find 56 / 7.",
+        "answer": "8",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Turn the division into a multiplication question.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Find the fact that lands on the dividend.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check It — state the quotient and multiply back.",
+            "given": false
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "A student tried this and made a mistake. Find it and fix it.",
+          "shown_work": [
+            "Writes 24 / 3 = 21 by subtracting, or guesses 42 / 6 = 8"
+          ],
+          "answer": "The student does not connect division to the multiplication fact in the same family. Division asks a missing-factor question: 24 / 3 means 3 times what makes 24, and 3 x 8 = 24 answers it."
+        }
       ]
     },
     {
@@ -223,6 +304,87 @@
         {
           "kind": "ask",
           "text": "Your turn: find all the factor pairs of 18."
+        }
+      ],
+      "worked_solution": {
+        "stem": "Find all the factor pairs of 24.",
+        "answer": "1x24, 2x12, 3x8, 4x6",
+        "steps": [
+          {
+            "math": "start at 1 and walk up: 1 x 24, 2 x 12",
+            "annotation": "Working in order is what stops you skipping a pair.",
+            "check": {
+              "move": "show_it",
+              "prompt": "Build a 3-row array from 24 tiles. How many in each row?",
+              "answer": "8 — so 3 x 8 is a pair"
+            }
+          },
+          {
+            "math": "3 x 8 = 24, 4 x 6 = 24",
+            "annotation": "Keep walking: 3, then 4."
+          },
+          {
+            "math": "5 does not divide 24, and 6 already appeared, so stop",
+            "annotation": "Stop when the factors meet in the middle.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who lists only 1, 2, 12, 24? Which pairs did they skip?",
+              "answer": "3 x 8 and 4 x 6 — they stopped walking up before reaching the middle"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Find all the factor pairs of 36.",
+        "answer": "1x36, 2x18, 3x12, 4x9, 6x6",
+        "steps": [
+          {
+            "math": "walk up from 1: 1 x 36, 2 x 18, 3 x 12",
+            "annotation": "In order, so nothing is skipped.",
+            "given": true
+          },
+          {
+            "math": "4 x 9 = 36, and 5 does not divide 36",
+            "annotation": "Keep testing each number in turn.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It — find the last pair and say where to stop.",
+            "given": false
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Find all the factor pairs of 40.",
+        "answer": "1x40, 2x20, 4x10, 5x8",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Start at 1 and walk upward, testing each number.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Keep going, skipping any that do not divide.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap — which pairs get skipped by stopping early?",
+            "given": false
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "A student tried this and made a mistake. Find it and fix it.",
+          "shown_work": [
+            "Says the factors of 24 are 1, 2, 12, and 24, skipping 3 x 8 and 4 x 6"
+          ],
+          "answer": "The student stops testing after 2 instead of trying every whole number in order. Testing 3, 4, 5, and so on until the pairs meet in the middle is what makes the list complete."
         }
       ]
     },
@@ -489,7 +651,12 @@
         "steps": [
           {
             "math": "2^4 means 2 x 2 x 2 x 2",
-            "annotation": "The exponent 4 counts four copies of the base 2."
+            "annotation": "The exponent 4 counts four copies of the base 2.",
+            "check": {
+              "move": "say_why",
+              "prompt": "What does the exponent 4 tell you to do with the 2?",
+              "answer": "use it as a factor four times"
+            }
           },
           {
             "math": "2 x 2 = 4",
@@ -501,7 +668,12 @@
           },
           {
             "math": "2^4 = 16",
-            "annotation": "Not 8: base times exponent would miss two doublings."
+            "annotation": "Not 8: base times exponent would miss two doublings.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 8 for 2^4? What did they do instead of repeated multiplication?",
+              "answer": "multiplied the base by the exponent — 2 x 4, but 2^4 means 2 x 2 x 2 x 2"
+            }
           }
         ]
       },
@@ -520,13 +692,13 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "9 x 3 = 27",
             "annotation": "Multiply by the last copy of 3.",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State the value of 3^3.",
+            "annotation": "Name the Trap — state the value of 3^3.",
             "given": false
           }
         ]
@@ -535,7 +707,33 @@
         "The exponent ___ tells me to multiply ___ copies of ___.",
         "Expanded, ___^___ = ___, which equals ___."
       ],
-      "fluency_source": "7NS5-F1"
+      "fluency_source": "7NS5-F1",
+      "guided_example": {
+        "stem": "Evaluate 4^3.",
+        "answer": "64",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Say Why — write out what the exponent tells you to do.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the first two copies.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Bring in the last copy.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the value.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS5-B2",
@@ -788,49 +986,59 @@
         ]
       },
       "worked_solution": {
-        "stem": "Find the GCF of 24 and 36.",
-        "answer": "12",
+        "stem": "Find the GCF of 28 and 42.",
+        "answer": "14",
         "steps": [
           {
-            "math": "factors of 24: 1, 2, 3, 4, 6, 8, 12, 24",
+            "math": "factors of 28: 1, 2, 4, 7, 14, 28",
             "annotation": "Test divisors in order so nothing is skipped."
           },
           {
-            "math": "factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36",
+            "math": "factors of 42: 1, 2, 3, 6, 7, 14, 21, 42",
             "annotation": "Same routine for the second number."
           },
           {
-            "math": "shared: 1, 2, 3, 4, 6, 12",
-            "annotation": "Circle every number on both lists."
+            "math": "shared: 1, 2, 7, 14",
+            "annotation": "Circle every number on both lists.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Which numbers appear on both lists?",
+              "answer": "1, 2, 7, 14"
+            }
           },
           {
-            "math": "GCF = 12",
-            "annotation": "The greatest shared factor; check that 12 divides both 24 and 36."
+            "math": "GCF = 14",
+            "annotation": "The greatest shared factor; check that 12 divides both 24 and 36.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 84 for the GCF of 28 and 42? What did they find instead?",
+              "answer": "a common multiple — the GCF must divide both numbers, so it cannot exceed either"
+            }
           }
         ]
       },
       "faded_example": {
-        "stem": "Find the GCF of 18 and 30.",
-        "answer": "6",
+        "stem": "Find the GCF of 16 and 24.",
+        "answer": "8",
         "steps": [
           {
-            "math": "factors of 18: 1, 2, 3, 6, 9, 18",
+            "math": "factors of 16: 1, 2, 4, 8, 16",
             "annotation": "List the factors of the first number in order.",
             "given": true
           },
           {
-            "math": "factors of 30: 1, 2, 3, 5, 6, 10, 15, 30",
+            "math": "factors of 24: 1, 2, 3, 4, 6, 8, 12, 24",
             "annotation": "List the factors of the second number.",
             "given": true
           },
           {
-            "math": null,
+            "math": "shared: 1, 2, 4, 8",
             "annotation": "Circle the factors that appear on both lists.",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Name the greatest shared factor.",
+            "annotation": "Name the Trap — name the greatest shared factor.",
             "given": false
           }
         ]
@@ -840,7 +1048,33 @@
         "The shared factors are ___, and the greatest is ___.",
         "My answer cannot be right because a factor of ___ cannot be bigger than ___."
       ],
-      "fluency_source": "7NS5-F2"
+      "fluency_source": "7NS5-F2",
+      "guided_example": {
+        "stem": "Find the GCF of 20 and 32.",
+        "answer": "4",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "List the factors of the first number in order.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "List the factors of the second.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Circle the factors on both lists.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Call It — state the greatest one.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS5-S1",
@@ -1122,11 +1356,21 @@
         "steps": [
           {
             "math": "3: only factors are 1 and 3",
-            "annotation": "Prime."
+            "annotation": "Prime.",
+            "check": {
+              "move": "say_why",
+              "prompt": "What makes a number prime?",
+              "answer": "its only factors are 1 and itself"
+            }
           },
           {
             "math": "33 = 3 x 11 and 57 = 3 x 19",
-            "annotation": "Digit sums 6 and 12 are multiples of 3, so both are composite."
+            "annotation": "Digit sums 6 and 12 are multiples of 3, so both are composite.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Add the digits of 33. Does 3 divide that?",
+              "answer": "6, and yes — so 33 is composite"
+            }
           },
           {
             "math": "41 and 89: no prime up to their square roots divides them",
@@ -1134,7 +1378,12 @@
           },
           {
             "math": "primes: 3, 41, 89",
-            "annotation": "The composites 33 and 57 were the odd-looking traps."
+            "annotation": "The composites 33 and 57 were the odd-looking traps.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who calls 57 prime? Which factor did they miss?",
+              "answer": "3 — 57 = 3 x 19, and the digit sum 12 gives it away"
+            }
           }
         ]
       },
@@ -1153,18 +1402,44 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "27 = 3 x 9, so it is composite; 15 = 3 x 5",
             "annotation": "Test 27: what is 2 + 7, and does 3 divide it?",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "List all the primes in the set.",
+            "annotation": "Name the Trap — list all the primes in the set.",
             "given": false
           }
         ]
       },
-      "pld_band": "below"
+      "pld_band": "below",
+      "guided_example": {
+        "stem": "From the set 7, 21, 31, 39, 61, select all the prime numbers.",
+        "answer": "7, 31, 61",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Say Why — state the test for a prime number.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Use the digit-sum test to rule out the multiples of 3.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check the survivors against the small primes.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "List the primes.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS5-S2",
@@ -1397,15 +1672,30 @@
           },
           {
             "math": "4 = 2 x 2 and 21 = 3 x 7",
-            "annotation": "Break each composite piece into primes."
+            "annotation": "Break each composite piece into primes.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Is 4 prime? What does it break into?",
+              "answer": "no — 2 x 2"
+            }
           },
           {
             "math": "84 = 2 x 2 x 3 x 7",
-            "annotation": "Every factor is now prime; write them small to large."
+            "annotation": "Every factor is now prime; write them small to large.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Someone writes 42 = 6 x 7 and stops, leaving 6 (composite) unfactored instead of 2 x 3 x 7. What went wrong?",
+              "answer": "The student treats any product as 'factored' without checking that every factor is prime. Factoring is complete only when no factor can be broken down further."
+            }
           },
           {
             "math": "check: 2 x 2 x 3 x 7 = 84",
-            "annotation": "Multiply back to confirm."
+            "annotation": "Multiply back to confirm.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Multiply your factors back. Do you land on 84?",
+              "answer": "yes — 2 x 2 x 3 x 7 = 84"
+            }
           }
         ]
       },
@@ -1424,18 +1714,44 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "36 = 2 x 2 x 3 x 3",
             "annotation": "Write all four prime factors in order.",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Multiply back to check you get 36.",
+            "annotation": "Check It — multiply back to check you get 36.",
             "given": false
           }
         ]
       },
-      "pld_band": "below"
+      "pld_band": "below",
+      "guided_example": {
+        "stem": "Write the prime factorization of 60 (no exponents).",
+        "answer": "2 x 2 x 3 x 5",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Split the number into any two factors.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Split any factor that is not yet prime.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write all the prime factors in order.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check It — multiply them back to confirm.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS5-S8",
@@ -1683,24 +1999,39 @@
         ]
       },
       "worked_solution": {
-        "stem": "Fill in the blank to complete the prime factorization of 200:  2 x 2 x 2 x 5 x ___",
+        "stem": "Fill in the blank to complete the prime factorization of 300:  2 x 2 x 3 x 5 x ___",
         "answer": "5",
         "steps": [
           {
-            "math": "Multiply the visible factors: 2 x 2 x 2 x 5 = 40.",
-            "annotation": "Handle what you can see before touching the blank."
+            "math": "Multiply the visible factors: 2 x 2 x 3 x 5 = 60.",
+            "annotation": "Handle what you can see before touching the blank.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Multiply the visible factors. What do they give?",
+              "answer": "60"
+            }
           },
           {
-            "math": "40 times the blank must equal 200.",
+            "math": "60 times the blank must equal 300.",
             "annotation": "Name the relationship before solving it."
           },
           {
-            "math": "200 divided by 40 = 5.",
-            "annotation": "Division finds the unknown factor."
+            "math": "300 divided by 60 = 5.",
+            "annotation": "Division finds the unknown factor.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Multiply your answer back into the list. Do you reach 200?",
+              "answer": "yes — 2 x 2 x 2 x 5 x 5 = 200"
+            }
           },
           {
-            "math": "Check: 2 x 2 x 2 x 5 x 5 = 200, and 5 is prime.",
-            "annotation": "Multiply back, and confirm the answer is prime."
+            "math": "Check: 2 x 2 x 3 x 5 x 5 = 300, and 5 is prime.",
+            "annotation": "Multiply back, and confirm the answer is prime.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes 2 for the blank because the list starts with 2s? What did they skip?",
+              "answer": "dividing — the visible factors multiply to 60, and 300 / 60 = 5, not 2"
+            }
           }
         ]
       },
@@ -1719,8 +2050,13 @@
             "given": true
           },
           {
+            "math": "90 divided by 18 = 5.",
+            "annotation": "Divide the target by the visible product.",
+            "given": true
+          },
+          {
             "math": null,
-            "annotation": "Do the division that finds the blank, then multiply the whole row back to check.",
+            "annotation": "Check It — do the division that finds the blank, then multiply the whole row back to check.",
             "given": false
           }
         ]
@@ -1731,7 +2067,33 @@
         "Check: ___ x ___ x ___ = ___."
       ],
       "fluency_source": "7NS5-F1",
-      "pld_band": "below"
+      "pld_band": "below",
+      "guided_example": {
+        "stem": "Fill in the blank to complete the prime factorization of 84: 2 x 2 x 3 x ___",
+        "answer": "7",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Multiply the factors you can see.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Ask what that product times the blank must equal.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Divide the target by that product to find the blank.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check It — multiply the whole list back, and confirm the blank is prime.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS5-S3",
@@ -2007,11 +2369,21 @@
           },
           {
             "math": "three 2s and two 5s",
-            "annotation": "Count how many times each prime appears."
+            "annotation": "Count how many times each prime appears.",
+            "check": {
+              "move": "call_it",
+              "prompt": "How many 2s and how many 5s are there?",
+              "answer": "three 2s and two 5s"
+            }
           },
           {
             "math": "200 = 2^3 x 5^2",
-            "annotation": "Write each prime with its exponent."
+            "annotation": "Write each prime with its exponent.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes 3 x 7^2 for 63? Which base got the exponent?",
+              "answer": "the wrong one — 63 = 3 x 3 x 7, so it is 3^2 x 7"
+            }
           }
         ]
       },
@@ -2030,18 +2402,44 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "three 2s and one 5",
             "annotation": "Write the 2 with its exponent (the 5 appears once).",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Multiply back to check you get 40.",
+            "annotation": "Name the Trap — multiply back to check you get 40.",
             "given": false
           }
         ]
       },
-      "pld_band": "approaching"
+      "pld_band": "approaching",
+      "guided_example": {
+        "stem": "Write the prime factorization of 72 using exponents.",
+        "answer": "2^3 x 3^2",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Break the number into primes.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Group the repeated primes together.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Count each group and write the exponent.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check It — evaluate your expression to confirm.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS5-S5",
@@ -2322,7 +2720,12 @@
         "steps": [
           {
             "math": "2^3 = 8",
-            "annotation": "Evaluate the part you already know."
+            "annotation": "Evaluate the part you already know.",
+            "check": {
+              "move": "call_it",
+              "prompt": "What is 2^3?",
+              "answer": "8"
+            }
           },
           {
             "math": "200 / 8 = 25",
@@ -2330,11 +2733,21 @@
           },
           {
             "math": "25 = 5 x 5 = 5^2",
-            "annotation": "25 is 5 squared, so the exponent is 2."
+            "annotation": "25 is 5 squared, so the exponent is 2.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Someone for 2 x 3 x 5^x = 150 answers x = 1 (giving 30) instead of x = 2 (giving 150). What went wrong?",
+              "answer": "The student picks an exponent from the look of the expression instead of testing it. The correct exponent is the one that makes the whole product equal the target number."
+            }
           },
           {
             "math": "x = 2; check 8 x 25 = 200",
-            "annotation": "Multiply back to confirm."
+            "annotation": "Multiply back to confirm.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Multiply 8 by 25. Do you land on 200?",
+              "answer": "yes"
+            }
           }
         ]
       },
@@ -2353,18 +2766,44 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "160 / 5 = 32, and 32 = 2 x 2 x 2 x 2 x 2",
             "annotation": "Count the 2s -- that is x.",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Check that 2^x x 5 = 160.",
+            "annotation": "Check It — check that 2^x x 5 = 160.",
             "given": false
           }
         ]
       },
-      "pld_band": "approaching"
+      "pld_band": "approaching",
+      "guided_example": {
+        "stem": "The prime factorization of 108 is 2^2 x 3^x = 108. Find x.",
+        "answer": "3",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Evaluate the power you already know.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Divide the total by it.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Factor what is left and count that prime.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check It — multiply the two powers back together.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS5-S4",
@@ -2592,7 +3031,12 @@
         "steps": [
           {
             "math": "150 / 2 = 75",
-            "annotation": "Divide by the smallest prime, 2."
+            "annotation": "Divide by the smallest prime, 2.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Divide by the smallest prime that fits. What do you get?",
+              "answer": "75"
+            }
           },
           {
             "math": "75 / 3 = 25",
@@ -2604,7 +3048,12 @@
           },
           {
             "math": "150 = 2 x 3 x 5 x 5 = 2 x 3 x 5^2",
-            "annotation": "Collect the two 5s into an exponent."
+            "annotation": "Collect the two 5s into an exponent.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes 2^2 x 3 x 5 for 120? How many times did they really divide by 2?",
+              "answer": "twice, but 120 needs three 2s — their expression evaluates to 60, not 120"
+            }
           }
         ]
       },
@@ -2623,18 +3072,44 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "108 = 2 x 2 x 3 x 3 x 3",
             "annotation": "Count the primes -- two 2s and three 3s -- and write them with exponents.",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Multiply back to check you get 108.",
+            "annotation": "Name the Trap — multiply back to check you get 108.",
             "given": false
           }
         ]
       },
-      "pld_band": "at"
+      "pld_band": "at",
+      "guided_example": {
+        "stem": "Find the prime factorization of 200 using exponents.",
+        "answer": "2^3 x 5^2",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Divide by the smallest prime that fits, and keep dividing.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Continue until the quotient is prime.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Count each repeated prime.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check It — evaluate your expression against the original number.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS5-S9",
@@ -2882,44 +3357,64 @@
         ]
       },
       "worked_solution": {
-        "stem": "2^a x 5^b = 200. What are the values of a and b?",
-        "answer": "a = 3, b = 2",
+        "stem": "2^a x 5^b = 500. What are the values of a and b?",
+        "answer": "a = 2, b = 3",
         "steps": [
           {
-            "math": "Factor 200 completely: 200 = 2 x 2 x 2 x 5 x 5.",
-            "annotation": "Get the full prime list before looking at the letters."
+            "math": "Factor 500 completely: 500 = 2 x 2 x 5 x 5 x 5.",
+            "annotation": "Get the full prime list before looking at the letters.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Factor 500 completely. What do you get?",
+              "answer": "2 x 2 x 5 x 5 x 5"
+            }
           },
           {
-            "math": "Count the 2s: there are three.",
+            "math": "Count the 2s: there are two.",
             "annotation": "That count is the exponent on the base 2, so a = 3."
           },
           {
-            "math": "Count the 5s: there are two.",
-            "annotation": "That count is the exponent on the base 5, so b = 2."
+            "math": "Count the 5s: there are three.",
+            "annotation": "That count is the exponent on the base 5, so b = 2.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Evaluate 2^3 x 5^2. Does it give 200?",
+              "answer": "yes — 8 x 25"
+            }
           },
           {
-            "math": "Check: 2^3 x 5^2 = 8 x 25 = 200.",
-            "annotation": "Evaluating and multiplying back confirms both the counts and the assignment."
+            "math": "Check: 2^2 x 5^3 = 4 x 125 = 500.",
+            "annotation": "Evaluating and multiplying back confirms both the counts and the assignment.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers a = 1, b = 1 because two primes appear? What did they forget to do?",
+              "answer": "count how many times EACH prime appears — 500 has two 2s and three 5s"
+            }
           }
         ]
       },
       "faded_example": {
-        "stem": "2^a x 3^b = 72. What are the values of a and b?",
-        "answer": "a = 3, b = 2",
+        "stem": "2^a x 3^b = 144. What are the values of a and b?",
+        "answer": "a = 4, b = 2",
         "steps": [
           {
-            "math": "Factor 72 completely: 72 = 2 x 2 x 2 x 3 x 3.",
+            "math": "Factor 144 completely: 144 = 2 x 2 x 2 x 2 x 3 x 3.",
             "annotation": "Get the full prime list before looking at the letters.",
             "given": true
           },
           {
-            "math": "Count the 2s: there are three, so a = 3.",
+            "math": "Count the 2s: there are four.",
             "annotation": "That count is the exponent on the base 2.",
             "given": true
           },
           {
+            "math": "Count the 3s: there are two.",
+            "annotation": "Count each prime in turn.",
+            "given": true
+          },
+          {
             "math": null,
-            "annotation": "Count the other base to find b, then check by evaluating both powers and multiplying.",
+            "annotation": "Check It — count the other base to find b, then check by evaluating both powers and multiplying.",
             "given": false
           }
         ]
@@ -2930,7 +3425,33 @@
         "Check: ___ x ___ = ___."
       ],
       "fluency_source": "7NS5-F1",
-      "pld_band": "at"
+      "pld_band": "at",
+      "guided_example": {
+        "stem": "2^a x 3^b = 108. What are the values of a and b?",
+        "answer": "a = 2, b = 3",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Factor the number completely into primes.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Count how many 2s there are — that is a.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Count how many 3s there are — that is b.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check It — evaluate your powers and compare with the original.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS5-S6",
@@ -3184,7 +3705,12 @@
         "steps": [
           {
             "math": "2 x 2 x 15 = 60",
-            "annotation": "The product is right, so check the factors next."
+            "annotation": "The product is right, so check the factors next.",
+            "check": {
+              "move": "say_why",
+              "prompt": "What has to be true of every factor in a prime factorization?",
+              "answer": "each one must be prime"
+            }
           },
           {
             "math": "15 = 3 x 5 is composite",
@@ -3196,7 +3722,12 @@
           },
           {
             "math": "all factors prime and product = 60",
-            "annotation": "Both checks pass -- this is the prime factorization."
+            "annotation": "Both checks pass -- this is the prime factorization.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who calls 2 x 4 x 5 the prime factorization of 40? Which factor is not prime?",
+              "answer": "4 — it splits into 2 x 2, so the factorization is 2 x 2 x 2 x 5"
+            }
           }
         ]
       },
@@ -3215,18 +3746,44 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "83 is prime, so it is its own factorization",
             "annotation": "Rewrite 90 using only primes, with exponents.",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State why your version is fully reduced.",
+            "annotation": "Name the Trap — state why your version is fully reduced.",
             "given": false
           }
         ]
       },
-      "pld_band": "above"
+      "pld_band": "above",
+      "guided_example": {
+        "stem": "Is 3 x 6 x 5 the prime factorization of 90? Justify your answer.",
+        "answer": "No — 6 is composite; 90 = 2 x 3 x 3 x 5",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Say Why — state what every factor must be.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Test each factor against that rule.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Fix any factor that fails it.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check It — multiply your corrected list back to the original number.",
+            "given": false
+          }
+        ]
+      }
     }
   ],
   "skill_columns": {
