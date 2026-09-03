@@ -86,6 +86,18 @@ PLD_BANDS = ("below", "approaching", "at", "above")
 # deliberately narrow — a definite article or an explicit "shows"/"below".
 # "Name a number between 1/2 and 1 on the number line" describes the task
 # rather than referring to a drawing, and owes no render_data.
+# Gate 9: a stem that tells the student to choose must give them something to
+# choose from. Options can live in a `choices` list or be listed inline.
+ASKS_TO_CHOOSE = re.compile(
+    r"\b(select|choose|circle the|pick the|which of)\b", re.I)
+# Inline options look like a comma-separated run, an "A or B" pair, or a
+# "from the set ..." preamble.
+LISTS_OPTIONS = re.compile(
+    r"(?:[:,]\s*[^,:]+,\s*[^,:]+)"     # at least two comma-separated options
+    r"|\bor\b"                          # "... : A or B?"
+    r"|\bfrom the set\b"
+    r"|\bwhich of\s+[^,]+,", re.I)
+
 PROMISES_FIGURE = re.compile(
     r"\b(the number ?line|the model|the grid|the table|the figure|the diagram"
     r"|number ?line (shows|below)|model shows|listed in the table|shown below"
@@ -213,6 +225,22 @@ def main():
             where = f"{sid} ({base})"
             is_foundation = s.get("column") == "foundation"
             text = lesson_text(s)
+
+            # -- Gate 9: a select-type stem must present its options ------
+            # "Select the expressions equivalent to (-4/9)(3/4)" printed no
+            # expressions, so the student was asked to choose from nothing.
+            # Options may be a `choices` list OR listed inline in the stem
+            # ("From the set 3, 33, 41, 57, 89, select all the primes").
+            for blk in ("worked_solution", "faded_example", "guided_example"):
+                b = s.get(blk) or {}
+                stem = b.get("stem") or ""
+                if not ASKS_TO_CHOOSE.search(stem):
+                    continue
+                if b.get("choices") or LISTS_OPTIONS.search(stem):
+                    continue
+                gate.append(
+                    f"{where}: {blk} asks the student to select but prints no "
+                    f"options (Gate 9)")
 
             # -- Gate 8: promised figures must exist ----------------------
             # A stem that points at a specific printed object ("the number
