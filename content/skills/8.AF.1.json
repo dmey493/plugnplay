@@ -13,7 +13,7 @@
       {
         "skill_id": "8AF1-S2",
         "verb": "distribute",
-        "rationale": "The standard explicitly requires expanding with the distributive property. The 8th-grade jump is negative and fractional coefficients over a parenthesis, p(ax + q) — a distinct mechanic that must be reliable before it can be one step inside solving."
+        "rationale": "The standard explicitly requires expanding with the distributive property. The 8th-grade jump is negative and fractional coefficients over a parenthesis, p(ax + q) -- a distinct mechanic that must be reliable before it can be one step inside solving."
       },
       {
         "skill_id": "8AF1-S3",
@@ -33,7 +33,7 @@
       {
         "skill_id": "8AF1-S6",
         "verb": "justify",
-        "rationale": "The Above-proficiency payoff: model a more complex situation, solve, and justify the solution in context — proving the answer makes sense, not just producing it."
+        "rationale": "The Above-proficiency payoff: model a more complex situation, solve, and justify the solution in context -- proving the answer makes sense, not just producing it."
       }
     ]
   },
@@ -130,6 +130,87 @@
           "kind": "ask",
           "text": "Your turn: evaluate 2 * (5 + 3) with a quick sketch."
         }
+      ],
+      "worked_solution": {
+        "stem": "Evaluate 4 * (7 - 2).",
+        "answer": "20",
+        "steps": [
+          {
+            "math": "parentheses first: 7 - 2 = 5",
+            "annotation": "Grouping symbols are worked before anything else.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Scan the expression. Which part is worked first?",
+              "answer": "the parentheses"
+            }
+          },
+          {
+            "math": "rewrite: 4 * 5",
+            "annotation": "Replace the parentheses with their value."
+          },
+          {
+            "math": "4 * 5 = 20",
+            "annotation": "Then multiply.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who computes 20 - 2 * 5 as 90? What did they do first?",
+              "answer": "subtracted before multiplying — multiplication comes first, so it is 20 - 10"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Evaluate 30 - 3 * 4.",
+        "answer": "18",
+        "steps": [
+          {
+            "math": "no parentheses, so multiply first",
+            "annotation": "Multiplication outranks subtraction.",
+            "given": true
+          },
+          {
+            "math": "3 * 4 = 12, rewrite: 30 - 12",
+            "annotation": "Replace the product.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It — finish and state the value.",
+            "given": false
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Evaluate 6 * (8 - 5) + 1.",
+        "answer": "19",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal — which part is worked first?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Work it, and rewrite what is left.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Finish the remaining operations in order and state the value.",
+            "given": false
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "A student tried this and made a mistake. Find it and fix it.",
+          "shown_work": [
+            "Computes 20 - 2 * 5 as 18 * 5 = 90 instead of 20 - 10 = 10"
+          ],
+          "answer": "The student reads the expression like a sentence and does each operation in reading order. The parentheses and the multiply-first rule set the real order, and a picture of groups shows why 2 * 5 must be built before it can be subtracted."
+        }
       ]
     },
     {
@@ -223,6 +304,87 @@
         {
           "kind": "ask",
           "text": "Your turn: draw the bar for 4x = 28 as four equal x pieces and solve."
+        }
+      ],
+      "worked_solution": {
+        "stem": "Solve x + 9 = 21.",
+        "answer": "x = 12",
+        "steps": [
+          {
+            "math": "x + 9 = 21",
+            "annotation": "Name what is being done to x.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "What operation is being done to x?",
+              "answer": "adding 9"
+            }
+          },
+          {
+            "math": "undo it: subtract 9 from both sides",
+            "annotation": "Use the inverse operation."
+          },
+          {
+            "math": "x = 12",
+            "annotation": "Check: 12 + 9 = 21.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Someone for x + 7 = 15 writes x = 22, or for 4x = 28 writes x = 24. What went wrong?",
+              "answer": "The student moves the number without reversing the operation, adding 7 again or subtracting the 4 that is actually multiplying. The bar model shows x is what is left when the 7 piece is removed, and 4x means four copies, which split by dividing."
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Solve 6x = 54.",
+        "answer": "x = 9",
+        "steps": [
+          {
+            "math": "6x = 54",
+            "annotation": "x is multiplied by 6.",
+            "given": true
+          },
+          {
+            "math": "undo it: divide both sides by 6",
+            "annotation": "Use the inverse.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Check It — state x, then substitute to confirm.",
+            "given": false
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Solve x/4 = 7.",
+        "answer": "x = 28",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal — what is being done to x?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the inverse and apply it to both sides.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check It — state x and substitute it back.",
+            "given": false
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "A student tried this and made a mistake. Find it and fix it.",
+          "shown_work": [
+            "For x + 7 = 15 writes x = 22, or for 4x = 28 writes x = 24"
+          ],
+          "answer": "The student moves the number without reversing the operation, adding 7 again or subtracting the 4 that is actually multiplying. The bar model shows x is what is left when the 7 piece is removed, and 4x means four copies, which split by dividing."
         }
       ]
     },
@@ -470,11 +632,11 @@
         ]
       },
       "worked_solution": {
-        "stem": "Solve 2x + 5 = 17.",
+        "stem": "Solve 6x + 5 = 41.",
         "answer": "x = 6",
         "steps": [
           {
-            "math": "2x + 5 = 17",
+            "math": "6x + 5 = 41",
             "annotation": "Built from x by times 2, then plus 5. Undo in reverse.",
             "check": {
               "move": "spot_signal",
@@ -483,7 +645,7 @@
             }
           },
           {
-            "math": "subtract 5: 2x = 12",
+            "math": "subtract 5 from both sides: 6x = 36",
             "annotation": "The plus 5 went on last, so it comes off first.",
             "check": {
               "move": "call_it",
@@ -492,11 +654,11 @@
             }
           },
           {
-            "math": "divide by 2: x = 6",
+            "math": "divide both sides by 6",
             "annotation": "Split the 12 into the two equal x pieces."
           },
           {
-            "math": "check: 2(6) + 5 = 17",
+            "math": "x = 6",
             "annotation": "The answer makes the original true, so it is a solution.",
             "check": {
               "move": "name_trap",
@@ -955,20 +1117,20 @@
         "type": "skill",
         "skill_id": "8AF1-F1"
       },
-      "i_do_script": "A solution is a value that makes the statement TRUE. To test one, I put the number in for the variable everywhere and check if the two sides really match. Watch: is 6 a solution to 4(x − 3) − x = 15? I replace every x with 6: 4(6 − 3) − 6 = 4 times 3 minus 6 = 12 − 6 = 6. The left side is 6, but the right side is 15, and 6 does not equal 15 — so 6 is NOT a solution. The check is the same for an inequality, except I ask whether the final statement (like 2 > 4) is true or false.",
+      "i_do_script": "A solution is a value that makes the statement TRUE. To test one, I put the number in for the variable everywhere and check if the two sides really match. Watch: is 6 a solution to 4(x - 3) - x = 15? I replace every x with 6: 4(6 - 3) - 6 = 4 times 3 minus 6 = 12 - 6 = 6. The left side is 6, but the right side is 15, and 6 does not equal 15 -- so 6 is NOT a solution. The check is the same for an inequality, except I ask whether the final statement (like 2 > 4) is true or false.",
       "canonical_error": {
         "pattern": "Declares a value a solution without finishing the arithmetic, or ignores order of operations while substituting",
-        "example": "For 4(x − 3) − x = 15 with x = 6, the student computes 4 times 6 minus 3 minus 6 = 15 by going left to right, and says 6 IS a solution",
+        "example": "For 4(x - 3) - x = 15 with x = 6, the student computes 4 times 6 minus 3 minus 6 = 15 by going left to right, and says 6 IS a solution",
         "why": "The student substitutes but then evaluates in reading order instead of order of operations (parentheses first), so a non-solution appears to check out. Substitution only tells the truth if the evaluation follows the rules."
       },
       "item_template": "An equation or inequality (often with a parenthesis) and a candidate value. Student substitutes, evaluates correctly, and states whether it is a solution with the true/false comparison. MC / dropdown-style.",
       "sample_items": [
         {
           "stem": "Is x = 6 a solution to 4(x - 3) - x = 15?",
-          "answer": "No — 4(6 - 3) - 6 = 12 - 6 = 6, and 6 does not equal 15.",
+          "answer": "No -- 4(6 - 3) - 6 = 12 - 6 = 6, and 6 does not equal 15.",
           "choices": [
             "Yes, because both sides equal 15.",
-            "No — 4(6 - 3) - 6 = 12 - 6 = 6, and 6 does not equal 15.",
+            "No -- 4(6 - 3) - 6 = 12 - 6 = 6, and 6 does not equal 15.",
             "Yes, because 6 is in the equation.",
             "Cannot be determined."
           ],
@@ -976,9 +1138,9 @@
         },
         {
           "stem": "Is x = 5 a solution to 3(x - 1) = 12?",
-          "answer": "Yes — 3(5 - 1) = 3 times 4 = 12, and 12 = 12.",
+          "answer": "Yes -- 3(5 - 1) = 3 times 4 = 12, and 12 = 12.",
           "choices": [
-            "Yes — 3(5 - 1) = 3 times 4 = 12, and 12 = 12.",
+            "Yes -- 3(5 - 1) = 3 times 4 = 12, and 12 = 12.",
             "No, because 3 times 5 is 15.",
             "No, because 5 is odd.",
             "Cannot be determined."
@@ -987,10 +1149,10 @@
         },
         {
           "stem": "Is x = -2 a solution to 5x + 8 = -2?",
-          "answer": "Yes — 5(-2) + 8 = -10 + 8 = -2, and -2 = -2.",
+          "answer": "Yes -- 5(-2) + 8 = -10 + 8 = -2, and -2 = -2.",
           "choices": [
-            "Yes — 5(-2) + 8 = -10 + 8 = -2, and -2 = -2.",
-            "No — 5(-2) + 8 = 18.",
+            "Yes -- 5(-2) + 8 = -10 + 8 = -2, and -2 = -2.",
+            "No -- 5(-2) + 8 = 18.",
             "No, because you cannot substitute a negative.",
             "Cannot be determined."
           ],
@@ -998,20 +1160,20 @@
         },
         {
           "stem": "Is x = 10 a solution to (1/2)x - 3 > 4?",
-          "answer": "No — (1/2)(10) - 3 = 5 - 3 = 2, and 2 > 4 is false.",
+          "answer": "No -- (1/2)(10) - 3 = 5 - 3 = 2, and 2 > 4 is false.",
           "choices": [
             "Yes, because 10 is large.",
-            "No — (1/2)(10) - 3 = 5 - 3 = 2, and 2 > 4 is false.",
-            "Yes — 2 > 4.",
+            "No -- (1/2)(10) - 3 = 5 - 3 = 2, and 2 > 4 is false.",
+            "Yes -- 2 > 4.",
             "Cannot be determined."
           ],
           "distractor_logic": "The value 2 does NOT satisfy > 4, so 10 is not a solution to the inequality; distractors reward guessing by size or misreading the comparison."
         }
       ],
       "redirect_script": {
-        "stop": "Before you decide — did you follow the order of operations?",
+        "stop": "Before you decide -- did you follow the order of operations?",
         "prompt": "Substitute the number for every x, then evaluate PEMDAS-style: parentheses first, not left to right. Circle the parenthesis and do it before anything else. Then compare the two sides.",
-        "praise": "You evaluated in the right order and then compared — that's a real solution check."
+        "praise": "You evaluated in the right order and then compared -- that's a real solution check."
       },
       "vocabulary": [
         {
@@ -1061,7 +1223,7 @@
         {
           "difficulty": "warm_up",
           "stem": "Is x = 2 a solution to 5x = 10?",
-          "answer": "Yes — 5(2) = 10."
+          "answer": "Yes -- 5(2) = 10."
         },
         {
           "difficulty": "warm_up",
@@ -1071,13 +1233,13 @@
         {
           "difficulty": "core",
           "stem": "Is x = 6 a solution to 4(x - 3) - x = 15?",
-          "answer": "No — 4(6-3) - 6 = 12 - 6 = 6, and 6 ≠ 15.",
+          "answer": "No -- 4(6-3) - 6 = 12 - 6 = 6, and 6 != 15.",
           "notes": "Baits left-to-right evaluation that would falsely accept 6."
         },
         {
           "difficulty": "core",
           "stem": "Is x = -3 a solution to -2x + 1 = 7?",
-          "answer": "Yes — -2(-3) + 1 = 6 + 1 = 7.",
+          "answer": "Yes -- -2(-3) + 1 = 6 + 1 = 7.",
           "notes": "Negative-times-negative check."
         },
         {
@@ -1088,26 +1250,26 @@
             "Jordan wrote: '2 times 5 + 1 - 5 = 10 + 1 - 5 = 6.'",
             "'6 is not 9, so 5 is not a solution.'"
           ],
-          "answer": "Jordan skipped the parentheses. It should be 2(5 + 1) - 5 = 2 times 6 - 5 = 12 - 5 = 7. Still not 9, so 5 is not a solution — but Jordan got the right verdict for the wrong reason, and on another problem that shortcut would give a false answer.",
+          "answer": "Jordan skipped the parentheses. It should be 2(5 + 1) - 5 = 2 times 6 - 5 = 12 - 5 = 7. Still not 9, so 5 is not a solution -- but Jordan got the right verdict for the wrong reason, and on another problem that shortcut would give a false answer.",
           "notes": "Canonical error: substituting correctly but evaluating out of order."
         },
         {
           "difficulty": "core",
-          "stem": "Is x = 4 a solution to 3(x - 2) ≥ 5?",
-          "answer": "Yes — 3(4-2) = 6, and 6 ≥ 5 is true.",
-          "notes": "Inequality check — compare with the correct direction."
+          "stem": "Is x = 4 a solution to 3(x - 2) >= 5?",
+          "answer": "Yes -- 3(4-2) = 6, and 6 >= 5 is true.",
+          "notes": "Inequality check -- compare with the correct direction."
         },
         {
           "difficulty": "stretch",
           "stem": "For which equation is x = 2 a solution: (a) 5x - 1 = 9, or (b) 5x - 1 = 11? Explain how you know without solving.",
-          "answer": "(a) — 5(2) - 1 = 9, which matches equation (a); for (b), 9 does not equal 11, so x = 2 is not a solution to (b).",
+          "answer": "(a) -- 5(2) - 1 = 9, which matches equation (a); for (b), 9 does not equal 11, so x = 2 is not a solution to (b).",
           "notes": "Forces evaluating and comparing to two right-hand sides."
         },
         {
           "difficulty": "stretch",
           "stem": "Write an equation of the form a(x - 1) = b for which x = 4 is a solution. Show your check.",
           "answer": "Sample: 2(x - 1) = 6, since 2(4 - 1) = 2 times 3 = 6.",
-          "notes": "Reversed direction — build an equation with a known solution."
+          "notes": "Reversed direction -- build an equation with a known solution."
         }
       ],
       "activities": [
@@ -1119,7 +1281,7 @@
           "materials": [
             "Card set: 10 (equation/inequality + candidate value) cards"
           ],
-          "instructions": "1. Each card shows an equation or inequality and a value to test.\n2. Substitute the value and evaluate — parentheses first — on scratch paper.\n3. Sort the card into 'Solution' or 'Not a solution.'\n4. Rule to place a card: you must write the final true/false comparison (like '6 = 15? No').\n5. Debrief: which cards were traps because someone evaluated left to right?",
+          "instructions": "1. Each card shows an equation or inequality and a value to test.\n2. Substitute the value and evaluate -- parentheses first -- on scratch paper.\n3. Sort the card into 'Solution' or 'Not a solution.'\n4. Rule to place a card: you must write the final true/false comparison (like '6 = 15? No').\n5. Debrief: which cards were traps because someone evaluated left to right?",
           "content": {
             "categories": [
               "Solution",
@@ -1193,28 +1355,28 @@
       ],
       "teacher_moves": {
         "questioning_prompts": [
-          "Where does the number go — how many x's do you replace?",
+          "Where does the number go -- how many x's do you replace?",
           "What has to be evaluated first here?",
           "What are the two sides now, and are they equal?",
           "For an inequality, is the final statement true or false?",
-          "You substituted correctly — did you evaluate in the right order?"
+          "You substituted correctly -- did you evaluate in the right order?"
         ],
         "misconception_redirects": [
           {
             "if_you_see": "Student substitutes but evaluates left to right, skipping the parentheses.",
             "say": "Substitute the number for every x, then evaluate PEMDAS-style: parentheses first, not left to right. Circle the parenthesis and do it before anything else. Then compare the two sides.",
-            "praise": "You evaluated in the right order and then compared — that's a real solution check."
+            "praise": "You evaluated in the right order and then compared -- that's a real solution check."
           },
           {
             "if_you_see": "Student mishandles a negative, e.g., says 5(-2) = 10.",
             "say": "A positive times a negative is negative. 5 times -2 is -10. Write the sign before you add.",
-            "praise": "You tracked the negative sign through the multiplication — that's careful substitution."
+            "praise": "You tracked the negative sign through the multiplication -- that's careful substitution."
           }
         ],
         "quick_checks": [
           {
             "prompt": "Is x = 4 a solution to 2(x - 1) = 6?",
-            "look_for": "Yes — 2(4 - 1) = 2(3) = 6, which matches. A 'no' means the student mishandled the parenthesis."
+            "look_for": "Yes -- 2(4 - 1) = 2(3) = 6, which matches. A 'no' means the student mishandled the parenthesis."
           },
           {
             "prompt": "Is x = 6 a solution to 4(x - 3) - x = 15?",
@@ -1229,7 +1391,7 @@
       ],
       "worked_solution": {
         "stem": "Is x = 4 a solution to 3(x - 2) + 2x = 14?",
-        "answer": "Yes — 3(4 - 2) + 2(4) = 6 + 8 = 14, and 14 = 14.",
+        "answer": "Yes -- 3(4 - 2) + 2(4) = 6 + 8 = 14, and 14 = 14.",
         "steps": [
           {
             "math": "substitute x = 4: 3(4 - 2) + 2(4)",
@@ -1237,7 +1399,7 @@
           },
           {
             "math": "parentheses first: 4 - 2 = 2",
-            "annotation": "Order of operations — inside the parentheses before multiplying.",
+            "annotation": "Order of operations -- inside the parentheses before multiplying.",
             "check": {
               "move": "spot_signal",
               "prompt": "Circle the part of this expression that MUST be evaluated before any multiplying.",
@@ -1266,7 +1428,7 @@
       },
       "faded_example": {
         "stem": "Is x = 3 a solution to 5(x - 1) - 2x = 7?",
-        "answer": "No — 5(3 - 1) - 2(3) = 10 - 6 = 4, and 4 does not equal 7.",
+        "answer": "No -- 5(3 - 1) - 2(3) = 10 - 6 = 4, and 4 does not equal 7.",
         "steps": [
           {
             "math": "substitute x = 3: 5(3 - 1) - 2(3)",
@@ -1343,7 +1505,7 @@
         "type": "skill",
         "skill_id": "8AF1-F2"
       },
-      "i_do_script": "Distribution is an area box before it's an arrow rule. 4(x + 2) is a box 4 tall whose width splits into x and 2: the box's area is 4 of EVERY piece of the width -- 4x plus 8 -- because both pieces sit under the same height. Nothing gets skipped, because a box has no gaps. A negative outside works the same way and the signs come along for the ride: -4(x - 2) is the opposite of 4(x - 2) = 4x - 8, so it's -4x + 8 -- the -4 hits the x (-4x) AND the -2 (-4 times -2 = +8). Watch the arrows run the same box on −4(x − 2): the −4 hits the x: −4 times x is −4x. Then the −4 hits the −2: negative times negative is positive, so −4 times −2 is +8. The result is −4x + 8. The two places students slip are forgetting the second term and losing a sign — so I say each product out loud with its sign.",
+      "i_do_script": "Distribution is an area box before it's an arrow rule. 4(x + 2) is a box 4 tall whose width splits into x and 2: the box's area is 4 of EVERY piece of the width -- 4x plus 8 -- because both pieces sit under the same height. Nothing gets skipped, because a box has no gaps. A negative outside works the same way and the signs come along for the ride: -4(x - 2) is the opposite of 4(x - 2) = 4x - 8, so it's -4x + 8 -- the -4 hits the x (-4x) AND the -2 (-4 times -2 = +8). Watch the arrows run the same box on -4(x - 2): the -4 hits the x: -4 times x is -4x. Then the -4 hits the -2: negative times negative is positive, so -4 times -2 is +8. The result is -4x + 8. The two places students slip are forgetting the second term and losing a sign -- so I say each product out loud with its sign.",
       "canonical_error": {
         "pattern": "Distributes to the first term only, or drops/mishandles the sign on the second product",
         "example": "For -4(x - 2) the student writes -4x - 8 (keeping the minus) or -4x - 2 (only multiplying the first term)",
@@ -1380,7 +1542,7 @@
       "redirect_script": {
         "stop": "Did the outside number reach the SECOND term too?",
         "prompt": "Draw the box: outside number is the height, the width splits at each term. Fill in every piece's area -- did any piece of the width end up with no area? Draw an arrow from the outside number to each term inside. Say each product with its sign out loud: 'negative four times x, negative four times negative two.' Negative times negative is positive.",
-        "praise": "You multiplied both terms and kept the signs straight — that's clean distribution."
+        "praise": "You multiplied both terms and kept the signs straight -- that's clean distribution."
       },
       "vocabulary": [
         {
@@ -1419,7 +1581,7 @@
         },
         {
           "kind": "say",
-          "text": "Two terms, two products. -5 times 2x is -10x. -5 times -3 is +15 — negative times negative is positive. Result: -10x + 15."
+          "text": "Two terms, two products. -5 times 2x is -10x. -5 times -3 is +15 -- negative times negative is positive. Result: -10x + 15."
         },
         {
           "kind": "watch",
@@ -1475,13 +1637,13 @@
           "difficulty": "stretch",
           "stem": "Distribute and simplify: 2(3x - 1) - 4(x + 2).",
           "answer": "6x - 2 - 4x - 8 = 2x - 10",
-          "notes": "Two distributions plus combining — the exact structure of the solving step ahead."
+          "notes": "Two distributions plus combining -- the exact structure of the solving step ahead."
         },
         {
           "difficulty": "stretch",
           "stem": "Fill in the blank: -3(2x ___ ) = -6x + 9. What term is missing?",
           "answer": "-3 (since -3 times -3 = 9). The parenthesis is (2x - 3).",
-          "notes": "Reversed direction — recover the inside term from the expanded form."
+          "notes": "Reversed direction -- recover the inside term from the expanded form."
         }
       ],
       "activities": [
@@ -1503,7 +1665,7 @@
           "materials": [
             "Card set: 8 p(ax + q) cards and 10 expanded-form cards (two sign-trap decoys)"
           ],
-          "instructions": "1. Lay out the folded-form cards and the expanded-form cards.\n2. Match each p(ax + q) to its correct expansion.\n3. Two expanded cards are decoys with a flipped sign on the second term — set them aside and name the error.\n4. To claim a match, say both products out loud with their signs.\n5. Debrief: which sign rule caught the most decoys?",
+          "instructions": "1. Lay out the folded-form cards and the expanded-form cards.\n2. Match each p(ax + q) to its correct expansion.\n3. Two expanded cards are decoys with a flipped sign on the second term -- set them aside and name the error.\n4. To claim a match, say both products out loud with their signs.\n5. Debrief: which sign rule caught the most decoys?",
           "content": {
             "pairs": [
               {
@@ -1560,7 +1722,7 @@
         },
         {
           "strategy_id": "strat-math-003",
-          "why": "The sign-slip and skip-the-second-term errors are precise and baitable — ideal for find-and-fix."
+          "why": "The sign-slip and skip-the-second-term errors are precise and baitable -- ideal for find-and-fix."
         },
         {
           "strategy_id": "strat-math-010",
@@ -1579,12 +1741,12 @@
           {
             "if_you_see": "Student distributes to the first term only or flips the sign on the second product.",
             "say": "Draw an arrow from the outside number to each term inside. Say each product with its sign out loud: 'negative four times x, negative four times negative two.' Negative times negative is positive.",
-            "praise": "You multiplied both terms and kept the signs straight — that's clean distribution."
+            "praise": "You multiplied both terms and kept the signs straight -- that's clean distribution."
           },
           {
             "if_you_see": "Student forgets to multiply the constant by a fractional coefficient (leaves -8 in (1/2)(6x - 8)).",
             "say": "The 1/2 has to hit the -8 too: half of -8 is -4. Every term inside, no exceptions.",
-            "praise": "You multiplied the constant by the fraction as well — nothing skipped."
+            "praise": "You multiplied the constant by the fraction as well -- nothing skipped."
           }
         ],
         "quick_checks": [
@@ -1618,7 +1780,7 @@
           },
           {
             "math": "-3 times -5 = +15",
-            "annotation": "Negative times negative is positive — the classic slip point.",
+            "annotation": "Negative times negative is positive -- the classic slip point.",
             "check": {
               "move": "say_why",
               "prompt": "Say why the second product is positive: 'Negative times negative is ___.'",
@@ -1752,14 +1914,14 @@
         }
       ],
       "redirect_script": {
-        "stop": "Before you solve — is one side fully cleaned up?",
+        "stop": "Before you solve -- is one side fully cleaned up?",
         "prompt": "Do it in order: distribute every parenthesis, then combine the like terms into one x-term and one number. Only THEN start undoing. If your distribution had a sign slip, the whole answer follows it.",
-        "praise": "You cleaned up the side completely before solving — distribute, combine, then undo."
+        "praise": "You cleaned up the side completely before solving -- distribute, combine, then undo."
       },
       "vocabulary": [
         {
           "term": "Multi-step equation",
-          "definition": "An equation that needs several moves — distributing, combining, and inverse operations — to solve."
+          "definition": "An equation that needs several moves -- distributing, combining, and inverse operations -- to solve."
         },
         {
           "term": "Collect like terms",
@@ -1846,7 +2008,7 @@
           "difficulty": "stretch",
           "stem": "Solve 4(2x - 1) - 3(x + 5) = 0. Then check your answer by substitution.",
           "answer": "8x - 4 - 3x - 15 = 5x - 19 = 0, so 5x = 19, x = 19/5 = 3.8. Check: 4(2(3.8)-1) - 3(3.8+5) = 4(6.6) - 3(8.8) = 26.4 - 26.4 = 0.",
-          "notes": "Non-integer solution with a required check — models the fluency + verification loop."
+          "notes": "Non-integer solution with a required check -- models the fluency + verification loop."
         }
       ],
       "activities": [
@@ -1859,7 +2021,7 @@
             "Equation cards",
             "Three-column mat: 'Distribute', 'Combine', 'Solve'"
           ],
-          "instructions": "1. Draw an equation card with parentheses (like 3(x + 2) + 4x = 27).\n2. Work it across the mat, one column at a time — you may not move to 'Solve' until 'Combine' shows a single x-term and a single number.\n3. Write the solution, then check it by substituting into the original card.\n4. Swap with another pair and verify each other's checks.\n5. Debrief: what happens later if the 'Distribute' column has a sign slip?"
+          "instructions": "1. Draw an equation card with parentheses (like 3(x + 2) + 4x = 27).\n2. Work it across the mat, one column at a time -- you may not move to 'Solve' until 'Combine' shows a single x-term and a single number.\n3. Write the solution, then check it by substituting into the original card.\n4. Swap with another pair and verify each other's checks.\n5. Debrief: what happens later if the 'Distribute' column has a sign slip?"
         },
         {
           "type": "error_analysis",
@@ -1869,7 +2031,7 @@
           "materials": [
             "Slip with Casey's corrupted solve"
           ],
-          "instructions": "1. Read Casey's full solution to 2(x - 4) - 7(x + 4) = -1.\n2. Find the FIRST line where an error appears — don't just look at the final answer.\n3. Redo the problem from that line forward.\n4. Discuss: why does one early sign slip make every later step wrong even if the algebra is perfect?",
+          "instructions": "1. Read Casey's full solution to 2(x - 4) - 7(x + 4) = -1.\n2. Find the FIRST line where an error appears -- don't just look at the final answer.\n3. Redo the problem from that line forward.\n4. Discuss: why does one early sign slip make every later step wrong even if the algebra is perfect?",
           "content": {
             "worked_problem": "2(x - 4) - 7(x + 4) = -1. Casey wrote 2x - 8 - 7x + 28 = -1 and got x = 21/5.",
             "error_step": "Casey made -7 times +4 = +28 instead of -28.",
@@ -1894,7 +2056,7 @@
       "teacher_moves": {
         "questioning_prompts": [
           "What has to be cleaned up before you can undo anything?",
-          "How many x-terms do you have right now — can you divide yet?",
+          "How many x-terms do you have right now -- can you divide yet?",
           "What sign does that distributed term carry?",
           "Did you check your answer back in the original equation?",
           "Where would an early sign slip show up in your final answer?"
@@ -1903,12 +2065,12 @@
           {
             "if_you_see": "Student solves before combining, or carries a sign slip from the distribution through the whole solution.",
             "say": "Do it in order: distribute every parenthesis, then combine the like terms into one x-term and one number. Only THEN start undoing. If your distribution had a sign slip, the whole answer follows it.",
-            "praise": "You cleaned up the side completely before solving — distribute, combine, then undo."
+            "praise": "You cleaned up the side completely before solving -- distribute, combine, then undo."
           },
           {
             "if_you_see": "Student divides the whole equation by the coefficient before clearing the constant.",
             "say": "Clear the added or subtracted number first, so you have (number)x = (number). Then divide.",
-            "praise": "You cleared the constant before dividing — the right order to isolate x."
+            "praise": "You cleared the constant before dividing -- the right order to isolate x."
           }
         ],
         "quick_checks": [
@@ -2047,10 +2209,10 @@
         "type": "skill",
         "skill_id": "8AF1-S3"
       },
-      "i_do_script": "Try it with plain numbers first: 2 < 6 is true. Divide both sides by -2 and you get -1 and -3 -- but -1 < -3 is FALSE, because dividing by a negative drags both numbers to the other side of zero and reverses their order. The sign has to flip just to keep a true statement true. Solving an inequality uses the exact same moves as an equation, with one new rule: if you multiply or divide BOTH sides by a negative number, you flip the inequality sign. Watch: −3x + 5 ≤ 20. Subtract 5: −3x ≤ 15. Now divide by −3 — that's the negative move, so the ≤ flips to ≥: x ≥ −5. If I don't flip, I'd get the wrong half of the number line. Adding or subtracting never flips; only multiplying or dividing by a negative does.",
+      "i_do_script": "Try it with plain numbers first: 2 < 6 is true. Divide both sides by -2 and you get -1 and -3 -- but -1 < -3 is FALSE, because dividing by a negative drags both numbers to the other side of zero and reverses their order. The sign has to flip just to keep a true statement true. Solving an inequality uses the exact same moves as an equation, with one new rule: if you multiply or divide BOTH sides by a negative number, you flip the inequality sign. Watch: -3x + 5 <= 20. Subtract 5: -3x <= 15. Now divide by -3 -- that's the negative move, so the <= flips to >=: x >= -5. If I don't flip, I'd get the wrong half of the number line. Adding or subtracting never flips; only multiplying or dividing by a negative does.",
       "canonical_error": {
         "pattern": "Fails to reverse the inequality sign when multiplying or dividing by a negative (or flips it when only adding/subtracting)",
-        "example": "For -3x ≤ 15 the student divides by -3 and writes x ≤ -5 instead of x ≥ -5",
+        "example": "For -3x <= 15 the student divides by -3 and writes x <= -5 instead of x >= -5",
         "why": "The student runs the equation procedure without the inequality-specific rule, because the flip has no analog in equation-solving. Dividing by a negative reverses the order of the number line, so the direction of the inequality must reverse too."
       },
       "item_template": "A one-variable inequality with rational coefficients, sometimes needing distribution/combining; at least some requiring a sign flip. Student solves and states the solution set. Numeric/inequality response.",
@@ -2078,21 +2240,21 @@
       ],
       "redirect_script": {
         "stop": "Did you just multiply or divide by a NEGATIVE?",
-        "prompt": "Check it with plain numbers first: 2 < 6 is true, but divide both sides by -2 -- is -1 < -3 still true? If the number you divided by is negative, flip the inequality sign — greater becomes less, less becomes greater. Circle the negative divisor as a reminder. Adding or subtracting never flips.",
-        "praise": "You flipped the sign for the negative divide — that's the one rule inequalities add."
+        "prompt": "Check it with plain numbers first: 2 < 6 is true, but divide both sides by -2 -- is -1 < -3 still true? If the number you divided by is negative, flip the inequality sign -- greater becomes less, less becomes greater. Circle the negative divisor as a reminder. Adding or subtracting never flips.",
+        "praise": "You flipped the sign for the negative divide -- that's the one rule inequalities add."
       },
       "vocabulary": [
         {
           "term": "Linear inequality",
-          "definition": "A statement like 2x - 8 > 10 comparing two expressions with <, >, ≤, or ≥."
+          "definition": "A statement like 2x - 8 > 10 comparing two expressions with <, >, <=, or >=."
         },
         {
           "term": "Solution set",
-          "definition": "All the values that make the inequality true, like x ≥ -5."
+          "definition": "All the values that make the inequality true, like x >= -5."
         },
         {
           "term": "Reverse the inequality",
-          "definition": "Flip < to > (or ≤ to ≥) when you multiply or divide both sides by a negative."
+          "definition": "Flip < to > (or <= to >=) when you multiply or divide both sides by a negative."
         }
       ],
       "next_steps": {
@@ -2118,7 +2280,7 @@
         },
         {
           "kind": "ask",
-          "text": "Solve it like an equation first — what do you do to clear the +1?"
+          "text": "Solve it like an equation first -- what do you do to clear the +1?"
         },
         {
           "kind": "say",
@@ -2126,7 +2288,7 @@
         },
         {
           "kind": "watch",
-          "text": "If a student writes x > -4, stop: 'you divided by a negative — what has to happen to the sign?'"
+          "text": "If a student writes x > -4, stop: 'you divided by a negative -- what has to happen to the sign?'"
         },
         {
           "kind": "ask",
@@ -2137,7 +2299,7 @@
         {
           "difficulty": "warm_up",
           "stem": "Solve 2x < 10.",
-          "answer": "x < 5 (no flip — divided by a positive)"
+          "answer": "x < 5 (no flip -- divided by a positive)"
         },
         {
           "difficulty": "warm_up",
@@ -2153,8 +2315,8 @@
         {
           "difficulty": "core",
           "stem": "Solve 3(x - 2) < 9.",
-          "answer": "x < 5 (3x - 6 < 9, 3x < 15). No flip — divide by +3.",
-          "notes": "Distribution with no flip — guards against over-flipping."
+          "answer": "x < 5 (3x - 6 < 9, 3x < 15). No flip -- divide by +3.",
+          "notes": "Distribution with no flip -- guards against over-flipping."
         },
         {
           "difficulty": "core",
@@ -2182,7 +2344,7 @@
         {
           "difficulty": "stretch",
           "stem": "A classmate says '5 - 2x > 1 solves to x > 2.' Without redoing it fully, argue why the direction must be wrong.",
-          "answer": "Isolating gives -2x > -4; dividing by -2 flips to x < 2. Testing x = 0: 5 - 0 = 5 > 1 is true, and 0 < 2, so the solution must include 0 — meaning x < 2, not x > 2.",
+          "answer": "Isolating gives -2x > -4; dividing by -2 flips to x < 2. Testing x = 0: 5 - 0 = 5 > 1 is true, and 0 < 2, so the solution must include 0 -- meaning x < 2, not x > 2.",
           "notes": "Justify with a test point that the flip is required."
         }
       ],
@@ -2271,20 +2433,20 @@
         "questioning_prompts": [
           "Did you multiply or divide by a negative on that step?",
           "What has to happen to the sign, and why?",
-          "Pick a value from your solution — does it work in the original?",
+          "Pick a value from your solution -- does it work in the original?",
           "Did adding or subtracting change the direction? Should it?",
           "How would you say your solution set in plain words?"
         ],
         "misconception_redirects": [
           {
             "if_you_see": "Student divides or multiplies by a negative and keeps the inequality direction the same.",
-            "say": "If the number you divided by is negative, flip the inequality sign — greater becomes less, less becomes greater. Circle the negative divisor as a reminder. Adding or subtracting never flips.",
-            "praise": "You flipped the sign for the negative divide — that's the one rule inequalities add."
+            "say": "If the number you divided by is negative, flip the inequality sign -- greater becomes less, less becomes greater. Circle the negative divisor as a reminder. Adding or subtracting never flips.",
+            "praise": "You flipped the sign for the negative divide -- that's the one rule inequalities add."
           },
           {
             "if_you_see": "Student flips the sign after merely adding or subtracting a term.",
-            "say": "Adding and subtracting never flip the sign — only multiplying or dividing by a negative does. Put the sign back.",
-            "praise": "You kept the sign steady through the add/subtract — flips are only for negative multiply or divide."
+            "say": "Adding and subtracting never flip the sign -- only multiplying or dividing by a negative does. Put the sign back.",
+            "praise": "You kept the sign steady through the add/subtract -- flips are only for negative multiply or divide."
           }
         ],
         "quick_checks": [
@@ -2312,13 +2474,13 @@
             "annotation": "Subtracting never flips the sign.",
             "check": {
               "move": "call_it",
-              "prompt": "Before you look: does subtracting 7 change the direction of the < ? ",
+              "prompt": "Before you look: does subtracting 7 change the direction of the < ?",
               "answer": "no -- adding and subtracting never flip the sign"
             }
           },
           {
             "math": "divide by -4",
-            "annotation": "This is the negative move — the sign will reverse.",
+            "annotation": "This is the negative move -- the sign will reverse.",
             "check": {
               "move": "spot_signal",
               "prompt": "Circle the number you are about to divide by. What is its sign?",
@@ -2422,11 +2584,11 @@
         "type": "skill",
         "skill_id": "8AF1-S3"
       },
-      "i_do_script": "The hardest part of a word problem is turning the words into an equation — the solving is the easy part once it's built. My routine: name the unknown with a variable, write each quantity in terms of it, then set the total equal to what the problem says. Watch: a gym's enrollment fee is 4 times the monthly fee x, with $15 off, and a new member pays enrollment plus 5 months for $228. Enrollment is 4x − 15; five months is 5x. Total: 4x − 15 + 5x = 228, which is 9x − 15 = 228. Solve: 9x = 243, x = $27 a month. Every number in the story has a job in the equation.",
+      "i_do_script": "The hardest part of a word problem is turning the words into an equation -- the solving is the easy part once it's built. My routine: name the unknown with a variable, write each quantity in terms of it, then set the total equal to what the problem says. Watch: a gym's enrollment fee is 4 times the monthly fee x, with $15 off, and a new member pays enrollment plus 5 months for $228. Enrollment is 4x - 15; five months is 5x. Total: 4x - 15 + 5x = 228, which is 9x - 15 = 228. Solve: 9x = 243, x = $27 a month. Every number in the story has a job in the equation.",
       "canonical_error": {
         "pattern": "Attaches the coefficient to the wrong quantity when translating, or misplaces which amount is multiplied by the variable",
         "example": "For 'sells 4 standard mugs at $0.30 each and premium mugs at $0.75 each, wants over $20,' the student writes 0.3x + 0.75(4) > 20 instead of 0.3(4) + 0.75x > 20",
-        "why": "The student matches numbers to slots by position in the sentence rather than by meaning — the variable is the UNKNOWN count (premium mugs), so the per-premium price 0.75 multiplies x, and the known 4 standard mugs multiplies 0.30. Mapping by meaning, not word order, is the skill."
+        "why": "The student matches numbers to slots by position in the sentence rather than by meaning -- the variable is the UNKNOWN count (premium mugs), so the per-premium price 0.75 multiplies x, and the known 4 standard mugs multiplies 0.30. Mapping by meaning, not word order, is the skill."
       },
       "item_template": "A real-world situation; student defines the variable, writes a one-variable equation or inequality (often multi-part), and solves. Rational coefficients; some contexts need distribution/combining. Multi-part response.",
       "sample_items": [
@@ -2453,8 +2615,8 @@
       ],
       "redirect_script": {
         "stop": "Which quantity is the UNKNOWN one you're solving for?",
-        "prompt": "Label the unknown x, then write each amount in the story next to what it multiplies — the price PER unknown item multiplies x; a fixed count or fee stands on its own. Match numbers by meaning, not by the order they appear.",
-        "praise": "You mapped each number to its real job — the per-item rate on the variable, the fixed part alone."
+        "prompt": "Label the unknown x, then write each amount in the story next to what it multiplies -- the price PER unknown item multiplies x; a fixed count or fee stands on its own. Match numbers by meaning, not by the order they appear.",
+        "praise": "You mapped each number to its real job -- the per-item rate on the variable, the fixed part alone."
       },
       "vocabulary": [
         {
@@ -2546,7 +2708,7 @@
           "difficulty": "stretch",
           "stem": "Write your own word problem that leads to the equation 9x - 15 = 228, then solve it.",
           "answer": "Sample: 'Enrollment is 4 times the $x monthly fee minus a $15 discount, plus 5 months, totals $228.' Solve: 9x = 243, x = 27.",
-          "notes": "Reversed direction — build a story to fit an equation."
+          "notes": "Reversed direction -- build a story to fit an equation."
         }
       ],
       "activities": [
@@ -2558,7 +2720,7 @@
           "materials": [
             "Card set: 6 word problems and 8 equations/inequalities (two swap-the-coefficient decoys)"
           ],
-          "instructions": "1. Match each word problem to the equation or inequality that models it.\n2. Two equation cards are decoys where the coefficient is on the wrong quantity — set them aside and explain the mismatch.\n3. To claim a match, name what the variable stands for and what each number does.\n4. Solve two of your matched pairs.\n5. Debrief: how do you decide which number multiplies the variable?",
+          "instructions": "1. Match each word problem to the equation or inequality that models it.\n2. Two equation cards are decoys where the coefficient is on the wrong quantity -- set them aside and explain the mismatch.\n3. To claim a match, name what the variable stands for and what each number does.\n4. Solve two of your matched pairs.\n5. Debrief: how do you decide which number multiplies the variable?",
           "content": {
             "pairs": [
               {
@@ -2628,18 +2790,18 @@
           "Which number happens once, and which happens per item?",
           "What does each term in your equation represent in the story?",
           "Is this a 'total equals' equation or an 'at most/at least' inequality?",
-          "Does your answer make sense in the context — right units, reasonable size?"
+          "Does your answer make sense in the context -- right units, reasonable size?"
         ],
         "misconception_redirects": [
           {
             "if_you_see": "Student attaches the variable to a fixed fee or puts the per-unit rate on a known count.",
-            "say": "Label the unknown x, then write each amount next to what it multiplies — the price PER unknown item multiplies x; a fixed count or fee stands on its own. Match numbers by meaning, not by the order they appear.",
-            "praise": "You mapped each number to its real job — the per-item rate on the variable, the fixed part alone."
+            "say": "Label the unknown x, then write each amount next to what it multiplies -- the price PER unknown item multiplies x; a fixed count or fee stands on its own. Match numbers by meaning, not by the order they appear.",
+            "praise": "You mapped each number to its real job -- the per-item rate on the variable, the fixed part alone."
           },
           {
             "if_you_see": "Student solves correctly but ignores whether the answer fits the context (e.g., 4.6 tickets).",
-            "say": "Read your answer back into the story. Can you buy 4.6 tickets? If not, recheck the setup — a strange answer often means a mislabeled equation.",
-            "praise": "You sanity-checked the answer against the situation — that's what modeling requires."
+            "say": "Read your answer back into the story. Can you buy 4.6 tickets? If not, recheck the setup -- a strange answer often means a mislabeled equation.",
+            "praise": "You sanity-checked the answer against the situation -- that's what modeling requires."
           }
         ],
         "quick_checks": [
@@ -2686,7 +2848,7 @@
           },
           {
             "math": "x = 15",
-            "annotation": "15 guests — a whole number, sensible for the context.",
+            "annotation": "15 guests -- a whole number, sensible for the context.",
             "check": {
               "move": "name_trap",
               "prompt": "A classmate wrote 60x + 12 = 240. Which quantity did they attach the wrong coefficient to?",
@@ -2777,7 +2939,7 @@
         "type": "skill",
         "skill_id": "8AF1-S5"
       },
-      "i_do_script": "At the top level I handle problems where two quantities depend on each other, and I have to explain WHY my answer is right, not just report it. Watch: paperbacks cost $8, hardcovers $10, and a student buys 2 MORE paperbacks than hardcovers, spending $34. I let h be the hardcovers, so paperbacks are h + 2. Cost: 8(h + 2) + 10h = 34. That's 8h + 16 + 10h = 18h + 16 = 34, so 18h = 18 and h = 1 hardcover. To justify: 1 hardcover ($10) and 3 paperbacks ($24) total $34 — it checks, and the answer is a whole number of books, which makes sense.",
+      "i_do_script": "At the top level I handle problems where two quantities depend on each other, and I have to explain WHY my answer is right, not just report it. Watch: paperbacks cost $8, hardcovers $10, and a student buys 2 MORE paperbacks than hardcovers, spending $34. I let h be the hardcovers, so paperbacks are h + 2. Cost: 8(h + 2) + 10h = 34. That's 8h + 16 + 10h = 18h + 16 = 34, so 18h = 18 and h = 1 hardcover. To justify: 1 hardcover ($10) and 3 paperbacks ($24) total $34 -- it checks, and the answer is a whole number of books, which makes sense.",
       "canonical_error": {
         "pattern": "Sets up the related quantities incorrectly (adds the relationship to the wrong variable) or asserts the answer without a justification tied to the context",
         "example": "For '2 more paperbacks than hardcovers,' the student writes hardcovers as h + 2 (labeling the wrong item) or solves and stops without checking that the totals reproduce $34",
@@ -2808,8 +2970,8 @@
       ],
       "redirect_script": {
         "stop": "Which item is 'more,' and which variable did you name?",
-        "prompt": "Write the relationship next to the variable it modifies: if paperbacks are '2 more than hardcovers' and h is hardcovers, then paperbacks are h + 2 — not the other way. Then, after solving, prove it: put the numbers back and show they reproduce the total.",
-        "praise": "You attached 'more than' to the right quantity AND justified by checking the totals — that's complete modeling."
+        "prompt": "Write the relationship next to the variable it modifies: if paperbacks are '2 more than hardcovers' and h is hardcovers, then paperbacks are h + 2 -- not the other way. Then, after solving, prove it: put the numbers back and show they reproduce the total.",
+        "praise": "You attached 'more than' to the right quantity AND justified by checking the totals -- that's complete modeling."
       },
       "vocabulary": [
         {
@@ -2957,13 +3119,13 @@
         "misconception_redirects": [
           {
             "if_you_see": "Student expresses the related quantity in the wrong direction, or stops without justifying.",
-            "say": "Write the relationship next to the variable it modifies: if paperbacks are '2 more than hardcovers' and h is hardcovers, then paperbacks are h + 2 — not the other way. Then, after solving, prove it: put the numbers back and show they reproduce the total.",
-            "praise": "You attached 'more than' to the right quantity AND justified by checking the totals — that's complete modeling."
+            "say": "Write the relationship next to the variable it modifies: if paperbacks are '2 more than hardcovers' and h is hardcovers, then paperbacks are h + 2 -- not the other way. Then, after solving, prove it: put the numbers back and show they reproduce the total.",
+            "praise": "You attached 'more than' to the right quantity AND justified by checking the totals -- that's complete modeling."
           },
           {
             "if_you_see": "Student produces a non-whole or negative count and accepts it without question.",
-            "say": "Read the answer back into the story — can you have 2.2 books? A strange answer usually means the relationship or a sign is set up backward. Recheck the model.",
-            "praise": "You used the odd answer as a signal to recheck the setup — that's mathematical skepticism."
+            "say": "Read the answer back into the story -- can you have 2.2 books? A strange answer usually means the relationship or a sign is set up backward. Recheck the model.",
+            "praise": "You used the odd answer as a signal to recheck the setup -- that's mathematical skepticism."
           }
         ],
         "quick_checks": [
@@ -3010,7 +3172,7 @@
           },
           {
             "math": "s = 10 scones (15 muffins): 2(15) + 3(10) = 30 + 30 = 60, true",
-            "annotation": "Justify by substituting back — the totals reproduce $60.",
+            "annotation": "Justify by substituting back -- the totals reproduce $60.",
             "check": {
               "move": "name_trap",
               "prompt": "A classmate labeled scones as s + 5 instead of muffins. Show why their answer cannot be checked back to $60.",

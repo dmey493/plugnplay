@@ -134,6 +134,87 @@
           "kind": "ask",
           "text": "Your turn: build arrays for 18 and list its factor pairs. Then try 7. How many arrays does 7 have?"
         }
+      ],
+      "worked_solution": {
+        "stem": "List all the factor pairs of 24.",
+        "answer": "1x24, 2x12, 3x8, 4x6",
+        "steps": [
+          {
+            "math": "start at 1 and walk up: 1 x 24, 2 x 12",
+            "annotation": "Working in order is what stops you skipping a pair.",
+            "check": {
+              "move": "show_it",
+              "prompt": "Build a 3-row array from 24 tiles. How many in each row?",
+              "answer": "8 — so 3 x 8 is a pair"
+            }
+          },
+          {
+            "math": "3 x 8 = 24, 4 x 6 = 24",
+            "annotation": "Keep walking: 3, then 4."
+          },
+          {
+            "math": "5 does not divide 24, and 6 already appeared, so stop",
+            "annotation": "Stop when the two factors meet in the middle.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who lists only 2, 6, and 12 for 12? Which factors did they miss?",
+              "answer": "1, 3, 4 and 12 itself — they grabbed a few instead of walking up in order"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "List all the factor pairs of 30.",
+        "answer": "1x30, 2x15, 3x10, 5x6",
+        "steps": [
+          {
+            "math": "walk up from 1: 1 x 30, 2 x 15",
+            "annotation": "In order, so nothing is skipped.",
+            "given": true
+          },
+          {
+            "math": "3 x 10 = 30, and 4 does not divide 30",
+            "annotation": "Test each number in turn.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It — find the last pair and say where to stop.",
+            "given": false
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "List all the factor pairs of 28.",
+        "answer": "1x28, 2x14, 4x7",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Start at 1 and walk upward, testing each number.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Skip any that do not divide, and keep going.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap — which pairs get missed by stopping early?",
+            "given": false
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "A student tried this and made a mistake. Find it and fix it.",
+          "shown_work": [
+            "Says the factors of 12 are just 2, 6, and 12, or says 9 is prime because it is odd"
+          ],
+          "answer": "The student guesses factors instead of testing 1, 2, 3, 4 in order, and confuses odd with prime. 9 = 3 x 3, so 9 has three factors and is composite."
+        }
       ]
     },
     {
@@ -231,6 +312,87 @@
         {
           "kind": "ask",
           "text": "Your turn: expand 3^4 and find its value."
+        }
+      ],
+      "worked_solution": {
+        "stem": "What is 4^2?",
+        "answer": "16",
+        "steps": [
+          {
+            "math": "4^2 means 4 x 4",
+            "annotation": "The exponent counts how many times the base is a factor.",
+            "check": {
+              "move": "say_why",
+              "prompt": "What does the exponent 2 tell you to do with the 4?",
+              "answer": "use it as a factor twice"
+            }
+          },
+          {
+            "math": "4 x 4 = 16",
+            "annotation": "Multiply, do not add."
+          },
+          {
+            "math": "4^2 = 16",
+            "annotation": "Two factors of 4.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 8 for 4^2? What did they do instead?",
+              "answer": "multiplied base by exponent — 4 x 2, but 4^2 is 4 x 4"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "What is 6^2?",
+        "answer": "36",
+        "steps": [
+          {
+            "math": "6^2 means 6 x 6",
+            "annotation": "The exponent counts the factors.",
+            "given": true
+          },
+          {
+            "math": "6 x 6",
+            "annotation": "Multiply the two copies.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It — state the value.",
+            "given": false
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "What is 2^6?",
+        "answer": "64",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Say Why — write out what the exponent tells you to do.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the copies, a pair at a time.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap — what do you get by multiplying base times exponent? Why is that wrong?",
+            "given": false
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "A student tried this and made a mistake. Find it and fix it.",
+          "shown_work": [
+            "Writes 3^4 = 3 x 4 = 12 instead of 3 x 3 x 3 x 3 = 81"
+          ],
+          "answer": "The student treats the exponent like a second factor. The exponent is a count: 3^4 means four 3s multiplied together, so the value is 81, not 12."
         }
       ]
     },
@@ -487,11 +649,11 @@
         ]
       },
       "worked_solution": {
-        "stem": "Write the prime factorization of 72 using exponents.",
-        "answer": "2^3 x 3^2",
+        "stem": "Write the prime factorization of 90 using exponents.",
+        "answer": "2 x 3^2 x 5",
         "steps": [
           {
-            "math": "72 = 8 x 9",
+            "math": "90 = 9 x 10",
             "annotation": "Split into any factor pair to start the tree.",
             "check": {
               "move": "call_it",
@@ -500,11 +662,11 @@
             }
           },
           {
-            "math": "8 = 2 x 2 x 2 and 9 = 3 x 3",
+            "math": "9 = 3 x 3 and 10 = 2 x 5",
             "annotation": "Keep splitting until every branch is prime."
           },
           {
-            "math": "72 = 2 x 2 x 2 x 3 x 3",
+            "math": "90 = 2 x 3 x 3 x 5",
             "annotation": "List every circled prime.",
             "check": {
               "move": "say_why",
@@ -513,7 +675,7 @@
             }
           },
           {
-            "math": "72 = 2^3 x 3^2",
+            "math": "90 = 2 x 3^2 x 5",
             "annotation": "Collect repeats with exponents: three 2s, two 3s. Check: 8 x 9 = 72.",
             "check": {
               "move": "name_trap",
@@ -2289,11 +2451,11 @@
         "Keeping the base ___, the expression simplifies to ___^___."
       ],
       "worked_solution": {
-        "stem": "Simplify 5^6 / 5^2. Write your answer as a single power.",
-        "answer": "5^4",
+        "stem": "Simplify 6^7 / 6^3. Write your answer as a single power.",
+        "answer": "6^4",
         "steps": [
           {
-            "math": "5^6 / 5^2",
+            "math": "same base, so subtract the exponents",
             "annotation": "Same base divided, so use the quotient of powers rule.",
             "check": {
               "move": "spot_signal",
@@ -2302,11 +2464,11 @@
             }
           },
           {
-            "math": "(5 x 5 x 5 x 5 x 5 x 5) / (5 x 5)",
+            "math": "7 - 3 = 4",
             "annotation": "Expand top and bottom to see the factors."
           },
           {
-            "math": "two 5s cancel, leaving four 5s",
+            "math": "6^7 / 6^3 = 6^4",
             "annotation": "Cancel matching factors: 6 - 2 = 4.",
             "check": {
               "move": "call_it",
@@ -2326,16 +2488,16 @@
         ]
       },
       "faded_example": {
-        "stem": "Simplify (3^2)^3. Write your answer as a single power.",
-        "answer": "3^6",
+        "stem": "Simplify (4^3)^2. Write your answer as a single power.",
+        "answer": "4^6",
         "steps": [
           {
-            "math": "(3^2)^3",
+            "math": "a power raised to a power: multiply the exponents",
             "annotation": "A power raised to a power, so multiply the exponents.",
             "given": true
           },
           {
-            "math": "(3^2) x (3^2) x (3^2)",
+            "math": "3 x 2 = 6",
             "annotation": "Write three copies of 3^2.",
             "given": true
           },
@@ -2644,11 +2806,11 @@
         "Any nonzero base to the zero power is ___, so ___^0 = ___."
       ],
       "worked_solution": {
-        "stem": "Write 2^-3 as a fraction.",
-        "answer": "1/8",
+        "stem": "Write 4^-2 as a fraction.",
+        "answer": "1/16",
         "steps": [
           {
-            "math": "2^-3",
+            "math": "a negative exponent means the reciprocal",
             "annotation": "The exponent is negative, so take the reciprocal of the positive power.",
             "check": {
               "move": "spot_signal",
@@ -2657,11 +2819,11 @@
             }
           },
           {
-            "math": "2^-3 = 1/2^3",
+            "math": "4^-2 = 1 / 4^2",
             "annotation": "Flip 2^3 under 1; the exponent becomes positive."
           },
           {
-            "math": "2^3 = 2 x 2 x 2 = 8",
+            "math": "4^2 = 16",
             "annotation": "Evaluate the denominator.",
             "check": {
               "move": "call_it",
@@ -2670,7 +2832,7 @@
             }
           },
           {
-            "math": "2^-3 = 1/8",
+            "math": "4^-2 = 1/16",
             "annotation": "The value is a positive fraction, not a negative number.",
             "check": {
               "move": "name_trap",
@@ -2681,16 +2843,16 @@
         ]
       },
       "faded_example": {
-        "stem": "Write 5^-2 as a fraction.",
-        "answer": "1/25",
+        "stem": "Write 6^-2 as a fraction.",
+        "answer": "1/36",
         "steps": [
           {
-            "math": "5^-2",
+            "math": "a negative exponent means the reciprocal",
             "annotation": "Negative exponent -- rewrite as a reciprocal.",
             "given": true
           },
           {
-            "math": "5^-2 = 1/5^2",
+            "math": "6^-2 = 1 / 6^2",
             "annotation": "Flip the positive power under 1.",
             "given": true
           },
