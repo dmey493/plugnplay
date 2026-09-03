@@ -1,7 +1,7 @@
 {
   "standard_code": "8.AF.2",
   "standard_text": "Generate linear equations in one variable with one solution, infinitely many solutions, or no solutions. Justify the classification given.",
-  "schema_version": 3,
+  "schema_version": 4,
   "progression": {
     "narrative": "This standard asks students to decide whether a linear equation has one solution, no solution, or infinitely many, and to justify the call by simplifying each side and reading the line that remains. The on-grade skills build in order: read an already simplified final line, compare coefficients and constants on tidy equations, simplify with distribution and like terms before classifying, then generate and defend examples of each case. Students who stall here usually cannot simplify reliably or do not treat an equation as a statement that can be true or false. The grade 7 skills of simplifying linear expressions and solving px + q = r equations rebuild that machinery one grade down. Beneath those sit the real foundations: the distributive property in whole number multiplication and the equals sign as a true or false balance.",
     "steps": [
@@ -500,7 +500,12 @@
         "steps": [
           {
             "math": "3 x 2x = 6x and 3 x 4 = 12",
-            "annotation": "The 3 multiplies both terms inside, two terms give two products."
+            "annotation": "The 3 multiplies both terms inside, two terms give two products.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: how many products does the 3 make?",
+              "answer": "two -- 3 x 2x and 3 x 4, one product per term inside"
+            }
           },
           {
             "math": "rewrite: 6x + 12 - 5x",
@@ -508,11 +513,21 @@
           },
           {
             "math": "combine like terms: 6x - 5x = 1x",
-            "annotation": "Only the x terms combine; the 12 has no x."
+            "annotation": "Only the x terms combine; the 12 has no x.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: why does the 12 stay out of the combining?",
+              "answer": "the 12 has no x, so it is not a like term with 6x or 5x"
+            }
           },
           {
             "math": "result: x + 12",
-            "annotation": "One x term and one constant, fully simplified."
+            "annotation": "One x term and one constant, fully simplified.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 12x + 4 here? Which term did they forget to multiply?",
+              "answer": "the distribute-to-the-first-term-only slip; they multiplied 2x but left the 4 alone"
+            }
           }
         ]
       },
@@ -531,14 +546,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Combine the like x terms.",
-            "given": false
+            "math": "combine like terms: 6x - 4x = 2x",
+            "annotation": "Only the x terms combine; the 10 has no x.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Write the simplified form: one x term and one constant.",
-            "given": false
+            "annotation": "Do your Name the Trap: write the simplified form, then say why 12x + 10 is not it.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Write the simplified form. Why is 12x + 10 wrong?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Simplify 5(2x + 3) - 7x.",
+        "answer": "3x + 15",
+        "steps": [
+          {
+            "math": "5 x 2x = 10x and 5 x 3 = 15",
+            "annotation": "Distribute the 5 to both terms inside.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It: rewrite the expression with the parenthesis replaced.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: rewrite it with the parenthesis replaced."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Say Why: combine the like x terms and say why 15 stays out.",
+            "given": false,
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: combine the x terms. Why does 15 stay out?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: write the simplified form, then say why 10x + 3 is wrong.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Write the simplified form. Why is 10x + 3 wrong?"
+            }
           }
         ]
       },
@@ -786,7 +843,12 @@
         "steps": [
           {
             "math": "subtract 4 from both sides: 3x = 15",
-            "annotation": "Undo the addition first, on both entire sides."
+            "annotation": "Undo the addition first, on both entire sides.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: after the 4 is gone, what is left on the left side?",
+              "answer": "3x, and 15 on the right"
+            }
           },
           {
             "math": "divide both sides by 3: x = 5",
@@ -794,11 +856,21 @@
           },
           {
             "math": "check: 3 x 5 + 4 = 19",
-            "annotation": "Substitute the answer back in."
+            "annotation": "Substitute the answer back in.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Put 5 in for x. What does 3x + 4 come out to?",
+              "answer": "19, matching the right side"
+            }
           },
           {
             "math": "19 = 19 is true",
-            "annotation": "A true statement proves x = 5 is the one solution."
+            "annotation": "A true statement proves x = 5 is the one solution.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who divides 3x + 4 = 19 by 3 first and writes x + 4 = 19? What did they skip?",
+              "answer": "they divided part of one side; dividing a side divides every term, 4 included"
+            }
           }
         ]
       },
@@ -817,14 +889,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Check by substituting x = 4 into 2x + 7.",
-            "given": false
+            "math": "check: 2 x 4 + 7 = 15",
+            "annotation": "Substitute x = 4 back into the original left side.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State the true statement your check produced.",
-            "given": false
+            "annotation": "Do your Check It: state the true number statement your substitution produced.",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Finish the check. What true statement do both sides give?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Solve 4x + 5 = 29.",
+        "answer": "x = 6",
+        "steps": [
+          {
+            "math": "subtract 5 from both sides: 4x = 24",
+            "annotation": "Undo the addition first, on both entire sides.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It: undo the multiplication and write x.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: divide both sides by 4. What is x?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Check It: substitute your x back into 4x + 5.",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Check It: put your x into 4x + 5. What do you get?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: state the true statement, then say why dividing 4x + 5 by 4 first fails.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "State the true statement. Why does dividing 4x + 5 by 4 first fail?"
+            }
           }
         ]
       },
@@ -1125,7 +1239,12 @@
         "steps": [
           {
             "math": "start: 6x + 4 = 6x + 4",
-            "annotation": "Both sides are already identical."
+            "annotation": "Both sides are already identical.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle what tells you the x-terms will cancel.",
+              "answer": "6x on both sides -- identical x-terms subtract away"
+            }
           },
           {
             "math": "subtract 6x from both sides: 4 = 4",
@@ -1133,11 +1252,21 @@
           },
           {
             "math": "4 = 4 is always true",
-            "annotation": "No variable is left and the statement is true."
+            "annotation": "No variable is left and the statement is true.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: is 4 = 4 true or false, and does any x change that?",
+              "answer": "true, and no x appears, so it is true for every x"
+            }
           },
           {
             "math": "-> infinitely many solutions",
-            "annotation": "An always-true leftover means every value of x works."
+            "annotation": "An always-true leftover means every value of x works.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who reads 4 = 4 as 'no solution'? Who writes x = 0? Why are both wrong?",
+              "answer": "a true leftover means infinitely many; 4 = 4 is a true statement, not a value of x"
+            }
           }
         ]
       },
@@ -1156,14 +1285,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "State whether 3 = 10 is true or false.",
-            "given": false
+            "math": "3 = 10 is false",
+            "annotation": "No variable is left and the statement cannot hold.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "A false leftover means how many solutions? Write it.",
-            "given": false
+            "annotation": "Do your Name the Trap: write the number of solutions, then say why x = 0 is not it.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "How many solutions? Why is 'x = 0' not the answer here?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "An equation simplifies to its final line 8 = 8. How many solutions, and why?",
+        "answer": "Infinitely many solutions -- 8 = 8 is always true.",
+        "steps": [
+          {
+            "math": "leftover statement: 8 = 8",
+            "annotation": "The variable has already canceled.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: circle what is missing from this line.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal: circle what is missing. Is there any x left?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: is 8 = 8 true or false?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: is 8 = 8 true or false?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: how many solutions, and why is x = 8 not the answer?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "How many solutions? Why is 'x = 8' not the answer?"
+            }
           }
         ]
       },
@@ -1470,11 +1641,21 @@
         "steps": [
           {
             "math": "compare coefficients: 5x and 5x are the same",
-            "annotation": "Matching x-terms will cancel."
+            "annotation": "Matching x-terms will cancel.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the pair of terms that decides whether the x's cancel.",
+              "answer": "5x and 5x -- same coefficient, so they cancel"
+            }
           },
           {
             "math": "subtract 5x from both sides: 0 = 5",
-            "annotation": "Left constant 0, right constant 5."
+            "annotation": "Left constant 0, right constant 5.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: the x's are gone. Which two numbers are left facing off?",
+              "answer": "0 on the left and 5 on the right"
+            }
           },
           {
             "math": "0 = 5 is false",
@@ -1482,7 +1663,12 @@
           },
           {
             "math": "-> no solution",
-            "annotation": "Same coefficient, different constant = no solution."
+            "annotation": "Same coefficient, different constant = no solution.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who says infinitely many because both sides show 5x? What did they skip?",
+              "answer": "they matched coefficients and never checked the constants 0 and 5, which disagree"
+            }
           }
         ]
       },
@@ -1501,14 +1687,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Is 0 = 1 true or false?",
-            "given": false
+            "math": "0 = 1 is false",
+            "annotation": "The constants disagree, so the leftover cannot hold.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Classify the equation from the leftover statement.",
-            "given": false
+            "annotation": "Do your Name the Trap: classify it, and say why 'infinitely many' is the trap.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Classify it. Why is 'infinitely many because both sides show 4x' wrong?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Classify 7x + 2 = 7x + 2.",
+        "answer": "Infinitely many solutions.",
+        "steps": [
+          {
+            "math": "compare coefficients: 7x and 7x are the same",
+            "annotation": "Matching x-terms will cancel.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It: subtract 7x. Which two constants are left?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: subtract 7x from both sides. What is left?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Say Why: is that leftover true or false, and why?",
+            "given": false,
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: is that leftover true or false? Say why."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: classify it, and say why matching 7x alone is not enough.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Classify it. Why is matching the 7x coefficients alone not enough?"
+            }
           }
         ]
       },
@@ -1526,7 +1754,7 @@
         "type": "skill",
         "skill_id": "8AF2-S2"
       },
-      "i_do_script": "Before simplifying anything, spot-check -4(x + 3) = -12 - 4x with real numbers: x = 1 gives -16 = -16, x = 5 gives -32 = -32 -- the sides keep matching, so an honest simplification had better end with two identical expressions. Most equations don't arrive tidy -- I have to distribute and combine on each side FIRST, then compare like before. Watch: -4(x + 3) = -12 - 4x. Left side: -4 times x is -4x, -4 times 3 is -12, giving -4x - 12. Right side: -12 - 4x is the same thing, -4x - 12. The sides are identical, so infinitely many solutions. Now a trap: -(3 - 6b) = 6b + 5. The leading minus flips both signs: -(3 - 6b) = -3 + 6b, which is 6b - 3. The right side is 6b + 5. Same coefficient 6b, but -3 is not 5 -- no solution. The rule: simplify honestly, because one sign slip changes the whole verdict.",
+      "i_do_script": "Before simplifying anything, spot-check -4(x + 3) = -12 - 4x with real numbers: x = 1 gives -16 = -16, x = 5 gives -32 = -32 -- the sides keep matching, so an honest simplification had better end with two identical expressions. Most equations don't arrive tidy -- I have to distribute and combine on each side FIRST, then compare like before. Watch: -4(x + 3) = -12 - 4x. Left side: -4 times x is -4x, -4 times 3 is -12, giving -4x - 12. Right side: -12 - 4x is the same thing, -4x - 12. The sides are identical, so infinitely many solutions. Now a trap: -(3 - 6b) = 6b + 5. The leading minus flips both signs: -(3 - 6b) = -3 + 6b, which is 6b - 3. The right side is 6b + 5. Same coefficient 6b, but -3 is not 5 -- no solution. If a sign feels slippery, draw the area model: a rectangle split into two columns, one for each term inside, with the outside factor down the side. Each cell of the area model holds one product with its own sign, so -(3 - 6b) gives cells of -3 and +6b and nothing gets left out. The rule: simplify honestly, because one sign slip changes the whole verdict.",
       "canonical_error": {
         "pattern": "A sign or distribution slip while simplifying produces the wrong leftover statement, so the equation is misclassified",
         "example": "For -(3 - 6b) = 6b + 5 the student writes -3 - 6b (missing that -(-6b) = +6b), gets -3 - 6b = 6b + 5 with different coefficients, and calls it 'one solution' instead of no solution",
@@ -1749,7 +1977,12 @@
         "steps": [
           {
             "math": "distribute the leading minus: -(3 - 6b) = -3 + 6b",
-            "annotation": "The minus flips both signs; write it as 6b - 3."
+            "annotation": "The minus flips both signs; write it as 6b - 3.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the sign in front of the parenthesis. What does it do to the -6b?",
+              "answer": "the leading minus; it flips -6b to +6b"
+            }
           },
           {
             "math": "rewrite the equation: 6b - 3 = 6b + 5",
@@ -1757,11 +1990,21 @@
           },
           {
             "math": "subtract 6b from both sides: -3 = 5",
-            "annotation": "The matching b-terms cancel."
+            "annotation": "The matching b-terms cancel.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: the 6b's cancel. Which two numbers are left?",
+              "answer": "-3 on the left and 5 on the right"
+            }
           },
           {
             "math": "-3 = 5 is false -> no solution",
-            "annotation": "Same coefficient, different constant means no value works."
+            "annotation": "Same coefficient, different constant means no value works.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes -3 - 6b and calls it one solution? Which sign did they slip?",
+              "answer": "they kept -6b instead of flipping it to +6b, so the coefficients differed"
+            }
           }
         ]
       },
@@ -1780,14 +2023,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Compare the two simplified sides -- same coefficient and same constant?",
-            "given": false
+            "math": "compare: 2x + 12 and 2x + 12 are identical",
+            "annotation": "Same coefficient AND same constant on both sides.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State the leftover statement and the number of solutions.",
-            "given": false
+            "annotation": "Do your Call It: write the leftover statement and the number of solutions.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Subtract 2x from both sides. What leftover statement, and how many solutions?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Classify -(5 - 2x) = 2x + 5.",
+        "answer": "No solution.",
+        "steps": [
+          {
+            "math": "distribute the leading minus: -(5 - 2x) = -5 + 2x",
+            "annotation": "The minus flips both signs; write it as 2x - 5.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It: rewrite the whole equation with the clean left side.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: rewrite the equation with the clean left side."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: circle the two constants once the 2x's cancel.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Subtract 2x. Circle the two constants that are left."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: classify it, and say why -5 - 2x would slip the sign.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Classify it. Why does writing -5 - 2x slip a sign?"
+            }
           }
         ]
       },
@@ -2011,7 +2296,12 @@
         "steps": [
           {
             "math": "distribute the left: 3(x + 2) = 3x + 6",
-            "annotation": "Both sides must become identical for infinitely many."
+            "annotation": "Both sides must become identical for infinitely many.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: distribute 3(x + 2). What constant lands outside?",
+              "answer": "6, because 3 x 2 = 6"
+            }
           },
           {
             "math": "match the x-coefficient: a = 3",
@@ -2019,11 +2309,21 @@
           },
           {
             "math": "match the constant: b = 6",
-            "annotation": "The right side needs + 6, the DISTRIBUTED constant."
+            "annotation": "The right side needs + 6, the DISTRIBUTED constant.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: why must b be 6 and not 2?",
+              "answer": "the right side has to match the DISTRIBUTED left side 3x + 6, not the inside 2"
+            }
           },
           {
             "math": "3(x + 2) = 3x + 6 -> both sides equal -> infinitely many",
-            "annotation": "Identical sides means every value of x works."
+            "annotation": "Identical sides means every value of x works.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who sets b = 2 by copying the constant inside the parentheses? What do they get?",
+              "answer": "3x + 6 = 3x + 2, which is no solution, not infinitely many"
+            }
           }
         ]
       },
@@ -2042,14 +2342,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Choose a to match the x-coefficient.",
-            "given": false
+            "math": "match the x-coefficient: a = 5",
+            "annotation": "The right side needs 5x.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Choose b to match the constant -- watch the sign.",
-            "given": false
+            "annotation": "Do your Name the Trap: give b, and say why copying the inside -4 fails.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "What is b? Why does copying the inside -4 give the wrong equation?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "In 4(x + 3) = ax + b, find a and b so the equation has infinitely many solutions.",
+        "answer": "a = 4, b = 12.",
+        "steps": [
+          {
+            "math": "distribute the left: 4(x + 3) = 4x + 12",
+            "annotation": "Both sides must become identical for infinitely many.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It: what does the x-coefficient a have to be?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: what must a be so the x-terms match?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Say Why: choose b, and say why it comes from the distributed side.",
+            "given": false,
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: what is b, and why does it come from the distributed side?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: write the finished equation, then say why b = 3 fails.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Write the finished equation. Why does copying the inside 3 for b fail?"
+            }
           }
         ]
       },
@@ -2279,7 +2621,12 @@
         "steps": [
           {
             "math": "keep the x-terms identical: x = x",
-            "annotation": "Same coefficient so the x's cancel."
+            "annotation": "Same coefficient so the x's cancel.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the part you must keep IDENTICAL to force the x's to cancel.",
+              "answer": "the x-terms, x and x -- same coefficient on both sides"
+            }
           },
           {
             "math": "make the constants disagree: + 3 vs + 5",
@@ -2287,11 +2634,21 @@
           },
           {
             "math": "x + 3 = x + 5 -> subtract x -> 3 = 5",
-            "annotation": "The x's cancel to a number statement."
+            "annotation": "The x's cancel to a number statement.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: subtract x from both sides. What statement is left?",
+              "answer": "3 = 5"
+            }
           },
           {
             "math": "3 = 5 is false -> no solution",
-            "annotation": "Justify by reading the leftover statement."
+            "annotation": "Justify by reading the leftover statement.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes 3x = 2x + 5 for no solution? Solve it -- what do they actually get?",
+              "answer": "x = 5, exactly one solution; different coefficients never give no solution"
+            }
           }
         ]
       },
@@ -2310,14 +2667,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Write your full equation with an identical right side.",
-            "given": false
+            "math": "write it: 2(x + 1) = 2x + 2",
+            "annotation": "The right side is a copy of the expanded left side.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Justify: simplify both sides and show the leftover 0 = 0.",
-            "given": false
+            "annotation": "Do your Say Why: simplify both sides and say why the leftover 0 = 0 proves it.",
+            "given": false,
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: what leftover statement do you get, and what does it prove?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Write a linear equation that has exactly one solution, and justify it.",
+        "answer": "Sample: 4x + 1 = 2x + 9 (one solution, x = 4).",
+        "steps": [
+          {
+            "math": "make the x-terms different: 4x and 2x",
+            "annotation": "Different coefficients mean the x's cannot cancel.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It: pick any two constants and write your equation.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: add any two constants and write your equation."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Check It: solve it and show the single value of x.",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Check It: solve your equation. What single value of x works?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: justify the case, and say why 3x = 2x + 5 is not a no-solution equation.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Justify the case. Why does 3x = 2x + 5 have one solution, not none?"
+            }
           }
         ]
       },
@@ -2545,11 +2944,21 @@
         "steps": [
           {
             "math": "left side: 4(4x + 3) = 16x + 12",
-            "annotation": "Distribute the 4 to both terms."
+            "annotation": "Distribute the 4 to both terms.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: distribute the 4. What x-term and constant appear?",
+              "answer": "16x and 12"
+            }
           },
           {
             "math": "right side: 19x + 9 - 3x + 3 = 16x + 12",
-            "annotation": "Combine 19x - 3x = 16x and 9 + 3 = 12."
+            "annotation": "Combine 19x - 3x = 16x and 9 + 3 = 12.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Underline the two x-terms on the right that still need combining.",
+              "answer": "19x and -3x, which combine to 16x"
+            }
           },
           {
             "math": "16x + 12 = 16x + 12 -> 0 = 0",
@@ -2557,7 +2966,12 @@
           },
           {
             "math": "infinitely many solutions -> disagree with Sam",
-            "annotation": "A true leftover means every value works, so 'no solution' is wrong."
+            "annotation": "A true leftover means every value works, so 'no solution' is wrong.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who agrees with Sam? Which side did they leave uncombined?",
+              "answer": "the right; skipping 19x - 3x = 16x hides that the sides match"
+            }
           }
         ]
       },
@@ -2576,14 +2990,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Same coefficient? Now compare the constants 12 and 4.",
-            "given": false
+            "math": "compare: 3x + 12 and 3x + 4, same coefficient, 12 is not 4",
+            "annotation": "The x's will cancel; the constants disagree.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State the leftover statement and whether Devon is right.",
-            "given": false
+            "annotation": "Do your Name the Trap: state the leftover, the case, and why Devon is wrong.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Write the leftover statement. Why is Devon's 'infinitely many' wrong?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Reese says 2(5x + 1) = 12x + 6 - 2x - 4 has no solution. Do you agree or disagree? Justify.",
+        "answer": "Disagree -- the equation has infinitely many solutions.",
+        "steps": [
+          {
+            "math": "left side: 2(5x + 1) = 10x + 2",
+            "annotation": "Distribute the 2 to both terms.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: underline the terms on the right that still combine.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Underline the right-side terms that still need combining, then combine them."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: compare the two simplified sides and write the leftover.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: compare the clean sides. What leftover statement do you get?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: agree or disagree, and say which side Reese left uncombined.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Agree or disagree? Which side did Reese leave uncombined?"
+            }
           }
         ]
       },

@@ -1,7 +1,7 @@
 {
   "standard_code": "8.NS.3",
   "standard_text": "Given a numeric expression with common rational number bases and integer exponents, apply the properties of exponents to generate equivalent expressions.",
-  "schema_version": 3,
+  "schema_version": 4,
   "progression": {
     "narrative": "This standard asks students to apply the properties of integer exponents, product of powers, quotient of powers, power of a power, power of a product, zero exponent, and negative exponents, to generate equivalent numerical expressions. The on-grade work builds from matching a power to its expanded notation, through each named rule one at a time, to combining several rules in one expression. Every rule rests on one idea: an exponent counts how many times the base is used as a factor. Students who stall here usually carry older gaps, most often weak multiplication fact and factor knowledge from grade 4 and a shaky grasp of exponent notation from grade 6. Intervention should rebuild those foundations, then the grade 7 skills of prime factorization with exponents and squares and square roots, before returning to the rules themselves.",
     "steps": [
@@ -492,7 +492,12 @@
         "steps": [
           {
             "math": "72 = 8 x 9",
-            "annotation": "Split into any factor pair to start the tree."
+            "annotation": "Split into any factor pair to start the tree.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you split: is 8 prime? Is 9 prime? Which branches keep going?",
+              "answer": "neither is prime -- both keep splitting"
+            }
           },
           {
             "math": "8 = 2 x 2 x 2 and 9 = 3 x 3",
@@ -500,11 +505,21 @@
           },
           {
             "math": "72 = 2 x 2 x 2 x 3 x 3",
-            "annotation": "List every circled prime."
+            "annotation": "List every circled prime.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: how many 2s are on the list, and how many 3s?",
+              "answer": "three 2s and two 3s"
+            }
           },
           {
             "math": "72 = 2^3 x 3^2",
-            "annotation": "Collect repeats with exponents: three 2s, two 3s. Check: 8 x 9 = 72."
+            "annotation": "Collect repeats with exponents: three 2s, two 3s. Check: 8 x 9 = 72.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who pools the exponents and writes 2 x 3^5? Why is that not 72?",
+              "answer": "pooling loses which prime repeats; 2 x 3^5 = 486, not 72"
+            }
           }
         ]
       },
@@ -523,14 +538,52 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "60 = 2 x 3 x 2 x 5",
             "annotation": "List every prime from the tree.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Do your Name the Trap: collect the repeats with exponents, then multiply back to check.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the exponent form. Why is 2 x 3 x 2 x 5 not the final answer?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Write the prime factorization of 84 using exponents.",
+        "answer": "2^2 x 3 x 7",
+        "steps": [
+          {
+            "math": "84 = 4 x 21",
+            "annotation": "Split into any factor pair to start the tree.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It: neither 4 nor 21 is prime, so both keep splitting.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: split 4 and split 21. Which four primes come out?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "List every circled prime from the tree.",
             "given": false
           },
           {
             "math": null,
-            "annotation": "Collect the repeats with exponents and check by multiplying back.",
-            "given": false
+            "annotation": "Do your Name the Trap: collect the repeats with exponents and multiply back.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the exponent form. Why is 4 x 21 not a prime factorization?"
+            }
           }
         ]
       },
@@ -812,11 +865,21 @@
         "steps": [
           {
             "math": "square root of 144 = ?",
-            "annotation": "Ask: what number times itself makes 144?"
+            "annotation": "Ask: what number times itself makes 144?",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the words that say what to do: 'times itself' or 'times 2'?",
+              "answer": "times itself -- a square root undoes a square"
+            }
           },
           {
             "math": "10 x 10 = 100, too small; 13 x 13 = 169, too big",
-            "annotation": "Trap the answer between known squares."
+            "annotation": "Trap the answer between known squares.",
+            "check": {
+              "move": "call_it",
+              "prompt": "144 sits between 100 and 169, so the root sits between which two numbers?",
+              "answer": "between 10 and 13, so 11 or 12"
+            }
           },
           {
             "math": "12 x 12 = 144",
@@ -824,7 +887,12 @@
           },
           {
             "math": "square root of 144 = 12",
-            "annotation": "Check by squaring back: 12^2 = 144."
+            "annotation": "Check by squaring back: 12^2 = 144.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who halves 144 and says 72? Why does halving never find a square root?",
+              "answer": "halving is not squaring; 72 x 72 = 5184, nowhere near 144"
+            }
           }
         ]
       },
@@ -843,14 +911,52 @@
             "given": true
           },
           {
+            "math": "14 x 14 = 196",
+            "annotation": "Test 14: it lands exactly.",
+            "given": true
+          },
+          {
             "math": null,
-            "annotation": "Test the number between them.",
+            "annotation": "Do your Name the Trap: state the root, then square it back.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the root. Why is halving 196 not the move?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Find the square root of 169.",
+        "answer": "13",
+        "steps": [
+          {
+            "math": "square root of 169 = ?",
+            "annotation": "Ask: what number times itself makes 169?",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: trap the root between two squares you already know.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal: 12 x 12 = 144 and 14 x 14 = 196. What sits between?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Test that number by multiplying it by itself.",
             "given": false
           },
           {
             "math": null,
-            "annotation": "State the root and check by squaring back.",
-            "given": false
+            "annotation": "Do your Name the Trap: state the root and square it back.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the root. Why is 169 divided by 2 not a square root?"
+            }
           }
         ]
       },
@@ -1121,7 +1227,12 @@
         "steps": [
           {
             "math": "(3^2)^4",
-            "annotation": "The outer exponent 4 counts copies of the inner power 3^2."
+            "annotation": "The outer exponent 4 counts copies of the inner power 3^2.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the outer exponent. Does it count 3s, or copies of 3^2?",
+              "answer": "the 4 counts copies of 3^2"
+            }
           },
           {
             "math": "(3^2) x (3^2) x (3^2) x (3^2)",
@@ -1129,11 +1240,21 @@
           },
           {
             "math": "each 3^2 is two 3s, so eight 3s in all",
-            "annotation": "Count all the base factors."
+            "annotation": "Count all the base factors.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: four copies of two 3s is how many 3s in all?",
+              "answer": "eight"
+            }
           },
           {
             "math": "(3^2)^4 = 3^8",
-            "annotation": "The exponents multiply: 2 x 4 = 8."
+            "annotation": "The exponents multiply: 2 x 4 = 8.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who adds 2 + 4 and writes 3^6? Why do these exponents multiply instead?",
+              "answer": "adding is the product of powers rule; here 4 counts copies of 3^2, so 2 x 4 = 8"
+            }
           }
         ]
       },
@@ -1152,14 +1273,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Count all the 2s (three copies of three 2s).",
-            "given": false
+            "math": "each 2^3 is three 2s, so nine 2s in all",
+            "annotation": "Count all the base factors.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Write the single power by multiplying the exponents.",
-            "given": false
+            "annotation": "Do your Name the Trap: write the single power by multiplying the exponents.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the single power. Why is 2^6 (adding 3 + 3) wrong?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Select the expanded notation equal to (4^2)^3, then write it as a single power.",
+        "answer": "(4^2) x (4^2) x (4^2) = 4^6",
+        "steps": [
+          {
+            "math": "(4^2)^3",
+            "annotation": "The outer exponent 3 counts copies of the inner power 4^2.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: write 4^2 that many times.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal: the outer 3 means how many copies of 4^2? Write them out."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: count all the base factors before you look.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: three copies of two 4s is how many 4s in all?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Do your Name the Trap: write the single power by multiplying the exponents.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the single power. Why is 4^5 (adding 2 + 3) wrong?"
+            }
           }
         ]
       },
@@ -1427,7 +1590,12 @@
         "steps": [
           {
             "math": "2^3 x 2^4",
-            "annotation": "The bases are both 2, so the product of powers rule applies."
+            "annotation": "The bases are both 2, so the product of powers rule applies.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle both bases. Are they the same? That is what lets you add exponents.",
+              "answer": "both are 2, so the product of powers rule applies"
+            }
           },
           {
             "math": "(2 x 2 x 2) x (2 x 2 x 2 x 2)",
@@ -1435,11 +1603,21 @@
           },
           {
             "math": "seven 2s multiplied together",
-            "annotation": "Count the factors: 3 + 4 = 7."
+            "annotation": "Count the factors: 3 + 4 = 7.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: three 2s next to four 2s is how many 2s in all?",
+              "answer": "seven"
+            }
           },
           {
             "math": "2^3 x 2^4 = 2^7",
-            "annotation": "Keep the base 2 and add the exponents."
+            "annotation": "Keep the base 2 and add the exponents.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who multiplies the bases and writes 4^7? Why does the base stay 2?",
+              "answer": "the factors pile up but the base never changes; you never multiply 2 x 2"
+            }
           }
         ]
       },
@@ -1458,14 +1636,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Count the 3s (2 + 5) to find the new exponent.",
-            "given": false
+            "math": "seven 3s multiplied together",
+            "annotation": "Count the factors: 2 + 5 = 7.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Write the single power, keeping the base 3.",
-            "given": false
+            "annotation": "Do your Name the Trap: write the single power, keeping the base 3.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the single power. Why does the base stay 3, not become 9?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Simplify 5^4 x 5^2. Write your answer as a single power.",
+        "answer": "5^6",
+        "steps": [
+          {
+            "math": "5^4 x 5^2",
+            "annotation": "The bases are both 5, so the product of powers rule applies.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: expand each power to see the factors.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal: write out the 5s in 5^4 and the 5s in 5^2."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: count the factors before you look.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: four 5s next to two 5s is how many 5s in all?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Do your Name the Trap: write the single power, keeping the base 5.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the single power. Why is 25^6 wrong?"
+            }
           }
         ]
       },
@@ -1728,11 +1948,21 @@
         "steps": [
           {
             "math": "2^a x 2^3 = 2^7",
-            "annotation": "Same base multiplied, so use the product of powers rule."
+            "annotation": "Same base multiplied, so use the product of powers rule.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the operation between the powers. Add the exponents or subtract them?",
+              "answer": "multiplication, so the exponents add"
+            }
           },
           {
             "math": "a + 3 = 7",
-            "annotation": "The product rule adds the exponents; set that sum equal to 7."
+            "annotation": "The product rule adds the exponents; set that sum equal to 7.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you solve: is a bigger or smaller than 7? Say why in one breath.",
+              "answer": "smaller -- a plus 3 has to reach 7"
+            }
           },
           {
             "math": "a = 7 - 3 = 4",
@@ -1740,7 +1970,12 @@
           },
           {
             "math": "check: 2^4 x 2^3 = 2^7",
-            "annotation": "Substitute back to confirm both sides match."
+            "annotation": "Substitute back to confirm both sides match.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who guesses a = 7 + 3 = 10 without checking? Why does the equation rule it out?",
+              "answer": "2^10 x 2^3 = 2^13, not 2^7 -- substituting back kills the guess"
+            }
           }
         ]
       },
@@ -1759,14 +1994,52 @@
             "given": true
           },
           {
+            "math": "a = 4 + 2 = 6",
+            "annotation": "Solve the exponent equation for a.",
+            "given": true
+          },
+          {
             "math": null,
-            "annotation": "Solve a - 2 = 4 for a.",
+            "annotation": "Do your Name the Trap: substitute a back into the equation and check.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: check a = 6. Why is a = 4 - 2 = 2 the tempting wrong one?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Solve for a: 3^a x 3^5 = 3^8.",
+        "answer": "3",
+        "steps": [
+          {
+            "math": "3^a x 3^5 = 3^8",
+            "annotation": "Same base multiplied, so use the product of powers rule.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: the product rule adds. Write the exponent equation.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal: circle the operation. Write the equation it gives for a."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Solve that exponent equation for a.",
             "given": false
           },
           {
             "math": null,
-            "annotation": "Substitute a back into the equation to check.",
-            "given": false
+            "annotation": "Do your Name the Trap: substitute a back and check both sides.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: check your a. Why is a = 8 + 5 = 13 the tempting wrong one?"
+            }
           }
         ]
       },
@@ -2021,7 +2294,12 @@
         "steps": [
           {
             "math": "5^6 / 5^2",
-            "annotation": "Same base divided, so use the quotient of powers rule."
+            "annotation": "Same base divided, so use the quotient of powers rule.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the division bar. Which rule is that, and what happens to the exponents?",
+              "answer": "quotient of powers -- subtract the exponents"
+            }
           },
           {
             "math": "(5 x 5 x 5 x 5 x 5 x 5) / (5 x 5)",
@@ -2029,11 +2307,21 @@
           },
           {
             "math": "two 5s cancel, leaving four 5s",
-            "annotation": "Cancel matching factors: 6 - 2 = 4."
+            "annotation": "Cancel matching factors: 6 - 2 = 4.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: six 5s on top, two below. How many 5s survive?",
+              "answer": "four"
+            }
           },
           {
             "math": "5^6 / 5^2 = 5^4",
-            "annotation": "Keep the base 5 and subtract the exponents."
+            "annotation": "Keep the base 5 and subtract the exponents.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who divides 6 by 2 and writes 5^3? Why does the quotient rule subtract?",
+              "answer": "cancelling removes factors one for one, so 6 - 2 = 4, never 6 divided by 2"
+            }
           }
         ]
       },
@@ -2052,14 +2340,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Count all the 3s (2 x 3) to find the new exponent.",
-            "given": false
+            "math": "each 3^2 is two 3s, so six 3s in all",
+            "annotation": "Count all the base factors.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Write the single power, keeping the base 3.",
-            "given": false
+            "annotation": "Do your Name the Trap: write the single power, keeping the base 3.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the single power. Why is 3^5 (adding 2 + 3) wrong?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Simplify 7^5 / 7^3. Write your answer as a single power.",
+        "answer": "7^2",
+        "steps": [
+          {
+            "math": "7^5 / 7^3",
+            "annotation": "Same base divided, so use the quotient of powers rule.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: expand top and bottom to see the factors.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal: write the 7s above the bar and the 7s below it."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: cancel matching factors before you look.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: five 7s on top, three below. How many 7s survive?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Do your Name the Trap: write the single power, keeping the base 7.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the single power. Why is 7^8 (adding 5 + 3) wrong?"
+            }
           }
         ]
       },
@@ -2319,7 +2649,12 @@
         "steps": [
           {
             "math": "2^-3",
-            "annotation": "The exponent is negative, so take the reciprocal of the positive power."
+            "annotation": "The exponent is negative, so take the reciprocal of the positive power.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the minus sign. Does it sit on the base or on the exponent?",
+              "answer": "on the exponent -- it signals a reciprocal, not a negative"
+            }
           },
           {
             "math": "2^-3 = 1/2^3",
@@ -2327,11 +2662,21 @@
           },
           {
             "math": "2^3 = 2 x 2 x 2 = 8",
-            "annotation": "Evaluate the denominator."
+            "annotation": "Evaluate the denominator.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: will the final answer be bigger or smaller than 1?",
+              "answer": "smaller -- it is 1 over a whole number"
+            }
           },
           {
             "math": "2^-3 = 1/8",
-            "annotation": "The value is a positive fraction, not a negative number."
+            "annotation": "The value is a positive fraction, not a negative number.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes 2^-3 = -8? Why is the value a positive fraction instead?",
+              "answer": "the negative exponent flips the power; it does not make the number negative"
+            }
           }
         ]
       },
@@ -2350,14 +2695,52 @@
             "given": true
           },
           {
+            "math": "5^2 = 5 x 5 = 25",
+            "annotation": "Evaluate the denominator.",
+            "given": true
+          },
+          {
             "math": null,
-            "annotation": "Evaluate 5^2 in the denominator.",
+            "annotation": "Do your Name the Trap: write the final fraction.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the fraction. Why is -25 the tempting wrong one?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Write 3^-2 as a fraction.",
+        "answer": "1/9",
+        "steps": [
+          {
+            "math": "3^-2",
+            "annotation": "The exponent is negative, so take the reciprocal of the positive power.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: flip the positive power under 1.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal: circle the minus. Rewrite 3^-2 with a positive exponent."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Evaluate the denominator.",
             "given": false
           },
           {
             "math": null,
-            "annotation": "Write the final fraction.",
-            "given": false
+            "annotation": "Do your Name the Trap: write the final fraction.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the fraction. Why is -9 the tempting wrong one?"
+            }
           }
         ]
       },
@@ -2630,11 +3013,21 @@
         "steps": [
           {
             "math": "(4^3)^2 x 4^2",
-            "annotation": "Two operations: a power of a power and a product."
+            "annotation": "Two operations: a power of a power and a product.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the parentheses. Which piece must be simplified before anything else?",
+              "answer": "(4^3)^2 -- the power of a power goes first"
+            }
           },
           {
             "math": "(4^3)^2 = 4^(3 x 2) = 4^6",
-            "annotation": "Resolve the power of a power first -- multiply the exponents."
+            "annotation": "Resolve the power of a power first -- multiply the exponents.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: do 3 and 2 add or multiply inside those parentheses?",
+              "answer": "multiply -- 3 x 2 = 6"
+            }
           },
           {
             "math": "4^6 x 4^2",
@@ -2642,7 +3035,12 @@
           },
           {
             "math": "4^6 x 4^2 = 4^8",
-            "annotation": "Add the exponents: 6 + 2 = 8."
+            "annotation": "Add the exponents: 6 + 2 = 8.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who adds 3 + 2 + 2 and writes 4^7? Which exponents were meant to multiply?",
+              "answer": "the inner pair: 3 x 2 = 6 first, then add the 2, giving 4^8"
+            }
           }
         ]
       },
@@ -2661,14 +3059,52 @@
             "given": true
           },
           {
+            "math": "2^4 x 2^6",
+            "annotation": "Now it is a product of like bases.",
+            "given": true
+          },
+          {
             "math": null,
-            "annotation": "Rewrite as 2^4 x 2^6, a product of like bases.",
+            "annotation": "Do your Name the Trap: add the exponents to get the single power.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the single power. Why is 2^9 (adding 4 + 2 + 3) wrong?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Simplify (2^2)^4 x 2^3. Write your answer as a single power.",
+        "answer": "2^11",
+        "steps": [
+          {
+            "math": "(2^2)^4 x 2^3",
+            "annotation": "Two operations: a power of a power and a product.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: resolve the parentheses first, multiplying the inner exponents.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal: circle the parentheses. What single power does (2^2)^4 become?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Rewrite as a product of like bases.",
             "given": false
           },
           {
             "math": null,
-            "annotation": "Add the exponents to get the single power.",
-            "given": false
+            "annotation": "Do your Name the Trap: add the exponents to get the single power.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the single power. Why is 2^9 (adding 2 + 4 + 3) wrong?"
+            }
           }
         ]
       },
@@ -2939,7 +3375,12 @@
           },
           {
             "math": "Right side: 1/6^4 = 6^-4.",
-            "annotation": "A reciprocal is a negative exponent."
+            "annotation": "A reciprocal is a negative exponent.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: 1/6^4 becomes 6^-4 because a reciprocal does what to the exponent?",
+              "answer": "it makes the exponent negative"
+            }
           },
           {
             "math": "Same base on both sides, so a + b - 3 = -4.",
@@ -2947,11 +3388,21 @@
           },
           {
             "math": "a + b = -1.",
-            "annotation": "Two unknowns, one equation -- this relationship is the answer."
+            "annotation": "Two unknowns, one equation -- this relationship is the answer.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: one equation, two unknowns. How many pairs will fit?",
+              "answer": "infinitely many -- any a and b summing to -1"
+            }
           },
           {
             "math": "Pick any pair: a = 0, b = -1. Check: 6^0 x 6^-1 / 6^3 = 6^-4.",
-            "annotation": "a = 2, b = -3 works too. Infinitely many, all summing to -1."
+            "annotation": "a = 2, b = -3 works too. Infinitely many, all summing to -1.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 'not enough information', or forces a = b? What licenses that?",
+              "answer": "nothing does; one equation still pins the relationship a + b = -1"
+            }
           }
         ]
       },
@@ -2975,9 +3426,61 @@
             "given": true
           },
           {
+            "math": "a + b = -1.",
+            "annotation": "Two unknowns, one equation -- this relationship is the answer.",
+            "given": true
+          },
+          {
             "math": null,
-            "annotation": "Solve for the relationship, then name one pair that fits it and check your pair in the original equation.",
+            "annotation": "Do your Name the Trap: name one pair that fits and check it in the original equation.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: give one pair. Why is 'not enough information' the wrong call?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "4^a x 4^b / 4^5 = 1/4^2. What is one possible set of values for a and b?",
+        "answer": "Any pair with a + b = 3, for example a = 1 and b = 2",
+        "steps": [
+          {
+            "math": "Left side: 4^a x 4^b / 4^5 = 4^(a + b - 5).",
+            "annotation": "Add for the product, subtract for the quotient.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Say Why: a reciprocal does what to the exponent?",
+            "given": false,
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: rewrite 1/4^2 as a single power of 4. What sign does the exponent take?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Equal powers of the same base means equal exponents. Write that equation.",
             "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Call It: solve for the relationship between a and b.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: before you look, will a + b come out positive or negative here?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Do your Name the Trap: name one pair that fits and check it in the original.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: give one pair. Why is 'not enough information' the wrong call?"
+            }
           }
         ]
       },

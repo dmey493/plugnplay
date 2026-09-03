@@ -1,7 +1,7 @@
 {
   "standard_code": "8.NS.2",
   "standard_text": "Use rational approximations of irrational numbers to compare the size of irrational numbers, plot them approximately on a number line, and estimate the value of expressions involving irrational numbers.",
-  "schema_version": 3,
+  "schema_version": 4,
   "progression": {
     "narrative": "This standard asks students to approximate irrational numbers with nearby rationals so they can compare their sizes, plot them on a number line, and estimate expressions like the square root of 2 plus 3, all without a calculator. The on-grade work repeats one move: bracket a square root between the two perfect squares that hug it, lean toward the closer one, then use that estimate to place, compare, or select. Students who stall here usually lack the grade 7 groundwork, which is instant recall of perfect squares and their roots and comfort ordering rational numbers on a number line. Below that sit grade 4 and 5 gaps in multiplication facts and decimal comparison, where errors like 7 squared is 14 and more digits means bigger are born. Intervention rebuilds facts and decimal placement first, then perfect square roots and rational ordering, and only then returns to estimating irrationals.",
     "steps": [
@@ -473,7 +473,12 @@
           },
           {
             "math": "try 10: 10 x 10 = 100, too small",
-            "annotation": "Use nearby facts to close in."
+            "annotation": "Use nearby facts to close in.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: is 12 x 12 going to land above or below 144?",
+              "answer": "exactly on it -- 12 x 12 = 144, so 12 is the root"
+            }
           },
           {
             "math": "try 12: 12 x 12 = 144",
@@ -481,7 +486,12 @@
           },
           {
             "math": "square root of 144 = 12",
-            "annotation": "Not 72; halving is not rooting."
+            "annotation": "Not 72; halving is not rooting.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Someone says the square root of 144 is 72. What did they do to 144?",
+              "answer": "they halved it -- 144 / 2 = 72, but 72 x 72 = 5184, not 144"
+            }
           }
         ]
       },
@@ -500,14 +510,52 @@
             "given": true
           },
           {
+            "math": "try 14: 14 x 14 = 196",
+            "annotation": "The next whole number lands exactly on it.",
+            "given": true
+          },
+          {
             "math": null,
-            "annotation": "Try the next whole number and check it.",
+            "annotation": "Do your Name the Trap: state the root, then say why 98 is wrong.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "State the root. Someone answers 98 -- what did they do to 196?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "What is the square root of 169?",
+        "answer": "13",
+        "steps": [
+          {
+            "math": "square root of 169 asks: what times itself is 169?",
+            "annotation": "Look for the side of a 169-tile square.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It: try 12 and say whether 12 x 12 lands above or below 169.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Try 12. Does 12 x 12 land above or below 169?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Try the next whole number and square it.",
             "given": false
           },
           {
             "math": null,
-            "annotation": "State the square root.",
-            "given": false
+            "annotation": "Name the Trap: state the root, then say why 84.5 is wrong.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "State the root. Someone halves 169 and answers 84.5. Why is that not a root?"
+            }
           }
         ]
       },
@@ -783,11 +831,21 @@
         "steps": [
           {
             "math": "rename: 3/4 = 0.75",
-            "annotation": "Put everything in decimal form so each number has a clear spot."
+            "annotation": "Put everything in decimal form so each number has a clear spot.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the number that is not already a decimal. What do you do to it first?",
+              "answer": "3/4 -- rename it as 0.75"
+            }
           },
           {
             "math": "negatives: -2 is left of -1.5",
-            "annotation": "Farther left means less, so -2 is least."
+            "annotation": "Farther left means less, so -2 is least.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: -2 is less than -1.5 because it sits ___ on the line.",
+              "answer": "farther left; more negative means less, even though 2 looks bigger than 1.5"
+            }
           },
           {
             "math": "positives: 0.7 < 0.75",
@@ -795,7 +853,12 @@
           },
           {
             "math": "order: -2, -1.5, 0.7, 3/4",
-            "annotation": "Read the line left to right."
+            "annotation": "Read the line left to right.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who puts -1.5 before -2? What size are they comparing without the sign?",
+              "answer": "they compare 1.5 against 2 with the sign dropped; -2 is farther left, so -2 is less"
+            }
           }
         ]
       },
@@ -814,14 +877,52 @@
             "given": true
           },
           {
+            "math": "positives: 0.4 < 1.25",
+            "annotation": "Compare the two positive values.",
+            "given": true
+          },
+          {
             "math": null,
-            "annotation": "Place the two positive values in order.",
+            "annotation": "Do your Name the Trap: write the full list, then say why -0.25 is not the least.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Write the least-to-greatest list. Why is -0.25 not less than -1?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Order from least to greatest: -0.5, 7/2, -3, 1.2",
+        "answer": "-3, -0.5, 1.2, 7/2",
+        "steps": [
+          {
+            "math": "rename: 7/2 = 3.5",
+            "annotation": "Decimal form gives each number a spot.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Say Why: which negative is farther left, and what does that mean?",
+            "given": false,
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: -3 is less than -0.5 because it sits ___ on the line."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Put the two positive values in order.",
             "given": false
           },
           {
             "math": null,
-            "annotation": "Write the full least-to-greatest list.",
-            "given": false
+            "annotation": "Name the Trap: write the full list, then say why -0.5 is not the least.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Write the list. Who says -0.5 is least because 0.5 is small? What did they drop?"
+            }
           }
         ]
       },
@@ -1109,7 +1210,12 @@
         "steps": [
           {
             "math": "perfect squares around 55: 49 = 7 x 7 and 64 = 8 x 8",
-            "annotation": "Bracket the number between perfect squares."
+            "annotation": "Bracket the number between perfect squares.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Underline the two perfect squares that trap 55. Which roots do they give?",
+              "answer": "49 and 64, giving the roots 7 and 8"
+            }
           },
           {
             "math": "so the square root of 55 is between 7 and 8",
@@ -1117,11 +1223,21 @@
           },
           {
             "math": "55 - 49 = 6 and 64 - 55 = 9, so 55 is closer to 49",
-            "annotation": "Compare the distances to each perfect square."
+            "annotation": "Compare the distances to each perfect square.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you compute: 6 away from 49, 9 away from 64. Which whole number wins?",
+              "answer": "7 -- 55 is nearer 49"
+            }
           },
           {
             "math": "the square root of 55 is about 7.4, which rounds to 7",
-            "annotation": "Nearest whole number, not 55 / 2 = 27.5."
+            "annotation": "Nearest whole number, not 55 / 2 = 27.5.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Someone answers 27.5 for the square root of 55. What did they divide by 2?",
+              "answer": "they divided 55 by 2; a root asks what times itself is 55, so it is about 7.4"
+            }
           }
         ]
       },
@@ -1140,14 +1256,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Which perfect square is 20 closer to?",
-            "given": false
+            "math": "20 - 16 = 4 and 25 - 20 = 5, so 20 is closer to 16",
+            "annotation": "Compare the distances to each perfect square.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State the nearest whole number.",
-            "given": false
+            "annotation": "Do your Name the Trap: give the nearest whole number, then say why 10 is wrong.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "State the nearest whole number. Someone says 10 -- what did they divide by 2?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Estimate the square root of 68 to the nearest whole number.",
+        "answer": "8",
+        "steps": [
+          {
+            "math": "perfect squares around 68: 64 = 8 x 8 and 81 = 9 x 9",
+            "annotation": "Bracket the number between perfect squares.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: name the interval the root falls in.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Underline the roots of 64 and 81. What interval do they give?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: measure the distance to each perfect square.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you compute: is 68 nearer 64 or nearer 81?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: give the nearest whole number, then say why 34 is wrong.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "State the whole number. Someone answers 34. What did they divide by 2?"
+            }
           }
         ]
       },
@@ -1410,7 +1568,12 @@
         "steps": [
           {
             "math": "40 is between 36 = 6 x 6 and 49 = 7 x 7",
-            "annotation": "Bracket between perfect squares."
+            "annotation": "Bracket between perfect squares.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the two perfect squares around 40. What interval do their roots give?",
+              "answer": "36 and 49, so the point lands between 6 and 7"
+            }
           },
           {
             "math": "so the square root of 40 is between 6 and 7",
@@ -1418,11 +1581,21 @@
           },
           {
             "math": "40 is closer to 36, so the root is about 6.3",
-            "annotation": "Lean toward the closer whole number."
+            "annotation": "Lean toward the closer whole number.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you place it: is 6.3 left or right of the middle tick 6.5?",
+              "answer": "left -- 40 is nearer 36, so the point sits below 6.5"
+            }
           },
           {
             "math": "place the point near the third tick past 6",
-            "annotation": "6.3 is three tenths past 6, not at 20."
+            "annotation": "6.3 is three tenths past 6, not at 20.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who marks the point at 20 for the square root of 40? What number did they halve?",
+              "answer": "they halved the radicand 40; the root is about 6.3, not 20"
+            }
           }
         ]
       },
@@ -1441,14 +1614,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Which whole number is 75 closer to, and about what tenth is that?",
-            "given": false
+            "math": "75 is closer to 81, so the root is about 8.7",
+            "annotation": "Lean toward the closer whole number.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State which tick to place the point near.",
-            "given": false
+            "annotation": "Do your Name the Trap: name the tick, then say why 37.5 is not the spot.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Which tick past 8? Someone marks 37.5 -- what number did they halve?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Describe where to plot the square root of 54 on a number line from 7 to 8 marked in tenths.",
+        "answer": "About the third tick past 7 (near 7.3)",
+        "steps": [
+          {
+            "math": "54 is between 49 = 7 x 7 and 64 = 8 x 8",
+            "annotation": "Bracket between perfect squares.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: name the interval the point lives in.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Which two whole numbers does the square root of 54 fall between?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: decide which end 54 leans toward and pick a tenth.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Is 54 nearer 49 or 64? Is your point left or right of the 7.5 tick?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: name the tick, then say why 27 is not the spot.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Which tick past 7? Someone marks 27. What number did they halve?"
+            }
           }
         ]
       },
@@ -1763,7 +1978,12 @@
         "steps": [
           {
             "math": "perfect squares around 46: 36 = 6 x 6 and 49 = 7 x 7",
-            "annotation": "Find the bracketing perfect squares."
+            "annotation": "Find the bracketing perfect squares.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Underline the perfect squares that trap 46. Not 45 and 47 -- why not?",
+              "answer": "36 and 49; the neighbours of 46 are not perfect squares, so they give no roots"
+            }
           },
           {
             "math": "36 < 46 < 49",
@@ -1771,11 +1991,21 @@
           },
           {
             "math": "so the square root of 46 is between the roots 6 and 7",
-            "annotation": "The roots give the range."
+            "annotation": "The roots give the range.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: the range is 6 to 7 because 46 sits between ___ and ___.",
+              "answer": "36 and 49, whose roots are 6 and 7"
+            }
           },
           {
             "math": "range: between 6 and 7",
-            "annotation": "Not near 23, which would be 46 / 2."
+            "annotation": "Not near 23, which would be 46 / 2.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Someone answers between 45 and 46. Which number did they build the range from?",
+              "answer": "the radicand 46 itself; the range comes from the roots of 36 and 49, so 6 to 7"
+            }
           }
         ]
       },
@@ -1794,14 +2024,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "What are the roots of 100 and 121?",
-            "given": false
+            "math": "the roots of 100 and 121 are 10 and 11",
+            "annotation": "The roots give the range.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State the range.",
-            "given": false
+            "annotation": "Do your Name the Trap: write the range, then say why 109 to 110 is wrong.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Write the range. Someone answers 109 to 110 -- which number did they build it from?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Which range contains the value of the square root of 78?",
+        "answer": "Between 8 and 9",
+        "steps": [
+          {
+            "math": "perfect squares around 78: 64 = 8 x 8 and 81 = 9 x 9",
+            "annotation": "Find the bracketing perfect squares.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: write the inequality that traps 78.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Underline the perfect squares around 78 and write them as an inequality."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Say Why: name the roots of those two perfect squares.",
+            "given": false,
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: the range is ___ to ___ because 78 sits between ___ and ___."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: state the range, then say why 77 to 78 is wrong.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "State the range. Someone answers 77 to 78. Which number did they build it from?"
+            }
           }
         ]
       },
@@ -2075,7 +2347,12 @@
         "steps": [
           {
             "math": "Nothing to simplify under the bar: the radicand is 24.",
-            "annotation": "Check for an operation inside first, every time."
+            "annotation": "Check for an operation inside first, every time.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Look under the bar first. Is there an operation to simplify, or a single number?",
+              "answer": "a single number, 24 -- nothing to simplify, so estimate straight away"
+            }
           },
           {
             "math": "24 sits between the perfect squares 16 and 25, so the value is between 4 and 5.",
@@ -2083,11 +2360,21 @@
           },
           {
             "math": "24 is much nearer 25 than 16, so try a tenth near 5. Test 4.9: 4.9 x 4.9 = 24.01.",
-            "annotation": "Squaring the guess is the test."
+            "annotation": "Squaring the guess is the test.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Test the guess: square 4.9. Does it land above or below 24?",
+              "answer": "4.9 x 4.9 = 24.01, just above 24"
+            }
           },
           {
             "math": "24.01 is barely above 24, so the root is just under 4.9. To the nearest tenth, 4.9.",
-            "annotation": "Two neighbouring tenths straddle the target; report the nearer one."
+            "annotation": "Two neighbouring tenths straddle the target; report the nearer one.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "If it read square root of (4 squared plus 8), why is 4 plus the square root of 8 wrong?",
+              "answer": "the bar groups the terms; simplify 16 plus 8 to 24 first, then take one root"
+            }
           }
         ]
       },
@@ -2112,8 +2399,50 @@
           },
           {
             "math": null,
-            "annotation": "Compare 38.44 to 38, test the tenth below if you need to, and state the answer to the nearest tenth.",
-            "given": false
+            "annotation": "Do your Name the Trap: give the answer to the nearest tenth, then say why splitting the bar fails.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "State the tenth. If it read root of (6 squared plus 2), why is 6 plus root 2 wrong?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Approximate the square root of 62 to the nearest tenth.",
+        "answer": "About 7.9",
+        "steps": [
+          {
+            "math": "Nothing to simplify under the bar: the radicand is 62.",
+            "annotation": "Check for an operation inside first, every time.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: bracket 62 between perfect squares.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Which two perfect squares trap 62? What whole numbers does that give?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Check It: pick a tenth and square it.",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "62 is nearer 64, so test a tenth just under 8. Square it: above or below 62?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: give the tenth, then say why splitting the bar fails.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "State the tenth. If it read root of (7 squared plus 13), why is 7 plus root 13 wrong?"
+            }
           }
         ]
       },
@@ -2413,7 +2742,12 @@
         "steps": [
           {
             "math": "the square root of 8 is about 2.8",
-            "annotation": "Estimate: 8 is between 4 and 9, closer to 9."
+            "annotation": "Estimate: 8 is between 4 and 9, closer to 9.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the two bounds. Which listed numbers are not decimals yet?",
+              "answer": "2 and 6; the square root of 8 and the square root of 40 need estimating first"
+            }
           },
           {
             "math": "2.8 is greater than 2 and less than 6 -- IN",
@@ -2421,11 +2755,21 @@
           },
           {
             "math": "5.5 is IN; the square root of 40 is about 6.3 -- OUT (too big); 1 is OUT (too small)",
-            "annotation": "Check each against both bounds."
+            "annotation": "Check each against both bounds.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you check: 40 is above 36, so is the square root of 40 in or out?",
+              "answer": "out -- about 6.3, which is above the upper bound 6"
+            }
           },
           {
             "math": "answer: the square root of 8 and 5.5",
-            "annotation": "Only these pass both tests."
+            "annotation": "Only these pass both tests.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who throws out the square root of 8 by calling it 8? Which number are they judging?",
+              "answer": "the radicand 8, not the root; the square root of 8 is about 2.8, so it is IN"
+            }
           }
         ]
       },
@@ -2444,14 +2788,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Which values are greater than 3 AND less than 7?",
-            "given": false
+            "math": "2.2 is OUT (too small); 6.3 is IN; 6.5 is IN; 2 is OUT (too small)",
+            "annotation": "Check each against both bounds.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "List the numbers in the range.",
-            "given": false
+            "annotation": "Do your Name the Trap: list the numbers in range, then say why the square root of 40 is not out.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "List the numbers in range. Who calls the square root of 40 too big? What did they judge?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Select all numbers greater than 4 and less than 8: the square root of 20, the square root of 70, 7.2, 3.",
+        "answer": "the square root of 20, 7.2",
+        "steps": [
+          {
+            "math": "the square root of 20 is about 4.5",
+            "annotation": "Estimate: 20 is between 16 and 25, closer to 16.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: test 4.5 against both bounds.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the two bounds. Is 4.5 greater than 4 AND less than 8?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: estimate the other root and judge each value.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you check: 70 is above 64, so is the square root of 70 in or out?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: list the numbers in range, then say why 20 is not the number you judge.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "List them. Who throws out the square root of 20 by calling it 20? What did they judge?"
+            }
           }
         ]
       },
@@ -2741,7 +3127,12 @@
         "steps": [
           {
             "math": "49 < 55 < 64, so the square root of 55 is between 7 and 8",
-            "annotation": "Bracket between perfect squares."
+            "annotation": "Bracket between perfect squares.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the number under the root. What must you find before comparing it to 7?",
+              "answer": "55; find its root, about 7.4, then compare"
+            }
           },
           {
             "math": "the square root of 55 is about 7.4",
@@ -2749,11 +3140,21 @@
           },
           {
             "math": "is 7.4 < 7? no",
-            "annotation": "Compare the estimate to 7."
+            "annotation": "Compare the estimate to 7.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you decide: the root is above 7, so will less than 7 come out true?",
+              "answer": "no -- 7.4 is greater than 7, so the statement is False"
+            }
           },
           {
             "math": "the statement is False",
-            "annotation": "7.4 is greater than 7, not less."
+            "annotation": "7.4 is greater than 7, not less.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who calls this True because 55 is greater than 7? Which number did they compare?",
+              "answer": "the radicand 55 instead of the root; the square root of 55 is about 7.4"
+            }
           }
         ]
       },
@@ -2772,14 +3173,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Is 4.5 greater than 4?",
-            "given": false
+            "math": "is 4.5 > 4? yes",
+            "annotation": "Compare the estimate to 4.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State True or False.",
-            "given": false
+            "annotation": "Do your Name the Trap: answer True or False, then say why 20 > 4 is the wrong comparison.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "True or False? Someone compares 20 to 4 instead. Which number should they use?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "True or False: the square root of 85 < 9.",
+        "answer": "False",
+        "steps": [
+          {
+            "math": "81 < 85 < 100, so the square root of 85 is between 9 and 10",
+            "annotation": "Bracket between perfect squares.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: name the value you must estimate before comparing.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the number under the root. What must you find before comparing to 9?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: the root is just above 9, so predict the verdict.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you decide: the root is above 9, so will less than 9 come out true?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: answer True or False, then say why 85 > 9 is the wrong comparison.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "True or False? Someone compares 85 to 9. Which number should they compare instead?"
+            }
           }
         ]
       },
@@ -3043,7 +3486,12 @@
         "steps": [
           {
             "math": "Two requirements: strictly between 5 and 6, and irrational.",
-            "annotation": "Read the condition apart before answering."
+            "annotation": "Read the condition apart before answering.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Underline the two requirements. How many must your answer meet?",
+              "answer": "between 5 and 6, and irrational -- both, not just the interval"
+            }
           },
           {
             "math": "For a square root between 5 and 6, the radicand sits between 5 squared and 6 squared: between 25 and 36.",
@@ -3051,11 +3499,21 @@
           },
           {
             "math": "Choose a value in that range that is not a perfect square: 30.",
-            "annotation": "Not a perfect square is what makes the root irrational."
+            "annotation": "Not a perfect square is what makes the root irrational.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Test 30: is it a perfect square? Name the squares just under and just over it.",
+              "answer": "no -- 25 and 36 straddle it, so the square root of 30 is irrational"
+            }
           },
           {
             "math": "Check: 25 < 30 < 36, so 5 < sqrt(30) < 6. And 30 is not a perfect square, so sqrt(30) is irrational.",
-            "annotation": "Both requirements verified separately."
+            "annotation": "Both requirements verified separately.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Why is 5.5 a tempting answer here, and which requirement does it fail?",
+              "answer": "it is between 5 and 6 but it is a terminating decimal, so it is not irrational"
+            }
           }
         ]
       },
@@ -3074,9 +3532,56 @@
             "given": true
           },
           {
+            "math": "Choose a value in that range that is not a perfect square: 55.",
+            "annotation": "Not a perfect square is what makes the root irrational.",
+            "given": true
+          },
+          {
             "math": null,
-            "annotation": "Pick a radicand in that range that is not a perfect square, then verify both requirements.",
-            "given": false
+            "annotation": "Do your Name the Trap: verify both requirements, then say why 7.5 fails one of them.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Check both requirements for sqrt(55). Why does 7.5 fit the interval but still fail?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Name an irrational number between 3 and 4, and justify that it meets both requirements.",
+        "answer": "The square root of 11 (also correct: sqrt(10), sqrt(12), sqrt(13), sqrt(14), sqrt(15))",
+        "steps": [
+          {
+            "math": "Two requirements: strictly between 3 and 4, and irrational.",
+            "annotation": "Read the condition apart before answering.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: square both bounds to convert the interval.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Underline both bounds. What do 3 squared and 4 squared give you?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Check It: pick a radicand in that range and test it.",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Pick a number between 9 and 16. Is it a perfect square? If so, pick again."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: verify both requirements, then say why 3.5 fails one.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Check both requirements for your root. Why does 3.5 fit the interval but still fail?"
+            }
           }
         ]
       },
@@ -3373,11 +3878,21 @@
         "steps": [
           {
             "math": "the square root of 10 is about 3.2",
-            "annotation": "9 < 10 < 16, closer to 9."
+            "annotation": "9 < 10 < 16, closer to 9.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the irrational part of the expression. What must you do to it first?",
+              "answer": "the square root of 10 -- estimate it as about 3.2 before subtracting"
+            }
           },
           {
             "math": "the square root of 10 - 1 is about 2.2",
-            "annotation": "Do the one operation: 3.2 - 1."
+            "annotation": "Do the one operation: 3.2 - 1.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you compare: does 3.2 minus 1 land just above or just below 2?",
+              "answer": "just above -- 2.2"
+            }
           },
           {
             "math": "is 2.2 greater than 2? yes",
@@ -3385,7 +3900,12 @@
           },
           {
             "math": "the square root of 10 - 1 > 2 is true",
-            "annotation": "Estimate the root, subtract, then compare."
+            "annotation": "Estimate the root, subtract, then compare.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who rounds the square root of 10 to 3 and answers no? What did the rounding cost?",
+              "answer": "3 - 1 = 2 is not greater than 2; the estimate was too rough, use 3.2"
+            }
           }
         ]
       },
@@ -3404,14 +3924,52 @@
             "given": true
           },
           {
+            "math": "is 5.14 greater than 5? yes",
+            "annotation": "Compare to the benchmark.",
+            "given": true
+          },
+          {
             "math": null,
-            "annotation": "Is 5.14 greater than 5?",
+            "annotation": "Do your Name the Trap: state the answer, then say why rounding pi to 3 breaks it.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "State the answer. Round pi to 3 instead: what does the comparison become?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Is the square root of 17 + 2 greater than 6?",
+        "answer": "Yes",
+        "steps": [
+          {
+            "math": "the square root of 17 is about 4.1",
+            "annotation": "16 < 17 < 25, closer to 16.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It: do the one operation and predict where it lands.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Does 4.1 plus 2 land just above or just below 6?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Compare the estimate to the benchmark 6.",
             "given": false
           },
           {
             "math": null,
-            "annotation": "State the answer.",
-            "given": false
+            "annotation": "Name the Trap: state the answer, then say why rounding the root to 4 breaks it.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "State the answer. Round the square root of 17 to 4 instead. What goes wrong?"
+            }
           }
         ]
       },
@@ -3680,7 +4238,12 @@
         "steps": [
           {
             "math": "Approximate every value before sorting: sqrt(35) is about 5.92.",
-            "annotation": "35 sits between 25 and 36, much nearer 36."
+            "annotation": "35 sits between 25 and 36, much nearer 36.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle every value that is not already a decimal. Those are the ones to approximate.",
+              "answer": "3pi, the square root of 35, and the square root of 50"
+            }
           },
           {
             "math": "sqrt(50) is about 7.07; 7.4 and 9 are already decimals.",
@@ -3688,7 +4251,12 @@
           },
           {
             "math": "3pi is about 3 x 3.14 = 9.42.",
-            "annotation": "Multiply the coefficient by the approximation of pi."
+            "annotation": "Multiply the coefficient by the approximation of pi.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Test 3pi: multiply 3 by 3.14. Is the result above or below 9?",
+              "answer": "9.42, above 9, so 3pi is the greatest of the five"
+            }
           },
           {
             "math": "Sort the approximations: 5.92, 7.07, 7.4, 9, 9.42.",
@@ -3696,7 +4264,12 @@
           },
           {
             "math": "Order: sqrt(35), sqrt(50), 7.4, 9, 3pi.",
-            "annotation": "Justification: every value was approximated as a decimal so all five could be compared on the same scale."
+            "annotation": "Justification: every value was approximated as a decimal so all five could be compared on the same scale.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who puts the square root of 35 last because 35 is the biggest number shown?",
+              "answer": "they sorted by the radicand; the square root of 35 is about 5.92, the least"
+            }
           }
         ]
       },
@@ -3710,7 +4283,12 @@
             "given": true
           },
           {
-            "math": "2pi is about 2 x 3.14 = 6.28; 5.6 and 8 are already decimals.",
+            "math": "5.6 and 8 are already decimals, so they need no approximating.",
+            "annotation": "Only the irrational values need work.",
+            "given": true
+          },
+          {
+            "math": "2pi is about 2 x 3.14 = 6.28.",
             "annotation": "Multiply the coefficient by the approximation of pi.",
             "given": true
           },
@@ -3721,8 +4299,55 @@
           },
           {
             "math": null,
-            "annotation": "Write the order using the original expressions, then write the justification naming the method you used.",
+            "annotation": "Do your Name the Trap: write the order and justification, then say why sorting by 30 fails.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Write the order and justification. Why is sqrt(30) not the greatest, given 30 is?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Order from least to greatest: 2pi, sqrt(45), 6.9, 8. Justify your ordering.",
+        "answer": "2pi, sqrt(45), 6.9, 8",
+        "steps": [
+          {
+            "math": "Approximate every value before sorting: sqrt(45) is about 6.71.",
+            "annotation": "45 sits between 36 and 49, much nearer 49.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: name which values still need approximating.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle every value that is not already a decimal. Which ones are left?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Check It: approximate 2pi and place it.",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Multiply 2 by 3.14. Is the result above or below 6.71?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Sort all four approximations on one scale.",
             "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: write the order and justification, then say why 45 first is wrong.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Write the order and justification. Who puts sqrt(45) last because 45 is biggest?"
+            }
           }
         ]
       },

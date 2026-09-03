@@ -1,7 +1,7 @@
 {
   "standard_code": "8.AF.1",
   "standard_text": "Solve linear equations and inequalities with rational number coefficients fluently, including those whose solutions require expanding expressions using the distributive property and collecting like terms. Represent real-world problems using linear equations and inequalities in one variable and solve such problems.",
-  "schema_version": 3,
+  "schema_version": 4,
   "progression": {
     "narrative": "This standard asks eighth graders to solve any one variable linear equation or inequality fluently, including ones that must first be untangled by distributing a rational coefficient and combining like terms, and then to model real situations with them. The on grade skills build from checking a candidate solution by substitution to distributing, solving multi step equations, solving inequalities with the sign flip rule, and finally writing equations and inequalities from word problems. Students who stall here usually cannot yet run the grade 7 machinery of two step equations and two step inequalities, so those skills live in the looking back column. Below that, gaps in grade 5 order of operations and grade 6 one step equations quietly break both substitution checks and inverse operations. Intervention starts at the deepest broken layer and climbs: evaluate correctly, undo one step, undo two steps, then clean up and solve.",
     "steps": [
@@ -475,11 +475,21 @@
         "steps": [
           {
             "math": "2x + 5 = 17",
-            "annotation": "Built from x by times 2, then plus 5. Undo in reverse."
+            "annotation": "Built from x by times 2, then plus 5. Undo in reverse.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the operation that was done LAST when this equation was built.",
+              "answer": "the plus 5 -- so it is the first thing to undo"
+            }
           },
           {
             "math": "subtract 5: 2x = 12",
-            "annotation": "The plus 5 went on last, so it comes off first."
+            "annotation": "The plus 5 went on last, so it comes off first.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: after the 5 comes off, what is left on the right side?",
+              "answer": "12 -- because 17 - 5 = 12, and the left is 2x"
+            }
           },
           {
             "math": "divide by 2: x = 6",
@@ -487,7 +497,12 @@
           },
           {
             "math": "check: 2(6) + 5 = 17",
-            "annotation": "The answer makes the original true, so it is a solution."
+            "annotation": "The answer makes the original true, so it is a solution.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "A classmate wrote 2x = 22. Which number did they move without reversing it?",
+              "answer": "the 5 -- they added 5 to 17 instead of subtracting it, so 22 is wrong"
+            }
           }
         ]
       },
@@ -506,14 +521,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Undo the times 3.",
-            "given": false
+            "math": "divide by 3: x = 5",
+            "annotation": "Split the 15 into the three equal x pieces.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Check your answer in the original equation.",
-            "given": false
+            "annotation": "Do your Check It: substitute your x back into 3x - 4 = 11.",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Check It: does your x make 3x - 4 equal 11?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Solve 4x + 3 = 27.",
+        "answer": "x = 6",
+        "steps": [
+          {
+            "math": "4x + 3 = 27",
+            "annotation": "Built from x by times 4, then plus 3. Undo in reverse.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: which operation went on last, so comes off first?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal: which number comes off both sides first?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: undo the times 4 and name x before you check.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: what is x once you undo the times 4?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Do your Name the Trap: which wrong x comes from adding the 3 instead?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: what do you get if you move the 3 without reversing it?"
+            }
           }
         ]
       },
@@ -784,15 +841,30 @@
           },
           {
             "math": "divide by 3: x <= 5",
-            "annotation": "Dividing by a positive keeps the sign direction."
+            "annotation": "Dividing by a positive keeps the sign direction.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you divide: will the <= keep its direction here? Why?",
+              "answer": "yes -- 3 is positive, and dividing by a positive keeps the direction"
+            }
           },
           {
             "math": "closed circle at 5, shade left",
-            "annotation": "The <= includes the boundary, so the circle is filled in."
+            "annotation": "The <= includes the boundary, so the circle is filled in.",
+            "check": {
+              "move": "show_it",
+              "prompt": "Draw the circle at 5. Open or closed, and how do you know?",
+              "answer": "closed -- the <= includes 5 itself"
+            }
           },
           {
             "math": "test x = 0: 3(0) + 4 = 4, and 4 <= 19 is true",
-            "annotation": "A number from the shaded side makes the original true, so the direction is right."
+            "annotation": "A number from the shaded side makes the original true, so the direction is right.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Why is 'x = 5' not the whole answer, and which side of the boundary do you shade?",
+              "answer": "x = 5 stops at the boundary instead of naming the set; shade left, not right, and the x = 0 test proves it"
+            }
           }
         ]
       },
@@ -811,14 +883,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Draw the boundary circle: open or closed?",
-            "given": false
+            "math": "closed circle at 3, shade right",
+            "annotation": "The >= includes the boundary, so fill the circle in.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Test a number to pick the shading direction and finish the graph.",
-            "given": false
+            "annotation": "Do your Check It: test one number from the shaded side in the original.",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Check It: test x = 4. Does 5x - 2 >= 13 come out true?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Solve 2x - 6 <= 8 and graph the solution set.",
+        "answer": "x <= 7, closed circle at 7 shaded left",
+        "steps": [
+          {
+            "math": "add 6: 2x <= 14",
+            "annotation": "Clear the constant first, same as an equation.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It: dividing by 2 is positive, so does the sign direction change?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: after you divide by 2, what does x compare to?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Show It: draw the boundary circle, open or closed.",
+            "given": false,
+            "check": {
+              "move": "show_it",
+              "prompt": "Show It: draw the circle at 7. Filled in or hollow, and why?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Do your Name the Trap: why is 'x = 7' not the answer, and which way do you shade?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: test x = 0. Which side of 7 does the shading really cover?"
+            }
           }
         ]
       },
@@ -1123,15 +1237,30 @@
           },
           {
             "math": "parentheses first: 4 - 2 = 2",
-            "annotation": "Order of operations — inside the parentheses before multiplying."
+            "annotation": "Order of operations — inside the parentheses before multiplying.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the part of this expression that MUST be evaluated before any multiplying.",
+              "answer": "(4 - 2) -- parentheses come first"
+            }
           },
           {
             "math": "3(2) + 8 = 6 + 8 = 14",
-            "annotation": "Multiply, then add the terms."
+            "annotation": "Multiply, then add the terms.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: what does the left side total?",
+              "answer": "14 -- 3(2) = 6 and 2(4) = 8, so 6 + 8 = 14"
+            }
           },
           {
             "math": "14 = 14, true -> x = 4 IS a solution",
-            "annotation": "Both sides match, so the value is a solution."
+            "annotation": "Both sides match, so the value is a solution.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "A classmate went left to right and skipped the parentheses. What did they get?",
+              "answer": "3 times 4 minus 2 plus 8 = 18, not 14 -- reading order is not order of operations"
+            }
           }
         ]
       },
@@ -1150,14 +1279,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Multiply 5(2) and 2(3), then combine.",
-            "given": false
+            "math": "5(2) - 6 = 10 - 6 = 4",
+            "annotation": "Multiply both products, then combine.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Compare your left side to 7 and state whether 3 is a solution.",
-            "given": false
+            "annotation": "Do your Name the Trap: name the wrong total you get by going left to right.",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: what total does skipping the parentheses give?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Is x = 2 a solution to 6(x - 1) - 3x = 5?",
+        "answer": "No -- 6(2 - 1) - 3(2) = 6 - 6 = 0, and 0 does not equal 5.",
+        "steps": [
+          {
+            "math": "substitute x = 2: 6(2 - 1) - 3(2)",
+            "annotation": "Replace every x with 2.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: which piece must be evaluated before any multiplying?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal: circle the part you evaluate first."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: finish both products and combine them.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: before you write it, what does the left side total?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Do your Name the Trap: what does going left to right give, and is 2 a solution?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: what total does skipping the parentheses give instead?"
+            }
           }
         ]
       },
@@ -1322,7 +1493,7 @@
           "materials": [
             "Grid paper (or the grid-paper printable)"
           ],
-          "instructions": "1. Pairs draw the box for 3(x + 2) on grid paper: 3 rows tall, width split into an x-strip and a 2-strip. Fill each region's area.\n2. Repeat for 5(2x + 3). Check: does every piece of the width carry area?\n3. Now -5(2x - 3): first build 5(2x - 3) = 10x - 15, then take the OPPOSITE of the whole box: -10x + 15.\n4. Debrief: the classic error drops the second term (writes -10x - 3 or -10x - 15). Where does the box make that impossible?"
+          "instructions": "1. Pairs draw the box model for 3(x + 2) on grid paper: 3 rows tall, width split into an x-strip and a 2-strip. Fill each region's area.\n2. Repeat for 5(2x + 3). Check: does every piece of the width carry area?\n3. Now -5(2x - 3): first build 5(2x - 3) = 10x - 15, then take the OPPOSITE of the whole box: -10x + 15.\n4. Debrief: the classic error drops the second term (writes -10x - 3 or -10x - 15). Where does the box make that impossible?"
         },
         {
           "type": "matching",
@@ -1438,11 +1609,21 @@
         "steps": [
           {
             "math": "-3 times 2x = -6x",
-            "annotation": "Multiply the outside number by the first inside term."
+            "annotation": "Multiply the outside number by the first inside term.",
+            "check": {
+              "move": "call_it",
+              "prompt": "How many terms are inside the parenthesis, so how many products will you write?",
+              "answer": "two terms, so two products -- neither one can be skipped"
+            }
           },
           {
             "math": "-3 times -5 = +15",
-            "annotation": "Negative times negative is positive — the classic slip point."
+            "annotation": "Negative times negative is positive — the classic slip point.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Say why the second product is positive: 'Negative times negative is ___.'",
+              "answer": "positive -- so -3 times -5 is +15, not -15"
+            }
           },
           {
             "math": "-6x + 15 + 4x",
@@ -1450,7 +1631,12 @@
           },
           {
             "math": "-6x + 4x + 15 = -2x + 15",
-            "annotation": "Combine the x-terms; the constant stays."
+            "annotation": "Combine the x-terms; the constant stays.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Which wrong answer comes from keeping the minus on the second product?",
+              "answer": "-6x - 15, and -6x - 5 comes from multiplying the first term only"
+            }
           }
         ]
       },
@@ -1469,14 +1655,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Write the expansion -6x + 8, then add the 5x.",
-            "given": false
+            "math": "-6x + 8 + 5x",
+            "annotation": "Write the full expansion, then bring down the 5x.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Combine the x-terms to finish.",
-            "given": false
+            "annotation": "Do your Name the Trap: which sign slip turns this into -6x - 8 + 5x?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: what does -x + 8 become if you keep the minus on the 8?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Distribute and simplify: -5(2x - 3) + 7x.",
+        "answer": "-3x + 15",
+        "steps": [
+          {
+            "math": "-5 times 2x = -10x",
+            "annotation": "Multiply the outside number by the first inside term.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Say Why: 'Negative times negative is ___,' so name the second product.",
+            "given": false,
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: negative times negative is ___, so -5 times -3 is ___."
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: write the full expansion, then bring down the 7x.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: what are all three terms before you combine anything?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Do your Name the Trap: which wrong answer keeps the minus on the second product?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: what do you get if you write -15 instead of +15?"
+            }
           }
         ]
       },
@@ -1705,11 +1933,21 @@
         "steps": [
           {
             "math": "distribute: 4x - 4 + 3x + 6",
-            "annotation": "Multiply each parenthesis out; watch every sign."
+            "annotation": "Multiply each parenthesis out; watch every sign.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you combine: how many x-terms and how many plain numbers did you just write?",
+              "answer": "two of each -- 4x and 3x, then -4 and +6"
+            }
           },
           {
             "math": "combine like terms: 7x + 2 = 23",
-            "annotation": "4x + 3x = 7x; -4 + 6 = 2. One x-term, one number."
+            "annotation": "4x + 3x = 7x; -4 + 6 = 2. One x-term, one number.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Say why -4 + 6 is +2 and not -2.",
+              "answer": "the 6 is larger and positive, so the sum lands on the positive side"
+            }
           },
           {
             "math": "subtract 2: 7x = 21",
@@ -1717,7 +1955,12 @@
           },
           {
             "math": "divide by 7: x = 3",
-            "annotation": "Check: 4(2) + 3(5) = 8 + 15 = 23. True."
+            "annotation": "Check: 4(2) + 3(5) = 8 + 15 = 23. True.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "A classmate distributed 3(x + 2) as 3x + 2. Which like term did that corrupt?",
+              "answer": "the constant: they failed to distribute to the 2, so -4 + 2 = -2 and the wrong value carries through every later step"
+            }
           }
         ]
       },
@@ -1736,14 +1979,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Clear the constant 13 from both sides.",
-            "given": false
+            "math": "subtract 13: 3x = 12",
+            "annotation": "Clear the constant before you touch the coefficient.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Divide to find x, then check in the original.",
-            "given": false
+            "annotation": "Do your Check It: divide to find x, then substitute it into the original.",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Check It: find x, then show 5(x + 1) - 2(x - 4) really equals 25."
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Solve 3(x + 5) - 4(x - 2) = 20.",
+        "answer": "x = 3",
+        "steps": [
+          {
+            "math": "distribute: 3x + 15 - 4x + 8",
+            "annotation": "Multiply each parenthesis out; -4 times -2 = +8.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Say Why: say why 3x - 4x is -x and why 15 + 8 is 23.",
+            "given": false,
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: combine the x-terms and the numbers. What equation is left?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: clear the constant from both sides.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: after the 23 comes off, what does -x equal?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Do your Name the Trap: which sign slip in the distribution costs every later step?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: what if you wrote -4 times -2 as -8? Where does x land then?"
+            }
           }
         ]
       },
@@ -2024,11 +2309,21 @@
         "steps": [
           {
             "math": "subtract 7: -4x < 12",
-            "annotation": "Subtracting never flips the sign."
+            "annotation": "Subtracting never flips the sign.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: does subtracting 7 change the direction of the < ? ",
+              "answer": "no -- adding and subtracting never flip the sign"
+            }
           },
           {
             "math": "divide by -4",
-            "annotation": "This is the negative move — the sign will reverse."
+            "annotation": "This is the negative move — the sign will reverse.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the number you are about to divide by. What is its sign?",
+              "answer": "-4, negative -- that is the signal that the inequality must reverse"
+            }
           },
           {
             "math": "x > -3",
@@ -2036,7 +2331,12 @@
           },
           {
             "math": "check x = 0: -4(0) + 7 = 7 < 19, true",
-            "annotation": "A test point from the solution confirms the direction."
+            "annotation": "A test point from the solution confirms the direction.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "A classmate divided -4x < 12 by -4 and wrote x < -3. Why is that wrong?",
+              "answer": "they failed to reverse the sign when dividing by a negative; x < -3 fails the x = 0 test, so it must be x > -3"
+            }
           }
         ]
       },
@@ -2055,14 +2355,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Write the solution with the flipped sign.",
-            "given": false
+            "math": "x <= -3",
+            "annotation": "Reversed, because we divided by a negative.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Test a value from your solution in the original to confirm.",
-            "given": false
+            "annotation": "Do your Name the Trap: what wrong answer do you get if you forget to reverse?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: which side of -3 does the sign land on if you skip the flip?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Solve -6x + 5 > 23.",
+        "answer": "x < -3",
+        "steps": [
+          {
+            "math": "subtract 5: -6x > 18",
+            "annotation": "Subtracting never flips the sign.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: circle the number you are dividing by. What is its sign?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal: circle the divisor. Is it negative?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: divide by -6 and write the solution with the reversed sign.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: after dividing by -6, does x go above or below -3?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Do your Name the Trap: what wrong answer comes from not reversing the sign?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: which answer do you get if you divide by -6 and keep the > ?"
+            }
           }
         ]
       },
@@ -2326,15 +2668,30 @@
           },
           {
             "math": "60 + 12x = 240",
-            "annotation": "The $60 is fixed (once); the $12 is per guest, so it multiplies x."
+            "annotation": "The $60 is fixed (once); the $12 is per guest, so it multiplies x.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the two words that tell you which price multiplies x.",
+              "answer": "'per guest' -- a per-something rate is what x is multiplied by"
+            }
           },
           {
             "math": "12x = 180",
-            "annotation": "Clear the fixed fee."
+            "annotation": "Clear the fixed fee.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: after the setup fee comes off, what is 12x equal to?",
+              "answer": "180 -- 240 - 60 = 180"
+            }
           },
           {
             "math": "x = 15",
-            "annotation": "15 guests — a whole number, sensible for the context."
+            "annotation": "15 guests — a whole number, sensible for the context.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "A classmate wrote 60x + 12 = 240. Which quantity did they attach the wrong coefficient to?",
+              "answer": "the $60 setup fee is charged once, not per guest -- the $12 is the one that multiplies x"
+            }
           }
         ]
       },
@@ -2353,14 +2710,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Clear the fixed $30 from both sides.",
-            "given": false
+            "math": "18x = 126",
+            "annotation": "Clear the one-time joining fee first.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Divide to find the months; check it fits the context.",
-            "given": false
+            "annotation": "Do your Check It: divide to find the months, then test it against $156.",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Check It: find the months, then show 30 + 18x really totals $156."
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "A plumber charges a $45 call fee plus $25 per hour. A job's bill was $170. How many hours?",
+        "answer": "5 hours",
+        "steps": [
+          {
+            "math": "let x = number of hours",
+            "annotation": "Name the unknown first.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal: circle the two words that say which price multiplies x.",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal: which price is 'per' something, so it multiplies x?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: clear the one-time call fee from both sides.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: after the $45 comes off, what does 25x equal?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Do your Name the Trap: which quantity gets the wrong coefficient if you go by word order?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: why is 45x + 25 = 170 the wrong model here?"
+            }
           }
         ]
       },
@@ -2589,7 +2988,12 @@
         "steps": [
           {
             "math": "let s = scones; muffins = s + 5",
-            "annotation": "Name one quantity; express the other in terms of it (5 MORE muffins)."
+            "annotation": "Name one quantity; express the other in terms of it (5 MORE muffins).",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the phrase that says which item there are MORE of.",
+              "answer": "'5 more muffins than scones' -- so muffins = s + 5, not scones = s + 5"
+            }
           },
           {
             "math": "2(s + 5) + 3s = 60",
@@ -2597,11 +3001,21 @@
           },
           {
             "math": "2s + 10 + 3s = 5s + 10 = 60, so 5s = 50",
-            "annotation": "Distribute and combine, then clear the constant."
+            "annotation": "Distribute and combine, then clear the constant.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before you look: what do the two x-terms 2s and 3s combine to?",
+              "answer": "5s, and the equation becomes 5s + 10 = 60"
+            }
           },
           {
             "math": "s = 10 scones (15 muffins): 2(15) + 3(10) = 30 + 30 = 60, true",
-            "annotation": "Justify by substituting back — the totals reproduce $60."
+            "annotation": "Justify by substituting back — the totals reproduce $60.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "A classmate labeled scones as s + 5 instead of muffins. Show why their answer cannot be checked back to $60.",
+              "answer": "attaching '5 more' to the wrong item gives 2s + 3(s + 5) = 60, so s = 9 and the real totals do not reproduce $60"
+            }
           }
         ]
       },
@@ -2620,14 +3034,56 @@
             "given": true
           },
           {
-            "math": null,
-            "annotation": "Distribute and combine to get one x-term and one number, then solve.",
-            "given": false
+            "math": "3p + p + 4 = 4p + 4 = 24, so 4p = 20",
+            "annotation": "Distribute and combine, then clear the constant.",
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Justify: put the counts back and show the money totals $24.",
-            "given": false
+            "annotation": "Do your Check It: solve for the pens, then justify by rebuilding the $24.",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Check It: find the pens and pencils, then show the money adds back to $24."
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Adult tickets cost $8 and child tickets $5. A booth sells 3 more child tickets than adult tickets and collects $80. How many adult tickets, and how do you know?",
+        "answer": "5 adult tickets (8 child): 8(5) + 5(8) = 40 + 40 = 80",
+        "steps": [
+          {
+            "math": "let a = adult tickets; child = a + 3",
+            "annotation": "Name one quantity; express the other in terms of it (3 MORE child tickets).",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Say Why: say why the $8 goes with a and the $5 goes with a + 3.",
+            "given": false,
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why: write the equation. Which price multiplies which count, and why?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It: distribute, combine, and clear the constant.",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It: what does 13a equal once the constant comes off?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Do your Check It: justify by putting both counts back and rebuilding the $80.",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Check It: show the two ticket counts really add back to $80."
+            }
           }
         ]
       },
