@@ -44,6 +44,14 @@ legacy v3 content is untouched:
           e) a Find the Mistake source exists: >=1 practice problem of
              type error_analysis with shown_work.
 
+Item-spec alignment gate:
+  Gate 7  PLD coverage — a standard that carries `pld_descriptors` (the
+          proficiency-level descriptors lifted from the ILEARN item
+          specification) must have at least one skill tagged with each band
+          the spec actually describes. A band the spec defines but no skill
+          teaches is an intervention that cannot move a student across that
+          proficiency line. Reports as a warning; hard-fails under --strict.
+
 Run:  python engine/validate_content.py [--strict]
 Wire into CI as a gate before shipping content; authoring runs --strict.
 """
@@ -69,6 +77,10 @@ ROOT = _find_root()
 WEB = os.path.join(ROOT, "web", "content", "skills")
 AUTH = os.path.join(ROOT, "authoring", "data", "skills")
 STRATS = os.path.join(ROOT, "web", "content", "strategies", "math")
+
+# Gate 7: the ILEARN proficiency bands, low to high. Mirrors PLD_BAND_ORDER
+# in web/src/lib/intervention/skills.ts.
+PLD_BANDS = ("below", "approaching", "at", "above")
 
 # Gate 6a: the closed thinking-moves menu (mirror of THINKING_MOVES in
 # generate_skill_packet.py and the glossary in
@@ -157,6 +169,20 @@ def main():
         cj = json.load(io.open(cf, encoding="utf-8"))
         if wj != cj:
             failures.append(f"{base}: web/authoring mirrors differ")
+
+        # -- Gate 7: item-spec PLD coverage ---------------------------
+        # Bands are only checked when the spec describes them, so standards
+        # without pld_descriptors (not yet mapped to an item spec) are silent
+        # rather than noisy.
+        pld_desc = wj.get("pld_descriptors") or {}
+        described = [b for b in PLD_BANDS if (pld_desc.get(b) or "").strip()]
+        if described:
+            tagged = {s.get("pld_band") for s in wj.get("skills", [])}
+            for band in described:
+                if band not in tagged:
+                    gate.append(
+                        f"{base}: item spec describes the '{band}' proficiency "
+                        f"level but no skill is tagged pld_band '{band}' (Gate 7)")
 
         for s in wj.get("skills", []):
             sid = s.get("skill_id", "?")

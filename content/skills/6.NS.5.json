@@ -138,7 +138,218 @@
           "kind": "ask",
           "text": "Your turn: use 8 x 8 = 64 to build 8 x 9 the same way."
         }
-      ]
+      ],
+      "worked_solution": {
+        "stem": "What is 6 x 7?",
+        "answer": "42",
+        "steps": [
+          {
+            "math": "start from a fact you already own:  5 x 7 = 35",
+            "annotation": "",
+            "check": {
+              "move": "call_it",
+              "prompt": "You know 5 x 7 without thinking. What is it?",
+              "answer": "35"
+            }
+          },
+          {
+            "math": "one more group of 7:  35 + 7 = 42",
+            "annotation": "",
+            "check": {
+              "move": "say_why",
+              "prompt": "Why add 7, and not 6, to get from five 7s to six 7s?",
+              "answer": "each group is a 7, so one more group adds 7"
+            }
+          },
+          {
+            "math": "6 x 7 = 42,  so 42 / 7 = 6",
+            "annotation": "",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Inside 6 x (42 / 7), who says 42 / 7 = 7? What does that break?",
+              "answer": "the fact -- 42 / 7 is 6, and every step after it inherits the error"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "What is 7 x 8?",
+        "answer": "56",
+        "steps": [
+          {
+            "math": "start from a fact you already own:  7 x 4 = 28",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "double it:  28 + 28 = 56",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: write the fact. Who answers 54 here, and what did they guess from?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the fact. Who answers 54 here, and what did they guess from?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "What is 8 x 9?",
+        "answer": "72",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Call It − start from 8 x 10. What is it?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − start from 8 x 10. What is it?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Say Why − why take away 8, and not 9?",
+            "given": false,
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why − why take away 8, and not 9?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − write it. Who answers 81, and what fact did they grab?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − write it. Who answers 81, and what fact did they grab?"
+            }
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "What is 6 x 8?",
+          "answer": "48"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is 56 / 7?",
+          "answer": "8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is 9 x 7?",
+          "answer": "63"
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is 72 / 9?",
+          "answer": "8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is 4 x 12?",
+          "answer": "48"
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is 63 / 9?",
+          "answer": "7"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Use 6 x 10 to find 6 x 9. Show the step.",
+          "answer": "60 − 6 = 54"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Evaluating 6 x (42 / 7) + 100, Nia wrote 6 x 7 + 100 = 142. Find her mistake and fix it.",
+          "shown_work": [
+            "6 x (42 / 7) + 100",
+            "Nia says 42 / 7 = 7",
+            "6 x 7 + 100",
+            "42 + 100 = 142"
+          ],
+          "answer": "Her order of operations was right; the fact was wrong. 42 / 7 = 6, not 7. So the expression is 6 x 6 + 100 = 36 + 100 = 136. One shaky fact spoils every step after it."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Build It From What You Know",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Array grid paper",
+            "Colored pencils",
+            "Fact cards within 100"
+          ],
+          "instructions": "1. Draw a card, then build that product as an array on grid paper.\n2. Split the array into a fact you already own plus a leftover strip, for example 6 x 7 as 5 x 7 and one more row of 7.\n3. Write the two pieces as an addition and total them.\n4. Say the whole chain out loud: 'five sevens is 35, one more seven is 42.'\n5. Turn it around: write the matching division fact under it.\n6. Repeat with four more cards, always splitting off a fact you already own."
+        },
+        {
+          "type": "game",
+          "title": "Beat the Chain",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Fact cards within 100",
+            "Timer"
+          ],
+          "instructions": "1. Flip a card and both players race to say the product.\n2. The winner must also say the matching division fact to score.\n3. Any fact answered from a build ('ten eights minus eight') scores double, because that is the strategy being taught.\n4. Play for three minutes and mark the facts that needed a build. Those are the ones to practice next session."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Splitting an array into a known fact plus a leftover row makes the build strategy visible before it is used mentally."
+        },
+        {
+          "strategy_id": "strat-math-010",
+          "why": "Choral response on a small set of facts gives the many quick opportunities to respond that fluency actually needs."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Which nearby fact do you already own?",
+          "How do you get from that fact to this one?",
+          "What is the matching division fact?",
+          "You paused on that one. Which fact would you build it from?",
+          "Why does one wrong fact spoil the whole expression?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student guesses a product that is close but wrong.",
+            "say": "Do not guess. Name a fact you own that is near it, then step to this one.",
+            "praise": "You built it instead of guessing, and that is what makes it stick."
+          },
+          {
+            "if_you_see": "Student knows the multiplication but stalls on the division.",
+            "say": "Say the multiplication out loud, then read it backwards. The same three numbers make both facts.",
+            "praise": "You used the multiplication to get the division, which is exactly the connection."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "What is 7 x 6, and what is 42 / 6?",
+            "look_for": "42 and 7, answered quickly and as a linked pair."
+          },
+          {
+            "prompt": "Build 6 x 9 from 6 x 10.",
+            "look_for": "60 minus 6 is 54, with the step said aloud."
+          }
+        ]
+      },
+      "sentence_starters": [
+        "I know ___ x ___ = ___, so ___ x ___ is ___ more, which is ___.",
+        "Since ___ x ___ = ___, I know ___ / ___ = ___."
+      ],
+      "engine_stems": []
     },
     {
       "skill_id": "6NS5-F2",
@@ -232,7 +443,217 @@
           "kind": "ask",
           "text": "Your turn: what is 7/10 - 4/10?"
         }
-      ]
+      ],
+      "worked_solution": {
+        "stem": "7/10 − 4/10",
+        "answer": "3/10",
+        "steps": [
+          {
+            "math": "the pieces are the same size:  tenths",
+            "annotation": "",
+            "check": {
+              "move": "show_it",
+              "prompt": "Shade 7 tenths, then cross out 4. What size is every piece?",
+              "answer": "a tenth -- the pieces match, so they can be counted straight off"
+            }
+          },
+          {
+            "math": "count what is left:  7 − 4 = 3",
+            "annotation": "",
+            "check": {
+              "move": "call_it",
+              "prompt": "How many tenths are still shaded?",
+              "answer": "3 tenths"
+            }
+          },
+          {
+            "math": "3/10",
+            "annotation": "",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes 5/16 for 3/8 + 2/8? What did they do to the bottom number?",
+              "answer": "added it -- the bottom names the piece size, and counting more pieces never changes it"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "2/5 + 2/5",
+        "answer": "4/5",
+        "steps": [
+          {
+            "math": "the pieces are the same size:  fifths",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "count the pieces:  2 + 2 = 4",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: write the sum. Why doesn't the bottom number become 10?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the sum. Why doesn't the bottom number become 10?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "5/12 + 4/12",
+        "answer": "9/12 (or 3/4)",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Show It − shade 5 twelfths, then 4 more",
+            "given": false,
+            "check": {
+              "move": "show_it",
+              "prompt": "Show It − shade 5 twelfths, then 4 more"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It − how many twelfths altogether?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − how many twelfths altogether?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − write it. Why isn't the answer 9/24?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − write it. Why isn't the answer 9/24?"
+            }
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "1/6 + 2/6",
+          "answer": "3/6 (or 1/2)"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "5/8 − 2/8",
+          "answer": "3/8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "4/9 + 3/9",
+          "answer": "7/9"
+        },
+        {
+          "difficulty": "core",
+          "stem": "9/10 − 6/10",
+          "answer": "3/10"
+        },
+        {
+          "difficulty": "core",
+          "stem": "3/7 + 3/7",
+          "answer": "6/7"
+        },
+        {
+          "difficulty": "core",
+          "stem": "11/12 − 5/12",
+          "answer": "6/12 (or 1/2)"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Inside 2 x (5/8 + 1/8), what is the value of the parentheses?",
+          "answer": "6/8 (or 3/4)"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Kai wrote 3/8 + 2/8 = 5/16. Find the mistake and fix it.",
+          "shown_work": [
+            "3/8 + 2/8",
+            "Kai adds the tops: 3 + 2 = 5",
+            "Kai adds the bottoms: 8 + 8 = 16",
+            "Kai writes 5/16"
+          ],
+          "answer": "He added the bottom numbers. The bottom names how big each piece is, and that does not change when you count more of them. Three eighths plus two eighths is five eighths: 5/8."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Cross Out and Count",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Strips folded into tenths and twelfths",
+            "Colored pencils"
+          ],
+          "instructions": "1. Shade a starting amount on a folded strip, for example 7 of 10 pieces.\n2. Your partner names an amount to remove; cross out that many pieces.\n3. Count what is left and write the subtraction sentence.\n4. Ask each time: did the size of one piece change? Write yes or no.\n5. After five rounds, look at your no column and state the rule.\n6. Finish with one addition round on the same strip so both operations use the same picture."
+        },
+        {
+          "type": "game",
+          "title": "Bottom Stays Put",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Fraction cards sharing a denominator",
+            "Whiteboards"
+          ],
+          "instructions": "1. Deal each player two cards with matching bottoms.\n2. Everyone writes the sum or difference on a whiteboard and reveals together.\n3. Any board whose bottom number changed is out for the round, even if the top is right.\n4. Last player standing takes the round.\n5. Play until every denominator in the deck has come up at least once."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Crossing out pieces on a folded strip shows the piece size holding steady while the count changes."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Adding the denominators is a stable, predictable error, so finding and fixing it in shown work confronts it directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What does the bottom number name? What does the top number count?",
+          "Did the size of one piece change when you added more?",
+          "Read it out loud. What exactly are you counting?",
+          "Why must the bottoms match before you can just count?",
+          "Shade your answer. Does it match the picture?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student adds the bottom numbers along with the top.",
+            "say": "Shade three eighths and two more eighths. Are the pieces still eighths? Then the bottom stays eighths.",
+            "praise": "You counted the pieces and left the piece size alone."
+          },
+          {
+            "if_you_see": "Student stops at an unsimplified answer and is unsure whether it is finished.",
+            "say": "Your count is right. Now ask whether a bigger piece names the same amount.",
+            "praise": "You got the count right before worrying about the name."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "4/9 + 2/9",
+            "look_for": "6/9, denominator unchanged."
+          },
+          {
+            "prompt": "Why is 3/8 + 2/8 not 5/16?",
+            "look_for": "The bottom names the piece size; it is not counted."
+          }
+        ]
+      },
+      "sentence_starters": [
+        "All the pieces are ___, so I just count ___.",
+        "___ pieces and ___ pieces makes ___ pieces, so the answer is ___."
+      ],
+      "engine_stems": []
     },
     {
       "skill_id": "6NS5-B1",
@@ -450,11 +871,21 @@
         "steps": [
           {
             "math": "3 x (10 - 7) + 2",
-            "annotation": "Scan before computing: grouping symbols first."
+            "annotation": "Scan before computing: grouping symbols first.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Scan it before you compute. What has to happen before anything else?",
+              "answer": "the parentheses -- 10 minus 7"
+            }
           },
           {
             "math": "= 3 x 3 + 2",
-            "annotation": "Inside the parentheses, 10 - 7 = 3. Rewrite the whole line."
+            "annotation": "Inside the parentheses, 10 - 7 = 3. Rewrite the whole line.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Parentheses done. Which operation comes next?",
+              "answer": "the multiplication, 3 x 3"
+            }
           },
           {
             "math": "= 9 + 2",
@@ -462,33 +893,42 @@
           },
           {
             "math": "= 11",
-            "annotation": "The addition runs last."
+            "annotation": "The addition runs last.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who computes 5 + 3 first in 5 + 3 x 2? What order are they using?",
+              "answer": "left to right -- reading order, not the order of operations"
+            }
           }
         ]
       },
       "faded_example": {
-        "stem": "Evaluate 6 + 2 x (8 - 3).",
+        "stem": "Evaluate 6 + 2 x (8 − 3).",
         "answer": "16",
         "steps": [
           {
-            "math": "6 + 2 x (8 - 3) = 6 + 2 x 5",
-            "annotation": "Grouping first: 8 - 3 = 5.",
+            "math": "6 + 2 x (8 − 3)",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "= 6 + 2 x 5",
+            "annotation": "",
             "given": true
           },
           {
             "math": "= 6 + 10",
-            "annotation": "Multiplication before addition: 2 x 5 = 10.",
+            "annotation": "",
             "given": true
           },
           {
             "math": null,
-            "annotation": "Do the last operation and rewrite the line.",
-            "given": false
-          },
-          {
-            "math": null,
-            "annotation": "State the final value.",
-            "given": false
+            "annotation": "Name the Trap: finish it. Who gets 40 here, and what order did they use?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: finish it. Who gets 40 here, and what order did they use?"
+            }
           }
         ]
       },
@@ -496,7 +936,45 @@
         "The first step is ___ because the rule says ___ comes before ___.",
         "After that step, my new line reads ___."
       ],
-      "fluency_source": "6NS5-F1"
+      "fluency_source": "6NS5-F1",
+      "guided_example": {
+        "stem": "Evaluate 4 + 5 x (9 − 6).",
+        "answer": "19",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal − scan it. What happens before anything else?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − scan it. What happens before anything else?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It − parentheses done. Which operation is next?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − parentheses done. Which operation is next?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "do that operation",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − finish it. What does straight left to right give?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − finish it. What does straight left to right give?"
+            }
+          }
+        ]
+      }
     },
     {
       "skill_id": "6NS5-B2",
@@ -715,11 +1193,21 @@
         "steps": [
           {
             "math": "common denominator: 6",
-            "annotation": "Both 3 and 6 go into 6, so cut both bars into sixths."
+            "annotation": "Both 3 and 6 go into 6, so cut both bars into sixths.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Why can't thirds and sixths be added the way they are written?",
+              "answer": "different piece sizes -- they have to be renamed to match"
+            }
           },
           {
             "math": "1/3 = 2/6",
-            "annotation": "A third is two sixths."
+            "annotation": "A third is two sixths.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Rename 1/3 in sixths. What is it?",
+              "answer": "2/6"
+            }
           },
           {
             "math": "2/6 + 1/6 = 3/6",
@@ -727,7 +1215,12 @@
           },
           {
             "math": "3/6 = 1/2",
-            "annotation": "Three sixths is the same as one half."
+            "annotation": "Three sixths is the same as one half.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes 2/6 for 1/2 + 1/4? What did they add straight across?",
+              "answer": "numerators and denominators both -- the true sum is 3/4"
+            }
           }
         ]
       },
@@ -736,24 +1229,28 @@
         "answer": "3/4",
         "steps": [
           {
-            "math": "common denominator: 4",
-            "annotation": "Both 4 and 2 go into 4.",
+            "math": "common denominator:  4",
+            "annotation": "",
             "given": true
           },
           {
             "math": "1/2 = 2/4",
-            "annotation": "Rename the half as fourths so the pieces match.",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "1/4 + 2/4 = 3/4",
+            "annotation": "",
             "given": true
           },
           {
             "math": null,
-            "annotation": "Add the fourths.",
-            "given": false
-          },
-          {
-            "math": null,
-            "annotation": "State the sum.",
-            "given": false
+            "annotation": "Name the Trap: write the sum. Why isn't the answer 2/6?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the sum. Why isn't the answer 2/6?"
+            }
           }
         ]
       },
@@ -761,7 +1258,45 @@
         "The pieces do not match, so I rename ___ as ___.",
         "I lined up the decimal points so that ___ adds to ___."
       ],
-      "fluency_source": "6NS5-F2"
+      "fluency_source": "6NS5-F2",
+      "guided_example": {
+        "stem": "Add 1/2 + 1/6.",
+        "answer": "2/3",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Say Why − why can't halves and sixths be added as written?",
+            "given": false,
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why − why can't halves and sixths be added as written?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It − rename 1/2 in sixths. What is it?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − rename 1/2 in sixths. What is it?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "add the pieces",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − write it in simplest form. Why isn't it 2/8?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − write it in simplest form. Why isn't it 2/8?"
+            }
+          }
+        ]
+      }
     },
     {
       "skill_id": "6NS5-S7",
@@ -877,9 +1412,9 @@
           "2. EXPONENTS.",
           "3. MULTIPLY and DIVIDE, left to right.",
           "4. ADD and SUBTRACT, left to right.",
-          "8 + 3 x 5^2   ->  first step is 5^2, NOT 8 + 3.",
-          "6 x (42 / 7) + 100  ->  first step is 42 / 7.",
-          "[(9 + 3) / 4] x 5  ->  first step is 9 + 3, the innermost group.",
+          "8 + 3 x 5^2 → first step is 5^2, NOT 8 + 3.",
+          "6 x (42 / 7) + 100 → first step is 42 / 7.",
+          "[(9 + 3) / 4] x 5 → first step is 9 + 3, the innermost group.",
           "Left to right breaks ties WITHIN a level. It never picks the level."
         ]
       },
@@ -1020,7 +1555,12 @@
         "steps": [
           {
             "math": "Scan the whole expression before choosing.",
-            "annotation": "Do not start at the left by habit."
+            "annotation": "Do not start at the left by habit.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Scan it. What do you look for first, then second, then third?",
+              "answer": "grouping symbols, then exponents, then x and /"
+            }
           },
           {
             "math": "Grouping symbols? There are none here.",
@@ -1028,32 +1568,51 @@
           },
           {
             "math": "Exponents? Yes -- 5^2.",
-            "annotation": "Exponents outrank both the addition and the multiplication."
+            "annotation": "Exponents outrank both the addition and the multiplication.",
+            "check": {
+              "move": "call_it",
+              "prompt": "No grouping symbols. What is the next thing on the list?",
+              "answer": "exponents -- and there is one, 5^2"
+            }
           },
           {
             "math": "First step: evaluate 5^2.",
-            "annotation": "8 + 3 is tempting only because it is leftmost."
+            "annotation": "8 + 3 is tempting only because it is leftmost.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who says the first step is 8 + 3? What order are they reading in?",
+              "answer": "left to right -- reading order, not the order of operations"
+            }
           }
         ]
       },
       "faded_example": {
-        "stem": "An expression is given: 20 - 2 x 3^2. What is the first step in evaluating it?",
+        "stem": "An expression is given: 20 − 2 x 3^2. What is the first step in evaluating it?",
         "answer": "Evaluate 3^2",
         "steps": [
           {
             "math": "Scan the whole expression before choosing.",
-            "annotation": "Do not start at the left by habit.",
+            "annotation": "",
             "given": true
           },
           {
             "math": "Grouping symbols? There are none here.",
-            "annotation": "Level one is empty, so move down.",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "Exponents? Yes -- 3^2.",
+            "annotation": "",
             "given": true
           },
           {
             "math": null,
-            "annotation": "Check the next level down and name the first step. Why is 20 - 2 the tempting wrong choice?",
-            "given": false
+            "annotation": "Name the Trap: name the first step. Who answers 20 − 2, and why?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: name the first step. Who answers 20 − 2, and why?"
+            }
           }
         ]
       },
@@ -1063,7 +1622,45 @@
         "___ is tempting because it is leftmost, but ___."
       ],
       "fluency_source": "6NS5-F1",
-      "pld_band": "below"
+      "pld_band": "below",
+      "guided_example": {
+        "stem": "An expression is given: 12 + 4 x 2^3. What is the first step in evaluating it?",
+        "answer": "Evaluate 2^3",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal − scan it. What do you look for, in what order?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − scan it. What do you look for, in what order?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "grouping symbols: are there any?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Call It − none. What is next on the list?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − none. What is next on the list?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − name the first step. Who answers 12 + 4?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − name the first step. Who answers 12 + 4?"
+            }
+          }
+        ]
+      }
     },
     {
       "skill_id": "6NS5-S1",
@@ -1385,11 +1982,21 @@
         "steps": [
           {
             "math": "6 x (42 / 7) + 100",
-            "annotation": "Scan before you compute: parentheses first, always."
+            "annotation": "Scan before you compute: parentheses first, always.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Scan it first. What has to happen before anything else?",
+              "answer": "the parentheses -- 42 divided by 7"
+            }
           },
           {
             "math": "= 6 x 6 + 100",
-            "annotation": "42 / 7 = 6. Rewrite the whole line with 6 standing in for the parentheses."
+            "annotation": "42 / 7 = 6. Rewrite the whole line with 6 standing in for the parentheses.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Parentheses done. Which operation comes next?",
+              "answer": "the multiplication, 6 x 6"
+            }
           },
           {
             "math": "= 36 + 100",
@@ -1397,32 +2004,84 @@
           },
           {
             "math": "= 136",
-            "annotation": "Only when multiplication is done does the addition get its turn."
+            "annotation": "Only when multiplication is done does the addition get its turn.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who computes 60 − 5 first in 60 − 5 x 8? What order is that?",
+              "answer": "left to right -- multiplication comes before subtraction"
+            }
           }
         ]
       },
       "faded_example": {
-        "stem": "Evaluate: 4 x (15 - 9) + 8",
+        "stem": "Evaluate: 4 x (15 − 9) + 8",
         "answer": "32",
         "steps": [
           {
-            "math": "4 x (15 - 9) + 8 = 4 x 6 + 8",
-            "annotation": "Parentheses first: 15 - 9 = 6.",
+            "math": "4 x (15 − 9) + 8",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "= 4 x 6 + 8",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "= 24 + 8",
+            "annotation": "",
             "given": true
           },
           {
             "math": null,
-            "annotation": "Which operation wins now -- the multiplication or the addition? Compute it and rewrite the line.",
+            "annotation": "Name the Trap: finish it. Who works straight left to right, and what do they get?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: finish it. Who works straight left to right, and what do they get?"
+            }
+          }
+        ]
+      },
+      "pld_band": "below",
+      "guided_example": {
+        "stem": "Evaluate: 5 x (24 / 8) + 30",
+        "answer": "45",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal − what has to happen before anything else?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − what has to happen before anything else?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It − parentheses done. Which operation comes next?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − parentheses done. Which operation comes next?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "add what is left",
             "given": false
           },
           {
             "math": null,
-            "annotation": "Finish with the last operation.",
-            "given": false
+            "annotation": "Name the Trap − finish it. Who does 5 x 24 first, and why?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − finish it. Who does 5 x 24 first, and why?"
+            }
           }
         ]
-      },
-      "pld_band": "below"
+      }
     },
     {
       "skill_id": "6NS5-S2",
@@ -1513,7 +2172,7 @@
         },
         {
           "term": "Inverse property",
-          "definition": "A number and its opposite partner undo each other: 3/4 x 4/3 = 1, and 5 + (-5) = 0 (in grade 6 we focus on the multiplication version)."
+          "definition": "A number and its opposite partner undo each other: 3/4 x 4/3 = 1, and 5 + (−5) = 0 (in grade 6 we focus on the multiplication version)."
         }
       ],
       "next_steps": {
@@ -1736,40 +2395,92 @@
         "steps": [
           {
             "math": "Left side: 7 x (10 + 2)",
-            "annotation": "One 7 multiplying a package of two terms."
+            "annotation": "One 7 multiplying a package of two terms.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Compare the two sides. What changed from left to right?",
+              "answer": "the 7 got handed to both numbers inside the parentheses"
+            }
           },
           {
             "math": "Right side: 7 x 10 + 7 x 2",
-            "annotation": "The 7 got handed to EACH term inside -- shared out, or 'distributed.'"
+            "annotation": "The 7 got handed to EACH term inside -- shared out, or 'distributed.'",
+            "check": {
+              "move": "call_it",
+              "prompt": "One factor multiplied each term inside. Which property is that?",
+              "answer": "the distributive property"
+            }
           },
           {
             "math": "Check: 7 x 12 = 84 and 70 + 14 = 84",
-            "annotation": "Both sides equal 84, so the move was legal. Multiplication reaching across an addition is the distributive property."
+            "annotation": "Both sides equal 84, so the move was legal. Multiplication reaching across an addition is the distributive property.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who calls (5 + 2) + 8 = 5 + (2 + 8) commutative? What actually moved?",
+              "answer": "the parentheses, not the numbers -- that one is associative"
+            }
           }
         ]
       },
       "faded_example": {
-        "stem": "Which property of operations is shown? (4 x 5) x 2 = 4 x (5 x 2)",
+        "stem": "Which property of operations is shown?  (4 x 5) x 2 = 4 x (5 x 2)",
         "answer": "Associative property of multiplication",
         "steps": [
           {
-            "math": "Left numbers in order: 4, 5, 2.  Right numbers in order: 4, 5, 2.",
-            "annotation": "First test: did the numbers swap places?",
+            "math": "Left numbers in order: 4, 5, 2.    Right numbers in order: 4, 5, 2.",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "The numbers did not move; only the parentheses did.",
+            "annotation": "",
             "given": true
           },
           {
             "math": null,
-            "annotation": "The order is the same -- so what DID move?",
-            "given": false
-          },
-          {
-            "math": null,
-            "annotation": "Name the property that moves the grouping without moving the numbers.",
-            "given": false
+            "annotation": "Name the Trap: name the property. Why isn't this the commutative property?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: name the property. Why isn't this the commutative property?"
+            }
           }
         ]
       },
-      "pld_band": "below"
+      "pld_band": "below",
+      "guided_example": {
+        "stem": "Which property of operations is shown?  (9 + 3) + 7 = 9 + (3 + 7)",
+        "answer": "Associative property of addition",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal − compare the sides. What changed?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − compare the sides. What changed?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It − did the numbers move, or did the grouping?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − did the numbers move, or did the grouping?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − name it. Why isn't it commutative?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − name it. Why isn't it commutative?"
+            }
+          }
+        ]
+      }
     },
     {
       "skill_id": "6NS5-S3",
@@ -2035,11 +2746,21 @@
         "steps": [
           {
             "math": "[(54 / 9 + 14) / 4]",
-            "annotation": "Two layers: parentheses inside brackets. Start at the innermost layer."
+            "annotation": "Two layers: parentheses inside brackets. Start at the innermost layer.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Two sets of grouping symbols. Which one do you resolve first?",
+              "answer": "the innermost -- then work outward"
+            }
           },
           {
             "math": "= [(6 + 14) / 4]",
-            "annotation": "Inside the parentheses, division beats addition: 54 / 9 = 6."
+            "annotation": "Inside the parentheses, division beats addition: 54 / 9 = 6.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Inside the parentheses: 54 / 9, then + 14. What do you get?",
+              "answer": "20"
+            }
           },
           {
             "math": "= [20 / 4]",
@@ -2047,32 +2768,84 @@
           },
           {
             "math": "= 5",
-            "annotation": "Now the brackets' own division runs: 20 / 4 = 5."
+            "annotation": "Now the brackets' own division runs: 20 / 4 = 5.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "In 36 / 6 x 2, who multiplies first because M comes before D?",
+              "answer": "PEMDAS-as-order thinking -- x and / go left to right, so 36 / 6 = 6, then 6 x 2 = 12"
+            }
           }
         ]
       },
       "faded_example": {
-        "stem": "Evaluate: [(5 x 8 - 10) / 6]",
+        "stem": "Evaluate: [(5 x 8 − 10) / 6]",
         "answer": "5",
         "steps": [
           {
-            "math": "[(5 x 8 - 10) / 6] = [(40 - 10) / 6]",
-            "annotation": "Innermost layer first, and inside it multiplication beats subtraction: 5 x 8 = 40.",
+            "math": "[(5 x 8 − 10) / 6]",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "= [(40 − 10) / 6]",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "= [30 / 6]",
+            "annotation": "",
             "given": true
           },
           {
             "math": null,
-            "annotation": "Finish the inside of the parentheses and rewrite the line.",
+            "annotation": "Name the Trap: finish it. Who does 10 / 6 first, and what did they ignore?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: finish it. Who does 10 / 6 first, and what did they ignore?"
+            }
+          }
+        ]
+      },
+      "pld_band": "approaching",
+      "guided_example": {
+        "stem": "Evaluate: [(72 / 8 + 6) / 3]",
+        "answer": "5",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal − which grouping symbols do you resolve first?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − which grouping symbols do you resolve first?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It − inside: 72 / 8, then + 6. What do you get?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − inside: 72 / 8, then + 6. What do you get?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "divide by 3",
             "given": false
           },
           {
             "math": null,
-            "annotation": "Run the last division to collapse the brackets.",
-            "given": false
+            "annotation": "Name the Trap − finish it. Who does 8 + 6 first, and what did they skip?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − finish it. Who does 8 + 6 first, and what did they skip?"
+            }
           }
         ]
-      },
-      "pld_band": "approaching"
+      }
     },
     {
       "skill_id": "6NS5-S4",
@@ -2368,11 +3141,21 @@
         "steps": [
           {
             "math": "3² + (4/5) x 10",
-            "annotation": "Check grouping first -- the parentheses just hold the fraction, nothing to compute. Exponents come next."
+            "annotation": "Check grouping first -- the parentheses just hold the fraction, nothing to compute. Exponents come next.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Scan it. What has to be evaluated first here?",
+              "answer": "the exponent, 3²"
+            }
           },
           {
             "math": "= 9 + (4/5) x 10",
-            "annotation": "3² means 3 x 3 = 9. Never 3 x 2 -- the little 2 counts copies."
+            "annotation": "3² means 3 x 3 = 9. Never 3 x 2 -- the little 2 counts copies.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who computes 3² as 3 x 2 = 6? What does the exponent actually tell you?",
+              "answer": "how many times to use 3 as a factor -- 3 x 3 = 9"
+            }
           },
           {
             "math": "= 9 + 8",
@@ -2380,32 +3163,84 @@
           },
           {
             "math": "= 17",
-            "annotation": "The addition goes last."
+            "annotation": "The addition goes last.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Ballpark it: 9 plus a bit under 10. Does 17 fit?",
+              "answer": "yes"
+            }
           }
         ]
       },
       "faded_example": {
-        "stem": "Evaluate: 5² - 2.5 x 4",
+        "stem": "Evaluate: 5² − 2.5 x 4",
         "answer": "15",
         "steps": [
           {
-            "math": "5² - 2.5 x 4 = 25 - 2.5 x 4",
-            "annotation": "Exponent first: 5² = 5 x 5 = 25.",
+            "math": "5² − 2.5 x 4",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "= 25 − 2.5 x 4",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "= 25 − 10",
+            "annotation": "",
             "given": true
           },
           {
             "math": null,
-            "annotation": "Multiplication beats subtraction -- compute 2.5 x 4 and rewrite the line.",
+            "annotation": "Check It: finish it, then ballpark 25 take away 10. Does your answer fit?",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Check It: finish it, then ballpark 25 take away 10. Does your answer fit?"
+            }
+          }
+        ]
+      },
+      "pld_band": "at",
+      "guided_example": {
+        "stem": "Evaluate: 4² − (3/4) x 8",
+        "answer": "10",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal − what gets evaluated first here?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − what gets evaluated first here?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − who writes 4² as 8? What does the exponent say?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − who writes 4² as 8? What does the exponent say?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "take 3/4 of 8",
             "given": false
           },
           {
             "math": null,
-            "annotation": "Finish with the subtraction.",
-            "given": false
+            "annotation": "Check It − ballpark 16 take away 6. Does your answer fit?",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Check It − ballpark 16 take away 6. Does your answer fit?"
+            }
           }
         ]
-      },
-      "pld_band": "at"
+      }
     },
     {
       "skill_id": "6NS5-S5",
@@ -2752,15 +3587,30 @@
         "steps": [
           {
             "math": "8(16 + 24) - 52",
-            "annotation": "The 8 multiplies the whole package (16 + 24). The 52 sits OUTSIDE the parentheses."
+            "annotation": "The 8 multiplies the whole package (16 + 24). The 52 sits OUTSIDE the parentheses.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "What is the 8 multiplying? Circle exactly what sits inside.",
+              "answer": "16 and 24 -- the 52 is outside the parentheses"
+            }
           },
           {
             "math": "8 x 16 + 8 x 24 - 52",
-            "annotation": "Distribute: the 8 reaches each term inside -- and stops at the closing parenthesis. The 52 stays as it was."
+            "annotation": "Distribute: the 8 reaches each term inside -- and stops at the closing parenthesis. The 52 stays as it was.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes 7 x 9 + 4 for 7(9 + 4)? How far did the 7 reach?",
+              "answer": "only the first term -- it has to reach both: 7 x 9 + 7 x 4"
+            }
           },
           {
             "math": "Check: 8 x 40 - 52 = 320 - 52 = 268, and 128 + 192 - 52 = 268",
-            "annotation": "Both forms equal 268, so they're equivalent. The wrong version 8 x 52 would have subtracted 416 -- way too much."
+            "annotation": "Both forms equal 268, so they're equivalent. The wrong version 8 x 52 would have subtracted 416 -- way too much.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Evaluate both forms. Do they agree?",
+              "answer": "yes -- both give 268"
+            }
           }
         ]
       },
@@ -2770,22 +3620,59 @@
         "steps": [
           {
             "math": "9(20 + 4): the 9 multiplies BOTH the 20 and the 4",
-            "annotation": "Draw an arrow from the 9 to each term inside.",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "9 x 20 + 9 x 4 = 180 + 36",
+            "annotation": "",
             "given": true
           },
           {
             "math": null,
-            "annotation": "Write the distributed form with both products.",
-            "given": false
-          },
-          {
-            "math": null,
-            "annotation": "Evaluate both forms -- the original the short way (9 x 24) and your rewrite -- and confirm they match.",
-            "given": false
+            "annotation": "Check It: finish both forms. Does 9 x 24 give the same total?",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Check It: finish both forms. Does 9 x 24 give the same total?"
+            }
           }
         ]
       },
-      "pld_band": "at"
+      "pld_band": "at",
+      "guided_example": {
+        "stem": "Which expression is equivalent to 5(12 + 30) − 40?",
+        "answer": "(5 x 12) + (5 x 30) − 40",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal − what is the 5 multiplying? What sits outside?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − what is the 5 multiplying? What sits outside?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − who multiplies the 40 by 5 too? What did they include?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − who multiplies the 40 by 5 too? What did they include?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Check It − evaluate both forms. Do they agree?",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Check It − evaluate both forms. Do they agree?"
+            }
+          }
+        ]
+      }
     },
     {
       "skill_id": "6NS5-S6",
@@ -3092,19 +3979,39 @@
         "steps": [
           {
             "math": "4 x 3 + 5 = 12 + 5 = 17",
-            "annotation": "First find the value with NO parentheses. 17 is not 32, so the parentheses must change the order."
+            "annotation": "First find the value with NO parentheses. 17 is not 32, so the parentheses must change the order.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Evaluate it as written first. What do you get, and what is the target?",
+              "answer": "17, and the target is 32"
+            }
           },
           {
             "math": "Try (4 x 3) + 5 = 17",
-            "annotation": "These parentheses repeat what order of operations already does -- nothing changes. Cross this option off."
+            "annotation": "These parentheses repeat what order of operations already does -- nothing changes. Cross this option off.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Those parentheses changed nothing. Why not?",
+              "answer": "they wrapped what the order of operations already did first"
+            }
           },
           {
             "math": "Try 4 x (3 + 5) = 4 x 8 = 32",
-            "annotation": "These parentheses OVERRIDE the order: addition now runs first. Evaluate and compare to the target."
+            "annotation": "These parentheses OVERRIDE the order: addition now runs first. Evaluate and compare to the target.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Evaluate your placement. Does it hit the target exactly?",
+              "answer": "yes -- 4 x 8 = 32"
+            }
           },
           {
             "math": "32 = 32, true",
-            "annotation": "The check against the target is what turns a guess into an answer."
+            "annotation": "The check against the target is what turns a guess into an answer.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes (2 x 8) − 5 for a target of 6 and moves on? What did they skip?",
+              "answer": "evaluating it -- (2 x 8) − 5 is 11, not 6"
+            }
           }
         ]
       },
@@ -3113,23 +4020,70 @@
         "answer": "(6 + 4) x 5 = 50",
         "steps": [
           {
-            "math": "With no parentheses: 6 + 4 x 5 = 6 + 20 = 26",
-            "annotation": "26 is not 50, so the parentheses must change which step runs first.",
+            "math": "With no parentheses:  6 + 4 x 5 = 6 + 20 = 26",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "The target is 50, so the addition has to happen first.",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "Try (6 + 4) x 5 = 10 x 5 = 50",
+            "annotation": "",
             "given": true
           },
           {
             "math": null,
-            "annotation": "There are two candidate placements. Try one, evaluate it completely.",
+            "annotation": "Name the Trap: write the true equation. Who places them and moves on without checking?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the true equation. Who places them and moves on without checking?"
+            }
+          }
+        ]
+      },
+      "pld_band": "above",
+      "guided_example": {
+        "stem": "Place one set of parentheses in 10 − 2 x 4 = 32 to make it true.",
+        "answer": "(10 − 2) x 4 = 32",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal − evaluate as written. What do you get vs the target?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − evaluate as written. What do you get vs the target?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It − which operation has to happen first to reach 32?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − which operation has to happen first to reach 32?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "place the parentheses and evaluate",
             "given": false
           },
           {
             "math": null,
-            "annotation": "Compare your value to the target 50. If it misses, try the other placement and check again.",
-            "given": false
+            "annotation": "Name the Trap − write the true equation. Who never checks the value?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − write the true equation. Who never checks the value?"
+            }
           }
         ]
-      },
-      "pld_band": "above"
+      }
     },
     {
       "skill_id": "6NS5-S8",
@@ -3385,7 +4339,12 @@
         "steps": [
           {
             "math": "Numerator: 12 + 8 = 20.",
-            "annotation": "The bar groups the whole top -- collapse it to one number."
+            "annotation": "The bar groups the whole top -- collapse it to one number.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "A fraction bar groups. What must you finish before you divide?",
+              "answer": "the top and the bottom, each down to a single value"
+            }
           },
           {
             "math": "Denominator: 4 + 1 = 5.",
@@ -3393,7 +4352,12 @@
           },
           {
             "math": "The fraction is 20 / 5 = 4.",
-            "annotation": "One division, once both halves are single values."
+            "annotation": "One division, once both halves are single values.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Top is 20, bottom is 5. What does the fraction equal?",
+              "answer": "4"
+            }
           },
           {
             "math": "(2 + 3)^2 = 5^2 = 25.",
@@ -3401,33 +4365,47 @@
           },
           {
             "math": "25 - 4 = 21.",
-            "annotation": "Subtract last."
+            "annotation": "Subtract last.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who computes 12/4 + 8/1 for (12 + 8) / (4 + 1)? What did they divide?",
+              "answer": "term by term across the bar -- the bar groups, so it is 20 / 5 = 4"
+            }
           }
         ]
       },
       "faded_example": {
-        "stem": "Evaluate: (1 + 4)^2 - [(10 + 5) / (2 + 1)]",
+        "stem": "Evaluate: (1 + 4)^2 − [(10 + 5) / (2 + 1)]",
         "answer": "20",
         "steps": [
           {
-            "math": "Numerator: 10 + 5 = 15.",
-            "annotation": "The bar groups the whole top -- collapse it to one number.",
+            "math": "Numerator:  10 + 5 = 15.",
+            "annotation": "",
             "given": true
           },
           {
-            "math": "Denominator: 2 + 1 = 3.",
-            "annotation": "And the whole bottom. Now the division is legal.",
+            "math": "Denominator:  2 + 1 = 3.",
+            "annotation": "",
             "given": true
           },
           {
             "math": "The fraction is 15 / 3 = 5.",
-            "annotation": "One division, once both halves are single values.",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "(1 + 4)^2 = 5^2 = 25.",
+            "annotation": "",
             "given": true
           },
           {
             "math": null,
-            "annotation": "Evaluate the squared grouping, then subtract, and state the value.",
-            "given": false
+            "annotation": "Name the Trap: finish it. Who computes 10/2 + 5/1 instead, and what did they divide?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: finish it. Who computes 10/2 + 5/1 instead, and what did they divide?"
+            }
           }
         ]
       },
@@ -3437,7 +4415,50 @@
         "I cannot divide yet because ___."
       ],
       "fluency_source": "6NS5-F1",
-      "pld_band": "above"
+      "pld_band": "above",
+      "guided_example": {
+        "stem": "Evaluate: (3 + 2)^2 − [(9 + 6) / (2 + 3)]",
+        "answer": "22",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal − what must be finished before you divide?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − what must be finished before you divide?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "resolve the bottom",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Call It − top over bottom. What does the fraction equal?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − top over bottom. What does the fraction equal?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "evaluate the squared group",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − subtract. Who divides term by term across the bar?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − subtract. Who divides term by term across the bar?"
+            }
+          }
+        ]
+      }
     }
   ],
   "skill_sequence": [

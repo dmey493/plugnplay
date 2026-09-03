@@ -85,10 +85,14 @@ def _fmt_tick(v):
     try:
         fv = float(v)
     except (TypeError, ValueError):
-        return str(v)
+        return str(v).replace("-", "−")
     if fv == int(fv):
-        return str(int(fv))
-    return f"{fv:.2f}".rstrip("0").rstrip(".")
+        out = str(int(fv))
+    else:
+        out = f"{fv:.2f}".rstrip("0").rstrip(".")
+    # A hyphen next to a digit reads as a hyphen. Negative ticks get U+2212
+    # MINUS SIGN so the label looks like the number it names.
+    return out.replace("-", "−")
 
 
 def _clip_line_to_rect(lx1, ly1, lx2, ly2, rx_min, rx_max, ry_min, ry_max):
@@ -188,6 +192,9 @@ class MathPDF(FPDF):
         self.category = category
         self.subdomain = subdomain
         self.calculator = calculator
+        # Printed in the footer so a teacher holding paper can find the skill
+        # in the app. Without it the routing chips have nothing to match.
+        self.skill_tag = ""
         self._setup_fonts()
 
     def _setup_fonts(self):
@@ -915,7 +922,17 @@ class MathPDF(FPDF):
         fs = 7 if compact else FONT_SIZE_SMALL
 
         if orientation == "horizontal":
-            # Each header is a row; data values go across columns
+            # Each header is a row label; each entry of `rows` is a data COLUMN
+            # holding one value per row. Authored data sometimes arrives
+            # transposed (one header, each "row" a full series), which used to
+            # draw a single line and silently discard every value past the
+            # first. Detect that and transpose it back.
+            if len(headers) == 1 and len(rows) > 1 and any(len(r) > 1 for r in rows):
+                headers = [str(r[0]) for r in rows]
+                series = [list(r[1:]) for r in rows]
+                width = max((len(sr) for sr in series), default=0)
+                rows = [[(sr[i] if i < len(sr) else "") for sr in series]
+                        for i in range(width)]
             n_data_cols = len(rows)
             n_rows = len(headers)
 
@@ -2354,7 +2371,9 @@ class PlugNPlayPDF(MathPDF):
 
         # Page number + brand
         self.set_font(self.ff, "", 7)
-        page_text = f"Plug N Play  |  Page {self.page_no()}/{{nb}}"
+        tag = getattr(self, "skill_tag", "") or ""
+        page_text = (f"Plug N Play  |  {tag}  |  Page {self.page_no()}/{{nb}}"
+                     if tag else f"Plug N Play  |  Page {self.page_no()}/{{nb}}")
         page_w = self.get_string_width(page_text)
         self.set_xy(self.w - PAGE_MARGIN - page_w, bar_y + 2)
         self.cell(page_w, 5, page_text)

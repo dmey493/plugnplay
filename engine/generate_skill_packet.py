@@ -112,7 +112,12 @@ def _draw_footer(pdf, standard_code, skill_name):
     pdf.set_xy(PAGE_MARGIN, footer_y + 2)
     pdf.cell(pdf.w * 0.55, 5, left)
     pdf.set_font(pdf.ff, "", 7)
-    label = f"Plug N Play  |  Page {pdf.page_no()}"
+    # The skill id has to be on the paper: a teacher holding a printed sheet
+    # otherwise has no way to look the skill up in the app, and the routing
+    # chips on the skill cards have nothing to match against.
+    tag = getattr(pdf, "skill_tag", "") or ""
+    label = (f"Plug N Play  |  {tag}  |  Page {pdf.page_no()}"
+             if tag else f"Plug N Play  |  Page {pdf.page_no()}")
     lw = pdf.get_string_width(label)
     pdf.set_xy(pdf.w - PAGE_MARGIN - lw, footer_y + 2)
     pdf.cell(lw, 5, label)
@@ -282,7 +287,7 @@ LINE_GRAY = (150, 154, 162)   # student writing lines
 # "pass" of a 2-item exit ticket (review priority #2).
 MASTERY_CRITERION = (
     "Mastered = BOTH Show-What-You-Know items correct AND a sound written "
-    "explanation. 1 or fewer correct (or a shaky explanation) -> reteach this "
+    "explanation. 1 or fewer correct (or a shaky explanation) → reteach this "
     "skill before advancing."
 )
 
@@ -291,7 +296,8 @@ MASTERY_CRITERION = (
 SESSION_DOSAGE = (
     "Session at a glance: ~30 min, 3-5x/week, groups of 3-5. Pacing -- fluency 3 / "
     "Watch & learn 5 / Let's try together 7 / Your turn 8 / exit 5 min. "
-    "Short on time? Do the starred core items and always finish with the exit ticket. "
+    "Short on time? Cut in this order -- Remember these, then the LEVEL UP items, "
+    "then Find the mistake. Never cut the exit ticket: it is the only measure. "
     "Recheck placement about every 6 sessions."
 )
 
@@ -301,7 +307,8 @@ SESSION_DOSAGE_V4 = (
     "Session at a glance: ~30 min, 3-5x/week, groups of 3-5. Pacing -- fluency 3 / "
     "Watch & learn + checks 6 / You finish it 4 / Let's try together 5 / "
     "Your turn + Find the mistake 8 / exit 4 min. "
-    "Short on time? Do the starred core items and always finish with the exit ticket. "
+    "Short on time? Cut in this order -- Remember these, then the LEVEL UP items, "
+    "then Find the mistake. Never cut the exit ticket: it is the only measure. "
     "Recheck placement about every 6 sessions."
 )
 
@@ -1060,7 +1067,19 @@ def _fill_items_from_engine(skill, standard_code, target_count=10, session=1,
     return whatever items we already had. The packet still renders, just
     with fewer items.
     """
-    authored = list(skill.get("sample_items", []) or [])
+    def _stem_key(text):
+        """Match stems by content, not by typing. The same problem is authored
+        with different internal spacing in different blocks ('Write < or >:  105
+        __ 89' in the ladder, single-spaced in sample_items), so exact matching
+        silently let duplicates through."""
+        return " ".join((text or "").split()).casefold()
+
+    _excluded_stems = {_stem_key(s) for s in (exclude_stems or []) if s and s.strip()}
+    # sample_items must be filtered too, not just practice_problems: most of
+    # the ladder-problem reprints came from here, and an unfiltered
+    # sample_items[0] is exactly what the exit ticket draws from first.
+    authored = [it for it in (skill.get("sample_items", []) or [])
+                if _stem_key(it.get("stem")) not in _excluded_stems]
     # Strip any stale _source tags from authored items (they shouldn't
     # have one, but defend against bad input).
     for it in authored:
@@ -1074,12 +1093,12 @@ def _fill_items_from_engine(skill, standard_code, target_count=10, session=1,
     # Stems claimed by a dedicated slot elsewhere on the sheet (e.g. the v4
     # "Find the Mistake" item) are kept out of the pool so they can't print
     # twice.
-    excluded = {s.strip() for s in (exclude_stems or []) if s and s.strip()}
-    seen = {(it.get("stem") or "").strip() for it in authored} | excluded
+    excluded = _excluded_stems
+    seen = {_stem_key(it.get("stem")) for it in authored} | excluded
     diff_rank = {"warm_up": 0, "core": 1, "stretch": 2}
     curated = sorted(
         (p for p in (skill.get("practice_problems") or [])
-         if (p.get("stem") or "").strip() and (p.get("stem") or "").strip() not in seen),
+         if (p.get("stem") or "").strip() and _stem_key(p.get("stem")) not in seen),
         key=lambda p: diff_rank.get(p.get("difficulty"), 1),
     )
     curated_items = [{
@@ -1333,8 +1352,12 @@ def _resolve_fluency_items(skill, standard_data, count=12, session=1):
     rnd = random.Random(seed)
     shuffled = list(pool)
     rnd.shuffle(shuffled)
-    start = ((session - 1) * count) % max(1, len(shuffled))
-    picked = (shuffled + shuffled)[start:start + count]
+    # Never print the same question twice in one timed sprint: a pool of 6-9
+    # short items cannot fill 12 slots, and wrapping it silently repeated
+    # items (every CP1 sheet did). Take at most one full pass of the pool.
+    n = min(count, len(shuffled))
+    start = ((session - 1) * n) % max(1, len(shuffled))
+    picked = (shuffled + shuffled)[start:start + n]
     return {"title": src.get("name", "Fluency Sprint"), "items": picked}
 
 
@@ -2403,8 +2426,68 @@ def _write_exit_ticket_block(pdf, exit_items, skill, usable_w,
         pdf.set_text_color(*SB_DARK)
 
 
+def _write_teacher_solution_steps(pdf, solution, usable_w):
+    """The teacher's mirror of the student's Watch & learn: every step as the
+    student sees it, plus the micro-check prompt and its answer."""
+    ff = pdf.ff
+    steps = solution.get("steps") or []
+    if not steps:
+        pdf.ln(2)
+        return
+
+    block_y0 = pdf.get_y()
+    pdf.set_fill_color(243, 248, 255)
+    pdf.set_draw_color(140, 180, 220)
+    pdf.set_line_width(0.4)
+    pdf.rect(PAGE_MARGIN, block_y0, usable_w, 6.5, style="DF")
+    pdf.set_xy(PAGE_MARGIN + 3, block_y0 + 1)
+    pdf.set_font(ff, "B", 9)
+    pdf.set_text_color(30, 80, 140)
+    pdf.cell(0, 4.5, "The student sees these same steps. Ask each check before "
+                     "you reveal the line under it.")
+    pdf.set_y(block_y0 + 7.5)
+
+    letter = 0
+    for n, st in enumerate(steps, start=1):
+        check = st.get("check")
+        if check:
+            # Ask first, then reveal -- the order the student sheet prints.
+            name = THINKING_MOVES.get(check.get("move"), check.get("move") or "")
+            tag = chr(ord("a") + letter)
+            letter += 1
+            pdf.set_font(ff, "B", 8)
+            pdf.set_text_color(146, 64, 14)
+            pdf.set_x(PAGE_MARGIN + 4)
+            pdf.multi_cell(usable_w - 8, 4,
+                           f"({tag}) {name.upper()}  {check.get('prompt', '')}",
+                           new_x="LMARGIN", new_y="NEXT")
+            ans = str(check.get("answer") or "").strip()
+            if ans:
+                pdf.set_font(ff, "I", 8)
+                pdf.set_text_color(30, 120, 50)
+                pdf.set_x(PAGE_MARGIN + 8)
+                pdf.multi_cell(usable_w - 12, 3.8, f"looking for: {ans}",
+                               new_x="LMARGIN", new_y="NEXT")
+        math_txt = st.get("math")
+        if math_txt:
+            pdf.set_font(ff, "B", 8.5)
+            pdf.set_text_color(*SB_DARK)
+            pdf.set_x(PAGE_MARGIN + 4)
+            pdf.cell(6, 4.4, f"{n}.")
+            _write_text_or_math(pdf, math_txt, x=PAGE_MARGIN + 10,
+                                max_width=usable_w - 14, font_size=8.5)
+        ann = (st.get("annotation") or "").strip()
+        if ann:
+            pdf.set_font(ff, "", 8)
+            pdf.set_text_color(90, 90, 100)
+            pdf.set_x(PAGE_MARGIN + 10)
+            pdf.multi_cell(usable_w - 14, 3.8, ann, new_x="LMARGIN", new_y="NEXT")
+        pdf.set_text_color(*SB_DARK)
+    pdf.ln(2)
+
+
 def _write_worked_example_teacher_block(pdf, item, skill, usable_w,
-                                         section_badges, num):
+                                         section_badges, num, solution=None):
     """Render the Worked Example on the TEACHER companion as a scripted
     walkthrough.
 
@@ -2444,11 +2527,14 @@ def _write_worked_example_teacher_block(pdf, item, skill, usable_w,
     pdf.set_line_width(0.3)
     pdf.ln(8)
 
-    # Q-num + stem
+    # Q-num + stem. `num` is None when the caller wants no number, which is
+    # the case for the worked example: the student's Watch & learn is
+    # unnumbered, so numbering it here would shift every following item.
     pdf.set_font(ff, "B", 9)
     pdf.set_text_color(*SB_DARK)
     pdf.set_x(PAGE_MARGIN)
-    pdf.cell(7, 4, f"{num}.")
+    if num is not None:
+        pdf.cell(7, 4, f"{num}.")
     pdf.set_font(ff, "", 9)
     pdf.set_xy(PAGE_MARGIN + 7, pdf.get_y())
     _write_text_or_math(pdf, item.get("stem", ""),
@@ -2464,7 +2550,15 @@ def _write_worked_example_teacher_block(pdf, item, skill, usable_w,
     pdf.set_text_color(*SB_DARK)
     pdf.ln(2)
 
-    # Scripted steps
+    # v4: mirror the student's Watch & learn exactly -- the same steps, in
+    # the same order, with the micro-check prompts and their key. The
+    # Say/Ask/Show script is written around whatever example the author had in
+    # mind and cannot be trusted to match this problem, so v4 does not use it.
+    if solution:
+        _write_teacher_solution_steps(pdf, solution, usable_w)
+        return
+
+    # Scripted steps (v3)
     steps = _build_worked_example_script(skill)
     if not steps:
         pdf.ln(2)
@@ -2777,9 +2871,20 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
                 }
                 break
 
+    # Anything the v4 ladder already shows the student must not come back as an
+    # item, and above all not as an exit-ticket item: the exit ticket is the
+    # whole mastery decision, and re-asking the problem the teacher just
+    # modelled measures page-flipping. Excludes the worked, faded and guided
+    # stems alongside the Find-the-Mistake stem.
+    _excluded = [ftm_item["stem"]] if ftm_item else []
+    for _blk in ("worked_solution", "faded_example", "guided_example"):
+        _stem = (skill.get(_blk) or {}).get("stem")
+        if _stem:
+            _excluded.append(_stem)
+
     items = _fill_items_from_engine(
         skill, standard_code, target_count=10, session=session,
-        exclude_stems=[ftm_item["stem"]] if ftm_item else None)
+        exclude_stems=_excluded or None)
 
     # Slice into the gradual-release sections.
     sections = _allocate_items(items)
@@ -2791,6 +2896,7 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
     we_item = we_items[0] if we_items else None
 
     pdf = MathPDF()
+    pdf.skill_tag = skill.get("skill_id", "")
     ff = pdf.ff
     pdf.set_auto_page_break(auto=False)
     pdf.header = lambda: None
@@ -2813,8 +2919,8 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
     # Session Sheet v2 resources (v3 schema; every piece degrades
     # gracefully when the field is absent on older skill files).
     fluency = _resolve_fluency_items(skill, standard_data, session=session)
-    mixed_items = _resolve_mixed_review(skill, standard_data, session=session)
     worked_solution = skill.get("worked_solution")
+    mixed_items = _resolve_mixed_review(skill, standard_data, session=session)
     faded_example = skill.get("faded_example")
     sentence_starters = skill.get("sentence_starters") or []
 
@@ -2824,6 +2930,40 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
     # and broke the fade. Legacy skills keep the diagnose block.
     if guided_example:
         diag_items = []
+
+    # ---- ONE NUMBERING FOR BOTH SHEETS ----------------------------------
+    # When a teacher says "number 4", it has to be the student's number 4.
+    # The companion used to run its own counter that started on the worked
+    # example -- which the student page never numbers -- so every item from
+    # there to the exit ticket was off by one.
+    #
+    # Number the sections in the order the STUDENT page prints them:
+    #   Let's try together -> Your turn -> Find the mistake ->
+    #   Remember these -> Show what you know
+    # then hand the companion those starts. Watch & learn stays unnumbered on
+    # both sheets. Section toggles are applied here too, so switching a
+    # section off drops it from the answer key as well as the handout.
+    _keep_stretch = inc["level_up"]
+
+    def _sheet_side(items):
+        if not inc["your_turn"]:
+            return []
+        return [it for it in items
+                if _keep_stretch or it.get("difficulty") != "stretch"]
+
+    sheet_diag = list(diag_items) if inc["lets_try"] else []
+    sheet_we_do = _sheet_side(we_do_items)
+    sheet_you_do = _sheet_side(you_do_items)
+    sheet_ftm = ftm_item if (ftm_item and inc["find_mistake"]) else None
+    sheet_mixed = list(mixed_items) if inc["remember_these"] else []
+    sheet_exit = list(exit_items) if inc["show_what_you_know"] else []
+
+    N_DIAG = 1
+    N_WE_DO = N_DIAG + len(sheet_diag)
+    N_YOU_DO = N_WE_DO + len(sheet_we_do)
+    N_FTM = N_YOU_DO + len(sheet_you_do)
+    N_MIXED = N_FTM + (1 if sheet_ftm else 0)
+    N_EXIT = N_MIXED + len(sheet_mixed)
 
     # v4 student pages repeat the first sentence frame in the footer (cleared
     # again before the teacher companion). Legacy skills keep the quote so
@@ -2908,13 +3048,8 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
         # is visible to the student: guided ("Let's Try Together") then
         # independent ("Your Turn"). Kid-friendly labels, not teacher
         # jargon — the teacher companion keeps the internal section names.
-        guided_items = list(diag_items) if inc["lets_try"] else []
-        independent_items = list(we_do_items) + list(you_do_items)
-        if not inc["level_up"]:
-            independent_items = [it for it in independent_items
-                                 if it.get("difficulty") != "stretch"]
-        if not inc["your_turn"]:
-            independent_items = []
+        guided_items = sheet_diag
+        independent_items = sheet_we_do + sheet_you_do
         if guided_items:
             _write_section_header_safe(
                 pdf, "Let's try together",
@@ -2953,13 +3088,13 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
             q_num += 1
 
         # ---- MIXED REVIEW (interleaved items from earlier skills) ----
-        if mixed_items and inc["remember_these"]:
+        if sheet_mixed:
             _write_section_header_safe(
                 pdf, "Remember these?",
                 "Mixed practice from skills you've already worked on -- watch out, they're not all the same kind!",
                 SECTION_COLORS["exit"], usable_w,
-                next_item_height=_estimate_item_height(mixed_items[0]))
-            q_num = _render_two_column_block(pdf, mixed_items, q_num,
+                next_item_height=_estimate_item_height(sheet_mixed[0]))
+            q_num = _render_two_column_block(pdf, sheet_mixed, q_num,
                                              _write_student_question)
 
         # ---- Exit Ticket placement ----
@@ -3250,7 +3385,7 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
         pdf.ln(3)
 
     # ---- Per-section question blocks (teacher-facing) ----
-    t_num = 1
+    # Numbers come from the student page (N_* above), not a local counter.
 
     # Section colors keyed by lowercase label prefix — so the teacher
     # companion gets the same red/amber/green/navy badges the student
@@ -3263,8 +3398,7 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
         "exit": ((219, 234, 254), (30, 64, 175)),
     }
 
-    def _teacher_section(label, items_for_section):
-        nonlocal t_num
+    def _teacher_section(label, items_for_section, start_num):
         if not items_for_section:
             return
         # Pick a badge color by prefix.
@@ -3294,21 +3428,26 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
         def _render_one(p, n, it, w):
             _write_teacher_question(p, n, it, skill, section_label_local, w)
 
-        t_num = _render_two_column_block(pdf, items_for_section, t_num,
-                                         _render_one)
+        _render_two_column_block(pdf, items_for_section, start_num,
+                                 _render_one)
 
     # Worked Example gets its own scripted block — the teacher follows the
     # numbered Say/Ask/Show steps live in front of students. Designed for a
     # non-math teacher: every step is something they can read aloud or do.
-    if we_items:
+    if we_items or worked_solution:
+        # Unnumbered: the student's "Watch & learn" carries no number either.
+        # v4 models the student's own worked_solution, not a second problem.
+        we_teacher_item = ({"stem": worked_solution.get("stem", ""),
+                            "answer": worked_solution.get("answer", "")}
+                           if worked_solution else we_items[0])
         _write_worked_example_teacher_block(
-            pdf, we_items[0], skill, usable_w, _SECTION_BADGE, t_num)
-        t_num += 1
+            pdf, we_teacher_item, skill, usable_w, _SECTION_BADGE, None,
+            solution=worked_solution)
 
-    _teacher_section("DIAGNOSE",                       diag_items)
-    _teacher_section("WE DO - Guided",                 we_do_items)
-    _teacher_section("YOU DO - Independent",           you_do_items)
-    _teacher_section("EXIT TICKET",                    exit_items)
+    _teacher_section("DIAGNOSE",           sheet_diag,   N_DIAG)
+    _teacher_section("WE DO - Guided",     sheet_we_do,  N_WE_DO)
+    _teacher_section("YOU DO - Independent", sheet_you_do, N_YOU_DO)
+    _teacher_section("EXIT TICKET",        sheet_exit,   N_EXIT)
 
     # Scoring note for the exit ticket's written explanation.
     if exit_items:
@@ -3325,8 +3464,8 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
 
     # Mixed review key, tagged with source skills so the teacher knows
     # which earlier skill each interleaved item exercises.
-    if mixed_items:
-        _teacher_section("MIXED REVIEW", mixed_items)
+    if sheet_mixed:
+        _teacher_section("MIXED REVIEW", sheet_mixed, N_MIXED)
         sources = sorted({it.get("_mixed_source", "") for it in mixed_items if it.get("_mixed_source")})
         if sources:
             pdf.set_font(ff, "I", 8)
@@ -3345,23 +3484,14 @@ def generate_skill_packet_pdf(skill, standard_data, output_path,
             f"{(it.get('stem') or '').strip()} {it.get('answer', '')}"
             for it in fluency["items"])
         extras.append(("FLUENCY SPRINT KEY (" + fluency.get("title", "") + ")", key))
-    if worked_solution:
-        checks = [s.get("check") for s in worked_solution.get("steps", [])
-                  if s.get("check")]
-        if checks:
-            key = "   ".join(
-                f"{chr(ord('a') + i)}. [{THINKING_MOVES.get(c.get('move'), c.get('move') or '')}] {c.get('answer', '')}"
-                for i, c in enumerate(checks))
-            extras.append(("WATCH & LEARN MICRO-CHECKS",
-                           key + "  --  call them by letter (\"do check b\") or by move name."))
     if faded_example:
         extras.append(("FADED EXAMPLE",
                        f"Final answer: {faded_example.get('answer', '')}. The blank steps are the student's to voice -- any correct chain of reasoning counts."))
     if guided_example:
         extras.append(("LET'S TRY TOGETHER (guided example)",
                        f"Final answer: {guided_example.get('answer', '')}. Only the first step is given -- the student carries the rest; prompt with the cued thinking move, not the math."))
-    if ftm_item:
-        extras.append(("FIND THE MISTAKE",
+    if sheet_ftm:
+        extras.append((f"FIND THE MISTAKE (#{N_FTM} on the student page)",
                        f"Answer: {ftm_item.get('answer', '')}. Mirrors the WATCH FOR error above -- if the student can't find it, reteach from the Quick Reference redirect."))
     for label, body in extras:
         pdf.ln(2)

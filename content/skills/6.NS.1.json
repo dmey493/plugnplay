@@ -13,12 +13,12 @@
       {
         "skill_id": "6NS1-S2",
         "verb": "identify",
-        "rationale": "Attach an actual integer to the situation. This is the first place the sign must survive contact with a number: '200 feet below sea level' is -200, even though the words say '200.'"
+        "rationale": "Attach an actual integer to the situation. This is the first place the sign must survive contact with a number: '200 feet below sea level' is −200, even though the words say '200.'"
       },
       {
         "skill_id": "6NS1-S3",
         "verb": "represent",
-        "rationale": "Extend representation past the integer ticks. The spec's medium band demands decimals and fractions -- a place can be -0.5 feet below sea level, and the space between 0 and -1 is full of real values."
+        "rationale": "Extend representation past the integer ticks. The spec's medium band demands decimals and fractions -- a place can be −0.5 feet below sea level, and the space between 0 and −1 is full of real values."
       },
       {
         "skill_id": "6NS1-S4",
@@ -38,7 +38,7 @@
       {
         "skill_id": "6NS1-S7",
         "verb": "critique",
-        "rationale": "The above-proficiency demand: read a record of signed changes (score table, bank statement) and critique claims about it -- a change of -3 is a loss of 3, a change of 0 is no change at all."
+        "rationale": "The above-proficiency demand: read a record of signed changes (score table, bank statement) and critique claims about it -- a change of −3 is a loss of 3, a change of 0 is no change at all."
       }
     ]
   },
@@ -143,7 +143,229 @@
           "kind": "ask",
           "text": "Your turn: on the same line, which tick is 1/4, and is it closer to 0 or to 1?"
         }
-      ]
+      ],
+      "worked_solution": {
+        "stem": "A number line from 0 to 1 is cut into 4 equal parts. What fraction names the first tick after 0?",
+        "answer": "1/4",
+        "steps": [
+          {
+            "math": "count the SPACES from 0 to 1:  4 equal spaces",
+            "annotation": "",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "To name the parts, do you count the ticks or the spaces between them?",
+              "answer": "the spaces -- each space is one equal part"
+            }
+          },
+          {
+            "math": "each space is worth one fourth:  1/4",
+            "annotation": ""
+          },
+          {
+            "math": "hop 1 space from 0:  1/4",
+            "annotation": "",
+            "check": {
+              "move": "call_it",
+              "prompt": "What names the first tick after 0?",
+              "answer": "1/4 -- one hop of one fourth from 0"
+            }
+          },
+          {
+            "math": "first tick after 0  =  1/4",
+            "annotation": "",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Someone counts 3 ticks between 0 and 1 and says thirds. What did they count?",
+              "answer": "ticks instead of spaces -- 4 equal spaces make fourths, and 3 ticks sit between them"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "A number line from 0 to 1 is cut into 3 equal parts. What fraction names the first tick after 0?",
+        "answer": "1/3",
+        "steps": [
+          {
+            "math": "count the SPACES from 0 to 1:  3 equal spaces",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "each space is worth one third:  1/3",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "hop 1 space from 0:  1/3",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": null,
+            "given": false,
+            "annotation": "Do your Say Why: name the first tick, and say what you counted to get it.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Do your Say Why: name the first tick, and say what you counted to get it."
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "A number line from 0 to 1 is cut into 6 equal parts. What fraction names the second tick after 0?",
+        "answer": "2/6",
+        "steps": [
+          {
+            "math": null,
+            "given": false,
+            "annotation": "Spot the Signal − count the spaces, not the ticks",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − count the spaces, not the ticks"
+            }
+          },
+          {
+            "math": null,
+            "given": false,
+            "annotation": "name what one space is worth"
+          },
+          {
+            "math": null,
+            "given": false,
+            "annotation": "hop from 0 the number of spaces you were asked for"
+          },
+          {
+            "math": null,
+            "given": false,
+            "annotation": "Name the Trap − how many ticks sit between 0 and 1? Why is that not the name?",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − how many ticks sit between 0 and 1? Why is that not the name?"
+            }
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "A line from 0 to 1 is cut into 2 equal parts. What names the tick in the middle?",
+          "answer": "1/2"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "On a line from 0 to 10, how many hops of 1 does it take to reach 6?",
+          "answer": "6"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A line from 0 to 1 is cut into 5 equal parts. What names the first tick after 0?",
+          "answer": "1/5"
+        },
+        {
+          "difficulty": "core",
+          "stem": "A line from 0 to 1 is cut into 8 equal parts. What names the third tick after 0?",
+          "answer": "3/8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "How many ticks sit between 0 and 1 when the space is cut into 4 equal parts?",
+          "answer": "3 ticks, but 4 spaces"
+        },
+        {
+          "difficulty": "core",
+          "stem": "On a line from 0 to 10, is 4 closer to 0 or to 10?",
+          "answer": "0"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "A line from 0 to 1 is cut into equal parts and the first tick after 0 is 1/6. How many spaces are there?",
+          "answer": "6"
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Devon cut 0 to 1 into 4 equal parts and labeled the first tick 1/3. Find his mistake and fix it.",
+          "shown_work": [
+            "Cut the space from 0 to 1 into 4 equal parts",
+            "Devon counts the ticks between 0 and 1: 1, 2, 3",
+            "Devon says: 3 ticks, so the first one is 1/3"
+          ],
+          "answer": "He counted ticks instead of spaces. Cutting into 4 equal parts makes 4 spaces, so each hop is 1/4 and the first tick is 1/4. Only 3 ticks sit between 0 and 1 because the two ends are already labeled."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Spaces, Not Ticks",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Paper strips of equal length",
+            "A drawn number line from 0 to 1",
+            "Colored pencils"
+          ],
+          "instructions": "1. Each partner folds a strip into a different number of equal parts: halves, thirds, fourths, sixths.\n2. Unfold and trace the creases onto a number line from 0 to 1.\n3. Count the SPACES out loud, then count the ticks between 0 and 1. Write both numbers down.\n4. Notice they never match: 4 spaces give only 3 ticks between the ends.\n5. Label every tick by hopping from 0, saying each fraction as you land.\n6. Finish the sentence together: the bottom number counts ___, not ___."
+        },
+        {
+          "type": "game",
+          "title": "Hop to It",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "A blank number line from 0 to 1 for each player",
+            "Number cube",
+            "Unit fraction cards"
+          ],
+          "instructions": "1. Draw a fraction card and cut your line into that many equal spaces.\n2. Roll the cube, hop that many spaces from 0, and name where you land.\n3. Your partner checks by counting the spaces with you. A landing named from tick counting scores nothing.\n4. First player to name three landings correctly takes the round.\n5. Play five rounds, then say which cut was hardest and why."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Folding a strip into equal parts and tracing it onto a number line makes the space versus tick difference physical before the naming rule is stated."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The tick counting error is stable and predictable, so finding and fixing it in shown work confronts it head on."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Did you count spaces or ticks? Show me one space with your finger.",
+          "How many equal parts is this line cut into? So what is one hop worth?",
+          "Why are there only 3 ticks between 0 and 1 on a fourths line?",
+          "Start at 0 and hop out loud. What do you say as you land each time?",
+          "Is this number closer to 0 or to 1? How do you know?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student counts the ticks between 0 and 1 and names the parts from that count.",
+            "say": "Put your finger on 0 and slide it to the next tick. That slide is one space. Count the slides, not the marks.",
+            "praise": "You counted the hops from 0, which is exactly what the bottom number means."
+          },
+          {
+            "if_you_see": "Student places a fraction by guessing instead of cutting the space into equal parts.",
+            "say": "Before you point anywhere, cut the space from 0 to 1 into the number of equal parts the bottom number names.",
+            "praise": "You cut first and pointed second, and that is why your spot is exact."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "A line from 0 to 1 is cut into 5 equal parts. Name the second tick after 0.",
+            "look_for": "2/5, reached by hopping two spaces from 0, not by counting marks."
+          },
+          {
+            "prompt": "How many ticks sit strictly between 0 and 1 on a line cut into 6 equal parts?",
+            "look_for": "5 ticks with 6 spaces, and the student can say why the two numbers differ."
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The space from 0 to 1 is cut into ___ equal parts, so one hop is ___.",
+        "I hopped ___ times from 0, so I landed on ___.",
+        "There are ___ spaces but only ___ ticks between 0 and 1 because ___."
+      ],
+      "engine_stems": []
     },
     {
       "skill_id": "6NS1-F2",
@@ -241,7 +463,228 @@
           "kind": "ask",
           "text": "Your turn: which is greater, 5306 or 5036, and which place decided it?"
         }
-      ]
+      ],
+      "worked_solution": {
+        "stem": "Which is greater: 899 or 1002?",
+        "answer": "1002 > 899",
+        "steps": [
+          {
+            "math": "count places:  899 has 3,  1002 has 4",
+            "annotation": "",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Before comparing a single digit, what should you count?",
+              "answer": "the places -- 899 has 3, 1002 has 4"
+            }
+          },
+          {
+            "math": "line up:   0899   and   1002",
+            "annotation": ""
+          },
+          {
+            "math": "thousands:  0 < 1",
+            "annotation": "",
+            "check": {
+              "move": "call_it",
+              "prompt": "Which one is greater, and which place settled it?",
+              "answer": "1002, settled at the thousands -- one thousand beats any count of hundreds"
+            }
+          },
+          {
+            "math": "1002 > 899",
+            "annotation": "",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who says 899 wins? Which digits are they comparing?",
+              "answer": "digit-first thinking -- it compares 8 against 1 and never asks what place each digit sits in"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Which is greater: 4205 or 4250?",
+        "answer": "4250",
+        "steps": [
+          {
+            "math": "count places:  both have 4",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "thousands match:  4 = 4",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "hundreds match:  2 = 2,   tens:  0 against 5",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": null,
+            "given": false,
+            "annotation": "Do your Check It: write > or <, then name the place that decided and the ones that never mattered.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Do your Check It: write > or <, then name the place that decided and the ones that never mattered."
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Which is greater: 999 or 1010?",
+        "answer": "1010",
+        "steps": [
+          {
+            "math": null,
+            "given": false,
+            "annotation": "Spot the Signal − count the places in each number first",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − count the places in each number first"
+            }
+          },
+          {
+            "math": null,
+            "given": false,
+            "annotation": "which one has more places?"
+          },
+          {
+            "math": null,
+            "given": false,
+            "annotation": "more places wins before any digit is compared"
+          },
+          {
+            "math": null,
+            "given": false,
+            "annotation": "Name the Trap − what does '9 beats 1' thinking answer? Why is it wrong?",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − what does '9 beats 1' thinking answer? Why is it wrong?"
+            }
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "Which is greater: 62 or 71?",
+          "answer": "71"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "Which is greater: 480 or 84?",
+          "answer": "480"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which is greater: 3072 or 3027?",
+          "answer": "3072"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Which is greater: 989 or 1001?",
+          "answer": "1001"
+        },
+        {
+          "difficulty": "core",
+          "stem": "In which place do 8140 and 8410 first differ?",
+          "answer": "The hundreds place"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Order from least to greatest: 706, 760, 607",
+          "answer": "607, 706, 760"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "One number has 4 places and another has 3. Can the 3-place number ever be greater? Explain.",
+          "answer": "No. Any 4-place whole number is at least 1000 and any 3-place whole number is at most 999."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Reggie wrote 899 > 1002. Find his mistake and fix it.",
+          "shown_work": [
+            "899 compared with 1002",
+            "8 is greater than 1",
+            "so 899 > 1002"
+          ],
+          "answer": "He compared the leading digits without checking their places. The 8 sits in the hundreds place and the 1 sits in the thousands place, so 1002 > 899. Counting the places first would have settled it."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Stack and Settle",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Place value mats ruled to the thousands",
+            "Base ten blocks or digit cards",
+            "Recording sheet"
+          ],
+          "instructions": "1. Each partner builds a number on a place value mat, one digit per column.\n2. Stack the mats so the ones columns line up under each other.\n3. Sweep from the biggest place to the right and stop at the first column where the digits differ.\n4. Write the comparison with > or < and circle the column that settled it.\n5. Cross out every column to the right of that one and say out loud: these never mattered.\n6. Include one pair whose numbers have different place counts, such as 899 and 1002."
+        },
+        {
+          "type": "game",
+          "title": "First Difference",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Digit cards 0 to 9",
+            "Blank place value frames"
+          ],
+          "instructions": "1. Each player draws four digit cards and arranges them into a number, kept face down until everyone is ready.\n2. Reveal together. The first player to name the place where the two numbers first differ claims the round.\n3. Claiming with a digit comparison alone, such as mine starts with 9, forfeits the round.\n4. Play eight rounds. Track how often the biggest place decided it and how often it came down to the tens or ones."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building both numbers on a place value mat before comparing makes place, not digit size, the thing the eye lands on."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "The 899 beats 1002 error is stable and predictable, so finding and fixing it in shown work confronts it head on."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "How many places does each number have? Does that settle it already?",
+          "Which place are you comparing first, and why that one?",
+          "Which place decided this, and which places never mattered?",
+          "Why can a number starting with 8 be smaller than one starting with 1?",
+          "What is that digit actually worth where it sits?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student compares leading digits without lining places up, saying 899 beats 1002.",
+            "say": "Count the places in each number before you look at any digit. Which place does the 8 live in? Which place does the 1 live in?",
+            "praise": "You asked what the digit was worth instead of how big it looked, and that is the whole skill."
+          },
+          {
+            "if_you_see": "Student compares from the right, starting at the ones.",
+            "say": "Start at the biggest place instead. The first place where the digits differ decides, and nothing to its right can undo it.",
+            "praise": "You swept from the left and stopped at the first difference, exactly right."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "Put > or < between 6120 ___ 6210.",
+            "look_for": "6120 < 6210, decided at the hundreds, with the tens and ones named as irrelevant."
+          },
+          {
+            "prompt": "Which is greater, 999 or 1010, and how do you know without comparing digits?",
+            "look_for": "1010, because it has four places and 999 has only three."
+          }
+        ]
+      },
+      "sentence_starters": [
+        "___ has ___ places and ___ has ___ places, so ___.",
+        "The first place where the digits differ is the ___, so ___ is greater.",
+        "The ___ decided it, and the places to the right never mattered."
+      ],
+      "engine_stems": []
     },
     {
       "skill_id": "6NS1-B1",
@@ -942,10 +1385,10 @@
         "type": "skill",
         "skill_id": "6NS1-B1"
       },
-      "i_do_script": "Now we attach the actual number. Two steps, always in this order: FIRST decide the sign from the direction word, THEN copy the size from the story. 'An elevation of 200 feet below sea level' -- 'below' means negative, the size is 200, so the number is -200. If you copy the number first, the sign never gets a turn.",
+      "i_do_script": "Now we attach the actual number. Two steps, always in this order: FIRST decide the sign from the direction word, THEN copy the size from the story. 'An elevation of 200 feet below sea level' -- 'below' means negative, the size is 200, so the number is −200. If you copy the number first, the sign never gets a turn.",
       "canonical_error": {
         "pattern": "Drops the negative sign because the story states the size in positive-sounding words",
-        "example": "For 'an elevation of 200 feet below sea level,' picks 200 instead of -200 -- the words said '200 feet,' so 200 looks right",
+        "example": "For 'an elevation of 200 feet below sea level,' picks 200 instead of −200 -- the words said '200 feet,' so 200 looks right",
         "why": "The student copies the number they hear instead of first deciding which side of zero the situation is on. The direction word ('below') never gets converted into a sign, so the answer matches the story's digits but not its meaning."
       },
       "redirect_script": {
@@ -957,22 +1400,22 @@
       "sample_items": [
         {
           "stem": "Which number best represents the following situation?\n\n\"A withdrawal of $45 from a bank account\"",
-          "answer": "-45",
+          "answer": "−45",
           "choices": [
-            "-45",
+            "−45",
             "45",
             "0",
-            "-90"
+            "−90"
           ],
-          "distractor_logic": "45 is the sign-drop bait (copying the story's digits); 0 baits 'the money is gone'; -90 is a doubled-magnitude error"
+          "distractor_logic": "45 is the sign-drop bait (copying the story's digits); 0 baits 'the money is gone'; −90 is a doubled-magnitude error"
         },
         {
           "stem": "Chicago, Illinois has an elevation of 600 feet above sea level. Seeley, California is located below sea level. What is a possible elevation of Seeley, California?",
-          "answer": "-200 feet",
+          "answer": "−200 feet",
           "choices": [
             "600 feet",
             "500 feet",
-            "-200 feet",
+            "−200 feet",
             "0 feet"
           ],
           "distractor_logic": "Mirrors the spec's Below item: 600 copies Chicago's number; 500 is 'a bit less than Chicago'; 0 confuses 'below sea level' with 'at sea level.' Only a negative value can be below sea level"
@@ -982,11 +1425,11 @@
           "answer": "12",
           "choices": [
             "12",
-            "-12",
+            "−12",
             "0",
             "24"
           ],
-          "distractor_logic": "-12 catches students who tag all football plays negative after seeing losses; 24 is a doubling slip; 0 is 'no play'"
+          "distractor_logic": "−12 catches students who tag all football plays negative after seeing losses; 24 is a doubling slip; 0 is 'no play'"
         },
         {
           "stem": "The point T on the number line shows the temperature in degrees. Which situation does it represent?",
@@ -1021,24 +1464,24 @@
         },
         {
           "stem": "Which number best represents the following situation?\n\n\"An elevator descends 3 floors\"",
-          "answer": "-3",
+          "answer": "−3",
           "choices": [
-            "-3",
+            "−3",
             "3",
             "0",
-            "-13"
+            "−13"
           ],
-          "distractor_logic": "3 is the sign-drop bait; -13 checks careless digit reading; 0 baits 'the elevator stopped'"
+          "distractor_logic": "3 is the sign-drop bait; −13 checks careless digit reading; 0 baits 'the elevator stopped'"
         }
       ],
       "vocabulary": [
         {
           "term": "Integer",
-          "definition": "A whole number, its opposite, or zero: ..., -3, -2, -1, 0, 1, 2, 3, ..."
+          "definition": "A whole number, its opposite, or zero: ..., −3, −2, −1, 0, 1, 2, 3, ..."
         },
         {
           "term": "Represent",
-          "definition": "To stand for. The number -200 represents '200 feet below sea level.'"
+          "definition": "To stand for. The number −200 represents '200 feet below sea level.'"
         },
         {
           "term": "Balance",
@@ -1056,7 +1499,7 @@
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write the situation on the board: 'A withdrawal of $45 from a bank account.' Underneath write the choices: -45, 45, 0, -90."
+          "text": "Write the situation on the board: 'A withdrawal of $45 from a bank account.' Underneath write the choices: −45, 45, 0, −90."
         },
         {
           "kind": "ask",
@@ -1080,11 +1523,11 @@
         },
         {
           "kind": "ask",
-          "text": "Why is -90 wrong even though it's negative? What are the TWO things the number has to get right here?"
+          "text": "Why is −90 wrong even though it's negative? What are the TWO things the number has to get right here?"
         },
         {
           "kind": "ask",
-          "text": "Confirm the answer: -45 -- sign first from 'withdrawal,' size 45 from the story. Which of those two parts do students forget most often?"
+          "text": "Confirm the answer: −45 -- sign first from 'withdrawal,' size 45 from the story. Which of those two parts do students forget most often?"
         }
       ],
       "practice_problems": [
@@ -1096,18 +1539,18 @@
         {
           "difficulty": "warm_up",
           "stem": "What number represents '5 degrees below zero'?",
-          "answer": "-5"
+          "answer": "−5"
         },
         {
           "difficulty": "core",
-          "stem": "Which number best represents 'a submarine 350 feet below the surface': 350, -350, 0, or -35?",
-          "answer": "-350",
+          "stem": "Which number best represents 'a submarine 350 feet below the surface': 350, −350, 0, or −35?",
+          "answer": "−350",
           "notes": "Big magnitude on purpose -- watch for students who resist a 'big' negative."
         },
         {
           "difficulty": "core",
-          "stem": "Which number best represents 'a football penalty of 10 yards': 10, -10, 0, or -20?",
-          "answer": "-10",
+          "stem": "Which number best represents 'a football penalty of 10 yards': 10, −10, 0, or −20?",
+          "answer": "−10",
           "notes": "No word 'loss' or 'below' appears -- the student must reason that a penalty moves the team backward."
         },
         {
@@ -1119,14 +1562,14 @@
             "Amir writes: 12",
             "Amir says: 'The story says 12 feet, so the number is 12.'"
           ],
-          "answer": "-12. Amir copied the size but never used the direction word. 'Below ground level' means below zero, so the sign must be negative: sign first (-), size second (12), answer -12.",
+          "answer": "−12. Amir copied the size but never used the direction word. 'Below ground level' means below zero, so the sign must be negative: sign first (-), size second (12), answer −12.",
           "notes": "Baits the canonical sign-drop error with fresh numbers."
         },
         {
           "difficulty": "core",
           "type": "number_line",
           "stem": "A bird is 30 feet above the water and a fish is 20 feet below it. The number line shows both. Which point is the fish, and what number represents it?",
-          "answer": "Point F at -20",
+          "answer": "Point F at −20",
           "render_data": {
             "type": "number_line_point",
             "ticks": [
@@ -1154,7 +1597,7 @@
         },
         {
           "difficulty": "stretch",
-          "stem": "The number is -8. Write a real-world situation about an elevator that it could represent.",
+          "stem": "The number is −8. Write a real-world situation about an elevator that it could represent.",
           "answer": "Any downward elevator situation of size 8, e.g. 'The elevator went down 8 floors.'",
           "notes": "Reversed direction: number to story."
         },
@@ -1162,7 +1605,7 @@
           "difficulty": "stretch",
           "type": "number_line",
           "stem": "Mark the number that represents 'a temperature of 3 degrees below zero' on the number line.",
-          "answer": "-3",
+          "answer": "−3",
           "render_data": {
             "type": "number_line_point",
             "ticks": [
@@ -1197,7 +1640,7 @@
             "pairs": [
               {
                 "left": "a withdrawal of $60",
-                "right": "-60"
+                "right": "−60"
               },
               {
                 "left": "a deposit of $35",
@@ -1205,7 +1648,7 @@
               },
               {
                 "left": "9 feet below sea level",
-                "right": "-9"
+                "right": "−9"
               },
               {
                 "left": "a gain of 14 yards",
@@ -1213,7 +1656,7 @@
               },
               {
                 "left": "descending 7 floors",
-                "right": "-7"
+                "right": "−7"
               },
               {
                 "left": "a bank balance of no money and no debt",
@@ -1222,7 +1665,7 @@
             ],
             "decoys": [
               "60",
-              "-14"
+              "−14"
             ]
           }
         },
@@ -1238,7 +1681,7 @@
           "content": {
             "worked_problem": "Situation: 'The school basement is 12 feet below ground level.' Amir's answer: 12.",
             "error_step": "Amir copied the size straight from the story and never converted 'below ground level' into a sign.",
-            "why": "The digits in a story are always stated as a size. The sign has to come from the direction words -- 'below' means the value sits under zero, so the number is -12."
+            "why": "The digits in a story are always stated as a size. The sign has to come from the direction words -- 'below' means the value sits under zero, so the number is −12."
           }
         },
         {
@@ -1291,10 +1734,10 @@
         "quick_checks": [
           {
             "prompt": "Show me on your whiteboard: the number for 'a debt of $75.'",
-            "look_for": "-75 written without hesitation. A bare 75 means the sign-first habit isn't set; -57 or -750 means digits are being copied carelessly."
+            "look_for": "−75 written without hesitation. A bare 75 means the sign-first habit isn't set; −57 or −750 means digits are being copied carelessly."
           },
           {
-            "prompt": "Point to where -2 goes on the class number line, then tell me a situation it could represent.",
+            "prompt": "Point to where −2 goes on the class number line, then tell me a situation it could represent.",
             "look_for": "Correct placement left of 0 AND a downward situation. Correct placement with an upward story means the symbol and the meaning are still disconnected."
           }
         ]
@@ -1334,7 +1777,7 @@
       },
       "faded_example": {
         "stem": "What number represents this situation? 'The temperature is 9 degrees below zero.'",
-        "answer": "-9",
+        "answer": "−9",
         "steps": [
           {
             "math": "negative   ( − )",
@@ -1359,7 +1802,7 @@
       },
       "guided_example": {
         "stem": "What number represents this situation? 'A basement floor is 12 feet below street level.'",
-        "answer": "-12",
+        "answer": "−12",
         "steps": [
           {
             "math": null,
@@ -1561,7 +2004,7 @@
             "(a) a whale 400 feet below the ocean surface   (b) a $6 allowance",
             "Deja picked (b). She says: '400 is way too big to be negative -- negative numbers are the small ones.'"
           ],
-          "answer": "(a). 'Below the surface' means the whale is below zero, so its position is -400. Negative numbers are not small numbers -- they are numbers BELOW zero, and they can be as big in size as you like.",
+          "answer": "(a). 'Below the surface' means the whale is below zero, so its position is −400. Negative numbers are not small numbers -- they are numbers BELOW zero, and they can be as big in size as you like.",
           "notes": "Directly baits the canonical 'negative means small' error."
         },
         {
@@ -1579,7 +2022,7 @@
           "difficulty": "stretch",
           "type": "number_line",
           "stem": "The point on the number line shows where a situation sits. Which fits: 'a gain of 4 yards' or 'a loss of 4 yards'? Explain how you know.",
-          "answer": "A loss of 4 yards -- the point is at -4, which is 4 units BELOW zero, and a loss points down.",
+          "answer": "A loss of 4 yards -- the point is at −4, which is 4 units BELOW zero, and a loss points down.",
           "render_data": {
             "type": "number_line_point",
             "ticks": [
@@ -1832,55 +2275,55 @@
         "grade": 6,
         "description": "Identify the signed integer for a situation (6NS1-S2)",
         "check_question": "What number represents 'an elevation of 40 feet below sea level'?",
-        "check_answer": "-40. 'Below' makes it negative; the size is 40.",
+        "check_answer": "−40. 'Below' makes it negative; the size is 40.",
         "if_student_says": "If they answer 40, the sign-first habit isn't set -- go back to 6NS1-S2 before adding decimals and fractions."
       },
-      "i_do_script": "Same two steps as before -- sign first, size second -- but now the size can be a decimal or a fraction. 'The water level dropped 0.5 feet': 'dropped' means negative, the size is 0.5, so the number is -0.5. Half a foot below zero is a real place on the number line -- it sits between 0 and -1, closer to 0. The ticks don't stop being real just because the number gets small or messy.",
+      "i_do_script": "Same two steps as before -- sign first, size second -- but now the size can be a decimal or a fraction. 'The water level dropped 0.5 feet': 'dropped' means negative, the size is 0.5, so the number is −0.5. Half a foot below zero is a real place on the number line -- it sits between 0 and −1, closer to 0. The ticks don't stop being real just because the number gets small or messy.",
       "canonical_error": {
-        "pattern": "Accepts signed integers but rejects or misreads signed decimals and fractions -- treats a value like -0.5 as 'basically zero' or 'not really below'",
-        "example": "Asked to select all values that could be below sea level, picks -12.5 but skips -0.5, saying 'half a foot isn't really below sea level'",
-        "why": "The student's mental number line has ticks only at the integers. The space between 0 and -1 feels like 'nothing there,' so a small negative decimal reads as zero-ish -- the 'negative means small, so a small negative means nothing' error. Below is below, by any amount."
+        "pattern": "Accepts signed integers but rejects or misreads signed decimals and fractions -- treats a value like −0.5 as 'basically zero' or 'not really below'",
+        "example": "Asked to select all values that could be below sea level, picks −12.5 but skips −0.5, saying 'half a foot isn't really below sea level'",
+        "why": "The student's mental number line has ticks only at the integers. The space between 0 and −1 feels like 'nothing there,' so a small negative decimal reads as zero-ish -- the 'negative means small, so a small negative means nothing' error. Below is below, by any amount."
       },
       "redirect_script": {
         "stop": "Hold on -- is ANY amount below zero still below zero?",
-        "prompt": "Zoom in on the number line between 0 and -1. Mark -0.5. Is your mark above zero, at zero, or below zero? If a bug crawled half a foot below the waterline, is it wet or dry?",
+        "prompt": "Zoom in on the number line between 0 and −1. Mark −0.5. Is your mark above zero, at zero, or below zero? If a bug crawled half a foot below the waterline, is it wet or dry?",
         "praise": "Yes -- below by half a foot is still below. You read the sign, not the size."
       },
       "item_template": "MC or select-all. A real-world situation whose value is a positive or negative decimal or fraction (spec medium band: decimals OR fractions exclusively). Student selects the value(s) that represent or could represent the situation. Distractors: wrong sign, 0, place-value slips.",
       "sample_items": [
         {
-          "stem": "Chicago, Illinois has an elevation of 600 feet above sea level. Seeley, California is located below sea level. Select ALL the values that could represent the elevation of Seeley.\n\n-0.5 ft, 0.5 ft, 0 ft, 12.5 ft, -12.5 ft",
-          "answer": "-0.5 ft and -12.5 ft",
+          "stem": "Chicago, Illinois has an elevation of 600 feet above sea level. Seeley, California is located below sea level. Select ALL the values that could represent the elevation of Seeley.\n\n−0.5 ft, 0.5 ft, 0 ft, 12.5 ft, −12.5 ft",
+          "answer": "−0.5 ft and −12.5 ft",
           "choices": [
-            "-0.5 ft",
+            "−0.5 ft",
             "0.5 ft",
             "0 ft",
             "12.5 ft",
-            "-12.5 ft"
+            "−12.5 ft"
           ],
-          "distractor_logic": "Mirrors the spec's Approaching item. Skipping -0.5 is the 'too small to count as below' error; picking 0 confuses below with at sea level; 0.5 and 12.5 are sign-blind reads"
+          "distractor_logic": "Mirrors the spec's Approaching item. Skipping −0.5 is the 'too small to count as below' error; picking 0 confuses below with at sea level; 0.5 and 12.5 are sign-blind reads"
         },
         {
           "stem": "Which number best represents the following situation?\n\n\"The temperature dropped 3.5 degrees overnight\"",
-          "answer": "-3.5",
+          "answer": "−3.5",
           "choices": [
-            "-3.5",
+            "−3.5",
             "3.5",
-            "-35",
-            "-0.35"
+            "−35",
+            "−0.35"
           ],
-          "distractor_logic": "3.5 drops the sign; -35 and -0.35 are decimal place-value slips with the correct sign"
+          "distractor_logic": "3.5 drops the sign; −35 and −0.35 are decimal place-value slips with the correct sign"
         },
         {
           "stem": "Which number best represents the following situation?\n\n\"A snail is 3/4 of a foot below the top of a garden wall\"",
-          "answer": "-3/4",
+          "answer": "−3/4",
           "choices": [
-            "-3/4",
+            "−3/4",
             "3/4",
-            "-4/3",
+            "−4/3",
             "0"
           ],
-          "distractor_logic": "3/4 drops the sign; -4/3 flips the fraction; 0 treats a below-the-top position as 'at the top'"
+          "distractor_logic": "3/4 drops the sign; −4/3 flips the fraction; 0 treats a below-the-top position as 'at the top'"
         },
         {
           "stem": "The point D on the number line shows a diver's position, in feet, relative to the water's surface. Which situation does it represent?",
@@ -1909,7 +2352,7 @@
       "vocabulary": [
         {
           "term": "Rational number",
-          "definition": "Any number that can be written as a fraction -- integers, decimals like -3.5, and fractions like -3/4 all count."
+          "definition": "Any number that can be written as a fraction -- integers, decimals like −3.5, and fractions like −3/4 all count."
         },
         {
           "term": "Sea level",
@@ -1917,17 +2360,17 @@
         },
         {
           "term": "Withdrawal",
-          "definition": "Money taken out of an account. A withdrawal of $2.50 is represented by -2.50."
+          "definition": "Money taken out of an account. A withdrawal of $2.50 is represented by −2.50."
         }
       ],
       "next_steps": {
         "if_pass": "Move to 6NS1-S4: write the signed rational number yourself, with no choices to lean on.",
-        "if_fail": "If the miss was the SIGN, revisit 6NS1-S2 with integers. If the miss was rejecting small decimals or fractions as 'not real,' zoom in on the number line between 0 and -1 with 6NS1-F1-style placement work."
+        "if_fail": "If the miss was the SIGN, revisit 6NS1-S2 with integers. If the miss was rejecting small decimals or fractions as 'not real,' zoom in on the number line between 0 and −1 with 6NS1-F1-style placement work."
       },
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw a number line from -1 to 1 with ticks at every half: -1, -0.5, 0, 0.5, 1. Write the situation: 'After a dry week, the pond's water level is 0.5 feet below its normal mark.'"
+          "text": "Draw a number line from −1 to 1 with ticks at every half: −1, −0.5, 0, 0.5, 1. Write the situation: 'After a dry week, the pond's water level is 0.5 feet below its normal mark.'"
         },
         {
           "kind": "ask",
@@ -1939,7 +2382,7 @@
         },
         {
           "kind": "ask",
-          "text": "Put them together. Now point to where -0.5 lives on this line. Is it above zero, at zero, or below zero?"
+          "text": "Put them together. Now point to where −0.5 lives on this line. Is it above zero, at zero, or below zero?"
         },
         {
           "kind": "watch",
@@ -1947,15 +2390,15 @@
         },
         {
           "kind": "say",
-          "text": "Below is below, by any amount. -0.5 is a real place between 0 and -1 -- closer to 0, but still on the negative side."
+          "text": "Below is below, by any amount. −0.5 is a real place between 0 and −1 -- closer to 0, but still on the negative side."
         },
         {
           "kind": "ask",
-          "text": "Now a fraction: 'a chick standing 1/4 foot below the nest's edge.' What number represents that, and where does it sit between 0 and -1?"
+          "text": "Now a fraction: 'a chick standing 1/4 foot below the nest's edge.' What number represents that, and where does it sit between 0 and −1?"
         },
         {
           "kind": "ask",
-          "text": "Last check: could a place below sea level have an elevation of -0.5 feet AND could another be at -12.5 feet? Why are both allowed?"
+          "text": "Last check: could a place below sea level have an elevation of −0.5 feet AND could another be at −12.5 feet? Why are both allowed?"
         }
       ],
       "practice_problems": [
@@ -1967,19 +2410,19 @@
         {
           "difficulty": "warm_up",
           "stem": "What number represents 'a drop of 1.5 degrees'?",
-          "answer": "-1.5"
+          "answer": "−1.5"
         },
         {
           "difficulty": "core",
-          "stem": "A trail sign says the path descends 2/3 of a mile in elevation. Which number represents the change: 2/3, -2/3, -3/2, or 0?",
-          "answer": "-2/3",
-          "notes": "Watch for -3/2 -- a flipped fraction with a correct sign is a different bug than a dropped sign."
+          "stem": "A trail sign says the path descends 2/3 of a mile in elevation. Which number represents the change: 2/3, −2/3, −3/2, or 0?",
+          "answer": "−2/3",
+          "notes": "Watch for −3/2 -- a flipped fraction with a correct sign is a different bug than a dropped sign."
         },
         {
           "difficulty": "core",
-          "stem": "Select ALL the values that could be the elevation of a town located below sea level: -0.8 ft, 0.8 ft, 0 ft, -25.5 ft, 3 ft.",
-          "answer": "-0.8 ft and -25.5 ft",
-          "notes": "Skipping -0.8 (too small to 'count') or -25.5 (too big to 'be negative') are the two faces of the size-decides-the-sign error."
+          "stem": "Select ALL the values that could be the elevation of a town located below sea level: −0.8 ft, 0.8 ft, 0 ft, −25.5 ft, 3 ft.",
+          "answer": "−0.8 ft and −25.5 ft",
+          "notes": "Skipping −0.8 (too small to 'count') or −25.5 (too big to 'be negative') are the two faces of the size-decides-the-sign error."
         },
         {
           "difficulty": "core",
@@ -1987,17 +2430,17 @@
           "stem": "Priya answered the question below. Find her mistake and fix it.",
           "shown_work": [
             "Question: Select ALL the values that could be the position of a fish below the water's surface:",
-            "-0.5 ft,  -8.5 ft,  0.5 ft",
-            "Priya selected only -8.5. She says: '-0.5 is so close to 0 that the fish would basically be at the surface, not below it.'"
+            "−0.5 ft,  −8.5 ft,  0.5 ft",
+            "Priya selected only −8.5. She says: '−0.5 is so close to 0 that the fish would basically be at the surface, not below it.'"
           ],
-          "answer": "-0.5 and -8.5. Any value below zero is below the surface -- even half a foot. -0.5 sits between 0 and -1 on the number line, on the negative side. Close to the surface is still under water.",
+          "answer": "−0.5 and −8.5. Any value below zero is below the surface -- even half a foot. −0.5 sits between 0 and −1 on the number line, on the negative side. Close to the surface is still under water.",
           "notes": "Baits the 'small negative is basically zero' version of the canonical error."
         },
         {
           "difficulty": "core",
           "type": "number_line",
           "stem": "Mark the number that represents 'a water level 1/2 foot below normal' on the number line.",
-          "answer": "-1/2",
+          "answer": "−1/2",
           "render_data": {
             "type": "number_line_point",
             "ticks": [
@@ -2017,15 +2460,15 @@
         },
         {
           "difficulty": "stretch",
-          "stem": "Write a real-world money situation that -6.25 could represent. Then write one that 6.25 could represent.",
+          "stem": "Write a real-world money situation that −6.25 could represent. Then write one that 6.25 could represent.",
           "answer": "Any downward money situation of size 6.25 (e.g. 'a withdrawal of $6.25') and any upward one (e.g. 'a deposit of $6.25').",
           "notes": "Producing both directions shows the sign is under the student's control."
         },
         {
           "difficulty": "stretch",
           "type": "number_line",
-          "stem": "Points A and B show two elevations, in feet. One is -0.5 and one is -1.5. Which point is -0.5, and is it above or below sea level?",
-          "answer": "Point A is -0.5. It is below sea level -- closer to it than B, but still below.",
+          "stem": "Points A and B show two elevations, in feet. One is −0.5 and one is −1.5. Which point is −0.5, and is it above or below sea level?",
+          "answer": "Point A is −0.5. It is below sea level -- closer to it than B, but still below.",
           "render_data": {
             "type": "number_line_point",
             "ticks": [
@@ -2063,7 +2506,7 @@
             "Two header cards: ABOVE SEA LEVEL, BELOW SEA LEVEL",
             "One header card: AT SEA LEVEL"
           ],
-          "instructions": "1. Lay the three headers on the desk. All cards are elevations in feet.\n2. Partners alternate drawing a card, reading it aloud, and placing it. The rule to say out loud: 'the sign decides, not the size.'\n3. Challenge cards -0.1 and -30.5 are in the deck on purpose -- one feels 'too small' and one 'too big' to be below.\n4. Debrief: what did every BELOW card have in common? Did size ever matter?",
+          "instructions": "1. Lay the three headers on the desk. All cards are elevations in feet.\n2. Partners alternate drawing a card, reading it aloud, and placing it. The rule to say out loud: 'the sign decides, not the size.'\n3. Challenge cards −0.1 and −30.5 are in the deck on purpose -- one feels 'too small' and one 'too big' to be below.\n4. Debrief: what did every BELOW card have in common? Did size ever matter?",
           "content": {
             "categories": [
               "ABOVE SEA LEVEL",
@@ -2072,7 +2515,7 @@
             ],
             "cards": [
               {
-                "text": "-0.1",
+                "text": "−0.1",
                 "category": "BELOW SEA LEVEL"
               },
               {
@@ -2080,7 +2523,7 @@
                 "category": "ABOVE SEA LEVEL"
               },
               {
-                "text": "-30.5",
+                "text": "−30.5",
                 "category": "BELOW SEA LEVEL"
               },
               {
@@ -2092,7 +2535,7 @@
                 "category": "AT SEA LEVEL"
               },
               {
-                "text": "-1/2",
+                "text": "−1/2",
                 "category": "BELOW SEA LEVEL"
               },
               {
@@ -2100,11 +2543,11 @@
                 "category": "ABOVE SEA LEVEL"
               },
               {
-                "text": "-2/3",
+                "text": "−2/3",
                 "category": "BELOW SEA LEVEL"
               },
               {
-                "text": "-12.5",
+                "text": "−12.5",
                 "category": "BELOW SEA LEVEL"
               },
               {
@@ -2123,7 +2566,7 @@
             "Whiteboard",
             "Meter stick or long strip of paper"
           ],
-          "instructions": "1. Draw a number line from -1 to 1 the full width of the board, ticks only at -1, 0, 1.\n2. Call out decimal and fraction values (-0.5, 1/4, -3/4, -0.1) and have students place a magnet or mark for each.\n3. After each placement ask the group: above zero or below zero? How do you know without measuring?\n4. Debrief question: is there ANY number between 0 and -1 that isn't below zero?"
+          "instructions": "1. Draw a number line from −1 to 1 the full width of the board, ticks only at −1, 0, 1.\n2. Call out decimal and fraction values (−0.5, 1/4, −3/4, −0.1) and have students place a magnet or mark for each.\n3. After each placement ask the group: above zero or below zero? How do you know without measuring?\n4. Debrief question: is there ANY number between 0 and −1 that isn't below zero?"
         },
         {
           "type": "matching",
@@ -2138,7 +2581,7 @@
             "pairs": [
               {
                 "left": "a withdrawal of $4.75",
-                "right": "-4.75"
+                "right": "−4.75"
               },
               {
                 "left": "a deposit of $4.75",
@@ -2146,7 +2589,7 @@
               },
               {
                 "left": "1/2 foot below sea level",
-                "right": "-1/2"
+                "right": "−1/2"
               },
               {
                 "left": "a rise of 2.5 degrees",
@@ -2154,11 +2597,11 @@
               },
               {
                 "left": "a drop of 0.25 degrees",
-                "right": "-0.25"
+                "right": "−0.25"
               }
             ],
             "decoys": [
-              "-2.5",
+              "−2.5",
               "1/2"
             ]
           }
@@ -2167,11 +2610,11 @@
       "strategy_links": [
         {
           "strategy_id": "strat-math-007",
-          "why": "The gap here is representational -- physically zooming in between 0 and -1 (concrete) before symbols makes small negatives real."
+          "why": "The gap here is representational -- physically zooming in between 0 and −1 (concrete) before symbols makes small negatives real."
         },
         {
           "strategy_id": "strat-math-002",
-          "why": "A number talk on 'is -0.5 below sea level?' surfaces the size-versus-sign reasoning students are actually using."
+          "why": "A number talk on 'is −0.5 below sea level?' surfaces the size-versus-sign reasoning students are actually using."
         },
         {
           "strategy_id": "strat-math-003",
@@ -2180,32 +2623,32 @@
       ],
       "teacher_moves": {
         "questioning_prompts": [
-          "Is -0.5 above zero, below zero, or at zero? How do you know without measuring?",
-          "Where does -3/4 live -- between which two integers? Closer to which one?",
+          "Is −0.5 above zero, below zero, or at zero? How do you know without measuring?",
+          "Where does −3/4 live -- between which two integers? Closer to which one?",
           "Does the sign care how big the number is? What DOES the sign care about?",
-          "Could a town have an elevation of -0.5 feet? What would that look like standing there?",
-          "Which of these is NOT below zero: -12.5, -0.5, 0.5? What gives it away?"
+          "Could a town have an elevation of −0.5 feet? What would that look like standing there?",
+          "Which of these is NOT below zero: −12.5, −0.5, 0.5? What gives it away?"
         ],
         "misconception_redirects": [
           {
-            "if_you_see": "Student accepts big negatives but rejects small ones -- skips -0.5 in a select-all because it's 'basically zero' or 'not really below.'",
-            "say": "Zoom in on the number line between 0 and -1. Mark -0.5. Is your mark above zero, at zero, or below zero? If a bug crawled half a foot below the waterline, is it wet or dry?",
+            "if_you_see": "Student accepts big negatives but rejects small ones -- skips −0.5 in a select-all because it's 'basically zero' or 'not really below.'",
+            "say": "Zoom in on the number line between 0 and −1. Mark −0.5. Is your mark above zero, at zero, or below zero? If a bug crawled half a foot below the waterline, is it wet or dry?",
             "praise": "Yes -- below by half a foot is still below. You read the sign, not the size."
           },
           {
-            "if_you_see": "Student writes the right sign but mangles the value: -35 for a 3.5 drop, or -4/3 for 3/4 below.",
+            "if_you_see": "Student writes the right sign but mangles the value: −35 for a 3.5 drop, or −4/3 for 3/4 below.",
             "say": "The sign is right -- now check the size. Read the story's number out loud: 'three POINT five.' Write exactly that size after your sign.",
             "praise": "Sign right AND size right -- that's the whole number."
           }
         ],
         "quick_checks": [
           {
-            "prompt": "Thumbs up or down: -0.5 is below sea level.",
+            "prompt": "Thumbs up or down: −0.5 is below sea level.",
             "look_for": "An instant thumbs up (it IS below). Hesitation or a thumbs down means the between-the-ticks space still feels like 'nothing' -- rerun the zoom-in activity."
           },
           {
             "prompt": "Whiteboards: the number for 'a fee of $1.25 charged to an account.'",
-            "look_for": "-1.25. A bare 1.25 is the sign drop; -125 or -12.5 is a decimal slip riding on a correct sign decision."
+            "look_for": "−1.25. A bare 1.25 is the sign drop; −125 or −12.5 is a decimal slip riding on a correct sign decision."
           }
         ]
       },
@@ -2243,8 +2686,8 @@
         ]
       },
       "faded_example": {
-        "stem": "Select ALL the values that could be the position of a turtle swimming below the surface: -0.25 ft, 0 ft, -4.5 ft, 2 ft.",
-        "answer": "-0.25 ft and -4.5 ft",
+        "stem": "Select ALL the values that could be the position of a turtle swimming below the surface: −0.25 ft, 0 ft, −4.5 ft, 2 ft.",
+        "answer": "−0.25 ft and −4.5 ft",
         "steps": [
           {
             "math": "the value must be negative",
@@ -2268,8 +2711,8 @@
         ]
       },
       "guided_example": {
-        "stem": "Select ALL the values that could be the elevation of a fish swimming below sea level: -8.25 m, 0 m, -0.75 m, 3 m.",
-        "answer": "-8.25 m and -0.75 m",
+        "stem": "Select ALL the values that could be the elevation of a fish swimming below sea level: −8.25 m, 0 m, −0.75 m, 3 m.",
+        "answer": "−8.25 m and −0.75 m",
         "steps": [
           {
             "math": null,
@@ -2316,11 +2759,11 @@
         "type": "gap",
         "grade": 6,
         "description": "Select the signed decimal or fraction that matches a situation (6NS1-S3)",
-        "check_question": "Which represents 'a drop of 2.5 degrees': 2.5 or -2.5?",
-        "check_answer": "-2.5 -- 'drop' points down, so the sign is negative.",
+        "check_question": "Which represents 'a drop of 2.5 degrees': 2.5 or −2.5?",
+        "check_answer": "−2.5 -- 'drop' points down, so the sign is negative.",
         "if_student_says": "If they can't pick the right sign even with choices in front of them, go back to 6NS1-S3 before asking them to produce the number cold."
       },
-      "i_do_script": "Now there are no choices -- you write the number yourself, and that's exactly where the sign gets forgotten. So we make the sign a separate, physical step. Read the situation: 'The cost of a bicycle was reduced by $23.57.' Step one, write ONLY the sign: 'reduced' points down, so write '-'. Step two, copy the size: 23.57. The answer box gets -23.57, and the sign went in first so it couldn't get lost.",
+      "i_do_script": "Now there are no choices -- you write the number yourself, and that's exactly where the sign gets forgotten. So we make the sign a separate, physical step. Read the situation: 'The cost of a bicycle was reduced by $23.57.' Step one, write ONLY the sign: 'reduced' points down, so write '-'. Step two, copy the size: 23.57. The answer box gets −23.57, and the sign went in first so it couldn't get lost.",
       "canonical_error": {
         "pattern": "Writes the magnitude without the sign when producing the answer -- the box gets 23.57 for a $23.57 reduction",
         "example": "'The cost of a bicycle was reduced by $23.57. Write the rational number to represent this reduction.' Student writes 23.57",
@@ -2331,31 +2774,31 @@
         "prompt": "Write the sign BEFORE the digits, every time: read the situation, write '+' or '-' in the box first, then copy the size after it. Read your finished answer back against the story: does a positive number match a reduction?",
         "praise": "You wrote the sign first, so it couldn't get lost. That's the pro move."
       },
-      "item_template": "NR (numeric response). A one-sentence situation with a decimal or fraction quantity (spec At example: 'reduced by $23.57' -> -23.57). Student writes the signed rational number in a box. No choices.",
+      "item_template": "NR (numeric response). A one-sentence situation with a decimal or fraction quantity (spec At example: 'reduced by $23.57' → −23.57). Student writes the signed rational number in a box. No choices.",
       "sample_items": [
         {
           "stem": "The cost of a jacket was reduced by $18.25. Write the rational number that represents this reduction.",
-          "answer": "-18.25",
+          "answer": "−18.25",
           "choices": null,
-          "distractor_logic": "18.25 is the canonical sign-drop; watch also for -1825 (decimal point lost)"
+          "distractor_logic": "18.25 is the canonical sign-drop; watch also for −1825 (decimal point lost)"
         },
         {
           "stem": "A hot-air balloon ascends 425.8 feet. Write the rational number that represents this change in altitude.",
           "answer": "425.8",
           "choices": null,
-          "distractor_logic": "-425.8 signals the student now tags every 'change' negative -- overcorrection is a real failure mode here"
+          "distractor_logic": "−425.8 signals the student now tags every 'change' negative -- overcorrection is a real failure mode here"
         },
         {
           "stem": "Lena's bank account is overdrawn by $6.50. Write the rational number that represents her balance.",
-          "answer": "-6.50",
+          "answer": "−6.50",
           "choices": null,
           "distractor_logic": "6.50 drops the sign; 'overdrawn' has no obvious down-word, so the student must know it means below a zero balance"
         },
         {
           "stem": "A hiking trail descends 3/4 of a mile in elevation. Write the rational number that represents this change.",
-          "answer": "-3/4",
+          "answer": "−3/4",
           "choices": null,
-          "distractor_logic": "3/4 drops the sign; -4/3 flips the fraction while keeping the sign"
+          "distractor_logic": "3/4 drops the sign; −4/3 flips the fraction while keeping the sign"
         }
       ],
       "vocabulary": [
@@ -2407,18 +2850,18 @@
         },
         {
           "kind": "ask",
-          "text": "Read the finished answer, -18.25, back against the story. Does a negative number match a reduction? Say why in one sentence."
+          "text": "Read the finished answer, −18.25, back against the story. Does a negative number match a reduction? Say why in one sentence."
         },
         {
           "kind": "ask",
-          "text": "Confirm the answer: -18.25 -- the '-' came from 'reduced,' and 18.25 is the size copied straight from the story, cents and all. Why did writing the sign first keep it from getting lost?"
+          "text": "Confirm the answer: −18.25 -- the '-' came from 'reduced,' and 18.25 is the size copied straight from the story, cents and all. Why did writing the sign first keep it from getting lost?"
         }
       ],
       "practice_problems": [
         {
           "difficulty": "warm_up",
           "stem": "Write the number that represents 'a withdrawal of $8'.",
-          "answer": "-8"
+          "answer": "−8"
         },
         {
           "difficulty": "warm_up",
@@ -2428,12 +2871,12 @@
         {
           "difficulty": "core",
           "stem": "The temperature fell 7.5 degrees overnight. Write the rational number that represents this change.",
-          "answer": "-7.5"
+          "answer": "−7.5"
         },
         {
           "difficulty": "core",
           "stem": "A stock's price dropped $0.45 today. Write the rational number that represents this change.",
-          "answer": "-0.45",
+          "answer": "−0.45",
           "notes": "Small magnitude on purpose -- pairs the sign-drop risk with the 'small negative' discomfort from S3."
         },
         {
@@ -2445,25 +2888,25 @@
             "Kira writes: 9.99",
             "Kira says: 'I wrote exactly what the price tag changed by.'"
           ],
-          "answer": "-9.99. Kira copied the size but skipped the sign decision. 'Reduced' points down, so the change is negative. A bare 9.99 would mean the price went UP by $9.99 -- the opposite of the story.",
+          "answer": "−9.99. Kira copied the size but skipped the sign decision. 'Reduced' points down, so the change is negative. A bare 9.99 would mean the price went UP by $9.99 -- the opposite of the story.",
           "notes": "The canonical error with fresh numbers; the fix names what the wrong answer would actually mean."
         },
         {
           "difficulty": "core",
           "stem": "A submarine changes its depth, ending 2/5 of a mile below the surface. Write the rational number that represents its position.",
-          "answer": "-2/5"
+          "answer": "−2/5"
         },
         {
           "difficulty": "stretch",
           "stem": "Write the number for each, and explain why the signs differ: (a) a paycheck deposit of $52.75, (b) a gym fee of $52.75 charged to the account.",
-          "answer": "(a) 52.75 and (b) -52.75. Same size, opposite directions: money in versus money out.",
+          "answer": "(a) 52.75 and (b) −52.75. Same size, opposite directions: money in versus money out.",
           "notes": "Same magnitude forces the student to articulate that only the direction differs."
         },
         {
           "difficulty": "stretch",
           "type": "number_line",
           "stem": "Write the number that represents 'a change in water level of 1.5 feet downward,' then mark it on the number line.",
-          "answer": "-1.5",
+          "answer": "−1.5",
           "render_data": {
             "type": "number_line_point",
             "ticks": [
@@ -2504,7 +2947,7 @@
           "time_minutes": 10,
           "grouping": "pairs",
           "materials": [
-            "Paper strip 'thermometer' (vertical number line from -10 to 10)",
+            "Paper strip 'thermometer' (vertical number line from −10 to 10)",
             "Paper clip slider"
           ],
           "instructions": "1. Partner A slides the clip to a new reading and says the change as a story ('it fell 3.5 degrees').\n2. Partner B writes the signed number for the change, sign first.\n3. Swap roles every three turns; include rises, falls, and 'no change' (0).\n4. Debrief: which stories had no obvious direction word, and how did you decide the sign anyway?"
@@ -2558,11 +3001,11 @@
         "quick_checks": [
           {
             "prompt": "Empty box on the board: 'A puppy gained 2.3 pounds.' Write the number.",
-            "look_for": "2.3 (positive, no sign needed). A -2.3 means the student is blanket-tagging changes negative; hesitation means 'gain' isn't mapped."
+            "look_for": "2.3 (positive, no sign needed). A −2.3 means the student is blanket-tagging changes negative; hesitation means 'gain' isn't mapped."
           },
           {
             "prompt": "Empty box: 'A library fine of $0.75 is charged to an account.' Write the number.",
-            "look_for": "-0.75, sign first. A bare 0.75 is the canonical drop; also watch the decimal -- -75 means the size got mangled while attention went to the sign."
+            "look_for": "−0.75, sign first. A bare 0.75 is the canonical drop; also watch the decimal -- −75 means the size got mangled while attention went to the sign."
           }
         ]
       },
@@ -2601,7 +3044,7 @@
       },
       "faded_example": {
         "stem": "The temperature fell 4.5 degrees after sunset. Write the rational number that represents this change.",
-        "answer": "-4.5",
+        "answer": "−4.5",
         "steps": [
           {
             "math": "negative   ( − )",
@@ -2626,7 +3069,7 @@
       },
       "guided_example": {
         "stem": "A hot-air balloon descended 32.8 feet. Write the rational number that represents this change.",
-        "answer": "-32.8",
+        "answer": "−32.8",
         "steps": [
           {
             "math": null,
@@ -2670,13 +3113,13 @@
         "grade": 6,
         "description": "Represent a real-world quantity with a signed number (6NS1-S2/S4)",
         "check_question": "What number represents 'a temperature of 9 degrees below zero'?",
-        "check_answer": "-9.",
-        "if_student_says": "If they can't produce -9, comparison will collapse -- go back to 6NS1-S2 or S4 first."
+        "check_answer": "−9.",
+        "if_student_says": "If they can't produce −9, comparison will collapse -- go back to 6NS1-S2 or S4 first."
       },
-      "i_do_script": "Comparing signed numbers is a POSITION question, not a size question. 'Monday's low was -8, Tuesday's was -3 -- which night was colder?' Put both on a number line. -8 sits farther LEFT, so -8 is the lower temperature: Monday was colder. The digits lie to you here -- 8 beats 3 in size, but on the negative side, the bigger-looking number is farther DOWN. Position decides, always.",
+      "i_do_script": "Comparing signed numbers is a POSITION question, not a size question. 'Monday's low was −8, Tuesday's was −3 -- which night was colder?' Put both on a number line. −8 sits farther LEFT, so −8 is the lower temperature: Monday was colder. The digits lie to you here -- 8 beats 3 in size, but on the negative side, the bigger-looking number is farther DOWN. Position decides, always.",
       "canonical_error": {
-        "pattern": "Orders negative numbers by their digits -- says -50 is greater than -20 because 50 beats 20",
-        "example": "Says -15 degrees is warmer than -3 degrees 'because 15 is bigger than 3,' when -15 is actually 12 degrees colder",
+        "pattern": "Orders negative numbers by their digits -- says −50 is greater than −20 because 50 beats 20",
+        "example": "Says −15 degrees is warmer than −3 degrees 'because 15 is bigger than 3,' when −15 is actually 12 degrees colder",
         "why": "The student compares distances from zero instead of positions on the number line. Every whole-number habit says bigger digits mean a bigger number -- but left of zero that habit points exactly the wrong way, because farther from zero means farther DOWN."
       },
       "redirect_script": {
@@ -2687,34 +3130,34 @@
       "item_template": "A context gives two (or more) signed rational numbers (temperatures, elevations, balances, depths). Student says which is greater/less, or picks true statements, or orders values -- no computation, position only. Number-line figures appear in most items.",
       "sample_items": [
         {
-          "stem": "The overnight low was -8 degrees on Monday and -3 degrees on Tuesday. Which night was colder?",
-          "answer": "Monday (-8 degrees)",
+          "stem": "The overnight low was −8 degrees on Monday and −3 degrees on Tuesday. Which night was colder?",
+          "answer": "Monday (−8 degrees)",
           "choices": null,
           "distractor_logic": "Tuesday is the digit-comparison miss read backward; saying Tuesday because '3 is smaller' means digits are still in charge"
         },
         {
-          "stem": "Jo's bank balance is -25 dollars and Ted's is -40 dollars. Who owes more money?",
+          "stem": "Jo's bank balance is −25 dollars and Ted's is −40 dollars. Who owes more money?",
           "answer": "Ted",
           "choices": null,
-          "distractor_logic": "Jo is the miss if the student thinks -25 is 'more negative' because it was said first or because 25 < 40 confuses them; owing more = farther below zero"
+          "distractor_logic": "Jo is the miss if the student thinks −25 is 'more negative' because it was said first or because 25 < 40 confuses them; owing more = farther below zero"
         },
         {
-          "stem": "Which elevation is lower: -120 feet or -85 feet?",
-          "answer": "-120 feet",
+          "stem": "Which elevation is lower: −120 feet or −85 feet?",
+          "answer": "−120 feet",
           "choices": null,
-          "distractor_logic": "-85 is the digit-order miss; -120 sits farther left/down"
+          "distractor_logic": "−85 is the digit-order miss; −120 sits farther left/down"
         },
         {
-          "stem": "Order these temperatures from coldest to warmest: -7, 2, -12, 0",
-          "answer": "-12, -7, 0, 2",
+          "stem": "Order these temperatures from coldest to warmest: −7, 2, −12, 0",
+          "answer": "−12, −7, 0, 2",
           "choices": null,
-          "distractor_logic": "-7 before -12 means negatives were ordered by digits; 0 misplaced means zero's position between the signs isn't set"
+          "distractor_logic": "−7 before −12 means negatives were ordered by digits; 0 misplaced means zero's position between the signs isn't set"
         },
         {
           "stem": "Points A and B on the number line show two divers' positions in feet. Which diver is deeper, and what number shows it?",
-          "answer": "Diver B, at -6 feet",
+          "answer": "Diver B, at −6 feet",
           "choices": null,
-          "distractor_logic": "Picking A (-2) as deeper means 'closer to the surface' and 'deeper' are being read as the same; the figure makes position visible",
+          "distractor_logic": "Picking A (−2) as deeper means 'closer to the surface' and 'deeper' are being read as the same; the figure makes position visible",
           "render_data": {
             "type": "number_line_point",
             "ticks": [
@@ -2745,25 +3188,25 @@
           }
         },
         {
-          "stem": "Which is greater: -1/2 or -3/4?",
-          "answer": "-1/2",
+          "stem": "Which is greater: −1/2 or −3/4?",
+          "answer": "−1/2",
           "choices": null,
-          "distractor_logic": "-3/4 is the digit-comparison miss (3/4 > 1/2 as sizes); -1/2 sits closer to zero, so it is greater"
+          "distractor_logic": "−3/4 is the digit-comparison miss (3/4 > 1/2 as sizes); −1/2 sits closer to zero, so it is greater"
         },
         {
-          "stem": "Diver A is at -35.5 feet and Diver B is at -35.8 feet. Who is deeper?",
+          "stem": "Diver A is at −35.5 feet and Diver B is at −35.8 feet. Who is deeper?",
           "answer": "Diver B",
           "choices": null,
-          "distractor_logic": "A near-tie forces reading the decimal: -35.8 is farther below zero than -35.5 even though they look almost identical"
+          "distractor_logic": "A near-tie forces reading the decimal: −35.8 is farther below zero than −35.5 even though they look almost identical"
         },
         {
-          "stem": "Which position is closer to sea level: an elevation of -6 feet or an elevation of 4 feet?",
+          "stem": "Which position is closer to sea level: an elevation of −6 feet or an elevation of 4 feet?",
           "answer": "4 feet",
           "choices": null,
-          "distractor_logic": "Distance from zero, not order: -6 is 6 away, 4 is 4 away. Saying -6 'because negatives are small' confuses order with distance"
+          "distractor_logic": "Distance from zero, not order: −6 is 6 away, 4 is 4 away. Saying −6 'because negatives are small' confuses order with distance"
         },
         {
-          "stem": "Chicago, Illinois has an elevation of 600 feet above sea level. The elevation of Seeley, California is -200 feet. Which statement is true?",
+          "stem": "Chicago, Illinois has an elevation of 600 feet above sea level. The elevation of Seeley, California is −200 feet. Which statement is true?",
           "answer": "Seeley is below sea level",
           "choices": [
             "Seeley is below sea level",
@@ -2771,10 +3214,10 @@
             "Seeley is at sea level",
             "Chicago is below sea level"
           ],
-          "distractor_logic": "Mirrors the spec's At item. 'Above' is the sign-blind read of -200; 'at sea level' treats the negative as zero-ish"
+          "distractor_logic": "Mirrors the spec's At item. 'Above' is the sign-blind read of −200; 'at sea level' treats the negative as zero-ish"
         },
         {
-          "stem": "In golf, lower scores are better. Rosa finished at -2 (two under par) and Kim finished at 1 (one over par). Who had the better score?",
+          "stem": "In golf, lower scores are better. Rosa finished at −2 (two under par) and Kim finished at 1 (one over par). Who had the better score?",
           "answer": "Rosa",
           "choices": null,
           "distractor_logic": "Kim is the miss if 'negative means worse/smaller' -- in golf the direction of 'better' points down, which rewards reading signs correctly"
@@ -2787,7 +3230,7 @@
         },
         {
           "term": "Greater than / less than",
-          "definition": "-3 > -8 because -3 sits to the RIGHT of -8 on the number line -- even though 8 looks bigger than 3."
+          "definition": "−3 > −8 because −3 sits to the RIGHT of −8 on the number line -- even though 8 looks bigger than 3."
         },
         {
           "term": "Descend",
@@ -2801,11 +3244,11 @@
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Write the problem: 'Monday's low: -8 degrees. Tuesday's low: -3 degrees. Which night was colder?' Draw a blank number line from -10 to 5 underneath."
+          "text": "Write the problem: 'Monday's low: −8 degrees. Tuesday's low: −3 degrees. Which night was colder?' Draw a blank number line from −10 to 5 underneath."
         },
         {
           "kind": "ask",
-          "text": "Before any comparing -- plot both numbers on the line. Where does -8 go? Where does -3 go?"
+          "text": "Before any comparing -- plot both numbers on the line. Where does −8 go? Where does −3 go?"
         },
         {
           "kind": "ask",
@@ -2817,32 +3260,32 @@
         },
         {
           "kind": "say",
-          "text": "This is the trap with negatives: the digits flip sides. 8 beats 3 as a size, but -8 sits BELOW -3. On the left side of zero, bigger-looking digits mean farther down."
+          "text": "This is the trap with negatives: the digits flip sides. 8 beats 3 as a size, but −8 sits BELOW −3. On the left side of zero, bigger-looking digits mean farther down."
         },
         {
           "kind": "ask",
-          "text": "Say the comparison both ways: -8 is ___ than -3, so Monday was ___ than Tuesday."
+          "text": "Say the comparison both ways: −8 is ___ than −3, so Monday was ___ than Tuesday."
         },
         {
           "kind": "ask",
-          "text": "Quick test of the idea: which is greater, -50 or -20? Answer from the number line in your head, not the digits."
+          "text": "Quick test of the idea: which is greater, −50 or −20? Answer from the number line in your head, not the digits."
         },
         {
           "kind": "ask",
-          "text": "Now a money version: Jo's balance is -25 and Ted's is -40. Who owes more, and where does each sit on the line?"
+          "text": "Now a money version: Jo's balance is −25 and Ted's is −40. Who owes more, and where does each sit on the line?"
         }
       ],
       "practice_problems": [
         {
           "difficulty": "warm_up",
-          "stem": "Which is greater: -4 or 2?",
+          "stem": "Which is greater: −4 or 2?",
           "answer": "2"
         },
         {
           "difficulty": "warm_up",
           "type": "number_line",
-          "stem": "Plot -5 and -1 on the number line. Which sits farther left?",
-          "answer": "-5",
+          "stem": "Plot −5 and −1 on the number line. Which sits farther left?",
+          "answer": "−5",
           "render_data": {
             "type": "number_line_point",
             "ticks": [
@@ -2862,8 +3305,8 @@
         },
         {
           "difficulty": "core",
-          "stem": "The temperature in Duluth is -14 degrees and in Gary it is -6 degrees. Which city is colder?",
-          "answer": "Duluth (-14 degrees)",
+          "stem": "The temperature in Duluth is −14 degrees and in Gary it is −6 degrees. Which city is colder?",
+          "answer": "Duluth (−14 degrees)",
           "notes": "Watch for 'Gary, because 6 is smaller' -- digits in charge."
         },
         {
@@ -2871,18 +3314,18 @@
           "type": "error_analysis",
           "stem": "Trey compared two bank balances. Find his mistake and fix it.",
           "shown_work": [
-            "Jade's balance: -30 dollars.  Sam's balance: -12 dollars.",
-            "Trey writes: -30 > -12",
-            "Trey says: '30 is bigger than 12, so -30 is greater.'"
+            "Jade's balance: −30 dollars.  Sam's balance: −12 dollars.",
+            "Trey writes: −30 > −12",
+            "Trey says: '30 is bigger than 12, so −30 is greater.'"
           ],
-          "answer": "-30 < -12. On the number line, -30 sits farther left (farther below zero) than -12, so it is LESS. Jade owes more money; Sam's balance is greater. Below zero, bigger digits mean a lower number.",
+          "answer": "−30 < −12. On the number line, −30 sits farther left (farther below zero) than −12, so it is LESS. Jade owes more money; Sam's balance is greater. Below zero, bigger digits mean a lower number.",
           "notes": "Directly baits the canonical order-by-digits error."
         },
         {
           "difficulty": "core",
           "type": "number_line",
           "stem": "Points P and Q show two basement floors' elevations in meters. Write a comparison using < or > that matches the picture.",
-          "answer": "-4 < -1 (or -1 > -4)",
+          "answer": "−4 < −1 (or −1 > −4)",
           "render_data": {
             "type": "number_line_point",
             "ticks": [
@@ -2910,21 +3353,21 @@
         },
         {
           "difficulty": "core",
-          "stem": "Which is greater: -0.75 or -0.7?",
-          "answer": "-0.7",
-          "notes": "Decimal near-tie: -0.75 is farther below zero. Digit habits say 75 beats 7 -- position says otherwise."
+          "stem": "Which is greater: −0.75 or −0.7?",
+          "answer": "−0.7",
+          "notes": "Decimal near-tie: −0.75 is farther below zero. Digit habits say 75 beats 7 -- position says otherwise."
         },
         {
           "difficulty": "stretch",
-          "stem": "Order from lowest to highest elevation: -1/2 ft, 3 ft, -5.5 ft, 0 ft.",
-          "answer": "-5.5, -1/2, 0, 3",
+          "stem": "Order from lowest to highest elevation: −1/2 ft, 3 ft, −5.5 ft, 0 ft.",
+          "answer": "−5.5, −1/2, 0, 3",
           "notes": "Mixed rational numbers -- the spec's 'difficult' band. Zero must land between the signs."
         },
         {
           "difficulty": "stretch",
-          "stem": "Write a real-world comparison story where -20 is GREATER than the other number in it.",
-          "answer": "Any story comparing -20 with something less, e.g. '-20 degrees in Fairbanks was warmer than -35 in Barrow.'",
-          "notes": "Producing a case where -20 is the greater value breaks 'negative means small/worst' for good."
+          "stem": "Write a real-world comparison story where −20 is GREATER than the other number in it.",
+          "answer": "Any story comparing −20 with something less, e.g. '−20 degrees in Fairbanks was warmer than −35 in Barrow.'",
+          "notes": "Producing a case where −20 is the greater value breaks 'negative means small/worst' for good."
         }
       ],
       "activities": [
@@ -2937,7 +3380,7 @@
             "Index cards with signed temperatures (one per student)",
             "Tape line on the floor with 0 marked"
           ],
-          "instructions": "1. Hand each student a temperature card (-12, -7, -0.5, 0, 3, 8.5, ...).\n2. Students place themselves on the floor line -- no talking, position only.\n3. Once set, ask down-the-line questions: 'Who is colder, -12 or -7? Prove it without digits -- just point.'\n4. Debrief: what did EVERY person left of the 0 mark have in common? Who was lowest, and were their digits the biggest or smallest?"
+          "instructions": "1. Hand each student a temperature card (−12, −7, −0.5, 0, 3, 8.5, ...).\n2. Students place themselves on the floor line -- no talking, position only.\n3. Once set, ask down-the-line questions: 'Who is colder, −12 or −7? Prove it without digits -- just point.'\n4. Debrief: what did EVERY person left of the 0 mark have in common? Who was lowest, and were their digits the biggest or smallest?"
         },
         {
           "type": "error_analysis",
@@ -2947,11 +3390,11 @@
           "materials": [
             "One printed problem card per group"
           ],
-          "instructions": "1. Show Trey's work (-30 > -12) and let the group react before you say anything.\n2. Require a number line in the group's fix -- the rule 'farther left is less' must appear in their words.\n3. Ask the transfer question: whose bank account would you rather have, and what does that say about which number is greater?\n4. Each student writes the corrected statement and one sentence on why the digit rule breaks below zero.",
+          "instructions": "1. Show Trey's work (−30 > −12) and let the group react before you say anything.\n2. Require a number line in the group's fix -- the rule 'farther left is less' must appear in their words.\n3. Ask the transfer question: whose bank account would you rather have, and what does that say about which number is greater?\n4. Each student writes the corrected statement and one sentence on why the digit rule breaks below zero.",
           "content": {
-            "worked_problem": "Jade's balance: -30. Sam's balance: -12. Trey wrote: -30 > -12 because 30 is bigger than 12.",
-            "error_step": "Trey compared the digits (30 vs 12) instead of the positions of -30 and -12 on the number line.",
-            "why": "Digits measure distance from zero, not order. -30 is FARTHER below zero than -12, so it is less: -30 < -12. Below zero, the whole-number habit points exactly backward."
+            "worked_problem": "Jade's balance: −30. Sam's balance: −12. Trey wrote: −30 > −12 because 30 is bigger than 12.",
+            "error_step": "Trey compared the digits (30 vs 12) instead of the positions of −30 and −12 on the number line.",
+            "why": "Digits measure distance from zero, not order. −30 is FARTHER below zero than −12, so it is less: −30 < −12. Below zero, the whole-number habit points exactly backward."
           }
         },
         {
@@ -2960,15 +3403,15 @@
           "time_minutes": 10,
           "grouping": "pairs",
           "materials": [
-            "Deck of signed-number cards (integers, decimals, fractions from -12 to 12)"
+            "Deck of signed-number cards (integers, decimals, fractions from −12 to 12)"
           ],
-          "instructions": "1. Split the deck. Each round, both partners flip a card face up.\n2. Call the round's rule BEFORE flipping: 'lowest wins' (coldest) or 'highest wins' (warmest) -- alternate each round.\n3. The winner must say the comparison out loud with < or > ('-9 < -2, so I win coldest').\n4. A wrong sentence forfeits the round. Debrief: which pairs of cards caused arguments -- and was it ever two negatives?"
+          "instructions": "1. Split the deck. Each round, both partners flip a card face up.\n2. Call the round's rule BEFORE flipping: 'lowest wins' (coldest) or 'highest wins' (warmest) -- alternate each round.\n3. The winner must say the comparison out loud with < or > ('−9 < −2, so I win coldest').\n4. A wrong sentence forfeits the round. Debrief: which pairs of cards caused arguments -- and was it ever two negatives?"
         }
       ],
       "strategy_links": [
         {
           "strategy_id": "strat-math-002",
-          "why": "A number talk on 'which is greater, -30 or -12?' exposes the digit-comparison reasoning so the group can dismantle it together."
+          "why": "A number talk on 'which is greater, −30 or −12?' exposes the digit-comparison reasoning so the group can dismantle it together."
         },
         {
           "strategy_id": "strat-math-003",
@@ -2983,13 +3426,13 @@
         "questioning_prompts": [
           "Which number sits farther left on the number line? What does farther left mean in this story?",
           "You said 15 is bigger than 3 -- bigger as a DISTANCE from zero, or greater as a POSITION? Which one does 'colder' care about?",
-          "Whose bank account would you rather have, -12 or -30? So which number is greater?",
+          "Whose bank account would you rather have, −12 or −30? So which number is greater?",
           "Where does 0 sit in your ordering? What has to be true of everything left of it?",
-          "Can you name a number between -0.7 and -0.75? Which side of both does it sit on?"
+          "Can you name a number between −0.7 and −0.75? Which side of both does it sit on?"
         ],
         "misconception_redirects": [
           {
-            "if_you_see": "Student says -50 is greater than -20 (or -15 degrees is warmer than -3) because the digits are bigger.",
+            "if_you_see": "Student says −50 is greater than −20 (or −15 degrees is warmer than −3) because the digits are bigger.",
             "say": "Draw a quick number line and PLOT both numbers before you compare. Which one sits farther left? Farther left is smaller -- colder, deeper, more owed -- every time. Now answer from the picture, not the digits.",
             "praise": "You compared positions, not digits. Left means less -- you've got it."
           },
@@ -3001,12 +3444,12 @@
         ],
         "quick_checks": [
           {
-            "prompt": "Whiteboards: put < or > between -9 ___ -2.",
-            "look_for": "-9 < -2 without hesitation. A > means digits are still in charge -- rerun the plot-first move before more items."
+            "prompt": "Whiteboards: put < or > between −9 ___ −2.",
+            "look_for": "−9 < −2 without hesitation. A > means digits are still in charge -- rerun the plot-first move before more items."
           },
           {
-            "prompt": "Say it in a sentence: the elevations are -35 feet and -80 feet. Which place is lower?",
-            "look_for": "'-80 is lower' with a position reason (farther below sea level). A '-35' answer or a digits reason means the number-line picture isn't being consulted."
+            "prompt": "Say it in a sentence: the elevations are −35 feet and −80 feet. Which place is lower?",
+            "look_for": "'−80 is lower' with a position reason (farther below sea level). A '−35' answer or a digits reason means the number-line picture isn't being consulted."
           }
         ]
       },
@@ -3069,8 +3512,8 @@
         }
       },
       "faded_example": {
-        "stem": "Two accounts: Mia's balance is -18 dollars, Leo's is -7 dollars. Whose balance is lower?",
-        "answer": "Mia's (-18 < -7)",
+        "stem": "Two accounts: Mia's balance is −18 dollars, Leo's is −7 dollars. Whose balance is lower?",
+        "answer": "Mia's (−18 < −7)",
         "steps": [
           {
             "math": "plot both:  −18  and  −7",
@@ -3116,8 +3559,8 @@
         }
       },
       "guided_example": {
-        "stem": "The low temperature was -9 degrees in Duluth and -21 degrees in Butte. Which city was colder?",
-        "answer": "Butte (-21 < -9)",
+        "stem": "The low temperature was −9 degrees in Duluth and −21 degrees in Butte. Which city was colder?",
+        "answer": "Butte (−21 < −9)",
         "render_data": {
           "type": "number_line_point",
           "ticks": [
@@ -3176,7 +3619,7 @@
         "type": "gap",
         "grade": 6,
         "description": "Represent situations above and below a reference point with signed numbers (6NS1-S2)",
-        "check_question": "If +10 means 10 feet above sea level and -10 means 10 feet below it, what does 0 mean?",
+        "check_question": "If +10 means 10 feet above sea level and −10 means 10 feet below it, what does 0 mean?",
         "check_answer": "Exactly at sea level -- the reference point the other numbers measure from.",
         "if_student_says": "If they say '0 means no elevation' or 'nothing,' this skill is exactly what they need -- but confirm S2 is solid first."
       },
@@ -3224,10 +3667,10 @@
             "One second before launch",
             "The rocket has no fuel left"
           ],
-          "distractor_logic": "'Canceled' and 'no fuel' read 0 as nothing/failure; 'one second before' would be -1"
+          "distractor_logic": "'Canceled' and 'no fuel' read 0 as nothing/failure; 'one second before' would be −1"
         },
         {
-          "stem": "In golf, scores are recorded relative to par: -2 means two strokes under par, +3 means three over. What does a score of 0 mean?",
+          "stem": "In golf, scores are recorded relative to par: −2 means two strokes under par, +3 means three over. What does a score of 0 mean?",
           "answer": "The golfer took exactly par -- no strokes over or under",
           "choices": [
             "The golfer took exactly par -- no strokes over or under",
@@ -3260,7 +3703,7 @@
           "distractor_logic": "'The basement' would be negative; the other two are 0-means-nothing reads"
         },
         {
-          "stem": "A scientist records a lake's water level compared to its normal mark: +1.5 means 1.5 feet above normal, -1.5 means 1.5 feet below. What does 0 mean?",
+          "stem": "A scientist records a lake's water level compared to its normal mark: +1.5 means 1.5 feet above normal, −1.5 means 1.5 feet below. What does 0 mean?",
           "answer": "The water is exactly at its normal mark",
           "choices": [
             "The water is exactly at its normal mark",
@@ -3277,7 +3720,7 @@
           "distractor_logic": "'Out of the water' or 'at the bottom' both misplace the reference point; the surface is the zero the gauge measures from"
         },
         {
-          "stem": "The point Z on the number line marks 0 on a thermometer that shows -5 to 5 degrees. Explain what the temperature at Z means -- is it 'no temperature'?",
+          "stem": "The point Z on the number line marks 0 on a thermometer that shows −5 to 5 degrees. Explain what the temperature at Z means -- is it 'no temperature'?",
           "answer": "No -- 0 degrees is a real temperature, the reference point of the scale. Above it readings are positive, below it they are negative.",
           "choices": null,
           "distractor_logic": "Any 'no temperature' answer shows 0 is still an amount word; the figure shows 0 as a position between the signs",
@@ -3337,7 +3780,7 @@
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw a vertical line on the board. Write '+10 = 10 feet above sea level' near the top and '-10 = 10 feet below sea level' near the bottom. Leave the middle blank."
+          "text": "Draw a vertical line on the board. Write '+10 = 10 feet above sea level' near the top and '−10 = 10 feet below sea level' near the bottom. Leave the middle blank."
         },
         {
           "kind": "ask",
@@ -3361,7 +3804,7 @@
         },
         {
           "kind": "ask",
-          "text": "One more: a rocket countdown goes -3, -2, -1, 0, 1, 2... What real moment does 0 mark?"
+          "text": "One more: a rocket countdown goes −3, −2, −1, 0, 1, 2... What real moment does 0 mark?"
         },
         {
           "kind": "ask",
@@ -3381,7 +3824,7 @@
         },
         {
           "difficulty": "core",
-          "stem": "A freezer log records temperatures relative to the freezer's set point: -1.5 means 1.5 degrees below the set point. What does a reading of 0 mean?",
+          "stem": "A freezer log records temperatures relative to the freezer's set point: −1.5 means 1.5 degrees below the set point. What does a reading of 0 mean?",
           "answer": "The freezer is exactly at its set point",
           "notes": "The reference point here is NOT 0 degrees on a thermometer -- listen for whether students find the context's own zero."
         },
@@ -3406,7 +3849,7 @@
           "difficulty": "core",
           "type": "number_line",
           "stem": "The number line shows an elevator's floors relative to ground level. Mark where 0 belongs and say what it stands for.",
-          "answer": "0 goes between -1 and 1; it stands for ground level (street height).",
+          "answer": "0 goes between −1 and 1; it stands for ground level (street height).",
           "render_data": {
             "type": "number_line_point",
             "ticks": [
@@ -3570,8 +4013,8 @@
             "praise": "You named what zero stands for -- that's the reference point the whole story hangs on."
           },
           {
-            "if_you_see": "Student rounds near-zero values into zero -- calls -0.1 feet 'basically sea level' or a $0.05 fee 'nothing.'",
-            "say": "Close to the reference point is not AT it. Plot -0.1 and 0 on a zoomed-in line -- are they the same point? What's different about a swimmer at 0 and one at -0.1?",
+            "if_you_see": "Student rounds near-zero values into zero -- calls −0.1 feet 'basically sea level' or a $0.05 fee 'nothing.'",
+            "say": "Close to the reference point is not AT it. Plot −0.1 and 0 on a zoomed-in line -- are they the same point? What's different about a swimmer at 0 and one at −0.1?",
             "praise": "Right -- zero is exact. You kept 'near zero' and 'at zero' apart."
           }
         ],
@@ -3620,7 +4063,7 @@
         ]
       },
       "faded_example": {
-        "stem": "A weather app shows temperatures relative to the day's average: +2 means 2 degrees above average, -2 means 2 below. The app reads 0. What does that mean?",
+        "stem": "A weather app shows temperatures relative to the day's average: +2 means 2 degrees above average, −2 means 2 below. The app reads 0. What does that mean?",
         "answer": "The temperature is exactly at the day's average.",
         "steps": [
           {
@@ -3645,7 +4088,7 @@
         ]
       },
       "guided_example": {
-        "stem": "A parking garage labels floors relative to the street: +2 means two floors above the street, -1 means one floor below. An elevator screen reads 0. What does that mean?",
+        "stem": "A parking garage labels floors relative to the street: +2 means two floors above the street, −1 means one floor below. An elevator screen reads 0. What does that mean?",
         "answer": "The elevator is exactly at street level.",
         "steps": [
           {
@@ -3695,12 +4138,12 @@
         "description": "Compare signed values and explain 0 in context (6NS1-S5 and S6)",
         "check_question": "In a score table, what does a change of 0 in one round mean?",
         "check_answer": "The score didn't change that round -- no points gained, none lost.",
-        "if_student_says": "If they say 0 means 'lost the round' or 'didn't play,' shore up 6NS1-S6 first; if they can't compare -4 and -1, revisit 6NS1-S5."
+        "if_student_says": "If they say 0 means 'lost the round' or 'didn't play,' shore up 6NS1-S6 first; if they can't compare −4 and −1, revisit 6NS1-S5."
       },
-      "i_do_script": "Now the signed numbers come in a whole table -- a game log, a bank statement -- and our job is to read each entry's sign correctly and judge claims about the record. Reading a row like +2, -4, 0, +1, -3: each entry is a CHANGE. The sign tells the direction of that round: -4 means the score DROPPED 4, 0 means it stayed put. When someone makes a claim about the table, check it against the signs, not just the digits.",
+      "i_do_script": "Now the signed numbers come in a whole table -- a game log, a bank statement -- and our job is to read each entry's sign correctly and judge claims about the record. Reading a row like +2, −4, 0, +1, −3: each entry is a CHANGE. The sign tells the direction of that round: −4 means the score DROPPED 4, 0 means it stayed put. When someone makes a claim about the table, check it against the signs, not just the digits.",
       "canonical_error": {
-        "pattern": "Reads a signed table entry as its bare digits -- a change of -3 becomes 'scored 3 points,' and 0 becomes 'lost the round'",
-        "example": "Sees -3 in Round 5 of a score table and says the player 'earned 3 points that round,' or claims the 0 in Round 4 means the player lost",
+        "pattern": "Reads a signed table entry as its bare digits -- a change of −3 becomes 'scored 3 points,' and 0 becomes 'lost the round'",
+        "example": "Sees −3 in Round 5 of a score table and says the player 'earned 3 points that round,' or claims the 0 in Round 4 means the player lost",
         "why": "In a table the sign is one thin mark next to the digits. A student skimming for numbers processes the '3' and never the '-', so gains and losses read identically -- and 0, carrying no digits worth reading, gets a made-up meaning."
       },
       "redirect_script": {
@@ -3719,7 +4162,7 @@
             "Marco's score did not change at the end of Round 5",
             "Marco's score decreased at the end of Round 4"
           ],
-          "distractor_logic": "Round 3's 0 read as an increase, Round 5's -3 read as 'no change,' and Round 4's +1 read as a decrease are all sign-blind reads of the table",
+          "distractor_logic": "Round 3's 0 read as an increase, Round 5's −3 read as 'no change,' and Round 4's +1 read as a decrease are all sign-blind reads of the table",
           "render_data": {
             "type": "data_table",
             "headers": [
@@ -3734,10 +4177,10 @@
               [
                 "Change in score",
                 "+2",
-                "-4",
+                "−4",
                 "0",
                 "+1",
-                "-3"
+                "−3"
               ]
             ]
           }
@@ -3751,7 +4194,7 @@
             "Wednesday",
             "Thursday"
           ],
-          "distractor_logic": "Thursday (+3) has the biggest digits -- the bait for reading size without sign; Wednesday (-0.5) is a fall but the smallest; Monday (+1.5) is a rise",
+          "distractor_logic": "Thursday (+3) has the biggest digits -- the bait for reading size without sign; Wednesday (−0.5) is a fall but the smallest; Monday (+1.5) is a rise",
           "render_data": {
             "type": "data_table",
             "headers": [
@@ -3765,8 +4208,8 @@
               [
                 "Change (degrees)",
                 "+1.5",
-                "-2.5",
-                "-0.5",
+                "−2.5",
+                "−0.5",
                 "+3"
               ]
             ]
@@ -3774,14 +4217,14 @@
         },
         {
           "stem": "The table shows the transactions on Ana's bank account this week. Which statement is true?",
-          "answer": "The -20.50 entry is money that left the account",
+          "answer": "The −20.50 entry is money that left the account",
           "choices": [
-            "The -20.50 entry is money that left the account",
-            "The -20.50 entry is a deposit",
+            "The −20.50 entry is money that left the account",
+            "The −20.50 entry is a deposit",
             "The 0 entry means the account was closed that day",
             "The +15.25 entry is money that left the account"
           ],
-          "distractor_logic": "Calling -20.50 a deposit and +15.25 an outflow are sign-blind reads; '0 means closed' is the zero-means-nothing error inside a table",
+          "distractor_logic": "Calling −20.50 a deposit and +15.25 an outflow are sign-blind reads; '0 means closed' is the zero-means-nothing error inside a table",
           "render_data": {
             "type": "data_table",
             "headers": [
@@ -3794,7 +4237,7 @@
               [
                 "Transaction ($)",
                 "+15.25",
-                "-20.50",
+                "−20.50",
                 "0"
               ]
             ]
@@ -3802,7 +4245,7 @@
         },
         {
           "stem": "Ava's game log is shown. Ava says: 'Round 3 was my best round -- I scored 6 points!' Critique her claim: what does the table actually say about Round 3?",
-          "answer": "The Round 3 entry is -6: her score went DOWN 6 points. It was her worst round in the log, not her best -- she read the digits and skipped the sign.",
+          "answer": "The Round 3 entry is −6: her score went DOWN 6 points. It was her worst round in the log, not her best -- she read the digits and skipped the sign.",
           "choices": null,
           "distractor_logic": "Agreeing with Ava is the pure sign-blind read; the critique must name the sign as the thing she skipped",
           "render_data": {
@@ -3819,7 +4262,7 @@
                 "Change in score",
                 "+4",
                 "0",
-                "-6",
+                "−6",
                 "+2"
               ]
             ]
@@ -3833,7 +4276,7 @@
         },
         {
           "term": "Increase / Decrease",
-          "definition": "An increase is a positive change; a decrease is a negative change. A change of -4 IS a decrease of 4."
+          "definition": "An increase is a positive change; a decrease is a negative change. A change of −4 IS a decrease of 4."
         },
         {
           "term": "Transaction",
@@ -3847,7 +4290,7 @@
       "worked_example_script": [
         {
           "kind": "show",
-          "text": "Draw the table on the board -- Round: 1, 2, 3, 4, 5 / Change: +2, -4, 0, +1, -3. Say: Marco starts at 0 points, and each entry is the CHANGE that round."
+          "text": "Draw the table on the board -- Round: 1, 2, 3, 4, 5 / Change: +2, −4, 0, +1, −3. Say: Marco starts at 0 points, and each entry is the CHANGE that round."
         },
         {
           "kind": "ask",
@@ -3867,7 +4310,7 @@
         },
         {
           "kind": "ask",
-          "text": "Another claim: 'Marco's score did not change in Round 5.' Check it against the table -- what does the -3 actually say?"
+          "text": "Another claim: 'Marco's score did not change in Round 5.' Check it against the table -- what does the −3 actually say?"
         },
         {
           "kind": "say",
@@ -3881,7 +4324,7 @@
       "practice_problems": [
         {
           "difficulty": "warm_up",
-          "stem": "In a game log, a round's entry is -5. Did the score go up, go down, or stay the same?",
+          "stem": "In a game log, a round's entry is −5. Did the score go up, go down, or stay the same?",
           "answer": "Down (a decrease of 5)"
         },
         {
@@ -3895,39 +4338,39 @@
           "stem": "Malik read the game log below. Find his mistake and fix it.",
           "shown_work": [
             "Round:            1    2    3",
-            "Change in score: +3   -6    0",
+            "Change in score: +3   −6    0",
             "Malik says: 'Round 2 was great -- a 6-point round! And Round 3 must mean a loss, since 0 is nothing.'"
           ],
-          "answer": "Round 2's entry is -6: the score DROPPED 6 -- his worst round, not a 6-point gain. And Round 3's 0 means the score didn't change at all, not a loss. Malik read the digits and skipped both signs.",
+          "answer": "Round 2's entry is −6: the score DROPPED 6 -- his worst round, not a 6-point gain. And Round 3's 0 means the score didn't change at all, not a loss. Malik read the digits and skipped both signs.",
           "notes": "Baits both halves of the canonical error: the skipped negative sign and the invented meaning for 0."
         },
         {
           "difficulty": "core",
-          "stem": "A dive log shows a diver's depth changes, in meters, for three moves: -4.5, +2, -0.5. Which move brought the diver TOWARD the surface?",
+          "stem": "A dive log shows a diver's depth changes, in meters, for three moves: −4.5, +2, −0.5. Which move brought the diver TOWARD the surface?",
           "answer": "The +2 move",
           "notes": "The direction words never appear -- the student must supply 'toward the surface = positive' themselves."
         },
         {
           "difficulty": "core",
-          "stem": "A team's plays are logged as +7, -3, 0, +12. A reporter writes: 'The team lost yards on two plays.' Is the claim true? Fix it if not.",
-          "answer": "False -- only one play (-3) lost yards. The 0 play gained and lost nothing.",
+          "stem": "A team's plays are logged as +7, −3, 0, +12. A reporter writes: 'The team lost yards on two plays.' Is the claim true? Fix it if not.",
+          "answer": "False -- only one play (−3) lost yards. The 0 play gained and lost nothing.",
           "notes": "The claim baits counting the 0 as a loss."
         },
         {
           "difficulty": "core",
-          "stem": "Look at this week's transactions: Mon +40.00, Tue -12.75, Thu -0.25, Fri 0. Which entries are money leaving the account?",
-          "answer": "Tuesday (-12.75) and Thursday (-0.25)",
-          "notes": "The -0.25 tests whether tiny negatives still register as outflows; the 0 must not be counted."
+          "stem": "Look at this week's transactions: Mon +40.00, Tue −12.75, Thu −0.25, Fri 0. Which entries are money leaving the account?",
+          "answer": "Tuesday (−12.75) and Thursday (−0.25)",
+          "notes": "The −0.25 tests whether tiny negatives still register as outflows; the 0 must not be counted."
         },
         {
           "difficulty": "stretch",
           "stem": "Write a game log of five signed changes where the third round is the WORST round -- then write one true claim and one false claim about your log.",
-          "answer": "Any log whose Round 3 entry is the least value (e.g. +2, -1, -8, 0, +3), with a matching true claim and a false claim.",
+          "answer": "Any log whose Round 3 entry is the least value (e.g. +2, −1, −8, 0, +3), with a matching true claim and a false claim.",
           "notes": "Producing the record reverses the skill: the student controls the signs to force a meaning."
         },
         {
           "difficulty": "stretch",
-          "stem": "A weather log shows daily temperature changes: -2, -2, -2. Kayla says: 'The temperature is now -6 degrees.' What is wrong with her reasoning, and what CAN you say for sure?",
+          "stem": "A weather log shows daily temperature changes: −2, −2, −2. Kayla says: 'The temperature is now −6 degrees.' What is wrong with her reasoning, and what CAN you say for sure?",
           "answer": "The log only shows changes, not the actual temperature -- without knowing the starting temperature you can't name the final one. What's sure: the temperature fell three days in a row, 2 degrees each day.",
           "notes": "Critique-the-model stretch: separates 'change' entries from 'position' values, the exact idea 7.NS.1 builds on."
         }
@@ -3941,11 +4384,11 @@
           "materials": [
             "Printed game log and recap paragraph (one per group)"
           ],
-          "instructions": "1. Give each group the log (Round changes: +5, -2, 0, -7, +1) and a 'reporter recap' containing three errors.\n2. The recap reads: 'A 2-point gain in Round 2, a scoreless loss in Round 3, and a huge 7-point rally in Round 4 capped the game.'\n3. Groups touch each entry, say its direction, and rewrite the recap correctly.\n4. Debrief: which of the reporter's errors came from skipping a sign, and which from making up a meaning for 0?",
+          "instructions": "1. Give each group the log (Round changes: +5, −2, 0, −7, +1) and a 'reporter recap' containing three errors.\n2. The recap reads: 'A 2-point gain in Round 2, a scoreless loss in Round 3, and a huge 7-point rally in Round 4 capped the game.'\n3. Groups touch each entry, say its direction, and rewrite the recap correctly.\n4. Debrief: which of the reporter's errors came from skipping a sign, and which from making up a meaning for 0?",
           "content": {
-            "worked_problem": "Log: +5, -2, 0, -7, +1. Recap claims: Round 2 was a 2-point gain; Round 3 was a loss; Round 4 was a 7-point rally.",
-            "error_step": "All three claims read the digits without the signs: -2 became a gain, 0 became a loss, and -7 became a rally.",
-            "why": "A table's sign carries the whole direction of each change. -2 is a 2-point DROP, 0 is no change at all, and -7 is the game's worst round -- the digits alone can't distinguish any of that."
+            "worked_problem": "Log: +5, −2, 0, −7, +1. Recap claims: Round 2 was a 2-point gain; Round 3 was a loss; Round 4 was a 7-point rally.",
+            "error_step": "All three claims read the digits without the signs: −2 became a gain, 0 became a loss, and −7 became a rally.",
+            "why": "A table's sign carries the whole direction of each change. −2 is a 2-point DROP, 0 is no change at all, and −7 is the game's worst round -- the digits alone can't distinguish any of that."
           }
         },
         {
@@ -3957,7 +4400,7 @@
             "Blank 5-row statement template",
             "Pencil"
           ],
-          "instructions": "1. Each student invents a week of transactions: at least two negative entries, one positive, and one 0 -- each with a story ('Tuesday: bought a snack, -1.75').\n2. Students swap statements and write one true statement and one trick (false) claim about the partner's week.\n3. Statements come back; each student catches the trick claim and explains what sign it misread.\n4. Debrief: why is the 0 row the easiest one to write a trick claim about?"
+          "instructions": "1. Each student invents a week of transactions: at least two negative entries, one positive, and one 0 -- each with a story ('Tuesday: bought a snack, −1.75').\n2. Students swap statements and write one true statement and one trick (false) claim about the partner's week.\n3. Statements come back; each student catches the trick claim and explains what sign it misread.\n4. Debrief: why is the 0 row the easiest one to write a trick claim about?"
         },
         {
           "type": "game",
@@ -3968,7 +4411,7 @@
             "A signed-change table on the board",
             "Claim cards (mix of true and false)"
           ],
-          "instructions": "1. Post one table for the room (e.g. Day changes: +1.5, -3, 0, -0.5, +2).\n2. Partners draw a claim card ('the value fell on exactly two days') and check it against the table together.\n3. TRUE claims go in one pile; FALSE claims must be fixed in writing before they can be discarded.\n4. Debrief: which false claim fooled the most pairs, and what sign did it hide behind?"
+          "instructions": "1. Post one table for the room (e.g. Day changes: +1.5, −3, 0, −0.5, +2).\n2. Partners draw a claim card ('the value fell on exactly two days') and check it against the table together.\n3. TRUE claims go in one pile; FALSE claims must be fixed in writing before they can be discarded.\n4. Debrief: which false claim fooled the most pairs, and what sign did it hide behind?"
         }
       ],
       "strategy_links": [
@@ -3995,19 +4438,19 @@
         ],
         "misconception_redirects": [
           {
-            "if_you_see": "Student reads -3 in a table as 'scored 3 points' or calls the 0 entry a loss -- digits without signs.",
+            "if_you_see": "Student reads −3 in a table as 'scored 3 points' or calls the 0 entry a loss -- digits without signs.",
             "say": "Touch each entry and say its direction out loud before its size: 'minus... 3 -- the score went DOWN 3.' For a 0, say 'no change.' Now re-read the claim -- does it match what the signs actually say?",
             "praise": "You read the sign first and caught the claim that didn't match. That's real table-reading."
           },
           {
-            "if_you_see": "Student picks the entry with the biggest digits when asked for the biggest drop (chooses +3 over -2.5 as 'the most change downward').",
+            "if_you_see": "Student picks the entry with the biggest digits when asked for the biggest drop (chooses +3 over −2.5 as 'the most change downward').",
             "say": "'Fell the most' only looks at entries with a minus sign. Circle just the negative entries first, then compare those -- which sits lowest on a number line?",
             "praise": "You filtered by direction before comparing size -- exactly the right order."
           }
         ],
         "quick_checks": [
           {
-            "prompt": "Point at the -4 in this table. In five words or less, what happened?",
+            "prompt": "Point at the −4 in this table. In five words or less, what happened?",
             "look_for": "'It went down four' (or equivalent). 'Four points' with no direction word means the sign still isn't being read."
           },
           {
@@ -4050,7 +4493,7 @@
         ]
       },
       "faded_example": {
-        "stem": "A dive log shows depth changes in meters: -3, +1.5, 0. A classmate claims: 'The diver rose in the second move.' Judge the claim.",
+        "stem": "A dive log shows depth changes in meters: −3, +1.5, 0. A classmate claims: 'The diver rose in the second move.' Judge the claim.",
         "answer": "True -- the second entry is +1.5, a change toward the surface.",
         "steps": [
           {
@@ -4075,7 +4518,7 @@
         ]
       },
       "guided_example": {
-        "stem": "A savings log shows weekly changes in dollars: +5, 0, -12. A friend claims: 'The account lost money in Week 2.' Judge the claim.",
+        "stem": "A savings log shows weekly changes in dollars: +5, 0, −12. A friend claims: 'The account lost money in Week 2.' Judge the claim.",
         "answer": "False -- Week 2's entry is 0: no change that week, not a loss.",
         "steps": [
           {

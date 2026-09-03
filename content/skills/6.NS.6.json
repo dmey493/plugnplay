@@ -150,7 +150,217 @@
           "kind": "ask",
           "text": "Your turn, quick: 8 x __ = 72, then 63 / 9."
         }
-      ]
+      ],
+      "worked_solution": {
+        "stem": "6 x __ = 42",
+        "answer": "7",
+        "steps": [
+          {
+            "math": "read it backward:  42 / 6 = ?",
+            "annotation": "",
+            "check": {
+              "move": "say_why",
+              "prompt": "A factor is missing. What division question is this the same as?",
+              "answer": "42 divided by 6 -- the same rectangle read the other way"
+            }
+          },
+          {
+            "math": "run the 6s row:  6 x 7 = 42",
+            "annotation": "",
+            "check": {
+              "move": "call_it",
+              "prompt": "Run the 6s row out loud. Which one lands exactly on 42?",
+              "answer": "6 x 7"
+            }
+          },
+          {
+            "math": "the missing factor is 7",
+            "annotation": "",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 8 here? Which product did they grab by mistake?",
+              "answer": "48 -- a neighbour in the 6s row, not 42"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "7 x __ = 56",
+        "answer": "8",
+        "steps": [
+          {
+            "math": "read it backward:  56 / 7 = ?",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "run the 7s row:  7 x 8 = 56",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: write the missing factor. Who answers 9, and what did they grab?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the missing factor. Who answers 9, and what did they grab?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "9 x __ = 63",
+        "answer": "7",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Say Why − what division question is this the same as?",
+            "given": false,
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why − what division question is this the same as?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It − run the 9s row. Which lands on 63?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − run the 9s row. Which lands on 63?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − write it. Who answers 8, and what did they grab?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − write it. Who answers 8, and what did they grab?"
+            }
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "4 x __ = 28",
+          "answer": "7"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "What is 7 x 8?",
+          "answer": "56"
+        },
+        {
+          "difficulty": "core",
+          "stem": "8 x __ = 72",
+          "answer": "9"
+        },
+        {
+          "difficulty": "core",
+          "stem": "__ x 6 = 54",
+          "answer": "9"
+        },
+        {
+          "difficulty": "core",
+          "stem": "12 x __ = 96",
+          "answer": "8"
+        },
+        {
+          "difficulty": "core",
+          "stem": "What is 63 / 9?",
+          "answer": "7"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "Is 7 a factor of 52? Run the 7s row and explain.",
+          "answer": "No. 7 x 7 = 49 and 7 x 8 = 56, so 52 is skipped over."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "For 6 x __ = 42, Tia answered 8. Find her mistake and fix it.",
+          "shown_work": [
+            "6 x __ = 42",
+            "Tia thinks of the 6s row",
+            "She lands on 48 and writes 8"
+          ],
+          "answer": "She grabbed a neighbouring product. 6 x 8 is 48, not 42. Running the row carefully gives 6 x 7 = 42, so the missing factor is 7. Reading it backward as 42 / 6 = 7 confirms it."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Read the Rectangle Backward",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Array grid paper",
+            "Counters",
+            "Missing-factor cards"
+          ],
+          "instructions": "1. Draw a missing-factor card, for example 6 x __ = 42.\n2. Build a rectangle with 6 rows and keep adding columns until you reach 42 counters.\n3. Count the columns: that is the missing factor.\n4. Write all four facts the rectangle holds: two multiplications and two divisions.\n5. Now build the neighbour, 6 x 8, and see that it overshoots to 48.\n6. Say why a near miss in the row gives a wrong factor."
+        },
+        {
+          "type": "game",
+          "title": "Row Walk",
+          "time_minutes": 10,
+          "grouping": "pairs",
+          "materials": [
+            "Missing-factor cards through 12",
+            "Timer"
+          ],
+          "instructions": "1. Flip a card and both players walk the row out loud until someone lands on the target.\n2. The player who names the missing factor first scores, but only if they can also say the matching division fact.\n3. Overshooting the target and naming the neighbour costs a point.\n4. Play for three minutes and mark the rows that caused overshoots."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Building the array column by column makes the missing factor a thing you count, not a fact you try to recall."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Grabbing a neighbouring product is a stable, predictable error, so finding and fixing it in shown work confronts it directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "What division question is this the same as?",
+          "Walk the row out loud. Where does it land?",
+          "Did you land exactly on the target, or just near it?",
+          "What are the other three facts in this rectangle?",
+          "How would you check that factor without me telling you?"
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student names a factor whose product is near but not equal to the target.",
+            "say": "Multiply your answer back out. Did you land exactly on the target, or past it?",
+            "praise": "You checked by multiplying back, which catches every near miss."
+          },
+          {
+            "if_you_see": "Student cannot start a missing-factor problem.",
+            "say": "Turn it into a division question and read the rectangle the other way.",
+            "praise": "You used division to undo the multiplication, which is the whole idea."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "8 x __ = 56",
+            "look_for": "7, checked by multiplying back to 56."
+          },
+          {
+            "prompt": "Is 6 a factor of 40? Explain.",
+            "look_for": "No; 6 x 6 = 36 and 6 x 7 = 42, so 40 is skipped."
+          }
+        ]
+      },
+      "sentence_starters": [
+        "___ x ___ = ___, so the missing factor is ___.",
+        "I read it backward as ___ / ___, which is ___."
+      ],
+      "engine_stems": []
     },
     {
       "skill_id": "6NS6-F2",
@@ -274,7 +484,217 @@
           "kind": "ask",
           "text": "Your turn: list every factor of 18, then the first three multiples of 18."
         }
-      ]
+      ],
+      "worked_solution": {
+        "stem": "List all the factors of 24.",
+        "answer": "1, 2, 3, 4, 6, 8, 12, 24",
+        "steps": [
+          {
+            "math": "factors fit INSIDE 24 -- they divide it evenly",
+            "annotation": "",
+            "check": {
+              "move": "say_why",
+              "prompt": "Where do factors live compared with the number itself?",
+              "answer": "inside it -- the list never goes past 24"
+            }
+          },
+          {
+            "math": "walk the pairs:  1 x 24,  2 x 12,  3 x 8,  4 x 6",
+            "annotation": "",
+            "check": {
+              "move": "call_it",
+              "prompt": "Walk up from 1 in pairs. Which pairs multiply to 24?",
+              "answer": "1 x 24, 2 x 12, 3 x 8, 4 x 6"
+            }
+          },
+          {
+            "math": "factors of 24:  1, 2, 3, 4, 6, 8, 12, 24",
+            "annotation": "",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who names 48 as a factor of 24? What did they list instead?",
+              "answer": "a multiple -- multiples run outward from 24, factors stop at it"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "List all the factors of 36.",
+        "answer": "1, 2, 3, 4, 6, 9, 12, 18, 36",
+        "steps": [
+          {
+            "math": "factors fit INSIDE 36 -- they divide it evenly",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "walk the pairs:  1 x 36,  2 x 18,  3 x 12,  4 x 9,  6 x 6",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: write the full list. Who adds 72, and what did they list?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the full list. Who adds 72, and what did they list?"
+            }
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "List all the factors of 40.",
+        "answer": "1, 2, 4, 5, 8, 10, 20, 40",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Say Why − where do factors live compared with 40?",
+            "given": false,
+            "check": {
+              "move": "say_why",
+              "prompt": "Say Why − where do factors live compared with 40?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It − walk up from 1 in pairs. Which pairs make 40?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − walk up from 1 in pairs. Which pairs make 40?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − write the list. Why isn't 80 on it?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − write the list. Why isn't 80 on it?"
+            }
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "warm_up",
+          "stem": "List all the factors of 12.",
+          "answer": "1, 2, 3, 4, 6, 12"
+        },
+        {
+          "difficulty": "warm_up",
+          "stem": "List the first four multiples of 5.",
+          "answer": "5, 10, 15, 20"
+        },
+        {
+          "difficulty": "core",
+          "stem": "List all the factors of 30.",
+          "answer": "1, 2, 3, 5, 6, 10, 15, 30"
+        },
+        {
+          "difficulty": "core",
+          "stem": "List the first five multiples of 8.",
+          "answer": "8, 16, 24, 32, 40"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is 7 a factor of 28, a multiple of 28, or neither?",
+          "answer": "A factor of 28"
+        },
+        {
+          "difficulty": "core",
+          "stem": "Is 48 a factor of 12, a multiple of 12, or neither?",
+          "answer": "A multiple of 12"
+        },
+        {
+          "difficulty": "stretch",
+          "stem": "What is the largest factor of any number, and what is its smallest multiple?",
+          "answer": "The number itself is both."
+        },
+        {
+          "difficulty": "stretch",
+          "type": "error_analysis",
+          "stem": "Asked for a factor of 6, Luis answered 12. Find his mistake and fix it.",
+          "shown_work": [
+            "Name a factor of 6",
+            "Luis says 6 goes into 12",
+            "Luis answers 12"
+          ],
+          "answer": "He named a multiple. Factors of 6 fit inside it and stop at 6: 1, 2, 3, 6. Multiples of 6 run outward: 6, 12, 18. Because 6 divides 12, the 6 is a factor of 12 and 12 is a multiple of 6, which is the reverse of what was asked."
+        }
+      ],
+      "activities": [
+        {
+          "type": "hands_on",
+          "title": "Inside and Outside",
+          "time_minutes": 12,
+          "grouping": "pairs",
+          "materials": [
+            "Counters",
+            "Two labelled hoops or drawn circles: INSIDE and OUTSIDE",
+            "Number cards"
+          ],
+          "instructions": "1. Pick a number card, for example 12, and write it between the two circles.\n2. Build every rectangle you can with that many counters and record the pair of side lengths.\n3. Put each side length in the INSIDE circle: those are the factors, and they stop at 12.\n4. Now skip-count by 12 and write those in the OUTSIDE circle: those are the multiples, and they run on forever.\n5. Point at 12 and say why it appears in both circles.\n6. Repeat with two more numbers and keep the circles side by side."
+        },
+        {
+          "type": "game",
+          "title": "Inside, Outside, Neither",
+          "time_minutes": 10,
+          "grouping": "small_group",
+          "materials": [
+            "Number cards",
+            "Three response cards per player: INSIDE, OUTSIDE, NEITHER"
+          ],
+          "instructions": "1. The leader names a target number, for example 15.\n2. The leader then calls out a second number, for example 45.\n3. Everyone raises INSIDE for a factor, OUTSIDE for a multiple, or NEITHER.\n4. Anyone raising a card must justify it with a multiplication before it scores.\n5. Rotate the leader every five calls and keep a tally of the mix-ups."
+        }
+      ],
+      "strategy_links": [
+        {
+          "strategy_id": "strat-math-007",
+          "why": "Sorting side lengths into an inside circle and skip-counts into an outside circle makes the direction of each word physical."
+        },
+        {
+          "strategy_id": "strat-math-003",
+          "why": "Swapping factor and multiple is a stable, predictable error, so finding and fixing it in shown work confronts it directly."
+        }
+      ],
+      "teacher_moves": {
+        "questioning_prompts": [
+          "Does that number fit inside, or does it run outward?",
+          "Where does a factor list stop? Where does a multiple list stop?",
+          "What multiplication proves that is a factor?",
+          "Why does the number itself show up in both lists?",
+          "Say it as a sentence: ___ is a factor of ___, and ___ is a multiple of ___."
+        ],
+        "misconception_redirects": [
+          {
+            "if_you_see": "Student names a multiple when asked for a factor.",
+            "say": "Does your number fit inside the target, or is it bigger than it? Factors never go past the number.",
+            "praise": "You checked the direction before answering, which is what keeps the two words apart."
+          },
+          {
+            "if_you_see": "Student stops a factor list early and misses a pair.",
+            "say": "Walk up from 1 and write both numbers in each pair. Stop when the pairs meet in the middle.",
+            "praise": "You walked the pairs, so nothing got skipped."
+          }
+        ],
+        "quick_checks": [
+          {
+            "prompt": "List all the factors of 18.",
+            "look_for": "1, 2, 3, 6, 9, 18, found in pairs."
+          },
+          {
+            "prompt": "Is 9 a factor of 3 or a multiple of 3?",
+            "look_for": "A multiple of 3, with 3 x 3 = 9 as the reason."
+          }
+        ]
+      },
+      "sentence_starters": [
+        "___ is a factor of ___ because ___ x ___ = ___.",
+        "___ is a multiple of ___ because it is ___ counted ___ times."
+      ],
+      "engine_stems": []
     },
     {
       "skill_id": "6NS6-B1",
@@ -549,7 +969,12 @@
         "steps": [
           {
             "math": "width 5 + 2 = 7, height 6",
-            "annotation": "Draw one rectangle 6 tall and split the width into a 5 part and a 2 part."
+            "annotation": "Draw one rectangle 6 tall and split the width into a 5 part and a 2 part.",
+            "check": {
+              "move": "show_it",
+              "prompt": "Draw the rectangle. What is its width, and what is its height?",
+              "answer": "width 7, made of 5 and 2; height 6"
+            }
           },
           {
             "math": "6 x 5 = 30",
@@ -557,11 +982,21 @@
           },
           {
             "math": "6 x 2 = 12",
-            "annotation": "Area of the right piece, the addend students often skip."
+            "annotation": "Area of the right piece, the addend students often skip.",
+            "check": {
+              "move": "call_it",
+              "prompt": "The 6 has to reach the 2 as well. What is that second piece?",
+              "answer": "12"
+            }
           },
           {
             "math": "30 + 12 = 42",
-            "annotation": "Add the two pieces. Check: 6 x 7 = 42."
+            "annotation": "Add the two pieces. Check: 6 x 7 = 42.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes 36 + 2 for 4 x (9 + 2)? How far did the 4 reach?",
+              "answer": "only the 9 -- it has to multiply both addends, giving 36 + 8"
+            }
           }
         ]
       },
@@ -571,23 +1006,27 @@
         "steps": [
           {
             "math": "width 9 + 2 = 11, height 4",
-            "annotation": "Split the width into a 9 part and a 2 part.",
+            "annotation": "",
             "given": true
           },
           {
             "math": "4 x 9 = 36",
-            "annotation": "Area of the first piece.",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "4 x 2 = 8",
+            "annotation": "",
             "given": true
           },
           {
             "math": null,
-            "annotation": "Find the area of the second piece, 4 x 2.",
-            "given": false
-          },
-          {
-            "math": null,
-            "annotation": "Add the two pieces and state the product.",
-            "given": false
+            "annotation": "Name the Trap: add the two pieces. Who answers 38, and what did the 4 miss?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: add the two pieces. Who answers 38, and what did the 4 miss?"
+            }
           }
         ]
       },
@@ -595,7 +1034,45 @@
         "I split the width into ___ and ___, so the two pieces are ___ and ___.",
         "The outside number ___ multiplies both ___ and ___, then I add."
       ],
-      "fluency_source": "6NS6-F1"
+      "fluency_source": "6NS6-F1",
+      "guided_example": {
+        "stem": "Multiply 5 x (7 + 3).",
+        "answer": "50",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Show It − draw the rectangle. What is its width and height?",
+            "given": false,
+            "check": {
+              "move": "show_it",
+              "prompt": "Show It − draw the rectangle. What is its width and height?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "multiply the height by the first part of the width",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Call It − the 5 must reach the 3 too. What is that piece?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − the 5 must reach the 3 too. What is that piece?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − add them. Who answers 38, and what did they skip?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − add them. Who answers 38, and what did they skip?"
+            }
+          }
+        ]
+      }
     },
     {
       "skill_id": "6NS6-B2",
@@ -871,11 +1348,21 @@
         "steps": [
           {
             "math": "share 96 into 8 equal groups",
-            "annotation": "Deal the total round by round into 8 groups."
+            "annotation": "Deal the total round by round into 8 groups.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "What is being shared, and into how many equal groups?",
+              "answer": "96, into 8 groups"
+            }
           },
           {
             "math": "8 x 10 = 80, leaving 96 - 80 = 16",
-            "annotation": "Put 10 in each group first, then see what is left."
+            "annotation": "Put 10 in each group first, then see what is left.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Ten in each group uses 80. How much is left to share?",
+              "answer": "16"
+            }
           },
           {
             "math": "16 / 8 = 2 more each, so 10 + 2 = 12",
@@ -883,7 +1370,12 @@
           },
           {
             "math": "96 / 8 = 12, no remainder",
-            "annotation": "Check: 8 x 12 = 96, so 8 is a factor of 96."
+            "annotation": "Check: 8 x 12 = 96, so 8 is a factor of 96.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who says 4 is a factor of 30 because 30 / 4 is about 7? What did they drop?",
+              "answer": "the remainder -- 4 x 7 is 28, not 30, so 4 is not a factor"
+            }
           }
         ]
       },
@@ -893,23 +1385,27 @@
         "steps": [
           {
             "math": "share 84 into 7 equal groups",
-            "annotation": "Deal the total into 7 groups.",
+            "annotation": "",
             "given": true
           },
           {
-            "math": "7 x 10 = 70, leaving 84 - 70 = 14",
-            "annotation": "Put 10 in each group, then see what is left.",
+            "math": "7 x 10 = 70, leaving 84 − 70 = 14",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": "14 / 7 = 2 more each, so 10 + 2 = 12",
+            "annotation": "",
             "given": true
           },
           {
             "math": null,
-            "annotation": "Share the 14 that are left: 14 / 7 in each group.",
-            "given": false
-          },
-          {
-            "math": null,
-            "annotation": "State the quotient and check 7 x __ = 84.",
-            "given": false
+            "annotation": "Name the Trap: state the quotient. Is there a remainder, and why does that matter?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: state the quotient. Is there a remainder, and why does that matter?"
+            }
           }
         ]
       },
@@ -917,7 +1413,45 @@
         "I shared ___ into ___ equal groups, so each group has ___.",
         "There (is / is no) remainder, so ___ (is / is not) a factor of ___."
       ],
-      "fluency_source": "6NS6-F1"
+      "fluency_source": "6NS6-F1",
+      "guided_example": {
+        "stem": "Divide 72 / 6.",
+        "answer": "12",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal − what is shared, into how many groups?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − what is shared, into how many groups?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It − ten each uses 60. How much is left?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − ten each uses 60. How much is left?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "share what is left",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − state it. Why does a remainder change the answer?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − state it. Why does a remainder change the answer?"
+            }
+          }
+        ]
+      }
     },
     {
       "skill_id": "6NS6-S1",
@@ -1326,15 +1860,30 @@
           },
           {
             "math": "Common factors: 1, 2, 3, 6",
-            "annotation": "Circle every number that appears in BOTH lists. 'Common' filters first."
+            "annotation": "Circle every number that appears in BOTH lists. 'Common' filters first.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Circle the numbers that appear in BOTH lists. Which are they?",
+              "answer": "1, 2, 3, 6"
+            }
           },
           {
-            "math": "Greatest of 1, 2, 3, 6 --> 6",
-            "annotation": "Now 'greatest' picks from the circled numbers only -- not from the whole table."
+            "math": "Greatest of 1, 2, 3, 6 → 6",
+            "annotation": "Now 'greatest' picks from the circled numbers only -- not from the whole table.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Greatest of the common ones. Which is it?",
+              "answer": "6"
+            }
           },
           {
             "math": "GCF(12, 30) = 6",
-            "annotation": "Check: 12 / 6 = 2 and 30 / 6 = 5, both divide evenly."
+            "annotation": "Check: 12 / 6 = 2 and 30 / 6 = 5, both divide evenly.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 30 here? Which list were they actually looking at?",
+              "answer": "neither -- they took the biggest number on the page, and 30 is not a factor of 12"
+            }
           }
         ]
       },
@@ -1343,19 +1892,28 @@
         "answer": "6",
         "steps": [
           {
-            "math": "Factors of 18: 1, 2, 3, 6, 9, 18 / Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24",
-            "annotation": "The lists are given -- read them carefully.",
+            "math": "Factors of 18: 1, 2, 3, 6, 9, 18   /   Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24",
+            "annotation": "",
             "given": true
           },
           {
             "math": "Common factors: 1, 2, 3, 6",
-            "annotation": "Circle only the numbers that appear in BOTH lists.",
+            "annotation": "",
             "given": true
           },
           {
-            "math": "GCF = 6",
-            "annotation": "Pick the greatest of the circled numbers -- not the greatest number in the table.",
-            "given": false
+            "math": "Greatest of 1, 2, 3, 6 → 6",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: write the GCF. Who answers 24, and what were they looking at?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the GCF. Who answers 24, and what were they looking at?"
+            }
           }
         ]
       },
@@ -1364,7 +1922,45 @@
         "___ can't be the GCF because it is only in ___ list."
       ],
       "fluency_source": "6NS6-F1",
-      "pld_band": "below"
+      "pld_band": "below",
+      "guided_example": {
+        "stem": "The factors of 20 and 30 are listed. What is the GCF of 20 and 30?",
+        "answer": "10",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "read both factor lists",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal − circle what appears in BOTH lists",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − circle what appears in BOTH lists"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It − greatest of the common ones. Which?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − greatest of the common ones. Which?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − write it. Who answers 30, and why is that wrong?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − write it. Who answers 30, and why is that wrong?"
+            }
+          }
+        ]
+      }
     },
     {
       "skill_id": "6NS6-S2",
@@ -1842,15 +2438,30 @@
         "steps": [
           {
             "math": "Multiples of 5: 5, 10, 15, 20, 25, 30, 35, 40, 45 / Multiples of 9: 9, 18, 27, 36, 45",
-            "annotation": "Both skip-counting rows are given. We want the FIRST number they share."
+            "annotation": "Both skip-counting rows are given. We want the FIRST number they share.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "You want multiples, not factors. Which rows are you walking?",
+              "answer": "the multiples rows for 5 and 9"
+            }
           },
           {
             "math": "Walk the 9s row: 9? no. 18? no. 27? no. 36? no. 45? YES",
-            "annotation": "Check each multiple of 9 against the 5s row -- walking the faster-growing row saves steps."
+            "annotation": "Check each multiple of 9 against the 5s row -- walking the faster-growing row saves steps.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Walk the 9s. Which one first turns up in the 5s?",
+              "answer": "45"
+            }
           },
           {
             "math": "LCM(5, 9) = 45",
-            "annotation": "45 is in both rows, and nothing earlier is. Check: 45 / 5 = 9 and 45 / 9 = 5."
+            "annotation": "45 is in both rows, and nothing earlier is. Check: 45 / 5 = 9 and 45 / 9 = 5.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 2 for the LCM of 6 and 8? What did they find instead?",
+              "answer": "a common factor -- the question asks for a common multiple"
+            }
           }
         ]
       },
@@ -1859,19 +2470,23 @@
         "answer": "12",
         "steps": [
           {
-            "math": "Multiples of 4: 4, 8, 12, 16, 20, 24 / Multiples of 6: 6, 12, 18, 24",
-            "annotation": "Read both rows -- they grow forever, but we only need the start.",
+            "math": "Multiples of 4: 4, 8, 12, 16, 20, 24   /   Multiples of 6: 6, 12, 18, 24",
+            "annotation": "",
             "given": true
           },
           {
             "math": "Walk the 6s row: 6? not in the 4s. 12? YES -- 12 is in both rows.",
-            "annotation": "Check each multiple of 6 against the 4s row, starting from the smallest.",
+            "annotation": "",
             "given": true
           },
           {
-            "math": "LCM = 12",
-            "annotation": "Name the first shared number -- not the product 24, which comes later.",
-            "given": false
+            "math": null,
+            "annotation": "Name the Trap: write the LCM. Who answers 2 here, and what did they find?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the LCM. Who answers 2 here, and what did they find?"
+            }
           }
         ]
       },
@@ -1880,7 +2495,40 @@
         "The LCM can't be ___ because it is smaller than ___."
       ],
       "fluency_source": "6NS6-F1",
-      "pld_band": "below"
+      "pld_band": "below",
+      "guided_example": {
+        "stem": "Some multiples of 3 and 5 are listed. What is the LCM of 3 and 5?",
+        "answer": "15",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal − multiples or factors? Which rows do you walk?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − multiples or factors? Which rows do you walk?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It − walk the 5s. Which first turns up in the 3s?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − walk the 5s. Which first turns up in the 3s?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − write the LCM. Who answers 1 here, and why?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − write the LCM. Who answers 1 here, and why?"
+            }
+          }
+        ]
+      }
     },
     {
       "skill_id": "6NS6-S3",
@@ -2179,15 +2827,30 @@
           },
           {
             "math": "Factors of 48: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48",
-            "annotation": "Same pair hunt: 1 x 48, 2 x 24, 3 x 16, 4 x 12, 6 x 8."
+            "annotation": "Same pair hunt: 1 x 48, 2 x 24, 3 x 16, 4 x 12, 6 x 8.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Factors, not multiples. Where does each list stop?",
+              "answer": "at the number itself -- 36 and 48"
+            }
           },
           {
             "math": "Common factors: 1, 2, 3, 4, 6, 12",
-            "annotation": "Circle the numbers that appear in BOTH lists."
+            "annotation": "Circle the numbers that appear in BOTH lists.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Which numbers turn up in both lists?",
+              "answer": "1, 2, 3, 4, 6, 12"
+            }
           },
           {
             "math": "GCF(36, 48) = 12",
-            "annotation": "Take the greatest circled number. Check: 36 / 12 = 3 and 48 / 12 = 4."
+            "annotation": "Take the greatest circled number. Check: 36 / 12 = 3 and 48 / 12 = 4.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes 6, 12, 18, 24 for the GCF of 6 and 8 and answers 24?",
+              "answer": "they listed multiples instead of factors -- that answers the LCM question"
+            }
           }
         ]
       },
@@ -2197,23 +2860,27 @@
         "steps": [
           {
             "math": "Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24",
-            "annotation": "Pair hunt: 1 x 24, 2 x 12, 3 x 8, 4 x 6.",
+            "annotation": "",
             "given": true
           },
           {
             "math": "Factors of 60: 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60",
-            "annotation": "Pair hunt: 1 x 60, 2 x 30, 3 x 20, 4 x 15, 5 x 12, 6 x 10.",
+            "annotation": "",
             "given": true
           },
           {
             "math": "Common factors: 1, 2, 3, 4, 6, 12",
-            "annotation": "Circle what appears in both lists.",
-            "given": false
+            "annotation": "",
+            "given": true
           },
           {
-            "math": "GCF = 12",
-            "annotation": "Greatest of the circled numbers -- did you check past 6?",
-            "given": false
+            "math": null,
+            "annotation": "Name the Trap: write the GCF. Who lists multiples here, and what would they answer?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: write the GCF. Who lists multiples here, and what would they answer?"
+            }
           }
         ]
       },
@@ -2222,7 +2889,45 @@
         "I know my factor list is complete because every pair from 1 x ___ up is checked."
       ],
       "fluency_source": "6NS6-F1",
-      "pld_band": "approaching"
+      "pld_band": "approaching",
+      "guided_example": {
+        "stem": "What is the greatest common factor of 42 and 56?",
+        "answer": "14",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "list the factors of 42",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal − factors, not multiples. Where does the list stop?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − factors, not multiples. Where does the list stop?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Call It − which numbers appear in both lists?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − which numbers appear in both lists?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − write the GCF. Who lists multiples instead?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − write the GCF. Who lists multiples instead?"
+            }
+          }
+        ]
+      }
     },
     {
       "skill_id": "6NS6-S5",
@@ -2515,19 +3220,39 @@
         "steps": [
           {
             "math": "GCF of 24 and 36 = 12",
-            "annotation": "Find the greatest common factor of BOTH addends first."
+            "annotation": "Find the greatest common factor of BOTH addends first.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Find the GCF of 24 and 36 first. What is it?",
+              "answer": "12"
+            }
           },
           {
             "math": "24 = 12 x 2 and 36 = 12 x 3",
-            "annotation": "Divide each addend by the GCF -- both addends, not just the first."
+            "annotation": "Divide each addend by the GCF -- both addends, not just the first.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Both addends get rewritten. What does each one become?",
+              "answer": "24 = 12 x 2 and 36 = 12 x 3"
+            }
           },
           {
             "math": "24 + 36 = 12(2 + 3)",
-            "annotation": "The GCF goes out front; the leftover pieces go inside. 2 and 3 share no common factor -- proof we used the GREATEST factor."
+            "annotation": "The GCF goes out front; the leftover pieces go inside. 2 and 3 share no common factor -- proof we used the GREATEST factor.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes 12(2 + 36)? Which addend did they leave alone?",
+              "answer": "the 36 -- both addends have to be divided by the GCF"
+            }
           },
           {
             "math": "Check: 12 x 2 + 12 x 3 = 24 + 36",
-            "annotation": "Multiply back out. If it doesn't land on the original sum, an addend never got divided."
+            "annotation": "Multiply back out. If it doesn't land on the original sum, an addend never got divided.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Multiply it back out. Do you land on 24 + 36?",
+              "answer": "yes -- 24 + 36"
+            }
           }
         ]
       },
@@ -2537,18 +3262,27 @@
         "steps": [
           {
             "math": "GCF of 18 and 30 = 6",
-            "annotation": "Factor lists: 18 --> 1, 2, 3, 6, 9, 18; 30 --> 1, 2, 3, 5, 6, 10, 15, 30.",
+            "annotation": "",
             "given": true
           },
           {
-            "math": "18 = 6 x 3 and 30 = 6 x 5",
-            "annotation": "Divide BOTH addends by 6.",
-            "given": false
+            "math": "18 = 6 x 3  and  30 = 6 x 5",
+            "annotation": "",
+            "given": true
           },
           {
             "math": "18 + 30 = 6(3 + 5)",
-            "annotation": "GCF out front, leftovers inside -- do 3 and 5 share a factor?",
-            "given": false
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Check It: multiply it back out. Do you land on 18 + 30?",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Check It: multiply it back out. Do you land on 18 + 30?"
+            }
           }
         ]
       },
@@ -2557,7 +3291,49 @@
         "I checked by multiplying back: ___ x ___ + ___ x ___ = ___."
       ],
       "fluency_source": "6NS6-F1",
-      "pld_band": "approaching"
+      "pld_band": "approaching",
+      "guided_example": {
+        "stem": "Use the distributive property and the GCF to write an expression equivalent to 45 + 60.",
+        "answer": "15(3 + 4)",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Call It − find the GCF of 45 and 60. What is it?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − find the GCF of 45 and 60. What is it?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal − both addends get rewritten. Into what?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − both addends get rewritten. Into what?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − write it. Who leaves the 60 alone inside?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − write it. Who leaves the 60 alone inside?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Check It − multiply back out. Do you land on 45 + 60?",
+            "given": false,
+            "check": {
+              "move": "check_it",
+              "prompt": "Check It − multiply back out. Do you land on 45 + 60?"
+            }
+          }
+        ]
+      }
     },
     {
       "skill_id": "6NS6-S4",
@@ -2835,7 +3611,7 @@
           },
           {
             "prompt": "Thumbs up or down: the LCM of two numbers is always their product.",
-            "look_for": "Down, with a counterexample like 6 and 8 --> 24. A thumbs-up needs the two-color number line again."
+            "look_for": "Down, with a counterexample like 6 and 8 → 24. A thumbs-up needs the two-color number line again."
           }
         ]
       },
@@ -2845,11 +3621,21 @@
         "steps": [
           {
             "math": "Skip-count the bigger number: 12, 24, 36, ...",
-            "annotation": "Walk the 12s -- the faster-growing list -- and test each one."
+            "annotation": "Walk the 12s -- the faster-growing list -- and test each one.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Skip-count the bigger number. What are the first few?",
+              "answer": "12, 24, 36"
+            }
           },
           {
             "math": "12: is it a multiple of 8? No. 24: 8 x 3 = 24 -- yes!",
-            "annotation": "Stop at the FIRST multiple of 12 that 8 also divides."
+            "annotation": "Stop at the FIRST multiple of 12 that 8 also divides.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Test each one against the other number. Which is the first hit?",
+              "answer": "24 -- because 8 x 3 = 24"
+            }
           },
           {
             "math": "LCM(8, 12) = 24",
@@ -2857,7 +3643,12 @@
           },
           {
             "math": "Compare: 8 x 12 = 96 is a common multiple, but not the least",
-            "annotation": "The product shortcut overshoots whenever the numbers share a factor -- here they share 4."
+            "annotation": "The product shortcut overshoots whenever the numbers share a factor -- here they share 4.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 96? What did they do instead of walking the list?",
+              "answer": "multiplied the two numbers -- 96 is a common multiple, but not the least"
+            }
           }
         ]
       },
@@ -2867,18 +3658,27 @@
         "steps": [
           {
             "math": "Skip-count the 9s: 9, 18, 27, ...",
-            "annotation": "Walk the bigger number's list.",
+            "annotation": "",
             "given": true
           },
           {
-            "math": "9: multiple of 6? No. 18: 6 x 3 = 18 -- yes.",
-            "annotation": "Test each 9s number against the 6s until one hits.",
-            "given": false
+            "math": "9: is it a multiple of 6? No.  18: 6 x 3 = 18 -- yes!",
+            "annotation": "",
+            "given": true
           },
           {
-            "math": "LCM = 18",
-            "annotation": "Say both checks: 9 x 2 = 18 and 6 x 3 = 18. Not 54 -- that's the product.",
-            "given": false
+            "math": "LCM(6, 9) = 18",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: state the LCM. Who answers 54, and what did they do?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: state the LCM. Who answers 54, and what did they do?"
+            }
           }
         ]
       },
@@ -2887,7 +3687,45 @@
         "The product ___ is a common multiple, but the lists meet earlier at ___."
       ],
       "fluency_source": "6NS6-F1",
-      "pld_band": "at"
+      "pld_band": "at",
+      "guided_example": {
+        "stem": "What is the least common multiple of 4 and 10?",
+        "answer": "20",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Call It − skip-count the bigger one. What are the first few?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − skip-count the bigger one. What are the first few?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal − test each against the other. First hit?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − test each against the other. First hit?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "name the LCM",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − who answers 40, and what did they do?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − who answers 40, and what did they do?"
+            }
+          }
+        ]
+      }
     },
     {
       "skill_id": "6NS6-S6",
@@ -3174,7 +4012,12 @@
         "steps": [
           {
             "math": "Story check: buses KEEP COMING until their arrivals line up",
-            "annotation": "Repeating events that line up means multiples -- this is an LCM problem, and the answer must be bigger than 10."
+            "annotation": "Repeating events that line up means multiples -- this is an LCM problem, and the answer must be bigger than 10.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Read the story. Are things being split up, or do they keep repeating?",
+              "answer": "repeating until they line up -- that is an LCM story"
+            }
           },
           {
             "math": "Multiples of 10: 10, 20, 30 / Multiples of 6: 6, 12, 18, 24, 30",
@@ -3182,32 +4025,51 @@
           },
           {
             "math": "LCM(6, 10) = 30",
-            "annotation": "30 is the first number in both lists: 10 x 3 and 6 x 5."
+            "annotation": "30 is the first number in both lists: 10 x 3 and 6 x 5.",
+            "check": {
+              "move": "call_it",
+              "prompt": "First number that turns up in both rows. What is it?",
+              "answer": "30"
+            }
           },
           {
             "math": "Answer: 30 minutes",
-            "annotation": "Size check: 30 is bigger than both 6 and 10 -- sensible for a meeting time. (The GCF, 2, would mean buses meeting before either even returns.)"
+            "annotation": "Size check: 30 is bigger than both 6 and 10 -- sensible for a meeting time. (The GCF, 2, would mean buses meeting before either even returns.)",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who finds the GCF for a buses problem and answers 2 minutes?",
+              "answer": "wrong tool -- 'when do they line up' is a least common multiple story"
+            }
           }
         ]
       },
       "faded_example": {
-        "stem": "A chef has 24 strawberries and 40 grapes. He makes the greatest possible number of identical fruit cups with nothing left over. How many fruit cups does he make?",
+        "stem": "A chef has 24 strawberries and 40 grapes. He makes the greatest possible number of identical fruit cups with none left over. How many cups?",
         "answer": "8 fruit cups",
         "steps": [
           {
-            "math": "Story check: SPLITTING two amounts into identical groups --> GCF",
-            "annotation": "Nothing repeats or grows; we're dividing amounts into groups.",
+            "math": "Story check: SPLITTING two amounts into identical groups → GCF",
+            "annotation": "",
             "given": true
           },
           {
-            "math": "Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24 / Factors of 40: 1, 2, 4, 5, 8, 10, 20, 40",
-            "annotation": "Hunt factor pairs for both amounts.",
+            "math": "Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24   /   Factors of 40: 1, 2, 4, 5, 8, 10, 20, 40",
+            "annotation": "",
             "given": true
           },
           {
-            "math": "GCF(24, 40) = 8 --> 8 fruit cups",
-            "annotation": "Greatest shared factor. Check the story: 24 / 8 = 3 strawberries and 40 / 8 = 5 grapes per cup.",
-            "given": false
+            "math": "Common factors: 1, 2, 4, 8",
+            "annotation": "",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap: answer the question. Who reaches for the LCM here, and why is that wrong?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap: answer the question. Who reaches for the LCM here, and why is that wrong?"
+            }
           }
         ]
       },
@@ -3216,7 +4078,45 @@
         "My answer makes sense because it is (bigger / smaller) than both numbers, and the story needs ___."
       ],
       "fluency_source": "6NS6-F1",
-      "pld_band": "above"
+      "pld_band": "above",
+      "guided_example": {
+        "stem": "A florist has 18 roses and 30 tulips. She makes the greatest possible number of identical bouquets with none left over. How many bouquets?",
+        "answer": "6 bouquets",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal − split up, or repeating until they line up?",
+            "given": false,
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Spot the Signal − split up, or repeating until they line up?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "list the factors of both amounts",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Call It − greatest number in both lists. Which?",
+            "given": false,
+            "check": {
+              "move": "call_it",
+              "prompt": "Call It − greatest number in both lists. Which?"
+            }
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap − answer it. Who reaches for the LCM, and why is that wrong?",
+            "given": false,
+            "check": {
+              "move": "name_trap",
+              "prompt": "Name the Trap − answer it. Who reaches for the LCM, and why is that wrong?"
+            }
+          }
+        ]
+      }
     }
   ],
   "skill_columns": {
