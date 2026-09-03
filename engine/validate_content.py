@@ -55,7 +55,7 @@ Item-spec alignment gate:
 Run:  python engine/validate_content.py [--strict]
 Wire into CI as a gate before shipping content; authoring runs --strict.
 """
-import json, io, glob, os, sys
+import json, io, glob, os, re, sys
 
 
 def _find_root():
@@ -81,6 +81,15 @@ STRATS = os.path.join(ROOT, "web", "content", "strategies", "math")
 # Gate 7: the ILEARN proficiency bands, low to high. Mirrors PLD_BAND_ORDER
 # in web/src/lib/intervention/skills.ts.
 PLD_BANDS = ("below", "approaching", "at", "above")
+
+# Gate 8: stems that point at a specific object printed on the page. Kept
+# deliberately narrow — a definite article or an explicit "shows"/"below".
+# "Name a number between 1/2 and 1 on the number line" describes the task
+# rather than referring to a drawing, and owes no render_data.
+PROMISES_FIGURE = re.compile(
+    r"\b(the number ?line|the model|the grid|the table|the figure|the diagram"
+    r"|number ?line (shows|below)|model shows|listed in the table|shown below"
+    r"|the point shown|shows only the point)", re.I)
 
 # Gate 6a: the closed thinking-moves menu (mirror of THINKING_MOVES in
 # generate_skill_packet.py and the glossary in
@@ -189,6 +198,27 @@ def main():
             where = f"{sid} ({base})"
             is_foundation = s.get("column") == "foundation"
             text = lesson_text(s)
+
+            # -- Gate 8: promised figures must exist ----------------------
+            # A stem that points at a specific printed object ("the number
+            # line shows only the point -4", "the model shows 65% shaded",
+            # "listed in the table") is unanswerable when nothing is drawn,
+            # and it silently turns a scaffolded below-grade item into a
+            # from-scratch one. Only DEFINITE references count: "name a
+            # number between 1/2 and 1 on the number line" describes the
+            # task and owes no drawing.
+            for blk in ("worked_solution", "faded_example", "guided_example"):
+                b = s.get(blk) or {}
+                if PROMISES_FIGURE.search(b.get("stem") or "") and not b.get("render_data"):
+                    gate.append(
+                        f"{where}: {blk} stem names a printed figure but has "
+                        f"no render_data (Gate 8)")
+            for pool in ("sample_items", "practice_problems"):
+                for i, it in enumerate(s.get(pool) or []):
+                    if PROMISES_FIGURE.search(it.get("stem") or "") and not it.get("render_data"):
+                        gate.append(
+                            f"{where}: {pool}[{i}] stem names a printed figure "
+                            f"but has no render_data (Gate 8)")
 
             # -- original hard checks -------------------------------------
             if not is_foundation:

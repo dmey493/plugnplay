@@ -837,6 +837,8 @@ def _draw_render_data(pdf, x, y, render_data, max_width=120):
                 point_label=render_data.get("point_label", "P"),
                 points=render_data.get("points"),
                 width=_fit_w(80),
+                hide_tick_labels=render_data.get("hide_tick_labels", False),
+                labeled_ticks=render_data.get("labeled_ticks"),
             )
         if rd_type == "double_number_line":
             kwargs = {k: v for k, v in render_data.items()

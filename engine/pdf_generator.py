@@ -692,12 +692,22 @@ class MathPDF(FPDF):
     # ============================================================
 
     def _draw_number_line_point(self, x, y, ticks, point_value=None, point_label="P",
-                                points=None, width=80):
+                                points=None, width=80, hide_tick_labels=False,
+                                labeled_ticks=None):
         """Draw a number line with labeled ticks and marked point(s).
 
         Supports single point (point_value/point_label) or multiple points
         via points=[{"value": v, "label": "L"}, ...].
+
+        hide_tick_labels: draw the ticks but print no numbers under them. Some
+        tasks ("the line shows only the point -4; plot 0 and its opposite")
+        are about measuring distance from 0, and a fully labeled line hands
+        the answer over.
+        labeled_ticks: label only these tick values, leaving the rest bare.
         """
+        show = None
+        if labeled_ticks is not None:
+            show = {float(v) for v in labeled_ticks}
         height = 18
         line_y = y + 6
         pad = 8
@@ -734,6 +744,13 @@ class MathPDF(FPDF):
         for i, tick_val in enumerate(ticks):
             tx = line_x1 + i * tick_spacing
             self.line(tx, line_y - 2, tx, line_y + 2)
+            if hide_tick_labels:
+                continue
+            try:
+                if show is not None and float(tick_val) not in show:
+                    continue
+            except (TypeError, ValueError):
+                pass
             label = _fmt_tick(tick_val)
             lw = self.get_string_width(label)
             self.set_xy(tx - lw / 2, line_y + 3)
@@ -1456,7 +1473,9 @@ class MathPDF(FPDF):
                             x_body + 5, nl_y, ticks=rd['ticks'],
                             point_value=rd.get('point_value'),
                             point_label=rd.get('point_label', 'P'),
-                            points=rd.get('points'))
+                            points=rd.get('points'),
+                            hide_tick_labels=rd.get('hide_tick_labels', False),
+                            labeled_ticks=rd.get('labeled_ticks'),)
                     else:
                         h = self._draw_double_number_line(
                             x_body + 5, nl_y,
@@ -1699,7 +1718,8 @@ class MathPDF(FPDF):
                 point_value=rd.get('point_value'),
                 point_label=rd.get('point_label', 'P'),
                 points=rd.get('points'),
-            )
+                hide_tick_labels=rd.get('hide_tick_labels', False),
+                labeled_ticks=rd.get('labeled_ticks'),)
             self.set_y(nl_y + h)
         elif rd.get('type') == 'double_number_line':
             self.ln(_sp)
@@ -3145,7 +3165,8 @@ def generate_exit_ticket_pdf(question, output_path, standard_code="",
                 point_label=rd.get('point_label', 'P'),
                 points=rd.get('points'),
                 width=min(fig_w, 65),
-            )
+                hide_tick_labels=rd.get('hide_tick_labels', False),
+                labeled_ticks=rd.get('labeled_ticks'),)
             cur_y += h + 1
         elif rd.get('type') == 'double_number_line' and remaining_h > 20:
             h = pdf._draw_double_number_line(
@@ -3366,7 +3387,8 @@ def _write_column_question(pdf, question, num, col_x, col_w, start_y,
             point_label=rd.get('point_label', 'P'),
             points=rd.get('points'),
             width=fig_w,
-        )
+            hide_tick_labels=rd.get('hide_tick_labels', False),
+            labeled_ticks=rd.get('labeled_ticks'),)
         cur_y += h
     elif rd.get('type') == 'double_number_line':
         cur_y += 1
