@@ -410,7 +410,7 @@
       "i_do_script": "Prime factorization breaks a number all the way down to prime factors, and exponents collect the repeats. Watch 72 on a factor tree: 72 = 8 x 9. Neither is prime, so keep splitting: 8 = 2 x 2 x 2 and 9 = 3 x 3. Now every branch ends in a prime: 2, 2, 2, 3, 3. I collect the repeats with exponents: three 2s is 2^3 and two 3s is 3^2, so 72 = 2^3 x 3^2. Check by multiplying back: 8 x 9 = 72. A prime number like 17 is already done; its prime factorization is just 17.",
       "canonical_error": {
         "pattern": "Stops at composite factors or writes the exponent as the number of different primes instead of the count of repeats",
-        "example": "Writes 72 = 8 x 9 and stops, or writes 72 = 2^3 x 3^2 as 2 x 3^5 by pooling the exponents",
+        "example": "Writes 90 = 9 x 10 and stops, or pools the primes into 2 x 3^3 (= 54) instead of 2 x 3^2 x 5",
         "why": "The student either quits before every branch is prime or loses track of which prime repeats how many times. Each exponent counts the copies of one prime: three 2s and two 3s, so 2^3 x 3^2."
       },
       "item_template": "A whole number 200 or less. Student writes its prime factorization using exponents, or identifies the number a given prime factorization builds. Numeric or expression response, no calculator.",
@@ -679,8 +679,8 @@
             "annotation": "Collect repeats with exponents: three 2s, two 3s. Check: 8 x 9 = 72.",
             "check": {
               "move": "name_trap",
-              "prompt": "Who pools the exponents and writes 2 x 3^5? Why is that not 72?",
-              "answer": "pooling loses which prime repeats; 2 x 3^5 = 486, not 72"
+              "prompt": "Who pools the exponents and writes 2 x 3^3? Why is that not 90?",
+              "answer": "2 x 3^3 = 54, not 90 — the 5 is a separate prime and keeps its own place; exponents only collect REPEATS of the same base."
             }
           }
         ]
@@ -2569,7 +2569,7 @@
       "i_do_script": "Zero and negative exponents both come from the subtraction rule. Since 5^3 / 5^3 = 5^0 and any number over itself is 1, a^0 = 1 for any nonzero base -- so 7^0 = 1. And since 2^2 / 2^5 = 2^(-3), a negative exponent means a reciprocal: 2^-3 = 1/2^3 = 1/8. A negative exponent does NOT make the value negative; it flips the power into a fraction. Watch 1/27: since 27 = 3^3, one over it is 3^-3.",
       "canonical_error": {
         "pattern": "Treats a negative exponent as a negative value (or the zero exponent as zero) instead of a reciprocal",
-        "example": "Writes 2^-3 = -8 (or -6) instead of 1/8, or says 7^0 = 0 instead of 1",
+        "example": "Writes 4^-2 = -16 instead of 1/16, or says 7^0 = 0 instead of 1",
         "why": "The student reads the minus sign as making the number negative. A negative exponent means take the reciprocal: 2^-3 = 1/2^3 = 1/8. And a^0 = 1 because a power divided by itself is 1, never 0."
       },
       "item_template": "A power with a zero or negative integer exponent, or a unit fraction to rewrite as a power. Student writes the equivalent value or expression. Multiple choice or expression response. Hand-authored -- no engine stem.",
@@ -2836,8 +2836,8 @@
             "annotation": "The value is a positive fraction, not a negative number.",
             "check": {
               "move": "name_trap",
-              "prompt": "Who writes 2^-3 = -8? Why is the value a positive fraction instead?",
-              "answer": "the negative exponent flips the power; it does not make the number negative"
+              "prompt": "Who writes 4^-2 = -16? Why is the value a positive fraction instead?",
+              "answer": "a negative exponent means the reciprocal, not a negative number: 4^-2 = 1/4^2 = 1/16"
             }
           }
         ]

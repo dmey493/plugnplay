@@ -764,7 +764,7 @@
       "i_do_script": "A two-step equation gets built in two moves, so I take it apart in two opposite moves, last one first. Watch 3x + 5 = 20 as a bar model: three equal x boxes plus a 5 box make 20. First I remove the 5 from both sides: 3x = 15. Now three equal boxes make 15, so each box is 15 / 3 = 5. So x = 5, and the check works: 3(5) + 5 = 20. Undo the add or subtract first, then undo the multiply, and check by substituting back.",
       "canonical_error": {
         "pattern": "Undoes the addition by repeating it, or divides before removing the added constant",
-        "example": "For 3x + 5 = 20, writes 3x = 25 (adds 5 instead of subtracting), or divides everything except the 5 by 3",
+        "example": "For 7x + 4 = 39, writes 7x = 43 (adds 4 instead of subtracting), or divides everything except the 4 by 7",
         "why": "The student either repeats the operation instead of undoing it, or peels the layers in the wrong order. The 5 was added last when the expression was built, so it must be removed first, and it must leave both sides."
       },
       "item_template": "A two-step equation px + q = r or px - q = r with positive rational numbers and whole number solutions. Student solves for x and can check by substitution. Numeric response.",
@@ -1037,8 +1037,8 @@
             "annotation": "Substitute back; the balance holds.",
             "check": {
               "move": "name_trap",
-              "prompt": "Someone writes 3x = 25. Which operation did they repeat instead of undo?",
-              "answer": "they repeated the addition, adds 5 instead of subtracting; undoing + 5 means - 5, giving 3x = 15"
+              "prompt": "Someone writes 7x = 43. Which operation did they repeat instead of undo?",
+              "answer": "adding 4 — to undo '+ 4' you subtract it, giving 7x = 35"
             }
           }
         ]
@@ -1512,7 +1512,7 @@
       "i_do_script": "The ranking matches meaning: in 10 - 2 x 3^2 + 1, the '2 x 3^2' is one bundled quantity -- two 9s, 18 -- so the expression says 'take 18 from 10, then add 1.' The exponent binds before the 2 because 3^2 names a single number (a 3-by-3 square of 9), and the product binds before the subtraction because two 9s are one amount. Once an expression has more than one operation, the ORDER matters, and a calculator will happily compute the wrong order if I type it wrong. The rule: parentheses first, then exponents, then multiply and divide, then add and subtract. Watch: 3 + 4 x 5. Left to right would give (3 + 4) x 5 = 35 -- but that is wrong. Multiplication comes first: 4 x 5 = 20, then 3 + 20 = 23. Exponents outrank multiplication too: 2 x 3 squared is 2 x 9 = 18, not (2 x 3) squared = 36. I scan the whole line and rank the operations before I press a single key.",
       "canonical_error": {
         "pattern": "Evaluates left to right, doing addition or subtraction before a multiplication, division, or exponent",
-        "example": "Computes 3 + 4 x 5 as (3 + 4) x 5 = 35 instead of 3 + (4 x 5) = 23, or 2 x 3^2 as (2 x 3)^2 = 36",
+        "example": "Computes 6^2 - 5 x 4 as (36 - 5) x 4 = 124 instead of 36 - 20 = 16",
         "why": "The student reads the expression like a sentence, left to right, instead of ranking the operations. Parentheses, then exponents, then multiply/divide outrank add/subtract and must be done first -- the calculator does not fix a wrong order."
       },
       "item_template": "A purely mathematical expression with two or more operations on rational numbers (may include an exponent or parentheses). Student evaluates. Short numeric response.",
@@ -1798,8 +1798,8 @@
             "annotation": "Subtract last to finish.",
             "check": {
               "move": "name_trap",
-              "prompt": "Someone gets 63. Which two numbers did they subtract left to right first?",
-              "answer": "they went left to right, 25 - 4 = 21 then 21 x 3 = 63, doing subtraction before the multiplication"
+              "prompt": "Someone gets 124. Which two numbers did they combine left to right first?",
+              "answer": "36 and 5 — they subtracted before multiplying, but 5 x 4 comes first"
             }
           }
         ]
