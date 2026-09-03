@@ -130,6 +130,87 @@
           "kind": "ask",
           "text": "Your turn: which is greater, 0.6 or 0.58?"
         }
+      ],
+      "worked_solution": {
+        "stem": "Which is greater: 0.6 or 0.45?",
+        "answer": "0.6",
+        "steps": [
+          {
+            "math": "0.6 has 6 tenths; 0.45 has 4 tenths",
+            "annotation": "Compare the biggest place first, not the number of digits.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Read the tenths digit in each. Which is bigger?",
+              "answer": "6 tenths beats 4 tenths"
+            }
+          },
+          {
+            "math": "6 tenths > 4 tenths",
+            "annotation": "The tenths decide it; hundredths never catch up."
+          },
+          {
+            "math": "0.6 > 0.45",
+            "annotation": "More digits does not mean a bigger number.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who says 0.35 is bigger? What did they compare?",
+              "answer": "45 against 6 as whole numbers, ignoring place value"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Which is greater: 0.7 or 0.68?",
+        "answer": "0.7",
+        "steps": [
+          {
+            "math": "0.7 has 7 tenths; 0.68 has 6 tenths",
+            "annotation": "Compare tenths first.",
+            "given": true
+          },
+          {
+            "math": "7 tenths > 6 tenths",
+            "annotation": "The tenths settle it.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It — state which is greater.",
+            "given": false
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Which is greater: 0.4 or 0.36?",
+        "answer": "0.4",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Call It — read the tenths digit in each number.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Compare just those two digits.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap — which one does 'more digits wins' pick? Why is it wrong?",
+            "given": false
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Rosa compared 0.5 and 0.35. Find and fix her mistake.",
+          "shown_work": [
+            "Rosa wrote: '0.35 > 0.5 because 35 is bigger than 5.'"
+          ],
+          "answer": "She compared the digits as whole numbers. Compare place by place: 0.5 has 5 tenths and 0.35 has 3 tenths, so 0.5 is greater."
+        }
       ]
     },
     {
@@ -223,6 +304,87 @@
         {
           "kind": "ask",
           "text": "Your turn: what is 7/10 - 4/10?"
+        }
+      ],
+      "worked_solution": {
+        "stem": "Add 3/8 + 2/8.",
+        "answer": "5/8",
+        "steps": [
+          {
+            "math": "the denominators match: both are eighths",
+            "annotation": "Same-size pieces, so they can be counted together.",
+            "check": {
+              "move": "call_it",
+              "prompt": "What size is each piece here?",
+              "answer": "an eighth"
+            }
+          },
+          {
+            "math": "3 eighths + 2 eighths = 5 eighths",
+            "annotation": "Count the pieces; the size does not change."
+          },
+          {
+            "math": "= 5/8",
+            "annotation": "The denominator names the piece size, so it stays 8.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes 5/16? What did they add that they should not have?",
+              "answer": "the denominators — 8 + 8, but piece size is not a count"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Add 2/5 + 2/5.",
+        "answer": "4/5",
+        "steps": [
+          {
+            "math": "the denominators match: both are fifths",
+            "annotation": "Same-size pieces.",
+            "given": true
+          },
+          {
+            "math": "2 fifths + 2 fifths = 4 fifths",
+            "annotation": "Count the pieces.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It — write the sum as a fraction.",
+            "given": false
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Add 4/9 + 4/9.",
+        "answer": "8/9",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Call It — what size is each piece?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Count the pieces you have altogether.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap — what does the denominator do when you add? Why?",
+            "given": false
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "Dev added 3/8 + 2/8. Find and fix his mistake.",
+          "shown_work": [
+            "Dev wrote: '3/8 + 2/8 = 5/16.'"
+          ],
+          "answer": "He added the denominators too. The denominator names the piece size and does not change: 3 eighths + 2 eighths = 5 eighths = 5/8."
         }
       ]
     },
@@ -470,7 +632,12 @@
         "steps": [
           {
             "math": "common denominator: 6",
-            "annotation": "Both 2 and 3 go into 6, so cut both bars into sixths."
+            "annotation": "Both 2 and 3 go into 6, so cut both bars into sixths.",
+            "check": {
+              "move": "call_it",
+              "prompt": "What number do both 2 and 3 divide into?",
+              "answer": "6"
+            }
           },
           {
             "math": "1/2 = 3/6",
@@ -478,11 +645,21 @@
           },
           {
             "math": "1/3 = 2/6",
-            "annotation": "A third is two sixths."
+            "annotation": "A third is two sixths.",
+            "check": {
+              "move": "show_it",
+              "prompt": "Cut a bar into sixths. How many sixths cover one third?",
+              "answer": "2"
+            }
           },
           {
             "math": "3/6 + 2/6 = 5/6",
-            "annotation": "Now the pieces match, so count them."
+            "annotation": "Now the pieces match, so count them.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes 1/2 + 1/3 = 2/5? What did they add straight across?",
+              "answer": "the numerators and the denominators separately — but a denominator is a piece size, not a count"
+            }
           }
         ]
       },
@@ -501,13 +678,13 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "3/12 + 4/12 = 7/12",
             "annotation": "Add the twelfths.",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State the sum.",
+            "annotation": "Call It — state the sum in twelfths.",
             "given": false
           }
         ]
@@ -516,7 +693,33 @@
         "The pieces do not match, so I rename ___ and ___ as ___.",
         "The common denominator is ___ because both ___ and ___ go into it."
       ],
-      "fluency_source": "7NS1-F2"
+      "fluency_source": "7NS1-F2",
+      "guided_example": {
+        "stem": "Add 1/3 + 1/6.",
+        "answer": "1/2 (3/6)",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Call It — what denominator do 3 and 6 both go into?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Rename the first fraction over that denominator.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Rename the second fraction (it may already be there).",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Add the counts and simplify if you can.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS1-B2",
@@ -735,7 +938,12 @@
         "steps": [
           {
             "math": "3.6 = 3.60",
-            "annotation": "Append a zero so both numbers show hundredths."
+            "annotation": "Append a zero so both numbers show hundredths.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Before computing: is the answer going up or down from here?",
+              "answer": "down — we are taking away"
+            }
           },
           {
             "math": "line up: 3.60 over 1.75",
@@ -747,7 +955,12 @@
           },
           {
             "math": "wholes: 3 + 1 + 1 = 5, so 5.35",
-            "annotation": "Add the regrouped whole with the ones."
+            "annotation": "Add the regrouped whole with the ones.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who right-aligns the digits instead of lining up the decimal points? What do they get?",
+              "answer": "they line up 5.4 and 2.65 by the last digit and subtract the wrong places — the decimal points must line up first"
+            }
           }
         ]
       },
@@ -766,13 +979,13 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "5.40 - 2.65 = 2.75",
             "annotation": "Subtract the hundredths; you will need to trade a tenth.",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Finish the tenths and wholes and state the answer.",
+            "annotation": "Call It — state the difference.",
             "given": false
           }
         ]
@@ -781,7 +994,33 @@
         "I lined up the decimal points so that ___ adds to ___.",
         "I traded ten ___ for one ___ when the place filled up."
       ],
-      "fluency_source": "7NS1-F1"
+      "fluency_source": "7NS1-F1",
+      "guided_example": {
+        "stem": "Subtract 5/6 - 1/3.",
+        "answer": "1/2 (3/6)",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Call It — what denominator do 6 and 3 share?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Rename each fraction over it.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Subtract the counts.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Simplify and say what the answer means.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS1-S1",
@@ -1001,7 +1240,12 @@
         "steps": [
           {
             "math": "look for opposites: -7/3 and 4/3 don't cancel yet",
-            "annotation": "Scan for canceling pairs first."
+            "annotation": "Scan for canceling pairs first.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Scan the three terms. Which pair are exact opposites?",
+              "answer": "none yet — the fractions have to be combined first"
+            }
           },
           {
             "math": "-7/3 + 4/3 = -3/3 = -1",
@@ -1009,11 +1253,21 @@
           },
           {
             "math": "-1 + 1 = 0",
-            "annotation": "Now -1 and 1 are opposites — they cancel."
+            "annotation": "Now -1 and 1 are opposites — they cancel.",
+            "check": {
+              "move": "call_it",
+              "prompt": "-1 and 1: what does a number plus its opposite always give?",
+              "answer": "0"
+            }
           },
           {
             "math": "sum = 0",
-            "annotation": "The whole expression is zero."
+            "annotation": "The whole expression is zero.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 4.6 for 2.3 + (-2.3)? What did they do to the sizes?",
+              "answer": "added them instead of letting them cancel"
+            }
           }
         ]
       },
@@ -1032,18 +1286,44 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "-2 + 2 = 0",
             "annotation": "Now add the -2 and the 2 — what do opposites give?",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State the final sum.",
+            "annotation": "Call It — state the final sum.",
             "given": false
           }
         ]
       },
-      "pld_band": "below"
+      "pld_band": "below",
+      "guided_example": {
+        "stem": "Evaluate -7/2 + 3 + 1/2.",
+        "answer": "0",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal — which two terms share a denominator?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Combine those two.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Look at what is left: are they opposites?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the sum.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS1-S2",
@@ -1318,11 +1598,21 @@
         "steps": [
           {
             "math": "the points straddle zero: -7 (left) and 2 (right)",
-            "annotation": "Distance is the total gap across zero."
+            "annotation": "Distance is the total gap across zero.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "One point is negative and one positive. What does that tell you about the gap?",
+              "answer": "it crosses zero, so the two distances add"
+            }
           },
           {
             "math": "|-7| + |2| = 7 + 2 = 9",
-            "annotation": "Add each point's distance from zero."
+            "annotation": "Add each point's distance from zero.",
+            "check": {
+              "move": "call_it",
+              "prompt": "What is |-7|?",
+              "answer": "7"
+            }
           },
           {
             "math": "or |2 - (-7)| = |9|",
@@ -1330,7 +1620,12 @@
           },
           {
             "math": "distance = 9",
-            "annotation": "A positive amount, as distance must be."
+            "annotation": "A positive amount, as distance must be.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Which expression does 'just add the coordinates' give? Why is it wrong?",
+              "answer": "-7 + 2 = -5 — a distance can never be negative"
+            }
           }
         ]
       },
@@ -1349,18 +1644,44 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "3 + 6 = 9",
             "annotation": "Compute the sum of the two distances.",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State the distance (a positive number).",
+            "annotation": "Call It — state the distance, and check it is positive.",
             "given": false
           }
         ]
       },
-      "pld_band": "approaching"
+      "pld_band": "approaching",
+      "guided_example": {
+        "stem": "Write an expression for the distance between -5 and 4, then find it.",
+        "answer": "|4 - (-5)| = 9",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal — do these points sit on the same side of zero?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write each point's distance from zero using absolute value.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Combine them into one expression and evaluate it.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the distance and check it is positive.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS1-S3",
@@ -1580,19 +1901,39 @@
         "steps": [
           {
             "math": "-3.5 is 3.5 from zero; 2.5 is 2.5 from zero",
-            "annotation": "Find each point's distance from zero."
+            "annotation": "Find each point's distance from zero.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who subtracts the two coordinates here instead of adding the distances? What do they get?",
+              "answer": "3.5 − 2.5 = 1 — but the points straddle zero, so the two distances add to 6"
+            }
           },
           {
             "math": "the points are on opposite sides of zero",
-            "annotation": "One negative, one positive — they straddle zero."
+            "annotation": "One negative, one positive — they straddle zero.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "One negative, one positive. Add the distances or subtract them?",
+              "answer": "add — they are on opposite sides of zero"
+            }
           },
           {
             "math": "3.5 + 2.5 = 6",
-            "annotation": "Across zero, add the two distances."
+            "annotation": "Across zero, add the two distances.",
+            "check": {
+              "move": "call_it",
+              "prompt": "3.5 + 2.5 is what?",
+              "answer": "6"
+            }
           },
           {
             "math": "distance = 6",
-            "annotation": "The gap between the points."
+            "annotation": "The gap between the points.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Count from -3.5 up to 0, then 0 up to 2.5. Does it total 6?",
+              "answer": "yes — 3.5 then 2.5"
+            }
           }
         ]
       },
@@ -1611,18 +1952,44 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "4 1/2 + 1 1/2 = 6",
             "annotation": "Add the two distances from zero.",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State the distance.",
+            "annotation": "Call It — state the distance between the points.",
             "given": false
           }
         ]
       },
-      "pld_band": "approaching"
+      "pld_band": "approaching",
+      "guided_example": {
+        "stem": "Find the distance between the points at -1 3/4 and 2 1/4.",
+        "answer": "4",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Write how far each point is from zero.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal — same side of zero, or opposite sides?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Combine the two distances the way that rule says.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check It — walk it in two hops through zero. Does it agree?",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS1-S4",
@@ -1885,7 +2252,12 @@
         "steps": [
           {
             "math": "opposite signs: distances are 12 and 7.5",
-            "annotation": "One negative, one positive — they partly cancel."
+            "annotation": "One negative, one positive — they partly cancel.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Same signs or opposite signs? What does that mean you will do?",
+              "answer": "opposite — subtract the distances"
+            }
           },
           {
             "math": "12 - 7.5 = 4.5",
@@ -1893,13 +2265,50 @@
           },
           {
             "math": "-12 is farther from zero",
-            "annotation": "Its sign wins."
+            "annotation": "Its sign wins.",
+            "check": {
+              "move": "call_it",
+              "prompt": "Which number is farther from zero, -12 or 7.5?",
+              "answer": "-12"
+            }
           },
           {
             "math": "answer = -4.5",
-            "annotation": "Subtract the distances, keep the farther sign."
+            "annotation": "Subtract the distances, keep the farther sign.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers -19.5 for -12 + 7.5? What did they do with the two magnitudes?",
+              "answer": "added them instead of subtracting — opposite signs partly cancel"
+            }
           }
-        ]
+        ],
+        "render_data": {
+          "type": "number_line_point",
+          "ticks": [
+            -14,
+            -12,
+            -10,
+            -8,
+            -6,
+            -4,
+            -2,
+            0,
+            2,
+            4,
+            6,
+            8
+          ],
+          "points": [
+            {
+              "value": -12,
+              "label": "start"
+            },
+            {
+              "value": -4.5,
+              "label": "end"
+            }
+          ]
+        }
       },
       "faded_example": {
         "stem": "Evaluate -3/8 + 5/8.",
@@ -1916,18 +2325,44 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "5/8 is farther from zero, so the answer is positive",
             "annotation": "Which number is farther from zero — what sign?",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State the answer (simplify if possible).",
+            "annotation": "Call It — state the answer, simplified.",
             "given": false
           }
         ]
       },
-      "pld_band": "at"
+      "pld_band": "at",
+      "guided_example": {
+        "stem": "Evaluate 9 + (-14).",
+        "answer": "-5",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal — are the signs the same or opposite?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Subtract the smaller distance from the larger.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Decide which number is farther from zero — its sign wins.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the answer with that sign.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS1-S5",
@@ -2170,19 +2605,39 @@
         "steps": [
           {
             "math": "below = negative: start at -90",
-            "annotation": "Translate 'below the surface' to a negative position."
+            "annotation": "Translate 'below the surface' to a negative position.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Which word in the story sets the sign of the starting position?",
+              "answer": "'below' — so it is negative"
+            }
           },
           {
             "math": "rises 35 = +35",
-            "annotation": "'Rises' moves toward the surface, so positive."
+            "annotation": "'Rises' moves toward the surface, so positive.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "Which word tells you the direction of the change?",
+              "answer": "'rises' — toward the surface, so positive"
+            }
           },
           {
             "math": "-90 + 35",
-            "annotation": "Opposite signs: subtract 90 - 35 = 55, keep the -90 sign."
+            "annotation": "Opposite signs: subtract 90 - 35 = 55, keep the -90 sign.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who computes 90 + 35 here? Which direction word did they ignore?",
+              "answer": "'below' — they treated the depth as positive"
+            }
           },
           {
             "math": "= -55, i.e., 55 m below the surface",
-            "annotation": "Read the negative sign back into the context."
+            "annotation": "Read the negative sign back into the context.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Is the rise smaller than the depth? Then should the sub still be below?",
+              "answer": "yes — so a negative answer is right"
+            }
           }
         ]
       },
@@ -2201,18 +2656,44 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "-8 + 13 = 5",
             "annotation": "Add -8 + 13 (opposite signs).",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State the temperature and what the sign means.",
+            "annotation": "Call It — state the temperature and say what its sign means.",
             "given": false
           }
         ]
       },
-      "pld_band": "at"
+      "pld_band": "at",
+      "guided_example": {
+        "stem": "A bank account is overdrawn by $45. The owner deposits $30. What is the new balance?",
+        "answer": "-$15 (still $15 overdrawn)",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal — which word makes the starting amount negative?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Spot the Signal — which word makes the change positive?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Add the two signed amounts.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Check It — the deposit is smaller than the overdraft, so what must the sign be?",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS1-S7",
@@ -2235,7 +2716,35 @@
           "stem": "Explain how the number line shows that -5 + 3 = -2. Your explanation must say where to start, how far to move, and in which direction.",
           "answer": "Start at -5. The second number is positive 3, so travel 3 units to the right. That lands on -2.",
           "choices": null,
-          "distractor_logic": "'5 - 3 = 2 and 5 is bigger so it's negative' is a correct rule and an incorrect explanation -- it never uses the line."
+          "distractor_logic": "'5 - 3 = 2 and 5 is bigger so it's negative' is a correct rule and an incorrect explanation -- it never uses the line.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "points": [
+              {
+                "value": -5,
+                "label": "start"
+              }
+            ]
+          }
         },
         {
           "stem": "Which explanation correctly describes how a number line shows 4 + (-7)?",
@@ -2246,19 +2755,97 @@
             "Start at 4 and move 7 units to the right, landing on 11.",
             "Subtract 4 from 7 and keep the negative sign."
           ],
-          "distractor_logic": "The last option is the shortcut restated -- true arithmetic, but not an explanation of the model."
+          "distractor_logic": "The last option is the shortcut restated -- true arithmetic, but not an explanation of the model.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "points": [
+              {
+                "value": 4,
+                "label": "start"
+              }
+            ]
+          }
         },
         {
           "stem": "A number line shows a jump starting at -2, travelling 6 units right, ending at 4. Write the addition equation it models, and explain how you know.",
           "answer": "-2 + 6 = 4. The start point is the first addend, the jump length and direction give the second addend (right means positive 6), and the landing point is the sum.",
           "choices": null,
-          "distractor_logic": "Writing 4 - 6 = -2 reads the picture backwards, treating the landing point as the start."
+          "distractor_logic": "Writing 4 - 6 = -2 reads the picture backwards, treating the landing point as the start.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "points": [
+              {
+                "value": -2,
+                "label": "start"
+              }
+            ]
+          }
         },
         {
           "stem": "Marcus says adding a negative number always moves you left on the number line. Is he right? Explain, and say what decides the direction.",
           "answer": "Yes. The sign of the number being added decides the direction, not the sign of where you start. Adding a negative always travels left, whether you begin at 8 or at -8.",
           "choices": null,
-          "distractor_logic": "Saying it depends on where you start confuses the start point with the direction of travel."
+          "distractor_logic": "Saying it depends on where you start confuses the start point with the direction of travel.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          }
         }
       ],
       "redirect_script": {
@@ -2352,7 +2939,29 @@
           "difficulty": "core",
           "stem": "Explain how a number line shows that -5 + 3 = -2. Name the start point, the distance, the direction, and the landing point.",
           "answer": "Start at -5. The second number is positive 3, so travel 3 units to the right. You land on -2.",
-          "notes": "An answer of '-2' with no trip scores nothing here -- the explanation is the task."
+          "notes": "An answer of '-2' with no trip scores nothing here -- the explanation is the task.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          }
         },
         {
           "difficulty": "core",
@@ -2363,7 +2972,29 @@
         {
           "difficulty": "core",
           "stem": "A number line shows a jump starting at -2, travelling 6 units to the right, ending at 4. Write the addition equation it models and explain how you read it.",
-          "answer": "-2 + 6 = 4. The start is the first addend, the jump length with its direction is the second addend, and the landing point is the sum."
+          "answer": "-2 + 6 = 4. The start is the first addend, the jump length with its direction is the second addend, and the landing point is the sum.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          }
         },
         {
           "difficulty": "core",
@@ -2379,13 +3010,57 @@
         {
           "difficulty": "stretch",
           "stem": "Explain how a number line shows -3.5 + 1.25. Then explain why the trip is exactly the same shape as -3 + 1, even though the numbers are messier.",
-          "answer": "Start at -3.5, travel 1.25 units right, land on -2.25. The shape is identical because the start point, distance, and direction do not care whether the numbers are whole -- only the tick spacing changes."
+          "answer": "Start at -3.5, travel 1.25 units right, land on -2.25. The shape is identical because the start point, distance, and direction do not care whether the numbers are whole -- only the tick spacing changes.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          }
         },
         {
           "difficulty": "stretch",
           "stem": "Two students both land on the correct answer for -6 + 10. One says 'start at -6, travel 10 right, land on 4.' The other says '10 - 6 = 4 and 10 is bigger and positive so it's positive 4.' Both are correct. Which one has explained the number line, and why does the difference matter later?",
           "answer": "The first explained the number line; the second explained a rule. It matters because when the numbers become letters, or when a problem asks WHY rather than WHAT, the rule has nothing underneath it while the trip still describes what is happening.",
-          "notes": "Makes the distinction the skill rests on into the object of the question."
+          "notes": "Makes the distinction the skill rests on into the object of the question.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          }
         }
       ],
       "activities": [
@@ -2477,7 +3152,12 @@
         "steps": [
           {
             "math": "Start at -5.",
-            "annotation": "The first addend is the starting point -- put a finger there."
+            "annotation": "The first addend is the starting point -- put a finger there.",
+            "check": {
+              "move": "show_it",
+              "prompt": "Put your finger on the starting point. Where is it?",
+              "answer": "-5"
+            }
           },
           {
             "math": "The second addend is +3, so travel 3 units.",
@@ -2485,13 +3165,51 @@
           },
           {
             "math": "It is positive, so travel to the RIGHT.",
-            "annotation": "The sign gives the direction. Positive right, negative left."
+            "annotation": "The sign gives the direction. Positive right, negative left.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Why does a positive second number send you right?",
+              "answer": "positive means the direction of increase, which is right on the line"
+            }
           },
           {
             "math": "Landing point: -2. So -5 + 3 = -2.",
-            "annotation": "Where the trip ends is the sum. Nothing was subtracted."
+            "annotation": "Where the trip ends is the sum. Nothing was subtracted.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who explains this by saying '5 - 3 = 2'? What did they never describe?",
+              "answer": "the start point and the direction — they named a shortcut, not the movement"
+            }
           }
-        ]
+        ],
+        "render_data": {
+          "type": "number_line_point",
+          "ticks": [
+            -8,
+            -7,
+            -6,
+            -5,
+            -4,
+            -3,
+            -2,
+            -1,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "points": [
+            {
+              "value": -5,
+              "label": "start"
+            }
+          ]
+        }
       },
       "faded_example": {
         "stem": "Explain how a number line shows that -6 + 4 = -2.",
@@ -2514,10 +3232,38 @@
           },
           {
             "math": null,
-            "annotation": "Name the landing point and write the full sentence explaining the trip.",
+            "annotation": "Show It — name the landing point, then write the whole trip as a sentence.",
             "given": false
           }
-        ]
+        ],
+        "render_data": {
+          "type": "number_line_point",
+          "ticks": [
+            -8,
+            -7,
+            -6,
+            -5,
+            -4,
+            -3,
+            -2,
+            -1,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "points": [
+            {
+              "value": -6,
+              "label": "start"
+            }
+          ]
+        }
       },
       "sentence_starters": [
         "Start at ___. The second number is ___, so travel ___ units to the ___.",
@@ -2525,7 +3271,61 @@
         "The direction comes from ___, not from ___."
       ],
       "fluency_source": "7NS1-F1",
-      "pld_band": "at"
+      "pld_band": "at",
+      "guided_example": {
+        "stem": "Explain how a number line shows that -2 + 7 = 5.",
+        "answer": "Start at -2, travel 7 units right, land on 5",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Show It — name the starting point and put a finger on it.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Say how far you travel.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Say Why — which direction, and what tells you?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the landing point and write the whole trip as one sentence.",
+            "given": false
+          }
+        ],
+        "render_data": {
+          "type": "number_line_point",
+          "ticks": [
+            -8,
+            -7,
+            -6,
+            -5,
+            -4,
+            -3,
+            -2,
+            -1,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "points": [
+            {
+              "value": -2,
+              "label": "start"
+            }
+          ]
+        }
+      }
     },
     {
       "skill_id": "7NS1-S6",
@@ -2798,11 +3598,21 @@
         "steps": [
           {
             "math": "b is farther from zero than a",
-            "annotation": "|b| > |a| means b dominates the sum."
+            "annotation": "|b| > |a| means b dominates the sum.",
+            "check": {
+              "move": "call_it",
+              "prompt": "|b| > |a|. Which one is farther from zero?",
+              "answer": "b"
+            }
           },
           {
             "math": "opposite signs -> subtract, keep b's sign",
-            "annotation": "b is negative, so c is negative."
+            "annotation": "b is negative, so c is negative.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Why does the farther number decide the sign?",
+              "answer": "the nearer one only cancels part of it, so what survives has the farther number's sign"
+            }
           },
           {
             "math": "c < 0",
@@ -2810,7 +3620,12 @@
           },
           {
             "math": "|c| = |b| - |a|",
-            "annotation": "The magnitude is what remains after the positive a cancels part of b."
+            "annotation": "The magnitude is what remains after the positive a cancels part of b.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who concludes b = a from a + b = 0? What does 'opposite' mean that 'equal' does not?",
+              "answer": "b = -a — same magnitude, other side of zero. Opposite is not equal."
+            }
           }
         ]
       },
@@ -2829,18 +3644,44 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "|a| = |b|",
             "annotation": "State the relationship between |a| and |b|.",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Explain why in one sentence.",
+            "annotation": "Say Why — state the relationship between |a| and |b|, and why.",
             "given": false
           }
         ]
       },
-      "pld_band": "above"
+      "pld_band": "above",
+      "guided_example": {
+        "stem": "a is negative, b is positive, and |a| > |b|. Determine the sign of c = a + b.",
+        "answer": "c < 0, because a is farther from zero and its sign survives",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Call It — which of a and b is farther from zero?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Say Why — opposite signs, so what happens to the smaller distance?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "State the sign of c.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Say why in one sentence, using distance from zero.",
+            "given": false
+          }
+        ]
+      }
     }
   ],
   "skill_columns": {

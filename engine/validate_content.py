@@ -138,6 +138,21 @@ def lesson_text(s):
     parts = [s.get("i_do_script") or ""]
     for st in s.get("worked_example_script") or []:
         parts.append(st.get("text") or "")
+    # Session Sheet v4 moved the modelling into the ladder, so a skill can
+    # enact a representation there and still read as model debt to Gate 1.
+    # Count the ladder's own prose, its micro-check prompts, and the TYPE of
+    # any figure it draws ("number_line_point" contains "number line").
+    for blk in ("worked_solution", "faded_example", "guided_example"):
+        b = s.get(blk) or {}
+        parts.append(b.get("stem") or "")
+        rd = b.get("render_data") or {}
+        parts.append(str(rd.get("type") or "").replace("_", " "))
+        for st in b.get("steps") or []:
+            parts.append(st.get("math") or "")
+            parts.append(st.get("annotation") or "")
+            ck = st.get("check") or {}
+            parts.append(ck.get("prompt") or "")
+            parts.append(ck.get("answer") or "")
     for a in s.get("activities") or []:
         parts.append(a.get("title") or "")
         parts.append(a.get("instructions") or "")
