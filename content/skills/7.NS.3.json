@@ -134,6 +134,87 @@
           "kind": "ask",
           "text": "Your turn: sketch or picture 7 x 8 by splitting it into 7 x 5 and 7 x 3."
         }
+      ],
+      "worked_solution": {
+        "stem": "What is 7 x 8?",
+        "answer": "56",
+        "steps": [
+          {
+            "math": "picture 7 rows of 8",
+            "annotation": "An array turns a fact into a countable picture.",
+            "check": {
+              "move": "call_it",
+              "prompt": "What is 7 x 4, half of this array?",
+              "answer": "28"
+            }
+          },
+          {
+            "math": "7 x 4 = 28, and double it",
+            "annotation": "Split the array in half, then double."
+          },
+          {
+            "math": "28 + 28 = 56",
+            "annotation": "So 7 x 8 = 56.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 54? Which fact did they land on instead?",
+              "answer": "a neighbouring product — 54 is 6 x 9, not 7 x 8"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "What is 6 x 7?",
+        "answer": "42",
+        "steps": [
+          {
+            "math": "picture 6 rows of 7",
+            "annotation": "Build the array.",
+            "given": true
+          },
+          {
+            "math": "6 x 7 is 5 rows of 7 plus one more row: 35 + 7",
+            "annotation": "Split off a friendly fact.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It — add those and state the product.",
+            "given": false
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "What is 8 x 6?",
+        "answer": "48",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Picture the array: how many rows, how many in each?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Split it into a fact you already know, plus the rest.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap — which neighbouring product is easy to grab by mistake?",
+            "given": false
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "A student tried this and made a mistake. Find it and fix it.",
+          "shown_work": [
+            "Says 7 x 8 = 54, mixing it up with 6 x 9, instead of 56"
+          ],
+          "answer": "The fact is not automatic, so the student guesses from memory and lands on a nearby product. The array splits the fact into pieces the student can rebuild and check."
+        }
       ]
     },
     {
@@ -227,6 +308,87 @@
         {
           "kind": "ask",
           "text": "Your turn: use money or strips to find 0.6 x 5."
+        }
+      ],
+      "worked_solution": {
+        "stem": "Multiply 0.3 x 6.",
+        "answer": "1.8",
+        "steps": [
+          {
+            "math": "estimate: 0.3 is under a half, so the answer is under 3",
+            "annotation": "Know roughly where the answer lands before computing.",
+            "check": {
+              "move": "call_it",
+              "prompt": "What is 3 x 6, ignoring the point?",
+              "answer": "18"
+            }
+          },
+          {
+            "math": "3 x 6 = 18, and 0.3 has one decimal place",
+            "annotation": "Multiply the digits, then count decimal places."
+          },
+          {
+            "math": "0.3 x 6 = 1.8",
+            "annotation": "One decimal place in, one decimal place out.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 18? What did they ignore?",
+              "answer": "the decimal point — they treated 0.3 as the whole number 3"
+            }
+          }
+        ]
+      },
+      "faded_example": {
+        "stem": "Multiply 0.4 x 7.",
+        "answer": "2.8",
+        "steps": [
+          {
+            "math": "estimate: under half of 7, so under 3.5",
+            "annotation": "Set an expectation.",
+            "given": true
+          },
+          {
+            "math": "4 x 7 = 28, and 0.4 has one decimal place",
+            "annotation": "Digits first, then places.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Call It — place the point and state the product.",
+            "given": false
+          }
+        ]
+      },
+      "guided_example": {
+        "stem": "Multiply 0.6 x 9.",
+        "answer": "5.4",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Estimate first: is the answer above or below 9?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the digits, ignoring the point for a moment.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap — what answer do you get if you forget the point? Why is it wrong?",
+            "given": false
+          }
+        ]
+      },
+      "practice_problems": [
+        {
+          "difficulty": "core",
+          "type": "error_analysis",
+          "stem": "A student tried this and made a mistake. Find it and fix it.",
+          "shown_work": [
+            "Writes 0.3 x 4 = 12 instead of 1.2"
+          ],
+          "answer": "The student multiplies the digits and forgets the factor was tenths, not ones. Four groups of 3 tenths is 12 tenths, and 12 tenths regroups to 1.2. Money makes it visible: 30 cents four times cannot be 12 dollars."
         }
       ]
     },
@@ -481,15 +643,30 @@
           },
           {
             "math": "take 2/3 of the shaded part with horizontal strips",
-            "annotation": "The 'of' means multiply: we want 2 of every 3 shaded rows."
+            "annotation": "The 'of' means multiply: we want 2 of every 3 shaded rows.",
+            "check": {
+              "move": "show_it",
+              "prompt": "Shade 3/4 with vertical strips, then 2/3 across it. What overlaps?",
+              "answer": "the double-shaded pieces — that is the product"
+            }
           },
           {
             "math": "count: 6 double-shaded pieces out of 12",
-            "annotation": "Both cuts together make 3 x 4 = 12 pieces; 2 x 3 = 6 are double-shaded."
+            "annotation": "Both cuts together make 3 x 4 = 12 pieces; 2 x 3 = 6 are double-shaded.",
+            "check": {
+              "move": "call_it",
+              "prompt": "How many pieces does the square have in total?",
+              "answer": "12"
+            }
           },
           {
             "math": "2/3 x 3/4 = 6/12 = 1/2",
-            "annotation": "Top times top over bottom times bottom, then simplify."
+            "annotation": "Top times top over bottom times bottom, then simplify.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 17/12 here? What did they do instead of taking a part of a part?",
+              "answer": "added the fractions — but 'of' means multiply, and a part of a part is smaller than either"
+            }
           }
         ]
       },
@@ -508,6 +685,37 @@
             "given": true
           },
           {
+            "math": "4 double-shaded out of 10 pieces",
+            "annotation": "Count the double-shaded pieces and the total pieces.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap — write the product and simplify.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "This asks for ___ OF ___, so I multiply.",
+        "The square has ___ pieces and ___ are double-shaded, so the product is ___."
+      ],
+      "fluency_source": "7NS3-F1",
+      "guided_example": {
+        "stem": "Multiply 3/5 x 5/6.",
+        "answer": "1/2 (15/30)",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Show It — shade the second fraction with vertical strips.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Take the first fraction of it with horizontal strips.",
+            "given": false
+          },
+          {
             "math": null,
             "annotation": "Count the double-shaded pieces and the total pieces.",
             "given": false
@@ -518,12 +726,7 @@
             "given": false
           }
         ]
-      },
-      "sentence_starters": [
-        "This asks for ___ OF ___, so I multiply.",
-        "The square has ___ pieces and ___ are double-shaded, so the product is ___."
-      ],
-      "fluency_source": "7NS3-F1"
+      }
     },
     {
       "skill_id": "7NS3-B2",
@@ -753,7 +956,12 @@
         "steps": [
           {
             "math": "estimate: both factors are less than 1",
-            "annotation": "So the product must be smaller than either factor, well under 1."
+            "annotation": "So the product must be smaller than either factor, well under 1.",
+            "check": {
+              "move": "check_it",
+              "prompt": "Both factors are under 1. Should the answer be bigger or smaller than 0.4?",
+              "answer": "smaller — taking part of a part shrinks it"
+            }
           },
           {
             "math": "multiply the digits: 4 x 3 = 12",
@@ -761,11 +969,21 @@
           },
           {
             "math": "count decimal places: 1 + 1 = 2",
-            "annotation": "Tenths times tenths makes hundredths."
+            "annotation": "Tenths times tenths makes hundredths.",
+            "check": {
+              "move": "call_it",
+              "prompt": "How many decimal places are there altogether?",
+              "answer": "2"
+            }
           },
           {
             "math": "0.4 x 0.3 = 0.12",
-            "annotation": "Twelve hundredths, matching the 12 overlap squares on the grid."
+            "annotation": "Twelve hundredths, matching the 12 overlap squares on the grid.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers 1.2 for 0.4 x 0.3? What did they get wrong?",
+              "answer": "the decimal point — the digits 12 are right but tenths times tenths makes hundredths, so it is 0.12"
+            }
           }
         ]
       },
@@ -784,6 +1002,37 @@
             "given": true
           },
           {
+            "math": "two decimal places: 0.30",
+            "annotation": "Count the decimal places in the two factors.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap — place the point and state the product.",
+            "given": false
+          }
+        ]
+      },
+      "sentence_starters": [
+        "The factors have ___ decimal places in all, so the product has ___.",
+        "Both factors are less than 1, so the product must be ___ than ___."
+      ],
+      "fluency_source": "7NS3-F2",
+      "guided_example": {
+        "stem": "Multiply 0.7 x 0.2.",
+        "answer": "0.14",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Check It — both factors are under 1, so where should the answer land?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the digits as whole numbers.",
+            "given": false
+          },
+          {
             "math": null,
             "annotation": "Count the decimal places in the two factors.",
             "given": false
@@ -794,12 +1043,7 @@
             "given": false
           }
         ]
-      },
-      "sentence_starters": [
-        "The factors have ___ decimal places in all, so the product has ___.",
-        "Both factors are less than 1, so the product must be ___ than ___."
-      ],
-      "fluency_source": "7NS3-F2"
+      }
     },
     {
       "skill_id": "7NS3-S1",
@@ -831,7 +1075,33 @@
             "-2 x -3 = 6",
             "0 x 6 = 0"
           ],
-          "distractor_logic": "Left jumps are negative: -2 x 3 = -6. Dropping the sign gives 2 x 3; making both negative gives a positive product."
+          "distractor_logic": "Left jumps are negative: -2 x 3 = -6. Dropping the sign gives 2 x 3; making both negative gives a positive product.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -10,
+              -9,
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          }
         },
         {
           "stem": "A number line shows 4 jumps of 3 units to the LEFT, ending at -12. Which expression does it model?",
@@ -842,7 +1112,33 @@
             "-3 x -4 = 12",
             "-4 x 3 = -12"
           ],
-          "distractor_logic": "Each left jump is -3, repeated 4 times: -3 x 4 = -12."
+          "distractor_logic": "Each left jump is -3, repeated 4 times: -3 x 4 = -12.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -10,
+              -9,
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          }
         },
         {
           "stem": "A number line shows 2 jumps of 5 units to the LEFT, ending at -10. What product does it model?",
@@ -853,12 +1149,64 @@
             "-5 x -2 = 10",
             "-10 x 0 = 0"
           ],
-          "distractor_logic": "-5 x 2 = -10; the landing point is the product."
+          "distractor_logic": "-5 x 2 = -10; the landing point is the product.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -10,
+              -9,
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          }
         },
         {
           "stem": "Starting at 0, a number line makes 5 jumps of 1 unit to the LEFT. Where does it end, and what product is modeled?",
           "answer": "-5; -1 x 5 = -5",
-          "distractor_logic": "Five left jumps of 1 land on -5, modeling -1 x 5 = -5."
+          "distractor_logic": "Five left jumps of 1 land on -5, modeling -1 x 5 = -5.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -10,
+              -9,
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          }
         }
       ],
       "redirect_script": {
@@ -917,7 +1265,33 @@
           "difficulty": "core",
           "stem": "A number line shows 3 jumps of 2 to the LEFT, ending at -6. Which expression models it?",
           "answer": "-2 x 3 = -6",
-          "notes": "Baits dropping the sign to 2 x 3."
+          "notes": "Baits dropping the sign to 2 x 3.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -10,
+              -9,
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          }
         },
         {
           "difficulty": "core",
@@ -933,7 +1307,33 @@
             "Sam wrote: '5 x 2 = 10, so the number line models 5 x 2.'"
           ],
           "answer": "Jumps to the LEFT are negative, so each jump is -5: -5 x 2 = -10. Sam ignored the leftward direction and dropped the negative sign.",
-          "notes": "Canonical error: ignoring the sign of the jumps."
+          "notes": "Canonical error: ignoring the sign of the jumps.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -10,
+              -9,
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          }
         },
         {
           "difficulty": "core",
@@ -950,13 +1350,65 @@
           "difficulty": "stretch",
           "stem": "Describe a number line that models -3 x 4. How many jumps, what size, which direction, and where does it end?",
           "answer": "4 jumps of 3 units to the LEFT, starting at 0 and ending at -12.",
-          "notes": "Reverses direction: expression -> model."
+          "notes": "Reverses direction: expression -> model.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -10,
+              -9,
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          }
         },
         {
           "difficulty": "stretch",
           "stem": "A number line ends at -8 after 4 equal jumps to the left. What signed number is each jump, and what product does it model?",
           "answer": "Each jump is -2; it models -2 x 4 = -8.",
-          "notes": "Work back from the landing point."
+          "notes": "Work back from the landing point.",
+          "render_data": {
+            "type": "number_line_point",
+            "ticks": [
+              -10,
+              -9,
+              -8,
+              -7,
+              -6,
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          }
         }
       ],
       "activities": [
@@ -1059,11 +1511,21 @@
         "steps": [
           {
             "math": "each jump of 2 to the LEFT is -2",
-            "annotation": "Left means negative on the number line."
+            "annotation": "Left means negative on the number line.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "The jumps go LEFT. What does that make the jump size?",
+              "answer": "negative: -2"
+            }
           },
           {
             "math": "there are 3 jumps -> multiply by 3",
-            "annotation": "Repeated equal jumps mean multiplication."
+            "annotation": "Repeated equal jumps mean multiplication.",
+            "check": {
+              "move": "call_it",
+              "prompt": "How many jumps are there?",
+              "answer": "3"
+            }
           },
           {
             "math": "-2 x 3",
@@ -1071,9 +1533,48 @@
           },
           {
             "math": "-2 x 3 = -6",
-            "annotation": "The landing point, -6, is the product."
+            "annotation": "The landing point, -6, is the product.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who writes 2 x 3 = 6 here? Which part of the picture did they ignore?",
+              "answer": "the direction — the jumps go left, so the jump size is -2 and the product is -6"
+            }
           }
-        ]
+        ],
+        "render_data": {
+          "type": "number_line_point",
+          "ticks": [
+            -14,
+            -13,
+            -12,
+            -11,
+            -10,
+            -9,
+            -8,
+            -7,
+            -6,
+            -5,
+            -4,
+            -3,
+            -2,
+            -1,
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "points": [
+            {
+              "value": 0,
+              "label": "start"
+            },
+            {
+              "value": -6,
+              "label": "end"
+            }
+          ]
+        }
       },
       "faded_example": {
         "stem": "A number line shows 4 jumps of 3 units to the LEFT, ending at -12. Which expression does it model, and what is the product?",
@@ -1090,8 +1591,69 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "-3 x 4",
             "annotation": "Write the product of the jump size and the number of jumps.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap — state the landing point as the product.",
+            "given": false
+          }
+        ],
+        "render_data": {
+          "type": "number_line_point",
+          "ticks": [
+            -14,
+            -13,
+            -12,
+            -11,
+            -10,
+            -9,
+            -8,
+            -7,
+            -6,
+            -5,
+            -4,
+            -3,
+            -2,
+            -1,
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "points": [
+            {
+              "value": 0,
+              "label": "start"
+            },
+            {
+              "value": -12,
+              "label": "end"
+            }
+          ]
+        }
+      },
+      "pld_band": "below",
+      "guided_example": {
+        "stem": "A number line shows 5 jumps of 2 units to the LEFT, ending at -10. Which expression does it model, and what is the product?",
+        "answer": "-2 x 5 = -10",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal — which way do the jumps go, and what sign does that give the jump size?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Count the jumps.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Write the product of jump size and number of jumps.",
             "given": false
           },
           {
@@ -1099,9 +1661,42 @@
             "annotation": "State the landing point as the product.",
             "given": false
           }
-        ]
-      },
-      "pld_band": "below"
+        ],
+        "render_data": {
+          "type": "number_line_point",
+          "ticks": [
+            -14,
+            -13,
+            -12,
+            -11,
+            -10,
+            -9,
+            -8,
+            -7,
+            -6,
+            -5,
+            -4,
+            -3,
+            -2,
+            -1,
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "points": [
+            {
+              "value": 0,
+              "label": "start"
+            },
+            {
+              "value": -10,
+              "label": "end"
+            }
+          ]
+        }
+      }
     },
     {
       "skill_id": "7NS3-S2",
@@ -1412,11 +2007,21 @@
         "steps": [
           {
             "math": "count the negative factors: -2, -5, -1 -> three negatives",
-            "annotation": "Look only at the signs."
+            "annotation": "Look only at the signs.",
+            "check": {
+              "move": "call_it",
+              "prompt": "How many negative factors are there?",
+              "answer": "three"
+            }
           },
           {
             "math": "three is an ODD number of negatives",
-            "annotation": "Odd count of negatives means a negative product."
+            "annotation": "Odd count of negatives means a negative product.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Why does an odd count make the product negative?",
+              "answer": "negatives pair off to positives; an odd count leaves one unpaired"
+            }
           },
           {
             "math": "so the product is negative",
@@ -1424,7 +2029,12 @@
           },
           {
             "math": "check: 2 x 5 x 1 = 10, so (-2)(-5)(-1) = -10",
-            "annotation": "Magnitude 10 with a negative sign."
+            "annotation": "Magnitude 10 with a negative sign.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who says two negatives make a negative? What are they confusing multiplication with?",
+              "answer": "adding negatives — (-3) + (-4) is negative, but (-3)(-4) is positive"
+            }
           }
         ]
       },
@@ -1443,18 +2053,44 @@
             "given": true
           },
           {
+            "math": "even count -> positive",
+            "annotation": "State whether the product is positive or negative.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap — confirm with the magnitude if you like (3 x 4 = 12).",
+            "given": false
+          }
+        ]
+      },
+      "pld_band": "below",
+      "guided_example": {
+        "stem": "Is the product (-1)(-2)(-3)(-4) positive or negative?",
+        "answer": "positive",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Call It — count the negative factors.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Decide whether that count is odd or even.",
+            "given": false
+          },
+          {
             "math": null,
             "annotation": "State whether the product is positive or negative.",
             "given": false
           },
           {
             "math": null,
-            "annotation": "Confirm with the magnitude if you like (3 x 4 = 12).",
+            "annotation": "Say Why — explain using pairing, in one sentence.",
             "given": false
           }
         ]
-      },
-      "pld_band": "below"
+      }
     },
     {
       "skill_id": "7NS3-S3",
@@ -1685,11 +2321,21 @@
         "steps": [
           {
             "math": "multiply the sizes: 2 x 5 x 3 = 30",
-            "annotation": "Ignore the signs and find the amount."
+            "annotation": "Ignore the signs and find the amount.",
+            "check": {
+              "move": "call_it",
+              "prompt": "What is 2 x 5 x 3, ignoring signs?",
+              "answer": "30"
+            }
           },
           {
             "math": "count the negatives: -2 and -3 -> two negatives",
-            "annotation": "Two is an even count."
+            "annotation": "Two is an even count.",
+            "check": {
+              "move": "call_it",
+              "prompt": "How many of the factors are negative?",
+              "answer": "two"
+            }
           },
           {
             "math": "even count of negatives -> positive product",
@@ -1697,7 +2343,12 @@
           },
           {
             "math": "(-2)(5)(-3) = 30",
-            "annotation": "Positive 30."
+            "annotation": "Positive 30.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers -30 here? What did they do with the two negatives?",
+              "answer": "kept a negative sign — but an even count of negatives makes the product positive"
+            }
           }
         ]
       },
@@ -1716,8 +2367,35 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "even count of negatives -> positive",
             "annotation": "Decide the sign from the count of negatives.",
+            "given": true
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap — state the final signed product.",
+            "given": false
+          }
+        ]
+      },
+      "pld_band": "approaching",
+      "guided_example": {
+        "stem": "Multiply (-3)(2)(-4).",
+        "answer": "24",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Multiply the sizes, ignoring every sign.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Call It — count the negative factors.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Decide the sign from that count.",
             "given": false
           },
           {
@@ -1726,8 +2404,7 @@
             "given": false
           }
         ]
-      },
-      "pld_band": "approaching"
+      }
     },
     {
       "skill_id": "7NS3-S4",
@@ -1987,7 +2664,12 @@
         "steps": [
           {
             "math": "count negatives: -1 1/2 and -3 -> two negatives -> positive",
-            "annotation": "Even count makes the product positive."
+            "annotation": "Even count makes the product positive.",
+            "check": {
+              "move": "call_it",
+              "prompt": "How many negative factors?",
+              "answer": "two, so the product is positive"
+            }
           },
           {
             "math": "write 1 1/2 as 1.5",
@@ -1995,11 +2677,21 @@
           },
           {
             "math": "1.5 x 0.25 = 0.375",
-            "annotation": "Multiply the first two sizes."
+            "annotation": "Multiply the first two sizes.",
+            "check": {
+              "move": "call_it",
+              "prompt": "What is 1.5 x 0.25?",
+              "answer": "0.375"
+            }
           },
           {
             "math": "0.375 x 3 = 1.125",
-            "annotation": "Multiply by the last factor; the sign is positive."
+            "annotation": "Multiply by the last factor; the sign is positive.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers -1.125? What did they get right and what did they get wrong?",
+              "answer": "the magnitude is right but the sign is wrong — two negatives make a positive"
+            }
           }
         ]
       },
@@ -2018,18 +2710,44 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "the count was even, so the product is positive",
             "annotation": "Apply the sign from the negative count.",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "State the final product.",
+            "annotation": "Name the Trap — state the final product.",
             "given": false
           }
         ]
       },
-      "pld_band": "approaching"
+      "pld_band": "approaching",
+      "guided_example": {
+        "stem": "Multiply (-0.5)(-4/5).",
+        "answer": "0.4 (2/5)",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Call It — count the negatives and decide the sign now.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Put both factors in the same form.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply the sizes.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Apply the sign and state the product.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS3-S6",
@@ -2324,11 +3042,21 @@
         "steps": [
           {
             "math": "(-4/9)(3/4) = -12/36 = -1/3",
-            "annotation": "One negative factor -> the product is negative."
+            "annotation": "One negative factor -> the product is negative.",
+            "check": {
+              "move": "call_it",
+              "prompt": "How many negative factors are in (-4/9)(3/4)?",
+              "answer": "one, so the product is negative"
+            }
           },
           {
             "math": "(4/9)(-3/4) = -12/36 = -1/3",
-            "annotation": "Moving the one negative keeps the value."
+            "annotation": "Moving the one negative keeps the value.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Why does moving the negative to the other factor keep the value?",
+              "answer": "the count of negatives is still one, so the sign is unchanged"
+            }
           },
           {
             "math": "(-4/9)(-3/4) = +1/3 -> NOT equivalent",
@@ -2336,7 +3064,12 @@
           },
           {
             "math": "equivalent: -1/3 and (4/9)(-3/4)",
-            "annotation": "Same value, -1/3."
+            "annotation": "Same value, -1/3.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who says (-4/9)(-3/4) is equivalent? What did adding a second negative do?",
+              "answer": "flipped the sign to positive — adding a negative does not keep the value the same"
+            }
           }
         ]
       },
@@ -2355,18 +3088,44 @@
             "given": true
           },
           {
-            "math": null,
+            "math": "(-2/3)(-3/5) = +2/5, so it is NOT equivalent",
             "annotation": "Decide whether (-2/3)(-3/5) is equivalent (check the sign).",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "List the two equivalent expressions.",
+            "annotation": "Name the Trap — list the two equivalent expressions.",
             "given": false
           }
         ]
       },
-      "pld_band": "approaching"
+      "pld_band": "approaching",
+      "guided_example": {
+        "stem": "Select the expressions equivalent to (-3/5)(2/7).",
+        "answer": "-6/35 and (3/5)(-2/7)",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Call It — how many negatives, and what sign does that give?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Compute the value.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Move the negative to the other factor and check the value is unchanged.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the Trap — test the version with two negatives. Is it equivalent?",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS3-S5",
@@ -2649,54 +3408,95 @@
         "So a(b + c) = ___ + ___ = ___."
       ],
       "worked_solution": {
-        "stem": "Simplify -1/2(9 + 3).",
+        "stem": "Simplify -1/3(12 + 6).",
         "answer": "-6",
         "steps": [
           {
-            "math": "-1/2(9 + 3) = -1/2 x 9 + -1/2 x 3",
-            "annotation": "Distribute -1/2 to BOTH terms inside."
+            "math": "-1/3(12 + 6) = -1/3 x 12 + -1/3 x 6",
+            "annotation": "Distribute -1/2 to BOTH terms inside.",
+            "check": {
+              "move": "spot_signal",
+              "prompt": "How many terms are inside the parentheses?",
+              "answer": "two — both get the factor"
+            }
           },
           {
-            "math": "-1/2 x 9 = -4.5",
+            "math": "-1/3 x 12 = -4",
             "annotation": "A negative times a positive is negative."
           },
           {
-            "math": "-1/2 x 3 = -1.5",
-            "annotation": "Distribute to the second term too."
+            "math": "-1/3 x 6 = -2",
+            "annotation": "Distribute to the second term too.",
+            "check": {
+              "move": "call_it",
+              "prompt": "What is -1/3 x 6?",
+              "answer": "-2"
+            }
           },
           {
-            "math": "-4.5 + (-1.5) = -6",
-            "annotation": "Add the two products."
+            "math": "-4 + (-2) = -6",
+            "annotation": "Add the two products.",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who answers -4 + 6? Which term did they leave alone?",
+              "answer": "the second one — the outside factor distributes to BOTH terms inside"
+            }
           }
         ]
       },
       "faded_example": {
-        "stem": "Simplify -1/4(8 + 4).",
-        "answer": "-3",
+        "stem": "Simplify -1/5(15 + 5).",
+        "answer": "-4",
         "steps": [
           {
-            "math": "-1/4(8 + 4) = -1/4 x 8 + -1/4 x 4",
+            "math": "-1/5(15 + 5) = -1/5 x 15 + -1/5 x 5",
             "annotation": "Distribute to both terms.",
             "given": true
           },
           {
-            "math": "-1/4 x 8 = -2",
+            "math": "-1/5 x 15 = -3",
             "annotation": "A negative times a positive is negative.",
             "given": true
           },
           {
-            "math": null,
+            "math": "-1/5 x 5 = -1",
             "annotation": "Multiply -1/4 by the second term, 4.",
-            "given": false
+            "given": true
           },
           {
             "math": null,
-            "annotation": "Add the two products for the final answer.",
+            "annotation": "Name the Trap — add the two products for the final answer.",
             "given": false
           }
         ]
       },
-      "pld_band": "at"
+      "pld_band": "at",
+      "guided_example": {
+        "stem": "Simplify -1/3(6 + 9).",
+        "answer": "-5",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Spot the Signal — how many terms will the outside factor hit?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply it by the first term.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Multiply it by the second term.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Add the two products and state the answer.",
+            "given": false
+          }
+        ]
+      }
     },
     {
       "skill_id": "7NS3-S7",
@@ -2965,19 +3765,39 @@
         "steps": [
           {
             "math": "Inside first: s > 0 and t > 0, so s + t > 0.",
-            "annotation": "Positive plus positive is positive. Resolve the parenthesis to one sign."
+            "annotation": "Positive plus positive is positive. Resolve the parenthesis to one sign.",
+            "check": {
+              "move": "call_it",
+              "prompt": "s > 0 and t > 0. What is the sign of s + t?",
+              "answer": "positive"
+            }
           },
           {
             "math": "Now the expression is r times a positive quantity.",
-            "annotation": "Two factors: r, and (s + t)."
+            "annotation": "Two factors: r, and (s + t).",
+            "check": {
+              "move": "name_trap",
+              "prompt": "Who calls r(s + t) 'negative times positive, twice'? What did they skip?",
+              "answer": "resolving the parenthesis first — s + t is one positive quantity, so there is only one negative factor"
+            }
           },
           {
             "math": "r < 0, so exactly one factor is negative.",
-            "annotation": "Count negatives among factors only."
+            "annotation": "Count negatives among factors only.",
+            "check": {
+              "move": "call_it",
+              "prompt": "How many of the two factors are negative?",
+              "answer": "one — only r"
+            }
           },
           {
             "math": "One negative factor, so r(s + t) < 0.",
-            "annotation": "True for every r, s, t fitting the description -- no values needed."
+            "annotation": "True for every r, s, t fitting the description -- no values needed.",
+            "check": {
+              "move": "say_why",
+              "prompt": "Why does this hold for every r, s and t that fit, with no numbers?",
+              "answer": "the signs alone decide it: one negative factor always gives a negative product"
+            }
           }
         ]
       },
@@ -2996,8 +3816,13 @@
             "given": true
           },
           {
+            "math": "m < 0, so exactly one factor is negative.",
+            "annotation": "Count negatives among the factors only.",
+            "given": true
+          },
+          {
             "math": null,
-            "annotation": "Count the negative factors, then write the inequality comparing m(p + q) to 0.",
+            "annotation": "Say Why — count the negative factors, then write the inequality comparing m(p + q) to 0.",
             "given": false
           }
         ]
@@ -3008,7 +3833,33 @@
         "The sign is determined even though the value is not, because ___."
       ],
       "fluency_source": "7NS3-F1",
-      "pld_band": "above"
+      "pld_band": "above",
+      "guided_example": {
+        "stem": "If u < 0, v < 0, and w > 0, determine the sign of w(u + v).",
+        "answer": "w(u + v) < 0",
+        "steps": [
+          {
+            "math": null,
+            "annotation": "Resolve inside the parentheses first: what is the sign of u + v?",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Name the two factors you are now multiplying.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Count the negative factors among them.",
+            "given": false
+          },
+          {
+            "math": null,
+            "annotation": "Say Why — write the inequality and justify it in one sentence.",
+            "given": false
+          }
+        ]
+      }
     }
   ],
   "skill_columns": {
