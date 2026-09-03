@@ -88,8 +88,16 @@ PLD_BANDS = ("below", "approaching", "at", "above")
 # rather than referring to a drawing, and owes no render_data.
 # Gate 9: a stem that tells the student to choose must give them something to
 # choose from. Options can live in a `choices` list or be listed inline.
+# "Which expression does it model?" implies a set to pick from just as much as
+# "Select the expression", so the pattern covers both. The first version only
+# matched select/choose/circle/pick and missed eight shipped stems.
 ASKS_TO_CHOOSE = re.compile(
-    r"\b(select|choose|circle the|pick the|which of)\b", re.I)
+    r"\b(select|choose|circle the|pick the|identify which"
+    r"|which (?:of|expression|equation|statement"
+    r"|explanation|answer|product|model|form))\b", re.I)
+# Deliberately NOT matched: "which one is farther left", "say which one is the
+# distance". Those point back at values the student just produced in an earlier
+# step, so the options are in their own work and no list is owed.
 # Inline options look like a comma-separated run, an "A or B" pair, or a
 # "from the set ..." preamble.
 LISTS_OPTIONS = re.compile(
