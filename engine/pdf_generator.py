@@ -1048,7 +1048,7 @@ class MathPDF(FPDF):
     # ============================================================
 
     def _draw_array(self, x, y, rows, cols, split_after=None, cell=4.2,
-                    max_width=None):
+                    max_width=None, empty=False):
         """Draw a rows x cols array of unit squares.
 
         The multiplication-fact skills ask the student to picture an array and
@@ -1057,6 +1057,10 @@ class MathPDF(FPDF):
 
         split_after: draw a heavier rule after this many rows, showing the split
         the worked example talks about.
+        empty: leave the cells unshaded. Area skills ask the student to COUNT
+        the squares, so a pre-filled grid does the work for them; an empty grid
+        is a thing to count. Multiplication-fact skills shade it, because there
+        the array is a picture of a fact they are recalling, not counting.
         """
         if not rows or not cols:
             return 0
@@ -1066,10 +1070,11 @@ class MathPDF(FPDF):
 
         self.set_draw_color(120, 120, 120)
         self.set_line_width(0.15)
-        self.set_fill_color(233, 240, 250)
+        self.set_fill_color(255, 255, 255) if empty else self.set_fill_color(233, 240, 250)
         for r in range(rows):
             for c in range(cols):
-                self.rect(x + c * cell, y + r * cell, cell, cell, style="FD")
+                self.rect(x + c * cell, y + r * cell, cell, cell,
+                          style="D" if empty else "FD")
 
         # Outer border, then the split rule if one was asked for.
         self.set_draw_color(0, 0, 0)

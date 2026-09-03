@@ -874,6 +874,7 @@ def _draw_render_data(pdf, x, y, render_data, max_width=120):
                 rows=render_data.get("rows", 0),
                 cols=render_data.get("cols", 0),
                 split_after=render_data.get("split_after"),
+                empty=render_data.get("empty", False),
                 max_width=max_width,
             )
         if rd_type == "data_table":
