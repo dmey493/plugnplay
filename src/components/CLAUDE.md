@@ -7,7 +7,10 @@ features are top level (`intervention/`, `generator/`, `wodb/`, `number-talks/`,
 ## Shared across features
 
 - `standards/StandardPicker.tsx` is used by BOTH `intervention/` and
-  `generator/`. That is why it is not inside either.
+  `generator/`. That is why it is not inside either. `spiral-review/` has its
+  own multi-select picker (`SpiralStandardPicker.tsx`) because it picks
+  several standards at once; it copies the grade and tab styling rather than
+  importing the single-select one.
 - `projection/` (`DrawingOverlay`, `InlineMath`) is used by `intervention/`,
   `tasks/ProjectionView`, and `thin-slices/ThinSliceRunner`.
 - `ui/`, `layout/`, `sections/` are generic building blocks.

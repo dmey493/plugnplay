@@ -15,7 +15,11 @@ Stale forks exist in `authoring/execution/` and
 - all read `content/skills/<STD>.json`
 
 **Generators** (builds problems on demand):
-- `generate_pdf_api.py` API entry, called by `src/lib/generators/engine.ts`
+- `review_api.py` the Problem Generator's entry (preview, swap, PDF), called by
+  `src/lib/generators/engine.ts`
+- `spiral_api.py` + `spiral_pdf.py` spiral review: several standards per
+  sheet, a sheet per week, from the same stems
+- `generate_pdf_api.py` older one-shot entry; nothing in the app calls it
 - `generate_worksheet.py` worksheet assembly
 - `number_generators.py` the numbers
 - `context_pools.py` word-problem contexts

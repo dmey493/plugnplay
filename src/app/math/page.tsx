@@ -97,6 +97,21 @@ const RESOURCES: TileEntry[] = [
       </svg>
     ),
   },
+  {
+    title: "Spiral review",
+    description:
+      "Mix 1 or 2 problems from each standard you pick, at the level you choose. Build several weeks at once, swap any problem, and print.",
+    href: "/math/spiral-review",
+    color: "#60a5fa",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="m17 2 4 4-4 4" />
+        <path d="M3 11v-1a4 4 0 0 1 4-4h14" />
+        <path d="m7 22-4-4 4-4" />
+        <path d="M21 13v1a4 4 0 0 1-4 4H3" />
+      </svg>
+    ),
+  },
 ];
 
 const ROUTINES: TileEntry[] = [
@@ -266,8 +281,11 @@ function TileGrid({ tiles }: { tiles: TileEntry[] }) {
     2: "lg:grid-cols-2",
     3: "lg:grid-cols-3",
     4: "lg:grid-cols-4",
+    // Five across only once there is room; at lg a 3 + 2 wrap reads better
+    // than four with one stranded underneath.
+    5: "lg:grid-cols-3 xl:grid-cols-5",
   };
-  const lgCols = colCap[Math.min(Math.max(tiles.length, 1), 4)] ?? "lg:grid-cols-3";
+  const lgCols = colCap[Math.min(Math.max(tiles.length, 1), 5)] ?? "lg:grid-cols-3";
 
   return (
     <div className={`grid gap-6 sm:grid-cols-2 ${lgCols}`}>

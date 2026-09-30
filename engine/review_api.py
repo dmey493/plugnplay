@@ -8,6 +8,7 @@ Usage:
   echo '{"action":"review-generate","standard":"6.AF.3","format":"mms",...}' | python engine/review_api.py
 """
 
+import contextlib
 import json
 import os
 import sys
@@ -209,13 +210,14 @@ def handle_swap_question(params):
             return question_to_dict(random.choice(narrowed))
         return {"error": "No replacement questions available"}
     if target_prof:
+        # The level is a hard constraint: a swap must not hand back a problem
+        # at a different proficiency level than the card says. Difficulty is a
+        # preference that relaxes when nothing at the level matches it.
         narrowed = filter_prof(candidates, target_prof)
-        if target_diff:
-            narrowed2 = filter_diff(narrowed, target_diff)
-            if narrowed2:
-                candidates = narrowed2
-            elif narrowed:
-                candidates = narrowed
+        if not narrowed:
+            return {"error": "No replacement questions available"}
+        narrowed2 = filter_diff(narrowed, target_diff) if target_diff else []
+        candidates = narrowed2 or narrowed
 
     if not candidates:
         return {"error": "No replacement questions available"}
@@ -289,16 +291,22 @@ def main():
     params = json.loads(raw)
     action = params.get("action", "review-generate")
 
-    if action == "review-generate":
-        result = handle_review_generate(params)
-    elif action == "swap-question":
-        result = handle_swap_question(params)
-    elif action == "review-pdf":
-        result = handle_review_pdf(params)
-    else:
-        result = {"error": f"Unknown action: {action}"}
+    # Stem modules print "Error generating ..." when a variant fails. On stdout
+    # that text would sit in front of the JSON and break the caller's parse, so
+    # anything printed while handling goes to stderr instead.
+    out = sys.stdout
+    with contextlib.redirect_stdout(sys.stderr):
+        if action == "review-generate":
+            result = handle_review_generate(params)
+        elif action == "swap-question":
+            result = handle_swap_question(params)
+        elif action == "review-pdf":
+            result = handle_review_pdf(params)
+        else:
+            result = {"error": f"Unknown action: {action}"}
 
-    print(json.dumps(result))
+    out.write(json.dumps(result))
+    out.flush()
 
 
 if __name__ == "__main__":

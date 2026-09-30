@@ -2893,7 +2893,15 @@ def _write_math_line(pdf, text, x, y, font_size, line_h, max_w, ff="Helvetica",
     if not has_frac and not has_exp:
         return None  # Caller should use regular multi_cell
 
-    segments = MathPDF._absorb_prefrac_spaces(MathPDF._parse_fractions(text))
+    raw = MathPDF._parse_fractions(text)
+    # A space in front of a fraction is swapped for a fixed gap below, but it
+    # is still a place where the line may break.
+    break_before = {
+        i for i, seg in enumerate(raw)
+        if seg[0] in ('fraction', 'mixed') and i > 0
+        and raw[i - 1][0] == 'text' and raw[i - 1][1].endswith(' ')
+    }
+    segments = MathPDF._absorb_prefrac_spaces(raw)
     frac_lh = line_h * 1.8 if has_frac else line_h
     y_center = y + frac_lh * 0.42
     # Zero fpdf's cell margin so text ink lands exactly at cur_x (see
@@ -2903,100 +2911,138 @@ def _write_math_line(pdf, text, x, y, font_size, line_h, max_w, ff="Helvetica",
     x = x + saved_cm
     cur_x = x
 
+    def text_y():
+        return y + (frac_lh - line_h) / 2 if has_frac else y
+
+    def new_line():
+        nonlocal cur_x, y, y_center
+        cur_x = x
+        y += frac_lh
+        y_center = y + frac_lh * 0.42
+
+    def word_w(tok):
+        if '^' not in tok:
+            pdf.set_font(ff, font_style, font_size)
+            return pdf.get_string_width(tok)
+        w = 0
+        for i, part in enumerate(EXPONENT_RE.split(tok)):
+            if part:
+                pdf.set_font(ff, font_style, font_size * (0.65 if i % 2 else 1))
+                w += pdf.get_string_width(part)
+        return w
+
+    def frac_dims(num_str, den_str):
+        frac_fs = font_size * 0.78
+        pdf.set_font(ff, "", frac_fs)
+        content_w = max(pdf.get_string_width(num_str), pdf.get_string_width(den_str))
+        side_pad = 0.5
+        return frac_fs, side_pad, content_w + 2 * side_pad, frac_fs * 0.4
+
+    # Lay the line out as items: words, spaces and fractions. A cluster is a
+    # run of items with no space between them ("(2/5)(1/3)." or "2^3"); lines
+    # break only between clusters, so a paren or period never strands alone.
+    items = []  # (kind, payload, width, starts_cluster)
     for si, seg in enumerate(segments):
         if seg[0] == 'text':
-            piece = seg[1]
-            if '^' in piece:
-                # Handle exponents
-                parts = EXPONENT_RE.split(piece)
-                for i, part in enumerate(parts):
-                    if not part:
-                        continue
-                    if i % 2 == 0:
-                        pdf.set_font(ff, font_style, font_size)
-                        w = pdf.get_string_width(part)
-                        text_y = y + (frac_lh - line_h) / 2 if has_frac else y
-                        pdf.set_xy(cur_x, text_y)
-                        pdf.cell(w, line_h, part)
-                        cur_x += w
-                    else:
-                        exp_fs = font_size * 0.65
-                        pdf.set_font(ff, font_style, exp_fs)
-                        w = pdf.get_string_width(part)
-                        text_y = y + (frac_lh - line_h) / 2 if has_frac else y
-                        pdf.set_xy(cur_x, text_y - 1.2)
-                        pdf.cell(w, line_h, part)
-                        cur_x += w
-            else:
-                pdf.set_font(ff, font_style, font_size)
-                w = pdf.get_string_width(piece)
-                if cur_x + w > x + max_w and cur_x > x + 5:
-                    # Line wrap
-                    cur_x = x
-                    y += frac_lh
-                    y_center = y + frac_lh * 0.42
-                text_y = y + (frac_lh - line_h) / 2 if has_frac else y
-                pdf.set_xy(cur_x, text_y)
-                pdf.cell(w, line_h, piece)
-                cur_x += w
-
-        elif seg[0] == 'fraction':
-            # Add spacing before fraction when next to parentheses
-            cur_x += 0.8
-            frac_fs = font_size * 0.78
-            pdf.set_font(ff, "", frac_fs)
+            for tok in re.split(r'(\s+)', seg[1]):
+                if not tok:
+                    continue
+                if tok.isspace():
+                    pdf.set_font(ff, font_style, font_size)
+                    items.append(('space', tok, pdf.get_string_width(tok), True))
+                else:
+                    items.append(('word', tok, word_w(tok), False))
+            continue
+        spaced_after = (si + 1 < len(segments) and segments[si + 1][0] == 'text'
+                        and segments[si + 1][1].startswith(' '))
+        if seg[0] == 'fraction':
             num_str, den_str = str(seg[1]), str(seg[2])
-            num_w = pdf.get_string_width(num_str)
-            den_w = pdf.get_string_width(den_str)
-            content_w = max(num_w, den_w)
-            side_pad = 0.5
-            frac_w = content_w + 2 * side_pad
-            cell_h = frac_fs * 0.4
-
-            # Bar
-            pdf.set_draw_color(0, 0, 0)
-            pdf.set_line_width(0.25)
-            pdf.line(cur_x + side_pad, y_center,
-                     cur_x + frac_w - side_pad, y_center)
-            # Numerator
-            pdf.set_xy(cur_x, y_center - 0.3 - cell_h)
-            pdf.cell(frac_w, cell_h, num_str, align="C")
-            # Denominator
-            pdf.set_xy(cur_x, y_center + 0.3 + 0.2)
-            pdf.cell(frac_w, cell_h, den_str, align="C")
-            cur_x += frac_w + MathPDF._post_frac_gap(segments, si)
-
-        elif seg[0] == 'mixed':
-            # Add spacing before mixed number when next to parentheses
-            cur_x += 0.8
-            # Whole number
-            pdf.set_font(ff, font_style, font_size)
+            dims = frac_dims(num_str, den_str)
+            gap = MathPDF._post_frac_gap(segments, si)
+            items.append(('fraction', (num_str, den_str, dims, gap),
+                          0.8 + dims[2] + gap, si in break_before))
+        else:  # mixed number
             ws = seg[1]
+            num_str, den_str = str(seg[2]), str(seg[3])
+            dims = frac_dims(num_str, den_str)
+            pdf.set_font(ff, font_style, font_size)
             ww = pdf.get_string_width(ws)
-            text_y = y + (frac_lh - line_h) / 2
-            pdf.set_xy(cur_x, text_y)
+            gap = MathPDF._post_frac_gap(segments, si)
+            items.append(('mixed', (ws, ww, num_str, den_str, dims, gap),
+                          0.8 + ww + 1.5 + dims[2] + gap, si in break_before))
+        if spaced_after:
+            items.append(('break', None, 0, True))
+
+    def draw_frac(num_str, den_str, dims):
+        nonlocal cur_x
+        frac_fs, side_pad, frac_w, cell_h = dims
+        pdf.set_font(ff, "", frac_fs)
+        pdf.set_draw_color(0, 0, 0)
+        pdf.set_line_width(0.25)
+        pdf.line(cur_x + side_pad, y_center, cur_x + frac_w - side_pad, y_center)
+        pdf.set_xy(cur_x, y_center - 0.3 - cell_h)
+        pdf.cell(frac_w, cell_h, num_str, align="C")
+        pdf.set_xy(cur_x, y_center + 0.3 + 0.2)
+        pdf.cell(frac_w, cell_h, den_str, align="C")
+        cur_x += frac_w
+
+    def draw(item):
+        nonlocal cur_x
+        kind, payload = item[0], item[1]
+        if kind == 'word':
+            for i, part in enumerate(EXPONENT_RE.split(payload)):
+                if not part:
+                    continue
+                if i % 2 == 0:
+                    pdf.set_font(ff, font_style, font_size)
+                    w = pdf.get_string_width(part)
+                    pdf.set_xy(cur_x, text_y())
+                else:
+                    pdf.set_font(ff, font_style, font_size * 0.65)
+                    w = pdf.get_string_width(part)
+                    pdf.set_xy(cur_x, text_y() - 1.2)
+                pdf.cell(w, line_h, part)
+                cur_x += w
+        elif kind == 'fraction':
+            num_str, den_str, dims, gap = payload
+            cur_x += 0.8  # spacing before a fraction, e.g. next to a paren
+            draw_frac(num_str, den_str, dims)
+            cur_x += gap
+        elif kind == 'mixed':
+            ws, ww, num_str, den_str, dims, gap = payload
+            cur_x += 0.8
+            pdf.set_font(ff, font_style, font_size)
+            pdf.set_xy(cur_x, y + (frac_lh - line_h) / 2)
             pdf.cell(ww, line_h, ws)
             cur_x += ww + 1.5
-            # Fraction part
-            frac_fs = font_size * 0.78
-            pdf.set_font(ff, "", frac_fs)
-            num_str, den_str = str(seg[2]), str(seg[3])
-            num_w = pdf.get_string_width(num_str)
-            den_w = pdf.get_string_width(den_str)
-            content_w = max(num_w, den_w)
-            side_pad = 0.5
-            frac_w = content_w + 2 * side_pad
-            cell_h = frac_fs * 0.4
+            draw_frac(num_str, den_str, dims)
+            cur_x += gap
 
-            pdf.set_draw_color(0, 0, 0)
-            pdf.set_line_width(0.25)
-            pdf.line(cur_x + side_pad, y_center,
-                     cur_x + frac_w - side_pad, y_center)
-            pdf.set_xy(cur_x, y_center - 0.3 - cell_h)
-            pdf.cell(frac_w, cell_h, num_str, align="C")
-            pdf.set_xy(cur_x, y_center + 0.3 + 0.2)
-            pdf.cell(frac_w, cell_h, den_str, align="C")
-            cur_x += frac_w + MathPDF._post_frac_gap(segments, si)
+    i = 0
+    while i < len(items):
+        kind, _, w, _ = items[i]
+        if kind == 'space':
+            if cur_x > x:  # no leading space on a wrapped line
+                cur_x += w
+            i += 1
+            continue
+        if kind == 'break':
+            i += 1
+            continue
+        j = i + 1
+        while j < len(items) and items[j][0] not in ('space', 'break') and not items[j][3]:
+            j += 1
+        cluster = items[i:j]
+        cluster_w = sum(it[2] for it in cluster)
+        if cur_x + cluster_w > x + max_w and cur_x > x:
+            new_line()
+        whole = cur_x + cluster_w <= x + max_w
+        for it in cluster:
+            # A cluster wider than a whole line may still break between items.
+            if not whole and cur_x + it[2] > x + max_w and cur_x > x:
+                new_line()
+            draw(it)
+        i = j
 
     pdf.c_margin = saved_cm
     pdf.set_font(ff, font_style, font_size)
@@ -3368,259 +3414,405 @@ def generate_exit_ticket_pdf(question, output_path, standard_code="",
     return output_path
 
 
+_PART_LABEL_RE = re.compile(r'^(Part [A-F])\b\s*:?\s*(.*)$')
+
+
 def _write_column_question(pdf, question, num, col_x, col_w, start_y,
-                           font_scale=1.0):
+                           font_scale=1.0, show_number=True, fig_max_h=None,
+                           inline_parts=False):
     """Render a question within a constrained column.
 
     font_scale: 0.5-1.0 multiplier applied to font sizes, line heights,
                 and figure dimensions so content shrinks to fit the page.
+    show_number: draw a bold "N." at col_x and indent the text past it.
+                Callers that draw their own number pass False and get the
+                whole column width.
+    fig_max_h:  optional cap (mm) on figure height, for layouts that share
+                one page between many questions.
+    inline_parts: follow the stem as written. The figure goes where the stem
+                puts [FIGURE], and inline "Part A" / "Part B" sections render
+                in place with their own answer space (the choices sit under
+                the part that asks for them). Otherwise the labels are skipped
+                and the shorter prompts in question.parts repeat at the end.
     Returns the y position after the question is rendered.
     """
+    from engine.models import ItemType
+
     ff = pdf.ff
     fs_body = max(6, 10 * font_scale)
     fs_small = max(5, 9 * font_scale)
     line_h = max(3, 5 * font_scale)
-    text_w = col_w - 8  # indent from number
+    # Ragged right reads better in a narrow box than justified text, whose
+    # stretched word gaps open up rivers. The older layouts keep justify.
+    align = "L" if inline_parts else "J"
 
     cur_y = start_y
 
-    # Question number
-    pdf.set_font(ff, "B", fs_body)
-    pdf.set_xy(col_x, cur_y)
-    pdf.cell(5, line_h, f"{num}.", new_x="RIGHT", new_y="TOP")
-    q_text_x = col_x + 6
+    if show_number:
+        text_w = col_w - 8  # indent from number
+        pdf.set_font(ff, "B", fs_body)
+        pdf.set_xy(col_x, cur_y)
+        pdf.cell(5, line_h, f"{num}.", new_x="RIGHT", new_y="TOP")
+        q_text_x = col_x + 6
+    else:
+        text_w = col_w
+        q_text_x = col_x
 
-    # Stem text
-    pdf.set_font(ff, "", fs_body)
-    stem = MathPDF._clean_text(question.stem_text)
-    stem = stem.replace("[FIGURE]", "").strip()
-
-    for line in stem.split("\n"):
-        line = line.strip()
-        if not line:
-            cur_y += 2
-            continue
-
-        # Stems that carry both inline "Part A:" lines AND a parts array
-        # would render the prompts twice here (the parts section below adds
-        # them with answer lines) — skip the inline copies.
-        if question.parts and line.startswith(("Part A", "Part B", "Part C")):
-            continue
-
-        # Try rendering with stacked fractions/exponents
-        result = _write_math_line(pdf, line, q_text_x, cur_y, fs_body,
-                                  line_h, text_w, ff=ff)
-        if result is not None:
-            _, cur_y = result
-        else:
-            pdf.set_xy(q_text_x, cur_y)
-            pdf.multi_cell(text_w, line_h, line, new_x="LMARGIN", new_y="NEXT")
-            cur_y = pdf.get_y()
-
-    # Render_data diagrams — use MathPDF drawing methods scaled to column width
     rd = getattr(question, 'render_data', None) or {}
     fig_w = text_w - 2  # available width for figures
 
-    if rd.get('type') == 'data_table':
-        cur_y += 1
-        h = pdf._draw_data_table(
-            q_text_x, cur_y,
-            headers=rd['headers'],
-            rows=rd['rows'],
-            orientation=rd.get('orientation', 'vertical'),
-            max_width=text_w
-        )
-        cur_y += h
-    elif rd.get('type') == 'number_line':
-        cur_y += 1
-        h = pdf._draw_number_line(
-            q_text_x, cur_y,
-            value=rd['value'],
-            circle_type=rd['circle_type'],
-            direction=rd['direction'],
-            width=fig_w,
-            blank=rd.get('blank', False),
-        )
-        cur_y += h
-    elif rd.get('type') == 'number_line_point':
-        cur_y += 1
-        h = pdf._draw_number_line_point(
-            q_text_x, cur_y,
-            ticks=rd['ticks'],
-            point_value=rd.get('point_value'),
-            point_label=rd.get('point_label', 'P'),
-            points=rd.get('points'),
-            width=fig_w,
-            hide_tick_labels=rd.get('hide_tick_labels', False),
-            labeled_ticks=rd.get('labeled_ticks'),)
-        cur_y += h
-    elif rd.get('type') == 'double_number_line':
-        cur_y += 1
-        h = pdf._draw_double_number_line(
-            q_text_x, cur_y,
-            top_ticks=rd['top_ticks'],
-            bottom_ticks=rd['bottom_ticks'],
-            top_label=rd.get('top_label', ''),
-            bottom_label=rd.get('bottom_label', ''),
-            width=fig_w,
-        )
-        cur_y += h
-    elif rd.get('type') == 'rectangle_diagram':
-        cur_y += 1
-        h = pdf._draw_rectangle_diagram(
-            q_text_x, cur_y,
-            side=rd['side'], cut_l=rd['cut_l'], cut_w=rd['cut_w']
-        )
-        cur_y += h
-    elif rd.get('type') == 'coordinate_grid':
-        cur_y += 1
-        grid_sz = min(fig_w - 5, 50 * font_scale)  # fit within column
-        h = pdf._draw_coordinate_grid(
-            q_text_x, cur_y,
-            x_range=rd['x_range'],
-            y_range=rd['y_range'],
-            points=rd.get('points', []),
-            lines=rd.get('lines', []),
-            grid_size=grid_sz,
-            label_step=rd.get('label_step'),
-            hide_labels=rd.get('hide_labels', False), x_label=rd.get('x_label'), y_label=rd.get('y_label'),
-        )
-        cur_y += h
-    elif rd.get('tables'):
-        # Multiple tables — constrain each to fit within the column
-        cur_y += 1
-        table_list = rd['tables']
-        gap_t = 3
-        n_tables = len(table_list)
+    def capped(h):
+        return min(h, fig_max_h) if fig_max_h else h
 
-        # Each table gets an equal share of the available width
-        per_table_w = (text_w - gap_t * max(0, n_tables - 1)) / max(n_tables, 1)
+    def write_text(text, x, y, width, fs, style=""):
+        # Stacked fractions/exponents when the line has math, else wrapped text.
+        result = _write_math_line(pdf, text, x, y, fs, line_h, width,
+                                  ff=ff, font_style=style)
+        if result is not None:
+            return result[1]
+        pdf.set_font(ff, style, fs)
+        pdf.set_xy(x, y)
+        pdf.multi_cell(width, line_h, text, align=align, new_x="LMARGIN", new_y="NEXT")
+        return pdf.get_y()
 
-        t_x = q_text_x
-        max_h = 0
-        for idx_t, tbl in enumerate(table_list):
-            label_t = tbl.get('title', f"Table {idx_t + 1}")
-            pdf.set_font(ff, "B", fs_small)
-            pdf.set_xy(t_x, cur_y)
-            pdf.cell(per_table_w, line_h, label_t, new_x="LEFT", new_y="TOP")
+    def draw_figure(y):
+        # Render_data diagrams, using MathPDF drawing methods scaled to the column.
+        if rd.get('type') == 'data_table':
+            y += 1
             h = pdf._draw_data_table(
-                t_x, cur_y + line_h,
-                headers=tbl['headers'],
-                rows=tbl['rows'],
-                orientation=tbl.get('orientation', 'vertical'),
-                max_width=per_table_w
+                q_text_x, y,
+                headers=rd['headers'],
+                rows=rd['rows'],
+                orientation=rd.get('orientation', 'vertical'),
+                max_width=text_w
             )
-            t_x += per_table_w + gap_t
-            max_h = max(max_h, h + line_h)
-        cur_y += max_h
-    elif rd.get('type') == 'composite_shape':
-        cur_y += 1
-        svg_str = _composite_shape_to_svg(rd)
-        fig_max_h = max(25, 50 * font_scale)
-        h = pdf._render_svg_figure(
-            q_text_x, cur_y, svg_str,
-            max_width=fig_w, max_height=fig_max_h,
-        )
-        cur_y += h + 1
-    elif rd.get('type') == 'polygon_angles':
-        cur_y += 1
-        svg_str = _polygon_angles_to_svg(rd)
-        fig_max_h = max(25, 50 * font_scale)
-        h = pdf._render_svg_figure(
-            q_text_x, cur_y, svg_str,
-            max_width=fig_w, max_height=fig_max_h,
-        )
-        cur_y += h + 1
-    elif rd.get('type') == 'rectangular_prism':
-        cur_y += 1
-        svg_str = _rectangular_prism_to_svg(rd)
-        fig_max_h = max(25, 50 * font_scale)
-        h = pdf._render_svg_figure(
-            q_text_x, cur_y, svg_str,
-            max_width=fig_w, max_height=fig_max_h,
-        )
-        cur_y += h + 1
-    elif rd.get('svg_html'):
-        # Render SVG geometry figures (triangles, circles, 3D shapes, etc.)
-        cur_y += 1
-        fig_max_h = max(30, 70 * font_scale)
-        h = pdf._render_svg_figure(
-            q_text_x, cur_y, rd['svg_html'],
-            max_width=fig_w, max_height=fig_max_h,
-        )
-        cur_y += h + 1
+            y += h
+        elif rd.get('type') == 'number_line':
+            y += 1
+            h = pdf._draw_number_line(
+                q_text_x, y,
+                value=rd['value'],
+                circle_type=rd['circle_type'],
+                direction=rd['direction'],
+                width=fig_w,
+                blank=rd.get('blank', False),
+            )
+            y += h
+        elif rd.get('type') == 'number_line_point':
+            y += 1
+            h = pdf._draw_number_line_point(
+                q_text_x, y,
+                ticks=rd['ticks'],
+                point_value=rd.get('point_value'),
+                point_label=rd.get('point_label', 'P'),
+                points=rd.get('points'),
+                width=fig_w,
+                hide_tick_labels=rd.get('hide_tick_labels', False),
+                labeled_ticks=rd.get('labeled_ticks'),)
+            y += h
+        elif rd.get('type') == 'double_number_line':
+            y += 1
+            h = pdf._draw_double_number_line(
+                q_text_x, y,
+                top_ticks=rd['top_ticks'],
+                bottom_ticks=rd['bottom_ticks'],
+                top_label=rd.get('top_label', ''),
+                bottom_label=rd.get('bottom_label', ''),
+                width=fig_w,
+            )
+            y += h
+        elif rd.get('type') == 'rectangle_diagram':
+            y += 1
+            h = pdf._draw_rectangle_diagram(
+                q_text_x, y,
+                side=rd['side'], cut_l=rd['cut_l'], cut_w=rd['cut_w']
+            )
+            y += h
+        elif rd.get('type') == 'coordinate_grid':
+            y += 1
+            grid_sz = capped(min(fig_w - 5, 50 * font_scale))  # fit within column
+            h = pdf._draw_coordinate_grid(
+                q_text_x, y,
+                x_range=rd['x_range'],
+                y_range=rd['y_range'],
+                points=rd.get('points', []),
+                lines=rd.get('lines', []),
+                grid_size=grid_sz,
+                label_step=rd.get('label_step'),
+                hide_labels=rd.get('hide_labels', False), x_label=rd.get('x_label'), y_label=rd.get('y_label'),
+            )
+            y += h
+        elif rd.get('tables'):
+            # Multiple tables — constrain each to fit within the column
+            y += 1
+            table_list = rd['tables']
+            gap_t = 3
+            n_tables = len(table_list)
 
-    # Reset font after any figure rendering
-    if rd:
-        pdf.set_font(ff, "", fs_body)
+            # Each table gets an equal share of the available width
+            per_table_w = (text_w - gap_t * max(0, n_tables - 1)) / max(n_tables, 1)
 
-    # MC choices
-    if question.choices:
-        cur_y += 1
+            t_x = q_text_x
+            max_h = 0
+            for idx_t, tbl in enumerate(table_list):
+                label_t = tbl.get('title', f"Table {idx_t + 1}")
+                pdf.set_font(ff, "B", fs_small)
+                pdf.set_xy(t_x, y)
+                pdf.cell(per_table_w, line_h, label_t, new_x="LEFT", new_y="TOP")
+                h = pdf._draw_data_table(
+                    t_x, y + line_h,
+                    headers=tbl['headers'],
+                    rows=tbl['rows'],
+                    orientation=tbl.get('orientation', 'vertical'),
+                    max_width=per_table_w
+                )
+                t_x += per_table_w + gap_t
+                max_h = max(max_h, h + line_h)
+            y += max_h
+        elif rd.get('type') == 'composite_shape':
+            y += 1
+            svg_str = _composite_shape_to_svg(rd)
+            h = pdf._render_svg_figure(
+                q_text_x, y, svg_str,
+                max_width=fig_w, max_height=capped(max(25, 50 * font_scale)),
+            )
+            y += h + 1
+        elif rd.get('type') == 'polygon_angles':
+            y += 1
+            svg_str = _polygon_angles_to_svg(rd)
+            h = pdf._render_svg_figure(
+                q_text_x, y, svg_str,
+                max_width=fig_w, max_height=capped(max(25, 50 * font_scale)),
+            )
+            y += h + 1
+        elif rd.get('type') == 'rectangular_prism':
+            y += 1
+            svg_str = _rectangular_prism_to_svg(rd)
+            h = pdf._render_svg_figure(
+                q_text_x, y, svg_str,
+                max_width=fig_w, max_height=capped(max(25, 50 * font_scale)),
+            )
+            y += h + 1
+        elif rd.get('svg_html'):
+            # Render SVG geometry figures (triangles, circles, 3D shapes, etc.)
+            y += 1
+            h = pdf._render_svg_figure(
+                q_text_x, y, rd['svg_html'],
+                max_width=fig_w, max_height=capped(max(30, 70 * font_scale)),
+            )
+            y += h + 1
+
+        # Reset font after any figure rendering
+        if rd:
+            pdf.set_font(ff, "", fs_body)
+        return y
+
+    def draw_choices(y):
+        y += 1
         labels = ['A', 'B', 'C', 'D', 'E', 'F']
         for idx, choice in enumerate(question.choices):
             pdf.set_font(ff, "B", fs_small)
-            pdf.set_xy(q_text_x + 1, cur_y)
+            pdf.set_xy(q_text_x + 1, y)
             lbl = labels[idx] if idx < len(labels) else str(idx + 1)
             c_text = MathPDF._clean_text(choice.text)
             pdf.cell(4, line_h, f"{lbl}.", new_x="RIGHT", new_y="TOP")
             lbl_end_x = q_text_x + 5
+            c_rd = getattr(choice, 'render_data', None) or {}
+            if inline_parts and c_rd.get('type') == 'number_line':
+                # Graph choices are drawn, not described ("open circle at 8").
+                h = pdf._draw_number_line(
+                    lbl_end_x, y,
+                    value=c_rd['value'],
+                    circle_type=c_rd['circle_type'],
+                    direction=c_rd['direction'],
+                    width=min(70, text_w - 6),
+                )
+                y += h + 1
+                continue
             # Try stacked fraction rendering
-            result = _write_math_line(pdf, c_text, lbl_end_x, cur_y,
+            result = _write_math_line(pdf, c_text, lbl_end_x, y,
                                       fs_small, line_h, text_w - 6, ff=ff)
             if result is not None:
-                _, cur_y = result
+                _, y = result
             else:
                 pdf.set_font(ff, "", fs_small)
-                pdf.set_xy(lbl_end_x, cur_y)
-                pdf.multi_cell(text_w - 6, line_h, c_text, new_x="LMARGIN", new_y="NEXT")
-                cur_y = pdf.get_y()
+                pdf.set_xy(lbl_end_x, y)
+                pdf.multi_cell(text_w - 6, line_h, c_text, align=align,
+                               new_x="LMARGIN", new_y="NEXT")
+                y = pdf.get_y()
+        return y
 
-    # Answer line for NR/EQ types
-    from engine.models import ItemType
-    if question.item_type in (ItemType.NR, ItemType.EQ) and not question.parts:
-        cur_y += 2
-        pdf.set_font(ff, "", fs_small)
-        pdf.set_xy(q_text_x, cur_y)
-        pdf.cell(text_w, line_h, "Answer: ______________", new_x="LMARGIN", new_y="NEXT")
-        cur_y = pdf.get_y()
-
-    # Multi-part questions
-    if question.parts:
-        for part in question.parts:
-            cur_y += 1
+    def draw_parts_list(y, part_list):
+        # Prompts that live only in question.parts, each with an answer line.
+        for part in part_list:
+            y += 1
             pdf.set_font(ff, "B", fs_small)
-            pdf.set_xy(q_text_x, cur_y)
+            pdf.set_xy(q_text_x, y)
             part_label = part.label + ":" if part.label else ""
             prompt = MathPDF._clean_text(part.prompt) if part.prompt else ""
             lbl_w = pdf.get_string_width(part_label) + 1
             pdf.cell(lbl_w, line_h, part_label, new_x="RIGHT", new_y="TOP")
             prompt_x = q_text_x + lbl_w
-            result = _write_math_line(pdf, prompt, prompt_x, cur_y,
+            result = _write_math_line(pdf, prompt, prompt_x, y,
                                       fs_small, line_h,
                                       text_w - lbl_w - 2, ff=ff)
             if result is not None:
-                _, cur_y = result
+                _, y = result
             else:
                 pdf.set_font(ff, "", fs_small)
-                pdf.set_xy(prompt_x, cur_y)
+                pdf.set_xy(prompt_x, y)
                 pdf.multi_cell(text_w - lbl_w - 2, line_h,
-                               prompt, new_x="LMARGIN", new_y="NEXT")
-                cur_y = pdf.get_y()
+                               prompt, align=align, new_x="LMARGIN", new_y="NEXT")
+                y = pdf.get_y()
             # Answer line for each part
-            cur_y += 1
-            pdf.set_xy(q_text_x + 2, cur_y)
+            y += 1
+            pdf.set_xy(q_text_x + 2, y)
             pdf.cell(text_w - 4, line_h, "_______________", new_x="LMARGIN", new_y="NEXT")
-            cur_y = pdf.get_y()
+            y = pdf.get_y()
+        return y
 
-    # ER answer box
-    if question.item_type == ItemType.ER and not question.parts:
-        cur_y += 2
+    def draw_answer_line(y, text="Answer: ______________"):
+        y += 2
+        pdf.set_font(ff, "", fs_small)
+        pdf.set_xy(q_text_x, y)
+        pdf.cell(text_w, line_h, text, new_x="LMARGIN", new_y="NEXT")
+        return pdf.get_y()
+
+    def draw_er_box(y):
+        y += 2
         pdf.set_draw_color(0, 0, 0)
         box_h = max(10, 20 * font_scale)
-        pdf.rect(q_text_x, cur_y, text_w, box_h)
-        cur_y += box_h + 1
+        pdf.rect(q_text_x, y, text_w, box_h)
+        return y + box_h + 1
 
+    stem = MathPDF._clean_text(question.stem_text)
+
+    if not inline_parts:
+        pdf.set_font(ff, "", fs_body)
+        stem = stem.replace("[FIGURE]", "").strip()
+        for line in stem.split("\n"):
+            line = line.strip()
+            if not line:
+                cur_y += 2
+                continue
+            # Stems that carry both inline "Part A:" lines AND a parts array
+            # would render the prompts twice here (the parts section below adds
+            # them with answer lines) — skip the inline copies.
+            if question.parts and line.startswith(("Part A", "Part B", "Part C")):
+                continue
+            cur_y = write_text(line, q_text_x, cur_y, text_w, fs_body)
+
+        cur_y = draw_figure(cur_y)
+        if question.choices:
+            cur_y = draw_choices(cur_y)
+        # Answer line for NR/EQ types
+        if question.item_type in (ItemType.NR, ItemType.EQ) and not question.parts:
+            cur_y = draw_answer_line(cur_y)
+        if question.parts:
+            cur_y = draw_parts_list(cur_y, question.parts)
+        if question.item_type == ItemType.ER and not question.parts:
+            cur_y = draw_er_box(cur_y)
+        return cur_y
+
+    # inline_parts: split the stem into its lead-in and its Part sections.
+    lead, sections = [], []
+    for raw in stem.strip().split("\n"):
+        line = raw.strip()
+        m = _PART_LABEL_RE.match(line)
+        if m:
+            sections.append({"label": m.group(1), "lines": [m.group(2)] if m.group(2) else []})
+        elif sections:
+            sections[-1]["lines"].append(line)
+        else:
+            lead.append(line)
+
+    figure_done = not rd
+
+    def draw_lines(lines, y):
+        nonlocal figure_done
+        for line in lines:
+            if not line:
+                y += 2
+                continue
+            if "[FIGURE]" in line:
+                before, after = (s.strip() for s in line.split("[FIGURE]", 1))
+                if before:
+                    y = write_text(before, q_text_x, y, text_w, fs_body)
+                if not figure_done:
+                    y = draw_figure(y)
+                    figure_done = True
+                if after:
+                    y = write_text(after, q_text_x, y, text_w, fs_body)
+                continue
+            y = write_text(line, q_text_x, y, text_w, fs_body)
+        return y
+
+    cur_y = draw_lines(lead, cur_y)
+    if not figure_done:
+        cur_y = draw_figure(cur_y)
+        figure_done = True
+
+    if not sections:
+        if question.choices:
+            cur_y = draw_choices(cur_y)
+        if question.parts:
+            cur_y = draw_parts_list(cur_y, question.parts)
+        elif question.item_type in (ItemType.NR, ItemType.EQ):
+            cur_y = draw_answer_line(cur_y)
+        elif question.item_type == ItemType.ER:
+            cur_y = draw_er_box(cur_y)
+        return cur_y
+
+    # The choices belong under the part that asks the student to pick.
+    parts = question.parts or []
+    choice_section = 0
+    for i, part in enumerate(parts[:len(sections)]):
+        if part.item_type in (ItemType.MC, ItemType.MS):
+            choice_section = i
+            break
+
+    for i, sec in enumerate(sections):
+        cur_y += 1
+        body = list(sec["lines"])
+        while body and not body[0]:
+            body.pop(0)
+        label = sec["label"] + ":"
+        pdf.set_font(ff, "B", fs_body)
+        lbl_w = pdf.get_string_width(label) + 1.5
+        pdf.set_xy(q_text_x, cur_y)
+        pdf.cell(lbl_w, line_h, label, new_x="RIGHT", new_y="TOP")
+        if body and "[FIGURE]" not in body[0]:
+            cur_y = write_text(body.pop(0), q_text_x + lbl_w, cur_y,
+                               text_w - lbl_w, fs_body)
+        else:
+            cur_y += line_h
+        cur_y = draw_lines(body, cur_y)
+
+        if i == choice_section and question.choices:
+            cur_y = draw_choices(cur_y)
+        else:
+            prompt = " ".join(sec["lines"]).lower()
+            if any(w in prompt for w in ("explain", "describe", "justify", "why")):
+                # Writing lines for an explanation
+                pdf.set_draw_color(150, 150, 150)
+                pdf.set_line_width(0.2)
+                for _ in range(3):
+                    cur_y += max(5, 7 * font_scale)
+                    pdf.line(q_text_x + 2, cur_y, q_text_x + text_w, cur_y)
+                pdf.set_draw_color(0, 0, 0)
+                pdf.set_line_width(0.3)
+                cur_y += 1
+            else:
+                cur_y += 1
+                pdf.set_font(ff, "", fs_small)
+                pdf.set_xy(q_text_x + 2, cur_y)
+                pdf.cell(text_w - 4, line_h, "_______________",
+                         new_x="LMARGIN", new_y="NEXT")
+                cur_y = pdf.get_y()
+
+    # Any parts the stem never names still need their prompt and answer line.
+    if len(parts) > len(sections):
+        cur_y = draw_parts_list(cur_y, parts[len(sections):])
     return cur_y
 
 

@@ -12,16 +12,39 @@ const PYTHON_PATH =
 const PROJECT_ROOT = process.cwd();
 const REVIEW_SCRIPT = path.join(PROJECT_ROOT, "engine", "review_api.py");
 const GENERATE_SCRIPT = path.join(PROJECT_ROOT, "engine", "generate_pdf_api.py");
+const SPIRAL_SCRIPT = path.join(PROJECT_ROOT, "engine", "spiral_api.py");
+
+// Python salts str hashes per process, and several stems (and the distractor
+// engine) build sets of strings. Without a fixed seed the same (standard, seed)
+// comes back with different choices in the next process, so a preview stops
+// matching its PDF.
+const PYTHON_ENV = {
+  ...process.env,
+  PYTHONHASHSEED: "0",
+  PYTHONIOENCODING: "utf-8",
+};
+
+export interface PythonCallOptions {
+  timeoutMs?: number;
+  signal?: AbortSignal;
+}
 
 export async function callPython(
   script: string,
-  input: Record<string, unknown>
+  input: Record<string, unknown>,
+  opts: PythonCallOptions = {}
 ): Promise<string> {
   return new Promise((resolve, reject) => {
     const child = execFile(
       PYTHON_PATH,
       [script],
-      { cwd: PROJECT_ROOT, timeout: 30000 },
+      {
+        cwd: PROJECT_ROOT,
+        timeout: opts.timeoutMs ?? 30000,
+        maxBuffer: 10 * 1024 * 1024,
+        env: PYTHON_ENV,
+        signal: opts.signal,
+      },
       (error, stdout, stderr) => {
         if (error) {
           reject(new Error(stderr || error.message));
@@ -62,4 +85,47 @@ export async function generateReviewPdf(
   const buffer = await readFile(pdfPath);
   unlink(pdfPath).catch(() => {});
   return new Uint8Array(buffer);
+}
+
+// Spiral review mixes several standards on one sheet, so it has its own script
+// (engine/spiral_api.py). A multi-week build measures every problem before it
+// draws, which takes longer than the single-standard review calls.
+
+// The engine answers {error, message}: "bad_request" and "no_candidates" are
+// things the teacher can fix, "engine_error" is ours.
+export function spiralErrorStatus(error: unknown): number {
+  return error === "engine_error" ? 500 : 400;
+}
+
+export async function callSpiralApi(
+  params: Record<string, unknown>,
+  opts: PythonCallOptions = {}
+): Promise<Record<string, unknown>> {
+  const result = await callPython(SPIRAL_SCRIPT, params, {
+    timeoutMs: 60000,
+    ...opts,
+  });
+  return JSON.parse(result);
+}
+
+export async function generateSpiralPdf(
+  params: Record<string, unknown>,
+  opts: PythonCallOptions = {}
+): Promise<{ pdf: Uint8Array; report: Record<string, unknown> }> {
+  const result = await callSpiralApi(
+    { ...params, action: "spiral-pdf" },
+    { timeoutMs: 90000, ...opts }
+  );
+  if ("error" in result) {
+    throw Object.assign(new Error(String(result.message ?? result.error)), {
+      status: spiralErrorStatus(result.error),
+    });
+  }
+  const pdfPath = result.path as string;
+  const buffer = await readFile(pdfPath);
+  unlink(pdfPath).catch(() => {});
+  return {
+    pdf: new Uint8Array(buffer),
+    report: (result.report as Record<string, unknown>) ?? {},
+  };
 }
