@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { CheckpointNav } from "@/lib/standards/checkpoints";
 import type { ProficiencyLevel } from "@/lib/standards/plds";
 import {
@@ -40,6 +40,11 @@ import SpiralStandardPicker, { type PickerTab } from "./SpiralStandardPicker";
 type LinkState = "idle" | "copied" | "failed";
 
 const BUILD_FAILED = "The sheet could not be built. Check your connection and try again.";
+
+// The sheet panel is sticky 120px from the top on wide screens (the site
+// header is 104px). Keep these in step with the aside's lg:top-[120px].
+const PANEL_TOP = 120;
+const PANEL_GAP = 16;
 
 export default function SpiralReviewBuilder({
   checkpointNav,
@@ -104,6 +109,58 @@ export default function SpiralReviewBuilder({
     setLastDownloaded(last);
     setRestoredNote(message);
     setMounted(true);
+  }, []);
+
+  // ── Keep Build on screen ────────────────────────────────────────────────
+  // A sticky element only travels inside its parent, and the grid ends just
+  // above the page footer. Near the bottom of the page the grid would push
+  // the panel up and Build would leave the screen, so the panel is sized to
+  // the room left above the grid's bottom. Its list scrolls; its top stays.
+  // Written as a CSS variable so scrolling never re-renders the page.
+  const gridRef = useRef<HTMLDivElement>(null);
+  const asideRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const grid = gridRef.current;
+    const aside = asideRef.current;
+    if (!grid || !aside) return;
+    const wide = window.matchMedia("(min-width: 1024px)");
+    let frame = 0;
+    let last = "";
+    const fit = () => {
+      frame = 0;
+      let value = "";
+      if (wide.matches) {
+        const bottom = Math.min(
+          window.innerHeight - PANEL_GAP,
+          grid.getBoundingClientRect().bottom
+        );
+        // Never shorter than the pinned top itself (+ the panel's borders):
+        // the list gives up all its room before Build could be clipped.
+        const pinned =
+          aside.querySelector<HTMLElement>("[data-sheet-pinned]")?.offsetHeight ?? 0;
+        value = `${Math.max(pinned + 4, Math.floor(bottom - PANEL_TOP))}px`;
+      }
+      if (value === last) return;
+      last = value;
+      if (value) aside.style.setProperty("--sheet-max", value);
+      else aside.style.removeProperty("--sheet-max");
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(fit);
+    };
+    const resized = new ResizeObserver(schedule);
+    resized.observe(grid);
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    wide.addEventListener("change", schedule);
+    schedule();
+    return () => {
+      cancelAnimationFrame(frame);
+      resized.disconnect();
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      wide.removeEventListener("change", schedule);
+    };
   }, []);
 
   // ── Autosave ────────────────────────────────────────────────────────────
@@ -251,8 +308,11 @@ export default function SpiralReviewBuilder({
   };
 
   return (
-    <div className="pb-24 lg:pb-0">
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start">
+    <div className="pb-28 lg:pb-0">
+      <div
+        ref={gridRef}
+        className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start"
+      >
         <div className="rounded-xl border-2 border-pnp-navy bg-white p-6 shadow-[4px_4px_0_var(--pnp-navy)] md:p-8">
           <SpiralStandardPicker
             grade={grade}
@@ -268,10 +328,14 @@ export default function SpiralReviewBuilder({
           />
         </div>
 
+        {/* Pinned just below the site's sticky header (104px on wide screens),
+            so the sheet and its Build button stay on screen while the picker
+            scrolls. The panel scrolls its own list when that runs long. */}
         <aside
+          ref={asideRef}
           id="spiral-sheet"
           aria-label="Your sheet"
-          className="scroll-mt-6 lg:sticky lg:top-6 lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto lg:pb-2 lg:pr-2"
+          className="scroll-mt-28 lg:sticky lg:top-[120px]"
         >
           <SheetPanel
             grade={grade}
@@ -293,21 +357,38 @@ export default function SpiralReviewBuilder({
         </aside>
       </div>
 
-      {/* Small screens: the sheet panel sits below a long list, so keep its
-          count and a way to reach it in view. */}
-      <div className="fixed inset-x-0 bottom-0 z-40 flex items-center justify-between gap-3 border-t-2 border-pnp-navy bg-white px-4 py-3 lg:hidden">
-        <span className="text-sm font-semibold text-pnp-navy">
-          {total} of {MAX_PROBLEMS} problems
-        </span>
-        <Button
-          tier="secondary"
-          size="small"
-          onClick={() =>
-            document.getElementById("spiral-sheet")?.scrollIntoView({ behavior: "smooth" })
-          }
-        >
-          Go to your sheet
-        </Button>
+      {/* Small screens: Build lives in a bar pinned to the bottom of the
+          page, so it can be pressed from anywhere in the long list. */}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t-2 border-pnp-navy bg-white px-4 py-3 lg:hidden">
+        {buildError && (
+          <p
+            role="alert"
+            className="mb-2 rounded-md border border-pnp-red/30 bg-pnp-red/5 px-3 py-2 text-xs text-pnp-gray-900"
+          >
+            {buildError}
+          </p>
+        )}
+        <div className="flex items-center justify-between gap-3">
+          <Button
+            tier="tertiary"
+            size="small"
+            onClick={() =>
+              document.getElementById("spiral-sheet")?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            Your sheet: {total} of {MAX_PROBLEMS}
+          </Button>
+          <Button
+            tier="primary"
+            size="small"
+            onClick={build}
+            disabled={setup.picks.length === 0 || building}
+          >
+            {building
+              ? "Building..."
+              : `Build ${setup.weeks} ${setup.weeks === 1 ? "week" : "weeks"}`}
+          </Button>
+        </div>
       </div>
 
       {plan && reviewOpen && (
